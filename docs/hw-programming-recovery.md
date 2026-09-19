@@ -91,8 +91,16 @@ lspci -d 8086:bcce && lspci -d 12ba:0070   # discover current BDF
 
 ## Open items
 
-- [ ] Confirm `.rpd` conversion path for our 26.1.1 OFS image (BittWare doc /
-      OFS flash-image script) and record exact command + hash.
+- [x] ~~Confirm `.rpd` conversion path~~ — **closed by
+      `qualification/flash-image-research-01/report.md`**: `quartus_pfg -c
+      ofs_top.sof ofs_top_user.rpd -o mode=ASX4 -o bitswap=ON` (tool already
+      in our 26.1.1 install; `bitswap=ON` required — the BittWare programmer
+      bit-flips every byte on read). Address `0x04000000` = **User_Image_1**
+      (vendor flash map: Factory @0x20000, User_Image_1
+      @0x04000000–0x77FF000, info tables @0x7FF6000+). Residual: possible RSU
+      header/wrapping on the vendor image — cross-check the BittWare
+      **IA-840f FPGA Developer Guide** (portal) before first flash; the
+      JTAG-first volatile test remains the empirical backstop.
 - [ ] Apply + verify the narrow JTAG udev permission fix; `jtagconfig` green.
 - [ ] Record known-good vendor image identity before first volatile test.
 - [ ] First flash authorized separately (plan §1 class G) after volatile
