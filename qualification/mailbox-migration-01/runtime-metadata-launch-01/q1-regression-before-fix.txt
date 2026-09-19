@@ -1,0 +1,66 @@
+Command: python3 -B -m unittest -v test_launcher.LauncherTests.test_setup_refusal_gate_close_error_still_cleans_up_fake_only
+CWD: /home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/runtime-metadata-launch-01
+test_setup_refusal_gate_close_error_still_cleans_up_fake_only (test_launcher.LauncherTests.test_setup_refusal_gate_close_error_still_cleans_up_fake_only) ... 
+  test_setup_refusal_gate_close_error_still_cleans_up_fake_only (test_launcher.LauncherTests.test_setup_refusal_gate_close_error_still_cleans_up_fake_only) (refusal='acquisition') ... ERROR
+  test_setup_refusal_gate_close_error_still_cleans_up_fake_only (test_launcher.LauncherTests.test_setup_refusal_gate_close_error_still_cleans_up_fake_only) (refusal='probe') ... ERROR
+
+======================================================================
+ERROR: test_setup_refusal_gate_close_error_still_cleans_up_fake_only (test_launcher.LauncherTests.test_setup_refusal_gate_close_error_still_cleans_up_fake_only) (refusal='acquisition')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/runtime-metadata-launch-01/test_launcher.py", line 183, in test_setup_refusal_gate_close_error_still_cleans_up_fake_only
+    result = self.inert(GOOD)
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/runtime-metadata-launch-01/test_launcher.py", line 19, in inert
+    return L.run_child(data)
+           ~~~~~~~~~~~^^^^^^
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/runtime-metadata-launch-01/launcher.py", line 200, in run_child
+    close(gate_w)
+    ~~~~~^^^^^^^^
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/runtime-metadata-launch-01/launcher.py", line 109, in close
+    os.close(fd)
+    ~~~~~~~~^^^^
+  File "/usr/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/unittest/mock.py", line 1234, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/runtime-metadata-launch-01/test_launcher.py", line 158, in close
+    raise gate_error
+OSError: inert gate close failure
+
+======================================================================
+ERROR: test_setup_refusal_gate_close_error_still_cleans_up_fake_only (test_launcher.LauncherTests.test_setup_refusal_gate_close_error_still_cleans_up_fake_only) (refusal='probe')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/runtime-metadata-launch-01/test_launcher.py", line 183, in test_setup_refusal_gate_close_error_still_cleans_up_fake_only
+    result = self.inert(GOOD)
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/runtime-metadata-launch-01/test_launcher.py", line 19, in inert
+    return L.run_child(data)
+           ~~~~~~~~~~~^^^^^^
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/runtime-metadata-launch-01/launcher.py", line 200, in run_child
+    close(gate_w)
+    ~~~~~^^^^^^^^
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/runtime-metadata-launch-01/launcher.py", line 109, in close
+    os.close(fd)
+    ~~~~~~~~^^^^
+  File "/usr/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/unittest/mock.py", line 1234, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/runtime-metadata-launch-01/test_launcher.py", line 158, in close
+    raise gate_error
+OSError: inert gate close failure
+
+----------------------------------------------------------------------
+Ran 1 test in 0.010s
+
+FAILED (errors=2)
+
+Exit status: 1

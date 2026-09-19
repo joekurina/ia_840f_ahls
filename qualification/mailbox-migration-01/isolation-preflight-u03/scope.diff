@@ -1,0 +1,71 @@
+--- isolation-preflight-u02/preflight.py
++++ isolation-preflight-u03/preflight.py
+@@ -16,7 +16,7 @@
+ import time
+ 
+ HERE = Path(__file__).resolve().parent
+-ROOT = Path('/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/preflight-isolation-7c407469a419-u02')
++ROOT = Path('/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/preflight-isolation-7c407469a419-u03')
+ RESERVED = [str(ROOT.parent / n) for n in ('scratch-first-7c407469a419-u01', 'observation-first-7c407469a419-u01')]
+ ENV = {'PATH': '/usr/bin:/bin', 'LANG': 'C'}
+ MAX_OUTPUT = 67108864
+@@ -536,9 +536,9 @@
+     require(expected['tmux']['path'] == '/usr/bin/tmux', 'wrong tmux path')
+     tools = tool_identities(expected)
+     tmux = subprocess.run(['/usr/bin/tmux', '-S', '/tmp/tmux-1000/default', 'display-message', '-p', '-t', 'ia840f_migration_preflight',
+-                           '#{session_name}\t#{session_id}\t#{pane_id}\t#{pane_pid}'],
++                           '#{session_name}|#{session_id}|#{pane_id}|#{pane_pid}'],
+                           stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.PIPE, env=ENV, timeout=3, check=True)
+-    require(tmux.stdout == b'ia840f_migration_preflight\t$4\t%4\t25387\n', 'named tmux pane identity drift')
++    require(tmux.stdout == b'ia840f_migration_preflight|$4|%4|25387\n', 'named tmux pane identity drift')
+     protected = inputs['protected_absent_paths']
+     require(set(protected) == {'original', 'work03', 'board_boundary_1', 'board_boundary_2'}, 'exact protected path roles required')
+     for p in protected.values():
+--- isolation-preflight-u02/test_local.py
++++ isolation-preflight-u03/test_local.py
+@@ -90,7 +90,7 @@
+ 
+     def test_claim_path_exact(self):
+         proposal = json.loads((p.HERE.parent / 'isolation-preflight-proposal.json').read_text())
+-        self.assertEqual(str(p.ROOT), '/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/preflight-isolation-7c407469a419-u02')
++        self.assertEqual(str(p.ROOT), '/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/preflight-isolation-7c407469a419-u03')
+         self.assertEqual(proposal['paths']['exclusive_preflight_root'], str(p.ROOT)[:-3] + 'u01')
+         self.assertEqual(p.RESERVED[0], proposal['paths']['reserved_vendor_scratch_do_not_create'])
+         self.assertEqual(p.RESERVED[1], proposal['paths']['reserved_actual_observation_do_not_claim'])
+--- isolation-preflight-u02/run_local_u02.py
++++ isolation-preflight-u03/run_local_u03.py
+@@ -1,5 +1,9 @@
+ #!/usr/bin/env python3
+-"""Exclusive local inert evidence; never invokes preflight.main or namespaces."""
++"""Local inert tests plus unapproved-template CLI refusal before host effects.
++
++The CLI invokes main, but refuses before host/tool discovery or fixture claim.
++No tmux, bwrap, namespace, remote or vendor execution.
++"""
+ import ast
+ import hashlib
+ import importlib
+@@ -13,12 +17,12 @@
+ HERE = Path(__file__).resolve().parent
+ sys.path.insert(0, str(HERE))
+ os.umask(0o077)
+-OUT = HERE / 'verification-u02-02'
++OUT = HERE / 'verification-u03-01'
+ OUT.mkdir()  # retained, exclusive evidence; repeat invocation refuses
+ files = sorted(p.name for p in HERE.glob('*.py'))
+ before = {n: hashlib.sha256((HERE / n).read_bytes()).hexdigest() for n in files}
+ results = []
+-for name in ('test_local', 'test_b1b2', 'test_tool_roles'):
++for name in ('test_local', 'test_b1b2', 'test_tool_roles', 'test_tmux_identity'):
+     module = importlib.import_module(name)
+     if hasattr(module, 'BASE'):
+         module.BASE = OUT / (name + '-fixtures')
+@@ -51,7 +55,7 @@
+ assert receipt['retained_root'] is None and receipt['authorization'] is False
+ assert receipt['ready_for_build'] is False
+ record = {'python': sys.version, 'results': results, 'python39_grammar': 'pass',
+-          'command': 'python3 -I -B -S ' + str(HERE / 'run_local_u02.py'),
++          'command': 'python3 -I -B -S ' + str(HERE / 'run_local_u03.py'),
+           'tested_sha256': before, 'manifest_sha256': hashlib.sha256(manifest.read_bytes()).hexdigest(),
+           'cli_template_refusal': 'pass', 'remote_or_namespace_execution': False,
+           'vendor_run': False, 'ready_for_build': False, 'authorization': False}

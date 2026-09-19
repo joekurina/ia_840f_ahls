@@ -1,0 +1,22 @@
+>  d=(p/n).read_bytes();r['"'"'files'"'"'][n]={'"'"'text'"'"':d.decode(),'"'"'sha256'"'"':hashlib.sha256(d).hexdigest()}                                        
+> t=json.loads((p/'"'"'tools.json'"'"').read_text());t['"'"'tmux'"'"']=json.loads((p/'"'"'parent-inputs.json'"'"').read_text())['"'"'tmux_tool'"'"']            
+> for n,v in t.items():                 
+>  q=Path(v['"'"'realpath'"'"']);s=q.stat()                                     
+>  try: c=os.getxattr(str(q),'"'"'security.capability'"'"').hex()               
+>  except OSError as e: c={'"'"'errno'"'"':e.errno}                             
+>  r['"'"'tools'"'"'][n]={'"'"'path'"'"':str(q),'"'"'mode'"'"':oct(s.st_mode),'"'"'regular'"'"':stat.S_ISREG(s.st_mode),'"'"'setuid'"'"':bool(s.st_mode&stat.S_ISUID),'"'"'setgid'"'"':bool(s.st_mode&stat.S_ISGID),'"'"'capability'"'"':c}     
+> r['"'"'fixture_exists'"'"']=Path('"'"'/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/preflight-isolation-7c407469a419-u01'"'"').exists() 
+>                   
+> with (p/'"'"'stop-evidence.json'"'"').open('"'"'x'"'"') as f: json.dump(r,f,indent=2)             
+> for n,v in r['"'"'tools'"'"'].items(): print(n,json.dumps(v))                 
+> print('"'"'fixture_exists'"'"',r['"'"'fixture_exists'"'"'])                   
+> '                 
+bwrap {"path": "/usr/bin/bwrap", "mode": "0o100755", "regular": true, "setuid": false, "setgid": false, "capability": {"errno": 61}}                            
+unshare {"path": "/usr/bin/unshare", "mode": "0o100755", "regular": true, "setuid": false, "setgid": false, "capability": {"errno": 61}}                        
+mount {"path": "/usr/bin/mount", "mode": "0o104755", "regular": true, "setuid": true, "setgid": false, "capability": {"errno": 61}}                             
+setpriv {"path": "/usr/bin/setpriv", "mode": "0o100755", "regular": true, "setuid": false, "setgid": false, "capability": {"errno": 61}}                        
+strace {"path": "/usr/bin/strace", "mode": "0o100755", "regular": true, "setuid": false, "setgid": false, "capability": {"errno": 61}}                          
+python3 {"path": "/usr/bin/python3.9", "mode": "0o100755", "regular": true, "setuid": false, "setgid": false, "capability": {"errno": 61}}                      
+tmux {"path": "/usr/bin/tmux", "mode": "0o100755", "regular": true, "setuid": false, "setgid": false, "capability": {"errno": 61}}                              
+fixture_exists False                    
+[uwb_student00@Agilex7Workstation mailbox-migration-01]$                        

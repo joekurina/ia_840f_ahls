@@ -1,0 +1,5 @@
+import os,sys,json
+os.write(1,(json.dumps(dict(ppid=os.getppid(),eof=os.read(0,1)==b""))+"\n").encode())
+os.write(1,bytes(range(256))*32)
+os.write(2,bytes(reversed(range(256)))*32)
+sys.exit(23)

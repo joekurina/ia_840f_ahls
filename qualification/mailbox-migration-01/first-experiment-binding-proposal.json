@@ -1,0 +1,1520 @@
+{
+  "authorization": false,
+  "candidate_binding": {
+    "api_26_1_reviewed": false,
+    "argv": {
+      "child": [
+        "/opt/altera/26.1.1/qsys/bin/qsys-script",
+        "--quartus-project=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/mailbox_migration.qpf",
+        "--rev=mailbox_migration",
+        "--package-version=26.1",
+        "--search-path=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/arbiter,/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/irq_generator,$",
+        "--script=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/child.tcl"
+      ],
+      "parent": [
+        "/opt/altera/26.1.1/qsys/bin/qsys-script",
+        "--quartus-project=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/mailbox_migration.qpf",
+        "--rev=mailbox_migration",
+        "--package-version=26.1",
+        "--search-path=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/arbiter,/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/irq_generator,$",
+        "--script=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/parent.tcl"
+      ],
+      "upgrade": [
+        "/opt/altera/26.1.1/qsys/bin/qsys-generate",
+        "--upgrade-ip-cores",
+        "bmc_spi_sub.qsys",
+        "--batch=./ip/bmc_spi_sub/sdm_mailbox.ip",
+        "--quartus-project=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/mailbox_migration.qpf",
+        "--rev=mailbox_migration",
+        "--part=AGFB027R25A2E2V",
+        "--search-path=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/arbiter,/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/irq_generator,$"
+      ]
+    },
+    "catalog_hashes": {
+      "/opt/altera/26.1.1/ip/altera/common/hw_tcl_packages/altera_terp.tcl": "baebc4d798fcfc99ff83874d4c387f19e30663f8f04412b3011a719214c975e0",
+      "/opt/altera/26.1.1/ip/altera/common/hw_tcl_packages/pkgIndex.tcl": "8d047a7dc87b3f4e69282744445295129b916bb22abbc2c4c5ce86037e8d39da",
+      "/opt/altera/26.1.1/ip/altera/eip/altera_avalon_spislave_to_avalonmm_bridge/SPISlaveToAvalonMasterBridge_hw.tcl": "9e66ac8ea6cca98c671ffef3a3fae788a560d17b9085a7c4d6095925de08d78c",
+      "/opt/altera/26.1.1/ip/altera/eip/altera_avalon_sysid_qsys/altera_avalon_sysid_qsys_hw.tcl": "b370bb7e84c94d2b45cd1bd81e96a23c230aa5ab64bda97249527e203146f66b",
+      "/opt/altera/26.1.1/ip/altera/merlin/altera_avalon_mm_bridge/altera_avalon_mm_bridge_hw.tcl": "966bfa66e4933dc42e8dec6b4d4e76114737e5c63dbb5bab4f9e44002b7356f3",
+      "/opt/altera/26.1.1/ip/altera/merlin/altera_axi_bridge/altera_axi_bridge_hw.tcl": "cbbea3d6560c10b091f870cc7860f31fcdd5f1dfc953938409a13566229165f3",
+      "/opt/altera/26.1.1/ip/altera/merlin/altera_axi_bridge/axi_gui.tcl": "b635e93f6bd0500f3b78db0ba5d92b3c12e7189b5303acd5c54b7b683b323120",
+      "/opt/altera/26.1.1/ip/altera/merlin/altera_axi_bridge/axi_interface.tcl": "2944701658cfad4aa61312a904b6673052c81d4019a3ce126854c06c9d82fadd",
+      "/opt/altera/26.1.1/ip/altera/merlin/altera_clock_bridge/altera_clock_bridge_hw.tcl": "7b35ca4e5e8fb9b6507531cff54a93e18fc8f1a5116a62a001a5b9e0f79f5862",
+      "/opt/altera/26.1.1/ip/altera/merlin/altera_reset_bridge/altera_reset_bridge_hw.tcl": "8af2905efd93b0e2997c29812613b455d45810468d76ce7fbc29ee6fc2aa97b8",
+      "/opt/altera/26.1.1/ip/altera/merlin/shared/axi5_interface.tcl": "fc56ad5cf41721b984b187387815e0185eed692f561d6c44b455db63ed471353",
+      "/opt/altera/26.1.1/ip/altera/pgm/altera_s10_mailbox_client/altera_s10_mailbox_client_core.sv": "12692f551cb0a4e22e9dbfa5077b8a0b259826892a9cce613d09d574ea2a3ede",
+      "/opt/altera/26.1.1/ip/altera/pgm/altera_s10_mailbox_client/altera_s10_mailbox_client_core_hw.tcl": "bb8a89c2068a5381c405e5b9480fbdbe46b69457f78586a3a809d0a21d07eda1",
+      "/opt/altera/26.1.1/ip/altera/pgm/altera_s10_mailbox_client/altera_s10_mailbox_client_hw.tcl": "e20fc216fb32613026c8da82e7081242dabb3ff3f0fb4c63db8a93660106973f",
+      "/opt/altera/26.1.1/ip/altera/pgm/altera_s10_mailbox_client/altera_s10_mailbox_client_sw.tcl": "a20eac89555eadb2ae681eff42553711ce7fcb3881359e7ab3f7484a977cb00f",
+      "/opt/altera/26.1.1/ip/altera/pgm/lib/intel_avst_dp_scfifo/intel_avst_dp_scfifo.sv": "ff3965227084b939a8dbac492af2a4069edd39e8140024844aafe53404eae6e8",
+      "/opt/altera/26.1.1/ip/altera/platform_designer_ip/altera_avalon_onchip_memory2/altera_avalon_onchip_memory2_hw.tcl": "a1b7e8902d0f1c434a6f67fc30df0bff1fee8540ce83240b35fa1f04a1501a2c",
+      "/opt/altera/26.1.1/ip/altera/sld/core/endpoint_wrappers/altera_config_stream_endpoint_hw.tcl": "90669e159ed7f16a7a385a05e6f2ffa0159d757de54c975affcdff9fd98d635d",
+      "/opt/altera/26.1.1/ip/altera/sopc_builder_ip/common/embedded_ip_hwtcl_common.tcl": "b8df91f1eae39c52727732fa05383ae5cc3c0cf0bcb7776516c411c4601d26b5",
+      "/opt/altera/26.1.1/ip/altera/sopc_builder_ip/common/embedded_ip_hwtcl_common_forCDC.tcl": "5b008aed58096cbb3415d0d8b3a03c25e1ca8e355bbc15f1f1063a16e68dbc98",
+      "/opt/altera/26.1.1/qsys/lib/builtin.ipx": "388f78a5d639cc2a9fed13a77c1c22a3b50aa83388df2931f790092dbfd6c11d",
+      "/opt/altera/26.1.1/qsys/lib/ip_component_categories.ipx": "a77d53aa0afa22707af09e266c15788424dd2f8ba4cb4f66a246fd397c7baf27",
+      "/opt/altera/26.1.1/qsys/lib/root_components.ipx": "a9382a5614d4cc70d7b270d2467878add287e46913c590299a9e2d2a27788154",
+      "/opt/altera/26.1.1/quartus/sopc_builder/bin/ip_component_categories.ipx": "2d94a73c02637bf4200ca549b2fae3e8faf2b412855d542ef12cccc6f698c01f",
+      "/opt/altera/26.1.1/quartus/sopc_builder/bin/root_components.ipx": "55fb2864379895195aed2ab9f66a445d641f895e2270f15d03824fbbec6ae2b3"
+    },
+    "catalog_search_closure_reviewed": false,
+    "cwd": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc",
+    "env": {
+      "HOME": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/home",
+      "LANG": "C",
+      "LM_LICENSE_FILE": "/home/uwb_student00/quartus_26/LR-191011_License.dat",
+      "PATH": "/opt/altera/26.1.1/quartus/bin:/opt/altera/26.1.1/qsys/bin:/usr/bin:/bin",
+      "QUARTUS_ROOTDIR": "/opt/altera/26.1.1/quartus",
+      "TMPDIR": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/tmp"
+    },
+    "evidence_hashes": {
+      "/home/uwb_student00/ahls/new_BSP/qualification/ipgen-03/installed-refresh-tool-discovery.json": "79db4ecb18aa7eeeeadb4de914902594c99bca775bb4a0e545e8769df5954ffd",
+      "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/binding-evidence-live01.json": "4da8984e639dfba97ac2a5430268633a07849925bcdd449a20a3f74c74623214",
+      "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/binding-evidence-live02.json": "0c13de271466b3db1fd10585f99d965886a662e67d8421022bceceb9c768c0ed",
+      "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/followup-evidence-live01.json": "7c407469a4196058230f3585c4d2908359f488a267c8e6f357e6d11ea240a9c7",
+      "/home/uwb_student00/quartus_26/instructions.md": "bc40aa72401c41bba3929fe722baa86b47b98f67b15cdb1de2da6eadcf208d99"
+    },
+    "harness_hashes": {
+      "child.tcl": "3b735d9ccb1886dfbc3791a905abde3afa067892743798a5e4ed344cb7071362",
+      "migration.py": "a4f360484dba25f4e0a12a7cdb294b1387c86f1bb7b884480acb630368bb2f9c",
+      "parent.tcl": "5b8d78e78e61cec558fcbe8abd5f1eb9cdd6a76efc203cfb4d598adf2fbcf51d",
+      "source-baseline.json": "148bb2897db6416a5950d152b6a8104c39cffda494e2723c97afecce9efb3a57"
+    },
+    "installed_help_reviewed": false,
+    "minimal_project_reviewed": false,
+    "part": "AGFB027R25A2E2V",
+    "qpf": "PROJECT_REVISION = \"mailbox_migration\"\n",
+    "qsf": "set_global_assignment -name FAMILY \"Agilex 7\"\nset_global_assignment -name DEVICE AGFB027R25A2E2V\n",
+    "ready_for_build": false,
+    "reviewed": false,
+    "reviewer": null,
+    "root": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01",
+    "runtime_identity_closure_reviewed": false,
+    "search_path": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/arbiter,/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/irq_generator,$",
+    "side_effects_reviewed": false,
+    "source": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ipss/ia840f/bwbmc",
+    "source_hashes": {
+      "bmc_spi_sub.qsys": "71bcb8de75167546c7dcb0b159021fa16666f2ed92cdaacb8d9f9ed67c36f952",
+      "bw_840_support.qsys": "8c597695379a47c4426220fee88789e1fcce5ab84ab29612e9c10348ccd36098",
+      "bwbmc_design_files.tcl": "2996ffcb72aa56062e31a7cd6a25bed75dfcad11e4fdfd2dd892aaa8aa1c70b1",
+      "bwbmc_wrapper.sv": "c96b7ca1de13f989ed6ad71c81bbb6ee8e2f7644fe1035f3a0e068b5910da800",
+      "ip/arbiter/arbiter_hw.tcl": "b85ba844dc85ebe9447e73c6b52aa5a119aed4a7f75f96c51259f647e442b26b",
+      "ip/arbiter/hdl/arbiter_v2.vhd": "9085fc684a2054c1bbecd462e9371987e89f2e0a5e284911ff533a9570303d1f",
+      "ip/bmc_spi_sub/bmc_spi_cardtest_pipe.ip": "461ec47075fd499891df37d8f53afc7fc73aebef0b794409c0df52ef261f7e12",
+      "ip/bmc_spi_sub/bmc_spi_pipe0.ip": "925390f1e227e8d4354ee869e15303e71a046573467d58c258068eef4ee35eea",
+      "ip/bmc_spi_sub/bmc_spi_sdm_pipe.ip": "18c69e7734956ba69b412302c6a92f35ceeca88cdf901baae250df9d528a191a",
+      "ip/bmc_spi_sub/bmc_spi_support_pipe.ip": "c7e12dd61bb6ea7993cf4d8e7028ceef0da7f7dc6976dee9d13c3e4513ceda3c",
+      "ip/bmc_spi_sub/bmc_spi_to_avmm.ip": "6f6906669d71643a72566bcd404d0f81d5cb81b7fa559a6d5d8fc1fc847aebcd",
+      "ip/bmc_spi_sub/bmc_spi_xcvr_pipe.ip": "d185db7abfc2944c3f5d87e23c39609ff0f25337dfefdf4fcb695a965027dcbb",
+      "ip/bmc_spi_sub/bmc_to_pcie_irq_gen.ip": "69833c95fe26120ab42b672e0e00dd139fa7419e43cac97f0220461e3e1d6dae",
+      "ip/bmc_spi_sub/host_sdm_pipe.ip": "fd66d08deb116b491a4cd16523447c8b679e814c8b0ebd00bdd3242f382951f0",
+      "ip/bmc_spi_sub/host_support_pipe.ip": "284ef9a6d6de4ec8c3733ebbe8a8ac8b0643749b9a4ac80fd3abbb3b227c205d",
+      "ip/bmc_spi_sub/ocmem.ip": "c50d93095e7c5b9d6c75f3b2136f49b6bd9da4932554db05b9325a200b327258",
+      "ip/bmc_spi_sub/pci_to_bmc_irq_gen.ip": "eb217952389020a41786e1a47d52c4c2baac3b746f7d3f9568e411ec2936d354",
+      "ip/bmc_spi_sub/sdm_mailbox.ip": "539fc0453b109b25a820863e002a5ae6e633705c307699bfdee974f9a71222f1",
+      "ip/bmc_spi_sub/sdm_pipeline.ip": "d244f88b13a8a12b4ba35765a4b7723bf5cbdd4a932e888ea748d96b78029e74",
+      "ip/bmc_spi_sub/sdm_reset.ip": "efbd0443b246327f33fa8a3aa15b3e4aa81254cdecf2c48b13e51a33354a6583",
+      "ip/bmc_spi_sub/system_arbiter.ip": "9c42b33591a796111acd6409a67489cefb0c9041c6ca4405b123735167ee9832",
+      "ip/bmc_spi_sub/system_clk_bridge.ip": "b3396a9b1fc417f398a88528a0bf3292b06d25f65ae72d5463874db078f59be0",
+      "ip/bmc_spi_sub/system_rst_bridge.ip": "09a2bca3f21c615c51367c83ae708619e035e6471f3d329894346865c9c7db47",
+      "ip/bw_840_support/bw_840_support_axi_bridge_0.ip": "4c57b9d4dbe14745e39ad61b134ddeb2d3f2e2976300176b7197000fcab8a4ca",
+      "ip/bw_840_support/bw_840_support_mm_bridge_0.ip": "9291ae00ba6628fc24da22390e888952e5e3d38d7e61a0779dfaeb7ce1ba5ca5",
+      "ip/bw_840_support/bw_840_support_sysid_qsys_0.ip": "6fcc75b9dd992a5650f5517562fac4414b9de976c66845b3774e6b8e22e35a35",
+      "ip/bw_840_support/host_bmc_support_pipeline.ip": "08cfa7d90e1eda3671ead4100fa370f42c2f4a14bc506c643c042d5fd0dcd4bc",
+      "ip/bw_840_support/host_sdm_pipeline.ip": "05900870bc1e2923a4ae38518028593f6ad31ec2f7c1b059b7de2d1e600e9688",
+      "ip/bw_840_support/sysclk_bridge.ip": "2db3475c9aa0397a3e976824a84d61c338593f49792f83b6fa20db26be93b703",
+      "ip/bw_840_support/sysrst_bridge.ip": "6aedcc883f09b74b05cb8e67577eb4d9873548a3b9645614cbc56b89cc7596c8",
+      "ip/common/rtl/arbiter_frr.vhd": "f46c956089027b30668841bc9299a0d9ec89a896afa5fcf08e252e945b752353",
+      "ip/common/rtl/pkg_global.vhd": "60081028bb8a69c96c526d2c90aae9c5425acace58aa84b7365364f446872bd5",
+      "ip/irq_generator/irq_generator.v": "1e13b36a132b32d636ea2cea80b5bbd9bcc8b4f45c1188a893469e89501d9411",
+      "ip/irq_generator/irq_generator_hw.tcl": "59dcd99e672e99e69930956ce9006219170dfd3acc3df9ba6a29af46ee9262ba"
+    },
+    "speed_grade": "2",
+    "tmux_session_reviewed": false,
+    "tool_hashes": {
+      "/opt/altera/26.1.1/qcore/linux64/libSafeString.so": "ca54f2241f3f3eae37a00cabcefce34f21b16c84e2237971e692612aa8dd7a5c",
+      "/opt/altera/26.1.1/qcore/linux64/libboost_filesystem-x64.so.1.87.0": "b35fcc53a92df0173f2b2c3e5592b9e5de98be2fed2864b492ca43808dc59062",
+      "/opt/altera/26.1.1/qcore/linux64/libboost_iostreams-mt-x64.so.1.87.0": "6a516fe9d3a5ac1feb6e7439d79787e0f95d750526b22da091648cfbd4821baf",
+      "/opt/altera/26.1.1/qcore/linux64/libboost_program_options-x64.so.1.87.0": "d07e03a785716fdc62e89444fbb7c7753f102129d08c9cbcf17354a90dbd0a97",
+      "/opt/altera/26.1.1/qcore/linux64/libboost_serialization-x64.so.1.87.0": "28cb890194d1ca0636babaaba2da962a5d76f86477d93025b2c5da7e241adde3",
+      "/opt/altera/26.1.1/qcore/linux64/libboost_system-x64.so.1.87.0": "d1348e948aedab93d8dbc12c0a47984cec3e1d32215b75f91ea2f550df37d3bb",
+      "/opt/altera/26.1.1/qcore/linux64/libboost_unit_test_framework-x64.so.1.87.0": "fa05942d84e0901393d5d28f924567977be4cbac2eb4148863cc8debe0826b88",
+      "/opt/altera/26.1.1/qcore/linux64/libccl_atcl.so": "0364bfbdff4fad978ad1f230bfb6c299604b2ccb808f3e9e396f6216df61e6b6",
+      "/opt/altera/26.1.1/qcore/linux64/libccl_cfg_ini.so": "55433ac128c5eed96a6281cf89f72e6ba843e9432ebc8913057a933b2bafe7d2",
+      "/opt/altera/26.1.1/qcore/linux64/libccl_fio.so": "83de0cb93ef77745860cfb79ce911cea444b376cd72ec1ee3051f079fffe497f",
+      "/opt/altera/26.1.1/qcore/linux64/libccl_gen.so": "0f71513e67c2bad6f2ec590776e3495245ffb51c0c383c34c262d09141571435",
+      "/opt/altera/26.1.1/qcore/linux64/libccl_mem.so": "8c28fa21ff72a12dbe2d3d2889a90c9301dca62f59f031482edb77471942f79f",
+      "/opt/altera/26.1.1/qcore/linux64/libccl_msg.so": "6f8478bda5a3ab4b189955c3eeb4b85317bd8e1f3a4faf584518af4880fe0260",
+      "/opt/altera/26.1.1/qcore/linux64/libccl_py.so": "0e50f51120fb1a30b9b8e0659a7e34a2578d3df1cb3a987cf05c8f32ccbb8141",
+      "/opt/altera/26.1.1/qcore/linux64/libccl_thr.so": "5cd87a75450239c93d53d23cdaa9c59fb5bf4593c7300face52b01bcb112e42f",
+      "/opt/altera/26.1.1/qcore/linux64/libddb_dev.so": "7d98797ba8aa0cd97098b7d478949d7aa4d2ec8f2683ffe9fb27e47eeb3c72e1",
+      "/opt/altera/26.1.1/qcore/linux64/libddb_dev_root.so": "48b1777521151f4751583d415699d49e3efc78ed53da2de1174611259e56d910",
+      "/opt/altera/26.1.1/qcore/linux64/libgcc_s.so.1": "79f7a523b5e7ec0eac35b3f407bc510fbcb9f4adae9ec0f29eaf0c0d5706807b",
+      "/opt/altera/26.1.1/qcore/linux64/libgomp.so.1": "699604d52af227c02fb283de95606f0147d3dd36b1dd839b88efbb282ee1f310",
+      "/opt/altera/26.1.1/qcore/linux64/libpython3.11.so.1.0": "80fa4a0918faef3fc2510fa93e0e7366499833cffbb26413326ed9fdc55c2442",
+      "/opt/altera/26.1.1/qcore/linux64/libpython3.so": "f6e6dee824e3eaab24678094e5949cda03abc0c3e6142d52ffee5c5c945fdc79",
+      "/opt/altera/26.1.1/qcore/linux64/libstdc++.so.6": "7aff636775fff8c7c851dc7ade8ca807e45431298ea36bbcd776c1643d4e7621",
+      "/opt/altera/26.1.1/qcore/linux64/libsys_cpt.so": "77a6f311b7808945d18e17827812e35e8d9939cbe1f0c4066512fe753fe68012",
+      "/opt/altera/26.1.1/qcore/linux64/libtcl8.6.so": "9761e7337467df043aed9429295b19d74ebf56d69e26ca8f2266261a49c1fdca",
+      "/opt/altera/26.1.1/qcore/linux64/libtcmalloc.so.9.9.5": "8984a164ad025f1440d9a90d47447e31f2fde06edcfd9aa97c5a83fc9026c0f0",
+      "/opt/altera/26.1.1/qcore/linux64/libxerces-c-3.2.so": "0525686b2ddefea905ea79c08f6391675d5b533e8b8d95c5ee1c5dac861d51ec",
+      "/opt/altera/26.1.1/qsys/bin/qsys-generate": "10db24cb15ba97694c1385b56f6ffde3bcfcd2249e2901c9a3f0c34b68da14df",
+      "/opt/altera/26.1.1/qsys/bin/qsys-script": "a0c811ed4010961b2ae4e92711492a172be969c900709b380f3c66db875d3f75",
+      "/opt/altera/26.1.1/qsys/lib/FastInfoset.jar": "785861db11ca1bd0d1956682b974ad73eb19cd3e01a4b3fa82d62eca97210aec",
+      "/opt/altera/26.1.1/qsys/lib/antlr4-runtime-4.7.2.jar": "4c518b87d4bdff8b44cd8cbc1af816e944b62a3fe5b80b781501cf1f4759bbc4",
+      "/opt/altera/26.1.1/qsys/lib/codemodel.jar": "8cd4bd09ffce59a5e2c66237836dfe71f7e34306f40c2d7e6c5f23afa292bc24",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.componenteditor2.jar": "1a2f300cdcee0abd190eef8a2b2bceee0d87cf79df489637cf4c276f9f5695f2",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.ddmwriter.jar": "7e1d64486bd1c1b3be1fffd8d3c037b497c1f32c01bd92676b73b8e80a8365db",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.embeddedsw.app_lib.jar": "d51c475bd8a8711725ec040c81692e1a131e0d4ac1783b97a0599dc6c9fe14f9",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.embeddedsw.bsp.elements.jar": "3efb1d5a0ba092824e6271c6414f77c8c487625f6583a4d8952aef39e57a3760",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.embeddedsw.bsp.jar": "05ba276f20523c315fe5c9dc57c3e460d03d9ad754abd7c6ac21daa016723c66",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.embeddedsw.bsp.plugin.core.jar": "9b9748b130c71e17c52f5e4de27d18514844b3ac84629ed9536f790f7938475b",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.embeddedsw.bsp.plugin.hal.jar": "6a00bff9552ff750b80f4be3ec8d77279c1268ccea2408a83ee5cbac9b1795a4",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.embeddedsw.bsp.plugin.hps_baremetal.jar": "c90b4d833e5165ba8b9a510a567ef134aab4b023426783bceff033ce5f0841f8",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.embeddedsw.bsp.schema.jar": "7bc3927c9771d4fe602897221c79481c70c6121e50422e49443244850cb86f2b",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.embeddedsw.swinfo.jar": "9f0e6507da3ad84f59bbc512cf150e98b682f95c444d04d77cb2f23182a49483",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.embeddedsw.utilities.jar": "13634285613240ad71ac253c615f10eae2ee934a74e04f0418a21ff67f739709",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.hdlcomponent.jar": "eb4ddcb9279c79a537e55fb68215e61c042fd177a3dd500382acd51e884d08d0",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.hdlwriter.jar": "43a52ae4d436f8f8cb0f3c66dfbe1319388c704126417711bb20fede6f09bddf",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.privateinterfaces.jar": "a9f802398130e4525a17d8058e682166d8f65fd8b33906303bb5fc8fd086e87f",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.qsys.blackboxmodule.jar": "4bdd6943a293f4c5e0dd5551858b9d6e373e44711c04c7fce9e65fcd030e7c9e",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.qsys.cmsis.jar": "874458bf3dd5d11296ef880a91a97e98559a6b89f2634d9fd31312cbb86a68c4",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.qsys.common.jar": "bd3469b321f7760db64fc537ca64f208845b3e6e02ec23fb133631473b8567df",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.qsys.grpc.jar": "cda608ec2fbb78fda9fef6e5d2a6b0cf9dcef6a0a732058250c4e4b50037f5ca",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.qsys.hypericonnect.jar": "1ec5910770ef490e4851c85cee46b369b89f1068366251949154c9ea46994bc7",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.qsys.ipxact.jar": "da9071ad80ac1f15a3564b79ced4a68a2a5570e0256adad66e57ec2ce68ef663",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.qsys.ipxact.module.jar": "b48ac543ae1d602aeacdf08fb085589a1022f87c6335b3d3be9c907e83dee37e",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.qsys.model.capabilitypackage.jar": "7fd386a4539c5bfc4e0b397a3202ccc29f6850a0385252420549bf44e1320ac0",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.qsys.model.common.jar": "bac63448565a660cfa24f9617aaf6a898eae4d39f4eba2293ec08f24f1c55b42",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.qsys.ui.jar": "97e79e35df64c44a22cf370edacc102ab01fcfec02ac60a74d5476fb22acd454",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.sopc.generator.jar": "95f5bc9d8af4f16eaba444113f6857c2429793117e084b4aade72874672e1943",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.sopc.qsymbol.jar": "72470b503282f10197f7fdbf0462336d12377c47cfcb1dcde0046649ec37435c",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.sopcdocument.jar": "dc3f1ea239376c60040631a2f80d2aabee9349b8723a5164a21b5bb5b7de7de0",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.sopceditor.jar": "301b6944401ee8c47a5da3adcf16ecc1fefa6299beafecd9dcb6defa832ad7ba",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.sopcfactories.jar": "732dfb8987425ba515775dc6625963a6ee22a1015978bebdf1e763495d2867cc",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.sopclibrary.jar": "f45ea773f2e928d2cd065652a286f9e7ac44f39e1165f52c488fee02de4dad38",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.sopcmodel.atlantic.jar": "1ff1d0e47c2cd3806943f8bb77b829f633b139cf184c8d83e439680765b91699",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.sopcmodel.components.tclelement.jar": "8d3d689cf3ac1030b961a95950a523536bb4646706afe20bcf8d5c59ec99a196",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.sopcmodel.embeddedsw.jar": "a2556a8ae9e6e5620ac5dc750792d62f276ea54f23a2d6e35321ac233d8d80b3",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.sopcmodel.jar": "8e51047f4cd4ac67c22f331dff6b74500cfd7dce194ddf0c3e9a8b0b3a288fb8",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.sopcmodel.sbtools.jar": "6e73d573e291b280b275d71cf3f6923c8064b908a6209f4ae97be5a4949b986b",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.sopcmodel.transforms.jar": "3f4d83fee349fe6ebb22536406f91b51384ba7d97020da1d5f42723b78c9b9fe",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.sopcreport.build.jar": "5a35e75f84bfd850604ba7b57368686287b6b79a86b5750cfc8b7f8998946a39",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.sopcreport.jar": "dc432cb98eca3bd31c4fa9548068f8a609d43ed4a73574ee0c7bd5007e4a8f48",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.tcl.interpreter.jar": "1e90ec690dfbd3ae2577e34e871a78d2060a85b436481d3761792edcdd12ecd3",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.ui.ientity.jar": "b98536d224c29f50f0b78343b306010999468aab59245f33684fb8bdb1ea4d57",
+      "/opt/altera/26.1.1/qsys/lib/com.altera.widgets.jar": "c88071bcd6895cc2cdcc26058f4839fa6c49ef33278a048f482055658484fe19",
+      "/opt/altera/26.1.1/qsys/lib/com.intel.quartus.dni.jar": "bcdbf5ec951b0dc24d21e309c7ae62c9be8435c19dbb44dfc333d8f1f66292af",
+      "/opt/altera/26.1.1/qsys/lib/com.intel.quartus.ngpd.jar": "75b2f5f068353b3237043b6a5f7862e9fbd5f6f4b5a894c34e8a4ee076b2abdb",
+      "/opt/altera/26.1.1/qsys/lib/com.intel.shared.jar": "094356afdff894a647b1b2561b04dc6f808f9382ec3934d09d75ae67038249b2",
+      "/opt/altera/26.1.1/qsys/lib/commons-lang3-3.12.0.jar": "d919d904486c037f8d193412da0c92e22a9fa24230b9d67a57855c5c31c7e94e",
+      "/opt/altera/26.1.1/qsys/lib/commons-text-1.10.0.jar": "770cd903fa7b604d1f7ef7ba17f84108667294b2b478be8ed1af3bffb4ae0018",
+      "/opt/altera/26.1.1/qsys/lib/docking-frames-common-1.1.2_20c.jar": "8d7d2ae22cb874fa969587175f827e74ac4da69b30c8b52e005ea88e4a345d37",
+      "/opt/altera/26.1.1/qsys/lib/dtd-parser.jar": "5b4bc07036d751fe5ce224e28c83a3ea78e574bfcb01fd8e2a95d81f9e428c22",
+      "/opt/altera/26.1.1/qsys/lib/grpc-api-1.60.1.jar": "bdcefde43d7c542e748adb7b2bccc46db16313ba86ab46f8ba3b54677c7c5883",
+      "/opt/altera/26.1.1/qsys/lib/grpc-context-1.60.1.jar": "4ab6efb9cbadc88f8dc723ada3a61785da367697373d4432aef5222312aa70f6",
+      "/opt/altera/26.1.1/qsys/lib/grpc-core-1.60.1.jar": "b96af7b762e7fca6ffecce7163bcaf2d762dd7a0e24bb757e507639a3469b8e9",
+      "/opt/altera/26.1.1/qsys/lib/grpc-netty-shaded-1.60.1.jar": "b2cf4feaae628aaf6495edd204f77a62f64d270cbdf27bc62e51ffb5c340aba7",
+      "/opt/altera/26.1.1/qsys/lib/grpc-protobuf-1.60.1.jar": "f74972f5b6bf6795fd8ece318314312bad3871823046a32be0651c5778f7d5fd",
+      "/opt/altera/26.1.1/qsys/lib/grpc-protobuf-lite-1.60.1.jar": "b180794ab05912fc3ae5e3729abfb7f50b37b4feacf0eb1b7a1f08cee057ed53",
+      "/opt/altera/26.1.1/qsys/lib/grpc-stub-1.60.1.jar": "4c73ded16d31519b20a43a0c7f6c1e2f65238b2a1025256d97b77ab5ada26ed4",
+      "/opt/altera/26.1.1/qsys/lib/grpc-util-1.60.1.jar": "0232e0160f8a54eee8d12942f6ddfadd8ce05231ad8e035cbba9fc31b687b76c",
+      "/opt/altera/26.1.1/qsys/lib/gson-2.10.1.jar": "4241c14a7727c34feea6507ec801318a3d4a90f070e4525681079fb94ee4c593",
+      "/opt/altera/26.1.1/qsys/lib/guava-32.0.1-jre.jar": "bd7fa227591fb8509677d0d1122cf95158f3b8a9f45653f58281d879f6dc48c5",
+      "/opt/altera/26.1.1/qsys/lib/istack-commons-runtime.jar": "6443e10ba2e259fb821d9b6becf10db5316285fc30c53cec9d7b19a3877e7fdf",
+      "/opt/altera/26.1.1/qsys/lib/istack-commons-tools.jar": "d06568cd93d7a86f436f47040853827a7b955a30e2ee4ecd3ae1ba2ce15ea6b3",
+      "/opt/altera/26.1.1/qsys/lib/jacl1.3.2a.jar": "d4fa0e256c844bf202910c1476a072e73fa56bf67d132b2ca28d03919f702e3c",
+      "/opt/altera/26.1.1/qsys/lib/javax.activation-1.2.0.jar": "993302b16cd7056f21e779cc577d175a810bb4900ef73cd8fbf2b50f928ba9ce",
+      "/opt/altera/26.1.1/qsys/lib/javax.activation-api.jar": "43fdef0b5b6ceb31b0424b208b930c74ab58fac2ceeb7b3f6fd3aeb8b5ca4393",
+      "/opt/altera/26.1.1/qsys/lib/jaxb-api.jar": "88b955a0df57880a26a74708bc34f74dcaf8ebf4e78843a28b50eae945732b06",
+      "/opt/altera/26.1.1/qsys/lib/jaxb-jxc.jar": "f392d81651091c7e87752f9e6d367aa91967c4add8cb097da43a22cf47a5178d",
+      "/opt/altera/26.1.1/qsys/lib/jaxb-runtime.jar": "45fecfa5c8217ce1f3652ab95179790ec8cc0dec0384bca51cbeb94a293d9f2f",
+      "/opt/altera/26.1.1/qsys/lib/jaxb-xjc.jar": "659daa78b81fc46647f378d5a9a020ba968a4222d49788dbf38cf029886cfcfc",
+      "/opt/altera/26.1.1/qsys/lib/jfreechart-1.5.0.jar": "ae3788e0977723ed6769d3569c6f2003df8735eca6fc108c67ad10a62a15bc5e",
+      "/opt/altera/26.1.1/qsys/lib/jgraphx-4.2.2.jar": "8030369bdcaf8f46545c317ae84cd2bc832da54fdb615e48b0a8862280882a82",
+      "/opt/altera/26.1.1/qsys/lib/miglayout-swing-5.2.jar": "8369f682ea153efb681a3f582acc488e82a97ee6f47d25352f080e977f138c86",
+      "/opt/altera/26.1.1/qsys/lib/nashorn-core-15.4.jar": "6f816e84dfd63a81d4eaa7829c08337bbaff3ec683ff3bf6bbd90d017a00dc6f",
+      "/opt/altera/26.1.1/qsys/lib/nlview.jar": "3bba82f463133499acd913a151525c64539e579df0192f6c20bab1c9081c1edb",
+      "/opt/altera/26.1.1/qsys/lib/org-netbeans-swing-outline-7.2.jar": "15364a15f15f5eacb47ba60f3e5a26fd43a48a779e6821e613da413785804be9",
+      "/opt/altera/26.1.1/qsys/lib/sqlite-jdbc-3.49.1.0.jar": "5c8609d2ca341deb8c6f71778974b5ba4995c7d32d7c7c89d9392a3e72c39291",
+      "/opt/altera/26.1.1/quartus/bin/quartus_sh": "06c1bd805bc078d9636015c472e09a054160c405f3f06b7c555e7a4b6f7d3f14",
+      "/opt/altera/26.1.1/quartus/linux64/java17/jre64/bin/java": "ff746894f128c5c18c19443f54e162b86f4b21baff2ba339bcd371f73b487711",
+      "/opt/altera/26.1.1/quartus/linux64/java17/jre64/lib/libjli.so": "79f7398739f96472aa4deb432c5a6ef54dc5001a5b5d4ca24a1e4bed8f5e2cdd",
+      "/opt/altera/26.1.1/quartus/linux64/java17/jre64/lib/libsplashscreen.so": "9ba39622498c8a8b3861b8e008f4477cf8ffe52b8d6c3f8358e6ae310968b4ee",
+      "/opt/altera/26.1.1/quartus/linux64/java17/jre64/lib/modules": "b303e183dc05a46616cfd9d904199afc9e7a672c070633e9f9f8cab9f2dfccfe",
+      "/opt/altera/26.1.1/quartus/linux64/java17/jre64/lib/server/libjvm.so": "1fe475a6e8e8700aa25b0346b70ad32f30919aac819075515052411af8723089",
+      "/opt/altera/26.1.1/quartus/linux64/java17/jre64/release": "ee2ffd9d528d296656ea7f3f232585eb7dc2e394a482653a5fdfa86d4375c1b1",
+      "/opt/altera/26.1.1/quartus/linux64/libcomp_qcu.so": "eccee654f88264cd53fb4a0c62f4cc61101a078712f5c928e94ab5368d64de3d",
+      "/opt/altera/26.1.1/quartus/linux64/libcomp_qexe.so": "f808fb2bfc43cd7e786156e6cee1cf9c89f87507cc186094882f32f38141d2a8",
+      "/opt/altera/26.1.1/quartus/linux64/libdb_acf.so": "ff83ee6769849c55ebb83a6c6567e3d2f9e063210deee7b83bc6698221929f16",
+      "/opt/altera/26.1.1/quartus/linux64/libddb_dmgr.so": "bf8b7f8aef523142db6281ae45a811909f50d39e5cc71020c2334623a340fa51",
+      "/opt/altera/26.1.1/quartus/linux64/libsys_cloud.so": "71d59c4bb644e7bc7a0fc56abdaf42bc451f70024bf0632123e8381e4a86b270",
+      "/opt/altera/26.1.1/quartus/linux64/libsys_tb2.so": "2ec5cea4b31375ebf2d8b139cbf8f58329ff162ba13ee27240d2193ac41e76fc",
+      "/opt/altera/26.1.1/quartus/linux64/quartus_sh": "5740e47134517eac623c1391837761d12ab18b99a2db78be790cf764af3e3bce",
+      "/opt/altera/26.1.1/quartus/sopc_builder/version.txt": "f55f7f365abe2ecf1f931eb590e2869f80010ffedc574d92bcc655c94c2f007a"
+    },
+    "workstation_instructions_reviewed": false
+  },
+  "changes_from_proposed_binding": [
+    {
+      "old_value": [
+        "/opt/altera/26.1.1/qsys/bin/qsys-script",
+        "--quartus-project=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch/mailbox_migration.qpf",
+        "--rev=mailbox_migration",
+        "--package-version=26.1",
+        "--search-path=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch/bwbmc/ip/arbiter,/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch/bwbmc/ip/irq_generator,$",
+        "--script=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch/child.tcl"
+      ],
+      "op": "replace",
+      "path": "/argv/child",
+      "value": [
+        "/opt/altera/26.1.1/qsys/bin/qsys-script",
+        "--quartus-project=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/mailbox_migration.qpf",
+        "--rev=mailbox_migration",
+        "--package-version=26.1",
+        "--search-path=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/arbiter,/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/irq_generator,$",
+        "--script=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/child.tcl"
+      ]
+    },
+    {
+      "old_value": [
+        "/opt/altera/26.1.1/qsys/bin/qsys-script",
+        "--quartus-project=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch/mailbox_migration.qpf",
+        "--rev=mailbox_migration",
+        "--package-version=26.1",
+        "--search-path=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch/bwbmc/ip/arbiter,/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch/bwbmc/ip/irq_generator,$",
+        "--script=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch/parent.tcl"
+      ],
+      "op": "replace",
+      "path": "/argv/parent",
+      "value": [
+        "/opt/altera/26.1.1/qsys/bin/qsys-script",
+        "--quartus-project=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/mailbox_migration.qpf",
+        "--rev=mailbox_migration",
+        "--package-version=26.1",
+        "--search-path=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/arbiter,/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/irq_generator,$",
+        "--script=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/parent.tcl"
+      ]
+    },
+    {
+      "old_value": [
+        "/opt/altera/26.1.1/qsys/bin/qsys-generate",
+        "--upgrade-ip-cores",
+        "bmc_spi_sub.qsys",
+        "--batch=./ip/bmc_spi_sub/sdm_mailbox.ip",
+        "--quartus-project=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch/mailbox_migration.qpf",
+        "--rev=mailbox_migration",
+        "--part=AGFB027R25A2E2V",
+        "--search-path=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch/bwbmc/ip/arbiter,/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch/bwbmc/ip/irq_generator,$"
+      ],
+      "op": "replace",
+      "path": "/argv/upgrade",
+      "value": [
+        "/opt/altera/26.1.1/qsys/bin/qsys-generate",
+        "--upgrade-ip-cores",
+        "bmc_spi_sub.qsys",
+        "--batch=./ip/bmc_spi_sub/sdm_mailbox.ip",
+        "--quartus-project=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/mailbox_migration.qpf",
+        "--rev=mailbox_migration",
+        "--part=AGFB027R25A2E2V",
+        "--search-path=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/arbiter,/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/irq_generator,$"
+      ]
+    },
+    {
+      "op": "add",
+      "path": "/catalog_hashes/~1opt~1altera~126.1.1~1ip~1altera~1common~1hw_tcl_packages~1altera_terp.tcl",
+      "value": "baebc4d798fcfc99ff83874d4c387f19e30663f8f04412b3011a719214c975e0"
+    },
+    {
+      "op": "add",
+      "path": "/catalog_hashes/~1opt~1altera~126.1.1~1ip~1altera~1eip~1altera_avalon_spislave_to_avalonmm_bridge~1SPISlaveToAvalonMasterBridge_hw.tcl",
+      "value": "9e66ac8ea6cca98c671ffef3a3fae788a560d17b9085a7c4d6095925de08d78c"
+    },
+    {
+      "op": "add",
+      "path": "/catalog_hashes/~1opt~1altera~126.1.1~1ip~1altera~1merlin~1altera_axi_bridge~1axi_gui.tcl",
+      "value": "b635e93f6bd0500f3b78db0ba5d92b3c12e7189b5303acd5c54b7b683b323120"
+    },
+    {
+      "op": "add",
+      "path": "/catalog_hashes/~1opt~1altera~126.1.1~1ip~1altera~1merlin~1altera_axi_bridge~1axi_interface.tcl",
+      "value": "2944701658cfad4aa61312a904b6673052c81d4019a3ce126854c06c9d82fadd"
+    },
+    {
+      "op": "add",
+      "path": "/catalog_hashes/~1opt~1altera~126.1.1~1ip~1altera~1merlin~1shared~1axi5_interface.tcl",
+      "value": "fc56ad5cf41721b984b187387815e0185eed692f561d6c44b455db63ed471353"
+    },
+    {
+      "op": "add",
+      "path": "/catalog_hashes/~1opt~1altera~126.1.1~1ip~1altera~1sopc_builder_ip~1common~1embedded_ip_hwtcl_common_forCDC.tcl",
+      "value": "5b008aed58096cbb3415d0d8b3a03c25e1ca8e355bbc15f1f1063a16e68dbc98"
+    },
+    {
+      "op": "add",
+      "path": "/catalog_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1builtin.ipx",
+      "value": "388f78a5d639cc2a9fed13a77c1c22a3b50aa83388df2931f790092dbfd6c11d"
+    },
+    {
+      "op": "add",
+      "path": "/catalog_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1ip_component_categories.ipx",
+      "value": "a77d53aa0afa22707af09e266c15788424dd2f8ba4cb4f66a246fd397c7baf27"
+    },
+    {
+      "op": "add",
+      "path": "/catalog_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1root_components.ipx",
+      "value": "a9382a5614d4cc70d7b270d2467878add287e46913c590299a9e2d2a27788154"
+    },
+    {
+      "op": "add",
+      "path": "/catalog_hashes/~1opt~1altera~126.1.1~1quartus~1sopc_builder~1bin~1ip_component_categories.ipx",
+      "value": "2d94a73c02637bf4200ca549b2fae3e8faf2b412855d542ef12cccc6f698c01f"
+    },
+    {
+      "op": "add",
+      "path": "/catalog_hashes/~1opt~1altera~126.1.1~1quartus~1sopc_builder~1bin~1root_components.ipx",
+      "value": "55fb2864379895195aed2ab9f66a445d641f895e2270f15d03824fbbec6ae2b3"
+    },
+    {
+      "old_value": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch/bwbmc",
+      "op": "replace",
+      "path": "/cwd",
+      "value": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc"
+    },
+    {
+      "old_value": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch/home",
+      "op": "replace",
+      "path": "/env/HOME",
+      "value": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/home"
+    },
+    {
+      "op": "add",
+      "path": "/env/LM_LICENSE_FILE",
+      "value": "/home/uwb_student00/quartus_26/LR-191011_License.dat"
+    },
+    {
+      "old_value": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch/tmp",
+      "op": "replace",
+      "path": "/env/TMPDIR",
+      "value": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/tmp"
+    },
+    {
+      "op": "add",
+      "path": "/evidence_hashes/~1home~1uwb_student00~1ahls~1new_BSP~1qualification~1mailbox-migration-01~1binding-evidence-live02.json",
+      "value": "0c13de271466b3db1fd10585f99d965886a662e67d8421022bceceb9c768c0ed"
+    },
+    {
+      "op": "add",
+      "path": "/evidence_hashes/~1home~1uwb_student00~1ahls~1new_BSP~1qualification~1mailbox-migration-01~1followup-evidence-live01.json",
+      "value": "7c407469a4196058230f3585c4d2908359f488a267c8e6f357e6d11ea240a9c7"
+    },
+    {
+      "old_value": "bab7fd328d6b053e6ce3e270e847229d35f7d9f296f4c3b79fb29d6f238cb9ba",
+      "op": "replace",
+      "path": "/harness_hashes/child.tcl",
+      "value": "3b735d9ccb1886dfbc3791a905abde3afa067892743798a5e4ed344cb7071362"
+    },
+    {
+      "old_value": "35a69d8c0cfdea91434c907bdba5ea41123fd9dfed3ac8a82f7a934a731e44c7",
+      "op": "replace",
+      "path": "/harness_hashes/migration.py",
+      "value": "a4f360484dba25f4e0a12a7cdb294b1387c86f1bb7b884480acb630368bb2f9c"
+    },
+    {
+      "old_value": "98bd59f3dfdcc324990e6281cc7f15deebf44450be0559a0719ff53e5e23ea9b",
+      "op": "replace",
+      "path": "/harness_hashes/parent.tcl",
+      "value": "5b8d78e78e61cec558fcbe8abd5f1eb9cdd6a76efc203cfb4d598adf2fbcf51d"
+    },
+    {
+      "old_value": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch",
+      "op": "replace",
+      "path": "/root",
+      "value": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01"
+    },
+    {
+      "old_value": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch/bwbmc/ip/arbiter,/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch/bwbmc/ip/irq_generator,$",
+      "op": "replace",
+      "path": "/search_path",
+      "value": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/arbiter,/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/irq_generator,$"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libSafeString.so",
+      "value": "ca54f2241f3f3eae37a00cabcefce34f21b16c84e2237971e692612aa8dd7a5c"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libboost_filesystem-x64.so.1.87.0",
+      "value": "b35fcc53a92df0173f2b2c3e5592b9e5de98be2fed2864b492ca43808dc59062"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libboost_iostreams-mt-x64.so.1.87.0",
+      "value": "6a516fe9d3a5ac1feb6e7439d79787e0f95d750526b22da091648cfbd4821baf"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libboost_program_options-x64.so.1.87.0",
+      "value": "d07e03a785716fdc62e89444fbb7c7753f102129d08c9cbcf17354a90dbd0a97"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libboost_serialization-x64.so.1.87.0",
+      "value": "28cb890194d1ca0636babaaba2da962a5d76f86477d93025b2c5da7e241adde3"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libboost_system-x64.so.1.87.0",
+      "value": "d1348e948aedab93d8dbc12c0a47984cec3e1d32215b75f91ea2f550df37d3bb"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libboost_unit_test_framework-x64.so.1.87.0",
+      "value": "fa05942d84e0901393d5d28f924567977be4cbac2eb4148863cc8debe0826b88"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libccl_atcl.so",
+      "value": "0364bfbdff4fad978ad1f230bfb6c299604b2ccb808f3e9e396f6216df61e6b6"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libccl_cfg_ini.so",
+      "value": "55433ac128c5eed96a6281cf89f72e6ba843e9432ebc8913057a933b2bafe7d2"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libccl_fio.so",
+      "value": "83de0cb93ef77745860cfb79ce911cea444b376cd72ec1ee3051f079fffe497f"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libccl_gen.so",
+      "value": "0f71513e67c2bad6f2ec590776e3495245ffb51c0c383c34c262d09141571435"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libccl_mem.so",
+      "value": "8c28fa21ff72a12dbe2d3d2889a90c9301dca62f59f031482edb77471942f79f"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libccl_msg.so",
+      "value": "6f8478bda5a3ab4b189955c3eeb4b85317bd8e1f3a4faf584518af4880fe0260"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libccl_py.so",
+      "value": "0e50f51120fb1a30b9b8e0659a7e34a2578d3df1cb3a987cf05c8f32ccbb8141"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libccl_thr.so",
+      "value": "5cd87a75450239c93d53d23cdaa9c59fb5bf4593c7300face52b01bcb112e42f"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libddb_dev.so",
+      "value": "7d98797ba8aa0cd97098b7d478949d7aa4d2ec8f2683ffe9fb27e47eeb3c72e1"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libddb_dev_root.so",
+      "value": "48b1777521151f4751583d415699d49e3efc78ed53da2de1174611259e56d910"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libgcc_s.so.1",
+      "value": "79f7a523b5e7ec0eac35b3f407bc510fbcb9f4adae9ec0f29eaf0c0d5706807b"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libgomp.so.1",
+      "value": "699604d52af227c02fb283de95606f0147d3dd36b1dd839b88efbb282ee1f310"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libpython3.11.so.1.0",
+      "value": "80fa4a0918faef3fc2510fa93e0e7366499833cffbb26413326ed9fdc55c2442"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libpython3.so",
+      "value": "f6e6dee824e3eaab24678094e5949cda03abc0c3e6142d52ffee5c5c945fdc79"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libstdc++.so.6",
+      "value": "7aff636775fff8c7c851dc7ade8ca807e45431298ea36bbcd776c1643d4e7621"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libsys_cpt.so",
+      "value": "77a6f311b7808945d18e17827812e35e8d9939cbe1f0c4066512fe753fe68012"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libtcl8.6.so",
+      "value": "9761e7337467df043aed9429295b19d74ebf56d69e26ca8f2266261a49c1fdca"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libtcmalloc.so.9.9.5",
+      "value": "8984a164ad025f1440d9a90d47447e31f2fde06edcfd9aa97c5a83fc9026c0f0"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qcore~1linux64~1libxerces-c-3.2.so",
+      "value": "0525686b2ddefea905ea79c08f6391675d5b533e8b8d95c5ee1c5dac861d51ec"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1FastInfoset.jar",
+      "value": "785861db11ca1bd0d1956682b974ad73eb19cd3e01a4b3fa82d62eca97210aec"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1antlr4-runtime-4.7.2.jar",
+      "value": "4c518b87d4bdff8b44cd8cbc1af816e944b62a3fe5b80b781501cf1f4759bbc4"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1codemodel.jar",
+      "value": "8cd4bd09ffce59a5e2c66237836dfe71f7e34306f40c2d7e6c5f23afa292bc24"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.componenteditor2.jar",
+      "value": "1a2f300cdcee0abd190eef8a2b2bceee0d87cf79df489637cf4c276f9f5695f2"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.ddmwriter.jar",
+      "value": "7e1d64486bd1c1b3be1fffd8d3c037b497c1f32c01bd92676b73b8e80a8365db"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.embeddedsw.app_lib.jar",
+      "value": "d51c475bd8a8711725ec040c81692e1a131e0d4ac1783b97a0599dc6c9fe14f9"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.embeddedsw.bsp.elements.jar",
+      "value": "3efb1d5a0ba092824e6271c6414f77c8c487625f6583a4d8952aef39e57a3760"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.embeddedsw.bsp.jar",
+      "value": "05ba276f20523c315fe5c9dc57c3e460d03d9ad754abd7c6ac21daa016723c66"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.embeddedsw.bsp.plugin.core.jar",
+      "value": "9b9748b130c71e17c52f5e4de27d18514844b3ac84629ed9536f790f7938475b"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.embeddedsw.bsp.plugin.hal.jar",
+      "value": "6a00bff9552ff750b80f4be3ec8d77279c1268ccea2408a83ee5cbac9b1795a4"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.embeddedsw.bsp.plugin.hps_baremetal.jar",
+      "value": "c90b4d833e5165ba8b9a510a567ef134aab4b023426783bceff033ce5f0841f8"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.embeddedsw.bsp.schema.jar",
+      "value": "7bc3927c9771d4fe602897221c79481c70c6121e50422e49443244850cb86f2b"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.embeddedsw.swinfo.jar",
+      "value": "9f0e6507da3ad84f59bbc512cf150e98b682f95c444d04d77cb2f23182a49483"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.embeddedsw.utilities.jar",
+      "value": "13634285613240ad71ac253c615f10eae2ee934a74e04f0418a21ff67f739709"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.hdlcomponent.jar",
+      "value": "eb4ddcb9279c79a537e55fb68215e61c042fd177a3dd500382acd51e884d08d0"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.hdlwriter.jar",
+      "value": "43a52ae4d436f8f8cb0f3c66dfbe1319388c704126417711bb20fede6f09bddf"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.privateinterfaces.jar",
+      "value": "a9f802398130e4525a17d8058e682166d8f65fd8b33906303bb5fc8fd086e87f"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.qsys.blackboxmodule.jar",
+      "value": "4bdd6943a293f4c5e0dd5551858b9d6e373e44711c04c7fce9e65fcd030e7c9e"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.qsys.cmsis.jar",
+      "value": "874458bf3dd5d11296ef880a91a97e98559a6b89f2634d9fd31312cbb86a68c4"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.qsys.common.jar",
+      "value": "bd3469b321f7760db64fc537ca64f208845b3e6e02ec23fb133631473b8567df"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.qsys.grpc.jar",
+      "value": "cda608ec2fbb78fda9fef6e5d2a6b0cf9dcef6a0a732058250c4e4b50037f5ca"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.qsys.hypericonnect.jar",
+      "value": "1ec5910770ef490e4851c85cee46b369b89f1068366251949154c9ea46994bc7"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.qsys.ipxact.jar",
+      "value": "da9071ad80ac1f15a3564b79ced4a68a2a5570e0256adad66e57ec2ce68ef663"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.qsys.ipxact.module.jar",
+      "value": "b48ac543ae1d602aeacdf08fb085589a1022f87c6335b3d3be9c907e83dee37e"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.qsys.model.capabilitypackage.jar",
+      "value": "7fd386a4539c5bfc4e0b397a3202ccc29f6850a0385252420549bf44e1320ac0"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.qsys.model.common.jar",
+      "value": "bac63448565a660cfa24f9617aaf6a898eae4d39f4eba2293ec08f24f1c55b42"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.qsys.ui.jar",
+      "value": "97e79e35df64c44a22cf370edacc102ab01fcfec02ac60a74d5476fb22acd454"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.sopc.generator.jar",
+      "value": "95f5bc9d8af4f16eaba444113f6857c2429793117e084b4aade72874672e1943"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.sopc.qsymbol.jar",
+      "value": "72470b503282f10197f7fdbf0462336d12377c47cfcb1dcde0046649ec37435c"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.sopcdocument.jar",
+      "value": "dc3f1ea239376c60040631a2f80d2aabee9349b8723a5164a21b5bb5b7de7de0"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.sopceditor.jar",
+      "value": "301b6944401ee8c47a5da3adcf16ecc1fefa6299beafecd9dcb6defa832ad7ba"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.sopcfactories.jar",
+      "value": "732dfb8987425ba515775dc6625963a6ee22a1015978bebdf1e763495d2867cc"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.sopclibrary.jar",
+      "value": "f45ea773f2e928d2cd065652a286f9e7ac44f39e1165f52c488fee02de4dad38"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.sopcmodel.atlantic.jar",
+      "value": "1ff1d0e47c2cd3806943f8bb77b829f633b139cf184c8d83e439680765b91699"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.sopcmodel.components.tclelement.jar",
+      "value": "8d3d689cf3ac1030b961a95950a523536bb4646706afe20bcf8d5c59ec99a196"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.sopcmodel.embeddedsw.jar",
+      "value": "a2556a8ae9e6e5620ac5dc750792d62f276ea54f23a2d6e35321ac233d8d80b3"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.sopcmodel.jar",
+      "value": "8e51047f4cd4ac67c22f331dff6b74500cfd7dce194ddf0c3e9a8b0b3a288fb8"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.sopcmodel.sbtools.jar",
+      "value": "6e73d573e291b280b275d71cf3f6923c8064b908a6209f4ae97be5a4949b986b"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.sopcmodel.transforms.jar",
+      "value": "3f4d83fee349fe6ebb22536406f91b51384ba7d97020da1d5f42723b78c9b9fe"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.sopcreport.build.jar",
+      "value": "5a35e75f84bfd850604ba7b57368686287b6b79a86b5750cfc8b7f8998946a39"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.sopcreport.jar",
+      "value": "dc432cb98eca3bd31c4fa9548068f8a609d43ed4a73574ee0c7bd5007e4a8f48"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.tcl.interpreter.jar",
+      "value": "1e90ec690dfbd3ae2577e34e871a78d2060a85b436481d3761792edcdd12ecd3"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.ui.ientity.jar",
+      "value": "b98536d224c29f50f0b78343b306010999468aab59245f33684fb8bdb1ea4d57"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.altera.widgets.jar",
+      "value": "c88071bcd6895cc2cdcc26058f4839fa6c49ef33278a048f482055658484fe19"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.intel.quartus.dni.jar",
+      "value": "bcdbf5ec951b0dc24d21e309c7ae62c9be8435c19dbb44dfc333d8f1f66292af"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.intel.quartus.ngpd.jar",
+      "value": "75b2f5f068353b3237043b6a5f7862e9fbd5f6f4b5a894c34e8a4ee076b2abdb"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1com.intel.shared.jar",
+      "value": "094356afdff894a647b1b2561b04dc6f808f9382ec3934d09d75ae67038249b2"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1commons-lang3-3.12.0.jar",
+      "value": "d919d904486c037f8d193412da0c92e22a9fa24230b9d67a57855c5c31c7e94e"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1commons-text-1.10.0.jar",
+      "value": "770cd903fa7b604d1f7ef7ba17f84108667294b2b478be8ed1af3bffb4ae0018"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1docking-frames-common-1.1.2_20c.jar",
+      "value": "8d7d2ae22cb874fa969587175f827e74ac4da69b30c8b52e005ea88e4a345d37"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1dtd-parser.jar",
+      "value": "5b4bc07036d751fe5ce224e28c83a3ea78e574bfcb01fd8e2a95d81f9e428c22"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1grpc-api-1.60.1.jar",
+      "value": "bdcefde43d7c542e748adb7b2bccc46db16313ba86ab46f8ba3b54677c7c5883"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1grpc-context-1.60.1.jar",
+      "value": "4ab6efb9cbadc88f8dc723ada3a61785da367697373d4432aef5222312aa70f6"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1grpc-core-1.60.1.jar",
+      "value": "b96af7b762e7fca6ffecce7163bcaf2d762dd7a0e24bb757e507639a3469b8e9"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1grpc-netty-shaded-1.60.1.jar",
+      "value": "b2cf4feaae628aaf6495edd204f77a62f64d270cbdf27bc62e51ffb5c340aba7"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1grpc-protobuf-1.60.1.jar",
+      "value": "f74972f5b6bf6795fd8ece318314312bad3871823046a32be0651c5778f7d5fd"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1grpc-protobuf-lite-1.60.1.jar",
+      "value": "b180794ab05912fc3ae5e3729abfb7f50b37b4feacf0eb1b7a1f08cee057ed53"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1grpc-stub-1.60.1.jar",
+      "value": "4c73ded16d31519b20a43a0c7f6c1e2f65238b2a1025256d97b77ab5ada26ed4"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1grpc-util-1.60.1.jar",
+      "value": "0232e0160f8a54eee8d12942f6ddfadd8ce05231ad8e035cbba9fc31b687b76c"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1gson-2.10.1.jar",
+      "value": "4241c14a7727c34feea6507ec801318a3d4a90f070e4525681079fb94ee4c593"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1guava-32.0.1-jre.jar",
+      "value": "bd7fa227591fb8509677d0d1122cf95158f3b8a9f45653f58281d879f6dc48c5"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1istack-commons-runtime.jar",
+      "value": "6443e10ba2e259fb821d9b6becf10db5316285fc30c53cec9d7b19a3877e7fdf"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1istack-commons-tools.jar",
+      "value": "d06568cd93d7a86f436f47040853827a7b955a30e2ee4ecd3ae1ba2ce15ea6b3"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1jacl1.3.2a.jar",
+      "value": "d4fa0e256c844bf202910c1476a072e73fa56bf67d132b2ca28d03919f702e3c"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1javax.activation-1.2.0.jar",
+      "value": "993302b16cd7056f21e779cc577d175a810bb4900ef73cd8fbf2b50f928ba9ce"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1javax.activation-api.jar",
+      "value": "43fdef0b5b6ceb31b0424b208b930c74ab58fac2ceeb7b3f6fd3aeb8b5ca4393"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1jaxb-api.jar",
+      "value": "88b955a0df57880a26a74708bc34f74dcaf8ebf4e78843a28b50eae945732b06"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1jaxb-jxc.jar",
+      "value": "f392d81651091c7e87752f9e6d367aa91967c4add8cb097da43a22cf47a5178d"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1jaxb-runtime.jar",
+      "value": "45fecfa5c8217ce1f3652ab95179790ec8cc0dec0384bca51cbeb94a293d9f2f"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1jaxb-xjc.jar",
+      "value": "659daa78b81fc46647f378d5a9a020ba968a4222d49788dbf38cf029886cfcfc"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1jfreechart-1.5.0.jar",
+      "value": "ae3788e0977723ed6769d3569c6f2003df8735eca6fc108c67ad10a62a15bc5e"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1jgraphx-4.2.2.jar",
+      "value": "8030369bdcaf8f46545c317ae84cd2bc832da54fdb615e48b0a8862280882a82"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1miglayout-swing-5.2.jar",
+      "value": "8369f682ea153efb681a3f582acc488e82a97ee6f47d25352f080e977f138c86"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1nashorn-core-15.4.jar",
+      "value": "6f816e84dfd63a81d4eaa7829c08337bbaff3ec683ff3bf6bbd90d017a00dc6f"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1nlview.jar",
+      "value": "3bba82f463133499acd913a151525c64539e579df0192f6c20bab1c9081c1edb"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1org-netbeans-swing-outline-7.2.jar",
+      "value": "15364a15f15f5eacb47ba60f3e5a26fd43a48a779e6821e613da413785804be9"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1qsys~1lib~1sqlite-jdbc-3.49.1.0.jar",
+      "value": "5c8609d2ca341deb8c6f71778974b5ba4995c7d32d7c7c89d9392a3e72c39291"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1quartus~1linux64~1java17~1jre64~1lib~1libjli.so",
+      "value": "79f7398739f96472aa4deb432c5a6ef54dc5001a5b5d4ca24a1e4bed8f5e2cdd"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1quartus~1linux64~1java17~1jre64~1lib~1libsplashscreen.so",
+      "value": "9ba39622498c8a8b3861b8e008f4477cf8ffe52b8d6c3f8358e6ae310968b4ee"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1quartus~1linux64~1java17~1jre64~1lib~1modules",
+      "value": "b303e183dc05a46616cfd9d904199afc9e7a672c070633e9f9f8cab9f2dfccfe"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1quartus~1linux64~1java17~1jre64~1lib~1server~1libjvm.so",
+      "value": "1fe475a6e8e8700aa25b0346b70ad32f30919aac819075515052411af8723089"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1quartus~1linux64~1libcomp_qcu.so",
+      "value": "eccee654f88264cd53fb4a0c62f4cc61101a078712f5c928e94ab5368d64de3d"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1quartus~1linux64~1libcomp_qexe.so",
+      "value": "f808fb2bfc43cd7e786156e6cee1cf9c89f87507cc186094882f32f38141d2a8"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1quartus~1linux64~1libdb_acf.so",
+      "value": "ff83ee6769849c55ebb83a6c6567e3d2f9e063210deee7b83bc6698221929f16"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1quartus~1linux64~1libddb_dmgr.so",
+      "value": "bf8b7f8aef523142db6281ae45a811909f50d39e5cc71020c2334623a340fa51"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1quartus~1linux64~1libsys_cloud.so",
+      "value": "71d59c4bb644e7bc7a0fc56abdaf42bc451f70024bf0632123e8381e4a86b270"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1quartus~1linux64~1libsys_tb2.so",
+      "value": "2ec5cea4b31375ebf2d8b139cbf8f58329ff162ba13ee27240d2193ac41e76fc"
+    },
+    {
+      "op": "add",
+      "path": "/tool_hashes/~1opt~1altera~126.1.1~1quartus~1sopc_builder~1version.txt",
+      "value": "f55f7f365abe2ecf1f931eb590e2869f80010ffedc574d92bcc655c94c2f007a"
+    }
+  ],
+  "experimental_acceptance_not_prelaunch_success": [
+    "minimal QPF/QSF loader acceptance",
+    "runtime selected classpath and native loader identities",
+    "26.1 API availability/behavior",
+    "catalog selected public 23.0.0/core 21.0.0 and preserved nontarget versions",
+    "selective leaf save, later child and parent coherence",
+    "no unexpected external effects"
+  ],
+  "monitoring_recommendation": {
+    "acceptance": "Require complete traces for every observed child, exit statuses, external-path audit resolving cwd/dirfd/renames/fd writes/shared writable mappings, source and boundary posthashes, full scratch before/after, project equality, logs, saved-target and actual resolution review. Lost/truncated trace or detached/unaccounted child fails acceptance.",
+    "external_effects": "Read-only node-locked license file. /dev/null output and ordinary anonymous pipes/local IPC allowed; pathname sockets/caches under scratch only. No external persistent writes, no external license cache exception, no remote network endpoint preapproved. Unexpected external connection or write => stop/retain/review.",
+    "lifecycle": "Dedicated session/process group; track all clone/fork descendants by PID plus start time, including setsid escapees. On stop terminate traced descendants, TERM then KILL after grace; record final survivor scan and tracer exit. No claim that polling prevents writes.",
+    "limits": {
+      "term_grace_seconds": 10,
+      "trace_bytes": 2147483648,
+      "wall_seconds": 1800,
+      "watchdog_poll_seconds": 1
+    },
+    "mode": "observed bounded experiment, not OS sandbox or prior proof of dynamic closure",
+    "observer": "strace follow-fork syscall capture from harness start, plus independent watchdog/process inventory",
+    "observer_deployed_or_verified": false,
+    "observer_root": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/observation-first-7c407469a419-u01",
+    "prefix_placeholders": "Resolve and hash strace executable and Python interpreter locally on workstation; substitute literal stage (stage or upgrade first). No shell expansion in vendor argv.",
+    "process_rule": "First vendor executable is exact qsys-generate. Expected internal identities limited to its same-path launcher re-exec, bound JRE java, quartus/bin/quartus_sh wrapper and quartus/linux64/quartus_sh IPC mode. Capture full argv/cwd/env/exe and library mappings; internal command lines are observations, not statically proven grammar. A shell may only interpret the bound quartus wrapper, not arbitrary -c. Other executables, HDL generation/compile/fit/assembler/Questa, changed project paths, user shell init or FIM sourcing => stop. No dynamic substitution of first-stage argv.",
+    "retention": "Keep exclusive root/claims, logs, before bytes, partial outputs, raw observer traces and stopped-process receipt indefinitely through independent disposition; no automatic cleanup or retry. Observer outside scratch avoids invalidating staged/previous-report snapshots. Keep approval files outside scratch. umask 077; retained traces may contain sensitive data.",
+    "strace_prefix": [
+      "strace",
+      "-ff",
+      "-ttt",
+      "-T",
+      "-yy",
+      "-v",
+      "-s",
+      "65535",
+      "-e",
+      "trace=all",
+      "-e",
+      "raw=read,pread64,readv,preadv,preadv2",
+      "-o",
+      "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/observation-first-7c407469a419-u01/<stage>/syscall"
+    ],
+    "vendor_argv": "Exactly candidate_binding.argv.upgrade; observer wraps Python harness, not this vendor vector.",
+    "writes_allowed": [
+      "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/** (vendor scratch only; non-target source/project changes still reject acceptance)",
+      "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/observation-first-7c407469a419-u01/** (observer only, never a vendor-write exception)"
+    ]
+  },
+  "prelaunch_actions_not_done": [
+    "Parent explicitly approves this limited experiment and records the scope/meaning of review flags; this reviewer does not authorize execution.",
+    "Apply only proposed path substitutions in a reviewed successor harness/scripts; verify deployed bytes against proposed hashes and update accompanying successor template/docs. Existing template/candidate are untouched here.",
+    "Resolve/hash observer and interpreter, demonstrate tracer fork/exec/write capture and descendant stop on an inert nonvendor probe; if unavailable, stop for an equivalent reviewed observer, not unobserved vendor execution.",
+    "Verify named tmux ia840f_migration_preflight identity, host/user, absent fresh root and ancestors, exclusive observation directory; harness itself exclusively creates scratch. Do not precreate scratch.",
+    "Verify all candidate hash paths and source inventory; deploy/readback evidence receipts if not already at exact remote path. For SPI/IPX entries from full-source records recheck no-link ancestor compatibility.",
+    "Compare finite reference native symlink chains/targets before launch using a separate observer preflight, not migration.no_links; retain ordinary OS/library symlinks as observed references without altering vendor argv.",
+    "Create a separately approved binding only after these preconditions; keep candidate reviewed/reviewer/flags false until parent approval. Authorize stage then upgrade only; no automatic child or parent."
+  ],
+  "ready_for_build": false,
+  "receipt_validation": {
+    "followup": {
+      "errors": [],
+      "full_text_hash_failures": [],
+      "mismatches": [],
+      "records": 136
+    },
+    "live02": {
+      "errors": [],
+      "full_text_hash_failures": [],
+      "mismatches": [],
+      "records": 358
+    }
+  },
+  "reference_native_identities_not_harness_paths": {
+    "/etc/ld.so.cache": {
+      "harness_no_links_compatible": true,
+      "resolved_path": "/etc/ld.so.cache",
+      "sha256": "f9bf2c35db8d0e493f42e68063a66b49c2b202c4feb2e0a5c7627c7add8d5306",
+      "stable_during_read": true,
+      "symlink_chain": []
+    },
+    "/lib64/ld-linux-x86-64.so.2": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/usr/lib64/ld-linux-x86-64.so.2",
+      "sha256": "58b211cde994b9373c9a39abeb2633191b832574c7ca0bd44e362d33e0cc6111",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/lib64",
+          "target": "usr/lib64"
+        }
+      ]
+    },
+    "/lib64/libc.so.6": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/usr/lib64/libc.so.6",
+      "sha256": "c6b12761834ea9a2fde7a17682ebfaf37982a0df6e9345e5b9d298ac1ca3c746",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/lib64",
+          "target": "usr/lib64"
+        }
+      ]
+    },
+    "/lib64/libdl.so.2": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/usr/lib64/libdl.so.2",
+      "sha256": "e79f2c36a3228050061432b564923893a42241fb334b52bd2be88793c3eedce3",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/lib64",
+          "target": "usr/lib64"
+        }
+      ]
+    },
+    "/lib64/libedit.so.0": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/usr/lib64/libedit.so.0.0.64",
+      "sha256": "6db0a14cefca97424f8e5ba91eca4f92b171dd0829392b9dba7c23ef342d1b22",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/lib64",
+          "target": "usr/lib64"
+        },
+        {
+          "path": "/usr/lib64/libedit.so.0",
+          "target": "libedit.so.0.0.64"
+        }
+      ]
+    },
+    "/lib64/libgcc_s.so.1": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/usr/lib64/libgcc_s-11-20240719.so.1",
+      "sha256": "6e7aa8810311b391a45e97dfaedef85d85b9790ce43da903fd740e2c5862c3f6",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/lib64",
+          "target": "usr/lib64"
+        },
+        {
+          "path": "/usr/lib64/libgcc_s.so.1",
+          "target": "libgcc_s-11-20240719.so.1"
+        }
+      ]
+    },
+    "/lib64/libgomp.so.1": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/usr/lib64/libgomp.so.1.0.0",
+      "sha256": "6e4626e10049deaadf2ddf7ec99d55626d470d7ddfbc44598b1b52c5bbf4c9c7",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/lib64",
+          "target": "usr/lib64"
+        },
+        {
+          "path": "/usr/lib64/libgomp.so.1",
+          "target": "libgomp.so.1.0.0"
+        }
+      ]
+    },
+    "/lib64/liblzma.so.5": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/usr/lib64/liblzma.so.5.2.5",
+      "sha256": "16125c779c2442c5bc32a3aeded7e6a5e70c9112864eebb5bb061651222a2dda",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/lib64",
+          "target": "usr/lib64"
+        },
+        {
+          "path": "/usr/lib64/liblzma.so.5",
+          "target": "liblzma.so.5.2.5"
+        }
+      ]
+    },
+    "/lib64/libm.so.6": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/usr/lib64/libm.so.6",
+      "sha256": "f0734a09a0602ccde6b98ea7fbb3c9cfc62b3a4cf4a7b17ccd36d774ca22b8df",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/lib64",
+          "target": "usr/lib64"
+        }
+      ]
+    },
+    "/lib64/libpthread.so.0": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/usr/lib64/libpthread.so.0",
+      "sha256": "ff337ffb3d2cd083f45190c3c0eb7c3156cd8643abe2ef1c941b6a13a415bd07",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/lib64",
+          "target": "usr/lib64"
+        }
+      ]
+    },
+    "/lib64/libpython3.11.so.1.0": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/usr/lib64/libpython3.11.so.1.0",
+      "sha256": "d1ce11063bbd1f4d8ad15071d6dcb4965a7b944514c6fc28276f1c060177c7c1",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/lib64",
+          "target": "usr/lib64"
+        }
+      ]
+    },
+    "/lib64/libpython3.so": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/usr/lib64/libpython3.so",
+      "sha256": "5efaed3407c3e1cdb35f7bfb364a7f3c4d9efa5293e4cb511848062ade24f0b4",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/lib64",
+          "target": "usr/lib64"
+        }
+      ]
+    },
+    "/lib64/librt.so.1": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/usr/lib64/librt.so.1",
+      "sha256": "23d6ce2d88c5b8d827ecd68654d3f3e21adc42ed6a97801baf56db359c973e5a",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/lib64",
+          "target": "usr/lib64"
+        }
+      ]
+    },
+    "/lib64/libstdc++.so.6": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/usr/lib64/libstdc++.so.6.0.29",
+      "sha256": "3199d9007e9e0d4aa399340b83d76bda8d54a6dab76810430295f6b14fc0e458",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/lib64",
+          "target": "usr/lib64"
+        },
+        {
+          "path": "/usr/lib64/libstdc++.so.6",
+          "target": "libstdc++.so.6.0.29"
+        }
+      ]
+    },
+    "/lib64/libtbbmalloc.so.2": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/usr/lib64/libtbbmalloc.so.2",
+      "sha256": "610ef0df46559e55b96a0568f2d0077c9fc3b6940b2b240207fced44c28b125e",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/lib64",
+          "target": "usr/lib64"
+        }
+      ]
+    },
+    "/lib64/libtcl8.6.so": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/usr/lib64/libtcl8.6.so",
+      "sha256": "40b196eb105691f22cb7d8f02dc8c712b30113e70dfc248aa09924d96d6e1c99",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/lib64",
+          "target": "usr/lib64"
+        }
+      ]
+    },
+    "/lib64/libutil.so.1": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/usr/lib64/libutil.so.1",
+      "sha256": "eefb387c80183a5dac333d67c9f247f599d70fd19dda5dca3fb2fb15ba56a34b",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/lib64",
+          "target": "usr/lib64"
+        }
+      ]
+    },
+    "/lib64/libzstd.so.1": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/usr/lib64/libzstd.so.1.5.5",
+      "sha256": "069d3cf8a87b6a82d0ba8058762ded65f13a8152158d9bcef1ef8df87688ea51",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/lib64",
+          "target": "usr/lib64"
+        },
+        {
+          "path": "/usr/lib64/libzstd.so.1",
+          "target": "libzstd.so.1.5.5"
+        }
+      ]
+    },
+    "/opt/altera/26.1.1/qcore/linux64/libedit.so.0": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/opt/altera/26.1.1/qcore/linux64/libedit.so.0.0.70",
+      "sha256": "3a2fd76ac78e281e19d3b274d87695e296ce9a6e497f6f97f3dfd5564ae1076b",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/opt/altera/26.1.1/qcore/linux64/libedit.so.0",
+          "target": "libedit.so.0.0.70"
+        }
+      ]
+    },
+    "/opt/altera/26.1.1/qcore/linux64/libfmt.so.11": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/opt/altera/26.1.1/qcore/linux64/libfmt.so.11.2.0",
+      "sha256": "993c006dc2390568400151cbc51f65511680a3586152b912c182c88670028a2d",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/opt/altera/26.1.1/qcore/linux64/libfmt.so.11",
+          "target": "libfmt.so.11.2.0"
+        }
+      ]
+    },
+    "/opt/altera/26.1.1/qcore/linux64/libicudata.so.69": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/opt/altera/26.1.1/qcore/linux64/libicudata.so.69.1",
+      "sha256": "d870f9b925dd4f9acd76094c157a8d2ee0ff321c65e029d4241c02bede5e17be",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/opt/altera/26.1.1/qcore/linux64/libicudata.so.69",
+          "target": "libicudata.so.69.1"
+        }
+      ]
+    },
+    "/opt/altera/26.1.1/qcore/linux64/libicuuc.so.69": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/opt/altera/26.1.1/qcore/linux64/libicuuc.so.69.1",
+      "sha256": "7a9704283b54e28e8c21f26e37995b337d58cdc41f11268dfd4f1d4273979d98",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/opt/altera/26.1.1/qcore/linux64/libicuuc.so.69",
+          "target": "libicuuc.so.69.1"
+        }
+      ]
+    },
+    "/opt/altera/26.1.1/qcore/linux64/liblzma.so.5": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/opt/altera/26.1.1/qcore/linux64/liblzma.so.5.4.3",
+      "sha256": "06d301fec8d58cafec026e7fa3448b09a8aeb4283387e36d9252835983e192d1",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/opt/altera/26.1.1/qcore/linux64/liblzma.so.5",
+          "target": "liblzma.so.5.4.3"
+        }
+      ]
+    },
+    "/opt/altera/26.1.1/qcore/linux64/libtbb.so.12": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/opt/altera/26.1.1/qcore/linux64/libtbb.so.12.5",
+      "sha256": "820cd07a87b5ee6b209e5883e54a3d4403b8c40475203376566e206478f1a54e",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/opt/altera/26.1.1/qcore/linux64/libtbb.so.12",
+          "target": "libtbb.so.12.5"
+        }
+      ]
+    },
+    "/opt/altera/26.1.1/qcore/linux64/libtbbamalloc.so.2": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/opt/altera/26.1.1/qcore/linux64/libtbbamalloc.so.2.5",
+      "sha256": "a097eb4db79b908602054f024b155a4ed21416d9e12b941b9cab2f81185ff27a",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/opt/altera/26.1.1/qcore/linux64/libtbbamalloc.so.2",
+          "target": "libtbbamalloc.so.2.5"
+        }
+      ]
+    },
+    "/opt/altera/26.1.1/qcore/linux64/libtbbmalloc.so.2": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/opt/altera/26.1.1/qcore/linux64/libtbbmalloc.so.2.5",
+      "sha256": "68f1c0e15964ce510a525985c73de0ce61630c77911dcd1c6bd5a13f7558fd3c",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/opt/altera/26.1.1/qcore/linux64/libtbbmalloc.so.2",
+          "target": "libtbbmalloc.so.2.5"
+        }
+      ]
+    },
+    "/opt/altera/26.1.1/qcore/linux64/libzstd.so.1": {
+      "harness_no_links_compatible": false,
+      "resolved_path": "/opt/altera/26.1.1/qcore/linux64/libzstd.so.1.5.5",
+      "sha256": "283a905bbb9970c50e6d1d2fa65a16867d27ed4de56f5609cdc5a16d304e61a8",
+      "stable_during_read": true,
+      "symlink_chain": [
+        {
+          "path": "/opt/altera/26.1.1/qcore/linux64/libzstd.so.1",
+          "target": "libzstd.so.1.5.5"
+        }
+      ]
+    }
+  },
+  "required_source_transformations_not_applied": [
+    {
+      "file": "migration.py",
+      "new_string": "qualification/mailbox-migration-01/scratch-first-7c407469a419-u01'",
+      "old_sha256": "35a69d8c0cfdea91434c907bdba5ea41123fd9dfed3ac8a82f7a934a731e44c7",
+      "old_string": "qualification/mailbox-migration-01/scratch'",
+      "proposed_sha256": "a4f360484dba25f4e0a12a7cdb294b1387c86f1bb7b884480acb630368bb2f9c",
+      "written_or_tested": false
+    },
+    {
+      "file": "child.tcl",
+      "new_string": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc",
+      "old_sha256": "bab7fd328d6b053e6ce3e270e847229d35f7d9f296f4c3b79fb29d6f238cb9ba",
+      "old_string": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch/bwbmc",
+      "proposed_sha256": "3b735d9ccb1886dfbc3791a905abde3afa067892743798a5e4ed344cb7071362",
+      "written_or_tested": false
+    },
+    {
+      "file": "parent.tcl",
+      "new_string": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc",
+      "old_sha256": "98bd59f3dfdcc324990e6281cc7f15deebf44450be0559a0719ff53e5e23ea9b",
+      "old_string": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch/bwbmc",
+      "proposed_sha256": "5b8d78e78e61cec558fcbe8abd5f1eb9cdd6a76efc203cfb4d598adf2fbcf51d",
+      "written_or_tested": false
+    }
+  ],
+  "review_basis": {
+    "README.md": {
+      "bytes": 16421,
+      "sha256": "0bf737cd94f50033255b4abc1966c454433d1c467f5eae8f369e65d82f1bbed5"
+    },
+    "binding-evidence-live02.json": {
+      "bytes": 6006788,
+      "sha256": "0c13de271466b3db1fd10585f99d965886a662e67d8421022bceceb9c768c0ed"
+    },
+    "binding-template.json": {
+      "bytes": 8338,
+      "sha256": "a9a597bf88a3a8cfd1792ba7456ce3d9cc0cfb477486eccf1ee47327cba8c8a0"
+    },
+    "child.tcl": {
+      "bytes": 1878,
+      "sha256": "bab7fd328d6b053e6ce3e270e847229d35f7d9f296f4c3b79fb29d6f238cb9ba"
+    },
+    "followup-evidence-live01.json": {
+      "bytes": 3387272,
+      "sha256": "7c407469a4196058230f3585c4d2908359f488a267c8e6f357e6d11ea240a9c7"
+    },
+    "live02-parent-verification.json": {
+      "bytes": 2915,
+      "sha256": "3ffe4a1ad72fd15cef98388c428bc42efef505421e679b854a01e0f0ba154ea3"
+    },
+    "migration.py": {
+      "bytes": 23766,
+      "sha256": "35a69d8c0cfdea91434c907bdba5ea41123fd9dfed3ac8a82f7a934a731e44c7"
+    },
+    "parent.tcl": {
+      "bytes": 813,
+      "sha256": "98bd59f3dfdcc324990e6281cc7f15deebf44450be0559a0719ff53e5e23ea9b"
+    },
+    "proposed-binding.json": {
+      "bytes": 10869,
+      "sha256": "19b329ce0c475ea65f3457494e21dd83d215e6aabde84826a3add4fd06071e03"
+    },
+    "quality-review.md": {
+      "bytes": 9967,
+      "sha256": "072d6b4df2f9a675221624fc11caabd061f5504ec1a7a6c20f29b24109d30525"
+    },
+    "runtime-catalog-review.md": {
+      "bytes": 15788,
+      "sha256": "3b4a140459e78282abc7d0b3f5d58795d32ad1a28127df69fa7a54d4786e20e1"
+    },
+    "source-baseline.json": {
+      "bytes": 4123,
+      "sha256": "148bb2897db6416a5950d152b6a8104c39cffda494e2723c97afecce9efb3a57"
+    },
+    "spec-final-review.md": {
+      "bytes": 11198,
+      "sha256": "668b9bfb028228b8cd07069e3009140dfbfdba80f9090f8edb8fba5960c61412"
+    },
+    "spec-rereview.md": {
+      "bytes": 12338,
+      "sha256": "d85248707be374e9debecaaff7a042680d21fb1bbd54d0611be47bdeb66d0640"
+    },
+    "spec-review.md": {
+      "bytes": 11371,
+      "sha256": "e72e617ee926bc5731662e486d8d8d7c626e4294d2837bcc99753acb7cfd5d24"
+    }
+  },
+  "review_flag_semantics": "Parent may mark review fields true only to attest review/approval of this bounded experiment and its residual uncertainties, NOT successful prior loader/API execution or exhaustive closure. Record that interpretation with the approved binding. This proposal changes no such flags.",
+  "reviewed": false,
+  "schema": "mailbox-first-experiment-binding-proposal-v1",
+  "verdict": "PASS_WITH_EXPLICIT_EXPERIMENTAL_LIMITS"
+}

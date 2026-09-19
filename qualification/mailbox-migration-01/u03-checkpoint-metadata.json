@@ -1,0 +1,33 @@
+{
+  "command": "/usr/bin/python3 -I -B -S -c 'import os,json,stat,pathlib,socket,base64\nassert socket.gethostname()=='\"'\"'Agilex7Workstation'\"'\"' and os.getuid()==1000 and os.environ.get('\"'\"'TMUX'\"'\"')=='\"'\"'/tmp/tmux-1000/default,7828,4'\"'\"'\nroot=pathlib.Path('\"'\"'/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/preflight-isolation-7c407469a419-u03/observer'\"'\"')\nfor p in [root,*root.parents]:assert not p.is_symlink()\nrows=[]\nfor name in ('\"'\"'inputs.json'\"'\"','\"'\"'host-before.json'\"'\"','\"'\"'runtime-before.json'\"'\"'):\n p=root/name\n try:\n  s=os.lstat(p);out={'\"'\"'path'\"'\"':str(p),'\"'\"'mode'\"'\"':oct(s.st_mode),'\"'\"'regular'\"'\"':stat.S_ISREG(s.st_mode),'\"'\"'uid'\"'\"':s.st_uid,'\"'\"'gid'\"'\"':s.st_gid,'\"'\"'size'\"'\"':s.st_size,'\"'\"'mtime_ns'\"'\"':s.st_mtime_ns,'\"'\"'dev'\"'\"':s.st_dev,'\"'\"'ino'\"'\"':s.st_ino}\n except OSError as e:out={'\"'\"'path'\"'\"':str(p),'\"'\"'error_type'\"'\"':type(e).__name__,'\"'\"'errno'\"'\"':e.errno,'\"'\"'filename'\"'\"':e.filename}\n rows.append(out)\nprint('\"'\"'U03META_BEGIN'\"'\"');print(base64.b64encode(json.dumps(rows).encode()).decode());print('\"'\"'U03META_END'\"'\"')\n'",
+  "records": [
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/preflight-isolation-7c407469a419-u03/observer/inputs.json",
+      "mode": "0o100600",
+      "regular": true,
+      "uid": 1000,
+      "gid": 1000,
+      "size": 7318,
+      "mtime_ns": 1789734734932914546,
+      "dev": 64768,
+      "ino": 5972937408
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/preflight-isolation-7c407469a419-u03/observer/host-before.json",
+      "mode": "0o100600",
+      "regular": true,
+      "uid": 1000,
+      "gid": 1000,
+      "size": 6888,
+      "mtime_ns": 1789734734943914585,
+      "dev": 64768,
+      "ino": 5972937409
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/preflight-isolation-7c407469a419-u03/observer/runtime-before.json",
+      "error_type": "FileNotFoundError",
+      "errno": 2,
+      "filename": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/preflight-isolation-7c407469a419-u03/observer/runtime-before.json"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "query_argv": [
+    "/usr/bin/tmux",
+    "-S",
+    "/tmp/tmux-1000/default",
+    "display-message",
+    "-p",
+    "-t",
+    "ia840f_migration_preflight",
+    "#{session_name}\t#{session_id}\t#{pane_id}\t#{pane_pid}"
+  ],
+  "returncode": 0,
+  "stdout_hex": "6961383430665f6d6967726174696f6e5f707265666c696768745f24345f25345f32353338370a",
+  "stdout_repr": "b'ia840f_migration_preflight_$4_%4_25387\\n'",
+  "stderr_repr": "b''",
+  "fixture_exists": false,
+  "files": {
+    "invocation.json": {
+      "sha256": "b5c9adcf52f857db3a249b8de8ed97b8a8b8603d7c5538ce40a7c68bda40a793",
+      "content": "{\n  \"argv\": [\n    \"/usr/bin/python3\",\n    \"-I\",\n    \"-B\",\n    \"-S\",\n    \"/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/isolation-preflight-u02/preflight.py\",\n    \"--bundle-sha256\",\n    \"8bad241dbf06925614014ba101476d91319be8d64a1fd6af4c5a81a44a39efac\",\n    \"--inputs\",\n    \"/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/isolation-preflight-u02/parent-inputs.json\",\n    \"--inputs-sha256\",\n    \"d9936662bcaac9f3e97c11668b7aae54f96f55316fe1b723eff31ec72950bd03\",\n    \"--acknowledge-partial-nonvendor-only\"\n  ],\n  \"started_unix\": 1789733591.9560692\n}"
+    },
+    "result.json": {
+      "sha256": "af330c31499194123533706d3929c18506709d2bf1ac31da0651ad0dc6f68b72",
+      "content": "{\n  \"returncode\": 2,\n  \"finished_unix\": 1789733592.01692\n}"
+    },
+    "execution.log": {
+      "sha256": "132b5176cd9bd0464db6857995630dcd0eb6204cf37f5b57845d3b51ad79990a",
+      "content": "{\"status\": \"REFUSED_BEFORE_CLAIM\", \"retained_root\": null, \"final_receipt\": null, \"error\": \"RuntimeError('named tmux pane identity drift')\", \"authorization\": false, \"ready_for_build\": false}\n"
+    }
+  }
+}

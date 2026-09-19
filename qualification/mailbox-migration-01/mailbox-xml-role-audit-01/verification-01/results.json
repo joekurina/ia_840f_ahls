@@ -1,0 +1,207 @@
+{
+  "started_utc": "2026-09-18T15:32:51.287856+00:00",
+  "cwd": "/home/joe",
+  "python": "3.13.5 (main, Aug 10 2026, 12:06:59) [GCC 14.2.0]",
+  "executable": "/usr/bin/python3",
+  "executable_sha256": "889c603f0d17cb54060951bcf4c4f9b8c9ebd9e52b392c70209bbb9755d797d9",
+  "source_snapshots": {
+    "audit.py": "d7fcb56b1446abd186b2a361d1d5d5a684888cbffdfc032512c55ab58c364639",
+    "test_audit.py": "232800c3abc5955234dc2622916c25c1ca40448ec7f2aab4fa7bcac942f0a93e",
+    "verify_local.py": "3cfc773bf604bf4a6e2fdaaccfaadce8a47419311d6b1dd34f92759e5695e0e7"
+  },
+  "original_input_hashes": {
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/ipss/ia840f/bwbmc/bmc_spi_sub.qsys": "71bcb8de75167546c7dcb0b159021fa16666f2ed92cdaacb8d9f9ed67c36f952",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/ipss/ia840f/bwbmc/bw_840_support.qsys": "8c597695379a47c4426220fee88789e1fcce5ab84ab29612e9c10348ccd36098",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/ipss/ia840f/bwbmc/ip/bmc_spi_sub/sdm_mailbox.ip": "539fc0453b109b25a820863e002a5ae6e633705c307699bfdee974f9a71222f1",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/migration.py": "35a69d8c0cfdea91434c907bdba5ea41123fd9dfed3ac8a82f7a934a731e44c7",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/successor-first-u01/README.md": "f8b77c7f4b38671f03146c55ae0bba16201076aa3ff2e7ec03476a80799e0992",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ipgen-03/installed-mailbox-source.json": "61f51b72535e7330e5bd2a3c751b2a7519327d982ad9cafc8ab78d0a1af6cca3",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ipgen-03/installed-mailbox-source/altera_s10_mailbox_client_core.sv": "12692f551cb0a4e22e9dbfa5077b8a0b259826892a9cce613d09d574ea2a3ede",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ipgen-03/installed-mailbox-source/altera_s10_mailbox_client_core_hw.tcl": "bb8a89c2068a5381c405e5b9480fbdbe46b69457f78586a3a809d0a21d07eda1",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ipgen-03/installed-mailbox-source/altera_s10_mailbox_client_hw.tcl": "e20fc216fb32613026c8da82e7081242dabb3ff3f0fb4c63db8a93660106973f",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ipgen-03/installed-mailbox-source/altera_s10_mailbox_client_sw.tcl": "a20eac89555eadb2ae681eff42553711ce7fcb3881359e7ab3f7484a977cb00f"
+  },
+  "runs": [
+    {
+      "label": "tests",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/mailbox-xml-role-audit-01/test_audit.py"
+      ],
+      "returncode": 0
+    },
+    {
+      "label": "baseline",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/mailbox-xml-role-audit-01/audit.py",
+        "--leaf",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/ipss/ia840f/bwbmc/ip/bmc_spi_sub/sdm_mailbox.ip",
+        "--child",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/ipss/ia840f/bwbmc/bmc_spi_sub.qsys",
+        "--parent",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/ipss/ia840f/bwbmc/bw_840_support.qsys",
+        "--output",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/mailbox-xml-role-audit-01/verification-01/baseline"
+      ],
+      "returncode": 2
+    },
+    {
+      "label": "exclusive-reuse-rejected",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/mailbox-xml-role-audit-01/audit.py",
+        "--leaf",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/ipss/ia840f/bwbmc/ip/bmc_spi_sub/sdm_mailbox.ip",
+        "--child",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/ipss/ia840f/bwbmc/bmc_spi_sub.qsys",
+        "--parent",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/ipss/ia840f/bwbmc/bw_840_support.qsys",
+        "--output",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/mailbox-xml-role-audit-01/verification-01/baseline"
+      ],
+      "returncode": 1
+    }
+  ],
+  "flags": {
+    "authorized": false,
+    "ready_for_build": false,
+    "migration_approved": false,
+    "diagnostic_execution": false,
+    "vendor_execution": false,
+    "rtl_backpressure_certified": false
+  },
+  "exclusive_reuse_unchanged": true,
+  "sources_unchanged": true,
+  "sources_match_initial_reference": true,
+  "baseline_finding_counts": {
+    "missing_required_role": 4,
+    "address_metadata_without_port_maps": 2,
+    "uninterpreted_interface_child": 1
+  },
+  "coverage": {
+    "leaf": [
+      {
+        "parameter": "lockedInterfaceDefinition",
+        "schema": "boundary",
+        "required": true,
+        "status": "covered",
+        "count": 1,
+        "paths": [
+          "/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}component[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}vendorExtensions[1]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}altera_system_parameters[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}parameters[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}parameter[8]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}value[1]::embedded/boundaryDefinition[1]"
+        ],
+        "parameter_paths": [
+          "/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}component[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}vendorExtensions[1]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}altera_system_parameters[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}parameters[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}parameter[8]"
+        ]
+      },
+      {
+        "parameter": null,
+        "schema": "ipxact",
+        "required": true,
+        "status": "covered",
+        "count": 1,
+        "paths": [
+          "/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}component[1]"
+        ],
+        "parameter_paths": []
+      }
+    ],
+    "child": [
+      {
+        "parameter": "componentDefinition",
+        "schema": "boundary",
+        "required": true,
+        "status": "covered",
+        "count": 1,
+        "paths": [
+          "/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}design[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}vendorExtensions[1]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}modules[1]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}module[12]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}altera_module_parameters[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}parameters[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}parameter[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}value[1]::embedded/componentDefinition[1]/boundary[1]"
+        ],
+        "parameter_paths": [
+          "/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}design[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}vendorExtensions[1]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}modules[1]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}module[12]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}altera_module_parameters[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}parameters[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}parameter[1]"
+        ]
+      },
+      {
+        "parameter": "defaultBoundary",
+        "schema": "boundary",
+        "required": true,
+        "status": "covered",
+        "count": 1,
+        "paths": [
+          "/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}design[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}vendorExtensions[1]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}modules[1]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}module[12]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}altera_module_parameters[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}parameters[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}parameter[2]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}value[1]::embedded/boundaryDefinition[1]"
+        ],
+        "parameter_paths": [
+          "/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}design[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}vendorExtensions[1]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}modules[1]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}module[12]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}altera_module_parameters[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}parameters[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}parameter[2]"
+        ]
+      }
+    ],
+    "parent": [
+      {
+        "parameter": "componentDefinition",
+        "schema": "boundary",
+        "required": true,
+        "status": "covered",
+        "count": 1,
+        "paths": [
+          "/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}design[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}vendorExtensions[1]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}modules[1]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}module[2]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}altera_module_parameters[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}parameters[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}parameter[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}value[1]::embedded/componentDefinition[1]/boundary[1]"
+        ],
+        "parameter_paths": [
+          "/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}design[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}vendorExtensions[1]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}modules[1]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}module[2]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}altera_module_parameters[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}parameters[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}parameter[1]"
+        ]
+      },
+      {
+        "parameter": "defaultBoundary",
+        "schema": "boundary",
+        "required": false,
+        "status": "explicitly_empty_observed",
+        "count": 0,
+        "paths": [],
+        "parameter_paths": [
+          "/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}design[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}vendorExtensions[1]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}modules[1]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}module[2]/{http://www.altera.com/XMLSchema/IPXact2014/extensions}altera_module_parameters[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}parameters[1]/{http://www.accellera.org/XMLSchema/IPXACT/1685-2014}parameter[2]"
+        ]
+      }
+    ]
+  },
+  "baseline_summary": [
+    {
+      "kind": "leaf",
+      "parse_complete": true,
+      "required_coverage_complete": true,
+      "representations": 2,
+      "embedded_documents": 3,
+      "parsed_nodes": 834,
+      "findings": {
+        "missing_required_role": 2
+      }
+    },
+    {
+      "kind": "child",
+      "parse_complete": true,
+      "required_coverage_complete": true,
+      "representations": 35,
+      "embedded_documents": 95,
+      "parsed_nodes": 15252,
+      "findings": {
+        "missing_required_role": 2,
+        "address_metadata_without_port_maps": 1
+      }
+    },
+    {
+      "kind": "parent",
+      "parse_complete": true,
+      "required_coverage_complete": true,
+      "representations": 16,
+      "embedded_documents": 43,
+      "parsed_nodes": 7824,
+      "findings": {
+        "uninterpreted_interface_child": 1,
+        "address_metadata_without_port_maps": 1
+      }
+    }
+  ],
+  "expected_baseline_missing_waitrequest": true,
+  "verified": true,
+  "finished_utc": "2026-09-18T15:32:54.205344+00:00"
+}

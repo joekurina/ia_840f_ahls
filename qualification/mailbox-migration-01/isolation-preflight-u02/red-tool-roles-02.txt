@@ -1,0 +1,19 @@
+test_inventory_privilege_metadata_retained_not_normalized (test_tool_roles.ToolRoles.test_inventory_privilege_metadata_retained_not_normalized) ... ERROR
+
+======================================================================
+ERROR: test_inventory_privilege_metadata_retained_not_normalized (test_tool_roles.ToolRoles.test_inventory_privilege_metadata_retained_not_normalized)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/isolation-preflight-u02/test_tool_roles.py", line 70, in test_inventory_privilege_metadata_retained_not_normalized
+    result = p.tool_identities(self.expected)
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/isolation-preflight-u02/preflight.py", line 207, in tool_identities
+    require(stat.S_ISREG(s.st_mode) and not s.st_mode & (stat.S_ISUID | stat.S_ISGID), 'privileged/nonregular tool')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/isolation-preflight-u02/preflight.py", line 31, in require
+    raise RuntimeError(message)
+RuntimeError: privileged/nonregular tool
+
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+FAILED (errors=1)

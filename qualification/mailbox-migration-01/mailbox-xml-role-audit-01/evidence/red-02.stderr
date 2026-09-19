@@ -1,0 +1,49 @@
+test_bidir_conduit_is_valid (__main__.RoleAuditTests.test_bidir_conduit_is_valid) ... FAIL
+test_conduit_repeated_role_is_not_avalon_duplicate (__main__.RoleAuditTests.test_conduit_repeated_role_is_not_avalon_duplicate) ... ok
+test_current_baseline_missing_wait_not_readvalid (__main__.RoleAuditTests.test_current_baseline_missing_wait_not_readvalid) ... ok
+test_default_termination_value_is_not_termination (__main__.RoleAuditTests.test_default_termination_value_is_not_termination) ... ok
+test_dtd_and_limits (__main__.RoleAuditTests.test_dtd_and_limits) ... ok
+test_duplicate_role_preserved_before_dictionary (__main__.RoleAuditTests.test_duplicate_role_preserved_before_dictionary) ... ok
+test_interface_termination_is_not_ignored (__main__.RoleAuditTests.test_interface_termination_is_not_ignored) ... FAIL
+test_invalid_required_fields (__main__.RoleAuditTests.test_invalid_required_fields) ... ok
+test_ipxact_duplicate_mapping_and_dangling_physical (__main__.RoleAuditTests.test_ipxact_duplicate_mapping_and_dangling_physical) ... ok
+test_ipxact_physical_declaration_duplicate (__main__.RoleAuditTests.test_ipxact_physical_declaration_duplicate) ... ok
+test_malformed_embedded_xml (__main__.RoleAuditTests.test_malformed_embedded_xml) ... ok
+test_missing_child_nesting_not_covered (__main__.RoleAuditTests.test_missing_child_nesting_not_covered) ... ok
+test_physical_collision (__main__.RoleAuditTests.test_physical_collision) ... ok
+test_termination_and_constant (__main__.RoleAuditTests.test_termination_and_constant) ... ok
+test_unexpected_nested_port_not_silently_consumed (__main__.RoleAuditTests.test_unexpected_nested_port_not_silently_consumed) ... FAIL
+test_unknown_role_structure_retained (__main__.RoleAuditTests.test_unknown_role_structure_retained) ... ok
+test_valid_boundary (__main__.RoleAuditTests.test_valid_boundary) ... ok
+
+======================================================================
+FAIL: test_bidir_conduit_is_valid (__main__.RoleAuditTests.test_bidir_conduit_is_valid)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/mailbox-xml-role-audit-01/test_audit.py", line 116, in test_bidir_conduit_is_valid
+    self.assertNotIn('invalid_port_shape', self.codes(self.run_xml(r)))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'invalid_port_shape' unexpectedly found in ['invalid_port_shape', 'invalid_required_role', 'required_avmm_interface_count']
+
+======================================================================
+FAIL: test_interface_termination_is_not_ignored (__main__.RoleAuditTests.test_interface_termination_is_not_ignored)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/mailbox-xml-role-audit-01/test_audit.py", line 129, in test_interface_termination_is_not_ignored
+    self.assertIn('unsafe_port_semantics', self.codes(self.run_xml(r)))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'unsafe_port_semantics' not found in []
+
+======================================================================
+FAIL: test_unexpected_nested_port_not_silently_consumed (__main__.RoleAuditTests.test_unexpected_nested_port_not_silently_consumed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/mailbox-xml-role-audit-01/test_audit.py", line 122, in test_unexpected_nested_port_not_silently_consumed
+    self.assertIn('unmatched_role_structure', self.codes(self.run_xml(r)))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'unmatched_role_structure' not found in []
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.206s
+
+FAILED (failures=3)

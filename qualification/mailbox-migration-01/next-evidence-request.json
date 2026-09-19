@@ -1,0 +1,231 @@
+{
+  "schema": "mailbox-next-static-evidence-request-v1",
+  "reviewed": false,
+  "authorization": false,
+  "ready_for_build": false,
+  "basis_receipt": "binding-evidence-live01.json",
+  "basis_sha256": "4da8984e639dfba97ac2a5430268633a07849925bcdd449a20a3f74c74623214",
+  "purpose": "One finite read-only evidence batch to enable independent first scratch-experiment authorization; no dynamic closure claim.",
+  "exact_installed_files": [
+    {
+      "path": "/opt/altera/26.1.1/ip/altera/sopc_builder_ip/common/embedded_ip_hwtcl_common_forCDC.tcl",
+      "reason": "Unconditional onchip-memory Tcl source, hw line 18.",
+      "already_captured": false
+    },
+    {
+      "path": "/opt/altera/26.1.1/ip/altera/merlin/shared/axi5_interface.tcl",
+      "reason": "Unconditional AXI bridge source, hw line 52.",
+      "already_captured": false
+    },
+    {
+      "path": "/opt/altera/26.1.1/ip/altera/merlin/altera_axi_bridge/axi_interface.tcl",
+      "reason": "Relative AXI bridge source, hw line 53; verify catalog-relative source semantics during experiment.",
+      "already_captured": false
+    },
+    {
+      "path": "/opt/altera/26.1.1/ip/altera/merlin/altera_axi_bridge/axi_gui.tcl",
+      "reason": "Unconditional AXI bridge source, hw line 2153.",
+      "already_captured": false
+    },
+    {
+      "path": "/opt/altera/26.1.1/ip/altera/common/hw_tcl_packages/altera_terp.tcl",
+      "reason": "Provider explicitly named in captured pkgIndex; both bridges require exact altera_terp 1.0.",
+      "already_captured": false
+    },
+    {
+      "path": "/opt/altera/26.1.1/quartus/sopc_builder/version.txt",
+      "reason": "Literal launcher reference; version/configuration context.",
+      "already_captured": false
+    },
+    {
+      "path": "/opt/altera/26.1.1/quartus/linux64/java17/jre64/lib/libjli.so",
+      "reason": "Java DT_NEEDED plus ORIGIN/../lib search candidate; existence/resolution not yet proven.",
+      "already_captured": false
+    },
+    {
+      "path": "/opt/altera/26.1.1/quartus/linux64/java17/jre64/lib/server/libjvm.so",
+      "reason": "Conventional JRE candidate for launcher libjvm string; confirm via bounded JRE directory query if absent.",
+      "already_captured": false
+    },
+    {
+      "path": "/opt/altera/26.1.1/quartus/linux64/java17/jre64/lib/libsplashscreen.so",
+      "reason": "Launcher literal library name; candidate path, actual use may be conditional.",
+      "already_captured": false
+    },
+    {
+      "path": "/opt/altera/26.1.1/quartus/linux64/java17/jre64/lib/modules",
+      "reason": "JRE module image identity candidate; hash full bytes, do not extract entire runtime.",
+      "already_captured": false
+    }
+  ],
+  "bounded_static_queries": [
+    {
+      "id": "spi-and-catalog-declarations",
+      "roots": [
+        "/opt/altera/26.1.1/ip"
+      ],
+      "operation": "Read-only filename/index discovery for spi_slave_to_avalon_mm_master_bridge (including _hw.tcl, .ipx and alternative Tcl names). Scan NAME/VERSION declarations for the finite requested_catalog_kinds, retaining every match and its catalog/index path. Do not treat filename uniqueness as catalog uniqueness. Return source definitions for SPI and relevant default search index/config references only.",
+      "kind_filter": [
+        "Arbiter",
+        "IRQ_Generator",
+        "altera_avalon_mm_bridge",
+        "altera_avalon_onchip_memory2",
+        "altera_avalon_sysid_qsys",
+        "altera_axi_bridge",
+        "altera_clock_bridge",
+        "altera_config_stream_endpoint",
+        "altera_reset_bridge",
+        "altera_s10_mailbox_client",
+        "altera_s10_mailbox_client_core",
+        "intel_memory_initiator_endpoint",
+        "spi_slave_to_avalon_mm_master_bridge"
+      ],
+      "max_directory_entries": 250000,
+      "max_text_files": 12000,
+      "max_bytes_per_file": 2097152,
+      "max_full_match_files": 24,
+      "follow_symlink_directories": false
+    },
+    {
+      "id": "launcher-classpath-package",
+      "roots": [
+        "/opt/altera/26.1.1/qsys/bin",
+        "/opt/altera/26.1.1/qsys/lib",
+        "/opt/altera/26.1.1/quartus/sopc_builder/bin",
+        "/opt/altera/26.1.1/quartus/sopc_builder/common"
+      ],
+      "operation": "One bounded static pass: list launcher-adjacent config/classpath/JAR files; read text launcher config and JAR MANIFEST.MF via Python zipfile, not Java/jar. Extract exact classpath/main-class/package resource names and hashes. Search bounded archive member names for qsys/sopc API provider/version tables and Tcl APIs load_component/save_component/reload_component_footprint/validate_component_footprint/sync_sysinfo_parameters. Read only matching provider resources. Record classpath order/default catalog roots if explicitly available; report absent evidence without guessed paths. Hash only explicitly referenced classpath archives, not all installation jars.",
+      "max_directory_entries": 12000,
+      "max_archives": 80,
+      "max_archive_members_total": 250000,
+      "max_resource_bytes_each": 2097152,
+      "max_matching_resources": 40,
+      "max_text_config_files": 40,
+      "recursive_depth_limit": 4,
+      "follow_symlink_directories": false
+    },
+    {
+      "id": "direct-native-identities",
+      "roots": [
+        "/opt/altera/26.1.1/quartus/linux64",
+        "/opt/altera/26.1.1/qcore/linux64",
+        "/opt/altera/26.1.1/quartus/linux64/java17/jre64/lib",
+        "/opt/altera/26.1.1/quartus/linux64/java17/jre64/lib/server",
+        "/lib64",
+        "/lib/x86_64-linux-gnu",
+        "/usr/lib/x86_64-linux-gnu"
+      ],
+      "operation": "For precisely the receipt DT_NEEDED names below, inspect direct root/name candidates only, plus interpreter /lib64/ld-linux-x86-64.so.2 and /etc/ld.so.cache metadata. Capture hashes and all symlink chains, ELF NEEDED/RPATH/RUNPATH with static Python parser. No ldd, loader, vendor execution or recursive dependency expansion. Return all candidates rather than claiming selected loader identity. Include native libraries for quartus_sh because prior process evidence shows --ipc_sh, not as an automatic generation dependency.",
+      "names": [
+        "libSafeString.so",
+        "libboost_filesystem-x64.so.1.87.0",
+        "libboost_iostreams-mt-x64.so.1.87.0",
+        "libboost_program_options-x64.so.1.87.0",
+        "libboost_serialization-x64.so.1.87.0",
+        "libboost_system-x64.so.1.87.0",
+        "libboost_unit_test_framework-x64.so.1.87.0",
+        "libc.so.6",
+        "libccl_atcl.so",
+        "libccl_cfg_ini.so",
+        "libccl_fio.so",
+        "libccl_gen.so",
+        "libccl_mem.so",
+        "libccl_msg.so",
+        "libccl_py.so",
+        "libccl_thr.so",
+        "libcomp_qcu.so",
+        "libcomp_qexe.so",
+        "libdb_acf.so",
+        "libddb_dev.so",
+        "libddb_dev_root.so",
+        "libddb_dmgr.so",
+        "libdl.so.2",
+        "libedit.so.0",
+        "libfmt.so.11",
+        "libgcc_s.so.1",
+        "libgomp.so.1",
+        "libicudata.so.69",
+        "libicuuc.so.69",
+        "libjli.so",
+        "liblzma.so.5",
+        "libm.so.6",
+        "libpthread.so.0",
+        "libpython3.11.so.1.0",
+        "libpython3.so",
+        "librt.so.1",
+        "libstdc++.so.6",
+        "libsys_cloud.so",
+        "libsys_cpt.so",
+        "libsys_tb2.so",
+        "libtbb.so.12",
+        "libtbbamalloc.so.2",
+        "libtbbmalloc.so.2",
+        "libtcl8.6.so",
+        "libtcmalloc.so.9.9.5",
+        "libutil.so.1",
+        "libxerces-c-3.2.so",
+        "libzstd.so.1"
+      ],
+      "max_matched_files": 100,
+      "max_dependency_hops": 1
+    },
+    {
+      "id": "direct-helper-edges",
+      "input_files": [
+        "/opt/altera/26.1.1/ip/altera/sopc_builder_ip/common/embedded_ip_hwtcl_common_forCDC.tcl",
+        "/opt/altera/26.1.1/ip/altera/merlin/shared/axi5_interface.tcl",
+        "/opt/altera/26.1.1/ip/altera/merlin/altera_axi_bridge/axi_interface.tcl",
+        "/opt/altera/26.1.1/ip/altera/merlin/altera_axi_bridge/axi_gui.tcl",
+        "/opt/altera/26.1.1/ip/altera/common/hw_tcl_packages/altera_terp.tcl"
+      ],
+      "operation": "Read the five exact helper files first. Collect only one additional literal source/package-provider edge from these files if needed for load/elaboration; return conditional/generation-only edges as references, no recursion.",
+      "max_additional_files": 16,
+      "max_bytes_per_file": 2097152
+    },
+    {
+      "id": "context-check",
+      "operation": "Read-only lstat scratch and ancestors, verify scratch absent and never-used claim policy; verify current named tmux session ia840f_migration_preflight and host; verify license pathname readability without contents, explicit environment policy and planned external-write/process monitoring. No creation or execution.",
+      "scratch": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch",
+      "license_path": "/home/uwb_student00/quartus_26/LR-191011_License.dat"
+    }
+  ],
+  "receipt_path_repair": {
+    "remote_path": "/home/uwb_student00/ahls/new_BSP/qualification/ipgen-03/installed-refresh-tool-discovery.json",
+    "local_source": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ipgen-03/installed-refresh-tool-discovery.json",
+    "sha256": "79db4ecb18aa7eeeeadb4de914902594c99bca775bb4a0e545e8769df5954ffd",
+    "action": "Separate authorized deployment of identical existing local receipt to missing bound remote pathname, then readback hash. This request does not authorize remote writes; do not remove the binding or substitute another receipt."
+  },
+  "generation_resources_not_blanket_first_scratch_prerequisites": [
+    {
+      "path": "/opt/altera/26.1.1/ip/altera/sld/core/endpoint_wrappers/altera_config_stream_endpoint_wrapper.sv",
+      "reason": "ACTIVE DEBUG=0 endpoint fileset; collect if static fileset identity is required for first authorization, mandatory before generation."
+    },
+    {
+      "path": "/opt/altera/26.1.1/ip/altera/eip/altera_avalon_sysid_qsys/altera_avalon_sysid_qsys.v",
+      "reason": "Unconditional fileset declaration, generation resource, not a sourced Tcl dependency."
+    },
+    {
+      "path": "/opt/altera/26.1.1/ip/altera/merlin/altera_avalon_mm_bridge/altera_avalon_mm_bridge.v.terp",
+      "reason": "Generation callback only."
+    },
+    {
+      "path": "/opt/altera/26.1.1/ip/altera/merlin/altera_merlin_waitrequest_adapter/altera_merlin_waitrequest_adapter.v",
+      "reason": "Generation callback only."
+    },
+    {
+      "path": "/opt/altera/26.1.1/ip/altera/sopc_builder_ip/altera_avalon_sc_fifo/altera_avalon_sc_fifo.v",
+      "reason": "Generation callback only."
+    },
+    {
+      "path": "/opt/altera/26.1.1/ip/altera/merlin/altera_axi_bridge/altera_axi_bridge.sv.terp",
+      "reason": "Generation callback only."
+    },
+    {
+      "path": "/opt/altera/26.1.1/ip/altera/avalon_st/altera_avalon_st_pipeline_stage/altera_avalon_st_pipeline_base.v",
+      "reason": "Generation callback only."
+    }
+  ],
+  "generation_only_unlocated_reference": "altera_std_synchronizer_bundle at mailbox core.sv:1120,1132; resolve installed primitive provider before later HDL generation, not by demanding every FPGA library now.",
+  "excluded": "Inactive HAS_OFFLOAD=0 memory endpoint wrapper/transitives; unrelated indexed pkgIndex providers; HAL software BSP; Questa; full synthesis/simulation/generation graph.",
+  "stop_rule": "One pass only. Caps hit or ambiguous dependencies produce an explicit finite unresolved list for independent risk review; never automatically recurse. Static provider/API evidence supports authorization; actual loading/selection/project acceptance is experimental acceptance. No remote/vendor/Tcl/build performed by this request."
+}

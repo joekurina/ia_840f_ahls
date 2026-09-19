@@ -1,0 +1,7 @@
+BEFORE_TRAP
+trap -- ':' SIGUSR1
+helper error: OSError(9, 'Bad file descriptor')
+HS1 cccccccccccccccccccccccccccccccc P O_readiness C none,O:71,restore:75 T 75
+AFTER_TRAP
+trap -- ':' SIGUSR1
+FIXTURE_END

@@ -1,0 +1,36 @@
+{
+  "python": "3.13.5 (main, Aug 10 2026, 12:06:59) [GCC 14.2.0]",
+  "runs": [
+    {
+      "test": "test_local.py",
+      "command": [
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "-S",
+        "-c",
+        "import runpy,sys; b,n=sys.argv[1:]; sys.path.insert(0,b); sys.argv=[n]; runpy.run_path(b+'/'+n,run_name='__main__')",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/isolation-preflight-u01",
+        "test_local.py"
+      ],
+      "returncode": 0,
+      "transcript": "test_local.py.b1b2-01.txt"
+    },
+    {
+      "test": "test_b1b2.py",
+      "command": [
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "-S",
+        "-c",
+        "import runpy,sys; b,n=sys.argv[1:]; sys.path.insert(0,b); sys.argv=[n]; runpy.run_path(b+'/'+n,run_name='__main__')",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/isolation-preflight-u01",
+        "test_b1b2.py"
+      ],
+      "returncode": 0,
+      "transcript": "test_b1b2.py.b1b2-01.txt"
+    }
+  ],
+  "remote_or_namespace_execution": false
+}

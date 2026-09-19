@@ -1,0 +1,275 @@
+--- u01/preflight.py
++++ u02/preflight.py
+@@ -16,7 +16,7 @@
+ import time
+ 
+ HERE = Path(__file__).resolve().parent
+-ROOT = Path('/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/preflight-isolation-7c407469a419-u01')
++ROOT = Path('/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/preflight-isolation-7c407469a419-u02')
+ RESERVED = [str(ROOT.parent / n) for n in ('scratch-first-7c407469a419-u01', 'observation-first-7c407469a419-u01')]
+ ENV = {'PATH': '/usr/bin:/bin', 'LANG': 'C'}
+ MAX_OUTPUT = 67108864
+@@ -24,6 +24,16 @@
+ MAX_HASH = 8589934592
+ BWRAP = '/usr/bin/bwrap'
+ PYTHON = '/usr/bin/python3'
++EXECUTED_TOOLS = frozenset({'python3', 'bwrap', 'tmux'})
++INVENTORY_ONLY_TOOLS = frozenset({'unshare', 'mount', 'setpriv', 'strace'})
++
++
++def tool_roles(expected):
++    """Source-bound roles, never caller-supplied execution permission."""
++    require(not EXECUTED_TOOLS & INVENTORY_ONLY_TOOLS, 'tool role overlap')
++    require(set(expected) == EXECUTED_TOOLS | INVENTORY_ONLY_TOOLS, 'exact tool role union required')
++    return {name: 'EXECUTED' if name in EXECUTED_TOOLS else 'INVENTORY_ONLY'
++            for name in expected}
+ 
+ 
+ def require(ok, message):
+@@ -195,6 +205,7 @@
+ 
+ 
+ def tool_identities(expected):
++    roles = tool_roles(expected)
+     result, total = {}, 0
+     for name, item in expected.items():
+         path = item['path']
+@@ -204,16 +215,18 @@
+         s = os.stat(path)
+         total += s.st_size
+         require(total <= MAX_HASH, 'identity hash cap')
+-        require(stat.S_ISREG(s.st_mode) and not s.st_mode & (stat.S_ISUID | stat.S_ISGID), 'privileged/nonregular tool')
++        require(stat.S_ISREG(s.st_mode), 'nonregular tool: ' + name)
+         try:
+             capability = os.getxattr(path, 'security.capability')
+         except OSError as exc:
+             import errno
+             require(exc.errno == errno.ENODATA, 'capability detection unsupported')
+             capability = b''
+-        require(not capability, 'file capabilities present')
+         require(digest(path) == item['sha256'], 'tool hash mismatch: ' + name)
+-        result[name] = dict(item, mode=s.st_mode, capabilities=capability.hex())
++        if roles[name] == 'EXECUTED':
++            require(not s.st_mode & (stat.S_ISUID | stat.S_ISGID), 'privileged executed tool: ' + name)
++            require(not capability, 'file capabilities present: ' + name)
++        result[name] = dict(item, mode=s.st_mode, capabilities=capability.hex(), role=roles[name])
+     require(os.path.realpath('/proc/self/exe') == expected['python3']['realpath'], 'wrong interpreter')
+     return result
+ 
+--- u01/test_local.py
++++ u02/test_local.py
+@@ -90,7 +90,8 @@
+ 
+     def test_claim_path_exact(self):
+         proposal = json.loads((p.HERE.parent / 'isolation-preflight-proposal.json').read_text())
+-        self.assertEqual(str(p.ROOT), proposal['paths']['exclusive_preflight_root'])
++        self.assertEqual(str(p.ROOT), '/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/preflight-isolation-7c407469a419-u02')
++        self.assertEqual(proposal['paths']['exclusive_preflight_root'], str(p.ROOT)[:-3] + 'u01')
+         self.assertEqual(p.RESERVED[0], proposal['paths']['reserved_vendor_scratch_do_not_create'])
+         self.assertEqual(p.RESERVED[1], proposal['paths']['reserved_actual_observation_do_not_claim'])
+ 
+@@ -99,7 +100,10 @@
+         self.assertEqual(json.loads((p.HERE / 'tools.json').read_text()), actual['tools'])
+ 
+     def test_hash_mismatch_stops_before_exec(self):
+-        expected = {'python3': {'path': '/usr/bin/python3', 'realpath': '/different', 'sha256': '0' * 64}}
++        expected = json.loads((p.HERE / 'tools.json').read_text())
++        expected['tmux'] = {'path': '/usr/bin/tmux', 'realpath': '/usr/bin/tmux', 'sha256': '0' * 64}
++        # Keep the full role union while refusing before any installed-tool I/O.
++        expected['bwrap']['realpath'] = '/different'
+         with self.assertRaisesRegex(RuntimeError, 'realpath mismatch'):
+             p.tool_identities(expected)
+ 
+--- u01/parent-inputs.template.json
++++ u02/parent-inputs.template.json
+@@ -1,5 +1,8 @@
+ {
+   "approval_scope": "NOT_APPROVED",
++  "authorization": false,
++  "ready_for_build": false,
++  "vendor_run": false,
+   "tmux_tool": {
+     "path": "/usr/bin/tmux",
+     "realpath": null,
+--- u01/README.md
++++ u02/README.md
+@@ -1,6 +1,9 @@
+-# Finite nonvendor isolation controls — prepared, not remotely run
+-
+-**Status: local fixture tests pass; full proposal implementation is incomplete.**
++# Successor u02: finite nonvendor isolation controls — local preparation only
++
++**Status: NOT_APPROVED; separate spec then quality review required.**
++`authorization: false`, `ready_for_build: false`, `vendor_run: false`.
++No inherited approval or execution receipt is a u02 approval. The u01 one-shot
++authorization was consumed; fixture absence does not renew it.
+ No remote command, bubblewrap namespace, vendor program, Java, license checkout,
+ real migration scratch, or real observation claim was executed/created here.
+ `authorization: false`, `ready_for_build: false`. Historical harness, observer,
+@@ -14,14 +17,22 @@
+ 
+ ## Implemented design (not workstation observations)
+ 
+-- Fixed exclusive root, exactly as proposed:
+-  `/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/preflight-isolation-7c407469a419-u01`.
++- Fixed exclusive successor root, explicitly scoped by the parent:
++  `/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/preflight-isolation-7c407469a419-u02`.
+   No alternate suffix, deletion, retry, or reuse. No-link ancestor checks, mode
+   0700/umask 077, retained `rw`, `protected`, and host-only `observer` children.
+ - Observed SHA-256/realpath pins for bwrap, Python 3.9, unshare, mount, setpriv,
+   and strace are copied exactly into `tools.json`; only Python/bwrap and a
+-  separately pinned tmux are executed. Required setuid/file-capability detection
+-  must work and report no extra executable privileges. Missing pidfd support,
++  separately pinned tmux are executed. The exact closed executed set is
++  `{python3, bwrap, tmux}`; inventory-only is `{unshare, mount, setpriv, strace}`.
++  Missing/unknown names or role overlap refuse; caller role fields cannot override
++  source-bound roles. Every entry retains location, realpath, regular-file,
++  cumulative hash-byte cap, hash and capability-detection checks. Only ENODATA
++  means absent capability xattr; unsupported/unreadable detection refuses.
++  Receipts retain actual mode, capability hex and explicit role; mode is observed,
++  not an expected-mode equality pin. SUID/SGID and nonempty capability bytes
++  refuse for executed tools only. Privileged inventory entries remain hashed
++  and recorded, never permission to execute. No chmod or capability removal. Missing pidfd support,
+   userns denial, unsupported bwrap options or inaccessible evidence stops; no
+   unshare fallback. Userns limit 511531 is not treated as proof of usability.
+ - Host `Agilex7Workstation`, UID 1000, user `uwb_student00`, observed TMUX value
+@@ -140,21 +151,16 @@
+ work03 location is supplied. Input bytes are pinned separately on the command
+ line. No SSH alias/address or deployment has been invented/performed.
+ 
+-## Exact future invocation — NOT RUN
+-
+-Assuming the parent separately deploys this reviewed bundle at the following
+-path and creates the reviewed input file, invoke from the existing named tmux
+-session, not via an invented remote connection. `PREFLIGHT_INPUTS_SHA256` must be
+-the parent's reviewed input-file hash, not an unchecked on-host auto-rebinding.
+-
+-```sh
+-: "${PREFLIGHT_INPUTS_SHA256:?set reviewed parent-inputs.json SHA-256}"
+-/usr/bin/python3 -I -B -S /home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/isolation-preflight-u01/preflight.py \
+-  --bundle-sha256 3b98d1769e4ed29944cf0c8db917a5d0280c9bed0622b12ed5e95083fd9fc9ac \
+-  --inputs /home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/isolation-preflight-u01/parent-inputs.json \
+-  --inputs-sha256 "$PREFLIGHT_INPUTS_SHA256" \
+-  --acknowledge-partial-nonvendor-only
+-```
++## Future deployment boundary — NOT AUTHORIZED
++
++The future deployment pathname is exactly
++`/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/isolation-preflight-u02`.
++The only future fixture pathname is the u02 root above. No staging, remote
++connection, namespace launch or retry is authorized now. A future parent decision
++must bind the newly reviewed `HASHES.json` digest and fresh input bytes explicitly;
++there is no filled `parent-inputs.json` here. Do not reuse the old decision, inputs,
++manifest hash or receipts. The template remains NOT_APPROVED, null identity/path
++inputs, authorization/readiness/vendor flags false. No automatic rebinding.
+ 
+ The interpreter must first be independently trusted against `tools.json`; a
+ Python program cannot retroactively authenticate its interpreter before that
+@@ -163,60 +169,50 @@
+ inputs refuse before claiming. Remote successful partial observation still
+ returns 2, never full acceptance. Preserve output and every claimed file.
+ 
+-## Actual local verification
+-
+-### B1/B2 revision — requires fresh spec, then quality review
+-
+-Before edits, the entire reviewed directory (including code, manifest, README,
+-review and all test evidence, FIFOs and symlinks) was preserved under
+-`prior-revision-b1b2/`. The current `spec-review.md` remains verbatim; its blocked
+-verdict is historical and has not been replaced by an implementation claim.
+-The parent input evidence outside this directory was not changed or used to
+-approve, stage or run anything. The template remains NOT_APPROVED and readiness
+-remains false.
+-
+-Exact local command executed:
+-
+-```sh
+-python3 -I -B -S /home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/isolation-preflight-u01/run_local_b1b2.py
+-```
+-
+-`verification-b1b2-01/results.json` binds tested source hashes and reports
+-**14 existing tests plus 19 injected regression tests passed**, zero failures or
+-errors, Python 3.13.5; all five Python files parse as Python 3.9. Individual test
+-names/results are in its `test_local.txt` and `test_b1b2.txt`. The runner claims
+-its evidence directory exclusively: a repeat refuses instead of overwriting.
+-Earlier B1/B2 batches and fixtures also remain retained, without deletion.
+-
+-Regression coverage includes stale/reused info PID, stable unrelated init,
+-identity changes and failed/missing NSpid through the actual attempt/finally
+-path; rejected handles receive no signal. It includes acquisition/close failures,
+-a valid mocked ownership chain, independent signal/close/reap/scan failures,
+-bounded unreaped uncertainty, confirmed teardown prerequisites, supervisor-only
+-fallback, terminal reserve exhaustion, compact terminal fallback, filesystem
+-write refusal, prelaunch receipt failure and postlaunch cap/write failures with
+-cleanup and primary-error preservation. All topology/syscall failure injections
+-are inert mocks. Only the original owned-child pidfd test launches an ordinary
+-local Python sleeper; no bwrap, namespace, remote or vendor launch occurred.
+-
+-Installed bwrap's exact ancestry remains untested and intentionally fails closed
+-if different. Namespace relationship here means a checked parent chain plus
+-NSpid depth and differing namespace identities, not a privileged namespace ioctl.
+-No approval follows from mocked acceptance. Fresh spec and quality reviews are
+-still required before any separately authorized workstation experiment.
+-
+-### Original reviewed evidence (retained unchanged)
+-
+-`local-tests-final.txt` / `local-results.json`: **14 tests passed**, zero failures
+-or errors on local Python 3.13.5; Python 3.9 grammar checked with `ast.parse`.
+-Tests cover exclusive claim collision, symlink refusal, negative-control errno
+-classification, local writable mmap helper, finite metadata/FIFO/cap/deadline
+-handling, fixed argv, exact proposal paths and observed tool map, tool-identity
+-mismatch, signalling only an owned inert child via pidfd, retained receipt cap,
+-syntax and absence of vendor-launch strings. They do **not** establish actual
+-namespace, readonly mount, network, or lifecycle-chain behavior on either host.
+-`local-fixtures-01` and `local-fixtures-02` retain both local test batches; no
+-cleanup. First test transcript also retained. No local bubblewrap run occurred.
+-
+-`HASHES.json` pins code/test/tool/template/provenance members. `source-provenance.json`
+-pins the three reviewed source documents without rewriting any of them.
++## Read-only exposure is not an execution prohibition
++
++Read-only binding `/usr` does **not** imply `noexec` or `nosuid`. Setuid mount
++remains visible and executable in that intended view. Inventory-only is not a
++kernel exec allowlist. Runtime metadata scanning rejects special endpoints and
++nested mounts, not every privileged regular file or capability xattr. Do not
++claim a privilege-free runtime tree or an installed-bwrap helper audit.
++
++The unchanged fixed argv requests `--cap-drop ALL` and private namespaces.
++Both controls and lifecycle call the unchanged payload baseline first: it must
++observe `NoNewPrivs=1` and zero `CapInh`, `CapPrm`, `CapEff`, `CapBnd`, `CapAmb`.
++The argv does not explicitly set no-new-privileges; installed bwrap must establish
++it and the payload must verify it. These installed controls have not been reached
++or qualified by the refused u01 invocation or this local work. No-new-privileges
++prevents acquiring privilege on exec, not execution or already-held privilege;
++zero capabilities remain essential. No `nosuid` assumption or mount-execution
++test is made. Fixed trusted fixture controls are not hostile-code containment,
++full sandbox qualification, vendor/license qualification or build readiness.
++
++## Local verification and preservation
++
++Run `python3 -I -B -S` with the absolute path to `run_local_u02.py` only for inert
++local tests. The runner exclusively claims `verification-u02-02`; it refuses to
++overwrite. That directory holds exact per-test output, tested source SHA-256,
++Python version, Python 3.9 grammar results and an unapproved-template CLI refusal.
++All existing tests remain (two expectations adapted for the successor root and
++full tool union); new tests cover roles, metadata retention, executed privileges,
++universal identity failures and the unchanged payload baseline. The existing
++owned-child pidfd test starts only an ordinary local Python sleeper. No namespace,
++bwrap, tmux, inventory tool or vendor execution occurs. OS identities/capabilities
++in the new tests are synthetic mocks, not workstation observations.
++
++`successor-provenance.json` binds original copied source hashes and the disposition.
++`source-provenance.json` and `tools.json` are byte-identical to u01. Historical
++reviews, approval inputs and execution receipts were not copied as successor
++artifacts. `preservation-before.json` and `preservation-check.json` audit the
++surrounding qualification tree (including immutable u01) excluding u02.
++`root-only.diff` records the fixture-root-only change independently of
++`scope.diff`, the full copied-member diff. Only the root constant changes in the
++launch design: reserved vendor scratch/observation paths, abstract listener name,
++fixed argv, preclaim ordering, B1 ownership, B2 cleanup, bounds and payload remain
++unchanged. A source diff is not approval. Old B1/B2 review evidence stays in u01.
++
++`HASHES.json` pins current source/tests/templates/provenance/docs, not itself or
++new test results. `EVIDENCE-HASHES.json` separately binds retained local outputs
++and fixtures (special files recorded by type, not opened). No full-proposal
++acceptance, vendor authorization or readiness follows from passing local tests.

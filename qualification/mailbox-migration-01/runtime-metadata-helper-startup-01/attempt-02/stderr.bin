@@ -1,0 +1,73 @@
+test_apply_failure_restores (test_startup.StartupTests.test_apply_failure_restores) ... ok
+test_bytes_and_grammar (test_startup.StartupTests.test_bytes_and_grammar) ... ok
+test_each_failure_and_timeout_prevents_dispatch (test_startup.StartupTests.test_each_failure_and_timeout_prevents_dispatch) ... 
+  test_each_failure_and_timeout_prevents_dispatch (test_startup.StartupTests.test_each_failure_and_timeout_prevents_dispatch) (role='E', fault='fail') ... FAIL
+  test_each_failure_and_timeout_prevents_dispatch (test_startup.StartupTests.test_each_failure_and_timeout_prevents_dispatch) (role='E', fault='timeout') ... FAIL
+  test_each_failure_and_timeout_prevents_dispatch (test_startup.StartupTests.test_each_failure_and_timeout_prevents_dispatch) (role='E', fault='fd') ... FAIL
+test_normal (test_startup.StartupTests.test_normal) ... ERROR
+test_partial_setup_and_cleanup_errors_separate (test_startup.StartupTests.test_partial_setup_and_cleanup_errors_separate) ... FAIL
+test_restore_failure_rejects_success (test_startup.StartupTests.test_restore_failure_rejects_success) ... FAIL
+
+======================================================================
+ERROR: test_normal (test_startup.StartupTests.test_normal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/runtime-metadata-helper-startup-01/test_startup.py", line 25, in test_normal
+    decoded = fixture.decode(r['raw'], TOKEN)
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/runtime-metadata-helper-startup-01/fixture.py", line 24, in decode
+    return ns['decode'](b'%output %0 '+escaped+b'\n', '%0', token)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/runtime-metadata-delivery-01/delivery.py", line 171, in decode
+    if status is None or not restored: raise Incomplete('missing status/restoration')
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+immutable_decoder.Incomplete: missing status/restoration
+
+======================================================================
+FAIL: test_each_failure_and_timeout_prevents_dispatch (test_startup.StartupTests.test_each_failure_and_timeout_prevents_dispatch) (role='E', fault='fail')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/runtime-metadata-helper-startup-01/test_startup.py", line 42, in test_each_failure_and_timeout_prevents_dispatch
+    self.assertIn(('P '+role+'_readiness').encode(), r['raw'])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: b'P E_readiness' not found in b"BEFORE_TRAP\r\ntrap -- ':' SIGUSR1\r\nhelper error: RuntimeError('required fd 9: [Errno 9] Bad file descriptor')\nHS1 cccccccccccccccccccccccccccccccc P O_readiness C none,O:71 T 0\r\nAFTER_TRAP\r\ntrap -- ':' SIGUSR1\r\nFIXTURE_END\r\n"
+
+======================================================================
+FAIL: test_each_failure_and_timeout_prevents_dispatch (test_startup.StartupTests.test_each_failure_and_timeout_prevents_dispatch) (role='E', fault='timeout')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/runtime-metadata-helper-startup-01/test_startup.py", line 42, in test_each_failure_and_timeout_prevents_dispatch
+    self.assertIn(('P '+role+'_readiness').encode(), r['raw'])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: b'P E_readiness' not found in b"BEFORE_TRAP\r\ntrap -- ':' SIGUSR1\r\nhelper error: RuntimeError('required fd 9: [Errno 9] Bad file descriptor')\nHS1 cccccccccccccccccccccccccccccccc P O_readiness C none,O:71 T 0\r\nAFTER_TRAP\r\ntrap -- ':' SIGUSR1\r\nFIXTURE_END\r\n"
+
+======================================================================
+FAIL: test_each_failure_and_timeout_prevents_dispatch (test_startup.StartupTests.test_each_failure_and_timeout_prevents_dispatch) (role='E', fault='fd')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/runtime-metadata-helper-startup-01/test_startup.py", line 42, in test_each_failure_and_timeout_prevents_dispatch
+    self.assertIn(('P '+role+'_readiness').encode(), r['raw'])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: b'P E_readiness' not found in b"BEFORE_TRAP\r\ntrap -- ':' SIGUSR1\r\nhelper error: RuntimeError('required fd 9: [Errno 9] Bad file descriptor')\nHS1 cccccccccccccccccccccccccccccccc P O_readiness C none,O:71 T 0\r\nAFTER_TRAP\r\ntrap -- ':' SIGUSR1\r\nFIXTURE_END\r\n"
+
+======================================================================
+FAIL: test_partial_setup_and_cleanup_errors_separate (test_startup.StartupTests.test_partial_setup_and_cleanup_errors_separate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/runtime-metadata-helper-startup-01/test_startup.py", line 48, in test_partial_setup_and_cleanup_errors_separate
+    self.assertIn(b'P E_readiness', r['raw'])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: b'P E_readiness' not found in b"BEFORE_TRAP\r\ntrap -- ':' SIGUSR1\r\nhelper error: RuntimeError('required fd 9: [Errno 9] Bad file descriptor')\nHS1 cccccccccccccccccccccccccccccccc P O_readiness C none,O:71,restore:75 T 75\nAFTER_TRAP\ntrap -- ':' SIGUSR1\nFIXTURE_END\n"
+
+======================================================================
+FAIL: test_restore_failure_rejects_success (test_startup.StartupTests.test_restore_failure_rejects_success)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/runtime-metadata-helper-startup-01/test_startup.py", line 63, in test_restore_failure_rejects_success
+    self.assertIn(b' S 23 0 0 0', r['raw'])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: b' S 23 0 0 0' not found in b"BEFORE_TRAP\r\ntrap -- ':' SIGUSR1\r\nhelper error: RuntimeError('required fd 9: [Errno 9] Bad file descriptor')\nHS1 cccccccccccccccccccccccccccccccc P O_readiness C none,O:71,restore:75 T 75\nAFTER_TRAP\ntrap -- ':' SIGUSR1\nFIXTURE_END\n"
+
+----------------------------------------------------------------------
+Ran 6 tests in 4.883s
+
+FAILED (failures=5, errors=1)

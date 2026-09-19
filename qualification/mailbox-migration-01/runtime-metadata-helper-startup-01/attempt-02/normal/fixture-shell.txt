@@ -1,0 +1,211 @@
+trap ':' USR1
+builtin printf 'BEFORE_TRAP\n'; trap -p USR1
+{
+d_primary=none; d_cleanup=none; d_saved=; d_ts=99
+d_rpid=; d_opid=; d_epid=; d_rs=99; d_os=99; d_es=99
+d_fd7=0; d_fd8=0; d_fd9=0; d_saved_ok=0; d_dispatched=0
+if exec 3>&1; then
+if d_saved=$(/usr/bin/python3 -I -B -S -c 'import base64;exec(base64.b64decode('"'"'aW1wb3J0IHRlcm1pb3MsanNvbjsgcz10ZXJtaW9zLnR'\
+jZ2V0YXR0cigzKTsgcHJpbnQoanNvbi5kdW1wcyhbKnNbOjZdLFt4IGlmIGlzaW5zdGFuY2UoeCxpbnQ\
+'pIGVsc2UgeFswXSBmb3IgeCBpbiBzWzZdXV0sc2VwYXJhdG9ycz0oJywnLCc6JykpKQ=='"'"'))'); then d_saved_ok=1; else d_primary=save; fi
+if [[ $d_primary == none ]]; then
+if /usr/bin/python3 -I -B -S -c 'import base64;exec(base64.b64decode('"'"'aW1wb3J0IHRlcm1pb3M7IHM9dGVybWlvcy50Y2dldGF'\
+0dHIoMyk7IHNbMV0mPX50ZXJtaW9zLk9QT1NUOyBzWzNdJj1+dGVybWlvcy5FQ0hPOyB0ZXJtaW9zLnR\
+'jc2V0YXR0cigzLHRlcm1pb3MuVENTQU5PVyxzKQ=='"'"'))'; then :; else d_primary=apply; fi
+fi
+if [[ $d_primary == none ]]; then
+coproc HSRELAY { exec /usr/bin/python3 -I -B -S -c 'import base64;exec(base64.b64decode('"'"'IiIiRW1iZWRkZWQgY29vcGVyYXRpdmUgaGVscGVyLCB'\
+ub3QgYSBwYXlsb2FkIGxhdW5jaGVyLiBObyBmaWxlc3lzdGVtIHdyaXRlcy4iIiIKaW1wb3J0IGJhc2U\
+2NAppbXBvcnQgZmNudGwKaW1wb3J0IG9zCmltcG9ydCBzZWxlY3QKaW1wb3J0IHN0YXQKaW1wb3J0IHN\
+5cwppbXBvcnQgdGltZQoKCmRlZiBydW4ocm9sZSwgdG9rZW4sIGZhdWx0LCBjbGVhbnVwX2ZhdWx0KTo\
+KICAgIHRhcmdldCA9IDMgaWYgcm9sZSA9PSAncmVsYXknIGVsc2UgOQogICAgIyBDb3Byb2Nlc3MgZXh\
+lYyByZWNlaXZlcyBvbmx5IHRoZXNlIGRlc2NyaXB0b3JzOyBwcm92ZSBhY3R1YWwgcGlwZSBhY2Nlc3M\
+sCiAgICAjIG5vdCBqdXN0IGV4aXN0ZW5jZSBvZiBhIGNoaWxkIG9yIHN1Y2Nlc3Mgb2Ygc2hlbGwgcmV\
+kaXJlY3Rpb24gc3ludGF4LgogICAgaWYgZmF1bHQgPT0gJ2ZhaWwnOiByZXR1cm4gNzIKICAgIGlmIGZ\
+hdWx0ID09ICdmZCc6IG9zLmNsb3NlKHRhcmdldCkKICAgIGZvciBmZCwgbW9kZSBpbiAoKDAsIG9zLk9\
+fUkRPTkxZKSwgKDEsIG9zLk9fV1JPTkxZKSwgKHRhcmdldCwgb3MuT19XUk9OTFkpKToKICAgICAgICB\
+0cnk6IG1ldGEgPSBvcy5mc3RhdChmZCkKICAgICAgICBleGNlcHQgT1NFcnJvciBhcyBleGM6IHJhaXN\
+lIFJ1bnRpbWVFcnJvcigncmVxdWlyZWQgZmQgJytzdHIoZmQpKyc6ICcrc3RyKGV4YykpIGZyb20gZXh\
+jCiAgICAgICAgaWYgZmQgIT0gdGFyZ2V0IG9yIHJvbGUgIT0gJ3JlbGF5JzoKICAgICAgICAgICAgaWY\
+gbm90IHN0YXQuU19JU0ZJRk8obWV0YS5zdF9tb2RlKTogcmFpc2UgUnVudGltZUVycm9yKCdyZXF1aXJ\
+lZCBwaXBlJykKICAgICAgICBhY2Nlc3MgPSBmY250bC5mY250bChmZCwgZmNudGwuRl9HRVRGTCkgJiB\
+vcy5PX0FDQ01PREUKICAgICAgICBpZiBhY2Nlc3MgIT0gbW9kZSBhbmQgbm90IChmZCA9PSB0YXJnZXQ\
+gYW5kIHJvbGUgPT0gJ3JlbGF5JyBhbmQgYWNjZXNzID09IG9zLk9fUkRXUik6CiAgICAgICAgICAgIHJ\
+haXNlIFJ1bnRpbWVFcnJvcigncmVxdWlyZWQgYWNjZXNzIG1vZGUnKQogICAgaWYgcm9sZSA9PSAncmV\
+sYXknIGFuZCBub3Qgb3MuaXNhdHR5KHRhcmdldCk6IHJhaXNlIFJ1bnRpbWVFcnJvcigncmVxdWlyZWQ\
+gdHR5JykKICAgIGlmIGZhdWx0ID09ICd0aW1lb3V0JzoKICAgICAgICAjIENvb3BlcmF0aXZlIG1pc3N\
+pbmctcmVhZHkgaW5qZWN0aW9uOiBFT0YgZnJvbSBvd25lciBjYW5jZWxzIHByb21wdGx5LgogICAgICA\
+gIGlmIHNlbGVjdC5zZWxlY3QoWzBdLCBbXSwgW10sIDMpWzBdOiBvcy5yZWFkKDAsIDEpCiAgICAgICA\
+gcmV0dXJuIDczCiAgICBpZiBvcy53cml0ZSgxLCAoJ1JFQURZICcrcm9sZSsnXG4nKS5lbmNvZGUoKSk\
+gIT0gbGVuKCdSRUFEWSAnK3JvbGUrJ1xuJyk6CiAgICAgICAgcmFpc2UgUnVudGltZUVycm9yKCdyZWF\
+kaW5lc3Mgc2hvcnQgd3JpdGUnKQogICAgb3MuY2xvc2UoMSkKICAgICMgQXZvaWQgY2hhbmdpbmcgdGF\
+yZ2V0IG9wZW4tZmlsZS1kZXNjcmlwdGlvbiBmbGFncyAoUFRZIHNoYXJlZCB3aXRoIGJhc2gpLgogICA\
+gIyBTbWFsbCBwaXBlIHdyaXRlcyBhcmUgYXRvbWljOyByZWxheSB3cml0ZXMgYXJlIGJvdW5kZWQgYnV\
+0IGEgYmxvY2tlZCB0dHkKICAgICMgc3lzY2FsbCByZW1haW5zIGEgc3RhdGVkIGhhcmQgbGltaXQsIG5\
+vdCBhbiBpbnZlbnRlZCByZWNvdmVyeSBndWFyYW50ZWUuCiAgICBkZWFkbGluZSA9IHRpbWUubW9ub3R\
+vbmljKCkgKyAxNQogICAgbiA9IDAKICAgIHdoaWxlIFRydWU6CiAgICAgICAgbGVmdCA9IGRlYWRsaW5\
+lIC0gdGltZS5tb25vdG9uaWMoKQogICAgICAgIGlmIGxlZnQgPD0gMCBvciBub3Qgc2VsZWN0LnNlbGV\
+jdChbMF0sIFtdLCBbXSwgbGVmdClbMF06IHJldHVybiA3NgogICAgICAgIGIgPSBvcy5yZWFkKDAsIDQ\
+wOTYgaWYgcm9sZSA9PSAncmVsYXknIGVsc2UgMjg4KQogICAgICAgIGlmIHJvbGUgPT0gJ3JlbGF5Jzo\
+KICAgICAgICAgICAgaWYgbm90IGI6IGJyZWFrCiAgICAgICAgICAgIHdoaWxlIGI6CiAgICAgICAgICA\
+gICAgICBjb3VudCA9IG9zLndyaXRlKHRhcmdldCwgYikKICAgICAgICAgICAgICAgIGlmIGNvdW50IDw\
+9IDA6IHJhaXNlIFJ1bnRpbWVFcnJvcignc2hvcnQgcmVsYXknKQogICAgICAgICAgICAgICAgYiA9IGJ\
+bY291bnQ6XQogICAgICAgIGVsc2U6CiAgICAgICAgICAgIGZyYW1lID0gKCdEMSAnK3Rva2VuKycgJyt\
+yb2xlKycgJytzdHIobikrJyAnKS5lbmNvZGUoKStiYXNlNjQuYjY0ZW5jb2RlKGIpK2InXG4nCiAgICA\
+gICAgICAgIGlmIGxlbihmcmFtZSk+NTEyIG9yIG9zLndyaXRlKHRhcmdldCwgZnJhbWUpIT1sZW4oZnJ\
+hbWUpOgogICAgICAgICAgICAgICAgcmFpc2UgUnVudGltZUVycm9yKCdzaG9ydCBlbmNvZGVyJykKICA\
+gICAgICAgICAgbiArPSAxCiAgICAgICAgICAgIGlmIG5vdCBiOiBicmVhawogICAgcmV0dXJuIDc0IGl\
+mIGNsZWFudXBfZmF1bHQgPT0gJ2ZhaWwnIGVsc2UgMAoKaWYgX19uYW1lX18gPT0gJ19fbWFpbl9fJzo\
+KICAgIHRyeTogcmVzdWx0ID0gcnVuKCpzeXMuYXJndlsxOl0pCiAgICBleGNlcHQgRXhjZXB0aW9uIGF\
+zIGV4YzoKICAgICAgICBwcmludCgnaGVscGVyIGVycm9yOiAnK3JlcHIoZXhjKSwgZmlsZT1zeXMuc3R\
+'kZXJyKQogICAgICAgIHJlc3VsdCA9IDcxCiAgICBzeXMuZXhpdChyZXN1bHQpCg=='"'"'))' relay cccccccccccccccccccccccccccccccc none none 4>&- 5>&- 6>&- 7>&- 8>&- 9>&-; }
+d_rpid=$!; d_ci=${HSRELAY[1]}; d_co=${HSRELAY[0]}
+if exec 9>&"$d_ci"; then d_fd9=1; else d_primary=relay_descriptor; fi
+if exec 4<&"$d_co"; then
+exec {d_ci}>&-; exec {d_co}<&-
+if IFS= read -r -t 0.4 d_ready <&4 && [[ $d_ready == 'READY relay' ]]; then :; else d_primary=relay_readiness; fi
+exec 4<&-
+else d_primary=relay_control; exec {d_ci}>&-; exec {d_co}<&-; fi
+fi
+if [[ $d_primary == none ]]; then
+coproc HSOUT { exec /usr/bin/python3 -I -B -S -c 'import base64;exec(base64.b64decode('"'"'IiIiRW1iZWRkZWQgY29vcGVyYXRpdmUgaGVscGVyLCB'\
+ub3QgYSBwYXlsb2FkIGxhdW5jaGVyLiBObyBmaWxlc3lzdGVtIHdyaXRlcy4iIiIKaW1wb3J0IGJhc2U\
+2NAppbXBvcnQgZmNudGwKaW1wb3J0IG9zCmltcG9ydCBzZWxlY3QKaW1wb3J0IHN0YXQKaW1wb3J0IHN\
+5cwppbXBvcnQgdGltZQoKCmRlZiBydW4ocm9sZSwgdG9rZW4sIGZhdWx0LCBjbGVhbnVwX2ZhdWx0KTo\
+KICAgIHRhcmdldCA9IDMgaWYgcm9sZSA9PSAncmVsYXknIGVsc2UgOQogICAgIyBDb3Byb2Nlc3MgZXh\
+lYyByZWNlaXZlcyBvbmx5IHRoZXNlIGRlc2NyaXB0b3JzOyBwcm92ZSBhY3R1YWwgcGlwZSBhY2Nlc3M\
+sCiAgICAjIG5vdCBqdXN0IGV4aXN0ZW5jZSBvZiBhIGNoaWxkIG9yIHN1Y2Nlc3Mgb2Ygc2hlbGwgcmV\
+kaXJlY3Rpb24gc3ludGF4LgogICAgaWYgZmF1bHQgPT0gJ2ZhaWwnOiByZXR1cm4gNzIKICAgIGlmIGZ\
+hdWx0ID09ICdmZCc6IG9zLmNsb3NlKHRhcmdldCkKICAgIGZvciBmZCwgbW9kZSBpbiAoKDAsIG9zLk9\
+fUkRPTkxZKSwgKDEsIG9zLk9fV1JPTkxZKSwgKHRhcmdldCwgb3MuT19XUk9OTFkpKToKICAgICAgICB\
+0cnk6IG1ldGEgPSBvcy5mc3RhdChmZCkKICAgICAgICBleGNlcHQgT1NFcnJvciBhcyBleGM6IHJhaXN\
+lIFJ1bnRpbWVFcnJvcigncmVxdWlyZWQgZmQgJytzdHIoZmQpKyc6ICcrc3RyKGV4YykpIGZyb20gZXh\
+jCiAgICAgICAgaWYgZmQgIT0gdGFyZ2V0IG9yIHJvbGUgIT0gJ3JlbGF5JzoKICAgICAgICAgICAgaWY\
+gbm90IHN0YXQuU19JU0ZJRk8obWV0YS5zdF9tb2RlKTogcmFpc2UgUnVudGltZUVycm9yKCdyZXF1aXJ\
+lZCBwaXBlJykKICAgICAgICBhY2Nlc3MgPSBmY250bC5mY250bChmZCwgZmNudGwuRl9HRVRGTCkgJiB\
+vcy5PX0FDQ01PREUKICAgICAgICBpZiBhY2Nlc3MgIT0gbW9kZSBhbmQgbm90IChmZCA9PSB0YXJnZXQ\
+gYW5kIHJvbGUgPT0gJ3JlbGF5JyBhbmQgYWNjZXNzID09IG9zLk9fUkRXUik6CiAgICAgICAgICAgIHJ\
+haXNlIFJ1bnRpbWVFcnJvcigncmVxdWlyZWQgYWNjZXNzIG1vZGUnKQogICAgaWYgcm9sZSA9PSAncmV\
+sYXknIGFuZCBub3Qgb3MuaXNhdHR5KHRhcmdldCk6IHJhaXNlIFJ1bnRpbWVFcnJvcigncmVxdWlyZWQ\
+gdHR5JykKICAgIGlmIGZhdWx0ID09ICd0aW1lb3V0JzoKICAgICAgICAjIENvb3BlcmF0aXZlIG1pc3N\
+pbmctcmVhZHkgaW5qZWN0aW9uOiBFT0YgZnJvbSBvd25lciBjYW5jZWxzIHByb21wdGx5LgogICAgICA\
+gIGlmIHNlbGVjdC5zZWxlY3QoWzBdLCBbXSwgW10sIDMpWzBdOiBvcy5yZWFkKDAsIDEpCiAgICAgICA\
+gcmV0dXJuIDczCiAgICBpZiBvcy53cml0ZSgxLCAoJ1JFQURZICcrcm9sZSsnXG4nKS5lbmNvZGUoKSk\
+gIT0gbGVuKCdSRUFEWSAnK3JvbGUrJ1xuJyk6CiAgICAgICAgcmFpc2UgUnVudGltZUVycm9yKCdyZWF\
+kaW5lc3Mgc2hvcnQgd3JpdGUnKQogICAgb3MuY2xvc2UoMSkKICAgICMgQXZvaWQgY2hhbmdpbmcgdGF\
+yZ2V0IG9wZW4tZmlsZS1kZXNjcmlwdGlvbiBmbGFncyAoUFRZIHNoYXJlZCB3aXRoIGJhc2gpLgogICA\
+gIyBTbWFsbCBwaXBlIHdyaXRlcyBhcmUgYXRvbWljOyByZWxheSB3cml0ZXMgYXJlIGJvdW5kZWQgYnV\
+0IGEgYmxvY2tlZCB0dHkKICAgICMgc3lzY2FsbCByZW1haW5zIGEgc3RhdGVkIGhhcmQgbGltaXQsIG5\
+vdCBhbiBpbnZlbnRlZCByZWNvdmVyeSBndWFyYW50ZWUuCiAgICBkZWFkbGluZSA9IHRpbWUubW9ub3R\
+vbmljKCkgKyAxNQogICAgbiA9IDAKICAgIHdoaWxlIFRydWU6CiAgICAgICAgbGVmdCA9IGRlYWRsaW5\
+lIC0gdGltZS5tb25vdG9uaWMoKQogICAgICAgIGlmIGxlZnQgPD0gMCBvciBub3Qgc2VsZWN0LnNlbGV\
+jdChbMF0sIFtdLCBbXSwgbGVmdClbMF06IHJldHVybiA3NgogICAgICAgIGIgPSBvcy5yZWFkKDAsIDQ\
+wOTYgaWYgcm9sZSA9PSAncmVsYXknIGVsc2UgMjg4KQogICAgICAgIGlmIHJvbGUgPT0gJ3JlbGF5Jzo\
+KICAgICAgICAgICAgaWYgbm90IGI6IGJyZWFrCiAgICAgICAgICAgIHdoaWxlIGI6CiAgICAgICAgICA\
+gICAgICBjb3VudCA9IG9zLndyaXRlKHRhcmdldCwgYikKICAgICAgICAgICAgICAgIGlmIGNvdW50IDw\
+9IDA6IHJhaXNlIFJ1bnRpbWVFcnJvcignc2hvcnQgcmVsYXknKQogICAgICAgICAgICAgICAgYiA9IGJ\
+bY291bnQ6XQogICAgICAgIGVsc2U6CiAgICAgICAgICAgIGZyYW1lID0gKCdEMSAnK3Rva2VuKycgJyt\
+yb2xlKycgJytzdHIobikrJyAnKS5lbmNvZGUoKStiYXNlNjQuYjY0ZW5jb2RlKGIpK2InXG4nCiAgICA\
+gICAgICAgIGlmIGxlbihmcmFtZSk+NTEyIG9yIG9zLndyaXRlKHRhcmdldCwgZnJhbWUpIT1sZW4oZnJ\
+hbWUpOgogICAgICAgICAgICAgICAgcmFpc2UgUnVudGltZUVycm9yKCdzaG9ydCBlbmNvZGVyJykKICA\
+gICAgICAgICAgbiArPSAxCiAgICAgICAgICAgIGlmIG5vdCBiOiBicmVhawogICAgcmV0dXJuIDc0IGl\
+mIGNsZWFudXBfZmF1bHQgPT0gJ2ZhaWwnIGVsc2UgMAoKaWYgX19uYW1lX18gPT0gJ19fbWFpbl9fJzo\
+KICAgIHRyeTogcmVzdWx0ID0gcnVuKCpzeXMuYXJndlsxOl0pCiAgICBleGNlcHQgRXhjZXB0aW9uIGF\
+zIGV4YzoKICAgICAgICBwcmludCgnaGVscGVyIGVycm9yOiAnK3JlcHIoZXhjKSwgZmlsZT1zeXMuc3R\
+'kZXJyKQogICAgICAgIHJlc3VsdCA9IDcxCiAgICBzeXMuZXhpdChyZXN1bHQpCg=='"'"'))' O cccccccccccccccccccccccccccccccc none none 4>&- 5>&- 6>&- 7>&- 8>&- 3>&-; }
+d_opid=$!; d_ci=${HSOUT[1]}; d_co=${HSOUT[0]}
+if exec 7>&"$d_ci"; then d_fd7=1; else d_primary=O_descriptor; fi
+if exec 4<&"$d_co"; then
+exec {d_ci}>&-; exec {d_co}<&-
+if IFS= read -r -t 0.4 d_ready <&4 && [[ $d_ready == 'READY O' ]]; then :; else d_primary=O_readiness; fi
+exec 4<&-
+else d_primary=O_control; exec {d_ci}>&-; exec {d_co}<&-; fi
+fi
+if [[ $d_primary == none ]]; then
+coproc HSERR { exec /usr/bin/python3 -I -B -S -c 'import base64;exec(base64.b64decode('"'"'IiIiRW1iZWRkZWQgY29vcGVyYXRpdmUgaGVscGVyLCB'\
+ub3QgYSBwYXlsb2FkIGxhdW5jaGVyLiBObyBmaWxlc3lzdGVtIHdyaXRlcy4iIiIKaW1wb3J0IGJhc2U\
+2NAppbXBvcnQgZmNudGwKaW1wb3J0IG9zCmltcG9ydCBzZWxlY3QKaW1wb3J0IHN0YXQKaW1wb3J0IHN\
+5cwppbXBvcnQgdGltZQoKCmRlZiBydW4ocm9sZSwgdG9rZW4sIGZhdWx0LCBjbGVhbnVwX2ZhdWx0KTo\
+KICAgIHRhcmdldCA9IDMgaWYgcm9sZSA9PSAncmVsYXknIGVsc2UgOQogICAgIyBDb3Byb2Nlc3MgZXh\
+lYyByZWNlaXZlcyBvbmx5IHRoZXNlIGRlc2NyaXB0b3JzOyBwcm92ZSBhY3R1YWwgcGlwZSBhY2Nlc3M\
+sCiAgICAjIG5vdCBqdXN0IGV4aXN0ZW5jZSBvZiBhIGNoaWxkIG9yIHN1Y2Nlc3Mgb2Ygc2hlbGwgcmV\
+kaXJlY3Rpb24gc3ludGF4LgogICAgaWYgZmF1bHQgPT0gJ2ZhaWwnOiByZXR1cm4gNzIKICAgIGlmIGZ\
+hdWx0ID09ICdmZCc6IG9zLmNsb3NlKHRhcmdldCkKICAgIGZvciBmZCwgbW9kZSBpbiAoKDAsIG9zLk9\
+fUkRPTkxZKSwgKDEsIG9zLk9fV1JPTkxZKSwgKHRhcmdldCwgb3MuT19XUk9OTFkpKToKICAgICAgICB\
+0cnk6IG1ldGEgPSBvcy5mc3RhdChmZCkKICAgICAgICBleGNlcHQgT1NFcnJvciBhcyBleGM6IHJhaXN\
+lIFJ1bnRpbWVFcnJvcigncmVxdWlyZWQgZmQgJytzdHIoZmQpKyc6ICcrc3RyKGV4YykpIGZyb20gZXh\
+jCiAgICAgICAgaWYgZmQgIT0gdGFyZ2V0IG9yIHJvbGUgIT0gJ3JlbGF5JzoKICAgICAgICAgICAgaWY\
+gbm90IHN0YXQuU19JU0ZJRk8obWV0YS5zdF9tb2RlKTogcmFpc2UgUnVudGltZUVycm9yKCdyZXF1aXJ\
+lZCBwaXBlJykKICAgICAgICBhY2Nlc3MgPSBmY250bC5mY250bChmZCwgZmNudGwuRl9HRVRGTCkgJiB\
+vcy5PX0FDQ01PREUKICAgICAgICBpZiBhY2Nlc3MgIT0gbW9kZSBhbmQgbm90IChmZCA9PSB0YXJnZXQ\
+gYW5kIHJvbGUgPT0gJ3JlbGF5JyBhbmQgYWNjZXNzID09IG9zLk9fUkRXUik6CiAgICAgICAgICAgIHJ\
+haXNlIFJ1bnRpbWVFcnJvcigncmVxdWlyZWQgYWNjZXNzIG1vZGUnKQogICAgaWYgcm9sZSA9PSAncmV\
+sYXknIGFuZCBub3Qgb3MuaXNhdHR5KHRhcmdldCk6IHJhaXNlIFJ1bnRpbWVFcnJvcigncmVxdWlyZWQ\
+gdHR5JykKICAgIGlmIGZhdWx0ID09ICd0aW1lb3V0JzoKICAgICAgICAjIENvb3BlcmF0aXZlIG1pc3N\
+pbmctcmVhZHkgaW5qZWN0aW9uOiBFT0YgZnJvbSBvd25lciBjYW5jZWxzIHByb21wdGx5LgogICAgICA\
+gIGlmIHNlbGVjdC5zZWxlY3QoWzBdLCBbXSwgW10sIDMpWzBdOiBvcy5yZWFkKDAsIDEpCiAgICAgICA\
+gcmV0dXJuIDczCiAgICBpZiBvcy53cml0ZSgxLCAoJ1JFQURZICcrcm9sZSsnXG4nKS5lbmNvZGUoKSk\
+gIT0gbGVuKCdSRUFEWSAnK3JvbGUrJ1xuJyk6CiAgICAgICAgcmFpc2UgUnVudGltZUVycm9yKCdyZWF\
+kaW5lc3Mgc2hvcnQgd3JpdGUnKQogICAgb3MuY2xvc2UoMSkKICAgICMgQXZvaWQgY2hhbmdpbmcgdGF\
+yZ2V0IG9wZW4tZmlsZS1kZXNjcmlwdGlvbiBmbGFncyAoUFRZIHNoYXJlZCB3aXRoIGJhc2gpLgogICA\
+gIyBTbWFsbCBwaXBlIHdyaXRlcyBhcmUgYXRvbWljOyByZWxheSB3cml0ZXMgYXJlIGJvdW5kZWQgYnV\
+0IGEgYmxvY2tlZCB0dHkKICAgICMgc3lzY2FsbCByZW1haW5zIGEgc3RhdGVkIGhhcmQgbGltaXQsIG5\
+vdCBhbiBpbnZlbnRlZCByZWNvdmVyeSBndWFyYW50ZWUuCiAgICBkZWFkbGluZSA9IHRpbWUubW9ub3R\
+vbmljKCkgKyAxNQogICAgbiA9IDAKICAgIHdoaWxlIFRydWU6CiAgICAgICAgbGVmdCA9IGRlYWRsaW5\
+lIC0gdGltZS5tb25vdG9uaWMoKQogICAgICAgIGlmIGxlZnQgPD0gMCBvciBub3Qgc2VsZWN0LnNlbGV\
+jdChbMF0sIFtdLCBbXSwgbGVmdClbMF06IHJldHVybiA3NgogICAgICAgIGIgPSBvcy5yZWFkKDAsIDQ\
+wOTYgaWYgcm9sZSA9PSAncmVsYXknIGVsc2UgMjg4KQogICAgICAgIGlmIHJvbGUgPT0gJ3JlbGF5Jzo\
+KICAgICAgICAgICAgaWYgbm90IGI6IGJyZWFrCiAgICAgICAgICAgIHdoaWxlIGI6CiAgICAgICAgICA\
+gICAgICBjb3VudCA9IG9zLndyaXRlKHRhcmdldCwgYikKICAgICAgICAgICAgICAgIGlmIGNvdW50IDw\
+9IDA6IHJhaXNlIFJ1bnRpbWVFcnJvcignc2hvcnQgcmVsYXknKQogICAgICAgICAgICAgICAgYiA9IGJ\
+bY291bnQ6XQogICAgICAgIGVsc2U6CiAgICAgICAgICAgIGZyYW1lID0gKCdEMSAnK3Rva2VuKycgJyt\
+yb2xlKycgJytzdHIobikrJyAnKS5lbmNvZGUoKStiYXNlNjQuYjY0ZW5jb2RlKGIpK2InXG4nCiAgICA\
+gICAgICAgIGlmIGxlbihmcmFtZSk+NTEyIG9yIG9zLndyaXRlKHRhcmdldCwgZnJhbWUpIT1sZW4oZnJ\
+hbWUpOgogICAgICAgICAgICAgICAgcmFpc2UgUnVudGltZUVycm9yKCdzaG9ydCBlbmNvZGVyJykKICA\
+gICAgICAgICAgbiArPSAxCiAgICAgICAgICAgIGlmIG5vdCBiOiBicmVhawogICAgcmV0dXJuIDc0IGl\
+mIGNsZWFudXBfZmF1bHQgPT0gJ2ZhaWwnIGVsc2UgMAoKaWYgX19uYW1lX18gPT0gJ19fbWFpbl9fJzo\
+KICAgIHRyeTogcmVzdWx0ID0gcnVuKCpzeXMuYXJndlsxOl0pCiAgICBleGNlcHQgRXhjZXB0aW9uIGF\
+zIGV4YzoKICAgICAgICBwcmludCgnaGVscGVyIGVycm9yOiAnK3JlcHIoZXhjKSwgZmlsZT1zeXMuc3R\
+'kZXJyKQogICAgICAgIHJlc3VsdCA9IDcxCiAgICBzeXMuZXhpdChyZXN1bHQpCg=='"'"'))' E cccccccccccccccccccccccccccccccc none none 4>&- 5>&- 6>&- 7>&- 8>&- 3>&-; }
+d_epid=$!; d_ci=${HSERR[1]}; d_co=${HSERR[0]}
+if exec 8>&"$d_ci"; then d_fd8=1; else d_primary=E_descriptor; fi
+if exec 4<&"$d_co"; then
+exec {d_ci}>&-; exec {d_co}<&-
+if IFS= read -r -t 0.4 d_ready <&4 && [[ $d_ready == 'READY E' ]]; then :; else d_primary=E_readiness; fi
+exec 4<&-
+else d_primary=E_control; exec {d_ci}>&-; exec {d_co}<&-; fi
+fi
+if [[ $d_primary == none ]]; then
+builtin printf 'HS1 cccccccccccccccccccccccccccccccc DISPATCH\n' >&3
+d_dispatched=1
+# PAYLOAD_BEGIN
+builtin printf '%b' \
+'\151\155\160\157\162\164\040\157\163\054\163\171\163\054\152\163\157\156\012\157\163\056\167\162\151\164\145\050\061\054\050\152\163\157\156\056\144\165\155\160\163\050\144\151\143\164\050\160\160\151\144\075\157\163\056\147\145\164\160\160\151\144\050\051\054\145\157\146\075\157\163\056\162\145\141\144\050\060\054\061\051\075\075\142\042\042\051\051\053\042\134\156\042\051\056\145\156\143\157\144\145\050\051\051\012\157\163\056\167\162\151\164\145\050\061\054\142\171\164\145\163\050\162\141\156\147\145\050' \
+'\062\065\066\051\051\052\063\062\051\012\157\163\056\167\162\151\164\145\050\062\054\142\171\164\145\163\050\162\145\166\145\162\163\145\144\050\162\141\156\147\145\050\062\065\066\051\051\051\052\063\062\051\012\163\171\163\056\145\170\151\164\050\062\063\051\012' | /usr/bin/python3 -I -B -S - >&7 2>&8 3>&- 4>&- 5>&- 6>&- 7>&- 8>&- 9>&-
+d_ps=("${PIPESTATUS[@]}")
+# PAYLOAD_END
+fi
+if [[ $d_fd7 == 1 ]]; then exec 7>&-; fi
+if [[ $d_fd8 == 1 ]]; then exec 8>&-; fi
+if [[ -n $d_opid ]]; then if builtin wait "$d_opid"; then d_os=0; else d_os=$?; d_cleanup+=,O:$d_os; fi; fi
+if [[ -n $d_epid ]]; then if builtin wait "$d_epid"; then d_es=0; else d_es=$?; d_cleanup+=,E:$d_es; fi; fi
+if [[ $d_dispatched == 1 ]]; then
+builtin printf 'D1 cccccccccccccccccccccccccccccccc S %s %s %s %s\n' "${d_ps[1]}" "$d_os" "$d_es" "${d_ps[0]}" >&9
+fi
+if [[ $d_fd9 == 1 ]]; then exec 9>&-; fi
+if [[ -n $d_rpid ]]; then if builtin wait "$d_rpid"; then d_rs=0; else d_rs=$?; d_cleanup+=,relay:$d_rs; fi; fi
+if [[ $d_saved_ok == 1 ]]; then
+if /usr/bin/python3 -I -B -S -c 'import base64;exec(base64.b64decode('"'"'aW1wb3J0IHRlcm1pb3MsanNvbixzeXM7IHM9anNvbi5'\
+sb2FkcyhzeXMuYXJndlsxXSk7IHNbNl09W2J5dGVzKFt4XSkgZm9yIHggaW4gc1s2XV07IHRlcm1pb3M\
+udGNzZXRhdHRyKDMsdGVybWlvcy5UQ1NBTk9XLHMpOyBhc3NlcnQgdGVybWlvcy50Y2dldGF0dHIoMyk\
+'9PXM='"'"'))' "$d_saved"; then d_ts=0; else d_ts=$?; d_cleanup+=,restore:$d_ts; fi
+fi
+if [[ $d_dispatched == 1 ]]; then
+builtin printf '\nD1 cccccccccccccccccccccccccccccccc R %s %s\n' "$d_rs" "$d_ts" >&3
+fi
+builtin printf 'HS1 cccccccccccccccccccccccccccccccc P %s C %s T %s\n' "$d_primary" "$d_cleanup" "$d_ts" >&3
+exec 3>&-
+else builtin printf "HS1 cccccccccccccccccccccccccccccccc P save_descriptor C none T 99\n"; fi
+}
+builtin printf 'AFTER_TRAP\n'; trap -p USR1
+builtin printf 'FIXTURE_END\n'

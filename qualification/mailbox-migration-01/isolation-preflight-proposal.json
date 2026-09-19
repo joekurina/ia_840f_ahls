@@ -1,0 +1,211 @@
+{
+  "schema": "mailbox-isolation-preflight-proposal-v1",
+  "status": "PROPOSAL_ONLY_NOT_EXECUTED",
+  "authorization": false,
+  "reviewed": false,
+  "reviewer": null,
+  "ready_for_build": false,
+  "scope": "One bounded nonvendor workstation preflight proposal; no implementation, remote execution, installation or authorization supplied by this review.",
+  "review_basis": {
+    "first-experiment-binding-review.md": {
+      "sha256": "60f00b2d8f574a006499f5a20e7ca25e156f7a2116b754ebe7822bea06dc2e91",
+      "bytes": 20333
+    },
+    "first-experiment-binding-proposal.json": {
+      "sha256": "3a43e54127052568364e5bdbeb1e70b7a2d98a0454132f9777c4c24859bfaf83",
+      "bytes": 82777
+    },
+    "observer-first-u01/README.md": {
+      "sha256": "58df441f22ee5486d784fe1f2f9b4eeb0851c4202452530bf205ce103393aa5b",
+      "bytes": 8055
+    },
+    "migration.py": {
+      "sha256": "35a69d8c0cfdea91434c907bdba5ea41123fd9dfed3ac8a82f7a934a731e44c7",
+      "bytes": 23766
+    },
+    "source-baseline.json": {
+      "sha256": "148bb2897db6416a5950d152b6a8104c39cffda494e2723c97afecce9efb3a57",
+      "bytes": 4123
+    },
+    "successor-first-u01/README.md": {
+      "sha256": "f8b77c7f4b38671f03146c55ae0bba16201076aa3ff2e7ec03476a80799e0992",
+      "bytes": 8202
+    }
+  },
+  "binding_preservation": {
+    "source_proposal_sha256": "3a43e54127052568364e5bdbeb1e70b7a2d98a0454132f9777c4c24859bfaf83",
+    "vendor_fields_exact": {
+      "root": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01",
+      "source": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ipss/ia840f/bwbmc",
+      "argv": {
+        "child": [
+          "/opt/altera/26.1.1/qsys/bin/qsys-script",
+          "--quartus-project=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/mailbox_migration.qpf",
+          "--rev=mailbox_migration",
+          "--package-version=26.1",
+          "--search-path=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/arbiter,/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/irq_generator,$",
+          "--script=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/child.tcl"
+        ],
+        "parent": [
+          "/opt/altera/26.1.1/qsys/bin/qsys-script",
+          "--quartus-project=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/mailbox_migration.qpf",
+          "--rev=mailbox_migration",
+          "--package-version=26.1",
+          "--search-path=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/arbiter,/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/irq_generator,$",
+          "--script=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/parent.tcl"
+        ],
+        "upgrade": [
+          "/opt/altera/26.1.1/qsys/bin/qsys-generate",
+          "--upgrade-ip-cores",
+          "bmc_spi_sub.qsys",
+          "--batch=./ip/bmc_spi_sub/sdm_mailbox.ip",
+          "--quartus-project=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/mailbox_migration.qpf",
+          "--rev=mailbox_migration",
+          "--part=AGFB027R25A2E2V",
+          "--search-path=/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/arbiter,/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/irq_generator,$"
+        ]
+      },
+      "cwd": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc",
+      "env": {
+        "HOME": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/home",
+        "LANG": "C",
+        "LM_LICENSE_FILE": "/home/uwb_student00/quartus_26/LR-191011_License.dat",
+        "PATH": "/opt/altera/26.1.1/quartus/bin:/opt/altera/26.1.1/qsys/bin:/usr/bin:/bin",
+        "QUARTUS_ROOTDIR": "/opt/altera/26.1.1/quartus",
+        "TMPDIR": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/tmp"
+      },
+      "part": "AGFB027R25A2E2V",
+      "speed_grade": "2",
+      "qpf": "PROJECT_REVISION = \"mailbox_migration\"\n",
+      "qsf": "set_global_assignment -name FAMILY \"Agilex 7\"\nset_global_assignment -name DEVICE AGFB027R25A2E2V\n",
+      "search_path": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/arbiter,/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01/bwbmc/ip/irq_generator,$",
+      "ready_for_build": false
+    },
+    "unchanged_identity_maps_reference": "first-experiment-binding-proposal.json#/candidate_binding: source_hashes, harness_hashes, tool_hashes, catalog_hashes, evidence_hashes; native symlink references remain outside harness no-links maps",
+    "vendor_execution_allowed_in_preflight": false,
+    "future_harness_change": "Separate future reviewed vendor-subprocess sandbox integration and new harness hash bindings required; do not alter historical bindings or current unconditional observer refusal.",
+    "environment_policy": "Exactly the six candidate env keys at initial vendor exec. No inherited TMUX, LD_LIBRARY_PATH, QUARTUS_ROOTDIR_OVERRIDE or injection variables. Vendor internal launcher mutations are observations, not additions to this initial environment."
+  },
+  "required_parent_inputs_before_batch": [
+    "Explicit approval for this nonvendor batch only; approval does not permit staging or upgrade.",
+    "Existing verified remote connection/host identity and expected UID/user uwb_student00; do not invent an SSH alias or address.",
+    "Verify named tmux ia840f_migration_preflight identity read-only; do not create or alter sessions.",
+    "Exact protected original/work03 roots from existing project inventory; board-boundary paths from source-baseline.json under /home/uwb_student00/ahls/new_BSP. No guessed work03 pathname.",
+    "Separately reviewed inert probe payload and supervisor identities before execution. This JSON is a declarative specification, not an executable probe or approved launcher."
+  ],
+  "batch_bounds": {
+    "remote_batches": 1,
+    "wall_seconds": 300,
+    "per_probe_seconds": 20,
+    "term_grace_seconds": 10,
+    "aggregate_receipt_bytes": 67108864,
+    "fixture_regular_file_bytes": 1048576,
+    "metadata_entries_max": 250000,
+    "identity_hash_bytes_max": 8589934592,
+    "inventory_and_hash_seconds_max": 120,
+    "namespace_attempts_max": 3,
+    "cap_behavior": "Stop, retain claim and report INCONCLUSIVE; no larger follow-up scan or fallback execution in this batch. Limits are supervisory stop thresholds unless a tested hard control is available; no aggregate hard disk-quota claim."
+  },
+  "paths": {
+    "exclusive_preflight_root": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/preflight-isolation-7c407469a419-u01",
+    "writable_probe_root": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/preflight-isolation-7c407469a419-u01/rw",
+    "outside_canaries_and_listeners": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/preflight-isolation-7c407469a419-u01/protected",
+    "host_only_observer_root": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/preflight-isolation-7c407469a419-u01/observer",
+    "reserved_vendor_scratch_do_not_create": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/scratch-first-7c407469a419-u01",
+    "reserved_actual_observation_do_not_claim": "/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/observation-first-7c407469a419-u01",
+    "creation_policy": "No symlink ancestors; exclusive mkdir with umask 077, absent path required. Collision stops; no deletion/reuse/new suffix. Only the preflight fixture is newly writable; do not change protected real roots. Retain every file and claim."
+  },
+  "ordered_batch": [
+    {
+      "id": "01_read_only_discovery",
+      "action": "Resolve existing bwrap, unshare, mount, setpriv, python3 and optional strace from fixed /usr/bin:/bin only; record resolved executable paths, hashes, symlink chains, file mode/setuid/file capabilities, installed version/help options. Read UID/GID, kernel release, current namespace links and mountinfo, user namespace limits and applicable userns restriction sysctls/LSM status when readable. Unreadable is unknown, not disabled/enabled. No vendor help/version commands.",
+      "concrete_nonvendor_queries": [
+        "bwrap --version",
+        "bwrap --help",
+        "unshare --version",
+        "unshare --help",
+        "mount --version",
+        "setpriv --help"
+      ],
+      "branch": "Queries only for resolved installed binaries. Missing bubblewrap or required capabilities stops sandbox tests; record unshare composition feasibility only, never automatically substitute it."
+    },
+    {
+      "id": "02_claim_and_inputs",
+      "action": "Exclusively claim the preflight root and three child fixture directories; retain a host-owned regular-file canary and a controlled socket/FIFO fixture. Read-only revalidate finite candidate identity maps and native chains, exact BMC inventory and board boundaries. Record separately supplied original/work03 inventories under common caps; never expand catalog dependencies. Confirm real scratch/observation paths remain untouched. License check is regular-file/no-link/readability metadata only, no content readback into receipts.",
+      "pass": "Bound known identities match, inventory complete within caps, no collision, and no source or reserved attempt writes."
+    },
+    {
+      "id": "03_construct_and_inspect",
+      "action": "One normal inert namespace attempt with private user/mount/PID/network/IPC, fresh procfs, new session, no_new_privs and dropped capabilities. Retain hostname/UID where supported. Construct RO vendor installation and OS runtime mounts at original absolute paths, regular-file etc allowlist, minimal private dev and scratch-backed tmp; use rw fixture instead of actual scratch. Original home/run/var/shared mounts/observer absent. Preserve OS symlink layout without exposing additional roots. Read resulting mountinfo, namespace IDs, UID map, status capability/no_new_privs fields and open FDs. Inspect exposed metadata for sockets/FIFOs and nested mounts within cap.",
+      "pass": "Every exposed host-backed mount is RO except rw fixture; no writable alias, special endpoint or inherited host FD; host mounts/network/namespace links unchanged. Private root scaffolding is made read-only before probe exec except documented ephemeral proc/dev/IPC semantics."
+    },
+    {
+      "id": "04_inert_controls_same_namespace",
+      "action": "Fixed Python-only probe writes a small rw canary successfully; attempts create, truncate, rename and shared-writable mmap on deliberately RO fixture aliases and must fail. Check observer and real protected paths are absent. Exercise symlink/relative-path attempts using only fixture targets and require no escape. Inspect FDs for only null stdin and output pipes after helper setup. No intentional write attempts against actual source, license, system files or real observation output.",
+      "network_and_ipc": "Create test listeners solely owned by this batch: host loopback on an ephemeral port, host abstract AF_UNIX name and host pathname socket under protected fixture. Sandbox connection attempts must not reach them; listeners must receive no bytes. No external endpoint, DNS request, host service contact or host firewall alteration. Internal loopback and scratch-local AF_UNIX may succeed. Record interfaces/routes to establish no non-loopback connectivity; tests supplement topology, not replace it.",
+      "identity": "Compare host versus sandbox hostname, effective UID, machine-id availability and interface/MAC visibility through ordinary nonvendor interfaces; redact identity values in broad report and keep private receipt. Do not run vendor host-ID tools. Classify likely node-locked license compatibility UNKNOWN even if identity metadata matches.",
+      "pass": "RW success, every negative fixture control fails safely, no listener escape, unchanged outside canaries and no host network changes."
+    },
+    {
+      "id": "05_timeout_teardown",
+      "action": "Second namespace attempt: inert double-fork/setsid child stays alive beyond parent, emits PID/starttime/namespace identity through a pipe. Exercise deadline stop and TERM then KILL of namespace init by validated identity/pidfd, not merely process group. Verify init exit and absence of namespace descendants, including reparented child, from host namespace. Bound survivor scan and declare unknown on inaccessible evidence.",
+      "pass": "No surviving fixture descendants; namespace teardown confirmed and stop receipt retained."
+    },
+    {
+      "id": "06_supervisor_loss",
+      "action": "Third namespace attempt: inert double-fork/setsid fixture under the same sandbox launch topology. Deliberately terminate only this batch test supervisor to verify configured parent-death chain removes namespace init and all descendants. Outer batch controller retains final receipt and owns emergency termination by validated namespace-init identity. Never signal unrelated processes.",
+      "pass": "No fixture descendants remain after grace; missing receipt or unsupported parent-death semantics fails."
+    },
+    {
+      "id": "07_final_receipt",
+      "action": "Compare canaries, protected inventories and host namespace/mount/network state to baseline, record all attempt statuses/identities/errno/mount maps/final survivor evidence and every cap. Preserve all fixture files and partial results; close only this batch listeners and processes. Do not clean retained claims/files or attempt a vendor command.",
+      "pass": "All required controls passed with complete receipts; report PREFLIGHT_CONTROLS_PASS_LICENSE_AND_VENDOR_UNTESTED, not execution authorization."
+    }
+  ],
+  "future_vendor_contract": {
+    "preferred_facility": "Already installed bubblewrap; no silent unshare fallback.",
+    "mount_policy": "Constructed view, host-backed filesystem RO except exact candidate scratch, private proc/dev/IPC exceptions only. Blind RO whole-root bind rejected because sockets/devices/FDs remain channels.",
+    "observer": "Outside sandbox and absent from its mount view; vendor gets pipes, not observer file FDs. Known command/env/cwd and kernel boundary receipts plus bounded diagnostics; no claim of exhaustive realtime syscall/exec provenance.",
+    "network": "Fresh network namespace, no host NIC/veth/routes; scratch-only pathname IPC; no host abstract/pathname sockets. Host UTS may be retained; no MAC spoofing or NIC movement.",
+    "license": "Exact read-only candidate LM_LICENSE_FILE pathname preserved. Network namespace changes MAC discovery; checkout untested and may fail. No host-network/external-service exception is implicit.",
+    "lifecycle": {
+      "term_grace_seconds": 10,
+      "trace_bytes": 2147483648,
+      "wall_seconds": 1800,
+      "watchdog_poll_seconds": 1
+    },
+    "lifecycle_enforcement": "Host watchdog terminates namespace init, retaining stable identity and confirming descendants gone. Resource thresholds are not comprehensive kernel quotas.",
+    "phases": [
+      "Trusted authorized host stage exclusively creates scratch and snapshot",
+      "Trusted host run preparation checks binding/snapshots and writes stage claim/before bytes",
+      "Vendor-only sandbox at subprocess boundary with exact preserved argv/env/cwd",
+      "Confirmed namespace teardown followed by trusted host reporting and independent review"
+    ],
+    "barriers": "Upgrade only then STOP; child requires exact upgrade report hash approval; parent requires exact child report hash approval. Existing semantic/XML, inventory/project checks and later RTL obligations unchanged."
+  },
+  "decision_rules": {
+    "engineering_blocker": "Unavailable/restricted facility, unsupported mount/FD/PID/parent-death controls, cap exhaustion, incomplete inventories or harness integration defect: no vendor launch; finite report, not recursive catalog search.",
+    "policy_decision": "Parent must explicitly amend original complete syscall/instant exec audit to trusted-code kernel containment plus nonexhaustive diagnostics. Acceptance of resource/concurrent-writer risk also explicit.",
+    "license_decision": "Host-ID mismatch or required external license IPC is compatibility uncertainty/risk scope, not catalog closure. No automatic relaxation; stop on later checkout failure.",
+    "unavailable_alternative": "Record installed unshare/mount/setpriv feasibility once; separate composition review required. Otherwise choose an already suitable isolated host/VM subject to licensing or seek explicit reduced monitored-only scope. Neither is preapproved; monitored-only is not equivalent sandboxing.",
+    "never": [
+      "install packages",
+      "sudo/root host changes",
+      "change sysctl/LSM/firewall/network",
+      "move or spoof host NIC",
+      "copy license contents into evidence",
+      "run vendor/help/license binaries",
+      "create real migration scratch",
+      "relax namespace failure into host execution",
+      "reuse or delete claims",
+      "advance readiness"
+    ]
+  },
+  "static_validation": {
+    "json_serializable": true,
+    "vendor_field_equality_checked_against_candidate": true,
+    "six_environment_keys_checked": true,
+    "authorization_and_readiness_false": true,
+    "remote_results_present": false
+  }
+}

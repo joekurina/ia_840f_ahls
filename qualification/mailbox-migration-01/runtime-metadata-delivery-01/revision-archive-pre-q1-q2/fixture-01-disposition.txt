@@ -1,0 +1,14 @@
+Original command: python3 -B fixture.py
+Original fixture: fixture-01 (before named-mode CLI was introduced)
+Observed tool exit: 1
+Observed exception: RuntimeError: incomplete capture: []
+Original capture and commands.json retained in fixture-01.
+Root cause reproduced from saved transcript: the original decoder rejected an
+embedded D1 nonce in pre-frame shell command echo. It never accepted this run.
+Correction: ignore embedded markers before the first actual line-start frame;
+continue rejecting misalignment after framed acquisition starts. Added explicit
+synthetic regression test_prompt_echo_is_not_a_frame.
+A later offline replay using the corrected decoder recovered 3145509 stdout bytes,
+3145472 stderr bytes and Python status 23. This does not retroactively mark the
+original timed-out acquisition successful. Final evidence is fixture-06/07.
+No automatic retry; all follow-up runs were deliberate local synthetic tests.

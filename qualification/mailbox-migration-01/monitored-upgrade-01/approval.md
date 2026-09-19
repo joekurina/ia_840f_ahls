@@ -1,0 +1,1 @@
+User explicitly approved the monitored scratch upgrade, without custom sandbox or exhaustive syscall monitoring. One selective mailbox leaf upgrade only, normal account permissions, named tmux, retained hashes/logs and source comparisons. Stop for result inspection before parent refresh or RTL generation. Existing claims and gates are unchanged. ready_for_build=false.

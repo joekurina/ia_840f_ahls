@@ -1,0 +1,26 @@
+[
+  {
+    "command": "python3 -B /home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/observer-first-u01/test_observer.py",
+    "result": {
+      "output": "test_detect_deleted_trace (__main__.ObserverTests.test_detect_deleted_trace) ... ok\ntest_exclusive_retention (__main__.ObserverTests.test_exclusive_retention) ... ok\ntest_external_write_stop_retains (__main__.ObserverTests.test_external_write_stop_retains) ... ok\ntest_manifest (__main__.ObserverTests.test_manifest) ... ok\ntest_missing_strace_no_launch (__main__.ObserverTests.test_missing_strace_no_launch) ... ok\ntest_observer_heartbeat_loss (__main__.ObserverTests.test_observer_heartbeat_loss) ... ok\ntest_setsid_descendant_stop (__main__.ObserverTests.test_setsid_descendant_stop) ... ok\ntest_timeout (__main__.ObserverTests.test_timeout) ... ok\ntest_trace_byte_limit (__main__.ObserverTests.test_trace_byte_limit) ... ok\ntest_trace_loss_stop (__main__.ObserverTests.test_trace_loss_stop) ... ok\ntest_unexpected_execution_stop (__main__.ObserverTests.test_unexpected_execution_stop) ... ok\ntest_unresolved_scope_is_stop (__main__.ObserverTests.test_unresolved_scope_is_stop) ... ok\ntest_vendor_rejected_before_launch (__main__.ObserverTests.test_vendor_rejected_before_launch) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 4.728s\n\nOK",
+      "exit_code": 0,
+      "error": null
+    }
+  },
+  {
+    "command": "python3 -I -B /home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/observer-first-u01/observer.py preflight --evidence /home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/observer-first-u01/local-preflight-01 --protected /home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/observer-first-u01/observer.py --protected /home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/observer-first-u01/../first-experiment-binding-proposal.json",
+    "result": {
+      "output": "{\n  \"probe_passed\": false,\n  \"scope_parser\": \"unsupported\",\n  \"vendor_launch\": \"refused\",\n  \"proposal_sha256\": \"3a43e54127052568364e5bdbeb1e70b7a2d98a0454132f9777c4c24859bfaf83\",\n  \"observer\": {\n    \"path\": \"/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/observer-first-u01/observer.py\",\n    \"resolved\": \"/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/observer-first-u01/observer.py\",\n    \"sha256\": \"c339ca005f10a3035524dabd42e6941d120ed2962371c5365441f27115f1270f\"\n  },\n  \"python\": {\n    \"path\": \"/usr/bin/python3\",\n    \"resolved\": \"/usr/bin/python3.13\",\n    \"sha256\": \"889c603f0d17cb54060951bcf4c4f9b8c9ebd9e52b392c70209bbb9755d797d9\"\n  },\n  \"error\": \"Refusal('strace unavailable; no probe launched')\",\n  \"protected_unchanged\": true\n}",
+      "exit_code": 2,
+      "error": null
+    }
+  },
+  {
+    "command": "python3 -I -B /home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/mailbox-migration-01/observer-first-u01/observer.py upgrade",
+    "result": {
+      "output": "vendor launch unsupported: complete cwd/dirfd/FD/rename/mmap scope parser and race-safe descendant accounting unavailable; no approval or preflight result overrides this gate",
+      "exit_code": 2,
+      "error": null
+    }
+  }
+]
