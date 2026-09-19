@@ -1,0 +1,1 @@
+Parent accepts exact diagnosed VoptFlow=1 isolated-ini correction. Only run.py and its manifest entry differ from package02; all HDL inputs unchanged. Historical README/inert logs retain original preparation context. Transfer exact manifest payload plus manifest. User approval covers bounded simulation; no long traffic/calibration/extensive reset-error tests.

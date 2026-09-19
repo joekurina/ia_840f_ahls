@@ -1,0 +1,1 @@
+User explicitly approved starting simulations, excluding detailed calibration, long traffic sequences, and extensive reset/error tests. Start reviewed bounded adapter unit test; DDR4/BSP smoke tests require real harness/interface readiness, not additional incremental permission. No hardware programming authorized by this approval.

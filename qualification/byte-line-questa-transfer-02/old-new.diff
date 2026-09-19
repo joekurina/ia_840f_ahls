@@ -1,0 +1,110 @@
+--- byte-line-questa-01/README.md
++++ byte-line-questa-02/README.md
+@@ -27,6 +27,16 @@
+ modified. The bench's original-path comment is intentionally unchanged; execution
+ uses hash-identical staged copies rather than local provenance paths.
+ 
++## Narrow run-01 compatibility correction
++
++The preserved run-01 evidence reports `vlib -version` exiting 1 with usage;
++compilation and simulation were never reached. This fresh package removes only
++that unsupported version probe. `vlib` identity/hashes and `vlib work` remain
++required. All 13 inputs are unchanged. Historical inert logs and preparation
++verification are retained from -01, not evidence of testing this revision; current
++inert-test results and review belong in sibling `byte-line-questa-transfer-02/`.
++No detailed calibration, long traffic, or extensive reset/error tests are added.
++
+ ## Dependency repair (no source modifications)
+ 
+ The umbrella header unconditionally includes the actual CCI-P import header and
+@@ -54,7 +64,7 @@
+ effective UID 1000, invoke (substitute reviewed transfer/output paths):
+ 
+ ```
+-python3 -B /absolute/transferred/byte-line-questa-01/run.py \
++python3 -B /absolute/transferred/byte-line-questa-02/run.py \
+   --execute-reviewed --output /absolute/existing-parent/fresh-exclusive-run
+ ```
+ 
+@@ -83,7 +93,7 @@
+ identity, launcher argv/cwd, and each actual stage argv/cwd. Installed launcher
+ hashes do not attest every shared library/internal executable loaded by Questa.
+ 
+-Order and outer timeouts: each tool's `-version` (15 seconds each), `vlib work`
++Order and outer timeouts: `vlog -version`, `vsim -version` (15 seconds each), `vlib work`
+ (30 seconds), `vlog -sv -timescale 1ns/1ps -work work` with the three definitions
+ and `-f sources.f` (180 seconds), then `vsim -c -onfinish exit -l
+ simulator-transcript.log work.tb -do ...` (60 seconds). Relative file-list paths
+@@ -97,7 +107,7 @@
+ The final nonzero quit is a fallback, not a successful result. Each executed stage
+ has its own exclusive directory with `invocation.json`, `output.log`, and
+ `result.json` (rc, timeout, diagnostic gate and log hash). Version output is in
+-the three version-stage logs. `result.json` at run root is authoritative; stages
++the two version-stage logs. `result.json` at run root is authoritative; stages
+ not reached have no vendor invocation and simulation rc remains null. Positive
+ native failure exit codes propagate; negative/signal exits map to runner rc 2;
+ timeouts kill the stage process group and return 124. No compilation after a
+--- byte-line-questa-01/run.py
++++ byte-line-questa-02/run.py
+@@ -191,7 +191,7 @@
+              'fixture_definitions': DEFINES, 'license_file_sha': pin(Path(LICENSE)),
+              'review_attestation': True})
+         commands = [(name + '-version', [str(TOOLS / name), '-version'], 15)
+-                    for name in ('vlib', 'vlog', 'vsim')]
++                    for name in ('vlog', 'vsim')]
+         commands += [('vlib', [str(TOOLS / 'vlib'), 'work'], 30),
+                      ('compile', [str(TOOLS / 'vlog'), '-sv', '-timescale', '1ns/1ps',
+                                   '-work', 'work', *DEFINES, '-f', 'sources.f'], 180),
+--- byte-line-questa-01/test_runner.py
++++ byte-line-questa-02/test_runner.py
+@@ -91,7 +91,17 @@
+             with patch.object(r, 'HERE', pkg), patch.object(r, 'TOOLS', tools), patch.object(r, 'LICENSE', str(license_file)), patch.object(r, 'runtime_guard'), patch.object(r, 'stage', side_effect=fake_stage), patch.dict(os.environ, {'TMUX': 'INERT-ONLY'}), contextlib.redirect_stdout(io.StringIO()):
+                 rc = r.main(['--execute-reviewed', '--output', str(out)])
+                 self.assertEqual(rc, 17)
+-                self.assertEqual(called, ['vlib-version', 'vlog-version', 'vsim-version', 'vlib', 'compile'])
++                self.assertEqual(called, ['vlog-version', 'vsim-version', 'vlib', 'compile'])
++                self.assertEqual(r.stage.call_args_list[0].args[2:5:2],
++                                 ([str(tools / 'vlog'), '-version'], 15))
++                self.assertEqual(r.stage.call_args_list[1].args[2:5:2],
++                                 ([str(tools / 'vsim'), '-version'], 15))
++                self.assertEqual(r.stage.call_args_list[2].args[2:5:2],
++                                 ([str(tools / 'vlib'), 'work'], 30))
++                tool_pins = json.loads((out / 'tools.before.json').read_text())
++                self.assertEqual(set(tool_pins), {'vlib', 'vlog', 'vsim'})
++                self.assertEqual(tool_pins['vlib']['sha256'], r.pin(tools / 'vlib')['sha256'])
++                self.assertEqual(tool_pins, json.loads((out / 'tools.after.json').read_text()))
+                 result = json.loads((out / 'result.json').read_text())
+                 self.assertEqual(result['status'], 'FAIL')
+                 self.assertIsNone(result['simulation_rc'])
+--- byte-line-questa-01/package-sha256.json
++++ byte-line-questa-02/package-sha256.json
+@@ -1,7 +1,7 @@
+ {
+   "README.md": {
+-    "size": 7363,
+-    "sha256": "6afbc9bebd170e72d88ad6d6871301b82a7f8a1151e60b6c8763aed23fe91d64"
++    "size": 7970,
++    "sha256": "f36c1ed88c4acf4a87d15f8de149cd4f63c2b921592779cf644577e531141605"
+   },
+   "inert-tests-final.log": {
+     "size": 705,
+@@ -84,15 +84,15 @@
+     "sha256": "ace8246782f6bc28098a7d41c230ad2b99f44b7daf4d802fb4257b718e3fba50"
+   },
+   "run.py": {
+-    "size": 12727,
+-    "sha256": "5d15321fed635dea6c5d3c41368dff6876366f35376f7803bf3642c903c26516"
++    "size": 12719,
++    "sha256": "876bab0ae4a03fad6516ca3e951aaa408eca90f5176d9c12cca67a046de3cb23"
+   },
+   "sources.f": {
+     "size": 143,
+     "sha256": "268f90ae89b5db6caa83b8fdf11b4144b00566974246a6b8f5e6ce55010853a0"
+   },
+   "test_runner.py": {
+-    "size": 6125,
+-    "sha256": "7f530d3ae2a5bb7121eec2eab42aed85fd75d6f275740fc94a61fcffa97f358b"
++    "size": 6889,
++    "sha256": "8148d35c86f110cf919b48dcdfb9f8ea8ba8189be71342630b2c69f78c471059"
+   }
+ }

@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "uwb_student00@100.101.227.97",
+    "tmux new-window -d -P -F '#{pane_id}' -t ia840f_mailbox_monitored_01 -n diag03-inspect 'python3 -c '\"'\"'import base64,io,contextlib,traceback; o=io.StringIO();\nwith contextlib.redirect_stdout(o):\n try: exec(\"import base64;exec(base64.b64decode('\"'\"'\"'\"'\"'\"'\"'\"'aW1wb3J0IG9zLCBqc29uLCBoYXNobGliLCBzb2NrZXQKZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCnJvb3Q9UGF0aCgnL29wdC9hbHRlcmEvMjYuMS4xL3F1ZXN0YV9mZScpCmRlZiByZWNvcmQocCk6CiAgICBiPXAucmVhZF9ieXRlcygpCiAgICB0ZXh0PWIuZGVjb2RlKGVycm9ycz0ncmVwbGFjZScpCiAgICBsaW5lcz10ZXh0LnNwbGl0bGluZXMoKQogICAgaWYgcC5uYW1lPT0nbW9kZWxzaW0uaW5pJzoKICAgICAgICBzZWxlY3RlZD1zZXQoKQogICAgICAgIGZvciBpLGxpbmUgaW4gZW51bWVyYXRlKGxpbmVzKToKICAgICAgICAgICAgaWYgYW55KHggaW4gbGluZS5sb3dlcigpIGZvciB4IGluICgndm9wdCcsJ25vdm9wdCcsJ1t2c2ltXScsJ1t2bG9nXScsJ290aGVycyA9JykpOgogICAgICAgICAgICAgICAgc2VsZWN0ZWQudXBkYXRlKHJhbmdlKG1heCgwLGktMyksbWluKGxlbihsaW5lcyksaSs0KSkpCiAgICAgICAgdGV4dD0nXG4nLmpvaW4oc3RyKGkrMSkrJzogJytsaW5lc1tpXSBmb3IgaSBpbiBzb3J0ZWQoc2VsZWN0ZWQpKQogICAgcmV0dXJuIHsncGF0aCc6c3RyKHApLCdyZXNvbHZlZCc6c3RyKHAucmVzb2x2ZSgpKSwnc2l6ZSc6bGVuKGIpLCdzaGEyNTYnOmhhc2hsaWIuc2hhMjU2KGIpLmhleGRpZ2VzdCgpLCd0ZXh0Jzp0ZXh0fQpyPXsnaG9zdCc6c29ja2V0LmdldGhvc3RuYW1lKCksJ3RtdXgnOm9zLmVudmlyb24uZ2V0KCdUTVVYJyksJ2ZpbGVzJzpbXX0KZm9yIHAgaW4gKHJvb3QvJ21vZGVsc2ltLmluaScscm9vdC8ndmNvJyxQYXRoKCcvaG9tZS91d2Jfc3R1ZGVudDAwL21vZGVsc2ltLmluaScpKToKICAgIGlmIHAuaXNfZmlsZSgpOiByWydmaWxlcyddLmFwcGVuZChyZWNvcmQocCkpCnJbJ3Jvb3RfZW50cmllcyddPVtwLm5hbWUgZm9yIHAgaW4gcm9vdC5pdGVyZGlyKCldCnByaW50KGpzb24uZHVtcHMocikpCg=='\"'\"'\"'\"'\"'\"'\"'\"'))\")\n except: traceback.print_exc(file=o)\ns=base64.b64encode(o.getvalue().encode()).decode();print(\"DIAG_BEGIN\");[print(s[i:i+60]) for i in range(0,len(s),60)];print(\"DIAG_END\")'\"'\"'; exec bash --noprofile --norc'"
+  ],
+  "rc": 0,
+  "stdout": "%80\n",
+  "stderr": ""
+}

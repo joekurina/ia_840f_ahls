@@ -1,0 +1,12 @@
++incdir+/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/byte-line-protocol-01
++incdir+/home/joe/Projects/Thesis/AHLS/new_bsp/new/afu/ahls/rtl
++incdir+/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/rtl
++incdir+/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/rtl/base_ifcs/avalon
++incdir+/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/rtl/base_ifcs/axi
++incdir+/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/rtl/base_ifcs/clocks
++incdir+/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/rtl/ifc_classes/host_chan/afu_ifcs/ccip
++incdir+/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/rtl/utils
+/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/rtl/utils/ofs_plat_log_pkg.sv
+/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/rtl/base_ifcs/avalon/ofs_plat_avalon_mem_if.sv
+/home/joe/Projects/Thesis/AHLS/new_bsp/new/afu/ahls/rtl/ahls_avmm_byte_to_line.sv
+/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/byte-line-protocol-01/tb.sv

@@ -1,0 +1,1 @@
+Accepted narrow correction after independently verifying full manifest, exact single-line runner delta and unchanged input copies. Prior compile/simulation gates retained. Transfer exactly manifest entries plus manifest; reviews outside payload. User simulation approval applies, excluding detailed calibration/long traffic/extensive reset-error tests.

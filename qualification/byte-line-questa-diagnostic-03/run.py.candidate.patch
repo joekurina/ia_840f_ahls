@@ -1,0 +1,11 @@
+--- a/run.py
++++ b/run.py
+@@ -168,7 +168,7 @@
+         shutil.copyfile(HERE / 'sources.f', out / 'sources.f')
+         if inventory(out, input_pins) != input_pins:
+             raise RuntimeError('Staged input mismatch')
+-        (out / 'modelsim.ini').write_text('[Library]\nwork = work\n')
++        (out / 'modelsim.ini').write_text('[Library]\nwork = work\n\n[vsim]\nVoptFlow = 1\n')
+         config_before = {name: pin(out / name) for name in ('sources.f', 'modelsim.ini')}
+         dump(out / 'configuration.before.json', config_before)
+         dump(out / 'inputs.before.json', input_pins)
