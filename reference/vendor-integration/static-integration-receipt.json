@@ -1,0 +1,68 @@
+{
+  "check_kind": "read_only_source_inventory",
+  "bsp_declaration_contract": {
+    "ofs_ia840f": {
+      "device_model": "agfb027r25a2e2v_dm.xml",
+      "ddr_bank_sizes_bytes": [
+        17179869184,
+        17179869184
+      ],
+      "host_memory_declared": false,
+      "compile_flows_inspected": 2
+    },
+    "ofs_ia840f_usm": {
+      "device_model": "agfb027r25a2e2v_dm.xml",
+      "ddr_bank_sizes_bytes": [
+        17179869184,
+        17179869184
+      ],
+      "host_memory_declared": true,
+      "compile_flows_inspected": 2
+    }
+  },
+  "hostpipe_policy": "Conditional reference-derived feature; historical experiments are not baseline requirements",
+  "csr_hostpipe_candidate_source_sha256": {
+    "afu/hostpipe_csr/hostpipe_csr.cpp": "7b4ab3689b0538b3fe5eba2136f6770bebcbff7ec9e5eb2e08055f122d168d26",
+    "afu/hostpipe_csr/CMakeLists.txt": "9e4f573b5563317afd3911ef502e65c65150efb9ddfa2d06c74418b82d323399",
+    "docs/host-pipes.md": "441ad8c5ebdb732a59035111d6c76111a206b0f19fb30b0f3aab11e11ce50647"
+  },
+  "source_consistency": "pass",
+  "ready_for_build": false,
+  "host_pipes_qualified": false,
+  "builds_configure_simulations_tests_run": false,
+  "revisions": {
+    "ofs-agx7-pcie-attach": "599ac052eafbc9cede22561c099233ae4a54cb7d",
+    "ofs-agx7-pcie-attach/ofs-common": "34a8540697fdf3d66fbcaa263fa037bae17cc32f",
+    "ofs-platform-afu-bbb": "3c21189e728009d4c492fa2be54c0ab1008b06dc",
+    "examples-afu": "4a1350e3c9e223d8bac3cb47f756a1d919ef8de1",
+    "oneapi-asp": "1af2ca74c452cb6ebbf54beb86e758e53489e826",
+    "oneapi-asp/common/source/extra/intel-fpga-bbb": "6f185d10be192d05ecb2b77dfe3df1c4f9b3f859"
+  },
+  "fim_manifest_entries_checked": 99,
+  "asp_source_files": 22,
+  "parsed_xml_files": [
+    "oneapi-asp/ia840f/board_env.xml",
+    "oneapi-asp/ia840f/hardware/ofs_ia840f/board_spec.xml",
+    "oneapi-asp/ia840f/hardware/ofs_ia840f_usm/board_spec.xml"
+  ],
+  "compiled_artifacts_in_board_paths": [],
+  "unresolved_fim_requirements": [
+    "vendor-derived mixed-memory preset: controller/model semantics and generated port/pin mapping qualification",
+    "modern PCIe PF1 BAR2 schema and full capabilities qualification (known-schema overrides connected)",
+    "vendor BMC IP loading/generation, PF1 FLR safety and unsupported SPI window behavior",
+    "clock/PR timing and fresh matching platform template",
+    "AHLS generated-component binding, required width/stream adapters and OPAE host integration",
+    "Altera AHLS/OFS/Quartus 26.1.1 and board-IP qualification"
+  ],
+  "errors": [],
+  "ahls_selected_origin_hashes_checked": 17,
+  "active_target": "altera-ahls-ofs-opae",
+  "asp_checks_scope": "preserved reference only",
+  "new_ahls_sources": {
+    "afu/ahls/rtl/ahls_avmm_byte_to_line.sv": "d47c8d45e8bd4643d1d990aba65ebd27a773971f15ae834130f8a82c88586645",
+    "afu/ahls/rtl/ahls_board_binding.sv": "dfdc163d67cb26a0f6757a699eedd5655584df09b9f29fbe0e31a083c1384d93",
+    "afu/ahls/rtl/ahls_mmio_aperture.sv": "b9e424d95714c883eb8db19d4be96ffec4215f9f84683a80fe161b8d0c5294ad",
+    "afu/ahls/rtl/ahls_mmio_to_avmm.sv": "4fa60523f3b227faca5b0b232d7aa0f29e1b13eea7c62bfb4fd510367b4100f2",
+    "afu/ahls/rtl/ahls_ofs_board_services.sv": "823aa941b8f7dc2addba78d0f9748cf3d22b2429e2e2835d6567099f235294a9"
+  }
+}

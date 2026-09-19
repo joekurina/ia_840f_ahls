@@ -1,0 +1,329 @@
+--- a/ofs-agx7-pcie-attach/syn/board/ia840f/setup/emif_loc.tcl
++++ b/ofs-agx7-pcie-attach/syn/board/ia840f/setup/emif_loc.tcl
+@@ -1,126 +1,126 @@
+-# IA840F physical pins with modern grouped-memory port spellings.
+-# Proposed group 0: P1 discrete memory, group 1: RDIMM.
+-# Gate remains closed until regenerated mem_ss confirms group/port naming.
+-set_location_assignment PIN_GW52 -to ddr4_mem_group_1[0].ba[1]
+-set_location_assignment PIN_HB53 -to ddr4_mem_group_1[0].bg[0]
+-set_location_assignment PIN_HH52 -to ddr4_mem_group_1[0].alert_n
+-set_location_assignment PIN_HF53 -to ddr4_mem_group_1[0].ba[0]
+-set_location_assignment PIN_GW50 -to ddr4_mem_group_1[0].a[15]
+-set_location_assignment PIN_HB51 -to ddr4_mem_group_1[0].a[16]
+-set_location_assignment PIN_HH50 -to ddr4_mem_group_1[0].a[13]
+-set_location_assignment PIN_HF51 -to ddr4_mem_group_1[0].a[14]
++# IA840F physical pins using Work04 generated mem_ss port spellings.
++# One interface group: index 0 is P1 discrete memory; index 1 is RDIMM.
++# Package coordinates unchanged; calibration, fit and timing remain unqualified.
++set_location_assignment PIN_GW52 -to ddr4_mem[1].ba[1]
++set_location_assignment PIN_HB53 -to ddr4_mem[1].bg[0]
++set_location_assignment PIN_HH52 -to ddr4_mem[1].alert_n
++set_location_assignment PIN_HF53 -to ddr4_mem[1].ba[0]
++set_location_assignment PIN_GW50 -to ddr4_mem[1].a[15]
++set_location_assignment PIN_HB51 -to ddr4_mem[1].a[16]
++set_location_assignment PIN_HH50 -to ddr4_mem[1].a[13]
++set_location_assignment PIN_HF51 -to ddr4_mem[1].a[14]
+ set_location_assignment PIN_GW48 -to ddr4_mem_ref_clk[1].oct_rzqin
+-set_location_assignment PIN_HB49 -to ddr4_mem_group_1[0].a[12]
++set_location_assignment PIN_HB49 -to ddr4_mem[1].a[12]
+ set_location_assignment PIN_HH48 -to ddr4_mem_ref_clk[1].clk
+-set_location_assignment PIN_GJ46 -to ddr4_mem_group_1[0].a[10]
+-set_location_assignment PIN_GG47 -to ddr4_mem_group_1[0].a[11]
+-set_location_assignment PIN_GP46 -to ddr4_mem_group_1[0].a[8]
+-set_location_assignment PIN_GU47 -to ddr4_mem_group_1[0].a[9]
+-set_location_assignment PIN_GJ44 -to ddr4_mem_group_1[0].a[6]
+-set_location_assignment PIN_GG45 -to ddr4_mem_group_1[0].a[7]
+-set_location_assignment PIN_GP44 -to ddr4_mem_group_1[0].a[4]
+-set_location_assignment PIN_GU45 -to ddr4_mem_group_1[0].a[5]
+-set_location_assignment PIN_GJ42 -to ddr4_mem_group_1[0].a[2]
+-set_location_assignment PIN_GG43 -to ddr4_mem_group_1[0].a[3]
+-set_location_assignment PIN_GP42 -to ddr4_mem_group_1[0].a[0]
+-set_location_assignment PIN_GU43 -to ddr4_mem_group_1[0].a[1]
+-set_location_assignment PIN_HB47 -to ddr4_mem_group_1[0].par
+-set_location_assignment PIN_HH46 -to ddr4_mem_group_1[0].ck
+-set_location_assignment PIN_HF47 -to ddr4_mem_group_1[0].ck_n
+-set_location_assignment PIN_GW44 -to ddr4_mem_group_1[0].cke
+-set_location_assignment PIN_HH44 -to ddr4_mem_group_1[0].odt
+-set_location_assignment PIN_GW42 -to ddr4_mem_group_1[0].cs_n
+-set_location_assignment PIN_HB43 -to ddr4_mem_group_1[0].act_n
+-set_location_assignment PIN_HH42 -to ddr4_mem_group_1[0].bg[1]
+-set_location_assignment PIN_HF43 -to ddr4_mem_group_1[0].reset_n
+-set_location_assignment PIN_FK52 -to ddr4_mem_group_1[0].dq[63]
+-set_location_assignment PIN_FH53 -to ddr4_mem_group_1[0].dq[62]
+-set_location_assignment PIN_FP52 -to ddr4_mem_group_1[0].dq[61]
+-set_location_assignment PIN_FT53 -to ddr4_mem_group_1[0].dq[60]
+-set_location_assignment PIN_FK50 -to ddr4_mem_group_1[0].dbi_n[7]
+-set_location_assignment PIN_FP50 -to ddr4_mem_group_1[0].dqs[7]
+-set_location_assignment PIN_FT51 -to ddr4_mem_group_1[0].dqs_n[7]
+-set_location_assignment PIN_FK48 -to ddr4_mem_group_1[0].dq[59]
+-set_location_assignment PIN_FH49 -to ddr4_mem_group_1[0].dq[58]
+-set_location_assignment PIN_FP48 -to ddr4_mem_group_1[0].dq[57]
+-set_location_assignment PIN_FT49 -to ddr4_mem_group_1[0].dq[56]
+-set_location_assignment PIN_FV52 -to ddr4_mem_group_1[0].dq[55]
+-set_location_assignment PIN_FY53 -to ddr4_mem_group_1[0].dq[54]
+-set_location_assignment PIN_GE52 -to ddr4_mem_group_1[0].dq[53]
+-set_location_assignment PIN_GC53 -to ddr4_mem_group_1[0].dq[52]
+-set_location_assignment PIN_FV50 -to ddr4_mem_group_1[0].dbi_n[6]
+-set_location_assignment PIN_GE50 -to ddr4_mem_group_1[0].dqs[6]
+-set_location_assignment PIN_GC51 -to ddr4_mem_group_1[0].dqs_n[6]
+-set_location_assignment PIN_FV48 -to ddr4_mem_group_1[0].dq[51]
+-set_location_assignment PIN_FY49 -to ddr4_mem_group_1[0].dq[50]
+-set_location_assignment PIN_GE48 -to ddr4_mem_group_1[0].dq[49]
+-set_location_assignment PIN_GC49 -to ddr4_mem_group_1[0].dq[48]
+-set_location_assignment PIN_FK46 -to ddr4_mem_group_1[0].dq[47]
+-set_location_assignment PIN_FH47 -to ddr4_mem_group_1[0].dq[46]
+-set_location_assignment PIN_FP46 -to ddr4_mem_group_1[0].dq[45]
+-set_location_assignment PIN_FT47 -to ddr4_mem_group_1[0].dq[44]
+-set_location_assignment PIN_FK44 -to ddr4_mem_group_1[0].dbi_n[5]
+-set_location_assignment PIN_FP44 -to ddr4_mem_group_1[0].dqs[5]
+-set_location_assignment PIN_FT45 -to ddr4_mem_group_1[0].dqs_n[5]
+-set_location_assignment PIN_FK42 -to ddr4_mem_group_1[0].dq[43]
+-set_location_assignment PIN_FH43 -to ddr4_mem_group_1[0].dq[42]
+-set_location_assignment PIN_FP42 -to ddr4_mem_group_1[0].dq[41]
+-set_location_assignment PIN_FT43 -to ddr4_mem_group_1[0].dq[40]
+-set_location_assignment PIN_FV46 -to ddr4_mem_group_1[0].dq[39]
+-set_location_assignment PIN_FY47 -to ddr4_mem_group_1[0].dq[38]
+-set_location_assignment PIN_GE46 -to ddr4_mem_group_1[0].dq[37]
+-set_location_assignment PIN_GC47 -to ddr4_mem_group_1[0].dq[36]
+-set_location_assignment PIN_FV44 -to ddr4_mem_group_1[0].dbi_n[4]
+-set_location_assignment PIN_GE44 -to ddr4_mem_group_1[0].dqs[4]
+-set_location_assignment PIN_GC45 -to ddr4_mem_group_1[0].dqs_n[4]
+-set_location_assignment PIN_FV42 -to ddr4_mem_group_1[0].dq[35]
+-set_location_assignment PIN_FY43 -to ddr4_mem_group_1[0].dq[34]
+-set_location_assignment PIN_GE42 -to ddr4_mem_group_1[0].dq[33]
+-set_location_assignment PIN_GC43 -to ddr4_mem_group_1[0].dq[32]
+-set_location_assignment PIN_GG31 -to ddr4_mem_group_1[0].dq[4]
+-set_location_assignment PIN_GJ30 -to ddr4_mem_group_1[0].dq[5]
+-set_location_assignment PIN_GU31 -to ddr4_mem_group_1[0].dq[6]
+-set_location_assignment PIN_GP30 -to ddr4_mem_group_1[0].dq[7]
+-set_location_assignment PIN_GG33 -to ddr4_mem_group_1[0].dbi_n[0]	
+-set_location_assignment PIN_GU33 -to ddr4_mem_group_1[0].dqs[0]	
+-set_location_assignment PIN_GP32 -to ddr4_mem_group_1[0].dqs_n[0]	
+-set_location_assignment PIN_GG35 -to ddr4_mem_group_1[0].dq[0]
+-set_location_assignment PIN_GJ34 -to ddr4_mem_group_1[0].dq[1]
+-set_location_assignment PIN_GU35 -to ddr4_mem_group_1[0].dq[2]
+-set_location_assignment PIN_GP34 -to ddr4_mem_group_1[0].dq[3]
+-set_location_assignment PIN_HB31 -to ddr4_mem_group_1[0].dq[12]
+-set_location_assignment PIN_GW30 -to ddr4_mem_group_1[0].dq[13]
+-set_location_assignment PIN_HF31 -to ddr4_mem_group_1[0].dq[14]
+-set_location_assignment PIN_HH30 -to ddr4_mem_group_1[0].dq[15]
+-set_location_assignment PIN_HB33 -to ddr4_mem_group_1[0].dbi_n[1] 
+-set_location_assignment PIN_HF33 -to ddr4_mem_group_1[0].dqs[1] 
+-set_location_assignment PIN_HH32 -to ddr4_mem_group_1[0].dqs_n[1] 
+-set_location_assignment PIN_HB35 -to ddr4_mem_group_1[0].dq[8]
+-set_location_assignment PIN_GW34 -to ddr4_mem_group_1[0].dq[9]
+-set_location_assignment PIN_HF35 -to ddr4_mem_group_1[0].dq[10]
+-set_location_assignment PIN_HH34 -to ddr4_mem_group_1[0].dq[11]
+-set_location_assignment PIN_GG37 -to ddr4_mem_group_1[0].dq[20]
+-set_location_assignment PIN_GJ36 -to ddr4_mem_group_1[0].dq[21]
+-set_location_assignment PIN_GU37 -to ddr4_mem_group_1[0].dq[22]
+-set_location_assignment PIN_GP36 -to ddr4_mem_group_1[0].dq[23]
+-set_location_assignment PIN_GG39 -to ddr4_mem_group_1[0].dbi_n[2]	
+-set_location_assignment PIN_GU39 -to ddr4_mem_group_1[0].dqs[2]	
+-set_location_assignment PIN_GP38 -to ddr4_mem_group_1[0].dqs_n[2]	
+-set_location_assignment PIN_GG41 -to ddr4_mem_group_1[0].dq[16]
+-set_location_assignment PIN_GJ40 -to ddr4_mem_group_1[0].dq[17]
+-set_location_assignment PIN_GU41 -to ddr4_mem_group_1[0].dq[18]
+-set_location_assignment PIN_GP40 -to ddr4_mem_group_1[0].dq[19]
+-set_location_assignment PIN_HB37 -to ddr4_mem_group_1[0].dq[28]
+-set_location_assignment PIN_GW36 -to ddr4_mem_group_1[0].dq[29]
+-set_location_assignment PIN_HF37 -to ddr4_mem_group_1[0].dq[30]
+-set_location_assignment PIN_HH36 -to ddr4_mem_group_1[0].dq[31]
+-set_location_assignment PIN_HB39 -to ddr4_mem_group_1[0].dbi_n[3]	
+-set_location_assignment PIN_HF39 -to ddr4_mem_group_1[0].dqs[3]	
+-set_location_assignment PIN_HH38 -to ddr4_mem_group_1[0].dqs_n[3]	
+-set_location_assignment PIN_HB41 -to ddr4_mem_group_1[0].dq[24]
+-set_location_assignment PIN_GW40 -to ddr4_mem_group_1[0].dq[25]
+-set_location_assignment PIN_HF41 -to ddr4_mem_group_1[0].dq[26]
+-set_location_assignment PIN_HH40 -to ddr4_mem_group_1[0].dq[27]
++set_location_assignment PIN_GJ46 -to ddr4_mem[1].a[10]
++set_location_assignment PIN_GG47 -to ddr4_mem[1].a[11]
++set_location_assignment PIN_GP46 -to ddr4_mem[1].a[8]
++set_location_assignment PIN_GU47 -to ddr4_mem[1].a[9]
++set_location_assignment PIN_GJ44 -to ddr4_mem[1].a[6]
++set_location_assignment PIN_GG45 -to ddr4_mem[1].a[7]
++set_location_assignment PIN_GP44 -to ddr4_mem[1].a[4]
++set_location_assignment PIN_GU45 -to ddr4_mem[1].a[5]
++set_location_assignment PIN_GJ42 -to ddr4_mem[1].a[2]
++set_location_assignment PIN_GG43 -to ddr4_mem[1].a[3]
++set_location_assignment PIN_GP42 -to ddr4_mem[1].a[0]
++set_location_assignment PIN_GU43 -to ddr4_mem[1].a[1]
++set_location_assignment PIN_HB47 -to ddr4_mem[1].par
++set_location_assignment PIN_HH46 -to ddr4_mem[1].ck
++set_location_assignment PIN_HF47 -to ddr4_mem[1].ck_n
++set_location_assignment PIN_GW44 -to ddr4_mem[1].cke
++set_location_assignment PIN_HH44 -to ddr4_mem[1].odt
++set_location_assignment PIN_GW42 -to ddr4_mem[1].cs_n
++set_location_assignment PIN_HB43 -to ddr4_mem[1].act_n
++set_location_assignment PIN_HH42 -to ddr4_mem[1].bg[1]
++set_location_assignment PIN_HF43 -to ddr4_mem[1].reset_n
++set_location_assignment PIN_FK52 -to ddr4_mem[1].dq[63]
++set_location_assignment PIN_FH53 -to ddr4_mem[1].dq[62]
++set_location_assignment PIN_FP52 -to ddr4_mem[1].dq[61]
++set_location_assignment PIN_FT53 -to ddr4_mem[1].dq[60]
++set_location_assignment PIN_FK50 -to ddr4_mem[1].dbi_n[7]
++set_location_assignment PIN_FP50 -to ddr4_mem[1].dqs[7]
++set_location_assignment PIN_FT51 -to ddr4_mem[1].dqs_n[7]
++set_location_assignment PIN_FK48 -to ddr4_mem[1].dq[59]
++set_location_assignment PIN_FH49 -to ddr4_mem[1].dq[58]
++set_location_assignment PIN_FP48 -to ddr4_mem[1].dq[57]
++set_location_assignment PIN_FT49 -to ddr4_mem[1].dq[56]
++set_location_assignment PIN_FV52 -to ddr4_mem[1].dq[55]
++set_location_assignment PIN_FY53 -to ddr4_mem[1].dq[54]
++set_location_assignment PIN_GE52 -to ddr4_mem[1].dq[53]
++set_location_assignment PIN_GC53 -to ddr4_mem[1].dq[52]
++set_location_assignment PIN_FV50 -to ddr4_mem[1].dbi_n[6]
++set_location_assignment PIN_GE50 -to ddr4_mem[1].dqs[6]
++set_location_assignment PIN_GC51 -to ddr4_mem[1].dqs_n[6]
++set_location_assignment PIN_FV48 -to ddr4_mem[1].dq[51]
++set_location_assignment PIN_FY49 -to ddr4_mem[1].dq[50]
++set_location_assignment PIN_GE48 -to ddr4_mem[1].dq[49]
++set_location_assignment PIN_GC49 -to ddr4_mem[1].dq[48]
++set_location_assignment PIN_FK46 -to ddr4_mem[1].dq[47]
++set_location_assignment PIN_FH47 -to ddr4_mem[1].dq[46]
++set_location_assignment PIN_FP46 -to ddr4_mem[1].dq[45]
++set_location_assignment PIN_FT47 -to ddr4_mem[1].dq[44]
++set_location_assignment PIN_FK44 -to ddr4_mem[1].dbi_n[5]
++set_location_assignment PIN_FP44 -to ddr4_mem[1].dqs[5]
++set_location_assignment PIN_FT45 -to ddr4_mem[1].dqs_n[5]
++set_location_assignment PIN_FK42 -to ddr4_mem[1].dq[43]
++set_location_assignment PIN_FH43 -to ddr4_mem[1].dq[42]
++set_location_assignment PIN_FP42 -to ddr4_mem[1].dq[41]
++set_location_assignment PIN_FT43 -to ddr4_mem[1].dq[40]
++set_location_assignment PIN_FV46 -to ddr4_mem[1].dq[39]
++set_location_assignment PIN_FY47 -to ddr4_mem[1].dq[38]
++set_location_assignment PIN_GE46 -to ddr4_mem[1].dq[37]
++set_location_assignment PIN_GC47 -to ddr4_mem[1].dq[36]
++set_location_assignment PIN_FV44 -to ddr4_mem[1].dbi_n[4]
++set_location_assignment PIN_GE44 -to ddr4_mem[1].dqs[4]
++set_location_assignment PIN_GC45 -to ddr4_mem[1].dqs_n[4]
++set_location_assignment PIN_FV42 -to ddr4_mem[1].dq[35]
++set_location_assignment PIN_FY43 -to ddr4_mem[1].dq[34]
++set_location_assignment PIN_GE42 -to ddr4_mem[1].dq[33]
++set_location_assignment PIN_GC43 -to ddr4_mem[1].dq[32]
++set_location_assignment PIN_GG31 -to ddr4_mem[1].dq[4]
++set_location_assignment PIN_GJ30 -to ddr4_mem[1].dq[5]
++set_location_assignment PIN_GU31 -to ddr4_mem[1].dq[6]
++set_location_assignment PIN_GP30 -to ddr4_mem[1].dq[7]
++set_location_assignment PIN_GG33 -to ddr4_mem[1].dbi_n[0]	
++set_location_assignment PIN_GU33 -to ddr4_mem[1].dqs[0]	
++set_location_assignment PIN_GP32 -to ddr4_mem[1].dqs_n[0]	
++set_location_assignment PIN_GG35 -to ddr4_mem[1].dq[0]
++set_location_assignment PIN_GJ34 -to ddr4_mem[1].dq[1]
++set_location_assignment PIN_GU35 -to ddr4_mem[1].dq[2]
++set_location_assignment PIN_GP34 -to ddr4_mem[1].dq[3]
++set_location_assignment PIN_HB31 -to ddr4_mem[1].dq[12]
++set_location_assignment PIN_GW30 -to ddr4_mem[1].dq[13]
++set_location_assignment PIN_HF31 -to ddr4_mem[1].dq[14]
++set_location_assignment PIN_HH30 -to ddr4_mem[1].dq[15]
++set_location_assignment PIN_HB33 -to ddr4_mem[1].dbi_n[1] 
++set_location_assignment PIN_HF33 -to ddr4_mem[1].dqs[1] 
++set_location_assignment PIN_HH32 -to ddr4_mem[1].dqs_n[1] 
++set_location_assignment PIN_HB35 -to ddr4_mem[1].dq[8]
++set_location_assignment PIN_GW34 -to ddr4_mem[1].dq[9]
++set_location_assignment PIN_HF35 -to ddr4_mem[1].dq[10]
++set_location_assignment PIN_HH34 -to ddr4_mem[1].dq[11]
++set_location_assignment PIN_GG37 -to ddr4_mem[1].dq[20]
++set_location_assignment PIN_GJ36 -to ddr4_mem[1].dq[21]
++set_location_assignment PIN_GU37 -to ddr4_mem[1].dq[22]
++set_location_assignment PIN_GP36 -to ddr4_mem[1].dq[23]
++set_location_assignment PIN_GG39 -to ddr4_mem[1].dbi_n[2]	
++set_location_assignment PIN_GU39 -to ddr4_mem[1].dqs[2]	
++set_location_assignment PIN_GP38 -to ddr4_mem[1].dqs_n[2]	
++set_location_assignment PIN_GG41 -to ddr4_mem[1].dq[16]
++set_location_assignment PIN_GJ40 -to ddr4_mem[1].dq[17]
++set_location_assignment PIN_GU41 -to ddr4_mem[1].dq[18]
++set_location_assignment PIN_GP40 -to ddr4_mem[1].dq[19]
++set_location_assignment PIN_HB37 -to ddr4_mem[1].dq[28]
++set_location_assignment PIN_GW36 -to ddr4_mem[1].dq[29]
++set_location_assignment PIN_HF37 -to ddr4_mem[1].dq[30]
++set_location_assignment PIN_HH36 -to ddr4_mem[1].dq[31]
++set_location_assignment PIN_HB39 -to ddr4_mem[1].dbi_n[3]	
++set_location_assignment PIN_HF39 -to ddr4_mem[1].dqs[3]	
++set_location_assignment PIN_HH38 -to ddr4_mem[1].dqs_n[3]	
++set_location_assignment PIN_HB41 -to ddr4_mem[1].dq[24]
++set_location_assignment PIN_GW40 -to ddr4_mem[1].dq[25]
++set_location_assignment PIN_HF41 -to ddr4_mem[1].dq[26]
++set_location_assignment PIN_HH40 -to ddr4_mem[1].dq[27]
+ set_location_assignment PIN_HH22 -to "ddr4_mem_ref_clk[0].clk(n)"
+ set_location_assignment PIN_HF23 -to ddr4_mem_ref_clk[0].clk
+ set_location_assignment PIN_GW18 -to ddr4_mem[0].bg[0]
+@@ -152,7 +152,7 @@
+ set_location_assignment PIN_HB27 -to ddr4_mem[0].cke
+ set_location_assignment PIN_HF27 -to ddr4_mem[0].odt
+ set_location_assignment PIN_GW28 -to ddr4_mem[0].act_n
+-set_location_assignment PIN_HB29 -to ddr4_mem[0].cs_n[0]
++set_location_assignment PIN_HB29 -to ddr4_mem[0].cs_n
+ set_location_assignment PIN_HH28 -to ddr4_mem[0].reset_n
+ set_location_assignment PIN_FH21 -to ddr4_mem[0].dbi_n[0]
+ set_location_assignment PIN_FP20 -to ddr4_mem[0].dqs_n[0]
+--- a/ofs-agx7-pcie-attach/ofs-common/src/fpga_family/agilex/mem_ss/mem_ss_top.sv
++++ b/ofs-agx7-pcie-attach/ofs-common/src/fpga_family/agilex/mem_ss/mem_ss_top.sv
+@@ -306,6 +306,10 @@
+    assign ss_axi_mm[c].awlock   = afu_mem_if[c].awlock;
+    assign ss_axi_mm[c].awcache  = afu_mem_if[c].awcache;
+    assign ss_axi_mm[c].awprot   = afu_mem_if[c].awprot;
++`ifdef IFC_MEM_SS_I_AXI_MM_IF_WIDTH_AWQOS
++   // OFS does not supply a QoS policy; use the AXI default priority.
++   assign ss_axi_mm[c].awqos    = '0;
++`endif
+    assign ss_axi_mm[c].awuser   = afu_mem_if[c].awuser;
+    // Write data channel
+    assign afu_mem_if[c].wready  = ss_axi_mm[c].wready;
+@@ -330,6 +334,10 @@
+    assign ss_axi_mm[c].arlock   = afu_mem_if[c].arlock;
+    assign ss_axi_mm[c].arcache  = afu_mem_if[c].arcache;
+    assign ss_axi_mm[c].arprot   = afu_mem_if[c].arprot;
++`ifdef IFC_MEM_SS_I_AXI_MM_IF_WIDTH_ARQOS
++   // Match the write-channel default; do not forward undriven AFU QoS.
++   assign ss_axi_mm[c].arqos    = '0;
++`endif
+    assign ss_axi_mm[c].aruser   = afu_mem_if[c].aruser;
+    // Read response channel
+    assign ss_axi_mm[c].rready   = afu_mem_if[c].rready;
+--- a/ofs-agx7-pcie-attach/syn/board/ia840f/source_manifest.json
++++ b/ofs-agx7-pcie-attach/syn/board/ia840f/source_manifest.json
+@@ -438,8 +438,9 @@
+     },
+     {
+       "path": "syn/board/ia840f/setup/emif_loc.tcl",
+-      "sha256": "44fdb76902f22b83df265da656f531fca9d5abe61a74c696190b5465c0da579d",
+-      "change": "only channels 0/1; split refclk interface; RDIMM to group_1[0]; scalar alert_n",
++      "sha256": "a48a84b89fd6c5d5fd36c87cfe5c7d03264f3dea08ea6a447151351a21b523c3",
++      "prior_sha256": "44fdb76902f22b83df265da656f531fca9d5abe61a74c696190b5465c0da579d",
++      "change": "Work04 generated single-group names: RDIMM index1 and scalar discrete CS_N; all 241 physical coordinates retained; see qualification/fim-integration-05/report.md",
+       "source": "/home/joe/Projects/Thesis/AHLS/new_bsp/old_bsp/ia-840/IOFS_BUILD_ROOT/ofs-ia840f/syn/setup/emif_loc.tcl",
+       "source_sha256": "606feee0a053afa1cab1e397df963b516b0c8a416a55472e3f138e07a6171bae"
+     },
+--- a/docs/feature-matrix.md
++++ b/docs/feature-matrix.md
+@@ -2,12 +2,12 @@
+ 
+ ## Active AHLS / OFS / OPAE source project
+ 
+-**Source-only; not build-ready.** The explicit AHLS target correction governs the active implementation; the earlier standard/USM ASP work below remains reference-only. Requested Quartus Pro **26.1.1** is unchanged. Pinned donors are not a vendor-qualified combined release. See [scope](ahls-scope.md), [source lock](../sources.lock.json) and [integration status](vendor-integration-status.md).
++**Generated candidate; not build-ready.** Work04 IP/RTL and headers executed successfully (not FIM synthesis). [FIM integration 05](../qualification/fim-integration-05/report.md) corrects the proven DDR pin-target/CS_N/QoS source defects with bounded static checks. DDR simulation is **SKIPPED BY USER**, not passed and not a compile prerequisite. Compile/fit/timing and hardware qualification remain unperformed. The explicit AHLS target correction governs the active implementation; the earlier standard/USM ASP work below remains reference-only. Requested Quartus Pro **26.1.1** is unchanged. Pinned donors are not a vendor-qualified combined release. See [scope](ahls-scope.md), [source lock](../sources.lock.json) and [integration status](vendor-integration-status.md).
+ 
+ | Function | Prepared source / reuse | Applicability | Remaining boundary |
+ |---|---|---|---|
+ | Device and pins | Vendor AGFB027R25A2E2V board-local constraints retained | Shared FIM | Generated-interface, electrical and timing qualification |
+-| DDR4 | Vendor discrete DDR4 and RDIMM topology; board-local modern `mem_ss` and two model source presets | Shared FIM; PIM local memory | [Source mapping review complete](memory-port-source-map.md); physical grouping remains unresolved, so group-specific pin names are proposals. Derived model settings and generated interfaces remain open. [CSR review](memory-csr-source-review.md) establishes the existing outer router; enabled subsystem/MSA register and clock/reset semantics remain unproven. Internal controller-MMR routes are outside the outer aperture, not demonstrated direct host access |
++| DDR4 | Vendor discrete DDR4 and RDIMM topology; board-local modern `mem_ss` and two model source presets | Shared FIM; PIM local memory | Work04 emits one two-element physical group: discrete[0], RDIMM[1], each configured 16 GiB x64/no ECC. Integration05 corrects 118 stale RDIMM target names and scalar CS_N while preserving all 241 coordinates; guarded AWQOS/ARQOS zero defaults added. Static target checks pass; Quartus elaboration/fit remains pending. CSR/PMON disabled in emitted wrapper; status/DFH fallback applies. Calibration association and PIM USER semantics remain unqualified; no remap. DDR simulation SKIPPED BY USER |
+ | PCIe | P-Tile Gen4 x16; vendor identities, PF0VF0 AFU, PF1 BMC; installed-source-backed PF1 BAR2 type/width 28 added, BAR0 disabled and BAR4 width 14 retained | Shared FIM | Child-IP acceptance, generated capability/interface and toolchain qualification; unconditional gate retained |
+ | BMC | Actual vendor SPI/mailbox/arbitration implementation; modern OFS CDC/TX skid; explicit CSR clock/reset and unused IRQ-cause tie-off | Shared management | [Completed source review](bmc-flr-source-review.md) found no vendor/OFS-proven PF1 drain/cancellation fix; RTL unchanged. Shared-reset safety, legacy IP, unsupported SPI windows and MSI-X transport remain open |
+ | PIM / PR | Pinned OFS PIM and board source integration | AHLS AFU infrastructure | Fresh matching generated PIM/PR artifacts; no legacy QDB reuse |
+@@ -20,7 +20,7 @@
+ 
+ Evidence: [preset derivation](vendor-derived-presets.md), [resolved subsystem BAR2 trace](pcie-bar2-source-trace.md), [BMC integration](vendor-derived-bmc.md), [AHLS source binding](vendor-derived-ahls-binding.md), and [FIM manifest](../ofs-agx7-pcie-attach/syn/board/ia840f/source_manifest.json). The memory and BMC source reviews are complete; their unresolved interface requirements remain open and are not qualification claims.
+ 
+-AHLS documentation names Quartus Pro 26.1 for Agilex 7; that does not qualify the exact 26.1.1 + pinned OFS + BittWare IP combination. Historical oneAPI version constraints below are not active AHLS acceptance criteria. No compiled, simulated, timing or hardware validation is claimed.
++AHLS documentation names Quartus Pro 26.1 for Agilex 7; that does not qualify the exact 26.1.1 + pinned OFS + BittWare IP combination. Historical oneAPI version constraints below are not active AHLS acceptance criteria. No compiled FIM, DDR-simulation, timing or hardware validation is claimed.
+ 
+ ## Historical standard / USM ASP reference inventory
+ 
+@@ -56,4 +56,4 @@
+ 
+ Requested **Quartus 26.1.1 remains unchanged**. It is outside FPGA-capable oneAPI 2025.0's documented range **22.3–24.2**, while the newest FIM names **25.1**. Integrated FPGA compiler support was removed in oneAPI 2025.1; newer generic oneAPI is not an assumed fix. This establishes a support gap, not proven impossibility.
+ 
+-Only source preparation/review and static consistency are established. No configure/setup, generation, compilation, simulation, executable tests, workstation operations, installation, programming, commits or pushes. No functional, performance, utilization or timing-closure claim.
++Current execution evidence supersedes the original source-only status: Work04 setup/IP generation/header emission completed. Integration05 source repairs pass bounded static checks. No FIM synthesis/fit/timing or hardware acceptance is established. DDR simulation is SKIPPED BY USER; historical failed simulator experiments are preserved, not reclassified as passes. No commits or pushes.

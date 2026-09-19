@@ -1,0 +1,104 @@
+Static-only inspection: vendor executable was NOT executed.
+Input: /opt/intel/oneapi/compiler/2025.0/opt/oclfpga/host/linux64/bin/aocl-boardspec
+SHA256: c5c09a0460e1cb09e512a37e19ca6948f6cf142337b42fa8356d0b50d8623f0c
+ELF .rodata VMA/file offset 0x3cd7b: b'hostpipe'
+ELF .rodata VMA/file offset 0x3c83e: b'true'
+ELF .rodata VMA/file offset 0x3cae4: b'false'
+ELF .rodata VMA/file offset 0x3e738: b"Unrecognized hostpipe setting in Avalon interface '"
+ELF .rodata VMA/file offset 0x3cccc: b"'."
+ELF .rodata VMA/file offset 0x3e7f8: b"'; valid values are 'true' and 'false'."
+
+$ objdump -d --start-address=0x183fa --stop-address=0x18420 /opt/intel/oneapi/compiler/2025.0/opt/oclfpga/host/linux64/bin/aocl-boardspec
+
+/opt/intel/oneapi/compiler/2025.0/opt/oclfpga/host/linux64/bin/aocl-boardspec:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+00000000000183fa <_ZNKSt5ctypeIcE8do_widenEc@@Base+0xe3aa>:
+   183fa:	48 8d 15 7a 49 02 00 	lea    0x2497a(%rip),%rdx        # 3cd7b <_ZNKSt5ctypeIcE8do_widenEc@@Base+0x32d2b>
+   18401:	45 31 c9             	xor    %r9d,%r9d
+   18404:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+   1840a:	4c 89 e6             	mov    %r12,%rsi
+   1840d:	48 89 df             	mov    %rbx,%rdi
+   18410:	4c 89 f9             	mov    %r15,%rcx
+   18413:	e8 e8 4d 00 00       	call   1d200 <_ZNKSt5ctypeIcE8do_widenEc@@Base+0x131b0>
+   18418:	84 c0                	test   %al,%al
+   1841a:	0f 85 d0 04 00 00    	jne    188f0 <_ZNKSt5ctypeIcE8do_widenEc@@Base+0xe8a0>
+
+$ objdump -d --start-address=0x188f0 --stop-address=0x18914 /opt/intel/oneapi/compiler/2025.0/opt/oclfpga/host/linux64/bin/aocl-boardspec
+
+/opt/intel/oneapi/compiler/2025.0/opt/oclfpga/host/linux64/bin/aocl-boardspec:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+00000000000188f0 <_ZNKSt5ctypeIcE8do_widenEc@@Base+0xe8a0>:
+   188f0:	48 8d 35 47 3f 02 00 	lea    0x23f47(%rip),%rsi        # 3c83e <_ZNKSt5ctypeIcE8do_widenEc@@Base+0x327ee>
+   188f7:	4c 89 ff             	mov    %r15,%rdi
+   188fa:	e8 31 e1 fe ff       	call   6a30 <_ZNKSs7compareEPKc@plt>
+   188ff:	85 c0                	test   %eax,%eax
+   18901:	0f 85 16 05 00 00    	jne    18e1d <_ZNKSt5ctypeIcE8do_widenEc@@Base+0xedcd>
+   18907:	48 8b 43 60          	mov    0x60(%rbx),%rax
+   1890b:	c6 40 78 01          	movb   $0x1,0x78(%rax)
+   1890f:	e9 0c fb ff ff       	jmp    18420 <_ZNKSt5ctypeIcE8do_widenEc@@Base+0xe3d0>
+
+$ objdump -d --start-address=0x18e1d --stop-address=0x18e41 /opt/intel/oneapi/compiler/2025.0/opt/oclfpga/host/linux64/bin/aocl-boardspec
+
+/opt/intel/oneapi/compiler/2025.0/opt/oclfpga/host/linux64/bin/aocl-boardspec:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000018e1d <_ZNKSt5ctypeIcE8do_widenEc@@Base+0xedcd>:
+   18e1d:	48 8d 35 c0 3c 02 00 	lea    0x23cc0(%rip),%rsi        # 3cae4 <_ZNKSt5ctypeIcE8do_widenEc@@Base+0x32a94>
+   18e24:	4c 89 ff             	mov    %r15,%rdi
+   18e27:	e8 04 dc fe ff       	call   6a30 <_ZNKSs7compareEPKc@plt>
+   18e2c:	85 c0                	test   %eax,%eax
+   18e2e:	0f 85 38 02 00 00    	jne    1906c <_ZNKSt5ctypeIcE8do_widenEc@@Base+0xf01c>
+   18e34:	48 8b 43 60          	mov    0x60(%rbx),%rax
+   18e38:	c6 40 78 00          	movb   $0x0,0x78(%rax)
+   18e3c:	e9 df f5 ff ff       	jmp    18420 <_ZNKSt5ctypeIcE8do_widenEc@@Base+0xe3d0>
+
+$ objdump -d --start-address=0x1906c --stop-address=0x190f6 /opt/intel/oneapi/compiler/2025.0/opt/oclfpga/host/linux64/bin/aocl-boardspec
+
+/opt/intel/oneapi/compiler/2025.0/opt/oclfpga/host/linux64/bin/aocl-boardspec:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+000000000001906c <_ZNKSt5ctypeIcE8do_widenEc@@Base+0xf01c>:
+   1906c:	be 18 00 00 00       	mov    $0x18,%esi
+   19071:	4c 89 f7             	mov    %r14,%rdi
+   19074:	e8 f7 db fe ff       	call   6c70 <_ZNSt18basic_stringstreamIcSt11char_traitsIcESaIcEEC1ESt13_Ios_Openmode@plt>
+   19079:	49 8d 7e 10          	lea    0x10(%r14),%rdi
+   1907d:	48 8d 35 b4 56 02 00 	lea    0x256b4(%rip),%rsi        # 3e738 <_ZNKSt5ctypeIcE8do_widenEc@@Base+0x346e8>
+   19084:	ba 33 00 00 00       	mov    $0x33,%edx
+   19089:	e8 f2 dc fe ff       	call   6d80 <_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l@plt>
+   1908e:	48 8b b4 24 98 00 00 	mov    0x98(%rsp),%rsi
+   19095:	00 
+   19096:	49 8d 7e 10          	lea    0x10(%r14),%rdi
+   1909a:	48 8b 56 e8          	mov    -0x18(%rsi),%rdx
+   1909e:	e8 dd dc fe ff       	call   6d80 <_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l@plt>
+   190a3:	48 8d 35 22 3c 02 00 	lea    0x23c22(%rip),%rsi        # 3cccc <_ZNKSt5ctypeIcE8do_widenEc@@Base+0x32c7c>
+   190aa:	48 89 c7             	mov    %rax,%rdi
+   190ad:	e8 1e dc fe ff       	call   6cd0 <_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@plt>
+   190b2:	4c 8d bc 24 e0 00 00 	lea    0xe0(%rsp),%r15
+   190b9:	00 
+   190ba:	49 8d 76 18          	lea    0x18(%r14),%rsi
+   190be:	4c 89 ff             	mov    %r15,%rdi
+   190c1:	e8 3a db fe ff       	call   6c00 <_ZNKSt15basic_stringbufIcSt11char_traitsIcESaIcEE3strEv@plt>
+   190c6:	48 8d ac 24 e8 00 00 	lea    0xe8(%rsp),%rbp
+   190cd:	00 
+   190ce:	48 8d 94 24 d0 00 00 	lea    0xd0(%rsp),%rdx
+   190d5:	00 
+   190d6:	48 8d 35 9e 3c 02 00 	lea    0x23c9e(%rip),%rsi        # 3cd7b <_ZNKSt5ctypeIcE8do_widenEc@@Base+0x32d2b>
+   190dd:	48 89 ef             	mov    %rbp,%rdi
+   190e0:	e8 8b dc fe ff       	call   6d70 <_ZNSsC1EPKcRKSaIcE@plt>
+   190e5:	4c 89 f9             	mov    %r15,%rcx
+   190e8:	48 89 ea             	mov    %rbp,%rdx
+   190eb:	4c 89 e6             	mov    %r12,%rsi
+   190ee:	48 89 df             	mov    %rbx,%rdi
+   190f1:	e8 ea 83 01 00       	call   314e0 <_ZNKSt5ctypeIcE8do_widenEc@@Base+0x27490>
+
+NOTE: objdump symbol-relative labels refer to a nearby remaining dynamic symbol; these are NOT recovered parser function names. The hostpipe error path appends "'." at 0x3cccc, NOT the nearby valid-values message.
