@@ -1,0 +1,427 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Shell
+    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+    Info: Copyright (C) 2026  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Fri Sep 18 23:56:08 2026
+    Info: System process ID: 150522
+Info: Command: quartus_sh -t metadata.tcl
+=== get_assignment_name_info ===
+---------------------------------------------------------------------------
+
+Usage: get_assignment_name_info [-h] [-help] [-long_help] <name>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        <name>: Assignment name
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::project 7.0
+
+------------
+Description:
+------------
+
+Returns information for the specified assignment name.
+
+--------------
+Example Usage:
+--------------
+
+    ## View information for all assignment names
+foreach name [get_all_assignment_names] {
+    puts [get_assignment_name_info $name]
+}
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_OK   	0   	INFO: Assignment <string> is not supported in this edition of the Quartus Prime software.
+TCL_ERROR	1   	ERROR: Illegal assignment name: <string>. Specify a legal assignment name. To view the list of legal assignment names, run "get_all_assignment_names".
+
+---------------------------------------------------------------------------
+
+=== get_all_assignment_names ===
+---------------------------------------------------------------------------
+
+Usage: get_all_assignment_names [-h] [-help] [-long_help] [-family <family>] [-module <all|ip_generate|map|tlg|fit|tan|asm|eda|drc|power|generic>] [-type <all|global|instance>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -family <family>: Option to filter based on the specified device family. Defaults to all families.
+        -module <all|ip_generate|map|tlg|fit|tan|asm|eda|drc|power|generic>: Option to filter based on the specified flow module. Defaults to all.
+        -type <all|global|instance>: Option to filter based on the specified assignment type. Defaults to all.
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::project 7.0
+
+------------
+Description:
+------------
+
+Returns a filtered output list of all available, matching
+assignment names.
+
+The module option takes one of the following values:
+
+Module           Description
+--------         -------------------------------------
+ip_generate      IP Generation assignment names
+tlg              Support Logic Generation assignment names 
+map              Analysis & Synthesis assignment names
+fit              Fitter assignment names
+asm              Assembler assignment names
+eda              EDA Netlist Writer assignment names
+drc              Design Assistant assignment names
+power            Power Analyzer assignment names
+generic          Other assignment names not included in any 
+                 of the above flow modules
+all              All assignment names
+
+--------------
+Example Usage:
+--------------
+
+## Print out all available global assignments
+foreach i [get_all_assignment_names -type global] {
+    puts $i
+}
+
+## Print out all available global assignments
+## for the Stratix family
+foreach i [get_all_assignment_names -type global -family Stratix] {
+    puts $i
+}
+
+## Print out all available global assignments
+## for the Stratix family required
+## by the Analysis & Synthesis module
+foreach i [get_all_assignment_names -type global -family Stratix -module map] {
+    puts $i
+}
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_OK   	0   	INFO: Assignment <string> is not supported in this edition of the Quartus Prime software.
+TCL_ERROR	1   	ERROR: Illegal flow module: <string>.  Specify "<string>", "<string>", "<string>", "<string>", "<string>", "<string>", "<string>", or "<string>".
+TCL_ERROR	1   	ERROR: Illegal type: <string>.  Specify "<string>", "<string>", or "<string>".
+TCL_ERROR	1   	ERROR: Illegal device family: <string>.  Specify a legal device family.
+
+---------------------------------------------------------------------------
+
+=== test_assignment_trait ===
+---------------------------------------------------------------------------
+
+Usage: test_assignment_trait [-h] [-help] [-long_help] -name <name> -trait <trait_name>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -name <name>: Assignment name
+        -trait <trait_name>: Trait name
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::project 7.0
+
+------------
+Description:
+------------
+
+Checks whether the assignment name has the specified trait.
+Returns 1, if the assignment name has the trait;
+returns 0, otherwise.
+
+--------------
+Example Usage:
+--------------
+
+## Test if the assignment name is case-sensitive
+if {[test_assignment_trait -name VHDL_FILE -trait CASE_SENSITIVE]} {
+	puts "VHDL_FILE assignment is case-sensitive."
+} else {
+	puts "VHDL_FILE assignment is not case-sensitive."
+}
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_OK   	0   	INFO: Assignment <string> is not supported in this edition of the Quartus Prime software.
+TCL_ERROR	1   	ERROR: Value "<string>" for the "-<string>" option is illegal. Specify a legal value.
+TCL_ERROR	1   	ERROR: Options cannot be specified together: -<string>, -<string> and -<string>. Specify only one or two of the three options.
+TCL_ERROR	1   	ERROR: Ignored assignment: <string>. The assignment is no longer supported.
+TCL_ERROR	1   	ERROR: Illegal assignment name: <string>. Specify a legal assignment name. To view the list of legal assignment names, run "get_all_assignment_names".
+TCL_ERROR	1   	ERROR: Illegal trait: <string>. Specify a legal trait name.
+
+---------------------------------------------------------------------------
+
+=== get_part_info ===
+---------------------------------------------------------------------------
+
+Usage: get_part_info [-h] [-help] [-long_help] [-default_voltage] [-device] [-device_group] [-family] [-family_variant] [-fast_grade_revision] [-grade_revision] [-hssi_speed_grade] [-iobank_revision] [-package] [-pdn_model_status] [-pin_count] [-pof_id] [-power_model] [-power_model_status] [-rohs_grade] [-sip_tile] [-speed_grade] [-subdevice_id_code] [-subdevice_id_mask] [-temperature_grade] <part>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -default_voltage: Option to get the default core voltage (such as 0.9V or 1.1V)
+        -device: Option to get device name (such as EP1S25 or EP1S80)
+        -device_group: Option to get the device_group
+        -family: Option to get family name (such as Stratix or Cyclone)
+        -family_variant: Option to get family variant (such as Base, E or GX)
+        -fast_grade_revision: Option to get the fast_grade_revision
+        -grade_revision: Option to get the grade_revision
+        -hssi_speed_grade: Option to get the hssi speed grade
+        -iobank_revision: Option to get the iobank_revision
+        -package: Option to get package name (such as FBGA or BGA)
+        -pdn_model_status: Option to get the power distribution network (PDN) model status (such as ADVANCE, PRELIMINARY, or FINAL)
+        -pin_count: Option to get total number of pins in the package
+        -pof_id: Option to get the pof_id
+        -power_model: Option to get the power model (such as STANDARD or LOW)
+        -power_model_status: Option to get the power model status (such as PRELIMINARY or FINAL)
+        -rohs_grade: Option to get the ROHS grade (ROHS5, ROHS6, Leaded)
+        -sip_tile: Option to get SiP tile (such as L-tile, H-tile, E-tile)
+        -speed_grade: Option to get speed grade (such as 5, 6, or 7)
+        -subdevice_id_code: Option to get the subdevice_id_code
+        -subdevice_id_mask: Option to get the subdevice_id_mask
+        -temperature_grade: Option to get temperature grade of the package (such as COMMERCIAL or INDUSTRIAL)
+        <part>: Part name
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::device 1.0
+
+------------
+Description:
+------------
+
+Returns part characteristics for the specified part.
+
+If you use multiple options, the command returns a list 
+in the following order:
+    <family> <device> <package> <pin_count> <speed grade> <temperature_grade> <family_variant> <power_model_status> <hssi_speed_grade> <power_model> <rohs_grade>
+
+--------------
+Example Usage:
+--------------
+
+tcl> get_part_info -family EP1S25F780C5
+tcl> Stratix
+
+tcl> get_part_info -family -device EP1S25F780C5
+tcl> Stratix EP1S25
+
+tcl> get_part_info -device -package -pin_count -speed_grade EP1S25F780C5
+tcl> EP1S25 FBGA 780 5
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Illegal die location name: <string>. Specify a legal die location name.
+TCL_ERROR	1   	ERROR: Illegal resource name: <string>. Specify a legal resource name.
+
+---------------------------------------------------------------------------
+
+=== project_new ===
+---------------------------------------------------------------------------
+
+Usage: project_new [-h] [-help] [-long_help] [-family <family>] [-overwrite] [-part <part>] [-revision <revision_name>] <project_name>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -family <family>: Family name
+        -overwrite: Option to overwrite existing project and revision
+        -part <part>: Part name
+        -revision <revision_name>: Revision name
+        <project_name>: Project name
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::project 7.0
+
+------------
+Description:
+------------
+
+Creates and opens a new project with the specified project name.
+
+If the "-revision" option is not specified, the project name 
+is used to create the revision.
+
+Assignments created or modified by using this Tcl command are 
+not saved to the Quartus Prime Settings File (.qsf) unless you
+explicitly call one of the following two Tcl commands:
+
+1) export_assignments
+2) project_close (unless "-dont_export_assignments" is specified)
+
+These two Tcl commands reside in the ::quartus::project Tcl 
+package. You must save assignment changes before you run 
+Quartus Prime command-line executables. Note, however, that 
+the Tcl commands "execute_flow" and "execute_module" (part 
+of the ::quartus::flow Tcl package) automatically call 
+"export_assignments" before they run command-line executables.
+
+--------------
+Example Usage:
+--------------
+
+## Create project "chiptrip" and revision "chiptrip"
+project_new chiptrip
+
+## Create project "chiptrip" and revision "auto_max"
+project_new -revision auto_max chiptrip
+
+## Create project "chiptrip" and revision "chiptrip"
+## Overwrite any Quartus Prime Settings File (.qsf) if it exists
+project_new chiptrip -overwrite
+
+## Create project "chiptrip" and revision "chiptrip"
+## Set the FAMILY assignment to Stratix
+project_new chiptrip -family Stratix
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: The "-<string>" option must also be used when you use the "-<string>" option. Specify both options.
+TCL_ERROR	1   	ERROR: Can't create project: <string>. Specify a legal project name.
+TCL_ERROR	1   	ERROR: Can't create revision: <string>. Specify a legal revision name using the "-<string>" option.
+TCL_ERROR	1   	ERROR: Can't create revision: <string>. Specify a legal revision name.
+TCL_ERROR	1   	ERROR: Can't create settings files for project: <string>. Make sure the .psf, .csf, and .ssf files are writeable.
+TCL_ERROR	1   	ERROR: Can't open project: <string>
+TCL_ERROR	1   	ERROR: Can't remove Quartus Prime Settings File: <string>. Make sure the file is writeable.
+TCL_ERROR	1   	ERROR: Can't run Tcl command while a process is in progress: <string>. To run the command, stop the compilation or simulation; or wait for the compilation or simulation to complete.
+TCL_ERROR	1   	ERROR: Found two options: -<string> and -<string>. Choose one of the options.
+TCL_ERROR	1   	ERROR: Project already exists: <string>. Specify a different project name or use the "-overwrite" option.
+
+---------------------------------------------------------------------------
+
+=== get_global_assignment ===
+---------------------------------------------------------------------------
+
+Usage: get_global_assignment [-h] [-help] [-long_help] [-entity <entity_name>] [-fall] [-front] -name <name> [-rise] [-section_id <section id>] [-tag <data>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -entity <entity_name>: Entity to which assignment belongs
+        -fall: Option applies to falling edge
+        -front: Option to return the first assignment if there is more than one assignment found
+        -name <name>: Assignment name
+        -rise: Option applies to rising edge
+        -section_id <section id>: Section id
+        -tag <data>: Option to tag data to this assignment
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::project 7.0
+
+------------
+Description:
+------------
+
+Returns the value of the global assignment.
+
+The "-name" option is not case sensitive.
+
+For entity-specific assignments, use the "-entity"
+option to retrieve the assignment from the specified
+entity. If the "-entity" option is not specified, the
+value for the FOCUS_ENTITY_NAME assignment is used. If
+the FOCUS_ENTITY_NAME value is not found, the revision
+name is used.		
+
+--------------
+Example Usage:
+--------------
+
+## Get the value of the FAMILY assignment
+get_global_assignment -name FAMILY
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_OK   	0   	INFO: Assignment <string> is not supported in this edition of the Quartus Prime software.
+TCL_ERROR	1   	ERROR: Assignment is not a global assignment: <string> --  it is an instance assignment. Specify a global assignment name or use the instance assignment commands.
+TCL_ERROR	1   	ERROR: Can't find file(s) associated with assignment. Specify a different assignment name.
+TCL_ERROR	1   	ERROR: Can't find section information for assignment. Specify a different assignment name.
+TCL_ERROR	1   	ERROR: Can't find active revision name. Make sure there is an open, active revision name.
+TCL_ERROR	1   	ERROR: Entity does not exist or uses illegal name characters: <string>. Specify a legal entity name.
+TCL_ERROR	1   	ERROR: Value "<string>" for the "-<string>" option is illegal. Specify a legal value.
+TCL_ERROR	1   	ERROR: Option "-<string>" for "<string>" assignment is illegal. Specify a legal option or remove the option.
+TCL_ERROR	1   	ERROR: Options cannot be specified together: -<string>, -<string> and -<string>. Specify only one or two of the three options.
+TCL_ERROR	1   	ERROR: Missing destination for assignment. Specify the destination for the assignment.
+TCL_ERROR	1   	ERROR: You must open a project before you can use this command.
+TCL_ERROR	1   	ERROR: Ignored assignment: <string>. The assignment is no longer supported.
+TCL_ERROR	1   	ERROR: Found two options: -<string> and -<string>. Choose one of the options.
+TCL_ERROR	1   	ERROR: Illegal assignment name: <string>. Specify a legal assignment name. To view the list of legal assignment names, run "get_all_assignment_names".
+TCL_ERROR	1   	ERROR: An unknown error has occured.
+TCL_ERROR	1   	ERROR: Assignment <string> has multiple values. Use the "<string>" command to get all values or use the "<string> -front" command to get the first value.
+
+---------------------------------------------------------------------------
+
+Info (23030): Evaluation of Tcl script metadata.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 1360 megabytes
+    Info: Processing ended: Fri Sep 18 23:56:09 2026
+    Info: Elapsed time: 00:00:01
+    Info: System process ID: 150522

@@ -1,0 +1,50 @@
+{
+  "package_files": 34,
+  "package_manifest_sha256": "6b243c6ed22c917a0550aba0dc149b277141a420395569c0daa5f2b7d53aa5f4",
+  "verified": true,
+  "work_absent": true,
+  "run_absent": true,
+  "review_absent": true,
+  "tests": [
+    {
+      "label": "pure-python-tests",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "test_candidate.py"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/qualification/msa-bank-spreading-integration-01/generation-candidate",
+      "returncode": 0,
+      "log_sha256": "d2c7c060047ada91215b43b4022a2c4a3e64267d467657a562df8f88b6ac8615",
+      "tail": "test_all_generated_baseline_files_compared (__main__.Comparisons) ... ok\ntest_copy_drift_rejected (__main__.Comparisons) ... ok\ntest_exact_two_changes (__main__.Comparisons) ... ok\ntest_full_wrapper_count_and_connections (__main__.Comparisons) ... ok\ntest_hidden_or_interface_drift_rejected (__main__.Comparisons) ... ok\ntest_missing_parameter_rejected (__main__.Comparisons) ... ok\ntest_original_eights_rejected (__main__.Comparisons) ... ok\ntest_changed_manifest_rejected (__main__.EarlyGuard) ... ok\ntest_false_review_rejected_before_creation (__main__.EarlyGuard) ... ok\ntest_missing_review_has_no_side_effects (__main__.EarlyGuard) ... ok\ntest_native_failure_and_exclusive_rerun_with_inert_child (__main__.EarlyGuard) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 3.127s\n\nOK\n"
+    },
+    {
+      "label": "live-dependency-verification",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "-c",
+        "import run_generation as r; b=r.check_source_and_dependencies(); print(\"LIVE_BINDINGS_VERIFIED\",len(b[\"dependencies\"]))"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/qualification/msa-bank-spreading-integration-01/generation-candidate",
+      "returncode": 0,
+      "log_sha256": "558b414e2c36a0360c7d5ee0c0aa422508794da264249e4c7ecb417f49fbd264",
+      "tail": "LIVE_BINDINGS_VERIFIED 419\n"
+    },
+    {
+      "label": "missing-review-rejection",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "run_generation.py",
+        "--preflight"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/qualification/msa-bank-spreading-integration-01/generation-candidate",
+      "returncode": 1,
+      "log_sha256": "a8810951de08f4b775fd361174a2b6baff4c65fff42dd17f77e9ae7fbc1b5b05",
+      "tail": "Traceback (most recent call last):\n  File \"/home/uwb_student00/ahls/new_BSP/qualification/msa-bank-spreading-integration-01/generation-candidate/run_generation.py\", line 152, in <module>\n    preflight()\n  File \"/home/uwb_student00/ahls/new_BSP/qualification/msa-bank-spreading-integration-01/generation-candidate/run_generation.py\", line 66, in preflight\n    check_package()\n  File \"/home/uwb_student00/ahls/new_BSP/qualification/msa-bank-spreading-integration-01/generation-candidate/run_generation.py\", line 42, in check_package\n    review = json.loads(REVIEW.read_text())\n  File \"/usr/lib64/python3.9/pathlib.py\", line 1194, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n  File \"/usr/lib64/python3.9/pathlib.py\", line 1180, in open\n    return io.open(self, mode, buffering, encoding, errors, newline,\n  File \"/usr/lib64/python3.9/pathlib.py\", line 1038, in _opener\n    return self._accessor.open(self, flags, mode)\nFileNotFoundError: [Errno 2] No such file or directory: '/home/uwb_student00/ahls/new_BSP/qualification/msa-bank-spreading-integration-01/generation-candidate/consumed-review.json'\n"
+    }
+  ],
+  "vendor_launched": false,
+  "execution_ready": false
+}

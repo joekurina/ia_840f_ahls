@@ -1,0 +1,15 @@
+	component mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl is
+		port (
+			clk                   : in  std_logic := 'X'; -- clk
+			reset_n               : in  std_logic := 'X'; -- pll_locked
+			app_ss_rst_req        : in  std_logic := 'X'; -- app_ss_rst_req
+			ss_app_rst_rdy        : out std_logic;        -- ss_app_rst_rdy
+			app_ss_cold_rst_n     : in  std_logic := 'X'; -- app_ss_cold_rst_n
+			ss_app_cold_rst_ack_n : out std_logic;        -- ss_app_cold_rst_ack_n
+			local_reset_req_0     : out std_logic;        -- local_reset_req
+			local_reset_done_0    : in  std_logic := 'X'; -- local_reset_done
+			local_reset_req_1     : out std_logic;        -- local_reset_req
+			local_reset_done_1    : in  std_logic := 'X'  -- local_reset_done
+		);
+	end component mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl;
+

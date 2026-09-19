@@ -1,0 +1,260 @@
+--- generation-candidate-02/REVIEW.md
++++ generation-candidate-03/REVIEW.md
+@@ -1,4 +1,6 @@
+ # Fresh memory-generation successor — execution review required
++
++**Candidate03 is local-only and requires new specification then quality review.** Candidate02's review is historical MUST-FIX evidence, not approval. See `SUCCESSOR.md` for S1, local tests, and retained WORK-path provenance. Tool hashes/help and live SOURCE/dependency checks below are captured predecessor evidence, not a new remote observation; they remain exact bindings that the actual preflight must reverify. No remote candidate03 staging has occurred.
+ 
+ **Not authorized or launched. No full compile.** The three-file correction is already integrated and verified; this package is a separate, unconsumed generation proposal. No `consumed-review.json`, run claim or WORK directory is supplied. All execution, timing, constraint and functional readiness remains false. Work11 completed with failed timing; its records and source settings remain preserved.
+ 
+@@ -19,7 +21,7 @@
+ Commands inside a fresh window of owned tmux session `ia840f_mailbox_monitored_01` on `uwb_student00@100.101.227.97`:
+ 
+ ```sh
+-cd /home/uwb_student00/ahls/new_BSP/qualification/msa-bank-spreading-integration-01/generation-candidate-02
++cd /home/uwb_student00/ahls/new_BSP/qualification/msa-bank-spreading-integration-01/generation-candidate-03
+ env -u PYTHONOPTIMIZE PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -B run_generation.py --preflight
+ env -u PYTHONOPTIMIZE PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -B run_generation.py
+ ```
+@@ -31,7 +33,7 @@
+ /opt/altera/26.1.1/quartus/sopc_builder/bin/qsys-script
+   --qpf=none
+   --search-path=/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ipss/**/*,$
+-  --script=/home/uwb_student00/ahls/new_BSP/qualification/msa-bank-spreading-integration-01/generation-candidate-02/save_reload.tcl
++  --script=/home/uwb_student00/ahls/new_BSP/qualification/msa-bank-spreading-integration-01/generation-candidate-03/save_reload.tcl
+ 
+ /opt/altera/26.1.1/quartus/sopc_builder/bin/qsys-generate
+   /home/uwb_student00/ahls/new_BSP/work_ia840f_msa_generation_01/mem_ss.ip
+--- generation-candidate-02/SUCCESSOR.md
++++ generation-candidate-03/SUCCESSOR.md
+@@ -1,3 +1,9 @@
+-# Candidate 02
++# Candidate 03 — S1 correction; independent re-review required
+ 
+-Supersedes the preserved unconsumed generation-candidate package. Final self-check found the first runner persisted a child failure correctly but would exit 1 rather than propagate the native child status. Candidate 02 adds a typed failure and main() propagation (including timeout124), with a focused regression. Native sequence, source/tool identities, baseline, strict comparisons and unused WORK path are unchanged. Package paths are mechanically retargeted. No vendor tool or authorization has been consumed. Independent execution review is required.
++Supersedes preserved candidate02 only for future review. Historical specification review `../generation-spec-review-02.md` (SHA256 `640ec6bace2de43f6af5d1c4fac52dec1ccb5eb1ae24539036a66132b460fd40`) found S1 and is not approval of either package.
++
++Only production behavior changed: timeout cleanup retains the unreaped session/group leader to reserve its identity, gives its owned group a full ten-second TERM grace independent of launcher exit, then sends KILL even if the launcher exited. Already-absent groups are harmless. A bounded ten-second post-KILL check distinguishes live members from zombies before reaping the launcher. Timeout still returns 124 and exclusively retains failed records, with timeout_group_terminated reporting cleanup outcome. An uninterruptible survivor is not claimed dead and cannot cause an unbounded wait. Signals target only the runner-created group; this is not an OS sandbox or a policy for descendants that escape the group.
++
++The original twelve tests are byte-identical; test_timeout.py adds real inert fork/TERM-resistance and absent-group race regressions. RED/GREEN commands, logs and retained fixture records are outside the package in `../generation-correction-03/`. No fixture vendor program is executed. Native command semantics, Tcl sequence, checker, SOURCE/PIM/dependencies, contract, readiness and original WORK path remain unchanged; package references alone are retargeted to candidate03. Captured `../generation-package02-result.json` verifies original WORK/run/review absence and vendor_launched=false at predecessor staging. No new remote check is claimed; actual preflight must again require WORK absent before use.
++
++Local-only correction: not staged remotely, no consumed review or run claim supplied, no source edit, authorization consumption, vendor launch, generation, compile, Query04, simulation, hardware, installation, permission change or commit. Next: independent focused specification review, then independent quality review; only after acceptance perform separately controlled transfer/live verification. All readiness remains false.
+--- generation-candidate-02/execution-binding.json
++++ generation-candidate-03/execution-binding.json
+@@ -2343,7 +2343,7 @@
+         "/opt/altera/26.1.1/quartus/sopc_builder/bin/qsys-script",
+         "--qpf=none",
+         "--search-path=/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ipss/**/*,$",
+-        "--script=/home/uwb_student00/ahls/new_BSP/qualification/msa-bank-spreading-integration-01/generation-candidate-02/save_reload.tcl"
++        "--script=/home/uwb_student00/ahls/new_BSP/qualification/msa-bank-spreading-integration-01/generation-candidate-03/save_reload.tcl"
+       ],
+       "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_msa_generation_01",
+       "timeout_seconds": 900
+--- generation-candidate-02/package-manifest.json
++++ generation-candidate-03/package-manifest.json
+@@ -1,6 +1,6 @@
+ {
+-  "REVIEW.md": "b938e63765f220aeac1a256c572cf6569a95555b437985c602b44dca034caf8f",
+-  "SUCCESSOR.md": "f3523485deecf83e4d24a95da0574db9daf6b6ec36697c90168b38837ac5e28d",
++  "REVIEW.md": "9d23ed4ac2d9b05c1f0eb93a6fd887f0fb944dbb6d022840ee7a615a421e7874",
++  "SUCCESSOR.md": "8b98896e06df270935a220f42b83c919412ed919618a988823edf59ccedb5670",
+   "baseline/mem_ss/mem_ss.sopcinfo": "7ce6bd890179f73a53810da926a44fa6fbc3a891f5c7b4c5b4c88b82e7e06ee3",
+   "baseline/mem_ss/mem_ss_mem_ss_501_qm5zaka/sim/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_msa_0/sim/mem_ss_mem_ss_501_qm5zaka_msa_0.v": "6c0994ccd32b2da2754f78a1782396dca91377ea984920d59f06cd977d34c017",
+   "baseline/mem_ss/mem_ss_mem_ss_501_qm5zaka/sim/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_msa_1/sim/mem_ss_mem_ss_501_qm5zaka_msa_1.v": "7bf6fed46e727915c2027986ded75d0e4190c337e878264fcae5a17ef290f660",
+@@ -28,9 +28,10 @@
+   "consumed-review.template.json": "43a1d507e5ed8995ca65e6172ee673bb7ef4ab007ffd95ee93033ecacd3490c8",
+   "evidence/qsys-generate-help.txt": "b1f6bbfddd3273f42da315fc5dbb34672fb69dfa310e73a2b7d724a6b15c39e5",
+   "evidence/qsys-script-help.txt": "9b59a08f65c2efcda08f2a8b6845189aeffdfc06600470424dfd302b40871494",
+-  "execution-binding.json": "ea4a8c93be003b034664896299a8e57198cfeb3ee88b65390d1148701a57d358",
++  "execution-binding.json": "b44267fd7185277a4d828f4e978df83fa19f3bd269cb3bbbfd85442dc315248f",
+   "extra-baseline-bindings.json": "887497b91e6cf21ffab9afe1a116870e619708462bd494ec18362121be28464a",
+-  "run_generation.py": "3f0b24983be2310f13d1ba2c8c6c6abe8263c14839d8165adfb46b4523f83445",
+-  "save_reload.tcl": "3ee08904a10ee69982e50e3405b0348a9f4aa5e1cfa51c2a530f0e90cf589d86",
+-  "test_candidate.py": "e6540653e33190b257ac20b99762e9bde487e8994c13b8598d9e2fbe19d28296"
+-}+  "run_generation.py": "4ab5a5e10a78afc2029e7aaf868b99553de173a581407a38f88718904b397e12",
++  "save_reload.tcl": "243e96b4a93b0eb3bde16d5d2959df9c7495e13c1d78f9e7e1286183d3cbfe98",
++  "test_candidate.py": "e6540653e33190b257ac20b99762e9bde487e8994c13b8598d9e2fbe19d28296",
++  "test_timeout.py": "886d0416a530c552305935a037e3d476e0461fb485c58a3be6e7afd0f4f6ba4d"
++}
+--- generation-candidate-02/run_generation.py
++++ generation-candidate-03/run_generation.py
+@@ -14,7 +14,7 @@
+ 
+ BASE = Path('/home/uwb_student00/ahls/new_BSP')
+ SOURCE = BASE / 'ofs-agx7-pcie-attach'
+-PACKAGE = BASE / 'qualification/msa-bank-spreading-integration-01/generation-candidate-02'
++PACKAGE = BASE / 'qualification/msa-bank-spreading-integration-01/generation-candidate-03'
+ WORK = BASE / 'work_ia840f_msa_generation_01'
+ RUN = PACKAGE / 'run'
+ REVIEW = PACKAGE / 'consumed-review.json'
+@@ -95,6 +95,39 @@
+     check_source_and_dependencies()
+ 
+ 
++def terminate_stage_group(child):
++    import signal
++
++    # start_new_session=True makes this unreaped child the PGID/session leader.
++    # Do not poll/wait/reap it before the final group signal: even if TERM exits
++    # the launcher, its PID stays reserved and cannot identify a recycled group.
++    pgid = child.pid
++    try: os.killpg(pgid, signal.SIGTERM)
++    except ProcessLookupError: pass
++    time.sleep(10)  # Full bounded TERM grace, independent of launcher exit.
++    try: os.killpg(pgid, signal.SIGKILL)
++    except ProcessLookupError: pass
++
++    # KILL delivery is asynchronous. Observe this group quiesce before returning;
++    # zombies are dead, not surviving writers. Keep the leader unreaped here too.
++    deadline = time.monotonic() + 10
++    while True:
++        live = False
++        for entry in Path('/proc').iterdir():
++            if not entry.name.isdigit(): continue
++            try: fields = (entry / 'stat').read_text().rsplit(')', 1)[1].split()
++            except (FileNotFoundError, ProcessLookupError): continue
++            if int(fields[2]) == pgid and fields[0] not in ('Z', 'X'):
++                live = True
++                break
++        if not live or time.monotonic() >= deadline: break
++        time.sleep(0.01)
++    # Do not turn an uninterruptible survivor into an unbounded wait or replace
++    # the original rc124. Record unsuccessful cleanup in the stage result.
++    if not live: child.wait()
++    return not live
++
++
+ def run():
+     binding = preflight()
+     RUN.mkdir()
+@@ -121,17 +154,13 @@
+             put(RUN / (stage['name'] + '-invocation.json'), invocation)
+             with (RUN / (stage['name'] + '.log')).open('xb') as log:
+                 child = subprocess.Popen(argv, cwd=WORK, env=env, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
++                timeout_evidence = {}
+                 try:
+                     rc = child.wait(timeout=stage['timeout_seconds'])
+                 except subprocess.TimeoutExpired:
+-                    import signal
+-                    os.killpg(child.pid, signal.SIGTERM)
+-                    try: child.wait(timeout=10)
+-                    except subprocess.TimeoutExpired:
+-                        os.killpg(child.pid, signal.SIGKILL)
+-                        child.wait()
++                    timeout_evidence['timeout_group_terminated'] = terminate_stage_group(child)
+                     rc = 124
+-            put(RUN / (stage['name'] + '-result.json'), {'returncode': rc, 'finished_unix': time.time()})
++            put(RUN / (stage['name'] + '-result.json'), dict(returncode=rc, finished_unix=time.time(), **timeout_evidence))
+             if rc != 0: raise NativeStageFailure(stage['name'], rc)
+             text = (RUN / (stage['name'] + '.log')).read_text(errors='replace')
+             import re
+--- generation-candidate-02/save_reload.tcl
++++ generation-candidate-03/save_reload.tcl
+@@ -1,5 +1,5 @@
+ # First command is an ancestry-bound execution-review gate.
+-exec /usr/bin/python3 -B /home/uwb_student00/ahls/new_BSP/qualification/msa-bank-spreading-integration-01/generation-candidate-02/run_generation.py --active save-reload
++exec /usr/bin/python3 -B /home/uwb_student00/ahls/new_BSP/qualification/msa-bank-spreading-integration-01/generation-candidate-03/run_generation.py --active save-reload
+ package require -exact qsys 26.1
+ set_project_property DEVICE {AGFB027R25A2E2V}
+ set_project_property DEVICE_FAMILY {agilex}
+--- /dev/null
++++ generation-candidate-03/test_timeout.py
+@@ -0,0 +1,98 @@
++"""Linux-only inert S1 regression: actual runner, no vendor executable."""
++import ctypes
++import json
++import os
++from pathlib import Path
++import signal
++import sys
++import tempfile
++import time
++import unittest
++from unittest.mock import patch
++
++import compare_memory as c
++import run_generation as runner
++
++
++class TimeoutGroup(unittest.TestCase):
++    def test_already_absent_group_preserves_timeout_status(self):
++        from unittest.mock import Mock
++        import subprocess
++        with tempfile.TemporaryDirectory() as t:
++            root = Path(t); work, run = root/'work', root/'run'
++            (root/'execution-binding.json').write_text('{}')
++            binding = {'environment': {}, 'stages': [{'name':'save-reload', 'argv':['inert-not-executed'], 'cwd':str(work), 'timeout_seconds':1}]}
++            child = Mock(pid=987654321)
++            child.wait.side_effect = [subprocess.TimeoutExpired('inert', 1), 0]
++            signals = []
++            def absent(pgid, sig):
++                # No intermediate wait/poll may reap the group leader.
++                self.assertEqual(child.wait.call_count, 1)
++                self.assertEqual(pgid, child.pid)
++                signals.append(sig)
++                raise ProcessLookupError()
++            with patch.object(runner, 'PACKAGE', root), patch.object(runner, 'WORK', work), patch.object(runner, 'RUN', run), patch.object(runner, 'preflight', return_value=binding), patch.object(runner, 'check_source_and_dependencies', return_value=binding), patch.object(runner.subprocess, 'Popen', return_value=child), patch.object(runner.os, 'killpg', side_effect=absent), patch.object(runner.time, 'sleep'), patch.object(sys, 'argv', ['run_generation.py']):
++                self.assertEqual(runner.main(), 124)
++            self.assertEqual(signals, [signal.SIGTERM, signal.SIGKILL])
++            self.assertEqual(child.wait.call_count, 2)
++            child.poll.assert_not_called()
++            result = json.loads((run/'save-reload-result.json').read_text())
++            self.assertEqual(result['returncode'], 124)
++            self.assertIs(result['timeout_group_terminated'], True)
++            self.assertEqual(json.loads((run/'result.json').read_text())['status'], 'failed')
++
++    def test_launcher_exits_descendant_ignores_term(self):
++        # Adopt/reap this test's orphan rather than leave a zombie under PID 1.
++        libc = ctypes.CDLL(None, use_errno=True)
++        previous = ctypes.c_int()
++        self.assertEqual(libc.prctl(37, ctypes.byref(previous), 0, 0, 0), 0)
++        self.assertEqual(libc.prctl(36, 1, 0, 0, 0), 0)
++        root = Path(tempfile.mkdtemp(prefix='msa-inert-timeout-', dir=os.environ.get('MSA_TEST_EVIDENCE')))
++        work, run = root/'work', root/'run'
++        script = '''import os, signal, time
++from pathlib import Path
++signal.signal(signal.SIGTERM, lambda *_: os._exit(0))
++pid = os.fork()
++if pid == 0:
++    signal.signal(signal.SIGTERM, signal.SIG_IGN)
++    Path('descendant.json').write_text(__import__('json').dumps({'pid':os.getpid(),'pgid':os.getpgrp(),'sid':os.getsid(0)}))
++while True: time.sleep(.01)
++'''
++        binding = {'environment': {}, 'stages': [{'name':'save-reload', 'argv':[sys.executable,'-B','-c',script], 'cwd':str(work), 'timeout_seconds':1}]}
++        (root/'execution-binding.json').write_text('{}')
++        descendant = None
++        try:
++            with patch.object(runner, 'PACKAGE', root), patch.object(runner, 'WORK', work), patch.object(runner, 'RUN', run), patch.object(runner, 'preflight', return_value=binding), patch.object(runner, 'check_source_and_dependencies', return_value=binding), patch.object(sys, 'argv', ['run_generation.py']):
++                started = time.monotonic()
++                rc = runner.main()
++                elapsed = time.monotonic() - started
++                descendant = json.loads((work/'descendant.json').read_text())
++                stat = Path('/proc')/str(descendant['pid'])/'stat'
++                observed = stat.read_text().rsplit(')', 1)[1].split() if stat.exists() else None
++                live = observed is not None and observed[0] not in ('Z', 'X')
++                if observed:
++                    self.assertEqual(int(observed[2]), descendant['pgid'])
++                    self.assertEqual(int(observed[3]), descendant['sid'])
++                self.assertEqual(rc, 124)
++                self.assertLess(elapsed, 25)
++                self.assertEqual(json.loads((run/'save-reload-result.json').read_text())['returncode'], 124)
++                result = json.loads((run/'result.json').read_text())
++                self.assertEqual(result['status'], 'failed')
++                for flag in ('execution_ready','functional_ready','timing_ready','constraint_ready','native_generation_completed'):
++                    self.assertIs(result[flag], False)
++                snapshot = {str(p.relative_to(root)):c.sha(p) for p in root.rglob('*') if p.is_file()}
++                with self.assertRaises(FileExistsError): runner.main()
++                self.assertEqual(snapshot, {str(p.relative_to(root)):c.sha(p) for p in root.rglob('*') if p.is_file()})
++                observation = {'returncode':rc, 'elapsed_seconds':elapsed, 'descendant':descendant, 'state_on_return':observed[0] if observed else 'absent', 'live_on_return':live, 'rerun_unchanged':True, 'evidence':str(root)}
++                (root/'observation.json').write_text(json.dumps(observation,indent=2)+'\n')
++                print(json.dumps(observation), flush=True)
++                self.assertFalse(live, 'S1: TERM-resistant descendant still live when actual runner returns')
++        finally:
++            if descendant:
++                try: os.kill(descendant['pid'], signal.SIGKILL)
++                except ProcessLookupError: pass
++                os.waitpid(descendant['pid'], 0)
++            libc.prctl(36, previous.value, 0, 0, 0)
++
++
++if __name__ == '__main__': unittest.main(verbosity=2)

@@ -1,0 +1,44 @@
+[
+  {
+    "label": "red",
+    "argv": [
+      "/home/joe/.hermes/hermes-agent/venv/bin/python",
+      "-B",
+      "-m",
+      "unittest",
+      "-v",
+      "test_bank_spreading.PublicationOrder"
+    ],
+    "cwd": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/msa-bank-spreading-fix-02",
+    "returncode": 1,
+    "log": "red.log",
+    "publisher_sha256": "efb379cedd7e428d9cdc4d440186b2b7c1d6dc33a1d6d89ce7a8d1b4268b2d88"
+  },
+  {
+    "label": "green",
+    "argv": [
+      "/home/joe/.hermes/hermes-agent/venv/bin/python",
+      "-B",
+      "-m",
+      "unittest",
+      "-v",
+      "test_bank_spreading"
+    ],
+    "cwd": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/msa-bank-spreading-fix-02",
+    "returncode": 0,
+    "log": "green.log",
+    "publisher_sha256": "d47b49f752fff8cad74ce8a8ca12b58401b7c2f913974012d523ddf0200ce98c"
+  },
+  {
+    "label": "verifier",
+    "argv": [
+      "/home/joe/.hermes/hermes-agent/venv/bin/python",
+      "-B",
+      "verify_package.py"
+    ],
+    "cwd": "/tmp/ia840f-q1-verifier-uhiqobiw/package",
+    "returncode": 0,
+    "log": "verifier.log",
+    "publisher_sha256": "d47b49f752fff8cad74ce8a8ca12b58401b7c2f913974012d523ddf0200ce98c"
+  }
+]

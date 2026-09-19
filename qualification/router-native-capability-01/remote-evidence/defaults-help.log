@@ -1,0 +1,484 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Shell
+    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+    Info: Copyright (C) 2026  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Fri Sep 18 23:57:27 2026
+    Info: System process ID: 150770
+Info: Command: quartus_sh -t defaults-help.tcl
+---------------------------------------------------------------------------
+
+Usage: get_all_quartus_defaults [-h] [-help] [-long_help] [-fall] [-name <name>] [-rise] [-section_id <section id>] [-tag <data>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -fall: Option applies to falling edge
+        -name <name>: Assignment name (string pattern is matched using Tcl string matching)
+        -rise: Option applies to rising edge
+        -section_id <section id>: Section id
+        -tag <data>: Option to tag data to this assignment
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::project 7.0
+
+------------
+Description:
+------------
+
+Returns a filtered output collection of all matching default
+assignment values. To access each element of the output 
+collection, use the Tcl command "foreach_in_collection". To 
+see example usage, type "foreach_in_collection -long_help".
+
+In version 5.0 of ::quartus::project package, two new
+Tcl commands "get_all_assignments" and "get_assignment_info"
+have been introduced to replace the "get_all_quartus_defaults"
+command. These two new commands simplify the interface to retrieve
+information about Quartus Prime Settings File (.qsf) assignments.
+The "get_all_quartus_defaults" command is still supported
+for backward compatibility. 
+
+The "-name" option is not case sensitive. This option can take 
+string patterns containing special characters from the set 
+"*?\[]" as the value. The value is matched using Tcl string 
+matching.
+
+This Tcl command reads in the default assignments found inside
+the Quartus Prime Default Settings File (.qdf). It filters the 
+assignments data found inside the .qdf and outputs the data 
+based on the values specified by the "-name" option.
+
+Each element of the collection is a list with the following 
+format:
+{ {<Section Id>} {<Assignment name>} {<Assignment value>} }
+
+Certain sections in the .qsf can appear more than once. 
+For example, because there may be more than one clock 
+used in a project, there may be more than one CLOCK section 
+each containing its own set of clock assignments. To uniquely 
+identify sections of this type, a <Section Id> is used. 
+<Section Id> can be one of three types. It can be the same as 
+the revision name, or it can be some unique name. The 
+following is a list of sections requiring a <Section Id> and 
+the associated <Section Id> description:
+
+Section Id                    Description
+---------------------------   ------------------------------
+CHIP                          Same as revision name
+LOGICLOCK_REGION              A unique name
+EDA_TOOL_SETTINGS             A unique name
+CLIQUE                        A unique name
+BREAKPOINT                    A unique name
+CLOCK                         A unique name
+AUTO_INSERT_SLD_NODE_ENTITY   A unique name
+
+--------------
+Example Usage:
+--------------
+
+## Print out all the default assignments using
+## the foreach_in_collection method
+
+set default_asgns_col [get_all_quartus_defaults]
+foreach_in_collection default $default_asgns_col {
+	set sect_id [lindex $default 0]
+	set name [lindex $default 1]
+	set value [lindex $default 2]
+
+	## Now, display the content of the assignment
+	puts "Section ID ($sect_id)"
+	puts "Assignment Name ($name)"
+	puts "Assignment Value ($value)"
+}
+
+## Using wildcards
+set default_asgns_col [get_all_quartus_defaults -name *]
+foreach_in_collection default $default_asgns_col {
+	set sect_id [lindex $default 0]
+	set name [lindex $default 1]
+	set value [lindex $default 2]
+
+	## Now, display the content of the assignment
+	puts "Section ID ($sect_id)"
+	puts "Assignment Name ($name)"
+	puts "Assignment Value ($value)"
+}
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Assignment is not a global assignment: <string> --  it is an instance assignment. Specify a global assignment name or use the instance assignment commands.
+TCL_ERROR	1   	ERROR: Can't find file(s) associated with assignment. Specify a different assignment name.
+TCL_ERROR	1   	ERROR: Can't find section information for assignment. Specify a different assignment name.
+TCL_ERROR	1   	ERROR: Can't find active revision name. Make sure there is an open, active revision name.
+TCL_ERROR	1   	ERROR: Entity does not exist or uses illegal name characters: <string>. Specify a legal entity name.
+TCL_ERROR	1   	ERROR: Can't run Tcl command while a process is in progress: <string>. To run the command, stop the compilation or simulation; or wait for the compilation or simulation to complete.
+TCL_ERROR	1   	ERROR: Value "<string>" for the "-<string>" option is illegal. Specify a legal value.
+TCL_ERROR	1   	ERROR: Options cannot be specified together: -<string>, -<string> and -<string>. Specify only one or two of the three options.
+TCL_ERROR	1   	ERROR: Missing destination for assignment. Specify the destination for the assignment.
+TCL_ERROR	1   	ERROR: You must open a project before you can use this command.
+TCL_ERROR	1   	ERROR: Ignored assignment: <string>. The assignment is no longer supported.
+TCL_ERROR	1   	ERROR: Found two options: -<string> and -<string>. Choose one of the options.
+TCL_ERROR	1   	ERROR: Illegal assignment name: <string>. Specify a legal assignment name. To view the list of legal assignment names, run "get_all_assignment_names".
+TCL_ERROR	1   	ERROR: An unknown error has occured.
+
+---------------------------------------------------------------------------
+
+---------------------------------------------------------------------------
+
+Usage: get_all_assignments [-h] [-help] [-long_help] [-entity <entity_name>] [-fall] [-from <source>] -name <name> [-rise] [-section_id <section id>] [-tag <data>] [-to <destination>] -type <global|instance|parameter|default>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -entity <entity_name>: Entity name
+        -fall: Option applies to falling edge
+        -from <source>: Source name (string pattern is matched using Tcl string matching)
+        -name <name>: Assignment name (string pattern is matched using Tcl string matching)
+        -rise: Option applies to rising edge
+        -section_id <section id>: Section id
+        -tag <data>: Option to tag data to this assignment
+        -to <destination>: Destination name (string pattern is matched using Tcl string matching)
+        -type <global|instance|parameter|default>: Option to specify the type of assignments to return
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::project 7.0
+
+------------
+Description:
+------------
+
+Returns a collection of all matching global, instance, parameter,
+or default assignment ids. To iterate through each assignment id
+in this collection, use the Tcl command "foreach_in_collection".
+
+To view details for the assignment that is associated with the
+assignment id, use the Tcl command "get_assignment_info".
+
+The "get_all_assignments" command is easier to use than the
+deprecated commands listed in Table 1.
+
+
+* Table 1. The -type Option
+
+Value for
+-type Option  Deprecated Tcl command        Description
+------------  ----------------------        -----------
+default       get_all_quartus_defaults      Returns only default assignments.
+
+global        get_all_global_assignments    Returns only global assignments.
+
+instance      get_all_instance_assignments  Returns only instance assignments.
+
+parameter      get_all_parameters            Returns only parameter assignments.
+
+
+The "-name" option is not case sensitive.
+The "-to" and "-from" options are case sensitive.
+
+These options can take string patterns containing special 
+characters from the set "*?\[]" as values. The values are 
+matched using Tcl string matching. Note that bus names are
+automatically detected and do not need to be escaped. Bus
+names have the following format:
+
+<bus name>[<bus index>] or <bus name>[*]
+
+The <bus name> portion is a string of alphanumeric characters.
+The <bus index> portion is an integer greater than or equal to
+zero or it can be the character "*" used for string matching.
+Notice that the <bus index> is enclosed by the square
+brackets "[" and "]". For example, "a[0]" and "a[*]" are
+supported bus names and can be used as follows:
+
+# To match index 0 of bus "a", type:
+get_all_assignments -type instance -name LOCATION -to a[0]
+
+# To match all indices of bus "a", type:
+get_all_assignments -type instance -name LOCATION -to a[*]
+
+All other uses of square brackets must be escaped if you do
+not intend to use them as string patterns. For example,
+to match indices 0, 1, and 2 of the bus "a", type:
+
+get_all_assignments -type instance LOCATION -to "a[escape_brackets \[]\[0-2\][escape_brackets \]]"
+
+For more information about escaping square brackets, type
+"escape_brackets -h".
+
+This Tcl command reads in the global, instance, and parameter
+assignments found in the Quartus Prime Settings File (.qsf) and
+reads in the default assignments found inside the
+Quartus Prime Default Settings File (.qdf).
+
+If you tagged data by making assignments with the -tag option,
+then the information can be searched using the -tag option.
+
+Certain sections in the .qsf can appear more than once. 
+For example, because there may be more than one clock 
+used in a project, there may be more than one clock section 
+each containing its own set of clock assignments. To uniquely 
+identify sections of this type, use the -section_id option.
+
+For entity-specific assignments, use the "-entity" option to 
+retrieve assignments from a specific entity. If the
+"-entity" option is not specified, the value for the 
+FOCUS_ENTITY_NAME assignment is used. If the FOCUS_ENTITY_NAME
+value is not found, the revision name is used.
+
+--------------
+Example Usage:
+--------------
+
+    ## View all the timing requirements using wildcards
+    ## to match TSU_REQUIREMENT, TCO_REQUIREMENT,
+    ## and others.
+foreach_in_collection asgn_id [get_all_assignments -type instance -name *_REQUIREMENT] {
+
+    set from   [get_assignment_info $asgn_id -from]
+    set to     [get_assignment_info $asgn_id -to]
+    set name   [get_assignment_info $asgn_id -name]
+    set value  [get_assignment_info $asgn_id -value]
+    set entity [get_assignment_info $asgn_id -entity]
+    set sid    [get_assignment_info $asgn_id -section_id]
+    set tag    [get_assignment_info $asgn_id -tag]
+
+    puts "$entity: $name ($from -> $to) = $value"
+}
+
+    ## View all global assignments
+foreach_in_collection asgn_id [get_all_assignments -type global -name *] {
+
+    set name   [get_assignment_info $asgn_id -name]
+    set value  [get_assignment_info $asgn_id -value]
+    set entity [get_assignment_info $asgn_id -entity]
+    set sid    [get_assignment_info $asgn_id -section_id]
+    set tag    [get_assignment_info $asgn_id -tag]
+
+    puts "$entity: $name = $value"
+}
+
+    ## View all project-wide default parameter values
+foreach_in_collection asgn_id [get_all_assignments -type parameter -name *] {
+
+    set name  [get_assignment_info $asgn_id -name]
+    set value [get_assignment_info $asgn_id -value]
+    set tag    [get_assignment_info $asgn_id -tag]
+
+    puts "$name = $value"
+}
+
+    ## View all entity-specific parameter values
+foreach_in_collection asgn_id [get_all_assignments -type parameter -name * -to *] {
+
+    set dest  [get_assignment_info $asgn_id -to]
+    set name  [get_assignment_info $asgn_id -name]
+    set value [get_assignment_info $asgn_id -value]
+    set tag    [get_assignment_info $asgn_id -tag]
+
+    puts "$name (-> $dest) = $value"
+}
+
+    ## View all default assignments
+foreach_in_collection asgn_id [get_all_assignments -type default -name * -to *] {
+
+    set name    [get_assignment_info $asgn_id -name]
+    set value   [get_assignment_info $asgn_id -value]
+
+    puts "$name = $value"
+}
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_OK   	0   	INFO: Assignment <string> is not supported in this edition of the Quartus Prime software.
+TCL_ERROR	1   	ERROR: Assignment is not an instance assignment: <string> -- it is a global assignment. Specify an instance assignment name or use the global assignment commands.
+TCL_ERROR	1   	ERROR: Can't find file(s) associated with assignment. Specify a different assignment name.
+TCL_ERROR	1   	ERROR: Can't find section information for assignment. Specify a different assignment name.
+TCL_ERROR	1   	ERROR: Can't find active revision name. Make sure there is an open, active revision name.
+TCL_ERROR	1   	ERROR: Entity does not exist or uses illegal name characters: <string>. Specify a legal entity name.
+TCL_ERROR	1   	ERROR: Can't run Tcl command while a process is in progress: <string>. To run the command, stop the compilation or simulation; or wait for the compilation or simulation to complete.
+TCL_ERROR	1   	ERROR: Value "<string>" for the "-<string>" option is illegal. Specify a legal value.
+TCL_ERROR	1   	ERROR: Illegal assignment type: <string>. Specify "<string>", "<string>", "<string>", or "<string>".
+TCL_ERROR	1   	ERROR: Illegal option "<string>". The specified option is illegal for <string> assignments.
+TCL_ERROR	1   	ERROR: Options cannot be specified together: -<string>, -<string> and -<string>. Specify only one or two of the three options.
+TCL_ERROR	1   	ERROR: Missing destination for assignment. Specify the destination for the assignment.
+TCL_ERROR	1   	ERROR: You must open a project before you can use this command.
+TCL_ERROR	1   	ERROR: Ignored assignment: <string>. The assignment is no longer supported.
+TCL_ERROR	1   	ERROR: Found two options: -<string> and -<string>. Choose one of the options.
+TCL_ERROR	1   	ERROR: Illegal assignment name: <string>. Specify a legal assignment name. To view the list of legal assignment names, run "get_all_assignment_names".
+TCL_ERROR	1   	ERROR: An unknown error has occured.
+
+---------------------------------------------------------------------------
+
+---------------------------------------------------------------------------
+
+Usage: get_assignment_info [-h] [-help] [-long_help] [-comments] [-entity] [-from] [-get_tcl_command] [-name] [-section_id] [-tag] [-to] [-value] <asgn_id>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -comments: Option to get the assignment comment
+        -entity: Option to get the assignment entity
+        -from: Option to get the assignment source
+        -get_tcl_command: Option to get the tcl command that sets the assignment
+        -name: Option to get the assignment name
+        -section_id: Option to get the assignment section id
+        -tag: Option to get the assignment tag
+        -to: Option to get the assignment destination
+        -value: Option to get the assignment value
+        <asgn_id>: Assignment id
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::project 7.0
+
+------------
+Description:
+------------
+
+Returns information for the assignment id based on the
+specified option.
+
+The assignment id is obtained from the "get_all_assignments"
+Tcl command.
+
+--------------
+Example Usage:
+--------------
+
+    ## View all the instance assignments
+foreach_in_collection asgn_id [get_all_assignments -type instance -name *] {
+
+    set from   [get_assignment_info $asgn_id -from]
+    set to     [get_assignment_info $asgn_id -to]
+    set name   [get_assignment_info $asgn_id -name]
+    set value  [get_assignment_info $asgn_id -value]
+    set entity [get_assignment_info $asgn_id -entity]
+    set tag    [get_assignment_info $asgn_id -tag]
+
+    puts "$entity: $name ($from -> $to) = $value"
+}
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Illegal assignment id: <string>. Specify a legal assignment id that was retrieved from the Tcl command "get_all_assignments".
+
+---------------------------------------------------------------------------
+
+---------------------------------------------------------------------------
+
+Usage: project_open [-h] [-help] [-long_help] [-current_revision] [-force] [-preserve_revision_order] [-revision <revision_name>] <project_name>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -current_revision: Option to open the current revision automatically
+        -force: Option to open the project and overwrite the compilation database if the database version is incompatible.
+        -preserve_revision_order: Option to not move the revision to top in the qpf file and preserve existing revision ordering
+        -revision <revision_name>: Revision name
+        <project_name>: Project name
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::project 7.0
+
+------------
+Description:
+------------
+
+Opens an existing project. To create a new project, use the
+project_new command.
+
+If the -revision option is not specified, the project name is
+specified as the revision name.
+
+The project_open command gives an error when the compilation database
+version is not compatible with the current version of Quartus Prime
+software.  You may specify the "-force" option to avoid the error and
+overwrite the database.
+
+--------------
+Example Usage:
+--------------
+
+## Open project "chiptrip" and revision "chiptrip"
+project_open chiptrip
+
+## Open project "chiptrip" and revision "auto_max"
+project_open -revision auto_max chiptrip
+
+## Get the current revision before opening
+## the project with the current revision
+set project_name chiptrip
+set current_revision [get_current_revision $project_name]
+project_open -revision $current_revision $project_name
+puts [get_global_assignment -name FAMILY]
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_OK   	0   	WARNING: Project is already open: <string>
+TCL_ERROR	1   	ERROR: Can't open project: <string>. First close the currently open project: <string>.
+TCL_ERROR	1   	ERROR: Can't open project: <string>
+TCL_ERROR	1   	ERROR: Can't set revision: <string>. Make sure there is an open, active revision name.
+TCL_ERROR	1   	ERROR: Can't run Tcl command while a process is in progress: <string>. To run the command, stop the compilation or simulation; or wait for the compilation or simulation to complete.
+TCL_ERROR	1   	ERROR: Cannot open project: <string>. The project is not compatible with the installed version of the Quartus Prime software. Opening the project will overwrite the old project database. If you wish to overwrite the old project database, make sure to specify the -<string> option.
+TCL_ERROR	1   	ERROR: Can't open revision: <string> (project: <string>). The revision is not compatible with the installed version of the Quartus Prime software. Opening the revision will overwrite the old revision database. If you wish to overwrite the old revision database, make sure to specify the -<string> option.
+TCL_ERROR	1   	ERROR: Found two options: -<string> and -<string>. Choose one of the options.
+TCL_ERROR	1   	ERROR: Revision does not exist: <string>. Specify a legal revision name using the "-<string>" option.
+TCL_ERROR	1   	ERROR: Project does not exist or has illegal name characters: <string>. Specify a legal project name.
+
+---------------------------------------------------------------------------
+
+Info (23030): Evaluation of Tcl script defaults-help.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 1360 megabytes
+    Info: Processing ended: Fri Sep 18 23:57:28 2026
+    Info: Elapsed time: 00:00:01
+    Info: System process ID: 150770

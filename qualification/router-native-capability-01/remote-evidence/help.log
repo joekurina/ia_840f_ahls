@@ -1,0 +1,294 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Shell
+    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+    Info: Copyright (C) 2026  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Fri Sep 18 23:55:37 2026
+    Info: System process ID: 150399
+Info: Command: quartus_sh -t help.tcl
+---------------------------------------------------------------------------
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+	::quartus::project 7.0
+
+------------
+Description:
+------------
+
+	This package contains the set of Tcl functions for making
+	project-wide assignments.
+	
+	In versions before 4.0 of this package, the full path of
+	the source file assignment was returned when you accessed
+	the assignment through the "get_global_assignment" or
+	"get_all_global_assignments" command.
+	
+	In version 4.0 of this package, the actual value of the source
+	file assignment stored in the Quartus Prime Settings File (.qsf)
+	is returned. To get the resolved full path of the file, use
+	the "resolve_file_path" command. For more information about
+	resolving file names and view an example, type
+	"resolve_file_path -long_help".
+	
+	In version 5.0 of this package, two new Tcl commands
+	"get_all_assignments" and "get_assignment_info" have been
+	introduced to replace the following commands:
+	
+		get_all_quartus_defaults
+		get_all_global_assignments
+		get_all_instance_assignments
+		get_all_parameters
+	
+	These two new commands simplify the interface to retrieve
+	information about Quartus Prime Settings File (.qsf) and
+	Quartus Prime Default Settings File (.qdf) assignments.
+	
+	In addition, the new "assignment_group" command replaces
+	the deprecated "timegroup" command.
+	
+	In version 6.0, all Tcl commands designed to process
+	Timing Analyzer assignments have been moved to the
+	::quartus::timing_assignment package.
+
+-------------
+Availability:
+-------------
+
+	This package is also available in the following versions:
+
+		::quartus::project 1.0
+		::quartus::project 2.0
+		::quartus::project 3.0
+		::quartus::project 4.0
+		::quartus::project 5.0
+		::quartus::project 6.0
+
+	This package is loaded by default in the following executables:
+
+		hdb_debug
+		qpro_sh
+		quartus_asm
+		quartus_bpps
+		quartus_cdb
+		quartus_design
+		quartus_eda
+		quartus_fit
+		quartus_idb
+		quartus_ipd
+		quartus_ipgenerate
+		quartus_map
+		quartus_sh
+		quartus_si
+		quartus_sim
+		quartus_sta
+		quartus_stp
+		quartus_syn
+		quartus_tlg
+
+-------------
+Tcl Commands:
+-------------
+
+	close_side_revision
+	create_revision
+	delete_revision
+	execute_assignment_batch
+	export_assignments
+	generate_project_tcl
+	get_all_assignment_names
+	get_all_assignments
+	get_all_global_assignments
+	get_all_instance_assignments
+	get_all_parameters
+	get_all_quartus_defaults
+	get_all_user_option_names
+	get_assignment_info
+	get_assignment_name_info
+	get_current_project
+	get_current_revision
+	get_database_version
+	get_global_assignment
+	get_instance_assignment
+	get_location_assignment
+	get_name_info
+	get_names
+	get_parameter
+	get_project_directory
+	get_project_revisions
+	get_revision_description
+	get_top_level_entity
+	get_user_option
+	is_database_version_compatible
+	is_fitter_in_qhd_mode
+	is_project_open
+	open_side_revision
+	project_archive
+	project_clean
+	project_close
+	project_exists
+	project_new
+	project_open
+	project_restore
+	remove_all_global_assignments
+	remove_all_instance_assignments
+	remove_all_parameters
+	resolve_file_path
+	revision_exists
+	set_current_revision
+	set_global_assignment
+	set_high_effort_fmax_optimization_assignments
+	set_instance_assignment
+	set_io_assignment
+	set_location_assignment
+	set_parameter
+	set_power_file_assignment
+	set_revision_description
+	set_user_option
+	test_assignment_trait
+
+---------------------------------------------------------------------------
+
+---------------------------------------------------------------------------
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+	::quartus::device 1.0
+
+------------
+Description:
+------------
+
+	This package contains the set of Tcl functions
+	for accessing information from the Quartus Prime 
+	device database.
+
+-------------
+Availability:
+-------------
+
+	This package is loaded by default in the following executables:
+
+		qpro_sh
+		quartus_cdb
+		quartus_eda
+		quartus_fit
+		quartus_ipgenerate
+		quartus_sh
+		quartus_sim
+		quartus_sta
+		quartus_syn
+
+	This package is available for loading in the following executables:
+
+		qpro
+		quartus
+		quartus_si
+
+-------------
+Tcl Commands:
+-------------
+
+	get_family_list
+	get_part_info
+	get_part_list
+	report_device_info
+	report_family_info
+	report_part_info
+
+---------------------------------------------------------------------------
+
+---------------------------------------------------------------------------
+
+Usage: help [-h] [-help] [-long_help] [-cmd <command name>] [-examples] [-pkg <package name>] [-quartus] [-tcl] [-timequestinfo] [-timinganalyzerinfo] [-version <version number>] [<package or command name>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -cmd <command name>: Option to display long help for a Quartus Prime Tcl command
+        -examples: Option to display examples of Quartus Prime Tcl usage
+        -pkg <package name>: Option to display help for an available Quartus Prime Tcl package
+        -quartus: Option to display help on the predefined global "quartus" Tcl array
+        -tcl: Option to display overview on Quartus Prime Tcl usage
+        -timequestinfo: Deprecated alias of the "timinganalyzerinfo" option
+        -timinganalyzerinfo: Option to display help on the predefined global "TimingAnalyzerInfo" Tcl array
+        -version <version number>: Option to specify the package version for the specified Quartus Prime Tcl package or command
+        <package or command name>: Name of an available Quartus Prime Tcl package or command. This is functionally equivalent to the -pkg and -cmd options.
+
+------------
+Description:
+------------
+
+
+For convenience, you can omit the "::quartus::" package prefix when
+you query for help on a package. For example, you can type either of
+the following to view help for the ::quartus::project package:
+     help ::quartus::project
+     help project
+
+--------------
+Example Usage:
+--------------
+
+1) Type "help <package name>"
+   to view help for a Quartus Prime Tcl package.
+
+   Example: help ::quartus::project
+
+2) Type "help <command name>"
+   to view long help for a Quartus Prime Tcl command.
+
+   Example: help project_open
+
+3) Type "help -quartus"
+   to view help on the predefined global "quartus" Tcl array.
+
+   Example: help -quartus
+
+4) Type "help -examples"
+   to view examples of Quartus Prime Tcl usage.
+
+   Example: help -examples
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Quartus Prime Tcl command "<string>" is only available for use in the following executable<string>:<string>
+TCL_ERROR	1   	ERROR: Quartus Prime Tcl command "<string>" belongs to the "<string>" package which is currently not loaded. Please type "load_package <string>" to load the package before using this command.
+TCL_ERROR	1   	ERROR: Tcl command does not exist or is not supported by Quartus Prime Tcl help: <string>. Specify an available Quartus Prime Tcl command. Type "info commands" for a list of available commands.
+TCL_ERROR	1   	ERROR: Tcl command "<string>" version "<string>" does not exist or is not supported by Quartus Prime Tcl help. Specify an available Quartus Prime Tcl command. Type "info commands" for a list of available commands.
+TCL_ERROR	1   	ERROR: Tcl package does not exist or is not supported by Quartus Prime Tcl help: <string>. Specify an available Tcl package. Type "help" for a list of available packages.
+TCL_ERROR	1   	ERROR: Tcl package "<string>" version "<string>" does not exist or is not supported by Quartus Prime Tcl help. Specify an available Tcl package. Type "help" for a list of available packages.
+TCL_ERROR	1   	ERROR: Illegal Quartus Prime Tcl package or command: <string>. Specify an available Quartus Prime Tcl package or command.
+TCL_ERROR	1   	ERROR: Illegal Quartus Prime Tcl package or command: <string>, version <string>. Specify an available Quartus Prime Tcl package or command.
+TCL_ERROR	1   	ERROR: Quartus Prime Tcl package "<string>" is only available for use in the following executable<string>:<string>
+
+---------------------------------------------------------------------------
+
+Info (23030): Evaluation of Tcl script help.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 1360 megabytes
+    Info: Processing ended: Fri Sep 18 23:55:38 2026
+    Info: Elapsed time: 00:00:01
+    Info: System process ID: 150399

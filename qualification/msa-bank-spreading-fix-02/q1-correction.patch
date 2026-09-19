@@ -1,0 +1,88 @@
+--- a/stage_candidate.py
++++ b/stage_candidate.py
+@@ -107,8 +107,13 @@
+     require(outputs==module.derive(ROOT,P/'baseline/vendor'),'non-deterministic derivation')
+     delta=validate_outputs(outputs,before)
+     if args.publish:
+-        # All data has passed validation before the first output write.
+-        for name in ('presets/ia840f_mem.qprs','preset_derivation.json'):
++        published = ('presets/ia840f_mem.qprs','preset_derivation.json')
++        # Collateral is not rewritten: reject missing/stale bytes before publishing.
++        for name,data in outputs.items():
++            if name not in published:
++                require((HERE/name).is_file() and (HERE/name).read_bytes()==data,
++                        'stale or missing candidate: '+name)
++        for name in published:
+             (HERE/name).write_bytes(outputs[name])
+     for name,data in outputs.items():
+         require((HERE/name).read_bytes()==data,'stale candidate: '+name)
+--- a/test_bank_spreading.py
++++ b/test_bank_spreading.py
+@@ -277,5 +277,67 @@
+                     path.write_bytes(data)
+ 
+ 
++class PublicationOrder(unittest.TestCase):
++    def setUp(self):
++        tmp = tempfile.TemporaryDirectory()
++        self.addCleanup(tmp.cleanup)
++        self.base = Path(tmp.name)
++        for name in ('baseline', 'candidate'):
++            shutil.copytree(P/name, self.base/name)
++        for name in ('stage_candidate.py', 'remote-before.json'):
++            shutil.copyfile(P/name, self.base/name)
++        self.here = self.base/'candidate/source/ipss/ia840f'
++        self.targets = ('presets/ia840f_mem.qprs', 'preset_derivation.json')
++        self.expected = {name: (self.here/name).read_bytes() for name in self.targets}
++        for name, cap in zip(self.targets, ('06-ia840f_mem.qprs', '05-preset_derivation.json')):
++            baseline = (self.base/'baseline/review/captured'/cap).read_bytes()
++            self.assertNotEqual(baseline, self.expected[name])
++            (self.here/name).write_bytes(baseline)
++
++    def inventory(self):
++        return {str(f.relative_to(self.here)): f.read_bytes()
++                for f in self.here.rglob('*') if f.is_file()}
++
++    def publish(self):
++        return subprocess.run([sys.executable, '-B', 'stage_candidate.py', '--publish'],
++                              cwd=self.base, capture_output=True, text=True)
++
++    def reject_collateral(self, name, missing=False):
++        path = self.here/name
++        if missing:
++            path.unlink()
++        else:
++            path.write_bytes(path.read_bytes()+b'\n')
++        before = self.inventory()
++        result = self.publish()
++        self.assertNotEqual(result.returncode, 0)
++        self.assertIn(name, result.stderr)
++        after = self.inventory()
++        self.assertEqual(set(before), set(after))
++        self.assertEqual([k for k in before if before[k] != after[k]], [])
++
++    def test_stale_sim_rejects_before_writes(self):
++        self.reject_collateral('presets/ia840f_sim.qprs')
++
++    def test_missing_sim_rejects_before_writes(self):
++        self.reject_collateral('presets/ia840f_sim.qprs', missing=True)
++
++    def test_stale_pcie_rejects_before_writes(self):
++        self.reject_collateral('presets/ia840f_pcie_known_schema.qprs')
++
++    def test_missing_pcie_rejects_before_writes(self):
++        self.reject_collateral('presets/ia840f_pcie_known_schema.qprs', missing=True)
++
++    def test_success_updates_exact_pair(self):
++        before = self.inventory()
++        result = self.publish()
++        self.assertEqual(result.returncode, 0, result.stderr)
++        after = self.inventory()
++        self.assertEqual(set(before), set(after))
++        self.assertEqual({k for k in before if before[k] != after[k]}, set(self.targets))
++        for name in self.targets:
++            self.assertEqual(after[name], self.expected[name])
++
++
+ if __name__=='__main__':
+     unittest.main(verbosity=2)

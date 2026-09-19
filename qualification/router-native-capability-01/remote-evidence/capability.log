@@ -1,0 +1,75 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Shell
+    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+    Info: Copyright (C) 2026  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Fri Sep 18 23:56:43 2026
+    Info: System process ID: 150645
+Info: Command: quartus_sh -t capability.tcl
+PART_FAMILY={Agilex 7}
+FAMILY=Agilex 7 DEVICE=AGFB027R25A2E2V
+===NAME ROUTER_LCELL_INSERTION_AND_LOGIC_DUPLICATION AGILEX7=0 FIT=0 ===
+Name: ROUTER_LCELL_INSERTION_AND_LOGIC_DUPLICATION
+Type: Global
+Legal values: Auto, Off, On
+Description: Allows the Fitter to automatically insert buffer logic cells between two nodes without altering the functionality of the design. Buffer logic cells are created from unused logic cells in the device. This option also allows the Fitter to duplicate a logic cell within a LAB when there are unused logic cells available in a LAB. Using this option can increase compilation time. The default setting of Auto will allow these operations to run when 1) the design requires them to fit the design or 2) the performance of the design can be improved by this optimization with a nominal compilation time increase.
+===NAME ROUTER_REGISTER_DUPLICATION AGILEX7=0 FIT=0 ===
+Name: ROUTER_REGISTER_DUPLICATION
+Type: Global
+Legal values: Auto, Off, On
+Description: Allows the Fitter to automatically duplicate registers within a LAB containing empty logic cells. This option does not alter the functionality of the design. The Auto Register Duplication option is also ignored if you select OFF as the setting for the Logic Cell Insertion -- Logic Duplication logic option. Turning on this option can allow the Logic Cell Insertion -- Logic Duplication logic option to improve a design's routability, but can make formal verification of a design more difficult.
+===NAME POST_ROUTE_PHYSICAL_SYNTHESIS AGILEX7=0 FIT=0 ===
+Name: POST_ROUTE_PHYSICAL_SYNTHESIS
+Type: Global
+Legal values: On, Off
+Description: Enables the Physical Synthesis engine that includes combinational and sequential optimization after routing during fitting to improve circuit performance.
+===NAME TDC_AGGRESSIVE_HOLD_CLOSURE_EFFORT AGILEX7=1 FIT=1 ===
+Name: TDC_AGGRESSIVE_HOLD_CLOSURE_EFFORT
+Type: Global
+Legal values: On, Off
+Description: Instructs the Fitter to aggressively optimize for hold timing closure.
+===NAME SEED AGILEX7=1 FIT=1 ===
+Name: SEED
+Type: Global
+Legal values: <integer>
+Description: Specifies the starting value the Fitter uses when randomly determining the initial placement for the current design. The value can be any non-negative integer value. Changing the starting value may or may not produce better fitting. Specify a starting value only if the Fitter is not meeting timing requirements by a small amount. The Design Space Explorer tool lets you sweep many seed values easily to find the best value for a given project. Modifying the design or Quartus settings even slightly will usually change which seed is best for the design.
+===NAME ROUTER_TIMING_OPTIMIZATION_LEVEL AGILEX7=1 FIT=1 ===
+Name: ROUTER_TIMING_OPTIMIZATION_LEVEL
+Type: Global
+Legal values: MAXIMUM, MINIMUM, Normal
+Description: Controls how aggressively the router tries to meet timing requirements. Setting this option to Maximum can increase design speed slightly, at the cost of increased compile time.  Setting this option to Minimum can reduce compile time, at the cost of slightly reduced design speed. The default value is Normal.
+===NAME DUPLICATE_ATOM AGILEX7=1 FIT=1 ===
+Name: DUPLICATE_ATOM
+Type: Instance
+Legal values: <string>
+Description: Directs the Compiler to duplicate the source node, and uses the new duplicate node to fan out to the destination node; the original source node no longer fans out to the destination node. Use the 'Value' field to specify the name of the duplicate node.
+===NAME DUPLICATE_REGISTER AGILEX7=1 FIT=1 ===
+Name: DUPLICATE_REGISTER
+Type: Instance
+Legal values: <integer>
+Description: Directs the Compiler to create a number of duplicates of a register, including the original, and redistribute the fanouts of the original register among the duplicates.
+===NAME MAX_FANOUT AGILEX7=1 FIT=0 ===
+Name: MAX_FANOUT
+Type: Global, Instance
+Legal values: <integer>
+Description: Directs the Compiler to control the number of destinations the specified node feeds so the fan-out count does not exceed the value specified as the maximum number of fan-out allowed from the node.
+===FAMILY LIST===
+{Agilex 7}
+Info (23030): Evaluation of Tcl script capability.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 1620 megabytes
+    Info: Processing ended: Fri Sep 18 23:56:44 2026
+    Info: Elapsed time: 00:00:01
+    Info: System process ID: 150645

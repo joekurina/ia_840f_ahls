@@ -1,0 +1,70 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_bank_spreading"
+      ],
+      "cwd": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/msa-bank-spreading-fix-01",
+      "returncode": 0,
+      "log": "01.log"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "stage_candidate.py"
+      ],
+      "cwd": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/msa-bank-spreading-fix-01",
+      "returncode": 0,
+      "log": "02.log"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/msa-bank-spreading-fix-01/candidate/source/ipss/ia840f/derive_presets.py",
+        "--vendor-root",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/msa-bank-spreading-fix-01/baseline/vendor"
+      ],
+      "cwd": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/msa-bank-spreading-fix-01",
+      "returncode": 0,
+      "log": "03.log"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "stage_candidate.py"
+      ],
+      "cwd": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/msa-bank-spreading-fix-01",
+      "returncode": 0,
+      "log": "04.log"
+    }
+  ],
+  "original_four_artifacts_reproduced": true,
+  "baseline_and_candidate_unchanged_by_tests": true,
+  "changed_artifacts": [
+    {
+      "path": "ipss/ia840f/derive_presets.py",
+      "before_sha256": "a41dbb3a23bd2153f128c994f8ccf68eeae03676543b16b05e19da4bf06c88f5",
+      "after_sha256": "bb07cdfc817e50517e3277cb6cb4daca2f80c4da37a6e158ceed36403cbe46c4"
+    },
+    {
+      "path": "ipss/ia840f/preset_derivation.json",
+      "before_sha256": "e58e146ea0ec90e1a2528ddffdba2553339f4168dadda0b109574844c41d2d06",
+      "after_sha256": "31218876eab8d532bbebe2f7e486a02f602dff20acb931bf9cb8a997f7913069"
+    },
+    {
+      "path": "ipss/ia840f/presets/ia840f_mem.qprs",
+      "before_sha256": "26cf53d439221fc7a9cd6ecaef55c232945df9ab38883499dfb63d1d78841c1e",
+      "after_sha256": "59d7f4dcd38386e6a3e54d86a22e3945c116f5951353c49dbf032e20a0b4bdbd"
+    }
+  ],
+  "execution_ready": false,
+  "vendor_invocations": 0
+}

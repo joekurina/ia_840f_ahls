@@ -1,0 +1,278 @@
+--- a/ipss/ia840f/derive_presets.py
++++ b/ipss/ia840f/derive_presets.py
+@@ -15,6 +15,63 @@
+       'a': 'http://www.altera.com/XMLSchema/IPXact2014/extensions'}
+ MEM_NAME = 'ia840f_discrete_rdimm_source'
+ PCIE_NAME = 'ia840f_pf0vf0_pf1_bmc_source'
++
++
++# Captured installed 26.1.1 schema, not a global vendor-IP default override.
++# These hashes identify reviewed evidence; they do not qualify a live installation.
++BANK_SPREADING_EVIDENCE = (
++    {'source': '/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/ip_msa/declare.tcl',
++     'sha256': '9ae7ebc3e99103345563ddd633b2b0f26629c58e7238bd68afc79a823437ef95',
++     'lines': '85-87: copies 1/2/4/8; non-derived bank count 0/2/4/8',
++     'review_capture': 'baseline/review/captured/18-declare.tcl'},
++    {'source': '/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/ip_msa/elaborate.tcl',
++     'sha256': 'f939c58f7c4b378faa19d7a4617b0c33ca18f28f29936b0f130dfc9637161c61',
++     'lines': '17-18: positive count conflicts with copies greater than one',
++     'review_capture': 'baseline/review/captured/19-elaborate.tcl'},
++    {'source': '/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/ip_msa/strings/parameters.properties',
++     'sha256': '76d0d589373a3c22f0ff7717c771fe7c7e4226d9a539a46f21327c76d910b03c',
++     'lines': '17-25: copy capacity and zero means no bank spreading',
++     'review_capture': 'baseline/review/captured/20-parameters.properties'},
++    {'source': '/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/ip_mem_ss/edit_qsys_fm.tcl',
++     'sha256': '409dc24e8fef7cc752a3adbe018ec98cf4065918931917ef63cb6d583c12c551',
++     'lines': '191-203: regular DDR4 user control; 375-390: distinct ASSOC_STORAGE branch',
++     'review_capture': 'baseline/review/captured/15-edit_qsys_fm.tcl'},
++)
++
++
++def translate_bank_spreading(donor, accepted, instance):
++    """Translate exact saved strings; absence is not false. No I/O or mutation."""
++    if not {'NUM_BANK_FIFOS', 'NUM_COPIES'}.issubset(accepted):
++        raise ValueError(f'{instance}: missing modern bank-count/copies schema')
++    flag = donor.get('BANK_SPREADING_EN')
++    if 'BANK_SPREADING_EN' in donor and flag not in ('false', 'true'):
++        raise ValueError(f'{instance}: invalid BANK_SPREADING_EN: {flag!r}')
++    count = donor.get('NUM_BANK_FIFOS')
++    if count not in ('0', '2', '4', '8'):
++        raise ValueError(f'{instance}: missing or invalid NUM_BANK_FIFOS: {count!r}')
++    copies = donor.get('NUM_WRITE_COPIES')
++    if copies not in ('1', '2', '4', '8'):
++        raise ValueError(f'{instance}: missing or invalid NUM_WRITE_COPIES: {copies!r}')
++    if flag == 'true' and count == '0':
++        raise ValueError(f'{instance}: enabled bank spreading with zero FIFOs')
++    effective = '0' if flag == 'false' else count
++    if effective != '0' and copies != '1':
++        raise ValueError(f'{instance}: positive bank count conflicts with write copies')
++    rule = ('explicit false overrides count to zero' if flag == 'false' else
++            'explicit true preserves positive count' if flag == 'true' else
++            'absent enable preserves explicit count; enable semantics unresolved')
++    record = {
++        'raw_source_values': {'BANK_SPREADING_EN': flag, 'NUM_BANK_FIFOS': count,
++                              'NUM_WRITE_COPIES': copies},
++        'enable_present': 'BANK_SPREADING_EN' in donor,
++        'semantics_resolved': flag is not None,
++        'count_role': 'inactive saved evidence' if flag == 'false' else 'direct count',
++        'output': {'scope': f'mem_ss|{instance}|NUM_BANK_FIFOS', 'value': effective},
++        'rule': rule,
++        'supporting_sources': [dict(e) for e in BANK_SPREADING_EVIDENCE],
++        'qualification': 'saved intent only; no donor generated-behavior, functional, timing or execution qualification',
++    }
++    return effective, record
+ 
+ 
+ def derive(root, vendor):
+@@ -37,13 +94,20 @@
+             value_node = node.find('i:value', NS)
+             assert name_node is not None and name_node.text is not None and value_node is not None
+             key = name_node.text
+-            assert key not in result, (path, key)
++            if key in result:
++                raise ValueError(f'{path}: duplicate module parameter {key}')
+             result[key] = value_node.text or ''
+         return result
+     def preset(path, name):
+         node = next(n for n in ET.fromstring(read(path)).findall('.//preset')
+                     if n.get('name') == name)
+-        return {n.attrib['name']: n.attrib['value'] for n in node.findall('parameter')}
++        result = {}
++        for parameter in node.findall('parameter'):
++            key = parameter.attrib['name']
++            if key in result:
++                raise ValueError(f'{path}: duplicate preset parameter {key}')
++            result[key] = parameter.attrib['value']
++        return result
+     def xml(presets):
+         doc = ET.Element('ip')
+         group = ET.SubElement(doc, 'presets', version='12.1')
+@@ -104,9 +168,21 @@
+             # Modern enum replaces old bool. Preserve modern SS_CONTROLLED,
+             # record the unresolved semantic migration instead of bool-casting.
+             mem[f'mem_ss|msa_{i}|{key}'] = value
++        effective, semantic = translate_bank_spreading(msa[i], accepted_msa, f'msa_{i}')
++        source_label = f'vendor/ipss/mem/qip/mem_ss/ip/mem_ss_fm_0/mem_ss_fm_0_msa_{i}.ip'
++        semantic.update(source=source_label, source_sha256=inputs[source_label])
++        mem[f'mem_ss|msa_{i}|NUM_BANK_FIFOS'] = effective
++        # Keep the old unresolved set except the explicitly resolved enable;
++        # the overridden count remains evidence in the semantic record, not here.
++        unresolved[f'msa_{i}'] = {k: v for k, v in msa[i].items() if k not in used.values()}
++        if semantic['semantics_resolved']:
++            unresolved[f'msa_{i}'].pop('BANK_SPREADING_EN', None)
++        if msa[i].get('BANK_SPREADING_EN') == 'false':
++            used.pop('NUM_BANK_FIFOS', None)
+         mappings[f'msa_{i}'] = {'vendor_mapping': used,
+-            'modern_defaults': {k: v for k, v in accepted_msa.items() if k not in used}}
+-        unresolved[f'msa_{i}'] = {k: v for k, v in msa[i].items() if k not in used.values()}
++            'modern_defaults': {k: v for k, v in accepted_msa.items()
++                                if k not in used and k != 'NUM_BANK_FIFOS'},
++            'bank_spreading_saved_intent': semantic}
+     for key in reference:
+         if key.startswith('mem_ss|emif_cal_bot|'):
+             leaf = key.split('|')[-1]
+--- a/ipss/ia840f/preset_derivation.json
++++ b/ipss/ia840f/preset_derivation.json
+@@ -2879,6 +2879,50 @@
+       "remaining_top_level": "modern mixed-memory reference defaults, not vendor qualification"
+     },
+     "msa_0": {
++      "bank_spreading_saved_intent": {
++        "count_role": "inactive saved evidence",
++        "enable_present": true,
++        "output": {
++          "scope": "mem_ss|msa_0|NUM_BANK_FIFOS",
++          "value": "0"
++        },
++        "qualification": "saved intent only; no donor generated-behavior, functional, timing or execution qualification",
++        "raw_source_values": {
++          "BANK_SPREADING_EN": "false",
++          "NUM_BANK_FIFOS": "8",
++          "NUM_WRITE_COPIES": "1"
++        },
++        "rule": "explicit false overrides count to zero",
++        "semantics_resolved": true,
++        "source": "vendor/ipss/mem/qip/mem_ss/ip/mem_ss_fm_0/mem_ss_fm_0_msa_0.ip",
++        "source_sha256": "693e29897af8d3f9d8cfa91f0e30ab740762aa7fe7a916dff31d59dafe30d03f",
++        "supporting_sources": [
++          {
++            "lines": "85-87: copies 1/2/4/8; non-derived bank count 0/2/4/8",
++            "review_capture": "baseline/review/captured/18-declare.tcl",
++            "sha256": "9ae7ebc3e99103345563ddd633b2b0f26629c58e7238bd68afc79a823437ef95",
++            "source": "/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/ip_msa/declare.tcl"
++          },
++          {
++            "lines": "17-18: positive count conflicts with copies greater than one",
++            "review_capture": "baseline/review/captured/19-elaborate.tcl",
++            "sha256": "f939c58f7c4b378faa19d7a4617b0c33ca18f28f29936b0f130dfc9637161c61",
++            "source": "/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/ip_msa/elaborate.tcl"
++          },
++          {
++            "lines": "17-25: copy capacity and zero means no bank spreading",
++            "review_capture": "baseline/review/captured/20-parameters.properties",
++            "sha256": "76d0d589373a3c22f0ff7717c771fe7c7e4226d9a539a46f21327c76d910b03c",
++            "source": "/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/ip_msa/strings/parameters.properties"
++          },
++          {
++            "lines": "191-203: regular DDR4 user control; 375-390: distinct ASSOC_STORAGE branch",
++            "review_capture": "baseline/review/captured/15-edit_qsys_fm.tcl",
++            "sha256": "409dc24e8fef7cc752a3adbe018ec98cf4065918931917ef63cb6d583c12c551",
++            "source": "/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/ip_mem_ss/edit_qsys_fm.tcl"
++          }
++        ]
++      },
+       "modern_defaults": {
+         "ASYNC_EN": "false",
+         "AUTO_PRECHARGE": "SS_CONTROLLED",
+@@ -2893,7 +2937,6 @@
+         "COL_ADDR_WIDTH": "DDR4_COL_ADDR_WIDTH",
+         "ECC_EN": "ECC_EN",
+         "MBL_TRAFFIC_EN": "MBL_TRAFFIC_EN",
+-        "NUM_BANK_FIFOS": "NUM_BANK_FIFOS",
+         "NUM_COPIES": "NUM_WRITE_COPIES",
+         "RESP_RD_DATA_WIDTH": "AMM_DATA_WIDTH",
+         "RESP_WR_DATA_WIDTH": "AMM_DATA_WIDTH",
+@@ -2903,6 +2946,50 @@
+       }
+     },
+     "msa_1": {
++      "bank_spreading_saved_intent": {
++        "count_role": "inactive saved evidence",
++        "enable_present": true,
++        "output": {
++          "scope": "mem_ss|msa_1|NUM_BANK_FIFOS",
++          "value": "0"
++        },
++        "qualification": "saved intent only; no donor generated-behavior, functional, timing or execution qualification",
++        "raw_source_values": {
++          "BANK_SPREADING_EN": "false",
++          "NUM_BANK_FIFOS": "8",
++          "NUM_WRITE_COPIES": "1"
++        },
++        "rule": "explicit false overrides count to zero",
++        "semantics_resolved": true,
++        "source": "vendor/ipss/mem/qip/mem_ss/ip/mem_ss_fm_0/mem_ss_fm_0_msa_1.ip",
++        "source_sha256": "6f92ed9ce9ab66c5c5fab14cefc6d6835df764d1ba7b73eae02c737985177150",
++        "supporting_sources": [
++          {
++            "lines": "85-87: copies 1/2/4/8; non-derived bank count 0/2/4/8",
++            "review_capture": "baseline/review/captured/18-declare.tcl",
++            "sha256": "9ae7ebc3e99103345563ddd633b2b0f26629c58e7238bd68afc79a823437ef95",
++            "source": "/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/ip_msa/declare.tcl"
++          },
++          {
++            "lines": "17-18: positive count conflicts with copies greater than one",
++            "review_capture": "baseline/review/captured/19-elaborate.tcl",
++            "sha256": "f939c58f7c4b378faa19d7a4617b0c33ca18f28f29936b0f130dfc9637161c61",
++            "source": "/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/ip_msa/elaborate.tcl"
++          },
++          {
++            "lines": "17-25: copy capacity and zero means no bank spreading",
++            "review_capture": "baseline/review/captured/20-parameters.properties",
++            "sha256": "76d0d589373a3c22f0ff7717c771fe7c7e4226d9a539a46f21327c76d910b03c",
++            "source": "/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/ip_msa/strings/parameters.properties"
++          },
++          {
++            "lines": "191-203: regular DDR4 user control; 375-390: distinct ASSOC_STORAGE branch",
++            "review_capture": "baseline/review/captured/15-edit_qsys_fm.tcl",
++            "sha256": "409dc24e8fef7cc752a3adbe018ec98cf4065918931917ef63cb6d583c12c551",
++            "source": "/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/ip_mem_ss/edit_qsys_fm.tcl"
++          }
++        ]
++      },
+       "modern_defaults": {
+         "ASYNC_EN": "false",
+         "AUTO_PRECHARGE": "SS_CONTROLLED",
+@@ -2917,7 +3004,6 @@
+         "COL_ADDR_WIDTH": "DDR4_COL_ADDR_WIDTH",
+         "ECC_EN": "ECC_EN",
+         "MBL_TRAFFIC_EN": "MBL_TRAFFIC_EN",
+-        "NUM_BANK_FIFOS": "NUM_BANK_FIFOS",
+         "NUM_COPIES": "NUM_WRITE_COPIES",
+         "RESP_RD_DATA_WIDTH": "AMM_DATA_WIDTH",
+         "RESP_WR_DATA_WIDTH": "AMM_DATA_WIDTH",
+@@ -6153,7 +6239,7 @@
+     ]
+   },
+   "outputs_sha256": {
+-    "presets/ia840f_mem.qprs": "26cf53d439221fc7a9cd6ecaef55c232945df9ab38883499dfb63d1d78841c1e",
++    "presets/ia840f_mem.qprs": "59d7f4dcd38386e6a3e54d86a22e3945c116f5951353c49dbf032e20a0b4bdbd",
+     "presets/ia840f_pcie_known_schema.qprs": "420f73c5c4bf1432ce39508f068bc381f4e4f2117a87a96940ca8500a93c876e",
+     "presets/ia840f_sim.qprs": "8af9954c412405597fd073d1b2507dfac2e3475ef21871e1973f4ddbd666465e"
+   },
+@@ -6490,7 +6576,6 @@
+       "AXI_DATA_WIDTH": "512",
+       "AXI_ID_WIDTH": "9",
+       "AXI_USER_WIDTH": "0",
+-      "BANK_SPREADING_EN": "false",
+       "DIAG_ENABLE_CSR": "true",
+       "NUM_USER_POOLS": "1",
+       "READY_LATENCY": "3",
+@@ -6514,7 +6599,6 @@
+       "AXI_DATA_WIDTH": "512",
+       "AXI_ID_WIDTH": "9",
+       "AXI_USER_WIDTH": "0",
+-      "BANK_SPREADING_EN": "false",
+       "DIAG_ENABLE_CSR": "true",
+       "NUM_USER_POOLS": "1",
+       "READY_LATENCY": "3",
+--- a/ipss/ia840f/presets/ia840f_mem.qprs
++++ b/ipss/ia840f/presets/ia840f_mem.qprs
+@@ -2906,7 +2906,7 @@
+       <parameter name="mem_ss|msa_0|CSR_EN" value="false" />
+       <parameter name="mem_ss|msa_0|ECC_EN" value="false" />
+       <parameter name="mem_ss|msa_0|MBL_TRAFFIC_EN" value="false" />
+-      <parameter name="mem_ss|msa_0|NUM_BANK_FIFOS" value="8" />
++      <parameter name="mem_ss|msa_0|NUM_BANK_FIFOS" value="0" />
+       <parameter name="mem_ss|msa_0|NUM_COPIES" value="1" />
+       <parameter name="mem_ss|msa_0|PRIORITY_EN" value="false" />
+       <parameter name="mem_ss|msa_0|RESP_RD_DATA_WIDTH" value="512" />
+@@ -2924,7 +2924,7 @@
+       <parameter name="mem_ss|msa_1|CSR_EN" value="false" />
+       <parameter name="mem_ss|msa_1|ECC_EN" value="false" />
+       <parameter name="mem_ss|msa_1|MBL_TRAFFIC_EN" value="false" />
+-      <parameter name="mem_ss|msa_1|NUM_BANK_FIFOS" value="8" />
++      <parameter name="mem_ss|msa_1|NUM_BANK_FIFOS" value="0" />
+       <parameter name="mem_ss|msa_1|NUM_COPIES" value="1" />
+       <parameter name="mem_ss|msa_1|PRIORITY_EN" value="false" />
+       <parameter name="mem_ss|msa_1|RESP_RD_DATA_WIDTH" value="512" />

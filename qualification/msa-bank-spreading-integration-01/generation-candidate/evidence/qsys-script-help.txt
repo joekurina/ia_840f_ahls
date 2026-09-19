@@ -1,0 +1,85 @@
+***************************************************************
+Quartus is a registered trademark of Altera Corporation in the
+US and other countries.  Portions of the Quartus Prime software
+code, and other portions of the code included in this download
+or on this DVD, are licensed to Altera Corporation and are the
+copyrighted property of third parties. For license details,
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+***************************************************************
+
+
+Usage: qsys-script
+
+   OPTION                            DESCRIPTION
+   --cmd=<value>                   ? Tcl commands string
+   --script=<file>                 ? Tcl commands script file
+   --package-version=<value>       ? Tcl commands package version
+   --system-file=<file>            ? Platform Designer system file to load
+   -sp, --search-path=<value>      ? Component search path 
+   -qpf, --quartus-project=<value> ? Use Quartus Project
+   --new-quartus-project=<value>   ? create a new Quartus Project
+   -c, --rev=<value>               ? Quartus Project Revision
+   --jvm-max-heap-size=<value>     ? Set the maximum heap memory size to be used
+   -h, --help                      ? Show help
+
+QSYS-SCRIPT
+-----------
+The qsys-script pro tool can be used to create and manipulate Platform
+Designer systems using Tcl scripting commands. If a system is specified,
+it will be loaded before any scripting commands are executed.
+
+--cmd=<value>
+     Optional. A string containing Tcl scripting commands for creating
+     or manipulating Platform Designer systems. If a Tcl script file is
+     also specified, commands in the script string will be run before
+     the the contents of the script file.
+
+--script=<file>
+     Optional. A file containing Tcl scripting commands for creating or
+     manipulating Platform Designer systems. If a Tcl command string is
+     also specified, commands in the command string will be run before
+     the commands in the script file are run.
+
+--package-version=<value>
+     Optional. Specify which version of the system scripting Tcl API to
+     use. This version determines the availability and behavior of the
+     Tcl commands. The minimum supported version is 12.0. If not
+     specified, the Tcl script must request the system scripting API
+     directly using the "package require -exact qsys <version>" command
+     in the script.
+
+--system-file=<file>
+     Optional. Specifies the path to a .qsys system file. This system
+     will be loaded before running any scripting commands.
+
+--search-path=<value>
+     Optional. If omitted, a standard default path will be used. If
+     provided, a comma-separated list of paths will be searched. To
+     include the standard path in your replacement, use "$", like
+     "/extra/dir,$".
+
+--quartus-project=<value>
+     Optional. The name of the Quartus project file. You may provide the
+     revision name using --rev; otherwise, the default revision
+     associated with the Quartus project is used.
+
+--new-quartus-project=<value>
+     Optional. Create a new Quartus project with the specified path and
+     name. You may provide the revision name using --rev; otherwise, the
+     default revision name is the project name.
+
+--rev=<value>
+     Optional. The name of the Quartus project revision. This switch is
+     ignored if it is provided without one of the quartus project
+     switches.
+
+--jvm-max-heap-size=<value>
+     Optional. The maximum memory size to be used for allocations when
+     running this tool. This value is specified as <size><unit> where
+     unit can be m (or M) for multiples of megabytes or g (or G) for
+     multiples of gigabytes. The default value is 512m.
+
+--help
+     Optional. Display help for this tool
+

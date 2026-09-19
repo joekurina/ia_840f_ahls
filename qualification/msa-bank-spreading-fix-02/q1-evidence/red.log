@@ -1,0 +1,78 @@
+test_missing_pcie_rejects_before_writes (test_bank_spreading.PublicationOrder.test_missing_pcie_rejects_before_writes) ... FAIL
+test_missing_sim_rejects_before_writes (test_bank_spreading.PublicationOrder.test_missing_sim_rejects_before_writes) ... FAIL
+test_stale_pcie_rejects_before_writes (test_bank_spreading.PublicationOrder.test_stale_pcie_rejects_before_writes) ... FAIL
+test_stale_sim_rejects_before_writes (test_bank_spreading.PublicationOrder.test_stale_sim_rejects_before_writes) ... FAIL
+test_success_updates_exact_pair (test_bank_spreading.PublicationOrder.test_success_updates_exact_pair) ... ok
+
+======================================================================
+FAIL: test_missing_pcie_rejects_before_writes (test_bank_spreading.PublicationOrder.test_missing_pcie_rejects_before_writes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/msa-bank-spreading-fix-02/test_bank_spreading.py", line 329, in test_missing_pcie_rejects_before_writes
+    self.reject_collateral('presets/ia840f_pcie_known_schema.qprs', missing=True)
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/msa-bank-spreading-fix-02/test_bank_spreading.py", line 317, in reject_collateral
+    self.assertEqual([k for k in before if before[k] != after[k]], [])
+AssertionError: Lists differ: ['preset_derivation.json', 'presets/ia840f_mem.qprs'] != []
+
+First list contains 2 additional elements.
+First extra element 0:
+'preset_derivation.json'
+
+- ['preset_derivation.json', 'presets/ia840f_mem.qprs']
++ []
+
+======================================================================
+FAIL: test_missing_sim_rejects_before_writes (test_bank_spreading.PublicationOrder.test_missing_sim_rejects_before_writes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/msa-bank-spreading-fix-02/test_bank_spreading.py", line 323, in test_missing_sim_rejects_before_writes
+    self.reject_collateral('presets/ia840f_sim.qprs', missing=True)
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/msa-bank-spreading-fix-02/test_bank_spreading.py", line 317, in reject_collateral
+    self.assertEqual([k for k in before if before[k] != after[k]], [])
+AssertionError: Lists differ: ['preset_derivation.json', 'presets/ia840f_mem.qprs'] != []
+
+First list contains 2 additional elements.
+First extra element 0:
+'preset_derivation.json'
+
+- ['preset_derivation.json', 'presets/ia840f_mem.qprs']
++ []
+
+======================================================================
+FAIL: test_stale_pcie_rejects_before_writes (test_bank_spreading.PublicationOrder.test_stale_pcie_rejects_before_writes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/msa-bank-spreading-fix-02/test_bank_spreading.py", line 326, in test_stale_pcie_rejects_before_writes
+    self.reject_collateral('presets/ia840f_pcie_known_schema.qprs')
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/msa-bank-spreading-fix-02/test_bank_spreading.py", line 317, in reject_collateral
+    self.assertEqual([k for k in before if before[k] != after[k]], [])
+AssertionError: Lists differ: ['preset_derivation.json', 'presets/ia840f_mem.qprs'] != []
+
+First list contains 2 additional elements.
+First extra element 0:
+'preset_derivation.json'
+
+- ['preset_derivation.json', 'presets/ia840f_mem.qprs']
++ []
+
+======================================================================
+FAIL: test_stale_sim_rejects_before_writes (test_bank_spreading.PublicationOrder.test_stale_sim_rejects_before_writes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/msa-bank-spreading-fix-02/test_bank_spreading.py", line 320, in test_stale_sim_rejects_before_writes
+    self.reject_collateral('presets/ia840f_sim.qprs')
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/msa-bank-spreading-fix-02/test_bank_spreading.py", line 317, in reject_collateral
+    self.assertEqual([k for k in before if before[k] != after[k]], [])
+AssertionError: Lists differ: ['preset_derivation.json', 'presets/ia840f_mem.qprs'] != []
+
+First list contains 2 additional elements.
+First extra element 0:
+'preset_derivation.json'
+
+- ['preset_derivation.json', 'presets/ia840f_mem.qprs']
++ []
+
+----------------------------------------------------------------------
+Ran 5 tests in 17.061s
+
+FAILED (failures=4)

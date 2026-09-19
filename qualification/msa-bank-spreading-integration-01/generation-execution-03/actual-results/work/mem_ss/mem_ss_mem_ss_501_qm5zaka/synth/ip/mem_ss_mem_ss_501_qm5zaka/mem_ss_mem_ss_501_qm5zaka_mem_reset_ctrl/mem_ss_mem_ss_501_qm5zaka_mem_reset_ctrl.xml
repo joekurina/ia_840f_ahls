@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy
+ date="2026.09.19.03:00:02"
+ outputDirectory="/tmp/alt0715_2357079155904054191.dir/0012_packageGeneration/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl/">
+ <perimeter>
+  <parameter
+     name="AUTO_GENERATION_ID"
+     type="Integer"
+     defaultValue="0"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_UNIQUE_ID"
+     type="String"
+     defaultValue=""
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_FAMILY"
+     type="String"
+     defaultValue="Agilex 7"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE"
+     type="String"
+     defaultValue="AGFB027R25A2E2V"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_SPEEDGRADE"
+     type="String"
+     defaultValue="1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_BOARD"
+     type="String"
+     defaultValue="default"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLK_CLOCK_RATE"
+     type="Long"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLK_CLOCK_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLK_RESET_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <interface name="clk" kind="clock" start="0">
+   <property name="clockRate" value="0" />
+   <property name="externallyDriven" value="false" />
+   <property name="ptfSchematicName" value="" />
+   <port name="clk" direction="input" role="clk" width="1" />
+  </interface>
+  <interface name="reset" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <property name="prSafe" value="false" />
+   <port name="reset_n" direction="input" role="pll_locked" width="1" />
+  </interface>
+  <interface name="subsystem_reset" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <property name="prSafe" value="false" />
+   <port
+       name="app_ss_rst_req"
+       direction="input"
+       role="app_ss_rst_req"
+       width="1" />
+   <port
+       name="ss_app_rst_rdy"
+       direction="output"
+       role="ss_app_rst_rdy"
+       width="1" />
+   <port
+       name="app_ss_cold_rst_n"
+       direction="input"
+       role="app_ss_cold_rst_n"
+       width="1" />
+   <port
+       name="ss_app_cold_rst_ack_n"
+       direction="output"
+       role="ss_app_cold_rst_ack_n"
+       width="1" />
+  </interface>
+  <interface name="fm_emif_reset_req_0" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <property name="prSafe" value="false" />
+   <port
+       name="local_reset_req_0"
+       direction="output"
+       role="local_reset_req"
+       width="1" />
+  </interface>
+  <interface name="fm_emif_reset_status_0" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <property name="prSafe" value="false" />
+   <port
+       name="local_reset_done_0"
+       direction="input"
+       role="local_reset_done"
+       width="1" />
+  </interface>
+  <interface name="fm_emif_reset_req_1" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <property name="prSafe" value="false" />
+   <port
+       name="local_reset_req_1"
+       direction="output"
+       role="local_reset_req"
+       width="1" />
+  </interface>
+  <interface name="fm_emif_reset_status_1" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <property name="prSafe" value="false" />
+   <port
+       name="local_reset_done_1"
+       direction="input"
+       role="local_reset_done"
+       width="1" />
+  </interface>
+ </perimeter>
+ <entity
+   kind="mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl"
+   version="1.0"
+   name="mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl">
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="-1" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_DEVICE" value="AGFB027R25A2E2V" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 7" />
+  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="-1" />
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="-1" />
+  <parameter name="AUTO_UNIQUE_ID" value="" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="2" />
+  <generatedFiles>
+   <file
+       path="/tmp/alt0715_2357079155904054191.dir/0012_packageGeneration/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl/synth/mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/tmp/alt0715_2357079155904054191.dir/0012_packageGeneration/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl/synth/mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/tmp/alt0715_2357079155904054191.dir/0012_packageGeneration/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl.ip" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/ip_reset_ctrl/mem_ss_reset_ctrl_hw.tcl" />
+  </childSourceFiles>
+  <messages>
+   <message level="Info" culprit="mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl">"Generating: mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl"</message>
+   <message level="Info" culprit="mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl">"Generating: mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl_mem_ss_reset_ctrl_201_pb3fzui"</message>
+   <message level="Debug" culprit="mem_reset_ctrl">quartus_synth fileset time: 10.27 ms</message>
+  </messages>
+ </entity>
+ <entity
+   kind="mem_ss_reset_ctrl"
+   version="2.0.1"
+   name="mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl_mem_ss_reset_ctrl_201_pb3fzui">
+  <parameter name="RESET_PORT_ROLE" value="pll_locked" />
+  <parameter name="NUM_FP_HBM" value="0" />
+  <parameter name="NUM_FM_EMIF" value="2" />
+  <generatedFiles>
+   <file
+       path="/tmp/alt0715_2357079155904054191.dir/0012_packageGeneration/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl/mem_ss_reset_ctrl_201/synth/mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl_mem_ss_reset_ctrl_201_pb3fzui_top.sv"
+       attributes="" />
+   <file
+       path="/tmp/alt0715_2357079155904054191.dir/0012_packageGeneration/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl/mem_ss_reset_ctrl_201/synth/mem_ss_reset_ctrl_impl.sv"
+       attributes="" />
+   <file
+       path="/tmp/alt0715_2357079155904054191.dir/0012_packageGeneration/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl/mem_ss_reset_ctrl_201/synth/mem_ss_reset_ctrl.sdc"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/tmp/alt0715_2357079155904054191.dir/0012_packageGeneration/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl/mem_ss_reset_ctrl_201/synth/mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl_mem_ss_reset_ctrl_201_pb3fzui_top.sv"
+       attributes="" />
+   <file
+       path="/tmp/alt0715_2357079155904054191.dir/0012_packageGeneration/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl/mem_ss_reset_ctrl_201/synth/mem_ss_reset_ctrl_impl.sv"
+       attributes="" />
+   <file
+       path="/tmp/alt0715_2357079155904054191.dir/0012_packageGeneration/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl/mem_ss_reset_ctrl_201/synth/mem_ss_reset_ctrl.sdc"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/ip_reset_ctrl/mem_ss_reset_ctrl_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl"
+     as="mem_reset_ctrl" />
+  <messages>
+   <message level="Info" culprit="mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl">"Generating: mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl_mem_ss_reset_ctrl_201_pb3fzui"</message>
+   <message level="Debug" culprit="mem_reset_ctrl">quartus_synth fileset time: 10.27 ms</message>
+  </messages>
+ </entity>
+</deploy>

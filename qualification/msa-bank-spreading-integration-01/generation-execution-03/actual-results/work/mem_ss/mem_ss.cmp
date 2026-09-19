@@ -1,0 +1,133 @@
+	component mem_ss is
+		port (
+			mem0_pll_ref_clk        : in    std_logic                      := 'X';             -- clk
+			mem0_oct_rzqin          : in    std_logic                      := 'X';             -- oct_rzqin
+			mem0_ddr4_ck            : out   std_logic_vector(0 downto 0);                      -- mem_ck
+			mem0_ddr4_ck_n          : out   std_logic_vector(0 downto 0);                      -- mem_ck_n
+			mem0_ddr4_a             : out   std_logic_vector(16 downto 0);                     -- mem_a
+			mem0_ddr4_act_n         : out   std_logic_vector(0 downto 0);                      -- mem_act_n
+			mem0_ddr4_ba            : out   std_logic_vector(1 downto 0);                      -- mem_ba
+			mem0_ddr4_bg            : out   std_logic_vector(1 downto 0);                      -- mem_bg
+			mem0_ddr4_cke           : out   std_logic_vector(0 downto 0);                      -- mem_cke
+			mem0_ddr4_cs_n          : out   std_logic_vector(0 downto 0);                      -- mem_cs_n
+			mem0_ddr4_odt           : out   std_logic_vector(0 downto 0);                      -- mem_odt
+			mem0_ddr4_reset_n       : out   std_logic_vector(0 downto 0);                      -- mem_reset_n
+			mem0_ddr4_par           : out   std_logic_vector(0 downto 0);                      -- mem_par
+			mem0_ddr4_alert_n       : in    std_logic_vector(0 downto 0)   := (others => 'X'); -- mem_alert_n
+			mem0_ddr4_dqs           : inout std_logic_vector(7 downto 0)   := (others => 'X'); -- mem_dqs
+			mem0_ddr4_dqs_n         : inout std_logic_vector(7 downto 0)   := (others => 'X'); -- mem_dqs_n
+			mem0_ddr4_dq            : inout std_logic_vector(63 downto 0)  := (others => 'X'); -- mem_dq
+			mem0_ddr4_dbi_n         : inout std_logic_vector(7 downto 0)   := (others => 'X'); -- mem_dbi_n
+			mem0_ss_app_usr_clk     : out   std_logic;                                         -- clk
+			mem0_ss_app_usr_reset_n : out   std_logic;                                         -- reset_n
+			mem1_pll_ref_clk        : in    std_logic                      := 'X';             -- clk
+			mem1_oct_rzqin          : in    std_logic                      := 'X';             -- oct_rzqin
+			mem1_ddr4_ck            : out   std_logic_vector(0 downto 0);                      -- mem_ck
+			mem1_ddr4_ck_n          : out   std_logic_vector(0 downto 0);                      -- mem_ck_n
+			mem1_ddr4_a             : out   std_logic_vector(16 downto 0);                     -- mem_a
+			mem1_ddr4_act_n         : out   std_logic_vector(0 downto 0);                      -- mem_act_n
+			mem1_ddr4_ba            : out   std_logic_vector(1 downto 0);                      -- mem_ba
+			mem1_ddr4_bg            : out   std_logic_vector(1 downto 0);                      -- mem_bg
+			mem1_ddr4_cke           : out   std_logic_vector(0 downto 0);                      -- mem_cke
+			mem1_ddr4_cs_n          : out   std_logic_vector(0 downto 0);                      -- mem_cs_n
+			mem1_ddr4_odt           : out   std_logic_vector(0 downto 0);                      -- mem_odt
+			mem1_ddr4_reset_n       : out   std_logic_vector(0 downto 0);                      -- mem_reset_n
+			mem1_ddr4_par           : out   std_logic_vector(0 downto 0);                      -- mem_par
+			mem1_ddr4_alert_n       : in    std_logic_vector(0 downto 0)   := (others => 'X'); -- mem_alert_n
+			mem1_ddr4_dqs           : inout std_logic_vector(7 downto 0)   := (others => 'X'); -- mem_dqs
+			mem1_ddr4_dqs_n         : inout std_logic_vector(7 downto 0)   := (others => 'X'); -- mem_dqs_n
+			mem1_ddr4_dq            : inout std_logic_vector(63 downto 0)  := (others => 'X'); -- mem_dq
+			mem1_ddr4_dbi_n         : inout std_logic_vector(7 downto 0)   := (others => 'X'); -- mem_dbi_n
+			mem1_ss_app_usr_clk     : out   std_logic;                                         -- clk
+			mem1_ss_app_usr_reset_n : out   std_logic;                                         -- reset_n
+			app_ss_rst_req          : in    std_logic                      := 'X';             -- app_ss_rst_req
+			ss_app_rst_rdy          : out   std_logic;                                         -- ss_app_rst_rdy
+			app_ss_cold_rst_n       : in    std_logic                      := 'X';             -- app_ss_cold_rst_n
+			ss_app_cold_rst_ack_n   : out   std_logic;                                         -- ss_app_cold_rst_ack_n
+			i0_ss_app_mm_awready    : out   std_logic;                                         -- awready
+			i0_app_ss_mm_awvalid    : in    std_logic                      := 'X';             -- awvalid
+			i0_app_ss_mm_awid       : in    std_logic_vector(8 downto 0)   := (others => 'X'); -- awid
+			i0_app_ss_mm_awaddr     : in    std_logic_vector(33 downto 0)  := (others => 'X'); -- awaddr
+			i0_app_ss_mm_awlen      : in    std_logic_vector(7 downto 0)   := (others => 'X'); -- awlen
+			i0_app_ss_mm_awsize     : in    std_logic_vector(2 downto 0)   := (others => 'X'); -- awsize
+			i0_app_ss_mm_awburst    : in    std_logic_vector(1 downto 0)   := (others => 'X'); -- awburst
+			i0_app_ss_mm_awlock     : in    std_logic                      := 'X';             -- awlock
+			i0_app_ss_mm_awcache    : in    std_logic_vector(3 downto 0)   := (others => 'X'); -- awcache
+			i0_app_ss_mm_awprot     : in    std_logic_vector(2 downto 0)   := (others => 'X'); -- awprot
+			i0_app_ss_mm_awqos      : in    std_logic_vector(3 downto 0)   := (others => 'X'); -- awqos
+			i0_app_ss_mm_awuser     : in    std_logic_vector(13 downto 0)  := (others => 'X'); -- awuser
+			i0_ss_app_mm_arready    : out   std_logic;                                         -- arready
+			i0_app_ss_mm_arvalid    : in    std_logic                      := 'X';             -- arvalid
+			i0_app_ss_mm_arid       : in    std_logic_vector(8 downto 0)   := (others => 'X'); -- arid
+			i0_app_ss_mm_araddr     : in    std_logic_vector(33 downto 0)  := (others => 'X'); -- araddr
+			i0_app_ss_mm_arlen      : in    std_logic_vector(7 downto 0)   := (others => 'X'); -- arlen
+			i0_app_ss_mm_arsize     : in    std_logic_vector(2 downto 0)   := (others => 'X'); -- arsize
+			i0_app_ss_mm_arburst    : in    std_logic_vector(1 downto 0)   := (others => 'X'); -- arburst
+			i0_app_ss_mm_arlock     : in    std_logic                      := 'X';             -- arlock
+			i0_app_ss_mm_arcache    : in    std_logic_vector(3 downto 0)   := (others => 'X'); -- arcache
+			i0_app_ss_mm_arprot     : in    std_logic_vector(2 downto 0)   := (others => 'X'); -- arprot
+			i0_app_ss_mm_arqos      : in    std_logic_vector(3 downto 0)   := (others => 'X'); -- arqos
+			i0_app_ss_mm_aruser     : in    std_logic_vector(13 downto 0)  := (others => 'X'); -- aruser
+			i0_ss_app_mm_wready     : out   std_logic;                                         -- wready
+			i0_app_ss_mm_wvalid     : in    std_logic                      := 'X';             -- wvalid
+			i0_app_ss_mm_wdata      : in    std_logic_vector(511 downto 0) := (others => 'X'); -- wdata
+			i0_app_ss_mm_wstrb      : in    std_logic_vector(63 downto 0)  := (others => 'X'); -- wstrb
+			i0_app_ss_mm_wlast      : in    std_logic                      := 'X';             -- wlast
+			i0_app_ss_mm_bready     : in    std_logic                      := 'X';             -- bready
+			i0_ss_app_mm_bvalid     : out   std_logic;                                         -- bvalid
+			i0_ss_app_mm_bid        : out   std_logic_vector(8 downto 0);                      -- bid
+			i0_ss_app_mm_bresp      : out   std_logic_vector(1 downto 0);                      -- bresp
+			i0_ss_app_mm_buser      : out   std_logic;                                         -- buser
+			i0_app_ss_mm_rready     : in    std_logic                      := 'X';             -- rready
+			i0_ss_app_mm_rvalid     : out   std_logic;                                         -- rvalid
+			i0_ss_app_mm_rid        : out   std_logic_vector(8 downto 0);                      -- rid
+			i0_ss_app_mm_rresp      : out   std_logic_vector(1 downto 0);                      -- rresp
+			i0_ss_app_mm_rdata      : out   std_logic_vector(511 downto 0);                    -- rdata
+			i0_ss_app_mm_rlast      : out   std_logic;                                         -- rlast
+			mem0_local_cal_success  : out   std_logic;                                         -- local_cal_success
+			mem0_local_cal_fail     : out   std_logic;                                         -- local_cal_fail
+			i1_ss_app_mm_awready    : out   std_logic;                                         -- awready
+			i1_app_ss_mm_awvalid    : in    std_logic                      := 'X';             -- awvalid
+			i1_app_ss_mm_awid       : in    std_logic_vector(8 downto 0)   := (others => 'X'); -- awid
+			i1_app_ss_mm_awaddr     : in    std_logic_vector(33 downto 0)  := (others => 'X'); -- awaddr
+			i1_app_ss_mm_awlen      : in    std_logic_vector(7 downto 0)   := (others => 'X'); -- awlen
+			i1_app_ss_mm_awsize     : in    std_logic_vector(2 downto 0)   := (others => 'X'); -- awsize
+			i1_app_ss_mm_awburst    : in    std_logic_vector(1 downto 0)   := (others => 'X'); -- awburst
+			i1_app_ss_mm_awlock     : in    std_logic                      := 'X';             -- awlock
+			i1_app_ss_mm_awcache    : in    std_logic_vector(3 downto 0)   := (others => 'X'); -- awcache
+			i1_app_ss_mm_awprot     : in    std_logic_vector(2 downto 0)   := (others => 'X'); -- awprot
+			i1_app_ss_mm_awqos      : in    std_logic_vector(3 downto 0)   := (others => 'X'); -- awqos
+			i1_app_ss_mm_awuser     : in    std_logic_vector(13 downto 0)  := (others => 'X'); -- awuser
+			i1_ss_app_mm_arready    : out   std_logic;                                         -- arready
+			i1_app_ss_mm_arvalid    : in    std_logic                      := 'X';             -- arvalid
+			i1_app_ss_mm_arid       : in    std_logic_vector(8 downto 0)   := (others => 'X'); -- arid
+			i1_app_ss_mm_araddr     : in    std_logic_vector(33 downto 0)  := (others => 'X'); -- araddr
+			i1_app_ss_mm_arlen      : in    std_logic_vector(7 downto 0)   := (others => 'X'); -- arlen
+			i1_app_ss_mm_arsize     : in    std_logic_vector(2 downto 0)   := (others => 'X'); -- arsize
+			i1_app_ss_mm_arburst    : in    std_logic_vector(1 downto 0)   := (others => 'X'); -- arburst
+			i1_app_ss_mm_arlock     : in    std_logic                      := 'X';             -- arlock
+			i1_app_ss_mm_arcache    : in    std_logic_vector(3 downto 0)   := (others => 'X'); -- arcache
+			i1_app_ss_mm_arprot     : in    std_logic_vector(2 downto 0)   := (others => 'X'); -- arprot
+			i1_app_ss_mm_arqos      : in    std_logic_vector(3 downto 0)   := (others => 'X'); -- arqos
+			i1_app_ss_mm_aruser     : in    std_logic_vector(13 downto 0)  := (others => 'X'); -- aruser
+			i1_ss_app_mm_wready     : out   std_logic;                                         -- wready
+			i1_app_ss_mm_wvalid     : in    std_logic                      := 'X';             -- wvalid
+			i1_app_ss_mm_wdata      : in    std_logic_vector(511 downto 0) := (others => 'X'); -- wdata
+			i1_app_ss_mm_wstrb      : in    std_logic_vector(63 downto 0)  := (others => 'X'); -- wstrb
+			i1_app_ss_mm_wlast      : in    std_logic                      := 'X';             -- wlast
+			i1_app_ss_mm_bready     : in    std_logic                      := 'X';             -- bready
+			i1_ss_app_mm_bvalid     : out   std_logic;                                         -- bvalid
+			i1_ss_app_mm_bid        : out   std_logic_vector(8 downto 0);                      -- bid
+			i1_ss_app_mm_bresp      : out   std_logic_vector(1 downto 0);                      -- bresp
+			i1_ss_app_mm_buser      : out   std_logic;                                         -- buser
+			i1_app_ss_mm_rready     : in    std_logic                      := 'X';             -- rready
+			i1_ss_app_mm_rvalid     : out   std_logic;                                         -- rvalid
+			i1_ss_app_mm_rid        : out   std_logic_vector(8 downto 0);                      -- rid
+			i1_ss_app_mm_rresp      : out   std_logic_vector(1 downto 0);                      -- rresp
+			i1_ss_app_mm_rdata      : out   std_logic_vector(511 downto 0);                    -- rdata
+			i1_ss_app_mm_rlast      : out   std_logic;                                         -- rlast
+			mem1_local_cal_success  : out   std_logic;                                         -- local_cal_success
+			mem1_local_cal_fail     : out   std_logic                                          -- local_cal_fail
+		);
+	end component mem_ss;
+
