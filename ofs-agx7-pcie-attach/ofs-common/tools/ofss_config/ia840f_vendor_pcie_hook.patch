@@ -1,0 +1,24 @@
+--- a/ofs-common/tools/ofss_config/pcie_ip.py
++++ b/ofs-common/tools/ofss_config/pcie_ip.py
+@@ -267,6 +267,11 @@
+                     if not c8_k in self.ip_component_params:
+                         self.ip_component_params[c8_k] = self.ip_component_params[c16_k]
+ 
++        # Board-specific vendor contract and fail-closed schema gate.
++        if self.platform == "ia840f":
++            from ia840f_vendor_pcie import apply_ia840f_pcie_source
++            apply_ia840f_pcie_source(self)
++
+         if self.ip_component == "intel_pcie_gts":
+             self.append_gts_components()
+ 
+--- a/syn/board/ia840f/config/ia840f.ofss
++++ b/syn/board/ia840f/config/ia840f.ofss
+@@ -3,6 +3,6 @@
+ # ia840f_vendor_pcie_hook.patch and its paired selection change are applied.
+ [default]
+ "$OFS_ROOTDIR"/syn/board/ia840f/config/ia840f_base.ofss
+-"$OFS_ROOTDIR"/syn/board/ia840f/config/ia840f_pcie.ofss
++"$OFS_ROOTDIR"/syn/board/ia840f/config/ia840f_pcie_vendor_source.ofss
+ "$OFS_ROOTDIR"/tools/ofss_config/iopll/iopll_470MHz.ofss
+ "$OFS_ROOTDIR"/syn/board/ia840f/config/ia840f_memory.ofss

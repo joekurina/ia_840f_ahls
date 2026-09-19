@@ -1,0 +1,38 @@
+# Source-only PF/VF configuration. Requires ia840f_vendor_pcie_hook.patch.
+# DO NOT select without the hook: upstream defaults enable PF1 BAR0 and
+# silently omit PF1 BAR2. The helper overlays installed-source-backed schema
+# and enforces the experimental gate. Child-IP acceptance and generated
+# capabilities/interfaces remain unqualified; schema evidence is not acceptance.
+[ip]
+type = pcie
+
+[settings]
+output_name = pcie_ss
+ip_component = intel_pcie_ss_axi
+pcie_gen = 4
+pcie_instances = 1
+pcie_instances_enabled = 1
+pcie_lane_width = 16
+
+[pf0]
+num_vfs = 1
+bar0_address_width = 20
+bar4_address_width = 14
+vf_bar0_address_width = 20
+vf_bar4_address_width = 14
+pci_type0_vendor_id = 0x8086
+pci_type0_device_id = 0xbcce
+subsys_vendor_id = 0x8086
+subsys_dev_id = 0x1771
+sriov_vf_device_id = 0xbccf
+exvf_subsysid = 0x1771
+
+[pf1]
+num_vfs = 0
+# Width 12 is the stored inactive value; helper DISABLES BAR0.
+bar0_address_width = 12
+bar4_address_width = 14
+pci_type0_vendor_id = 0x12ba
+pci_type0_device_id = 0x0070
+subsys_vendor_id = 0x12ba
+subsys_dev_id = 0xb5d4
