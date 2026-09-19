@@ -1,0 +1,14 @@
+=== JTAG udev fix 2026-09-19T13:50:06-07:00 ===
+device node: /dev/bus/usb/001/017
+--- permissions before ---
+crw-rw-r--. 1 root root 189, 16 Sep 18 17:28 /dev/bus/usb/001/017
+--- installing rule ---
+# Altera USB-Blaster II (09fb:6810) - narrow permission fix, added 2026-09-19 for IA-840F JTAG recovery path
+# rollback: remove this file, then: sudo udevadm control --reload-rules && sudo udevadm trigger --action=add --subsystem-match=usb
+SUBSYSTEM=="usb", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6810", MODE="0666", TAG+="uaccess"
+--- permissions after ---
+ls: cannot access '/dev/bus/usb/001/017': No such file or directory
+--- jtagconfig as user ---
+Connecting to server(s) [.                   ]                                              No JTAG hardware available
+jtagconfig_exit=4
+=== END 2026-09-19T13:50:10-07:00 ===
