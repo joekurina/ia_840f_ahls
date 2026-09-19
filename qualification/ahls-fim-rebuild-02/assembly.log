@@ -1,0 +1,27 @@
+=== FIM13 assembly 2026-09-19T14:13:35-07:00 ===
+--- preflight: W13 must not exist ---
+/dev/mapper/rl-root  1.9T  573G  1.3T  31% /
+--- 1. copy Work12 -> W13 (1.3G, excludes output_files) ---
+copy_rc=0
+--- 2. record pre-swap PR JSON UUID (must be exerciser 222baa4c) ---
+accelerator-type-uuid": "222baa4c-0ab8-4574-bf74-aa35b945a223"
+--- 3. swap in AHLS PR JSON ---
+cp: cannot stat '/home/uwb_student00/ahls/new_BSP/qualification/ahls-afu-fim-01/src/ofs_pr_afu.json': No such file or directory
+accelerator-type-uuid": "222baa4c-0ab8-4574-bf74-aa35b945a223"
+--- 4. transplant AHLS AFU tree (159 files, 11M) ---
+afu_json_info.vh
+ahls_binding
+ahls_ip
+ahls_qual_vec_op.json
+ofs_plat_afu.sv
+159
+--- 5. afu.tcl presence (afu_main.tcl branch trigger) ---
+ls: cannot access '/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_13/syn/board/ia840f/syn_top/afu_with_pim/afu.tcl': No such file or directory
+sha256sum: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_13/syn/board/ia840f/syn_top/afu_with_pim/afu.tcl: No such file or directory
+3638a59ec7d811c16d9d1e738ca57b606ee3cb9b8cc5bdb15b75ce965c8f12fb  /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_13/syn/board/ia840f/syn_top/afu_with_pim/afu/hw/ofs_plat_afu.sv
+--- 6. build_top.sh detects? (dry read of the branch files) ---
+3
+--- 7. sanity: no leftover output_files artifacts ---
+-bash: /map: Permission denied
+(output_files absent - good)
+=== ASSEMBLY COMPLETE 2026-09-19T14:13:36-07:00 ===
