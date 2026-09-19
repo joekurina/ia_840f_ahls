@@ -1,0 +1,63 @@
+repair4 0
+***************************************************************
+Quartus is a registered trademark of Altera Corporation in the
+US and other countries.  Portions of the Quartus Prime software
+code, and other portions of the code included in this download
+or on this DVD, are licensed to Altera Corporation and are the
+copyrighted property of third parties. For license details,
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+***************************************************************
+
+2026.09.18.11:35:14 Info: Doing: qsys-script --quartus-project=model_repair.qpf --script=repair4.tcl
+2026.09.18.11:35:18 Info: load_system model_repair.qsys
+2026.09.18.11:35:19 Info: load_component ed_sim_mem
+2026.09.18.11:35:22 Info: set_component_parameter_value SYS_INFO_DEVICE_DIE_REVISIONS HSSI_WHR_REVA HSSI_CRETE3_REVA MAIN_FM8_REVA
+2026.09.18.11:35:22 Info: set_component_parameter_value MEM_DDR4_R_DERIVED_ODTN {Rank 0} - - -
+2026.09.18.11:35:22 Info: set_component_parameter_value MEM_DDR4_R_DERIVED_ODT0 {(Drive) RZQ/7 (34 Ohm)} - - -
+2026.09.18.11:35:22 Info: set_component_parameter_value MEM_DDR4_R_DERIVED_ODT1 - - - -
+2026.09.18.11:35:22 Info: set_component_parameter_value MEM_DDR4_R_DERIVED_ODT2 - - - -
+2026.09.18.11:35:22 Info: set_component_parameter_value MEM_DDR4_R_DERIVED_ODT3 - - - -
+2026.09.18.11:35:22 Info: set_component_parameter_value MEM_DDR4_W_DERIVED_ODTN {Rank 0} - - -
+2026.09.18.11:35:22 Info: set_component_parameter_value MEM_DDR4_W_DERIVED_ODT0 {(Park) RZQ/4 (60 Ohm)} - - -
+2026.09.18.11:35:22 Info: set_component_parameter_value MEM_DDR4_W_DERIVED_ODT1 - - - -
+2026.09.18.11:35:22 Info: set_component_parameter_value MEM_DDR4_W_DERIVED_ODT2 - - - -
+2026.09.18.11:35:22 Info: set_component_parameter_value MEM_DDR4_W_DERIVED_ODT3 - - - -
+2026.09.18.11:35:22 Info: save_component 
+2026.09.18.11:35:22 Info: reload_component_footprint ed_sim_mem
+2026.09.18.11:35:22 Info: ed_sim_mem: Generic Component instance footprint reloaded.
+2026.09.18.11:35:22 Info: load_component ed_sim_mem_group1
+2026.09.18.11:35:22 Info: set_component_parameter_value SYS_INFO_DEVICE_DIE_REVISIONS HSSI_WHR_REVA HSSI_CRETE3_REVA MAIN_FM8_REVA
+2026.09.18.11:35:22 Info: set_component_parameter_value MEM_DDR4_R_DERIVED_ODTN {Rank 0} - - -
+2026.09.18.11:35:22 Info: set_component_parameter_value MEM_DDR4_R_DERIVED_ODT0 {(Drive) RZQ/7 (34 Ohm)} - - -
+2026.09.18.11:35:22 Info: set_component_parameter_value MEM_DDR4_R_DERIVED_ODT1 - - - -
+2026.09.18.11:35:22 Info: set_component_parameter_value MEM_DDR4_R_DERIVED_ODT2 - - - -
+2026.09.18.11:35:22 Info: set_component_parameter_value MEM_DDR4_R_DERIVED_ODT3 - - - -
+2026.09.18.11:35:22 Info: set_component_parameter_value MEM_DDR4_W_DERIVED_ODTN {Rank 0} - - -
+2026.09.18.11:35:22 Info: set_component_parameter_value MEM_DDR4_W_DERIVED_ODT0 {(Park) RZQ/4 (60 Ohm)} - - -
+2026.09.18.11:35:22 Info: set_component_parameter_value MEM_DDR4_W_DERIVED_ODT1 - - - -
+2026.09.18.11:35:22 Info: set_component_parameter_value MEM_DDR4_W_DERIVED_ODT2 - - - -
+2026.09.18.11:35:22 Info: set_component_parameter_value MEM_DDR4_W_DERIVED_ODT3 - - - -
+2026.09.18.11:35:22 Info: save_component 
+2026.09.18.11:35:23 Info: reload_component_footprint ed_sim_mem_group1
+2026.09.18.11:35:23 Info: ed_sim_mem_group1: Generic Component instance footprint reloaded.
+2026.09.18.11:35:23 Info: save_system model_repair.qsys
+2026.09.18.11:35:23 Info: Info: All modules have been converted to Generic Components.
+
+Traceback (most recent call last):
+  File "/usr/lib64/python3.9/shutil.py", line 825, in move
+    os.rename(src, real_dst)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/uwb_student00/ahls/new_BSP/qualification/ddr-model-repair-01/ed_sim_mem' -> '/home/uwb_student00/ahls/new_BSP/qualification/ddr-model-repair-01/intermediate-generation/ed_sim_mem'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+  File "<string>", line 17, in <module>
+  File "/usr/lib64/python3.9/shutil.py", line 845, in move
+    copy_function(src, real_dst)
+  File "/usr/lib64/python3.9/shutil.py", line 444, in copy2
+    copyfile(src, dst, follow_symlinks=follow_symlinks)
+  File "/usr/lib64/python3.9/shutil.py", line 264, in copyfile
+    with open(src, 'rb') as fsrc:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/uwb_student00/ahls/new_BSP/qualification/ddr-model-repair-01/ed_sim_mem'

@@ -1,0 +1,220 @@
+
+SOURCE 5815 5845    
+5815: defparam inst.sync_mode = sync_mode;                                      
+5816: defparam inst.half_rate_mode = half_rate_mode;                            
+5817:               
+5818: endmodule // tennm_ddio_out       
+5819:               
+5820:               
+5821: module tennm_iossm (              
+5822:     // ---- Soft-NIOS interface ------                                    
+5823:     input         soft_nios_clk,  
+5824:     input         soft_nios_read, 
+5825:     input         soft_nios_write,                                        
+5826:     input         soft_nios_byteenable,                                   
+5827:     input  [7:0]  soft_nios_write_data,                                   
+5828:     output [7:0]  soft_nios_read_data,                                    
+5829:     output        soft_nios_rdata_valid,                                  
+5830:     output        soft_nios_waitrequest,                                  
+5831:     input  [3:0]  soft_nios_irq,  
+5832:     input  [6:0]  soft_nios_address,                                      
+5833:               
+5834:     // ---- VJI Hard NIOS Debug interface                                 
+5835:     input         vji_cdr_to_the_hard_nios,                               
+5836:     input   [1:0] vji_ir_in_to_the_hard_nios,                             
+5837:     input         vji_rti_to_the_hard_nios,                               
+5838:     input         vji_sdr_to_the_hard_nios,                               
+5839:     input         vji_tck_to_the_hard_nios,                               
+5840:     input         vji_tdi_to_the_hard_nios,                               
+5841:     input         vji_udr_to_the_hard_nios,                               
+5842:     input         vji_uir_to_the_hard_nios,                               
+5843:     output  [1:0] vji_ir_out_from_the_hard_nios,                          
+5844:     output        vji_tdo_from_the_hard_nios,                             
+5845:               
+
+SOURCE 6080 6250    
+6080:               
+6081:     .calbus_clock(calbus_clock),  
+6082:     .calbus_read_0(calbus_read_0),                                        
+6083:     .calbus_write_0(calbus_write_0),                                      
+6084:     .calbus_address_0(calbus_address_0),                                  
+6085:     .calbus_wdata_0(calbus_wdata_0),                                      
+6086:     .calbus_rdata_0(calbus_rdata_0),                                      
+6087:     .calbus_param_tbl_0(calbus_param_tbl_0),                              
+6088:               
+6089:     .calbus_read_1(calbus_read_1),                                        
+6090:     .calbus_write_1(calbus_write_1),                                      
+6091:     .calbus_address_1(calbus_address_1),                                  
+6092:     .calbus_wdata_1(calbus_wdata_1),                                      
+6093:     .calbus_rdata_1(calbus_rdata_1),                                      
+6094:     .calbus_param_tbl_1(calbus_param_tbl_1),                              
+6095:               
+6096:     .calbus_read_2(calbus_read_2),                                        
+6097:     .calbus_write_2(calbus_write_2),                                      
+6098:     .calbus_address_2(calbus_address_2),                                  
+6099:     .calbus_wdata_2(calbus_wdata_2),                                      
+6100:     .calbus_rdata_2(calbus_rdata_2),                                      
+6101:     .calbus_param_tbl_2(calbus_param_tbl_2),                              
+6102:               
+6103:     .calbus_read_3(calbus_read_3),                                        
+6104:     .calbus_write_3(calbus_write_3),                                      
+6105:     .calbus_address_3(calbus_address_3),                                  
+6106:     .calbus_wdata_3(calbus_wdata_3),                                      
+6107:     .calbus_rdata_3(calbus_rdata_3),                                      
+6108:     .calbus_param_tbl_3(calbus_param_tbl_3),                              
+6109:               
+6110:     .calbus_read_4(calbus_read_4),                                        
+6111:     .calbus_write_4(calbus_write_4),                                      
+6112:     .calbus_address_4(calbus_address_4),                                  
+6113:     .calbus_wdata_4(calbus_wdata_4),                                      
+6114:     .calbus_rdata_4(calbus_rdata_4),                                      
+6115:     .calbus_param_tbl_4(calbus_param_tbl_4),                              
+6116:               
+6117:     .calbus_read_5(calbus_read_5),                                        
+6118:     .calbus_write_5(calbus_write_5),                                      
+6119:     .calbus_address_5(calbus_address_5),                                  
+6120:     .calbus_wdata_5(calbus_wdata_5),                                      
+6121:     .calbus_rdata_5(calbus_rdata_5),                                      
+6122:     .calbus_param_tbl_5(calbus_param_tbl_5),                              
+6123:               
+6124:     .calbus_read_6(calbus_read_6),                                        
+6125:     .calbus_write_6(calbus_write_6),                                      
+6126:     .calbus_address_6(calbus_address_6),                                  
+6127:     .calbus_wdata_6(calbus_wdata_6),                                      
+6128:     .calbus_rdata_6(calbus_rdata_6),                                      
+6129:     .calbus_param_tbl_6(calbus_param_tbl_6),                              
+6130:               
+6131:     .calbus_read_7(calbus_read_7),                                        
+6132:     .calbus_write_7(calbus_write_7),                                      
+6133:     .calbus_address_7(calbus_address_7),                                  
+6134:     .calbus_wdata_7(calbus_wdata_7),                                      
+6135:     .calbus_rdata_7(calbus_rdata_7),                                      
+6136:     .calbus_param_tbl_7(calbus_param_tbl_7),                              
+6137:               
+6138:     .calbus_read_8(calbus_read_8),                                        
+6139:     .calbus_write_8(calbus_write_8),                                      
+6140:     .calbus_address_8(calbus_address_8),                                  
+6141:     .calbus_wdata_8(calbus_wdata_8),                                      
+6142:     .calbus_rdata_8(calbus_rdata_8),                                      
+6143:     .calbus_param_tbl_8(calbus_param_tbl_8),                              
+6144:               
+6145:     .calbus_read_9(calbus_read_9),                                        
+6146:     .calbus_write_9(calbus_write_9),                                      
+6147:     .calbus_address_9(calbus_address_9),                                  
+6148:     .calbus_wdata_9(calbus_wdata_9),                                      
+6149:     .calbus_rdata_9(calbus_rdata_9),                                      
+6150:     .calbus_param_tbl_9(calbus_param_tbl_9),                              
+6151:               
+6152:     .calbus_read_10(calbus_read_10),                                      
+6153:     .calbus_write_10(calbus_write_10),                                    
+6154:     .calbus_address_10(calbus_address_10),                                
+6155:     .calbus_wdata_10(calbus_wdata_10),                                    
+6156:     .calbus_rdata_10(calbus_rdata_10),                                    
+6157:     .calbus_param_tbl_10(calbus_param_tbl_10),                            
+6158:               
+6159:     .calbus_read_11(calbus_read_11),                                      
+6160:     .calbus_write_11(calbus_write_11),                                    
+6161:     .calbus_address_11(calbus_address_11),                                
+6162:     .calbus_wdata_11(calbus_wdata_11),                                    
+6163:     .calbus_rdata_11(calbus_rdata_11),                                    
+6164:     .calbus_param_tbl_11(calbus_param_tbl_11),                            
+6165:               
+6166:     .calbus_read_12(calbus_read_12),                                      
+6167:     .calbus_write_12(calbus_write_12),                                    
+6168:     .calbus_address_12(calbus_address_12),                                
+6169:     .calbus_wdata_12(calbus_wdata_12),                                    
+6170:     .calbus_rdata_12(calbus_rdata_12),                                    
+6171:     .calbus_param_tbl_12(calbus_param_tbl_12),                            
+6172:               
+6173:     .calbus_read_13(calbus_read_13),                                      
+6174:     .calbus_write_13(calbus_write_13),                                    
+6175:     .calbus_address_13(calbus_address_13),                                
+6176:     .calbus_wdata_13(calbus_wdata_13),                                    
+6177:     .calbus_rdata_13(calbus_rdata_13),                                    
+6178:     .calbus_param_tbl_13(calbus_param_tbl_13),                            
+6179:               
+6180:     .calbus_read_14(calbus_read_14),                                      
+6181:     .calbus_write_14(calbus_write_14),                                    
+6182:     .calbus_address_14(calbus_address_14),                                
+6183:     .calbus_wdata_14(calbus_wdata_14),                                    
+6184:     .calbus_rdata_14(calbus_rdata_14),                                    
+6185:     .calbus_param_tbl_14(calbus_param_tbl_14),                            
+6186:               
+6187:     .calbus_read_15(calbus_read_15),                                      
+6188:     .calbus_write_15(calbus_write_15),                                    
+6189:     .calbus_address_15(calbus_address_15),                                
+6190:     .calbus_wdata_15(calbus_wdata_15),                                    
+6191:     .calbus_rdata_15(calbus_rdata_15),                                    
+6192:     .calbus_param_tbl_15(calbus_param_tbl_15)                             
+6193: );            
+6194: else          
+6195: tennm_iossm_model_encrypted #(    
+6196:     .a_iossm_is_calib_master       (a_iossm_is_calib_master),             
+6197:     .parameter_table_hex_file      (parameter_table_hex_file),            
+6198:     .nios_calibration_code_hex_file(nios_calibration_code_hex_file),      
+6199:     .mem_contents_0        (mem_contents_0),                              
+6200:     .mem_contents_1        (mem_contents_1),                              
+6201:     .mem_contents_2        (mem_contents_2),                              
+6202:     .mem_contents_3        (mem_contents_3),                              
+6203:     .gpt_ver               (gpt_ver),                                     
+6204:     .nios_ver              (nios_ver),                                    
+6205:     .col_id                (col_id),                                      
+6206:     .num_iopacks           (num_iopacks),                                 
+6207:     .nios_clk_freq         (nios_clk_freq),                               
+6208:     .pt_size               (pt_size),                                     
+6209:     .skip_steps            (skip_steps),                                  
+6210:     .cal_config            (cal_config),                                  
+6211:     .slave_clk_divider     (slave_clk_divider),                           
+6212:               
+6213:     .calbus0_interface_id  (calbus0_interface_id),                        
+6214:     .calbus1_interface_id  (calbus1_interface_id),                        
+6215:     .calbus2_interface_id  (calbus2_interface_id),                        
+6216:     .calbus3_interface_id  (calbus3_interface_id),                        
+6217:     .calbus4_interface_id  (calbus4_interface_id),                        
+6218:     .calbus5_interface_id  (calbus5_interface_id),                        
+6219:     .calbus6_interface_id  (calbus6_interface_id),                        
+6220:     .calbus7_interface_id  (calbus7_interface_id),                        
+6221:     .calbus8_interface_id  (calbus8_interface_id),                        
+6222:     .calbus9_interface_id  (calbus9_interface_id),                        
+6223:     .calbus10_interface_id (calbus10_interface_id),                       
+6224:     .calbus11_interface_id (calbus11_interface_id),                       
+6225:     .calbus12_interface_id (calbus12_interface_id),                       
+6226:     .calbus13_interface_id (calbus13_interface_id),                       
+6227:     .calbus14_interface_id (calbus14_interface_id),                       
+6228:     .calbus15_interface_id (calbus15_interface_id),                       
+6229:               
+6230:     .mem_contents_valid(mem_contents_valid),                              
+6231:     .mem_contents_updated (mem_contents_updated ),                        
+6232:     .iossm_sim_clk_period_ps(iossm_sim_clk_period_ps),                    
+6233:     .abstract_phy(abstract_phy),  
+6234:     .nios_fw_file(nios_fw_file)   
+6235: ) inst (      
+6236:     .soft_nios_clk        (soft_nios_clk),                                
+6237:     .soft_nios_read       (soft_nios_read),                               
+6238:     .soft_nios_write      (soft_nios_write),                              
+6239:     .soft_nios_byteenable (soft_nios_byteenable),                         
+6240:     .soft_nios_write_data (soft_nios_write_data),                         
+6241:     .soft_nios_read_data  (soft_nios_read_data),                          
+6242:     .soft_nios_rdata_valid(soft_nios_rdata_valid),                        
+6243:     .soft_nios_waitrequest(soft_nios_waitrequest),                        
+6244:     .soft_nios_irq        (soft_nios_irq),                                
+6245:     .soft_nios_address    (soft_nios_address),                            
+6246:               
+6247:     .vji_cdr_to_the_hard_nios     (vji_cdr_to_the_hard_nios),             
+6248:     .vji_ir_in_to_the_hard_nios   (vji_ir_in_to_the_hard_nios),           
+6249:     .vji_rti_to_the_hard_nios     (vji_rti_to_the_hard_nios),             
+6250:     .vji_sdr_to_the_hard_nios     (vji_sdr_to_the_hard_nios),             
+INCLUDES []         
+CANDIDATE /opt/altera/26.1.1/questa_fe/intel/verilog/src/tennm_atoms.sv         
+CANDIDATE /opt/altera/26.1.1/questa_fe/intel/vhdl/src/tennm/tennm_atoms.vhd     
+CANDIDATE /opt/altera/26.1.1/questa_fe/intel/vhdl/src/tennm/tennm_components.vhd
+CANDIDATE /opt/altera/26.1.1/questa_fe/intel/vhdl/src/tennm_sm/tennm_atoms.vhd  
+CANDIDATE /opt/altera/26.1.1/questa_fe/intel/vhdl/src/tennm_sm/tennm_components.vhd                 
+CANDIDATE /opt/altera/26.1.1/quartus/eda/fv_lib/verilog/tennm/tennm_atoms.sv    
+CANDIDATE /opt/altera/26.1.1/quartus/eda/fv_lib/verilog/tennm/tennm_atoms_encrypt.sv                
+IPIOSSM {'path': '/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/ipss/mem/qip/mem_ss/mem_ss/mem_ss_mem_ss_501_qm5zaka/sim/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_emif_cal_bot/altera_emif_cal_iossm_280/sim/altera_emif_cal_iossm.sv', 'sha256': 'd1b79ae1934baf48cc625f6ccc208bcc113db09f382fb65ef2a2075054f1814c'}         
+IPIOSSM {'path': '/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/ipss/mem/qip/mem_ss/mem_ss/mem_ss_mem_ss_501_qm5zaka/sim/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_emif_cal_bot/altera_emif_cal_iossm_280/sim/altera_emif_f2c_gearbox.sv', 'sha256': '5ac5f8f1266705a5d7656044800f64014c94a04b94dc9787a4d2d5a97b0d5635'}       
+IPIOSSM {'path': '/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/ipss/mem/qip/mem_ss/mem_ss/mem_ss_mem_ss_501_qm5zaka/sim/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_emif_cal_bot/altera_emif_cal_iossm_280/sim/mem_ss_mem_ss_501_qm5zaka_emif_cal_bot_altera_emif_cal_iossm_280_th76pdq_arch.sv', 'sha256': '7afb465e39238ffaf0e184eed7e7c4d69ce21ca374a7b5a32f7263156ef78b5d'}             
+IPIOSSM {'path': '/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/ipss/mem/qip/mem_ss/mem_ss/mem_ss_mem_ss_501_qm5zaka/sim/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_emif_cal_bot/altera_emif_cal_iossm_280/sim/mem_ss_mem_ss_501_qm5zaka_emif_cal_bot_altera_emif_cal_iossm_280_th76pdq.sv', 'sha256': '0f144a5626d3e8957031edab9625df4093c092e2780e95f820564c468280b3bd'}                  
+DONE                
+[uwb_student00@Agilex7Workstation ~]$   

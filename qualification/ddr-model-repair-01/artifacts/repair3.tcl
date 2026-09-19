@@ -1,0 +1,243 @@
+package require -exact qsys 26.1
+load_system model_repair.qsys
+load_component ed_sim_mem
+set_component_parameter_value SYS_INFO_DEVICE_FAMILY {Agilex 7}
+set_component_parameter_value SYS_INFO_DEVICE {AGFB027R25A2E2V}
+set_component_parameter_value SYS_INFO_DEVICE_SPEEDGRADE {2}
+set_component_parameter_value SYS_INFO_DEVICE_TEMPERATURE_GRADE {EXTENDED}
+set_component_parameter_value SYS_INFO_DEVICE_POWER_MODEL {STANDARD_POWER}
+set_component_parameter_value SYS_INFO_DEVICE_DIE_REVISIONS {HSSI_WHR_REVA,HSSI_CRETE3_REVA,MAIN_FM8_REVA}
+set_component_parameter_value FAMILY_ENUM {FAMILY_AGILEX}
+set_component_parameter_value TRAIT_SUPPORTS_VID {1}
+set_component_parameter_value TRAIT_IOBANK_REVISION {IO96A_REVB2}
+set_component_parameter_value PREV_PROTOCOL_ENUM {PROTOCOL_DDR4}
+set_component_parameter_value PHY_FPGA_SPEEDGRADE_GUI {E2V (ES3) - change device under 'View'->'Device Family'}
+set_component_parameter_value PHY_TARGET_SPEEDGRADE {E2V}
+set_component_parameter_value PHY_TARGET_IS_ES3 {true}
+set_component_parameter_value PHY_TARGET_IS_PRODUCTION {false}
+set_component_parameter_value PHY_CONFIG_ENUM {CONFIG_PHY_AND_HARD_CTRL}
+set_component_parameter_value PHY_REF_CLK_JITTER_PS {10.0}
+set_component_parameter_value PHY_CORE_CLKS_SHARING_ENUM {CORE_CLKS_SHARING_DISABLED}
+set_component_parameter_value PHY_CALIBRATED_OCT {true}
+set_component_parameter_value PHY_AC_CALIBRATED_OCT {true}
+set_component_parameter_value PHY_CK_CALIBRATED_OCT {true}
+set_component_parameter_value PHY_DATA_CALIBRATED_OCT {true}
+set_component_parameter_value PHY_RZQ {240}
+set_component_parameter_value PHY_USER_PERIODIC_OCT_RECAL_ENUM {PERIODIC_OCT_RECAL_AUTO}
+set_component_parameter_value PHY_AC_IO_STD_ENUM {IO_STD_SSTL_12}
+set_component_parameter_value PHY_CK_IO_STD_ENUM {IO_STD_SSTL_12}
+set_component_parameter_value PHY_DATA_IO_STD_ENUM {IO_STD_POD_12}
+set_component_parameter_value PHY_AC_MODE_ENUM {OUT_OCT_40_CAL}
+set_component_parameter_value PHY_CK_MODE_ENUM {OUT_OCT_40_CAL}
+set_component_parameter_value PHY_AC_DEEMPHASIS_ENUM {DEEMPHASIS_MODE_OFF}
+set_component_parameter_value PHY_CK_DEEMPHASIS_ENUM {DEEMPHASIS_MODE_OFF}
+set_component_parameter_value PHY_DATA_OUT_DEEMPHASIS_ENUM {DEEMPHASIS_MODE_HIGH}
+set_component_parameter_value PHY_DATA_OUT_MODE_ENUM {OUT_OCT_40_CAL}
+set_component_parameter_value PLL_VCO_CLK_FREQ_MHZ {1333.333}
+set_component_parameter_value PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_5 {1333.333}
+set_component_parameter_value PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_6 {1333.333}
+set_component_parameter_value PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_7 {1333.333}
+set_component_parameter_value PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_8 {1333.333}
+set_component_parameter_value PHY_DDR4_REF_CLK_FREQ_MHZ {33.333}
+set_component_parameter_value PHY_DDR4_AC_IO_STD_ENUM {IO_STD_SSTL_12}
+set_component_parameter_value PHY_DDR4_AC_MODE_ENUM {OUT_OCT_40_CAL}
+set_component_parameter_value PHY_DDR4_AC_SLEW_RATE_ENUM {SLEW_RATE_FM_FAST}
+set_component_parameter_value PHY_DDR4_AC_DEEMPHASIS_ENUM {DEEMPHASIS_MODE_OFF}
+set_component_parameter_value PHY_DDR4_CK_IO_STD_ENUM {IO_STD_SSTL_12}
+set_component_parameter_value PHY_DDR4_CK_MODE_ENUM {OUT_OCT_40_CAL}
+set_component_parameter_value PHY_DDR4_CK_SLEW_RATE_ENUM {SLEW_RATE_FM_FAST}
+set_component_parameter_value PHY_DDR4_CK_DEEMPHASIS_ENUM {DEEMPHASIS_MODE_OFF}
+set_component_parameter_value PHY_DDR4_DATA_IO_STD_ENUM {IO_STD_POD_12}
+set_component_parameter_value PHY_DDR4_DATA_OUT_MODE_ENUM {OUT_OCT_40_CAL}
+set_component_parameter_value PHY_DDR4_DATA_OUT_SLEW_RATE_ENUM {SLEW_RATE_FM_FAST}
+set_component_parameter_value PHY_DDR4_DATA_OUT_DEEMPHASIS_ENUM {DEEMPHASIS_MODE_HIGH}
+set_component_parameter_value PHY_DDR4_DATA_IN_MODE_ENUM {IN_OCT_60_CAL}
+set_component_parameter_value PHY_DDR4_STARTING_VREFIN {68.0}
+set_component_parameter_value PHY_DDR4_PLL_REF_CLK_IO_STD_ENUM {IO_STD_TRUE_DIFF_SIGNALING}
+set_component_parameter_value PHY_DDR4_RZQ_IO_STD_ENUM {IO_STD_CMOS_12}
+set_component_parameter_value MEM_READ_LATENCY {23.0}
+set_component_parameter_value MEM_WRITE_LATENCY {14}
+set_component_parameter_value MEM_BURST_LENGTH {8}
+set_component_parameter_value MEM_HAS_BSI_SUPPORT {true}
+set_component_parameter_value MEM_TTL_NUM_OF_READ_GROUPS {8}
+set_component_parameter_value MEM_TTL_NUM_OF_WRITE_GROUPS {8}
+set_component_parameter_value MEM_DDR4_ADDR_WIDTH {17}
+set_component_parameter_value MEM_DDR4_IDEAL_VREF_IN_PCT {68.0}
+set_component_parameter_value MEM_DDR4_IDEAL_VREF_OUT_PCT {70.0}
+set_component_parameter_value MEM_DDR4_VREFDQ_TRAINING_VALUE {70.0}
+set_component_parameter_value MEM_DDR4_VREFDQ_TRAINING_RANGE {DDR4_VREFDQ_TRAINING_RANGE_0}
+set_component_parameter_value MEM_DDR4_VREFDQ_TRAINING_RANGE_DISP {Range 1 - 60% to 92.5%}
+set_component_parameter_value MEM_DDR4_INTEL_DEFAULT_RTT_NOM_ENUM {DDR4_RTT_NOM_ODT_DISABLED}
+set_component_parameter_value MEM_DDR4_INTEL_DEFAULT_RTT_PARK_ENUM {DDR4_RTT_PARK_RZQ_4}
+set_component_parameter_value MEM_DDR4_INTEL_DEFAULT_RTT_NOM_ENUM_DISP {ODT Disabled}
+set_component_parameter_value MEM_DDR4_INTEL_DEFAULT_RTT_PARK_ENUM_DISP {RZQ/4 (60 Ohm)}
+set_component_parameter_value MEM_DDR4_TTL_DQ_WIDTH {64}
+set_component_parameter_value MEM_DDR4_TTL_ADDR_WIDTH {17}
+set_component_parameter_value MEM_DDR4_MR0 {2656}
+set_component_parameter_value MEM_DDR4_MR1 {65537}
+set_component_parameter_value MEM_DDR4_MR2 {131104}
+set_component_parameter_value MEM_DDR4_MR3 {197632}
+set_component_parameter_value MEM_DDR4_MR4 {264192}
+set_component_parameter_value MEM_DDR4_MR5 {332896}
+set_component_parameter_value MEM_DDR4_MR6 {395279}
+set_component_parameter_value MEM_DDR4_R_DERIVED_ODTN {Rank 0,-,-,-}
+set_component_parameter_value MEM_DDR4_R_DERIVED_ODT0 {(Drive) RZQ/7 (34 Ohm),-,-,-}
+set_component_parameter_value MEM_DDR4_R_DERIVED_ODT1 {-,-,-,-}
+set_component_parameter_value MEM_DDR4_R_DERIVED_ODT2 {-,-,-,-}
+set_component_parameter_value MEM_DDR4_R_DERIVED_ODT3 {-,-,-,-}
+set_component_parameter_value MEM_DDR4_W_DERIVED_ODTN {Rank 0,-,-,-}
+set_component_parameter_value MEM_DDR4_W_DERIVED_ODT0 {(Park) RZQ/4 (60 Ohm),-,-,-}
+set_component_parameter_value MEM_DDR4_W_DERIVED_ODT1 {-,-,-,-}
+set_component_parameter_value MEM_DDR4_W_DERIVED_ODT2 {-,-,-,-}
+set_component_parameter_value MEM_DDR4_W_DERIVED_ODT3 {-,-,-,-}
+set_component_parameter_value MEM_DDR4_TINIT_CK {666667}
+set_component_parameter_value MEM_DDR4_TRAS_CYC {43}
+set_component_parameter_value MEM_DDR4_TRCD_CYC {20}
+set_component_parameter_value MEM_DDR4_TRP_CYC {20}
+set_component_parameter_value MEM_DDR4_TRFC_CYC {734}
+set_component_parameter_value MEM_DDR4_TWR_CYC {20}
+set_component_parameter_value MEM_DDR4_TRTP_CYC {10}
+set_component_parameter_value MEM_DDR4_TFAW_CYC {28}
+set_component_parameter_value MEM_DDR4_TREFI_CYC {10400}
+set_component_parameter_value MEM_DDR4_WRITE_CMD_LATENCY {6}
+set_component_parameter_value MEM_DDR4_TRFC_DLR_CYC {120}
+set_component_parameter_value BOARD_DDR4_AC_ISI_NS {0.15}
+set_component_parameter_value BOARD_DDR4_RCLK_ISI_NS {0.15}
+set_component_parameter_value BOARD_DDR4_WCLK_ISI_NS {0.038}
+set_component_parameter_value BOARD_DDR4_RDATA_ISI_NS {0.075}
+set_component_parameter_value BOARD_DDR4_WDATA_ISI_NS {0.09}
+set_component_parameter_value BOARD_DDR4_SKEW_WITHIN_DQS_NS {0.02}
+set_component_parameter_value BOARD_DDR4_SKEW_WITHIN_AC_NS {0.18}
+set_component_parameter_value CTRL_AUTO_PRECHARGE_EN {true}
+set_component_parameter_value CTRL_REORDER_EN {true}
+set_component_parameter_value DIAG_SIM_CAL_MODE_ENUM {SIM_CAL_MODE_SKIP}
+set_component_parameter_value DIAG_EXPORT_SEQ_AVALON_SLAVE {CAL_DEBUG_EXPORT_MODE_DISABLED}
+set_component_parameter_value DIAG_EXPORT_SEQ_AVALON_HEAD_OF_CHAIN {true}
+set_component_parameter_value DIAG_EFFICIENCY_MONITOR {EFFMON_MODE_DISABLED}
+set_component_parameter_value DIAG_TG2_TEST_DURATION {SHORT}
+set_component_parameter_value DIAG_EXPORT_TG_CFG_AVALON_SLAVE {TG_CFG_AMM_EXPORT_MODE_JTAG}
+set_component_parameter_value DIAG_ENABLE_DEFAULT_MODE {true}
+save_component
+reload_component_footprint ed_sim_mem
+load_component ed_sim_mem_group1
+set_component_parameter_value SYS_INFO_DEVICE_FAMILY {Agilex 7}
+set_component_parameter_value SYS_INFO_DEVICE {AGFB027R25A2E2V}
+set_component_parameter_value SYS_INFO_DEVICE_SPEEDGRADE {2}
+set_component_parameter_value SYS_INFO_DEVICE_TEMPERATURE_GRADE {EXTENDED}
+set_component_parameter_value SYS_INFO_DEVICE_POWER_MODEL {STANDARD_POWER}
+set_component_parameter_value SYS_INFO_DEVICE_DIE_REVISIONS {HSSI_WHR_REVA,HSSI_CRETE3_REVA,MAIN_FM8_REVA}
+set_component_parameter_value FAMILY_ENUM {FAMILY_AGILEX}
+set_component_parameter_value TRAIT_SUPPORTS_VID {1}
+set_component_parameter_value TRAIT_IOBANK_REVISION {IO96A_REVB2}
+set_component_parameter_value PREV_PROTOCOL_ENUM {PROTOCOL_DDR4}
+set_component_parameter_value PHY_FPGA_SPEEDGRADE_GUI {E2V (ES3) - change device under 'View'->'Device Family'}
+set_component_parameter_value PHY_TARGET_SPEEDGRADE {E2V}
+set_component_parameter_value PHY_TARGET_IS_ES3 {true}
+set_component_parameter_value PHY_TARGET_IS_PRODUCTION {false}
+set_component_parameter_value PHY_CONFIG_ENUM {CONFIG_PHY_AND_HARD_CTRL}
+set_component_parameter_value PHY_REF_CLK_JITTER_PS {10.0}
+set_component_parameter_value PHY_CORE_CLKS_SHARING_ENUM {CORE_CLKS_SHARING_DISABLED}
+set_component_parameter_value PHY_CALIBRATED_OCT {true}
+set_component_parameter_value PHY_AC_CALIBRATED_OCT {true}
+set_component_parameter_value PHY_CK_CALIBRATED_OCT {true}
+set_component_parameter_value PHY_DATA_CALIBRATED_OCT {true}
+set_component_parameter_value PHY_RZQ {240}
+set_component_parameter_value PHY_USER_PERIODIC_OCT_RECAL_ENUM {PERIODIC_OCT_RECAL_AUTO}
+set_component_parameter_value PHY_AC_IO_STD_ENUM {IO_STD_SSTL_12}
+set_component_parameter_value PHY_CK_IO_STD_ENUM {IO_STD_SSTL_12}
+set_component_parameter_value PHY_DATA_IO_STD_ENUM {IO_STD_POD_12}
+set_component_parameter_value PHY_AC_MODE_ENUM {OUT_OCT_40_CAL}
+set_component_parameter_value PHY_CK_MODE_ENUM {OUT_OCT_40_CAL}
+set_component_parameter_value PHY_AC_DEEMPHASIS_ENUM {DEEMPHASIS_MODE_OFF}
+set_component_parameter_value PHY_CK_DEEMPHASIS_ENUM {DEEMPHASIS_MODE_OFF}
+set_component_parameter_value PHY_DATA_OUT_DEEMPHASIS_ENUM {DEEMPHASIS_MODE_HIGH}
+set_component_parameter_value PHY_DATA_OUT_MODE_ENUM {OUT_OCT_40_CAL}
+set_component_parameter_value PLL_VCO_CLK_FREQ_MHZ {1333.333}
+set_component_parameter_value PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_5 {1333.333}
+set_component_parameter_value PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_6 {1333.333}
+set_component_parameter_value PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_7 {1333.333}
+set_component_parameter_value PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_8 {1333.333}
+set_component_parameter_value PHY_DDR4_REF_CLK_FREQ_MHZ {33.333}
+set_component_parameter_value PHY_DDR4_AC_IO_STD_ENUM {IO_STD_SSTL_12}
+set_component_parameter_value PHY_DDR4_AC_MODE_ENUM {OUT_OCT_40_CAL}
+set_component_parameter_value PHY_DDR4_AC_SLEW_RATE_ENUM {SLEW_RATE_FM_FAST}
+set_component_parameter_value PHY_DDR4_AC_DEEMPHASIS_ENUM {DEEMPHASIS_MODE_OFF}
+set_component_parameter_value PHY_DDR4_CK_IO_STD_ENUM {IO_STD_SSTL_12}
+set_component_parameter_value PHY_DDR4_CK_MODE_ENUM {OUT_OCT_40_CAL}
+set_component_parameter_value PHY_DDR4_CK_SLEW_RATE_ENUM {SLEW_RATE_FM_FAST}
+set_component_parameter_value PHY_DDR4_CK_DEEMPHASIS_ENUM {DEEMPHASIS_MODE_OFF}
+set_component_parameter_value PHY_DDR4_DATA_IO_STD_ENUM {IO_STD_POD_12}
+set_component_parameter_value PHY_DDR4_DATA_OUT_MODE_ENUM {OUT_OCT_40_CAL}
+set_component_parameter_value PHY_DDR4_DATA_OUT_SLEW_RATE_ENUM {SLEW_RATE_FM_FAST}
+set_component_parameter_value PHY_DDR4_DATA_OUT_DEEMPHASIS_ENUM {DEEMPHASIS_MODE_HIGH}
+set_component_parameter_value PHY_DDR4_DATA_IN_MODE_ENUM {IN_OCT_60_CAL}
+set_component_parameter_value PHY_DDR4_STARTING_VREFIN {68.0}
+set_component_parameter_value PHY_DDR4_PLL_REF_CLK_IO_STD_ENUM {IO_STD_TRUE_DIFF_SIGNALING}
+set_component_parameter_value PHY_DDR4_RZQ_IO_STD_ENUM {IO_STD_CMOS_12}
+set_component_parameter_value MEM_READ_LATENCY {26.0}
+set_component_parameter_value MEM_WRITE_LATENCY {17}
+set_component_parameter_value MEM_BURST_LENGTH {8}
+set_component_parameter_value MEM_HAS_BSI_SUPPORT {true}
+set_component_parameter_value MEM_TTL_NUM_OF_READ_GROUPS {8}
+set_component_parameter_value MEM_TTL_NUM_OF_WRITE_GROUPS {8}
+set_component_parameter_value MEM_DDR4_ADDR_WIDTH {17}
+set_component_parameter_value MEM_DDR4_IDEAL_VREF_IN_PCT {68.0}
+set_component_parameter_value MEM_DDR4_IDEAL_VREF_OUT_PCT {70.0}
+set_component_parameter_value MEM_DDR4_VREFDQ_TRAINING_VALUE {70.0}
+set_component_parameter_value MEM_DDR4_VREFDQ_TRAINING_RANGE {DDR4_VREFDQ_TRAINING_RANGE_0}
+set_component_parameter_value MEM_DDR4_VREFDQ_TRAINING_RANGE_DISP {Range 1 - 60% to 92.5%}
+set_component_parameter_value MEM_DDR4_INTEL_DEFAULT_RTT_NOM_ENUM {DDR4_RTT_NOM_ODT_DISABLED}
+set_component_parameter_value MEM_DDR4_INTEL_DEFAULT_RTT_PARK_ENUM {DDR4_RTT_PARK_RZQ_4}
+set_component_parameter_value MEM_DDR4_INTEL_DEFAULT_RTT_NOM_ENUM_DISP {ODT Disabled}
+set_component_parameter_value MEM_DDR4_INTEL_DEFAULT_RTT_PARK_ENUM_DISP {RZQ/4 (60 Ohm)}
+set_component_parameter_value MEM_DDR4_TTL_DQ_WIDTH {64}
+set_component_parameter_value MEM_DDR4_TTL_ADDR_WIDTH {17}
+set_component_parameter_value MEM_DDR4_MR0 {2656}
+set_component_parameter_value MEM_DDR4_MR1 {65537}
+set_component_parameter_value MEM_DDR4_MR2 {131104}
+set_component_parameter_value MEM_DDR4_MR3 {197632}
+set_component_parameter_value MEM_DDR4_MR4 {264192}
+set_component_parameter_value MEM_DDR4_MR5 {332896}
+set_component_parameter_value MEM_DDR4_MR6 {395279}
+set_component_parameter_value MEM_DDR4_RDIMM_CONFIG {00000020000000004700001D40040B0F556000}
+set_component_parameter_value MEM_DDR4_RCD_COMMAND_LATENCY {2}
+set_component_parameter_value MEM_DDR4_R_DERIVED_ODTN {Rank 0,-,-,-}
+set_component_parameter_value MEM_DDR4_R_DERIVED_ODT0 {(Drive) RZQ/7 (34 Ohm),-,-,-}
+set_component_parameter_value MEM_DDR4_R_DERIVED_ODT1 {-,-,-,-}
+set_component_parameter_value MEM_DDR4_R_DERIVED_ODT2 {-,-,-,-}
+set_component_parameter_value MEM_DDR4_R_DERIVED_ODT3 {-,-,-,-}
+set_component_parameter_value MEM_DDR4_W_DERIVED_ODTN {Rank 0,-,-,-}
+set_component_parameter_value MEM_DDR4_W_DERIVED_ODT0 {(Park) RZQ/4 (60 Ohm),-,-,-}
+set_component_parameter_value MEM_DDR4_W_DERIVED_ODT1 {-,-,-,-}
+set_component_parameter_value MEM_DDR4_W_DERIVED_ODT2 {-,-,-,-}
+set_component_parameter_value MEM_DDR4_W_DERIVED_ODT3 {-,-,-,-}
+set_component_parameter_value MEM_DDR4_TINIT_CK {666667}
+set_component_parameter_value MEM_DDR4_TRAS_CYC {43}
+set_component_parameter_value MEM_DDR4_TRCD_CYC {20}
+set_component_parameter_value MEM_DDR4_TRP_CYC {20}
+set_component_parameter_value MEM_DDR4_TRFC_CYC {734}
+set_component_parameter_value MEM_DDR4_TWR_CYC {20}
+set_component_parameter_value MEM_DDR4_TRTP_CYC {10}
+set_component_parameter_value MEM_DDR4_TFAW_CYC {28}
+set_component_parameter_value MEM_DDR4_TREFI_CYC {10400}
+set_component_parameter_value MEM_DDR4_WRITE_CMD_LATENCY {6}
+set_component_parameter_value MEM_DDR4_TRFC_DLR_CYC {120}
+set_component_parameter_value BOARD_DDR4_AC_ISI_NS {0.15}
+set_component_parameter_value BOARD_DDR4_RCLK_ISI_NS {0.15}
+set_component_parameter_value BOARD_DDR4_WCLK_ISI_NS {0.06}
+set_component_parameter_value BOARD_DDR4_RDATA_ISI_NS {0.12}
+set_component_parameter_value BOARD_DDR4_WDATA_ISI_NS {0.13}
+set_component_parameter_value BOARD_DDR4_SKEW_WITHIN_DQS_NS {0.02}
+set_component_parameter_value BOARD_DDR4_SKEW_WITHIN_AC_NS {0.18}
+set_component_parameter_value CTRL_AUTO_PRECHARGE_EN {true}
+set_component_parameter_value CTRL_REORDER_EN {true}
+set_component_parameter_value DIAG_SIM_CAL_MODE_ENUM {SIM_CAL_MODE_SKIP}
+set_component_parameter_value DIAG_EXPORT_SEQ_AVALON_SLAVE {CAL_DEBUG_EXPORT_MODE_DISABLED}
+set_component_parameter_value DIAG_EXPORT_SEQ_AVALON_HEAD_OF_CHAIN {true}
+set_component_parameter_value DIAG_EFFICIENCY_MONITOR {EFFMON_MODE_DISABLED}
+set_component_parameter_value DIAG_TG2_TEST_DURATION {SHORT}
+set_component_parameter_value DIAG_EXPORT_TG_CFG_AVALON_SLAVE {TG_CFG_AMM_EXPORT_MODE_JTAG}
+set_component_parameter_value DIAG_ENABLE_DEFAULT_MODE {true}
+save_component
+reload_component_footprint ed_sim_mem_group1
+save_system model_repair.qsys

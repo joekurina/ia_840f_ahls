@@ -1,0 +1,6 @@
+import pathlib,hashlib,json,xml.etree.ElementTree as E
+r=pathlib.Path('/home/uwb_student00/ahls/new_BSP/qualification/ddr-model-repair-01');w=pathlib.Path('/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04');ns={'i':'http://www.accellera.org/XMLSchema/IPXACT/1685-2014'}
+p=w/'ipss/mem/qip/mem_ss/mem_ss.ip';t=E.parse(p);d={x.findtext('i:name',namespaces=ns):x.findtext('i:value',namespaces=ns) for x in t.findall('.//i:parameter',ns)}
+print('MEM_SS',str(p),hashlib.sha256(p.read_bytes()).hexdigest());subset={k:v for k,v in d.items() if 'CAL' in k or 'LOC' in k or 'BOT'==v or 'SIZE' in k};print(json.dumps(subset,indent=2))
+files=[pathlib.Path('/opt/altera/26.1.1/quartus/bin/quartus_sh'),pathlib.Path('/opt/altera/26.1.1/quartus/sopc_builder/bin/qsys-script'),pathlib.Path('/opt/altera/26.1.1/quartus/sopc_builder/bin/qsys-generate')]+[pathlib.Path('/opt/altera/26.1.1/ip/altera/emif')/s for s in ['ip_mem_model/ip_top/main.tcl','ip_mem_model/ip_core_ddr4/main.tcl','ip_mem_model/ip_core_ddr4/altera_emif_mem_model_core_ddr4_hw.tcl','ip_top/exports.tcl','ip_top/ex_design/make_qsys.tcl','util/device_family.tcl']]
+e={'tools_and_vendor_sources':{str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in files},'mem_ss_ip':{'path':str(p),'parameters':subset},'ready_for_build':False};(r/'provenance.json').write_text(json.dumps(e,indent=2));print(json.dumps(e,indent=2))

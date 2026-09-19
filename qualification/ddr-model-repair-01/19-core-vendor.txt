@@ -1,0 +1,73 @@
+[('/opt/altera/26.1.1/ip/altera/emif/ip_mem_model/ip_core_ddr4/altera_emif_mem_model_core_ddr4_hw.tcl', '# (C) 2001-2026 Altera Corporation. All rights reserved.\n# Your use of Altera Corporation\'s design tools, logic functions and other \n# software and tools, and its AMPP partner logic functions, and any output \n# files from any of the foregoing (including device programming or simulation \n# files), and any associated documentation or information are expressly subject \n# to the terms and conditions of the Altera Program License Subscription \n# Agreement, Altera IP License Agreement, or other applicable \n# license agreement, including, without limitation, that your use is for the \n# sole purpose of programming logic devices manufactured by Altera and sold by \n# Altera or its authorized distributors.  Please refer to the applicable \n# agreement for further details.\n\n\nset alt_mem_if_tcl_libs_dir "$env(QUARTUS_ROOTDIR)/../ip/altera/emif/util"\nif {[lsearch -exact $auto_path $alt_mem_if_tcl_libs_dir] == -1} {\n   lappend auto_path $alt_mem_if_tcl_libs_dir\n}\n\npackage require -exact qsys 20.1\n\npackage require altera_emif::util::hwtcl_utils\npackage require altera_emif::util::device_family\npackage require altera_emif::ip_mem_model::ip_core_ddr4::main\n\nload_strings common_messages.properties\nload_strings common_gui.properties\nload_strings common_params.properties\nload_strings common_ports.properties\nload_strings messages.properties\nload_strings gui.properties\n\nset_module_property DESCRIPTION [get_string HWTCL_MODULE_DESCRIPTION]\nset_module_property NAME altera_emif_mem_model_core_ddr4\nset_module_property VERSION 19.1\nset_module_property INTERNAL true\nset_module_property OPAQUE_ADDRESS_MAP true\nset_module_property GROUP [get_string INTERNAL_COMPONENT_ROOT_FOLDER]\nset_module_property AUTHOR [get_string AUTHOR]\nset_module_property DISPLAY_NAME [get_string HWTCL_MODULE_DISPLAY_NAME]\nset_module_property INSTANTIATE_IN_SYSTEM_MODULE true\nset_module_property EDITABLE true\nset_module_property DATASHEET_URL [get_string DATASHEET_URL]\nset_module_property SUPPORTED_DEVICE_FAMILIES [::altera_emif::util::device_family::get_qsys_supported_families]\n\nset_module_property ELABORATION_CALLBACK ::altera_emif::ip_mem_model::ip_core_ddr4::main::elaboration_callback\n\nadd_fileset sim_vhdl SIM_VHDL ::altera_emif::ip_mem_model::ip_core_ddr4::main::sim_vhdl_fileset_callback\nset_fileset_property sim_vhdl TOP_LEVEL altera_emif_ddrx_model\n\nadd_fileset sim_verilog SIM_VERILOG ::altera_emif::ip_mem_model::ip_core_ddr4::main::sim_verilog_fileset_callback\nset_fileset_property sim_verilog TOP_LEVEL altera_emif_ddrx_model\n\nadd_fileset quartus_synth QUARTUS_SYNTH ::altera_emif::ip_mem_model::ip_core_ddr4::main::quartus_synth_fileset_callback\nset_fileset_property quartus_synth TOP_LEVEL altera_emif_ddrx_model\n\nadd_fileset cdc_files CDC ::altera_emif::ip_mem_model::ip_core_ddr4::main::quartus_synth_fileset_callback\nset_fileset_property cdc_files TOP_LEVEL altera_emif_ddrx_model\n\n::altera_emif::ip_mem_model::ip_core_ddr4::main::create_parameters\n')]
+<?xml version="1.0" ?>
+<node xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:altera="http://www.altera.com/XMLSchema/Qsys/SystemTree">
+  <instanceKey xsi:type="xs:string">ed_sim_mem</instanceKey>
+  <instanceData xsi:type="data">
+    <parameters></parameters>
+    <interconnectAssignments></interconnectAssignments>
+    <className>ed_sim_mem</className>
+    <version>1.0</version>
+    <name>ed_sim_mem</name>
+    <uniqueName>ed_sim_mem</uniqueName>
+    <nonce>0</nonce>
+    <incidentConnections></incidentConnections>
+  </instanceData>
+  <children>
+    <node>
+      <instanceKey xsi:type="xs:string">ed_sim_mem</instanceKey>
+      <instanceData xsi:type="data">
+        <parameters>
+          <parameter>
+            <name>BOARD_DDR3_AC_ISI_NS</name>
+            <value>0.0</value>
+          </parameter>
+          <parameter>
+            <name>BOARD_DDR3_AC_SLEW_RATE</name>
+            <value>2.0</value>
+          </parameter>
+          <parameter>
+            <name>BOARD_DDR3_AC_TO_CK_SKEW_NS</name>
+            <value>0.0</value>
+          </parameter>
+          <parameter>
+            <name>BOARD_DDR3_BRD_SKEW_WITHIN_AC_NS</name>
+            <value>0.02</value>
+          </parameter>
+          <parameter>
+            <name>BOARD_DDR3_BRD_SKEW_WITHIN_DQS_NS</name>
+            <value>0.02</value>
+          </parameter>
+          <parameter>
+            <name>BOARD_DDR3_CK_SLEW_RATE</name>
+            <value>4.0</value>
+          </parameter>
+          <parameter>
+            <name>BOARD_DDR3_DQS_TO_CK_SKEW_NS</name>
+            <value>0.02</value>
+          </parameter>
+          <parameter>
+            <name>BOARD_DDR3_IS_SKEW_WITHIN_AC_DESKEWED</name>
+            <value>true</value>
+          </parameter>
+          <parameter>
+            <name>BOARD_DDR3_IS_SKEW_WITHIN_DQS_DESKEWED</name>
+            <value>false</value>
+          </parameter>
+          <parameter>
+            <name>BOARD_DDR3_MAX_CK_DELAY_NS</name>
+            <value>0.6</value>
+          </parameter>
+          <parameter>
+            <name>BOARD_DDR3_MAX_DQS_DELAY_NS</name>
+            <value>0.6</value>
+          </parameter>
+          <parameter>
+            <name>BOARD_DDR3_PKG_BRD_SKEW_WITHIN_AC_NS</name>
+            <value>0.02</value>
+          </parameter>
+          <parameter>
+            <name>BOARD_DDR3_PKG_BRD_SKEW_WITHIN_DQS_NS</name>
+            <value>0.02</value>
+          </parameter>
+          <parameter>
+            <name>B

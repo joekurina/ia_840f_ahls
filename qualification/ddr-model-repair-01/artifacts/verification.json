@@ -1,0 +1,397 @@
+{
+  "ready_for_build": false,
+  "simulation_run": false,
+  "models": {
+    "ed_sim_mem": {
+      "ip_sha256": "e0eeb165be0adf7c695807eee02472b2bc292d6e9c43c7823fec06e0e376c594",
+      "input_sha256": "c12a49e5752453ad6a89fb4a05f31fa43274b7972262a7f3820562c2b86aba65",
+      "parameter_count": 2345,
+      "changed_parameters": 116,
+      "preserved": {
+        "MEM_DDR4_ROW_ADDR_WIDTH": "17",
+        "MEM_DDR4_COL_ADDR_WIDTH": "10",
+        "MEM_DDR4_BANK_ADDR_WIDTH": "2",
+        "MEM_DDR4_BANK_GROUP_WIDTH": "2",
+        "MEM_DDR4_DQ_WIDTH": "64",
+        "MEM_DDR4_FORMAT_ENUM": "MEM_FORMAT_DISCRETE",
+        "MEM_FORMAT_ENUM": "MEM_FORMAT_DISCRETE",
+        "CTRL_DDR4_ECC_EN": "false",
+        "CTRL_ECC_EN": "false",
+        "DIAG_FAST_SIM": "true",
+        "DIAG_USE_ABSTRACT_PHY": "false",
+        "DIAG_DDR4_SIM_CAL_MODE_ENUM": "SIM_CAL_MODE_SKIP"
+      },
+      "capacity_bytes": 17179869184,
+      "ports": {
+        "mem_ck": {
+          "direction": "input",
+          "width": 1
+        },
+        "mem_ck_n": {
+          "direction": "input",
+          "width": 1
+        },
+        "mem_a": {
+          "direction": "input",
+          "width": 17
+        },
+        "mem_act_n": {
+          "direction": "input",
+          "width": 1
+        },
+        "mem_ba": {
+          "direction": "input",
+          "width": 2
+        },
+        "mem_bg": {
+          "direction": "input",
+          "width": 2
+        },
+        "mem_cke": {
+          "direction": "input",
+          "width": 1
+        },
+        "mem_cs_n": {
+          "direction": "input",
+          "width": 1
+        },
+        "mem_odt": {
+          "direction": "input",
+          "width": 1
+        },
+        "mem_reset_n": {
+          "direction": "input",
+          "width": 1
+        },
+        "mem_par": {
+          "direction": "input",
+          "width": 1
+        },
+        "mem_alert_n": {
+          "direction": "output",
+          "width": 1
+        },
+        "mem_dqs": {
+          "direction": "inout",
+          "width": 8
+        },
+        "mem_dqs_n": {
+          "direction": "inout",
+          "width": 8
+        },
+        "mem_dq": {
+          "direction": "inout",
+          "width": 64
+        },
+        "mem_dbi_n": {
+          "direction": "inout",
+          "width": 8
+        }
+      },
+      "core": [
+        {
+          "className": "altera_emif_mem_model_core_ddr4",
+          "version": "19.1",
+          "name": "core",
+          "uniqueName": "altera_emif_ddrx_model"
+        }
+      ],
+      "top": "/home/uwb_student00/ahls/new_BSP/qualification/ddr-model-repair-01/ed_sim_mem/sim/ed_sim_mem.v",
+      "top_sha256": "1b49b41edf5f3c341e45e9843f4cd6ddeebdd4144e4e8706192b46365dae36ef",
+      "leaf": "/home/uwb_student00/ahls/new_BSP/qualification/ddr-model-repair-01/ed_sim_mem/altera_emif_mem_model_191/sim/ed_sim_mem_altera_emif_mem_model_191_tododxq.v",
+      "leaf_sha256": "405f563c3bb8d1e177810ee365084fad7e29f54cec46f9f97819cbbf82e2a559",
+      "leaf_bytes": 10105,
+      "wrapper_parameters": {
+        "PROTOCOL_ENUM": "PROTOCOL_DDR4",
+        "PHY_PING_PONG_EN": "0",
+        "MEM_FORMAT_ENUM": "MEM_FORMAT_DISCRETE",
+        "DIAG_SIM_MEMORY_PRELOAD": "0",
+        "DIAG_SIM_MEMORY_PRELOAD_PRI_MEM_FILE": "",
+        "DIAG_SIM_MEMORY_PRELOAD_SEC_MEM_FILE": "",
+        "PORT_MEM_CK_WIDTH": "1",
+        "PORT_MEM_CK_N_WIDTH": "1",
+        "PORT_MEM_CK_BIDIR_WIDTH": "1",
+        "PORT_MEM_CK_BIDIR_N_WIDTH": "1",
+        "PORT_MEM_DK_WIDTH": "1",
+        "PORT_MEM_DK_N_WIDTH": "1",
+        "PORT_MEM_DKA_WIDTH": "1",
+        "PORT_MEM_DKA_N_WIDTH": "1",
+        "PORT_MEM_DKB_WIDTH": "1",
+        "PORT_MEM_DKB_N_WIDTH": "1",
+        "PORT_MEM_K_WIDTH": "1",
+        "PORT_MEM_K_N_WIDTH": "1",
+        "PORT_MEM_A_WIDTH": "17",
+        "PORT_MEM_BA_WIDTH": "2",
+        "PORT_MEM_BG_WIDTH": "2",
+        "PORT_MEM_C_WIDTH": "1",
+        "PORT_MEM_CKE_WIDTH": "1",
+        "PORT_MEM_CS_N_WIDTH": "1",
+        "PORT_MEM_RM_WIDTH": "1",
+        "PORT_MEM_ODT_WIDTH": "1",
+        "PORT_MEM_REQ_N_WIDTH": "1",
+        "PORT_MEM_GNT_N_WIDTH": "1",
+        "PORT_MEM_ERR_N_WIDTH": "1",
+        "PORT_MEM_RAS_N_WIDTH": "1",
+        "PORT_MEM_CAS_N_WIDTH": "1",
+        "PORT_MEM_WE_N_WIDTH": "1",
+        "PORT_MEM_RESET_N_WIDTH": "1",
+        "PORT_MEM_ACT_N_WIDTH": "1",
+        "PORT_MEM_PAR_WIDTH": "1",
+        "PORT_MEM_CA_WIDTH": "1",
+        "PORT_MEM_REF_N_WIDTH": "1",
+        "PORT_MEM_WPS_N_WIDTH": "1",
+        "PORT_MEM_RPS_N_WIDTH": "1",
+        "PORT_MEM_DOFF_N_WIDTH": "1",
+        "PORT_MEM_LDA_N_WIDTH": "1",
+        "PORT_MEM_LDB_N_WIDTH": "1",
+        "PORT_MEM_RWA_N_WIDTH": "1",
+        "PORT_MEM_RWB_N_WIDTH": "1",
+        "PORT_MEM_LBK0_N_WIDTH": "1",
+        "PORT_MEM_LBK1_N_WIDTH": "1",
+        "PORT_MEM_CFG_N_WIDTH": "1",
+        "PORT_MEM_AP_WIDTH": "1",
+        "PORT_MEM_AINV_WIDTH": "1",
+        "PORT_MEM_DM_WIDTH": "1",
+        "PORT_MEM_BWS_N_WIDTH": "1",
+        "PORT_MEM_D_WIDTH": "1",
+        "PORT_MEM_DQ_WIDTH": "64",
+        "PORT_MEM_DBI_N_WIDTH": "8",
+        "PORT_MEM_DQA_WIDTH": "1",
+        "PORT_MEM_DQB_WIDTH": "1",
+        "PORT_MEM_DINVA_WIDTH": "1",
+        "PORT_MEM_DINVB_WIDTH": "1",
+        "PORT_MEM_Q_WIDTH": "1",
+        "PORT_MEM_DQS_WIDTH": "8",
+        "PORT_MEM_DQS_N_WIDTH": "8",
+        "PORT_MEM_QK_WIDTH": "1",
+        "PORT_MEM_QK_N_WIDTH": "1",
+        "PORT_MEM_QKA_WIDTH": "1",
+        "PORT_MEM_QKA_N_WIDTH": "1",
+        "PORT_MEM_QKB_WIDTH": "1",
+        "PORT_MEM_QKB_N_WIDTH": "1",
+        "PORT_MEM_CQ_WIDTH": "1",
+        "PORT_MEM_CQ_N_WIDTH": "1",
+        "PORT_MEM_ALERT_N_WIDTH": "1",
+        "PORT_MEM_PE_N_WIDTH": "1",
+        "MEM_DISCRETE_CS_WIDTH": "1",
+        "MEM_CHIP_ID_WIDTH": "0",
+        "MEM_ROW_ADDR_WIDTH": "17",
+        "MEM_COL_ADDR_WIDTH": "10",
+        "MEM_TRTP": "10",
+        "MEM_TRCD": "20",
+        "MEM_RANKS_PER_DIMM": "1",
+        "MEM_NUM_OF_DIMMS": "1",
+        "MEM_DM_EN": "1",
+        "MEM_DISCRETE_MIRROR_ADDRESSING_EN": "0",
+        "MEM_MIRROR_ADDRESSING_EN": "1",
+        "MEM_INIT_MRS0": "0",
+        "MEM_INIT_MRS1": "0",
+        "MEM_INIT_MRS2": "0",
+        "MEM_INIT_MRS3": "0",
+        "MEM_VERBOSE": "1",
+        "MEM_CFG_GEN_SBE": "0",
+        "MEM_CFG_GEN_DBE": "0",
+        "MEM_CLAMSHELL_EN": "0"
+      },
+      "source_count": 9,
+      "controller_sopcinfo_sha256": "2f0a95043be5708f94f43a22dbe4efc411d82af60b6e25eefca80e6a40df2a62",
+      "location_params": {}
+    },
+    "ed_sim_mem_group1": {
+      "ip_sha256": "5370d008d02ad2855acb470746e481bd1c0ce07b3cba5c7de0baed8e386657d7",
+      "input_sha256": "8880c23dc3742d2277542b7eba82733411a697f2638ddd5cd3e250d3b0e5780e",
+      "parameter_count": 2345,
+      "changed_parameters": 118,
+      "preserved": {
+        "MEM_DDR4_ROW_ADDR_WIDTH": "17",
+        "MEM_DDR4_COL_ADDR_WIDTH": "10",
+        "MEM_DDR4_BANK_ADDR_WIDTH": "2",
+        "MEM_DDR4_BANK_GROUP_WIDTH": "2",
+        "MEM_DDR4_DQ_WIDTH": "64",
+        "MEM_DDR4_FORMAT_ENUM": "MEM_FORMAT_RDIMM",
+        "MEM_FORMAT_ENUM": "MEM_FORMAT_RDIMM",
+        "CTRL_DDR4_ECC_EN": "false",
+        "CTRL_ECC_EN": "false",
+        "DIAG_FAST_SIM": "true",
+        "DIAG_USE_ABSTRACT_PHY": "false",
+        "DIAG_DDR4_SIM_CAL_MODE_ENUM": "SIM_CAL_MODE_SKIP"
+      },
+      "capacity_bytes": 17179869184,
+      "ports": {
+        "mem_ck": {
+          "direction": "input",
+          "width": 1
+        },
+        "mem_ck_n": {
+          "direction": "input",
+          "width": 1
+        },
+        "mem_a": {
+          "direction": "input",
+          "width": 17
+        },
+        "mem_act_n": {
+          "direction": "input",
+          "width": 1
+        },
+        "mem_ba": {
+          "direction": "input",
+          "width": 2
+        },
+        "mem_bg": {
+          "direction": "input",
+          "width": 2
+        },
+        "mem_cke": {
+          "direction": "input",
+          "width": 1
+        },
+        "mem_cs_n": {
+          "direction": "input",
+          "width": 1
+        },
+        "mem_odt": {
+          "direction": "input",
+          "width": 1
+        },
+        "mem_reset_n": {
+          "direction": "input",
+          "width": 1
+        },
+        "mem_par": {
+          "direction": "input",
+          "width": 1
+        },
+        "mem_alert_n": {
+          "direction": "output",
+          "width": 1
+        },
+        "mem_dqs": {
+          "direction": "inout",
+          "width": 8
+        },
+        "mem_dqs_n": {
+          "direction": "inout",
+          "width": 8
+        },
+        "mem_dq": {
+          "direction": "inout",
+          "width": 64
+        },
+        "mem_dbi_n": {
+          "direction": "inout",
+          "width": 8
+        }
+      },
+      "core": [
+        {
+          "className": "altera_emif_mem_model_core_ddr4",
+          "version": "19.1",
+          "name": "core",
+          "uniqueName": "altera_emif_ddrx_model"
+        }
+      ],
+      "top": "/home/uwb_student00/ahls/new_BSP/qualification/ddr-model-repair-01/ed_sim_mem_group1/sim/ed_sim_mem_group1.v",
+      "top_sha256": "b3a38a867c8bebe27eec662bcb5966de5f07d2aaef8d14b8ae9cda6e796122bf",
+      "leaf": "/home/uwb_student00/ahls/new_BSP/qualification/ddr-model-repair-01/ed_sim_mem_group1/altera_emif_mem_model_191/sim/ed_sim_mem_group1_altera_emif_mem_model_191_kpsc7si.v",
+      "leaf_sha256": "9e766b91f0b8c5080ffca8877bb266e228f07b4ab53bbb367d70f0bc67d6de90",
+      "leaf_bytes": 10116,
+      "wrapper_parameters": {
+        "PROTOCOL_ENUM": "PROTOCOL_DDR4",
+        "PHY_PING_PONG_EN": "0",
+        "MEM_FORMAT_ENUM": "MEM_FORMAT_RDIMM",
+        "DIAG_SIM_MEMORY_PRELOAD": "0",
+        "DIAG_SIM_MEMORY_PRELOAD_PRI_MEM_FILE": "",
+        "DIAG_SIM_MEMORY_PRELOAD_SEC_MEM_FILE": "",
+        "PORT_MEM_CK_WIDTH": "1",
+        "PORT_MEM_CK_N_WIDTH": "1",
+        "PORT_MEM_CK_BIDIR_WIDTH": "1",
+        "PORT_MEM_CK_BIDIR_N_WIDTH": "1",
+        "PORT_MEM_DK_WIDTH": "1",
+        "PORT_MEM_DK_N_WIDTH": "1",
+        "PORT_MEM_DKA_WIDTH": "1",
+        "PORT_MEM_DKA_N_WIDTH": "1",
+        "PORT_MEM_DKB_WIDTH": "1",
+        "PORT_MEM_DKB_N_WIDTH": "1",
+        "PORT_MEM_K_WIDTH": "1",
+        "PORT_MEM_K_N_WIDTH": "1",
+        "PORT_MEM_A_WIDTH": "17",
+        "PORT_MEM_BA_WIDTH": "2",
+        "PORT_MEM_BG_WIDTH": "2",
+        "PORT_MEM_C_WIDTH": "1",
+        "PORT_MEM_CKE_WIDTH": "1",
+        "PORT_MEM_CS_N_WIDTH": "1",
+        "PORT_MEM_RM_WIDTH": "1",
+        "PORT_MEM_ODT_WIDTH": "1",
+        "PORT_MEM_REQ_N_WIDTH": "1",
+        "PORT_MEM_GNT_N_WIDTH": "1",
+        "PORT_MEM_ERR_N_WIDTH": "1",
+        "PORT_MEM_RAS_N_WIDTH": "1",
+        "PORT_MEM_CAS_N_WIDTH": "1",
+        "PORT_MEM_WE_N_WIDTH": "1",
+        "PORT_MEM_RESET_N_WIDTH": "1",
+        "PORT_MEM_ACT_N_WIDTH": "1",
+        "PORT_MEM_PAR_WIDTH": "1",
+        "PORT_MEM_CA_WIDTH": "1",
+        "PORT_MEM_REF_N_WIDTH": "1",
+        "PORT_MEM_WPS_N_WIDTH": "1",
+        "PORT_MEM_RPS_N_WIDTH": "1",
+        "PORT_MEM_DOFF_N_WIDTH": "1",
+        "PORT_MEM_LDA_N_WIDTH": "1",
+        "PORT_MEM_LDB_N_WIDTH": "1",
+        "PORT_MEM_RWA_N_WIDTH": "1",
+        "PORT_MEM_RWB_N_WIDTH": "1",
+        "PORT_MEM_LBK0_N_WIDTH": "1",
+        "PORT_MEM_LBK1_N_WIDTH": "1",
+        "PORT_MEM_CFG_N_WIDTH": "1",
+        "PORT_MEM_AP_WIDTH": "1",
+        "PORT_MEM_AINV_WIDTH": "1",
+        "PORT_MEM_DM_WIDTH": "1",
+        "PORT_MEM_BWS_N_WIDTH": "1",
+        "PORT_MEM_D_WIDTH": "1",
+        "PORT_MEM_DQ_WIDTH": "64",
+        "PORT_MEM_DBI_N_WIDTH": "8",
+        "PORT_MEM_DQA_WIDTH": "1",
+        "PORT_MEM_DQB_WIDTH": "1",
+        "PORT_MEM_DINVA_WIDTH": "1",
+        "PORT_MEM_DINVB_WIDTH": "1",
+        "PORT_MEM_Q_WIDTH": "1",
+        "PORT_MEM_DQS_WIDTH": "8",
+        "PORT_MEM_DQS_N_WIDTH": "8",
+        "PORT_MEM_QK_WIDTH": "1",
+        "PORT_MEM_QK_N_WIDTH": "1",
+        "PORT_MEM_QKA_WIDTH": "1",
+        "PORT_MEM_QKA_N_WIDTH": "1",
+        "PORT_MEM_QKB_WIDTH": "1",
+        "PORT_MEM_QKB_N_WIDTH": "1",
+        "PORT_MEM_CQ_WIDTH": "1",
+        "PORT_MEM_CQ_N_WIDTH": "1",
+        "PORT_MEM_ALERT_N_WIDTH": "1",
+        "PORT_MEM_PE_N_WIDTH": "1",
+        "MEM_DISCRETE_CS_WIDTH": "1",
+        "MEM_CHIP_ID_WIDTH": "0",
+        "MEM_ROW_ADDR_WIDTH": "17",
+        "MEM_COL_ADDR_WIDTH": "10",
+        "MEM_TRTP": "10",
+        "MEM_TRCD": "20",
+        "MEM_RANKS_PER_DIMM": "1",
+        "MEM_NUM_OF_DIMMS": "1",
+        "MEM_DM_EN": "1",
+        "MEM_DISCRETE_MIRROR_ADDRESSING_EN": "0",
+        "MEM_MIRROR_ADDRESSING_EN": "1",
+        "MEM_INIT_MRS0": "0",
+        "MEM_INIT_MRS1": "0",
+        "MEM_INIT_MRS2": "0",
+        "MEM_INIT_MRS3": "0",
+        "MEM_VERBOSE": "1",
+        "MEM_CFG_GEN_SBE": "0",
+        "MEM_CFG_GEN_DBE": "0",
+        "MEM_CLAMSHELL_EN": "0"
+      },
+      "source_count": 9,
+      "controller_sopcinfo_sha256": "ddddee4e58ae7aa9008c7cccd645b1738229f4383c007df6b665b1df3f406bce",
+      "location_params": {}
+    }
+  },
+  "work04_unchanged_files": 326
+}

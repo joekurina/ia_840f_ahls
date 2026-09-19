@@ -1,0 +1,302 @@
+[('environment.json', 434), ('qsys-script-help.txt', 3776), ('qsys-generate-help.txt', 10859)]
+***************************************************************
+Quartus is a registered trademark of Altera Corporation in the
+US and other countries.  Portions of the Quartus Prime software
+code, and other portions of the code included in this download
+or on this DVD, are licensed to Altera Corporation and are the
+copyrighted property of third parties. For license details,
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+***************************************************************
+
+
+Usage: qsys-script
+
+   OPTION                            DESCRIPTION
+   --cmd=<value>                   ? Tcl commands string
+   --script=<file>                 ? Tcl commands script file
+   --package-version=<value>       ? Tcl commands package version
+   --system-file=<file>            ? Platform Designer system file to load
+   -sp, --search-path=<value>      ? Component search path 
+   -qpf, --quartus-project=<value> ? Use Quartus Project
+   --new-quartus-project=<value>   ? create a new Quartus Project
+   -c, --rev=<value>               ? Quartus Project Revision
+   --jvm-max-heap-size=<value>     ? Set the maximum heap memory size to be used
+   -h, --help                      ? Show help
+
+QSYS-SCRIPT
+-----------
+The qsys-script pro tool can be used to create and manipulate Platform
+Designer systems using Tcl scripting commands. If a system is specified,
+it will be loaded before any scripting commands are executed.
+
+--cmd=<value>
+     Optional. A string containing Tcl scripting commands for creating
+     or manipulating Platform Designer systems. If a Tcl script file is
+     also specified, commands in the script string will be run before
+     the the contents of the script file.
+
+--script=<file>
+     Optional. A file containing Tcl scripting commands for creating or
+     manipulating Platform Designer systems. If a Tcl command string is
+     also specified, commands in the command string will be run before
+     the commands in the script file are run.
+
+--package-version=<value>
+     Optional. Specify which version of the system scripting Tcl API to
+     use. This version determines the availability and behavior of the
+     Tcl commands. The minimum supported version is 12.0. If not
+     specified, the Tcl script must request the system scripting API
+     directly using the "package require -exact qsys <version>" command
+     in the script.
+
+--system-file=<file>
+     Optional. Specifies the path to a .qsys system file. This system
+     will be loaded before running any scripting commands.
+
+--search-path=<value>
+     Optional. If omitted, a standard default path will be used. If
+     provided, a comma-separated list of paths will be searched. To
+     include the standard path in your replacement, use "$", like
+     "/extra/dir,$".
+
+--quartus-project=<value>
+     Optional. The name of the Quartus project file. You may provide the
+     revision name using --rev; otherwise, the default revision
+     associated with the Quartus project is used.
+
+--new-quartus-project=<value>
+     Optional. Create a new Quartus project with the specified path and
+     name. You may provide the revision name using --rev; otherwise, the
+     default revision name is the project name.
+
+--rev=<value>
+     Optional. The name of the Quartus project revision. This switch is
+     ignored if it is provided without one of the quartus project
+     switches.
+
+--jvm-max-heap-size=<value>
+     Optional. The maximum memory size to be used for allocations when
+     running this tool. This value is specified as <size><unit> where
+     unit can be m (or M) for multiples of megabytes or g (or G) for
+     multiples of gigabytes. The default value is 512m.
+
+--help
+     Optional. Display help for this tool
+
+
+***************************************************************
+Quartus is a registered trademark of Altera Corporation in the
+US and other countries.  Portions of the Quartus Prime software
+code, and other portions of the code included in this download
+or on this DVD, are licensed to Altera Corporation and are the
+copyrighted property of third parties. For license details,
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+***************************************************************
+
+
+Usage: qsys-generate <file>
+
+   OPTION                                               DESCRIPTION
+   <1st arg file>                                       .qsys or .ip file
+   -syn, --synthesis[=<VERILOG|VHDL|SYSTEM_VERILOG>]  ? Create synthesis files.
+   -bsf, --block-symbol-file                          ? Create block symbol file (.bsf).
+   -greybox, --greybox                                ? Create timing and resource estimates for third-parth EDA synthesis.
+   -ipxact, --ipxact                                  ? Create an IPXACT representation of your system.
+   -sim, --simulation[=<VERILOG|VHDL|SYSTEM_VERILOG>] ? Create simulation model.
+   -tb, --testbench[=<SIMPLE|STANDARD>]               ? Create testbench system.
+   -tb-sim, --testbench-simulation[=<VERILOG|VHDL|    ? Create simulation model for the testbench system.
+   SYSTEM_VERILOG>]                                   
+   -ed, --example-design[=<value>]                    ? Create example design files.
+   -sp, --search-path=<value>                         ? IP component search path 
+   --family=<value>                                   ? The device family
+   --part=<value>                                     ? The device part
+   --board[=<value>]                                  ? The board
+   -qpf, --quartus-project=<value>                    ? Quartus project
+   -c, --rev=<value>                                  ? Quartus project revision
+   -uvf, --upgrade-variation-file                     ? Enables upgrading a megawizard variation file to a Platform Designer format file
+   -uic, --upgrade-ip-cores                           ? Enables upgrading all the ip cores that are available in the Platform Designer system.
+   -cod , --clear-output-directory                    ? Clears the output directory corresponding to the selected target, i.e. simulation or synthesis.
+   -eqs, --export-qsys-script                         ? Exports the .qsys file system as a Platform Designer script file (.tcl).
+   -oipv, --omit-ip-version                           ? Omit the requested IP version when exporting the .qsys file system as a Platform Designer script file (.tcl).
+   -top, --top-level-generation                       ? Generate Top
+   -doc, --documentation                              ? Emit core-defined documentation files.
+   -b, --batch=<value>                                * Add file to batch generate.
+   -gass, --generate-all-simulation-scripts           ? Generate simulation scripts for entire hierarchy
+   -mf, --modelsim-flow[=<TRADITIONAL|QRUN>]          ? Specifies the Questasim flow used for simulation script generation.
+   -par, --parallel[=<value>]                         ? If omitted, or no value specified, best attempt is made to use the available cores in the system for parallel generation. A value greater than 1 can be specified to indicate the level of parallelism to use. To disable parallel generation, set value to "off".
+   -pemhs, --parallel-executors-max-heap-size=<value> ? Set the maximum heap memory size to be used by parallel execution modules in parallel mode.
+   -bqp, --bypass-quartus-project                     ? Bypass quartus project
+   -smltr, --simulator[=<value>]                      * Specifies the simulator type(s) for which simulation scripts will be generated.
+   -svw, --system-verilog-wrapper                     ? Create a SystemVerilog top-level wrapper when generating Verilog synthesis or simulation generation targets.
+   --jvm-max-heap-size=<value>                        ? Set the maximum heap memory size to be used
+   -h, --help                                         ? Show help
+
+QSYS-GENERATE
+-------------
+Generate HDL and other output files for system file(s) and/or ip
+files(s).
+
+<1st arg file>
+     Required. The name of the .qsys system file to generate.
+
+--synthesis[=<VERILOG|VHDL|SYSTEM_VERILOG>]
+     Optional. Create synthesis HDL files, used to compile the system in
+     a Quartus Prime project. The default is "VERILOG".
+
+--block-symbol-file
+     Optional. Create a block symbol file (.bsf) for the system.
+
+--greybox
+     Optional. If you are synthesizing your design with a third-party
+     EDA synthesis tool, you can generate a netlist for the synthesis
+     tool to estimate timing and resource usage for this design.
+
+--ipxact
+     Optional. When the value of this switch is true, the
+     post-generation system will be rendered as an IPXACT-compatible
+     component description.
+
+--simulation[=<VERILOG|VHDL|SYSTEM_VERILOG>]
+     Optional. Create a simulation model for the system. The simulation
+     model contains generated HDL files for the simulator, and may
+     include simulation-only features. The default is "VERILOG".
+
+--testbench[=<SIMPLE|STANDARD>]
+     Optional. Create a testbench system. The testbench system
+     instantiates the original system, adding bus functional models to
+     drive the top-level interfaces. Once generated, the bus functional
+     models can interact with the system in the simulator. The default
+     is "STANDARD".
+
+--testbench-simulation[=<VERILOG|VHDL|SYSTEM_VERILOG>]
+     Optional. After creating the testbench system, also create a
+     simulation model for the testbench system. The default is
+     "VERILOG".
+
+--example-design[=<value>]
+     Optional. Create example design files. For example:
+     --example-design (or) --example-design=all. The default is "All",
+     which generates example designs for all instances. Alternatively,
+     you can choose specific filesets based on instance name and fileset
+     name. For example
+     --example-design=instance0.example_design1,instance1.example_design
+     2. You can also specify an output directory to where the files will
+     be created.
+
+--search-path=<value>
+     Optional. If omitted, a standard default path will be used. If
+     provided, a comma-separated list of paths will be searched. To
+     include the standard path in your replacement, use "$", like
+     "/extra/dir,$".
+
+--family=<value>
+     Optional. Set the device family.
+
+--part=<value>
+     Optional. Set the device part number. If set, this option overrides
+     the "--family" option.
+
+--board[=<value>]
+     Optional. Set the board.
+
+--quartus-project=<value>
+     Optional. The name of the Quartus project file. You may provide the
+     revision name using --rev; otherwise, the default revision
+     associated with the Quartus project is used.
+
+--rev=<value>
+     Optional. The name of the Quartus project revision. This switch is
+     ignored if it is provided without one of the Quartus project
+     switches.
+
+--upgrade-variation-file
+     Optional. When the value of this switch is true, the file argument
+     for this command will accept a ".v" filewhich contains a megawizard
+     variant. This file will parameterize a corresponding instance in a
+     Platform Designer system of the same name.
+
+--upgrade-ip-cores
+     Optional. Enables upgrading all the ip cores that are available in
+     the Platform Designer system.
+
+--clear-output-directory
+     Optional. Clears the output directory corresponding to the selected
+     target, i.e. simulation or synthesis. 
+
+--export-qsys-script
+     Optional. When the value of this switch is true, the
+     post-generation system will be exported as a Platform Designer
+     script file with the extension (.tcl).
+
+--omit-ip-version
+     Optional. When the value of this switch is true, the generated
+     Platform Designer script (.tcl) will not include the requested IP
+     version. Use along with --export-qsys-script switch
+
+--top-level-generation
+     Optional. Only generate the top level of the given system, do not
+     descend into hierarchy, do not generate Generic Components.
+
+--documentation
+     Optional. Emit the core-defined documentation (if any) for each of
+     the IP instances in your system.
+
+--batch=<value>
+     Optional. Repeatable. Add the given system or stand-alone IP to the
+     list of files to batch generate.
+
+--generate-all-simulation-scripts
+     Optional. Generate simulation scripts for the top-level system, as
+     well as all subsystems and ip.
+
+--modelsim-flow[=<TRADITIONAL|QRUN>]
+     Optional. Specifies the Questasim flow (qrun or traditional) used
+     for simulation script generation. If not specified, the qrun flow
+     will be used.
+
+--parallel[=<value>]
+     Optional. If omitted, or no value specified, best attempt is made
+     to use the available cores in the system for parallel generation. A
+     value greater than 1 can be specified to indicate the level of
+     parallelism to use. To disable parallel generation, set value to
+     "off".
+
+--parallel-executors-max-heap-size=<value>
+     Optional. The maximum memory size to be used for allocations for
+     parallel execution modules when running this tool with parallel
+     mode enabled. This value is specified as <size><unit> where unit
+     can be m (or M) for multiples of megabytes or g (or G) for
+     multiples of gigabytes. The default value is 512m. This settings
+     has no effect when the parallel mode is not enabled.
+
+--bypass-quartus-project
+     Optional. Override Quartus Project settings with values from the
+     Platform Designer project if possible. For example, if the Platform
+     Designer project defines its own IP search path, use it instead of
+     the one defined in the Quartus Project settings. This will mainly
+     affect the generation process.
+
+--simulator[=<value>]
+     Optional. Repeatable. The specified simulator type(s) determine
+     which simulation scripts will be generated. The allowed simulator
+     types are: MODELSIM, VCSMX, VCX, RIVERIA, XCELIUM. The argument can
+     be a single simulator type or a comma separated list of simulator
+     types. For example: --simulator=MODELSIM or
+     --simulator=VCS,RIVIERA,XCELIUM.
+     If omitted, simulation scripts are generated for all types.
+
+--system-verilog-wrapper
+     Optional. If set, then create SystemVerilog top-level wrapper.
+
+--jvm-max-heap-size=<value>
+     Optional. The maximum memory size to be used for allocations when
+     running this tool. This value is specified as <size><unit> where
+     unit can be m (or M) for multiples of megabytes or g (or G) for
+     multiples of gigabytes. The default value is 512m.
+
+--help
+     Optional. Display help for this tool
+
+

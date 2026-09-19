@@ -1,0 +1,77 @@
+5821 module tennm_iossm (               
+5969    parameter a_iossm_is_calib_master = "is_master";                        
+5978    parameter iossm_sim_clk_period_ps = 800;                                
+5979    parameter abstract_phy = "false";                                       
+5990    parameter iossm_use_model = 1;  
+6009 generate       
+6010 if (!iossm_use_model)              
+6011 tennm_iossm_encrypted #(           
+6012     .a_iossm_is_calib_master       (a_iossm_is_calib_master),              
+6048     .iossm_sim_clk_period_ps(iossm_sim_clk_period_ps),                     
+6049     .abstract_phy(abstract_phy),   
+6194 else           
+6195 tennm_iossm_model_encrypted #(     
+6196     .a_iossm_is_calib_master       (a_iossm_is_calib_master),              
+6232     .iossm_sim_clk_period_ps(iossm_sim_clk_period_ps),                     
+6233     .abstract_phy(abstract_phy),   
+SECTION     .calbus12_interface_id (calbus12_interface_id),                     
+    .calbus13_interface_id (calbus13_interface_id),                             
+    .calbus14_interface_id (calbus14_interface_id),                             
+    .calbus15_interface_id (calbus15_interface_id),                             
+
+    .mem_contents_valid(mem_contents_valid),                                    
+    .mem_contents_updated (mem_contents_updated ),                              
+    .iossm_sim_clk_period_ps(iossm_sim_clk_period_ps),                          
+    .abstract_phy(abstract_phy),        
+    .nios_fw_file(nios_fw_file)         
+) inst (            
+    .soft_nios_clk        (soft_nios_clk),                                      
+    .soft_nios_read       (soft_nios_read),                                     
+    .soft_nios_write      (soft_nios_write),                                    
+    .soft_nios_byteenable (soft_nios_byteenable),                               
+    .soft_nios_write_data (soft_nios_write_data),                               
+    .soft_nios_read_data  (soft_nios_read_data),                                
+    .soft_nios_rdata_valid(soft_nios_rdata_valid),                              
+    .soft_nios_waitrequest(soft_nios_waitrequest),                              
+    .soft_nios_irq        (soft_nios_irq),                                      
+    .soft_nios_address    (soft_nios_address),                                  
+
+    .vji_cdr_to_the_hard_nios     (vji_cdr_to_the_hard_nios),                   
+    .vji_ir_in_to_the_hard_nios   (vji_ir_in_to_the_hard_nios),                 
+    .vji_rti_to_the_hard_nios     (vji_rti_to_the_hard_nios),                   
+    .vji_sdr_to_the_hard_nios     (vji_sdr_to_the_hard_nios),                   
+    .vji_tck_to_the_hard_nios     (vji_tck_to_the_hard_nios),                   
+    .vji_tdi_to_the_hard_nios     (vji_tdi_to_the_hard_nios),                   
+    .vji_udr_to_the_hard_nios     (vji_udr_to_the_hard_nios),                   
+    .vji_uir_to_the_hard_nios     (vji_uir_to_the_hard_nios),                   
+    .vji_ir_out_from_the_hard_nios(vji_ir_out_from_the_hard_nios),              
+    .vji_tdo_from_the_hard_nios   (vji_tdo_from_the_hard_nios),                 
+                    
+    .uc_av_bus_clk     (uc_av_bus_clk), 
+    .uc_read           (uc_read),       
+    .uc_write          (uc_write),      
+    .uc_address        (uc_address),    
+    .uc_write_data     (uc_write_data), 
+    .uc_read_data      (uc_read_data),  
+
+    .calbus_clock(calbus_clock),        
+    .calbus_read_0(calbus_read_0),      
+    .calbus_write_0(calbus_write_0),    
+    .calbus_address_0(calbus_address_0),                                        
+    .calbus_wdata_0(calbus_wdata_0),    
+    .calbus_rdata_0(calbus_rdata_0),    
+    .calbus_param_tbl_0(calbus_param_tbl_0),                                    
+
+    .calbus_read_1(calbus_read_1),      
+    .calbus_write_1(calbus_write_1),    
+    .calbus_address_1(calbus_address_1),                                        
+    .calbus_wdata_1(calbus_wdata_1),    
+    .calbus_rdata_1(calbus_rdata_1),    
+    .calbus_param_tbl_1(calbus_param_tbl_1),                                    
+
+    .calbus_read_2(calbus_read_2),      
+    .calbus_write_2(calbus_write_2),    
+    .calbus_address_2(calbus_address_2),                                        
+    .calbus_wdata_2(calbus_wdata_2),    
+    .calbus_rdata_2(calbus_rdata_2),    
+[uwb_student00@Agilex7Workstation ~]$   

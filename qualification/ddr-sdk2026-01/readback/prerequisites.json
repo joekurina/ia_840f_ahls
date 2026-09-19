@@ -1,0 +1,47 @@
+[
+  {
+    "path": "/opt/altera/26.1.1/quartus/eda/sim_lib/tennm_atoms.sv",
+    "exists": false
+  },
+  {
+    "path": "/opt/altera/26.1.1/quartus/eda/sim_lib/mentor/tennm_atoms_ncrypt.sv",
+    "exists": false
+  },
+  {
+    "path": "/opt/altera/26.1.1/quartus/eda/sim_lib/fmica_atoms_ncrypt.sv",
+    "exists": true,
+    "bytes": 9076,
+    "sha256": "10cab9ae3cca0683f115fd694ff15b7328d6a9b0bb8456fdf4a5f43b8e9b7b86"
+  },
+  {
+    "path": "/opt/altera/26.1.1/questa_fe/bin/vlog",
+    "exists": true,
+    "bytes": 4218,
+    "sha256": "5dcdcff349124176bc0e4312a5ddc650851566727d8104e80877f42baee5566b"
+  },
+  {
+    "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/ipss/mem/qip/mem_ss/mem_ss/sim/mentor/msim_setup.tcl",
+    "exists": true,
+    "bytes": 25711,
+    "sha256": "993316923cf645fc763b0daa965fe79705b6db424d451e70453cc7c3719f2860",
+    "recipe": [
+      "    eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                      \"$QUARTUS_SIM_LIB_DIR/tennm_atoms.sv\"                       -work tennm_ver        ",
+      "    eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                      \"$QUARTUS_SIM_LIB_DIR/mentor/tennm_atoms_ncrypt.sv\"         -work tennm_ver        ",
+      "    eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                      \"$QUARTUS_SIM_LIB_DIR/fmica_atoms_ncrypt.sv\"                -work tennm_ver        ",
+      "    eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                      \"$QUARTUS_SIM_LIB_DIR/mentor/tennm_atoms_ncrypt.sv\"         -work tennm            ",
+      "    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                             \"$QUARTUS_SIM_LIB_DIR/tennm_atoms.vhd\"                      -work tennm            "
+    ]
+  },
+  {
+    "path": "/home/uwb_student00/IA-840f/bittware-sdk-2026.1.0-1.el9.rpm",
+    "exists": true,
+    "bytes": 97856670,
+    "sha256": "c106fe06946f282825a5605d17f08d42b8b0da70a35db4c3af8d49ccee7d1382"
+  },
+  {
+    "path": "/home/uwb_student00/IA-840f/bittware-csp-ia840f-2024.3.1-1.el9.rpm",
+    "exists": true,
+    "bytes": 132376,
+    "sha256": "238a8fe9a1a9bcda753dc26f59170d8da3f562cbe312a4c9e8c66f6d7445a5e0"
+  }
+]

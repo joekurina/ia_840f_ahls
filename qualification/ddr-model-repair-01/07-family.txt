@@ -1,0 +1,525 @@
+FILE /opt/altera/26.1.1/ip/altera/emif/util/device_family.tcl
+# (C) 2001-2026 Altera Corporation. All rights reserved.
+# Your use of Altera Corporation's design tools, logic functions and other 
+# software and tools, and its AMPP partner logic functions, and any output 
+# files from any of the foregoing (including device programming or simulation 
+# files), and any associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License Subscription 
+# Agreement, Altera IP License Agreement, or other applicable 
+# license agreement, including, without limitation, that your use is for the 
+# sole purpose of programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the applicable 
+# agreement for further details.
+
+
+package provide altera_emif::util::device_family 0.1
+
+package require altera_emif::util::messaging
+package require altera_emif::util::qini
+package require altera_emif::util::hwtcl_utils
+package require altera_emif::util::enums
+package require altera_emif::util::enum_defs
+package require altera_emif::util::enum_defs_family_traits_and_features
+
+namespace eval ::altera_emif::util::device_family:: {
+   
+   namespace import ::altera_emif::util::messaging::*
+   namespace import ::altera_emif::util::qini::*
+   namespace import ::altera_emif::util::enums::*
+
+   namespace export get_feature_support_level
+   namespace export get_io_std_property
+   namespace export get_device_family_enum
+   namespace export get_base_device_family_enum
+   namespace export get_is_hps
+   namespace export get_device
+   namespace export get_device_die_revisions
+   namespace export get_speedgrade
+   namespace export get_speedgrade_from_opn
+   namespace export get_is_es
+   namespace export get_is_es2
+   namespace export get_is_es3
+   namespace export get_is_production
+   namespace export get_family_trait
+   namespace export get_family_trait_by_family
+   namespace export get_default_protocol
+   namespace export get_io_name
+   namespace export get_family
+      
+   
+   variable m_family_enum
+   variable m_base_family_enum
+   variable m_speedgrade
+   variable m_is_es
+   variable m_is_es2
+   variable m_is_es3
+   variable m_is_production
+   variable m_family_traits
+   variable m_feature_support_levels
+   variable m_io_std_properties
+}
+
+
+proc ::altera_emif::util::device_family::get_qsys_supported_families {} {
+   set retval [list]
+   foreach enum [enums_of_type FAMILY] {
+      foreach qsys_name [enum_data $enum QSYS_NAMES] {
+         lappend retval $qsys_name
+      }
+   }
+   return $retval
+}
+
+proc ::altera_emif::util::device_family::get_device_family_enum {} {
+   variable m_family_enum
+   emif_assert {[string compare $m_family_enum "FAMILY_INVALID"] != 0}
+   return $m_family_enum
+}
+
+
+
+proc ::altera_emif::util::device_family::get_base_device_family_enum {} {
+   variable m_base_family_enum
+   emif_assert {[string compare $m_base_family_enum "FAMILY_INVALID"] != 0}
+   return $m_base_family_enum
+}
+
+proc ::altera_emif::util::device_family::get_device {} {
+   set device [string toupper [string trim [get_parameter_value SYS_INFO_DEVICE]]]
+   if {$device == "UNKNOWN"} {
+      set device ""
+   }
+   return $device
+}
+
+proc ::altera_emif::util::device_family::get_speedgrade_from_opn { device_family part } {
+   set device_speed [get_parameter_value SYS_INFO_DEVICE_SPEEDGRADE]
+   set device_power [get_parameter_value SYS_INFO_DEVICE_POWER_MODEL]
+   set device_temp  [get_parameter_value SYS_INFO_DEVICE_TEMPERATURE_GRADE]
+
+   set power_model ""
+   set temp_grade ""
+
+   if { $device_family == "FAMILY_STRATIX10" } {
+      set temp_grades  { "EXTENDED" "E"  "INDUSTRIAL" "I" "COMMERICAL" "C" }
+      set power_models { "SMART_VID" "V" "DX_SMART_VID" "V" "DENSITY_160_SMART_VID" "V" "DENSITY_200_SMART_VID" "V"
+                         "WIDER_RANGE_SMART_VID" "W" "LOW" "L" "EXTRA_LOW" "L" "EXTREME_LOW" "X" "ULTRA_EXTREME_LOW" "Y" }
+                        
+   } elseif { $device_family == "FAMILY_AGILEX" } {
+      set temp_grades  { "EXTENDED" "E"  "INDUSTRIAL" "I" "COMMERICAL" "C" }
+      set power_models { "STANDARD_POWER" "V" "LOWER_POWER" "E" "EXTREME_LOW_POWER" "X" "FIXED_VOLTAGE" "F" }
+   } else {
+     emif_assert{0}
+   }
+
+   foreach {temp symbol} $temp_grades {
+     if {$temp == $device_temp} {
+         set temp_grade $symbol 
+         break
+     }
+   }
+
+   foreach {power symbol} $power_models {
+     if {$power == $device_power} {
+         set power_model $symbol 
+         break
+     }
+   }
+
+   set retval $temp_grade
+   append retval $device_speed
+   append retval $power_model
+   return $retval
+}
+
+proc ::altera_emif::util::device_family::get_device_die_revisions {} {
+   return [get_parameter_value SYS_INFO_DEVICE_DIE_REVISIONS]
+}
+
+proc ::altera_emif::util::device_family::get_speedgrade {} {
+   variable m_speedgrade
+   return $m_speedgrade
+}
+
+proc ::altera_emif::util::device_family::get_is_es {} {
+   variable m_is_es
+   return $m_is_es
+}
+
+proc ::altera_emif::util::device_family::get_is_es2 {} {
+   variable m_is_es2
+   return $m_is_es2
+}
+
+proc ::altera_emif::util::device_family::get_is_es3 {} {
+   variable m_is_es3
+   return $m_is_es3
+}
+
+proc ::altera_emif::util::device_family::get_is_production {} {
+   variable m_is_production
+   return $m_is_production
+}
+
+proc ::altera_emif::util::device_family::get_is_hps {} {
+   set family_enum [get_device_family_enum]
+   return [enum_data $family_enum IS_HPS]
+}
+
+proc ::altera_emif::util::device_family::get_io_name {} {
+
+   variable m_family_enum
+   if {[string compare $m_family_enum "FAMILY_CYCLONE10GX"] == 0} {
+      return cyclone10gx
+   }
+   return twentynm
+}
+
+proc ::altera_emif::util::device_family::get_family {} {
+
+   variable m_family_enum
+   return $m_family_enum
+}
+
+proc ::altera_emif::util::device_family::get_default_protocol {} {
+
+   variable m_family_enum
+   if {[string compare $m_family_enum "FAMILY_CYCLONE10GX"] == 0} {
+      return PROTOCOL_DDR3
+   }
+   return PROTOCOL_DDR4
+}
+
+proc ::altera_emif::util::device_family::create_parameters {} {
+   
+   ::altera_emif::util::hwtcl_utils::_add_parameter SYS_INFO_DEVICE_FAMILY string ""
+   set_parameter_property SYS_INFO_DEVICE_FAMILY SYSTEM_INFO DEVICE_FAMILY
+   set_parameter_property SYS_INFO_DEVICE_FAMILY VISIBLE false
+   
+   ::altera_emif::util::hwtcl_utils::_add_parameter SYS_INFO_DEVICE string ""
+   set_parameter_property SYS_INFO_DEVICE SYSTEM_INFO DEVICE
+   set_parameter_property SYS_INFO_DEVICE VISIBLE false
+   
+   ::altera_emif::util::hwtcl_utils::_add_parameter SYS_INFO_DEVICE_SPEEDGRADE string ""
+   set_parameter_property SYS_INFO_DEVICE_SPEEDGRADE SYSTEM_INFO DEVICE_SPEEDGRADE
+   set_parameter_property SYS_INFO_DEVICE_SPEEDGRADE VISIBLE false
+   
+   ::altera_emif::util::hwtcl_utils::_add_parameter SYS_INFO_DEVICE_TEMPERATURE_GRADE string ""
+   set_parameter_property SYS_INFO_DEVICE_TEMPERATURE_GRADE SYSTEM_INFO_TYPE PART_TRAIT
+   set_parameter_property SYS_INFO_DEVICE_TEMPERATURE_GRADE SYSTEM_INFO_ARG DEVICE_TEMPERATURE_GRADE
+   set_parameter_property SYS_INFO_DEVICE_TEMPERATURE_GRADE VISIBLE false
+
+   ::altera_emif::util::hwtcl_utils::_add_parameter SYS_INFO_DEVICE_POWER_MODEL string ""
+   set_parameter_property SYS_INFO_DEVICE_POWER_MODEL SYSTEM_INFO_TYPE PART_TRAIT
+   set_parameter_property SYS_INFO_DEVICE_POWER_MODEL SYSTEM_INFO_ARG DEVICE_POWER_MODEL
+   set_parameter_property SYS_INFO_DEVICE_POWER_MODEL VISIBLE false
+   
+
+   ::altera_emif::util::hwtcl_utils::_add_parameter SYS_INFO_DEVICE_DIE_REVISIONS STRING_LIST ""
+   set_parameter_property SYS_INFO_DEVICE_DIE_REVISIONS SYSTEM_INFO_TYPE DEVICE_DIE_REVISIONS
+   set_parameter_property SYS_INFO_DEVICE_DIE_REVISIONS VISIBLE false
+   
+   ::altera_emif::util::hwtcl_utils::_add_parameter FAMILY_ENUM string "FAMILY_INVALID"
+   set_parameter_property FAMILY_ENUM DERIVED true
+   set_parameter_property FAMILY_ENUM VISIBLE false
+   
+   ::altera_emif::util::hwtcl_utils::_add_parameter TRAIT_SUPPORTS_VID string "0"
+   set_parameter_property TRAIT_SUPPORTS_VID SYSTEM_INFO_TYPE PART_TRAIT
+   set_parameter_property TRAIT_SUPPORTS_VID SYSTEM_INFO_ARG SUPPORTS_VID
+   set_parameter_property TRAIT_SUPPORTS_VID VISIBLE false
+
+   ::altera_emif::util::hwtcl_utils::_add_parameter TRAIT_IOBANK_REVISION string "UNKNOWN"
+   set_parameter_property TRAIT_IOBANK_REVISION SYSTEM_INFO_TYPE PART_TRAIT
+   set_parameter_property TRAIT_IOBANK_REVISION SYSTEM_INFO_ARG DEVICE_IOBANK_REVISION
+   set_parameter_property TRAIT_IOBANK_REVISION VISIBLE false
+}
+
+proc ::altera_emif::util::device_family::get_feature_support_level {feature_enum protocol_enum {rate_enum RATE_INVALID}} {   
+   variable m_feature_support_levels
+   
+   set family_enum [get_device_family_enum]
+   set base_family_enum [get_base_device_family_enum]
+   
+   set family_key "$family_enum,$protocol_enum,$rate_enum,$feature_enum"
+   set base_family_key "$base_family_enum,$protocol_enum,$rate_enum,$feature_enum"
+   
+   if {[info exists m_feature_support_levels($family_key)]} {
+      return $m_feature_support_levels($family_key)
+   } elseif {[info exists m_feature_support_levels($base_family_key)]} {
+      return $m_feature_support_levels($base_family_key)
+   } else {
+      emif_ie "Undefined feature support level for family: $base_family_enum, $family_enum $protocol_enum $rate_enum $feature_enum"
+   }
+}
+
+proc ::altera_emif::util::device_family::get_family_trait {trait_enum} {
+   variable m_family_traits
+
+   set family_enum [get_device_family_enum]
+   set base_family_enum [get_base_device_family_enum]
+   
+   set family_key "$family_enum,$trait_enum"
+   set base_family_key "$base_family_enum,$trait_enum"
+   
+   if {[info exists m_family_traits($family_key)]} {
+      return $m_family_traits($family_key)
+   } elseif {[info exists m_family_traits($base_family_key)]} {
+      return $m_family_traits($base_family_key)
+   } else {
+      emif_ie "Undefined feature support level for family: $base_family_enum, $family_enum, $trait_enum"
+   }
+}
+
+proc ::altera_emif::util::device_family::get_family_trait_by_family {trait_enum family_enum} {
+   variable m_family_traits
+   
+   set family_key "$family_enum,$trait_enum"
+   
+   if {[info exists m_family_traits($family_key)]} {
+      return $m_family_traits($family_key)
+   } else {
+      emif_ie "Undefined feature support level for family: $family_enum, $trait_enum"
+   }
+}
+
+proc ::altera_emif::util::device_family::get_io_std_property {io_std_enum property} {
+   variable m_io_std_properties
+
+   set family_enum [get_device_family_enum]
+   set base_family_enum [get_base_device_family_enum]
+
+   set family_key "$family_enum,$io_std_enum"
+   set base_family_key "$base_family_enum,$io_std_enum"
+   
+   if {[info exists m_io_std_properties($family_key)]} {
+      return [enum_data $m_io_std_properties($family_key) $property]
+   } elseif {[info exists m_io_std_properties($base_family_key)]} {
+      return [enum_data $m_io_std_properties($base_family_key) $property]
+   } else {
+      emif_ie "Undefined I/O standard property for family: $base_family_enum $io_std_enum $property"
+   }
+}
+
+proc ::altera_emif::util::device_family::load_data {{is_top_level_component false}} {
+
+   _derive_device_family $is_top_level_component
+   _derive_device_speedgrade 
+   
+   return 1
+}
+
+
+proc ::altera_emif::util::device_family::_derive_device_family {is_top_level_component} {
+
+   variable m_family_enum
+   variable m_base_family_enum
+   
+   if {[get_parameter_value FAMILY_ENUM] != $m_family_enum} {
+   
+      if {$is_top_level_component} {
+         set_parameter_value FAMILY_ENUM $m_family_enum
+      } else {
+         set m_family_enum [get_parameter_value FAMILY_ENUM]
+      }
+   }
+      
+   if {$m_family_enum != "FAMILY_INVALID"} {
+      set m_base_family_enum [enum_data $m_family_enum BASE_FAMILY_ENUM]
+   } else {
+      set m_family_enum FAMILY_ARRIA10
+      set m_base_family_enum FAMILY_ARRIA10
+   }
+}
+
+proc ::altera_emif::util::device_family::_derive_device_speedgrade {} {   
+   
+   variable m_family_enum
+   variable m_base_family_enum
+   variable m_speedgrade
+   variable m_is_es
+   variable m_is_es2
+   variable m_is_es3
+   variable m_is_production
+   
+   set m_speedgrade ""
+   set m_is_es false
+   set m_is_es2 false
+   set m_is_es3 false
+   set m_is_production true
+
+   set device [get_device]
+   if {$device != ""} {
+      if {$m_base_family_enum == "FAMILY_ARRIA10"} {
+            
+        
+         set speedgrade [string range $device 12 13]
+        
+         set legal_speedgrades [get_family_trait FAMILY_TRAIT_SPEEDGRADES]
+         foreach legal_speedgrade $legal_speedgrades {
+            if {$legal_speedgrade == $speedgrade} {
+               set m_speedgrade $speedgrade
+               break
+            }
+         }
+         
+         if {[regexp -lineanchor -nocase {ES$} $device]} {
+            set m_is_es true
+            set m_is_es2 false
+            set m_is_es3 false
+            set m_is_production false
+         } elseif {[regexp -lineanchor -nocase {E2$} $device]} {
+            set m_is_es false
+            set m_is_es2 true
+            set m_is_es3 false
+            set m_is_production false
+         } elseif {[regexp -lineanchor -nocase {E3$} $device]} {
+            set m_is_es false
+            set m_is_es2 false
+            set m_is_es3 true
+            set m_is_production false
+         }
+      } elseif {$m_base_family_enum == "FAMILY_STRATIX10"} {
+         
+         set m_speedgrade [get_speedgrade_from_opn $m_base_family_enum $device]
+                  
+         if {[regexp -lineanchor -nocase {S1$} $device]} {
+            set m_is_es true
+            set m_is_es2 false
+            set m_is_es3 false
+            set m_is_production false
+         } elseif {[regexp -lineanchor -nocase {S2$} $device]} {
+            set m_is_es false
+            set m_is_es2 true
+            set m_is_es3 false
+            set m_is_production false
+         } elseif {[regexp -lineanchor -nocase {S3$} $device]} {
+            set m_is_es false
+            set m_is_es2 false
+            set m_is_es3 true
+            set m_is_production false
+         }
+      } elseif {$m_base_family_enum == "FAMILY_AGILEX"} {
+         set speedgrade [get_speedgrade_from_opn $m_base_family_enum $device]
+         
+         set legal_speedgrades [get_family_trait FAMILY_TRAIT_SPEEDGRADES]
+         foreach legal_speedgrade $legal_speedgrades {
+            if {$legal_speedgrade == $speedgrade} {
+               set m_speedgrade $speedgrade
+               break
+            }
+         }
+
+         set iobank_rev [get_parameter_value TRAIT_IOBANK_REVISION]
+
+         if {[string range $iobank_rev 0 4] == "IO96A"} {
+            set io_rev [regexp -nocase {IO96A_REV([AB])([0-9])} $iobank_rev matched bank_rev rev_ver]
+            if {$bank_rev == "A"} {
+               set m_is_es true
+               set m_is_es2 false
+               set m_is_es3 false
+               set m_is_production false
+            } elseif {$bank_rev == "B" && $rev_ver == "0"} {
+               set m_is_es false
+               set m_is_es2 true
+               set m_is_es3 false
+               set m_is_production false
+            } elseif {$bank_rev == "B" && $rev_ver == "2"} {
+               set m_is_es false
+               set m_is_es2 false
+               set m_is_es3 true
+               set m_is_production true
+            }
+         } else {
+           set m_is_es false
+           set m_is_es2 false
+           set m_is_es3 false
+           set m_is_production false
+         }
+      } else {
+         emif_ie "Unsupported family: $m_base_family_enum"
+      }
+   }
+}
+
+proc ::altera_emif::util::device_family::_gen_family_traits_hash {} {   
+
+   variable m_family_traits
+   
+   array unset m_family_traits
+
+   set num_of_traits 0
+   foreach enum [enums_of_type FAMILY_TRAIT_SPEC] {
+      set base_family_enum  [enum_data $enum BASE_FAMILY_ENUM]
+      set family_trait_enum [enum_data $enum FAMILY_TRAIT_ENUM]
+      set value             [enum_data $enum VALUE]
+      
+      set key "$base_family_enum,$family_trait_enum"
+      set m_family_traits($key) $value
+   }
+   
+   return 1
+}
+
+proc ::altera_emif::util::device_family::_gen_feature_support_levels_hash {} {   
+
+   variable m_feature_support_levels
+   
+   array unset m_feature_support_levels
+
+   foreach enum [enums_of_type FEATURE_SUPPORT_SPEC] {
+      set family_enum       [enum_data $enum FAMILY_ENUM]
+      set protocol_enum     [enum_data $enum PROTOCOL_ENUM]
+      set rate_enum         [enum_data $enum RATE_ENUM]
+      set feature_enum      [enum_data $enum FEATURE_ENUM]
+      set value             [enum_data $enum VALUE]
+      
+      set key "$family_enum,$protocol_enum,$rate_enum,$feature_enum"
+      set m_feature_support_levels($key) $value
+   }
+   
+   return 1
+}
+
+proc ::altera_emif::util::device_family::_gen_io_std_properties_hash {} {   
+
+   variable m_io_std_properties
+   
+   array unset m_io_std_properties
+
+   foreach enum [enums_of_type OCT_IO_STD] {
+      set family_enum  [enum_data $enum FAMILY_ENUM]
+      set io_std_enum  [enum_data $enum IO_STD_ENUM]
+      
+      set key "$family_enum,$io_std_enum"
+      set m_io_std_properties($key) $enum
+   }
+   
+   return 1
+}
+
+proc ::altera_emif::util::device_family::_init {} {
+   
+   variable m_family_enum
+   variable m_base_family_enum
+   variable m_speedgrade
+   variable m_is_es
+   variable m_is_es2
+   variable m_is_es3
+   variable m_is_production
+   
+   set m_family_enum FAMILY_INVALID
+   set m_base_family_enum FAMILY_INVALID
+   set m_speedgrade ""
+   set m_is_es false
+   set m_is_es2 false
+   set m_is_es3 false
+   set m_is_production true
+   
+   _gen_family_traits_hash
+   _gen_feature_support_levels_hash
+   _gen_io_std_properties_hash
+}
+
+::altera_emif::util::device_family::_init
+
+PARAMS [('SYS_INFO_DEVICE_FAMILY', None), ('FAMILY_ENUM', 'FAMILY_INVALID'), ('PHY_CONFIG_ENUM', None), ('PHY_DDR4_ALLOW_72_DQ_WIDTH', 'false'), ('MEM_FORMAT_ENUM', 'MEM_FORMAT_DISCRETE'), ('MEM_TTL_DATA_WIDTH', '64'), ('MEM_DDR3_FORMAT_ENUM', 'MEM_FORMAT_UDIMM'), ('MEM_DDR3_DQ_WIDTH', '72'), ('MEM_DDR3_DISCRETE_CS_WIDTH', '1'), ('MEM_DDR3_CK_WIDTH', '1'), ('MEM_DDR3_ROW_ADDR_WIDTH', '15'), ('MEM_DDR3_COL_ADDR_WIDTH', '10'), ('MEM_DDR3_BANK_ADDR_WIDTH', '3'), ('MEM_DDR3_DQS_WIDTH', '8'), ('MEM_DDR3_DM_WIDTH', '1'), ('MEM_DDR3_CS_WIDTH', '1'), ('MEM_DDR3_CKE_WIDTH', '1'), ('MEM_DDR3_ODT_WIDTH', '1'), ('MEM_DDR3_ADDR_WIDTH', '1'), ('MEM_DDR3_RM_WIDTH', '0'), ('MEM_DDR3_TTL_DQS_WIDTH', '8'), ('MEM_DDR3_TTL_DQ_WIDTH', '72'), ('MEM_DDR3_TTL_DM_WIDTH', '1'), ('MEM_DDR3_TTL_CS_WIDTH', '1'), ('MEM_DDR3_TTL_CK_WIDTH', '1'), ('MEM_DDR3_TTL_CKE_WIDTH', '1'), ('MEM_DDR3_TTL_ODT_WIDTH', '1'), ('MEM_DDR3_TTL_BANK_ADDR_WIDTH', '3'), ('MEM_DDR3_TTL_ADDR_WIDTH', '1'), ('MEM_DDR3_TTL_RM_WIDTH', '0'), ('MEM_DDR4_FORMAT_ENUM', 'MEM_FORMAT_DISCRETE'), ('MEM_DDR4_DQ_WIDTH', '64'), ('MEM_DDR4_DISCRETE_CS_WIDTH', '1'), ('MEM_DDR4_CHIP_ID_WIDTH', '0'), ('MEM_DDR4_CK_WIDTH', '1'), ('MEM_DDR4_ROW_ADDR_WIDTH', '17'), ('MEM_DDR4_COL_ADDR_WIDTH', '10'), ('MEM_DDR4_BANK_ADDR_WIDTH', '2'), ('MEM_DDR4_BANK_GROUP_WIDTH', '2'), ('MEM_DDR4_MPR_READ_FORMAT', 'DDR4_MPR_READ_FORMAT_SERIAL'), ('MEM_DDR4_CAL_MODE', '0'), ('MEM_DDR4_DQS_WIDTH', '8'), ('MEM_DDR4_CS_WIDTH', '1'), ('MEM_DDR4_CKE_WIDTH', '1'), ('MEM_DDR4_ODT_WIDTH', '1'), ('MEM_DDR4_ADDR_WIDTH', '1'), ('MEM_DDR4_RM_WIDTH', '0'), ('MEM_DDR4_TTL_DQS_WIDTH', '8'), ('MEM_DDR4_TTL_DQ_WIDTH', '72'), ('MEM_DDR4_TTL_CS_WIDTH', '1'), ('MEM_DDR4_TTL_CK_WIDTH', '1'), ('MEM_DDR4_TTL_CKE_WIDTH', '1'), ('MEM_DDR4_TTL_ODT_WIDTH', '1'), ('MEM_DDR4_TTL_BANK_ADDR_WIDTH', '2'), ('MEM_DDR4_TTL_BANK_GROUP_WIDTH', '2'), ('MEM_DDR4_TTL_CHIP_ID_WIDTH', '0'), ('MEM_DDR4_TTL_ADDR_WIDTH', '1'), ('MEM_DDR4_TTL_RM_WIDTH', '0'), ('MEM_QDR2_WIDTH_EXPANDED', 'false'), ('MEM_QDR2_ADDR_WIDTH', '19'), ('MEM_QDR2_FORMAT_ENUM', 'MEM_FORMAT_DISCRETE'), ('MEM_QDR2_DEVICE_WIDTH', '1'), ('MEM_QDR2_DATA_WIDTH', '36'), ('MEM_QDR2_BWS_N_WIDTH', '4'), ('MEM_QDR2_CQ_WIDTH', '1'), ('MEM_QDR2_K_WIDTH', '1'), ('MEM_QDR4_WIDTH_EXPANDED', 'false'), ('MEM_QDR4_ADDR_WIDTH', '21'), ('MEM_QDR4_FORMAT_ENUM', 'MEM_FORMAT_DISCRETE'), ('MEM_QDR4_DEVICE_WIDTH', '1'), ('MEM_QDR4_DQ_WIDTH', '72'), ('MEM_QDR4_QK_WIDTH', '4'), ('MEM_QDR4_DK_WIDTH', '4'), ('MEM_QDR4_DINV_WIDTH', '4'), ('MEM_QDR4_DQ_PER_PORT_WIDTH', '36'), ('MEM_QDR4_QK_PER_PORT_WIDTH', '2'), ('MEM_QDR4_DK_PER_PORT_WIDTH', '2'), ('MEM_QDR4_DINV_PER_PORT_WIDTH', '2'), ('MEM_RLD2_WIDTH_EXPANDED', 'false'), ('MEM_RLD2_ADDR_WIDTH', '21'), ('MEM_RLD2_BANK_ADDR_WIDTH', '3'), ('MEM_RLD2_FORMAT_ENUM', 'MEM_FORMAT_DISCRETE'), ('MEM_RLD2_DEVICE_WIDTH', '1'), ('MEM_RLD2_DQ_WIDTH', '9'), ('MEM_RLD2_QK_WIDTH', '1'), ('MEM_RLD2_DK_WIDTH', '1'), ('MEM_RLD2_DM_WIDTH', '1'), ('MEM_RLD2_CS_WIDTH', '1'), ('MEM_RLD3_WIDTH_EXPANDED', 'false'), ('MEM_RLD3_ADDR_WIDTH', '20'), ('MEM_RLD3_BANK_ADDR_WIDTH', '4'), ('MEM_RLD3_FORMAT_ENUM', 'MEM_FORMAT_DISCRETE'), ('MEM_RLD3_DEVICE_WIDTH', '1'), ('MEM_RLD3_DQ_WIDTH', '36'), ('MEM_RLD3_QK_WIDTH', '4'), ('MEM_RLD3_DK_WIDTH', '2'), ('MEM_RLD3_DM_WIDTH', '2'), ('MEM_RLD3_CS_WIDTH', '1'), ('MEM_LPDDR3_DQ_WIDTH', '32'), ('MEM_LPDDR3_DISCRETE_CS_WIDTH', '1'), ('MEM_LPDDR3_CK_WIDTH', '1'), ('MEM_LPDDR3_ROW_ADDR_WIDTH', '15'), ('MEM_LPDDR3_COL_ADDR_WIDTH', '10'), ('MEM_LPDDR3_BANK_ADDR_WIDTH', '3'), ('MEM_LPDDR3_DQS_WIDTH', '1'), ('MEM_LPDDR3_DM_WIDTH', '1'), ('MEM_LPDDR3_CS_WIDTH', '1'), ('MEM_LPDDR3_CKE_WIDTH', '1'), ('MEM_LPDDR3_ODT_WIDTH', '1'), ('MEM_LPDDR3_ADDR_WIDTH', '10'), ('MEM_LPDDR3_FORMAT_ENUM', 'MEM_FORMAT_DISCRETE'), ('MEM_DDRT_FORMAT_ENUM', 'MEM_FORMAT_LRDIMM'), ('MEM_DDRT_DQ_WIDTH', '72'), ('MEM_DDRT_DISCRETE_CS_WIDTH', '1'), ('MEM_DDRT_ROW_ADDR_WIDTH', '18'), ('MEM_DDRT_COL_ADDR_WIDTH', '10'), ('MEM_DDRT_BANK_ADDR_WIDTH', '2'), ('MEM_DDRT_BANK_GROUP_WIDTH', '2'), ('MEM_DDRT_MPR_READ_FORMAT', 'DDRT_MPR_READ_FORMAT_SERIAL'), ('MEM_DDRT_CAL_MODE', '0'), ('MEM_DDRT_DQS_WIDTH', '8'), ('MEM_DDRT_CS_WIDTH', '1'), ('MEM_DDRT_CKE_WIDTH', '1'), ('MEM_DDRT_GNT_N_WIDTH', '1'), ('MEM_DDRT_REQ_N_WIDTH', '1'), ('MEM_DDRT_ERR_N_WIDTH', '1'), ('MEM_DDRT_ERID_WIDTH', '2'), ('MEM_DDRT_ODT_WIDTH', '1'), ('MEM_DDRT_ADDR_WIDTH', '1'), ('MEM_DDRT_RM_WIDTH', '0'), ('MEM_DDRT_CK_WIDTH', '1'), ('MEM_DDRT_CHIP_ID_WIDTH', '2'), ('MEM_DDRT_TTL_DQS_WIDTH', '8'), ('MEM_DDRT_TTL_DQ_WIDTH', '72'), ('MEM_DDRT_TTL_CS_WIDTH', '1'), ('MEM_DDRT_TTL_CK_WIDTH', '1'), ('MEM_DDRT_TTL_CKE_WIDTH', '1'), ('MEM_DDRT_TTL_GNT_N_WIDTH', '1'), ('MEM_DDRT_TTL_REQ_N_WIDTH', '1'), ('MEM_DDRT_TTL_ERR_N_WIDTH', '1'), ('MEM_DDRT_TTL_ERID_WIDTH', '2'), ('MEM_DDRT_TTL_ODT_WIDTH', '1'), ('MEM_DDRT_TTL_BANK_ADDR_WIDTH', '2'), ('MEM_DDRT_TTL_BANK_GROUP_WIDTH', '2'), ('MEM_DDRT_TTL_CHIP_ID_WIDTH', '2'), ('MEM_DDRT_TTL_ADDR_WIDTH', '1'), ('MEM_DDRT_TTL_RM_WIDTH', '0'), ('CTRL_ECC_EN', 'false'), ('CTRL_ECC_READDATAERROR_EN', 'false'), ('CTRL_ECC_STATUS_EN', 'false'), ('CTRL_DDR3_ECC_EN', 'false'), ('CTRL_DDR3_ECC_AUTO_CORRECTION_EN', 'false'), ('CTRL_DDR3_ECC_READDATAERROR_EN', 'true'), ('CTRL_DDR3_ECC_STATUS_EN', 'false'), ('CTRL_DDR4_ECC_EN', 'false'), ('CTRL_DDR4_ECC_AUTO_CORRECTION_EN', 'false'), ('CTRL_DDR4_ECC_READDATAERROR_EN', 'false'), ('CTRL_DDR4_ECC_STATUS_EN', 'false'), ('CTRL_QDR2_AVL_SYMBOL_WIDTH', '9'), ('CTRL_QDR4_AVL_SYMBOL_WIDTH', '9'), ('CTRL_DDRT_ECC_EN', 'false'), ('CTRL_DDRT_ECC_AUTO_CORRECTION_EN', 'false'), ('CTRL_DDRT_ECC_READDATAERROR_EN', 'true'), ('CTRL_DDRT_ECC_STATUS_EN', 'true'), ('CTRL_DDRT_UPI_ID_WIDTH', '8'), ('CTRL_DDRT_PORT_AFI_C_WIDTH', '2'), ('CTRL_DDRT_AXIS_DATA_WIDTH', '512'), ('DIAG_FAST_SIM_OVERRIDE', 'FAST_SIM_OVERRIDE_DEFAULT'), ('DIAG_SIM_CAL_MODE_ENUM', None), ('DIAG_SIM_MEMORY_PRELOAD_PRI_ECC_FILE', None), ('DIAG_SIM_MEMORY_PRELOAD_SEC_ECC_FILE', None), ('DIAG_FAST_SIM', 'true'), ('DIAG_DDR3_SIM_CAL_MODE_ENUM', 'SIM_CAL_MODE_SKIP'), ('DIAG_DDR4_SIM_CAL_MODE_ENUM', 'SIM_CAL_MODE_SKIP'), ('DIAG_QDR2_SIM_CAL_MODE_ENUM', 'SIM_CAL_MODE_SKIP'), ('DIAG_QDR4_SIM_CAL_MODE_ENUM', 'SIM_CAL_MODE_SKIP'), ('DIAG_RLD2_SIM_CAL_MODE_ENUM', 'SIM_CAL_MODE_SKIP'), ('DIAG_RLD3_SIM_CAL_MODE_ENUM', 'SIM_CAL_MODE_SKIP'), ('DIAG_LPDDR3_SIM_CAL_MODE_ENUM', 'SIM_CAL_MODE_SKIP'), ('DIAG_DDRT_SIM_CAL_MODE_ENUM', 'SIM_CAL_MODE_SKIP'), ('EX_DESIGN_GUI_DDR3_HDL_FORMAT', 'HDL_FORMAT_VERILOG'), ('EX_DESIGN_GUI_DDR4_HDL_FORMAT', 'HDL_FORMAT_VERILOG'), ('EX_DESIGN_GUI_QDR2_HDL_FORMAT', 'HDL_FORMAT_VERILOG'), ('EX_DESIGN_GUI_QDR4_HDL_FORMAT', 'HDL_FORMAT_VERILOG'), ('EX_DESIGN_GUI_RLD2_HDL_FORMAT', 'HDL_FORMAT_VERILOG'), ('EX_DESIGN_GUI_RLD3_HDL_FORMAT', 'HDL_FORMAT_VERILOG'), ('EX_DESIGN_GUI_LPDDR3_HDL_FORMAT', 'HDL_FORMAT_VERILOG'), ('EX_DESIGN_GUI_DDRT_HDL_FORMAT', 'HDL_FORMAT_VERILOG'), ('AUTO_DEVICE_FAMILY', 'Agilex 7')]

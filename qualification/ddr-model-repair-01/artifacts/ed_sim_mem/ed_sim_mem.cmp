@@ -1,0 +1,21 @@
+	component ed_sim_mem is
+		port (
+			mem_ck      : in    std_logic_vector(0 downto 0)  := (others => 'X'); -- mem_ck
+			mem_ck_n    : in    std_logic_vector(0 downto 0)  := (others => 'X'); -- mem_ck_n
+			mem_a       : in    std_logic_vector(16 downto 0) := (others => 'X'); -- mem_a
+			mem_act_n   : in    std_logic_vector(0 downto 0)  := (others => 'X'); -- mem_act_n
+			mem_ba      : in    std_logic_vector(1 downto 0)  := (others => 'X'); -- mem_ba
+			mem_bg      : in    std_logic_vector(1 downto 0)  := (others => 'X'); -- mem_bg
+			mem_cke     : in    std_logic_vector(0 downto 0)  := (others => 'X'); -- mem_cke
+			mem_cs_n    : in    std_logic_vector(0 downto 0)  := (others => 'X'); -- mem_cs_n
+			mem_odt     : in    std_logic_vector(0 downto 0)  := (others => 'X'); -- mem_odt
+			mem_reset_n : in    std_logic_vector(0 downto 0)  := (others => 'X'); -- mem_reset_n
+			mem_par     : in    std_logic_vector(0 downto 0)  := (others => 'X'); -- mem_par
+			mem_alert_n : out   std_logic_vector(0 downto 0);                     -- mem_alert_n
+			mem_dqs     : inout std_logic_vector(7 downto 0)  := (others => 'X'); -- mem_dqs
+			mem_dqs_n   : inout std_logic_vector(7 downto 0)  := (others => 'X'); -- mem_dqs_n
+			mem_dq      : inout std_logic_vector(63 downto 0) := (others => 'X'); -- mem_dq
+			mem_dbi_n   : inout std_logic_vector(7 downto 0)  := (others => 'X')  -- mem_dbi_n
+		);
+	end component ed_sim_mem;
+

@@ -1,0 +1,319 @@
+EMIF_IPS ['/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/ipss/mem/qip/axilite_ic/ip/emif_csr_ic/emif_csr_ic_clock_in.ip', '/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/ipss/mem/qip/axilite_ic/ip/emif_csr_ic/emif_csr_ic_reset_in.ip', '/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/ipss/mem/qip/axilite_ic/ip/emif_csr_ic/emif_csr_slv.ip', '/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/ipss/mem/qip/axilite_ic/ip/emif_csr_ic/emif_dfh_mst.ip']
+SOURCE /opt/altera/26.1.1/ip/altera/emif/ip_top/exports.tcl 24
+# sole purpose of programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the applicable 
+# agreement for further details.
+
+
+package provide altera_emif::ip_top::exports 0.1
+
+package require altera_emif::ip_top::main
+
+namespace eval ::altera_emif::ip_top::exports:: {
+   
+
+}
+
+
+proc ::altera_emif:::ip_top::exports::inherit_top_level_parameter_defs {} {
+      
+   ::altera_emif:::ip_top::main::create_parameters false
+   
+   foreach param_name [get_parameters] {
+      set_parameter_property $param_name DERIVED false
+      set_parameter_property $param_name SYSTEM_INFO ""
+      
+      set_parameter_property $param_name ALLOWED_RANGES ""
+      
+      set_parameter_property $param_name HDL_PARAMETER false
+      
+      set_parameter_property $param_name VISIBLE false
+   }
+   return 1
+}
+
+
+proc ::altera_emif::ip_top::exports::_init {} {
+}
+
+::altera_emif::ip_top::exports::_init
+SOURCE /opt/altera/26.1.1/ip/altera/emif/ip_top/ex_design/make_qsys.tcl 624
+            }
+         }
+         if {$cal_oct} {
+            remove_interface ${emif}_oct
+         }
+      }
+      
+      if {$has_local_reset} {
+         remove_interface local_reset_req
+      }
+
+      foreach emif $emifs mem $mems sharing_enum $sharing_enums tg $tgs tg_cfg_bfm $tg_cfg_bfms {
+
+         set_validation_property AUTOMATIC_VALIDATION false
+
+         add_instance $mem altera_emif_mem_model
+
+         set_instance_parameter_values $mem $ip_param_lst
+
+         set board "${mem}_board"
+         if {[get_instance_parameter_value $emif "DIAG_USE_BOARD_DELAY_MODEL"]} {
+            add_instance $board altera_emif_board_delay_model
+            set_instance_parameter_values $board $ip_param_lst
+         }
+
+         validate_system
+         set_validation_property AUTOMATIC_VALIDATION true
+
+         if {[get_instance_parameter_value $emif "DIAG_USE_BOARD_DELAY_MODEL"]} {
+            add_connection ${emif}.mem ${board}.mem_0
+            add_connection ${board}.mem_1 ${mem}.mem
+         } else {
+            add_connection ${emif}.mem ${mem}.mem
+         }
+
+         if {$sharing_enum != "CORE_CLKS_SHARING_SLAVE"} {
+            add_connection ${clock_src}.clk ${emif}.pll_ref_clk
+         }
+
+      }
+
+      add_instance sim_checker altera_emif_sim_checker
+      set_instance_parameter_value sim_checker NUM_OF_TG_IFS $num_tg_status_ifs
+      set_instance_parameter_value sim_checker NUM_OF_EMIF_IFS [llength $emifs]
+      set_instance_parameter_value sim_checker SKIP_TG [get_instance_parameter_value $main_emif "DIAG_SIM_CHECKER_SKIP_TG"]
+
+      set tg_status_if_i 0
+      foreach tg $tgs {
+         foreach if [get_instance_interfaces $tg] {
+            if {[string first "tg_status" $if] == 0} {
+               add_connection ${tg}.${if} sim_checker.tg_status_${tg_status_if_i}
+               incr tg_status_if_i
+            }
+         }
+      }
+SOURCE /opt/altera/26.1.1/ip/altera/emif/ip_top/ex_design/make_qsys.tcl 988
+      }
+   }
+
+   if {$design_type == "sim"} {
+      foreach protocol $protocols emif $emifs mem $mems clk $clks {
+
+         set ref_clk_freq_mhz  [get_instance_parameter_value $emif "PHY_${protocol}_REF_CLK_FREQ_MHZ"]
+
+         set_validation_property AUTOMATIC_VALIDATION false
+
+         set clock_src "${clk}_source"
+         add_instance $clock_src altera_avalon_clock_source
+         set_instance_parameter_value $clock_src CLOCK_RATE [expr {round($ref_clk_freq_mhz * 1000000.0)}]
+         set_instance_parameter_value $clock_src CLOCK_UNIT 1
+
+         add_instance $mem altera_emif_mem_model
+         foreach param_name [get_instance_parameters $emif] {
+            set param_val [get_instance_parameter_value $emif $param_name]
+            set_instance_parameter_value $mem $param_name $param_val
+         }
+         
+         if {$has_global_reset} {
+            if {$use_separate_resets} {
+               set global_reset_n_src "global_reset_n_source_$emif"
+               add_instance $global_reset_n_src altera_avalon_reset_source
+               set_instance_parameter_value $global_reset_n_src ASSERT_HIGH_RESET 0
+               set_instance_parameter_value $global_reset_n_src INITIAL_RESET_CYCLES 5
+            }
+         }
+
+         validate_system
+         set_validation_property AUTOMATIC_VALIDATION true
+
+         add_connection ${emif}.mem ${mem}.mem
+
+         add_connection ${clock_src}.clk ${emif}.pll_ref_clk
+         
+         if {$has_global_reset} {
+            if {$use_separate_resets} {
+               add_connection ${clock_src}.clk ${global_reset_n_src}.clk
+               add_connection ${global_reset_n_src}.reset ${emif}.global_reset_n
+            }
+         }
+
+         set cal_oct [get_instance_parameter_value $emif PHY_CALIBRATED_OCT]
+         if {$cal_oct} {
+            remove_interface ${emif}_oct
+         }
+      }
+
+      set orig_num_cal_status_ifs [get_instance_parameter_value sim_checker NUM_OF_EMIF_IFS]
+      set orig_num_tg_status_ifs [get_instance_parameter_value sim_checker NUM_OF_TG_IFS]
+      set num_cal_status_ifs [expr {$orig_num_cal_status_ifs + [llength $emifs]}]
+      incr num_tg_status_ifs $orig_num_tg_status_ifs
+      set_instance_parameter_value sim_checker NUM_OF_TG_IFS $num_tg_status_ifs
+SOURCE /opt/altera/26.1.1/ip/altera/emif/ip_top/ex_design/make_qsys_with_cal.tcl 491
+            }
+         }
+         if {$cal_oct} {
+            remove_interface ${emif}_oct
+         }
+      }
+      
+      if {$has_local_reset} {
+         remove_interface local_reset_req
+      }
+
+      foreach emif $emifs mem $mems sharing_enum $sharing_enums tg $tgs tg_cfg_bfm $tg_cfg_bfms {
+
+         set_validation_property AUTOMATIC_VALIDATION false
+
+         add_instance $mem altera_emif_mem_model
+
+         set_instance_parameter_values $mem $ip_param_lst
+
+         set board "${mem}_board"
+         if {[get_instance_parameter_value $emif "DIAG_USE_BOARD_DELAY_MODEL"]} {
+            add_instance $board altera_emif_board_delay_model
+            set_instance_parameter_values $board $ip_param_lst
+         }
+
+         validate_system
+         set_validation_property AUTOMATIC_VALIDATION true
+
+         if {[get_instance_parameter_value $emif "DIAG_USE_BOARD_DELAY_MODEL"]} {
+            add_connection ${emif}.mem ${board}.mem_0
+            add_connection ${board}.mem_1 ${mem}.mem
+         } else {
+            add_connection ${emif}.mem ${mem}.mem
+         }
+
+         if {$sharing_enum != "CORE_CLKS_SHARING_SLAVE"} {
+            add_connection ${clock_src}.clk ${emif}.pll_ref_clk
+         }
+
+      }
+
+      add_instance sim_checker altera_emif_sim_checker
+      set_instance_parameter_value sim_checker NUM_OF_TG_IFS $num_tg_status_ifs
+      set_instance_parameter_value sim_checker NUM_OF_EMIF_IFS [llength $emifs]
+      set_instance_parameter_value sim_checker SKIP_TG [get_instance_parameter_value $main_emif "DIAG_SIM_CHECKER_SKIP_TG"]
+
+      set tg_status_if_i 0
+      foreach tg $tgs {
+         foreach if [get_instance_interfaces $tg] {
+            if {[string first "tg_status" $if] == 0} {
+               add_connection ${tg}.${if} sim_checker.tg_status_${tg_status_if_i}
+               incr tg_status_if_i
+            }
+         }
+      }
+SOURCE /opt/altera/26.1.1/ip/altera/emif/ip_top/ex_design/make_qsys_with_cal.tcl 789
+      }
+   }
+
+   if {$design_type == "sim"} {
+      foreach protocol $protocols emif $emifs mem $mems clk $clks {
+
+         set ref_clk_freq_mhz  [get_instance_parameter_value $emif "PHY_${protocol}_REF_CLK_FREQ_MHZ"]
+
+         set_validation_property AUTOMATIC_VALIDATION false
+
+         set clock_src "${clk}_source"
+         add_instance $clock_src altera_avalon_clock_source
+         set_instance_parameter_value $clock_src CLOCK_RATE [expr {round($ref_clk_freq_mhz * 1000000.0)}]
+         set_instance_parameter_value $clock_src CLOCK_UNIT 1
+
+         add_instance $mem altera_emif_mem_model
+         foreach param_name [get_instance_parameters $emif] {
+            set param_val [get_instance_parameter_value $emif $param_name]
+            set_instance_parameter_value $mem $param_name $param_val
+         }
+         
+         if {$has_global_reset} {
+            if {$use_separate_resets} {
+               set global_reset_n_src "global_reset_n_source_$emif"
+               add_instance $global_reset_n_src altera_avalon_reset_source
+               set_instance_parameter_value $global_reset_n_src ASSERT_HIGH_RESET 0
+               set_instance_parameter_value $global_reset_n_src INITIAL_RESET_CYCLES 5
+            }
+         }
+
+         validate_system
+         set_validation_property AUTOMATIC_VALIDATION true
+
+         add_connection ${emif}.mem ${mem}.mem
+
+         add_connection ${clock_src}.clk ${emif}.pll_ref_clk
+         
+         if {$has_global_reset} {
+            if {$use_separate_resets} {
+               add_connection ${clock_src}.clk ${global_reset_n_src}.clk
+               add_connection ${global_reset_n_src}.reset ${emif}.global_reset_n
+            }
+         }
+
+         set cal_oct [get_instance_parameter_value $emif PHY_CALIBRATED_OCT]
+         if {$cal_oct} {
+            remove_interface ${emif}_oct
+         }
+      }
+
+      set orig_num_cal_status_ifs [get_instance_parameter_value sim_checker NUM_OF_EMIF_IFS]
+      set orig_num_tg_status_ifs [get_instance_parameter_value sim_checker NUM_OF_TG_IFS]
+      set num_cal_status_ifs [expr {$orig_num_cal_status_ifs + [llength $emifs]}]
+      incr num_tg_status_ifs $orig_num_tg_status_ifs
+      set_instance_parameter_value sim_checker NUM_OF_TG_IFS $num_tg_status_ifs
+SOURCE /opt/altera/26.1.1/ip/altera/emif/ip_top/ex_design/make_qsys_with_cal_multi_ip.tcl 506
+    add_interface          sim_checker conduit end
+    set_interface_property sim_checker EXPORT_OF sim_checker.tg_status
+    add_interface          cal_status_checker conduit end
+    set_interface_property cal_status_checker EXPORT_OF sim_checker.status
+
+    for {set id 0} {$id < $NUM_IPS} {incr id} {
+        set protocol_enum       $ip_params(EMIF_${id}_PROTOCOL_ENUM)
+        set protocol            [lindex [split $protocol_enum "_"] 1]
+        
+        set emif      emif_fm_$id
+        set tg        tg_$id
+        set calbus_if emif_calbus_$id
+        set mem        mem_$id
+
+
+        add_instance $mem altera_emif_mem_model
+        set_instance_parameter_values $mem $ip_param_lst($id)
+
+        set board "${mem}_board"
+        if {$ip_params(EMIF_${id}_DIAG_USE_BOARD_DELAY_MODEL)} {
+            add_instance $board altera_emif_board_delay_model
+            set_instance_parameter_values $board $ip_param_lst($id)
+        }
+
+        if {$ip_params(EMIF_${id}_DIAG_USE_BOARD_DELAY_MODEL)} {
+            add_connection ${emif}.mem ${board}.mem_0
+            add_connection ${board}.mem_1 ${mem}.mem
+        } else {
+            add_connection ${emif}.mem ${mem}.mem
+        }
+
+        if {$id == $hps_emif_id} { 
+            continue
+        }
+
+        set config_enum         $ip_params(EMIF_${id}_PHY_CONFIG_ENUM)
+        set use_tg_avl_2        [expr {$ip_params(EMIF_${id}_DIAG_USE_TG_AVL_2) && ($ip_params(EMIF_${id}_PHY_CONFIG_ENUM) != "CONFIG_PHY_ONLY")}]
+
+        set tg_cfg_bfm tg_cfg_bfms_$id
+
+        set ref_clk_freq_mhz  $ip_params(EMIF_${id}_PHY_${protocol}_REF_CLK_FREQ_MHZ)
+        if {$ed_params(EMIF_${id}_REF_CLK_SHARING) == "EXPORTED"} {
+            set clock_src "pll_ref_clk_source_$id"
+            add_instance $clock_src altera_avalon_clock_source
+            set_instance_parameter_value $clock_src CLOCK_RATE [expr {round($ref_clk_freq_mhz * 1000000.0)}]
+            set_instance_parameter_value $clock_src CLOCK_UNIT 1
+        }
+
+        if {[get_instance_parameter_value $emif_cal_wrapper "DIAG_EXPORT_SEQ_AVALON_SLAVE"] == "CAL_DEBUG_EXPORT_MODE_EXPORT"} {
+            set cal_debug_clk_src "cal_debug_clk_source_$id"
+            add_instance $cal_debug_clk_src altera_avalon_clock_source
+            set_instance_parameter_value $cal_debug_clk_src CLOCK_RATE [expr {round($ref_clk_freq_mhz * 1000000.0)}]
+            set_instance_parameter_value $cal_debug_clk_src CLOCK_UNIT 1
+
+            set cal_debug_reset_n_src "cal_debug_reset_n_source_$id"

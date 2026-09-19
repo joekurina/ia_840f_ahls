@@ -1,0 +1,260 @@
+card_configurations:
+- name: IA-840F
+  versions: [".*"]
+  pci_vid: 0x12ba
+  pci_did: 0x0070
+  family: Agilex
+  i2c_controllers:
+  - name: I2C_SHARED
+    shared: true
+    devices:
+    - name: ID PROM
+      type: EPROM
+      component: AT24C16C
+      addr: 0x57
+    - name: I2C expander
+      type: I2C expander
+      component: TCA9548APW
+      addr: 0x72
+      addrbytes: 0
+      channels:
+        0:
+        - name: QSFP-DD0 # must be named with -DDn where n is module #
+          alias: QSFP0
+          type: QSFP-DD
+          addr: 0x50
+        1:
+        - name: QSFP-DD1 # must be named with -DDn where n is module #
+          alias: QSFP1
+          type: QSFP-DD
+          addr: 0x50
+        2:
+        - name: QSFP-DD2 # must be named with -DDn where n is module #
+          alias: QSFP2
+          type: QSFP-DD
+          addr: 0x50
+        3:
+        - name: MCIO_I2C_PORT2
+          type: MCIO_I2C
+          addr: 0  # Depends on device plugged in
+        4:
+        - name: MCIO_I2C_PORT0
+          type: MCIO_I2C
+          addr: 0  # Depends on device plugged in
+        5:
+        - name: MCIO_I2C_PORT1
+          type: MCIO_I2C
+          addr: 0  # Depends on device plugged in
+        6:
+        - name: MCIO_I2C_PORT3
+          type: MCIO_I2C
+          addr: 0  # Depends on device plugged in
+        7:
+        - name: QSFP0-2 GPIO
+          type: GPIO
+          component: TCA9535PWR
+          addr: 0x21
+          gpios:
+            0: [QSFP0_LP_MODE, QSFP0:LP_MODE]
+            1: [QSFP0_RST_L, QSFP0:RST_L]
+            2: [QSFP0_MOD_PRS_L, QSFP0:MOD_PRS_L]
+            3: [QSFP0_INT_L, QSFP0:INT_L]
+            4: [QSFP1_LP_MODE, QSFP1:LP_MODE]
+            5: [QSFP1_RST_L, QSFP1:RST_L]
+            6: [QSFP1_MOD_PRS_L, QSFP1:MOD_PRS_L]
+            7: [QSFP1_INT_L, QSFP1:INT_L]
+            8: [QSFP2_LP_MODE, QSFP2:LP_MODE]
+            9: [QSFP2_RST_L, QSFP2:RST_L]
+            10: [QSFP2_MOD_PRS_L, QSFP2:MOD_PRS_L]
+            11: [QSFP2_INT_L, QSFP2:INT_L]
+        - name: MCIO0 GPIO
+          type: GPIO
+          component: TCA9554PW
+          addr: 0x22
+          gpios:
+            0: MCIO0 GPIO0
+            1: MCIO0 GPIO1
+            2: MCIO0 GPIO2
+            3: MCIO0 GPIO3
+            4: MCIO0 GPIO4
+            5: MCIO0 GPIO5
+            6: MCIO0 GPIO6
+            7: MCIO0 GPIO7
+        - name: MCIO1 GPIO
+          type: GPIO
+          component: TCA9554PW
+          addr: 0x25
+          gpios:
+            0: MCIO1 GPIO0
+            1: MCIO1 GPIO1
+            2: MCIO1 GPIO2
+            3: MCIO1 GPIO3
+            4: MCIO1 GPIO4
+            5: MCIO1 GPIO5
+            6: MCIO1 GPIO6
+            7: MCIO1 GPIO7
+    - name: External GPIO Direction
+      type: GPIO
+      component: TCA9554PW
+      addr: 0x20
+      gpios:
+        0: EXT_DIR0
+        1: EXT_DIR1
+        2: EXT_DIR2
+        3: EXT_DIR3
+        4: EXT_DIR4
+        5: EXT_DIR5
+        6: EXT_DIR6
+        7: EXT_DIR7
+  flash_controllers:
+  - name: SDM_MAILBOX
+    devices:
+    - name: FPGA Boot Flash
+      type: QSPI
+  clocks:
+  - name: Bittware
+    ip_design_id: ANY
+    ip_revision: ANY
+    clock_defs:
+    # a list of tuples in order as implemented in the clocks test IP
+    # each tuple contains the clock name, frequency and internal/external flag
+    - ['CONFIG_CLK',                    50.0,   int,ref ]
+    - ['USER_CLK',                      100.0,  int]
+    - ['PCIe User Clock',               500.0,  int]
+    - ['DRAM Bank0 Reference Clock',    333.33, int]
+    - ['DRAM Bank1 Reference Clock',    333.33, int]
+    - ['DRAM Bank2 Reference Clock',    333.33, int]
+    - ['DRAM Bank3 Reference Clock',    333.33, int]
+    - ['1PPS_CLK',                      10.0,   ext]
+    - ['QSFPDD0 TX Clock',              402.83, int]
+    - ['QSFPDD1 TX Clock',              402.83, int]
+    - ['QSFPDD2 TX Clock',              402.83, int]
+    - ['CLKA/External Reference Clock', 10.0,   ext]
+    - ['Recovered Clock 0',             300.0,  int]
+    - ['Recovered Clock 1',             200.0,  int]
+    - ['Recovered Clock 2',             150.0,  int]
+    - ['Root Port (Port 0)',            200.0,  int]
+    - ['Root Port (Port 1)',            200.0,  int]
+    - ['Root Port (Port 2)',            200.0,  int]
+    - ['Root Port (Port 3)',            200.0,  int]
+  part_number:
+    pattern: "(IA-840F)-(.)-(.{7})-(.)(.)(..)(..)-(.)(.)-(.)(.)(.)(.)-(.)(.)(.)(.)-(.)-([ABCDEFG])([0123456789]{4})(-NM)?"
+    fields:
+    - Product:
+        IA-840F: IA-840F
+    - PWB:
+        S: Standard
+    - FPGA:
+        '0000000': None
+        A221E1V: AG F/No HPS/2,208K LE/Fastest XCVR Speed/Extended Commercial Temperature/Fastest Core Speed/Standard Power
+        A222E2V: AG F/No HPS/2,208K LE/Medium XCVR Speed/Extended Commercial Temperature/Nominal Core Speed/Standard Power
+        A271E1V: AG F/No HPS/2,692K LE/Fastest XCVR Speed/Extended Commercial Temperature/Fastest Core Speed/Standard Power
+        A272E2V: AG F/No HPS/2,692K LE/Medium XCVR Speed/Extended Commercial Temperature/Nominal Core Speed/Standard Power
+        B221E1V: AG F/HPS/2,208K LE/Fastest XCVR Speed/Extended Commercial Temperature/Fastest Core Speed/Standard Power
+        B222E2V: AG F/HPS/2,208K LE/Medium XCVR Speed/Extended Commercial Temperature/Nominal Core Speed/Standard Power
+        B271E1V: AG F/HPS/2,692K LE/Fastest XCVR Speed/Extended Commercial Temperature/Fastest Core Speed/Standard Power
+        B272E2V: AG F/HPS/2,692K LE/Medium XCVR Speed/Extended Commercial Temperature/Nominal Core Speed/Standard Power
+    - DDR4Bank1:
+        '0': None
+        '4': 16GB
+        '5': 32GB
+    - DDR4Bank2:
+        '0': None
+        '4': 16GB
+        '5': 32GB
+    - DIMM1:
+        '00': None
+        '99': No connector
+        R4: 16GB RDIMM
+        R5: 32GB RDIMM
+    - DIMM2:
+        '00': None
+        '99': No connector
+        R4: 16GB RDIMM
+        R5: 32GB RDIMM
+    - OscFrqCfg:
+        'S': Standard
+    - ClockGenCfg:
+        '0': Standard
+    - Timing:
+        '0': None
+        C: Front panel connectors
+        X: Onboard circuits only
+    - QSFPDDCfg:
+        '0': None
+        '3': 3
+    - MCIOCfg:
+        '0': None
+        '2': 2 PCIe root port
+        '4': 2 PCIe endpoint
+    - PowerConnector:
+        '1': 1
+        '2': 2
+    - HeatSinkCfg:
+        '1': Active
+        '2': Passive
+    - MechConfig:
+        '1': 1 slot
+        '2': 2 slot
+        '3': 3 slot
+        U: TRBX1401B/1402B
+    - FlashConfig:
+        '0': Default
+    - MiscConf:
+        '0': Default
+        E: EAU
+        L: LVDS GPIO
+    - EnvAssembly:
+        '9': RoHS 9/10
+    - PCB revision:
+    - Product revision:
+    - Not maintained:
+        NM: Not maintained
+  usb_devices:
+    # Merged and edited output of:
+    #     lsusb -s 1: (bus 1)  This lists all the devices on bus 1 with their IDs
+    #     lsusb -t (tree) This shows the structure of what we are trying to describe
+    #                     in the usb_devices block
+    #
+    # Starting at the first main-board hub (what the card is connected to)
+    # /:  Bus 01.Port 1: Dev 1, Class=root_hub, Driver=xhci_hcd/16p, 480M
+    #     |__ Port 11: Dev 4, If 0, Class=Hub, Driver=hub/4p, 480M
+    #         Bus 001 Device 004: ID 05e3:0608 Genesys Logic, Inc. Hub
+    #         (card presents as a Genesys Hub, the first thing in the usb device list)
+    #         |__ Port 1: Dev 5, If 0, Class=Vendor Specific Class, Driver=ftdi_sio, 12M
+    #             Bus 001 Device 005: ID 0403:6015 Future Technology Devices International, Ltd Bridge(I2C/SPI/UART/FIFO)
+    #             (is this the device plugged into the usb chain port on the card?)
+    #         |__ Port 2: Dev 6, If 0, Class=Vendor Specific Class, Driver=, 480M
+    #             Bus 001 Device 006: ID 09fb:6010 Altera
+    #             (first of 2 identical devices on hub port 2)
+    #         |__ Port 2: Dev 6, If 1, Class=Vendor Specific Class, Driver=, 480M
+    #             Bus 001 Device 006: ID 09fb:6010 Altera
+    #             (second of 2 identical devices on hub port 2)
+    #         |__ Port 4: Dev 7, If 0, Class=Vendor Specific Class, Driver=, 12M
+    #             Bus 001 Device 007: ID 2528:0005
+    #             (the BMC)
+    - name: USB_DEVICES
+      device_list:
+      - name: "Genesys Hub"
+        id:
+          - "05e3:0608"
+        device_list:
+        - name: "BMC"
+          id:
+            -  "2528:0005"
+        - name: "Intel Blaster"
+          id:
+            - "09fb:6810"
+            - "09fb:6010"
+        - name: "FTDI"
+          id:
+            - "0403:6015"
+
+  sdm_mappings:
+    "SDM_TEMP_0": "SDM Block Temperature"
+    "SDM_TEMP_1": "Fabric Lower Left Temperature"
+    "SDM_TEMP_2": "Fabric Upper Left Temperature"
+    "SDM_TEMP_3": "Fabric Lower Right Temperature"
+    "SDM_TEMP_4": "HPS Temperature"
+    "SDM_TEMP_5": "PCIe Temperature"
+    "SDM_TEMP_8": "QSFP-DD Temperatures"

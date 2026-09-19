@@ -1,0 +1,71 @@
+project 0
+Info: *******************************************************************
+Info: Running Quartus Prime Shell
+    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+    Info: Copyright (C) 2026  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Fri Sep 18 11:30:11 2026
+    Info: System process ID: 66811
+Info: Command: quartus_sh -t project.tcl
+Info (23030): Evaluation of Tcl script project.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 1620 megabytes
+    Info: Processing ended: Fri Sep 18 11:30:12 2026
+    Info: Elapsed time: 00:00:01
+    Info: System process ID: 66811
+
+repair 1
+***************************************************************
+Quartus is a registered trademark of Altera Corporation in the
+US and other countries.  Portions of the Quartus Prime software
+code, and other portions of the code included in this download
+or on this DVD, are licensed to Altera Corporation and are the
+copyrighted property of third parties. For license details,
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+***************************************************************
+
+2026.09.18.11:30:12 Info: Doing: qsys-script --quartus-project=model_repair.qpf --script=repair.tcl
+2026.09.18.11:30:17 Info: create_system model_repair
+2026.09.18.11:30:17 Info: set_project_property DEVICE_FAMILY Agilex 7
+2026.09.18.11:30:17 Info: set_project_property DEVICE AGFB027R25A2E2V
+2026.09.18.11:30:17 Info: add_component ed_sim_mem ed_sim_mem.ip
+2026.09.18.11:30:17 Info: ed_sim_mem: Generic Component instance footprint reloaded.
+2026.09.18.11:30:17 Info: load_component ed_sim_mem
+2026.09.18.11:30:19 Info: get_component_parameter_value SYS_INFO_DEVICE_FAMILY
+BEFORE ed_sim_mem 
+2026.09.18.11:30:19 Info: set_component_parameter_value SYS_INFO_DEVICE_FAMILY Agilex 7
+2026.09.18.11:30:19 Info: save_component 
+2026.09.18.11:30:20 Info: get_component_parameter_value SYS_INFO_DEVICE_FAMILY
+2026.09.18.11:30:20 Error: get_component_parameter_value SYS_INFO_DEVICE_FAMILY: Component not loaded.
+AFTER ed_sim_mem 
+2026.09.18.11:30:20 Info: add_component ed_sim_mem_group1 ed_sim_mem_group1.ip
+2026.09.18.11:30:20 Info: ed_sim_mem_group1: Generic Component instance footprint reloaded.
+2026.09.18.11:30:20 Info: load_component ed_sim_mem_group1
+2026.09.18.11:30:20 Info: get_component_parameter_value SYS_INFO_DEVICE_FAMILY
+BEFORE ed_sim_mem_group1 
+2026.09.18.11:30:20 Info: set_component_parameter_value SYS_INFO_DEVICE_FAMILY Agilex 7
+2026.09.18.11:30:20 Info: save_component 
+2026.09.18.11:30:21 Info: get_component_parameter_value SYS_INFO_DEVICE_FAMILY
+2026.09.18.11:30:21 Error: get_component_parameter_value SYS_INFO_DEVICE_FAMILY: Component not loaded.
+AFTER ed_sim_mem_group1 
+2026.09.18.11:30:21 Info: save_system model_repair.qsys
+2026.09.18.11:30:21 Info: Info: All modules have been converted to Generic Components.
+
+Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+  File "<string>", line 29, in <module>
+  File "<string>", line 7, in run
+AssertionError

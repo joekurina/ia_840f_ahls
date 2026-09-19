@@ -1,0 +1,171 @@
+{
+  "pass": false,
+  "ready_for_build": false,
+  "hardware_qualified": false,
+  "candidate_compile_pass": false,
+  "elaboration_attempted": false,
+  "simulation_ran": false,
+  "channel_completion_markers": 0,
+  "pass_markers": 0,
+  "steps": [
+    {
+      "argv": [
+        "/opt/altera/26.1.1/questa_fe/bin/vlog",
+        "-version"
+      ],
+      "timeout_s": 15,
+      "log": "vlog-version.log",
+      "started": 1789761716.570477,
+      "rc": 0,
+      "finished": 1789761716.6854286,
+      "elapsed_s": 0.11495161056518555
+    },
+    {
+      "argv": [
+        "/opt/altera/26.1.1/questa_fe/bin/vlib",
+        "libraries/tennm_ver"
+      ],
+      "timeout_s": 15,
+      "log": "vlib-import.log",
+      "started": 1789761716.6858213,
+      "rc": 0,
+      "finished": 1789761716.8020039,
+      "elapsed_s": 0.11618256568908691
+    },
+    {
+      "argv": [
+        "/opt/altera/26.1.1/questa_fe/bin/vlog",
+        "-sv",
+        "/home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/tennm_atoms.sv",
+        "-work",
+        "tennm_ver"
+      ],
+      "timeout_s": 1500,
+      "log": "compile-import-00.log",
+      "started": 1789761716.8024087,
+      "rc": 0,
+      "finished": 1789761717.1694944,
+      "elapsed_s": 0.36708569526672363
+    },
+    {
+      "argv": [
+        "/opt/altera/26.1.1/questa_fe/bin/vlog",
+        "-sv",
+        "/home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv",
+        "-work",
+        "tennm_ver"
+      ],
+      "timeout_s": 1500,
+      "log": "compile-import-01.log",
+      "started": 1789761717.1709054,
+      "rc": 2,
+      "finished": 1789761914.3920856,
+      "elapsed_s": 197.22118020057678
+    }
+  ],
+  "elapsed_attempt_s": 203.3120334148407,
+  "logs": {
+    "vlog-version.log": {
+      "sha256": "fe880d850b719fedfbcbffb6a6dd24bd637ba872bd6ddf51b0fe11e6014414a3",
+      "errors": [],
+      "warnings": [],
+      "summaries": []
+    },
+    "vlib-import.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "errors": [],
+      "warnings": [],
+      "summaries": []
+    },
+    "compile-import-00.log": {
+      "sha256": "3ae9544b2d669847868813a040e46d681c910492536319bf92a777f6bd2eaeef",
+      "errors": [],
+      "warnings": [],
+      "summaries": [
+        "Errors: 0, Warnings: 0"
+      ]
+    },
+    "compile-import-01.log": {
+      "sha256": "199ccb9f1d71b778e1cb5dfbdf83e565ac3d689a5e1bb90aa311a916c33b622e",
+      "errors": [
+        "** Error (suppressible): /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13488) Incorrect size constant for integer literal. ",
+        "** Error (suppressible): /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13488) Incorrect size constant for integer literal. ",
+        "** Error (suppressible): /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13488) Incorrect size constant for integer literal. ",
+        "** Error (suppressible): /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13488) Incorrect size constant for integer literal. "
+      ],
+      "warnings": [
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13528) Extra Parentheses after time system function.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13528) Extra Parentheses after time system function.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13528) Extra Parentheses after time system function.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13528) Extra Parentheses after time system function.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13528) Extra Parentheses after time system function.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13528) Extra Parentheses after time system function.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13314) Defaulting port '<protected>' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13314) Defaulting port '<protected>' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13314) Defaulting port '<protected>' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13314) Defaulting port '<protected>' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13314) Defaulting port '<protected>' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13314) Defaulting port '<protected>' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13314) Defaulting port '<protected>' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13314) Defaulting port '<protected>' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13314) Defaulting port '<protected>' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13314) Defaulting port '<protected>' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13528) Extra Parentheses after time system function.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13528) Extra Parentheses after time system function.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13528) Extra Parentheses after time system function.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13528) Extra Parentheses after time system function.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13528) Extra Parentheses after time system function.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13528) Extra Parentheses after time system function.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13528) Extra Parentheses after time system function.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13528) Extra Parentheses after time system function.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13528) Extra Parentheses after time system function.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13528) Extra Parentheses after time system function.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13314) Defaulting port '<protected>' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13314) Defaulting port '<protected>' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-13314) Defaulting port '<protected>' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>.",
+        "** Warning: /home/uwb_student00/ahls/new_BSP/qualification/ddr-library-import-01/imports/quartus-23.1/mentor/tennm_atoms_ncrypt.sv(40): (vlog-2263) Redefinition of macro: <protected>."
+      ],
+      "summaries": [
+        "Errors: 4, Warnings: 61"
+      ]
+    }
+  },
+  "readback_checks": {
+    "attempt_after_inventory_matches": true,
+    "reuse_original_matches": true,
+    "bound_files_match": true,
+    "source_trio_match": true
+  },
+  "stop_reason": "4 vlog-13488 incorrect-size integer literal errors inside protected source; no authorized semantics-preserving visible correction. No suppress/decrypt/patch. Third dependency and elaboration not reached."
+}

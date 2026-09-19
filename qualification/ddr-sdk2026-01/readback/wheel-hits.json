@@ -1,0 +1,285 @@
+[
+  {
+    "archive": "/usr/share/bittware-sdk/python/bw_core_utils-0.1.18-py3-none-any.whl",
+    "member": "bw_core_utils/tests/test_qsfp_utility.py",
+    "sha256": "9d82ea2dd7994e6499455ae9a824d2c0baf1903ff345637f80c87e6ae375056b",
+    "matches": [
+      {
+        "line": 8,
+        "text": "from bw_peripherals.i2c_devices.generic_split_page import GenericSplitPage"
+      },
+      {
+        "line": 90,
+        "text": "            \"QSFPDD0\": GenericSplitPage(None, 0, alias=\"QSFP0\"),"
+      },
+      {
+        "line": 91,
+        "text": "            \"QSFPDD1\": GenericSplitPage(None, 0, alias=\"QSFP1\"),"
+      },
+      {
+        "line": 92,
+        "text": "            \"QSFPDD2\": GenericSplitPage(None, 0, alias=\"QSFP2\"),"
+      },
+      {
+        "line": 103,
+        "text": "            \"QSFPDD0\": GenericSplitPage(None, 0, alias=\"QSFP0\"),"
+      },
+      {
+        "line": 104,
+        "text": "            \"QSFPDD1\": GenericSplitPage(None, 0, alias=\"QSFP1\"),"
+      },
+      {
+        "line": 105,
+        "text": "            \"QSFPDD2\": GenericSplitPage(None, 0, alias=\"QSFP2\"),"
+      },
+      {
+        "line": 155,
+        "text": "            \"QSFPDD0\": GenericSplitPage(None, 0, name=\"QSFP-DD0\", alias=\"QSFP0\"),"
+      }
+    ]
+  },
+  {
+    "archive": "/usr/share/bittware-sdk/python/bw_peripherals-0.1.7-py3-none-any.whl",
+    "member": "bw_peripherals/i2c_devices/__init__.py",
+    "sha256": "3359ec21e56606937822089a1fcfd0f18e7ce5f6d79eb869e23e9332b3c882d3",
+    "matches": [
+      {
+        "line": 38,
+        "text": "from .generic_split_page import GenericSplitPage"
+      },
+      {
+        "line": 47,
+        "text": "    \"GenericSplitPage\","
+      },
+      {
+        "line": 64,
+        "text": "    \"QSFP-DD\": GenericSplitPage,"
+      },
+      {
+        "line": 65,
+        "text": "    \"QSFP28-DD\": GenericSplitPage,"
+      },
+      {
+        "line": 66,
+        "text": "    \"QSFP28\": GenericSplitPage,"
+      },
+      {
+        "line": 67,
+        "text": "    \"QSFP56\": GenericSplitPage,"
+      }
+    ]
+  },
+  {
+    "archive": "/usr/share/bittware-sdk/python/bw_peripherals-0.1.7-py3-none-any.whl",
+    "member": "bw_peripherals/i2c_devices/generic_split_page.py",
+    "sha256": "542e4f5305a5a135683015d135c1f4effcd2b8353842a09dfefd24b455d3e62f",
+    "matches": [
+      {
+        "line": 42,
+        "text": "class GenericSplitPage(FpgaI2cDevice):"
+      }
+    ]
+  },
+  {
+    "archive": "/usr/share/bittware-sdk/python/bw_peripherals-0.1.7-py3-none-any.whl",
+    "member": "bw_peripherals/tests/test_i2c_devices.py",
+    "sha256": "c237e016b4c216404d64bef382774365c4cf853e00da6376c52142ddb1abcf6f",
+    "matches": [
+      {
+        "line": 7,
+        "text": "from bw_peripherals.i2c_devices import GenericMultiPage, GenericSplitPage, FpgaI2cDevice"
+      },
+      {
+        "line": 19,
+        "text": "            device = GenericSplitPage(i2c_comp=mocked_i2c, device_addr=0x0)"
+      },
+      {
+        "line": 22,
+        "text": "    @mock.patch.object(GenericSplitPage, \"_i2c_write\")"
+      },
+      {
+        "line": 29,
+        "text": "            device = GenericSplitPage(i2c_comp=mocked_i2c, device_addr=0x0)"
+      },
+      {
+        "line": 33,
+        "text": "    @mock.patch.object(GenericSplitPage, \"_i2c_write\")"
+      },
+      {
+        "line": 53,
+        "text": "            device = GenericSplitPage(i2c_shared, 0x0)"
+      },
+      {
+        "line": 88,
+        "text": "    @mock.patch.object(GenericSplitPage, \"_i2c_write\")"
+      }
+    ]
+  },
+  {
+    "archive": "/usr/share/bittware-sdk/python/bw_cardtest-1.5.21-py3-none-any.whl",
+    "member": "bw_cardtest/system.py",
+    "sha256": "a22fe517b24e3e60694a3369b763fb0d50f82a8e843fbea39f58e5ecfe62167f",
+    "matches": [
+      {
+        "line": 320,
+        "text": "QUARTUS_MINIMUM_VERSION = \"17.1.0\""
+      },
+      {
+        "line": 331,
+        "text": "      Quartus"
+      },
+      {
+        "line": 337,
+        "text": "    Quartus: Optional[str] = None  # optional, minimum should be '17.1.0'"
+      },
+      {
+        "line": 360,
+        "text": "    def find_quartus_version(self):"
+      },
+      {
+        "line": 362,
+        "text": "        Attempts to find the installed Quartus version. Stores it in SDK field if found."
+      },
+      {
+        "line": 364,
+        "text": "        self.Quartus = None"
+      },
+      {
+        "line": 366,
+        "text": "            proc = subprocess.run([\"quartus_pgm\", \"-v\"], **SUB_PROC_KWARGS)  # nosec"
+      },
+      {
+        "line": 369,
+        "text": "            # out = \"Quartus Prime Programmer\\n\"                                    \\"
+      },
+      {
+        "line": 374,
+        "text": "                self.Quartus = match[1]"
+      },
+      {
+        "line": 377,
+        "text": "            # Quartus not installed or not working"
+      },
+      {
+        "line": 382,
+        "text": "        Attempts to find the installed Quartus version. Stores it in SDK field if found."
+      },
+      {
+        "line": 419,
+        "text": "        path, have, want = self._require_field(\"Quartus\")"
+      },
+      {
+        "line": 422,
+        "text": "            self.wants.Quartus = QUARTUS_MINIMUM_VERSION"
+      },
+      {
+        "line": 425,
+        "text": "            self.find_quartus_version()"
+      },
+      {
+        "line": 426,
+        "text": "            if not self.Quartus:"
+      },
+      {
+        "line": 428,
+        "text": "                    f\"\\n    {path}:Quartus require '{want}' not satisfied - not installed or not on path\""
+      },
+      {
+        "line": 430,
+        "text": "            self.require_version(\"Quartus\")"
+      }
+    ]
+  },
+  {
+    "archive": "/usr/share/bittware-sdk/python/bw_cardtest-1.5.21-py3-none-any.whl",
+    "member": "bw_cardtest/test_plans/frozen.yaml",
+    "sha256": "836e6447008c1e1facb7a1c78410ddaa2d518248d30664e92396b4a82bc93bc8",
+    "matches": [
+      {
+        "line": 21,
+        "text": "    Quartus: ''"
+      }
+    ]
+  },
+  {
+    "archive": "/usr/share/bittware-sdk/python/bw_cardtest-1.5.21-py3-none-any.whl",
+    "member": "bw_cardtest/test_plans/system/full-example-doc.yaml",
+    "sha256": "755ed32cb9bb2d3ceea12129921099099b1fe16bdb2c08ac6a443864078b6b5e",
+    "matches": [
+      {
+        "line": 63,
+        "text": "    Quartus    : 17.1.0    # default revision compare is >="
+      }
+    ]
+  },
+  {
+    "archive": "/usr/share/bittware-sdk/python/bw_cardtest-1.5.21-py3-none-any.whl",
+    "member": "bw_cardtest/test_plans/system/stinger-bite5.yaml",
+    "sha256": "83420948b2cd25481135372af66377f208fe771f2d8613662faa4a38ce3441b2",
+    "matches": [
+      {
+        "line": 16,
+        "text": "    Quartus    : 17.1.0"
+      }
+    ]
+  },
+  {
+    "archive": "/usr/share/bittware-sdk/python/bw_cardtest-1.5.21-py3-none-any.whl",
+    "member": "bw_cardtest/test_plans/system/stinger-new-sdk.yaml",
+    "sha256": "0f019592cf01f3cffc5e61d39f025668250892fb22cb29cbc30303822da28446",
+    "matches": [
+      {
+        "line": 9,
+        "text": "    Quartus    : 20.2"
+      }
+    ]
+  },
+  {
+    "archive": "/usr/share/bittware-sdk/python/bw_cardtest-1.5.21-py3-none-any.whl",
+    "member": "bw_cardtest/unit_tests/full-example-doc.yaml",
+    "sha256": "dd15dc6f150965f8451634b2cd097e99f0ee3eb97692eae9fb881e0ff0096118",
+    "matches": [
+      {
+        "line": 63,
+        "text": "    Quartus    : 17.1.0    # default revision compare is >="
+      }
+    ]
+  },
+  {
+    "archive": "/usr/share/bittware-sdk/python/bw_cardtest-1.5.21-py3-none-any.whl",
+    "member": "bw_cardtest/unit_tests/test_system.py",
+    "sha256": "36dd8a8ce0481d14e7b9d63fd8b18714afd5f172ce6f4bacb1567e33330b30aa",
+    "matches": [
+      {
+        "line": 90,
+        "text": "                     'quartus_pgm -v':"
+      },
+      {
+        "line": 91,
+        "text": "                     \"Quartus Prime Programmer\\n\""
+      }
+    ]
+  },
+  {
+    "archive": "/usr/share/bittware-sdk/python/bw_core-0.1.30-py3-none-any.whl",
+    "member": "bw_core/enums.py",
+    "sha256": "04a3d097f57f3c8d62140e48005ff4574333a413e07288b0962aca31a9f816af",
+    "matches": [
+      {
+        "line": 82,
+        "text": "        JTAG_AVMM: JTAG AVMM (Intel, JTAG (Quartus) to Avalon Memory Mapped)"
+      }
+    ]
+  },
+  {
+    "archive": "/usr/share/bittware-sdk/python/bw_bmc_utils-0.2.12-py3-none-any.whl",
+    "member": "docs/bw_bmc_fpga_load.md",
+    "sha256": "e7014b0140e07aa5d38558bd5889b3e17ea8a1d8408bbecf31a82c111a939ae2",
+    "matches": [
+      {
+        "line": 15,
+        "text": "The `program` subcommand of `bw_bmc_fpga_load` is designed to efficiently program files to FPGA flash. To further enhance the integrity and reliability of this tool, we have introduced a valuable feature in SDK-2024.4.1. This enhancement automatically verifies the hash of the programmed file against the hash in the flash device post-programming, offering an additional layer of assurance for users. This feature is available in BMC3 version 1.1.0 and later, providing users with the latest advancements in programming accuracy."
+      }
+    ]
+  }
+]

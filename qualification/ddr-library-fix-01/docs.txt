@@ -1,0 +1,209 @@
+vopt-help-licensed.log Questa Altera FPGA Edition-64 vopt 2025.3 Compiler 2025.09 Sep 15 2025       
+    The vopt command performs global optimizations on designs after they have   
+    been compiled with vcom or vlog. For detailed usage information on          
+    optimization, refer to the chapter titled "Optimizing Designs with vopt" in 
+    the User's Manual.                  
+                    
+    Use the vopt command before simulation to produce an optimized version of   
+    your design in the working directory. You provide a name for this optimized 
+    version using the -o argument. You can then run the vsim command directly   
+    on that new design unit name.       
+                    
+    The default operation of vopt -o <name> is incremental compilation that is, 
+    Questa SIM reuses elements of the design that have not changed. This        
+    improves performance when using vopt on a design that has been minimally    
+    modified.       
+                    
+    In the course of optimizing a design, vopt will remove objects that are     
+    deemed unnecessary for simulation. For example, line numbers are removed,   
+    processes are merged, nets and registers may be removed, and so on. If you  
+    need visibility into your design for debugging purposes, use the vopt       
+    accessibility arguments (listed in Using vopt for Access Control for        
+    Visibility During Optimization) to conditionally enable visibility for      
+    parts of your design.               
+                    
+    Try the following to get help on specific options or categories:            
+
+    vopt -help all            : List all categories and options                 
+    vopt -help category       : List all categories                             
+    vopt -help <option>       : Help on an option                               
+    vopt -help <command-line> : Help on all options in a command-line           
+    vopt -help <category>     : List all options in a category                  
+
+    Category:       The list of categories in vopt tool.                        
+
+    General         List most common general options                            
+    Analog          List options supporting analog mixed-signal (AMS)           
+    Coverage        List options for Coverage                                   
+    Cpp             List options supporting SystemC module                      
+    Debug           List options for debug, and assertion                       
+    GLS             List options for Gate Level Simulation                      
+    HDS             List options for HDS                                        
+    Language        List all options supported by hardware language Verilog/VHDL
+    Library         List options for design, work library                       
+    Messages        List all warn, error, note, fatal messages options          
+    Optimize        List options for optimization                               
+    PA              List most common options supporting for Power Aware         
+    Pdu             List options for Preoptimized Design Unit.                  
+    Report          List options for reporting log file, statistics, capstats   
+    RNM             List options for the RNM flow                               
+
+vsim-help-licensed.log # Questa Altera FPGA Edition-64 vsim 2025.3 Simulator 2025.09 Sep 15 2025    
+#     The vsim tool provides HDL simulation based on the compiled and optimized 
+#     design and it provides various post-simulation analysis capabilities. In  
+#     simulation mode it expects to be provided with the optimization output for
+#     the root of the design, or it will automatically produce such an          
+#     optimization from the root of the design.                                 
+#                   
+#     Try the following to get help on specific options or categories:          
+#                   
+#     vsim -help all            : List all categories and options               
+#     vsim -help category       : List all categories                           
+#     vsim -help <option>       : Help on an option                             
+#     vsim -help <command-line> : Help on all options in a command-line         
+#     vsim -help <category>     : List all options in a category                
+#                   
+#     Category:       The list of categories in vsim tool.                      
+#                   
+#     General         List most common general options                          
+#     Coverage        List options for Coverage                                 
+#     Cpp             List options supporting SystemC module                    
+#     Debug           List options for debug, and assertion                     
+#     GLS             List options for Gate Level Simulation                    
+#     Language        List all options supported by hardware language Verilog/VHDL                  
+#     Library         List options for design, work library                     
+#     License         List options helping for license issues                   
+#     Messages        List all warn, error, note, fatal messages options        
+#     MultiCore       List options supporting for Multicore (MC2)               
+#     PA              List most common options supporting for Power Aware       
+#     Pdu             List options for Preoptimized Design Unit.                
+#     Report          List options for reporting log file, statistics, capstats 
+#     Solver          List options supporting for Solver                        
+#     Visualizer      List options supporting for visualizer                    
+#                   
+
+DOC /opt/altera/26.1.1/questa_fe/readme.txt                                     
+
+DOC /opt/altera/26.1.1/questa_fe/RELEASE_NOTES.txt                              
+   Redhat 7. And starting 2026.1, invoking these executables in RH7 will        
+DOC_FILES [('cmd_help', 89), ('highlights', 70), ('html', 10), ('supplemental', 10), ('tcl_help_html', 4096), ('technotes', 4096), ('rlsnotes', 112), ('legal', 32), ('pdfdocs', 4096), ('welcome', 25), ('doc_xref', 86)]                      
+OTHER /opt/intelFPGA_pro ['23.1']       
+OTHER /opt/intel ['oneapi', 'packagemanager']                                   
+5941     output           calbus_read_12,                                       
+5942     output           calbus_write_12,                                      
+5943     output  [19:0]   calbus_address_12,                                    
+5944     output  [31:0]   calbus_wdata_12,                                      
+5945     input   [31:0]   calbus_rdata_12,                                      
+5946     input   [4095:0] calbus_param_tbl_12,                                  
+5947                
+5948     output           calbus_read_13,                                       
+5949     output           calbus_write_13,                                      
+5950     output  [19:0]   calbus_address_13,                                    
+5951     output  [31:0]   calbus_wdata_13,                                      
+5952     input   [31:0]   calbus_rdata_13,                                      
+5953     input   [4095:0] calbus_param_tbl_13,                                  
+5954                
+5955     output           calbus_read_14,                                       
+5956     output           calbus_write_14,                                      
+5957     output  [19:0]   calbus_address_14,                                    
+5958     output  [31:0]   calbus_wdata_14,                                      
+5959     input   [31:0]   calbus_rdata_14,                                      
+5960     input   [4095:0] calbus_param_tbl_14,                                  
+5961                
+5962     output           calbus_read_15,                                       
+5963     output           calbus_write_15,                                      
+5964     output  [19:0]   calbus_address_15,                                    
+5965     output  [31:0]   calbus_wdata_15,                                      
+5966     input   [31:0]   calbus_rdata_15,                                      
+5967     input   [4095:0] calbus_param_tbl_15                                   
+5968 );             
+5969    parameter a_iossm_is_calib_master = "is_master";                        
+5970    parameter nios_calibration_code_hex_file = "";                          
+5971    parameter parameter_table_hex_file = "";                                
+5972    parameter mem_contents_0 = "";  
+5973    parameter mem_contents_1 = "";  
+5974    parameter mem_contents_2 = "";  
+5975    parameter mem_contents_3 = "";  
+5976    parameter mem_contents_valid = "false";                                 
+5977    parameter mem_contents_updated  = "false";                              
+5978    parameter iossm_sim_clk_period_ps = 800;                                
+5979    parameter abstract_phy = "false";                                       
+5980    parameter nios_fw_file = "";    
+5981    parameter gpt_ver = 0;          
+5982    parameter nios_ver = 0;         
+5983    parameter col_id = 0;           
+5984    parameter num_iopacks = 0;      
+5985    parameter nios_clk_freq = 0;    
+5986    parameter pt_size = 0;          
+5987    parameter skip_steps = 0;       
+5988    parameter cal_config = 0;       
+5989    parameter slave_clk_divider = 0;                                        
+5990    parameter iossm_use_model = 1;  
+5991                
+5992    parameter calbus0_interface_id = 0;                                     
+5993    parameter calbus1_interface_id = 1;                                     
+5994    parameter calbus2_interface_id = 2;                                     
+5995    parameter calbus3_interface_id = 3;                                     
+5996    parameter calbus4_interface_id = 4;                                     
+5997    parameter calbus5_interface_id = 5;                                     
+5998    parameter calbus6_interface_id = 6;                                     
+5999    parameter calbus7_interface_id = 7;                                     
+6000    parameter calbus8_interface_id = 8;                                     
+6001    parameter calbus9_interface_id = 9;                                     
+6002    parameter calbus10_interface_id = 10;                                   
+6003    parameter calbus11_interface_id = 11;                                   
+6004    parameter calbus12_interface_id = 12;                                   
+6005    parameter calbus13_interface_id = 13;                                   
+6006    parameter calbus14_interface_id = 14;                                   
+6007    parameter calbus15_interface_id = 15;                                   
+6008                
+6009 generate       
+6010 if (!iossm_use_model)              
+6011 tennm_iossm_encrypted #(           
+6012     .a_iossm_is_calib_master       (a_iossm_is_calib_master),              
+tennm Library vendor : Model Technology 
+Maximum unnamed designs : 3             
+MODULE tennm_iossm  
+    specified property for Cell OEM Marking: Intel                              
+    CMD source file: $MODEL_TECH/../intel/verilog/src/tennm_atoms.sv            
+    Depends on: X sv_std std @5XbY]_OacJl=`ToSm<M^0                             
+    Compile time: Fri Aug  7 12:31:50 2026                                      
+    Debug Symbol file exists            
+    DU Coverage Signature: F<L`3fjYeD2OO1CVz5NOM1                               
+    Verilog version: idW[^cO`43Kn_]hQ22Wca1                                     
+    Source directory: .                 
+    Source file: $MODEL_TECH/../intel/verilog/src/tennm_atoms.sv                
+    Start location: $MODEL_TECH/../intel/verilog/src/tennm_atoms.sv:5821:560    
+    Version string: Dg1SIo80bB@j0V0VzS_@n1                                      
+    Opcode format: 2025.3; VLOG SE-64 Object version 82                         
+    Optimized Verilog design root: 1    
+    VHDL language standard: 1           
+    Compiled in vopt flow               
+    Compile options: -suppress 13488 -sv -work /tmp/psgswbuild/nightly/26.1.1/130/l64/work/questa_fe/libs/intel/verilog/tennm -path {$MODEL_TECH/../intel/verilog/src/tennm_atoms.sv} -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact                   
+    Full compile options: -suppress 13488 -sv +define+EMIF_DISABLE_CAL_OPTIMIZATIONS -work /tmp/psgswbuild/nightly/26.1.1/130/l64/work/questa_fe/libs/intel/verilog/tennm -path {$MODEL_TECH/../intel/verilog/src/tennm_atoms.sv} -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact                                   
+    Compile defaults: CvgOpt=0          
+
+tennm_sm Library vendor : Model Technology                                      
+Maximum unnamed designs : 3             
+MODULE tennm_iossm  
+    specified property for Cell OEM Marking: Intel                              
+    CMD source file: $MODEL_TECH/../intel/verilog/src/tennm_atoms.sv            
+    Depends on: X sv_std std @5XbY]_OacJl=`ToSm<M^0                             
+    Compile time: Fri Aug  7 12:31:50 2026                                      
+    Debug Symbol file exists            
+    DU Coverage Signature: F<L`3fjYeD2OO1CVz5NOM1                               
+    Verilog version: n0VbKP^laL34K4YGU;76o3                                     
+    Source directory: .                 
+    Source file: $MODEL_TECH/../intel/verilog/src/tennm_atoms.sv                
+    Start location: $MODEL_TECH/../intel/verilog/src/tennm_atoms.sv:5821:560    
+    Version string: Dg1SIo80bB@j0V0VzS_@n1                                      
+    Opcode format: 2025.3; VLOG SE-64 Object version 82                         
+    Optimized Verilog design root: 1    
+    VHDL language standard: 1           
+    Compiled in vopt flow               
+    Compile options: -suppress 13488 -sv -work /tmp/psgswbuild/nightly/26.1.1/130/l64/work/questa_fe/libs/intel/verilog/tennm_sm -path {$MODEL_TECH/../intel/verilog/src/tennm_atoms.sv} -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact                
+    Full compile options: -suppress 13488 -sv +define+EMIF_DISABLE_CAL_OPTIMIZATIONS -work /tmp/psgswbuild/nightly/26.1.1/130/l64/work/questa_fe/libs/intel/verilog/tennm_sm -path {$MODEL_TECH/../intel/verilog/src/tennm_atoms.sv} -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact                                
+    Compile defaults: CvgOpt=0          
+
+DONE                
+[uwb_student00@Agilex7Workstation ~]$   
