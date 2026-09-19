@@ -1,0 +1,299 @@
+{
+  "schema_version": 1,
+  "ready": false,
+  "ready_for_build": false,
+  "execution_authorized": false,
+  "decision": "NO_SOURCE_PATCH_YET; preserve core470 and seven-port interface; prioritize active CSR constraint binding",
+  "activity": {
+    "local_static_read_only_source_review": true,
+    "python_arithmetic": true,
+    "source_changes": false,
+    "vendor_or_tcl_or_hdl_execution": false,
+    "tests": false,
+    "remote_access": false,
+    "commits": false
+  },
+  "prior_evidence": [
+    "generated-hdl-review.md:64-99",
+    "generated-hdl-disposition.json"
+  ],
+  "findings": [
+    {
+      "id": "noc_consumers",
+      "status": "UNUSED_IN_SELECTED_MAINTAINED_RTL",
+      "outputs": [
+        3,
+        6
+      ],
+      "evidence": [
+        "board_qsf:96-108",
+        "board_sources:58",
+        "board_top:152,516,519,1230-1290",
+        "memory_selection:5-6,23-40,67-84"
+      ],
+      "condition": "Only sinks require INCLUDE_LOCAL_MEM AND INCLUDE_HBM; DDR4 implies LOCAL_MEM but not HBM. No IA840F HBM definition found. Actual compiled macros/header remain unbound.",
+      "not_claimed": [
+        "fitter removed outputs",
+        "output clocks can safely be deleted",
+        "actual Work03 elaboration accepted"
+      ]
+    },
+    {
+      "id": "csr_active",
+      "status": "ACTIVE_SOURCE_CONSUMERS",
+      "outputs": [
+        1
+      ],
+      "evidence": [
+        "board_top:300,529,590,672,703,742,941,1274"
+      ],
+      "nominal_hz_exact": "705000000/7",
+      "period_ns_exact": "1400/141",
+      "consumer_wide_tolerance_approved": false
+    },
+    {
+      "id": "donor_history",
+      "status": "PREEXISTING_CSR_ROUNDING_NOT_ACCEPTANCE",
+      "evidence": [
+        "vendor_original_pll:230-233,401-404,864-867,1284-1307"
+      ],
+      "donor_has_five_outputs": true,
+      "drop_in_restore_supported": false
+    },
+    {
+      "id": "schema",
+      "status": "INTEGER_REQUEST_NOT_FRACTIONAL_TARGET",
+      "evidence": [
+        "captured_pcie_parameters:1721",
+        "captured_pcie_fileset:223,249,261-264"
+      ],
+      "parameter": "core16_axi_lite_clk_freq_user_hwtcl",
+      "type": "INTEGER",
+      "allowed_range_literal": "100:250",
+      "sdc_dictionary_key": "core16_axi_lite_source_freq_hwtcl",
+      "fractional_write_proposed": false
+    }
+  ],
+  "arithmetic": {
+    "scope": "existing integer-divider architecture only; no device VCO limit assumed",
+    "vco_mhz": 1410,
+    "required_C_for_exact_requests": {
+      "100": "141/10",
+      "630": "47/21",
+      "50": "141/5",
+      "350": "141/35"
+    },
+    "minimum_common_vco_mhz_with_470": {
+      "100": 4700,
+      "630": 29610,
+      "50": 2350,
+      "350": 16450
+    },
+    "all_five_exact_integer_rates_lcm_mhz": 296100,
+    "values_are_proposed_targets": false
+  },
+  "next_evidence": [
+    {
+      "priority": 1,
+      "kind": "INSTALLED_TEMPLATE_TEXT",
+      "literal_path_expression": "${QUARTUS_ROOTDIR}/../ip/altera/subsystems/intel_pcie_ss_axi/rtl/pcie_ss.sdc.terp",
+      "literal_reference": "N/reference/quartus-26.1.1-pcie/hwtcl/pcie_ss_fileset.tcl:261",
+      "installation_anchor": "N/reference/quartus-26.1.1-pcie/manifest.json:3,27",
+      "anchor_source": "/opt/altera/26.1.1/ip/altera/subsystems/intel_pcie_ss_axi/hwtcl/pcie_ss_fileset.tcl",
+      "absolute_resolved_path_observed": false,
+      "max_bytes": 262144,
+      "purpose": "Determine exact usage of integer source-frequency request, conditions and clock objects; not a guessed rendered SDC path."
+    },
+    {
+      "priority": 2,
+      "kind": "PROPOSED_CAPPED_METADATA_DISCOVERY_ONLY",
+      "execution_authorized": false,
+      "roots": [
+        {
+          "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss",
+          "basis": "Observed live01 simulation manifest and live02 TOP file paths; generated IP ancestor, not a guessed file"
+        },
+        {
+          "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ofs-common/src/fpga_family/agilex/sys_pll/sys_pll",
+          "basis": "Observed live01 simulation manifest and live03 PLLTOP paths; generated IP ancestor, not a guessed file"
+        }
+      ],
+      "proposed_limits": {
+        "max_depth": 5,
+        "max_entries_total": 512,
+        "max_output_bytes": 65536,
+        "follow_symlinks": false,
+        "bodies": false
+      },
+      "select_suffixes": [
+        ".qip",
+        ".qgsynthc",
+        ".sdc"
+      ],
+      "on_limit": "stop and report incomplete, do not accept a truncated list",
+      "purpose": "Establish literal Work03 synthesis manifest/SDC names. Capture bodies only in a later finite path batch after discovery approval."
+    },
+    {
+      "priority": 3,
+      "kind": "MANIFEST_REFERENCED_FINITE_BODY_CAPTURE",
+      "capture_roots": [],
+      "paths_status": "NOT_YET_ESTABLISHED",
+      "needed": [
+        "Actual Work03 PLL and PCIe synthesis manifests plus their explicitly registered HDL and SDC files",
+        "Actual board macro assignments and generated ofs_ip_cfg_db header binding for source/consumer selection"
+      ],
+      "exclude": [
+        "guessed synth counterpart to .vo",
+        ".qip extension substitution",
+        "legacy synthesis suffix transplanted to Work03"
+      ],
+      "acceptance": [
+        "Synthesis producer counters and mapping agree with reviewed simulation producer",
+        "Rendered incoming CSR clock and effective p0_axi_lite binding agree, or exact conflicting constraint is identified",
+        "HBM stays disabled in actual compiled macro/header set"
+      ]
+    },
+    {
+      "priority": 4,
+      "kind": "CONTRACT_DECISION",
+      "needed": [
+        "Consumer acceptance/timing evidence for active nominal CSR100.7142857... and clk50m50.3571429...",
+        "If an SDC conflict is proven, supported representation of actual source frequency without forcing a fractional value into the INTEGER schema"
+      ],
+      "not_needed_as_first_step": "Retune or hardware qualify unused NoC clock for the maintained DDR4-only consumer graph"
+    }
+  ],
+  "literal_legacy_only_manifest": {
+    "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/old_bsp/ia-840/IOFS_BUILD_ROOT/ofs-ia840f/work-ofs-23.1-2-build/syn/ip_lib/ofs-common/src/fpga_family/agilex/sys_pll/sys_pll/sys_pll.qip",
+    "qip_lines": [
+      14,
+      38,
+      41,
+      44
+    ],
+    "sdc_relative_literal": "altera_iopll_1931/synth/sys_pll_altera_iopll_1931_4x4eiei.sdc",
+    "tool_version": "23.1",
+    "qualifies_work03": false
+  },
+  "local_search_result": "live01-03 bodies contain no .qip/.sdc literals; additional relevant qualification receipt hits identify only maintained PLL SDC, not rendered Work03 timing files",
+  "preserve": [
+    "AGFB027R25A2E2V",
+    "PTileGen4x16",
+    "PF0VF0 AFU",
+    "PF1 BMC",
+    "PF1 BAR0 Disabled",
+    "PF1 BAR2 width28",
+    "PF1 BAR4 width14",
+    "64-byte/two-segment workaround",
+    "existing pins/channels",
+    "board/vendor geometry"
+  ],
+  "source_inventory": [
+    {
+      "alias": "board_qsf",
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/syn/board/ia840f/syn_top/ofs_top.qsf",
+      "bytes": 7498,
+      "sha256": "30149d42e1c4f17bd4f9222fb9b48a55c783ba6dd9169b3364eddc811dd568fb"
+    },
+    {
+      "alias": "board_sources",
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/syn/board/ia840f/syn_top/ofs_top_sources.tcl",
+      "bytes": 7226,
+      "sha256": "59b03764caf719c6716920bed2cd89da6dd04539d5f7ee15fda5cc5a1e8e4828"
+    },
+    {
+      "alias": "board_top",
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/src/board/ia840f/top.sv",
+      "bytes": 70463,
+      "sha256": "bb6ea012f3e2bbecafa6a238df7574bb145c02443b9612a99da8cd5c0e98d6fa"
+    },
+    {
+      "alias": "board_afu",
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/src/board/ia840f/afu_top.sv",
+      "bytes": 44159,
+      "sha256": "67c43a85a93c23c851a5f1136b05c1467bd541ab5bedb6da373af7d9d87d3bdc"
+    },
+    {
+      "alias": "memory_selection",
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/ipss/mem/mem_design_files.tcl",
+      "bytes": 3824,
+      "sha256": "bb091aaefafb777f629b1c4823adc7db6209fdc1b2ec7011f6522182a598bac1"
+    },
+    {
+      "alias": "board_ofss",
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/syn/board/ia840f/config/ia840f.ofss",
+      "bytes": 469,
+      "sha256": "525489cb80200b707309a9f4f0f5fdf83737b678f49d3a833a1e15a98d8055ed"
+    },
+    {
+      "alias": "470_preset",
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/tools/ofss_config/iopll/iopll_470MHz.ofss",
+      "bytes": 96,
+      "sha256": "b56acb5578f8509ad9f2135281c29354f28d6c8db2c88f4eb30ebc25f05fb16b"
+    },
+    {
+      "alias": "pll_helper",
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/ofs-common/tools/ofss_config/iopll_ip.py",
+      "bytes": 3961,
+      "sha256": "f8c97e31dabcbf4746e548c2e579d1987032fee44368a495643b99eba846aacf"
+    },
+    {
+      "alias": "pll_common_params",
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/ofs-common/tools/ofss_config/ip_params/iopll_component_parameters.py",
+      "bytes": 816,
+      "sha256": "ddff1a6b8819804829d7acae14590737477628b79f535d426138df0e002b1b6e"
+    },
+    {
+      "alias": "maintained_top_sdc",
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/syn/shared_config/top.sdc",
+      "bytes": 8874,
+      "sha256": "8255b34c200a46178174b9788bdc9231072ae829f57c34703cc63dd28ab66c3d"
+    },
+    {
+      "alias": "maintained_pll_sdc",
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/ofs-common/src/fpga_family/agilex/sys_pll/sys_pll.sdc",
+      "bytes": 1580,
+      "sha256": "685444d4fb4dbb654df7e0d4656a0c150230199c16b4eb2e0b606f2291ec7ea4"
+    },
+    {
+      "alias": "actual_frequency_package",
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/ofs-common/src/fpga_family/agilex/sys_pll/sys_pll_pkg.sv",
+      "bytes": 3449,
+      "sha256": "0f125935d8003f42e57c736ba2ed93984a3224dfe3741fb6466b9fdc3fc5b2fb"
+    },
+    {
+      "alias": "user_clock_actual_frequency",
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/ofs-common/src/fpga_family/agilex/user_clock/qph_user_clk.sv",
+      "bytes": 15054,
+      "sha256": "4111db940d056d7d1a6b52c06c2a7a511a9928e86aca622e46491a379347a992"
+    },
+    {
+      "alias": "vendor_original_pll",
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/old_bsp/ia-840/IOFS_BUILD_ROOT/ofs-ia840f/ofs-common/src/fpga_family/agilex/sys_pll/sys_pll.ip",
+      "bytes": 103803,
+      "sha256": "e3e795b22118f2d1bf04333db8acdd8e63b78b4f4bdf33799c0f66aa6ae100d6"
+    },
+    {
+      "alias": "legacy_synthesis_qip",
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/old_bsp/ia-840/IOFS_BUILD_ROOT/ofs-ia840f/work-ofs-23.1-2-build/syn/ip_lib/ofs-common/src/fpga_family/agilex/sys_pll/sys_pll/sys_pll.qip",
+      "bytes": 6252,
+      "sha256": "4ffc85fa3376207ccc5eced721966c852602f0ba5dd56818e7bd233bfe203794"
+    },
+    {
+      "alias": "captured_pcie_fileset",
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/reference/quartus-26.1.1-pcie/hwtcl/pcie_ss_fileset.tcl",
+      "bytes": 285310,
+      "sha256": "25616751a302b3eac05b059dcc2494cf97c5d26d8aa11972195fe9b2549c842b"
+    },
+    {
+      "alias": "captured_pcie_parameters",
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/reference/quartus-26.1.1-pcie/hwtcl/pcie_ss_parameters.tcl",
+      "bytes": 1799105,
+      "sha256": "752416154dc2eebeb37365b924579135d6513a47779326159e0d8921a772e3f0"
+    }
+  ],
+  "owned_outputs": [
+    "clock-consumer-contract-review.md",
+    "clock-consumer-next-evidence.json"
+  ]
+}

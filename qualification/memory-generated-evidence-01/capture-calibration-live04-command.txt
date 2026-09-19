@@ -1,0 +1,25 @@
+/usr/bin/python3 -I -B -S -c 'import os,json,stat,pathlib,socket,hashlib,base64,gzip
+assert socket.gethostname()=='"'"'Agilex7Workstation'"'"' and os.getuid()==1000 and os.environ.get('"'"'TMUX'"'"')=='"'"'/tmp/tmux-1000/default,7828,4'"'"'
+e={'"'"'files'"'"':[],'"'"'errors'"'"':[],'"'"'ready_for_build'"'"':False,'"'"'vendor_run'"'"':False};total=0
+for name in ['"'"'/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/ip_mem_ss/qcp/mem_ss_hwtcl_commands.tcl'"'"', '"'"'/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/util/common_tables.tcl'"'"', '"'"'/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/util/hwtcl_helpers.tcl'"'"', '"'"'/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/util/main.tcl'"'"', '"'"'/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/util/pkgIndex.tcl'"'"']:
+ try:
+  p=pathlib.Path(name)
+  for q in [p,*p.parents]:assert not q.is_symlink(),str(q)
+  fd=os.open(p,os.O_RDONLY|os.O_NOFOLLOW)
+  try:
+   a=os.fstat(fd)
+   if not stat.S_ISREG(a.st_mode):raise RuntimeError('"'"'not regular'"'"')
+   if a.st_size>2097152 or total+a.st_size>3145728:raise RuntimeError('"'"'capture byte limit: '"'"'+str(a.st_size))
+   with os.fdopen(fd,'"'"'rb'"'"',closefd=False) as f:raw=f.read(2097153)
+   b=os.fstat(fd);assert len(raw)==a.st_size and (a.st_size,a.st_mtime_ns)==(b.st_size,b.st_mtime_ns)
+  finally:os.close(fd)
+  total+=len(raw);e['"'"'files'"'"'].append({'"'"'path'"'"':name,'"'"'bytes'"'"':len(raw),'"'"'sha256'"'"':hashlib.sha256(raw).hexdigest(),'"'"'content'"'"':raw.decode('"'"'utf-8'"'"')})
+ except Exception as ex:e['"'"'errors'"'"'].append({'"'"'path'"'"':name,'"'"'error'"'"':repr(ex)});break
+raw=(json.dumps(e,indent=2)+chr(10)).encode()
+p=pathlib.Path('"'"'/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/calibration-installed-live04.json'"'"')
+for q in [p,*p.parents]:assert not q.is_symlink()
+fd=os.open(p,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,0o600)
+with os.fdopen(fd,'"'"'wb'"'"') as f:f.write(raw)
+assert p.read_bytes()==raw
+s=base64.b64encode(gzip.compress(raw)).decode();print('"'"'CAL4_BEGIN'"'"');print(chr(10).join(s[i:i+800] for i in range(0,len(s),800)));print('"'"'CAL4_END'"'"');print('"'"'CAL4_SHA'"'"',hashlib.sha256(raw).hexdigest())
+'

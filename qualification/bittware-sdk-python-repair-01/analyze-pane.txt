@@ -1,0 +1,731 @@
+BW_PIP_SOURCE
+"""install bittware python packages to pip"""
+
+import os
+import re
+import sys
+import glob
+import argparse
+from pathlib import Path
+import subprocess  # nosec
+from functools import lru_cache
+from typing import Dict, List, Optional, Sequence, Set, Tuple, Any, TypedDict
+import importlib.metadata
+
+try:
+    from packaging.version import parse as parse_version, Version, InvalidVersio
+n
+except (ImportError, ModuleNotFoundError):
+    _bwsdk_python_path = Path(os.path.expandvars("$BWSDK_ROOT")).joinpath("pytho
+n")
+    _package_paths = list(_bwsdk_python_path.glob("packaging*.whl"))
+
+    for directory in _bwsdk_python_path.iterdir():
+        if directory.is_dir():
+            _package_paths.extend(list(directory.glob("packaging*.whl")))
+
+    if BWSDK_PYTHON_PATH := os.environ.get("BWSDK_PYTHON_PATH"):
+        if not Path(BWSDK_PYTHON_PATH).exists():
+            print(f"Python executable not found at {BWSDK_PYTHON_PATH}")
+            sys.exit(1)
+
+        _pip_exec = [BWSDK_PYTHON_PATH, "-m", "pip"]
+    elif "--python-exec" in sys.argv:
+        print("PYTHON_EXEC not found in environment", file=sys.stderr)
+        _python_exec = sys.argv[sys.argv.index("--python-exec") + 1]
+        _pip_exec = [_python_exec, "-m", "pip"]
+    elif "--use_pipx" in sys.argv:
+        _pip_exec = ["pipx"]
+    else:
+        _pip_exec = [sys.executable, "-m", "pip"]
+
+    for _package_path in _package_paths:
+
+        if not _package_path.exists():
+            print("No packaging wheel found", file=sys.stderr)
+            sys.exit(1)
+
+        subprocess.call(  # nosec
+            [*_pip_exec, "install", _package_path.absolute()],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+
+        # install to this instance of python as well
+        subprocess.call(  # nosec
+            [sys.executable, "-m", "pip", "install", _package_path.absolute()],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+
+    from packaging.version import parse as parse_version, Version, InvalidVersio
+n
+
+
+class BWPipInstallException(Exception):
+    """occurs when there's an error with pip install"""
+
+
+class Constants:
+    """constants"""
+
+    # pylint: disable=too-few-public-methods
+
+    BWSDK_ROOT = os.environ.get("BWSDK_ROOT")
+    PYTHON_EXEC = os.environ.get("BWSDK_PYTHON_PATH", sys.executable)
+    PYTHON_VERSION = sys.version_info
+    PIP_MINIMUM_REQUIRED = parse_version("19.3")
+
+
+def get_python_instance(arguments: Optional[argparse.Namespace]) -> list[str]:
+    """
+    Retrieves the Python executable path based on the provided arguments.
+
+    This function checks the provided `arguments` for specific attributes to det
+ermine
+    the Python executable path. It first checks if the `use_pipx` attribute is p
+resent
+    and returns its value if it exists. If not, it then checks for the `python_e
+xec`
+    attribute and returns its value if it exists. If neither attribute is found,
+ it
+    returns a default Python executable path defined in `Constants.PYTHON_EXEC`.
+
+    Args:
+        arguments: The namespace object containing command-line arguments.
+
+    Returns:
+        The path to the Python executable.
+    """
+
+    _default_args = ["-m", "pip"]
+
+    if arguments:
+
+        if hasattr(arguments, "use_pipx"):
+            if python_exec := arguments.use_pipx:
+                return ["pipx"]
+
+        if hasattr(arguments, "python_exec"):
+            if python_exec := arguments.python_exec:
+                return [python_exec, *_default_args]
+
+    if not Path(Constants.PYTHON_EXEC).exists():
+        raise BWPipInstallException(
+            f"Python executable not found at {Constants.PYTHON_EXEC}"
+        )
+
+    return [Constants.PYTHON_EXEC, *_default_args]
+
+
+class Regex:
+    """constant regexes"""
+
+    # pylint: disable=too-few-public-methods
+    python_extension_regex = re.compile(r"cp(?P<python_version>\d+)-")
+    wheel_regex = re.compile(
+        r"(?P<name>.+)-(?P<version>\d+\.\d+(?:\.\d+)?).*?\.(whl|zip|tar|gz)$"
+    )
+    ext_regex = re.compile(r".(whl|zip|tar.gz|tar|gz)$")
+    pip_list = re.compile(
+        r"^\s*([a-zA-Z0-9_.-]+)\s+([\d.]+(?:[.+][\w.+]+)*(?:\.dev\d+\+\w+)?)(?:\
+s+(.+))?$"
+    )
+
+
+class PackageInfo(TypedDict):
+    """package info"""
+
+    name: str
+    version: Version
+    package_type: str
+    file_path: str
+
+
+@lru_cache(maxsize=5)
+def _get_python_version() -> str:
+    """get python version"""
+    return f"{sys.version_info.major}{sys.version_info.minor}"
+
+
+@lru_cache(maxsize=5)
+def _version_is_same(version: Tuple[int, int]) -> bool:
+    """check if version is the same"""
+    return (sys.version_info.major, sys.version_info.minor) == version
+
+
+def _check_package_extension(package_path: str) -> bool:
+    """check package extension version"""
+    matched = re.search(Regex.python_extension_regex, package_path)
+
+    # allow a package through even if version doesn't match
+    _white_listed = ("protobuf",)
+
+    # not a python extension
+    if not matched:
+        return True
+
+    python_version = matched.group("python_version")
+    package_python_version = (int(python_version[0]), int(python_version[1:]))
+
+    for package in _white_listed:
+        if package in package_path:
+            return True
+
+    return _version_is_same(package_python_version)
+
+
+@lru_cache(maxsize=1)
+def _validate_pip_version() -> Tuple[Optional[bool], Optional[str]]:
+    """validate python package version"""
+
+    try:
+        pip_version = importlib.metadata.version("pip")
+    except importlib.metadata.PackageNotFoundError:
+        return (None, None)
+
+    try:
+        return (
+            parse_version(pip_version) >= Constants.PIP_MINIMUM_REQUIRED
+        ), pip_version
+    except InvalidVersion:
+        return (None, pip_version)
+
+
+@lru_cache(maxsize=1)
+def supports_color() -> bool:
+    """check if terminal supports color on windows"""
+    plat = sys.platform
+    supported_platform = plat != "Pocket PC" and (
+        plat != "win32" or "ANSICON" in os.environ
+    )
+
+    is_a_tty = hasattr(sys.stdout, "isatty") and sys.stdout.isatty()
+
+    return supported_platform and is_a_tty
+
+
+def get_pip_list(
+    arguments: Optional[argparse.Namespace] = None,
+) -> List[Dict[str, Any]]:
+    """get pip list"""
+    packages = []
+
+    try:
+        proc = subprocess.run(  # nosec
+            [*get_python_instance(arguments), "list"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=True,
+        )
+        pip_list = proc.stdout.decode("utf-8")
+
+        for line in pip_list.splitlines():
+            if match := Regex.pip_list.match(line):
+                name, version, _ = match.groups()
+                try:
+                    package = {
+                        "name": name.replace("_", "-"),
+                        "version": parse_version(version),
+                    }
+                    packages.append(package)
+                except InvalidVersion:
+                    continue
+
+        return packages
+
+    except subprocess.CalledProcessError:
+        print("pip list failed", file=sys.stderr)
+        return []
+
+
+def get_third_party_packages() -> List[PackageInfo]:
+    """get third party packages"""
+
+    _packages: list[PackageInfo] = []
+
+    _bwsdk_root = os.path.expandvars("$BWSDK_ROOT")
+    _python_dir = Path(_bwsdk_root).joinpath("python").joinpath(_get_python_vers
+ion())
+
+    if not _python_dir.exists():
+        raise BWPipInstallException(f"Python Directory not found: {_python_dir}"
+)
+
+    for package in _python_dir.iterdir():
+        if package.is_file():
+            if Regex.wheel_regex.match(package.name):
+                if matched_package := Regex.wheel_regex.match(package.name):
+                    _packages.append(
+                        {
+                            "name": matched_package.group("name").replace("_", "
+-"),
+                            "version": parse_version(matched_package.group("vers
+ion")),
+                            "package_type": "SDK",
+                            "file_path": str(package.absolute()),
+                        }
+                    )
+
+    return _packages
+
+
+def get_available_packages() -> List[PackageInfo]:
+    """get available packages"""
+    packages: List[PackageInfo] = []
+
+    # these replacing is for windows
+    package_directory = os.path.expandvars("$BWSDK_ROOT/python/*").replace("\\",
+ "/")
+    csp_package_directory = os.path.expandvars("$BWSDK_ROOT/csps/**/python/*").r
+eplace(
+        "\\", "/"
+    )
+
+    sdk_packages = [
+        package
+        for package in glob.glob(package_directory)
+        if Regex.wheel_regex.match(package)
+    ]
+    csp_packages = [
+        package
+        for package in glob.glob(csp_package_directory)
+        if Regex.wheel_regex.match(package)
+    ]
+
+    for sdk_package in sdk_packages:
+        sdk_package = sdk_package.replace("\\", "/")
+        package = re.sub(
+            os.path.expandvars("$BWSDK_ROOT/python/").replace("\\", "/"),
+            "",
+            sdk_package,
+        )
+        if matched_package := Regex.wheel_regex.match(package):
+            packages.append(
+                {
+                    "name": matched_package.group("name").replace("_", "-"),
+                    "version": parse_version(matched_package.group("version")),
+                    "package_type": "SDK",
+                    "file_path": sdk_package,
+                }
+            )
+
+    # search csp packages
+    for csp_package in csp_packages:
+        csp_package = csp_package.replace("\\", "/")
+        package = re.sub(r"^.*python/", "", csp_package).replace("\\", "/")
+        package_type_match = re.search(r"csps/(.*?)/python", csp_package)
+
+        if package_type_match:
+            package_type = package_type_match.group(1)
+
+            if matched_package := Regex.wheel_regex.match(package):
+                packages.append(
+                    {
+                        "name": matched_package.group("version"),
+                        "version": parse_version(matched_package.group("version"
+)),
+                        "package_type": package_type.upper(),
+                        "file_path": csp_package,
+                    }
+                )
+
+    packages = [
+        package
+        for package in packages
+        if _check_package_extension(package["file_path"])
+    ]
+    packages = [*packages, *get_third_party_packages()]
+    return sorted(packages, key=lambda x: x["name"].lower())
+
+
+def handle_list(arguments: argparse.Namespace):
+    """handle printing the list"""
+
+    installed_packages = get_pip_list(arguments)
+    available_packages = get_available_packages()
+
+    if not available_packages:
+        print("No bittware packages could be found")
+        return
+
+    print(
+        f"{'Package Name': <21} {'Version': <19} {'Installer Package': <19} {'St
+atus': <19}"
+    )
+    print("-" * 19 * 4)
+
+    for available_package in available_packages:
+        installed_package = next(
+            (
+                installed_package
+                for installed_package in installed_packages
+                if isinstance(installed_package["name"], str)
+                and available_package["name"].casefold()
+                == installed_package["name"].casefold()
+            ),
+            None,
+        )
+
+        color = supports_color()
+        status = "\x1b[0;33;31mnot installed\x1b[0m" if color else "not installe
+d"
+        if installed_package:
+            installed_version = installed_package["version"]
+            available_version = available_package["version"]
+            if installed_version > available_version:
+                status = (
+                    f"\x1b[0;33;96mnewer ({installed_version})\x1b[0m"
+                    if color
+                    else f"newer ({installed_version})"
+                )
+            elif installed_version == available_version:
+                status = (
+                    f"\x1b[0;33;32minstalled ({installed_version})\x1b[0m"
+                    if color
+                    else f"installed ({installed_version})"
+                )
+            elif installed_version < available_version:
+                # check if the installed package is a development version
+                if installed_version.dev:
+                    status = (
+                        f"\x1b[0;35;35mpre-release ({installed_version})\x1b[0m"
+                        if color
+                        else f"pre-release ({installed_version})"
+                    )
+                else:
+                    status = (
+                        f"\x1b[0;33;33moutdated ({installed_version})\x1b[0m"
+                        if color
+                        else f"outdated ({installed_version})"
+                    )
+
+        print(
+            f"{available_package['name']: <21} {str(available_package['version']
+): <19} "
+            f"{available_package['package_type']: <19} {status: <35}"
+        )
+
+
+def organize_installation_order(packages: List[PackageInfo]) -> None:
+    """
+    Reorganizes the installation order of packages to prioritize certain depende
+ncies.
+
+    This function reorders the packages list in-place to ensure that priority pa
+ckages
+    are installed first, with 'pydantic-core' specifically positioned last among
+ the
+    priority packages. This helps avoid dependency conflicts during installation
+.
+
+    Args:
+        packages: A list of package information dictionaries. Each package dict
+must
+            contain a 'name' key with the package name. The list is modified in-
+place.
+
+    Returns:
+        None: The function modifies the packages list in-place.
+
+    Note:
+        Priority packages are moved to the beginning in this order:
+        1. annotated-types, mdurl, pycparser, setuptools, typing-extensions
+        2. pydantic-core (last among priority packages due to dependency require
+ments)
+    """
+    # Define packages that need to be installed first to avoid dependency confli
+cts
+    priority_package_names: Set[str] = {
+        "annotated-types",
+        "mdurl",
+        "pycparser",
+        "setuptools",
+        "wheel",
+        "typing-extensions",
+        "typing-inspection",
+    }
+
+    # Separate packages into priority, pydantic-core, and regular packages
+    priority_packages = []
+    pydantic_core_package = None
+    regular_packages = []
+
+    for package in packages:
+        package_name = package["name"].lower()
+        if package_name in priority_package_names:
+            priority_packages.append(package)
+        # pydantic_core needs special handling - it should be last among priorit
+y packages
+        elif package_name == "pydantic-core":
+            pydantic_core_package = package
+        else:
+            regular_packages.append(package)
+
+    # Rebuild the packages list with the desired order:
+    # 1. Priority packages first
+    # 2. pydantic-core after other priority packages (if present)
+    # 3. All other packages
+    packages.clear()
+    packages.extend(priority_packages)
+
+    if pydantic_core_package:
+        packages.append(pydantic_core_package)
+
+    packages.extend(regular_packages)
+
+
+def install_pip_package(
+    *package_names: Sequence[str], arguments: Optional[argparse.Namespace] = Non
+e
+):
+    """install pip package"""
+
+    available_packages = get_available_packages()
+    available_package_names = tuple(package["name"] for package in available_pac
+kages)
+
+    for package in package_names:
+        if package not in available_package_names:
+            raise BWPipInstallException(f"Could not find {package}")
+
+    available_packages = [
+        package for package in available_packages if package["name"] in package_
+names
+    ]
+
+    organize_installation_order(available_packages)
+
+    if not available_packages:
+        raise BWPipInstallException(
+            f"Could not find available packages {package_names}"
+        )
+
+    non_bw_packages = [
+        available_package["file_path"]
+        for available_package in available_packages
+        if not available_package["name"].startswith("bw-")
+    ]
+    bw_packages: List[str] = []
+
+    for available_package in available_packages:
+        if available_package["name"].startswith("bw-"):
+            if not any(
+                os.path.basename(available_package["file_path"]) in bw_package
+                for bw_package in bw_packages
+            ):
+                bw_packages.append(available_package["file_path"])
+
+    try:
+
+        # because we're using --no-build-isolation, third-party libraries
+        # need to be installed individually before move onto the next
+        for non_bw_package in non_bw_packages:
+
+            non_bw_pip_args = (
+                *get_python_instance(arguments),
+                "install",
+                "--upgrade",
+                "--no-build-isolation",
+                non_bw_package,
+            )
+
+            subprocess.run(non_bw_pip_args, check=True)  # nosec
+
+        if bw_packages:
+            bw_pip_args = (
+                *get_python_instance(arguments),
+                "install",
+                "--force-reinstall",
+                "--no-deps",
+                "--no-build-isolation",
+                *bw_packages,
+            )
+            subprocess.run(bw_pip_args, check=True)  # nosec
+
+    except subprocess.CalledProcessError as exc:  # nosec
+        raise BWPipInstallException from exc
+
+
+def install_bittware_package(
+    *package_types: List[str], arguments: Optional[argparse.Namespace] = None
+):
+    """install bittware package types"""
+
+    available_packages = get_available_packages()
+
+    if "ALL" in package_types:
+        install_pip_package(
+            *(package["name"] for package in available_packages), arguments=argu
+ments
+        )
+    elif "BITTWARE" in package_types:
+        install_pip_package(
+            *(
+                package["name"]
+                for package in available_packages
+                if package["name"].startswith("bw-")
+            ),
+            arguments=arguments,
+        )
+    else:
+        available_package_types = set(
+            available_package["package_type"]
+            for available_package in available_packages
+        )
+
+        for package_type in package_types:
+            if package_type not in available_package_types:
+                raise BWPipInstallException(
+                    f"Could not find package type {package_type}"
+                )
+
+        install_pip_package(
+            *(
+                package["name"]
+                for package in available_packages
+                if package["package_type"] in package_types
+            ),
+            arguments=arguments,
+        )
+
+
+def uninstall_bittware_packages(_args: argparse.Namespace):
+    """uninstall bittware package types"""
+
+    installed_bittware_packages = [
+        dist.metadata["Name"]
+        for dist in importlib.metadata.distributions()
+        if dist.metadata["Name"].startswith("bw-")
+    ]
+
+    if not installed_bittware_packages:
+        print("No bittware packages were installed", file=sys.stdout)
+        return
+
+    try:
+        subprocess.run(  # nosec
+            (
+                *get_python_instance(_args),
+                "uninstall",
+                *installed_bittware_packages,
+                "--y",
+            ),
+            check=True,
+        )
+
+    except subprocess.CalledProcessError as exc:
+        raise BWPipInstallException from exc
+
+
+def handle_package(arguments: argparse.Namespace):
+    """handle package installs"""
+
+    install_bittware_package(*arguments.packagelist, arguments=arguments)
+
+
+if __name__ == "__main__":
+    try:
+        if not Constants.BWSDK_ROOT:
+            raise BWPipInstallException("Could not determine BWSDK install path"
+)
+
+        init_parser = argparse.ArgumentParser(prog="bw_pip")
+        subparsers = init_parser.add_subparsers(
+            title="subcommands", metavar="<command>"
+        )
+        init_parser.add_argument(
+            "--python-exec", default="", help="Python executable to use"
+        )
+
+        # list parser
+        list_parser = subparsers.add_parser(
+            "list",
+            description="List available bittware python packages",
+            help="List available bittware python packages",
+        )
+        list_parser.set_defaults(func=handle_list)
+
+        # install parser
+        install_parser = subparsers.add_parser(
+            "install",
+            description="Install bittware python library",
+            help="Install bittware python library",
+        )
+        install_parser.add_argument(
+            "packagelist",
+            nargs="*",
+            default=["ALL"],
+            help="Bittware Packages to install.",
+        )
+        install_parser.add_argument(
+            "--bittware-only",
+            action="store_true",
+            default=False,
+            help="Install only bittware packages",
+        )
+        install_parser.add_argument(
+            "--use-pipx",
+            action="store_true",
+            default=False,
+            help="Use pipx to install packages",
+        )
+        install_parser.set_defaults(func=handle_package)
+
+        # uninstall parser
+        uninstall_parser = subparsers.add_parser(
+            "uninstall",
+            description="Uninstall bittware python library",
+            help="Uninstall bittware python library",
+        )
+        uninstall_parser.set_defaults(func=uninstall_bittware_packages)
+
+        if len(sys.argv) <= 1:
+            init_parser.print_help()
+            sys.exit(0)
+
+        result, installed_pip_version = _validate_pip_version()
+
+        if result is None:
+            raise BWPipInstallException("could not validate pip version")
+
+        if not result:
+            raise BWPipInstallException(
+                f"pip version was out of date "
+                f"installed version was {installed_pip_version} "
+                f"expected {Constants.PIP_MINIMUM_REQUIRED}"
+            )
+
+        args = init_parser.parse_args()
+
+        if hasattr(args, "bittware_only") and args.bittware_only:
+            args.packagelist = ["BITTWARE"]
+
+        if hasattr(args, "func") and args.func is not None:
+            args.func(args)
+
+    except BWPipInstallException as err:
+        print(err, file=sys.stderr)
+        sys.exit(-1)
+
+REMOVE_CANDIDATES [('bw-agilex', '2024.3.1'), ('bw-bmc', '0.1.25'), ('bw-bmc-lit
+e', '0.1.0'), ('bw-common', '0.4.64'), ('bw-mctp', '0.2.2'), ('bw-pldm', '0.2.10
+'), ('bw-sdk', '2024.3.1'), ('bw-uart-edge', '0.1.6'), ('bw-usb', '2024.3.1'), (
+'bw-vfio', '0.0.1')] grpcio-tools
+REVERSE {"bw-bmc-lite": [{"name": "bw-uart-edge", "requirement": "bw-bmc-lite"}]
+, "bw-bmc": [], "grpcio-tools": [{"name": "bw-vfio", "requirement": "grpcio-tool
+s==1.64.1"}, {"name": "grpcio", "requirement": "grpcio-tools>=1.78.0; extra == \
+"protobuf\""}], "bw-sdk": [], "bw-uart-edge": [], "bw-agilex": [], "bw-common":
+[{"name": "bw-agilex", "requirement": "bw-common>=0.4.8"}, {"name": "bw-bmc", "r
+equirement": "bw-common (>=0.4.55)"}, {"name": "bw-bmc-lite", "requirement": "bw
+-common (>=0.4.64)"}, {"name": "bw-sdk", "requirement": "bw-common>=0.4.20"}, {"
+name": "bw-uart-edge", "requirement": "bw-common (>=0.4.3)"}, {"name": "bw-usb",
+ "requirement": "bw-common>=0.4.8"}, {"name": "bw-vfio", "requirement": "bw-comm
+on>=0.4.64"}], "bw-pldm": [{"name": "bw-bmc", "requirement": "bw-pldm (>=0.0.17)
+"}], "bw-vfio": [], "bw-usb": [], "bw-mctp": [{"name": "bw-bmc", "requirement":
+"bw-mctp (>=0.0.5)"}]}
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "<string>", line 12, in <module>
+AssertionError
+

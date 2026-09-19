@@ -1,0 +1,525 @@
+identity Agilex7Workstation 1000 /usr/bin/python3 3.9.25 (main, Aug  6 2026, 00:
+00:00)
+[GCC 11.5.0 20240719 (Red Hat 11.5.0-14)]
+bw_pip /usr/share/bittware-sdk/bin/bw_pip /usr/share/bittware-sdk/bin/bw_pip
+#!/bin/sh
+
+if [ -z "$BWSDK_ROOT" ]; then
+    echo "Could not find BWSDK install path"
+    exit 1
+fi
+
+python3 $BWSDK_ROOT/scripts/bw_pip.py "$@"
+
+pip-check-before 1 bw-common 0.4.64 has requirement pydantic==1.8.2, but you hav
+e pydantic 2.11.10.
+bw-sdk 2024.3.1 has requirement pydantic==1.8.2, but you have pydantic 2.11.10.
+bw-usb 2024.3.1 has requirement cffi==1.14.6, but you have cffi 1.17.1.
+bw-vfio 0.0.1 has requirement cffi==1.14.6, but you have cffi 1.17.1.
+bw-vfio 0.0.1 has requirement grpcio==1.64.1, but you have grpcio 1.78.0.
+grpcio-tools 1.64.1 has requirement protobuf<6.0dev,>=5.26.1, but you have proto
+buf 6.33.6.
+
+pip-freeze-before 0 annotated-types @ file:///usr/share/bittware-sdk/python/39/a
+nnotated_types-0.7.0-py3-none-any.whl#sha256=1f02e8b43a8fbbc3f3e0d4f0f4bfc8131bc
+b4eebe8849b8e5c773f3a1c582a53
+anyio==4.12.1
+argon2-cffi==25.1.0
+argon2-cffi-bindings==25.1.0
+arrow==1.4.0
+asttokens==3.0.1
+async-lru==2.0.5
+attrs==26.1.0
+babel==2.18.0
+beautifulsoup4==4.14.3
+bleach==6.2.0
+Brlapi==0.8.2
+bw-achronix-product @ file:///usr/share/bittware-sdk/python/bw_achronix_product-
+0.1.43-py3-none-any.whl#sha256=5b13152c9e4455ee9b6235edfbba4cb70d9780006866919cd
+b7f91d70dbb01f4
+bw-agilex @ file:///usr/share/bittware-sdk/csps/ia840f/python/bw_agilex-2024.3.1
+-py3-none-any.whl#sha256=38376658560b2dafb7e6b2888cc34b6fd5ab033417cca5192a3cd3d
+7cb5c1fe8
+bw-agilex-product @ file:///usr/share/bittware-sdk/python/bw_agilex_product-0.1.
+49-py3-none-any.whl#sha256=01ecc9b347f6ef8a8d730323d1c2f54ba865167a38d0988406fff
+53b91b1c2bf
+bw-bmc @ file:///usr/share/bittware-sdk/python/bw_bmc-0.1.25-py3-none-any.whl#sh
+a256=4de6a8bd33b17d1742e69693b863d0851b4e128ca373078373fe9ed06ffcb661
+bw-bmc-abs @ file:///usr/share/bittware-sdk/python/bw_bmc_abs-0.1.3-py3-none-any
+.whl#sha256=898919fd44534f36ae81aabf42198d28c826483769e5bc82fedbd8f0a77c6e39
+bw-bmc-core @ file:///usr/share/bittware-sdk/python/bw_bmc_core-0.1.14-py3-none-
+any.whl#sha256=758e73389cb6695bcafac56a655d08eafca621ccdbe1ab723403fd112aa50570
+bw-bmc-core-lite @ file:///usr/share/bittware-sdk/python/bw_bmc_core_lite-0.1.4-
+py3-none-any.whl#sha256=ba9c218150f2e731f3ae631469705a77a8f7e6209802bdb8499b7043
+422a5234
+bw-bmc-lite @ file:///usr/share/bittware-sdk/python/bw_bmc_lite-0.1.0-py3-none-a
+ny.whl#sha256=96450b653a38688bb6db713eb729dce902df1b10a185b5f956eb38bbfcfec192
+bw-bmc-utils @ file:///usr/share/bittware-sdk/python/bw_bmc_utils-0.2.12-py3-non
+e-any.whl#sha256=15791c719787e9a9fb076fbbd7d336f89445498bd4c132595a8df4054de1fb5
+8
+bw-cardtest @ file:///usr/share/bittware-sdk/python/bw_cardtest-1.5.21-py3-none-
+any.whl#sha256=e3ae939062780a0819715d2b21f8fc1fc556af39379f624d4641ee332fd54c18
+bw-cardtest-tests @ file:///usr/share/bittware-sdk/python/bw_cardtest_tests-0.1.
+30-py3-none-any.whl#sha256=f118c6bc5a732e26f813389f21ae2bf48c4ee65221aefb505deb7
+da39f479186
+bw-cmdk @ file:///usr/share/bittware-sdk/python/bw_cmdk-0.1.11-py3-none-any.whl#
+sha256=dbfdf24adc470bed0c82191b8c2f079a381cd39a29c20b042a9ada11902add64
+bw-cmdk-comps-v1 @ file:///usr/share/bittware-sdk/python/bw_cmdk_comps_v1-0.1.5-
+py3-none-any.whl#sha256=9d0bf82d4f42a6098eaf9e38d53e4a2c6aa975f749930a3d45fe262e
+b99d00a2
+bw-common @ file:///usr/share/bittware-sdk/python/bw_common-0.4.64-py3-none-any.
+whl#sha256=a4e3fa136bc3ecfba2c608c388840f3d49470f867ccad5c0369f5fc2ce69793d
+bw-core @ file:///usr/share/bittware-sdk/python/bw_core-0.1.30-py3-none-any.whl#
+sha256=a099d0550f3cbde8b76e20410aeab9cb1ab564a19c236ca5d111e316f563b1b3
+bw-core-utils @ file:///usr/share/bittware-sdk/python/bw_core_utils-0.1.18-py3-n
+one-any.whl#sha256=c34ceee62836f762cfe08faca75303f98fde90bded76990a0634e9b7ceb6c
+ca6
+bw-kit @ file:///usr/share/bittware-sdk/python/bw_kit-0.1.17-py3-none-any.whl#sh
+a256=eba3c590c7727f33c83256b81390eb39cd8374f6c55728bcc10fbaf6b2eeea66
+bw-mctp @ file:///usr/share/bittware-sdk/python/bw_mctp-0.2.2-py3-none-any.whl#s
+ha256=e07ff8a3571841946900b0011fc7aae81f06e4d488b109ae25ed46cce655baa2
+bw-mctp-transport @ file:///usr/share/bittware-sdk/python/bw_mctp_transport-0.1.
+3-py3-none-any.whl#sha256=e186e9c4029b1d62888c620890de578e6c26248a230cdd1e8d476e
+2c636bb088
+bw-peripherals @ file:///usr/share/bittware-sdk/python/bw_peripherals-0.1.7-py3-
+none-any.whl#sha256=007f76be5978f17865b5b91612766e22006670165926cf3f9e8a73c3442c
+ddcf
+bw-pldm @ file:///usr/share/bittware-sdk/python/bw_pldm-0.2.10-py3-none-any.whl#
+sha256=af8111c1e3f9a808927dd044b59498614b95b24b49b0286ab39d430de5082010
+bw-pldm-transport @ file:///usr/share/bittware-sdk/python/bw_pldm_transport-0.1.
+13-py3-none-any.whl#sha256=d36227983c0a1ea8fc4f01e97615dc74586870e62ae53649db13f
+5742b15355d
+bw-sdk @ file:///usr/share/bittware-sdk/python/bw_sdk-2024.3.1-py3-none-any.whl#
+sha256=fbf76ed546e3235394b2a90ad1dbe4a1da46b947b30cfbfde59914eb240fce3a
+bw-sysfs-devices @ file:///usr/share/bittware-sdk/python/bw_sysfs_devices-0.0.4-
+py3-none-any.whl#sha256=e80ef7ef0a755a4b3db940579800f91fbbd45b9043630e4468f89622
+f78f5c10
+bw-uart-edge @ file:///usr/share/bittware-sdk/python/bw_uart_edge-0.1.6-py3-none
+-any.whl#sha256=fefdd2f4dd988f844ee6b42c0c81407b780775fc40637afa9731057c57d195ab
+bw-uart-edge-devices @ file:///usr/share/bittware-sdk/python/bw_uart_edge_device
+s-0.1.8-py3-none-any.whl#sha256=a32b218546966b5408012ab6d02df9969b05a4687a522f44
+a3c69f5de285355e
+bw-usb @ file:///usr/share/bittware-sdk/python/bw_usb-2024.3.1-py3-none-any.whl#
+sha256=c6324550650b6cb3da1264be150a24278aecb95820beaea6ec8a6f341c6ad65b
+bw-usb-devices @ file:///usr/share/bittware-sdk/python/bw_usb_devices-0.1.5-py3-
+none-any.whl#sha256=8f90e29e6b12ae78d0d057b2fa20db6610cb0c18f2014bc7345324758d9f
+ee9d
+bw-utils @ file:///usr/share/bittware-sdk/python/bw_utils-0.1.5-py3-none-any.whl
+#sha256=4923f89097b860350a70111018c540445b8e0b358d2fb42e37ea017bc4369df4
+bw-vfio @ file:///usr/share/bittware-sdk/python/bw_vfio-0.0.1-py3-none-any.whl#s
+ha256=f6bac6cc6e002063b4af28d7fcbd647243536c04aafbd1bdb87acbbc6194e4d6
+bw-vfio-devices @ file:///usr/share/bittware-sdk/python/bw_vfio_devices-0.1.19-p
+y3-none-any.whl#sha256=db778c5cac9cd9928f261e1cef251a0d8f3639cad4789d9725b6edea5
+ba6eb4c
+certifi==2026.4.22
+cffi @ file:///usr/share/bittware-sdk/python/39/cffi-1.17.1-cp39-cp39-manylinux_
+2_17_x86_64.manylinux2014_x86_64.whl#sha256=cdf5ce3acdfd1661132f2a9c19cac174758d
+c2352bfe37d98aa7512c6b7178b3
+chardet==4.0.0
+charset-normalizer==3.4.7
+cockpit @ file:///builddir/build/BUILD/cockpit-356.3/tmp/wheel/cockpit-356.3-py3
+-none-any.whl
+comm==0.2.3
+crc8 @ file:///usr/share/bittware-sdk/python/39/crc8-0.2.1-py3-none-any.whl#sha2
+56=0c7cc1e442f4e5227a4f1b83a025454fd2d575177c7f78f35814580c7ffd073a
+cupshelpers==1.0
+dasbus==1.7
+dbus-python==1.2.18
+debugpy==1.8.20
+decorator==5.2.1
+defusedxml==0.7.1
+distlib==0.4.0
+distro @ file:///usr/share/bittware-sdk/python/39/distro-1.9.0-py3-none-any.whl#
+sha256=7bffd925d65168f85027d8da9af6bddab658135b840670a223589bc0c8ef02b2
+exceptiongroup==1.3.1
+executing==2.2.1
+fastjsonschema==2.21.2
+file-magic==0.4.0
+filelock==3.19.1
+fqdn==1.5.1
+gpg==1.15.1
+grpcio @ file:///usr/share/bittware-sdk/python/39/grpcio-1.78.0-cp39-cp39-manyli
+nux2014_x86_64.manylinux_2_17_x86_64.whl#sha256=b0c689c02947d636bc7fab3e30cc3a34
+45cca99c834dfb77cd4a6cabfc1c5597
+grpcio-tools==1.64.1
+h11==0.16.0
+hexdump @ file:///usr/share/bittware-sdk/python/39/hexdump-3.3.zip#sha256=d781a4
+3b0c16ace3f9366aade73e8ad3a7bd5137d58f0b45ab2d3f54876f20db
+hssi_ethernet @ file:///home/uwb_student00/opae-sdk/binaries/hssi
+httpcore==1.0.9
+httpx==0.28.1
+idna==2.10
+importlib_metadata==8.7.1
+intelhex @ file:///usr/share/bittware-sdk/python/intelhex-2.3.0-py2.py3-none-any
+.whl#sha256=87cc5225657524ec6361354be928adfd56bcf2a3dcc646c40f8f094c39c07db4
+ipykernel==6.31.0
+ipython==8.18.1
+isoduration==20.11.0
+jedi==0.19.2
+Jinja2==3.1.6
+json5==0.14.0
+jsonpointer==3.0.0
+jsonschema==4.25.1
+jsonschema-specifications==2025.9.1
+jupyter-events==0.12.1
+jupyter-lsp==2.3.1
+jupyter_client==8.6.3
+jupyter_core==5.8.1
+jupyter_server==2.18.2
+jupyter_server_terminals==0.5.4
+jupyterlab==4.5.7
+jupyterlab_pygments==0.3.0
+jupyterlab_server==2.28.0
+lark==1.3.1
+libcomps==0.1.18
+lxml==4.6.5
+markdown-it-py @ file:///usr/share/bittware-sdk/python/markdown_it_py-3.0.0-py3-
+none-any.whl#sha256=355216845c60bd96232cd8d8c40e8f9765cc86f46880e43a8fd22dc1a1a8
+cab1
+MarkupSafe==3.0.3
+matplotlib-inline==0.2.2
+mdurl==0.1.2
+mistune==3.2.1
+nbclient==0.10.2
+nbconvert==7.17.1
+nbformat==5.10.4
+nest-asyncio==1.6.0
+nftables==0.1
+notebook==7.5.6
+notebook_shim==0.2.4
+ofs.uio @ file:///home/uwb_student00/opae-sdk/binaries/ofs.uio
+opae.admin @ file:///home/uwb_student00/opae-sdk/python/opae.admin
+opae.diag @ file:///home/uwb_student00/opae-sdk/build/binaries/fpgadiag/stage
+opae.io @ file:///home/uwb_student00/opae-sdk/build/binaries/opae.io/stage
+overrides==7.7.0
+packager @ file:///home/uwb_student00/opae-sdk/python/packager
+packaging @ file:///usr/share/bittware-sdk/python/39/packaging-26.2-py3-none-any
+.whl#sha256=5fc45236b9446107ff2415ce77c807cee2862cb6fac22b8a73826d0693b0980e
+pacsign @ file:///home/uwb_student00/opae-sdk/python/pacsign
+pandocfilters==1.5.1
+parso==0.8.6
+perf==0.1
+pexpect==4.8.0
+pip==26.0.1
+platformdirs==4.4.0
+platmgr @ file:///home/uwb_student00/opae-sdk/platforms
+podman==5.7.0
+prometheus_client==0.25.0
+prompt_toolkit==3.0.52
+protobuf @ file:///usr/share/bittware-sdk/python/39/protobuf-6.33.6-cp39-abi3-ma
+nylinux2014_x86_64.whl#sha256=e9db7e292e0ab79dd108d7f1a94fe31601ce1ee3f7b79e0692
+043423020b0593
+psutil==5.8.0
+ptyprocess==0.6.0
+pudb==2025.1.5
+pure_eval==0.2.3
+pybind11==3.0.3
+pycairo==1.20.1
+pycparser @ file:///usr/share/bittware-sdk/python/39/pycparser-2.23-py3-none-any
+.whl#sha256=e5c6e8d3fbad53479cab09ac03729e0a9faf2bee3db8208a550daf5af81a5934
+pycups==2.0.1
+pycurl==7.43.0.6
+pydantic @ file:///usr/share/bittware-sdk/python/39/pydantic-2.11.10-py3-none-an
+y.whl#sha256=802a655709d49bd004c31e865ef37da30b540786a46bfce02333e0e24b5fe29a
+pydantic_core @ file:///usr/share/bittware-sdk/python/39/pydantic_core-2.33.2-cp
+39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl#sha256=8d55ab81c57b8ff854
+8c3e4947f119551253f4e3787a7bbc0b6b3ca47498a9d3
+Pygments==2.20.0
+PyGObject==3.40.1
+pyinotify==0.9.6
+pyopaeuio @ file:///home/uwb_student00/opae-sdk/build/libraries/pyopaeuio/stage
+pyrsistent==0.17.3
+pyserial @ file:///usr/share/bittware-sdk/python/pyserial-3.5-py2.py3-none-any.w
+hl#sha256=c4451db6ba391ca6ca299fb3ec7bae67a5c55dde170964c7a14ceefec02f2cf0
+PySocks==1.7.1
+python-dateutil==2.9.0.post0
+python-discovery==1.2.1
+python-json-logger==4.0.0
+python-linux-procfs==0.7.4
+pyudev==0.22.0
+PyYAML @ file:///usr/share/bittware-sdk/python/39/PyYAML-6.0.1-cp39-cp39-manylin
+ux_2_17_x86_64.manylinux2014_x86_64.whl#sha256=bc1bf2925a1ecd43da378f4db9e4f7997
+75d6367bdb94671027b73b393a7c42c
+pyzmq==27.1.0
+referencing==0.36.2
+requests==2.32.5
+rfc3339-validator==0.1.4
+rfc3986-validator==0.1.1
+rfc3987-syntax==1.1.0
+rich @ file:///usr/share/bittware-sdk/python/39/rich-15.0.0-py3-none-any.whl#sha
+256=33bd4ef74232fb73fe9279a257718407f169c09b78a87ad3d296f548e27de0bb
+rpds-py==0.27.1
+rpm==4.16.1.3
+selinux==3.6
+Send2Trash==2.1.0
+sepolicy==3.6
+setools==4.4.4
+setroubleshoot @ file:///builddir/build/BUILD/setroubleshoot-3.3.35/src
+setuptools @ file:///usr/share/bittware-sdk/python/39/setuptools-82.0.1-py3-none
+-any.whl#sha256=a59e362652f08dcd477c78bb6e7bd9d80a7995bc73ce773050228a348ce2e5bb
+six==1.15.0
+sos==4.11.2
+soupsieve==2.8.3
+stack-data==0.6.3
+systemd-python==234
+terminado==0.18.1
+tinycss2==1.4.0
+tomli==2.4.1
+tornado==6.5.5
+traitlets==5.15.0
+typing-inspection @ file:///usr/share/bittware-sdk/python/39/typing_inspection-0
+.4.2-py3-none-any.whl#sha256=4ed1cacbdc298c220f1bd249ed5287caa16f34d44ef4e9c3d0c
+bad5b521545e7
+typing_extensions @ file:///usr/share/bittware-sdk/python/39/typing_extensions-4
+.15.0-py3-none-any.whl#sha256=f0fa19c6845758ab08074a0cfa8b7aecb71c999ca73d62883b
+c25cc018c4e548
+tzdata==2026.2
+udica==0.2.8
+uri-template==1.3.0
+urllib3==1.26.5
+urwid==4.0.0
+urwid_readline==0.15.1
+virtualenv==21.2.0
+wcwidth==0.6.0
+webcolors==24.11.1
+webencodings==0.5.1
+websocket-client==1.9.0
+wheel @ file:///usr/share/bittware-sdk/python/39/wheel-0.47.0-py3-none-any.whl#s
+ha256=212281cab4dff978f6cedd499cd893e1f620791ca6ff7107cf270781e587eced
+zipp==3.23.1
+
+{"name": "bw-agilex", "version": "2024.3.1", "location": "/home/uwb_student00/.l
+ocal/lib/python3.9/site-packages/bw_agilex-2024.3.1.dist-info", "requires": ["bw
+-common>=0.4.8"], "entry_points": ["EntryPoint(name='agilex_components', value='
+bw_agilex.components', group='bittware_components')", "EntryPoint(name='agilex',
+ value='bw_agilex:AgilexFPGA', group='bittware_sdk_fpga')", "EntryPoint(name='bw
+_agilex_flash_programmer', value='bw_agilex.bw_agilex_flash_programmer.bw_agilex
+_flash_programmer:main', group='console_scripts')"]}
+{"name": "bw-bmc", "version": "0.1.25", "location": "/home/uwb_student00/.local/
+lib/python3.9/site-packages/bw_bmc-0.1.25.dist-info", "requires": ["intelhex", "
+hexdump", "packaging", "bw-pldm (>=0.0.17)", "bw-mctp (>=0.0.5)", "bw-common (>=
+0.4.55)"], "entry_points": ["EntryPoint(name='bmc', value='bw_bmc:Bmc', group='b
+ittware_bmc')", "EntryPoint(name='bw_bmc_clock_programmer', value='bw_bmc.tools.
+clock_utility:main', group='console_scripts')", "EntryPoint(name='bw_bmc_configu
+re', value='bw_bmc.tools.bmc_configuration:main', group='console_scripts')", "En
+tryPoint(name='bw_bmc_file_utility', value='bw_bmc.tools.bmc_file_utility:main',
+ group='console_scripts')", "EntryPoint(name='bw_bmc_fpga_load', value='bw_bmc.t
+ools.bmc_fpga_load_utility:main', group='console_scripts')", "EntryPoint(name='b
+w_bmc_get_logs', value='bw_bmc.tools.bmc_get_logs:main', group='console_scripts'
+)", "EntryPoint(name='bw_bmc_pldm_effecter', value='bw_bmc.tools.bmc_pldm_effect
+er:main', group='console_scripts')", "EntryPoint(name='bw_bmc_pldm_sensor', valu
+e='bw_bmc.tools.bmc_pldm_sensor:main', group='console_scripts')", "EntryPoint(na
+me='bw_bmc_prom_utility', value='bw_bmc.tools.bmc_prom_utility:main', group='con
+sole_scripts')", "EntryPoint(name='bw_bmc_upgrade', value='bw_bmc.tools.bmc_firm
+ware_utility:main', group='console_scripts')", "EntryPoint(name='bw_card_monitor
+', value='bw_bmc.tools.monitor_utility:main', group='console_scripts')"]}
+{"name": "bw-bmc-lite", "version": "0.1.0", "location": "/home/uwb_student00/.lo
+cal/lib/python3.9/site-packages/bw_bmc_lite-0.1.0.dist-info", "requires": ["bw-c
+ommon (>=0.4.64)"], "entry_points": ["EntryPoint(name='bmc-lite', value='bw_bmc_
+lite:BmcLite', group='bittware_bmc')", "EntryPoint(name='bmc-lite_components', v
+alue='bw_bmc_lite.components', group='bittware_components')", "EntryPoint(name='
+bw_bmc_lite_cntl_stat', value='bw_bmc_lite.tools.bmc_lite_status:main', group='c
+onsole_scripts')", "EntryPoint(name='bw_bmc_lite_monitor', value='bw_bmc_lite.to
+ols.bmc_lite_sensors:main', group='console_scripts')", "EntryPoint(name='bw_bmc_
+lite_upgrade', value='bw_bmc_lite.tools.bmc_lite_update:main', group='console_sc
+ripts')"]}
+{"name": "bw-common", "version": "0.4.64", "location": "/home/uwb_student00/.loc
+al/lib/python3.9/site-packages/bw_common-0.4.64.dist-info", "requires": ["pydant
+ic ==1.8.2"], "entry_points": ["EntryPoint(name='common_components', value='bw_c
+ommon.component.library', group='bittware_components')"]}
+{"name": "bw-mctp", "version": "0.2.2", "location": "/home/uwb_student00/.local/
+lib/python3.9/site-packages/bw_mctp-0.2.2.dist-info", "requires": ["typing-exten
+sions (>=4.1.1)"], "entry_points": []}
+{"name": "bw-pldm", "version": "0.2.10", "location": "/home/uwb_student00/.local
+/lib/python3.9/site-packages/bw_pldm-0.2.10.dist-info", "requires": [], "entry_p
+oints": []}
+{"name": "bw-sdk", "version": "2024.3.1", "location": "/home/uwb_student00/.loca
+l/lib/python3.9/site-packages/bw_sdk-2024.3.1.dist-info", "requires": ["bw-commo
+n>=0.4.20", "pyserial", "pydantic==1.8.2"], "entry_points": ["EntryPoint(name='k
+it_sdk', value='bw_sdk.kit_sdk:KitSDK', group='bittware_kits')", "EntryPoint(nam
+e='bw_card_list', value='bw_sdk.tools.bw_card_list:main', group='console_scripts
+')", "EntryPoint(name='bw_fpga_i2c_peek_poke', value='bw_sdk.tools.bw_fpga_i2c_p
+eek_poke:main', group='console_scripts')", "EntryPoint(name='bw_qsfp_info', valu
+e='bw_sdk.tools.qsfp_utility:main', group='console_scripts')"]}
+{"name": "bw-uart-edge", "version": "0.1.6", "location": "/home/uwb_student00/.l
+ocal/lib/python3.9/site-packages/bw_uart_edge-0.1.6.dist-info", "requires": ["bw
+-common (>=0.4.3)", "bw-bmc-lite", "pyserial"], "entry_points": ["EntryPoint(nam
+e='kit_uart_edge', value='bw_uart_edge.kit_uart_edge:KitUART_Edge', group='bittw
+are_kits')", "EntryPoint(name='bw_uart_edge_probe', value='bw_uart_edge.uart_edg
+e_probe:main', group='console_scripts')"]}
+{"name": "bw-usb", "version": "2024.3.1", "location": "/home/uwb_student00/.loca
+l/lib/python3.9/site-packages/bw_usb-2024.3.1.dist-info", "requires": ["cffi==1.
+14.6", "bw-common>=0.4.8"], "entry_points": ["EntryPoint(name='usb_library', val
+ue='bw_usb', group='bittware_sdk')"]}
+{"name": "bw-vfio", "version": "0.0.1", "location": "/home/uwb_student00/.local/
+lib/python3.9/site-packages/bw_vfio-0.0.1.dist-info", "requires": ["cffi==1.14.6
+", "bw-common>=0.4.64", "grpcio==1.64.1", "grpcio-tools==1.64.1", "distro"], "en
+try_points": ["EntryPoint(name='kit_vfio', value='bw_vfio.kit_vfio:KitVFIO', gro
+up='bittware_kits')", "EntryPoint(name='vfio_library', value='bw_vfio', group='b
+ittware_sdk')", "EntryPoint(name='bw_vfio_peek_poke', value='bw_vfio.tools.pci_p
+eek_poke.vfio_peek_poke:main', group='console_scripts')"]}
+{"name": "grpcio-tools", "version": "1.64.1", "location": "/home/uwb_student00/.
+local/lib/python3.9/site-packages/grpcio_tools-1.64.1.dist-info", "requires": ["
+protobuf <6.0dev,>=5.26.1", "grpcio >=1.64.1", "setuptools"], "entry_points": []
+}
+{"name": "bw-peripherals", "version": "0.1.7", "location": "/home/uwb_student00/
+.local/lib/python3.9/site-packages/bw_peripherals-0.1.7.dist-info", "requires":
+["bw-core>=0.0.1", "bw-bmc-abs>=0.0.1", "bw-kit>=0.0.1", "PyYAML", "typing-exten
+sions"], "entry_points": []}
+{"name": "bw-mctp-transport", "version": "0.1.3", "location": "/home/uwb_student
+00/.local/lib/python3.9/site-packages/bw_mctp_transport-0.1.3.dist-info", "requi
+res": ["typing_extensions>=4.1.1"], "entry_points": []}
+{"name": "bw-core-utils", "version": "0.1.18", "location": "/home/uwb_student00/
+.local/lib/python3.9/site-packages/bw_core_utils-0.1.18.dist-info", "requires":
+["bw-core>=0.1.14"], "entry_points": ["EntryPoint(name='bw_card_list', value='bw
+_core_utils.bw_card_list:main', group='console_scripts')", "EntryPoint(name='bw_
+fpga_i2c_peek_poke', value='bw_core_utils.bw_fpga_i2c_peek_poke:main', group='co
+nsole_scripts')", "EntryPoint(name='bw_fpga_peek_poke', value='bw_core_utils.bw_
+fpga_peek_poke:main', group='console_scripts')", "EntryPoint(name='bw_product',
+value='bw_core_utils.bw_product:main', group='console_scripts')", "EntryPoint(na
+me='bw_qsfp_info', value='bw_core_utils.qsfp_utility:main', group='console_scrip
+ts')"]}
+{"name": "bw-core", "version": "0.1.30", "location": "/home/uwb_student00/.local
+/lib/python3.9/site-packages/bw_core-0.1.30.dist-info", "requires": ["bw-bmc-abs
+>=0.0.1", "typing_extensions>=4.11.0", "pyyaml", "pydantic>=2.8.2", "wheel; extr
+a == \"dev\"", "flake8; extra == \"dev\"", "pylint; extra == \"dev\"", "setuptoo
+ls; extra == \"dev\"", "build; extra == \"dev\"", "bandit; extra == \"dev\"", "p
+ytest; extra == \"dev\"", "pytest-cov; extra == \"dev\"", "pytest-mock; extra ==
+ \"dev\"", "pytest-sugar; extra == \"dev\"", "types-PyYAML; extra == \"dev\"", "
+types-setuptools; extra == \"dev\"", "types-cffi; extra == \"dev\"", "tox; extra
+ == \"dev\""], "entry_points": ["EntryPoint(name='common_components', value='bw_
+core.legacy.component.library', group='bittware_components')"]}
+{"name": "bw-cmdk-comps-v1", "version": "0.1.5", "location": "/home/uwb_student0
+0/.local/lib/python3.9/site-packages/bw_cmdk_comps_v1-0.1.5.dist-info", "require
+s": ["bw-cmdk", "typing-extensions"], "entry_points": ["EntryPoint(name='cmdk_co
+mp_lib_v1', value='bw_cmdk_comps_v1', group='bittware_cmdk_components')"]}
+{"name": "bw-cardtest-tests", "version": "0.1.30", "location": "/home/uwb_studen
+t00/.local/lib/python3.9/site-packages/bw_cardtest_tests-0.1.30.dist-info", "req
+uires": ["bw-utils>=0.1.4", "bw-bmc-core", "bw-kit", "pyyaml", "pydantic>=2.8",
+"flake8; extra == \"dev\"", "pylint; extra == \"dev\"", "setuptools; extra == \"
+dev\"", "build; extra == \"dev\"", "bandit; extra == \"dev\"", "pytest; extra ==
+ \"dev\"", "pytest-cov; extra == \"dev\"", "pytest-mock; extra == \"dev\"", "pyt
+est-sugar; extra == \"dev\"", "types-PyYAML; extra == \"dev\"", "types-setuptool
+s; extra == \"dev\"", "types-cffi; extra == \"dev\"", "tox; extra == \"dev\""],
+"entry_points": ["EntryPoint(name='generic_tests', value='bw_cardtest_tests.gene
+ric', group='bittware_tests')", "EntryPoint(name='other_tests', value='bw_cardte
+st_tests.others', group='bittware_tests')", "EntryPoint(name='utility_tests', va
+lue='bw_cardtest_tests.utility', group='bittware_tests')"]}
+{"name": "bw-cardtest", "version": "1.5.21", "location": "/home/uwb_student00/.l
+ocal/lib/python3.9/site-packages/bw_cardtest-1.5.21.dist-info", "requires": ["bw
+-bmc-core", "bw-kit", "bw-utils>=0.0.3", "pydantic>=2.9", "hexdump", "pyyaml", "
+rich", "zed10<1.0.0; extra == \"zed10\""], "entry_points": ["EntryPoint(name='bw
+_card_test', value='bw_cardtest.__main__:run', group='console_scripts')"]}
+{"name": "bw-bmc-utils", "version": "0.2.12", "location": "/home/uwb_student00/.
+local/lib/python3.9/site-packages/bw_bmc_utils-0.2.12.dist-info", "requires": ["
+hexdump", "intelhex", "bw-bmc-core"], "entry_points": ["EntryPoint(name='bw_bmc_
+clock_programmer', value='bw_bmc_utils.clock_utility:main', group='console_scrip
+ts')", "EntryPoint(name='bw_bmc_configure', value='bw_bmc_utils.bmc_configuratio
+n:main', group='console_scripts')", "EntryPoint(name='bw_bmc_file_utility', valu
+e='bw_bmc_utils.bmc_file_utility:main', group='console_scripts')", "EntryPoint(n
+ame='bw_bmc_fpga_load', value='bw_bmc_utils.bmc_fpga_load_utility:main', group='
+console_scripts')", "EntryPoint(name='bw_bmc_get_logs', value='bw_bmc_utils.bmc_
+get_logs:main', group='console_scripts')", "EntryPoint(name='bw_bmc_pldm_effecte
+r', value='bw_bmc_utils.bmc_pldm_effecter:main', group='console_scripts')", "Ent
+ryPoint(name='bw_bmc_pldm_sensor', value='bw_bmc_utils.bmc_pldm_sensor:main', gr
+oup='console_scripts')", "EntryPoint(name='bw_bmc_prom_utility', value='bw_bmc_u
+tils.bmc_prom_utility:main', group='console_scripts')", "EntryPoint(name='bw_bmc
+_qsfp_i2c', value='bw_bmc_utils.qsfp_i2c_utility:main', group='console_scripts')
+", "EntryPoint(name='bw_bmc_upgrade', value='bw_bmc_utils.bmc_firmware_utility:m
+ain', group='console_scripts')", "EntryPoint(name='bw_card_monitor', value='bw_b
+mc_utils.monitor_utility:main', group='console_scripts')"]}
+{"name": "bw-bmc-core-lite", "version": "0.1.4", "location": "/home/uwb_student0
+0/.local/lib/python3.9/site-packages/bw_bmc_core_lite-0.1.4.dist-info", "require
+s": ["bw-core", "bw-kit", "bw-bmc-abs", "bw-peripherals", "bw-uart-edge-devices"
+], "entry_points": ["EntryPoint(name='bmc-lite', value='bw_bmc_lite:BmcLite', gr
+oup='bittware_bmc')", "EntryPoint(name='bmc-lite_components', value='bw_bmc_lite
+.components', group='bittware_components')", "EntryPoint(name='bw_bmc_lite_cntl_
+stat', value='bw_bmc_lite.tools.bmc_lite_status:main', group='console_scripts')"
+, "EntryPoint(name='bw_bmc_lite_monitor', value='bw_bmc_lite.tools.bmc_lite_sens
+ors:main', group='console_scripts')", "EntryPoint(name='bw_bmc_lite_upgrade', va
+lue='bw_bmc_lite.tools.bmc_lite_update:main', group='console_scripts')"]}
+{"name": "bw-bmc-core", "version": "0.1.14", "location": "/home/uwb_student00/.l
+ocal/lib/python3.9/site-packages/bw_bmc_core-0.1.14.dist-info", "requires": ["in
+telhex", "hexdump", "packaging", "bw-pldm-transport", "bw-mctp-transport", "bw-c
+ore"], "entry_points": ["EntryPoint(name='bmc', value='bw_bmc:Bmc', group='bittw
+are_bmc')"]}
+{"name": "bw-agilex-product", "version": "0.1.49", "location": "/home/uwb_studen
+t00/.local/lib/python3.9/site-packages/bw_agilex_product-0.1.49.dist-info", "req
+uires": ["pyserial", "pydantic>=2.8", "bw-core", "bw-bmc-abs", "bw-kit", "typing
+-extensions", "wheel; extra == \"dev\"", "flake8; extra == \"dev\"", "pylint; ex
+tra == \"dev\"", "setuptools; extra == \"dev\"", "build; extra == \"dev\"", "ban
+dit; extra == \"dev\"", "pytest; extra == \"dev\"", "pytest-cov; extra == \"dev\
+"", "pytest-mock; extra == \"dev\"", "types-pyserial; extra == \"dev\""], "entry
+_points": ["EntryPoint(name='agilex_components', value='bw_agilex.components', g
+roup='bittware_components')", "EntryPoint(name='agilex_products', value='bw_agil
+ex.products', group='bittware_products')", "EntryPoint(name='agilex_tests', valu
+e='bw_agilex.product_testing.Agilex', group='bittware_tests')", "EntryPoint(name
+='ia_220_u2_tests', value='bw_agilex.product_testing.IA_220_U2', group='bittware
+_tests')", "EntryPoint(name='ia_720i_tests', value='bw_agilex.product_testing.IA
+_720I', group='bittware_tests')", "EntryPoint(name='ia_840f_tests', value='bw_ag
+ilex.product_testing.IA_840F', group='bittware_tests')", "EntryPoint(name='ia_86
+0m_tests', value='bw_agilex.product_testing.IA_860M', group='bittware_tests')",
+"EntryPoint(name='bw_agilex_flash_programmer', value='bw_agilex.tools.bw_agilex_
+flash_programmer:main', group='console_scripts')"]}
+{"name": "bw-achronix-product", "version": "0.1.43", "location": "/home/uwb_stud
+ent00/.local/lib/python3.9/site-packages/bw_achronix_product-0.1.43.dist-info",
+"requires": ["bw-core", "bw-kit", "typing_extensions", "pydantic>=2.8", "wheel;
+extra == \"dev\"", "flake8; extra == \"dev\"", "pylint; extra == \"dev\"", "setu
+ptools; extra == \"dev\"", "build; extra == \"dev\"", "bandit; extra == \"dev\""
+, "pytest; extra == \"dev\"", "pytest-cov; extra == \"dev\"", "pytest-mock; extr
+a == \"dev\"", "types-pyserial; extra == \"dev\""], "entry_points": ["EntryPoint
+(name='achronix_components', value='bw_achronix.components', group='bittware_com
+ponents')", "EntryPoint(name='achronix_products', value='bw_achronix.products',
+group='bittware_products')", "EntryPoint(name='achronix_tests', value='bw_achron
+ix.product_testing.Speedster', group='bittware_tests')", "EntryPoint(name='s7tvg
+6_tests', value='bw_achronix.product_testing.S7tVG6', group='bittware_tests')",
+"EntryPoint(name='bw_acx_flash_programmer', value='bw_achronix.tools.flash_progr
+ammer:main', group='console_scripts')"]}
+{"name": "bw-vfio-devices", "version": "0.1.19", "location": "/home/uwb_student0
+0/.local/lib/python3.9/site-packages/bw_vfio_devices-0.1.19.dist-info", "require
+s": ["cffi>=1.14.6", "bw-core>=0.0.1", "bw-kit>=0.0.1", "bw-bmc-core", "grpcio>=
+1.64.1", "protobuf", "distro", "pyyaml"], "entry_points": ["EntryPoint(name='kit
+_vfio', value='bw_vfio_devices.kit_vfio:KitVFIO', group='bittware_kits')"]}
+{"name": "bw-utils", "version": "0.1.5", "location": "/home/uwb_student00/.local
+/lib/python3.9/site-packages/bw_utils-0.1.5.dist-info", "requires": ["typing-ext
+ensions", "distro"], "entry_points": ["EntryPoint(name='bw_diagnostic_util', val
+ue='bw_utils.tools.bw_diagnostic_util:main', group='console_scripts')"]}
+{"name": "bw-usb-devices", "version": "0.1.5", "location": "/home/uwb_student00/
+.local/lib/python3.9/site-packages/bw_usb_devices-0.1.5.dist-info", "requires":
+["cffi>=1.14.6", "bw-core>=0.0.1", "bw-kit>=0.0.1", "bw-bmc-core", "crc8"], "ent
+ry_points": ["EntryPoint(name='kit_usb', value='bw_usb_devices.kit_bw_usb:KitUSB
+', group='bittware_kits')"]}
+{"name": "bw-uart-edge-devices", "version": "0.1.8", "location": "/home/uwb_stud
+ent00/.local/lib/python3.9/site-packages/bw_uart_edge_devices-0.1.8.dist-info",
+"requires": ["bw-core", "bw-peripherals", "pyserial", "typing-extensions", "pyya
+ml"], "entry_points": ["EntryPoint(name='kit_UART_edge', value='bw_uart_edge_dev
+ices.kit_uart_edge:KitUART_Edge', group='bittware_kits')", "EntryPoint(name='bw_
+uart_edge_probe', value='bw_uart_edge_devices.uart_edge_probe:main', group='cons
+ole_scripts')"]}
+{"name": "bw-sysfs-devices", "version": "0.0.4", "location": "/home/uwb_student0
+0/.local/lib/python3.9/site-packages/bw_sysfs_devices-0.0.4.dist-info", "require
+s": ["cffi>=1.14.6", "bw-core>=0.1.16", "bw-kit>=0.1.8", "bw-bmc-core"], "entry_
+points": ["EntryPoint(name='kit_sysfs', value='bw_sysfs_devices.kit_sysfs:KitSYS
+FS', group='bittware_kits')"]}
+{"name": "bw-pldm-transport", "version": "0.1.13", "location": "/home/uwb_studen
+t00/.local/lib/python3.9/site-packages/bw_pldm_transport-0.1.13.dist-info", "req
+uires": ["typing_extensions>=4.11.0", "wheel; extra == \"dev\"", "flake8; extra
+== \"dev\"", "pylint; extra == \"dev\"", "setuptools; extra == \"dev\"", "build;
+ extra == \"dev\"", "bandit; extra == \"dev\"", "pytest; extra == \"dev\"", "pyt
+est-cov; extra == \"dev\"", "pytest-mock; extra == \"dev\"", "pytest-sugar; extr
+a == \"dev\"", "types-PyYAML; extra == \"dev\"", "types-setuptools; extra == \"d
+ev\"", "types-cffi; extra == \"dev\"", "tox; extra == \"dev\""], "entry_points":
+ []}
+{"name": "bw-kit", "version": "0.1.17", "location": "/home/uwb_student00/.local/
+lib/python3.9/site-packages/bw_kit-0.1.17.dist-info", "requires": ["bw-core", "b
+w-bmc-abs", "typing-extensions"], "entry_points": []}
+{"name": "bw-cmdk", "version": "0.1.11", "location": "/home/uwb_student00/.local
+/lib/python3.9/site-packages/bw_cmdk-0.1.11.dist-info", "requires": ["bw-core",
+"typing-extensions"], "entry_points": ["EntryPoint(name='bw_cmdk_ls', value='bw_
+cmdk.utils.cmdk_ls:main', group='console_scripts')"]}
+{"name": "bw-bmc-abs", "version": "0.1.3", "location": "/home/uwb_student00/.loc
+al/lib/python3.9/site-packages/bw_bmc_abs-0.1.3.dist-info", "requires": [], "ent
+ry_points": []}
+SDK files 151
+DONE
+

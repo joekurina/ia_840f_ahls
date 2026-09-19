@@ -1,0 +1,762 @@
+REMOVE_CANDIDATES [('bw-agilex', '2024.3.1'), ('bw-bmc', '0.1.25'), ('bw-bmc-lit
+e', '0.1.0'), ('bw-common', '0.4.64'), ('bw-mctp', '0.2.2'), ('bw-pldm', '0.2.10
+'), ('bw-sdk', '2024.3.1'), ('bw-uart-edge', '0.1.6'), ('bw-usb', '2024.3.1'), (
+'bw-vfio', '0.0.1')] grpcio-tools
+REVERSE {"bw-mctp": [{"name": "bw-bmc", "requirement": "bw-mctp (>=0.0.5)"}], "b
+w-pldm": [{"name": "bw-bmc", "requirement": "bw-pldm (>=0.0.17)"}], "bw-bmc": []
+, "bw-common": [{"name": "bw-agilex", "requirement": "bw-common>=0.4.8"}, {"name
+": "bw-bmc", "requirement": "bw-common (>=0.4.55)"}, {"name": "bw-bmc-lite", "re
+quirement": "bw-common (>=0.4.64)"}, {"name": "bw-sdk", "requirement": "bw-commo
+n>=0.4.20"}, {"name": "bw-uart-edge", "requirement": "bw-common (>=0.4.3)"}, {"n
+ame": "bw-usb", "requirement": "bw-common>=0.4.8"}, {"name": "bw-vfio", "require
+ment": "bw-common>=0.4.64"}], "bw-vfio": [], "bw-agilex": [], "grpcio-tools": [{
+"name": "bw-vfio", "requirement": "grpcio-tools==1.64.1"}], "bw-uart-edge": [],
+"bw-sdk": [], "bw-usb": [], "bw-bmc-lite": [{"name": "bw-uart-edge", "requiremen
+t": "bw-bmc-lite"}]}
+OVERLAPS [('bw-mctp', 'bw-mctp-transport', 55), ('bw-pldm', 'bw-pldm-transport',
+ 355), ('bw-bmc', 'bw-bmc-core', 123), ('bw-bmc', 'bw-bmc-utils', 10), ('bw-agil
+ex', 'bw-agilex-product', 36), ('bw-uart-edge', 'bw-uart-edge-devices', 1), ('bw
+-sdk', 'bw-core-utils', 3), ('bw-bmc-lite', 'bw-bmc-core-lite', 37)]
+SOURCE bw_core_utils/bw_product.py
+#!python
+# Package:
+#    bw-core-utils
+#
+# Desc:
+#    bw_product.py
+#
+#  Provided by
+#  -----------
+#      BittWare, Inc.
+#      45 South Main St. Suite L100
+#      Concord, NH 03301
+#      Ph:     (603) 226 0404
+#      Fax:    (603) 226 6667
+#      WWW:    http://www.bittware.com
+#      Email:  support@bittware.com
+#
+# Copyright © 2020, BittWare, Inc.
+#
+# License:
+#  This source code is provided to you (the Licensee) under
+#  license by BittWare, a Molex Company.  To view or use this
+#  source code, the Licensee must accept a Software License
+#  Agreement (viewable at developer.bittware.com), which is
+#  commonly provided as a click-through license agreement.  The
+#  terms of the Software License Agreement govern all use and
+#  distribution of this file unless an alternative superseding
+#  license has been executed with BittWare.  This source code
+#  and its derivatives may not be distributed to third parties
+#  in source code form.  Software including or derived from this
+#  source code, including derivative works thereof created by
+#  Licensee, may be distributed to third parties with BITTWARE
+#  hardware only and in executable form only.
+#
+#  The click-thorough license is available here:
+#  https://developer.bittware.com/software_license.txt
+"""
+Utility for listing information about installed product classes
+"""
+from bw_core.product.__main__ import main
+
+if __name__ == "__main__":
+    main()
+
+SOURCE bw_core_utils/__init__.py
+
+SOURCE bw_core/__init__.py
+#  Provided by
+#  -----------
+#      BittWare, a Molex Company.
+#      45 South Main St. Suite L100
+#      Concord, NH 03301
+#      Ph:     (603) 226 0404
+#      WWW:    https://www.bittware.com
+#      Email:  support@bittware.com
+#
+# Copyright © 2020, BittWare, a Molex Company.
+#
+# License:
+#  This source code is provided to you (the Licensee) under
+#  license by BittWare, a Molex Company. To view or use this
+#  source code, the Licensee must accept a Software License
+#  Agreement (viewable at developer.bittware.com), which is
+#  commonly provided as a click-through license agreement. The
+#  terms of the Software License Agreement govern all use and
+#  distribution of this file unless an alternative superseding
+#  license has been executed with BittWare. This source code
+#  and its derivatives may not be distributed to third parties
+#  in source code form. Software including or derived from this
+#  source code, including derivative works thereof created by
+#  Licensee, may be distributed to third parties with BITTWARE
+#  hardware only and in executable form only.
+#
+#  The click-thorough license is available here:
+#  https://developer.bittware.com/software_license.txt
+"""bwsdk_defines"""
+from .enums import BMCType, CardFamily, CardName, MemorySpace
+from .decorators import classproperty, MaskingProperty
+
+__all__ = [
+    "BMCType",
+    "CardFamily",
+    "CardName",
+    "MemorySpace",
+    "classproperty",
+    "MaskingProperty"
+]
+
+SOURCE bw_agilex/__init__.py
+
+SOURCE bw_agilex/products/__init__.py
+# Library:
+#    bw_core.products.family.Agilex
+#
+# Desc:
+#    __init__.py
+#
+#  Provided by
+#  -----------
+#      BittWare, a Molex Company.
+#      45 South Main St. Suite L100
+#      Concord, NH 03301
+#      Ph:     (603) 226 0404
+#      WWW:    https://www.bittware.com
+#      Email:  support@bittware.com
+#
+# Copyright © 2024, BittWare, a Molex Company.
+#
+# License:
+#  This source code is provided to you (the Licensee) under
+#  license by BittWare, a Molex Company.  To view or use this
+#  source code, the Licensee must accept a Software License
+#  Agreement (viewable at developer.bittware.com), which is
+#  commonly provided as a click-through license agreement.  The
+#  terms of the Software License Agreement govern all use and
+#  distribution of this file unless an alternative superseding
+#  license has been executed with BittWare.  This source code
+#  and its derivatives may not be distributed to third parties
+#  in source code form.  Software including or derived from this
+#  source code, including derivative works thereof created by
+#  Licensee, may be distributed to third parties with BITTWARE
+#  hardware only and in executable form only.
+#
+#  The click-thorough license is available here:
+#  https://developer.bittware.com/software_license.txt
+"""
+Sub package for all product / family related code
+"""
+from .ia220u2_product import IA220U2Product
+from .ia420f_product import IA420FProduct
+from .ia440i_product import IA440IProduct
+from .ia441i_product import IA441IProduct  # noqa: F401
+from .ia720i_product import IA720IProduct
+from .ia780i_product import IA780IProduct
+from .ia840f_product import IA840FProduct, IA840FFakeProduct
+from .ia860m_product import IA860MProduct
+from .agidevkit_product import AGIDEVKITProduct
+
+__all__ = [
+    "IA220U2Product",
+    "IA420FProduct",
+    "IA440IProduct",
+    "IA441IProduct",
+    "IA720IProduct",
+    "IA780IProduct",
+    "IA840FProduct",
+    "IA840FFakeProduct",
+    "IA860MProduct",
+    "AGIDEVKITProduct",
+]
+
+SOURCE bw_agilex/products/ia840f_product.py
+# Library:
+#    bw_core.products.families.Agilex.IA840FProduct
+#
+# Desc:
+#    IA840F_product.py
+#
+#  Provided by
+#  -----------
+#      BittWare, a Molex Company.
+#      45 South Main St. Suite L100
+#      Concord, NH 03301
+#      Ph:     (603) 226 0404
+#      WWW:    https://www.bittware.com
+#      Email:  support@bittware.com
+#
+# Copyright © 2024, BittWare, a Molex Company.
+#
+# License:
+#  This source code is provided to you (the Licensee) under
+#  license by BittWare, a Molex Company.  To view or use this
+#  source code, the Licensee must accept a Software License
+#  Agreement (viewable at developer.bittware.com), which is
+#  commonly provided as a click-through license agreement.  The
+#  terms of the Software License Agreement govern all use and
+#  distribution of this file unless an alternative superseding
+#  license has been executed with BittWare.  This source code
+#  and its derivatives may not be distributed to third parties
+#  in source code form.  Software including or derived from this
+#  source code, including derivative works thereof created by
+#  Licensee, may be distributed to third parties with BITTWARE
+#  hardware only and in executable form only.
+#
+#  The click-thorough license is available here:
+#  https://developer.bittware.com/software_license.txt
+"""
+IA 840 F Product
+"""
+import os
+from typing import Dict
+from random import randrange
+from bw_core.enums import BMCType
+from bw_core.data_types import VendorDeviceInfo
+from bw_core.card_ids import BITTWARE_PCIE_VID, BT_IA_840F, FAKE_SDK_SSDID, Prod
+uctNames
+from ..agilex_product import AgilexProduct
+
+
+class IA840FProduct(AgilexProduct):
+    """
+    IA 840F Product class
+
+    Attributes:
+        name: name of the card
+        vendor_info: contains vendor_id and device_id
+        fpga_desc_path: path to the fpga description file
+        card_desc_path: path to the card description file
+        bmc_type: type of BMC on the card
+    """
+
+    name = ProductNames.IA_840F
+    vendor_info = VendorDeviceInfo(vendor_id=BITTWARE_PCIE_VID, device_id=BT_IA_
+840F)
+    data_directory = os.path.join(AgilexProduct.data_directory, "IA-840F")
+    fpga_desc_path = os.path.join(data_directory, "ia-840f_cardtest.json")
+    card_desc_path = os.path.join(data_directory, "IA-840F.yml")
+    clock_files = os.path.join(data_directory, "clocks")
+    bmc_type = BMCType.PLDM
+
+
+class IA840FFakeProduct(IA840FProduct):
+    """
+    IA 840F Product class when subsystem device ID is faked (test and simulated)
+
+    Attributes:
+        vendor_info: contains vendor_id and device_id
+        bmc_type: type of BMC on the card
+    """
+
+    name = ProductNames.IA_840F_QEMU
+    vendor_info = VendorDeviceInfo(
+        vendor_id=BITTWARE_PCIE_VID, device_id=BT_IA_840F, ss_vendor_id=BITTWARE
+_PCIE_VID, ss_device_id=FAKE_SDK_SSDID
+    )
+    bmc_type: BMCType = BMCType.NONE
+
+    @classmethod
+    def alt_mfg_info(cls, dev_ids: VendorDeviceInfo = VendorDeviceInfo(0, 0, Non
+e, None)) -> Dict[str, str]:
+        """
+        Return MFG info with random serial number
+
+        Note:
+            This method should only be called for mocking out alt info
+
+        Arguments:
+            dev_ids: A stubbed out vendor device id to mock
+
+        Returns:
+            A mocked out dictionary of manufacturing info
+        """
+        _vid, _did, _ss_vid, _ss_did = dev_ids
+        return {
+            "Model": "IA-840F",
+            "PartNumber": "IA-840F-S-B272E2V-44R4R4-S0-X322-220E-9",
+            "SerialNumber": f"{randrange(1, 999999):#06d}",  # nosec
+            "Version": "0.0.0.0.0",
+        }
+
+SOURCE bw_core_utils/bw_card_list.py
+#!python
+# Package:
+#    bw-sdk
+#
+# Desc:
+#    bw_card_list.py
+#
+#  Provided by
+#  -----------
+#      BittWare, Inc.
+#      45 South Main St. Suite L100
+#      Concord, NH 03301
+#      Ph:     (603) 226 0404
+#      Fax:    (603) 226 6667
+#      WWW:    http://www.bittware.com
+#      Email:  support@bittware.com
+#
+# Copyright © 2020, BittWare, Inc.
+#
+# License:
+#  This source code is provided to you (the Licensee) under
+#  license by BittWare, a Molex Company.  To view or use this
+#  source code, the Licensee must accept a Software License
+#  Agreement (viewable at developer.bittware.com), which is
+#  commonly provided as a click-through license agreement.  The
+#  terms of the Software License Agreement govern all use and
+#  distribution of this file unless an alternative superseding
+#  license has been executed with BittWare.  This source code
+#  and its derivatives may not be distributed to third parties
+#  in source code form.  Software including or derived from this
+#  source code, including derivative works thereof created by
+#  Licensee, may be distributed to third parties with BITTWARE
+#  hardware only and in executable form only.
+#
+#  The click-thorough license is available here:
+#  https://developer.bittware.com/software_license.txt
+"""Utility for listing Bittware cards found on the system"""
+
+import sys
+import argparse
+import json
+import logging
+from typing import Any, Union
+from bw_kit import (
+    Kits,
+    Interfaces,
+    KitCardAccessError,
+    DeviceEntry,
+)
+from bw_core.utils.common_argparse import add_common_arguments, BwArgParser
+from bw_core.exceptions.base import ComponentException, BmcError, BWException
+from bw_core.logging.legacy import BWLogLevel, set_log_verbosity_all
+
+
+JSONData = dict[str, Any]
+
+
+def _gather_bittware_design_info(entry: DeviceEntry) -> dict[str, str]:
+    # Should really only use these components if we know this is a
+    # BittWare Card Test design.
+    try:
+        # The following block of code should be a method of DeviceEntry
+        # prior code here did not limit component search to memory spaces
+        # supported byt the device entry.
+        comp_index = entry.component_index()
+
+        if comp_index.empty:
+            return {}
+
+        if (fw_comp := comp_index.get_component(("FIRMWARE", "FIRMWARE_"))) and
+(
+            ts_comp := comp_index.get_component(("TIMESTAMP", ""), prefix="TIMES
+TAMP_")
+        ):
+            fw_comp.rw_handler(entry.DevRW())
+            ts_comp.rw_handler(entry.DevRW())
+
+            version_major, version_minor = fw_comp.Version  # type: ignore
+            design_id_major, design_id_minor = fw_comp.DesignID  # type: ignore
+            timestamp = ts_comp.datetime_obj  # type: ignore
+            return {
+                "version": f"{version_major}.{version_minor}",
+                "design_id": f"{design_id_major}.{design_id_minor}",
+                "timestamp": timestamp.strftime("%Y-%m-%d %H:%M:%S"),
+            }
+        return {}
+    except (ComponentException, KitCardAccessError):
+        return {}
+
+
+def get_card_entry_info(entry: DeviceEntry) -> JSONData:
+    """get_card_entry_info
+    get basic, passive information about a card entry
+
+    Args:
+        entry: a card list entry
+    """
+    entry_info = {
+        "Interface": entry.interface,
+        "Index": entry.device,
+        "Vendor ID": entry.dev_ids.vendor_id,
+        "Device ID": entry.dev_ids.device_id,
+    }
+    if "location" in entry.extra_props:
+        entry_info.update({"Location": entry.extra_props["location"]})
+
+    if "slot_uid" in entry.extra_props:
+        entry_info.update({"Slot UID": entry.extra_props["slot_uid"]})
+
+    if "link_status" in entry.extra_props:
+        entry_info.update({"Link Status": entry.extra_props["link_status"]})
+
+    if "edge_id" in entry.extra_props:
+        entry_info.update({"Edge Protocol ID": entry.extra_props["edge_id"]})
+
+    return entry_info
+
+
+def get_mfg_info(card: JSONData) -> JSONData:
+    """get_mfg_info
+    Get the manufacturer and product information from the card entries
+    """
+
+    info = {}
+    for entry in card["Entries"]:
+        if "ManufactureDate" in entry.extra_props:
+            mfg_date = entry.extra_props["ManufactureDate"]
+            try:
+
+                mfg_date = (
+                    f"{mfg_date['year']}-{mfg_date['month']}-{mfg_date['day']} "
+                    f"{mfg_date['hour']}:{mfg_date['minute']:02d}:{mfg_date['sec
+ond']:02d}"
+                )
+                info.update({"Manufacture Date": mfg_date})
+            except KeyError:
+                pass
+
+        info.update({"Part Number": entry.configuration, "Version": entry.revisi
+on})
+        if "AssetTag" in entry.extra_props:
+            info.update({"Asset Tag": entry.extra_props["AssetTag"]})
+
+    return info
+
+
+def get_ver_info(card: JSONData) -> JSONData:
+    """get_ver_info
+    Get the firmware version information from the card entries
+    """
+
+    info = {}
+    for entry in card["Entries"]:
+        if entry.interface == "PCI":
+            des_id = _gather_bittware_design_info(entry)
+            if des_id:
+                info.update(
+                    {
+                        "FPGA Firmware Ver": des_id["version"],
+                        "FPGA Design ID": des_id["design_id"],
+                        "FPGA Timestamp": des_id["timestamp"],
+                    }
+                )
+        info.update({"CPLD Version": entry.cpld_version()})
+        bmc_version_full = entry.bmc_version()
+        if bmc_version_full:
+            bmc_info = bmc_version_full.split(",")
+            info.update({"BMC Version Full": bmc_version_full})
+            if len(bmc_info) > 1:
+                info.update({"BMC Version": bmc_info[0]})
+                info.update({"BMC Build Time": bmc_info[1]})
+                if len(bmc_info) > 2:
+                    info.update({"BMC Build Branch": bmc_info[2]})
+            else:
+                info.update({"BMC Version": bmc_info[0]})
+        else:
+            info.update({"BMC Version Full": "no bmc version reported"})
+
+    return info
+
+
+def get_card_status(card: JSONData) -> JSONData:
+    """get_card_status
+    Get the status of the card entries
+    """
+    status = {}
+    for entry in card["Entries"]:
+        try:
+            bmc = entry.bmc
+            if not bmc:
+                # A device entry may fail to produce a BMC handle and return Non
+e
+                # Should maybe add a message here
+                raise BmcError(f"No BMC for device entry {entry.device_tag}")
+            bmc.discover()
+
+            power = bmc.card().get_power_on()
+            status.update({"Power": "On" if power else "Off"})
+            if "BMC" in bmc.card():
+                last_error = bmc.card()["BMC"].last_error(clear_on_read=False)
+                err_msg = last_error["lastError"]
+                if err_msg == "":
+                    err_msg = "None"
+                status.update({"Last Error": err_msg, "Reset Cause": last_error[
+"resetCause"]})
+
+            if "FPGA" in bmc.card():
+                status.update({"FPGA State": bmc.card()["FPGA"].sensors["FPGA Co
+nfiguration"].get_value()})
+
+        # Could also use more general BWKitException
+        except (BmcError, KitCardAccessError):
+            bmc = None
+
+    return status
+
+
+def get_customer_data(card: JSONData) -> JSONData:
+    """get_customer_data
+    Get the status of the card entries
+    """
+    status = {}
+    achronix_key = "106G-Capability"
+    for entry in card["Entries"]:
+        try:
+            bmc = entry.bmc
+            if not bmc:
+                # A device entry may fail to produce a BMC handle and return Non
+e
+                raise BmcError(f"No BMC for device entry {entry.device_tag}")
+            bmc.discover()
+
+            card = bmc.card()
+            if "PROM" in card:
+                prom = card["PROM"]
+            elif "MFG_PROM" in card:
+                prom = card["MFG_PROM"]
+            else:
+                raise BWException("Error - Unable to find a MFG PROM component i
+n the BMC")
+            try:
+                prom_data = prom.information()
+                customer_data = prom_data["customer_data"]
+                if achronix_key in customer_data:
+                    status.update({achronix_key: customer_data.split(":", 1)[1]}
+)
+                else:
+                    status.update({"Customer Data": customer_data})
+            except UnicodeDecodeError as err:
+                raise BWException(
+                    "Unable to decode PROM contents.") from err
+
+        # Could also use more general BWKitException
+        except (BmcError, KitCardAccessError):
+            bmc = None
+
+    return status
+
+
+def organize_by_serials(devs: list[DeviceEntry]) -> dict[str, JSONData]:
+    """organize_by_serials
+    organize a list of devices by serial number
+    """
+    cards: dict[str, dict[str, Any]] = {}
+
+    for entry in devs:
+        if hasattr(entry, "serial_number") and entry.serial_number is not None:
+            serial_number = entry.serial_number
+        else:
+            serial_number = "(Unknown serial number)"
+
+        if serial_number in cards:
+            # Edge case - unset product if all of the products under this serial
+ are not the same
+            if entry.product != cards[serial_number]["Product"]:
+                cards[serial_number]["Product"] = None
+
+            cards[serial_number]["Entries"].append(entry)
+
+        else:
+            cards[serial_number] = {"Entries": [entry], "Product": entry.product
+}
+    return cards
+
+
+def format_card_data(cards: JSONData, verbose: bool = True) -> list[JSONData]:
+    """format_card_data
+    format the card data for display or turning into json
+    """
+    json_data = []
+
+    for card in cards:
+        product = cards[card]["Product"]
+        product_name = product.name if product is not None else "Unknown product
+"
+        cardname = f"{product_name} {card}"
+
+        entry_info = []
+        for entry in cards[card]["Entries"]:
+            entry_info.append(get_card_entry_info(entry))
+
+        card_info = {
+            "name": cardname,
+            "product": product_name,
+            "serial_number": card,
+            "entries": entry_info,
+        }
+        if verbose:
+            if not card == "(Unknown serial number)":
+                mfg_info = get_mfg_info(cards[card])
+                if mfg_info:
+                    card_info.update({"Manufacturing Info": mfg_info})
+                ver_info = get_ver_info(cards[card])
+                if ver_info:
+                    card_info.update({"Firmware Version Info": ver_info})
+                card_status = get_card_status(cards[card])
+                if card_status:
+                    card_info.update({"Card Status": card_status})
+                customer_data = get_customer_data(cards[card])
+                if customer_data:
+                    card_info.update({"Prom Data": customer_data})
+
+        json_data.append(card_info)
+    return json_data
+
+
+def print_card_data(json_data: list[JSONData]):   # pylint: disable=too-many-bra
+nches
+    """print_card_data
+    print the card data in a table
+    """
+
+    for card in json_data:
+        print(f"{card['name']}")
+        print("  Interface(s)")
+        for entry in card["entries"]:
+            for key, value in entry.items():
+                if key == "Interface":
+                    print(f"   {value}")
+                else:
+                    print(f"     {key:<20}: {value}")
+
+        if "Manufacturing Info" in card:
+            print("  Manufacturing Info")
+            for key, value in card["Manufacturing Info"].items():
+                print(f"    {key:<20}: {value}")
+        if "Firmware Version Info" in card:
+            print("  Firmware Version Info")
+            for key, value in card["Firmware Version Info"].items():
+                print(f"    {key:<20}: {value}")
+        if "Card Status" in card:
+            print("  Card Status")
+            for key, value in card["Card Status"].items():
+                print(f"    {key:<20}: {value}")
+        if "Prom Data" in card:
+            print("  Prom Data")
+            for key, value in card["Prom Data"].items():
+                print(f"    {key:<20}: {value}")
+
+
+def json_to_lower_case(json_data: Union[JSONData, list[JSONData]]) -> JSONData:
+    """json_to_lower_case
+    convert json keys to lowercase and remove spaces
+    """
+    if isinstance(json_data, dict):
+        new_dict = {}
+        for key, value in json_data.items():
+            new_dict[key.replace(" ", "_").lower()] = json_to_lower_case(value)
+        return new_dict
+
+    if isinstance(json_data, (list, set, tuple)):
+        new_data = type(json_data)
+        return new_data(json_to_lower_case(item) for item in json_data)  # type:
+ ignore
+
+    return json_data
+
+
+def handle_card_list(args: argparse.Namespace):  # pylint: disable=R0912
+    """handle_card_list
+    display information about cards
+
+    Args:
+        arguments: arguments from the argparser
+    """
+    int_enum = args.interface
+    devs = Kits.scan_devices(interfaces=int_enum, passive=not args.verbose)
+    cards = organize_by_serials(devs)
+
+    # Figure out why this was added
+    # - pretty sure this was added so that the MAX_10 UART_EN hack that is
+    # - currently required for S7T will work. We need a USB interface for the
+    # - card in order to make sure UART is enabled. If we haven't scanned
+    # - for it then UART may not be enabled.
+    if Interfaces.UART in int_enum and Interfaces.USB not in int_enum:
+        Kits.scan_devices(interfaces=Interfaces.USB, passive=True, rescan=True)
+
+    json_data = format_card_data(cards, verbose=args.verbose)
+    if args.json:
+        print(json.dumps(json_to_lower_case(json_data), indent=4))
+    else:
+        print_card_data(json_data)
+
+
+def _flatten(mixed: list[Any]) -> list[Any]:
+    """
+    Only needed for weird argparse option on interface
+
+    Flatten a list that contains values and lists (any combination of nested
+    lists or values into a single level list of values.
+
+    This is needed to handle argparse arguments that allow both: -i PCI -i USB
+    and -i PCI USB (one or more args that can be repeated)
+    """
+    ret = []
+    for item in mixed:
+        if isinstance(item, list):
+            ret.extend(_flatten(item))
+        else:
+            ret.append(item)
+    return ret
+
+
+def main():
+    """main
+    Main function
+    """
+    descr = "BMC card list\n"
+
+    parser = BwArgParser(description=descr, formatter_class=argparse.RawTextHelp
+Formatter)
+    parser.add_argument(
+        "-i",
+        "--interface",
+        help='BMC interface(s) to use. Defaults to "PCI" and "USB"',
+        choices=["PCI"] + Kits.interface_names(),
+        nargs="+",  # -i requires one or more values ie. -i PCI USB
+        action="append",  # Allows -i to be specified multiple times in arg list
+    )
+
+    # parser.add_argument('-a', '--all', help='Show all cards found', action='st
+ore_true')
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        help="Verbose mode - attempt to open each device to gather complete info
+",
+        action="store_true",
+    )
+    parser.add_argument("-j", "--json", help="Output in JSON format", action="st
+ore_true")
+    add_common_arguments(parser)
+
+    args = parser.parse_args()
+    try:
+        if args.interface:
+            interface_args = set(_flatten(args.interface))
+            args.interface = [Interfaces(arg) for arg in interface_args]
+        else:
+            args.interface = [Kits.PCI_INTERFACE_ALIAS, Interfaces.USB]
+
+        if args.json:
+            set_log_verbosity_all(BWLogLevel.OFF)
+            logging.disable(logging.CRITICAL)
+        handle_card_list(args)
+
+        if not args.verbose and not args.json:
+            print()
+            print("Use -v or --verbose to open each device and display more info
+rmation")
+    except (BWException, ValueError) as err:
+        print(f"bw_card_list Error: {err}", file=sys.stderr)
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
+
+CURRENT_GRPC_TOOLS_REFERENCES []
+DONE
+

@@ -1,0 +1,1629 @@
+           IA-840f
+oneAPI ASP usage within Intel oneAPI/oneASP
+
+           Technical Note
+IA-840f oneAPI Support Guide
+
+Document Revision: 15-Aug-2024
+Hardware Revisions: 1, 2, and 3
+BittWare
+45 South Main Street, Suite L100
+Concord, NH 03301 USA
++1 (603) 226 0404
+
+Intellectual Property
+Copyright © 2024, BittWare, a Molex company
+All rights reserved. All names, images and logos identifying BittWare or third parties and their products and
+services are subject to copyright, design rights and trademarks of BittWare and/or third parties. Nothing
+contained in these terms shall be construed as conferring by implication or otherwise any license or right to
+use any trademark, patent, design right or copyright of BittWare, or any other third party.
+
+Trademarks
+Agilex is a registered trademark of Intel Corp. All other trademarks are the property of their respective hold-
+ers.
+
+Disclaimer
+BittWare assumes no responsibility for any inaccuracies, errors, or omissions that may be in this manual. In
+no event will BittWare be liable for direct, indirect, special, incidental, or consequential damages resulting
+from any defect or omission in this manual. BittWare reserves the right to revise this document and to make
+changes from time to time in the content hereof without obligation of BittWare to notify any person or per-
+sons of such revision or changes.
+
+
+
+
+  © 2024 BittWare, a Molex company                                                                           2
+Contents
+1 Overview                                                    5
+
+  1.1 Changelog for 23.1-2 Release                            6
+
+2 Included ASP Variants                                       7
+
+3 Installing Software                                         9
+
+  3.1 Operating Systems Verified with oneAPI ASP Package      9
+
+    3.1.1 System Requirements and Boot Options:               9
+    3.1.2 Grub boot options:                                  9
+  3.2 Extracting the BittWare IA-840f Supplied File Set       10
+
+  3.3 Installing the BittWare IA-840f SDK and CSP             10
+
+  3.4 Installing the Linux DFL Driver                         12
+
+  3.5 Installing the OPAE SDK                                 13
+
+  3.6 Installing Intel oneAPI                                 13
+
+  3.7 OneAPI-ASP                                              15
+
+    3.7.1 Overview                                            15
+    3.7.2 Directory Structure                                 15
+    3.7.3 ASP variants                                        15
+  3.8 Installing BittWare IA-840f oneAPI ASP (OFS HLD SHIM)   16
+
+
+
+
+© 2024 BittWare, a Molex company                              3
+  4 Setting up the Hardware                                       17
+
+    4.1 Updating the oneAPI ASP FPGA Image                        17
+
+    4.2 Updating the FPGA Image (sof) Manually                    17
+
+    4.3 Updating the Flash FPGA Image                             18
+
+    4.4 Initializing the oneAPI ASP Device                        18
+
+       4.4.1 For the ofs_ia840f ASP:                              20
+       4.4.2 For the ofs_ia840f_usm ASP:                          20
+  5 Verifying the Setup                                           21
+
+    5.1 Legacy Diagnose utility                                   21
+
+  6 oneAPI Example                                                28
+
+    6.1 Vector-add Example                                        28
+
+    6.2 Board-Test Example                                        30
+
+    6.3 Buffered Host-Device Streaming tutorial                   36
+
+    6.4 Additional IA-840f Specific Examples                      38
+
+  7 Debugging Tools                                               39
+
+    7.1 HTML Reports                                              39
+
+    7.2 vTune Profiler                                            39
+
+  8 Known Issues                                                  41
+
+       8.0.1 Multiple Card Verification                           41
+       8.0.2 Memory allocation failure and ulimit configuration   41
+  9 OFS Reference Information                                     43
+
+    9.1 OFS Release Reference                                     43
+
+       9.1.1 Details:                                             43
+       9.1.2 Driver:                                              43
+
+
+
+
+© 2024 BittWare, a Molex company                                  4
+1 Overview
+Intel oneAPI/oneASP supports oneAPI ASP FPGA packages as targets. This technical note is intended to
+help clarify the steps required in getting started with the BittWare oneAPI ASP packages within
+oneAPI/oneASP, specifically in relation to the IA-840f. These steps have been tested against Intel oneAPI
+2024.1.0 specifically, but Intel’s support model is to provide only the latest version of oneAPI in their down-
+load site. Therefore, when you access, you may not see 2024.1.0 as an available version. Intel oneAPI
+2024.1.0 toolkit installer does not support the FPGA add-on (Quartus) selection; Quartus must be installed
+separately; thus, the intelfpgadpcpp folder is not inside the oneAPI root directory. For further details on
+FPGA add-on (Quartus) installation, refer to the link below: https://www.in-
+tel.com/content/www/us/en/developer/tools/oneapi/fpga.html Unlike previous generations of BittWare
+oneAPI ASP deliverables, such as on BittWare 520N-MX product, the IA-840f oneAPI ASP deliverables
+are based on Intel OFS approach. Intel OFS is considered BETA.
+This code release is supplied under MIT license terms as per the current OFS release model as of OFS
+2023.1. The DFL driver and OPAE SDK installation steps are now closer to the original IA-840F release:
+there is no longer the need to build a kernel or the OPAE SDK from source.
+
+This technical note will provide guidance to:
+
+    l   IA-840f standard RPM installation and requirements for ASP packages
+    l   Install Intel oneAPI
+    l   Install BittWare IA-840f oneAPI ASP package
+    l   Verify ASP and card installation
+    l   Build and run a basic vector-add example
+
+The following versions have been verified as part of this technical note:
+
+    l   Intel oneAPI 2024.1.0 with 23.1 Quartus patch 0.02iofs
+    l   BittWare IA-840F oneAPI ASP package based on OFS 2023.1 release.
+
+
+
+
+  © 2024 BittWare, a Molex company                                                                            5
+   l   BittWare SDK 2024.1.0 and BittWare IA-840f CSP 2024.1.0 packages.
+   l   Rocky 8
+   l   The recommended host system should be based on a 3rd Gen Intel Xeon-SP processor. Other
+       processors and host systems may support OFS/OPAE but are not recommended at this stage,
+       notably when using the USM variant.
+
+BittWare has worked to port and productize the release of the ASP fileset for the IA-840f as far as pos-
+sible at this stage. The file set contains two variants of ASP, one of which is denoted ‘_usm’ and is
+provided to allow for preliminary support for USM/SVM within oneAPI/oneASP and oneAPI approaches.
+Please refer to the known issues section for further comments regarding USM based BSP. Lastly, note
+that the term OpenCL AFU HLD shim and oneAPI ASP are used interchangeably in this doc. The AFU
+HLD shim is how the oneAPI ASP functionality is referred to within an OFS based context.
+
+1.1 Changelog for 23.1-2 Release
+   l   Uses RPM package to install DFL driver
+   l   Uses RPM packages to install OPAE SDK
+   l   Adds a second bank of DDR4 memory
+          l   Leads to slightly higher FPGA resource usage in the FIM
+   l   Fixes issue with PCI passthrough of the BittWare physical function
+
+
+
+
+© 2024 BittWare, a Molex company                                                                       6
+2 Included ASP Variants
+The file set contains two variants of ASP variants. One of which is denoted ‘_usm’ and is provided to allow
+for preliminary support for USM/SVM within oneAPI and OpenCL approaches. Please refer to the known
+issues section for further comments regarding USM based ASP. In the current release, both ASPs, are
+based on an OFS minimized approach to restrict the total number of features implemented to maximize the
+available FPGA user resource. This means that not all features on the IA-840F are exposed in the current
+ASP variants. In comparison to earlier generation BittWare BSP deliverables, the current IA-840F ASP
+packages, do not include or support the feature of external channels via QSFP type ports or modules. It is
+intended to expand the feature set of these ASPs in the future once external channels are fully supported in
+oneAPI itself. The following details the ASP variants included in this initial release.
+
+ofs_ia840f
+
+   l   Based on AGFB027R25A2E2V device
+   l   Two DDR4-2666 banks available to kernel targeting on on-board DDR4 bank (32GByte total)
+
+ofs_ia840f_usm
+
+   l   Based on AGFB027R25A2E2V device
+   l   Two DDR4-2666 banks available to kernel targeting on on-board DDR4 bank (32GByte total)
+   l   USM/SVM host based shared memory access option
+
+In both cases these ASP variants are based on a minimized OFS FIM design to maximize the available
+user FPGA logic. The following floorplan overview highlights the approach taken. The static portion of the
+design is currently minimized to an area in bottom left corner of the device. As oneAPI develops further,
+other ASP variants may be offered or developed that extend the features exposed on the IA-840F. These
+will require changes to the illustrated floor plan and therefore the consumed FPGA logic resources, depend-
+ent upon the new ASP variant(s).
+
+
+
+
+  © 2024 BittWare, a Molex company                                                                        7
+                                   Figure 1 OFS FIM minimized floorplan
+
+
+
+
+                        Figure 2
+
+
+
+
+© 2024 BittWare, a Molex company                                          8
+3 Installing Software
+3.1 Operating Systems Verified with oneAPI ASP Package
+
+Note that we have tested primarily on RedHat 8.9 series systems since this is the preferred oneAPI oper-
+ating system. Specifically, Redhat 8 and Rocky 8 is the best known configuration currently for the
+OFS/OPAE release that this ASP fileset is based on. BittWare is not directly supporting other distributions
+currently, but we plan to widen OS support in the future as OFS develops further. For this release, we have
+successfully tested the supplied file set against the following OS distribution and kernel combinations:
+
+   l   Rocky Linux release 8 (Green Obsidian)
+   l   Red Hat Enterprise Linux (RHEL) release 8.6 (Ootpa)
+
+3.1.1 System Requirements and Boot Options:
+Intel OFS and OPAE require specific settings in the host system BIOS and the Linux grub command boot
+arguments. BIOS settings required as follows:
+
+  1. SR-IOV / SR-IOV global enable : ENABLED
+  2. VT-d & virtualization extensions : ENABLED
+  3. Secure Boot : DISABLED
+
+3.1.2 Grub boot options:
+
+  1. It is a requirement to enable iommu and hugepages via grub command line options as follows: sudo
+     emacs /etc/default/grub and add following parameters, "intel_iommu=on pcie-
+     e=realloc hugepagesz=2M hugepages=2048" within the GRUB_CMDLINE_LINUX para-
+     meter. Here's an example of how it should look: GRUB_CMDLINE_LINUX="<default_prams>
+     intel_iommu=on pcie=realloc hugepagesz=2M hugepages=2048"
+
+
+
+
+  © 2024 BittWare, a Molex company                                                                        9
+  2. sudo su then run grub2-mkconfig and target the relevant output file depending upon your sys-
+     tem type, i.e.
+           l   If it is a legacy system, execute the following command: grub2-mkconfig -o /boot/-
+               grub2/grub.cfg
+           l   If it is an EFI based system, execute the following command: grub2-mkconfig -o
+               /boot/efi/EFI/<Linux_distro_name>/grub.cfg
+  3. Reboot the system.
+
+Ensure that IOMMU is turned on as explained in Intel's Building and Installing the OFS DFL Kernel
+Drivers from Source in Getting started guides for your target devices:
+
+    l   OFS Getting Started User Guide: OFS for Intel® Agilex® PCIe Attach FPGAs.
+
+You can verify this setting using cat /proc/cmdline command. The output must have intel_iom-
+mu=on pcie=realloc hugepagesz=2M hugepages=2048.
+
+
+   [testfpga@dellr750 ~]$ cat /proc/cmdline
+   BOOT_IMAGE=(hd0,gpt2)/vmlinuz-4.18.0-513.24.1.el8_9.x86_64 root=UUID=9383e60b-69be-
+   4839-96b0-37719966af8d ro crashkernel=auto resume=UUID=60d1d5ee-63ff-4263-8cf6-
+   1c37f4184288 rhgb quiet intel_iommu=on pcie=realloc hugepagesz=2M hugepages=2048
+
+
+
+
+3.2 Extracting the BittWare IA-840f Supplied File Set
+
+The IA-840f oneASP download contains a complete archive file that includes several sub folders and
+rpms used in the following installation steps. Refer to the archive file which should contain all the RPMs
+mentioned in this installation guide, except for OneAPI and Quartus, which need to be installed sep-
+arately. You will need to extract the supplied file archive to a suitable temporary folder before following
+the remaining steps. You may need to tailor the steps to fit your specific system host requirements.
+Extract the main archive supplied, for example: tar -xvzf ia840f-ofs-hldasp-
+2023.1.2.tar.gz
+
+3.3 Installing the BittWare IA-840f SDK and CSP
+
+For full support of the IA-840f hardware when using the oneAPI ASP, you should also install the Bitt-
+Ware SDK and CSP. The SDK and CSP support IP for the IA-840f BMC implementation that is included
+in the OFS-based oneAPI ASP implementation for the IA-840f. The installation requirements are there-
+fore to install both the supplied SDK and CSP RPMs on the host system. The SDK and CSP doc-
+umentation provides installation instructions, but the current steps are replicated here for ease. For the
+latest information, consult the main SDK and CSP documentation available on developer.bittware.com.
+The RPMs listed below are contained in the archive ‘rpm_package’ subfolder. If you are using RHEL8
+
+
+
+
+© 2024 BittWare, a Molex company                                                                         10
+you may need to enable additional repositories for support for DKMs. Below is a suggested simple
+approach if required for RHEL8 systems prior to moving onto the next steps.
+
+   l   sudo subscription-manager repos --enable codeready-builder-for-rhel-8-
+       $(arch)-rpms
+   l   sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-
+       latest-8.noarch.rpm
+
+PowerTools must be enabled from the config-manager this repository provides additional packages that
+are not available in the base repositories of some Linux distributions. These packages include devel-
+opment tools, libraries, and other software packages that are useful for users and developers:
+sudo yum config-manager --set-enabled powertools
+
+  1. Install pre-requisites for BittWare SDK and CSP installation packages:
+
+   l   sudo yum install epel-release
+   l   sudo yum install dkms kernel-devel python3 libusbx libusb libffi-devel
+       libnsl
+   l   python3 -m pip install --upgrade pip
+
+  2. Install the BittWare SDK RPM: sudo yum localinstall bittware-sdk-2024.1.0-
+       1.el8.rpm
+  3. Install the BittWare CSP RPM for the IA-840f: sudo yum localinstall bittware-csp-
+       ia840f-2024.1.0-1.el8.rpm
+  4. Set up user for relevant BittWare group: sudo usermod -a -G bittware {user}(Be sure
+       to change to have the required username for the account(s) as required on host system.) Log out
+       and then log back in. Verify the user added to the Bittware group by running the following com-
+       mand: groups | grep bittware
+  5. Install the BittWare python packages: bw_pip install Then to check the installation, at the ter-
+       minal type: bw_ls You should see the following packages listed:
+
+          bw_pip
+          bw_sem_unlock
+          bw_diagnostic_util
+          bw_ls
+          bw_vfio_peek_poke
+          bw_uart_edge_probe
+          bw_card_list
+
+
+
+
+© 2024 BittWare, a Molex company                                                                         11
+         bw_fpga_i2c_peek_poke
+         bw_fpga_peek_poke
+         bw_qsfp_info
+         bw_pci_link
+         bw_pci_peek_poke
+         bw_card_test
+         bw_bmc_clock_programmer
+         bw_bmc_configure
+         bw_bmc_file_utility
+         bw_bmc_fpga_load
+         bw_bmc_get_logs
+         bw_bmc_pldm_effecter
+         bw_bmc_pldm_sensor
+         bw_bmc_upgrade
+         bw_card_monitor
+         bw_bmc_lite_sensors
+         bw_bmc_lite_status
+         bw_bmc_lite_update
+         bw_agilex_flash_programmer
+
+
+
+
+3.4 Installing the Linux DFL Driver
+
+The OPAE SDK works with a driver called linux-dfl. We include a linux-dfl-backport RPM as opposed to
+building the kernel from source.
+The following packages are required for a functional DFL/OPAE SDK stack:
+
+
+   python3 -m pip install --user jsonschema virtualenv pudb pyyaml setuptools pybind11
+
+   # If setuptools and pybind11 were already installed
+   python3 -m pip install --upgrade --user pybind11 setuptools
+
+
+
+
+      Note: For complete details about building the linux-dfl custom kernel, refer to the link below:
+      https://ofs.github.io/ofs-2023.1/hw/n6001/user_guides/ug_qs_ofs_n6001/ug_qs_ofs_
+      n6001/#31-ofs-dfl-kernel-driver-environment-setup
+Navigate to the rpm_packages directory of the extracted fileset. Here you should see an RPM named
+intel-fpga-dfl-dkms-1.10.0-1.2023.12.07.g614d157.noarch.rpm and a directory
+named opae-2.10.0-1 (which will be installed in the next section). Follow the steps below to install
+and configure the DFL kernel:
+
+
+
+
+© 2024 BittWare, a Molex company                                                                        12
+   sudo dnf localinstall intel-fpga-dfl-dkms-1.10.0-1.2023.12.07.g614d157.noarch.rpm
+
+
+
+To verify the installation worked, ensure there are DFL kernel modules present.
+
+
+   [testfpga@dellr750 rpm_packages]$ lsmod | grep dfl
+   dfl_pci                16384 0
+   dfl                    32768 1 dfl_pci
+   fpga_region            16384 1 dfl
+
+
+
+
+3.5 Installing the OPAE SDK
+
+The OPAE SDK is a requirement as part of the software stack used in communicating with the OFS
+based oneAPI ASP provided.
+      For further details on OPAE SDK, refer to the OPAE Wiki and OPAE installation guide
+In the rpm_packages/opae-2.10.0.1/ folder there will be rpms to install:
+
+
+   [testfpga@dellr750 opae-2.10.0-1]$ ls
+   opae-2.10.0-1.el8.x86_64.rpm                    opae-devel-debuginfo-2.10.0-1.el8.x86_64.rpm
+   opae-2.10.0-1.tar.gz                            opae-extra-tools-2.10.0-1.el8.x86_64.rpm
+   opae-debuginfo-2.10.0-1.el8.x86_64.rpm          opae-extra-tools-debuginfo-2.10.0-1.el8.x86_
+   64.rpm
+   opae-debugsource-2.10.0-1.el8.x86_64.rpm        src
+   opae-devel-2.10.0-1.el8.x86_64.rpm
+
+
+
+Install the rpms: sudo dnf localinstall opae-*.rpm (however skip the src rpm)
+      Note: BittWare has incorporated a BittWare BMC element into the OFS port to the IA-840f
+      in place of the Intel reference BMC. Due to this, and the focus on the oneAPI AFU SHIM /
+      ASP for oneAPI, many of the additional OPAE tools and security flows are not currently sup-
+      ported. The minimal requirements are covered for supporting the oneAPI runtime with the
+      addition of management of the IA-840f via the BittWare SDK utilizes accessed via a sep-
+      arate PCI physical function (PF) in the implemented OFS design.
+
+3.6 Installing Intel oneAPI
+
+
+
+
+© 2024 BittWare, a Molex company                                                                    13
+There are multiple ways to install and manage Intel oneAPI tools, but the following is provided as a basic
+reference. Refer to Intel oneAPI installation documentation if other approaches are required. Please
+note that in terms of oneAPI operating systems, the BittWare release only supports oneAPI on Linux.
+
+  1. Go to Intel site and download and run the oneAPI installer script for the base toolkit: https://www.in-
+      tel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html
+  2. We typically use the offline/online method. Use offline if you need to replicate the installation or
+      keep a copy of the installation files.
+
+
+
+
+  3. Continue through the installation steps to complete the installation run. This will take some time
+      depending upon download speeds.
+  4. Follow the link page https://www.intel.com/content/www/us/en/developer/tools/oneapi/fpga.html
+      to download Quartus separately and install. Once installed, you must also ensure that the fol-
+      lowing env is set: QUARTUS_ROOTDIR_OVERRIDE environment variable must be set before
+      building the example program. It must point to the Quartus root dir. Quartus step mentioned in
+      oneAPI installation docs: https://www.intel.com/content/www/us/en/docs/oneapi/installation-
+      guide-linux/2023-1/install-the-intel-quartus-prime-software.html For example: export
+      QUARTUS_ROOTDIR_OVERRIDE=/path/to/quartus/intelFPGA_pro/23.1/quartus
+
+
+
+
+© 2024 BittWare, a Molex company                                                                            14
+       The path will depend on the relevant location of your installation. Note, if you have a previous
+       oneAPI installation, certain components may be upgraded. The new oneAPI toolkit installer does
+       not contain the FPGA add-on (Quartus). That needs to be installed separately. This means there
+       is no intelfpgadpcpp folder inside the oneapi directory.
+  5. Intel states that they only provide access to the latest/current version as part of their installer.
+       Therefore, we recommend you create an offline installer package for your use for use of older
+       oneAPI releases or for installing on other systems.
+
+
+3.7 OneAPI-ASP
+
+3.7.1 Overview
+This directory contains files necessary to generate ASP for the OFS IA840F reference platform. The
+hardware currently relies on platforms that implement the OFS PCIe TLP format using AXI-S interfaces,
+and the software uses OPAE SDK interfaces.
+
+3.7.2 Directory Structure
+The Directory is structured as follows:
+   l   bringup: contains files used by 'aocl install' command to install prerequisite software on a target
+       system and to load a ASP. The files are stored in two separate git submodules that each use git-lfs
+       to store their contents.
+   l   hardware: contains files used by the OneAPI compiler to integrate the generated kernel code with
+       platform specific code. Contains distinct shim targets with distinct functionalities (ex. USM and
+       non-USM variants targeting the same board platform).
+   l   linux64: contains the libraries and utilities that are used by the OneAPI software stack. The repos-
+       itory itself contains a few scripts that are checked-in to linux64/libexec. The linux64 directory is
+       also the target for files compiled from the source directory.
+   l   scripts: a variety of helper scripts used for configuring ASP and for running tests
+
+3.7.3 ASP variants
+The hardware folder contains subdirectories with the 2 different Shim/BSP variants:
+   l   ofs_ia840f_usm: Shim/ASP that supports shared virtual memory between host and device.
+       This variant is the same as the non-USM variant with the addition of the USM path between the
+       kernel-system and the host.
+   l   ofs_ia840f: DMA-based Shim/ASP that supports local memory and host memory interfaces for
+       the kernel system.
+
+
+
+
+© 2024 BittWare, a Molex company                                                                            15
+3.8 Installing BittWare IA-840f oneAPI ASP (OFS HLD SHIM)
+
+This step assumes that Intel oneAPI has been successfully installed and you have followed the instruc-
+tions to install the oneAPI Base Toolkit and the FPGA add-on (Quartus) from Intel for custom platforms.
+
+  1. After extracting the files, install the BittWare oneAPI ASP. Change directory to the oneAPI root, or
+      equivalent folder for your oneAPI installation, i.e. cd /path/to/intel/oneapi
+      Source the oneAPI setup script to set the environment source setvars.sh
+  2. Call aocl install /path/to/intel/oneapi-asp/ia840f to install the BittWare ASP
+      package into the environment. This will carry out the required package installation along with
+      some setup for 2M hugepage support for the login session.
+  3. Verify the detection of the package using the following command: aoc -list-boards
+  4. The output of the aoc -list-boards command should show the ofs_ia840f and ofs_ia840f_usm vari-
+      ants:
+
+         Board list:
+           ofs_ia840f (default)
+              Board Package: /path/to/intel/oneapi-asp/ia840f
+
+              ofs_ia840f_usm
+                 Board Package: /path/to/intel/oneapi-asp/ia840f
+                 Memories:      device, host
+
+
+
+
+© 2024 BittWare, a Molex company                                                                       16
+4 Setting up the Hardware
+4.1 Updating the oneAPI ASP FPGA Image
+
+The IA-840f hardware is shipped with a factory test image. This is not an oneAPI ASP FPGA image;
+instead it is a Card Test application image, so the card configuration will need to be updated for use with
+oneAPI. Before following these programming steps, connect a USB-C cable to the IA-840f USB IN PORT
+as shown in the BittWare IA-840f Hardware Reference Guide https://developer-
+.bittware.com/hardware/docs/ia-840f/Rev1/Content/HardwareReference/BoardOverview/Board_Lay-
+out.htm
+
+4.2 Updating the FPGA Image (sof) Manually
+
+The following instructions describe manually programming the FPGA directly using a SOF-based bit-
+stream. This is not therefore a permanent change to how the card boots from a cold power-on, but it is
+recommended as an initial step to get familiar with the hardware. The next section details the process to
+change the flash boot load on the IA-840f if required.
+
+  1. Before reprogramming the FPGA that is live on the PCIe bus, we strongly recommend disabling AER
+      using the provided script. Otherwise, you may experience a watchdog-based system reboot due to a
+      fatal PCIe error being detected.
+          l   Change to the IA-840f ASP folder: cd /path/to/intel/oneapi-asp/ia840f
+          l   Call the AER script for a number of possible live IA-840f combinations using the following:
+              sudo ./control_aer.sh 12ba:0070 off; sudo ./control_aer.sh 8086:bcce
+              off; sudo ./control_aer.sh 8086:bccf off; sudo ./control_aer.sh
+              1af4:1000 off; sudo ./control_aer.sh 12ba: off
+
+
+
+
+  © 2024 BittWare, a Molex company                                                                          17
+          l   For enabling the JTAG access via Quartus please make sure to follow the steps mentioned
+              in this link: https://www.intel.com/content/www/us/en/docs/programmable/683472/21-4/in-
+              stalling-on-red-hat-enterprise-linux.html Failure to update the rules file may cause issues
+              with the Quartus tools JTAG functionality.
+  2. Program the required IA-840f oneAPI ASP SOF into the FPGA using Intel Quartus programmer.
+      Program the FPGA using the required SOF from the command line: Change the directory to the
+      Quartus binaries folder
+          l   cd /path/to/quartus/intelFPGA_pro/23.1/quartus/bin/
+          l   ./jtagconfig --setparam 1 JtagClockAutoAdjust 0;./jtagconfig --set-
+              param 1 JtagClock 16M;./jtagconfig --getparam 1 JtagClock
+          l   ./quartus_pgm -c 1 -m JTAG -o "p;/path/to/intel/oneapi-asp/i-
+              a840f/build/bringup/ofs_ia840f/build/output_files/ofs_top.sof@1"
+          l   Note: In this release, the path to the SOF is: ~/IOFS_BUILD_ROOT/ofs-ia840f/work-
+              ofs-23.1-2-build/syn/syn_top/output_files/ofs_top.sof
+  3. Restart the host system: shutdown -r now
+
+
+4.3 Updating the Flash FPGA Image
+
+Rather than loading the SOF-based bitstream after each cold boot, you can update the flash on the IA-
+840f to directly boot as an oneAPI ready device on the IA-840f. This section details these steps to repro-
+gram the user flash page in the QSPI flash that is connected to the Agilex series device on the BittWare
+IA-840f. This is an optional step. For flash update to user page based on page setup from a factory pro-
+grammed card:
+
+  1. Change directory, cd, to the archive subfolder flash_image.
+  2. Call the Bittware Agilex flash programmer utility (bw_agilex_flash_programmer, which is
+      included in the BittWare SDK) to update the user page with the following command: bw_agilex_
+      flash_programmer program -a 0x04000000 ia840f-ofs-23.1-2-flash-
+      image.rpd
+
+Once the flash page has been updated you should shut down the system to power cycle the card. On
+next cold boot it will load the new image from flash and be ready for use as an oneAPI target device.
+
+4.4 Initializing the oneAPI ASP Device
+
+After updating the PCI-based FPGA image with either of the above steps, manual or flash-based load,
+you’ll need to complete some final steps once back into the OS. This can be automated in a startup
+
+
+
+
+© 2024 BittWare, a Molex company                                                                            18
+script but is currently a manual set of steps with OFS/OPAE. This process should improve in future
+releases.
+When the system is back up, complete the following steps to initialize the device for use within oneAPI:
+
+  1. Find the BDF (Bus Device Function) identifier for the IA-840f using lspci lspci -d 8086:bcce
+     you should see lspci output with multiple function on a particular bus and device. For example, in
+     the example below it is 0000:82:00.0:
+
+
+         82:00.0 Processing accelerators: Intel Corporation Device bcce (rev 01)
+
+
+
+
+            Note: The physical functions have reduced from 5 PFs to only 2 PFs; PF0 is mainly
+            used for the OFS DFL device, while the PF1 is used for the BittWare SDK device:
+            lspci -s 82:
+
+
+         82:00.0 Processing accelerators: Intel Corporation Device bcce (rev 01)
+         82:00.1 Processing accelerators: BittWare, Inc. Device 0070 (rev 01)
+
+
+
+  2. Use this BDF identifier along with your user and group account details (testfpga in the example
+     below) to set up the card for access via the pci_device and opae.io utilities. In the example below,
+     you may need to change the bus and device identifiers files (82:00) and the testfpga(user-
+     ):testfpga(group) parameters for your system and account.
+
+
+         sudo pci_device 0000:82:00.0 vf 1
+         sudo opae.io init -d 0000:82:00.2 testfpga:testfpga
+         sudo opae.io ls
+
+
+
+      Make sure the OPAE successfully initialized the PCIe BDF that points to vfio-pci driver. sudo
+      opae.io ls | grep "vfio-pci"
+
+
+         [0000:82:00.2] (0x8086, 0xbccf) Intel N6000 ADP VF (Driver: vfio-pci)
+
+
+
+  3. Set the required environment variable: export OFS_OCL_SHIM_ROOT-
+     T=/path/to/intel/oneapi-asp/ia840f
+
+  4. Source the oneAPI setup script to set the environment source /path/to/in-
+     tel/oneapi/setvars.sh
+
+  5. Carry out an initialization of the OFS based ASP:
+
+
+
+
+© 2024 BittWare, a Molex company                                                                       19
+      4.4.1 For the ofs_ia840f ASP:
+      aocl initialize acl0 ofs_ia840f
+
+      4.4.2 For the ofs_ia840f_usm ASP:
+      aocl initialize acl0 ofs_ia840f_usm
+      In either case it will carry out a partial reconfiguration of the AFU region in the OFS based ASP
+      design via the PCIe interface to prepare the card for access. Note acl0 refers to the first device
+      and may need changed in the case of multiple oneAPI ASP devices in the system.
+
+  6. Finally, log out and then log back in for the memory allocation in aocl initialize to take effect.
+
+  7. After log in make sure ulimit shows the max locked memory and max memory size as following:
+     ulimit -a
+
+
+         core file size               (blocks, -c) 0
+         data seg size                (kbytes, -d) unlimited
+         scheduling priority                  (-e) 0
+         file size                    (blocks, -f) unlimited
+         pending signals                      (-i) 254934
+         max locked memory            (kbytes, -l) 67108864
+         max memory size              (kbytes, -m) unlimited
+
+
+
+
+The IA-840f should now be ready for initialization in oneAPI ASP for within Intel oneAPI.
+
+
+
+
+© 2024 BittWare, a Molex company                                                                           20
+5 Verifying the Setup
+5.1 Legacy Diagnose utility
+
+This utility is still useful within oneAPI installations to verify communication to the board prior to building a
+full oneAPI hardware image. The aocl diagnose utility can be run as ‘aocl diagnose’ which will do a basic
+comms test to the card which will be sufficient for establishing that the hardware is correctly accessible in
+the system. A second mode ‘aocl diagnose acl0’, where acl0 refers to the device index, will run a DMA
+based test to the hardware but is not required to confirm basic access is ok.
+      Note: Before running the utility, you should have set up the environment for oneAPI using the
+      setvars.sh script included or an equivalent method.
+
+
+   [testfpga@dellr750 ~]$ cd /path/to/intel/oneapi/
+   [testfpga@dellr750 oneapi]$ source setvars.sh
+
+   :: initializing oneAPI environment ...
+      -bash: BASH_VERSION = 4.4.20(1)-release
+      args: Using "$@" for setvars.sh arguments:
+   :: advisor -- latest
+   :: ccl -- latest
+   :: compiler -- latest
+   :: dal -- latest
+   :: debugger -- latest
+   :: dev-utilities -- latest
+   :: dnnl -- latest
+   :: dpcpp-ct -- latest
+   :: dpl -- latest
+   :: intelfpgadpcpp -- latest
+
+
+
+
+   © 2024 BittWare, a Molex company                                                                             21
+   ::   intelpython -- latest
+   ::   ipp -- latest
+   ::   ippcp -- latest
+   ::   ipp -- latest
+   ::   mkl -- latest
+   ::   mpi -- latest
+   ::   tbb -- latest
+   ::   vpl -- latest
+   ::   vtune -- latest
+   ::   oneAPI environment initialized ::
+
+   [testfpga@dellr750 ~]$ aocl diagnose
+   --------------------------------------------------------------------
+   ICD System Diagnostics
+   --------------------------------------------------------------------
+
+   Using the following location for ICD installation:
+           /etc/OpenCL/vendors
+
+   Found 3 icd entry at that location:
+           /etc/OpenCL/vendors/intel64.icd
+           /etc/OpenCL/vendors/Intel_FPGA_SSG_Emulator.icd
+           /etc/OpenCL/vendors/Altera.icd
+
+   The following OpenCL libraries are referenced in the icd files:
+           /opt/intel/oneapi/compiler/latest/linux/lib/x64/libintelocl.so
+
+   Checking LD_LIBRARY_PATH for registered libraries:
+           /opt/intel/oneapi/compiler/latest/linux/lib/x64/libintelocl.so was registered on
+   the system.
+           /opt/intel/oneapi/compiler/latest/linux/lib/x64/libintelocl_emu.so
+
+   Checking LD_LIBRARY_PATH for registered libraries:
+           /opt/intel/oneapi/compiler/latest/linux/lib/x64/libintelocl_emu.so was
+   registered on the system.
+           /opt/intel/oneapi/compiler/latest/linux/lib/oclfpga/linux64/lib/libalteracl.so
+
+   Checking LD_LIBRARY_PATH for registered libraries:
+           /opt/intel/oneapi/compiler/latest/linux/lib/oclfpga/linux64/lib/libalteracl.so
+   was registered on the system.
+
+   Using OCL_ICD_FILENAMES to search for ICD clients, it is set to libintelocl_emu.so:libal-
+   teracl.so:/opt/intel/oneapi/compiler/2023.1.0/linux/lib/x64/libintelocl.so
+
+
+
+
+© 2024 BittWare, a Molex company                                                        22
+   Checking LD_LIBRARY_PATH for registered libraries specified by OCL_ICD_FILENAMES
+           libintelocl_emu.so was registered on the system at /op-
+   t/intel/oneapi/compiler/2023.1.0/linux/lib/x64
+           libalteracl.so was registered on the system at /op-
+   t/intel/oneapi/compiler/2023.1.0/linux/lib/oclfpga/linux64/lib
+           /opt/intel/oneapi/compiler/2023.1.0/linux/lib/x64/libintelocl.so was registered
+   on the system.
+
+   Using the following location for fcd installations:
+           /opt/Intel/OpenCLFPGA/oneAPI/Boards
+
+   Found 1 fcd entry at that location:
+           /opt/Intel/OpenCLFPGA/oneAPI/Boards/ofs_ia840f_shim.fcd
+
+   The following OpenCL libraries are referenced in the fcd files:
+           libopae-c.so
+   /home/testfpga/IOFS_BUILD_ROOT/oneapi-asp/ia840f/linux64/lib/libMPF.so
+   /home/testfpga/IOFS_BUILD_ROOT/oneapi-asp/ia840f/linux64/lib/libintel_opae_mmd.so
+
+   Checking LD_LIBRARY_PATH for registered libraries:
+           libopae-c.so was registered on the system at /usr/lib64
+           /home/testfpga/IOFS_BUILD_ROOT/oneapi-asp/ia840f/linux64/lib/libMPF.so was
+   registered on the system.
+           /home/testfpga/IOFS_BUILD_ROOT/oneapi-asp/ia840f/linux64/lib/libintel_opae_
+   mmd.so was registered on the system.
+
+   Number of Platforms = 3
+           1. Intel(R) FPGA Emulation Platform for OpenCL(TM)              | Intel(R)
+   Corporation           | OpenCL 1.2 Intel(R) FPGA SDK for OpenCL(TM), Version 20.3
+           2. Intel(R) FPGA SDK for OpenCL(TM)                             | Intel(R)
+   Corporation           | OpenCL 1.0 Intel(R) FPGA SDK for OpenCL(TM), Version 2023.1
+           3. Intel(R) OpenCL                                              | Intel(R)
+   Corporation           | OpenCL 3.0 LINUX
+   --------------------------------------------------------------------
+   ICD diagnostics PASSED
+   --------------------------------------------------------------------
+   --------------------------------------------------------------------
+   BSP Diagnostics
+   --------------------------------------------------------------------
+   --------------------------------------------------------------------
+   Device Name:
+   acl0
+
+
+
+
+© 2024 BittWare, a Molex company                                                         23
+   BSP Install Location:
+   /home/testfpga/IOFS_BUILD_ROOT/oneapi-asp/ia840f
+
+   Vendor: Intel Corp
+
+   Physical Dev Name       Status                Information
+
+   ofs_ee00000             Passed                Intel OFS Platform (ofs_ee00000)
+                                                 PCIe ca:00.0
+
+   DIAGNOSTIC_PASSED
+   --------------------------------------------------------------------
+
+
+
+Call "aocl diagnose acl0" to run diagnose for accelerator "0"
+Call "aocl diagnose all" to run diagnose for all devices
+
+
+
+   [testfpga@dellr750 ~]$ aocl diagnose acl0
+   --------------------------------------------------------------------
+   ICD System Diagnostics
+   --------------------------------------------------------------------
+
+   Using the following location for ICD installation:
+           /etc/OpenCL/vendors
+
+   Found 3 icd entry at that location:
+           /etc/OpenCL/vendors/intel64.icd
+           /etc/OpenCL/vendors/Intel_FPGA_SSG_Emulator.icd
+           /etc/OpenCL/vendors/Altera.icd
+
+   The following OpenCL libraries are referenced in the icd files:
+           /opt/intel/oneapi/compiler/latest/lib/libintelocl.so
+
+   Checking LD_LIBRARY_PATH for registered libraries:
+           /opt/intel/oneapi/compiler/latest/lib/libintelocl.so was registered on the sys-
+   tem.
+           /opt/intel/oneapi/compiler/latest/lib/libintelocl_emu.so
+
+   Checking LD_LIBRARY_PATH for registered libraries:
+           /opt/intel/oneapi/compiler/latest/lib/libintelocl_emu.so was registered on the
+
+
+
+
+© 2024 BittWare, a Molex company                                                        24
+   system.
+             /opt/intel/oneapi/compiler/latest/opt/oclfpga/host/linux64/lib/libalteracl.so
+
+   Checking LD_LIBRARY_PATH for registered libraries:
+           /opt/intel/oneapi/compiler/latest/opt/oclfpga/host/linux64/lib/libalteracl.so
+   was registered on the system.
+
+   Using OCL_ICD_FILENAMES to search for ICD clients, it is set to libintelocl_
+   emu.so:libalteracl.so:/opt/intel/oneapi/compiler/2024.1/lib/libintelocl.so
+
+   Checking LD_LIBRARY_PATH for registered libraries specified by OCL_ICD_FILENAMES
+           libintelocl_emu.so was registered on the system at /op-
+   t/intel/oneapi/compiler/2024.1/lib
+           libalteracl.so was registered on the system at /op-
+   t/intel/oneapi/compiler/2024.1/opt/oclfpga/host/linux64/lib
+           /opt/intel/oneapi/compiler/2024.1/lib/libintelocl.so was registered on the sys-
+   tem.
+
+   Using the following location for fcd installations:
+           /opt/Intel/OpenCLFPGA/oneAPI/Boards
+
+   Found 1 fcd entry at that location:
+           /opt/Intel/OpenCLFPGA/oneAPI/Boards/ofs_ia840f_shim.fcd
+
+   The following OpenCL libraries are referenced in the fcd files:
+           libopae-c.so
+   /home/testfpga/IOFS_BUILD_ROOT/oneapi-asp/ia840f/linux64/lib/libMPF.so
+   /home/testfpga/IOFS_BUILD_ROOT/oneapi-asp/ia840f/linux64/lib/libintel_opae_mmd.so
+
+   Checking LD_LIBRARY_PATH for registered libraries:
+           libopae-c.so was registered on the system at /usr/lib64
+           /home/testfpga/IOFS_BUILD_ROOT/oneapi-asp/ia840f/linux64/lib/libMPF.so was
+   registered on the system.
+           /home/testfpga/IOFS_BUILD_ROOT/oneapi-asp/ia840f/linux64/lib/libintel_opae_
+   mmd.so was registered on the system.
+
+   Number of Platforms = 3
+           1. Intel(R) FPGA Emulation Platform for OpenCL(TM)              | Intel(R)
+   Corporation           | OpenCL 1.2 Intel(R) FPGA SDK for OpenCL(TM), Version 20.3
+           2. Intel(R) FPGA SDK for OpenCL(TM)                             | Intel(R)
+   Corporation           | OpenCL 1.0 Intel(R) FPGA SDK for OpenCL(TM), Version 2024.1
+           3. Intel(R) OpenCL                                              | Intel(R)
+   Corporation           | OpenCL 3.0 LINUX
+   --------------------------------------------------------------------
+
+
+
+
+© 2024 BittWare, a Molex company                                                             25
+   ICD diagnostics PASSED
+   --------------------------------------------------------------------
+
+   --------------------------------------------------------------------
+   BSP Diagnostics
+   --------------------------------------------------------------------
+   Using platform: Intel(R) FPGA SDK for OpenCL(TM)
+   Using Device with name: ofs_ia840f : Intel OFS Platform (ofs_ee00000)
+   Using Device from vendor: Intel Corp
+   clGetDeviceInfo CL_DEVICE_GLOBAL_MEM_SIZE = 34359738368
+   clGetDeviceInfo CL_DEVICE_MAX_MEM_ALLOC_SIZE = 34359737344
+   Memory consumed for internal use = 1024
+   Actual maximum buffer size = 34359737344 bytes
+   Writing 32767 MB to global memory ...
+   Allocated 1073741824 Bytes host buffer for large transfers
+   Write speed: 14180.03 MB/s [14143.95 -> 14193.43]
+   Reading and verifying 32767 MB from global memory ...
+   Read speed: 14184.08 MB/s [13982.73 -> 14207.13]
+   Successfully wrote and readback 32767 MB buffer
+
+   Transferring   262144   KBs   in   512 512 KB blocks ... 2354.31 MB/s
+   Transferring   262144   KBs   in   256 1024 KB blocks ... 3942.02 MB/s
+   Transferring   262144   KBs   in   128 2048 KB blocks ... 7041.89 MB/s
+   Transferring   262144   KBs   in   64 4096 KB blocks ... 9397.02 MB/s
+   Transferring   262144   KBs   in   32 8192 KB blocks ... 11366.23 MB/s
+   Transferring   262144   KBs   in   16 16384 KB blocks ... 12507.76 MB/s
+   Transferring   262144   KBs   in   8 32768 KB blocks ... 13404.11 MB/s
+   Transferring   262144   KBs   in   4 65536 KB blocks ... 13752.15 MB/s
+   Transferring   262144   KBs   in   2 131072 KB blocks ... 13924.29 MB/s
+   Transferring   262144   KBs   in   1 262144 KB blocks ... 14027.08 MB/s
+
+   As a   reference:
+   PCIe   Gen1 peak speed: 250MB/s/lane
+   PCIe   Gen2 peak speed: 500MB/s/lane
+   PCIe   Gen3 peak speed: 985MB/s/lane
+
+   Writing 262144 KBs with block size (in bytes) below:
+
+   Block_Size Avg    Max    Min    End-End (MB/s)
+     524288 935.10 2338.50 565.34 926.59
+    1048576 1375.81 3942.02 691.97 1366.59
+    2097152 6337.76 7039.60 774.64 6238.40
+    4194304 8437.30 9351.14 1542.90 8355.28
+
+
+
+
+© 2024 BittWare, a Molex company                                             26
+    8388608 10152.31 11329.65 2880.59 10086.20
+   16777216 11126.33 12457.44 4800.26 11089.26
+   33554432 11918.85 13399.01 7277.39 11897.25
+   67108864 12252.76 13740.55 9626.96 12244.09
+   134217728 12399.20 13562.82 11419.46 12394.61
+   268435456 12573.12 12573.12 12573.12 12573.12
+
+   Reading 262144 KBs with block size (in bytes) below:
+
+   Block_Size Avg    Max    Min    End-End (MB/s)
+     524288 938.94 2354.31 758.02 930.30
+    1048576 1385.90 3934.65 758.58 1376.65
+    2097152 6843.71 7041.89 5000.89 6732.86
+    4194304 9150.82 9397.02 6950.98 9049.70
+    8388608 11165.06 11366.23 9432.71 11087.46
+   16777216 12316.42 12507.76 11422.65 12271.71
+   33554432 13265.31 13404.11 12766.04 13241.63
+   67108864 13639.96 13752.15 13451.66 13628.78
+   134217728 13887.51 13924.29 13850.93 13882.95
+   268435456 14027.08 14027.08 14027.08 14027.08
+
+   Write top speed = 13740.55 MB/s
+   Read top speed = 14027.08 MB/s
+   Throughput = 13883.82 MB/s
+
+   DIAGNOSTIC_PASSED
+
+
+
+
+      Note: The bandwidth figures above are dependent on the host system. If memory cannot be
+      allocated and the DMA portion of aocl diagnose fails run the command ulimit -a verify
+      the max locked memory and max memory size are both set to unlimited. If they are not
+      set correctly, If they are not set correctly, more details please refer ulimit configuration.
+
+
+
+
+© 2024 BittWare, a Molex company                                                                      27
+6 oneAPI Example
+6.1 Vector-add Example
+
+Intel oneAPI includes a command line utility for accessing several existing reference examples. This sec-
+tion walks through the vector-add example.
+
+  1. Use the oneapi-cli to download a copy of C-based vector-add example. Call oneapi-cli from the
+       terminal and then select the C based vector-add example. The CLI utility will create a local copy of
+       the example files for you.
+  2. Once the files have been created, exit the utility and browse to the vector-add folder
+  3. The new examples are using CMake tool to generate the required makefiles for building for the target
+       device.
+
+   l   cd <vector-add-example>
+   l   mkdir build
+   l   cd build
+   l   cmake .. -DFPGA_DEVICE=/path/to/oneapi-asp/ia840f/:ofs_ia840f .. or cmake
+       .. -DFPGA_DEVICE=/path/to/oneapi-asp/ia840f/:ofs_ia840f_usm ..
+
+  4. Make sure the QUARTUS_ROOTDIR_OVERRIDE environment variable is set before building the
+       example program. It must point to the Quartus root directory for example:
+
+   l   export QUARTUS_ROOTDIR_OVERRIDE=/path/to/quartus_pro_23.1/quartus
+
+  5. Then follow the vector add building steps.
+
+
+
+
+  © 2024 BittWare, a Molex company                                                                            28
+   l   make cpu-gpu
+
+  6. This should produce output for running vector-add on host CPU.
+
+   l   ./vector-add-buffers
+
+
+   Running on device: Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz
+   Vector size: 10000
+   [0]: 0 + 0 = 0
+   [1]: 1 + 1 = 2
+   [2]: 2 + 2 = 4
+   ...
+   [9999]: 9999 + 9999 = 19998
+   Vector add successfully completed on device.
+
+
+
+
+  7. Now make and run the same but using the FPGA emulator.
+
+   l   make fpga_emu
+
+  6. This should produce output for running vector-add on FPGA emulation device.
+
+   l   ./vector-add-buffers.fpga_emu
+
+
+   Running on device: Intel(R) FPGA Emulation Device
+   Vector size: 10000
+   [0]: 0 + 0 = 0
+   [1]: 1 + 1 = 2
+   [2]: 2 + 2 = 4
+   ...
+   [9999]: 9999 + 9999 = 19998
+   Vector add successfully completed on device.
+
+
+
+Now for the actual FPGA compilation to hardware.
+
+  1. First create a report as suggested to inspect the report in a local web browser.
+
+   l   make report
+
+  2. Build and then run the hardware design. Note the make hw (FPGA build process) may take sev-
+       eral hours.
+
+
+
+
+© 2024 BittWare, a Molex company                                                               29
+   l   make fpga
+   l   ./vector-add-buffers.fpga
+
+
+   Running on device: ofs_ia840f : Intel OFS Platform (ofs_ee00000)
+   Vector size: 10000
+
+   [0]: 0 + 0 = 0
+   [1]: 1 + 1 = 2
+   [2]: 2 + 2 = 4
+   ...
+   [9999]: 9999 + 9999 = 19998
+   Vector add successfully completed on device.
+
+
+
+
+6.2 Board-Test Example
+
+The Board Test example is another oneAPI reference design that contains tests to check FPGA board
+interfaces and reports the following metrics:
+
+   l   Host-to-device global memory interface bandwidth
+   l   Kernel clock frequency
+   l   Kernel launch latency
+   l   Kernel-to-device global memory bandwidth
+   l   Unified Shared Memory bandwidth
+
+This reference design implements tests to check FPGA board interfaces and measure host-to-device
+and kernel-to-global memory interface metrics. Use this reference design as a starting point to validate
+platform interfaces when you customize a BSP.
+       For further details on Board Test reference deisng, refer to the link below: https://-
+       github.com/oneapi-src/oneAPI-samples/tree/-
+       master/DirectProgramming/C%2B%2BSYCL_FPGA/ReferenceDesigns/board_test
+
+  1. Use the oneapi-cli to download a copy of C-based Board Test reference example. Call oneapi-
+       cli from the terminal and then select the C based Board Test example under 'Reference
+       Designs' section. The CLI utility will create a local copy of the example files for you.
+  2. Once the files have been created, exit the utility and brwose to the board-test example folder
+  3. The new examples are using CMake tool to generate the required makefiles for building for the tar-
+       get device.
+
+
+
+
+© 2024 BittWare, a Molex company                                                                       30
+   l   cd <board-test-example>
+   l   cd ReferenceDesigns/board_test
+   l   mkdir build
+   l   cd build
+   l   cmake .. -DFPGA_DEVICE=/path/to/oneapi-asp/ia840f/:ofs_ia840f .. or
+       cmake .. -DFPGA_DEVICE=/path/to/oneapi-asp/ia840f/:ofs_ia840f_usm ..
+
+  4. Make sure the QUARTUS_ROOTDIR_OVERRIDE environment variable is set before building the
+       example program. It must point to the Quartus root directory for example:
+
+   l   export QUARTUS_ROOTDIR_OVERRIDE=/path/to/quartus_pro_23.1/quartus
+
+Then follow the board test FPGA compilation and building steps.
+
+  1. First create a report as suggested to inspect the report in a local web browser.
+
+   l   make report
+
+  2. Build and then run the hardware design. Note the make hw (FPGA build process) may take sev-
+       eral hours.
+
+   l   make fpga
+   l   ./board_test.fpga
+
+
+   [testfpga@dellr750 build]$ ./board_test.fpga
+
+   *** Board_test usage information ***
+   Command to run board_test using generated binary:
+     > To run all tests (default): run board_test.fpga
+     > To run a specific test (see list below); pass the test number as argument to "-
+   test" option:
+     Linux: ./board_test.fpga -test=<test_number>
+     Windows: board_test.exe -test=<test_number>
+     > To see more details on what each test does use -help option
+   The tests are:
+     1. Host Speed and Host Read Write Test
+     2. Kernel Clock Frequency Test
+     3. Kernel Launch Test
+     4. Kernel Latency Measurement
+     5. Kernel-to-Memory Read Write Test
+     6. Kernel-to-Memory Bandwidth Test
+
+
+
+
+© 2024 BittWare, a Molex company                                                               31
+     7. Unified Shared Memory Bandwidth Test
+   Note: Kernel Clock Frequency is run along with all tests except 1 (Host Speed and Host
+   Read Write test)
+
+   Running all tests
+   Running on device: ofs_ia840f_usm : Intel OFS Platform (ofs_ee00000)
+
+   clGetDeviceInfo CL_DEVICE_GLOBAL_MEM_SIZE = 34359738368
+   clGetDeviceInfo CL_DEVICE_MAX_MEM_ALLOC_SIZE = 34359738368
+   Device buffer size available for allocation = 34359738368 bytes
+
+   *****************************************************************
+   *********************** Host Speed Test *************************
+   *****************************************************************
+
+   Size of buffer created = 34359738368 bytes
+   Writing 32768 MiB to device global memory ... 14227.6 MB/s
+   Reading 32768 MiB from device global memory ... 14148.2 MB/s
+   Verifying data ...
+   Successfully wrote and readback 32768 MB buffer
+
+   Transferring   8192   KBs   in   256 32   KB   blocks   ...
+   Transferring   8192   KBs   in   128 64   KB   blocks   ...
+   Transferring   8192   KBs   in   64 128   KB   blocks   ...
+   Transferring   8192   KBs   in   32 256   KB   blocks   ...
+   Transferring   8192   KBs   in   16 512   KB   blocks   ...
+   Transferring   8192   KBs   in   8 1024   KB   blocks   ...
+   Transferring   8192   KBs   in   4 2048   KB   blocks   ...
+   Transferring   8192   KBs   in   2 4096   KB   blocks   ...
+   Transferring   8192   KBs   in   1 8192   KB   blocks   ...
+
+   Writing 8192 KBs with block size (in bytes) below:
+
+   Block_Size Avg Max Min End-End (MB/s)
+      32768 331.53 356.37 69.98 4115.17
+      65536 496.56 536.35 136.22 7234.65
+     131072 675.58 897.85 271.51 12124.32
+     262144 855.10 1735.92 521.42 15540.27
+     524288 1067.83 3231.88 910.53 12481.41
+    1048576 1526.11 5626.62 971.94 7438.28
+    2097152 5904.89 8675.24 3587.14 13527.81
+    4194304 7223.26 9913.20 5681.57 11120.36
+    8388608 7872.80 7872.80 7872.80 7872.80
+
+
+
+
+© 2024 BittWare, a Molex company                                                        32
+   Reading 8192 KBs with block size (in bytes) below:
+
+   Block_Size Avg Max Min End-End (MB/s)
+      32768 356.77 377.27 65.93 3286.45
+      65536 531.34 560.81 125.58 6477.33
+     131072 709.88 984.28 224.85 11118.23
+     262144 870.02 1889.53 370.04 14260.88
+     524288 1041.67 3448.11 556.02 12371.19
+    1048576 1338.18 5755.24 719.28 7611.55
+    2097152 2603.97 9209.71 838.92 3318.87
+    4194304 2808.66 10076.31 1631.74 3249.80
+    8388608 2851.94 2851.94 2851.94 2851.94
+
+   Host write top speed = 15540.27 MB/s
+   Host read top speed = 14260.88 MB/s
+
+
+
+   HOST-TO-MEMORY BANDWIDTH = 14901 MB/s
+
+
+
+   *****************************************************************
+   ********************* Host Read Write Test **********************
+   *****************************************************************
+
+   --- Running host read write test with device offset 0
+   --- Running host read write test with device offset 3
+
+   HOST READ-WRITE TEST PASSED!
+
+   *****************************************************************
+   ******************* Kernel Clock Frequency Test ***************
+   *****************************************************************
+
+   Measured Frequency    =   522.198 MHz
+   Quartus Compiled Frequency =    523 MHz
+
+   Measured Clock frequency is within 2 percent of Quartus compiled frequency.
+
+   *****************************************************************
+   ********************* Kernel Launch Test ************************
+   *****************************************************************
+
+
+
+
+© 2024 BittWare, a Molex company                                                 33
+   Launching kernel KernelSender ...
+   Launching kernel KernelReceiver ...
+     ... Waiting for sender
+   Sender sent the token to receiver
+     ... Waiting for receiver
+
+   KERNEL_LAUNCH_TEST PASSED
+
+   *****************************************************************
+   ******************** Kernel Latency **************************
+   *****************************************************************
+
+   Processed 10000 kernels in 128.7521 ms
+   Single kernel round trip time = 12.8752 us
+   Throughput = 77.6686 kernels/ms
+   Kernel execution is complete
+
+   *****************************************************************
+   ************* Kernel-to-Memory Read Write Test ***************
+   *****************************************************************
+
+   Maximum device global memory allocation size is 34359738368 bytes
+   Finished host memory allocation for input and output data
+   Creating device buffer
+   Finished writing to device buffers
+   Launching kernel MemReadWriteStream ...
+   Launching kernel with global offset : 0
+   Launching kernel with global offset : 1073741824
+   Launching kernel with global offset : 2147483648
+   Launching kernel with global offset : 3221225472
+   Launching kernel with global offset : 4294967296
+   Launching kernel with global offset : 5368709120
+   Launching kernel with global offset : 6442450944
+   Launching kernel with global offset : 7516192768
+   ... kernel finished execution.
+   Finished Verification
+   KERNEL TO MEMORY READ WRITE TEST PASSED
+
+   *****************************************************************
+   ***************** Kernel-to-Memory Bandwidth *****************
+   *****************************************************************
+
+   Note: This test assumes that design was compiled with -Xsno-interleaving option
+
+
+
+
+© 2024 BittWare, a Molex company                                                     34
+   Performing kernel transfers of 4096 MiBs on the default global memory (address start-
+   ing at 0)
+   Launching kernel MemWriteStream ...
+   Launching kernel MemReadStream ...
+   Launching kernel MemReadWriteStream ...
+
+   Summarizing bandwidth in MB/s/bank for banks 1 to 8
+     19587.2 19587.3 19587.1 19587.2 19587.1 19587.2     19587.3   19587.2   MemWriteStrea-
+   m
+     19645.4 19645.5 19645.4 19645.3 19645.4 19645.5     19645.4   19645.4   MemReadStream
+     17709.5 17598.9 17694.7 17594.4 17711.8 17606.1     17712.7   17711.9   MemReadWriteS-
+   tream
+
+   KERNEL-TO-MEMORY BANDWIDTH = 18966.7 MB/s/bank
+
+   *****************************************************************
+   *********************** USM Bandwidth *************************
+   *****************************************************************
+
+   Iterations: 1
+   Data size: 1024 MB
+   Data type size: 64 bytes
+   Case: Full Duplex
+   Average Time: 74505.8 ns
+   Average Throughput: 26.8435 GB/s
+
+   Iterations: 1
+   Data size: 1024 MB
+   Data type size: 64 bytes
+   Case: From Host to Device
+   Average Time: 54896.6 ns
+   Average Throughput: 18.2161 GB/s
+
+   Iterations: 1
+   Data size: 1024 MB
+   Data type size: 64 bytes
+   Case: From Device to Host
+   Average Time: 43599.9 ns
+   Average Throughput: 22.9358 GB/s
+
+
+
+   BOARD TEST PASSED
+
+
+
+
+© 2024 BittWare, a Molex company                                                           35
+6.3 Buffered Host-Device Streaming tutorial
+
+The Buffered Host-Device Streaming is an oneAPI tutorial that demonstrates how to optimize a full sys-
+tem design that streams data from the host, to the device, and back to the host.
+       For further details on Buffered Host-Device Streaming example tutorial, refer to the link
+       below: https://github.com/oneapi-src/oneAPI-samples/tree/-
+       master/DirectProgramming/C%2B%2BSYCL_FPGA/Tutorials/DesignPatterns/buffered_
+       host_streaming
+
+  1. Use the oneapi-cli to download a copy of C-based Buffered Host-Device Streaming tutorial. Call
+       oneapi-cli from the terminal and then select the C based Buffered Host-Device Streaming
+       example under 'Tutorials > Design Patterns' section. The CLI utility will create a local copy of the
+       example files for you.
+  2. Once the files have been created, exit the utility and brwose to the Buffered Host-Device Stream-
+       ing folder
+  3. The new examples are using CMake tool to generate the required makefiles for building for the tar-
+       get device.
+
+   l   cd <buffered-host-device-streaming>
+   l   cd Tutorials/DesignPatterns/buffered_host_streaming
+   l   mkdir build
+   l   cd build
+   l   cmake .. -DFPGA_DEVICE=/path/to/oneapi-asp/ia840f/:ofs_ia840f .. or
+       cmake .. -DFPGA_DEVICE=/path/to/oneapi-asp/ia840f/:ofs_ia840f_usm ..
+
+  4. Make sure the QUARTUS_ROOTDIR_OVERRIDE environment variable is set before building the
+       example program. It must point to the Quartus root directory for example:
+
+   l   export QUARTUS_ROOTDIR_OVERRIDE=/path/to/quartus_pro_23.1/quartus
+
+Then follow the Buffered Host-Device Streaming FPGA compilation and building steps.
+
+  1. First create a report as suggested to inspect the report in a local web browser.
+
+   l   make report
+
+
+
+
+© 2024 BittWare, a Molex company                                                                          36
+  2. Build and then run the hardware design. Note the make hw (FPGA build process) may take sev-
+       eral hours.
+
+   l   make fpga
+   l   ./buffered_host_streaming.fpga
+
+
+   [testfpga@dellr750 build]$ ./buffered_host_streaming.fpga
+   Repetitions:      200
+   Buffers:          2
+   Buffer Count:     524288
+   Iterations:       4
+   Total Threads:    64
+
+   Running on device: ofs_ia840f_usm : Intel OFS Platform (ofs_ee00000)
+   Running the roofline analysis
+   Producer (32 threads)
+           Time:       2.4120 ms
+           Throughput: 13911.2101 MB/s
+   Consumer (32 threads)
+           Time:       2.4522 ms
+           Throughput: 13683.1949 MB/s
+   Producer & Consumer (32 threads, each)
+           Time:       3.6271 ms
+           Throughput: 9251.0701 MB/s
+   Kernel
+           Time:       2.3801 ms
+           Throughput: 14097.7918 MB/s
+
+   Maximum Design Throughput: 9251.0701 MB/s
+   The FPGA kernel does not limit the performance of the design
+   Done the roofline analysis
+
+   Running   the full design without API
+   Average   latency without API: 4.1668 ms
+   Average   processing time without API: 786.5571 ms
+   Average   throughput without API: 8531.9765 MB/s
+
+   Running   the full design with API
+   Average   latency with API: 7.6988 ms
+   Average   processing time with API: 772.3039 ms
+   Average   throughput with API: 8689.4377 MB/s
+
+
+
+
+© 2024 BittWare, a Molex company                                                               37
+   PASSED
+
+
+
+
+6.4 Additional IA-840f Specific Examples
+
+BittWare may develop separate demonstration examples using the IA-840f BSP within oneAPI. Please
+check the BittWare developer site for further examples in the future. This reference design implements
+tests to check FPGA board interfaces and measure host-to-device and kernel-to-global memory inter-
+face metrics. Use this reference design as a starting point to validate platform interfaces when you cus-
+tomize a BSP. For more information please
+
+
+
+
+© 2024 BittWare, a Molex company                                                                       38
+7 Debugging Tools
+7.1 HTML Reports
+
+The compiler includes a flag for generating "early-image" reports:
+
+
+   icpx ... -fsycl-link=early ...
+
+
+
+Once the report is created, there should be a directory ending in '.prj' in the current working directory. This
+directory contains generated RTL code for your design, FPGA resource estimates for your design, and an
+optimization report. To view the optimization report in a browser window use the following command:
+
+
+   fpga_report <name-of-example>.fpga.prj
+
+
+
+
+7.2 vTune Profiler
+
+The vTune profiler is included with the installation of oneAPI. The following metrics are collected during pro-
+filing:
+
+    l   Global Bandwidth
+    l   Stalls
+    l   Occupancy
+    l   Activity
+    l   Idle
+
+
+
+
+  © 2024 BittWare, a Molex company                                                                           39
+Profiling is enabled by using the following compilation flag:
+
+
+   icpx ... -Xsprofile ...
+
+
+
+To use the command line version of vTune, simply use:
+
+
+   vtune -collect fpga-interaction /path/to/executable
+
+
+
+This command will execute the profiled oneAPI binary and display various perfomance metrics and bot-
+tlenecks. As the name suggests, 'fpga-interaction' is used for getting information on oneAPI designs tar-
+getting FPGAs. Many of the other vTune features are not intended for FPGA designs.
+To use the GUI version of vTune, run the following command:
+
+
+   vtune-gui
+
+
+
+The vTune GUI displays all the same information as the command line version but it gives a richer pic-
+ture of what your oneAPI design is doing. The GUI allows users to actually see how the CPU and FPGA
+work in conjunction to execute oneAPI binaries.
+
+
+
+
+© 2024 BittWare, a Molex company                                                                       40
+8 Known Issues
+8.0.1 Multiple Card Verification
+The supplied ASP file set has only been verified in the configuration of a single IA-840f per host currently.
+There is not a known limitation in this regard, but initial testing in the best known configuration has been lim-
+ited to a single IA-840f.
+
+8.0.2 Memory allocation failure and ulimit configuration
+To ensure proper memory allocation and ulimit configuration for OneAPI, specific adjustments are
+required. The following modifications should be made to the ulimit settings: OneAPI requires the max
+locked memory and max memory size to be modified as followes: ulimit -a Output:
+
+
+   core file size               (blocks, -c) 0
+   data seg size                (kbytes, -d) unlimited
+   scheduling priority                  (-e) 0
+   file size                    (blocks, -f) unlimited
+   pending signals                      (-i) 254934
+   max locked memory            (kbytes, -l) 67108864
+   max memory size              (kbytes, -m) unlimited
+
+
+
+These settings should be set after initializing the OFS based ASP: aocl initialize acl0 ofs_ia840f. It's import-
+ant to log out and log back in or reboot the system to take the effect, however if these settings are not con-
+figured properly, the aocl diagnose acl0 will fail due to memory allocation problems. In the event of memory
+allocation problems or if the ulimit configuration fails again, there are additional steps to consider for limit
+settings:
+
+    l   Navigate to the /etc/systemd/ directory on your system.
+    l   Using a text editor, open the user.conf and system.conf files.
+
+
+
+
+  © 2024 BittWare, a Molex company                                                                            41
+   l   Uncomment and set the DefaultLimitMEMLOCK to the required size, for example: DefaultLim-
+       itMEMLOCK=67108864
+
+Note that user.conf represents the soft limit and system.conf represents the hard limit.
+
+
+
+
+© 2024 BittWare, a Molex company                                                           42
+9 OFS Reference Information
+9.1 OFS Release Reference
+
+The IA-840f OFS based oneAPI ASP (HLD SHIM) is based on the following OFS release from Intel. It is
+also based on the Intel N6000 reference code from Intel. Intel® OFS 2023.1 release (Intel® Agilex) Sum-
+mary: Intel OFS 2023.1 release (Intel® Agilex) FIM and HLD Shim
+
+9.1.1 Details:
+
+   l   Quartus Version: 23.1 Patch 0.02iofs: https://www.intel.com/content/www/us/en/software-
+       kit/776241/intel-quartus-prime-pro-edition-design-software-version-23-1-for-linux.html
+   l   Tested with: Rocky 8 with RHEL 8.9
+   l   OFS FIM Source (Note derived/effectively forked from this repo but not pushed to github currently,
+       repo included in source drop): https://github.com/OFS/ofs-n6001/releases/tag/ofs-2023.1-1
+   l   OPAE SDK 2.10.0-3: https://github.com/OFS/opae-sdk
+
+9.1.2 Driver:
+
+   l   Kernel drivers (linux-dfl): https://github.com/OFS/linux-dfl-backport
+
+       Note: For further details on the OFS Reference information, please refer to the link below:
+       https://ofs.github.io/ofs-2023.1/hw/n6001/user_guides/ug_qs_ofs_n6001/ug_qs_ofs_
+       n6001/#table-4-software-version-summary
+BittWare 45 South Main Street, Suite L100 Concord, NH 03301 USA
+603.226.0404
+Copyright © 2024, BittWare, a Molex company
+
+
+
+
+  © 2024 BittWare, a Molex company                                                                          43
+All Rights Reserved BittWare assumes no responsibility for any inaccuracies, errors, or omissions that
+may be in this manual. In no event will BittWare be liable for direct, indirect, special, incidental, or con-
+sequential damages resulting from any defect or omission in this manual. BittWare reserves the right to
+revise this document and to make changes from time to time in the content hereof without obligation of
+BittWare to notify any person or persons of such revision or changes.
+
+
+
+
+© 2024 BittWare, a Molex company                                                                           44
+

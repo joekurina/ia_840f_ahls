@@ -1,0 +1,67 @@
+[
+  {
+    "name": "identity",
+    "command": [
+      "bash",
+      "-c",
+      "hostname; id; command -v jtagconfig quartus_pgm; readlink -f $(command -v jtagconfig); quartus_pgm --version; ps -eo pid,user,args | /usr/bin/python3 -c \"import sys; print(\"\".join(l for l in sys.stdin if \"jtagd\" in l))\""
+    ],
+    "exit": 1
+  },
+  {
+    "name": "jtagconfig-help",
+    "command": [
+      "jtagconfig",
+      "--help"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "programmer-help",
+    "command": [
+      "quartus_pgm",
+      "--help"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "jtagconfig-version",
+    "command": [
+      "jtagconfig",
+      "--version"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "jtagconfig-enumeration",
+    "command": [
+      "jtagconfig"
+    ],
+    "exit": 4
+  },
+  {
+    "name": "programmer-list",
+    "command": [
+      "quartus_pgm",
+      "--list"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "usb",
+    "command": [
+      "lsusb"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "pci",
+    "command": [
+      "lspci",
+      "-nnk",
+      "-d",
+      "8086:"
+    ],
+    "exit": 0
+  }
+]

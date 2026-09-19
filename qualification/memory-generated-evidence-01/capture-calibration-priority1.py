@@ -1,0 +1,51 @@
+import os,sys,socket,pathlib,json,hashlib,fnmatch,stat,time,base64
+assert socket.gethostname()=='Agilex7Workstation' and os.getuid()==1000
+assert os.environ.get('TMUX')=='/tmp/tmux-1000/default,7828,4'
+root=pathlib.Path('/opt/altera/26.1.1/ip/altera/subsystems/mem_ss')
+out=pathlib.Path('/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/calibration-installed-live01.json')
+for p in [root,*root.parents,out.parent,*out.parent.parents]:
+ assert not p.is_symlink(), str(p)
+assert not os.path.lexists(out)
+e={'scope':'calibration priority-1 static source capture','started_unix':time.time(),'host':socket.gethostname(),'tmux':os.environ['TMUX'],'vendor_run':False,'ready_for_build':False,'entries_examined':0,'directories':[],'candidates':[],'files':[],'errors':[],'limits_hit':[]}
+patterns=['mem_ss*.tcl','hwtcl/mem_ss*.tcl','hwtcl/*/mem_ss*.tcl']
+def scan(d):
+ try:
+  entries=[]
+  with os.scandir(d) as it:
+   for ent in it:
+    e['entries_examined']+=1
+    if e['entries_examined']>512: raise RuntimeError('directory entry cap')
+    entries.append((ent.name,ent.is_dir(follow_symlinks=False),ent.is_file(follow_symlinks=False),ent.is_symlink()))
+  e['directories'].append({'path':str(d),'entries':entries})
+  return sorted(entries)
+ except FileNotFoundError:
+  e['errors'].append({'path':str(d),'error':'missing directory'});return []
+def matchfiles(d,items):
+ for name,isdir,isfile,islink in items:
+  rel=(d/name).relative_to(root).as_posix()
+  if isfile and not islink and any(len(rel.split('/'))==len(p.split('/')) and all(fnmatch.fnmatchcase(a,b) for a,b in zip(rel.split('/'),p.split('/'))) for p in patterns):
+   e['candidates'].append(str(d/name))
+try:
+ items=scan(root);matchfiles(root,items)
+ if any(n=='hwtcl' and d and not s for n,d,f,s in items):
+  h=root/'hwtcl';items=scan(h);matchfiles(h,items)
+  for name,isdir,isfile,islink in items:
+   if isdir and not islink:
+    d=h/name;matchfiles(d,scan(d))
+ candidates=sorted(set(e['candidates']))
+ if len(candidates)>16:raise RuntimeError('file cap')
+ sizes={p:os.stat(p,follow_symlinks=False).st_size for p in candidates}
+ if any(n>1048576 for n in sizes.values()) or sum(sizes.values())>6291456:raise RuntimeError('byte cap')
+ for path in candidates:
+  fd=os.open(path,os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK)
+  with os.fdopen(fd,'rb') as f:
+   before=os.fstat(f.fileno());assert stat.S_ISREG(before.st_mode)
+   raw=f.read(1048577);after=os.fstat(f.fileno())
+  assert len(raw)<=1048576 and before.st_size==after.st_size==len(raw) and before.st_mtime_ns==after.st_mtime_ns
+  e['files'].append({'path':path,'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest(),'content':raw.decode('utf-8')})
+except Exception as ex:e['errors'].append(repr(ex))
+e['finished_unix']=time.time();raw=(json.dumps(e,indent=2)+chr(10)).encode()
+fd=os.open(out,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,0o600)
+with os.fdopen(fd,'wb') as f:f.write(raw)
+assert out.read_bytes()==raw
+print('CAL_CAPTURE',json.dumps({'path':str(out),'sha256':hashlib.sha256(raw).hexdigest(),'bytes':len(raw),'files':len(e['files']),'entries':e['entries_examined'],'errors':e['errors'],'candidates':e['candidates']}),flush=True)

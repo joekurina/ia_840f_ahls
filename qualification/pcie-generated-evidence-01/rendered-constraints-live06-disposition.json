@@ -1,0 +1,157 @@
+{
+  "ready": false,
+  "ready_for_build": false,
+  "execution_authorized": false,
+  "review_kind": "static_captured_source_only",
+  "container": {
+    "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/pcie-generated-evidence-01/pcie-rendered-constraints-live06.json",
+    "bytes": 275510,
+    "sha256": "10e8e2b262ada40ed64e232194e8cdc20ec3f20083b18d0ba12e0f3fd97b3e0f",
+    "verified": true
+  },
+  "payloads": [
+    {
+      "alias": "Q",
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/pcie_ss.qip",
+      "bytes": 63169,
+      "sha256": "97d4cd6d42bd823437e9e221d0c6987e670ba45124e49c3e72cae69730b332df",
+      "decoded_lines": 360,
+      "integrity_verified": true
+    },
+    {
+      "alias": "I",
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/altera_iopll_2110/synth/pcie_ss_altera_iopll_2110_5imavpa.sdc",
+      "bytes": 7038,
+      "sha256": "6d2b95bfe3f3954da1dd60641bf0dac1f215a70c3112943c29752881c89da507",
+      "decoded_lines": 183,
+      "integrity_verified": true
+    },
+    {
+      "alias": "H",
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/intel_pcie_ptile_ast_1100/synth/intel_ptile_pcie.sdc",
+      "bytes": 138663,
+      "sha256": "aa82e3d18d152d231ea0f256dd2e7cb2a62bbb6499ebcb8633dde27b5e7645a0",
+      "decoded_lines": 2149,
+      "integrity_verified": true
+    },
+    {
+      "alias": "A",
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/intel_pcie_ss_axi_500/synth/pcie_ss.sdc",
+      "bytes": 59669,
+      "sha256": "b5fa069c1876031a8f63c1198f98b99dfabf5e7ad0cb748e5614bc235e04c265",
+      "decoded_lines": 736,
+      "integrity_verified": true
+    }
+  ],
+  "discovery": {
+    "complete_within_scope": false,
+    "entries_examined": 513,
+    "errors": [
+      "RuntimeError('512-entry discovery cap')"
+    ],
+    "pll_root_completeness_proved": false
+  },
+  "qip_sdc_registration_lines": [
+    84,
+    160,
+    345
+  ],
+  "all_literal_qip_sdc_registrations_captured": true,
+  "transitive_dependency_closure": false,
+  "rendered_axi": {
+    "lines": [
+      82,
+      94
+    ],
+    "tile": "P-TILE",
+    "topology": "Gen4 1x16",
+    "mode": "Native Endpoint",
+    "core16_lite_mhz": 100,
+    "conditional_period_ns": "10.000",
+    "period_calculation": "Python evaluation of rendered expression, not Tcl execution",
+    "condition_lines": [
+      161,
+      164
+    ],
+    "scope_line": 17,
+    "clock_target_helper_lines": [
+      63,
+      80
+    ],
+    "actual_clock_objects_evaluated": false
+  },
+  "nominal_producer": {
+    "source": "prior generated-hdl-review.md:66-91; simulation HDL",
+    "outclk": 1,
+    "mhz": "100.7142857142857...",
+    "period_ns": "9.929078014184396",
+    "synthesis_identity_verified": false
+  },
+  "conclusion": "RENDERED_CONDITIONAL_NUMERIC_MISMATCH; EFFECTIVE_CLOCK_CONFLICT_UNPROVEN",
+  "missing_synthesis_rtl": [
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/synth/pcie_ss.v",
+      "qip_line": 348
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/intel_pcie_ss_axi_500/synth/pcie_ss_intel_pcie_ss_axi_500_gycdipy.sv",
+      "qip_line": 162
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/intel_pcie_ss_axi_500/synth/pcie_ss_intel_pcie_ss_axi_intel_pcie_ptile_ast_500_pxriq3y.v",
+      "qip_line": 161
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/intel_pcie_ptile_ast_1100/synth/pcie_ss_intel_pcie_ptile_ast_1100_ndgxg4a.sv",
+      "qip_line": 88
+    }
+  ],
+  "missing_pcie_local_pll_helpers": [
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/altera_iopll_2110/synth/pcie_ss_altera_iopll_2110_5imavpa_parameters.tcl",
+      "sdc_lines": [
+        33
+      ],
+      "qip_line": 83
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/altera_iopll_2110/synth/pcie_ss_altera_iopll_2110_5imavpa_pin_map.tcl",
+      "sdc_lines": [
+        34
+      ],
+      "qip_line": 85
+    }
+  ],
+  "missing_system_pll": {
+    "observed_root": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ofs-common/src/fpga_family/agilex/sys_pll/sys_pll",
+    "manifest_path": null,
+    "registered_sdc_paths": null,
+    "reason": "Discovery capped before completeness; must use literal discovery and registrations, not inferred suffixes"
+  },
+  "missing_binding_contract": [
+    "actual selected generated headers/source set and QIP/SDC load order",
+    "AXI SDC current instance and get_ports wildcard/concrete collections",
+    "clock-target snapshot and lsearch -exact result at A:162",
+    "incoming sys_pll outclk_1 clock name/source/period/targets and same-sink relationship to any A:164 clock",
+    "A:192 divider target/master resolution",
+    "documented consumer tolerance and vendor-supported parent integer frequency interpretation"
+  ],
+  "broad_generation_status": "failed_mailbox_unresolved",
+  "headers_run": false,
+  "preserve": [
+    "core470",
+    "seven-port PLL interface",
+    "AGFB027R25A2E2V",
+    "PTileGen4x16",
+    "PF0VF0 AFU",
+    "PF1 BMC",
+    "PF1 BAR0 Disabled",
+    "BAR2 width28",
+    "BAR4 width14",
+    "64-byte/two-segment workaround",
+    "pins/channels/geometry"
+  ],
+  "source_edits": false,
+  "vendor_or_tcl_or_hdl_execution": false,
+  "network_or_new_capture": false
+}

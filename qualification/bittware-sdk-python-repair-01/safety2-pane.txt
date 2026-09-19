@@ -1,0 +1,314 @@
+SOURCE bw_kit/kits.py
+"""
+This class holds the data shared by all kits and helps break
+cyclic dependencies. Kits and Devices entries import from this
+class not each other.
+
+This class only imports Kit and Device entry for type hints.
+"""
+import logging
+import re
+import os
+from typing import TYPE_CHECKING, Union, Tuple, Sequence, overload, Literal, Opt
+ional, Any
+from bw_core.exceptions.base import KitException
+from bw_core.legacy import BraceMessage as _B
+from bw_core.utils.entry_points import get_entry_points
+from bw_kit.enums import Interfaces, TagAliases
+if TYPE_CHECKING:
+    from bw_kit.kit import Kit
+    from bw_kit.device_entry import DeviceEntry
+log = logging.getLogger(__name__)
+BW_ACTIVE_KITS: Tuple[str, ...] = _active_kits_from_env()
+""" Determines which kits will be used. The default behavior is use all installe
+d python kits (determined
+by registered 'bittware_kits' entry points). An environment variable can be used
+ to explicitly select what
+kits will be used:
+
+(shell)$ export BW_ACTIVE_KITS='KitVFIO KitUSB KitUART KitSYSFS'
+"""
+BW_PCI_TAG_ALIAS: Interfaces = Interfaces.VFIO
+""" Determines which interface type is to be considered the "PCI" interfaces for
+ device selection.
+The defaults is "VFIO", device tags that begin with PCI: are aliased to VFIO (PC
+I:1 == VFIO:1).
+Can be controlled by setting an environment variable of the same name:
+
+(shell)$ export BW_PCI_TAG_ALIAS='BWPCI'
+
+Will map all PCI:x devices to the Bittware PCI driver and kit
+"""
+try:
+    if "BW_PCI_TAG_ALIAS" in os.environ:
+        BW_PCI_TAG_ALIAS = Interfaces(os.environ.get("BW_PCI_TAG_ALIAS"))
+except (ValueError, AttributeError):
+    log.warning(
+        _B(
+            "Invalid value Environment variable BW_PCI_TAG_ALIAS. {iface} is not
+ a valid interface name."
+            " Using 'VFIO' instead.",
+            iface=os.environ.get("BW_PCI_TAG_ALIAS"),
+        )
+    )
+CLASS Kits
+"""
+    Holds the data used by Kits and DeviceEntries
+
+    Attributes:
+        KitClasses: Dictionary of actively used Kit classes. kits.use() determin
+es the active kits
+        KitEntryPoints: Dictionary of all available kit classes
+        KitInterfaces: Dictionary of all interface types provided by active kits
+. Kits.use_kits() must
+            be called (either implicitly or explicitly) prior to using this dict
+ionary otherwise
+            it will be empty.
+        devices: List all devices found from scanning available kits
+        ActiveKits: The list of kits that will be used to find devices. Can be s
+et by Kits.use_kits
+    """
+PCI_INTERFACE_ALIAS: Interfaces = BW_PCI_TAG_ALIAS
+KitClasses: dict[str, "Kit"] = {}
+KitEntryPoints: dict[str, "Kit"] = {}
+KitInterfaces: dict[str, "Kit"] = {}
+devices: Optional[list["DeviceEntry"]] = None
+ActiveKits: Tuple[str, ...] = BW_ACTIVE_KITS
+_last_scan_passive: Optional[bool] = None
+SOURCE bw_kit/kit.py
+"""
+Base class for all providers of kit functionality - A kit provides
+listing and connections/handles for cards along with memory and register
+R/W methods.
+
+Other packages (such as bw_cardtest) work with "kits" relying on the
+common interface.
+"""
+import logging
+import abc
+from typing import TYPE_CHECKING, Any, Optional
+from bw_core import MemorySpace
+from bw_core.register_rw import PCIDevRW
+from bw_kit.enums import Interfaces
+from bw_kit.kits import Kits
+if TYPE_CHECKING:
+    from bw_kit.device_entry import DeviceEntry
+    from bw_bmc_abs import BaseBmc
+log = logging.getLogger(__name__)
+CLASS Kit
+"""
+    Base class for Kit plug-ins.
+
+    All Kits are "singletons" intended to only have the class used directly an
+    are not instantiated to instances. However no effort is made to prevent
+    creating instances - so don't do it.
+
+    All data is kept in the class. Hence each Kit class contains the list of
+    all discovered device supported by the specific class and provides access
+    to the device.
+
+    Derived classes implement class methods as needed and appropriate for the
+    specific kit being used. Example device types PCI, USB, VFIO, SYSFS.
+
+    Attributes:
+        interfaces: List of interfaces supported by this class
+        interface_names: List of interface names supported by this Kit
+        memory_spaces: List of memory spaces supported by this Kit Class
+        memory_space_names: List of memory space names supported by this Kit
+    """
+interfaces: list[Interfaces] = []
+interface_names: list[str] = []
+memory_spaces: list[MemorySpace] = []
+memory_space_names: list[str] = []
+CODE_STATUS = "released"
+_devices: list["DeviceEntry"] = []
+class DevRW(PCIDevRW):
+        """
+        All derived classes will implement this as a subclass of RegRWABC.
+        Typically this is one of the standard ones already defined in bw_core,
+        such as PCIDevRW.
+        """
+SOURCE bw_kit/device_entry.py
+"""
+Base device entry class, all kits return devices and work on
+devices derived from this class. Kits may extend this class
+for additional kit specific device functionality.
+
+Kits should ONLY derive from this class if absolutely necessary.
+"""
+import logging
+from typing import TYPE_CHECKING, NamedTuple, Any, Optional
+from bw_core import BMCType
+from bw_core.data_types.card_desc_model import CardConfigurationModel
+from bw_core.exceptions.base import BmcError
+from bw_core.register_rw import PCIDevRW
+from bw_core.data_types import VendorDeviceInfo, DeviceComponentIndex
+from bw_bmc_abs import BaseBmc
+from bw_kit.enums import Interfaces
+from bw_kit.component_resolver import ComponentResolver
+from bw_kit.kits import Kits
+if TYPE_CHECKING:
+    from bw_kit.kit import Kit
+    from bw_core.product import BaseProduct as Product
+log = logging.getLogger(__name__)
+CLASS DeviceEntry
+"""
+    A generic / agnostic device entry that should work for any Kit class.
+    Provides immutable generic device entries. Used by all bw_kits for
+    card enumeration. A kit is only required to provide the fields "interface"
+    and "device".
+
+    The rest are populated if available and extra_props is a catch-all that
+    sub classes can use to cache any additional information needed.
+
+    Attributes:
+        product: The product object for this device entry
+        interface: The interface for this device entry
+        device: The device number for this device entry
+        serial_number: The serial number for this device entry
+        configuration: The configuration for this device entry
+        revision: The revision for this device entry
+        dev_ids: The vendor and device IDs for this device entry
+        kit_name: The name of the kit that produced this device entry
+        extra_props: A catch-all for any additional information needed
+    """
+product: Optional["Product"] = None
+interface: Optional[Interfaces] = None
+device: Optional[int] = None
+serial_number: str = ""
+configuration: str = ""
+revision: str = ""
+dev_ids: VendorDeviceInfo = VendorDeviceInfo(0, 0)
+kit_name: str = ""
+extra_props: dict[str, Any] = {}
+SOURCE bw_agilex/bmc_handlers/bmc_agilex_handler.py
+"""
+Bmc Agilex handler class
+
+******
+This class is really a bmc handler that uses BRAM, BMC and ARBITER
+components and any KIT that provides a valid RW handle for said components.
+For the moment this is strictly Agilex but doesn't necessarily have to be.
+******
+"""
+import time
+from typing import TYPE_CHECKING
+from bw_core.exceptions import ComponentException, BmcError
+from bw_kit.kit_bmc_handler import KitBmcHandler
+if TYPE_CHECKING:
+    from bw_kit import DeviceEntry
+CLASS BmcHandler
+"""BMC Agilex Handler class
+    This handler class is for communicating with the BMC using the
+    BittWare Agilex FPGA library to communicate with the BMC via the FPGA interf
+ace
+    Keyword Args:
+        device (DeviceEntry): Get a BMC handler for this card.
+    """
+_BMC_BRAM_REQUEST_COUNT_ADDRESS = 0
+_BMC_BRAM_REQUEST_ADDRESS = 4
+_BMC_BRAM_RESPONSE_COUNT_ADDRESS = 0x800
+_BMC_BRAM_RESPONSE_ADDRESS = 0x804
+_BMC_SPI_MAX_PACKET = 0x7FC
+SOURCE bw_agilex/bmc_handlers/bmc30_agilex_handler.py
+"""
+Bmc Agilex handler class
+
+******
+This class is really a bmc handler that uses BRAM, BMC and ARBITER
+components and any KIT that provides a valid RW handle for said components.
+For the moment this is strictly Agilex but doesn't necessarily have to be.
+******
+"""
+import logging
+from typing import TYPE_CHECKING
+from bw_core.legacy import BraceMessage
+from bw_core.exceptions.base import ComponentException
+from bw_core.enums import MemorySpace
+from bw_core.utils.semaphore.exception import BWSyncException
+from bw_kit.kit_bmc_handler import KitBmcHandler
+from bw_cmdk.nodes import Extended
+from bw_cmdk_comps_v1.BMC.bmc3_0 import BMC3_0
+from bw_cmdk_comps_v1.BMC.bmc3_0_host_if import BMC3_0_HOST_IF
+from bw_cmdk_comps_v1.BMC.bmc3_capability_rom import BMC3CapabilityROM
+if TYPE_CHECKING:
+    from bw_kit import DeviceEntry
+log = logging.getLogger(__name__)
+_B = BraceMessage
+CLASS Bmc30Handler
+"""BMC30 Agilex Handler class
+    This handler class is for communicating with the BMC using the
+    BittWare Agilex FPGA library to communicate with the BMC via the FPGA interf
+ace
+    Keyword Args:
+        device (DeviceEntry): Get a BMC handler for this card.
+    """
+SOURCE bw_core/utils/common_argparse.py
+"""
+common argparse
+
+!!! warning
+    This module will be deprecated in the future.
+"""
+import sys
+import logging
+from argparse import ArgumentParser, Action, SUPPRESS
+from typing import Sequence, Optional
+import bw_kit as bwk
+from . import bwsdk_version
+CLASS _VersionAction
+"""Print the SDK version, respecting --json / -j for output format.
+
+    argparse's built-in version action exits inside parse_args() before the
+    utility's post-parse code runs — so a bare `--version --json` ignores
+    the JSON request. This action scans sys.argv for --json/-j (the argparse
+    namespace isn't reliable here: actions fire in argv order, so
+    `--version --json` would see namespace.json still False) and emits either
+    a UtilityJSONData envelope or the plain banner before exit(0).
+    """
+CLASS BwArgParser
+""" Modified ArgumentParser that prints help on any invalid argument """
+def add_common_arguments(argument_parser: ArgumentParser, exclude: Optional[list
+[str]] = None):
+    """add common arguments to argparse
+
+    > --version    prints bwsdk version
+    > --loglevel   sets logging level
+
+    Optional argument exclude is a list of option names that should not be added
+. Note
+    that this is rarely needed.
+
+    Args:
+        argument_parser: argparse.ArgumentParser
+        exclude: list of option names to exclude
+    """
+    if not exclude:
+        exclude = []
+
+    if 'version' not in exclude:
+        argument_parser.add_argument("--version", action=_VersionAction)
+
+    class SetLogLevel(Action):  # pylint: disable=too-few-public-methods
+        """Configures the basic logging to specified log level"""
+
+        def __call__(self, parser, namespace, values, option_string=None):
+            if values:
+                logging.basicConfig(
+                    level=values,  # type: ignore
+                    format="%(asctime)s.%(msecs)03d000 %(levelname)-9s %(message
+)s",
+                    datefmt="%Y-%m-%dT%H:%M:%S",  # ISO8601
+                )
+
+    if 'loglevel' not in exclude:
+        argument_parser.add_argument(
+            "-L",
+            "--loglevel",
+            choices=["INFO", "DEBUG"],
+            help="Log level to log (INFO, DEBUG) defaults to None",
+            default=None,
+            action=SetLogLevel
+        )
+DONE
+

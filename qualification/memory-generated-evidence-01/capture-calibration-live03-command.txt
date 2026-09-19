@@ -1,0 +1,30 @@
+/usr/bin/python3 -I -B -S -c 'import os,json,stat,pathlib,socket,hashlib,base64,gzip
+assert socket.gethostname()=='"'"'Agilex7Workstation'"'"' and os.getuid()==1000 and os.environ.get('"'"'TMUX'"'"')=='"'"'/tmp/tmux-1000/default,7828,4'"'"'
+file=pathlib.Path('"'"'/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/ip_mem_ss/qcp/mem_ss_hwtcl_commands.tcl'"'"')
+directory=pathlib.Path('"'"'/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/util'"'"')
+e={'"'"'files'"'"':[],'"'"'directory'"'"':str(directory),'"'"'entries'"'"':[],'"'"'errors'"'"':[],'"'"'ready_for_build'"'"':False,'"'"'vendor_run'"'"':False}
+def no_links(p):
+ for q in [p,*p.parents]:assert not q.is_symlink(),str(q)
+try:
+ no_links(file);fd=os.open(file,os.O_RDONLY|os.O_NOFOLLOW)
+ try:
+  a=os.fstat(fd);assert stat.S_ISREG(a.st_mode) and a.st_size<=1048576
+  with os.fdopen(fd,'"'"'rb'"'"',closefd=False) as f:raw=f.read(1048577)
+  b=os.fstat(fd);assert len(raw)==a.st_size and (a.st_size,a.st_mtime_ns)==(b.st_size,b.st_mtime_ns)
+ finally:os.close(fd)
+ e['"'"'files'"'"'].append({'"'"'path'"'"':str(file),'"'"'bytes'"'"':len(raw),'"'"'sha256'"'"':hashlib.sha256(raw).hexdigest(),'"'"'content'"'"':raw.decode('"'"'utf-8'"'"')})
+except Exception as ex:e['"'"'errors'"'"'].append({'"'"'path'"'"':str(file),'"'"'error'"'"':repr(ex)})
+try:
+ no_links(directory)
+ with os.scandir(directory) as scan:
+  for i,d in enumerate(scan):
+   if i>=128:raise RuntimeError('"'"'directory entry limit exceeded; listing incomplete'"'"')
+   s=d.stat(follow_symlinks=False);e['"'"'entries'"'"'].append({'"'"'name'"'"':d.name,'"'"'type'"'"':'"'"'symlink'"'"' if stat.S_ISLNK(s.st_mode) else '"'"'directory'"'"' if stat.S_ISDIR(s.st_mode) else '"'"'regular'"'"' if stat.S_ISREG(s.st_mode) else '"'"'other'"'"','"'"'bytes'"'"':s.st_size})
+except Exception as ex:e['"'"'errors'"'"'].append({'"'"'path'"'"':str(directory),'"'"'error'"'"':repr(ex)})
+raw=(json.dumps(e,indent=2)+chr(10)).encode()
+p=pathlib.Path('"'"'/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/calibration-installed-live03.json'"'"')
+no_links(p);fd=os.open(p,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,0o600)
+with os.fdopen(fd,'"'"'wb'"'"') as f:f.write(raw)
+assert p.read_bytes()==raw
+print('"'"'CAL3_BEGIN'"'"');print(base64.b64encode(gzip.compress(raw)).decode());print('"'"'CAL3_END'"'"');print('"'"'CAL3_SHA'"'"',hashlib.sha256(raw).hexdigest())
+'

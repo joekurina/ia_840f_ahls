@@ -1,0 +1,166 @@
+IMAGES [{"path": "/home/uwb_student00/IA-840f/IOFS_BUILD_ROOT/flash_image/ia840f-ofs-23.1-2-flash-image.rpd", "bytes": 8478720}, {"path": "/home/uwb_student00/IA-840f/IOFS_BUILD_ROOT/oneapi-asp/ia840f/hardware/ofs_ia840f_usm/build/output_files/ofs_top.sof", "bytes": 9551870}, {"path": "/home/uwb_student00/IA-840f/IOFS_BUILD_ROOT/oneapi-asp/ia840f/hardware/ofs_ia840f/build/output_files/ofs_top.sof", "bytes": 9551870}, {"path": "/home/uwb_student00/IA-840f/ia-840/IOFS_BUILD_ROOT/flash_image/ia840f-ofs-23.1-2-flash-image.rpd", "bytes": 8478720}, {"path": "/home/uwb_student00/IA-840f/ia-840/IOFS_BUILD_ROOT/oneapi-asp/ia840f/hardware/ofs_ia840f_usm/build/output_files/ofs_top.sof", "bytes": 9551870}, {"path": "/home/uwb_student00/IA-840f/ia-840/IOFS_BUILD_ROOT/oneapi-asp/ia840f/hardware/ofs_ia840f/build/output_files/ofs_top.sof", "bytes": 9551870}, {"path": "/home/uwb_student00/Documents/IA-840f installation/IOFS_BUILD_ROOT/flash_image/ia840f-ofs-23.1-2-flash-image.rpd", "bytes": 8478720}, {"path": "/home/uwb_student00/Documents/IA-840f installation/IOFS_BUILD_ROOT/oneapi-asp/ia840f/hardware/ofs_ia840f_usm/build/output_files/ofs_top.sof", "bytes": 9551870}, {"path": "/home/uwb_student00/Documents/IA-840f installation/IOFS_BUILD_ROOT/oneapi-asp/ia840f/hardware/ofs_ia840f/build/output_files/ofs_top.sof", "bytes": 9551870}]
+PDF [{"path": "/home/uwb_student00/Documents/IA-840f installation/IA-840F_Hardware_Reference_Guide.pdf", "bytes": 6077654}, {"path": "/home/uwb_student00/Documents/IA-840f installation/IA-840f_oneAPI_Support_Guide.pdf", "bytes": 1173380}]
+/dev/bus/usb/001/017 0o20664 0 0 read True write False
+/dev/bus/usb/001/018 0o20660 0 984 read True write True
+ 110216 uwb_stu+ jtagd --user-start --config /home/uwb_student00/.jtagd.conf
+SOURCE /home/uwb_student00/Documents/IA-840f installation/IOFS_BUILD_ROOT/oneapi-asp/ia840f/README.md
+296: ### Updating the oneAPI ASP FPGA Image
+297: ---
+298: The IA-840f hardware is shipped with a factory test image. This is not an oneAPI ASP FPGA image; instead it is a Card Test application image, so the card configuration will need to be updated for use with oneAPI.
+299: Before following these programming steps, connect a USB-C cable to the IA-840f USB IN PORT as shown in the BittWare IA-840f Hardware Reference Guide 
+300: https://developer.bittware.com/hardware/docs/ia-840f/Rev1/Content/HardwareReference/BoardOverview/Board_Layout.htm
+301: 
+302: ### Updating the FPGA Image (sof) Manually
+303: ---
+304: The following instructions describe manually programming the FPGA directly using a SOF-based bitstream. This is not therefore a permanent change to how the card boots from a cold power-on, but it is recommended as an initial step to get familiar with the hardware. The next section details the process to change the flash boot load on the IA-840f if required. 
+305: 1. Before reprogramming the FPGA that is live on the PCIe bus, we strongly recommend disabling AER using the provided script. Otherwise, you may experience a watchdog-based system reboot due to a fatal PCIe error being detected. 
+306:     - Change to the IA-840f ASP folder: 
+307: ```cd /path/to/intel/oneapi-asp/ia840f```
+308:     - Call the AER script for a number of possible live IA-840f combinations using the following:
+309: ```sudo ./control_aer.sh 12ba:0070 off; sudo ./control_aer.sh 8086:bcce off; sudo ./control_aer.sh 8086:bccf off; sudo ./control_aer.sh 1af4:1000 off; sudo ./control_aer.sh 12ba: off```
+310:     - For enabling the JTAG access via Quartus please make sure to follow the steps mentioned in this link:
+311: https://www.intel.com/content/www/us/en/docs/programmable/683472/21-4/installing-on-red-hat-enterprise-linux.html
+312: Failure to update the rules file may cause issues with the Quartus tools JTAG functionality.
+313: 2. Program the required IA-840f oneAPI ASP SOF into the FPGA using Intel Quartus programmer. Program the FPGA using the required SOF from the command line: Change the directory to the Quartus binaries folder
+314:     - ```cd /path/to/quartus/intelFPGA_pro/23.1/quartus/bin/```
+315:     - ```./jtagconfig --setparam 1 JtagClockAutoAdjust 0;./jtagconfig --setparam 1 JtagClock 16M;./jtagconfig --getparam 1 JtagClock```
+316:     - ```./quartus_pgm -c 1 -m JTAG -o "p;/path/to/intel/oneapi-asp/ia840f/build/bringup/ofs_ia840f/build/output_files/ofs_top.sof@1"```
+317:     - **Note**: In this release, the path to the SOF is:
+318:     ```~/IOFS_BUILD_ROOT/ofs-ia840f/work-ofs-23.1-2-build/syn/syn_top/output_files/ofs_top.sof```
+319: 3. Restart the host system: ```shutdown -r now```
+320: 
+321: 
+322: ### Updating the Flash FPGA Image
+323: ---
+324: Rather than loading the SOF-based bitstream after each cold boot, you can update the flash on the IA-840f to directly boot as an oneAPI ready device on the IA-840f. This section details these steps to reprogram the user flash page in the QSPI flash that is connected to the Agilex series device on the BittWare IA-840f. 
+325: This is an optional step. 
+326: For flash update to user page based on page setup from a factory programmed card:
+327: 1. Change directory, cd, to the archive subfolder flash_image.
+328: 2. Call the Bittware Agilex flash programmer utility *(**bw_agilex_flash_programmer**, which is included in the BittWare SDK)* to update the user page with the following command:
+329: ```bw_agilex_flash_programmer program -a 0x04000000 ia840f-ofs-23.1-2-flash-image.rpd```
+330: 
+331: Once the flash page has been updated you should shut down the system to power cycle the card. On next cold boot it will load the new image from flash and be ready for use as an oneAPI target device.
+332: 
+333: ### Initializing the oneAPI ASP Device
+334: ---
+335: After updating the PCI-based FPGA image with either of the above steps, manual or flash-based load, you’ll need to complete some final steps once back into the OS. This can be automated in a startup script but is currently a manual set of steps with OFS/OPAE. This process should improve in future releases. 
+336: 
+337: When the system is back up, complete the following steps to initialize the device for use within oneAPI:
+338: 1. Find the BDF (Bus Device Function) identifier for the IA-840f using lspci ```lspci -d 8086:bcce```
+339: you should see lspci output with multiple function on a particular bus and device. For example, in the example below it is 0000:82:00.0: 
+340:     ```
+341:     82:00.0 Processing accelerators: Intel Corporation Device bcce (rev 01)	
+342:     ```
+343:     >**Note**: The physical functions have reduced from 5 PFs to only 2 PFs; PF0 is mainly used for the OFS DFL device, while the PF1 is used for the BittWare SDK device:
+344:     ```lspci -s 82:```
+345:     ```
+346:     82:00.0 Processing accelerators: Intel Corporation Device bcce (rev 01)
+RULE /etc/udev/rules.d/99-bwusb.rules # Device 0004
+ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="2528", ATTR{idProduct}=="0004", SYMLINK+="bwusb%k", MODE="0660", GROUP="bittware"
+
+# Device 0005
+ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="2528", ATTR{idProduct}=="0005", SYMLINK+="bwusb%k", MODE="0660", GROUP="bittware"
+
+# Device 0006
+ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="2528", ATTR{idProduct}=="0006", SYMLINK+="bwusb%k", MODE="0660", GROUP="bittware"
+
+# Device 0007 (BMC 3.0)
+ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="2528", ATTR{idProduct}=="0007", SYMLINK+="bwusb%k", MODE="0660", GROUP="bittware"
+
+# Device 0008 (BMC 3.0)
+ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="2528", ATTR{idProduct}=="0008", SYMLINK+="bwusb%k", MODE="0660", GROUP="bittware"
+
+# Device 1111 - firmware bootloader devices
+ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="2528", ATTR{idProduct}=="1111", SYMLINK+="bwusb%k", MODE="0660", GROUP="bittware"
+
+# Device 1115 - firmware bootloader devices
+ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="2528", ATTR{idProduct}=="1115", SYMLINK+="bwusb%k", MODE="0660", GROUP="bittware"
+
+# Device 1116 - firmware bootloader devices
+ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="2528", ATTR{idProduct}=="1116", SYMLINK+="bwusb%k", MODE="0660", GROUP="bittware"
+
+# Device 1117 - BMC 3.0 bootloader DFU
+ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="2528", ATTR{idProduct}=="1117", SYMLINK+="bwusb%k", MODE="0660", GROUP="bittware"
+
+RULE /etc/udev/rules.d/98-bwsysfs-perms.rules # VFIO rules for bittware devices
+#
+# This rules file should be located in /etc/udev/rules.d/
+# set-sysfs-perms.sh must be located in /usr/lib/udev/ and must be executable.
+
+SUBSYSTEM!="pci", GOTO="sysfs_perms_rules_end"
+ACTION=="remove|unbind", GOTO="sysfs_perms_cleanup"
+ACTION=="bind", GOTO="sysfs_perms_rules_end"
+
+ATTR{vendor}=="0x12ba", ATTR{subsystem_vendor}=="0x0055", TAG+="set-sysfs-perms"
+ATTR{vendor}=="0x12ba", ATTR{subsystem_vendor}=="0x1b59", TAG+="set-sysfs-perms"
+ATTR{vendor}=="0x12ba", ATTR{subsystem_vendor}=="0x12ba", ATTR{subsystem_device}=="0xb5d4", TAG+="set-sysfs-perms"
+ATTR{vendor}=="0x12ba", ATTR{subsystem_vendor}=="0x12ba", ATTR{subsystem_device}=="0xb5d5", TAG+="set-sysfs-perms"
+ATTR{vendor}=="0x12ba", ATTR{subsystem_vendor}=="0x12ba", ATTR{subsystem_device}=="0xb5d6", TAG+="set-sysfs-perms"
+ATTR{vendor}=="0x12ba", ATTR{subsystem_vendor}=="0x12ba", ATTR{subsystem_device}=="0xf5d4", TAG+="set-sysfs-perms"
+ATTR{vendor}=="0x12ba", ATTR{subsystem_vendor}=="0x12ba", ATTR{subsystem_device}=="0xf5d5", TAG+="set-sysfs-perms"
+ATTR{vendor}=="0x12ba", ATTR{subsystem_vendor}=="0x12ba", ATTR{subsystem_device}=="0xf5d6", TAG+="set-sysfs-perms"
+ATTR{vendor}=="0x12ba", ATTR{subsystem_vendor}=="0x12ba", ATTR{subsystem_device}=="0xb5d8", TAG+="set-sysfs-perms"
+ATTR{vendor}=="0x12ba", ATTR{subsystem_vendor}=="0x12ba", ATTR{subsystem_device}=="0xb5da", TAG+="set-sysfs-perms"
+ATTR{vendor}=="0x12ba", ATTR{subsystem_vendor}=="0x12ba", ATTR{subsystem_device}=="0xb5dc", TAG+="set-sysfs-perms"
+
+TAG=="set-sysfs-perms", RUN+="bittware-sysfs-perms.sh %k"
+GOTO="sysfs_perms_rules_end"
+
+LABEL="sysfs_perms_cleanup"
+ENV{PCI_ID}=="12BA:*", ENV{PCI_SUBSYS_ID}=="0055:*", TAG+="cleanup-sysfs-perms"
+ENV{PCI_ID}=="12BA:*", ENV{PCI_SUBSYS_ID}=="1B59:*", TAG+="cleanup-sysfs-perms"
+ENV{PCI_ID}=="12BA:*", ENV{PCI_SUBSYS_ID}=="12BA:B5D4", TAG+="cleanup-sysfs-perms"
+ENV{PCI_ID}=="12BA:*", ENV{PCI_SUBSYS_ID}=="12BA:B5D5", TAG+="cleanup-sysfs-perms"
+ENV{PCI_ID}=="12BA:*", ENV{PCI_SUBSYS_ID}=="12BA:B5D6", TAG+="cleanup-sysfs-perms"
+ENV{PCI_ID}=="12BA:*", ENV{PCI_SUBSYS_ID}=="12BA:F5D4", TAG+="cleanup-sysfs-perms"
+ENV{PCI_ID}=="12BA:*", ENV{PCI_SUBSYS_ID}=="12BA:F5D5", TAG+="cleanup-sysfs-perms"
+ENV{PCI_ID}=="12BA:*", ENV{PCI_SUBSYS_ID}=="12BA:F5D6", TAG+="cleanup-sysfs-perms"
+ENV{PCI_ID}=="12BA:*", ENV{PCI_SUBSYS_ID}=="12BA:B5D8", TAG+="cleanup-sysfs-perms"
+ENV{PCI_ID}=="12BA:*", ENV{PCI_SUBSYS_ID}=="12BA:B5DA", TAG+="cleanup-sysfs-perms"
+ENV{PCI_ID}=="12BA:*", ENV{PCI_SUBSYS_ID}=="12BA:B5DC", TAG+="cleanup-sysfs-perms"
+
+TAG=="cleanup-sysfs-perms", RUN+="bittware-sysfs-cleanup.sh %k"
+
+LABEL="sysfs_perms_rules_end"
+
+RULE /etc/udev/rules.d/99-bwvfio.rules # VFIO rules for bittware devices
+#
+# This rules file should be located in /etc/udev/rules.d/
+# vfio-pci-bind.sh must be located in /usr/lib/udev/ and must be executable.
+
+SUBSYSTEM!="pci", GOTO="vfio_pci_bind_rules_end"
+ACTION=="remove|unbind", GOTO="vfio_pci_cleanup"
+ACTION=="bind", GOTO="vfio_pci_bind_rules_end"
+
+ATTR{vendor}=="0x12ba", ATTR{subsystem_vendor}=="0x0055", TAG+="vfio-pci-bind"
+ATTR{vendor}=="0x12ba", ATTR{subsystem_vendor}=="0x1b59", TAG+="vfio-pci-bind"
+ATTR{vendor}=="0x12ba", ATTR{subsystem_vendor}=="0x12ba", ATTR{subsystem_device}=="0xb5d4", TAG+="vfio-pci-bind"
+ATTR{vendor}=="0x12ba", ATTR{subsystem_vendor}=="0x12ba", ATTR{subsystem_device}=="0xb5d5", TAG+="vfio-pci-bind"
+ATTR{vendor}=="0x12ba", ATTR{subsystem_vendor}=="0x12ba", ATTR{subsystem_device}=="0xb5d6", TAG+="vfio-pci-bind"
+ATTR{vendor}=="0x12ba", ATTR{subsystem_vendor}=="0x12ba", ATTR{subsystem_device}=="0xf5d4", TAG+="vfio-pci-bind"
+ATTR{vendor}=="0x12ba", ATTR{subsystem_vendor}=="0x12ba", ATTR{subsystem_device}=="0xf5d5", TAG+="vfio-pci-bind"
+ATTR{vendor}=="0x12ba", ATTR{subsystem_vendor}=="0x12ba", ATTR{subsystem_device}=="0xf5d6", TAG+="vfio-pci-bind"
+ATTR{vendor}=="0x12ba", ATTR{subsystem_vendor}=="0x12ba", ATTR{subsystem_device}=="0xb5d8", TAG+="vfio-pci-bind"
+ATTR{vendor}=="0x12ba", ATTR{subsystem_vendor}=="0x12ba", ATTR{subsystem_device}=="0xb5da", TAG+="vfio-pci-bind"
+ATTR{vendor}=="0x12ba", ATTR{subsystem_vendor}=="0x12ba", ATTR{subsystem_device}=="0xb5dc", TAG+="vfio-pci-bind"
+
+TAG=="vfio-pci-bind", RUN+="bittware-bind-vfio.sh %k"
+GOTO="vfio_pci_bind_rules_end"
+
+LABEL="vfio_pci_cleanup"
+ENV{PCI_ID}=="12BA:*", ENV{PCI_SUBSYS_ID}=="0055:*", TAG+="vfio-pci-cleanup"
+ENV{PCI_ID}=="12BA:*", ENV{PCI_SUBSYS_ID}=="1B59:*", TAG+="vfio-pci-cleanup"
+ENV{PCI_ID}=="12BA:*", ENV{PCI_SUBSYS_ID}=="12BA:B5D4", TAG+="vfio-pci-cleanup"
+ENV{PCI_ID}=="12BA:*", ENV{PCI_SUBSYS_ID}=="12BA:B5D5", TAG+="vfio-pci-cleanup"
+ENV{PCI_ID}=="12BA:*", ENV{PCI_SUBSYS_ID}=="12BA:B5D6", TAG+="vfio-pci-cleanup"
+ENV{PCI_ID}=="12BA:*", ENV{PCI_SUBSYS_ID}=="12BA:F5D4", TAG+="vfio-pci-cleanup"
+ENV{PCI_ID}=="12BA:*", ENV{PCI_SUBSYS_ID}=="12BA:F5D5", TAG+="vfio-pci-cleanup"
+ENV{PCI_ID}=="12BA:*", ENV{PCI_SUBSYS_ID}=="12BA:F5D6", TAG+="vfio-pci-cleanup"
+ENV{PCI_ID}=="12BA:*", ENV{PCI_SUBSYS_ID}=="12BA:B5D8", TAG+="vfio-pci-cleanup"
+ENV{PCI_ID}=="12BA:*", ENV{PCI_SUBSYS_ID}=="12BA:B5DA", TAG+="vfio-pci-cleanup"
+ENV{PCI_ID}=="12BA:*", ENV{PCI_SUBSYS_ID}=="12BA:B5DC", TAG+="vfio-pci-cleanup"
+
+TAG=="vfio-pci-cleanup", RUN+="bittware-vfio-cleanup.sh %k"
+
+LABEL="vfio_pci_bind_rules_end"
+

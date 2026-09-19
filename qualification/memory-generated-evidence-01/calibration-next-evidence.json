@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "status": "proposed_finite_static_followup_not_executed",
+  "authorization": false,
+  "ready_for_build": false,
+  "generated_interface_accepted": false,
+  "calibration_order_accepted": false,
+  "physical_equivalence_established": false,
+  "electrical_failure_established": false,
+  "supported_remap_established": false,
+  "composition_order_explained": true,
+  "review": "calibration-installed-source-review.md",
+  "evidence": {
+    "receipt": "calibration-installed-live02.json",
+    "bytes": 133556,
+    "sha256": "3b245eee4f7c3313a15aa4e363c488b2f08b869aa6931407fa091f202c994e22",
+    "verified_full_tcl_payload_count": 8,
+    "all_payload_bytes_and_hashes_match": true,
+    "missing_historical_root_receipt": "calibration-installed-live01.json",
+    "missing_historical_root_receipt_sha256": "1b50346cf4ab5cdda17a11609126f704b4c6ef5a5a7891acc8ae58eedd8a3316",
+    "generated_receipt": "memory-artifacts.json",
+    "generated_receipt_sha256": "a333f976a8f95024b37ad918051b379c3922bd66b91e123e09fc575e95eb60ae"
+  },
+  "findings": {
+    "applicable_flow": "mem_ss 5.0.1 / fm; not mem_ss_fp. Internal device_features implementation is not captured; flow is source-inferred and agrees with generated kind/type evidence, not a runtime call trace.",
+    "saved_configuration": {
+      "device": "AGFB027R25A2E2V",
+      "device_family": "Agilex 7",
+      "RUN_COMPOSE": true,
+      "MEM_INTFS_TYPE": "DDR4,DDR4",
+      "MEM_INTFS_LOCATION": "BOT,BOT",
+      "APP_INTFS_TYPE": "STORAGE,STORAGE",
+      "MEM_CH_0_CONNS": "1,0",
+      "MEM_CH_1_CONNS": "0,1"
+    },
+    "bottom_list_for_saved_configuration": ["emif_0", "emif_1"],
+    "generated_connections": [
+      {"from": "emif_cal_bot.emif_calbus_0", "to": "emif_0.emif_calbus", "physical_identity": "physical0 discrete/P1"},
+      {"from": "emif_cal_bot.emif_calbus_1", "to": "emif_1.emif_calbus", "physical_identity": "physical1 RDIMM"}
+    ],
+    "donor_association_from_prior_review": "bottom calbus0 to physical1 RDIMM; calbus1 to physical0 discrete/P1",
+    "calibration_cardinality": 2,
+    "ordering_citations": [
+      "declare.tcl:118-127 derived index-list expressions",
+      "elaborate.tcl:197-229 application connection vectors to connectivity arrays",
+      "edit_qsys_fm.tcl:83-98 zero counter and empty lists",
+      "edit_qsys_fm.tcl:105-144 memory-row traversal, skip and sequential regular-EMIF allocation",
+      "edit_qsys_fm.tcl:177-180 location-specific append",
+      "edit_qsys_fm.tcl:304-325 independent reset-controller sort, not calibration-list sort",
+      "edit_qsys_fm.tcl:476-493 later HPS append, inactive here",
+      "edit_qsys_fm.tcl:549-584 list-length cardinality and unchanged-list slot enumeration"
+    ],
+    "controls_disposition": "Location groups and application connectivity are supported surfaces with traced behavior, not independent within-block remapping. RUN_COMPOSE=false disables/removes wiring rather than preserving a manual rewire. No captured calibration-order consumer for DIAG_EXTRA_PARAMETERS. Cardinality already matches donor. No correction established.",
+    "semantic_limit": "Logical-slot enumeration and consistent sequence-table wiring explain output but do not prove cross-version physical calibration-address equivalence, fitted grouping, successful calibration, or electrical failure. AXM_ID_NUM, SEQ_GPT_COLUMN_ID, CONN_TO_CALIP and calbus_seq_param_tbl definitions/consumers are absent from the eight Tcl payloads."
+  },
+  "operation": "After separate authorization, capture one exact referenced UTF-8 source file and one exact package directory's immediate metadata only. No vendor/Tcl execution, project load, import, tests, remote action, generation, implementation, source edits or commits are authorized by this proposal.",
+  "lookup_targets": [
+    {
+      "operation": "capture_exact_file_full_text_bytes_sha256",
+      "path": "/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/ip_mem_ss/qcp/mem_ss_hwtcl_commands.tcl",
+      "existence_verified": false,
+      "literal_provenance": "declare.tcl:16 sets ip_dir; line26 sources ${ip_dir}/qcp/${system_name}_hwtcl_commands.tcl. Substitute system_name=mem_ss from generated files[63]:5-9 and declare.tcl:32-37.",
+      "reason": "Close the known generated declaration include; identify callback/parameter/instance declarations and any literal calibration descriptor references. Do not presume this file contains the calibration implementation."
+    },
+    {
+      "operation": "list_immediate_entry_name_type_size_only",
+      "path": "/opt/altera/26.1.1/ip/altera/subsystems/mem_ss_pkg/util",
+      "existence_verified": false,
+      "literal_provenance": "mem_ss_pkg.tcl:15 adds $env(QUARTUS_ROOTDIR)/../ip/altera/subsystems/mem_ss_pkg/util to auto_path; main.tcl:19 requires mem_ss_pkg::util; declare.tcl:223 calls ::mem_ss_pkg::util::create_device_features.",
+      "reason": "Identify exact package-definition filenames for a later reviewed request without guessing them. No entry contents or subdirectories may be read in this batch."
+    }
+  ],
+  "limits": {
+    "maximum_captured_files": 1,
+    "maximum_bytes_per_file": 1048576,
+    "maximum_total_content_bytes": 1048576,
+    "maximum_listed_directories": 1,
+    "maximum_directory_entries_examined": 128,
+    "follow_symlinks": false,
+    "recursive_enumeration": false,
+    "glob_patterns_allowed": false,
+    "follow_source_include_edges": false,
+    "on_limit": "Stop and report the limit, path and available size; do not silently truncate or select an arbitrary subset."
+  },
+  "capture_fields": ["exact_path", "bytes", "sha256", "full_text", "line_numbered_relevant_definitions", "immediate_directory_entries", "missing_paths", "limits_hit", "unfollowed_literal_references"],
+  "required_evidence_or_explicit_gap": [
+    "Registration and parameters for mem_ss and any declared calibration instances or supported slot controls in the exact QCP include",
+    "Literal references identifying further definitions; record without following",
+    "Actual immediate package filenames relevant to the missing create_device_features implementation; no guessed filename reads",
+    "Explicit statement whether any evidence establishes logical slot to physical calibration-address/sequence-table semantics; absence remains unresolved"
+  ],
+  "stop_conditions": [
+    "Missing exact target: report and stop that target. Do not retry the missing historical /opt/altera/26.1.1/ip/altera/subsystems/mem_ss root.",
+    "Symlink or size/entry limit: report and stop; no target following or scope broadening.",
+    "References beyond these exact targets: record literal reference and stop for new review; do not recursively chase includes or packages.",
+    "No literal calibration-consumer path: retain unresolved semantics and seek authoritative vendor clarification or a separately reviewed bounded descriptor lookup, not a fabricated implementation filename.",
+    "No old-version source capture without an independently bound installation root and separate authorization.",
+    "Do not implement a remap merely because generated enumeration differs from donor; supported control semantics or semantic-equivalence evidence is still required."
+  ],
+  "preserve": ["all existing package pins", "physical0 discrete/P1 identity", "physical1 RDIMM identity", "physical port names", "application topology", "BOT,BOT placement intent", "generated HDL", "vendor source", "board source", "presets", "manifests", "all readiness gates"],
+  "next_action_scope_limit": "This batch addresses the next literal declaration/package-reference gaps only. It is not guaranteed to contain IOSSM or sequence-table consumers and cannot by itself be predeclared calibration acceptance."
+}

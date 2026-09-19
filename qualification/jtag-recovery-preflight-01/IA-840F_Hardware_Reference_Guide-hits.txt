@@ -1,0 +1,286 @@
+196:               10.2 Board Features Accessible via USB     67
+                10.2.1 Max 10 and BMC USB Connectivity   68
+                10.2.2 On-board USB-Blaster II           68
+                10.2.3 USB-to-UART                       69
+              10.3 USB Connectors                        69
+              10.4 JTAG Utilities                        70
+            11 Power                                     71
+199:                 10.2.3 USB-to-UART                       69
+              10.3 USB Connectors                        69
+              10.4 JTAG Utilities                        70
+            11 Power                                     71
+              11.1 Power Specifications                  72
+              11.2 Power Sources                         72
+                11.2.1 8-Pin Power Connector             73
+391:    l   IO Input/Outputs
+   l   IP Intellectual Property
+   l   JTAG Joint Test Action Group (boundary scan standard)
+   l   LED Light Emitting Diode
+   l   MCTP Management Component Transfer Protocol
+   l   MT/s Mega Transfers per second
+   l   PLDM Platform Level Data Model
+481:           l Power-on FPGA configuration from flash, dual image
+
+          l USB-Blaster II Interface for FPGA JTAG access
+
+   l   Board Management Controller (BMC):
+          l Voltage, current, temperature monitoring
+
+501: 
+   l   USB connectivity:
+          l USB access to BMC, USB-JTAG, USB-UART
+
+
+
+
+600:                                         RECE-20369-001E-01              TAOGLAS
+    Ext. clock (J16)
+    JTAG (J17)                          2-1734592-4                     TE Connectivity
+    FPC connector (J18)                 5051106091                      Molex
+    GPIO (J24)                          5040501291                      Molex
+
+
+616:                                     Method(s)
+                Local micro-
+                                    BittWare factory-   Stores code and configuration options. Clock con-
+BMC             controller, flash
+                                    programmed          figuration stored in local flash. FRU data.
+                based
+                              USB (via BMC) or
+622:                               USB (via BMC) or
+Configuration   FPGA boot con-
+                              PCIe or           Two images: factory and application
+Flash           figuration
+                              pre-programmed
+                                                The FPGA will read the base MAC ID and can use 24
+                                                sequential addresses. The serial number can be read
+629: MAC ID &      Contains unique                   and used for software feature licensing. The MAC PROM
+                              Base MAC ID fact-
+Serial Number 128-bit serial                    is programmed at BittWare’s factory with card unique
+                              ory programmed
+PROM          number                            information. For more information about the MAC PROM,
+                                                and how to access its content, see VPD EPROM and
+                                                Appendix A: PROM Format.
+840: 3.4 RMA - Returning Your Product to BittWare
+Before BittWare issues an RMA, we will attempt to fix any issues remotely. We also capture as much
+debugging information as possible to help our production team replicate the issue at our factory. This
+process ensures a quicker resolution, and in many cases avoids having to return the card back to Bitt-
+Ware.
+RMA resolution time varies depending on the issue and the amount of investigation, retest, and rework
+required. The lead time for replacement parts and the availability of our rework factory also impacts the
+844: Ware.
+RMA resolution time varies depending on the issue and the amount of investigation, retest, and rework
+required. The lead time for replacement parts and the availability of our rework factory also impacts the
+RMA resolution time. We can estimate the RMA resolution time when we receive the RMA board at our
+factory.
+See Contacting BittWare for instructions on how to contact BittWare Support to request an RMA.
+
+846: required. The lead time for replacement parts and the availability of our rework factory also impacts the
+RMA resolution time. We can estimate the RMA resolution time when we receive the RMA board at our
+factory.
+See Contacting BittWare for instructions on how to contact BittWare Support to request an RMA.
+
+3.5 Card Test
+The IA-840f is delivered preprogrammed with a Card Test application that verifies the key features of the
+866: The IA-840f automatically loads an FPGA design from Flash at power on. There are several ways to pro-
+gram the FPGA:
+JTAG Chain using on-board USB-Blaster II – The IA-840f features a Max 10 FPGA which hosts a
+USB-Blaster II to access the FPGA JTAG chain. Connecting to the board via USB allows access to the
+JTAG chain with Quartus Programmer. Using this method, you can reconfigure the FPGA directly. The
+
+
+867: gram the FPGA:
+JTAG Chain using on-board USB-Blaster II – The IA-840f features a Max 10 FPGA which hosts a
+USB-Blaster II to access the FPGA JTAG chain. Connecting to the board via USB allows access to the
+JTAG chain with Quartus Programmer. Using this method, you can reconfigure the FPGA directly. The
+
+
+
+868: JTAG Chain using on-board USB-Blaster II – The IA-840f features a Max 10 FPGA which hosts a
+USB-Blaster II to access the FPGA JTAG chain. Connecting to the board via USB allows access to the
+JTAG chain with Quartus Programmer. Using this method, you can reconfigure the FPGA directly. The
+
+
+
+
+875: © 2025 BittWare, a Molex company                                                                          29
+
+JTAG chain also provides debug access to the board and enables the use of various JTAG-based
+debug utilities such as Intel’s Signal Tap Logic Analyzer and Intel’s System Console.
+User Flash Interface – There are currently two ways in which the QSPI Flash can be programmed: Pro-
+gramming via JTAG (using the Quartus programming tools and a .jic file) or programming via the SDM
+(using the Intel SDM Mailbox Client IP block within the FPGA design). The latter method requires a .rpd
+878: debug utilities such as Intel’s Signal Tap Logic Analyzer and Intel’s System Console.
+User Flash Interface – There are currently two ways in which the QSPI Flash can be programmed: Pro-
+gramming via JTAG (using the Quartus programming tools and a .jic file) or programming via the SDM
+(using the Intel SDM Mailbox Client IP block within the FPGA design). The latter method requires a .rpd
+file. Once the user design has reprogrammed the flash, the FPGA will be configured with the updated
+design at the next power cycle or after you launch a soft reconfigure request. For more detail on pro-
+gramming the flash, refer to the IA-840f FPGA Developer Guide.
+985: 
+5.1.3 PCIe Endpoint Characteristics
+The card is preprogrammed with the Card Test when shipped from the BittWare factory. When con-
+nected to a PCIe host, the card will enumerate on the PCIe bus with the following details:
+   l   PCI Vendor ID: 0x12ba
+   l   PCI Device ID: 0x70
+The PCIe end-points properties are accessible with the lspci command on Linux or using the Windows
+1458: 7.2 Flash
+The 2Gb Flash is used for storing FPGA images. At least two images can be stored into QSPI. There are
+currently two ways in which the QSPI Flash can be programmed: Programming via JTAG (using the
+Quartus programming tools and a .jic file) or programming via the SDM (using the SDM Mailbox IP within
+the FPGA design). The latter method requires a .rpd file.
+For instructions on programming the flash, refer to the IA-840f FPGA Developer Guide.
+
+1459: The 2Gb Flash is used for storing FPGA images. At least two images can be stored into QSPI. There are
+currently two ways in which the QSPI Flash can be programmed: Programming via JTAG (using the
+Quartus programming tools and a .jic file) or programming via the SDM (using the SDM Mailbox IP within
+the FPGA design). The latter method requires a .rpd file.
+For instructions on programming the flash, refer to the IA-840f FPGA Developer Guide.
+
+
+1606: © 2025 BittWare, a Molex company                                                                          54
+
+The default factory clock file programmed into the IA-840f at cold boot from the BMC is set to enable test-
+ing of the recovered clocks. With this programming file the initialization of the clocks at cold boot waits on
+recovered clocks that are not present until the FPGA is configured fully. This results in an overall startup
+time that is up to 5.5 seconds in total.
+In the majority of desktop class systems, the IA-840f will miss the PCIe enumeration and will require a
+1636:     l   Si5397-RevA-IA-840-840_R1_base-R3_NO_input
+        This file does not use any inputs (three recovered clocks and external reference clock). This is
+        what will be programmed in cards when they leave the factory.
+
+
+
+
+1674: 
+9.1 Max 10 FPGA
+An on-board Max 10 FPGA is used to control the JTAG chain (USB-Blaster II for Signal Tap, In-System
+Sources & Probes, Transceiver Toolkit, etc.)
+
+9.2 Board Managment Controller (BMC)
+The IA-840f features an advanced system monitoring subsystem, similar to those typically found on
+1768: 
+For USB access to the Max 10, the same USB interface is also used. The USB interface provides
+JTAG access to the FPGA and flash via a USB-Blaster-II (driver installed as part of the Quartus install-
+ation). A FPGA-driven UART is also provided. See the USB Connectivity section (driver available on
+the FTDI website).
+For FPGA IP access to the BMC, refer to the FPGA Developer Reference Guide.
+
+1926: 9.8 Jumpers and Switches
+The IA-840f has the following jumpers:
+   l   J2: BMC programming (Factory use only)
+   l   J19: I2C debug (Factory use only, header not installed)
+
+
+
+1927: The IA-840f has the following jumpers:
+   l   J2: BMC programming (Factory use only)
+   l   J19: I2C debug (Factory use only, header not installed)
+
+
+
+
+1939:  10.2 Board Features Accessible via USB   67
+ 10.3 USB Connectors                      69
+ 10.4 JTAG Utilities                      70
+
+
+
+
+1958: 
+Both the front and rear USB connectors give access to the same USB devices:
+  1. USB-Blaster II for JTAG access to the FPGA
+  2. BMC for access to control and status port
+  3. And a FPGA user-controller UART
+The USB front panel header and the USB IN rear panel share the up-stream bus into the USB hub. The
+front panel USB has priority over the rear panel USB. Plugging a cable into the front panel will dis-
+1987: the Max 10 and the BMC).
+
+10.2.2 On-board USB-Blaster II
+The IA-840f features an on-board USB-Blaster II part. It enables the IA-840f user access to the FPGA
+JTAG Chain for FPGA programming purposes using the Quartus Programmer or for debug purposes
+using the Quartus JTAG based utilities.
+The USB-Blaster II requires drivers to be loaded, they are supplied with the Intel Quartus tool chain. The
+1988: 
+10.2.2 On-board USB-Blaster II
+The IA-840f features an on-board USB-Blaster II part. It enables the IA-840f user access to the FPGA
+JTAG Chain for FPGA programming purposes using the Quartus Programmer or for debug purposes
+using the Quartus JTAG based utilities.
+The USB-Blaster II requires drivers to be loaded, they are supplied with the Intel Quartus tool chain. The
+USB-Blaster II device drivers require manual installation so that the cable will be properly recognized.
+1989: 10.2.2 On-board USB-Blaster II
+The IA-840f features an on-board USB-Blaster II part. It enables the IA-840f user access to the FPGA
+JTAG Chain for FPGA programming purposes using the Quartus Programmer or for debug purposes
+using the Quartus JTAG based utilities.
+The USB-Blaster II requires drivers to be loaded, they are supplied with the Intel Quartus tool chain. The
+USB-Blaster II device drivers require manual installation so that the cable will be properly recognized.
+If additional information on the installation for a particular operating system is needed, please consult the
+1990: The IA-840f features an on-board USB-Blaster II part. It enables the IA-840f user access to the FPGA
+JTAG Chain for FPGA programming purposes using the Quartus Programmer or for debug purposes
+using the Quartus JTAG based utilities.
+The USB-Blaster II requires drivers to be loaded, they are supplied with the Intel Quartus tool chain. The
+USB-Blaster II device drivers require manual installation so that the cable will be properly recognized.
+If additional information on the installation for a particular operating system is needed, please consult the
+Intel Quartus Software and Device Support Release Notes for the specific version of Quartus.
+1991: JTAG Chain for FPGA programming purposes using the Quartus Programmer or for debug purposes
+using the Quartus JTAG based utilities.
+The USB-Blaster II requires drivers to be loaded, they are supplied with the Intel Quartus tool chain. The
+USB-Blaster II device drivers require manual installation so that the cable will be properly recognized.
+If additional information on the installation for a particular operating system is needed, please consult the
+Intel Quartus Software and Device Support Release Notes for the specific version of Quartus.
+
+1992: using the Quartus JTAG based utilities.
+The USB-Blaster II requires drivers to be loaded, they are supplied with the Intel Quartus tool chain. The
+USB-Blaster II device drivers require manual installation so that the cable will be properly recognized.
+If additional information on the installation for a particular operating system is needed, please consult the
+Intel Quartus Software and Device Support Release Notes for the specific version of Quartus.
+
+
+2001: © 2025 BittWare, a Molex company                                                                          68
+
+Quartus uses the built-in USB devices driver on Linux to access the USB-Blaster II device. By default,
+root is the only user allowed to use these devices. Permissions must be changed on the ports before the
+USB-Blaster II can be used to program devices with Quartus software.
+
+10.2.3 USB-to-UART
+2003: Quartus uses the built-in USB devices driver on Linux to access the USB-Blaster II device. By default,
+root is the only user allowed to use these devices. Permissions must be changed on the ports before the
+USB-Blaster II can be used to program devices with Quartus software.
+
+10.2.3 USB-to-UART
+The FPGA design can implement a UART which will be accessible through USB; the board features a
+FT234XD chip. Please download and install this chip’s driver from the FTDI website.
+2022: © 2025 BittWare, a Molex company                                                                      69
+
+10.4 JTAG Utilities
+The USB-Blaster II interface provides access to the FPGA JTAG chain and allows you to reprogram the
+FPGA using the Quartus Programmer Tool.
+Intel provides several other debug tools which use the JTAG chain:
+   l   Signal Tap II Logic Analyzer
+2023: 
+10.4 JTAG Utilities
+The USB-Blaster II interface provides access to the FPGA JTAG chain and allows you to reprogram the
+FPGA using the Quartus Programmer Tool.
+Intel provides several other debug tools which use the JTAG chain:
+   l   Signal Tap II Logic Analyzer
+   l   Transceiver Toolkit
+2025: The USB-Blaster II interface provides access to the FPGA JTAG chain and allows you to reprogram the
+FPGA using the Quartus Programmer Tool.
+Intel provides several other debug tools which use the JTAG chain:
+   l   Signal Tap II Logic Analyzer
+   l   Transceiver Toolkit
+   l   External Memory Interface Toolkit
+   l   In-System Sources and Probes Editor
+2035:    Blaster) Driver for Linux” on the Intel website.
+
+The Quartus installation folder includes the USB-Blaster II drivers. BittWare recommends setting the
+JTAG clock speed to 16M. See the Getting Started Guide for details.
+
+
+
+2036: 
+The Quartus installation folder includes the USB-Blaster II drivers. BittWare recommends setting the
+JTAG clock speed to 16M. See the Getting Started Guide for details.
+
+
+

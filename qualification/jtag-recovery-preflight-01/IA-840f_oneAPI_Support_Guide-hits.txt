@@ -1,0 +1,49 @@
+552: 4.1 Updating the oneAPI ASP FPGA Image
+
+The IA-840f hardware is shipped with a factory test image. This is not an oneAPI ASP FPGA image;
+instead it is a Card Test application image, so the card configuration will need to be updated for use with
+oneAPI. Before following these programming steps, connect a USB-C cable to the IA-840f USB IN PORT
+as shown in the BittWare IA-840f Hardware Reference Guide https://developer-
+.bittware.com/hardware/docs/ia-840f/Rev1/Content/HardwareReference/BoardOverview/Board_Lay-
+580:   © 2024 BittWare, a Molex company                                                                          17
+
+          l   For enabling the JTAG access via Quartus please make sure to follow the steps mentioned
+              in this link: https://www.intel.com/content/www/us/en/docs/programmable/683472/21-4/in-
+              stalling-on-red-hat-enterprise-linux.html Failure to update the rules file may cause issues
+              with the Quartus tools JTAG functionality.
+  2. Program the required IA-840f oneAPI ASP SOF into the FPGA using Intel Quartus programmer.
+583:               in this link: https://www.intel.com/content/www/us/en/docs/programmable/683472/21-4/in-
+              stalling-on-red-hat-enterprise-linux.html Failure to update the rules file may cause issues
+              with the Quartus tools JTAG functionality.
+  2. Program the required IA-840f oneAPI ASP SOF into the FPGA using Intel Quartus programmer.
+      Program the FPGA using the required SOF from the command line: Change the directory to the
+      Quartus binaries folder
+          l   cd /path/to/quartus/intelFPGA_pro/23.1/quartus/bin/
+588:       Quartus binaries folder
+          l   cd /path/to/quartus/intelFPGA_pro/23.1/quartus/bin/
+          l   ./jtagconfig --setparam 1 JtagClockAutoAdjust 0;./jtagconfig --set-
+              param 1 JtagClock 16M;./jtagconfig --getparam 1 JtagClock
+          l   ./quartus_pgm -c 1 -m JTAG -o "p;/path/to/intel/oneapi-asp/i-
+              a840f/build/bringup/ofs_ia840f/build/output_files/ofs_top.sof@1"
+          l   Note: In this release, the path to the SOF is: ~/IOFS_BUILD_ROOT/ofs-ia840f/work-
+589:           l   cd /path/to/quartus/intelFPGA_pro/23.1/quartus/bin/
+          l   ./jtagconfig --setparam 1 JtagClockAutoAdjust 0;./jtagconfig --set-
+              param 1 JtagClock 16M;./jtagconfig --getparam 1 JtagClock
+          l   ./quartus_pgm -c 1 -m JTAG -o "p;/path/to/intel/oneapi-asp/i-
+              a840f/build/bringup/ofs_ia840f/build/output_files/ofs_top.sof@1"
+          l   Note: In this release, the path to the SOF is: ~/IOFS_BUILD_ROOT/ofs-ia840f/work-
+              ofs-23.1-2-build/syn/syn_top/output_files/ofs_top.sof
+590:           l   ./jtagconfig --setparam 1 JtagClockAutoAdjust 0;./jtagconfig --set-
+              param 1 JtagClock 16M;./jtagconfig --getparam 1 JtagClock
+          l   ./quartus_pgm -c 1 -m JTAG -o "p;/path/to/intel/oneapi-asp/i-
+              a840f/build/bringup/ofs_ia840f/build/output_files/ofs_top.sof@1"
+          l   Note: In this release, the path to the SOF is: ~/IOFS_BUILD_ROOT/ofs-ia840f/work-
+              ofs-23.1-2-build/syn/syn_top/output_files/ofs_top.sof
+  3. Restart the host system: shutdown -r now
+602: 840f to directly boot as an oneAPI ready device on the IA-840f. This section details these steps to repro-
+gram the user flash page in the QSPI flash that is connected to the Agilex series device on the BittWare
+IA-840f. This is an optional step. For flash update to user page based on page setup from a factory pro-
+grammed card:
+
+  1. Change directory, cd, to the archive subfolder flash_image.
+  2. Call the Bittware Agilex flash programmer utility (bw_agilex_flash_programmer, which is

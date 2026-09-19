@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ -z "$BWSDK_ROOT" ]; then
+    echo "Could not find BWSDK install path"
+    exit 1
+fi
+
+python3 $BWSDK_ROOT/scripts/bw_pip.py "$@"

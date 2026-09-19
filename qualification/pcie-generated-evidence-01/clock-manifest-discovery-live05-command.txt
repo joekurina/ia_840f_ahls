@@ -1,0 +1,34 @@
+/usr/bin/python3 -I -B -S -c 'import os,stat,json,socket,time,base64,gzip,hashlib,pathlib
+assert socket.gethostname()=='"'"'Agilex7Workstation'"'"' and os.getuid()==os.geteuid()==1000 and os.environ.get('"'"'TMUX'"'"')=='"'"'/tmp/tmux-1000/default,7828,4'"'"'
+roots=['"'"'/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss'"'"', '"'"'/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ofs-common/src/fpga_family/agilex/sys_pll/sys_pll'"'"']
+out={'"'"'roots'"'"':roots,'"'"'matches'"'"':[],'"'"'errors'"'"':[],'"'"'entries_examined'"'"':0,'"'"'ready_for_build'"'"':False,'"'"'vendor_run'"'"':False,'"'"'observed_unix'"'"':time.time()}
+try:
+ for root in roots:
+  p=pathlib.Path(root)
+  for q in [p,*p.parents]:
+   assert not q.is_symlink(),str(q)
+  stack=[(p,0)]
+  while stack:
+   p,depth=stack.pop()
+   with os.scandir(p) as entries:
+    for e in entries:
+     out['"'"'entries_examined'"'"']+=1
+     if out['"'"'entries_examined'"'"']>512:raise RuntimeError('"'"'512-entry discovery cap'"'"')
+     st=e.stat(follow_symlinks=False)
+     if stat.S_ISLNK(st.st_mode):continue
+     if stat.S_ISDIR(st.st_mode):
+      if depth<5:stack.append((pathlib.Path(e.path),depth+1))
+      else:raise RuntimeError('"'"'depth cap: '"'"'+e.path)
+     elif stat.S_ISREG(st.st_mode) and pathlib.Path(e.name).suffix in ('"'"'.qip'"'"','"'"'.qgsynthc'"'"','"'"'.sdc'"'"'):
+      out['"'"'matches'"'"'].append({'"'"'path'"'"':e.path,'"'"'bytes'"'"':st.st_size,'"'"'mtime_ns'"'"':st.st_mtime_ns})
+except Exception as ex:out['"'"'errors'"'"'].append(repr(ex))
+out['"'"'complete_within_scope'"'"']=not out['"'"'errors'"'"']
+raw=(json.dumps(out,indent=2)+'"'"'\n'"'"').encode()
+if len(raw)>65536:raise RuntimeError('"'"'output cap'"'"')
+p=pathlib.Path('"'"'/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/clock-manifest-discovery-live05.json'"'"')
+for q in [p,*p.parents]:assert not q.is_symlink()
+with open(p,'"'"'xb'"'"') as f:f.write(raw)
+assert p.read_bytes()==raw
+s=base64.b64encode(gzip.compress(raw)).decode()
+print('"'"'CLK5_SHA'"'"',hashlib.sha256(raw).hexdigest());print('"'"'CLK5_BEGIN'"'"');print(chr(10).join(s[i:i+400] for i in range(0,len(s),400)));print('"'"'CLK5_END'"'"')
+'

@@ -1,0 +1,78 @@
+bw-product-help 0 usage: bw_product [-h] [-l] [-d] [--version] [-L {INFO,DEBUG}]
+                  [product_name ...]
+
+Product Utility
+
+positional arguments:
+  product_name          A string that selects the target product. This string is
+ lazy
+                        matched (case ignored) to known product names. The defau
+lt value is 'ALL'
+                        which lists all known products.
+
+                        The product name may be followed by one or more attribut
+e names, in
+                        which case the specified product attributes are listed.V
+alid attribute names are:
+
+                        alt_mfg_info
+                        bmc_class
+                        bmc_handler
+                        bmc_type
+                        card_desc_path
+                        clock_files
+                        data_directory
+                        dump
+                        family
+                        fpga_desc_path
+                        name
+                        prom
+                        str_family
+                        str_name
+                        test_plans
+                        vendor_info
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -l, --list            List product(S), short form
+
+  -d, --dump            List product(s) long form (dump)
+
+  --version
+  -L {INFO,DEBUG}, --loglevel {INFO,DEBUG}
+                        Log level to log (INFO, DEBUG) defaults to None
+
+    Tool for finding info for installed products.
+
+Typical use:
+    $ python -m bw_core.product -d
+        < Dump long form product info for all products >
+
+    $ python -m bw_core.product -l ia440
+    IA-440I          /home/dbelser/SDK3/REPOS/Product_Families/agilex/bw_agilex/
+data/IA-440I
+
+    $ python -m bw_core.product ia440 alt_mfg_info
+    alt_mfg_info:{'Model': 'IA-440I'}
+
+offline-csp-import 0 {
+  "class": "IA840FProduct",
+  "name": "IA-840F",
+  "data_directory": "/home/uwb_student00/.local/lib/python3.9/site-packages/bw_a
+gilex/data/IA-840F",
+  "card_desc_path": "/home/uwb_student00/.local/lib/python3.9/site-packages/bw_a
+gilex/data/IA-840F/IA-840F.yml",
+  "fpga_desc_path": "/home/uwb_student00/.local/lib/python3.9/site-packages/bw_a
+gilex/data/IA-840F/ia-840f_cardtest.json",
+  "clock_files": "/home/uwb_student00/.local/lib/python3.9/site-packages/bw_agil
+ex/data/IA-840F/clocks",
+  "test_plans": [
+    "/home/uwb_student00/.local/lib/python3.9/site-packages/bw_agilex/data/IA-84
+0F/test_plans/ia840f_card_test.yaml"
+  ],
+  "card_model": "CardDescriptionModel",
+  "blocked_audit_events": []
+}
+
+DONE
+

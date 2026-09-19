@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "ready": false,
+  "execution_authorized": false,
+  "status": "proposal_only_missing_generated_acceptance",
+  "scope": "Work03 PCIe and its board CSR PLL only; no remote action performed",
+  "capture_count": 6,
+  "capture_roots": [
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss.ip",
+      "kind": "saved_parent_ip",
+      "purpose": "Recover full scoped configuration, clock interfaces and any serialized generation/file manifest; not generated child acceptance.",
+      "provenance": {
+        "capture": "qualification/ipgen-03/final-generation-evidence.json",
+        "report_key": "work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/pcie_ss_generation.rpt",
+        "decoded_line": 3,
+        "derivation": "Input path in report command, lexically resolve four parent-directory components from recorded syn_top; no filesystem search."
+      }
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/sim/common/modelsim_files.tcl",
+      "kind": "generated_file_list_script",
+      "purpose": "Read as inert text to obtain literal generated HDL/file-list references; never execute/source. Does not by itself close synthesis-only SDC/divider evidence.",
+      "provenance": {
+        "capture": "qualification/ipgen-03/final-generation-evidence.json",
+        "report_key": "work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/pcie_ss_generation.rpt",
+        "decoded_line": 72,
+        "derivation": "Filename explicitly emitted under exact sim directory in same report."
+      }
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/sim/mentor/msim_setup.tcl",
+      "kind": "generated_file_list_script",
+      "purpose": "Read as inert text to obtain literal generated HDL/file-list references; never execute/source. Does not by itself close synthesis-only SDC/divider evidence.",
+      "provenance": {
+        "capture": "qualification/ipgen-03/final-generation-evidence.json",
+        "report_key": "work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/pcie_ss_generation.rpt",
+        "decoded_line": 79,
+        "derivation": "Filename explicitly emitted under exact sim directory in same report."
+      }
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ofs-common/src/fpga_family/agilex/sys_pll/sys_pll.ip",
+      "kind": "saved_parent_ip",
+      "purpose": "Recover full scoped configuration, clock interfaces and any serialized generation/file manifest; not generated child acceptance.",
+      "provenance": {
+        "capture": "qualification/ipgen-03/final-generation-evidence.json",
+        "report_key": "work_ia840f_ipgen_03/ofs-common/src/fpga_family/agilex/sys_pll/sys_pll/sys_pll_generation.rpt",
+        "decoded_line": 3,
+        "derivation": "Input path in report command, lexically resolve four parent-directory components from recorded syn_top; no filesystem search."
+      }
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ofs-common/src/fpga_family/agilex/sys_pll/sys_pll/sim/common/modelsim_files.tcl",
+      "kind": "generated_file_list_script",
+      "purpose": "Read as inert text to obtain literal generated HDL/file-list references; never execute/source. Does not by itself close synthesis-only SDC/divider evidence.",
+      "provenance": {
+        "capture": "qualification/ipgen-03/final-generation-evidence.json",
+        "report_key": "work_ia840f_ipgen_03/ofs-common/src/fpga_family/agilex/sys_pll/sys_pll/sys_pll_generation.rpt",
+        "decoded_line": 15,
+        "derivation": "Filename explicitly emitted under exact sim directory in same report."
+      }
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ofs-common/src/fpga_family/agilex/sys_pll/sys_pll/sim/mentor/msim_setup.tcl",
+      "kind": "generated_file_list_script",
+      "purpose": "Read as inert text to obtain literal generated HDL/file-list references; never execute/source. Does not by itself close synthesis-only SDC/divider evidence.",
+      "provenance": {
+        "capture": "qualification/ipgen-03/final-generation-evidence.json",
+        "report_key": "work_ia840f_ipgen_03/ofs-common/src/fpga_family/agilex/sys_pll/sys_pll/sys_pll_generation.rpt",
+        "decoded_line": 22,
+        "derivation": "Filename explicitly emitted under exact sim directory in same report."
+      }
+    }
+  ],
+  "limits": {
+    "max_files": 6,
+    "max_bytes_per_file": 4194304,
+    "max_total_bytes": 16777216,
+    "recursive_scan": false,
+    "globs": false,
+    "execute_tcl": false,
+    "vendor_execution": false,
+    "regenerate": false,
+    "follow_unlisted_references": false
+  },
+  "capture_requirements": [
+    "Separate explicit authorization before remote read/copy.",
+    "Record exact path, full bytes, size and SHA256; preserve missing/read-error/oversize outcomes without guessing alternatives.",
+    "Parse XML with interface/component scope and preserve duplicate ordered parameter records.",
+    "Parse scripts as inert text only; no Tcl interpreter, source, substitutions, or HDL execution.",
+    "Stop after this batch; issue separately reviewed exact-path follow-up for literal relevant references only."
+  ],
+  "unresolved_exact_paths": [
+    "Generated PCIe SDC and synthesis QIP/export manifest path not present in reviewed capture bodies.",
+    "Generated PCIe parent/child synthesis HDL paths and child parameter exports not established by module names alone.",
+    "Generated sys_pll synthesis implementation/divider and clock constraint paths not established by module name alone."
+  ],
+  "follow_up_acceptance": [
+    "Confirm effective TILE rather than TILE_user, exact part/Gen4 x16, two PFs, PF0 VF count 1 and PF1 VF count 0.",
+    "Confirm PF1 BAR0 disabled, BAR2 64-bit prefetchable width28, BAR4 width14 and IDs in generated configuration, preserving 64-byte/two-segment workaround.",
+    "Inspect rendered PCIe SDC: core16_axi_lite_source_freq_hwtcl is proven as template dictionary input, not a proven child-IP field.",
+    "Reconcile generated PLL output1/dividers and requested 100 MHz with actual nominal frequency, constraints, clock-domain connectivity and reviewed tolerance; keep timing/hardware NOTEST."
+  ],
+  "source_container_sha256": "91887ab033812ff6bd416b90f58afea652868bcf4967053eeb9081c8bd936a84"
+}

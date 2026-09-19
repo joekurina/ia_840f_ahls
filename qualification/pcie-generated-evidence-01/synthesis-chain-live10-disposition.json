@@ -1,0 +1,111 @@
+{
+  "ready": false,
+  "ready_for_build": false,
+  "execution_authorized": false,
+  "vendor_run": false,
+  "scope": "static local captured PCIe synthesis chain only; no PLL re-review",
+  "container": {
+    "path": "pcie-synthesis-chain-live10.json",
+    "bytes": 11551912,
+    "sha256": "89fab314daae1a4ec64f87f8cd8f6fc1e0de23a007edb8691ac8574156fd4a33",
+    "errors": [],
+    "independently_verified": true
+  },
+  "payload_count": 4,
+  "total_payload_bytes": 11404444,
+  "files": [
+    {
+      "alias": "TOP",
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/synth/pcie_ss.v",
+      "bytes": 2454833,
+      "sha256": "c64ce327ff29f6a92c9af4bbf8ede410fe6b94c88796f6bf774866e85c3c8e9f",
+      "decoded_lines": 3219,
+      "simulation_path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/sim/pcie_ss.v",
+      "byte_identical_to_simulation": true,
+      "independently_hash_verified": true,
+      "qip_line": 348
+    },
+    {
+      "alias": "AXI",
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/intel_pcie_ss_axi_500/synth/pcie_ss_intel_pcie_ss_axi_500_gycdipy.sv",
+      "bytes": 755529,
+      "sha256": "ea4e45e5539f8153dbb0590c01c75f3f2c36103e83d989894033d567eaf55536",
+      "decoded_lines": 12989,
+      "simulation_path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/intel_pcie_ss_axi_500/sim/intelfpga/pcie_ss_intel_pcie_ss_axi_500_gycdipy.sv",
+      "byte_identical_to_simulation": true,
+      "independently_hash_verified": true,
+      "qip_line": 162
+    },
+    {
+      "alias": "BRIDGE",
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/intel_pcie_ss_axi_500/synth/pcie_ss_intel_pcie_ss_axi_intel_pcie_ptile_ast_500_pxriq3y.v",
+      "bytes": 712613,
+      "sha256": "3e158e13cfd3f772c765938ba10eb32eda0bd885bbf5fb2bcadcca4ecc53deaf",
+      "decoded_lines": 12548,
+      "simulation_path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/intel_pcie_ss_axi_500/sim/pcie_ss_intel_pcie_ss_axi_intel_pcie_ptile_ast_500_pxriq3y.v",
+      "byte_identical_to_simulation": true,
+      "independently_hash_verified": true,
+      "qip_line": 161
+    },
+    {
+      "alias": "HIP",
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/intel_pcie_ptile_ast_1100/synth/pcie_ss_intel_pcie_ptile_ast_1100_ndgxg4a.sv",
+      "bytes": 7481469,
+      "sha256": "5d2743a48beed5c3a5bd0e0560b7cebf31ee435431fb7fd0ca8280049d01e40a",
+      "decoded_lines": 43093,
+      "simulation_path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/intel_pcie_ptile_ast_1100/sim/pcie_ss_intel_pcie_ptile_ast_1100_ndgxg4a.sv",
+      "byte_identical_to_simulation": true,
+      "independently_hash_verified": true,
+      "qip_line": 88
+    }
+  ],
+  "byte_identity_status": "PASS_ALL_FOUR",
+  "contract_status": "PASS_STATIC_SCOPED_GENERATED_CHAIN",
+  "csr_consumer": {
+    "source_citations": [
+      "TOP:14,1177",
+      "AXI:1138,4530-4541,4687,4692,4694"
+    ],
+    "instance": "EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0",
+    "module": "intel_pciess_ptile_wrapper",
+    "port": "axi_lite_clk",
+    "signal": "p0_axi_lite_clk",
+    "serial_csr_edge_through_bridge_and_hip": false
+  },
+  "effective_contract": {
+    "tile": "P-TILE",
+    "mode": "EP",
+    "topology": "pcie_x16",
+    "function_mode": "pcie_g4_x16_ep",
+    "pf_count": 2,
+    "pf0_vf_count": 1,
+    "pf1_vf_count": 0,
+    "pf1_bar0_enabled": false,
+    "pf1_bar2_width": 28,
+    "pf1_bar4_width": 14,
+    "pf1_bar2_bar4_type": "prefetchable 64-bit memory",
+    "data_width_bits": 512,
+    "bytes_per_beat": 64,
+    "segments": 2
+  },
+  "proven_new_defects": [],
+  "timing_conflict_proven": false,
+  "compiled_source_selection_proven": false,
+  "timing_acceptance": false,
+  "hardware_acceptance": false,
+  "finite_optional_next_source": {
+    "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/intel_pcie_ss_axi_500/synth/intel_pciess_ptile_wrapper.sv",
+    "literal_reference": "live06 QIP:166",
+    "consumer_reference": "AXI:4533,4692",
+    "purpose": "deeper static CSR/divider tracing only",
+    "acquisition_authorized": false
+  },
+  "remaining_boundaries": [
+    "actual compiled board/header/library/source selection and QIP/SDC order",
+    "transitive datapath implementation and divider target",
+    "evaluated TimeQuest current instance, port collections, clock target snapshot, exact lookup, incoming PLL clock and conditional create outcome",
+    "consumer tolerance, reset/CDC, timing and hardware",
+    "overall generation recovery"
+  ],
+  "review": "synthesis-chain-live10-review.md"
+}

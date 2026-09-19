@@ -1,0 +1,420 @@
+SOURCE bw_core/utils/semaphore/linux.py
+# Library:
+#    semaphore/linux
+#
+# Desc:
+#    base_bmc_card.py
+#
+#  Provided by
+#  -----------
+#      BittWare, Inc.
+#      45 South Main St. Suite L100
+#      Concord, NH 03301
+#      Ph:     (603) 226 0404
+#      Fax:    (603) 226 6667
+#      WWW:    http://www.bittware.com
+#      Email:  support@bittware.com
+#
+# Copyright © 2021, BittWare, Inc.
+#
+# License:
+#  This source code is provided to you (the Licensee) under
+#  license by BittWare, a Molex Company.  To view or use this
+#  source code, the Licensee must accept a Software License
+#  Agreement (viewable at developer.bittware.com), which is
+#  commonly provided as a click-through license agreement.  The
+#  terms of the Software License Agreement govern all use and
+#  distribution of this file unless an alternative superseding
+#  license has been executed with BittWare.  This source code
+#  and its derivatives may not be distributed to third parties
+#  in source code form.  Software including or derived from this
+#  source code, including derivative works thereof created by
+#  Licensee, may be distributed to third parties with BITTWARE
+#  hardware only and in executable form only.
+#
+#  The click-thorough license is available here:
+#  https://developer.bittware.com/software_license.txt
+"""
+semaphore object for linux
+
+This module provides a semaphore object that can be used to synchronize
+
+Raises:
+    FileNotFoundError: If the pthread library is not found
+"""
+import os
+import logging
+from pathlib import Path
+import shutil
+from ctypes import POINTER, c_int, c_char_p, c_long, CDLL, Union, Structure
+from ctypes.util import find_library
+from typing import Optional
+from datetime import timedelta
+from .base import SemaphoreBase
+from .exception import BWSyncException
+
+
+pthread_library_name = find_library("pthread")
+
+if not pthread_library_name:
+    raise FileNotFoundError("pthread library not found")
+
+pthread = CDLL(pthread_library_name)
+
+
+class SemT(Union):
+    """sem_t FFI interface"""
+    # pylint: disable=too-few-public-methods
+
+    _fields_ = [
+        ("__size", c_char_p),
+        ("__align", c_long)
+    ]
+
+
+class Timespec(Structure):
+    """timespec FFI interface"""
+    # pylint: disable=too-few-public-methods
+    _fields_ = [
+        ("tv_sec", c_long),
+        ("tv_nsec", c_long)
+    ]
+
+
+_clock_gettime = pthread.clock_gettime
+_clock_gettime.argtypes = [c_int, POINTER(Timespec)]
+_clock_gettime.restype = c_int
+
+
+get_errno_loc = pthread.__errno_location  # pylint: disable=protected-access
+get_errno_loc.restype = POINTER(c_int)
+
+_sem_open = pthread.sem_open
+_sem_open.argtypes = [c_char_p, c_int, c_int, c_int]
+_sem_open.restype = POINTER(SemT)
+
+_sem_close = pthread.sem_close
+_sem_close.argtypes = [POINTER(SemT)]
+_sem_close.restype = c_int
+
+_sem_wait = pthread.sem_wait
+_sem_wait.argtypes = [POINTER(SemT)]
+_sem_wait.restype = c_int
+
+_sem_timedwait = pthread.sem_timedwait
+_sem_timedwait.argtypes = [POINTER(SemT), POINTER(Timespec)]
+_sem_timedwait.restype = c_int
+
+_sem_post = pthread.sem_post
+_sem_post.argtypes = [POINTER(SemT)]
+_sem_post.restype = c_int
+
+_sem_unlink = pthread.sem_unlink
+_sem_unlink.argtypes = [c_char_p]
+_sem_unlink.restype = c_int
+
+SEM_NAME = b"BWSDK_TEST_SEM"
+
+
+class Semaphore(SemaphoreBase):
+    """
+    Named semaphore object
+
+    !!! danger
+        This object must be closed when done with it.
+        This can be done by using a context manager or
+        manually calling the close method. See the following example.
+
+        Failing to close this object will result in a deadlock.
+        Deadlocks can be resolved by using the `bw_sem_unlock` utility
+        or clearing the named semaphore in `/dev/shm/sem.<sem_name>`
+
+    ???+ example
+        ```py
+        with Semaphore("semaphore_name") as semaphore:
+            # Do something
+
+        semaphore = Semaphore("semaphore_name")
+        semaphore.lock()
+        # do something
+        semaphore.unlock()
+        ```
+
+    Args:
+        name: Name of the semaphore
+    """
+
+    def __init__(self, name: str):
+        super().__init__(name)
+        self._sem: Optional[POINTER(SemT)] = None  # type: ignore
+
+    def open(self):
+        """
+        open the semaphore
+
+        Raises:
+            BWSyncException: If the semaphore fails to open
+        """
+        self._sem = _sem_open(
+            self._name,  # name
+            os.O_CREAT,  # oflag
+            0o664,       # mode  (semaphore permission level)
+            1            # value (initial semaphore value, ie count)
+        )
+        if self._sem is None:
+            errno = get_errno_loc()[0]
+            raise BWSyncException(os.strerror(errno))
+        semaphore_path = Path(f"/dev/shm/sem.{self._name.decode('utf-8')}")  # n
+osec
+
+        if semaphore_path.exists() and semaphore_path.group() != "bittware":
+            logging.debug("changing %s group to bittware", semaphore_path.absolu
+te())
+            shutil.chown(
+                path=semaphore_path.absolute(),
+                group="bittware"
+            )
+
+        # pthread sem_open (or perhaps underline linux call) doesn't
+        # honor setting mode to 664 (in some cases?) need to also
+        # check here and fix. Note that if we did not create the semaphore
+        # this chmod may not work.
+        if (semaphore_path.stat().st_mode & 0xFFF) != 0o664:
+            semaphore_path.chmod(0o664)
+
+    def close(self):
+        """close the semaphore"""
+        if self._sem is not None:
+            _sem_close(self._sem)
+            # _sem_unlink(self._name)
+            self._sem = None
+
+    @staticmethod
+    def _create_timeout(timeout_ms: int) -> Timespec:
+        """
+        create a timespec object with the given timeout in milliseconds
+
+        Args:
+            timeout_ms: timeout in milliseconds
+        """
+
+        timestamp = Timespec()
+        _clock_gettime(0, timestamp)
+        timestamp.tv_sec += timedelta(milliseconds=timeout_ms).seconds  # pylint
+: disable=no-member
+        return timestamp
+
+    def _wait(self):
+        """
+        wait on the semaphore
+
+        Raises:
+            BWSyncException: If the semaphore fails / timesout
+        """
+        result = _sem_wait(self._sem)
+        if result != 0:
+            errno = get_errno_loc()[0]
+            self.close()
+            raise BWSyncException(os.strerror(errno))
+
+    def _wait_timeout(self, timeout_ms: int):
+        """
+        wait on the semaphore with a timeout
+
+        Args:
+            timeout_ms: timeout in milliseconds
+
+        Raises:
+            BWSyncException: If the semaphore fails / timesout
+        """
+        timestamp = self._create_timeout(timeout_ms)
+        result = _sem_timedwait(self._sem, timestamp)
+        if result == -1:
+            errno = get_errno_loc()[0]
+            logging.warning("semaphore %s failed with errno %d", self._name, err
+no)
+            self.close()
+            raise BWSyncException(os.strerror(errno))
+
+    def lock(self, timeout_ms: int = 5000):
+        """
+        lock the semaphore
+
+        Args:
+            timeout_ms: timeout in milliseconds
+
+        Raises:
+            BWSyncException: on failure to lock or timeout
+        """
+        if not timeout_ms:
+            self._wait()
+        else:
+            self._wait_timeout(timeout_ms)
+
+    def unlock(self):
+        """unlock the semaphore"""
+        if self._sem is not None:
+            _sem_post(self._sem)
+
+SOURCE bw_kit/kit_bmc_handler.py
+# Library:
+#    bw-common
+#
+# Desc:
+#    base_bmc_handler.py
+#
+#  Provided by
+#  -----------
+#      BittWare, Inc.
+#      45 South Main St. Suite L100
+#      Concord, NH 03301
+#      Ph:     (603) 226 0404
+#      Fax:    (603) 226 6667
+#      WWW:    http://www.bittware.com
+#      Email:  support@bittware.com
+#
+# Copyright © 2020, BittWare, Inc.
+#
+# License:
+#  This source code is provided to you (the Licensee) under
+#  license by BittWare, a Molex Company.  To view or use this
+#  source code, the Licensee must accept a Software License
+#  Agreement (viewable at developer.bittware.com), which is
+#  commonly provided as a click-through license agreement.  The
+#  terms of the Software License Agreement govern all use and
+#  distribution of this file unless an alternative superseding
+#  license has been executed with BittWare.  This source code
+#  and its derivatives may not be distributed to third parties
+#  in source code form.  Software including or derived from this
+#  source code, including derivative works thereof created by
+#  Licensee, may be distributed to third parties with BITTWARE
+#  hardware only and in executable form only.
+#
+#  The click-thorough license is available here:
+#  https://developer.bittware.com/software_license.txt
+
+"""
+Bmc Handler base class
+"""
+import time
+import logging
+from abc import abstractmethod
+from typing import Optional
+from bw_core.exceptions.base import BmcError, KitException
+from bw_core.utils.semaphore import Semaphore
+from bw_bmc_abs import BmcBaseHandler
+from bw_kit.device_entry import DeviceEntry
+
+
+log = logging.getLogger(__name__)
+
+
+class KitBmcHandler(BmcBaseHandler):
+    """
+    BMC Base handler class
+
+    Base class for handlers
+
+    Attributes:
+        _card_entry: a device entry for a card
+    """
+
+    @property
+    def _dev(self):
+        """
+        This awkward property handler is here to provide backwards compatibility
+ for code
+        that use device numbers instead of kit entries. The correct way to use t
+his
+        is to pass in a kit entry as a 'card' kwarg. If that isn't found we crea
+te the
+        entry ourselves directly from KitSDK - which assumes we are always using
+ KitSDK
+        and the index kwarg is the PCI device number from bw_pci.
+        """
+        log.debug("_card_entry is: %s", self._card_entry)
+        if self._card_entry:
+            log.debug("_card_entry.handle is: %s", self._card_entry.handle)
+            return self._card_entry.handle
+
+        return None
+
+    def __init__(self, device: DeviceEntry, use_sem: bool = False):
+        """
+        BMC communication handler
+
+        Args:
+            device: device entry
+            use_sem: use semaphore
+
+        Raises:
+            BmcError: if there is an error
+        """
+        self.display_writes = False
+        self.display_reads = False
+        self.rw_byte_buffer = False  # if true write bytes with 8s
+        self._card_entry = device
+        self._sem: Optional[Semaphore] = None
+
+        try:
+            _ = device.handle  # force opening the handle
+        except KitException as err:
+            raise BmcError(err) from err
+
+        if use_sem:
+            self._sem = Semaphore(f"bittware.{device.device_tag}.BMC")
+
+        self._card_entry = device
+
+    def __del__(self):
+        self._sem_unlock()
+
+    def get_max_packet_size(self) -> Optional[int]:
+        """return max packet size supported by the handler"""
+        # default implementation is to return None so users will fall back
+        # to minimum size packets
+        return None
+
+    def reconnect(self):
+        """reconnect to the BMC after an image switch"""
+        # default implementation is to wait a few seconds for BMC to boot
+        time.sleep(3)
+
+    @property
+    def card_entry(self) -> DeviceEntry:
+        """Returns the card entry this handler was initialized with"""
+        return self._card_entry
+
+    @abstractmethod
+    def write_function(self, write_bytes: list[int]):
+        """write bytes to the BMC
+
+        Args:
+            writeBytes: list of bytes
+        """
+
+    @abstractmethod
+    def read_function(self, max_bytes: int) -> list[int]:
+        """read bytes from the BMC
+
+        Args:
+            maxBytes: maximum number of bytes to read
+
+        Returns:
+            list of bytes
+        """
+
+    def _sem_lock(self):
+        if self._sem:
+            self._sem.open()
+            self._sem.lock()
+
+    def _sem_unlock(self):
+        if self._sem:
+            self._sem.unlock()
+            self._sem.close()
+
+    def close(self):
+        """close the interface"""
+
+

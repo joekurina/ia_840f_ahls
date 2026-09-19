@@ -1,0 +1,33 @@
+/usr/bin/python3 -I -B -S -c 'import os,json,stat,pathlib,socket,hashlib,base64,gzip,time
+assert socket.gethostname()=='"'"'Agilex7Workstation'"'"' and os.getuid()==os.geteuid()==1000 and os.environ.get('"'"'TMUX'"'"')=='"'"'/tmp/tmux-1000/default,7828,4'"'"'
+e={'"'"'files'"'"':[],'"'"'errors'"'"':[],'"'"'ready_for_build'"'"':False,'"'"'vendor_run'"'"':False,'"'"'observed_unix'"'"':time.time()};total=0
+for name in ['"'"'/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/sim/pcie_ss.v'"'"', '"'"'/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/intel_pcie_ss_axi_500/sim/intelfpga/pcie_ss_intel_pcie_ss_axi_500_gycdipy.sv'"'"', '"'"'/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/intel_pcie_ss_axi_500/sim/pcie_ss_intel_pcie_ss_axi_intel_pcie_ptile_ast_500_pxriq3y.v'"'"', '"'"'/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ipss/pcie/qip/pcie_ss/intel_pcie_ptile_ast_1100/sim/pcie_ss_intel_pcie_ptile_ast_1100_ndgxg4a.sv'"'"', '"'"'/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ofs-common/src/fpga_family/agilex/sys_pll/sys_pll/sim/sys_pll.v'"'"', '"'"'/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_03/ofs-common/src/fpga_family/agilex/sys_pll/sys_pll/altera_iopll_2110/sim/sys_pll_altera_iopll_2110_3lkpvti.vo'"'"']:
+ try:
+  p=pathlib.Path(name)
+  for q in [p,*p.parents]:assert not q.is_symlink(),str(q)
+  fd=os.open(p,os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK)
+  try:
+   a=os.fstat(fd)
+   if not stat.S_ISREG(a.st_mode):raise RuntimeError('"'"'not regular'"'"')
+   if a.st_size>4194304 or total+a.st_size>16777216:raise RuntimeError('"'"'capture byte limit: '"'"'+str(a.st_size))
+   with os.fdopen(fd,'"'"'rb'"'"',closefd=False) as f:raw=f.read(4194305)
+   b=os.fstat(fd)
+   assert len(raw)==a.st_size and (a.st_dev,a.st_ino,a.st_size,a.st_mtime_ns)==(b.st_dev,b.st_ino,b.st_size,b.st_mtime_ns)
+  finally:os.close(fd)
+  text=raw.decode('"'"'utf-8'"'"');total+=len(raw)
+  e['"'"'files'"'"'].append({'"'"'path'"'"':name,'"'"'bytes'"'"':len(raw),'"'"'sha256'"'"':hashlib.sha256(raw).hexdigest(),'"'"'content'"'"':text})
+  if '"'"'pragma protect begin_protected'"'"' in text or '"'"'`protect begin_protected'"'"' in text:
+   e['"'"'errors'"'"'].append({'"'"'path'"'"':name,'"'"'error'"'"':'"'"'protected boundary: no further reads'"'"'});break
+ except Exception as ex:e['"'"'errors'"'"'].append({'"'"'path'"'"':name,'"'"'error'"'"':repr(ex)});break
+raw=(json.dumps(e,indent=2)+chr(10)).encode()
+p=pathlib.Path('"'"'/home/uwb_student00/ahls/new_BSP/qualification/mailbox-migration-01/pcie-generated-live02.json'"'"')
+for q in [p,*p.parents]:assert not q.is_symlink()
+fd=os.open(p,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,0o600)
+with os.fdopen(fd,'"'"'wb'"'"') as f:f.write(raw)
+assert p.read_bytes()==raw
+s=base64.b64encode(gzip.compress(raw)).decode()
+print('"'"'PCIE2_SHA'"'"',hashlib.sha256(raw).hexdigest(),'"'"'ENC_BYTES'"'"',len(s))
+if len(s)<=100000:
+ print('"'"'PCIE2_BEGIN'"'"');print(chr(10).join(s[i:i+400] for i in range(0,len(s),400)));print('"'"'PCIE2_END'"'"')
+print('"'"'PCIE2_FILES'"'"',len(e['"'"'files'"'"']),'"'"'ERRORS'"'"',e['"'"'errors'"'"'])
+'

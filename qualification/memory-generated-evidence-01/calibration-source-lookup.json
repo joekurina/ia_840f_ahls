@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "status": "proposed_finite_static_lookup_not_executed",
+  "authorization": false,
+  "ready_for_build": false,
+  "calibration_order_accepted": false,
+  "supported_remap_established": false,
+  "reason": "Local donor Qsys reverses calbus suffixes relative to controllers; generated HDL and SOPC metadata are direct. Derivation checks bottom-block membership but not suffix order. Saved metadata does not define physical semantics of bus indices across versions. Memory catalog composition and calibration consumers were not identified in locally saved qualification/reference sources.",
+  "root_provenance": {
+    "local_record": "qualification/ipgen-03/final-generation-evidence.json",
+    "evidence": "Recorded qproject-search-path includes /opt/altera/26.1.1/ip/altera/subsystems/mem_ss and /opt/altera/26.1.1/ip/altera/emif. These are historical installation paths, not locally accessed paths in this review.",
+    "active_kinds": ["mem_ss 5.0.1", "altera_emif_fm 2.8.0", "altera_emif_cal 2.8.0", "altera_emif_cal_iossm 2.8.0", "altera_emif_arch_fm 19.1"],
+    "active_kind_evidence": ["memory-artifacts.json files[63] lines 5-10", "files[65] lines 5-9", "files[77] lines 5-9", "files[66] module records", "files[78] module records"]
+  },
+  "operation": "Read-only filesystem enumeration and UTF-8 text/hash capture only, after separate authorization; no vendor, Tcl, project loader, generation, tests or remote action is authorized by this file.",
+  "candidate_paths_are_not_verified_existing": true,
+  "limits": {
+    "maximum_matched_files": 16,
+    "maximum_bytes_per_file": 1048576,
+    "maximum_total_bytes": 6291456,
+    "maximum_directory_entries_examined": 512,
+    "follow_symlinks": false,
+    "recursive_glob_double_star_allowed": false,
+    "follow_source_include_edges": false,
+    "on_limit": "Stop and report exact candidates and sizes; do not silently truncate, take an arbitrary subset or broaden lookup."
+  },
+  "lookup_groups": [
+    {
+      "priority": 1,
+      "root": "/opt/altera/26.1.1/ip/altera/subsystems/mem_ss",
+      "relative_name_patterns": ["mem_ss*.tcl", "hwtcl/mem_ss*.tcl", "hwtcl/*/mem_ss*.tcl"],
+      "reason": "Locate mem_ss descriptor, parameter schema and composition callback; confirm kind/version before interpreting. Each single star matches one path component only; maximum three components below this exact root.",
+      "required_evidence": [
+        "COMPOSITION_CALLBACK registration and callback body",
+        "MEM_INTFS_LOCATION parsing and per-location EMIF enumeration",
+        "emif_cal_bot creation and emif_calbus_N add_connection loop",
+        "NUM_CALBUS_INTERFACE and AXM_ID_NUM assignment/forwarding",
+        "Any declared supported ordering/remap control, allowed values and actual consumer",
+        "RUN_COMPOSE and DIAG_EXTRA_PARAMETERS behavior, without proposing unsupported overrides"
+      ]
+    },
+    {
+      "priority": 2,
+      "root": "/opt/altera/26.1.1/ip/altera/emif",
+      "relative_name_patterns": [
+        "altera_emif_cal*_hw.tcl",
+        "hwtcl/altera_emif_cal*.tcl",
+        "hwtcl/*/altera_emif_cal*.tcl",
+        "altera_emif_fm_hw.tcl",
+        "hwtcl/altera_emif_fm_hw.tcl",
+        "hwtcl/*/altera_emif_fm_hw.tcl"
+      ],
+      "reason": "Finite descriptor/parameter lookup for captured calibration and controller kinds, only if priority-1 composition evidence leaves slot/physical semantics unresolved. No installation-wide search or arbitrary EMIF subtree closure.",
+      "required_evidence": [
+        "Whether calbus suffix is a logical enumeration or fixed physical controller address",
+        "How per-bus sequence tables supply physical addressing/controller identity",
+        "AXM_ID_NUM meaning and SEQ_GPT_COLUMN_ID derivation",
+        "NUM_CALBUS_INTERFACE cardinality versus permutation semantics",
+        "EMIF_n_CONN_TO_CALIP scope and whether it can select a calbus slot",
+        "Literal source/include references needed for any unresolved consumer; record only, do not follow"
+      ]
+    }
+  ],
+  "search_terms_within_captured_files": ["COMPOSITION_CALLBACK", "compose", "MEM_INTFS_LOCATION", "emif_cal_bot", "emif_calbus", "add_connection", "NUM_CALBUS_INTERFACE", "NUM_CALBUS_USED", "AXM_ID_NUM", "SEQ_GPT_COLUMN_ID", "calbus_seq_param_tbl", "EMIF_0_CONN_TO_CALIP", "RUN_COMPOSE", "DIAG_EXTRA_PARAMETERS"],
+  "capture_fields": ["exact_path", "kind_and_version_if_declared", "bytes", "sha256", "full_text", "line_numbered_relevant_definitions", "missing_paths_or_patterns", "limits_hit", "unfollowed_exact_source_references"],
+  "stop_conditions": [
+    "If candidate layout is absent, report missing patterns and bounded immediate directory names only; obtain a new exact lookup request rather than expanding recursively.",
+    "If descriptor points to a differently named callback outside these patterns, report its literal path and stop for a separately reviewed capture.",
+    "Do not read an older installation or infer 23.1 behavior from 26.1.1; any old-version source request must first bind its actual installation root.",
+    "No source edit until a supported control or semantic-equivalence proof is established; mere ascending-loop enumeration explains output but does not prove electrical equivalence."
+  ],
+  "preserve": ["all package pins", "discrete physical channel 0", "RDIMM physical channel 1", "application topology", "generated HDL", "board source", "manifests", "readiness gates"]
+}
