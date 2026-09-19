@@ -1,0 +1,18 @@
+/usr/bin/python3 -I -B -S -c 'from pathlib import Path
+import os,socket,subprocess,json,hashlib,base64,gzip
+assert os.environ.get('"'"'TMUX'"'"') and socket.gethostname()=='"'"'Agilex7Workstation'"'"' and os.getuid()==1000
+os.umask(0o077)
+r=Path('"'"'/home/uwb_student00/ahls/new_BSP/qualification/ipgen-04-staging-v2'"'"')
+raw=gzip.decompress(base64.b64decode(subprocess.check_output(['"'"'tmux'"'"','"'"'show-buffer'"'"','"'"'-b'"'"','"'"'ia840f_work04_stage'"'"'])))
+assert hashlib.sha256(raw).hexdigest()=='"'"'c9bd7529d267993c5c93057f3e8cc0d37b3659f3ad408d0fcd01468c33efa751'"'"'
+p=json.loads(raw)
+for n,v in p.items():
+ assert '"'"'/'"'"' not in n and hashlib.sha256(v['"'"'content'"'"'].encode()).hexdigest()==v['"'"'sha256'"'"']
+r.mkdir()
+for n,v in p.items():
+ with (r/n).open('"'"'x'"'"') as f:f.write(v['"'"'content'"'"'])
+ assert hashlib.sha256((r/n).read_bytes()).hexdigest()==v['"'"'sha256'"'"']
+receipt={n:hashlib.sha256((r/n).read_bytes()).hexdigest() for n in p}
+(r/'"'"'staging-receipt.json'"'"').write_text(json.dumps(receipt,indent=2))
+print('"'"'STAGED_READBACK'"'"',json.dumps(receipt),flush=True)
+'

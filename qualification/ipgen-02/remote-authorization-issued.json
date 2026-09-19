@@ -1,0 +1,114 @@
+{
+  "record": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/syn/board/ia840f/setup/experimental-authorization.json",
+  "sha256": "30781e47965b9afe69b9686b19c8799ebd329066de46426125270eb18a95a8bb",
+  "source_file_counts": {
+    "syn": 140,
+    "src": 77,
+    "ipss": 149,
+    "ofs-common": 949,
+    "tools": 41
+  },
+  "pim_files": 530,
+  "contexts": [
+    {
+      "executable": "/opt/altera/26.1.1/quartus/linux64/quartus_sh",
+      "sha256": "5740e47134517eac623c1391837761d12ab18b99a2db78be790cf764af3e3bce",
+      "argv": [
+        "quartus_sh",
+        "--prepare",
+        "-r",
+        "ofs_top",
+        "ofs_top"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_02/syn/board/ia840f/syn_top",
+      "kind": "prepare"
+    },
+    {
+      "executable": "/opt/altera/26.1.1/quartus/linux64/quartus_sh",
+      "sha256": "5740e47134517eac623c1391837761d12ab18b99a2db78be790cf764af3e3bce",
+      "argv": [
+        "quartus_sh",
+        "--prepare",
+        "-r",
+        "ofs_pr_afu",
+        "ofs_top"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_02/syn/board/ia840f/syn_top",
+      "kind": "prepare"
+    },
+    {
+      "executable": "/opt/altera/26.1.1/quartus/linux64/quartus_ipgenerate",
+      "sha256": "ba12d46d14b1e675c88550e3d71f659597595885dfa7027036738a0e09cc3cb5",
+      "argv": [
+        "quartus_ipgenerate",
+        "-t",
+        "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/emit_project_ip.tcl",
+        "--project=ofs_top",
+        "--revision=ofs_top",
+        "--mode=ip_lib"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_02/syn/board/ia840f/syn_top",
+      "kind": "ip_lib"
+    },
+    {
+      "executable": "/opt/altera/26.1.1/quartus/linux64/quartus_sh",
+      "sha256": "5740e47134517eac623c1391837761d12ab18b99a2db78be790cf764af3e3bce",
+      "argv": [
+        "quartus_sh",
+        "-t",
+        "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/emit_project_macros.tcl",
+        "--project=ofs_top",
+        "--revision=ofs_top",
+        "--mode=txt",
+        "--output=/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_02/src/top/ofs_agilex.macros"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_02/syn/board/ia840f/syn_top",
+      "kind": "pim_macros"
+    },
+    {
+      "executable": "/opt/altera/26.1.1/quartus/linux64/quartus_ipgenerate",
+      "sha256": "ba12d46d14b1e675c88550e3d71f659597595885dfa7027036738a0e09cc3cb5",
+      "argv": [
+        "quartus_ipgenerate",
+        "-t",
+        "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_02/ofs-common/scripts/common/syn/emit_project_ip.tcl",
+        "--project=ofs_top",
+        "--revision=ofs_top",
+        "--output=project_ip_for_generation.tcl"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_02/syn/board/ia840f/syn_top",
+      "kind": "project_ip"
+    },
+    {
+      "executable": "/opt/altera/26.1.1/quartus/linux64/quartus_ipgenerate",
+      "sha256": "ba12d46d14b1e675c88550e3d71f659597595885dfa7027036738a0e09cc3cb5",
+      "argv": [
+        "quartus_ipgenerate",
+        "ofs_top",
+        "-c",
+        "ofs_top",
+        "--generate_project_ip_files",
+        "--synthesis=verilog",
+        "--simulation=verilog",
+        "--simulator=modelsim",
+        "--parallel=off"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_02/syn/board/ia840f/syn_top",
+      "kind": "generate"
+    },
+    {
+      "executable": "/opt/altera/26.1.1/quartus/linux64/quartus_sh",
+      "sha256": "5740e47134517eac623c1391837761d12ab18b99a2db78be790cf764af3e3bce",
+      "argv": [
+        "quartus_sh",
+        "-t",
+        "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_02/ofs-common/scripts/common/syn/ip_get_cfg/gen_ofs_ip_cfg_db.tcl",
+        "--project=ofs_top",
+        "--revision=ofs_top"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_02/syn/board/ia840f/syn_top",
+      "kind": "headers"
+    }
+  ],
+  "qualification": false
+}

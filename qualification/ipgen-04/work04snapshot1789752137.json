@@ -1,0 +1,118 @@
+{
+  "observed_unix": 1789752137.8895504,
+  "stages": {
+    "setup": {
+      "argv": [
+        "./ofs-common/scripts/common/syn/build_top.sh",
+        "--stage=setup",
+        "-p",
+        "--ofss",
+        "nodefault,/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/syn/board/ia840f/config/ia840f.ofss",
+        "ia840f",
+        "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach",
+      "started_unix": 1789751195.803935,
+      "environment": {
+        "COPY_WORK": "1",
+        "OFS_ROOTDIR": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach",
+        "OFS_PLATFORM_AFU_BBB": "/home/uwb_student00/ahls/new_BSP/ofs-platform-afu-bbb",
+        "QUARTUS_ROOTDIR_OVERRIDE": "/opt/altera/26.1.1/quartus",
+        "PATH": "/opt/altera/26.1.1/quartus/bin:/opt/altera/26.1.1/quartus/sopc_builder/bin:/opt/altera/26.1.1/questa_fe/bin:/opt/intelFPGA_pro/23.1/quartus/bin:/opt/intelFPGA_pro/23.1/questa_fe/linux_x86_64:/opt/intelFPGA_pro/23.1/questa_fe/bin:/home/uwb_student00/.opencode/bin:/home/uwb_student00/.local/bin:/opt/intelFPGA_pro/23.1/quartus/bin:/opt/intelFPGA_pro/23.1/questa_fe/linux_x86_64:/opt/intelFPGA_pro/23.1/questa_fe/bin:/home/uwb_student00/.opencode/bin:/home/uwb_student00/.local/bin:/home/uwb_student00/.local/bin:/home/uwb_student00/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/share/bittware-sdk/bin:/opt/gurobi1301/linux64/bin:/opt/gurobi1301/linux64/bin",
+        "LM_LICENSE_FILE": "/home/uwb_student00/quartus_26/LR-191011_License.dat",
+        "MGLS_LICENSE_FILE": "/home/uwb_student00/quartus_26/LR-191011_License.dat",
+        "SALT_LICENSE_SERVER": "/home/uwb_student00/quartus_26/LR-191011_License.dat"
+      },
+      "returncode": 0,
+      "finished_unix": 1789751315.316598
+    },
+    "project-ip": {
+      "argv": [
+        "python3",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/tools/ofss_config/ia840f_experimental_gate.py",
+        "run-post-setup-quartus",
+        "quartus_ipgenerate",
+        "-t",
+        "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/ofs-common/scripts/common/syn/emit_project_ip.tcl",
+        "--project=ofs_top",
+        "--revision=ofs_top",
+        "--output=project_ip_for_generation.tcl"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/board/ia840f/syn_top",
+      "started_unix": 1789751364.4698274,
+      "environment": {
+        "OFS_ROOTDIR": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04",
+        "OFS_PLATFORM_AFU_BBB": "/home/uwb_student00/ahls/new_BSP/ofs-platform-afu-bbb",
+        "QUARTUS_ROOTDIR_OVERRIDE": "/opt/altera/26.1.1/quartus",
+        "PATH": "/opt/altera/26.1.1/quartus/bin:/opt/altera/26.1.1/quartus/sopc_builder/bin:/opt/altera/26.1.1/questa_fe/bin:/opt/intelFPGA_pro/23.1/quartus/bin:/opt/intelFPGA_pro/23.1/questa_fe/linux_x86_64:/opt/intelFPGA_pro/23.1/questa_fe/bin:/home/uwb_student00/.opencode/bin:/home/uwb_student00/.local/bin:/opt/intelFPGA_pro/23.1/quartus/bin:/opt/intelFPGA_pro/23.1/questa_fe/linux_x86_64:/opt/intelFPGA_pro/23.1/questa_fe/bin:/home/uwb_student00/.opencode/bin:/home/uwb_student00/.local/bin:/home/uwb_student00/.local/bin:/home/uwb_student00/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/share/bittware-sdk/bin:/opt/gurobi1301/linux64/bin:/opt/gurobi1301/linux64/bin",
+        "LM_LICENSE_FILE": "/home/uwb_student00/quartus_26/LR-191011_License.dat",
+        "MGLS_LICENSE_FILE": "/home/uwb_student00/quartus_26/LR-191011_License.dat",
+        "SALT_LICENSE_SERVER": "/home/uwb_student00/quartus_26/LR-191011_License.dat"
+      },
+      "returncode": 0,
+      "finished_unix": 1789751367.9034173
+    },
+    "generate": null,
+    "headers": null
+  },
+  "bmc_reports": [
+    {
+      "path": "ipss/ia840f/bwbmc/bmc_spi_sub/bmc_spi_sub_generation.rpt",
+      "bytes": 15715,
+      "errors": [],
+      "last_lines": [
+        "Info: bmc_spi_sub: \"Generating: bmc_spi_sub_altera_merlin_traffic_limiter_altera_avalon_sc_fifo_1922_je2zh7a\"",
+        "Info: bmc_spi_sub: Done \"bmc_spi_sub\" with 56 modules, 53 files",
+        "Info: Finished: Create HDL design files for synthesis"
+      ]
+    },
+    {
+      "path": "ipss/ia840f/bwbmc/bw_840_support/bw_840_support_generation.rpt",
+      "bytes": 11011,
+      "errors": [],
+      "last_lines": [
+        "Info: bw_840_support: \"Generating: bw_840_support_altera_avalon_st_pipeline_stage_1930_oiupeiq\"",
+        "Info: bw_840_support: Done \"bw_840_support\" with 38 modules, 52 files",
+        "Info: Finished: Create HDL design files for synthesis"
+      ]
+    }
+  ],
+  "ready_for_build": false,
+  "setup_log": {
+    "bytes": 61901,
+    "sha256": "1cd4c7db416cb63a2c1ff150bc037e63ab743257d9e79a9f6b90fe43a397c163",
+    "error_lines": [],
+    "last_lines": [
+      "Info: Quartus Prime Shell was successful. 0 errors, 0 warnings",
+      "    Info: Peak virtual memory: 1503 megabytes",
+      "    Info: Processing ended: Fri Sep 18 10:08:35 2026",
+      "    Info: Elapsed time: 00:00:01",
+      "    Info: System process ID: 49762"
+    ]
+  },
+  "project-ip_log": {
+    "bytes": 15237,
+    "sha256": "81c4ad5c5c13f26c75e84ea208d36dd21b944f2023ba6e720d399bf3a0fe42da",
+    "error_lines": [],
+    "last_lines": [
+      "Info: Quartus Prime IP Generation Tool was successful. 0 errors, 0 warnings",
+      "    Info: Peak virtual memory: 1485 megabytes",
+      "    Info: Processing ended: Fri Sep 18 10:09:27 2026",
+      "    Info: Elapsed time: 00:00:02",
+      "    Info: System process ID: 50101"
+    ]
+  },
+  "generate_log": {
+    "bytes": 294912,
+    "sha256": "a2a9eae091eaf14be4a1b9a4d684490463ef7bad900f47f4a6e0e871b4071f66",
+    "error_lines": [],
+    "last_lines": [
+      "Info: mem_ss: \"Processing generation queue\"",
+      "Info: mem_ss: \"Generating: mem_ss\"",
+      "Info: mem_ss: \"Generating: mem_ss_mem_ss_501_qm5zaka\"",
+      "Info: mem_ss: Configuring IP for device AGFB027R25A2E2V (Agilex 7, speedgrade 2)",
+      "Info: mem_ss: generate_all_instances: qsys-generate mem_ss_mem_ss_501_qm5zaka.qsys --simulation=VERILOG --simulator=MODELSIM --generate-all-simulation-scripts --modelsim-flow=traditional --part=AGFB027R25A2E2V --qproject-search-path=/opt/altera/26.1.1/ip/altera/emif/**/*,/opt/altera/26.1.1/ip/altera/subsystems/mem_ss/**/*,/opt/altera/26.1.1/ip/altera/intel_pcie/ptile/**/*,/opt/altera/26.1.1/ip/alt"
+    ]
+  }
+}

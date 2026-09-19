@@ -1,0 +1,694 @@
+>>> OFS Board Path = ia840f
+>>> OFS Board Core = ia840f
+
+Setting up build variables
+source /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/syn/scripts/build_var_setup.sh
+BUILD_ROOT_REL is 
+
+**********************************
+********* ENV SETUP **************
+
+FIM Project:
+  OFS_PROJECT = ofs-agx7-pcie-attach
+  OFS_FIM     = 
+  OFS_BOARD   = ia840f
+  Q_PROJECT   = ofs_top
+  Q_REVISION  = ofs_top
+  Fitter SEED = 1
+FME id
+  BITSTREAM_ID = 05010202599ac052
+  BITSTREAM_MD = 0000000002609181
+Flow:
+  ENA_CREATE_WORK_DIR        = 1
+  ENA_OPAE_SDK_SETUP_FOR_FIM = 1
+  ENA_PRE_COMPILE_SCRIPT     = 1
+  ENA_SETUP_IP_LIB_SCRIPT    = 1
+  ENA_FIM_COMPILE            = 1
+  ENA_PR_SETUP               = 1
+  ENA_FLASH                  = 1
+  ENA_PR_BUILD_TEMPLATE_GEN  = 1
+OPAE_SDK:
+  OPAE_SDK_REPO = 
+  OPAE_SDK_REPO_BRANCH = 
+
+File pointers:
+  WORK_SYN_TOP_PATH = /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top
+  CREATE_WORK_DIR_SH_FILE = /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/create_work_dir.sh
+  FME_ID_MIF_FILE = /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/src/common/fme_id_rom/fme_id.mif
+  PMCI_NIOS_HEX_FILE = /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ipss/pmci/pmci_ss_nios_fw.hex
+  WORK_FME_ID_MIF_FILE = /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/fme_id.mif
+  WORK_PMCI_NIOS_HEX_FILE = /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/pmci_ss_nios_fw.hex
+  REPORT_TIMING_TCL_FILE = /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/report_timing.tcl
+  WORK_BUILD_FLASH_SH_FILE = /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/build_flash/build_flash.sh
+  WORK_PRE_COMPILE_SCRIPT_SH_FILE = /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/scripts/common/syn/pre_compile_script.sh
+  SETUP_OPAE_SDK_SH_FILE = /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/setup_opae_sdk.sh
+  REPO_PATH = /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/external
+
+PIM configuration:
+  PIM_PLATFORM_NAME = ofs_agilex
+  PIM_INI_FILE = /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/top/ofs_agilex.ini
+  PIM_ROOT_DIR = /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim
+
+
+*** Specified WORK directory: /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01
+ Creating /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01
+ Copying files...
+This may take a couple of minutes...
+Done setting up work directory (/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01)
+Dropping other board directory: /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/fseries-dk
+Dropping other board directory: /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/iseries-dk
+Dropping other board directory: /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/mseries-dk
+Dropping other board directory: /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/n6000
+Dropping other board directory: /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/n6001
+BUILD_ROOT_REL = ../../../..
+WORK_DIR = /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01
+Running pre compile script: /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/scripts/common/syn/pre_compile_script.sh
+SETUP_OPAE_SDK_SH_FILE is /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/setup_opae_sdk.sh
+Setting up OPAE SDK
+
+Found OPAE SDK programs on PATH. Not building OPAE SDK.
+
+Setting up project IP copies
+Info: *******************************************************************
+Info: Running Quartus Prime IP Generation Tool
+    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+    Info: Copyright (C) 2026  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Fri Sep 18 00:56:17 2026
+    Info: System process ID: 10945
+Info: Command: quartus_ipgenerate -t /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/emit_project_ip.tcl --project=ofs_top --revision=ofs_top --mode=ip_lib
+Info: Quartus(args): --project=ofs_top --revision=ofs_top --mode=ip_lib
+Info: Using INI file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/quartus.ini
+Info: BUILD_ROOT_REL is ../../../..
+Info: Loading device exerciser AFU...
+Info: Compiling PR Base revision...
+Info (25772): Use High Performance Effort optimization mode when optimizing for performance. Superior Performance optimization mode has been deprecated and will be removed in 27.1.1.
+Info (24087): The active revision settings file will be modified to remove errors. A backup is written to: /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/ofs_top.qsf.backup.
+Info (125068): Revision "ofs_top" was previously opened in Quartus Prime software version 22.3.0 SP0.31,0.35 Pro Edition. Created Quartus Prime Default Settings file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/ofs_top_assignment_defaults.qdf, which contains the default assignment setting information from Quartus Prime software version 22.3.0 SP0.31,0.35 Pro Edition.
+Info: Loading device exerciser AFU...
+Info: Compiling PR Base revision...
+Info (125069): Default assignment values were changed in the current version of the Quartus Prime software.  Change to default assignments values are contained in file /opt/altera/26.1.1/quartus/linux64/assignment_defaults.qdf
+Critical Warning (125091): Tcl error: IA840F NOT READY: IA840F EXPERIMENTAL GATE: tool path: quartus_sh
+child process exited abnormally. Child-IP/generated-interface, memory and BMC/FLR qualification remain unperformed.
+    while executing
+"error "IA840F NOT READY: $ia840f_gate_result. Child-IP/generated-interface, memory and BMC/FLR qualification remain unperformed.""
+    invoked from within
+"if {[catch {exec python3 $ia840f_gate quartus 2>@1} ia840f_gate_result]} {
+    error "IA840F NOT READY: $ia840f_gate_result. Child-IP/generated-interf..."
+    (file "../setup/build_gate.tcl" line 6)
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/build_gate.tcl
+Info: Found 83 IP file(s) in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/remote_stp/remote_debug_jtag_only.qsys was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/mem_ss/qip/axilite_ic/emif_csr_ic.qsys was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/bw_840_support.qsys was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/bmc_spi_sub.qsys was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/apf.qsys was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/bpf.qsys was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/common/fme_id_rom/fme_id_rom.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/common/lib/fifo/sc_fifo_tx_sc_fifo.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/avst_pipeline/avst_pipeline_st_pipeline_stage_0.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/cfg_mon/cfg_mon.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/pr/PR_IP.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/remote_stp/ip/remote_debug_jtag_only/remote_debug_jtag_only_clock_in.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/remote_stp/ip/remote_debug_jtag_only/host_if.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/remote_stp/ip/remote_debug_jtag_only/jop_blaster.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/remote_stp/ip/remote_debug_jtag_only/remote_debug_jtag_only_reset_in.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/remote_stp/ip/remote_debug_jtag_only/sys_clk.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/remote_stp/AFU_debug/config_reset_release.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/remote_stp/AFU_debug/scjio_agilex.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/sys_pll/sys_pll.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/user_clock/qph_user_clk_iopll_RF100M.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/user_clock/qph_user_clk_iopll_reconfig.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/mem_ss/qip/axilite_ic/ip/emif_csr_ic/emif_csr_ic_clock_in.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/mem_ss/qip/axilite_ic/ip/emif_csr_ic/emif_csr_ic_reset_in.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/mem_ss/qip/axilite_ic/ip/emif_csr_ic/emif_csr_slv.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/mem_ss/qip/axilite_ic/ip/emif_csr_ic/mem_ss_csr_mst.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/mem_ss/qip/axilite_ic/ip/emif_csr_ic/emif_dfh_mst.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/pcie/qip/pcie_ss.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bw_840_support/bw_840_support_axi_bridge_0.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bw_840_support/bw_840_support_mm_bridge_0.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bw_840_support/bw_840_support_sysid_qsys_0.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bw_840_support/host_bmc_support_pipeline.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bw_840_support/host_sdm_pipeline.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bw_840_support/sysclk_bridge.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bw_840_support/sysrst_bridge.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bmc_spi_sub/bmc_spi_cardtest_pipe.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bmc_spi_sub/bmc_spi_pipe0.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bmc_spi_sub/bmc_spi_sdm_pipe.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bmc_spi_sub/bmc_spi_support_pipe.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bmc_spi_sub/bmc_spi_to_avmm.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bmc_spi_sub/bmc_spi_xcvr_pipe.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bmc_spi_sub/bmc_to_pcie_irq_gen.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bmc_spi_sub/host_sdm_pipe.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bmc_spi_sub/host_support_pipe.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bmc_spi_sub/ocmem.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bmc_spi_sub/pci_to_bmc_irq_gen.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bmc_spi_sub/sdm_mailbox.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bmc_spi_sub/sdm_pipeline.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bmc_spi_sub/sdm_reset.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bmc_spi_sub/system_arbiter.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bmc_spi_sub/system_clk_bridge.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/ia840f/bwbmc/ip/bmc_spi_sub/system_rst_bridge.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/apf/apf_achk_slv.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/apf/apf_default_slv.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/apf/apf_bpf_mst.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/apf/apf_bpf_slv.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/apf/apf_clock_bridge.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/apf/apf_mctp_mst.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/apf/apf_pr_slv.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/apf/apf_reset_bridge.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/apf/apf_st2mm_mst.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/apf/apf_st2mm_slv.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/apf/apf_uart_mst.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/apf/apf_uart_slv.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/bpf/bpf_default_slv.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/bpf/bpf_apf_mst.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/bpf/bpf_apf_slv.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/bpf/bpf_clock_bridge.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/bpf/bpf_emif_slv.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/bpf/bpf_fme_mst.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/bpf/bpf_fme_slv.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/bpf/bpf_hssi_slv.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/bpf/bpf_pcie_slv.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/bpf/bpf_pmci_lpbk_mst.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/bpf/bpf_pmci_lpbk_slv.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/bpf/bpf_pmci_mst.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/bpf/bpf_pmci_slv.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/bpf/bpf_qsfp0_slv.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/bpf/bpf_qsfp1_slv.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/pd_qsys/fabric/ip/bpf/bpf_reset_bridge.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/mem/qip/mem_ss/mem_ss.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/mem/qip/ed_sim/ed_sim_mem.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/mem/qip/ed_sim/ed_sim_mem_group1.ip was found in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/uart/ip/uart.ip was found in the project.
+Warning: source file "../../../../ipss/pcie/qip/pcie_ss.ip" not found.
+Warning: source file "../../../../ipss/mem/qip/mem_ss/mem_ss.ip" not found.
+Warning: source file "../../../../ipss/mem/qip/ed_sim/ed_sim_mem_group1.ip" not found.
+Info (23030): Evaluation of Tcl script /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/emit_project_ip.tcl was successful
+Info: Quartus Prime IP Generation Tool was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 1486 megabytes
+    Info: Processing ended: Fri Sep 18 00:56:21 2026
+    Info: Elapsed time: 00:00:04
+    Info: System process ID: 10945
+Command: ${OFS_ROOTDIR}/ofs-common/tools/ofss_config/gen_ofs_settings.py --ofss "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/syn/board/ia840f/config/ia840f.ofss" --target ../../../..
+Applying default ofs: /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/syn/board/ia840f/config/ia840f_base.ofss
+Applying default pcie: /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/syn/board/ia840f/config/ia840f_pcie_vendor_source.ofss
+Applying default iopll: /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/tools/ofss_config/iopll/iopll_470MHz.ofss
+Applying default memory: /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/syn/board/ia840f/config/ia840f_memory.ofss
+intel_pcie_ss_axi source file: /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/tools/ofss_config/ip_params/intel_pcie_ss_axi_parameters.py
+ofs
+	settings:
+		platform : ia840f
+		family : agilex
+		fim : base_x16
+		part : AGFB027R25A2E2V
+		device_id : 840
+		p_clk : 470
+		mem_groups : 2
+	pcie.settings:
+		pcie_gen : 4
+		pcie_instances : 1
+		pcie_instances_enabled : 1
+		pcie_lane_width : 16
+pcie
+	settings:
+		output_name : pcie_ss
+		ip_component : intel_pcie_ss_axi
+		pcie_gen : 4
+		pcie_instances : 1
+		pcie_instances_enabled : 1
+		pcie_lane_width : 16
+	pf0:
+		num_vfs : 1
+		bar0_address_width : 20
+		bar4_address_width : 14
+		vf_bar0_address_width : 20
+		vf_bar4_address_width : 14
+		pci_type0_vendor_id : 0x8086
+		pci_type0_device_id : 0xbcce
+		subsys_vendor_id : 0x8086
+		subsys_dev_id : 0x1771
+		sriov_vf_device_id : 0xbccf
+		exvf_subsysid : 0x1771
+	pf1:
+		num_vfs : 0
+		bar0_address_width : 12
+		bar4_address_width : 14
+		pci_type0_vendor_id : 0x12ba
+		pci_type0_device_id : 0x0070
+		subsys_vendor_id : 0x12ba
+		subsys_dev_id : 0xb5d4
+iopll
+	settings:
+		output_name : sys_pll
+		instance_name : iopll_0
+	p_clk:
+		freq : 470
+memory
+	settings:
+		output_name : mem_ss
+		preset : ia840f_discrete_rdimm_source
+		memory_groups : 2
+hssi
+=============================================
+Beginning OFS IP Configuration Tool
+=============================================
+
+=========================
+Quartus Project Summary
+=========================
+Part = AGFB027R25A2E2V
+
+
+=========================
+IOPLL Summary
+=========================
+IOPLL IP Path: ../../../../ofs-common/src/fpga_family/agilex/sys_pll
+p_clk freq = 470
+p_clk/2 freq = 235.0
+p_clk/4 freq = 117.5
+
+Going to clean the following: ['../../../../ofs-common/src/fpga_family/agilex/sys_pll/sys_pll.ip', '../../../../ofs-common/src/fpga_family/agilex/sys_pll/sys_pll']
+Deploy Command:
+ip-deploy --family=agilex --part="AGFB027R25A2E2V" --search-path="$OFS_ROOTDIR/ipss/**/*,$" --output-name="sys_pll" --component-name="altera_iopll" --instance-name="iopll_0" --output-directory=../../../../ofs-common/src/fpga_family/agilex/sys_pll --component-parameter=gui_location_type="I/O Bank" --component-parameter=gui_reference_clock_frequency="100" --component-parameter=gui_use_locked="1" --component-parameter=gui_number_of_clocks="7" --component-parameter=gui_clock_name_string0="clk_sys" --component-parameter=gui_clock_name_string1="clk_100m" --component-parameter=gui_clock_name_string2="clk_sys_div2" --component-parameter=gui_clock_name_string3="clk_630m_noc" --component-parameter=gui_clock_name_string4="clk_50m" --component-parameter=gui_clock_name_string5="clk_sys_div4" --component-parameter=gui_clock_name_string6="clk_350m_noc" --component-parameter=gui_output_clock_frequency0="470" --component-parameter=gui_output_clock_frequency1="100" --component-parameter=gui_output_clock_frequency2="235.0" --component-parameter=gui_output_clock_frequency3="630" --component-parameter=gui_output_clock_frequency4="50" --component-parameter=gui_output_clock_frequency5="117.5" --component-parameter=gui_output_clock_frequency6="350" --component-parameter=gui_output_clock_frequency_ps0="2127.66" --component-parameter=gui_output_clock_frequency_ps2="4255.319" --component-parameter=gui_output_clock_frequency_ps5="8510.638"
+***************************************************************
+Quartus is a registered trademark of Altera Corporation in the
+US and other countries.  Portions of the Quartus Prime software
+code, and other portions of the code included in this download
+or on this DVD, are licensed to Altera Corporation and are the
+copyrighted property of third parties. For license details,
+refer to the Altera Software License Subscription Agreements
+on the Quartus Prime software download page.
+***************************************************************
+
+2026.09.18.00:56:29 Warning: sys_pll.iopll_0: Able to implement PLL - Actual outclk frequency 1 differs from requested setting
+2026.09.18.00:56:29 Warning: sys_pll.iopll_0: Able to implement PLL - Actual outclk frequency 3 differs from requested setting
+2026.09.18.00:56:29 Warning: sys_pll.iopll_0: Able to implement PLL - Actual outclk frequency 4 differs from requested setting
+2026.09.18.00:56:29 Warning: sys_pll.iopll_0: Able to implement PLL - Actual outclk frequency 6 differs from requested setting
+2026.09.18.00:56:29 Info: Deploying iopll_0 to /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/sys_pll/sys_pll.ip
+=========================
+IP-Deploy for altera_iopll COMPLETED
+=========================
+
+=========================
+PCIe (intel_pcie_ss_axi) Summary
+=========================
+Total PF Count = 2
+Total VF Count = 1
+PF VF Mapping = {'pf0': 1, 'pf1': 0}
+
+Going to clean the following: ['../../../../ipss/pcie/qip/pcie_ss.ip', '../../../../ipss/pcie/qip/pcie_ss']
+Deploy Command:
+ip-deploy --family=agilex --part="AGFB027R25A2E2V" --search-path="$OFS_ROOTDIR/ipss/**/*,$" --output-name="pcie_ss" --component-name="intel_pcie_ss_axi" --output-directory=../../../../ipss/pcie/qip --component-parameter=axi_lite_clk_freq_user_hwtcl="100" --component-parameter=core16_enable_multi_func_hwtcl="1" --component-parameter=core16_enable_sriov_hwtcl="1" --component-parameter=core16_enable_10bit_tag_support_intf_hwtcl="1" --component-parameter=core16_ctrl_shadow_en_hwtcl="1" --component-parameter=core16_comp_timeout_en_hwtcl="1" --component-parameter=core16_flr_cap_user_hwtcl="0" --component-parameter=pcie_link_en_hwtcl="1" --component-parameter=pipemode_sim_ed_hwtcl="1" --component-parameter=total_pcie_intf_hwtcl="1" --component-parameter=top_topology_hwtcl="Gen4 1x16" --component-parameter=core16_pf0_pcie_cap_port_num_hwtcl="1" --component-parameter=core16_ceb_en_hwtcl="0" --component-parameter=core16_ceb_pf_std_cap_last_ptr_hwtcl="0" --component-parameter=core16_ceb_pf_ext_cap_last_ptr_hwtcl="0" --component-parameter=core16_ceb_vf_std_cap_last_ptr_hwtcl="0" --component-parameter=core16_ceb_vf_ext_cap_last_ptr_hwtcl="0" --component-parameter=core16_pf0_expansion_base_address_register_hwtcl="0" --component-parameter=core16_pf0_sriov_vf_bar0_type_hwtcl="64-bit prefetchable memory" --component-parameter=core16_pf0_sriov_vf_bar0_type_user_hwtcl="64-bit prefetchable memory" --component-parameter=core16_pf0_bar0_type_user_hwtcl="64-bit prefetchable memory" --component-parameter=core16_pf0_bar0_address_width_user_hwtcl="20" --component-parameter=core16_virtual_pf0_msix_enable_user_hwtcl="1" --component-parameter=core16_virtual_pf0_exvf_msix_cap_enable_hwtcl="1" --component-parameter=core16_virtual_pf0_acs_cap_enable_hwtcl="1" --component-parameter=core16_exvf_msix_tablesize_pf0="6" --component-parameter=core16_exvf_msixtable_offset_pf0="1536" --component-parameter=core16_exvf_msixtable_bir_pf0="4" --component-parameter=core16_exvf_msixpba_offset_pf0="1550" --component-parameter=core16_exvf_msixpba_bir_pf0="4" --component-parameter=core16_pf0_bar4_type_user_hwtcl="64-bit prefetchable memory" --component-parameter=core16_pf0_bar4_address_width_user_hwtcl="14" --component-parameter=core16_pf0_sriov_vf_bar0_address_width_hwtcl="20" --component-parameter=core16_pf0_sriov_vf_bar4_type_hwtcl="64-bit prefetchable memory" --component-parameter=core16_pf0_sriov_vf_bar4_type_user_hwtcl="64-bit prefetchable memory" --component-parameter=core16_pf0_sriov_vf_bar4_address_width_hwtcl="14" --component-parameter=core16_pf0_pci_msix_table_size_hwtcl="6" --component-parameter=core8_pf0_pci_msix_table_size_user_hwtcl="6" --component-parameter=core16_pf0_pci_msix_table_offset_hwtcl="1536" --component-parameter=core16_pf0_pci_msix_bir_hwtcl="4" --component-parameter=core16_pf0_pci_msix_pba_offset_hwtcl="1550" --component-parameter=core16_pf0_pci_msix_pba_hwtcl="4" --component-parameter=core16_pf0_pci_msix_table_size_vfcomm_cs2_hwtcl="0" --component-parameter=core16_virtual_pf0_ats_cap_enable_hwtcl="0" --component-parameter=core16_pf0_vf_ats_cap_enable_hwtcl="0" --component-parameter=core16_virtual_pf0_prs_ext_cap_enable_hwtcl="0" --component-parameter=core16_virtual_pf0_pasid_cap_enable_hwtcl="0" --component-parameter=core16_pf0_pasid_cap_max_pasid_width="0" --component-parameter=core16_pf0_pci_type0_vendor_id_hwtcl="32902" --component-parameter=core16_pf0_pci_type0_vendor_id_user_hwtcl="32902" --component-parameter=core16_pf0_pci_type0_device_id_hwtcl="48334" --component-parameter=core16_pf0_revision_id_hwtcl="1" --component-parameter=core16_pf0_revision_id_user_hwtcl="1" --component-parameter=core16_pf0_class_code_hwtcl="1179648" --component-parameter=core16_pf0_subsys_vendor_id_hwtcl="32902" --component-parameter=core16_pf0_subsys_dev_id_hwtcl="6001" --component-parameter=core16_exvf_subsysid_pf0="6001" --component-parameter=core16_pf0_sriov_vf_device_id="48335" --component-parameter=core16_pf0_vf_acs_cap_enable_hwtcl="1" --component-parameter=core16_pf0_vf_count_hwtcl="1" --component-parameter=core16_pf1_expansion_base_address_register_hwtcl="0" --component-parameter=core16_pf1_sriov_vf_bar0_type_hwtcl="Disabled" --component-parameter=core16_pf1_sriov_vf_bar0_type_user_hwtcl="Disabled" --component-parameter=core16_pf1_bar0_type_user_hwtcl="Disabled" --component-parameter=core16_pf1_bar0_address_width_user_hwtcl="12" --component-parameter=core16_virtual_pf1_msix_enable_user_hwtcl="1" --component-parameter=core16_virtual_pf1_exvf_msix_cap_enable_hwtcl="0" --component-parameter=core16_virtual_pf1_acs_cap_enable_hwtcl="1" --component-parameter=core16_exvf_msix_tablesize_pf1="0" --component-parameter=core16_exvf_msixtable_offset_pf1="0" --component-parameter=core16_exvf_msixtable_bir_pf1="0" --component-parameter=core16_exvf_msixpba_offset_pf1="0" --component-parameter=core16_exvf_msixpba_bir_pf1="0" --component-parameter=core16_pf1_bar4_type_user_hwtcl="64-bit prefetchable memory" --component-parameter=core16_pf1_bar4_address_width_user_hwtcl="14" --component-parameter=core16_pf1_sriov_vf_bar0_address_width_hwtcl="0" --component-parameter=core16_pf1_sriov_vf_bar4_type_hwtcl="Disabled" --component-parameter=core16_pf1_sriov_vf_bar4_type_user_hwtcl="Disabled" --component-parameter=core16_pf1_sriov_vf_bar4_address_width_hwtcl="0" --component-parameter=core16_pf1_pci_msix_table_size_hwtcl="6" --component-parameter=core16_pf1_pci_msix_table_offset_hwtcl="1536" --component-parameter=core16_pf1_pci_msix_bir_hwtcl="4" --component-parameter=core16_pf1_pci_msix_pba_offset_hwtcl="1550" --component-parameter=core16_pf1_pci_msix_pba_hwtcl="4" --component-parameter=core16_pf1_pci_msix_table_size_vfcomm_cs2_hwtcl="0" --component-parameter=core16_virtual_pf1_ats_cap_enable_hwtcl="0" --component-parameter=core16_pf1_vf_ats_cap_enable_hwtcl="0" --component-parameter=core16_virtual_pf1_prs_ext_cap_enable_hwtcl="0" --component-parameter=core16_virtual_pf1_pasid_cap_enable_hwtcl="0" --component-parameter=core16_pf1_pasid_cap_max_pasid_width="0" --component-parameter=core16_pf1_pci_type0_vendor_id_hwtcl="4794" --component-parameter=core16_pf1_pci_type0_vendor_id_user_hwtcl="4794" --component-parameter=core16_pf1_pci_type0_device_id_hwtcl="112" --component-parameter=core16_pf1_revision_id_hwtcl="1" --component-parameter=core16_pf1_revision_id_user_hwtcl="1" --component-parameter=core16_pf1_class_code_hwtcl="1179648" --component-parameter=core16_pf1_subsys_vendor_id_hwtcl="4794" --component-parameter=core16_pf1_subsys_dev_id_hwtcl="46548" --component-parameter=core16_pf1_vf_count_hwtcl="0" --component-parameter=core16_total_pf_count_hwtcl="2" --component-parameter=core16_dwidth_byte_user_hwtcl="64" --component-parameter=core16_num_seg_user_hwtcl="2" --component-parameter=core16_pf1_bar2_address_width_user_hwtcl="28" --component-parameter=core16_pf1_bar2_type_user_hwtcl="64-bit prefetchable memory"
+***************************************************************
+Quartus is a registered trademark of Altera Corporation in the
+US and other countries.  Portions of the Quartus Prime software
+code, and other portions of the code included in this download
+or on this DVD, are licensed to Altera Corporation and are the
+copyrighted property of third parties. For license details,
+refer to the Altera Software License Subscription Agreements
+on the Quartus Prime software download page.
+***************************************************************
+
+2026.09.18.00:56:44 Warning: Ignored parameter assignment axi_lite_clk_freq_user_hwtcl=100
+HSSI_WHR_REVA HSSI_CRETE3_REVA MAIN_FM8_REVA
+P-TILE
+HSSI_WHR_REVA HSSI_CRETE3_REVA MAIN_FM8_REVA
+P-TILE
+HSSI_WHR_REVA HSSI_CRETE3_REVA MAIN_FM8_REVA
+P-TILE
+2026.09.18.00:57:05 Info: pcie_ss.pcie_ss: One x16 PCIe port will be instantiated.
+2026.09.18.00:57:05 Info: pcie_ss.pcie_ss: PCIe0: Enabling SR-IOV automatically enables FLR.
+2026.09.18.00:57:05 Info: pcie_ss.pcie_ss: PCIe0 pf0 IDs: Vendor ID is set to 0x8086. Please set proper value according to user application.
+2026.09.18.00:57:05 Info: pcie_ss.pcie_ss: PCIe0 pf0 IDs: Device ID is set to 0xbcce. Please set proper value according to user application.
+2026.09.18.00:57:05 Info: pcie_ss.pcie_ss: PCIe0 pf0 IDs: Revision ID is set to 0x1. Please set proper value according to user application.
+2026.09.18.00:57:05 Info: pcie_ss.pcie_ss: PCIe0 pf0 IDs: Class code is set to 0x120000. Please set proper value according to user application.
+2026.09.18.00:57:05 Info: pcie_ss.pcie_ss: PCIe0 pf0 VF IDs: Device ID is set to 0xbccf. Please set proper value according to user application.
+2026.09.18.00:57:05 Info: pcie_ss.pcie_ss: PCIe0 pf1 IDs: Vendor ID is set to 0x12ba. Please set proper value according to user application.
+2026.09.18.00:57:05 Info: pcie_ss.pcie_ss: PCIe0 pf1 IDs: Device ID is set to 0x70. Please set proper value according to user application.
+2026.09.18.00:57:05 Info: pcie_ss.pcie_ss: PCIe0 pf1 IDs: Revision ID is set to 0x1. Please set proper value according to user application.
+2026.09.18.00:57:05 Info: pcie_ss.pcie_ss: PCIe0 pf1 IDs: Class code is set to 0x120000. Please set proper value according to user application.
+2026.09.18.00:57:05 Info: pcie_ss.pcie_ss: PCIe0 pf1 VF IDs: Device ID is set to 0x0. Please set proper value according to user application.
+2026.09.18.00:57:05 Info: Deploying pcie_ss to /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ipss/pcie/qip/pcie_ss.ip
+=========================
+IP-Deploy for intel_pcie_ss_axi COMPLETED
+=========================
+
+=========================
+Memory Summary
+=========================
+Preset = ia840f_discrete_rdimm_source
+
+Going to clean the following: ['../../../../ipss/mem/qip/mem_ss/mem_ss.ip', '../../../../ipss/mem/qip/mem_ss/mem_ss']
+Deploy Command:
+qsys-script --qpf=none --search-path="$OFS_ROOTDIR/ipss/**/*,$" --cmd="package require qsys; set_project_property DEVICE {AGFB027R25A2E2V}; set_project_property DEVICE_FAMILY {agilex}; set_project_property BOARD {default}; set_validation_property AUTOMATIC_VALIDATION false; add_component mem_ss ../../../../ipss/mem/qip/mem_ss/mem_ss.ip mem_ss mem_ss; load_component mem_ss; apply_component_preset {ia840f_discrete_rdimm_source}; save_component"
+***************************************************************
+Quartus is a registered trademark of Altera Corporation in the
+US and other countries.  Portions of the Quartus Prime software
+code, and other portions of the code included in this download
+or on this DVD, are licensed to Altera Corporation and are the
+copyrighted property of third parties. For license details,
+refer to the Altera Software License Subscription Agreements
+on the Quartus Prime software download page.
+***************************************************************
+
+2026.09.18.00:57:07 Info: Doing: qsys-script --quartus-project=none --search-path=/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ipss/**/*,$ --cmd=package require qsys; set_project_property DEVICE {AGFB027R25A2E2V}; set_project_property DEVICE_FAMILY {agilex}; set_project_property BOARD {default}; set_validation_property AUTOMATIC_VALIDATION false; add_component mem_ss ../../../../ipss/mem/qip/mem_ss/mem_ss.ip mem_ss mem_ss; load_component mem_ss; apply_component_preset {ia840f_discrete_rdimm_source}; save_component
+2026.09.18.00:57:11 Info: set_project_property DEVICE AGFB027R25A2E2V
+2026.09.18.00:57:12 Info: set_project_property DEVICE_FAMILY agilex
+2026.09.18.00:57:12 Info: set_project_property BOARD default
+2026.09.18.00:57:12 Info: set_validation_property AUTOMATIC_VALIDATION false
+2026.09.18.00:57:12 Info: add_component mem_ss ../../../../ipss/mem/qip/mem_ss/mem_ss.ip mem_ss mem_ss
+2026.09.18.00:57:19 Info: mem_ss: Generic Component instance footprint reloaded.
+2026.09.18.00:57:19 Info: load_component mem_ss
+2026.09.18.00:57:20 Info: apply_component_preset ia840f_discrete_rdimm_source
+2026.09.18.00:57:47 Info: save_component 
+=========================
+IP-Deploy for mem_ss COMPLETED
+=========================
+
+=========================
+SimMemory Summary
+=========================
+Preset = ia840f_discrete_rdimm_source
+
+Going to clean the following: ['../../../../ipss/mem/qip/ed_sim/ed_sim_mem.ip', '../../../../ipss/mem/qip/ed_sim/ed_sim_mem']
+Deploy Command:
+qsys-script --qpf=none --search-path="$OFS_ROOTDIR/ipss/**/*,$" --cmd="package require qsys; set_project_property DEVICE {AGFB027R25A2E2V}; set_project_property DEVICE_FAMILY {agilex}; set_project_property BOARD {default}; set_validation_property AUTOMATIC_VALIDATION false; add_component ed_sim_mem ../../../../ipss/mem/qip/ed_sim/ed_sim_mem.ip altera_emif_mem_model ed_sim_mem; load_component ed_sim_mem; apply_component_preset {ia840f_discrete_rdimm_source}; save_component"
+***************************************************************
+Quartus is a registered trademark of Altera Corporation in the
+US and other countries.  Portions of the Quartus Prime software
+code, and other portions of the code included in this download
+or on this DVD, are licensed to Altera Corporation and are the
+copyrighted property of third parties. For license details,
+refer to the Altera Software License Subscription Agreements
+on the Quartus Prime software download page.
+***************************************************************
+
+2026.09.18.00:57:51 Info: Doing: qsys-script --quartus-project=none --search-path=/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ipss/**/*,$ --cmd=package require qsys; set_project_property DEVICE {AGFB027R25A2E2V}; set_project_property DEVICE_FAMILY {agilex}; set_project_property BOARD {default}; set_validation_property AUTOMATIC_VALIDATION false; add_component ed_sim_mem ../../../../ipss/mem/qip/ed_sim/ed_sim_mem.ip altera_emif_mem_model ed_sim_mem; load_component ed_sim_mem; apply_component_preset {ia840f_discrete_rdimm_source}; save_component
+2026.09.18.00:57:56 Info: set_project_property DEVICE AGFB027R25A2E2V
+2026.09.18.00:57:56 Info: set_project_property DEVICE_FAMILY agilex
+2026.09.18.00:57:56 Info: set_project_property BOARD default
+2026.09.18.00:57:56 Info: set_validation_property AUTOMATIC_VALIDATION false
+2026.09.18.00:57:56 Info: add_component ed_sim_mem ../../../../ipss/mem/qip/ed_sim/ed_sim_mem.ip altera_emif_mem_model ed_sim_mem
+2026.09.18.00:57:58 Info: ed_sim_mem: Generic Component instance footprint reloaded.
+2026.09.18.00:57:58 Info: load_component ed_sim_mem
+2026.09.18.00:57:58 Info: apply_component_preset ia840f_discrete_rdimm_source
+2026.09.18.00:57:58 Info: save_component 
+=========================
+IP-Deploy for altera_emif_mem_model COMPLETED
+=========================
+
+=========================
+SimMemory Summary
+=========================
+Preset = ia840f_discrete_rdimm_source_group1
+
+Going to clean the following: ['../../../../ipss/mem/qip/ed_sim/ed_sim_mem_group1.ip', '../../../../ipss/mem/qip/ed_sim/ed_sim_mem_group1']
+Deploy Command:
+qsys-script --qpf=none --search-path="$OFS_ROOTDIR/ipss/**/*,$" --cmd="package require qsys; set_project_property DEVICE {AGFB027R25A2E2V}; set_project_property DEVICE_FAMILY {agilex}; set_project_property BOARD {default}; set_validation_property AUTOMATIC_VALIDATION false; add_component ed_sim_mem_group1 ../../../../ipss/mem/qip/ed_sim/ed_sim_mem_group1.ip altera_emif_mem_model ed_sim_mem_group1; load_component ed_sim_mem_group1; apply_component_preset {ia840f_discrete_rdimm_source_group1}; save_component"
+***************************************************************
+Quartus is a registered trademark of Altera Corporation in the
+US and other countries.  Portions of the Quartus Prime software
+code, and other portions of the code included in this download
+or on this DVD, are licensed to Altera Corporation and are the
+copyrighted property of third parties. For license details,
+refer to the Altera Software License Subscription Agreements
+on the Quartus Prime software download page.
+***************************************************************
+
+2026.09.18.00:57:59 Info: Doing: qsys-script --quartus-project=none --search-path=/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ipss/**/*,$ --cmd=package require qsys; set_project_property DEVICE {AGFB027R25A2E2V}; set_project_property DEVICE_FAMILY {agilex}; set_project_property BOARD {default}; set_validation_property AUTOMATIC_VALIDATION false; add_component ed_sim_mem_group1 ../../../../ipss/mem/qip/ed_sim/ed_sim_mem_group1.ip altera_emif_mem_model ed_sim_mem_group1; load_component ed_sim_mem_group1; apply_component_preset {ia840f_discrete_rdimm_source_group1}; save_component
+2026.09.18.00:58:04 Info: set_project_property DEVICE AGFB027R25A2E2V
+2026.09.18.00:58:04 Info: set_project_property DEVICE_FAMILY agilex
+2026.09.18.00:58:04 Info: set_project_property BOARD default
+2026.09.18.00:58:04 Info: set_validation_property AUTOMATIC_VALIDATION false
+2026.09.18.00:58:04 Info: add_component ed_sim_mem_group1 ../../../../ipss/mem/qip/ed_sim/ed_sim_mem_group1.ip altera_emif_mem_model ed_sim_mem_group1
+2026.09.18.00:58:06 Info: ed_sim_mem_group1: Generic Component instance footprint reloaded.
+2026.09.18.00:58:06 Info: load_component ed_sim_mem_group1
+2026.09.18.00:58:06 Info: apply_component_preset ia840f_discrete_rdimm_source_group1
+2026.09.18.00:58:06 Info: save_component 
+=========================
+IP-Deploy for altera_emif_mem_model COMPLETED
+=========================
+=============================================
+OFS IP Configuration Tool Complete for:
+['/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/syn/board/ia840f/config/ia840f.ofss']
+Updated the following:
+	 - ../../../../ofs-common/src/fpga_family/agilex/sys_pll/sys_pll.ip
+	 - ../../../../ipss/pcie/qip/pcie_ss.ip
+	 - ../../../../ipss/mem/qip/mem_ss/mem_ss.ip
+	 - ../../../../ipss/mem/qip/ed_sim/ed_sim_mem.ip
+	 - ../../../../ipss/mem/qip/ed_sim/ed_sim_mem_group1.ip
+=============================================
+Using provided OFS_PLATFORM_AFU_BBB=/home/uwb_student00/ahls/new_BSP/ofs-platform-afu-bbb
+Info: *******************************************************************
+Info: Running Quartus Prime Shell
+    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+    Info: Copyright (C) 2026  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Fri Sep 18 00:58:07 2026
+    Info: System process ID: 12062
+Info: Command: quartus_sh -t /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/emit_project_macros.tcl --project=ofs_top --revision=ofs_top --mode=txt --output=/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/top/ofs_agilex.macros
+Info: Quartus(args): --project=ofs_top --revision=ofs_top --mode=txt --output=/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/top/ofs_agilex.macros
+Info: Using INI file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/quartus.ini
+Info: BUILD_ROOT_REL is ../../../..
+Info: Loading device exerciser AFU...
+Info: Compiling PR Base revision...
+Critical Warning (125091): Tcl error: IA840F NOT READY: IA840F EXPERIMENTAL GATE: tool path: quartus_sh
+child process exited abnormally. Child-IP/generated-interface, memory and BMC/FLR qualification remain unperformed.
+    while executing
+"error "IA840F NOT READY: $ia840f_gate_result. Child-IP/generated-interface, memory and BMC/FLR qualification remain unperformed.""
+    invoked from within
+"if {[catch {exec python3 $ia840f_gate quartus 2>@1} ia840f_gate_result]} {
+    error "IA840F NOT READY: $ia840f_gate_result. Child-IP/generated-interf..."
+    (file "../setup/build_gate.tcl" line 6)
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/build_gate.tcl
+Info (23030): Evaluation of Tcl script /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/emit_project_macros.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 1502 megabytes
+    Info: Processing ended: Fri Sep 18 00:58:08 2026
+    Info: Elapsed time: 00:00:01
+    Info: System process ID: 12062
+Parsing configuration defaults file: /home/uwb_student00/ahls/new_BSP/ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/config/defaults.ini
+Parsing configuration file: /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/top/ofs_agilex.ini
+  Section local_mem is enabled
+  Section hssi is DISABLED
+Found afu_main
+Found CCI-P
+Found local memory
++ /home/uwb_student00/ahls/new_BSP/ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/scripts/gen_ofs_plat_if -c /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/top/ofs_agilex.ini -v -t /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/build/platform/ofs_plat_if
+Parsing configuration defaults file: /home/uwb_student00/ahls/new_BSP/ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/config/defaults.ini
+Parsing configuration file: /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/top/ofs_agilex.ini
+  Section local_mem is enabled
+  Section hssi is DISABLED
+Creating target directory: /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/build/platform/ofs_plat_if
+
+Reading list of generic sources from /home/uwb_student00/ahls/new_BSP/ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/sources_generic.txt:
+  Copying par
+  Copying rtl/base_ifcs
+  Copying rtl/compat
+  Copying rtl/ofs_plat_if.vh
+  Copying rtl/platform_if.vh
+  Copying rtl/utils
+  Copying sim
+
+Generating clocks group 0 (no source)
+Generating define group 0 (no source)
+Generating host_chan group 0 using host_chan/native_axis_pcie_tlp:
+  Copying source rtl/ifc_classes/host_chan/native_axis_pcie_tlp to /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/build/platform/ofs_plat_if/rtl/ifc_classes/host_chan
+    Gasket /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/build/platform/ofs_plat_if/rtl/ifc_classes/host_chan/prims/gasket_ea_ofs_fim not used (looking for gasket_pcie_ss)
+    Preserving /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/build/platform/ofs_plat_if/rtl/ifc_classes/host_chan/prims/gasket_pcie_ss 
+    Merging AFU interface sources rtl/ifc_classes/host_chan/afu_ifcs
+  Generating ccip_cfg_pkg.sv from ccip_GROUP_cfg_pkg.sv
+  Generating ofs_plat_host_chan_as_avalon_mem_rdwr.sv from ofs_plat_host_chan_GROUP_as_avalon_mem_rdwr.sv
+  Generating ofs_plat_host_chan_as_axi_mem.sv from ofs_plat_host_chan_GROUP_as_axi_mem.sv
+  Generating ofs_plat_host_chan_as_ccip.sv from ofs_plat_host_chan_GROUP_as_ccip.sv
+  Generating ofs_plat_host_chan_fiu_if.sv from ofs_plat_host_chan_GROUP_fiu_if.sv
+  Generating ofs_plat_host_chan_fiu_if_tie_off.sv from ofs_plat_host_chan_GROUP_fiu_if_tie_off.sv
+  Generating ofs_plat_host_chan_map_as_avalon_mem_if.sv from ofs_plat_host_chan_GROUP_map_as_avalon_mem_if.sv
+  Generating ofs_plat_host_chan_map_as_axi_mem_if.sv from ofs_plat_host_chan_GROUP_map_as_axi_mem_if.sv
+  Generating ofs_plat_host_chan_map_as_ccip.sv from ofs_plat_host_chan_GROUP_map_as_ccip.sv
+  Generating ofs_plat_host_chan_as_axi_mem.vh from ofs_plat_host_chan_GROUP_as_axi_mem.vh
+  Generating ofs_plat_host_chan_pcie_tlp.vh from ofs_plat_host_chan_GROUP_pcie_tlp.vh
+  Generating ofs_plat_host_chan_pcie_tlp_pkg.sv from ofs_plat_host_chan_GROUP_pcie_tlp_pkg.sv
+  Generating ofs_plat_pcie_tlp_hdr_pkg.sv from ofs_plat_pcie_tlp_GROUP_hdr_pkg.sv
+  Generating ofs_plat_host_chan_gen_mmio_tlps.sv from ofs_plat_host_chan_GROUP_gen_mmio_tlps.sv
+  Generating ofs_plat_host_chan_gen_rd_tlps.sv from ofs_plat_host_chan_GROUP_gen_rd_tlps.sv
+  Generating ofs_plat_host_chan_gen_tlps_pkg.sv from ofs_plat_host_chan_GROUP_gen_tlps_pkg.sv
+  Generating ofs_plat_host_chan_gen_wr_tlps.sv from ofs_plat_host_chan_GROUP_gen_wr_tlps.sv
+  Generating ofs_plat_host_chan_map_to_tlps.sv from ofs_plat_host_chan_GROUP_map_to_tlps.sv
+  Generating ofs_plat_host_chan_axis_pcie_tlp_if.sv from ofs_plat_host_chan_GROUP_axis_pcie_tlp_if.sv
+  Generating ofs_plat_host_chan_axis_pcie_tlp_if.vh from ofs_plat_host_chan_GROUP_axis_pcie_tlp_if.vh
+  Generating ofs_plat_host_chan_fim_gasket.sv from ofs_plat_host_chan_GROUP_fim_gasket.sv
+  Generating ofs_plat_host_chan_fim_gasket_pkg.sv from ofs_plat_host_chan_GROUP_fim_gasket_pkg.sv
+  Generating ofs_plat_host_chan_fim_gasket_tie_off.sv from ofs_plat_host_chan_GROUP_fim_gasket_tie_off.sv
+  Generating map_fim_pcie_ss_to_host_chan.sv from map_fim_pcie_ss_to_GROUP_host_chan.sv
+  Generating map_fim_pcie_ss_to_pim_axi_stream.sv from map_fim_pcie_ss_to_GROUP_pim_axi_stream.sv
+  Generating ofs_plat_host_chan_align_rx_tlps.sv from ofs_plat_host_chan_GROUP_align_rx_tlps.sv
+  Generating ofs_plat_host_chan_align_tx_tlps.sv from ofs_plat_host_chan_GROUP_align_tx_tlps.sv
+  Generating ofs_plat_host_chan_axis_pcie_tlp_if.sv from ofs_plat_host_chan_GROUP_axis_pcie_tlp_if.sv
+  Generating ofs_plat_host_chan_axis_pcie_tlp_if.vh from ofs_plat_host_chan_GROUP_axis_pcie_tlp_if.vh
+  Generating ofs_plat_host_chan_fim_gasket.sv from ofs_plat_host_chan_GROUP_fim_gasket.sv
+  Generating ofs_plat_host_chan_fim_gasket_pkg.sv from ofs_plat_host_chan_GROUP_fim_gasket_pkg.sv
+  Generating ofs_plat_host_chan_fim_gasket_tie_off.sv from ofs_plat_host_chan_GROUP_fim_gasket_tie_off.sv
+  Generating ofs_plat_host_chan_fim_multi_link_afu_dfh.sv from ofs_plat_host_chan_GROUP_fim_multi_link_afu_dfh.sv
+  Generating ofs_plat_host_chan_as_avalon_mem_rdwr.vh from ofs_plat_host_chan_GROUP_as_avalon_mem_rdwr.vh
+  Generating ofs_plat_host_chan_pkg.sv from ofs_plat_host_chan_GROUP_pkg.sv
+Generating local_mem group 0 using local_mem/native_axi:
+  Copying source rtl/ifc_classes/local_mem/native_axi to /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/build/platform/ofs_plat_if/rtl/ifc_classes/local_mem
+    Preserving /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/build/platform/ofs_plat_if/rtl/ifc_classes/local_mem/prims/gasket_fim_emif_axi_mm 
+    Merging AFU interface sources rtl/ifc_classes/local_mem/afu_ifcs
+  Generating local_mem_cfg_pkg.sv from local_mem_GROUP_cfg_pkg.sv
+  Generating ofs_plat_local_mem_as_avalon_mem.sv from ofs_plat_local_mem_GROUP_as_avalon_mem.sv
+  Generating ofs_plat_local_mem_as_axi_mem.sv from ofs_plat_local_mem_GROUP_as_axi_mem.sv
+  Generating ofs_plat_local_mem_fiu_if.sv from ofs_plat_local_mem_GROUP_fiu_if.sv
+  Generating ofs_plat_local_mem_fiu_if_tie_off.sv from ofs_plat_local_mem_GROUP_fiu_if_tie_off.sv
+  Generating ofs_plat_local_mem_avalon_mem.vh from ofs_plat_local_mem_GROUP_avalon_mem.vh
+  Generating ofs_plat_local_mem_axi_mem.vh from ofs_plat_local_mem_GROUP_axi_mem.vh
+Generating other group 0 using generic_templates/ports:
+  Copying source rtl/ifc_classes/generic_templates/ports to /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/build/platform/ofs_plat_if/rtl/ifc_classes/other
+  Importing source /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/ofs-common/src/fpga_family/agilex/port_gasket/afu_main_pim/extend_pim to /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/build/platform/ofs_plat_if/rtl/ifc_classes/other/extend_pim
+  Generating ofs_plat_CLASS_fiu_if.sv from ofs_plat_CLASS_GROUP_fiu_if.sv
+  Generating ofs_plat_other_fiu_if.sv from ofs_plat_CLASS_fiu_if.sv
+
+Processing top-level RTL template files from /home/uwb_student00/ahls/new_BSP/ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/rtl:
+  Generating /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/build/platform/ofs_plat_if/rtl/ofs_plat_if.sv
+  Generating /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/build/platform/ofs_plat_if/rtl/ofs_plat_if_tie_off_unused.sv
+  Generating /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/build/platform/ofs_plat_if/rtl/ofs_plat_if_top_config.vh
+    Remove unused /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/build/platform/ofs_plat_if/rtl/ifc_classes/host_chan/prims/gasket_ea_ofs_fim 
+    Keep preserved /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/build/platform/ofs_plat_if/rtl/ifc_classes/host_chan/prims/gasket_pcie_ss 
+    Keep preserved /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/build/platform/ofs_plat_if/rtl/ifc_classes/local_mem/prims/gasket_fim_emif_axi_mm 
+
+Generating files to import ofs_plat_if:
+  Emitting simulator include file: /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/build/platform/ofs_plat_if/sim/platform_if_includes.txt
+  Emitting simulator sources file: /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/build/platform/ofs_plat_if/sim/platform_if_addenda.txt
+  Emitting Quartus sources file: /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/build/platform/ofs_plat_if/par/platform_if_addenda.qsf
++ set +x
+d is import=../../ofs-common/src/fpga_family/agilex/port_gasket/afu_main_pim/extend_pim/
+TGT = /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim/pim_template
+IMPORT_SRC_PATH = /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/src/top/../../ofs-common/src/fpga_family/agilex/port_gasket/afu_main_pim/extend_pim/
+PIM_ROOT_DIR = /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim
++ cd /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim
++ env OPAE_PLATFORM_ROOT=/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim/pim_template afu_synth_setup --platform= -s /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/pim/dummy_afu/dummy_afu_files.txt afu
+Loading platform database: /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/platform/platform_db/ofs_agilex.json
+Loading platform-params database: /usr/lib/python3.9/site-packages/platmgr/db/platform_db/platform_defaults.json
+Loading AFU database: /usr/lib/python3.9/site-packages/platmgr/db/afu_top_ifc_db/ofs_plat_afu.json
+Writing platform/platform_afu_top_config.vh
+Writing platform/platform_if_addenda.qsf
+Writing ../hw/afu_json_info.vh
+Copying build from /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/build...
+Configuring Quartus build directory: afu/build
++ set +x
+Info: *******************************************************************
+Info: Running Quartus Prime Shell
+    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+    Info: Copyright (C) 2026  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Fri Sep 18 00:58:11 2026
+    Info: System process ID: 12114
+Info: Command: quartus_sh --prepare -r ofs_pr_afu ofs_top
+Info: Quartus(args): -r ofs_pr_afu ofs_top
+Info: Using INI file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/quartus.ini
+Info: /opt/altera/26.1.1/quartus/common/tcl/internal/qsh_prepare.tcl version #1
+Info: BUILD_ROOT_REL is ../../../..
+Info: Loading device exerciser AFU...
+Info (25772): Use High Performance Effort optimization mode when optimizing for performance. Superior Performance optimization mode has been deprecated and will be removed in 27.1.1.
+Info (24087): The active revision settings file will be modified to remove errors. A backup is written to: /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/ofs_pr_afu.qsf.backup.
+Info (125068): Revision "ofs_pr_afu" was previously opened in Quartus Prime software version 22.3.0 SP0.31,0.35 Pro Edition. Created Quartus Prime Default Settings file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/ofs_pr_afu_assignment_defaults.qdf, which contains the default assignment setting information from Quartus Prime software version 22.3.0 SP0.31,0.35 Pro Edition.
+Info: Loading device exerciser AFU...
+Info (125069): Default assignment values were changed in the current version of the Quartus Prime software.  Change to default assignments values are contained in file /opt/altera/26.1.1/quartus/linux64/assignment_defaults.qdf
+Critical Warning (125091): Tcl error: IA840F NOT READY: IA840F EXPERIMENTAL GATE: tool path: quartus_sh
+child process exited abnormally. Child-IP/generated-interface, memory and BMC/FLR qualification remain unperformed.
+    while executing
+"error "IA840F NOT READY: $ia840f_gate_result. Child-IP/generated-interface, memory and BMC/FLR qualification remain unperformed.""
+    invoked from within
+"if {[catch {exec python3 $ia840f_gate quartus 2>@1} ia840f_gate_result]} {
+    error "IA840F NOT READY: $ia840f_gate_result. Child-IP/generated-interf..."
+    (file "../setup/build_gate.tcl" line 6)
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/build_gate.tcl
+Warning (125092): Tcl Script file fim_project_macros.tcl not found.
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE fim_project_macros.tcl
+Warning (125092): Tcl Script file fim_base_ip.tcl not found.
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE fim_base_ip.tcl
+Info (23030): Evaluation of Tcl script /opt/altera/26.1.1/quartus/common/tcl/internal/qsh_prepare.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 1504 megabytes
+    Info: Processing ended: Fri Sep 18 00:58:12 2026
+    Info: Elapsed time: 00:00:01
+    Info: System process ID: 12114
+Info: *******************************************************************
+Info: Running Quartus Prime Shell
+    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+    Info: Copyright (C) 2026  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Fri Sep 18 00:58:13 2026
+    Info: System process ID: 12139
+Info: Command: quartus_sh --prepare -r ofs_top ofs_top
+Info: Quartus(args): -r ofs_top ofs_top
+Info: Using INI file /home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_01/syn/board/ia840f/syn_top/quartus.ini
+Info: /opt/altera/26.1.1/quartus/common/tcl/internal/qsh_prepare.tcl version #1
+Info: BUILD_ROOT_REL is ../../../..
+Info: Loading device exerciser AFU...
+Info: Compiling PR Base revision...
+Critical Warning (125091): Tcl error: IA840F NOT READY: IA840F EXPERIMENTAL GATE: tool path: quartus_sh
+child process exited abnormally. Child-IP/generated-interface, memory and BMC/FLR qualification remain unperformed.
+    while executing
+"error "IA840F NOT READY: $ia840f_gate_result. Child-IP/generated-interface, memory and BMC/FLR qualification remain unperformed.""
+    invoked from within
+"if {[catch {exec python3 $ia840f_gate quartus 2>@1} ia840f_gate_result]} {
+    error "IA840F NOT READY: $ia840f_gate_result. Child-IP/generated-interf..."
+    (file "../setup/build_gate.tcl" line 6)
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/build_gate.tcl
+Info (23030): Evaluation of Tcl script /opt/altera/26.1.1/quartus/common/tcl/internal/qsh_prepare.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 1503 megabytes
+    Info: Processing ended: Fri Sep 18 00:58:14 2026
+    Info: Elapsed time: 00:00:01
+    Info: System process ID: 12139
