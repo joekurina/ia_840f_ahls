@@ -5,3 +5,6 @@ Partition DRC: 0 violations (all 4 rules)
 Release tree: work_ia840f_fim_13/pr_release_13a (bin/ afu_synth update_pim; hw/blue_bits/ofs_top.sof; hw/lib/build full PR template + ofs_plat_if platform)
 Base SOF sha256: fe566004accde825cb910e69fd458f87669ad2c67f0c7f36e81a115f57298c37 (identical to compile output)
 Log: /tmp/fim13-gates/prrel.log (tmux fim13_prrel_01)
+
+Flash image: ofs_top_user.rpd 6,369,280 B sha256 901002a1ad6c9ada7cec98df66915df77553b1fe6bb0b16cbb0aa0de4d2c8175
+  quartus_pfg -c ofs_top.sof ofs_top_user.rpd -o mode=ASX4 -o bitswap=ON -> RC=0 (tmux fim13_pfg_01, log /tmp/fim13-gates/pfg.log)
