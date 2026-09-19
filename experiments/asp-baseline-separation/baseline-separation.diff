@@ -1,0 +1,1058 @@
+--- pre-edit/oneapi-asp/common/hardware/common/build/asp_design_files.tcl
++++ active/oneapi-asp/common/hardware/common/build/asp_design_files.tcl
+@@ -10,10 +10,6 @@
+ # DMA controller
+ #--------------------
+ set_global_assignment -name SOURCE_TCL_SCRIPT_FILE  "./rtl/dma/par/dma_controller_filelist.tcl"
+-
+-# DMA-backed kernel hostchannel candidate definitions. Top-level/compiler
+-# binding remains gated; existing DDR DMA is not replaced or disabled.
+-set_global_assignment -name SOURCE_TCL_SCRIPT_FILE "./rtl/hostchannel/asp_hostchannel_sources.tcl"
+ 
+ #--------------------
+ # UDP Engine
+--- pre-edit/oneapi-asp/common/hardware/common/build/rtl/hostchannel/asp_hostchannel_engine.sv
++++ active/oneapi-asp/common/hardware/common/build/rtl/hostchannel/asp_hostchannel_engine.sv
+@@ -1,295 +0,0 @@
+-// SPDX-License-Identifier: MIT
+-`include "ofs_plat_if.vh"
+-// One DMA-backed channel. H2D=1: host ring -> kernel; H2D=0: kernel -> ring.
+-// mem uses physical line addresses, 512-bit data, waitrequestAllowance=0.
+-// Stream and CSR ports MUST be synchronous to mem.clk, readyLatency=0.
+-module asp_hostchannel_engine #(
+-    parameter bit H2D = 1,
+-    parameter int FIFO_LOG_DEPTH = 6,
+-    parameter int BATCH_LINES = 32
+-)(
+-    ofs_plat_avalon_mem_rdwr_if.to_sink mem,
+-    input logic external_fault,
+-    output logic transport_idle,
+-    input logic csr_write,
+-    input logic csr_bad_access,
+-    input logic [7:0] csr_address,
+-    input logic [63:0] csr_writedata,
+-    output logic [63:0] csr_readdata,
+-    input logic [511:0] kernel_in_data,
+-    input logic kernel_in_valid,
+-    output logic kernel_in_ready,
+-    output logic [511:0] kernel_out_data,
+-    output logic kernel_out_valid,
+-    input logic kernel_out_ready
+-);
+-    import asp_hostchannel_pkg::*;
+-    localparam int DEPTH = 1 << FIFO_LOG_DEPTH;
+-    wire clk = mem.clk;
+-    wire reset_n = mem.reset_n;
+-    logic run, quiesce, clean_epoch;
+-    logic [63:0] ring_iova, ring_bytes, host_position, device_position;
+-    logic [63:0] error_bits, csr_errors, dma_errors;
+-    logic dma_idle, transport_poison;
+-    assign transport_idle = dma_idle;
+-    wire quiesced = (!run || quiesce || (error_bits != 0)) &&
+-                     dma_idle && !transport_poison;
+-    wire active = run && !quiesce && (error_bits == 0);
+-    wire reset_positions = csr_write && !csr_bad_access &&
+-        (csr_address == CSR_CONTROL) && csr_writedata[2] &&
+-        !csr_writedata[0] && (csr_writedata[63:3] == 0) && quiesced;
+-    // Check upper physical address bits before conversion to line address.
+-    wire [63:0] ring_last = ring_iova + ring_bytes - 1'b1;
+-    wire valid_config = (ring_iova[5:0] == 0) &&
+-        (ring_bytes >= 64) && (ring_bytes <= 64'h80000000) &&
+-        ((ring_bytes & (ring_bytes - 1'b1)) == 0) &&
+-        (ring_last >= ring_iova) &&
+-        ((ring_last >> (mem.ADDR_WIDTH + 6)) == 0);
+-    wire configuration_idle = quiesced && clean_epoch && (host_position == 0) &&
+-                              (device_position == 0);
+-    logic host_update_ok;
+-    always_comb begin
+-        if (H2D)
+-            host_update_ok = (csr_writedata >= host_position) &&
+-                (csr_writedata >= device_position) &&
+-                (csr_writedata - device_position <= ring_bytes);
+-        else
+-            host_update_ok = (csr_writedata >= host_position) &&
+-                (csr_writedata <= device_position);
+-        host_update_ok = host_update_ok && (csr_writedata[5:0] == 0);
+-        csr_errors = 0;
+-        if (csr_bad_access) csr_errors = ERR_CSR;
+-        else if (csr_write) begin
+-            case (csr_address)
+-                CSR_CONTROL: begin
+-                    if (csr_writedata[63:3] != 0 ||
+-                        (csr_writedata[2] && (!quiesced || csr_writedata[0])))
+-                        csr_errors = ERR_CSR;
+-                    else if (csr_writedata[0] && !csr_writedata[1] && !valid_config)
+-                        csr_errors = ERR_CONFIG;
+-                end
+-                CSR_RING_IOVA, CSR_RING_BYTES:
+-                    if (!configuration_idle) csr_errors = ERR_CONFIG;
+-                CSR_HOST_POSITION:
+-                    if (!valid_config || !host_update_ok) csr_errors = ERR_POSITION;
+-                default: csr_errors = ERR_CSR;
+-            endcase
+-        end
+-        csr_readdata = 0;
+-        case (csr_address)
+-            CSR_IDENT: csr_readdata = ABI_IDENT;
+-            CSR_CONTROL: csr_readdata = {62'b0, quiesce, run};
+-            CSR_STATUS: csr_readdata = {61'b0, (error_bits != 0), quiesced, active};
+-            CSR_RING_IOVA: csr_readdata = ring_iova;
+-            CSR_RING_BYTES: csr_readdata = ring_bytes;
+-            CSR_HOST_POSITION: csr_readdata = host_position;
+-            CSR_DEVICE_POSITION: csr_readdata = device_position;
+-            CSR_ERROR: csr_readdata = error_bits;
+-            CSR_ELEMENT_BYTES: csr_readdata = ELEMENT_BYTES;
+-            default: csr_readdata = 0;
+-        endcase
+-    end
+-    always_ff @(posedge clk) begin
+-        if (!reset_n) begin
+-            run <= 0; quiesce <= 1; clean_epoch <= 1;
+-            ring_iova <= 0; ring_bytes <= 0; host_position <= 0;
+-            error_bits <= 0;
+-        end else if (reset_positions) begin
+-            run <= 0; quiesce <= 1; clean_epoch <= 1; host_position <= 0; error_bits <= 0;
+-        end else begin
+-            error_bits <= error_bits | csr_errors | dma_errors;
+-            if (csr_write && !csr_bad_access && (csr_errors == 0)) begin
+-                case (csr_address)
+-                    CSR_CONTROL: begin
+-                        run <= csr_writedata[0]; quiesce <= csr_writedata[1];
+-                        if (csr_writedata[0]) clean_epoch <= 0;
+-                    end
+-                    CSR_RING_IOVA: ring_iova <= csr_writedata;
+-                    CSR_RING_BYTES: ring_bytes <= csr_writedata;
+-                    CSR_HOST_POSITION: host_position <= csr_writedata;
+-                    default: ;
+-                endcase
+-            end
+-        end
+-    end
+-
+-    logic [511:0] fifo_in, fifo_out;
+-    logic fifo_in_valid, fifo_in_ready, fifo_out_valid, fifo_out_ready;
+-    logic [FIFO_LOG_DEPTH:0] fifo_count;
+-    asp_hostchannel_fifo #(.LOG_DEPTH(FIFO_LOG_DEPTH)) fifo (
+-        .clk, .reset_n, .clear(reset_positions),
+-        .in_data(fifo_in), .in_valid(fifo_in_valid), .in_ready(fifo_in_ready),
+-        .out_data(fifo_out), .out_valid(fifo_out_valid), .out_ready(fifo_out_ready),
+-        .count(fifo_count)
+-    );
+-
+-    // Both buses always have fully-defined request fields, even when idle.
+-    assign mem.rd_burstcount = 1;
+-    assign mem.rd_byteenable = '1;
+-    assign mem.rd_user = '0;
+-    assign mem.wr_burstcount = 1;
+-    assign mem.wr_byteenable = '1;
+-
+-    generate if (H2D) begin : ingress
+-        logic request_pending;
+-        logic [63:0] issued_position;
+-        logic [mem.ADDR_WIDTH-1:0] request_address;
+-        logic [FIFO_LOG_DEPTH:0] outstanding;
+-        wire fire = request_pending && !mem.rd_waitrequest;
+-        wire response = mem.rd_readdatavalid;
+-        wire expected_response = (outstanding != 0) || fire;
+-        wire pop = fifo_out_valid && fifo_out_ready;
+-        wire [63:0] next_issued = issued_position + (fire ? 64 : 0);
+-        // A response moves one reservation into the FIFO and does not release
+-        // capacity. Only kernel consumption releases a reservation.
+-        wire [FIFO_LOG_DEPTH+1:0] reserved_after =
+-            {1'b0, fifo_count} + {1'b0, outstanding} + (fire ? 1 : 0) - (pop ? 1 : 0);
+-        assign mem.rd_read = request_pending;
+-        assign mem.rd_address = request_address;
+-        assign mem.wr_write = 0;
+-        assign mem.wr_address = 0;
+-        assign mem.wr_writedata = 0;
+-        assign mem.wr_user = 0;
+-        assign kernel_in_ready = 0;
+-        assign kernel_out_data = fifo_out;
+-        assign kernel_out_valid = fifo_out_valid && active;
+-        assign fifo_out_ready = kernel_out_ready && active;
+-        assign fifo_in = mem.rd_readdata;
+-        assign fifo_in_valid = response && expected_response &&
+-                               (mem.rd_response == 0) && (error_bits == 0);
+-        assign dma_idle = !request_pending && (outstanding == 0);
+-        always_comb begin
+-            dma_errors = external_fault ? ERR_PROTOCOL : 0;
+-            if (response && mem.rd_response != 0) dma_errors = dma_errors | ERR_RESPONSE;
+-            if ((response && !expected_response) || mem.wr_writeresponsevalid ||
+-                (fifo_in_valid && !fifo_in_ready)) dma_errors = dma_errors | ERR_PROTOCOL;
+-        end
+-        always_ff @(posedge clk) begin
+-            if (!reset_n || reset_positions) begin
+-                request_pending <= 0; request_address <= 0;
+-                issued_position <= 0; device_position <= 0; outstanding <= 0;
+-                transport_poison <= 0;
+-            end else begin
+-                if ((dma_errors & ERR_PROTOCOL) != 0) transport_poison <= 1;
+-                if (fire) issued_position <= issued_position + 64;
+-                case ({fire, response && expected_response})
+-                    2'b10: outstanding <= outstanding + 1'b1;
+-                    2'b01: outstanding <= outstanding - 1'b1;
+-                    default: ;
+-                endcase
+-                if (fifo_in_valid && fifo_in_ready)
+-                    device_position <= device_position + 64;
+-                // Once presented, a request remains stable through backpressure,
+-                // including a concurrent software quiesce/error transition.
+-                if (!request_pending || fire) begin
+-                    request_pending <= 0;
+-                    if (active && csr_errors == 0 && dma_errors == 0 &&
+-                        !reset_positions && (reserved_after < DEPTH) &&
+-                        (next_issued < host_position)) begin
+-                        request_pending <= 1;
+-                        request_address <= (ring_iova +
+-                            (next_issued & (ring_bytes - 1'b1))) >> 6;
+-                    end
+-                end
+-            end
+-        end
+-    end else begin : egress
+-        typedef enum logic [1:0] {PAYLOAD, DRAIN, FENCE_REQUEST, FENCE_WAIT} state_t;
+-        state_t state;
+-        logic request_pending;
+-        logic [63:0] issued_position;
+-        logic [31:0] outstanding, batch_count;
+-        wire payload_fire = (state == PAYLOAD) && request_pending && !mem.wr_waitrequest;
+-        wire fence_fire = (state == FENCE_REQUEST) && !mem.wr_waitrequest;
+-        wire normal_response = mem.wr_writeresponsevalid &&
+-            ((state == PAYLOAD) || (state == DRAIN));
+-        wire expected_normal = (outstanding != 0) || payload_fire;
+-        wire fence_response = mem.wr_writeresponsevalid &&
+-            ((state == FENCE_WAIT) || fence_fire);
+-        wire [63:0] next_issued = issued_position + (payload_fire ? 64 : 0);
+-        wire [63:0] used_after = next_issued - host_position;
+-        wire can_issue = active && csr_errors == 0 && dma_errors == 0 &&
+-            (fifo_count > (payload_fire ? 1 : 0)) &&
+-            (used_after < ring_bytes) && (next_issued <= 64'hffffffffffffffbf) &&
+-            (batch_count + (payload_fire ? 1 : 0) < BATCH_LINES);
+-        assign mem.rd_read = 0;
+-        assign mem.rd_address = 0;
+-        assign mem.wr_write = ((state == PAYLOAD) && request_pending) || (state == FENCE_REQUEST);
+-        assign mem.wr_address = (ring_iova + (issued_position & (ring_bytes - 1'b1))) >> 6;
+-        assign mem.wr_writedata = (state == FENCE_REQUEST) ? '0 : fifo_out;
+-        always_comb begin
+-            mem.wr_user = 0;
+-            mem.wr_user[ofs_plat_host_chan_avalon_mem_pkg::HC_AVALON_UFLAG_FENCE] =
+-                (state == FENCE_REQUEST);
+-        end
+-        assign fifo_in = kernel_in_data;
+-        assign fifo_in_valid = kernel_in_valid && active;
+-        assign kernel_in_ready = fifo_in_ready && active;
+-        assign kernel_out_data = 0;
+-        assign kernel_out_valid = 0;
+-        assign fifo_out_ready = payload_fire;
+-        assign dma_idle = (state == PAYLOAD) && !request_pending &&
+-                          (outstanding == 0) && (batch_count == 0);
+-        always_comb begin
+-            dma_errors = external_fault ? ERR_PROTOCOL : 0;
+-            if (mem.wr_writeresponsevalid && mem.wr_response != 0)
+-                dma_errors = dma_errors | ERR_RESPONSE;
+-            if (mem.rd_readdatavalid ||
+-                (normal_response && !expected_normal) ||
+-                (mem.wr_writeresponsevalid && !normal_response && !fence_response))
+-                dma_errors = dma_errors | ERR_PROTOCOL;
+-            if (active && fifo_out_valid && next_issued > 64'hffffffffffffffbf)
+-                dma_errors = dma_errors | ERR_POSITION;
+-        end
+-        always_ff @(posedge clk) begin
+-            if (!reset_n || reset_positions) begin
+-                state <= PAYLOAD; request_pending <= 0;
+-                outstanding <= 0; batch_count <= 0;
+-                issued_position <= 0; device_position <= 0;
+-                transport_poison <= 0;
+-            end else begin
+-                if ((dma_errors & ERR_PROTOCOL) != 0 ||
+-                    (fence_response && mem.wr_response != 0)) transport_poison <= 1;
+-                case ({payload_fire, normal_response && expected_normal})
+-                    2'b10: outstanding <= outstanding + 1'b1;
+-                    2'b01: outstanding <= outstanding - 1'b1;
+-                    default: ;
+-                endcase
+-                if (payload_fire) begin
+-                    issued_position <= issued_position + 64;
+-                    batch_count <= batch_count + 1'b1;
+-                end
+-                case (state)
+-                    PAYLOAD: begin
+-                        if (!request_pending || payload_fire) request_pending <= can_issue;
+-                        // Force a fence at a bounded batch size, on stalls in
+-                        // the stream/ring, and on quiesce/error. Never cancel a
+-                        // pending payload to inject a fence.
+-                        if (!request_pending && batch_count != 0 && !can_issue)
+-                            state <= DRAIN;
+-                    end
+-                    DRAIN: if (outstanding == 0) state <= FENCE_REQUEST;
+-                    FENCE_REQUEST: if (fence_fire) state <= FENCE_WAIT;
+-                    FENCE_WAIT: ;
+-                    default: ;
+-                endcase
+-                if (fence_response) begin
+-                    // Only a successful fence is the host-visibility boundary.
+-                    if (mem.wr_response == 0 && error_bits == 0 && dma_errors == 0)
+-                        device_position <= issued_position;
+-                    state <= PAYLOAD;
+-                    batch_count <= 0;
+-                end
+-            end
+-        end
+-    end endgenerate
+-
+-    // synthesis translate_off
+-    initial begin
+-        if (mem.DATA_WIDTH != 512 || mem.MASKED_SYMBOL_WIDTH != 8 ||
+-            mem.WAIT_REQUEST_ALLOWANCE != 0 || mem.ADDR_WIDTH > 58 ||
+-            FIFO_LOG_DEPTH < 1 || FIFO_LOG_DEPTH > 16 || BATCH_LINES < 1)
+-            $fatal(1, "Unsupported DMA hostchannel interface/parameters");
+-    end
+-    // synthesis translate_on
+-endmodule
+--- pre-edit/oneapi-asp/common/hardware/common/build/rtl/hostchannel/asp_hostchannel_fifo.sv
++++ active/oneapi-asp/common/hardware/common/build/rtl/hostchannel/asp_hostchannel_fifo.sv
+@@ -1,42 +0,0 @@
+-// SPDX-License-Identifier: MIT
+-// Same-clock, bounded, ready/valid FIFO. DEPTH must be a power of two >= 2.
+-module asp_hostchannel_fifo #(
+-    parameter int WIDTH = 512,
+-    parameter int LOG_DEPTH = 6
+-)(
+-    input logic clk, reset_n, clear,
+-    input logic [WIDTH-1:0] in_data,
+-    input logic in_valid,
+-    output logic in_ready,
+-    output logic [WIDTH-1:0] out_data,
+-    output logic out_valid,
+-    input logic out_ready,
+-    output logic [LOG_DEPTH:0] count
+-);
+-    localparam int DEPTH = 1 << LOG_DEPTH;
+-    logic [WIDTH-1:0] storage [0:DEPTH-1];
+-    logic [LOG_DEPTH-1:0] head, tail;
+-    wire push = in_valid && in_ready;
+-    wire pop = out_valid && out_ready;
+-    assign in_ready = (count < DEPTH) && !clear && reset_n;
+-    assign out_valid = (count != 0) && !clear && reset_n;
+-    assign out_data = storage[head];
+-    always_ff @(posedge clk) begin
+-        if (!reset_n || clear) begin
+-            head <= '0;
+-            tail <= '0;
+-            count <= '0;
+-        end else begin
+-            if (push) begin
+-                storage[tail] <= in_data;
+-                tail <= tail + 1'b1;
+-            end
+-            if (pop) head <= head + 1'b1;
+-            case ({push, pop})
+-                2'b10: count <= count + 1'b1;
+-                2'b01: count <= count - 1'b1;
+-                default: count <= count;
+-            endcase
+-        end
+-    end
+-endmodule
+--- pre-edit/oneapi-asp/common/hardware/common/build/rtl/hostchannel/asp_hostchannel_integration.sv
++++ active/oneapi-asp/common/hardware/common/build/rtl/hostchannel/asp_hostchannel_integration.sv
+@@ -1,136 +0,0 @@
+-// SPDX-License-Identifier: MIT
+-`include "ofs_plat_if.vh"
+-// Source integration boundary: place between ofs_plat_afu's physical
+-// host_mem_to_afu[0]/mmio64_to_afu and the unchanged afu/VTP/DDR-DMA subtree.
+-// Streams are same-clock ready/valid. Do not connect a different kernel clock
+-// without a separately reset-coordinated asynchronous FIFO adapter.
+-module asp_hostchannel_integration #(
+-    parameter int FIFO_LOG_DEPTH = 6,
+-    parameter int BATCH_LINES = 32
+-)(
+-    ofs_plat_avalon_mem_rdwr_if.to_sink host_mem,
+-    ofs_plat_avalon_mem_rdwr_if.to_source legacy_host_mem,
+-    ofs_plat_avalon_mem_if.to_source mmio,
+-    ofs_plat_avalon_mem_if.to_sink legacy_mmio,
+-    output wire stream_clk,
+-    output wire stream_reset_n,
+-    output logic [511:0] host_to_kernel_data,
+-    output logic host_to_kernel_valid,
+-    input logic host_to_kernel_ready,
+-    input logic [511:0] kernel_to_host_data,
+-    input logic kernel_to_host_valid,
+-    output logic kernel_to_host_ready
+-);
+-    import asp_hostchannel_pkg::*;
+-    assign stream_clk = host_mem.clk;
+-    assign stream_reset_n = host_mem.reset_n;
+-    ofs_plat_avalon_mem_rdwr_if #(
+-        `OFS_PLAT_AVALON_MEM_RDWR_IF_REPLICATE_PARAMS(host_mem)
+-    ) channels[2]();
+-    for (genvar c = 0; c < 2; c = c + 1) begin : channel_clocks
+-        assign channels[c].clk = host_mem.clk;
+-        assign channels[c].reset_n = host_mem.reset_n;
+-        assign channels[c].instance_number = host_mem.instance_number + c + 1;
+-    end
+-    logic egress_idle, share_fault;
+-    asp_hostchannel_share sharing (
+-        .host_mem, .legacy(legacy_host_mem),
+-        .ingress(channels[0]), .egress(channels[1]), .egress_idle, .share_fault
+-    );
+-
+-    logic [1:0] csr_write, csr_bad;
+-    logic [63:0] csr_data[2];
+-    wire [63:0] byte_address = 64'(mmio.address) << 3;
+-    wire selected = (byte_address >= MMIO_BASE) && (byte_address < MMIO_BASE + MMIO_SPAN);
+-    wire [63:0] offset = byte_address - MMIO_BASE;
+-    wire slot_valid = offset < (2 * SLOT_STRIDE);
+-    wire slot = offset[8];
+-    wire full_access = (&mmio.byteenable) && (mmio.burstcount == 1) && !(mmio.read && mmio.write);
+-    wire known_register = (offset[2:0] == 0) && (offset[7:0] <= CSR_ELEMENT_BYTES);
+-    logic read_busy, local_owner, local_valid;
+-    logic [63:0] local_data;
+-    logic [mmio.RESPONSE_WIDTH-1:0] local_response;
+-    logic [mmio.USER_WIDTH-1:0] local_user;
+-    wire accepted = (mmio.read || mmio.write) && !mmio.waitrequest;
+-    // One outstanding MMIO read makes response ownership explicit even when
+-    // switching between legacy and hostchannel windows. DMA itself is pipelined.
+-    assign mmio.waitrequest = !host_mem.reset_n || read_busy ||
+-                              (!selected && legacy_mmio.waitrequest);
+-    assign legacy_mmio.address = mmio.address;
+-    assign legacy_mmio.burstcount = mmio.burstcount;
+-    assign legacy_mmio.byteenable = mmio.byteenable;
+-    assign legacy_mmio.writedata = mmio.writedata;
+-    assign legacy_mmio.user = mmio.user;
+-    assign legacy_mmio.read = mmio.read && !selected && !read_busy && host_mem.reset_n;
+-    assign legacy_mmio.write = mmio.write && !selected && !read_busy && host_mem.reset_n;
+-    assign mmio.readdatavalid = local_owner ? local_valid : legacy_mmio.readdatavalid;
+-    assign mmio.readdata = local_owner ? local_data : legacy_mmio.readdata;
+-    assign mmio.response = local_owner ? local_response : legacy_mmio.response;
+-    assign mmio.readresponseuser = local_owner ? local_user : legacy_mmio.readresponseuser;
+-    // PIM MMIO writes are posted and do not require an AFU write response.
+-    // Preserve any optional legacy response rather than consuming it.
+-    assign mmio.writeresponsevalid = legacy_mmio.writeresponsevalid;
+-    assign mmio.writeresponse = legacy_mmio.writeresponse;
+-    assign mmio.writeresponseuser = legacy_mmio.writeresponseuser;
+-    always_comb begin
+-        csr_write = 0;
+-        csr_bad = 0;
+-        if (accepted && selected) begin
+-            if (slot_valid) begin
+-                csr_write[slot] = mmio.write && full_access;
+-                csr_bad[slot] = !full_access;
+-            end else if (mmio.write) begin
+-                // Reserved slots have no engine of their own: report malformed
+-                // writes in slot 0 rather than silently aliasing another slot.
+-                csr_bad[0] = 1;
+-            end
+-        end
+-    end
+-    always_ff @(posedge host_mem.clk) begin
+-        if (!host_mem.reset_n) begin
+-            read_busy <= 0; local_owner <= 0; local_valid <= 0;
+-            local_data <= 0; local_response <= 0; local_user <= 0;
+-        end else begin
+-            local_valid <= 0;
+-            if (read_busy && mmio.readdatavalid) begin
+-                read_busy <= 0;
+-                local_owner <= 0;
+-            end
+-            if (accepted && mmio.read) begin
+-                // The legacy ASP returns registered responses. Supporting a
+-                // combinational zero-latency slave here requires a skid stage.
+-                read_busy <= 1;
+-                local_owner <= selected;
+-                if (selected) begin
+-                    local_valid <= 1;
+-                    local_data <= (slot_valid && full_access && known_register) ? csr_data[slot] : 0;
+-                    local_response <= (slot_valid && full_access && known_register) ? 0 : 2;
+-                    local_user <= mmio.user;
+-                end
+-            end
+-        end
+-    end
+-
+-    asp_hostchannel_engine #(.H2D(1), .FIFO_LOG_DEPTH(FIFO_LOG_DEPTH), .BATCH_LINES(BATCH_LINES)) ingress (
+-        .mem(channels[0]), .external_fault(share_fault), .transport_idle(),
+-        .csr_write(csr_write[0]), .csr_bad_access(csr_bad[0]),
+-        .csr_address(offset[7:0]), .csr_writedata(mmio.writedata), .csr_readdata(csr_data[0]),
+-        .kernel_in_data(512'b0), .kernel_in_valid(1'b0), .kernel_in_ready(),
+-        .kernel_out_data(host_to_kernel_data), .kernel_out_valid(host_to_kernel_valid),
+-        .kernel_out_ready(host_to_kernel_ready)
+-    );
+-    asp_hostchannel_engine #(.H2D(0), .FIFO_LOG_DEPTH(FIFO_LOG_DEPTH), .BATCH_LINES(BATCH_LINES)) egress (
+-        .mem(channels[1]), .external_fault(share_fault), .transport_idle(egress_idle),
+-        .csr_write(csr_write[1]), .csr_bad_access(csr_bad[1]),
+-        .csr_address(offset[7:0]), .csr_writedata(mmio.writedata), .csr_readdata(csr_data[1]),
+-        .kernel_in_data(kernel_to_host_data), .kernel_in_valid(kernel_to_host_valid),
+-        .kernel_in_ready(kernel_to_host_ready),
+-        .kernel_out_data(), .kernel_out_valid(), .kernel_out_ready(1'b0)
+-    );
+-    // synthesis translate_off
+-    initial begin
+-        if (mmio.DATA_WIDTH != 64 || mmio.WAIT_REQUEST_ALLOWANCE != 0)
+-            $fatal(1, "Hostchannel CSR bridge requires 64-bit allowance-zero MMIO");
+-    end
+-    // synthesis translate_on
+-endmodule
+--- pre-edit/oneapi-asp/common/hardware/common/build/rtl/hostchannel/asp_hostchannel_pkg.sv
++++ active/oneapi-asp/common/hardware/common/build/rtl/hostchannel/asp_hostchannel_pkg.sv
+@@ -1,14 +0,0 @@
+-// SPDX-License-Identifier: MIT
+-package asp_hostchannel_pkg;
+-    localparam logic [63:0] ABI_IDENT = 64'h4941383448430001;
+-    localparam logic [63:0] MMIO_BASE = 64'h30000;
+-    localparam logic [63:0] MMIO_SPAN = 64'h1000;
+-    localparam int SLOT_STRIDE = 'h100;
+-    localparam int ELEMENT_BYTES = 64;
+-    localparam int CSR_IDENT = 'h00, CSR_CONTROL = 'h08, CSR_STATUS = 'h10,
+-                   CSR_RING_IOVA = 'h18, CSR_RING_BYTES = 'h20,
+-                   CSR_HOST_POSITION = 'h28, CSR_DEVICE_POSITION = 'h30,
+-                   CSR_ERROR = 'h38, CSR_ELEMENT_BYTES = 'h40;
+-    localparam logic [63:0] ERR_CSR = 64'h1, ERR_CONFIG = 64'h2,
+-        ERR_POSITION = 64'h4, ERR_RESPONSE = 64'h8, ERR_PROTOCOL = 64'h10;
+-endpackage
+--- pre-edit/oneapi-asp/common/hardware/common/build/rtl/hostchannel/asp_hostchannel_share.sv
++++ active/oneapi-asp/common/hardware/common/build/rtl/hostchannel/asp_hostchannel_share.sv
+@@ -1,81 +0,0 @@
+-// SPDX-License-Identifier: MIT
+-`include "ofs_plat_if.vh"
+-// Physical host-memory sharing. PIM owns arbitration, burst tracking and
+-// response routing. This admission gate additionally keeps the D2H batch's
+-// last-write address valid until its fence has completed: no unrelated write
+-// may become the PIM's remembered fence-read address during that batch.
+-module asp_hostchannel_share (
+-    ofs_plat_avalon_mem_rdwr_if.to_sink host_mem,
+-    ofs_plat_avalon_mem_rdwr_if.to_source legacy,
+-    ofs_plat_avalon_mem_rdwr_if.to_source ingress,
+-    ofs_plat_avalon_mem_rdwr_if.to_source egress,
+-    input logic egress_idle,
+-    output logic share_fault
+-);
+-    ofs_plat_avalon_mem_rdwr_if #(
+-        `OFS_PLAT_AVALON_MEM_RDWR_IF_REPLICATE_PARAMS(host_mem)
+-    ) sources[3]();
+-    ofs_plat_avalon_mem_rdwr_if_mux #(
+-        .NUM_SOURCE_PORTS(3), .RD_TRACKER_DEPTH(256), .WR_TRACKER_DEPTH(128)
+-    ) host_mux (.mem_sink(host_mem), .mem_source(sources));
+-    typedef enum logic [1:0] {SHARED, ACQUIRE, EXCLUSIVE, RELEASE} state_t;
+-    state_t state;
+-    logic [host_mem.BURST_CNT_WIDTH-1:0] legacy_remaining;
+-    logic [15:0] legacy_outstanding;
+-    wire legacy_allowed = (state == SHARED) || (state == RELEASE) ||
+-                          ((state == ACQUIRE) && (legacy_remaining != 0));
+-    wire legacy_fire = sources[0].wr_write && !sources[0].wr_waitrequest;
+-    wire legacy_start = legacy_fire && (legacy_remaining == 0);
+-    wire legacy_reply_expected =
+-        !legacy.wr_user[ofs_plat_host_chan_avalon_mem_pkg::HC_AVALON_UFLAG_NO_REPLY];
+-    wire legacy_response = sources[0].wr_writeresponsevalid;
+-    always_comb begin
+-        `OFS_PLAT_AVALON_MEM_RDWR_IF_FROM_SOURCE_TO_SINK_COMB(sources[0], legacy);
+-        `OFS_PLAT_AVALON_MEM_RDWR_IF_FROM_SINK_TO_SOURCE_COMB(legacy, sources[0]);
+-        sources[0].wr_write = legacy.wr_write && legacy_allowed;
+-        legacy.wr_waitrequest = sources[0].wr_waitrequest || !legacy_allowed;
+-    end
+-    ofs_plat_avalon_mem_rdwr_if_connect ingress_connection (
+-        .mem_sink(sources[1]), .mem_source(ingress)
+-    );
+-    always_comb begin
+-        `OFS_PLAT_AVALON_MEM_RDWR_IF_FROM_SOURCE_TO_SINK_COMB(sources[2], egress);
+-        `OFS_PLAT_AVALON_MEM_RDWR_IF_FROM_SINK_TO_SOURCE_COMB(egress, sources[2]);
+-        sources[2].wr_write = egress.wr_write && (state == EXCLUSIVE);
+-        egress.wr_waitrequest = sources[2].wr_waitrequest || (state != EXCLUSIVE);
+-    end
+-    always_ff @(posedge host_mem.clk) begin
+-        if (!host_mem.reset_n) begin
+-            state <= SHARED;
+-            legacy_remaining <= 0;
+-            legacy_outstanding <= 0;
+-            share_fault <= 0;
+-        end else begin
+-            if (legacy_fire) begin
+-                if (legacy_remaining == 0)
+-                    legacy_remaining <= legacy.wr_burstcount - 1'b1;
+-                else legacy_remaining <= legacy_remaining - 1'b1;
+-            end
+-            case ({legacy_start && legacy_reply_expected, legacy_response})
+-                2'b10: legacy_outstanding <= legacy_outstanding + 1'b1;
+-                2'b01: legacy_outstanding <= legacy_outstanding - 1'b1;
+-                default: ;
+-            endcase
+-            // NO_REPLY is an internal PIM splitter flag, not supported at this
+-            // AFU physical-source boundary. Without its response no finite
+-            // source-side tracker can prove that a posted write left the mux.
+-            if ((legacy_start && (!legacy_reply_expected || legacy.wr_burstcount == 0)) ||
+-                (legacy_response && legacy_outstanding == 0 && !legacy_start))
+-                share_fault <= 1;
+-            case (state)
+-                SHARED: if (egress.wr_write) state <= ACQUIRE;
+-                ACQUIRE: if (legacy_remaining == 0 && legacy_outstanding == 0 && !share_fault)
+-                    state <= EXCLUSIVE;
+-                EXCLUSIVE: if (egress_idle && !egress.wr_write) state <= RELEASE;
+-                // Give the legacy source an admission cycle between batches.
+-                RELEASE: state <= SHARED;
+-                default: state <= SHARED;
+-            endcase
+-        end
+-    end
+-endmodule
+--- pre-edit/oneapi-asp/common/hardware/common/build/rtl/hostchannel/asp_hostchannel_sources.tcl
++++ active/oneapi-asp/common/hardware/common/build/rtl/hostchannel/asp_hostchannel_sources.tcl
+@@ -1,8 +0,0 @@
+-# SPDX-License-Identifier: MIT
+-# Definitions only: this does not advertise a compiler channel or enable an
+-# unbound top-level instance. Paths follow asp_design_files.tcl's build CWD.
+-set_global_assignment -name SYSTEMVERILOG_FILE "rtl/hostchannel/asp_hostchannel_pkg.sv"
+-set_global_assignment -name SYSTEMVERILOG_FILE "rtl/hostchannel/asp_hostchannel_fifo.sv"
+-set_global_assignment -name SYSTEMVERILOG_FILE "rtl/hostchannel/asp_hostchannel_engine.sv"
+-set_global_assignment -name SYSTEMVERILOG_FILE "rtl/hostchannel/asp_hostchannel_share.sv"
+-set_global_assignment -name SYSTEMVERILOG_FILE "rtl/hostchannel/asp_hostchannel_integration.sv"
+--- pre-edit/oneapi-asp/common/source/host/CMakeLists.txt
++++ active/oneapi-asp/common/source/host/CMakeLists.txt
+@@ -19,15 +19,11 @@
+    fpgaconf.c
+    kernel_interrupt.cpp
+    mmd_dma.cpp
+-   mmd_hostchannel.cpp
+    zlib_inflate.c
+    mmd_iopipes.cpp
+ )
+ 
+ add_library(intel_opae_mmd SHARED ${MMD_SRC})
+-# Shared source-only transport contract, outside the vendor ASP subtree.
+-target_include_directories(intel_opae_mmd PRIVATE
+-   "${CMAKE_CURRENT_SOURCE_DIR}/../../../../interfaces/dma_hostchannel")
+ 
+ add_library(libmpf STATIC IMPORTED)
+ set_property(TARGET libmpf PROPERTY IMPORTED_LOCATION ${CMAKE_INSTALL_PREFIX}/lib/libMPF.so)
+--- pre-edit/oneapi-asp/common/source/host/mmd.cpp
++++ active/oneapi-asp/common/source/host/mmd.cpp
+@@ -39,7 +39,6 @@
+ #include "fpgaconf.h"
+ #include "zlib_inflate.h"
+ 
+-std::recursive_mutex mmd_hostchannel_lifecycle_mutex;
+ bool diagnose = 0;
+ 
+ using namespace intel_opae_mmd;
+@@ -115,12 +114,7 @@
+     // delete all allocated Device* entries
+     while (handle_to_dev_map->size() > 0) {
+       int handle = handle_to_dev_map->begin()->first;
+-      if (aocl_mmd_close(handle) < 0) {
+-        // Keep remaining Device objects and OPAE registrations alive. Process
+-        // teardown is the driver boundary; never spin or free active rings.
+-        fprintf(stderr, "MMD: device close failed; quarantining remaining devices\n");
+-        break;
+-      }
++      aocl_mmd_close(handle);
+       #ifdef SIM
+         std::cout << "# mmd.cpp: When destroying DeviceMapManager in ASE, assume it worked.\n";
+         break;
+@@ -297,7 +291,6 @@
+ /** Interface for programing green bitstream(ASP + OneAPI Kernel) on device */
+ int mmd_device_reprogram(const char *device_name, void *data,
+                               size_t data_size) {
+-  std::lock_guard<std::recursive_mutex> lock(mmd_hostchannel_lifecycle_mutex);
+   if(std::getenv("MMD_ENABLE_DEBUG")){
+     DEBUG_LOG("DEBUG LOG : Entering mmd_device_reprogram() \n");
+   }
+@@ -717,7 +710,6 @@
+  *  It uses OPAE API fpgaReconfigureSlot() under the hood
+  */
+ static int program_aocx(int handle, void *data, size_t data_size) {
+-  std::lock_guard<std::recursive_mutex> lock(mmd_hostchannel_lifecycle_mutex);
+   Device *afu = device_manager.device_from_handle(handle);
+   if (afu == NULL) {
+     if(std::getenv("MMD_PROGRAM_DEBUG")){
+@@ -836,9 +828,6 @@
+  */
+ AOCL_MMD_CALL int aocl_mmd_program(int handle, void *user_data, size_t size,
+                                    aocl_mmd_program_mode_t program_mode) {
+-  std::lock_guard<std::recursive_mutex> lock(mmd_hostchannel_lifecycle_mutex);
+-  Device *channel_dev = device_manager.device_from_handle(handle);
+-  if (channel_dev && !channel_dev->shutdown_hostchannels()) return MMD_AOCL_ERR;
+   if(std::getenv("MMD_PROGRAM_DEBUG") || std::getenv("MMD_DMA_DEBUG") || std::getenv("MMD_ENABLE_DEBUG")){
+     DEBUG_LOG("DEBUG LOG : Entering MMD API aocl_mmd_program()\n");
+   }
+@@ -1350,7 +1339,6 @@
+  *  exit the application if an open call fails.
+  */
+ int AOCL_MMD_CALL aocl_mmd_open(const char *name) {
+-  std::lock_guard<std::recursive_mutex> lock(mmd_hostchannel_lifecycle_mutex);
+   DEBUG_PRINT("Opening device: %s\n", name);
+   if(std::getenv("MMD_PROGRAM_DEBUG") || std::getenv("MMD_DMA_DEBUG") || std::getenv("MMD_ENABLE_DEBUG")){
+     DEBUG_LOG("DEBUG LOG : aocl_mmd_open, Opening device: %s\n", name );
+@@ -1396,52 +1384,10 @@
+   return handle;
+ }
+ 
+-// Optional non-CSR host-pipe transport. No success is reported without a
+-// matching hardware identity, registered OPAE ring and observed RUNNING state.
+-AOCL_MMD_CALL int aocl_mmd_hostchannel_create(int handle, char *name,
+-                                             size_t bytes, int direction) {
+-  try {
+-    std::lock_guard<std::recursive_mutex> lock(mmd_hostchannel_lifecycle_mutex);
+-    Device *dev = device_manager.device_from_handle(handle);
+-    return dev ? dev->hostchannel_create(name, bytes, direction) : MMD_AOCL_ERR;
+-  } catch (...) { return MMD_AOCL_ERR; }
+-}
+-AOCL_MMD_CALL int aocl_mmd_hostchannel_destroy(int handle, int channel) {
+-  try {
+-    std::lock_guard<std::recursive_mutex> lock(mmd_hostchannel_lifecycle_mutex);
+-    Device *dev = device_manager.device_from_handle(handle);
+-    return dev ? dev->hostchannel_transport().destroy(channel) : MMD_AOCL_ERR;
+-  } catch (...) { return MMD_AOCL_ERR; }
+-}
+-AOCL_MMD_CALL void *aocl_mmd_hostchannel_get_buffer(int handle, int channel,
+-                                                   size_t *bytes, int *status) {
+-  if (bytes) *bytes = 0;
+-  if (status) *status = MMD_AOCL_ERR;
+-  if (!bytes || !status) return nullptr;
+-  try {
+-    std::lock_guard<std::recursive_mutex> lock(mmd_hostchannel_lifecycle_mutex);
+-    Device *dev = device_manager.device_from_handle(handle);
+-    return dev ? dev->hostchannel_transport().get_buffer(channel, bytes, status) : nullptr;
+-  } catch (...) { return nullptr; }
+-}
+-AOCL_MMD_CALL size_t aocl_mmd_hostchannel_ack_buffer(int handle, int channel,
+-                                                    size_t bytes, int *status) {
+-  if (status) *status = MMD_AOCL_ERR;
+-  if (!status) return 0;
+-  try {
+-    std::lock_guard<std::recursive_mutex> lock(mmd_hostchannel_lifecycle_mutex);
+-    Device *dev = device_manager.device_from_handle(handle);
+-    return dev ? dev->hostchannel_transport().ack_buffer(channel, bytes, status) : 0;
+-  } catch (...) { return 0; }
+-}
+-
+ /** Close an opened device, by its handle.
+  *  Returns: 0 on success, negative values on error.
+  */
+ int AOCL_MMD_CALL aocl_mmd_close(int handle) {
+-  std::lock_guard<std::recursive_mutex> lock(mmd_hostchannel_lifecycle_mutex);
+-  Device *dev = device_manager.device_from_handle(handle);
+-  if (dev && !dev->shutdown_hostchannels()) return MMD_AOCL_ERR;
+   #ifndef SIM
+     device_manager.close_device_if_exists(handle);
+   #else
+--- pre-edit/oneapi-asp/common/source/host/mmd_device.cpp
++++ active/oneapi-asp/common/source/host/mmd_device.cpp
+@@ -628,12 +628,6 @@
+  *  helps reduce bugs
+  */
+ Device::~Device() {
+-  // Only explicit close/reprogram may release DMA registrations. Never let
+-  // a destructor close an OPAE handle with outstanding hostchannel mappings.
+-  if (hostchannels.has_registrations()) {
+-    fprintf(stderr, "MMD: quarantining device resources after failed DMA hostchannel stop\n");
+-    return;
+-  }
+   if(std::getenv("MMD_ENABLE_DEBUG")){
+     DEBUG_LOG("DEBUG LOG : Destructing Device object \n");
+   }
+@@ -705,8 +699,6 @@
+  *  it reconnects MPF and re-initializes DMA after programming bitstream
+  */ 
+ int Device::program_bitstream(uint8_t *data, size_t data_size) {
+-  std::lock_guard<std::recursive_mutex> lock(mmd_hostchannel_lifecycle_mutex);
+-  if (!shutdown_hostchannels()) return -1;
+   if (!afu_initialized) {
+    if(std::getenv("MMD_PROGRAM_DEBUG") || std::getenv("MMD_ENABLE_DEBUG")){
+       DEBUG_LOG("DEBUG LOG : FPGA NOT FOUND \n");
+--- pre-edit/oneapi-asp/common/source/host/mmd_device.h
++++ active/oneapi-asp/common/source/host/mmd_device.h
+@@ -22,7 +22,6 @@
+ #include "mmd_dma.h"
+ #include "pkg_editor.h"
+ #include "mmd_iopipes.h"
+-#include "mmd_hostchannel.h"
+ 
+ // Tune delay for simulation or HW. Eventually delay
+ // should be removed for HW, may still be needed for ASE simulation
+@@ -147,12 +146,6 @@
+   void shared_mem_release_buffer(void *host_ptr);
+ 
+   void dump_mpf_stats();
+-
+-  int hostchannel_create(const char *name, size_t bytes, int direction) {
+-    return asp_initialized ? hostchannels.create(mmio_handle, name, bytes, direction) : -1;
+-  }
+-  DmaHostChannels &hostchannel_transport() { return hostchannels; }
+-  bool shutdown_hostchannels() { return hostchannels.shutdown(); }
+ 
+ private:
+   static int next_mmd_handle;
+@@ -209,7 +202,6 @@
+   intel_opae_mmd::mmd_dma *dma_fpga_to_host;
+   intel_opae_mmd::iopipes *io_pipes;
+ 
+-  DmaHostChannels hostchannels;
+   char *mmd_copy_buffer;
+ 
+   // Helper functions
+--- pre-edit/oneapi-asp/common/source/host/mmd_hostchannel.cpp
++++ active/oneapi-asp/common/source/host/mmd_hostchannel.cpp
+@@ -1,181 +0,0 @@
+-// SPDX-License-Identifier: MIT
+-#include "mmd_hostchannel.h"
+-#include "dma_hostchannel_abi.h"
+-#include <algorithm>
+-#include <atomic>
+-#include <chrono>
+-#include <climits>
+-#include <cstring>
+-#include <cstdio>
+-#include <thread>
+-
+-bool DmaHostChannels::read(unsigned s, uint64_t reg, uint64_t &v) {
+-  return fpgaReadMMIO64(queues_[s].device, 0, DHC_BASE + s * DHC_STRIDE + reg,
+-                        &v) == FPGA_OK;
+-}
+-bool DmaHostChannels::write(unsigned s, uint64_t reg, uint64_t v) {
+-  return fpgaWriteMMIO64(queues_[s].device, 0, DHC_BASE + s * DHC_STRIDE + reg,
+-                         v) == FPGA_OK;
+-}
+-bool DmaHostChannels::wait_status(unsigned s, uint64_t required,
+-                                  uint64_t forbidden) {
+-  const auto end = std::chrono::steady_clock::now() + std::chrono::seconds(1);
+-  do {
+-    uint64_t status = 0;
+-    if (!read(s, DHC_STATUS, status)) return false;
+-    if ((status & required) == required && !(status & forbidden)) return true;
+-    std::this_thread::sleep_for(std::chrono::microseconds(50));
+-  } while (std::chrono::steady_clock::now() < end);
+-  return false;
+-}
+-
+-bool DmaHostChannels::release(unsigned s) {
+-  Queue &q = queues_[s];
+-  if (!q.registered) { q = Queue{}; return true; }
+-  q.failed = true; // No more offers, even if stop or release fails.
+-  q.offered = 0;
+-  if (q.published) {
+-    if (!write(s, DHC_CONTROL, DHC_QUIESCE) ||
+-        !wait_status(s, DHC_QUIESCED, DHC_RUNNING)) {
+-      std::fprintf(stderr, "MMD hostchannel %u: quiesce failed; retaining DMA mapping\n", s);
+-      return false;
+-    }
+-    // Remove device addresses while stopped before unmapping. A failed write
+-    // is ambiguous; retain registration rather than relying on presumed state.
+-    if (!write(s, DHC_RING_BYTES, 0) || !write(s, DHC_RING_IOVA, 0)) return false;
+-    q.published = false;
+-  }
+-  if (fpgaReleaseBuffer(q.device, q.wsid) != FPGA_OK) return false;
+-  q = Queue{};
+-  return true;
+-}
+-
+-int DmaHostChannels::create(fpga_handle device, const char *name, size_t bytes,
+-                            int direction) {
+-  std::lock_guard<std::mutex> lock(mutex_);
+-#if !defined(__x86_64__)
+-  // No noncoherent cache-maintenance backend is implemented.
+-  return -1;
+-#endif
+-  if (!device || !name || bytes < DHC_ELEMENT_SIZE ||
+-      bytes > DHC_MAX_RING_BYTES || (bytes & (bytes - 1)) ||
+-      bytes % DHC_ELEMENT_SIZE || next_handle_ > INT_MAX) return -1;
+-  unsigned s;
+-  if (direction == 1 && !std::strcmp(name, DHC_H2D_NAME)) s = 0;
+-  else if (direction == 0 && !std::strcmp(name, DHC_D2H_NAME)) s = 1;
+-  else return -1;
+-  Queue &q = queues_[s];
+-  if (q.registered || q.handle) return -1;
+-  q.device = device;
+-  uint64_t ident = 0, element = 0, state = 0;
+-  // Read-only discovery: never write unknown or legacy hardware.
+-  if (!read(s, DHC_IDENT, ident) || ident != DHC_IDENT_VALUE ||
+-      !read(s, DHC_ELEMENT_BYTES, element) || element != DHC_ELEMENT_SIZE ||
+-      !read(s, DHC_STATUS, state) || !(state & DHC_QUIESCED) ||
+-      (state & DHC_RUNNING)) { q = Queue{}; return -1; }
+-  if (!write(s, DHC_CONTROL, DHC_RESET_POSITIONS) ||
+-      !wait_status(s, DHC_QUIESCED, DHC_RUNNING | DHC_FAILED) ||
+-      !read(s, DHC_HOST_POSITION, state) || state ||
+-      !read(s, DHC_DEVICE_POSITION, state) || state) {
+-    q = Queue{}; return -1;
+-  }
+-  // OPAE owns allocation AND registration (flags=0). No MPF virtual-address
+-  // assumption: only a successful fpgaGetIOAddress may supply the ring address.
+-  const size_t allocation_bytes = std::max(bytes, size_t(4096));
+-  if (fpgaPrepareBuffer(device, allocation_bytes, &q.buffer, &q.wsid, 0) != FPGA_OK) {
+-    q = Queue{}; return -1;
+-  }
+-  q.registered = true;
+-  if (!q.buffer || fpgaGetIOAddress(device, q.wsid, &q.iova) != FPGA_OK ||
+-      q.iova % DHC_ELEMENT_SIZE || q.iova > UINT64_MAX - allocation_bytes) {
+-    release(s); return -1;
+-  }
+-  q.capacity = bytes;
+-  std::memset(q.buffer, 0, allocation_bytes);
+-  std::atomic_thread_fence(std::memory_order_seq_cst);
+-  q.published = true; // Set BEFORE the first potentially effective MMIO write.
+-  if (!write(s, DHC_RING_IOVA, q.iova) || !write(s, DHC_RING_BYTES, bytes) ||
+-      !write(s, DHC_HOST_POSITION, 0) || !write(s, DHC_CONTROL, DHC_RUN) ||
+-      !wait_status(s, DHC_RUNNING, DHC_QUIESCED | DHC_FAILED)) {
+-    release(s); return -1;
+-  }
+-  q.handle = static_cast<int>(next_handle_++);
+-  return q.handle;
+-}
+-
+-int DmaHostChannels::lookup(int handle) {
+-  if (handle <= 0) return -1;
+-  for (int s = 0; s != 2; ++s)
+-    if (queues_[s].handle == handle) return s;
+-  return -1;
+-}
+-int DmaHostChannels::destroy(int handle) {
+-  std::lock_guard<std::mutex> lock(mutex_);
+-  const int s = lookup(handle);
+-  return s >= 0 && release(static_cast<unsigned>(s)) ? 0 : -1;
+-}
+-bool DmaHostChannels::has_registrations() {
+-  std::lock_guard<std::mutex> lock(mutex_);
+-  return queues_[0].registered || queues_[1].registered;
+-}
+-bool DmaHostChannels::shutdown() {
+-  std::lock_guard<std::mutex> lock(mutex_);
+-  bool ok = true;
+-  for (unsigned s = 0; s != 2; ++s) if (!release(s)) ok = false;
+-  return ok;
+-}
+-
+-void *DmaHostChannels::get_buffer(int handle, size_t *bytes, int *status) {
+-  if (status) *status = -1;
+-  if (bytes) *bytes = 0;
+-  if (!status || !bytes) return nullptr;
+-  std::lock_guard<std::mutex> lock(mutex_);
+-  const int s = lookup(handle);
+-  if (s < 0) return nullptr;
+-  Queue &q = queues_[s];
+-  if (q.failed) return nullptr;
+-  uint64_t state = 0, peer = 0;
+-  if (!read(s, DHC_STATUS, state) || !(state & DHC_RUNNING) ||
+-      (state & (DHC_FAILED | DHC_QUIESCED)) ||
+-      !read(s, DHC_DEVICE_POSITION, peer)) { q.failed = true; return nullptr; }
+-  const uint64_t used = s == 0 ? q.position - peer : peer - q.position;
+-  // Modulo subtraction supports uint64 wrap. Peer progress cannot exceed one
+-  // ring between observations because host credits have not advanced farther.
+-  if (used > q.capacity || peer - q.peer > q.capacity ||
+-      peer % DHC_ELEMENT_SIZE) { q.failed = true; return nullptr; }
+-  q.peer = peer;
+-  const size_t offset = q.position & (q.capacity - 1);
+-  const size_t available = s == 0 ? q.capacity - used : used;
+-  q.offered = std::min(available, q.capacity - offset);
+-  // The hardware contract, not this CPU fence alone, supplies DMA coherence.
+-  std::atomic_thread_fence(std::memory_order_seq_cst);
+-  *bytes = q.offered;
+-  *status = 0;
+-  return static_cast<unsigned char *>(q.buffer) + offset;
+-}
+-
+-size_t DmaHostChannels::ack_buffer(int handle, size_t bytes, int *status) {
+-  if (!status) return 0;
+-  *status = -1;
+-  std::lock_guard<std::mutex> lock(mutex_);
+-  const int s = lookup(handle);
+-  if (s < 0) return 0;
+-  Queue &q = queues_[s];
+-  if (q.failed || bytes % DHC_ELEMENT_SIZE) return 0;
+-  uint64_t state = 0;
+-  if (!read(s, DHC_STATUS, state) || !(state & DHC_RUNNING) ||
+-      (state & (DHC_FAILED | DHC_QUIESCED))) { q.failed = true; return 0; }
+-  const size_t accepted = std::min(bytes, q.offered);
+-  if (accepted) {
+-    std::atomic_thread_fence(std::memory_order_seq_cst);
+-    if (!write(s, DHC_HOST_POSITION, q.position + accepted)) {
+-      // Publication may have occurred despite the failed MMIO response. Never
+-      // retry it against a guessed position; only destruction is now allowed.
+-      q.failed = true; q.offered = 0; return 0;
+-    }
+-    q.position += accepted;
+-    q.offered -= accepted;
+-  }
+-  *status = 0;
+-  return accepted;
+-}
+--- pre-edit/oneapi-asp/common/source/host/mmd_hostchannel.h
++++ active/oneapi-asp/common/source/host/mmd_hostchannel.h
+@@ -1,44 +0,0 @@
+-// SPDX-License-Identifier: MIT
+-#ifndef MMD_HOSTCHANNEL_H
+-#define MMD_HOSTCHANNEL_H
+-#include <opae/fpga.h>
+-#include <cstddef>
+-#include <cstdint>
+-#include <mutex>
+-
+-// Serializes new exports with open/close/reprogram. Existing DDR API threading
+-// remains the runtime's responsibility. A returned buffer has one host owner;
+-// callers must not destroy/reprogram while using it outside the MMD call.
+-extern std::recursive_mutex mmd_hostchannel_lifecycle_mutex;
+-
+-class DmaHostChannels final {
+-public:
+-  DmaHostChannels() = default;
+-  DmaHostChannels(const DmaHostChannels &) = delete;
+-  DmaHostChannels &operator=(const DmaHostChannels &) = delete;
+-  // Deliberately no implicit release: failed quiescence must retain DMA mappings.
+-  ~DmaHostChannels() = default;
+-  int create(fpga_handle device, const char *name, size_t bytes, int direction);
+-  int destroy(int channel);
+-  void *get_buffer(int channel, size_t *bytes, int *status);
+-  size_t ack_buffer(int channel, size_t bytes, int *status);
+-  bool shutdown();
+-  bool has_registrations();
+-private:
+-  struct Queue {
+-    fpga_handle device = nullptr;
+-    void *buffer = nullptr;
+-    uint64_t wsid = 0, iova = 0, position = 0, peer = 0;
+-    size_t capacity = 0, offered = 0;
+-    int handle = 0;
+-    bool registered = false, published = false, failed = false;
+-  } queues_[2];
+-  uint64_t next_handle_ = 1; // Never reuse a stale handle within a Device.
+-  std::mutex mutex_;
+-  bool read(unsigned slot, uint64_t reg, uint64_t &value);
+-  bool write(unsigned slot, uint64_t reg, uint64_t value);
+-  bool wait_status(unsigned slot, uint64_t required, uint64_t forbidden);
+-  bool release(unsigned slot);
+-  int lookup(int handle);
+-};
+-#endif
+--- pre-edit/oneapi-asp/ia840f/README.md
++++ active/oneapi-asp/ia840f/README.md
+@@ -1,15 +1,26 @@
+ # IA840F source-only ASP port
+ 
+-Based on upstream oneapi-asp `1af2ca74c452cb6ebbf54beb86e758e53489e826`,
+-using the current N6001 layout, not old generated BSP outputs.
++General-purpose standard and USM source baseline derived from BittWare's
++`old_bsp/ia-840/IOFS_BUILD_ROOT/oneapi-asp/ia840f`. The vendor board identity,
++memory geometry, UUIDs and variant split are authoritative. Current common
++implementation and interface naming come from OFS oneapi-asp
++`1af2ca74c452cb6ebbf54beb86e758e53489e826` (N6001 is an interface/layout
++reference, not a substitute board). No old generated BSP outputs are imported.
+ 
+ - `ofs_ia840f`: local-memory/DMA source configuration (default).
+-- `ofs_ia840f_usm`: same plus upstream USM path.
+-- FPGA: `AGFB027R25A2E2V`; two 16-GiB DDR4-2666 banks.
+-- Host pipes: **not implemented or advertised**. HSSI/I/O variants omitted.
++- `ofs_ia840f_usm`: same plus the reference USM path.
++- FPGA: `AGFB027R25A2E2V`; two 16-GiB DDR4-2666 banks, backed by distinct
++  discrete-DDR4 and RDIMM physical interfaces, not interchangeable devkit banks.
++- No application-specific queues or streaming DMA hostchannel implementation.
++  The earlier experiment is preserved under `../../experiments/asp-baseline-separation/`.
++- Host pipes are **not advertised as qualified**. A reference runtime CSR path
++  exists, but compiler/RTL/board integration remains unverified. Non-CSR DMA
++  hostchannels and HSSI/I/O variants are not supplied by this baseline.
+ - All provided setup/build entrypoints are intentionally locked. Do not run them.
+ 
+-Read [`../../docs/asp-port.md`](../../docs/asp-port.md) for provenance,
+-UUIDs, source changes, blockers, and the requirements for future authorization.
++Read [`../../docs/asp-modernization-review.md`](../../docs/asp-modernization-review.md)
++for the baseline audit and hash-bound preservation evidence, and
++[`../../docs/asp-port.md`](../../docs/asp-port.md) for the earlier port details
++and requirements for future authorization.
+ No compiler, configure, IP generator, simulation, test, or hardware run has
+ qualified this port. Quartus 26.1.1 compatibility is unverified.

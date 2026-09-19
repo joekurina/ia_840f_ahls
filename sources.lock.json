@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "selection_policy": "Pinned OFS FIM/PIM sources for AHLS RTL integration, vendor IA840F board authority; oneAPI ASP retained as reference only. Independent donor pins are not a qualified combined release.",
+  "active_target": "altera-ahls-ofs-opae",
+  "reference_only_repositories": ["oneapi-asp"],
+  "fim_release": "ofs-2025.1-1",
+  "repositories": {
+    "ofs-agx7-pcie-attach": {
+      "url": "https://github.com/OFS/ofs-agx7-pcie-attach",
+      "commit": "599ac052eafbc9cede22561c099233ae4a54cb7d",
+      "release_url": "https://github.com/OFS/ofs-agx7-pcie-attach/releases/tag/ofs-2025.1-1",
+      "submodules": {
+        "ofs-common": {
+          "url": "https://github.com/OFS/ofs-fim-common.git",
+          "commit": "34a8540697fdf3d66fbcaa263fa037bae17cc32f"
+        }
+      }
+    },
+    "ofs-platform-afu-bbb": {
+      "url": "https://github.com/OFS/ofs-platform-afu-bbb.git",
+      "commit": "3c21189e728009d4c492fa2be54c0ab1008b06dc"
+    },
+    "examples-afu": {
+      "url": "https://github.com/OFS/examples-afu.git",
+      "commit": "4a1350e3c9e223d8bac3cb47f756a1d919ef8de1",
+      "tag": "ofs-2026.1-1",
+      "tag_is_prerelease": true
+    },
+    "oneapi-asp": {
+      "url": "https://github.com/OFS/oneapi-asp",
+      "commit": "1af2ca74c452cb6ebbf54beb86e758e53489e826",
+      "submodules": {
+        "common/source/extra/intel-fpga-bbb": {
+          "url": "https://github.com/OPAE/intel-fpga-bbb.git",
+          "commit": "6f185d10be192d05ecb2b77dfe3df1c4f9b3f859"
+        }
+      }
+    }
+  },
+  "old_board_reference": "../old_bsp/ia-840/IOFS_BUILD_ROOT",
+  "old_board_reference_policy": "Read-only board-source reference; generated images and fitted databases are not the new platform.",
+  "toolchain": {
+    "requested_quartus_pro": "26.1.1",
+    "installation_status": "User reports installed on workstation; no workstation access performed",
+    "ofs_2025_1_documented_quartus_pro": "25.1",
+    "old_pr_template_quartus_pro": "23.1",
+    "compatibility_status": "AHLS is the selected compiler. Its handbook requires Quartus Pro 26.1 for Agilex 7; exact 26.1.1 integration with pinned OFS and vendor IP remains unqualified. OFS documents 25.1. oneAPI compiler compatibility is not an acceptance criterion.",
+    "evidence": "docs/ahls-scope.md",
+    "oneapi_fpga_compiler": "Not used; retained ASP tree is reference only",
+    "ahls_role": "Primary compiler: generated RTL/IP integrated into OFS AFU through PIM; OPAE/DFL host access",
+    "ahls_version": "2026.1 documentation baseline; installed version not re-inspected",
+    "oneapi_runtime_required": false
+  },
+  "execution_policy": {
+    "build_authorized": false,
+    "configure_authorized": false,
+    "ip_generation_authorized": false,
+    "simulation_authorized": false,
+    "tests_authorized": false,
+    "workstation_access_authorized": false,
+    "flash_authorized": false,
+    "commit_push_authorized": false
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "contract_format": "ahls-ofs-source-integration",
+  "contract_version": 2,
+  "status": "vendor_derived_board_sources_present_generated_ip_unbound",
+  "executable_configuration": false,
+  "source_implementation": {
+    "status": "connected_reusable_rtl_not_elaborated_not_top_level_activated",
+    "entry_module": "ahls_board_binding",
+    "source_registration": "ahls_binding_sources.tcl",
+    "sources": [
+      "rtl/ahls_ofs_board_services.sv",
+      "rtl/ahls_avmm_byte_to_line.sv",
+      "rtl/ahls_mmio_aperture.sv",
+      "rtl/ahls_mmio_to_avmm.sv",
+      "rtl/ahls_board_binding.sv"
+    ],
+    "provenance": "provenance.json",
+    "static_review": "static-source-review.json",
+    "documentation": "../../docs/vendor-derived-ahls-binding.md",
+    "implemented": [
+      "Primary PIM host-channel/MMIO mapper and per-bank memory mapper with explicit CDC",
+      "Actual PIM shared-Avalon to split read/write host-memory conversion",
+      "DFH/UUID and parameterized nonoverlapping CSR aperture with rebasing",
+      "Serialized 64-bit tagless Avalon CSR bridge preserving byteenable and MMIO user metadata",
+      "Same-width aligned-byte-address to PIM-line-address adapters preserving memory responses",
+      "Connected composition, platform tie-off masks and explicit source registration"
+    ],
+    "mandatory_instance_parameters": ["AFU_UUID", "CSR_BASE_BYTES", "CSR_SIZE_BYTES"],
+    "normalized_boundary_is_generated_ahls_abi": false,
+    "source_list_executed": false,
+    "top_level_activated": false,
+    "limits": [
+      "64-bit CSR board boundary; generated narrower agents require reviewed width/unit adaptation",
+      "At least one local bank in the connected composition",
+      "Memory requests must match native PIM data geometry and use aligned byte addresses",
+      "Physical host IOVA only; no VTP/USM runtime or automatic DDR transfer engine",
+      "Generated ports/registers, invocation, IRQ, streams and globals remain unbound",
+      "No OPAE host implementation or host-visible completion/quiescence protocol"
+    ]
+  },
+  "scope": {
+    "board": "IA840F",
+    "purpose": "General-purpose OFS platform integration of Altera HLS IP Gen output",
+    "compiler": "ahls",
+    "quartus_requested": "26.1.1",
+    "ahls_previous_observation": "2026.1",
+    "version_evidence": "User context only; installation and compatibility not inspected",
+    "fim_commit_context": "599ac052eafbc9cede22561c099233ae4a54cb7d",
+    "common_commit_context": "34a8540697fdf3d66fbcaa263fa037bae17cc32f",
+    "pins_verified_by_this_contract": false,
+    "oneapi_asp_role": "reference_only_not_target_runtime",
+    "fixed_workload": null,
+    "fixed_data_width": null,
+    "fixed_transport_protocol": null
+  },
+  "evidence_roots": {
+    "handbook": "/home/joe/Documents/Obsidian/School/Thesis/AHLS/Handbook",
+    "samples": "/home/joe/Projects/Thesis/AHLS/hls-samples",
+    "new": "/home/joe/Projects/Thesis/AHLS/new_bsp/new"
+  },
+  "evidence": {
+    "H9_OUTPUT": {"root": "handbook", "path": "09 - Integrate Your Design.md", "lines": [27, 45]},
+    "H9_IMPORT": {"root": "handbook", "path": "09 - Integrate Your Design.md", "lines": [78, 93]},
+    "H10_TYPES": {"root": "handbook", "path": "10 - RTL IP Core Interfaces.md", "lines": [37, 98]},
+    "H10_ARGS": {"root": "handbook", "path": "10 - RTL IP Core Interfaces.md", "lines": [107, 124]},
+    "H10_CSR": {"root": "handbook", "path": "10 - RTL IP Core Interfaces.md", "lines": [132, 248]},
+    "H10_HEADER_ANOMALY": {"root": "handbook", "path": "10 - RTL IP Core Interfaces.md", "lines": [333, 340]},
+    "H10_CONDUIT": {"root": "handbook", "path": "10 - RTL IP Core Interfaces.md", "lines": [357, 384]},
+    "H10_STRUCT": {"root": "handbook", "path": "10 - RTL IP Core Interfaces.md", "lines": [431, 438]},
+    "H10_MEMORY": {"root": "handbook", "path": "10 - RTL IP Core Interfaces.md", "lines": [464, 490]},
+    "H10_MEMORY_PROPERTIES": {"root": "handbook", "path": "10 - RTL IP Core Interfaces.md", "lines": [537, 549]},
+    "H10_POINTER_ROUTING": {"root": "handbook", "path": "10 - RTL IP Core Interfaces.md", "lines": [653, 747]},
+    "H10_GLOBAL": {"root": "handbook", "path": "10 - RTL IP Core Interfaces.md", "lines": [458, 462]},
+    "H10_RESET": {"root": "handbook", "path": "10 - RTL IP Core Interfaces.md", "lines": [839, 853]},
+    "H11_TYPES": {"root": "handbook", "path": "11 - Pipes.md", "lines": [45, 102]},
+    "H11_PROPERTIES": {"root": "handbook", "path": "11 - Pipes.md", "lines": [168, 192]},
+    "H11_STREAM": {"root": "handbook", "path": "11 - Pipes.md", "lines": [389, 442]},
+    "H11_CSR": {"root": "handbook", "path": "11 - Pipes.md", "lines": [597, 650]},
+    "S_PD": {"root": "samples", "path": "Tutorials/Tools/platform_designer/README.md", "lines": [46, 79]},
+    "S_COMPILER": {"root": "samples", "path": "Tutorials/Tools/platform_designer/add_oneapi/CMakeLists.txt", "lines": [1, 23]},
+    "S_EARLY": {"root": "samples", "path": "Tutorials/Tools/platform_designer/add_oneapi/CMakeLists.txt", "lines": [89, 99]},
+    "S_ARGS": {"root": "samples", "path": "Tutorials/Features/hls_flow_interfaces/invocation_interfaces/src/reg_map_functor.cpp", "lines": [20, 47]},
+    "S_MEMORY": {"root": "samples", "path": "Tutorials/Features/hls_flow_interfaces/mmhost/part3_ddr_hosts/src/mmhost.cpp", "lines": [13, 32]},
+    "S_CSR": {"root": "samples", "path": "Tutorials/Features/experimental/pipes/csr_pipes/src/csr_pipes.cpp", "lines": [30, 88]},
+    "S_AXI": {"root": "samples", "path": "Tutorials/Features/hls_flow_interfaces/streaming_data_interfaces/axi_streaming/src/streaming_data_interfaces.cpp", "lines": [31, 82]},
+    "O_HOST": {"root": "new", "path": "examples-afu/tutorial/afu_types/01_pim_ifc/hello_world/sw/hello_world.c", "lines": [21, 126]},
+    "O_DFH": {"root": "new", "path": "examples-afu/tutorial/afu_types/01_pim_ifc/hello_world/hw/rtl/avalon/hello_world_avalon.sv", "lines": [11, 111]},
+    "O_LOCAL": {"root": "new", "path": "examples-afu/tutorial/afu_types/01_pim_ifc/local_memory/hw/rtl/avalon/ofs_plat_afu.sv", "lines": [45, 155]},
+    "P_MAPPING": {"root": "new", "path": "ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/rtl/ifc_classes/host_chan/native_axis_pcie_tlp/ofs_plat_host_chan_GROUP_as_avalon_mem_rdwr.sv", "lines": [19, 29]},
+    "P_PORTS": {"root": "new", "path": "ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/rtl/ifc_classes/host_chan/native_axis_pcie_tlp/ofs_plat_host_chan_GROUP_as_avalon_mem_rdwr.sv", "lines": [111, 138]},
+    "P_UNITS": {"root": "new", "path": "ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/rtl/ifc_classes/host_chan/afu_ifcs/avalon/ofs_plat_host_chan_GROUP_as_avalon_mem_rdwr.vh", "lines": [11, 26]},
+    "P_FLAGS": {"root": "new", "path": "ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/rtl/ifc_classes/host_chan/afu_ifcs/avalon/ofs_plat_host_chan_avalon_mem_pkg.sv", "lines": [9, 41]}
+  },
+  "artifact_handoff": {
+    "observed_generated_project": null,
+    "expected_documented_artifacts": [
+      {"pattern": "<project_name>.prj/top_<project_name>_di.ip", "purpose": "Quartus IP source/settings closure", "evidence": ["H9_OUTPUT", "H9_IMPORT"]},
+      {"pattern": "<project_name>.prj/<project_name>_di_hw.tcl", "purpose": "Generated interface metadata", "evidence": ["H9_OUTPUT"]},
+      {"pattern": "<project_name>.prj/<project_name>_di_inst.sv", "purpose": "Actual instantiation ports, not a guessed wrapper", "evidence": ["H9_OUTPUT", "H9_IMPORT"]},
+      {"pattern": "<project_name>.prj/include/register_map_offsets.h", "purpose": "Image-relative kernel bases and per-kernel header includes", "evidence": ["H10_CSR"]},
+      {"pattern": "<project_name>.prj/include/kernel_headers/<kernel_name>_register_map.h", "purpose": "Register offsets, sizes, masks and map version", "evidence": ["H10_CSR"]},
+      {"pattern": "<project_name>.prj/<kernel_name>interface_structs.sv", "purpose": "Struct packing when applicable", "evidence": ["H10_STRUCT"]}
+    ],
+    "split_mode": null,
+    "split_requirement": "Record actual image/kernel partitioning; default combines kernels, per_kernel separates projects/IP",
+    "split_evidence": ["H9_OUTPUT"],
+    "source_requirements": ["Preserve complete generated project dependencies and core-specific settings", "Record source revision, compiler identity, arguments, target part and split mode", "Inventory all generated clocks, resets, controls, interfaces and optional ports", "Resolve actual file paths and top module before adding any source list"],
+    "search_limit": "Local hls-samples discovery found no *_di_inst.sv or register_map_offsets.h; not an exhaustive generated-artifact search outside that tree"
+  },
+  "bound_instance": {
+    "generated_project": null,
+    "top_module": null,
+    "afu_uuid": null,
+    "mmio_region": null,
+    "image_csr_base_bytes": null,
+    "kernel_instances": [],
+    "memory_endpoints": [],
+    "pipe_endpoints": [],
+    "clock_reset_binding": null,
+    "meaning_of_empty_or_null": "Unresolved, not absent, not a default and not an implemented endpoint"
+  },
+  "bridge_contracts": [
+    {
+      "id": "csr_mmio",
+      "status": "normalized_board_mmio_adapter_present_generated_csr_binding_required",
+      "source_evidence": ["H10_TYPES", "H10_ARGS", "H10_CSR", "O_DFH", "P_UNITS", "P_PORTS"],
+      "requirements": ["Reserve the AFU DFH/UUID region separately from the AHLS shared CSR", "Translate OPAE byte offsets, PIM word-addressed MMIO and generated agent address units explicitly", "Add AFU image aperture base once; generated register macros may already include kernel base", "Preserve byteenable, width adaptation, waitrequest and returned MMIO transaction user metadata", "Do not make destructive register reads while splitting, probing or retrying accesses", "Serialize argument writes and Start per invocation owner; account for independently selected conduit arguments", "Read actual CSR map version and reject mismatched host ABI"]
+    },
+    {
+      "id": "invocation",
+      "status": "mode_unselected",
+      "source_evidence": ["H10_CSR", "H10_ARGS", "H10_CONDUIT", "S_ARGS"],
+      "requirements": ["CSR: wait until not busy, establish arguments, write Start, track completions", "FinishCounter is clear-on-read and acknowledges completions; use a single completion owner", "Record wait_for_done_write versus do_not_wait_for_done_write behavior", "Conduit: bind actual start/ready and done/ready signals from generated metadata; preserve argument sampling", "Do not assume ready_in exists when downstream stall is removed", "If software controls a conduit invocation, a separately specified MMIO-to-invocation controller is required; none is supplied"]
+    },
+    {
+      "id": "external_memory",
+      "status": "normalized_host_and_local_adapters_present_generated_endpoints_unmapped",
+      "source_evidence": ["H10_MEMORY", "H10_MEMORY_PROPERTIES", "H10_POINTER_ROUTING", "S_MEMORY", "O_LOCAL", "O_HOST", "P_UNITS", "P_FLAGS"],
+      "requirements": ["Map every generated buffer_location to an explicit local-bank or host-memory address domain", "Record widths, address units, burst count units, direction, alignment, latency and outstanding-response capacity", "Adapt ordinary generated Avalon MM to split read/write PIM host memory when that path is selected", "Do not wire byte addresses directly to PIM line addresses or discard sub-line byte enables", "Preserve burst boundaries, response routing, backpressure and any required write completion semantics", "Use OPAE-registered IOVA for a physical host-memory path; never substitute a process virtual pointer", "Local-memory offsets require a separate placement and transfer mechanism, not fpgaPrepareBuffer alone", "USM source annotations do not establish OFS shared virtual memory or translation support", "Do not guess location routing bits for mixed annotated/unannotated pointers", "Define host-visible ordering and quiescence independently of kernel done; a fence flag declaration alone does not prove end-to-end visibility"]
+    },
+    {
+      "id": "streaming_pipes",
+      "status": "transport_unselected_no_dma_bridge",
+      "source_evidence": ["H11_TYPES", "H11_PROPERTIES", "H11_STREAM", "S_AXI"],
+      "requirements": ["Internal inter-kernel pipes are not external endpoints", "For each external endpoint record direction, protocol, actual signal names, payload packing, sidebands, symbol order and ready latency", "Respect optional valid/ready removal and its always-available system obligations", "Bind to an on-board producer/consumer or separately designed host transport", "A generated Avalon-ST or AXI-stream pipe is not a PCIe DMA engine or an OPAE streaming API", "Do not equate OFS PCIe TLP AXI streams with AHLS payload streams", "Specify buffering, CDC, reset and concurrent service of connected endpoints without a fixed workload or packet format"]
+    },
+    {
+      "id": "csr_pipes",
+      "status": "requires_register_map_and_mmio_binding",
+      "source_evidence": ["H11_TYPES", "H11_CSR", "S_CSR"],
+      "requirements": ["Require register-mapped invocation for CSR pipes", "Input with valid: wait valid=0, write all payload pieces, then write valid=1", "Output with ready: wait ready=0, read all payload pieces, then write ready=1", "Resolve reset/initial register state from generated IP before first transfer", "Input without valid overwrites; output without ready exposes latest value, not a lossless queue", "Do not manufacture an input ready register or an output valid register", "Use generated offsets and widths, not handbook example constants; min_capacity is not a CSR FIFO depth", "Control-pipe presence does not guarantee stop responsiveness when other operations block"]
+    },
+    {
+      "id": "device_globals_clock_reset",
+      "status": "requires_generated_binding",
+      "source_evidence": ["H10_GLOBAL", "H10_RESET", "O_LOCAL", "P_PORTS"],
+      "requirements": ["Host-accessible device globals have an independent MM agent, not automatically the shared CSR", "Bind all IP clocks/resets including polarity, reset synchronization and PIM CDC choices", "Gate traffic until documented readiness, not merely external reset deassertion", "Review freeze, interrupt, exception and any other generated controls individually", "Tie off only unused platform resources with correct in-use masks; never tie off unknown required IP endpoints"]
+    }
+  ],
+  "opae_host_contract": {
+    "implementation_present": false,
+    "source_evidence": ["O_HOST", "O_DFH", "H10_CSR", "H11_CSR", "P_FLAGS"],
+    "requirements": ["Enumerate accelerator by the selected AFU UUID and resolve multiple matches deliberately", "Open the exact accelerator context and check every API result", "Discover/validate AFU identity, aperture layout and generated CSR version before control writes", "Implement generated-register accesses using OPAE MMIO APIs with correct byte offsets and access widths", "Prepare/register DMA buffers and retrieve IOVA only when the selected endpoint supports host memory", "Keep registration, address mapping and accelerator handle alive until proven DMA quiescence", "Specify ordered input publication and output visibility for the chosen platform path", "Choose polling or an explicitly mapped interrupt path; AHLS irq does not automatically become OPAE notification", "Bound waits and define failure/recovery semantics; a timeout is not evidence that DMA stopped", "Drain or reset/quiesce safely before releasing buffers, closing or reprogramming", "Do not require SYCL queue submission, OpenCL MMD hostchannels or oneAPI ASP runtime for this OPAE control layer"]
+  },
+  "known_source_caveats": [
+    {"evidence": ["H10_HEADER_ANOMALY"], "issue": "Handbook sample repeats FINISHCOUNTER macro at 0x30 and 0x34; do not copy the example as a compilable register header"},
+    {"evidence": ["S_CSR", "H11_CSR"], "issue": "Sample comments mention input ready/output valid, but actual properties and handbook specify input valid/output ready only"},
+    {"evidence": ["S_CSR"], "issue": "CSR sample reads nonblockingly but OutputPipe::write is blocking; its stop-at-any-time comment is not a liveness guarantee"},
+    {"evidence": ["S_PD", "S_COMPILER"], "issue": "Platform Designer sample is Arria 10 plus JTAG, not an IA840F PCIe design; legacy oneAPI names are not compiler/runtime selection"}
+  ],
+  "acceptance_gates": {
+    "static_contract_authored": true,
+    "actual_generated_ip_bound": false,
+    "board_address_map_bound": false,
+    "all_endpoint_adapters_implemented": false,
+    "opae_host_implemented": false,
+    "toolchain_compatibility_verified": false,
+    "elaboration_verified": false,
+    "simulation_verified": false,
+    "timing_verified": false,
+    "hardware_verified": false,
+    "permission_for_execution": false
+  },
+  "prohibited_in_this_phase": ["build", "configure", "setup", "IP generation", "tests", "vendor tool execution", "workstation access", "installation", "commit", "push", "accelerator migration"]
+}

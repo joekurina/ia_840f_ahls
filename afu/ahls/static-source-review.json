@@ -1,0 +1,101 @@
+{
+  "format": "ahls-static-source-review",
+  "version": 1,
+  "method": "Python text/JSON/path/hash inspection only; no HDL tools, simulation or authored execution tests",
+  "checks": {
+    "provenance_sources_match_recorded_bytes": true,
+    "contract_matches_exact_rtl_inventory": true,
+    "registration_matches_exact_rtl_inventory": true,
+    "local_instances_connect_all_declared_ports_once": true,
+    "no_generated_component_or_asp_module_instantiated": true,
+    "execution_and_generated_binding_gates_remain_false": true
+  },
+  "rtl_source_count": 5,
+  "provenance_source_count": 17,
+  "local_instances": [
+    {
+      "parent": "ahls_board_binding",
+      "instance": "aperture",
+      "module": "ahls_mmio_aperture",
+      "all_ports_connected_once": true
+    },
+    {
+      "parent": "ahls_board_binding",
+      "instance": "control",
+      "module": "ahls_mmio_to_avmm",
+      "all_ports_connected_once": true
+    },
+    {
+      "parent": "ahls_board_binding",
+      "instance": "board",
+      "module": "ahls_ofs_board_services",
+      "all_ports_connected_once": true
+    },
+    {
+      "parent": "ahls_board_binding",
+      "instance": "host_address",
+      "module": "ahls_avmm_byte_to_line",
+      "all_ports_connected_once": true
+    },
+    {
+      "parent": "ahls_board_binding",
+      "instance": "adapter",
+      "module": "ahls_avmm_byte_to_line",
+      "all_ports_connected_once": true
+    }
+  ],
+  "inventory": [
+    {
+      "path": "rtl/ahls_ofs_board_services.sv",
+      "size_bytes": 3723,
+      "sha256": "823aa941b8f7dc2addba78d0f9748cf3d22b2429e2e2835d6567099f235294a9"
+    },
+    {
+      "path": "rtl/ahls_avmm_byte_to_line.sv",
+      "size_bytes": 3042,
+      "sha256": "d47c8d45e8bd4643d1d990aba65ebd27a773971f15ae834130f8a82c88586645"
+    },
+    {
+      "path": "rtl/ahls_mmio_aperture.sv",
+      "size_bytes": 5273,
+      "sha256": "b9e424d95714c883eb8db19d4be96ffec4215f9f84683a80fe161b8d0c5294ad"
+    },
+    {
+      "path": "rtl/ahls_mmio_to_avmm.sv",
+      "size_bytes": 3645,
+      "sha256": "4fa60523f3b227faca5b0b232d7aa0f29e1b13eea7c62bfb4fd510367b4100f2"
+    },
+    {
+      "path": "rtl/ahls_board_binding.sv",
+      "size_bytes": 3266,
+      "sha256": "dfdc163d67cb26a0f6757a699eedd5655584df09b9f29fbe0e31a083c1384d93"
+    },
+    {
+      "path": "ahls_binding_sources.tcl",
+      "size_bytes": 752,
+      "sha256": "d85a2a6fbcdc27815de6d3b9b7cb9aa7da6c11ff8225797f22b622afa5f14ec3"
+    },
+    {
+      "path": "integration-contract.json",
+      "size_bytes": 16939,
+      "sha256": "367fa9f993bd92f57dd116d7a3221b6370393680b3df32aeb715d1156b36b795"
+    },
+    {
+      "path": "provenance.json",
+      "size_bytes": 8830,
+      "sha256": "cfec27e29abb7fe92cd4818758ca6b65c6dbb212ed18bf6a46b414eda7e3830c"
+    },
+    {
+      "path": "LICENSE",
+      "size_bytes": 1270,
+      "sha256": "62d4e6b6deb9083fbd016a88d89b4e69f629708da7c1ab2d6c9a4e035539ff0c"
+    }
+  ],
+  "limitations": [
+    "Not SystemVerilog syntax/type/elaboration validation",
+    "No PIM generation or transitive IP/SDC dependency closure",
+    "No transactional simulation or hardware validation",
+    "No toolchain compatibility qualification",
+    "New handshake/routing glue is untested; vendor source ancestry is not proof of correctness"
+  ]
+}

@@ -1,0 +1,298 @@
+{
+  "format": "ahls-vendor-derived-source-provenance",
+  "version": 1,
+  "status": "source_only_not_elaborated",
+  "roots": {
+    "vendor": "/home/joe/Projects/Thesis/AHLS/new_bsp/old_bsp/ia-840/IOFS_BUILD_ROOT",
+    "new": "/home/joe/Projects/Thesis/AHLS/new_bsp/new",
+    "handbook": "/home/joe/Documents/Obsidian/School/Thesis/AHLS/Handbook",
+    "samples": "/home/joe/Projects/Thesis/AHLS/hls-samples"
+  },
+  "hash_scope": "Current local bytes of selected evidence/dependency sources, not full PIM/IP/toolchain closure or historical build attestation",
+  "sources": [
+    {
+      "id": "V_BOARD",
+      "root": "vendor",
+      "path": "oneapi-asp/ia840f/hardware/ofs_ia840f/build/rtl/ofs_plat_afu.sv",
+      "lines": [
+        [
+          31,
+          67
+        ],
+        [
+          75,
+          121
+        ]
+      ],
+      "role": "Primary PCIe mapper, per-bank memory mapper, tie-off ownership; extracted without ASP/kernel wrapper.",
+      "size_bytes": 5454,
+      "sha256": "01ba661b0db7578002175899025fda547b9cd8843e2c4023a27866968320208d"
+    },
+    {
+      "id": "V_USM",
+      "root": "vendor",
+      "path": "oneapi-asp/ia840f/hardware/ofs_ia840f_usm/build/rtl/afu.sv",
+      "lines": [
+        [
+          81,
+          114
+        ]
+      ],
+      "role": "Shared Avalon to split rdwr converter precedent; USM/VTP and kernel_system not imported.",
+      "size_bytes": 4782,
+      "sha256": "bfe0dba08050e2ff4444f22624a0ff1fcadf2f4144d12fce62fc5c88dded32b3"
+    },
+    {
+      "id": "V_FIM",
+      "root": "vendor",
+      "path": "ofs-ia840f/patches/port_afu_instances.sv",
+      "lines": [
+        [
+          43,
+          65
+        ]
+      ],
+      "role": "Native PCIe TLP, commit and AXI EMIF boundary; commit is not host-visible completion.",
+      "size_bytes": 12868,
+      "sha256": "9ffb57b71d0d6601963dccaddd823d84bb80bdd2d0b351c0333d2ec14605f471"
+    },
+    {
+      "id": "N_BOARD",
+      "root": "new",
+      "path": "oneapi-asp/common/hardware/common/build/rtl/ofs_plat_afu.sv",
+      "lines": [
+        [
+          32,
+          77
+        ],
+        [
+          141,
+          194
+        ]
+      ],
+      "role": "Modern mapper APIs and local-bank/tie-off pattern; no hardcoded child port 3 imported.",
+      "size_bytes": 9967,
+      "sha256": "5c8b16c1fdef866be4eb23d8afc552705200f8df89265c439cee086a262d5315"
+    },
+    {
+      "id": "N_AFU",
+      "root": "new",
+      "path": "oneapi-asp/common/hardware/common/build/rtl/afu.sv",
+      "lines": [
+        [
+          113,
+          155
+        ]
+      ],
+      "role": "Modern shared/split and CDC implementation precedent.",
+      "size_bytes": 8043,
+      "sha256": "055d141c6dfcc4bbf1f588fab2b7d67ec5c14fe62e916c9d945a66dcfa5d6cd1"
+    },
+    {
+      "id": "N_LOGIC",
+      "root": "new",
+      "path": "oneapi-asp/common/hardware/common/build/rtl/asp_logic.sv",
+      "lines": [
+        [
+          493,
+          513
+        ],
+        [
+          625,
+          633
+        ],
+        [
+          795,
+          811
+        ]
+      ],
+      "role": "MMIO byte address/byteenable and DMA byte-to-line conversion precedent; old Qsys bit-2 special case not copied.",
+      "size_bytes": 53317,
+      "sha256": "f60baccf79eb866874b08825430506b10316ae7505683d748d614f42789cd77e"
+    },
+    {
+      "id": "P_SPLIT",
+      "root": "new",
+      "path": "ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/rtl/base_ifcs/avalon/prims/ofs_plat_avalon_mem_if_to_rdwr_if.sv",
+      "lines": [
+        [
+          10,
+          39
+        ]
+      ],
+      "role": "Instantiated by reference unchanged: actual shared/split implementation.",
+      "size_bytes": 1536,
+      "sha256": "f078623c8d3f05c5599714b721093a0302d71a547934c704e1efc264219719ec"
+    },
+    {
+      "id": "P_HOST",
+      "root": "new",
+      "path": "ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/rtl/ifc_classes/host_chan/native_axis_pcie_tlp/ofs_plat_host_chan_GROUP_as_avalon_mem_rdwr.sv",
+      "lines": [
+        [
+          115,
+          176
+        ]
+      ],
+      "role": "PIM host/MMIO mapper template instantiated through generated groupless name.",
+      "size_bytes": 20512,
+      "sha256": "7d4245273e93f43907102aee662c94ef1a5cf5071731f962f87cade01a471643"
+    },
+    {
+      "id": "P_LOCAL",
+      "root": "new",
+      "path": "ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/rtl/ifc_classes/local_mem/native_axi/ofs_plat_local_mem_GROUP_as_avalon_mem.sv",
+      "lines": [
+        [
+          20,
+          55
+        ]
+      ],
+      "role": "PIM local-memory mapper including line units and AFU reset.",
+      "size_bytes": 6107,
+      "sha256": "55d5f8fa1d2d427be517ea0ff265c6e7162ffb64c3ef898066b4be369dfd3a00"
+    },
+    {
+      "id": "P_UNITS",
+      "root": "new",
+      "path": "ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/rtl/ifc_classes/host_chan/afu_ifcs/avalon/ofs_plat_host_chan_GROUP_as_avalon_mem_rdwr.vh",
+      "lines": [
+        [
+          11,
+          26
+        ]
+      ],
+      "role": "Native memory line geometry and word-addressed MMIO.",
+      "size_bytes": 1210,
+      "sha256": "a9781233c87a6aca64b683e4771ef031516c5166f2e3704f09c70ae4d9ba6bdb"
+    },
+    {
+      "id": "P_LOCAL_PARAMS",
+      "root": "new",
+      "path": "ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/rtl/ifc_classes/local_mem/afu_ifcs/ofs_plat_local_mem_GROUP_avalon_mem.vh",
+      "lines": [
+        [
+          31,
+          48
+        ]
+      ],
+      "role": "Platform-derived bank address/data geometry.",
+      "size_bytes": 2478,
+      "sha256": "12cd50a006aa05764277f487df15005b5d22045998314d55bd6b3bee4f2e834f"
+    },
+    {
+      "id": "P_IF",
+      "root": "new",
+      "path": "ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/rtl/base_ifcs/avalon/ofs_plat_avalon_mem_if.sv",
+      "lines": [
+        [
+          15,
+          85
+        ],
+        [
+          94,
+          145
+        ],
+        [
+          178,
+          202
+        ]
+      ],
+      "role": "Interface field directions, response/user and clock ownership.",
+      "size_bytes": 12381,
+      "sha256": "add27b3d9616548eb92e6d9d53352bf0faae469c705cea43cf565ec3ea8de4d8"
+    },
+    {
+      "id": "O_DFH",
+      "root": "new",
+      "path": "examples-afu/tutorial/afu_types/01_pim_ifc/hello_world/hw/rtl/avalon/hello_world_avalon.sv",
+      "lines": [
+        [
+          48,
+          113
+        ]
+      ],
+      "role": "DFH/UUID words and readresponseuser echo; no workload copied.",
+      "size_bytes": 6610,
+      "sha256": "0d0a23dde942d3217c75f5ea01702f8d6b8aaa0ab6959b8eb1e6840c6cedf58e"
+    },
+    {
+      "id": "O_LOCAL_CDC",
+      "root": "new",
+      "path": "examples-afu/tutorial/afu_types/01_pim_ifc/local_memory/hw/rtl/avalon/ofs_plat_afu.sv",
+      "lines": [
+        [
+          93,
+          114
+        ]
+      ],
+      "role": "Move bank CDC into PIM rather than importing generated BSP Qsys.",
+      "size_bytes": 5975,
+      "sha256": "35b0874b323378857f34d5412b37ef00ef622cad1d07e63e92fd0d927dd8b3c8"
+    },
+    {
+      "id": "H_HANDOFF",
+      "root": "handbook",
+      "path": "09 - Integrate Your Design.md",
+      "lines": [
+        [
+          31,
+          45
+        ],
+        [
+          78,
+          93
+        ]
+      ],
+      "role": "Generated IP/metadata/instantiation are required before component binding.",
+      "size_bytes": 6924,
+      "sha256": "557fe0d7c33c4e38dc3322c925880d58abce0abd7ee14683d4379ac384c76b59"
+    },
+    {
+      "id": "H_MEMORY",
+      "root": "handbook",
+      "path": "10 - RTL IP Core Interfaces.md",
+      "lines": [
+        [
+          460,
+          490
+        ],
+        [
+          537,
+          549
+        ]
+      ],
+      "role": "Independent globals and configurable external memory ports.",
+      "size_bytes": 65319,
+      "sha256": "6ecab3999384f842978f38de87f058dc04a82efba6596473fa3fa2359fa0cc68"
+    },
+    {
+      "id": "S_MEMORY",
+      "root": "samples",
+      "path": "Tutorials/Features/hls_flow_interfaces/mmhost/part3_ddr_hosts/src/mmhost.cpp",
+      "lines": [
+        [
+          13,
+          32
+        ]
+      ],
+      "role": "Width/location are component-specific, not universal board parameters.",
+      "size_bytes": 3707,
+      "sha256": "97c3627d91987f8f2f73b3a43148873d5e619c2cfa109e2099798e2cd1f46374"
+    }
+  ],
+  "new_implementation": [
+    "Serialized single-outstanding tagless MMIO adapter",
+    "Bounded CSR aperture decoder and unmapped-read response handling",
+    "Parameterized aligned-byte-to-line adapter with backpressure on misalignment",
+    "Connected board_binding composition and explicit PIM CDC selection"
+  ],
+  "excluded": [
+    "oneAPI kernel_system",
+    "ASP Qsys board",
+    "VTP and USM runtime",
+    "custom archived hostchannels",
+    "DMA descriptor engine",
+    "workload and application stream protocol"
+  ]
+}
