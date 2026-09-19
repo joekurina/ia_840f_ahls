@@ -1,0 +1,99 @@
+{
+  "run": "ahls-afu-fim-01",
+  "stage": "Stage 1: AFU static verification",
+  "result": "PASS - quartus_syn --analysis_and_elaboration rc=0, 0 errors, 1 critical (dispositioned), 79 warnings (all dispositioned)",
+  "tool": "Quartus Prime Pro 26.1.1 Build 130 (quartus_syn)",
+  "driver_attempt4_sha256": "86e9a2e8a78dcd08452d426b89c4d6db2680959e60be83bf593aea6a892b09e6",
+  "files": [
+    {
+      "file": "CONTINUATION-PROMPT.md",
+      "sha256": "eed8e347729353515b13b7d36d2753b0fe89fb4f44af8b3b79f274c9638c4405",
+      "size": 7448,
+      "role": "recovery plan (input, preserved)"
+    },
+    {
+      "file": "report.md",
+      "sha256": "0a25d5242098bd934b31ccbfa8b3b17696615dc4a128ccd44301a0672612de26",
+      "size": 14879,
+      "role": "final report"
+    },
+    {
+      "file": "logs/assemble_and_static_verify.log",
+      "sha256": "625ace5e611c32305832198d3c48d2588897a7ad01a2dbf25fda7948ed2eedd6",
+      "size": 4997,
+      "role": "attempt 1 log (FAILED)"
+    },
+    {
+      "file": "logs/attempt2_ae.log",
+      "sha256": "38c295b39785a7424d46fb21e52fb503dba5ef9316ebc8b3f8ed2498eeb20059",
+      "size": 32278,
+      "role": "attempt 2 log (FAILED)"
+    },
+    {
+      "file": "logs/attempt3_ae.log",
+      "sha256": "8c1419a46ea8fda3c57adc885ac6208fcdb592fecada5941668c5d5df8b35a47",
+      "size": 1837442,
+      "role": "attempt 3 log (FAILED, 889 errors; >2MB local-only)"
+    },
+    {
+      "file": "logs/attempt4.qsf",
+      "sha256": "9279a3ecbab9b152970e4660cb57ccc0187b66c884e6501c7d00a1c26090ee59",
+      "size": 3162,
+      "role": "attempt 4 final QSF (passing configuration)"
+    },
+    {
+      "file": "logs/attempt4_ae.log",
+      "sha256": "1e0162a3d50176c988f28dfb8945a6d067efd2060b3ca15032bcfa5506f57653",
+      "size": 1627358,
+      "role": "attempt 4 log (PASS rc=0, 0 errors)"
+    },
+    {
+      "file": "logs/attempt4_ae.rpt",
+      "sha256": "a625ad394d15a8f26c4648b4f1d1da64fa85daadbfbeefdea57338d7820661f6",
+      "size": 9233175,
+      "role": "attempt 4 A&E report (PASS; 9.2MB local-only)"
+    },
+    {
+      "file": "logs/attempt4_drc.rpt",
+      "sha256": "b79cb1ad8e42f1466d99fd9701ddc533ee7cdeea14af23f8a868dc8543973a6c",
+      "size": 7971,
+      "role": "attempt 4 DRC report (1 High dispositioned)"
+    },
+    {
+      "file": "logs/attempt4_flow.rpt",
+      "sha256": "fa8ec5e0c35af3604a342046e44a0f23215f513d1e28eaf172e5934cf43e65b3",
+      "size": 3717,
+      "role": "attempt 4 flow report"
+    },
+    {
+      "file": "src/afu.tcl",
+      "sha256": "8657e8ba5b5e957ec85a82a989b4589559421a599893a6a199123754e25715a6",
+      "size": 5930,
+      "role": "authored: PIM-mode AFU source loader for afu_main.tcl"
+    },
+    {
+      "file": "src/ahls_qual_vec_op.json",
+      "sha256": "c49e3cd1e212e89bc37aa7048fb23171350f2d26298009b97a72a1b59efadbc4",
+      "size": 419,
+      "role": "authored: AFU JSON (UUID source of truth)"
+    },
+    {
+      "file": "src/gen_ahls_filelist.py",
+      "sha256": "c51ea5211e1f2186b1f57f96892b1f2b6e4234050709c22f4b9f87d6f65b0d5c",
+      "size": 3313,
+      "role": "authored: QUARTUS_SYNTH fileset translator"
+    },
+    {
+      "file": "src/ofs_plat_afu.sv",
+      "sha256": "3638a59ec7d811c16d9d1e738ca57b606ee3cb9b8cc5bdb15b75ce965c8f12fb",
+      "size": 12746,
+      "role": "authored: AFU top (binding + AHLS kernel wiring)"
+    },
+    {
+      "file": "src/ofs_pr_afu.json",
+      "sha256": "7bcfa323fc0b5992a784e6b1513207bebf5a42c2480ee40c462131f9cbdd5351",
+      "size": 461,
+      "role": "authored: PR AFU JSON (AHLS UUID)"
+    }
+  ]
+}

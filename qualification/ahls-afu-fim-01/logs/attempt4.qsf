@@ -1,0 +1,36 @@
+set_global_assignment -name FAMILY "Agilex 7"
+set_global_assignment -name DEVICE AGFB027R25A2E2V
+set_global_assignment -name TOP_LEVEL_ENTITY ofs_plat_afu
+set_global_assignment -name VERILOG_MACRO INCLUDE_LOCAL_MEM
+# FIM context (WORK12 read-only)
+set_global_assignment -name SEARCH_PATH $::env(BUILD_ROOT_REL)/src/includes
+set_global_assignment -name SEARCH_PATH $::env(BUILD_ROOT_REL)/src/afu_top/mux
+set_global_assignment -name SEARCH_PATH $::env(BUILD_ROOT_REL)/ofs-common/src/common/includes
+set_global_assignment -name SEARCH_PATH $::env(BUILD_ROOT_REL)/ofs-common/src/fpga_family/agilex/mem_ss/includes
+set_global_assignment -name SEARCH_PATH $::env(BUILD_ROOT_REL)/ofs-common/src/common/lib/mux
+set_global_assignment -name SEARCH_PATH $::env(BUILD_ROOT_REL)/syn/board/ia840f/syn_top/ofs_ip_cfg_db
+# --- attempt-4 addition: FIM IP-cfg-db closure (mirrors Work12
+# ofs_ip_cfg_db/ip_gen_sv_wrapper_inc.tcl, with $W-absolute paths) ---
+set_global_assignment -name SEARCH_PATH $::env(BUILD_ROOT_REL)/ipss/pcie/qip/sv_wrapper
+set_global_assignment -name SYSTEMVERILOG_FILE $::env(BUILD_ROOT_REL)/ipss/pcie/qip/sv_wrapper/pcie_ss_param_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE $::env(BUILD_ROOT_REL)/ipss/pcie/qip/sv_wrapper/pcie_ss_sv.sv
+set_global_assignment -name SEARCH_PATH $::env(BUILD_ROOT_REL)/ofs-common/src/fpga_family/agilex/sys_pll/sv_wrapper
+set_global_assignment -name SYSTEMVERILOG_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/fpga_family/agilex/sys_pll/sv_wrapper/sys_pll_param_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/fpga_family/agilex/sys_pll/sv_wrapper/sys_pll_sv.sv
+set_global_assignment -name SEARCH_PATH $::env(BUILD_ROOT_REL)/ipss/mem/qip/mem_ss/sv_wrapper
+set_global_assignment -name SYSTEMVERILOG_FILE $::env(BUILD_ROOT_REL)/ipss/mem/qip/mem_ss/sv_wrapper/mem_ss_param_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE $::env(BUILD_ROOT_REL)/ipss/mem/qip/mem_ss/sv_wrapper/mem_ss_sv.sv
+# sys_pll_pkg required by ofs_fim_cfg_pkg.sv:21 (clock_name_to_actual_mhz)
+set_global_assignment -name SYSTEMVERILOG_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/fpga_family/agilex/sys_pll/sys_pll_pkg.sv
+# PIM platform (adds ~150 platform sources + include paths, relative paths
+# resolve against this project dir)
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE afu_with_pim/pim.tcl
+# AFU (identity via afu_json_info.vh, binding library, AHLS component, top)
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE afu_with_pim/afu.tcl
+# FIM packages referenced by the PIM platform tree
+set_global_assignment -name SYSTEMVERILOG_FILE $::env(BUILD_ROOT_REL)/src/afu_top/mux/top_cfg_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE $::env(BUILD_ROOT_REL)/src/includes/ofs_fim_cfg_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/fpga_family/agilex/mem_ss/includes/ofs_fim_mem_if_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/common/includes/ofs_pcie_ss_cfg_pkg.sv
+set_global_assignment -name PWRMGT_VOLTAGE_OUTPUT_FORMAT "LINEAR FORMAT"
+set_global_assignment -name PWRMGT_LINEAR_FORMAT_N "-12"
