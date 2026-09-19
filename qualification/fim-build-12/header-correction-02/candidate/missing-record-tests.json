@@ -1,0 +1,59 @@
+{
+  "cases": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_12/ofs-common/tools/ofss_config/ia840f_experimental_gate.py",
+        "native",
+        "compile",
+        "ia840f",
+        "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_12"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach",
+      "rc": 1,
+      "stdout": "",
+      "stderr": "[Errno 2] No such file or directory: '/home/uwb_student00/ahls/new_BSP/qualification/fim-build-12/compile-authorization.json'\n"
+    },
+    {
+      "argv": [
+        "bash",
+        "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_12/ofs-common/scripts/common/syn/build_top.sh",
+        "--stage=compile",
+        "-k",
+        "-p",
+        "ia840f",
+        "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_12"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach",
+      "rc": 1,
+      "stdout": "",
+      "stderr": "[Errno 2] No such file or directory: '/home/uwb_student00/ahls/new_BSP/qualification/fim-build-12/compile-authorization.json'\n"
+    },
+    {
+      "argv": [
+        "bash",
+        "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_12/ofs-common/scripts/common/syn/build_fim_compile.sh",
+        "ia840f",
+        "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_12"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach",
+      "rc": 1,
+      "stdout": "",
+      "stderr": "[Errno 2] No such file or directory: '/home/uwb_student00/ahls/new_BSP/qualification/fim-build-12/compile-authorization.json'\n"
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-12/run_headers.py"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_12/syn/board/ia840f/syn_top",
+      "rc": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/home/uwb_student00/ahls/new_BSP/qualification/fim-build-12/run_headers.py\", line 47, in <module>\n    if __name__=='__main__':sys.exit(run())\n  File \"/home/uwb_student00/ahls/new_BSP/qualification/fim-build-12/run_headers.py\", line 19, in run\n    gate.environment();record=gate.load_record()\n  File \"/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_12/ofs-common/tools/ofss_config/ia840f_header_gate.py\", line 42, in load_record\n    record = json.loads(RECORD.read_text())\n  File \"/usr/lib64/python3.9/pathlib.py\", line 1194, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n  File \"/usr/lib64/python3.9/pathlib.py\", line 1180, in open\n    return io.open(self, mode, buffering, encoding, errors, newline,\n  File \"/usr/lib64/python3.9/pathlib.py\", line 1038, in _opener\n    return self._accessor.open(self, flags, mode)\nFileNotFoundError: [Errno 2] No such file or directory: '/home/uwb_student00/ahls/new_BSP/qualification/fim-build-12/header-authorization.json'\n"
+    }
+  ],
+  "work_unchanged": true,
+  "logs_claims_absent": true
+}

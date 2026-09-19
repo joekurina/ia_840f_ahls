@@ -1,0 +1,143 @@
+{
+  "review": "compile-result-review-01",
+  "reviewed_at": "2026-09-19",
+  "scope": "independent result review of Work12 once-only full compile; no vendor execution; no remote queries; no source/work/gate edits",
+  "verdict": "PASS-narrow",
+  "recommendation": "ACCEPT Work12; do NOT iterate on the -0.004 ns hold residual",
+  "key_correction_to_parent_assumption": "TDC_AGGRESSIVE_HOLD_CLOSURE_EFFORT is already ON in Work12 (inherited from Work11, the TDC-ON experiment vs Work10); a 'TDC ON' follow-up has already run and did not move the hold path",
+
+  "evidence_base": {
+    "local_monitor_dir": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim-build-12/monitor-20260919T175342Z",
+    "remote_twin_declared": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-12/monitor-20260919T175342Z (host uwb_student00@100.101.227.97, Agilex7Workstation, UID1000, tmux ia840f_mailbox_monitored_01)",
+    "remote_requery_performed": false,
+    "remote_requery_reason": "local copy complete and hash-verified against exported archive; boundary says read-only remote only if essential artifact missing"
+  },
+
+  "integrity_checks": {
+    "manifest_entries": 31,
+    "manifest_rehash_failures": 0,
+    "manifest_size_failures": 0,
+    "export_archive_bytes": 3795017,
+    "export_archive_sha256_declared": "9fa7c1710945d2d4b62b1202bbebbecb3cb6b5107a2cb5f3c51fa5009fd1edbc",
+    "export_archive_sha256_computed": "9fa7c1710945d2d4b62b1202bbebbecb3cb6b5107a2cb5f3c51fa5009fd1edbc",
+    "export_archive_sha256_match": true,
+    "export_members": 32,
+    "export_members_byte_identical_to_readback": 32,
+    "archive_only_files": [],
+    "readback_only_files": []
+  },
+
+  "run_state": {
+    "state": "finished",
+    "started_utc": "2026-09-19T11:41:16.794934Z",
+    "ended_utc": "2026-09-19T12:36:31.618935Z",
+    "wall_time_approx": "55m15s",
+    "native_returncode": 0,
+    "native_rc_persisted_at": "2026-09-19T12:36:31.614701Z",
+    "runner_returncode": 0,
+    "runner_rc_persisted_at": "2026-09-19T12:36:31.629320Z",
+    "gate_rejection": false,
+    "gate_markers": {"IA840F_GATE_REJECTED": 0, "IA840F NOT READY": 0, "IA840F EXPERIMENTAL GATE:": 0, "125091": 0},
+    "native_log_sha256": "437fbe02926b1905d15af31a5bb2a1eda2a1405c8c89f5393b1b9aa8c2538320",
+    "native_log_bytes": 3042729,
+    "native_log_error_fatal_diagnostics": 0,
+    "status_json_sha256": "bf9340b27ce097141239d",
+    "invocation_json_sha256": "ed28003503acea1ba0720a63c81fc7babc92b8b9edf48cbe047eb4cc225d11f2",
+    "claim_json_sha256_prefix": "b8c1d51cdd30a941",
+    "authorization_sha256": "ad16f23ca0e03041db913a5f2df45077f26fcdef15804b1c7d970f721bd256fb (prior accepted auth, consumed once)",
+    "compile_fit_assembly_timing_acceptance_status": "PENDING REPORT REVIEW (pre-review; this review is the acceptance gate)"
+  },
+
+  "flow_and_stages": {
+    "flow_status": "Successful (2026-09-19 05:35:52 remote-local)",
+    "tool": "Quartus Prime 26.1.1 Build 130 SC Pro, AGFB027R25A2E2V, Agilex 7, Final timing/power/device models",
+    "stage_elapsed": {"synthesis": "00:07:15", "fitter": "00:36:51", "timing_analyzer": "00:01:01", "assembler": "00:05:40", "total": "00:50:47"},
+    "fitter_status": "Successful",
+    "alm_utilization": "78716/912800 (9%)",
+    "alm_utilization_w11": "86270/912800 (9%)",
+    "pins": 321, "ptile": 1, "plls": 8,
+    "effective_settings_confirmed": {"TDC_AGGRESSIVE_HOLD_CLOSURE_EFFORT": "On (W12 AND W11)", "seed": 2, "effort": "high performance / maximum placement, SPEED/MAX router"},
+    "synthesis_summary": "0 errors, 32 warnings"
+  },
+
+  "sta_full_parse": {
+    "method": "machine parse of all native-console Info 332146/332119 blocks plus report tables and path details; both builds parsed independently",
+    "console_rows_parsed_per_build": 125,
+    "block_structure_per_build": {"setup": 17, "hold": 17, "recovery": 9, "removal": 9, "min_pulse_width": 73},
+    "corner_models_both_builds": ["Slow vid2 100C", "Slow vid2b 100C", "Fast vid2 100C", "Fast vid2a 0C", "Fast vid2a 100C"],
+    "w12_sta_rpt": {"bytes": 46655195, "sha256": "3dbae18d751539cdc76de0d7f9b6402f6fb71e911a703b59211e6c6ab2a29081"},
+    "w11_sta_rpt": {"bytes": 46834561, "sha256": "9b851e84ea597e8c7b8b846d630609ce69ed6436ce555cc853858f6ec91f838c"},
+    "w11_negative_rows": [
+      {"check": "setup", "slack": -0.508, "tns": -185.081, "endpoints": 711, "clock": "emif_0_core_usr_clk", "corner": "Slow vid2 100C"},
+      {"check": "setup", "slack": -0.170, "tns": -29.340, "endpoints": 403, "clock": "emif_1_core_usr_clk", "corner": "Slow vid2 100C"},
+      {"check": "hold", "slack": -0.004, "tns": -0.004, "endpoints": 1, "clock": "emif_1_phy_clk_l_0", "corner": "Fast vid2 100C"}
+    ],
+    "w12_negative_rows": [
+      {"check": "hold", "slack": -0.004, "tns": -0.004, "endpoints": 1, "clock": "emif_1_phy_clk_l_0", "corner": "Fast vid2 100C"}
+    ],
+    "w12_worst_setup": {"slack": 0.093, "clock": "pcie ptile rx_ch15", "corner": "Slow vid2b 100C"},
+    "w12_emif_core_setup_recovered": {"emif_1_core_usr_clk": 0.443, "emif_0_core_usr_clk": 0.637},
+    "design_wide_tns": {"w11": {"setup": -214.421, "hold": -0.004}, "w12": {"setup": 0.0, "hold": -0.004}},
+    "w11_violated_path_details_count": 21,
+    "w12_violated_path_details_count": 1,
+    "critical_warning_332148_count": {"w11": 2, "w12": 2},
+    "hold_path_identity": {
+      "from": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|hmc.amm.amm.data_if_inst|amm_writedata_0_r[0][243]",
+      "to": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|tile_gen[2].lane_gen[1].lane_inst|lane_inst~phy_reg1",
+      "launch_clock": "emif_1_core_usr_clk",
+      "latch_clock": "emif_1_phy_clk_l_0",
+      "hold_relationship": 0.0,
+      "clock_skew": -0.080,
+      "data_delay": 0.288,
+      "logic_levels": 1,
+      "arrival": 2.964,
+      "required": 2.968,
+      "corner": "Fast vid2 100C",
+      "w11_w12_numerically_identical": true,
+      "only_diff": "launch-tree node rename pll_inst~refclk|* -> pll_inst~refclk_Duplicate|* (naming artifact)",
+      "domain": "entirely inside encrypted vendor EMIF arch (Avalon-MM core -> PHY lane), clocks from same EMIF IOPLL; not user-SDC reachable"
+    },
+    "unconstrained_paths_both_builds": {
+      "unconstrained_clocks": 1,
+      "clock": "pcie u_pciess_clock_divider|clkdiv_inst~div_reg (Warning 332060)",
+      "input_ports": 2, "input_path_pairs": 78,
+      "output_ports": 2, "output_path_pairs": 10,
+      "checker_verdict": "Unconstrained Paths: Fail",
+      "set_net_delay_invalid_clock_rows": 8,
+      "changed_w11_to_w12": false,
+      "note": "standing OFS upstream baseline; open for future constraint-closure pass; not a W12 regression"
+    }
+  },
+
+  "images": [
+    {"file": "ofs_top.sof", "bytes": 8744710, "sha256": "f0710784aff43e76a0acadc48bee84c947951abb8d7fbdfffd9bedb9c9864616"},
+    {"file": "ofs_top.green_region.rbf", "bytes": 8458240, "sha256": "e5ebd5849c076aa4e1e5af1e9f51eea157aee905a4a4581f59174121b4e74ecf"},
+    {"file": "ofs_top.green_region.pmsf", "bytes": 8109814, "sha256": "18db06019311175a6eb7ef124f87790d978d1d2e26e42ce0b9faf3daa6b7c818"},
+    {"file": "ofs_top.static.msf", "bytes": 3341315, "sha256": "241d61e9db4fe30653e3d67bd0b959e051c149d849ef57e600e8ecadec53bfef"}
+  ],
+
+  "accept_vs_iterate_assessment": {
+    "decision": "accept",
+    "reasons": [
+      "TDC_AGGRESSIVE_HOLD_CLOSURE_EFFORT ON already active in W11 and W12; the hold is unchanged W10->W11->W12, so the proposed TDC experiment has already run and failed to move the path",
+      "path is placement/seed-insensitive: numerically identical across two materially different fits (ALMs 86270 vs 78716, fitter 45:32 vs 36:51)",
+      "seed re-roll risks reopening the eliminated MSA setup violations (recovered margins only +0.443/+0.637 ns; worst overall setup +0.093 ns) at ~55 min vendor cost plus a once-only build/authorization cycle",
+      "magnitude 4 ps on a single fast-corner endpoint inside the encrypted EMIF vendor domain; below final-model fast-corner routing quantization (~5-15 ps); PHY-internal segment is deskewed by EMIF runtime calibration rather than static core timing",
+      "fitter effort space exhausted for Agilex 7 per prior assignment-enum review (router lcell insertion/register duplication/post-route physical synthesis not family-applicable)"
+    ],
+    "if_iterating_anyway": {
+      "only_defensible_experiment": "seed-only change (e.g. seed 3), all else identical (clocks, SDC, geometry, constraints, effort, TDC ON retained)",
+      "label": "exploratory",
+      "risks": ["may reopen eliminated MSA setup violations", "expected no hold change", "consumes one build/authorization cycle"]
+    },
+    "not_acceptable_experiments": ["EMIF parameter changes", "SDC edits targeting the vendor-internal path", "any multi-variable overlay"]
+  },
+
+  "residuals_open": [
+    "unconstrained-path closure Fail (1 clock, 2 input + 2 output ports)",
+    "Design Assistant 19/88 rules failed (CDC/lint baseline category)",
+    "no separate DDR sub-report captured (EMIF DDR IO timing handled by EMIF flow, consistent with W11 handling)"
+  ],
+
+  "flags_unchanged": {"readiness": false, "timing_functional": false, "calibration": false, "functional_acceptance": false, "afu": "default standard exerciser (not AHLS)", "ddr_simulation": "SKIPPED BY USER"}
+}

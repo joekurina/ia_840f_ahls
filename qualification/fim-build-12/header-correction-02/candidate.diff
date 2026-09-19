@@ -1,0 +1,104 @@
+--- original/header-authorization.draft.json
++++ candidate/header-authorization.draft.json
+@@ -18225,7 +18225,7 @@
+     "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_11/ipss/mem/qip/mem_ss/mem_ss/mem_ss_mem_ss_501_qm5zaka/synth/mem_ss_mem_ss_501_qm5zaka/synth/mem_ss_mem_ss_501_qm5zaka.v": "418804c91789aa650b3679ce69a6a30258a93185d8d6fd76a2304cc9a9a4d45f",
+     "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_11/ipss/mem/qip/mem_ss/mem_ss/synth/mem_ss.v": "f5fd9ee05e8cf89c202039c0bc6d5950b55aace9d0447402da17bf46c9e14e75",
+     "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-12/ia840f_header_gate.py": "5f2119633171c0e262c556bfe1b27cdc7f297c5ca8b352647c449c8f048b0087",
+-    "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-12/run_headers.py": "d62f18b3a7dd9c644859dbf5239c63e0bc300ff0b0708c8899087c495f4ff2dd",
++    "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-12/run_headers.py": "7f411c876adf583227a7f4d45cd188ffba7f987d05b4228f2ff43e50ec9f521f",
+     "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-12/issue_headers.py": "d1134328befd7e1ce49588b35e7bdd614f4ffa4ef8db8a8e150adc53df042011",
+     "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-12/check_memory_closure.py": "b486120825761d9042072a5cfe3e876735c843238ddabddc0ab6d5edc319fdc7",
+     "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-12/launch_native_compile.py": "4685bc42008406fa7567593063f3cce96ced7e67ca5aef811fd570fda64149de",
+--- original/run_headers.py
++++ candidate/run_headers.py
+@@ -31,17 +31,54 @@
+   with (run/'native.log').open('xb') as log:
+    state['header_native_started']=True
+    rc=subprocess.run(cmd,cwd=gate.PROJECT,env=env,stdout=log,stderr=subprocess.STDOUT).returncode
+-  text=(run/'native.log').read_text(errors='replace')
+-  rejected=any((m.decode() if isinstance(m,bytes) else m) in text for m in gate.common.REJECTION_MARKERS)
+-  diagnostics=bool(re.search(r'\b(?:error|fatal)(?:\s*\([^\n)]*\))?\s*:',text,re.I)) or 'Critical Warning' in text
+-  outputs={p:dict(sha256=gate.sha(W/p),bytes=(W/p).stat().st_size,mtime_ns=(W/p).stat().st_mtime_ns) for p in record['required_outputs'] if (W/p).is_file()}
+-  complete=len(outputs)==len(record['required_outputs']) and all(v['bytes']>0 and v['mtime_ns']>=started for v in outputs.values())
+-  gate.load_record()
+-  save('outputs.json',outputs);save('postheader-work-inventory.json',gate.work_inventory())
+-  ok=rc==0 and not rejected and not diagnostics and complete
+-  state.update(native_returncode=rc,gate_rejection=rejected,reject_diagnostics=diagnostics,outputs_complete_fresh=complete,native_exit_accepted=ok,result_review_required=True,compile_authorized=False)
++   # Persist the child status before even closing its log or doing postflight.
++   state.update(native_returncode=rc,native_exit_accepted=False,result_review_required=True,compile_authorized=False)
++   save('native-status.json',state)
++  errors=[];state['collection_errors']=errors
++  def collect(label,fn):
++   try:return fn()
++   except Exception as exc:
++    errors.append(dict(stage=label,error=repr(exc)))
++    return None
++  text=collect('diagnostics',lambda:(run/'native.log').read_text(errors='replace'))
++  rejected=None if text is None else any((m.decode() if isinstance(m,bytes) else m) in text for m in gate.common.REJECTION_MARKERS)
++  diagnostics=None if text is None else bool(re.search(r'\b(?:error|fatal)(?:\s*\([^\n)]*\))?\s*:',text,re.I)) or 'Critical Warning' in text
++  outputs={}
++  for p in record['required_outputs']:
++   item={};outputs[p]=item
++   digest=collect('output hash: '+p,lambda:gate.sha(W/p))
++   if digest is not None:item['sha256']=digest
++   st=collect('output stat: '+p,lambda:(W/p).stat())
++   if st is not None:item.update(bytes=st.st_size,mtime_ns=st.st_mtime_ns)
++  complete=all(set(v)=={'sha256','bytes','mtime_ns'} and v['bytes']>0 and v['mtime_ns']>=started for v in outputs.values())
++  collect('outputs persistence',lambda:save('outputs.json',outputs))
++  collect('postflight verification',gate.load_record)
++  inventory=collect('postheader inventory',gate.work_inventory)
++  if inventory is None:
++   # Retain available entries even when strict inventory rejects one entry.
++   inventory={}
++   def entry(p):
++    rel=p.relative_to(W).as_posix()
++    if p.is_symlink():inventory[rel]={'symlink':os.readlink(p)}
++    elif p.is_file():inventory[rel]={'sha256':gate.sha(p)}
++   def walk_error(exc):errors.append(dict(stage='inventory walk',error=repr(exc)))
++   for directory,dirs,files in os.walk(W,onerror=walk_error,followlinks=False):
++    dirs[:]=[d for d in dirs if d!='__pycache__']
++    for name in dirs+files:
++     p=Path(directory)/name
++     if p.suffix!='.pyc':collect('inventory entry: '+str(p.relative_to(W)),lambda:entry(p))
++  collect('inventory persistence',lambda:save('postheader-work-inventory.json',inventory))
++  ok=rc==0 and not errors and rejected is False and diagnostics is False and complete
++  state.update(gate_rejection=rejected,reject_diagnostics=diagnostics,outputs_complete_fresh=complete,native_exit_accepted=ok)
++  if errors:save('failure.json',state)
+   save('result.json',state)
+-  return rc if rc else (0 if ok else 1)
++  return (128-rc if rc<0 else rc) if rc else (0 if ok else 1)
+  except BaseException as exc:
+-  state.update(error=repr(exc));save('failure.json',state);raise
++  state.update(error=repr(exc),native_exit_accepted=False,compile_authorized=False)
++  try:save('failure.json',state)
++  except Exception as evidence_exc:print('failure evidence persistence:',repr(evidence_exc),file=sys.stderr)
++  if 'native_returncode' in state:
++   rc=state['native_returncode']
++   return (128-rc if rc<0 else rc) if rc else 1
++  raise
+ if __name__=='__main__':sys.exit(run())
+--- original/review-package-sha256.json
++++ candidate/review-package-sha256.json
+@@ -11,7 +11,7 @@
+   "final-work-preheader-inventory.json": "ea299b2d7830419a442528f6b74a580f4619caaf76dd3ee08fe726f1de84c972",
+   "finalize_remote.py": "c469d5c20aa11e6e3e7f31447822a57a4783656ea559e95a12b5ae23f9408168",
+   "first-save.provenance.ip": "58b2409deb345a56a34b557d735d532d9b61b93b4a58c9dce2c5ab26f02e45c4",
+-  "header-authorization.draft.json": "316a499b61cff2281d5b9785650ff53b969f80ec7ec4178692cac98595f120d5",
++  "header-authorization.draft.json": "d51473a0f16d757dc5c0624b40a858d2cb85835d6d7ec77f9684da88bfbc824b",
+   "header-inert-a17z8orz/header-run/claim.json": "cb81f64f5f498ca6ca8691706af55148b2678142fccbd631c7856e567895087f",
+   "header-inert-a17z8orz/header-run/invocation.json": "3429743436b674c844cff252299ab2201b39e58e504b450087f20779c7a440ea",
+   "header-inert-a17z8orz/header-run/native.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+@@ -41,7 +41,7 @@
+   "preflight_remote.py": "1fb2c4c36c5902ed515c8796bf9c465bce0e7df82bb3fd641b02a65e78c4c385",
+   "project-header-source-evidence.json": "7f46d5d16a04e70d46fa6d9696fe1fba14f9cc0dedfafe84be176138ce2ccc85",
+   "relocations.json": "b654fa5539f6a743aafd0feb1cbcebf1a410de8d90541c9f71caa89c0faa7693",
+-  "run_headers.py": "d62f18b3a7dd9c644859dbf5239c63e0bc300ff0b0708c8899087c495f4ff2dd",
++  "run_headers.py": "7f411c876adf583227a7f4d45cd188ffba7f987d05b4228f2ff43e50ec9f521f",
+   "source-before.json": "ddc859afbe63e51f49aa4b52cae008b219f110277b5ee8b7ec08e8235c12282f",
+   "source-overlay/ipss/ia840f/derive_presets.py": "bb07cdfc817e50517e3277cb6cb4daca2f80c4da37a6e158ceed36403cbe46c4",
+   "source-overlay/ipss/ia840f/preset_derivation.json": "31218876eab8d532bbebe2f7e486a02f602dff20acb931bf9cb8a997f7913069",
+@@ -75,4 +75,4 @@
+   "test_tcl_issuer_remote.py": "6d05115777ee9f013d36c4a0d644f44770dd1159aeb843938066e014cd30eafe",
+   "work04-before.json": "57dd48021ff22c165796b522cb1695625cfadcd0be0e42557786a774b9200cd7",
+   "work12-preheader-inventory.json": "ca875f50aab4e7f812787ec5eb25444ad09064026435dd301b0304d33ff04b04"
+-}+}

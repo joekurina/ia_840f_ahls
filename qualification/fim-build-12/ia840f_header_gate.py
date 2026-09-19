@@ -1,0 +1,113 @@
+"""Work12 header-only gate. Candidate: no authorization is issued here.
+Full source/tool validation reused verbatim from exercised compile gate,
+except header record identity, permission and runner cwd.
+"""
+import os,json,sys
+from pathlib import Path
+import ia840f_experimental_gate as common
+BASE=common.BASE;SOURCE=common.SOURCE;WORK=BASE/'work_ia840f_fim_12'
+PROJECT=WORK/'syn/board/ia840f/syn_top';EVIDENCE=BASE/'qualification/fim-build-12'
+RECORD=EVIDENCE/'header-authorization.json';CLAIM=EVIDENCE/'header-run/claim.json'
+RUNNER=EVIDENCE/'run_headers.py'
+TOP_ARGS=['python3','-B',str(RUNNER)]
+HEADER_ARGS=['quartus_sh','-t',str(WORK/'ofs-common/scripts/common/syn/ip_get_cfg/gen_ofs_ip_cfg_db.tcl'),'--project=ofs_top','--revision=ofs_top']
+require=common.require;sha=common.sha
+PYTHON_EXE='/usr/bin/python3.9'
+def allowed_commands():return [HEADER_ARGS]
+
+def parent(pid):
+    return int(next(x.split()[1] for x in (Path('/proc') / str(pid) / 'status').read_text().splitlines() if x.startswith('PPid:')))
+
+def start_time(pid):
+    # comm may contain spaces or parentheses; starttime is field 22.
+    return (Path('/proc') / str(pid) / 'stat').read_text().rsplit(')', 1)[1].split()[19]
+
+def work_inventory():
+    """Initial copied tree, including generated cache; symlinks bound separately."""
+    result = {}
+    for p in sorted(WORK.rglob('*')):
+        if '__pycache__' in p.parts or p.suffix == '.pyc':
+            continue
+        rel = p.relative_to(WORK).as_posix()
+        if p.is_symlink():
+            require(p.resolve(strict=True).is_relative_to(WORK), 'work symlink escape: ' + rel)
+            result[rel] = {'symlink': os.readlink(p)}
+        elif p.is_file():
+            result[rel] = {'sha256': sha(p)}
+    require(bool(result), 'empty work inventory')
+    return result
+
+def load_record(inner=False):
+    require(not RECORD.is_symlink(), 'compile record symlink')
+    record = json.loads(RECORD.read_text())
+    expected = dict(schema=1, approved=True, accepted_execution=True,
+                    ready_for_build=False, source_review_consumed=True,
+                    gate_review_consumed=True, target='ia840f', part=common.PART,
+                    toolchain=common.VERSION, source=str(SOURCE), work=str(WORK),
+                    pim=str(common.PIM), permissions=['native-headers'])
+    for key, value in expected.items():
+        require(type(record.get(key)) is type(value) and record[key] == value, 'compile record field: ' + key)
+    for root in (SOURCE, WORK, common.PIM, EVIDENCE):
+        require(root.resolve(strict=True) == root, 'compile root alias')
+    require(set(record['source_sha256']) == set(common.TREES), 'compile source coverage')
+    for tree in common.TREES:
+        common.check_inventory(SOURCE / tree, record['source_sha256'][tree])
+    common.check_inventory(common.PIM, record['pim_sha256'])
+    require(set(record['tools']) == set(common.TOOLS) and set(record['quartus_tools']) == set(common.TOOLS), 'compile tool coverage')
+    for name in common.TOOLS:
+        outer, inside = record['tools'][name], record['quartus_tools'][name]
+        require(inside['path'] == common.INNER_TOOL_PATHS.get(name, outer['path']), 'compile inner path')
+        for tool in (outer, inside):
+            require(str(Path(tool['path']).resolve(strict=True)) == tool['path'], 'compile tool alias')
+            require(sha(tool['path']) == tool['sha256'], 'compile tool hash: ' + name)
+        selected = inside if inner else outer
+        found = common.shutil.which(name)
+        require(found is not None and str(Path(found).resolve()) == selected['path'], 'compile tool PATH: ' + name)
+    require(record['contexts'], 'empty compile contexts')
+    runtime_hashes = {}
+    for context in record['contexts']:
+        require(context['cwd'] == str(PROJECT), 'compile context directory')
+        exe = context['executable']
+        require(exe.startswith('/opt/altera/26.1.1/quartus/linux64/') and
+                Path(exe).name in ('quartus_sh', 'quartus_ipgenerate', 'quartus_syn',
+                                  'quartus_fit', 'quartus_sta', 'quartus_asm',
+                                  'quartus_cdb', 'quartus_pow', 'quartus_eda', 'quartus_tlg'),
+                'compile executable outside finite native tool set')
+        if exe not in runtime_hashes:
+            runtime_hashes[exe] = sha(exe)
+        require(runtime_hashes[exe] == context['sha256'], 'compile executable hash')
+        require(context['argv'] in allowed_commands(), 'compile command grammar')
+        require(context['argv'] and context['argv'][0] == Path(exe).name, 'compile argv0')
+    # Flow/task source semantics and independent reviews are immutable pins too.
+    for path, digest in record['dependency_sha256'].items():
+        require(sha(path) == digest, 'compile dependency hash: ' + path)
+    require(record['native_argv'] == TOP_ARGS and record['native_cwd'] == str(PROJECT), 'compile native binding')
+    return record
+
+def check_context(record, executable, argv, cwd):
+    require(cwd == str(PROJECT), 'compile runtime cwd')
+    context = dict(executable=executable, sha256=sha(executable), argv=argv, cwd=cwd)
+    require(context in record['contexts'], 'unrecorded compile executable/argv/cwd: ' + repr(context))
+
+def environment():
+    expected=dict(OFS_ROOTDIR=str(WORK),OFS_PLATFORM_AFU_BBB=str(common.PIM),QUARTUS_ROOTDIR_OVERRIDE='/opt/altera/26.1.1/quartus')
+    for k,v in expected.items():require(os.environ.get(k)==v,'header environment: '+k)
+    for k in ('SEED','ANALYSIS_AND_ELAB_ONLY','USE_OFSS_CONFIG_SCRIPT','OFS_PRE_SETUP_SCRIPT','OFS_POST_SETUP_SCRIPT','OFS_PRE_COMPILE_SCRIPT','OFS_POST_COMPILE_SCRIPT','AFU_WITH_PIM','BUILD_VAR_SETUP_COMPLETE'):
+        require(not os.environ.get(k),'forbidden header option: '+k)
+    require(not any(k.startswith('OFS_BUILD_TAG_') and v for k,v in os.environ.items()),'header variant tags')
+def claim_ancestor():
+    require(not CLAIM.is_symlink(),'header claim symlink')
+    claim=json.loads(CLAIM.read_text())
+    require(claim['record_sha256']==sha(RECORD),'header claim record mismatch')
+    pid=os.getppid()
+    for _ in range(64):
+        if pid==claim['pid']:
+            require(start_time(pid)==claim['start_time'],'header claim process reused')
+            exe,argv,cwd=common.process(pid)
+            require(exe==PYTHON_EXE and argv==TOP_ARGS and cwd==str(PROJECT),'header runner ancestor changed')
+            return
+        require(pid>1,'not descendant of header runner');pid=parent(pid)
+    require(False,'header ancestry limit')
+def quartus_context():
+    environment();record=load_record(inner=True);claim_ancestor()
+    check_context(record,*common.process(os.getppid()))

@@ -1,0 +1,6 @@
+commands:
+- verify session: ssh uwb_student00@100.101.227.97 "tmux has-session -t ia840f_mailbox_monitored_01"
+- windows used: @486 (failed transport, receipt window-486-failed-receipt.txt), @488 w12mon-175342-run3 (monitor rc0)
+- monitor script: monitor.py (local) / E/monitor-20260919T175342Z/monitor_run.py (sha256 3fae98b659189b535a056633b336e55bcd18ed84ecb8fe084abbe7a1c7ecdeaa)
+- export retrieval: ssh "tmux save-buffer -b monitor-20260919T175342Z-export -" > export.json
+- export archive sha256 9fa7c1710945d2d4b62b1202bbebbecb3cb6b5107a2cb5f3c51fa5009fd1edbc, 32 members, local rehash 0 failures

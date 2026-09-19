@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim-build-12/header-correction-02/test_failure_evidence.py", line 98, in <module>
+    if sys.argv[1]=='--worker':sys.exit(worker(sys.argv[2],sys.argv[3],int(sys.argv[4]),sys.argv[5]))
+                                        ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim-build-12/header-correction-02/test_failure_evidence.py", line 55, in worker
+    rc=mod.run()
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim-build-12/remote-evidence/run_headers.py", line 40, in run
+    save('outputs.json',outputs);save('postheader-work-inventory.json',gate.work_inventory())
+                                                                       ~~~~~~~~~~~~~~~~~~~^^
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim-build-12/header-correction-02/test_failure_evidence.py", line 29, in inventory
+    if fault=='inventory':raise OSError('inert inventory failure')
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: inert inventory failure

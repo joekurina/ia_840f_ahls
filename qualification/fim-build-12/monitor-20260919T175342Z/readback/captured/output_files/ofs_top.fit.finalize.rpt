@@ -1,0 +1,410 @@
+Fitter Finalize Stage Report for ofs_top
+Sat Sep 19 05:25:18 2026
+Quartus Prime Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Routing Usage Summary
+  3. Finalize Messages
+  4. PLL Usage Summary
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2026  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++-------------------------------------------------------------+
+; Routing Usage Summary                                       ;
++-----------------------------+-------------------------------+
+; Routing Resource Type       ; Usage                         ;
++-----------------------------+-------------------------------+
+; Block Input Mux Wrapbacks   ; 1,974 / 964,320 ( < 1 % )     ;
+; Block Input Muxes           ; 513,005 / 10,561,600 ( 5 % )  ;
+; Block interconnects         ; 393,153 / 12,385,280 ( 3 % )  ;
+; C1 interconnects            ; 176,690 / 5,173,760 ( 3 % )   ;
+; C4 interconnects            ; 74,959 / 4,933,120 ( 2 % )    ;
+; C8 interconnects            ; 4,343 / 493,312 ( < 1 % )     ;
+; DCM_muxes                   ; 86 / 1,152 ( 7 % )            ;
+; DELAY_CHAINs                ; 56 / 32,048 ( < 1 % )         ;
+; Direct links                ; 65,332 / 12,385,280 ( < 1 % ) ;
+; HIO Buffers                 ; 1,144 / 73,472 ( 2 % )        ;
+; Programmable Invert Buffers ; 56 / 560 ( 10 % )             ;
+; Programmable Invert Inputs  ; 18,566 / 932,160 ( 2 % )      ;
+; Programmable Inverts        ; 18,566 / 932,160 ( 2 % )      ;
+; R0 interconnects            ; 257,915 / 8,632,960 ( 3 % )   ;
+; R1 interconnects            ; 129,578 / 4,933,120 ( 3 % )   ;
+; R12 interconnects           ; 6,202 / 739,968 ( < 1 % )     ;
+; R2 interconnects            ; 55,724 / 2,473,120 ( 2 % )    ;
+; R4 interconnects            ; 45,550 / 2,486,240 ( 2 % )    ;
+; R6 interconnects            ; 54,652 / 2,492,800 ( 2 % )    ;
+; Redundancy Muxes            ; 2,408 / 145,648 ( 2 % )       ;
+; Row Clock Tap-Offs          ; 12,093 / 739,968 ( 2 % )      ;
+; Switchbox_clock_muxes       ; 1,068 / 23,040 ( 5 % )        ;
+; VIO Buffers                 ; 1,125 / 22,400 ( 5 % )        ;
+; Vertical_seam_tap_muxes     ; 1,079 / 12,288 ( 9 % )        ;
++-----------------------------+-------------------------------+
+
+
++-------------------+
+; Finalize Messages ;
++-------------------+
+Info: Loading device exerciser AFU...
+Info: Compiling PR Base revision...
+Info (20030): Parallel compilation is enabled and will use 18 of the 18 processors detected
+Info: *******************************************************************
+Info: Running Quartus Prime Fitter
+    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+    Info: Processing started: Sat Sep 19 04:48:51 2026
+    Info: System process ID: 178131
+Info: Command: quartus_fit --read_settings_files=on --write_settings_files=off ofs_top -c ofs_top
+Info: Using INI file /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_12/syn/board/ia840f/syn_top/quartus.ini
+Info: qfit2_default_script.tcl version: #1
+Info: Project  = ofs_top
+Info: Revision = ofs_top
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 100 degrees C
+Info (18258): Fitter Physical Synthesis operations beginning
+Info (18259): Fitter Physical Synthesis operations ending: elapsed time is 00:00:25
+Info (16557): Fitter post-fit operations ending: elapsed time is 00:06:01
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; PLL Usage Summary                                                                                                                                                                                                                         ;
++------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+;                                                                                                                  ;                                                                                                                        ;
++------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+; sys_pll|iopll_0|tennm_pll                                                                                        ;                                                                                                                        ;
+;     -- IOPLL Location                                                                                            ; IOPLL_X12_Y333_N303                                                                                                    ;
+;     -- IOPLL Type                                                                                                ; I/O Bank                                                                                                               ;
+;     -- IOPLL Bandwidth                                                                                           ; Low                                                                                                                    ;
+;         -- IOPLL Bandwidth Range                                                                                 ; 670000 to 540000 Hz                                                                                                    ;
+;     -- IOPLL Reference Clock Frequency                                                                           ; 100.0 MHz                                                                                                              ;
+;     -- IOPLL VCO Frequency                                                                                       ; 1410.0 MHz                                                                                                             ;
+;     -- IOPLL Operation Mode                                                                                      ; direct                                                                                                                 ;
+;     -- M Counter                                                                                                 ; 141                                                                                                                    ;
+;     -- N Counter                                                                                                 ; 10                                                                                                                     ;
+;     -- PLL Refclk Select                                                                                         ;                                                                                                                        ;
+;             -- PLL Reference Clock Input 0 source                                                                ; pll_clkin_src_ioclkin_2                                                                                                ;
+;             -- PLL Reference Clock Input 1 source                                                                ; pll_clkin_src_ioclkin_2                                                                                                ;
+;             -- CLKIN(0) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(1) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(2) source                                                                                   ; SYS_REFCLK~input                                                                                                       ;
+;             -- CLKIN(3) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CORE_REFCLK source                                                                                ; N/A                                                                                                                    ;
+;             -- PLL_CASCADE_IN source                                                                             ; N/A                                                                                                                    ;
+;     -- PLL Output Counter 1                                                                                      ;                                                                                                                        ;
+;             -- Output Clock Frequency                                                                            ; 470.0 MHz                                                                                                              ;
+;             -- Duty Cycle                                                                                        ; 50                                                                                                                     ;
+;             -- Phase Shift                                                                                       ; 0 ps                                                                                                                   ;
+;             -- C Counter Odd Divider Even Duty Enable                                                            ; On                                                                                                                     ;
+;             -- C Counter                                                                                         ; 3                                                                                                                      ;
+;             -- C Counter PH Mux PRST                                                                             ; 0                                                                                                                      ;
+;             -- C Counter PRST                                                                                    ; 1                                                                                                                      ;
+;     -- PLL Output Counter 2                                                                                      ;                                                                                                                        ;
+;             -- Output Clock Frequency                                                                            ; 100.714286 MHz                                                                                                         ;
+;             -- Duty Cycle                                                                                        ; 50                                                                                                                     ;
+;             -- Phase Shift                                                                                       ; 0 ps                                                                                                                   ;
+;             -- C Counter Odd Divider Even Duty Enable                                                            ; Off                                                                                                                    ;
+;             -- C Counter                                                                                         ; 14                                                                                                                     ;
+;             -- C Counter PH Mux PRST                                                                             ; 0                                                                                                                      ;
+;             -- C Counter PRST                                                                                    ; 1                                                                                                                      ;
+;     -- PLL Output Counter 3                                                                                      ;                                                                                                                        ;
+;             -- Output Clock Frequency                                                                            ; 235.0 MHz                                                                                                              ;
+;             -- Duty Cycle                                                                                        ; 50                                                                                                                     ;
+;             -- Phase Shift                                                                                       ; 0 ps                                                                                                                   ;
+;             -- C Counter Odd Divider Even Duty Enable                                                            ; Off                                                                                                                    ;
+;             -- C Counter                                                                                         ; 6                                                                                                                      ;
+;             -- C Counter PH Mux PRST                                                                             ; 0                                                                                                                      ;
+;             -- C Counter PRST                                                                                    ; 1                                                                                                                      ;
+;     -- PLL Output Counter 4                                                                                      ;                                                                                                                        ;
+;             -- Output Clock Frequency                                                                            ; 705.0 MHz                                                                                                              ;
+;             -- Duty Cycle                                                                                        ; 50                                                                                                                     ;
+;             -- Phase Shift                                                                                       ; 0 ps                                                                                                                   ;
+;             -- C Counter Odd Divider Even Duty Enable                                                            ; Off                                                                                                                    ;
+;             -- C Counter                                                                                         ; 2                                                                                                                      ;
+;             -- C Counter PH Mux PRST                                                                             ; 0                                                                                                                      ;
+;             -- C Counter PRST                                                                                    ; 1                                                                                                                      ;
+;     -- PLL Output Counter 5                                                                                      ;                                                                                                                        ;
+;             -- Output Clock Frequency                                                                            ; 50.357143 MHz                                                                                                          ;
+;             -- Duty Cycle                                                                                        ; 50                                                                                                                     ;
+;             -- Phase Shift                                                                                       ; 0 ps                                                                                                                   ;
+;             -- C Counter Odd Divider Even Duty Enable                                                            ; Off                                                                                                                    ;
+;             -- C Counter                                                                                         ; 28                                                                                                                     ;
+;             -- C Counter PH Mux PRST                                                                             ; 0                                                                                                                      ;
+;             -- C Counter PRST                                                                                    ; 1                                                                                                                      ;
+;     -- PLL Output Counter 6                                                                                      ;                                                                                                                        ;
+;             -- Output Clock Frequency                                                                            ; 117.5 MHz                                                                                                              ;
+;             -- Duty Cycle                                                                                        ; 50                                                                                                                     ;
+;             -- Phase Shift                                                                                       ; 0 ps                                                                                                                   ;
+;             -- C Counter Odd Divider Even Duty Enable                                                            ; Off                                                                                                                    ;
+;             -- C Counter                                                                                         ; 12                                                                                                                     ;
+;             -- C Counter PH Mux PRST                                                                             ; 0                                                                                                                      ;
+;             -- C Counter PRST                                                                                    ; 1                                                                                                                      ;
+;     -- PLL Output Counter 7                                                                                      ;                                                                                                                        ;
+;             -- Output Clock Frequency                                                                            ; 352.5 MHz                                                                                                              ;
+;             -- Duty Cycle                                                                                        ; 50                                                                                                                     ;
+;             -- Phase Shift                                                                                       ; 0 ps                                                                                                                   ;
+;             -- C Counter Odd Divider Even Duty Enable                                                            ; Off                                                                                                                    ;
+;             -- C Counter                                                                                         ; 4                                                                                                                      ;
+;             -- C Counter PH Mux PRST                                                                             ; 0                                                                                                                      ;
+;             -- C Counter PRST                                                                                    ; 1                                                                                                                      ;
+;                                                                                                                  ;                                                                                                                        ;
+; afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0|tennm_pll                      ;                                                                                                                        ;
+;     -- IOPLL Location                                                                                            ; IOPLL_X64_Y333_N303                                                                                                    ;
+;     -- IOPLL Type                                                                                                ; I/O Bank                                                                                                               ;
+;     -- IOPLL Bandwidth                                                                                           ; Low                                                                                                                    ;
+;         -- IOPLL Bandwidth Range                                                                                 ; 1190000 to 740000 Hz                                                                                                   ;
+;     -- IOPLL Reference Clock Frequency                                                                           ; 100.0 MHz                                                                                                              ;
+;     -- IOPLL VCO Frequency                                                                                       ; 1250.0 MHz                                                                                                             ;
+;     -- IOPLL Operation Mode                                                                                      ; direct                                                                                                                 ;
+;     -- M Counter                                                                                                 ; 25                                                                                                                     ;
+;     -- N Counter                                                                                                 ; 2                                                                                                                      ;
+;     -- PLL Refclk Select                                                                                         ;                                                                                                                        ;
+;             -- PLL Reference Clock Input 0 source                                                                ; pll_clkin_src_coreclkin                                                                                                ;
+;             -- PLL Reference Clock Input 1 source                                                                ; pll_clkin_src_ioclkin_0                                                                                                ;
+;             -- CLKIN(0) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(1) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(2) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(3) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CORE_REFCLK source                                                                                ; SYS_REFCLK~input                                                                                                       ;
+;             -- PLL_CASCADE_IN source                                                                             ; N/A                                                                                                                    ;
+;     -- PLL Output Counter 1                                                                                      ;                                                                                                                        ;
+;             -- Output Clock Frequency                                                                            ; 312.5 MHz                                                                                                              ;
+;             -- Duty Cycle                                                                                        ; 50                                                                                                                     ;
+;             -- Phase Shift                                                                                       ; 0 ps                                                                                                                   ;
+;             -- C Counter Odd Divider Even Duty Enable                                                            ; Off                                                                                                                    ;
+;             -- C Counter                                                                                         ; 4                                                                                                                      ;
+;             -- C Counter PH Mux PRST                                                                             ; 0                                                                                                                      ;
+;             -- C Counter PRST                                                                                    ; 1                                                                                                                      ;
+;     -- PLL Output Counter 2                                                                                      ;                                                                                                                        ;
+;             -- Output Clock Frequency                                                                            ; 156.25 MHz                                                                                                             ;
+;             -- Duty Cycle                                                                                        ; 50                                                                                                                     ;
+;             -- Phase Shift                                                                                       ; 0 ps                                                                                                                   ;
+;             -- C Counter Odd Divider Even Duty Enable                                                            ; Off                                                                                                                    ;
+;             -- C Counter                                                                                         ; 8                                                                                                                      ;
+;             -- C Counter PH Mux PRST                                                                             ; 0                                                                                                                      ;
+;             -- C Counter PRST                                                                                    ; 1                                                                                                                      ;
+;                                                                                                                  ;                                                                                                                        ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|pll_inst|pll_inst              ;                                                                                                                        ;
+;     -- IOPLL Location                                                                                            ; IOPLL_X172_Y0_N303                                                                                                     ;
+;     -- IOPLL Type                                                                                                ; I/O Bank                                                                                                               ;
+;     -- IOPLL Bandwidth                                                                                           ; High                                                                                                                   ;
+;         -- IOPLL Bandwidth Range                                                                                 ; 1190000 to 740000 Hz                                                                                                   ;
+;     -- IOPLL Reference Clock Frequency                                                                           ; 30000 ps                                                                                                               ;
+;     -- IOPLL VCO Frequency                                                                                       ; 750 ps                                                                                                                 ;
+;     -- IOPLL Operation Mode                                                                                      ; direct                                                                                                                 ;
+;     -- M Counter                                                                                                 ; 40                                                                                                                     ;
+;     -- N Counter                                                                                                 ; 1                                                                                                                      ;
+;     -- PLL Refclk Select                                                                                         ;                                                                                                                        ;
+;             -- PLL Reference Clock Input 0 source                                                                ; pll_clkin_src_refclkin                                                                                                 ;
+;             -- PLL Reference Clock Input 1 source                                                                ; pll_clkin_src_refclkin                                                                                                 ;
+;             -- CLKIN(0) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(1) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(2) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(3) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CORE_REFCLK source                                                                                ; N/A                                                                                                                    ;
+;             -- PLL_CASCADE_IN source                                                                             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|pll_inst|pll_inst~refclk_Duplicate   ;
+;     -- PLL Output Counter 0                                                                                      ;                                                                                                                        ;
+;             -- Output Clock Frequency                                                                            ; 3000 ps                                                                                                                ;
+;             -- Duty Cycle                                                                                        ; 50                                                                                                                     ;
+;             -- Phase Shift                                                                                       ; 0 ps                                                                                                                   ;
+;             -- C Counter Odd Divider Even Duty Enable                                                            ; Off                                                                                                                    ;
+;             -- C Counter                                                                                         ; 4                                                                                                                      ;
+;             -- C Counter PH Mux PRST                                                                             ; 0                                                                                                                      ;
+;             -- C Counter PRST                                                                                    ; 1                                                                                                                      ;
+;     -- PLL Output Counter 1                                                                                      ;                                                                                                                        ;
+;             -- Output Clock Frequency                                                                            ; 1500 ps                                                                                                                ;
+;             -- Duty Cycle                                                                                        ; 50                                                                                                                     ;
+;             -- Phase Shift                                                                                       ; 0 ps                                                                                                                   ;
+;             -- C Counter Odd Divider Even Duty Enable                                                            ; Off                                                                                                                    ;
+;             -- C Counter                                                                                         ; 2                                                                                                                      ;
+;             -- C Counter PH Mux PRST                                                                             ; 0                                                                                                                      ;
+;             -- C Counter PRST                                                                                    ; 1                                                                                                                      ;
+;     -- PLL Output Counter 2                                                                                      ;                                                                                                                        ;
+;             -- Output Clock Frequency                                                                            ; 3000 ps                                                                                                                ;
+;             -- Duty Cycle                                                                                        ; 50                                                                                                                     ;
+;             -- Phase Shift                                                                                       ; 0 ps                                                                                                                   ;
+;             -- C Counter Odd Divider Even Duty Enable                                                            ; Off                                                                                                                    ;
+;             -- C Counter                                                                                         ; 4                                                                                                                      ;
+;             -- C Counter PH Mux PRST                                                                             ; 0                                                                                                                      ;
+;             -- C Counter PRST                                                                                    ; 1                                                                                                                      ;
+;     -- PLL Output Counter 3                                                                                      ;                                                                                                                        ;
+;             -- Output Clock Frequency                                                                            ; 1500 ps                                                                                                                ;
+;             -- Duty Cycle                                                                                        ; 50                                                                                                                     ;
+;             -- Phase Shift                                                                                       ; 0 ps                                                                                                                   ;
+;             -- C Counter Odd Divider Even Duty Enable                                                            ; Off                                                                                                                    ;
+;             -- C Counter                                                                                         ; 2                                                                                                                      ;
+;             -- C Counter PH Mux PRST                                                                             ; 0                                                                                                                      ;
+;             -- C Counter PRST                                                                                    ; 1                                                                                                                      ;
+;     -- PLL Output Counter 4                                                                                      ;                                                                                                                        ;
+;             -- Output Clock Frequency                                                                            ; 3000 ps                                                                                                                ;
+;             -- Duty Cycle                                                                                        ; 50                                                                                                                     ;
+;             -- Phase Shift                                                                                       ; 0 ps                                                                                                                   ;
+;             -- C Counter Odd Divider Even Duty Enable                                                            ; Off                                                                                                                    ;
+;             -- C Counter                                                                                         ; 4                                                                                                                      ;
+;             -- C Counter PH Mux PRST                                                                             ; 0                                                                                                                      ;
+;             -- C Counter PRST                                                                                    ; 1                                                                                                                      ;
+;                                                                                                                  ;                                                                                                                        ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0|arch|arch_inst|pll_inst|pll_inst              ;                                                                                                                        ;
+;     -- IOPLL Location                                                                                            ; IOPLL_X281_Y0_N303                                                                                                     ;
+;     -- IOPLL Type                                                                                                ; I/O Bank                                                                                                               ;
+;     -- IOPLL Bandwidth                                                                                           ; High                                                                                                                   ;
+;         -- IOPLL Bandwidth Range                                                                                 ; 1190000 to 740000 Hz                                                                                                   ;
+;     -- IOPLL Reference Clock Frequency                                                                           ; 30000 ps                                                                                                               ;
+;     -- IOPLL VCO Frequency                                                                                       ; 750 ps                                                                                                                 ;
+;     -- IOPLL Operation Mode                                                                                      ; direct                                                                                                                 ;
+;     -- M Counter                                                                                                 ; 40                                                                                                                     ;
+;     -- N Counter                                                                                                 ; 1                                                                                                                      ;
+;     -- PLL Refclk Select                                                                                         ;                                                                                                                        ;
+;             -- PLL Reference Clock Input 0 source                                                                ; pll_clkin_src_refclkin                                                                                                 ;
+;             -- PLL Reference Clock Input 1 source                                                                ; pll_clkin_src_refclkin                                                                                                 ;
+;             -- CLKIN(0) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(1) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(2) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(3) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CORE_REFCLK source                                                                                ; N/A                                                                                                                    ;
+;             -- PLL_CASCADE_IN source                                                                             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0|arch|arch_inst|pll_inst|pll_inst~refclk             ;
+;     -- PLL Output Counter 0                                                                                      ;                                                                                                                        ;
+;             -- Output Clock Frequency                                                                            ; 3000 ps                                                                                                                ;
+;             -- Duty Cycle                                                                                        ; 50                                                                                                                     ;
+;             -- Phase Shift                                                                                       ; 0 ps                                                                                                                   ;
+;             -- C Counter Odd Divider Even Duty Enable                                                            ; Off                                                                                                                    ;
+;             -- C Counter                                                                                         ; 4                                                                                                                      ;
+;             -- C Counter PH Mux PRST                                                                             ; 0                                                                                                                      ;
+;             -- C Counter PRST                                                                                    ; 1                                                                                                                      ;
+;     -- PLL Output Counter 1                                                                                      ;                                                                                                                        ;
+;             -- Output Clock Frequency                                                                            ; 1500 ps                                                                                                                ;
+;             -- Duty Cycle                                                                                        ; 50                                                                                                                     ;
+;             -- Phase Shift                                                                                       ; 0 ps                                                                                                                   ;
+;             -- C Counter Odd Divider Even Duty Enable                                                            ; Off                                                                                                                    ;
+;             -- C Counter                                                                                         ; 2                                                                                                                      ;
+;             -- C Counter PH Mux PRST                                                                             ; 0                                                                                                                      ;
+;             -- C Counter PRST                                                                                    ; 1                                                                                                                      ;
+;     -- PLL Output Counter 2                                                                                      ;                                                                                                                        ;
+;             -- Output Clock Frequency                                                                            ; 3000 ps                                                                                                                ;
+;             -- Duty Cycle                                                                                        ; 50                                                                                                                     ;
+;             -- Phase Shift                                                                                       ; 0 ps                                                                                                                   ;
+;             -- C Counter Odd Divider Even Duty Enable                                                            ; Off                                                                                                                    ;
+;             -- C Counter                                                                                         ; 4                                                                                                                      ;
+;             -- C Counter PH Mux PRST                                                                             ; 0                                                                                                                      ;
+;             -- C Counter PRST                                                                                    ; 1                                                                                                                      ;
+;     -- PLL Output Counter 3                                                                                      ;                                                                                                                        ;
+;             -- Output Clock Frequency                                                                            ; 1500 ps                                                                                                                ;
+;             -- Duty Cycle                                                                                        ; 50                                                                                                                     ;
+;             -- Phase Shift                                                                                       ; 0 ps                                                                                                                   ;
+;             -- C Counter Odd Divider Even Duty Enable                                                            ; Off                                                                                                                    ;
+;             -- C Counter                                                                                         ; 2                                                                                                                      ;
+;             -- C Counter PH Mux PRST                                                                             ; 0                                                                                                                      ;
+;             -- C Counter PRST                                                                                    ; 1                                                                                                                      ;
+;     -- PLL Output Counter 4                                                                                      ;                                                                                                                        ;
+;             -- Output Clock Frequency                                                                            ; 3000 ps                                                                                                                ;
+;             -- Duty Cycle                                                                                        ; 50                                                                                                                     ;
+;             -- Phase Shift                                                                                       ; 0 ps                                                                                                                   ;
+;             -- C Counter Odd Divider Even Duty Enable                                                            ; Off                                                                                                                    ;
+;             -- C Counter                                                                                         ; 4                                                                                                                      ;
+;             -- C Counter PH Mux PRST                                                                             ; 0                                                                                                                      ;
+;             -- C Counter PRST                                                                                    ; 1                                                                                                                      ;
+;                                                                                                                  ;                                                                                                                        ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0|arch|arch_inst|pll_inst|pll_inst~_Duplicate   ;                                                                                                                        ;
+;     -- IOPLL Location                                                                                            ; IOPLL_X240_Y0_N303                                                                                                     ;
+;     -- IOPLL Type                                                                                                ; I/O Bank                                                                                                               ;
+;     -- IOPLL Bandwidth                                                                                           ; High                                                                                                                   ;
+;         -- IOPLL Bandwidth Range                                                                                 ; 1190000 to 740000 Hz                                                                                                   ;
+;     -- IOPLL Reference Clock Frequency                                                                           ; 30000 ps                                                                                                               ;
+;     -- IOPLL VCO Frequency                                                                                       ; 750 ps                                                                                                                 ;
+;     -- IOPLL Operation Mode                                                                                      ; direct                                                                                                                 ;
+;     -- M Counter                                                                                                 ; 40                                                                                                                     ;
+;     -- N Counter                                                                                                 ; 1                                                                                                                      ;
+;     -- PLL Refclk Select                                                                                         ;                                                                                                                        ;
+;             -- PLL Reference Clock Input 0 source                                                                ; pll_clkin_src_refclkin                                                                                                 ;
+;             -- PLL Reference Clock Input 1 source                                                                ; pll_clkin_src_refclkin                                                                                                 ;
+;             -- CLKIN(0) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(1) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(2) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(3) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CORE_REFCLK source                                                                                ; N/A                                                                                                                    ;
+;             -- PLL_CASCADE_IN source                                                                             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0|arch|arch_inst|pll_inst|pll_inst~refclk_Duplicate   ;
+;                                                                                                                  ;                                                                                                                        ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0|arch|arch_inst|pll_inst|pll_inst~_Duplicate_1 ;                                                                                                                        ;
+;     -- IOPLL Location                                                                                            ; IOPLL_X294_Y0_N303                                                                                                     ;
+;     -- IOPLL Type                                                                                                ; I/O Bank                                                                                                               ;
+;     -- IOPLL Bandwidth                                                                                           ; High                                                                                                                   ;
+;         -- IOPLL Bandwidth Range                                                                                 ; 1190000 to 740000 Hz                                                                                                   ;
+;     -- IOPLL Reference Clock Frequency                                                                           ; 30000 ps                                                                                                               ;
+;     -- IOPLL VCO Frequency                                                                                       ; 750 ps                                                                                                                 ;
+;     -- IOPLL Operation Mode                                                                                      ; direct                                                                                                                 ;
+;     -- M Counter                                                                                                 ; 40                                                                                                                     ;
+;     -- N Counter                                                                                                 ; 1                                                                                                                      ;
+;     -- PLL Refclk Select                                                                                         ;                                                                                                                        ;
+;             -- PLL Reference Clock Input 0 source                                                                ; pll_clkin_src_refclkin                                                                                                 ;
+;             -- PLL Reference Clock Input 1 source                                                                ; pll_clkin_src_refclkin                                                                                                 ;
+;             -- CLKIN(0) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(1) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(2) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(3) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CORE_REFCLK source                                                                                ; N/A                                                                                                                    ;
+;             -- PLL_CASCADE_IN source                                                                             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0|arch|arch_inst|pll_inst|pll_inst~refclk_Duplicate_3 ;
+;                                                                                                                  ;                                                                                                                        ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|pll_inst|pll_inst~_Duplicate   ;                                                                                                                        ;
+;     -- IOPLL Location                                                                                            ; IOPLL_X185_Y0_N303                                                                                                     ;
+;     -- IOPLL Type                                                                                                ; I/O Bank                                                                                                               ;
+;     -- IOPLL Bandwidth                                                                                           ; High                                                                                                                   ;
+;         -- IOPLL Bandwidth Range                                                                                 ; 1190000 to 740000 Hz                                                                                                   ;
+;     -- IOPLL Reference Clock Frequency                                                                           ; 30000 ps                                                                                                               ;
+;     -- IOPLL VCO Frequency                                                                                       ; 750 ps                                                                                                                 ;
+;     -- IOPLL Operation Mode                                                                                      ; direct                                                                                                                 ;
+;     -- M Counter                                                                                                 ; 40                                                                                                                     ;
+;     -- N Counter                                                                                                 ; 1                                                                                                                      ;
+;     -- PLL Refclk Select                                                                                         ;                                                                                                                        ;
+;             -- PLL Reference Clock Input 0 source                                                                ; pll_clkin_src_refclkin                                                                                                 ;
+;             -- PLL Reference Clock Input 1 source                                                                ; pll_clkin_src_refclkin                                                                                                 ;
+;             -- CLKIN(0) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(1) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(2) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(3) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CORE_REFCLK source                                                                                ; N/A                                                                                                                    ;
+;             -- PLL_CASCADE_IN source                                                                             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|pll_inst|pll_inst~refclk             ;
+;                                                                                                                  ;                                                                                                                        ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|pll_inst|pll_inst~_Duplicate_1 ;                                                                                                                        ;
+;     -- IOPLL Location                                                                                            ; IOPLL_X227_Y0_N303                                                                                                     ;
+;     -- IOPLL Type                                                                                                ; I/O Bank                                                                                                               ;
+;     -- IOPLL Bandwidth                                                                                           ; High                                                                                                                   ;
+;         -- IOPLL Bandwidth Range                                                                                 ; 1190000 to 740000 Hz                                                                                                   ;
+;     -- IOPLL Reference Clock Frequency                                                                           ; 30000 ps                                                                                                               ;
+;     -- IOPLL VCO Frequency                                                                                       ; 750 ps                                                                                                                 ;
+;     -- IOPLL Operation Mode                                                                                      ; direct                                                                                                                 ;
+;     -- M Counter                                                                                                 ; 40                                                                                                                     ;
+;     -- N Counter                                                                                                 ; 1                                                                                                                      ;
+;     -- PLL Refclk Select                                                                                         ;                                                                                                                        ;
+;             -- PLL Reference Clock Input 0 source                                                                ; pll_clkin_src_refclkin                                                                                                 ;
+;             -- PLL Reference Clock Input 1 source                                                                ; pll_clkin_src_refclkin                                                                                                 ;
+;             -- CLKIN(0) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(1) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(2) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CLKIN(3) source                                                                                   ; N/A                                                                                                                    ;
+;             -- CORE_REFCLK source                                                                                ; N/A                                                                                                                    ;
+;             -- PLL_CASCADE_IN source                                                                             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|pll_inst|pll_inst~refclk_Duplicate_3 ;
+;                                                                                                                  ;                                                                                                                        ;
++------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+
+

@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim-build-12/header-correction-02/test_failure_evidence.py", line 98, in <module>
+    if sys.argv[1]=='--worker':sys.exit(worker(sys.argv[2],sys.argv[3],int(sys.argv[4]),sys.argv[5]))
+                                        ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim-build-12/header-correction-02/test_failure_evidence.py", line 55, in worker
+    rc=mod.run()
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim-build-12/remote-evidence/run_headers.py", line 37, in run
+    outputs={p:dict(sha256=gate.sha(W/p),bytes=(W/p).stat().st_size,mtime_ns=(W/p).stat().st_mtime_ns) for p in record['required_outputs'] if (W/p).is_file()}
+                                                                                                                                              ~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/pathlib/_abc.py", line 482, in is_file
+    return S_ISREG(self.stat(follow_symlinks=follow_symlinks).st_mode)
+                   ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim-build-12/header-correction-02/test_failure_evidence.py", line 38, in stat
+    if fault=='stat' and p==work/'fresh.txt' and (work/'other.txt').exists():raise OSError('inert output stat failure')
+                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: inert output stat failure

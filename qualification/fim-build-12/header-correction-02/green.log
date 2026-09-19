@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim-build-12/header-correction-02/test_failure_evidence.py", line 99, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim-build-12/header-correction-02/test_failure_evidence.py", line 92, in main
+    if not json.loads((root/'rerun-check.json').read_text())['immutable']:problems.append('rerun changed')
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 548, in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_abc.py", line 632, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 539, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/work12-inert-17-postflight-07uh_6cm/rerun-check.json'
