@@ -1,0 +1,219 @@
+{
+  "record": "ahls-afu-integration-01",
+  "date": "2026-09-19",
+  "mode": "read-only-research",
+  "roots": {
+    "local_N": "/home/joe/Projects/Thesis/AHLS/new_bsp/new",
+    "remote_host": "uwb_student00@100.101.227.97 (Agilex7Workstation)",
+    "remote_B": "/home/uwb_student00/ahls/new_BSP",
+    "remote_WORK12": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_12"
+  },
+  "question_1_generated_ahls_artifacts": {
+    "found": false,
+    "conclusion": "No AHLS-tool-generated RTL/IP artifacts exist anywhere searched. Only the hand-written reusable binding library is present (identical bytes local and remote).",
+    "searched_patterns": ["*.aocx", "*.aoco", "*.aocr", "*.prj", "top_*_di.ip", "*_di_hw.tcl", "*_di_inst.sv", "register_map_offsets.h", "*_register_map.h", "*interface_structs.sv", "dirs *hls* / aoc*"],
+    "searched_locations_local": [
+      "N/afu", "N/examples-afu", "N/experiments", "N/interfaces", "N/reference", "N/oneapi-asp", "N/ofs-agx7-pcie-attach", "N/qualification",
+      "/home/joe/Projects/Thesis/AHLS/hls-samples"
+    ],
+    "searched_locations_remote": [
+      "B (full, excl .git)", "B/work_ia840f_fim_05..12", "B/work_ia840f_ipgen_01..04", "B/work_ia840f_msa_generation_01", "B/qualification",
+      "/home/uwb_student00/ahls/altera_hls (depth 6)"
+    ],
+    "ahls_compiler_install_remote": {
+      "path": "/home/uwb_student00/ahls/altera_hls/aclsycl",
+      "nature": "tool installation, not design output",
+      "contains": ["bin/ahls", "bin/aoc", "bin/aocl", "ip/acl_*.sv (tool IP library)", "ip/board/bsp", "host/linux64", "include/CL", "include/sycl"],
+      "apptainer_image": "/home/uwb_student00/ahls/ubuntu-ahls.sif (422834176 bytes)",
+      "quartus_symlink": "/home/uwb_student00/ahls/altera -> /opt/intelFPGA_pro/23.1"
+    },
+    "binding_library": {
+      "path_local": "N/afu/ahls",
+      "path_remote": "B/afu/ahls",
+      "identical_across_hosts": true,
+      "entry_module": "ahls_board_binding",
+      "mandatory_instance_parameters": ["AFU_UUID", "CSR_BASE_BYTES", "CSR_SIZE_BYTES"],
+      "contract_status": "vendor_derived_board_sources_present_generated_ip_unbound",
+      "bound_instance": null,
+      "files": [
+        {"path": "afu/ahls/rtl/ahls_board_binding.sv", "lines": 75, "sha256": "dfdc163d67cb26a0f6757a699eedd5655584df09b9f29fbe0e31a083c1384d93"},
+        {"path": "afu/ahls/rtl/ahls_ofs_board_services.sv", "lines": 84, "sha256": "823aa941b8f7dc2addba78d0f9748cf3d22b2429e2e2835d6567099f235294a9"},
+        {"path": "afu/ahls/rtl/ahls_mmio_aperture.sv", "lines": 112, "sha256": "b9e424d95714c883eb8db19d4be96ffec4215f9f84683a80fe161b8d0c5294ad"},
+        {"path": "afu/ahls/rtl/ahls_mmio_to_avmm.sv", "lines": 80, "sha256": "4fa60523f3b227faca5b0b232d7aa0f29e1b13eea7c62bfb4fd510367b4100f2"},
+        {"path": "afu/ahls/rtl/ahls_avmm_byte_to_line.sv", "lines": 54, "sha256": "d47c8d45e8bd4643d1d990aba65ebd27a773971f15ae834130f8a82c88586645"},
+        {"path": "afu/ahls/ahls_binding_sources.tcl", "sha256": "d85a2a6fbcdc27815de6d3b9b7cb9aa7da6c11ff8225797f22b622afa5f14ec3"},
+        {"path": "afu/ahls/integration-contract.json", "sha256": "367fa9f993bd92f57dd116d7a3221b6370393680b3df32aeb715d1156b36b795"},
+        {"path": "afu/ahls/provenance.json", "sha256": "cfec27e29abb7fe92cd4818758ca6b65c6dbb212ed18bf6a46b414eda7e3830c"},
+        {"path": "afu/ahls/static-source-review.json", "sha256": "dbaf03643babc1b0522a747423193946409b8071b9686ec79fe0ac1b0c0daed1"}
+      ],
+      "expected_but_absent_generated_artifacts": [
+        "<project>.prj/top_<project>_di.ip",
+        "<project>.prj/<project>_di_hw.tcl",
+        "<project>.prj/<project>_di_inst.sv",
+        "<project>.prj/include/register_map_offsets.h",
+        "<project>.prj/include/kernel_headers/<kernel>_register_map.h",
+        "<project>.prj/<kernel>interface_structs.sv"
+      ]
+    }
+  },
+  "question_2_pr_slot_mechanics": {
+    "pr_partition_instance_path": "afu_top|pg_afu.port_gasket|pr_slot|afu_main",
+    "entity_rebinding": "afu_main",
+    "revision_type": "PR_IMPL",
+    "top_level_entity": "top",
+    "device": "AGFB027R25A2E2V",
+    "gbs_generation": "POST_FLOW_SCRIPT_FILE quartus_sh:ofs_partial_reconfig/gen_gbs.tcl",
+    "source_chain": ["ofs_pr_afu.qsf", "ofs_pr_afu_sources.tcl", "afu_if_design_files.tcl (interfaces)", "setup/afu_design_files.tcl (SR default when OFS_BUILD_TAG_SR_AFU unset)", "ofs-common/src/fpga_family/agilex/afu_main.tcl"],
+    "afu_main_tcl_selection": {
+      "OPAE_PLATFORM_GEN": "template-only PIM environment",
+      "afu_with_pim/afu.tcl present": "PIM-based AFU: afu_main_pim/port_afu_instances.sv + afu.tcl",
+      "else": "std exerciser: afu_main_std_exerciser_design_files.tcl + fim_compile/port_afu_instances.sv",
+      "pim.tcl": "loaded whenever present"
+    },
+    "work12_slot_occupant": {
+      "afu_tcl_present": false,
+      "pim_tcl_present": true,
+      "occupant": "standard exerciser AFU (HE-LPBK he_lb_top; HE-MEM he_mem_top; HE-HSSI absent because INCLUDE_HSSI undefined)",
+      "ofs_pr_afu_json": {"cluster": "ofs_pr_default", "uuid": "222baa4c-0ab8-4574-bf74-aa35b945a223"}
+    },
+    "afu_interface_native_afu_main": {
+      "clocks": {"clk": "pClk 470 MHz (clk_sys)", "clk_div2": "235 MHz", "clk_div4": "117.5 MHz", "uclk_usr": "PR user clock (JSON-retargetable)", "uclk_usr_div2": null},
+      "resets": ["rst_n", "port_rst_n[PG_NUM_PORTS][PG_NUM_LINKS] (incl FLR)"],
+      "pcie_axis_ifs": ["afu_axi_tx_a_if", "afu_axi_rx_a_if (all host responses)", "afu_axi_tx_b_if (optional read/IRQ)", "afu_axi_rx_b_if (write commits, tready must be 1 if unused)"],
+      "local_mem": "ofs_fim_emif_axi_mm_if.user ext_mem_if[NUM_MEM_CH-1:0], NUM_MEM_CH=2",
+      "debug": "ofs_jtag_if.sink remote_stp_jtag_if (INCLUDE_REMOTE_STP)",
+      "quiescence": "pr_freeze_emif[]/softreset_emif[] via pr_slot_freeze_axis"
+    },
+    "afu_interface_pim_ofs_plat_afu": {
+      "shim_module": "ofs_plat_afu (PLATFORM_SHIM_MODULE_NAME)",
+      "connector": "ofs_plat_if plat_ifc()",
+      "host_chan": "map_fim_pcie_ss_to_host_chan -> plat_ifc.host_chan.ports[s]",
+      "local_mem": "map_fim_emif_axi_mm_to_local_mem -> plat_ifc.local_mem.banks[b]",
+      "other": "plat_ifc.other.ports[0].sample_state stub"
+    },
+    "active_macros": ["INCLUDE_USER_CLK", "DDR4_NUM_MEM_GROUPS=2", "INCLUDE_IA840F", "INCLUDE_DDR4", "INCLUDE_PR", "DISABLE_HE_HSSI_CRC", "INCLUDE_PCIE_SS", "INCLUDE_REMOTE_STP", "INCLUDE_LOCAL_MEM", "SHARED_AFU_MAIN_TO_PORT_AFU_INSTANCES", "AFU_MAIN_HAS_PF_VF_MUX"],
+    "inactive_macros": ["INCLUDE_HSSI", "INCLUDE_PMCI", "INCLUDE_HPS", "INCLUDE_HBM", "INCLUDE_UART"],
+    "pcie_ss_config": {"links": 1, "pfs": 2, "pf0_vfs": 1, "total_vfs": 1, "port_gasket_served_by": "PF0 VF0 (shared VF port per top_cfg_pkg.sv)"}
+  },
+  "question_3_csr_mmio_contract": {
+    "mmio_data_width": 64,
+    "pf0_bar0_addr_width": 20,
+    "pf0_vf_bar0_addr_width": 20,
+    "afu_outer_aperture": "2 MiB PF0-VF0 BAR0 (20-bit byte address); hypothesis '11-bit outer' is incorrect",
+    "dfl": {
+      "apf_pr_slv_baseaddress": "0x70000 (BAR0 offset)",
+      "apf_pr_slv_address_width": 16,
+      "apf_pr_slv_next_dfh_offset": "0x10000",
+      "afu_dfh_location": "next DFL feature at BAR offset 0x80000",
+      "afu_dfh_requirement": "5 quadwords at MMIO address 0 of AFU region: DFH, UUID lo, UUID hi, 2 reserved (hello_world_avalon.sv)"
+    },
+    "pim_host_chan_mmio": {
+      "OFS_PLAT_PARAM_HOST_CHAN_MMIO_ADDR_WIDTH": "ofs_fim_cfg_pkg::MMIO_ADDR_WIDTH_PG (20, byte-level)",
+      "OFS_PLAT_PARAM_HOST_CHAN_MMIO_DATA_WIDTH": 64,
+      "MMIO_512_WRITE_SUPPORTED": 1,
+      "BYTE_EN_SUPPORTED": 1,
+      "address_space": "IOVA",
+      "num_intr_vecs": "ofs_fim_cfg_pkg::NUM_AFU_INTERRUPTS",
+      "transport": "PCIe MemRd/MemWr TLPs on AXI-S A channel; MMIO split from host-mem traffic in PIM gasket"
+    },
+    "avalon_mmio_geometry_macro": "ADDR_WIDTH = MMIO_ADDR_WIDTH_BYTES - clog2(BUSWIDTH/8); DATA_WIDTH = BUSWIDTH; BURST_CNT_WIDTH = 1",
+    "pg_csr": "port control (softreset/FLR), user-clock freq cmd/sts, remote STP; PG CSR window 64 KiB"
+  },
+  "question_4_local_mem_contract": {
+    "fim_native": {
+      "interface": "ofs_fim_emif_axi_mm_if.user ext_mem_if[1:0]",
+      "channels": 2,
+      "protocol": "AXI4-MM",
+      "addr_width_bytes": 34,
+      "id_width": 9,
+      "user_width_awuser_aruser": 14,
+      "data_width": 512,
+      "wstrb_width": 64,
+      "len_width": 8,
+      "buser_ruser_width": 1
+    },
+    "pim_local_mem": {
+      "native_class": "native_axi",
+      "num_banks": 2,
+      "line_addr_width": 28,
+      "byte_addr_width": 34,
+      "data_width": 512,
+      "ecc_width": 0,
+      "burst_cnt_width_avalon": 9,
+      "burst_cnt_width_axi": 8,
+      "user_width": "14 (FIM) organized {AFU user, FIM user, PIM user}",
+      "rid_wid_width": 9,
+      "gasket": "fim_emif_axi_mm",
+      "max_active_lines": {"rd": 256, "wr": 128},
+      "suggested_timing_reg_stages": 2,
+      "afu_views": ["AXI: ofs_plat_axi_mem_if + LOCAL_MEM_AXI_MEM_PARAMS*", "Avalon: LOCAL_MEM_AVALON_MEM_PARAMS via ofs_plat_local_mem_as_avalon_mem.sv (binding library choice)"]
+    },
+    "host_chan_class": {
+      "native_class": "native_axis_pcie_tlp",
+      "gasket": "pcie_ss",
+      "addr_width_lines": 51,
+      "data_width": "ofs_pcie_ss_cfg_pkg::TDATA_WIDTH (512-bit)",
+      "max_active_flits": {"rd": 1024, "wr": 128},
+      "translation": "none (physical IOVA only; no VTP/USM)"
+    },
+    "clocks": {"pClk": "470 MHz", "pClkDiv2": "235 MHz", "pClkDiv4": "117.5 MHz", "uclk_usr": "JSON-retargetable user clock"}
+  },
+  "gaps_ranked": [
+    {"rank": 1, "criticality": "CRITICAL", "gap": "No generated AHLS IP exists anywhere (no <project>.prj, di.ip/di_hw.tcl/di_inst.sv, register-map headers). Entire AFU payload must be produced by an authorized AHLS compile before integration."},
+    {"rank": 2, "criticality": "CRITICAL", "gap": "AFU identity/aperture unbound: no UUID selected, CSR_BASE_BYTES/CSR_SIZE_BYTES unset, ofs_pr_afu.json still default exerciser UUID; DFH placement at 0x80000 within 2 MiB VF BAR0 must be fixed."},
+    {"rank": 3, "criticality": "CRITICAL", "gap": "afu_with_pim/afu.tcl not authored; PR slot builds std exerciser (HE-LPBK+HE-MEM). Need afu.tcl + AFU JSON + afu-top-interface choice (ofs_plat_afu vs afu_main)."},
+    {"rank": 4, "criticality": "HIGH", "gap": "Invocation semantics unselected (CSR start/done vs conduit); no MMIO-to-start controller supplied; FinishCounter ownership/ordering unspecified."},
+    {"rank": 5, "criticality": "HIGH", "gap": "Host-memory path decisions: physical IOVA only, buffer registration, width/burst/outstanding adaptation of generated Avalon agents to PIM split rd/wr host_chan, ordering/quiescence definition."},
+    {"rank": 6, "criticality": "HIGH", "gap": "Streaming pipes have no transport (no HSSI, no DMA bridge); endpoints must be bounded, bridged by design, or kept internal."},
+    {"rank": 7, "criticality": "MEDIUM", "gap": "Generated-IP clock/reset binding: domain choice, polarity, CDC to 470 MHz pClk, user-clock JSON request, freeze/quiescence with pr_slot_freeze_axis."},
+    {"rank": 8, "criticality": "MEDIUM", "gap": "CSR pipes and device globals need generated register map + separate MM agent decision."},
+    {"rank": 9, "criticality": "MEDIUM", "gap": "OPAE host layer absent (enumeration, MMIO access widths/offsets, buffer registration, bounded waits, teardown)."},
+    {"rank": 10, "criticality": "MEDIUM", "gap": "Toolchain compatibility unverified: AHLS 2026.1 output vs Quartus 26.1.1 Pro PR flow import."},
+    {"rank": 11, "criticality": "LOW", "gap": "Verification ladder all false: elaboration, simulation, timing, hardware gates."}
+  ],
+  "cited_file_hashes": {
+    "local": [
+      {"path": "ofs-agx7-pcie-attach/syn/board/ia840f/syn_top/ofs_pr_afu.qsf", "sha256": "7895adcb83f6057bf26f1ec51a26433339aef9cf12440282732a4723283016f4", "note": "SOURCE copy; WORK12 copy differs by documented native QSF migration (8e651a807fe04b6eaacc35d13472359435229d41ce6f2567db8c384d4eec68ac)"},
+      {"path": "ofs-agx7-pcie-attach/syn/board/ia840f/syn_top/ofs_pr_afu_sources.tcl", "sha256": "20673909569e8e7fbbe67ad2d377162a4f1a9853525599fede392d22fab41585", "note": "byte-identical in WORK12"},
+      {"path": "ofs-agx7-pcie-attach/syn/board/ia840f/syn_top/ofs_pr_afu.json", "sha256": "1e142303faf31a800174358ae04e1870d837d82bb8675c229bcc52dc3ba493c6", "note": "byte-identical in WORK12"},
+      {"path": "examples-afu/tutorial/afu_types/01_pim_ifc/hello_world/hw/rtl/avalon/hello_world_avalon.sv", "sha256": "0d0a23dde942d3217c75f5ea01702f8d6b8aaa0ab6959b8eb1e6840c6cedf58e"},
+      {"path": "examples-afu/tutorial/afu_types/01_pim_ifc/local_memory/hw/rtl/avalon/ofs_plat_afu.sv", "sha256": "35b0874b323378857f34d5412b37ef00ef622cad1d07e63e92fd0d927dd8b3c8"}
+    ],
+    "remote_WORK12": [
+      {"path": "syn/board/ia840f/syn_top/ofs_pr_afu.qsf", "sha256": "8e651a807fe04b6eaacc35d13472359435229d41ce6f2567db8c384d4eec68ac"},
+      {"path": "syn/board/ia840f/syn_top/ofs_pr_afu_sources.tcl", "sha256": "20673909569e8e7fbbe67ad2d377162a4f1a9853525599fede392d22fab41585"},
+      {"path": "syn/board/ia840f/syn_top/ofs_pr_afu.json", "sha256": "1e142303faf31a800174358ae04e1870d837d82bb8675c229bcc52dc3ba493c6"},
+      {"path": "syn/board/ia840f/syn_top/fim_project_macros.tcl", "sha256": "7e858a4d5d7c54a1727dd09083c35d95f68fe43d674d241355f59f6c6a2df5ea"},
+      {"path": "syn/board/ia840f/syn_top/afu_with_pim/pim.tcl", "sha256": "1b93ac1afd26385fda0613658743c37f285a23814508c3e0104ca895b2ddc3cf"},
+      {"path": "syn/board/ia840f/syn_top/afu_with_pim/afu/hw/dummy_afu.json", "sha256": "c36063c86860abf71a59832ff3e6396654308692706f1fd572a307cee33a4bf7"},
+      {"path": "syn/board/ia840f/syn_top/afu_with_pim/afu/hw/afu_json_info.vh", "sha256": "86611ce906ede5cf7b02f7469a7c908c2553fad27e12e5fe209a7d67f72226d9"},
+      {"path": "syn/board/ia840f/syn_top/afu_with_pim/afu/build/platform/platform_if_addenda.qsf", "sha256": "ff281dd5e4ef9a5bc09f9b066b1c7e7b75136af513456aefba15cc1d71d583ec"},
+      {"path": "syn/board/ia840f/syn_top/afu_with_pim/afu/build/platform/ofs_plat_if/par/platform_if_addenda.qsf", "sha256": "5bfcfac51eee587bdb3b240031cc489e7066507d31d8b8e328114cd18e835fbd"},
+      {"path": "syn/board/ia840f/syn_top/afu_with_pim/afu/build/platform/ofs_plat_if/rtl/ofs_plat_if_top_config.vh", "sha256": "cab8e6cae5c2a30f7e7d90e226606d4b1edd9287fb4cdfbadf74c1c7a4340c66"},
+      {"path": "syn/board/ia840f/syn_top/afu_with_pim/afu/build/platform/platform_afu_top_config.vh", "sha256": "abe5da1132568f464bc72e5991f76ac6668c9761562cda4b822f47e0938dae97"},
+      {"path": "syn/board/ia840f/syn_top/ofs_ip_cfg_db/ofs_ip_cfg_pcie_ss.vh", "sha256": "1e22cf7064ce3653e67b5acd2bb59a313eb450c30dd62c67055bb7e90ca27d8c"},
+      {"path": "syn/board/ia840f/syn_top/ofs_ip_cfg_db/ofs_ip_cfg_db.vh", "sha256": "cc0a7eb7c0538185d6e15db040d9f918d482951e079208421d004ac02fa9e937"},
+      {"path": "syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/platform/platform_db/ofs_agilex.json", "sha256": "21b571889ea3124b6e0a77fba74b5cb795d5ee2aac4e45bf229554b7526ae50b"},
+      {"path": "src/afu_top/mux/top_cfg_pkg.sv", "sha256": "85ac427a8413b7dcbb333a94274a9b509c1d48c314675369d3ea3db5f392099f"},
+      {"path": "ofs-common/src/fpga_family/agilex/afu_main.tcl", "sha256": "800b6fc92915cd4e66aba8cc051997ceea8fe155a2b2ae20dec85a2db21c2f47"},
+      {"path": "ofs-common/src/fpga_family/agilex/port_gasket/port_gasket.sv", "sha256": "7d38322cecdb120047a24603180d95ca69448522469d1ac79abaf8450eaed3ec"},
+      {"path": "ofs-common/src/fpga_family/agilex/port_gasket/pr_slot.sv", "sha256": "e6f69b311e7d592778f1e75a303c7517ef294dc47e28362a7ac3e87b96b861b1"},
+      {"path": "ofs-common/src/fpga_family/agilex/port_gasket/afu_main_pim/port_afu_instances.sv", "sha256": "c490fb485c9505684af5b51ecd17f352bff6c3f2b138d4bc38cc60a624079a71"},
+      {"path": "ofs-common/src/fpga_family/agilex/port_gasket/afu_main_std_exerciser/fim_compile/afu_main.sv", "sha256": "ea02940bc34e6fa33e142e429bbb0df8db893239880c8e15ba6039751bfe8e1c"},
+      {"path": "ofs-common/src/fpga_family/agilex/port_gasket/afu_main_std_exerciser/fim_compile/port_afu_instances.sv", "sha256": "e3e0a876379c02bd486b30f792c3c165bf38d2cf18effc38bdcda9e09e896bb7"},
+      {"path": "ipss/mem/qip/mem_ss/sv_wrapper/mem_ss_if_info.vh", "sha256": "901fa97b882f41c7aa7ae2278a47134b5972ed04df1023fca0ca3838b40a80d1"},
+      {"path": "ipss/mem/qip/mem_ss/sv_wrapper/mem_ss_param_pkg.sv", "sha256": "25908195980bb69b085f2ae004b490a7e6fe38dd04fe6e4779db46b321d65aa7"},
+      {"path": "src/includes/ofs_fim_cfg_pkg.sv", "sha256": "4dc25f5a083e2b2fc8ed2a51875a7235590cc5ad456a21adf9ecc3f4ecceaa38"},
+      {"path": "src/includes/fabric_width_pkg.sv", "sha256": "4b98d4dd1d5de1b4aa42f557d3287fd1f2f2148158d357708c849788a6279ba6"},
+      {"path": "ofs-common/src/fpga_family/agilex/sys_pll/sv_wrapper/sys_pll_ip_params.vh", "sha256": "814728c53a5a2c19e5909e601ac3d16dd18db3b0dde7d171dbdb012ac67bd0c5"},
+      {"path": "ofs-common/src/fpga_family/agilex/mem_ss/ofs_fim_emif_axi_mm_if.sv", "sha256": "914e3a8ddd2739682973aa7481930cc4344e3ca8510ff53899259f40dcf9431c"},
+      {"path": "ofs-common/src/fpga_family/agilex/mem_ss/includes/ofs_fim_mem_if_pkg.sv", "sha256": "f816e463f345769260b476bea663ac63fcbd6f087a191facbd69be6db389fff1"}
+    ]
+  },
+  "constraints_observed": {
+    "vendor_execution": false,
+    "remote_mutation": false,
+    "local_writes_confined_to": "N/qualification/ahls-afu-integration-01/",
+    "ssh_mode": "BatchMode read-only"
+  }
+}
