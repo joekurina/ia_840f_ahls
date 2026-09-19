@@ -1,0 +1,41 @@
+====SIZES====
+388K	qual_test
+1.9M	ip
+80K	logs
+100K	qual_test.qsys
+====EVIDENCE_TAR====
+-rw-r--r--. 1 uwb_student00 uwb_student00 288959 Sep 19 12:35 /tmp/qsysimp_evidence.tgz
+2a04fa39690ad39e5698655dd42a016f9f749fbd7482ac5dc524df14bb66dc5c  /tmp/qsysimp_evidence.tgz
+====PRODUCT_HASHES====
+135 /tmp/qsysimp_products_sha256.txt
+027fbb36fbe13c99038dfb6d46b2a661b7df2b10bb6ad1ac986e66afb3f8c1eb  ip/qual_test/qual_test_clk_1x.ip
+71e12111eb9725d8ab1ae0c13df394cc0ff25a73026f859bd9829a6e65f10cbb  ip/qual_test/qual_test_k0.ip
+bb74020e9c085c583a679ecf192957588600d98d3d3a1072910f9a0e57ca31fd  ip/qual_test/qual_test_rst.ip
+99ef72eeb89d36d5003b43a7ef875b70b63cc22361176200375e1de9de717be8  qual_test/synth/qual_test.v
+72c6f7903fe40b675f5315ad5de5d00b560e0458f32f2b41618fea5b51a59c5b  qual_test.qsys
+====QSF_AFTER====
+# -------------------------------------------------------------------------- #
+# qsys-import qualification settings (ahls-qsys-import-01)
+# Mirrors the proven mailbox_migration.qsf pattern; device = IA-840F part.
+# -------------------------------------------------------------------------- #
+set_global_assignment -name FAMILY "Agilex 7"
+set_global_assignment -name DEVICE AGFB027R25A2E2V
+set_global_assignment -name TOP_LEVEL_ENTITY qual_test
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 2
+set_global_assignment -name EDA_SIMULATION_TOOL "Questa Intel FPGA (Verilog)"
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name PWRMGT_VOLTAGE_OUTPUT_FORMAT "LINEAR FORMAT"
+set_global_assignment -name PWRMGT_LINEAR_FORMAT_N "-12"
+set_global_assignment -name LAST_QUARTUS_VERSION "26.1.1 Pro Edition"
+set_global_assignment -name IP_FILE ip/qual_test/qual_test_clk_1x.ip
+set_global_assignment -name IP_FILE ip/qual_test/qual_test_rst.ip
+set_global_assignment -name IP_FILE ip/qual_test/qual_test_k0.ip
+set_global_assignment -name QSYS_FILE qual_test.qsys
+====QPF_DIRTY_CHECK====
+23
+1e64990babc858d83a9d3df5c0df246666cf98fde7df3523b32089e4618131c5  /home/uwb_student00/ahls/new_BSP/work_ahls_compile_01/qual_vec_op.report.prj/qual_vec_op_report_di_hw.tcl
+HASH_DONE

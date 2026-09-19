@@ -1,0 +1,18 @@
+	component qual_test is
+		port (
+			clock_reset_clk           : in  std_logic                     := 'X';             -- clk
+			freeze_freeze             : in  std_logic                     := 'X';             -- freeze
+			device_exception_bus_data : out std_logic_vector(63 downto 0);                    -- data
+			kernel_irqs_irq           : out std_logic;                                        -- irq
+			avs_csr_read              : in  std_logic                     := 'X';             -- read
+			avs_csr_readdata          : out std_logic_vector(63 downto 0);                    -- readdata
+			avs_csr_readdatavalid     : out std_logic;                                        -- readdatavalid
+			avs_csr_write             : in  std_logic                     := 'X';             -- write
+			avs_csr_writedata         : in  std_logic_vector(63 downto 0) := (others => 'X'); -- writedata
+			avs_csr_address           : in  std_logic_vector(4 downto 0)  := (others => 'X'); -- address
+			avs_csr_byteenable        : in  std_logic_vector(7 downto 0)  := (others => 'X'); -- byteenable
+			avs_csr_waitrequest       : out std_logic;                                        -- waitrequest
+			clock_reset_reset_reset_n : in  std_logic                     := 'X'              -- reset_n
+		);
+	end component qual_test;
+
