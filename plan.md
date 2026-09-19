@@ -252,7 +252,7 @@ Recheck how this pinned flow persists options across stages before using the tem
 
 1. Obtain explicit programming/test authorization and identify the exact card/BDF and exclusive ownership.
 2. Save the known-good image identity, host-stack baseline and recovery instructions. Confirm a usable out-of-band/JTAG recovery path before replacing the running FIM.
-3. Review the vendor-supported volatile programming method and exact artifact; do not assume generic `fpgasupdate` supports this BMC. Stop if safe volatile/recovery access is unavailable.
+3. Review the vendor-supported volatile programming method and exact artifact; do not assume generic `fpgasupdate` supports this BMC. Stop if safe volatile/recovery access is unavailable. Durable deployment on this host requires **QSPI flash** via the BittWare SDK `bw_agilex_flash_programmer` (reboots power-cycle the machine, so JTAG SOF is volatile-only): exact procedure, AER-off steps and recovery gates in [hw-programming-recovery.md](docs/hw-programming-recovery.md).
 4. Program only the reviewed FIM. Re-enumerate PCIe and revalidate DFL/OPAE binding from Stage E.
 5. Inspect link negotiation, IDs, BAR allocation, PF/VF layout, AER/kernel logs, clocks, both DDR calibrations and actual BittWare management health.
 
