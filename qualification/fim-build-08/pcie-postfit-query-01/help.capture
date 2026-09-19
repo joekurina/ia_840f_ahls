@@ -1,0 +1,1667 @@
+[uwb_student00@Agilex7Workstation ~]$ python3 -c 'from pathlib import Path; prin
+t(Path("/home/uwb_student00/quartus_26/instructions.md").read_text()); w=Path("/
+home/uwb_student00/ahls/new_BSP/work_ia840f_fim_08"); print("ROOT", list(w.iterd
+ir())); print("QSF",list(w.rglob("ofs_top.qsf")))'
+# Quartus Pro 26.1.1 and Questa FPGA Edition
+
+## Installation and license
+
+- Installation: `/opt/altera/26.1.1`
+- Quartus: **26.1.1 Build 130, Pro Edition**
+- Simulator: **Questa Altera FPGA Edition 2025.3** (`questa_fe`)
+- Installed device family: **Agilex 7**
+- License: `/home/uwb_student00/quartus_26/LR-191011_License.dat`
+- License expiration: **December 16, 2026**
+- License type: node-locked evaluation, tied to this workstation's NIC MAC addre
+ss `00:be:43:b7:3a:b3`.
+
+The license includes Quartus Standard/Pro and Questa FPGA Edition. Renew or repl
+ace the license before it expires.
+
+## 1. Configure your terminal
+
+Run this before using the tools:
+
+```bash
+export QUARTUS_ROOTDIR_OVERRIDE=/opt/altera/26.1.1/quartus
+export PATH="/opt/altera/26.1.1/quartus/bin:/opt/altera/26.1.1/questa_fe/bin:$PA
+TH"
+
+export LM_LICENSE_FILE="$HOME/quartus_26/LR-191011_License.dat"
+export MGLS_LICENSE_FILE="$LM_LICENSE_FILE"
+export SALT_LICENSE_SERVER="$LM_LICENSE_FILE"
+```
+
+**Important:** This Questa release requires `SALT_LICENSE_SERVER`. During verifi
+cation, simulation failed with only `LM_LICENSE_FILE` and `MGLS_LICENSE_FILE`, t
+hen passed after setting `SALT_LICENSE_SERVER` to the license file.
+
+### Make the settings persistent
+
+Edit `~/.bashrc` and replace the old Quartus/license exports with the block abov
+e. At verification time, the old settings referenced:
+
+- `/opt/intelFPGA_pro/23.1/quartus`
+- `/opt/intelFPGA_pro/23.1/questa_fe`
+- `/home/uwb_student00/IA-840f/LR-157262_License.dat`
+
+In particular, an old `QUARTUS_ROOTDIR_OVERRIDE` redirects even an explicitly in
+voked new Quartus launcher to the old installation.
+
+After saving, open a new terminal or run:
+
+```bash
+source ~/.bashrc
+hash -r
+```
+
+Verify tool selection:
+
+```bash
+command -v quartus_sh
+quartus_sh --version
+command -v vsim
+vsim -version
+```
+
+Expected versions: Quartus **26.1.1 Build 130** and Questa FPGA Edition **2025.3
+**. Run development tools as your normal user; root is not needed for license ch
+eckout, compilation, or simulation.
+
+## 2. Use Quartus
+
+### Graphical interface
+
+From a desktop terminal with a working display:
+
+```bash
+quartus
+```
+
+Open your project's `.qpf` file. GUI operation was not verified in the headless
+SSH session.
+
+### Command-line compilation
+
+From the directory containing your project, substitute its actual name for `my_p
+roject`:
+
+```bash
+quartus_sh --flow compile my_project
+```
+
+For a specific revision:
+
+```bash
+quartus_sh --flow compile my_project -c my_revision
+```
+
+Check the compilation reports and timing results in the project's configured out
+put directory, commonly `output_files/`. Before programming a real board, use it
+s correct FPGA part, pin assignments, timing constraints, Reset Release IP, and
+power-management settings.
+
+## 3. Use Questa FPGA Edition
+
+From your simulation working directory, compile your design and testbench. Repla
+ce the example filenames and top-level testbench name with your own:
+
+```bash
+vlib work
+vlog -sv design.sv testbench.sv
+vsim -c work.tb -do 'run -all; quit -f'
+```
+
+Create `work` only if it does not already exist. For VHDL, compile sources using
+ `vcom` instead of `vlog`.
+
+The testbench should terminate or otherwise stop the simulation after checking i
+ts results. Inspect the transcript for errors and assertion failures; for automa
+ted testing, make the testbench/script return a nonzero exit code on failure.
+
+For interactive graphical simulation with a working display:
+
+```bash
+vsim work.tb
+```
+
+For designs containing Altera IP, use the IP/project-generated simulation setup
+scripts and required simulation libraries, rather than only compiling the top-le
+vel HDL files.
+
+## 4. Check programming hardware
+
+```bash
+jtagconfig
+quartus_pgm --list
+```
+
+At verification time, both reported **No JTAG hardware available**. Connect and
+power the board and its supported JTAG connection, then repeat these checks. If
+a cable is attached but not visible, investigate USB visibility, cable drivers/p
+ermissions, and JTAG server configuration.
+
+From a graphical desktop, launch the programmer with:
+
+```bash
+quartus_pgm
+```
+
+Select the correct hardware and a programming file built for the actual board. H
+ardware programming and board functionality have not yet been verified.
+
+## 5. Verification performed on September 17, 2026
+
+The following checks used the installation and license paths documented above:
+
+| Check | Result |
+| --- | --- |
+| Quartus version | 26.1.1 Build 130 |
+| Agilex 7 device database | Installed; 2,811 device entries |
+| Small counter synthesis | Passed |
+| Placement and routing | Passed; zero errors or warnings |
+| Timing analysis at 100 MHz | Passed; setup slack +7.284 ns, hold slack +0.124
+ns |
+| Assembler/programming-file generation | Passed; generated `smoke.sof` |
+| Questa FPGA Edition simulation | Passed; counter reached expected value 10; ze
+ro errors |
+| JTAG visibility | No hardware detected |
+| GUI and real-board operation | Not verified |
+
+The compile test targeted `AGIA027R31A1E1VC` with virtual I/O pins. It generated
+ warnings about missing Reset Release IP and board-specific power-management set
+tings. **Its `smoke.sof` is a toolchain test artifact, not a programming file fo
+r the workstation's board.**
+
+Verification sources and reports were left in `/tmp/opencode/altera_verify/`, in
+cluding:
+
+- `smoke.sv`: counter and self-checking testbench
+- `compile.tcl` and `smoke.sdc`: Quartus test setup
+- `compile.log`: synthesis, fitting, and timing results
+- `assembler.log`: successful standalone assembler run
+- `transcript`: Questa simulation output
+- `output_files/`: Quartus reports and test programming file
+
+The full-flow command reached the execution time limit after timing analysis; th
+e assembler was then run separately and completed successfully. Temporary files
+may be removed by system cleanup.
+
+## Troubleshooting
+
+### Quartus reports version 23.1
+
+Check `QUARTUS_ROOTDIR_OVERRIDE` and `PATH`, then reapply the environment block
+in section 1. An absolute path to the new launcher alone does not override an ol
+d `QUARTUS_ROOTDIR_OVERRIDE`.
+
+### Questa reports an invalid license environment
+
+Verify:
+
+```bash
+printenv LM_LICENSE_FILE MGLS_LICENSE_FILE SALT_LICENSE_SERVER
+test -r "$SALT_LICENSE_SERVER" && printf 'License file is readable\n'
+```
+
+All three variables should reference the current `LR-191011_License.dat` file. L
+aunch Questa from the configured terminal so it inherits these settings.
+
+### License checkout fails after previously working
+
+Check the error message, license expiration, system date, file readability, and
+workstation host-ID match. This license expires December 16, 2026 and is tied to
+ this machine. Installing the software on another host does not transfer the lic
+ense.
+
+ROOT [PosixPath('/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_08/ofs-common'
+), PosixPath('/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_08/ipss'), PosixP
+ath('/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_08/src'), PosixPath('/home
+/uwb_student00/ahls/new_BSP/work_ia840f_fim_08/syn'), PosixPath('/home/uwb_stude
+nt00/ahls/new_BSP/work_ia840f_fim_08/tools'), PosixPath('/home/uwb_student00/ahl
+s/new_BSP/work_ia840f_fim_08/quartus_proj_dir')]
+QSF [PosixPath('/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_08/src/board/ia
+840f/legacy/syn/syn_top/ofs_top.qsf'), PosixPath('/home/uwb_student00/ahls/new_B
+SP/work_ia840f_fim_08/syn/board/ia840f/syn_top/ofs_top.qsf')]
+[uwb_student00@Agilex7Workstation ~]$ python3 -c "import base64;exec(base64.b64d
+ecode('ZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCmltcG9ydCBvcyxoYXNobGliLGpzb24sc3VicHJvY
+2Vzcwp3PVBhdGgoJy9ob21lL3V3Yl9zdHVkZW50MDAvYWhscy9uZXdfQlNQL3dvcmtfaWE4NDBmX2Zpb
+V8wOCcpCmU9UGF0aCgnL2hvbWUvdXdiX3N0dWRlbnQwMC9haGxzL25ld19CU1AvcXVhbGlmaWNhdGlvb
+i9maW0tYnVpbGQtMDgvcGNpZS1wb3N0Zml0LXF1ZXJ5LTAxJyk7IGUubWtkaXIocGFyZW50cz1UcnVlL
+GV4aXN0X29rPUZhbHNlKQpwcmludCgnSURFTlRJVFknLG9zLnVuYW1lKCkubm9kZW5hbWUsb3MuZ2V0d
+WlkKCkpCnA9dy8nc3luL2JvYXJkL2lhODQwZi9zeW5fdG9wJwpwcmludCgnUFJPSkVDVCcsWyh4Lm5hb
+WUseC5pc19zeW1saW5rKCkpIGZvciB4IGluIHAuaXRlcmRpcigpXSk7IHByaW50KChwLydvZnNfdG9wL
+nFzZicpLnJlYWRfdGV4dCgpKQplbnY9b3MuZW52aXJvbi5jb3B5KCk7ZW52WydRVUFSVFVTX1JPT1RES
+VJfT1ZFUlJJREUnXT0nL29wdC9hbHRlcmEvMjYuMS4xL3F1YXJ0dXMnO2VudlsnTE1fTElDRU5TRV9GS
+UxFJ109Jy9ob21lL3V3Yl9zdHVkZW50MDAvcXVhcnR1c18yNi9MUi0xOTEwMTFfTGljZW5zZS5kYXQnC
+nI9c3VicHJvY2Vzcy5ydW4oWycvb3B0L2FsdGVyYS8yNi4xLjEvcXVhcnR1cy9iaW4vcXVhcnR1c19zd
+GEnLCctLWhlbHAnXSxjd2Q9ZSxlbnY9ZW52LHN0ZG91dD1zdWJwcm9jZXNzLlBJUEUsc3RkZXJyPXN1Y
+nByb2Nlc3MuU1RET1VULHRleHQ9VHJ1ZSx0aW1lb3V0PTIwKTsoZS8nc3RhLWhlbHAubG9nJykud3Jpd
+GVfdGV4dChyLnN0ZG91dCk7IHByaW50KHIuc3Rkb3V0KQo='))"
+IDENTITY Agilex7Workstation 1000
+PROJECT [('ofs_pr_afu.json', False), ('ofs_pr_afu.qsf', False), ('ofs_pr_afu_sou
+rces.tcl', False), ('ofs_top.qpf', False), ('ofs_top.qsf', False), ('ofs_top_sou
+rces.tcl', False), ('quartus.ini', False), ('ofs_partial_reconfig', False), ('fm
+e_id.mif', False), ('ofs_ip_cfg_db', False), ('ofs_top.qsf.backup', False), ('of
+s_top_assignment_defaults.qdf', False), ('dni', False), ('afu_with_pim', False),
+ ('ofs_pr_afu.qsf.backup', False), ('ofs_pr_afu_assignment_defaults.qdf', False)
+, ('project_ip_for_generation.tcl', False), ('mem_ss.ip', True), ('qdb', False),
+ ('output_files', False), ('tmp-clearbox', False), ('fim_project_macros.tcl', Fa
+lse), ('ofs_top_ioaux_right_param_table.hex', False), ('fme-ifc-id.txt', False),
+ ('build_env_db.txt', False), ('ofs_top.out.sdc', False), ('fim_base_ip.tcl', Fa
+lse), ('ofs_top.qdb', False), ('ofs_top.qar_info.json', False)]
+# Source-only board candidate; legacy LAST_QUARTUS_VERSION is provenance, not qu
+alification.
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/build_gate.tcl
+# Copyright (C) 2021-2023 Intel Corporation
+# SPDX-License-Identifier: MIT
+
+################################################################################
+############
+# FPGA Device
+################################################################################
+############
+
+set_global_assignment -name FAMILY "Agilex 7"
+set_global_assignment -name DEVICE AGFB027R25A2E2V
+
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "1.2 V"
+
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+#set_global_assignment -name RESERVE_DATA0_AFTER_CONFIGURATION "USE AS REGULAR I
+O" #Commented out as not in 840f
+#todo:
+set_global_assignment -name PRESERVE_UNUSED_XCVR_CHANNEL ON
+
+################################################################################
+############
+# Synthesis Options
+################################################################################
+############
+set_global_assignment -name TOP_LEVEL_ENTITY top
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name OPTIMIZATION_TECHNIQUE SPEED
+set_global_assignment -name OPTIMIZE_POWER_DURING_SYNTHESIS OFF
+set_global_assignment -name OPTIMIZE_POWER_DURING_FITTING OFF
+set_global_assignment -name ALLOW_REGISTER_RETIMING ON
+set_global_assignment -name ROUTER_TIMING_OPTIMIZATION_LEVEL MAXIMUM
+set_global_assignment -name SYNTH_TIMING_DRIVEN_SYNTHESIS ON
+set_global_assignment -name MUX_RESTRUCTURE ON
+
+set_global_assignment -name REMOVE_DUPLICATE_REGISTERS OFF -to rst_n_sys_afu
+set_global_assignment -name REMOVE_DUPLICATE_REGISTERS OFF -to rst_n_sys_mem
+set_global_assignment -name REMOVE_DUPLICATE_REGISTERS OFF -to rst_n_sys_pcie
+
+set_global_assignment -name LAST_QUARTUS_VERSION "26.1.1 Pro Edition"
+
+set_global_assignment -name FLOW_DISABLE_ASSEMBLER OFF
+set_global_assignment -name FLOW_ENABLE_INTERACTIVE_TIMING_ANALYZER OFF
+set_global_assignment -name SEED 1
+
+################################################################################
+############
+# PWR MGMT
+################################################################################
+############
+# todo
+set_global_assignment -name PWRMGT_DEVICE_ADDRESS_IN_PMBUS_SLAVE_MODE 01
+set_global_assignment -name VID_OPERATION_MODE "PMBUS SLAVE"
+#set_global_assignment -name PWRMGT_BUS_SPEED_MODE "100 KHZ" #Commented out as n
+ot in 840f
+set_global_assignment -name PWRMGT_VOLTAGE_OUTPUT_FORMAT "LINEAR FORMAT"
+set_global_assignment -name PWRMGT_LINEAR_FORMAT_N "-12"
+
+################################################################################
+############
+# Configuration Interface
+################################################################################
+############
+# todo
+#set_global_assignment -name AUTO_RESTART_CONFIGURATION OFF
+#set_global_assignment -name ENABLE_CONFIGURATION_PINS OFF
+#set_global_assignment -name ENABLE_BOOT_SEL_PIN OFF
+set_global_assignment -name STRATIXV_CONFIGURATION_SCHEME "ACTIVE SERIAL X4"
+#set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+#set_global_assignment -name STRATIXII_CONFIGURATION_DEVICE AUTO
+#set_global_assignment -name GENERATE_PR_RBF_FILE ON
+set_global_assignment -name ENABLE_ED_CRC_CHECK ON
+set_global_assignment -name MINIMUM_SEU_INTERVAL 0
+#set_global_assignment -name MINIMUM_SEU_INTERVAL 479
+#set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_100MHZ # Setting for Ag
+ilex DevKit
+#set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_115MHZ_IOSC
+set_global_assignment -name DEVICE_INITIALIZATION_CLOCK OSC_CLK_1_125MHZ
+#set_global_assignment -name DEVICE_INITIALIZATION_CLOCK OSC_CLK_1_25MHZ
+#set_global_assignment -name DEVICE_INITIALIZATION_CLOCK INIT_INTOSC
+set_global_assignment -name USE_PWRMGT_SCL SDM_IO14
+set_global_assignment -name USE_PWRMGT_SDA SDM_IO11
+set_global_assignment -name USE_CONF_DONE SDM_IO16
+set_global_assignment -name USE_PWRMGT_ALERT SDM_IO12
+set_global_assignment -name USE_INIT_DONE SDM_IO0
+#set_global_assignment -name USE_NCATTRIP SDM_IO9
+#set_global_assignment -name USE_HPS_COLD_RESET SDM_IO7
+#set_global_assignment -name HPS_INITIALIZATION "AFTER INIT_DONE"
+#set_global_assignment -name HPS_DAP_SPLIT_MODE "HPS PINS"
+#set_global_assignment -name HPS_DAP_SPLIT_MODE "SDM PINS"
+#set_global_assignment -name HPS_DAP_NO_CERTIFICATE on
+set_global_assignment -name GENERATE_RBF_FILE ON
+
+set_global_assignment -name GENERATE_COMPRESSED_SOF ON
+
+#840F section
+set_global_assignment -name SDM_DIRECT_TO_FACTORY_IMAGE SDM_IO13
+
+################################################################################
+############
+# Verilog Macros
+################################################################################
+############
+set_global_assignment -name VERILOG_MACRO "INCLUDE_USER_CLK"
+set_global_assignment -name VERILOG_MACRO "DDR4_NUM_MEM_GROUPS=2"
+set_global_assignment -name VERILOG_MACRO "INCLUDE_IA840F"
+set_global_assignment -name VERILOG_MACRO "INCLUDE_DDR4"             # Includes
+the MEM SS and the AXI-MM datapath
+#PMCI IP is removed in IA-840F port as not supported and access will be provided
+ via separate BittWare BMC subsystem IP.
+#set_global_assignment -name VERILOG_MACRO "INCLUDE_PMCI"             # Includes
+ PMCI SS in the fim
+set_global_assignment -name VERILOG_MACRO "INCLUDE_PR"               # INCLUDE_P
+R removes PR IP instatiation in port_gasket. To disable PR, remove INCLUDE_PR &
+pr_assignments.tcl from .qsf
+#set_global_assignment -name VERILOG_MACRO "INCLUDE_HSSI"             # Includes
+ HSSI SS and HE-HSSI logic into the design
+set_global_assignment -name VERILOG_MACRO "DISABLE_HE_HSSI_CRC"      # Disables
+CRC generation from HE-HSSI traffic generation
+set_global_assignment -name VERILOG_MACRO "INCLUDE_PCIE_SS"          # Instantia
+tes the PCIE SS (Gen4) when enabled, else instantiates PCIE Gen3 (should only be
+ disabled in unit test sim only).
+set_global_assignment -name VERILOG_MACRO "INCLUDE_REMOTE_STP"       # Includes
+Remote SignalTap support in PR Region
+#set_global_assignment -name VERILOG_MACRO "INCLUDE_HPS"              # Includes
+ Hard Processor System in the fim
+#set_global_assignment -name VERILOG_MACRO "INCLUDE_UART"             # Includes
+ Soft UART accessible from PCIe
+
+# Compile time Verilog Macros
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../../../shared_config/compil
+e_flags.tcl
+
+################################################################################
+############
+# Design Files
+################################################################################
+############
+
+# Ensure that variables such as BUILD_ROOT_REL are set (must be relative)
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/config_env.tcl
+
+# RTL and IP files use BUILD_ROOT_REL env variable, which is set only after conf
+ig_env.tcl is evaluated.
+# Move global assignment into separate tcl file to ensure availability of BUILD_
+ROOT_REL after evaluation.
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ofs_top_sources.tcl
+
+
+################################################################################
+############
+# VAB Assignments
+################################################################################
+############
+set_global_assignment -name ENABLE_MULTI_AUTHORITY ON
+set_global_assignment -name OPTIMIZATION_MODE "HIGH PERFORMANCE EFFORT" -comment
+ "Use High Performance Effort optimization mode when optimizing for performance.
+ Superior Performance optimization mode has been deprecated and will be removed
+in 27.1.1."
+
+Quartus Prime Timing Analyzer
+Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+Copyright (C) 2026  Altera Corporation. All rights reserved.
+
+Usage:
+------
+
+quartus_sta [-h | --help[=<option|topic>] | -v]
+quartus_sta <project name> [<options>]
+quartus_sta -t <script file> [<script args>]
+quartus_sta -s
+quartus_sta --tcl_eval <tcl command>
+
+Description:
+------------
+
+
+Options:
+--------
+
+        -?
+        -f <argument file>
+        -h
+        -p
+        -c <revision name> | --rev=<revision name>
+        --dni
+        --do_report_cdc_viewer
+        --do_report_timing
+        --force_dat
+        --grade=<value>
+        --help[=<option|topic>]
+        --lower_priority
+        --mode=<value>
+        --model=<fast|slow>
+        --multicorner[=on|off]
+        --parallel[=<num_processors>]
+        --post_fpp
+        --post_syn
+        --report_script=<value>
+        --sdc=<value>
+        --set=<assignment=value>
+        --snapshot=<value>
+        --speed=<value>
+        --temperature=<value_in_C>
+        --voltage=<value_in_mV>
+
+Help Topics:
+------------
+
+        arguments
+        return_codes
+        tcl
+
+For more information on specific options, use --help=<option|topic>.
+
+
+[uwb_student00@Agilex7Workstation ~]$ python3 -c 'from pathlib import Path;impor
+t subprocess,os; e=Path('"'"'/home/uwb_student00/ahls/new_BSP/qualification/fim-
+build-08/pcie-postfit-query-01'"'"');(e/"help.tcl").write_text('"'"'foreach cmd
+{project_open create_timing_netlist read_sdc get_pins get_pin_info get_cell_info
+ get_cells get_clock_info get_fanins read_atom_netlist get_atom_node_info get_at
+om_nodes} {\n puts "HELP_BEGIN $cmd"\n catch {help -long $cmd} result\n puts $re
+sult\n}\n'"'"');env=os.environ.copy();env["QUARTUS_ROOTDIR_OVERRIDE"]="/opt/alte
+ra/26.1.1/quartus";r=subprocess.run(["/opt/altera/26.1.1/quartus/bin/quartus_sta
+","-t",str(e/"help.tcl")],cwd=e,env=env,stdout=subprocess.PIPE,stderr=subprocess
+.STDOUT,text=True,timeout=25);(e/"api-help.log").write_text(r.stdout);print(r.st
+dout)'
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+    Info: Copyright (C) 2026  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions
+    Info: and other software and tools, and any partner logic
+    Info: functions, and any output files from any of the foregoing
+    Info: (including device programming or simulation files), and any
+    Info: associated documentation or information are expressly subject
+    Info: to the terms and conditions of the Altera Program License
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Fri Sep 18 20:53:21 2026
+    Info: System process ID: 123122
+Info: Command: quartus_sta -t /home/uwb_student00/ahls/new_BSP/qualification/fim
+-build-08/pcie-postfit-query-01/help.tcl
+HELP_BEGIN project_open
+---------------------------------------------------------------------------
+
+Usage: help [-h] [-help] [-long_help] [-cmd <command name>] [-examples] [-pkg <p
+ackage name>] [-quartus] [-tcl] [-timequestinfo] [-timinganalyzerinfo] [-version
+ <version number>] [<package or command name>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -cmd <command name>: Option to display long help for a Quartus Prime Tcl
+ command
+        -examples: Option to display examples of Quartus Prime Tcl usage
+        -pkg <package name>: Option to display help for an available Quartus Pri
+me Tcl package
+        -quartus: Option to display help on the predefined global "quartus" Tcl
+array
+        -tcl: Option to display overview on Quartus Prime Tcl usage
+        -timequestinfo: Deprecated alias of the "timinganalyzerinfo" option
+        -timinganalyzerinfo: Option to display help on the predefined global "Ti
+mingAnalyzerInfo" Tcl array
+        -version <version number>: Option to specify the package version for the
+ specified Quartus Prime Tcl package or command
+        <package or command name>: Name of an available Quartus Prime Tcl packag
+e or command. This is functionally equivalent to the -pkg and -cmd options.
+
+------------
+Description:
+------------
+
+
+For convenience, you can omit the "::quartus::" package prefix when
+you query for help on a package. For example, you can type either of
+the following to view help for the ::quartus::project package:
+     help ::quartus::project
+     help project
+
+--------------
+Example Usage:
+--------------
+
+1) Type "help <package name>"
+   to view help for a Quartus Prime Tcl package.
+
+   Example: help ::quartus::project
+
+2) Type "help <command name>"
+   to view long help for a Quartus Prime Tcl command.
+
+   Example: help project_open
+
+3) Type "help -quartus"
+   to view help on the predefined global "quartus" Tcl array.
+
+   Example: help -quartus
+
+4) Type "help -examples"
+   to view examples of Quartus Prime Tcl usage.
+
+   Example: help -examples
+
+-------------
+Return Value:
+-------------
+
+Code Name       Code    String Return
+---------       ----    -------------
+TCL_OK          0       INFO: Operation successful
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" is only avai
+lable for use in the following executable<string>:<string>
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" belongs to t
+he "<string>" package which is currently not loaded. Please type "load_package <
+string>" to load the package before using this command.
+TCL_ERROR       1       ERROR: Tcl command does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Quartus Prime Tcl comman
+d. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl command "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Quar
+tus Prime Tcl command. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl package does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Tcl package. Type "help"
+ for a list of available packages.
+TCL_ERROR       1       ERROR: Tcl package "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Tcl
+package. Type "help" for a list of available packages.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>. Specify an available Quartus Prime Tcl package or command.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>, version <string>. Specify an available Quartus Prime Tcl package or comma
+nd.
+TCL_ERROR       1       ERROR: Quartus Prime Tcl package "<string>" is only avai
+lable for use in the following executable<string>:<string>
+
+---------------------------------------------------------------------------
+
+HELP_BEGIN create_timing_netlist
+---------------------------------------------------------------------------
+
+Usage: help [-h] [-help] [-long_help] [-cmd <command name>] [-examples] [-pkg <p
+ackage name>] [-quartus] [-tcl] [-timequestinfo] [-timinganalyzerinfo] [-version
+ <version number>] [<package or command name>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -cmd <command name>: Option to display long help for a Quartus Prime Tcl
+ command
+        -examples: Option to display examples of Quartus Prime Tcl usage
+        -pkg <package name>: Option to display help for an available Quartus Pri
+me Tcl package
+        -quartus: Option to display help on the predefined global "quartus" Tcl
+array
+        -tcl: Option to display overview on Quartus Prime Tcl usage
+        -timequestinfo: Deprecated alias of the "timinganalyzerinfo" option
+        -timinganalyzerinfo: Option to display help on the predefined global "Ti
+mingAnalyzerInfo" Tcl array
+        -version <version number>: Option to specify the package version for the
+ specified Quartus Prime Tcl package or command
+        <package or command name>: Name of an available Quartus Prime Tcl packag
+e or command. This is functionally equivalent to the -pkg and -cmd options.
+
+------------
+Description:
+------------
+
+
+For convenience, you can omit the "::quartus::" package prefix when
+you query for help on a package. For example, you can type either of
+the following to view help for the ::quartus::project package:
+     help ::quartus::project
+     help project
+
+--------------
+Example Usage:
+--------------
+
+1) Type "help <package name>"
+   to view help for a Quartus Prime Tcl package.
+
+   Example: help ::quartus::project
+
+2) Type "help <command name>"
+   to view long help for a Quartus Prime Tcl command.
+
+   Example: help project_open
+
+3) Type "help -quartus"
+   to view help on the predefined global "quartus" Tcl array.
+
+   Example: help -quartus
+
+4) Type "help -examples"
+   to view examples of Quartus Prime Tcl usage.
+
+   Example: help -examples
+
+-------------
+Return Value:
+-------------
+
+Code Name       Code    String Return
+---------       ----    -------------
+TCL_OK          0       INFO: Operation successful
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" is only avai
+lable for use in the following executable<string>:<string>
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" belongs to t
+he "<string>" package which is currently not loaded. Please type "load_package <
+string>" to load the package before using this command.
+TCL_ERROR       1       ERROR: Tcl command does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Quartus Prime Tcl comman
+d. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl command "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Quar
+tus Prime Tcl command. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl package does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Tcl package. Type "help"
+ for a list of available packages.
+TCL_ERROR       1       ERROR: Tcl package "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Tcl
+package. Type "help" for a list of available packages.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>. Specify an available Quartus Prime Tcl package or command.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>, version <string>. Specify an available Quartus Prime Tcl package or comma
+nd.
+TCL_ERROR       1       ERROR: Quartus Prime Tcl package "<string>" is only avai
+lable for use in the following executable<string>:<string>
+
+---------------------------------------------------------------------------
+
+HELP_BEGIN read_sdc
+---------------------------------------------------------------------------
+
+Usage: help [-h] [-help] [-long_help] [-cmd <command name>] [-examples] [-pkg <p
+ackage name>] [-quartus] [-tcl] [-timequestinfo] [-timinganalyzerinfo] [-version
+ <version number>] [<package or command name>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -cmd <command name>: Option to display long help for a Quartus Prime Tcl
+ command
+        -examples: Option to display examples of Quartus Prime Tcl usage
+        -pkg <package name>: Option to display help for an available Quartus Pri
+me Tcl package
+        -quartus: Option to display help on the predefined global "quartus" Tcl
+array
+        -tcl: Option to display overview on Quartus Prime Tcl usage
+        -timequestinfo: Deprecated alias of the "timinganalyzerinfo" option
+        -timinganalyzerinfo: Option to display help on the predefined global "Ti
+mingAnalyzerInfo" Tcl array
+        -version <version number>: Option to specify the package version for the
+ specified Quartus Prime Tcl package or command
+        <package or command name>: Name of an available Quartus Prime Tcl packag
+e or command. This is functionally equivalent to the -pkg and -cmd options.
+
+------------
+Description:
+------------
+
+
+For convenience, you can omit the "::quartus::" package prefix when
+you query for help on a package. For example, you can type either of
+the following to view help for the ::quartus::project package:
+     help ::quartus::project
+     help project
+
+--------------
+Example Usage:
+--------------
+
+1) Type "help <package name>"
+   to view help for a Quartus Prime Tcl package.
+
+   Example: help ::quartus::project
+
+2) Type "help <command name>"
+   to view long help for a Quartus Prime Tcl command.
+
+   Example: help project_open
+
+3) Type "help -quartus"
+   to view help on the predefined global "quartus" Tcl array.
+
+   Example: help -quartus
+
+4) Type "help -examples"
+   to view examples of Quartus Prime Tcl usage.
+
+   Example: help -examples
+
+-------------
+Return Value:
+-------------
+
+Code Name       Code    String Return
+---------       ----    -------------
+TCL_OK          0       INFO: Operation successful
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" is only avai
+lable for use in the following executable<string>:<string>
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" belongs to t
+he "<string>" package which is currently not loaded. Please type "load_package <
+string>" to load the package before using this command.
+TCL_ERROR       1       ERROR: Tcl command does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Quartus Prime Tcl comman
+d. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl command "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Quar
+tus Prime Tcl command. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl package does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Tcl package. Type "help"
+ for a list of available packages.
+TCL_ERROR       1       ERROR: Tcl package "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Tcl
+package. Type "help" for a list of available packages.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>. Specify an available Quartus Prime Tcl package or command.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>, version <string>. Specify an available Quartus Prime Tcl package or comma
+nd.
+TCL_ERROR       1       ERROR: Quartus Prime Tcl package "<string>" is only avai
+lable for use in the following executable<string>:<string>
+
+---------------------------------------------------------------------------
+
+HELP_BEGIN get_pins
+---------------------------------------------------------------------------
+
+Usage: help [-h] [-help] [-long_help] [-cmd <command name>] [-examples] [-pkg <p
+ackage name>] [-quartus] [-tcl] [-timequestinfo] [-timinganalyzerinfo] [-version
+ <version number>] [<package or command name>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -cmd <command name>: Option to display long help for a Quartus Prime Tcl
+ command
+        -examples: Option to display examples of Quartus Prime Tcl usage
+        -pkg <package name>: Option to display help for an available Quartus Pri
+me Tcl package
+        -quartus: Option to display help on the predefined global "quartus" Tcl
+array
+        -tcl: Option to display overview on Quartus Prime Tcl usage
+        -timequestinfo: Deprecated alias of the "timinganalyzerinfo" option
+        -timinganalyzerinfo: Option to display help on the predefined global "Ti
+mingAnalyzerInfo" Tcl array
+        -version <version number>: Option to specify the package version for the
+ specified Quartus Prime Tcl package or command
+        <package or command name>: Name of an available Quartus Prime Tcl packag
+e or command. This is functionally equivalent to the -pkg and -cmd options.
+
+------------
+Description:
+------------
+
+
+For convenience, you can omit the "::quartus::" package prefix when
+you query for help on a package. For example, you can type either of
+the following to view help for the ::quartus::project package:
+     help ::quartus::project
+     help project
+
+--------------
+Example Usage:
+--------------
+
+1) Type "help <package name>"
+   to view help for a Quartus Prime Tcl package.
+
+   Example: help ::quartus::project
+
+2) Type "help <command name>"
+   to view long help for a Quartus Prime Tcl command.
+
+   Example: help project_open
+
+3) Type "help -quartus"
+   to view help on the predefined global "quartus" Tcl array.
+
+   Example: help -quartus
+
+4) Type "help -examples"
+   to view examples of Quartus Prime Tcl usage.
+
+   Example: help -examples
+
+-------------
+Return Value:
+-------------
+
+Code Name       Code    String Return
+---------       ----    -------------
+TCL_OK          0       INFO: Operation successful
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" is only avai
+lable for use in the following executable<string>:<string>
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" belongs to t
+he "<string>" package which is currently not loaded. Please type "load_package <
+string>" to load the package before using this command.
+TCL_ERROR       1       ERROR: Tcl command does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Quartus Prime Tcl comman
+d. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl command "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Quar
+tus Prime Tcl command. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl package does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Tcl package. Type "help"
+ for a list of available packages.
+TCL_ERROR       1       ERROR: Tcl package "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Tcl
+package. Type "help" for a list of available packages.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>. Specify an available Quartus Prime Tcl package or command.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>, version <string>. Specify an available Quartus Prime Tcl package or comma
+nd.
+TCL_ERROR       1       ERROR: Quartus Prime Tcl package "<string>" is only avai
+lable for use in the following executable<string>:<string>
+
+---------------------------------------------------------------------------
+
+HELP_BEGIN get_pin_info
+---------------------------------------------------------------------------
+
+Usage: help [-h] [-help] [-long_help] [-cmd <command name>] [-examples] [-pkg <p
+ackage name>] [-quartus] [-tcl] [-timequestinfo] [-timinganalyzerinfo] [-version
+ <version number>] [<package or command name>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -cmd <command name>: Option to display long help for a Quartus Prime Tcl
+ command
+        -examples: Option to display examples of Quartus Prime Tcl usage
+        -pkg <package name>: Option to display help for an available Quartus Pri
+me Tcl package
+        -quartus: Option to display help on the predefined global "quartus" Tcl
+array
+        -tcl: Option to display overview on Quartus Prime Tcl usage
+        -timequestinfo: Deprecated alias of the "timinganalyzerinfo" option
+        -timinganalyzerinfo: Option to display help on the predefined global "Ti
+mingAnalyzerInfo" Tcl array
+        -version <version number>: Option to specify the package version for the
+ specified Quartus Prime Tcl package or command
+        <package or command name>: Name of an available Quartus Prime Tcl packag
+e or command. This is functionally equivalent to the -pkg and -cmd options.
+
+------------
+Description:
+------------
+
+
+For convenience, you can omit the "::quartus::" package prefix when
+you query for help on a package. For example, you can type either of
+the following to view help for the ::quartus::project package:
+     help ::quartus::project
+     help project
+
+--------------
+Example Usage:
+--------------
+
+1) Type "help <package name>"
+   to view help for a Quartus Prime Tcl package.
+
+   Example: help ::quartus::project
+
+2) Type "help <command name>"
+   to view long help for a Quartus Prime Tcl command.
+
+   Example: help project_open
+
+3) Type "help -quartus"
+   to view help on the predefined global "quartus" Tcl array.
+
+   Example: help -quartus
+
+4) Type "help -examples"
+   to view examples of Quartus Prime Tcl usage.
+
+   Example: help -examples
+
+-------------
+Return Value:
+-------------
+
+Code Name       Code    String Return
+---------       ----    -------------
+TCL_OK          0       INFO: Operation successful
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" is only avai
+lable for use in the following executable<string>:<string>
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" belongs to t
+he "<string>" package which is currently not loaded. Please type "load_package <
+string>" to load the package before using this command.
+TCL_ERROR       1       ERROR: Tcl command does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Quartus Prime Tcl comman
+d. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl command "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Quar
+tus Prime Tcl command. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl package does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Tcl package. Type "help"
+ for a list of available packages.
+TCL_ERROR       1       ERROR: Tcl package "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Tcl
+package. Type "help" for a list of available packages.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>. Specify an available Quartus Prime Tcl package or command.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>, version <string>. Specify an available Quartus Prime Tcl package or comma
+nd.
+TCL_ERROR       1       ERROR: Quartus Prime Tcl package "<string>" is only avai
+lable for use in the following executable<string>:<string>
+
+---------------------------------------------------------------------------
+
+HELP_BEGIN get_cell_info
+---------------------------------------------------------------------------
+
+Usage: help [-h] [-help] [-long_help] [-cmd <command name>] [-examples] [-pkg <p
+ackage name>] [-quartus] [-tcl] [-timequestinfo] [-timinganalyzerinfo] [-version
+ <version number>] [<package or command name>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -cmd <command name>: Option to display long help for a Quartus Prime Tcl
+ command
+        -examples: Option to display examples of Quartus Prime Tcl usage
+        -pkg <package name>: Option to display help for an available Quartus Pri
+me Tcl package
+        -quartus: Option to display help on the predefined global "quartus" Tcl
+array
+        -tcl: Option to display overview on Quartus Prime Tcl usage
+        -timequestinfo: Deprecated alias of the "timinganalyzerinfo" option
+        -timinganalyzerinfo: Option to display help on the predefined global "Ti
+mingAnalyzerInfo" Tcl array
+        -version <version number>: Option to specify the package version for the
+ specified Quartus Prime Tcl package or command
+        <package or command name>: Name of an available Quartus Prime Tcl packag
+e or command. This is functionally equivalent to the -pkg and -cmd options.
+
+------------
+Description:
+------------
+
+
+For convenience, you can omit the "::quartus::" package prefix when
+you query for help on a package. For example, you can type either of
+the following to view help for the ::quartus::project package:
+     help ::quartus::project
+     help project
+
+--------------
+Example Usage:
+--------------
+
+1) Type "help <package name>"
+   to view help for a Quartus Prime Tcl package.
+
+   Example: help ::quartus::project
+
+2) Type "help <command name>"
+   to view long help for a Quartus Prime Tcl command.
+
+   Example: help project_open
+
+3) Type "help -quartus"
+   to view help on the predefined global "quartus" Tcl array.
+
+   Example: help -quartus
+
+4) Type "help -examples"
+   to view examples of Quartus Prime Tcl usage.
+
+   Example: help -examples
+
+-------------
+Return Value:
+-------------
+
+Code Name       Code    String Return
+---------       ----    -------------
+TCL_OK          0       INFO: Operation successful
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" is only avai
+lable for use in the following executable<string>:<string>
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" belongs to t
+he "<string>" package which is currently not loaded. Please type "load_package <
+string>" to load the package before using this command.
+TCL_ERROR       1       ERROR: Tcl command does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Quartus Prime Tcl comman
+d. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl command "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Quar
+tus Prime Tcl command. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl package does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Tcl package. Type "help"
+ for a list of available packages.
+TCL_ERROR       1       ERROR: Tcl package "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Tcl
+package. Type "help" for a list of available packages.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>. Specify an available Quartus Prime Tcl package or command.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>, version <string>. Specify an available Quartus Prime Tcl package or comma
+nd.
+TCL_ERROR       1       ERROR: Quartus Prime Tcl package "<string>" is only avai
+lable for use in the following executable<string>:<string>
+
+---------------------------------------------------------------------------
+
+HELP_BEGIN get_cells
+---------------------------------------------------------------------------
+
+Usage: help [-h] [-help] [-long_help] [-cmd <command name>] [-examples] [-pkg <p
+ackage name>] [-quartus] [-tcl] [-timequestinfo] [-timinganalyzerinfo] [-version
+ <version number>] [<package or command name>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -cmd <command name>: Option to display long help for a Quartus Prime Tcl
+ command
+        -examples: Option to display examples of Quartus Prime Tcl usage
+        -pkg <package name>: Option to display help for an available Quartus Pri
+me Tcl package
+        -quartus: Option to display help on the predefined global "quartus" Tcl
+array
+        -tcl: Option to display overview on Quartus Prime Tcl usage
+        -timequestinfo: Deprecated alias of the "timinganalyzerinfo" option
+        -timinganalyzerinfo: Option to display help on the predefined global "Ti
+mingAnalyzerInfo" Tcl array
+        -version <version number>: Option to specify the package version for the
+ specified Quartus Prime Tcl package or command
+        <package or command name>: Name of an available Quartus Prime Tcl packag
+e or command. This is functionally equivalent to the -pkg and -cmd options.
+
+------------
+Description:
+------------
+
+
+For convenience, you can omit the "::quartus::" package prefix when
+you query for help on a package. For example, you can type either of
+the following to view help for the ::quartus::project package:
+     help ::quartus::project
+     help project
+
+--------------
+Example Usage:
+--------------
+
+1) Type "help <package name>"
+   to view help for a Quartus Prime Tcl package.
+
+   Example: help ::quartus::project
+
+2) Type "help <command name>"
+   to view long help for a Quartus Prime Tcl command.
+
+   Example: help project_open
+
+3) Type "help -quartus"
+   to view help on the predefined global "quartus" Tcl array.
+
+   Example: help -quartus
+
+4) Type "help -examples"
+   to view examples of Quartus Prime Tcl usage.
+
+   Example: help -examples
+
+-------------
+Return Value:
+-------------
+
+Code Name       Code    String Return
+---------       ----    -------------
+TCL_OK          0       INFO: Operation successful
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" is only avai
+lable for use in the following executable<string>:<string>
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" belongs to t
+he "<string>" package which is currently not loaded. Please type "load_package <
+string>" to load the package before using this command.
+TCL_ERROR       1       ERROR: Tcl command does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Quartus Prime Tcl comman
+d. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl command "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Quar
+tus Prime Tcl command. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl package does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Tcl package. Type "help"
+ for a list of available packages.
+TCL_ERROR       1       ERROR: Tcl package "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Tcl
+package. Type "help" for a list of available packages.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>. Specify an available Quartus Prime Tcl package or command.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>, version <string>. Specify an available Quartus Prime Tcl package or comma
+nd.
+TCL_ERROR       1       ERROR: Quartus Prime Tcl package "<string>" is only avai
+lable for use in the following executable<string>:<string>
+
+---------------------------------------------------------------------------
+
+HELP_BEGIN get_clock_info
+---------------------------------------------------------------------------
+
+Usage: help [-h] [-help] [-long_help] [-cmd <command name>] [-examples] [-pkg <p
+ackage name>] [-quartus] [-tcl] [-timequestinfo] [-timinganalyzerinfo] [-version
+ <version number>] [<package or command name>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -cmd <command name>: Option to display long help for a Quartus Prime Tcl
+ command
+        -examples: Option to display examples of Quartus Prime Tcl usage
+        -pkg <package name>: Option to display help for an available Quartus Pri
+me Tcl package
+        -quartus: Option to display help on the predefined global "quartus" Tcl
+array
+        -tcl: Option to display overview on Quartus Prime Tcl usage
+        -timequestinfo: Deprecated alias of the "timinganalyzerinfo" option
+        -timinganalyzerinfo: Option to display help on the predefined global "Ti
+mingAnalyzerInfo" Tcl array
+        -version <version number>: Option to specify the package version for the
+ specified Quartus Prime Tcl package or command
+        <package or command name>: Name of an available Quartus Prime Tcl packag
+e or command. This is functionally equivalent to the -pkg and -cmd options.
+
+------------
+Description:
+------------
+
+
+For convenience, you can omit the "::quartus::" package prefix when
+you query for help on a package. For example, you can type either of
+the following to view help for the ::quartus::project package:
+     help ::quartus::project
+     help project
+
+--------------
+Example Usage:
+--------------
+
+1) Type "help <package name>"
+   to view help for a Quartus Prime Tcl package.
+
+   Example: help ::quartus::project
+
+2) Type "help <command name>"
+   to view long help for a Quartus Prime Tcl command.
+
+   Example: help project_open
+
+3) Type "help -quartus"
+   to view help on the predefined global "quartus" Tcl array.
+
+   Example: help -quartus
+
+4) Type "help -examples"
+   to view examples of Quartus Prime Tcl usage.
+
+   Example: help -examples
+
+-------------
+Return Value:
+-------------
+
+Code Name       Code    String Return
+---------       ----    -------------
+TCL_OK          0       INFO: Operation successful
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" is only avai
+lable for use in the following executable<string>:<string>
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" belongs to t
+he "<string>" package which is currently not loaded. Please type "load_package <
+string>" to load the package before using this command.
+TCL_ERROR       1       ERROR: Tcl command does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Quartus Prime Tcl comman
+d. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl command "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Quar
+tus Prime Tcl command. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl package does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Tcl package. Type "help"
+ for a list of available packages.
+TCL_ERROR       1       ERROR: Tcl package "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Tcl
+package. Type "help" for a list of available packages.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>. Specify an available Quartus Prime Tcl package or command.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>, version <string>. Specify an available Quartus Prime Tcl package or comma
+nd.
+TCL_ERROR       1       ERROR: Quartus Prime Tcl package "<string>" is only avai
+lable for use in the following executable<string>:<string>
+
+---------------------------------------------------------------------------
+
+HELP_BEGIN get_fanins
+---------------------------------------------------------------------------
+
+Usage: help [-h] [-help] [-long_help] [-cmd <command name>] [-examples] [-pkg <p
+ackage name>] [-quartus] [-tcl] [-timequestinfo] [-timinganalyzerinfo] [-version
+ <version number>] [<package or command name>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -cmd <command name>: Option to display long help for a Quartus Prime Tcl
+ command
+        -examples: Option to display examples of Quartus Prime Tcl usage
+        -pkg <package name>: Option to display help for an available Quartus Pri
+me Tcl package
+        -quartus: Option to display help on the predefined global "quartus" Tcl
+array
+        -tcl: Option to display overview on Quartus Prime Tcl usage
+        -timequestinfo: Deprecated alias of the "timinganalyzerinfo" option
+        -timinganalyzerinfo: Option to display help on the predefined global "Ti
+mingAnalyzerInfo" Tcl array
+        -version <version number>: Option to specify the package version for the
+ specified Quartus Prime Tcl package or command
+        <package or command name>: Name of an available Quartus Prime Tcl packag
+e or command. This is functionally equivalent to the -pkg and -cmd options.
+
+------------
+Description:
+------------
+
+
+For convenience, you can omit the "::quartus::" package prefix when
+you query for help on a package. For example, you can type either of
+the following to view help for the ::quartus::project package:
+     help ::quartus::project
+     help project
+
+--------------
+Example Usage:
+--------------
+
+1) Type "help <package name>"
+   to view help for a Quartus Prime Tcl package.
+
+   Example: help ::quartus::project
+
+2) Type "help <command name>"
+   to view long help for a Quartus Prime Tcl command.
+
+   Example: help project_open
+
+3) Type "help -quartus"
+   to view help on the predefined global "quartus" Tcl array.
+
+   Example: help -quartus
+
+4) Type "help -examples"
+   to view examples of Quartus Prime Tcl usage.
+
+   Example: help -examples
+
+-------------
+Return Value:
+-------------
+
+Code Name       Code    String Return
+---------       ----    -------------
+TCL_OK          0       INFO: Operation successful
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" is only avai
+lable for use in the following executable<string>:<string>
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" belongs to t
+he "<string>" package which is currently not loaded. Please type "load_package <
+string>" to load the package before using this command.
+TCL_ERROR       1       ERROR: Tcl command does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Quartus Prime Tcl comman
+d. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl command "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Quar
+tus Prime Tcl command. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl package does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Tcl package. Type "help"
+ for a list of available packages.
+TCL_ERROR       1       ERROR: Tcl package "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Tcl
+package. Type "help" for a list of available packages.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>. Specify an available Quartus Prime Tcl package or command.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>, version <string>. Specify an available Quartus Prime Tcl package or comma
+nd.
+TCL_ERROR       1       ERROR: Quartus Prime Tcl package "<string>" is only avai
+lable for use in the following executable<string>:<string>
+
+---------------------------------------------------------------------------
+
+HELP_BEGIN read_atom_netlist
+---------------------------------------------------------------------------
+
+Usage: help [-h] [-help] [-long_help] [-cmd <command name>] [-examples] [-pkg <p
+ackage name>] [-quartus] [-tcl] [-timequestinfo] [-timinganalyzerinfo] [-version
+ <version number>] [<package or command name>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -cmd <command name>: Option to display long help for a Quartus Prime Tcl
+ command
+        -examples: Option to display examples of Quartus Prime Tcl usage
+        -pkg <package name>: Option to display help for an available Quartus Pri
+me Tcl package
+        -quartus: Option to display help on the predefined global "quartus" Tcl
+array
+        -tcl: Option to display overview on Quartus Prime Tcl usage
+        -timequestinfo: Deprecated alias of the "timinganalyzerinfo" option
+        -timinganalyzerinfo: Option to display help on the predefined global "Ti
+mingAnalyzerInfo" Tcl array
+        -version <version number>: Option to specify the package version for the
+ specified Quartus Prime Tcl package or command
+        <package or command name>: Name of an available Quartus Prime Tcl packag
+e or command. This is functionally equivalent to the -pkg and -cmd options.
+
+------------
+Description:
+------------
+
+
+For convenience, you can omit the "::quartus::" package prefix when
+you query for help on a package. For example, you can type either of
+the following to view help for the ::quartus::project package:
+     help ::quartus::project
+     help project
+
+--------------
+Example Usage:
+--------------
+
+1) Type "help <package name>"
+   to view help for a Quartus Prime Tcl package.
+
+   Example: help ::quartus::project
+
+2) Type "help <command name>"
+   to view long help for a Quartus Prime Tcl command.
+
+   Example: help project_open
+
+3) Type "help -quartus"
+   to view help on the predefined global "quartus" Tcl array.
+
+   Example: help -quartus
+
+4) Type "help -examples"
+   to view examples of Quartus Prime Tcl usage.
+
+   Example: help -examples
+
+-------------
+Return Value:
+-------------
+
+Code Name       Code    String Return
+---------       ----    -------------
+TCL_OK          0       INFO: Operation successful
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" is only avai
+lable for use in the following executable<string>:<string>
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" belongs to t
+he "<string>" package which is currently not loaded. Please type "load_package <
+string>" to load the package before using this command.
+TCL_ERROR       1       ERROR: Tcl command does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Quartus Prime Tcl comman
+d. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl command "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Quar
+tus Prime Tcl command. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl package does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Tcl package. Type "help"
+ for a list of available packages.
+TCL_ERROR       1       ERROR: Tcl package "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Tcl
+package. Type "help" for a list of available packages.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>. Specify an available Quartus Prime Tcl package or command.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>, version <string>. Specify an available Quartus Prime Tcl package or comma
+nd.
+TCL_ERROR       1       ERROR: Quartus Prime Tcl package "<string>" is only avai
+lable for use in the following executable<string>:<string>
+
+---------------------------------------------------------------------------
+
+HELP_BEGIN get_atom_node_info
+---------------------------------------------------------------------------
+
+Usage: help [-h] [-help] [-long_help] [-cmd <command name>] [-examples] [-pkg <p
+ackage name>] [-quartus] [-tcl] [-timequestinfo] [-timinganalyzerinfo] [-version
+ <version number>] [<package or command name>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -cmd <command name>: Option to display long help for a Quartus Prime Tcl
+ command
+        -examples: Option to display examples of Quartus Prime Tcl usage
+        -pkg <package name>: Option to display help for an available Quartus Pri
+me Tcl package
+        -quartus: Option to display help on the predefined global "quartus" Tcl
+array
+        -tcl: Option to display overview on Quartus Prime Tcl usage
+        -timequestinfo: Deprecated alias of the "timinganalyzerinfo" option
+        -timinganalyzerinfo: Option to display help on the predefined global "Ti
+mingAnalyzerInfo" Tcl array
+        -version <version number>: Option to specify the package version for the
+ specified Quartus Prime Tcl package or command
+        <package or command name>: Name of an available Quartus Prime Tcl packag
+e or command. This is functionally equivalent to the -pkg and -cmd options.
+
+------------
+Description:
+------------
+
+
+For convenience, you can omit the "::quartus::" package prefix when
+you query for help on a package. For example, you can type either of
+the following to view help for the ::quartus::project package:
+     help ::quartus::project
+     help project
+
+--------------
+Example Usage:
+--------------
+
+1) Type "help <package name>"
+   to view help for a Quartus Prime Tcl package.
+
+   Example: help ::quartus::project
+
+2) Type "help <command name>"
+   to view long help for a Quartus Prime Tcl command.
+
+   Example: help project_open
+
+3) Type "help -quartus"
+   to view help on the predefined global "quartus" Tcl array.
+
+   Example: help -quartus
+
+4) Type "help -examples"
+   to view examples of Quartus Prime Tcl usage.
+
+   Example: help -examples
+
+-------------
+Return Value:
+-------------
+
+Code Name       Code    String Return
+---------       ----    -------------
+TCL_OK          0       INFO: Operation successful
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" is only avai
+lable for use in the following executable<string>:<string>
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" belongs to t
+he "<string>" package which is currently not loaded. Please type "load_package <
+string>" to load the package before using this command.
+TCL_ERROR       1       ERROR: Tcl command does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Quartus Prime Tcl comman
+d. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl command "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Quar
+tus Prime Tcl command. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl package does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Tcl package. Type "help"
+ for a list of available packages.
+TCL_ERROR       1       ERROR: Tcl package "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Tcl
+package. Type "help" for a list of available packages.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>. Specify an available Quartus Prime Tcl package or command.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>, version <string>. Specify an available Quartus Prime Tcl package or comma
+nd.
+TCL_ERROR       1       ERROR: Quartus Prime Tcl package "<string>" is only avai
+lable for use in the following executable<string>:<string>
+
+---------------------------------------------------------------------------
+
+HELP_BEGIN get_atom_nodes
+---------------------------------------------------------------------------
+
+Usage: help [-h] [-help] [-long_help] [-cmd <command name>] [-examples] [-pkg <p
+ackage name>] [-quartus] [-tcl] [-timequestinfo] [-timinganalyzerinfo] [-version
+ <version number>] [<package or command name>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -cmd <command name>: Option to display long help for a Quartus Prime Tcl
+ command
+        -examples: Option to display examples of Quartus Prime Tcl usage
+        -pkg <package name>: Option to display help for an available Quartus Pri
+me Tcl package
+        -quartus: Option to display help on the predefined global "quartus" Tcl
+array
+        -tcl: Option to display overview on Quartus Prime Tcl usage
+        -timequestinfo: Deprecated alias of the "timinganalyzerinfo" option
+        -timinganalyzerinfo: Option to display help on the predefined global "Ti
+mingAnalyzerInfo" Tcl array
+        -version <version number>: Option to specify the package version for the
+ specified Quartus Prime Tcl package or command
+        <package or command name>: Name of an available Quartus Prime Tcl packag
+e or command. This is functionally equivalent to the -pkg and -cmd options.
+
+------------
+Description:
+------------
+
+
+For convenience, you can omit the "::quartus::" package prefix when
+you query for help on a package. For example, you can type either of
+the following to view help for the ::quartus::project package:
+     help ::quartus::project
+     help project
+
+--------------
+Example Usage:
+--------------
+
+1) Type "help <package name>"
+   to view help for a Quartus Prime Tcl package.
+
+   Example: help ::quartus::project
+
+2) Type "help <command name>"
+   to view long help for a Quartus Prime Tcl command.
+
+   Example: help project_open
+
+3) Type "help -quartus"
+   to view help on the predefined global "quartus" Tcl array.
+
+   Example: help -quartus
+
+4) Type "help -examples"
+   to view examples of Quartus Prime Tcl usage.
+
+   Example: help -examples
+
+-------------
+Return Value:
+-------------
+
+Code Name       Code    String Return
+---------       ----    -------------
+TCL_OK          0       INFO: Operation successful
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" is only avai
+lable for use in the following executable<string>:<string>
+TCL_ERROR       1       ERROR: Quartus Prime Tcl command "<string>" belongs to t
+he "<string>" package which is currently not loaded. Please type "load_package <
+string>" to load the package before using this command.
+TCL_ERROR       1       ERROR: Tcl command does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Quartus Prime Tcl comman
+d. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl command "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Quar
+tus Prime Tcl command. Type "info commands" for a list of available commands.
+TCL_ERROR       1       ERROR: Tcl package does not exist or is not supported by
+ Quartus Prime Tcl help: <string>. Specify an available Tcl package. Type "help"
+ for a list of available packages.
+TCL_ERROR       1       ERROR: Tcl package "<string>" version "<string>" does no
+t exist or is not supported by Quartus Prime Tcl help. Specify an available Tcl
+package. Type "help" for a list of available packages.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>. Specify an available Quartus Prime Tcl package or command.
+TCL_ERROR       1       ERROR: Illegal Quartus Prime Tcl package or command: <st
+ring>, version <string>. Specify an available Quartus Prime Tcl package or comma
+nd.
+TCL_ERROR       1       ERROR: Quartus Prime Tcl package "<string>" is only avai
+lable for use in the following executable<string>:<string>
+
+---------------------------------------------------------------------------
+
+Info (23030): Evaluation of Tcl script /home/uwb_student00/ahls/new_BSP/qualific
+ation/fim-build-08/pcie-postfit-query-01/help.tcl was successful
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 1396 megabytes
+    Info: Processing ended: Fri Sep 18 20:53:22 2026
+    Info: Elapsed time: 00:00:01
+    Info: System process ID: 123122
+
+[uwb_student00@Agilex7Workstation ~]$
+

@@ -1,0 +1,218 @@
+{
+  "observed_utc": "2026-09-19T00:41:39.845828+00:00",
+  "host": "Agilex7Workstation",
+  "uid": 1000,
+  "session": "ia840f_mailbox_monitored_01",
+  "window": "@304",
+  "pane": "%304",
+  "state": "SYNTHESIS_RUNNING_POST_IP_CALLBACK_VERIFIED",
+  "post_ip_callback_verified": true,
+  "diagnostics": [],
+  "processes": [
+    {
+      "pid": 104427,
+      "ppid": 104426,
+      "starttime_ticks": 6635140,
+      "exe": "/usr/bin/python3.9",
+      "cwd": "/home/uwb_student00",
+      "argv": [
+        "python3",
+        "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-07/launch_native_compile.py"
+      ],
+      "stat": "104427 (python3) S 104426 104401 104401 35034 104401 4194304 12177 238 0 0 116 14 0 0 20 0 1 0 6635140 268763136 10049 18446744073709551615 94428937162752 94428937163129 140724006576336 0 0 0 0 19927040 2 1 0 0 17 16 0 0 0 0 0 94428937174424 94428937175044 94428950265856 140724006580781 140724006580874 140724006580874 140724006584295 0\n"
+    },
+    {
+      "pid": 104429,
+      "ppid": 104427,
+      "starttime_ticks": 6635272,
+      "exe": "/usr/bin/bash",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach",
+      "argv": [
+        "/bin/bash",
+        "./ofs-common/scripts/common/syn/build_top.sh",
+        "--stage=compile",
+        "-k",
+        "-p",
+        "ia840f",
+        "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_07"
+      ],
+      "stat": "104429 (build_top.sh) S 104427 104401 104401 35034 104401 4194304 372 12114 0 0 0 0 122 13 20 0 1 0 6635272 228016128 864 18446744073709551615 94154204258304 94154205152837 140729838356176 0 0 0 65536 3145732 65538 1 0 0 17 16 0 0 0 0 0 94154205391888 94154205439632 94154223828992 140729838359118 140729838359254 140729838359254 140729838362571 0\n"
+    },
+    {
+      "pid": 104437,
+      "ppid": 104429,
+      "starttime_ticks": 6635409,
+      "exe": "/usr/bin/bash",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_07/syn/board/ia840f/syn_top",
+      "argv": [
+        "/bin/bash",
+        "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/build_fim_compile.sh",
+        "ia840f",
+        "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_07"
+      ],
+      "stat": "104437 (build_fim_compi) S 104429 104401 104401 35034 104401 4194304 344 11602 0 0 0 0 116 14 20 0 1 0 6635409 227880960 864 18446744073709551615 93948510593024 93948511487557 140724653125680 0 0 0 65536 3145732 65538 1 0 0 17 4 0 0 0 0 0 93948511726608 93948511774352 93948518334464 140724653130013 140724653130187 140724653130187 140724653133711 0\n"
+    },
+    {
+      "pid": 104445,
+      "ppid": 104437,
+      "starttime_ticks": 6635541,
+      "exe": "/usr/bin/python3.9",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_07/syn/board/ia840f/syn_top",
+      "argv": [
+        "python3",
+        "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/tools/ofss_config/ia840f_experimental_gate.py",
+        "run-native-compile"
+      ],
+      "stat": "104445 (python3) S 104437 104401 104401 35034 104401 4194304 6312 0 0 0 32 5 0 0 20 0 1 0 6635541 254521344 6502 18446744073709551615 94133776035840 94133776036217 140726894688032 0 0 0 0 19927040 2 1 0 0 17 6 0 0 0 0 0 94133776047512 94133776048132 94133788897280 140726894694815 140726894694953 140726894694953 140726894698471 0\n"
+    },
+    {
+      "pid": 104446,
+      "ppid": 104445,
+      "starttime_ticks": 6635578,
+      "exe": "/opt/altera/26.1.1/quartus/linux64/quartus_sh",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_07/syn/board/ia840f/syn_top",
+      "argv": [
+        "quartus_sh",
+        "--flow",
+        "compile",
+        "ofs_top",
+        "-c",
+        "ofs_top"
+      ],
+      "stat": "104446 (quartus_sh) S 104445 104401 104401 35034 104401 4194304 57758 182353 0 0 154 165 505 60 20 0 3 0 6635578 1591922688 143894 18446744073709551615 4194304 4335072 140722263978224 0 0 0 0 3149824 17608 0 0 0 17 5 0 0 0 0 0 4341312 4350928 17076224 140722263985493 140722263985538 140722263985538 140722263990218 0\n"
+    },
+    {
+      "pid": 104566,
+      "ppid": 104446,
+      "starttime_ticks": 6636473,
+      "exe": "/opt/altera/26.1.1/quartus/linux64/quartus_syn",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_07/syn/board/ia840f/syn_top",
+      "argv": [
+        "quartus_syn",
+        "--ipc_flow=17",
+        "--ipc_mode",
+        "--read_settings_files=on",
+        "--write_settings_files=off",
+        "ofs_top",
+        "-c",
+        "ofs_top"
+      ],
+      "stat": "104566 (quartus_syn) R 104446 104401 104401 35034 104401 4194304 797606 485994 3 0 9497 231 6960 1204 20 0 21 0 6636473 5507194880 1110621 18446744073709551615 4194304 4335736 140730265656032 0 0 0 0 19927040 17610 0 0 0 17 33 0 0 0 0 0 4343072 4351992 17629184 140730265660096 140730265660204 140730265660204 140730265665481 0\n"
+    }
+  ],
+  "files": {
+    "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-07/consumed-reviews.json": {
+      "sha256": "6a7677be48e5044265fae98b29fabdde794069a678a980e9451b3620301c1f2f",
+      "bytes": 1528,
+      "snapshot": "consumed-reviews.json"
+    },
+    "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-07/compile-authorization.json": {
+      "sha256": "f4ac75458097d9fe2f057297ad1e2e97edb5bc0bed2ecd1bc04a23a88096e5ae",
+      "bytes": 1440415,
+      "snapshot": "compile-authorization.json"
+    },
+    "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-07/native-compile.claim.json": {
+      "sha256": "add066cfb13151ce58c07afdc57f8d797655053aee69b0a5d7af17098947a26e",
+      "bytes": 125,
+      "snapshot": "native-compile.claim.json"
+    },
+    "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-07/issuance-launch.log": {
+      "sha256": "e562d04be1bc9cdbd2b82c2dd8f7038bfadc15386624781421a38cc7a2bfc877",
+      "bytes": 99,
+      "snapshot": "issuance-launch.log"
+    },
+    "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-07/run/invocation.json": {
+      "sha256": "5e3b8dc33bc11d9f6096e49e8c1687803bab9875d6260c81ba1deb6feffda2b7",
+      "bytes": 1181,
+      "snapshot": "run--invocation.json"
+    },
+    "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-07/run/status.json": {
+      "sha256": "d39194480835661ed26cbd29eb6d62af38c2543afda6a29565bf29cd4a8ca328",
+      "bytes": 596,
+      "snapshot": "run--status.json"
+    },
+    "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-07/run/native.log": {
+      "sha256": "10b1ccfed1d2ca7479c8eb5d3e67defa969a0f814d983107cea62f327ad7ec3c",
+      "bytes": 2101358,
+      "snapshot": "run--native.log"
+    }
+  },
+  "milestones": [
+    {
+      "line": 20,
+      "text": "    Info: Processing started: Fri Sep 18 17:38:49 2026"
+    },
+    {
+      "line": 22,
+      "text": "Info: Command: quartus_sh --flow compile ofs_top -c ofs_top"
+    },
+    {
+      "line": 44,
+      "text": "    Info: Processing started: Fri Sep 18 17:38:52 2026"
+    },
+    {
+      "line": 46,
+      "text": "Info: Command: quartus_ipgenerate ofs_top -c ofs_top --run_default_mode_op"
+    },
+    {
+      "line": 217,
+      "text": "Info: Quartus Prime IP Generation Tool was successful. 0 errors, 0 warnings"
+    },
+    {
+      "line": 219,
+      "text": "    Info: Processing ended: Fri Sep 18 17:38:53 2026"
+    },
+    {
+      "line": 225,
+      "text": "    Info: Processing started: Fri Sep 18 17:38:54 2026"
+    },
+    {
+      "line": 227,
+      "text": "Info: Command: quartus_sh -t ../../../../syn/shared_config/post_module_hook.tcl quartus_ipgenerate ofs_top ofs_top"
+    },
+    {
+      "line": 240,
+      "text": "Info (23030): Evaluation of Tcl script ../../../../syn/shared_config/post_module_hook.tcl was successful"
+    },
+    {
+      "line": 241,
+      "text": "Info: Quartus Prime Shell was successful. 0 errors, 0 warnings"
+    },
+    {
+      "line": 243,
+      "text": "    Info: Processing ended: Fri Sep 18 17:38:57 2026"
+    },
+    {
+      "line": 252,
+      "text": "    Info: Processing started: Fri Sep 18 17:38:58 2026"
+    },
+    {
+      "line": 254,
+      "text": "Info: Command: quartus_syn --read_settings_files=on --write_settings_files=off ofs_top -c ofs_top"
+    }
+  ],
+  "runner_status": {
+    "state": "running",
+    "started": "2026-09-19T00:38:45.866658+00:00",
+    "runner_pid": 104427,
+    "argv": [
+      "./ofs-common/scripts/common/syn/build_top.sh",
+      "--stage=compile",
+      "-k",
+      "-p",
+      "ia840f",
+      "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_07"
+    ],
+    "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach",
+    "authorization_sha256": "f4ac75458097d9fe2f057297ad1e2e97edb5bc0bed2ecd1bc04a23a88096e5ae",
+    "ready_for_build": false,
+    "accepted_execution": true,
+    "ddr_simulation": "SKIPPED BY USER",
+    "functional_acceptance": false,
+    "native_pid": 104429
+  },
+  "ready_for_build": false,
+  "functional_acceptance": false,
+  "full_build_acceptance": "PENDING: synthesis completion, fit, timing, assembly and report review",
+  "ddr_simulation": "SKIPPED BY USER"
+}

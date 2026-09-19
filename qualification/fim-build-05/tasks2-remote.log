@@ -1,0 +1,90 @@
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/ipgenerate_task.tcl
+28 	flng::set_property -object $task1 -name shell_command_template -value "quartus_ipgenerate --classic \"@project\" -c @revision --run_default_mode_op"
+47     flng::set_property -object $task1 -name enable_quartus_ini_name -value "disable_flow_ipgen"
+48     flng::set_property -object $task1 -name enable_quartus_ini_value -value "off"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/dni_ipgenerate_task.tcl
+28 	flng::set_property -object $task1 -name shell_command_template -value "quartus_ipgenerate \"@project\" -c @revision --run_default_mode_op @dss_mode"
+48     flng::set_property -object $task1 -name enable_quartus_ini_name -value "disable_flow_ipgen"
+49     flng::set_property -object $task1 -name enable_quartus_ini_value -value "off"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/ds_ipgenerate_task.tcl
+28 	flng::set_property -object $task1 -name shell_command_template -value "quartus_ipgenerate \"@project\" -c @revision --run_default_mode_op @dss_mode"
+48     flng::set_property -object $task1 -name enable_quartus_ini_name -value "disable_flow_ipgen"
+49     flng::set_property -object $task1 -name enable_quartus_ini_value -value "off"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/quick_elab_task.tcl
+27 	flng::set_property -object $task1 -name shell_command_template -value "quartus_syn --classic --read_settings_files=on --write_settings_files=off \"@project\" -c @revision --quick_elab @rapid_recompile@optimization_mode"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/dni_quick_elab_task.tcl
+27 	flng::set_property -object $task1 -name shell_command_template -value "quartus_syn --read_settings_files=on --write_settings_files=off \"@project\" -c @revision --quick_elab @rapid_recompile@optimization_mode@dss_mode"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/dni_design_analysis_task.tcl
+26 	flng::set_property -object $task1 -name shell_command_template -value "quartus_syn --read_settings_files=on --write_settings_files=off \"@project\" -c @revision --design_analysis"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/design_analysis_task.tcl
+26 	flng::set_property -object $task1 -name shell_command_template -value "quartus_syn --read_settings_files=on --write_settings_files=off \"@project\" -c @revision --design_analysis"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/analysis_and_elaboration_task.tcl
+33 	flng::set_property -object $task1 -name shell_command_template -value "quartus_syn --classic --read_settings_files=on --write_settings_files=off  \"@project\" -c @revision --analysis_and_elaboration @rapid_recompile"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/dni_analysis_and_synthesis_task.tcl
+31     flng::set_property -object $task1 -name shell_command_template -value "quartus_syn --read_settings_files=on --write_settings_files=off  \"@project\" -c @revision @rapid_recompile@optimization_mode@dss_mode"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/synthesis_task.tcl
+34 	flng::set_property -object $task1 -name shell_command_template -value "quartus_syn --classic --read_settings_files=on --write_settings_files=off \"@project\" -c @revision @rapid_recompile@optimization_mode"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/dni_elaborate_task.tcl
+51     flng::set_property -object $task1 -name tcl_command_template -value "dni_setup_assignment_task::setup_assignment"
+81     flng::set_property -object $task1 -name tcl_command_template -value "dni_analysis_and_elaboration_task::analysis_and_elaboration"
+110     flng::set_property -object $task1 -name tcl_command_template -value "dni_partition_task::partition"
+153     flng::set_property -object $task1 -name tcl_command_template -value "dni_sweep_task::sweep"
+194     flng::set_property -object $task1 -name tcl_command_template -value "dni_read_stp_task::read_stp"
+232     flng::set_property -object $task1 -name tcl_command_template -value "dni_read_sdc_task::read_sdc"
+263     flng::set_property -object $task1 -name tcl_command_template -value "dni_export_to_qdb_task::export_design"
+303     flng::set_property -object $task1 -name tcl_command_template -value "dni_straight_setup_design_task::setup_design"
+346     flng::set_property -object $task1 -name tcl_command_template -value "dni_straight_elaborate_to_qdb_task::eloborate_design"
+368     flng::set_property -object $task1 -name shell_command_template -value "quartus_syn --read_settings_files=on --write_settings_files=off --analysis_and_elaboration \"@project\" -c @revision @rapid_recompile@optimization_mode@dss_mode"
+369 	flng::set_property -object $task1 -name shell_command_subtask_arg -value "--analysis_and_elaboration"
+379     flng::set_property -object $task1 -name subflow_not_executable -value "ON"
+468     flng::set_property -object $task1 -name shell_command_template -value "quartus_syn --read_settings_files=on --write_settings_files=off --synthesis \"@project\" -c @revision @rapid_recompile@optimization_mode@dss_mode"
+469 	flng::set_property -object $task1 -name shell_command_subtask_arg -value "--synthesis"
+565     flng::set_property -object $task1 -name shell_command_template -value "quartus_syn --dni --std_pro_lint  --read_settings_files=on --write_settings_files=off  \"@project\" -c @revision @rapid_recompile@optimization_mode@dss_mode"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/fitter_task.tcl
+30     # This command will execute if this entire task should run. If one or more tasks
+31     # from its subflow is requested, then this task's command will not execute.
+32  	flng::set_property -object $task1 -name shell_command_template -value "quartus_fit --read_settings_files=on --write_settings_files=off \"@project\" -c @revision @rapid_recompile@optimization_mode@dss_mode"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/fitter_implement_task.tcl
+29 	flng::set_property -object $task1 -name shell_command_template -value "quartus_fit --read_settings_files=on --write_settings_files=off \"@project\" -c @revision"
+30 	flng::set_property -object $task1 -name shell_command_appends_subtask_args -value 1
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/fitter_plan_task.tcl
+28 	flng::set_property -object $task1 -name shell_command_template -value "quartus_fit --read_settings_files=on --write_settings_files=off \"@project\" -c @revision --plan"
+29 	flng::set_property -object $task1 -name shell_command_subtask_arg -value "--plan"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/fitter_place_task.tcl
+28 	flng::set_property -object $task1 -name shell_command_template -value "quartus_fit --read_settings_files=on --write_settings_files=off \"@project\" -c @revision --place"	
+29 	flng::set_property -object $task1 -name shell_command_subtask_arg -value "--place"
+54 		# Set map for task to parameter token, used for tools' command/help with task stage specific information
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/fitter_route_task.tcl
+28 	flng::set_property -object $task1 -name shell_command_template -value "quartus_fit --read_settings_files=on --write_settings_files=off \"@project\" -c @revision --route"
+29 	flng::set_property -object $task1 -name shell_command_subtask_arg -value "--route"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/fitter_retime_task.tcl
+32 	flng::set_property -object $task1 -name shell_command_template -value "quartus_fit --read_settings_files=on --write_settings_files=off \"@project\" -c @revision --retime"
+33 	flng::set_property -object $task1 -name shell_command_subtask_arg -value "--retime"
+85     flng::set_property -object $task1 -name enable_quartus_ini_name -value "force_disable_hyper_retimer"
+86     flng::set_property -object $task1 -name enable_quartus_ini_value -value "off"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/fitter_ff_timing_task.tcl
+32 	flng::set_property -object $task1 -name shell_command_template -value "quartus_fit --read_settings_files=on --write_settings_files=off \"@project\" -c @revision --fastforward --continue_flow"
+86     flng::set_property -object $task1 -name enable_quartus_ini_name -value "force_disable_hyper_retimer"
+87     flng::set_property -object $task1 -name enable_quartus_ini_value -value "off"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/fitter_finalize_task.tcl
+28 	flng::set_property -object $task1 -name shell_command_template -value "quartus_fit --read_settings_files=on --write_settings_files=off \"@project\" -c @revision --finalize"
+29 	flng::set_property -object $task1 -name shell_command_subtask_arg -value "--finalize"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/sta_early_task.tcl
+25 	flng::set_property -object $task1 -name shell_command_template -value "quartus_sta \"@project\" -c @revision --post_syn"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/sta_implement_task.tcl
+26 	flng::set_property -object $task1 -name shell_command_template -value "quartus_sta \"@project\" -c @revision --mode=implement"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/eda_netlist_writer_task.tcl
+33     flng::set_property -object $task1 -name shell_command_template -value "quartus_eda --read_settings_files=on --write_settings_files=off \"@project\" -c @revision"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/sta_signoff_task.tcl
+27 	flng::set_property -object $task1 -name shell_command_template -value "quartus_sta \"@project\" -c @revision --mode=finalize"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/power_task.tcl
+31  	flng::set_property -object $task1 -name shell_command_template -value "quartus_pow --read_settings_files=on --write_settings_files=off \"@project\" -c @revision"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/assembler_task.tcl
+28     flng::set_property -object $task1 -name shell_command_template -value "quartus_asm --read_settings_files=on --write_settings_files=off \"@project\" -c @revision"
+41         # Set map for task to parameter token, used for tools' command/help with task stage specific information
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/generate_early_power_estimator_file_task.tcl
+33 	flng::set_property -object $task1 -name shell_command_template -value "quartus_pow --read_settings_files=on --write_settings_files=off \"@project\" -c @revision --estimate_power=off --@output_type=@output_file @extra_args"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/test_bench_template_writer_task.tcl
+33 	flng::set_property -object $task1 -name shell_command_template -value "quartus_eda --read_settings_files=on --write_settings_files=off  \"@project\" -c @revision  --gen_testbench"
+TASK /opt/altera/26.1.1/quartus/common/tcl/internal/flow/eco_task.tcl
+31     flng::set_property -object $task1 -name shell_command_template -value "quartus_fit --read_settings_files=on --write_settings_files=off \"@project\" -c @revision --eco=\"@tcl_file\""

@@ -1,0 +1,91 @@
+--- src/board/ia840f/top.sv (Work07 source)
++++ src/board/ia840f/top.sv (Work08)
+@@ -41,6 +41,9 @@
+    output wire bwbmc_bmc_mst_en_n,
+                     input                                       SYS_REFCLK,   // System Reference Clock (100MHz)
+                                       
++   // Bank 9A BTI reference is required even with INCLUDE_HSSI disabled.
++   input wire qsfp_ref_clk,
++
+ // Local Memory technology interfaces
+ `ifdef INCLUDE_LOCAL_MEM
+ `ifdef INCLUDE_DDR4
+@@ -62,7 +65,6 @@
+ 
+ `ifdef INCLUDE_HSSI                                                                              
+                     //QSFP control signals
+-                    input  wire                                 qsfp_ref_clk                      ,// QSFP Ethernet reference clock
+                     inout  wire                                 qsfpa_i2c_scl                     , // QSFPA I2C SCL
+                     inout  wire                                 qsfpa_i2c_sda                     , // QSFPA I2C SDA
+                     inout  wire                                 qsfpb_i2c_scl                     , // QSFPB I2C SCL
+--- syn/board/ia840f/setup/top_loc.tcl (Work07 source)
++++ syn/board/ia840f/setup/top_loc.tcl (Work08)
+@@ -1,4 +1,4 @@
+-# IA840F PCIe/system/BMC pins only; HSSI/HPS/PMCI are disabled.
++# IA840F PCIe/system/BMC and standalone bank9A BTI pins; HSSI/HPS/PMCI are disabled.
+ # Source: legacy syn/setup/top_loc.tcl; full original is retained in src/board/ia840f/legacy/.
+ set_instance_assignment -name IO_STANDARD 1.8V -to PCIE_RESET_N
+ set_location_assignment PIN_GJ56 -to PCIE_RESET_N
+@@ -91,3 +91,15 @@
+ set_instance_assignment -name IO_STANDARD "1.2V" -to bwbmc_fpga_max_miso
+ set_instance_assignment -name IO_STANDARD "1.2V" -to bwbmc_fpga_max_mosi
+ set_instance_assignment -name IO_STANDARD "1.2V" -to bwbmc_fpga_spi_cs
++
++# Vendor IA840F top_loc.tcl:105-106,254-262; see qualification/fim-bti-clock-01.
++# BTI key spelling follows Quartus 26.1.1 Error (21636), not assumed case equivalence.
++set_location_assignment PIN_CC19 -to qsfp_ref_clk
++set_location_assignment PIN_BW19 -to "qsfp_ref_clk(n)"
++set_instance_assignment -name IO_STANDARD "DIFFERENTIAL LVPECL" -to qsfp_ref_clk
++set_instance_assignment -name HSSI_PARAMETER "refclk_divider_enable_termination=enable_term" -to qsfp_ref_clk
++set_instance_assignment -name HSSI_PARAMETER "refclk_divider_enable_3p3v=disable_3p3v_tol" -to qsfp_ref_clk
++set_instance_assignment -name HSSI_PARAMETER "refclk_divider_disable_hysteresis=enable_hyst" -to qsfp_ref_clk
++set_instance_assignment -name HSSI_PARAMETER "refclk_divider_input_freq=156250000" -to qsfp_ref_clk
++set_instance_assignment -name HSSI_PARAMETER "refclk_divider_powerdown_mode=false" -to qsfp_ref_clk
++set_instance_assignment -name HSSI_PARAMETER "refclk_divider_use_as_BTI_clock=TRUE" -to qsfp_ref_clk
+--- syn/board/ia840f/syn_top/ofs_top_sources.tcl (Work07 source)
++++ syn/board/ia840f/syn_top/ofs_top_sources.tcl (Work08)
+@@ -62,7 +62,7 @@
+ ############################################################################################
+ set_global_assignment -name SDC_FILE  $::env(BUILD_ROOT_REL)/syn/shared_config/fim_dcfifo.sdc
+ set_global_assignment -name SDC_FILE  $::env(BUILD_ROOT_REL)/syn/shared_config/top.sdc
+-set_global_assignment -name SDC_FILE  $::env(BUILD_ROOT_REL)/syn/shared_config/eth_top.sdc
++set_global_assignment -name SDC_FILE  $::env(BUILD_ROOT_REL)/syn/board/ia840f/setup/bti_refclk.sdc
+ set_global_assignment -name SDC_FILE  $::env(BUILD_ROOT_REL)/syn/shared_config/pmci_top.sdc
+ 
+ # Generate timing reports during quartus_sta
+--- syn/board/ia840f/setup/bti_refclk.sdc (Work07 source)
++++ syn/board/ia840f/setup/bti_refclk.sdc (Work08)
+@@ -0,0 +1,2 @@
++# Standalone preservation clock only; donor eth_top.sdc:16. No Ethernet timing paths.
++create_clock -name qsfp_ref_clk -period 6.400 -waveform {0.000 3.200} [get_ports {qsfp_ref_clk}]
+--- ofs-common/tools/ofss_config/ia840f_compile_gate.py (Work07 source)
++++ ofs-common/tools/ofss_config/ia840f_compile_gate.py (Work08)
+@@ -1,4 +1,4 @@
+-"""Work07-only native compile authorization. Not functional readiness or sandboxing.
++"""Work08-only native compile authorization. Not functional readiness or sandboxing.
+ 
+ Trusted installed native flow children use a finite source-derived context table,
+ AND must descend from the exclusive native invocation. No arbitrary standalone
+@@ -12,9 +12,9 @@
+ 
+ BASE = common.BASE
+ SOURCE = common.SOURCE
+-WORK = BASE / 'work_ia840f_fim_07'
++WORK = BASE / 'work_ia840f_fim_08'
+ PROJECT = WORK / 'syn/board/ia840f/syn_top'
+-EVIDENCE = BASE / 'qualification/fim-build-07'
++EVIDENCE = BASE / 'qualification/fim-build-08'
+ RECORD = EVIDENCE / 'compile-authorization.json'
+ CLAIM = EVIDENCE / 'native-compile.claim.json'
+ TOP = './ofs-common/scripts/common/syn/build_top.sh'
+--- ofs-common/tools/ofss_config/ia840f_experimental_gate.py (Work07 source)
++++ ofs-common/tools/ofss_config/ia840f_experimental_gate.py (Work08)
+@@ -288,7 +288,7 @@
+ 
+ def main():
+     try:
+-        if sys.argv[1:] == ['quartus'] and Path.cwd() == BASE / 'work_ia840f_fim_07/syn/board/ia840f/syn_top':
++        if sys.argv[1:] == ['quartus'] and Path.cwd() == BASE / 'work_ia840f_fim_08/syn/board/ia840f/syn_top':
+             import ia840f_compile_gate
+             ia840f_compile_gate.quartus_context()
+         elif sys.argv[1:] == ['run-native-compile']:

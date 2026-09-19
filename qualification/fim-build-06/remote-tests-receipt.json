@@ -1,0 +1,30 @@
+{
+  "files": {
+    "candidate/ia840f_compile_gate.py": "3c33edeb2ba9f24ab6c5e4fe5d109413e174a35e68cad94ed3bf722bf970dfb5",
+    "candidate/test_ia840f_compile_gate.py": "165ff2e3c84a0189c3012ab90452edfaf7549c243a55183b8c16cd9ff3465c2d",
+    "candidate/test_callback_delta.py": "a3b0300ebff22c2441016139dd2bc9bf4b316ee9fa5926659aa576711b02e8d1",
+    "candidate/gate.patch": "e7086c2ec9f512eedccb51d7dbd0ee37c411924e054ba58f2f3c8493607c63ad",
+    "test_runner.py": "cce1f447ccc889edd2188e250671636bcb02a464b558a04144e3665d79f52e77",
+    "test_issuer.py": "7fa92bed3edd04526c723355933db1d6c210acc075175e3a212bb424981e7b7a",
+    "callback-construction.json": "f7148669e33c21ee4d62e9bb3a7de730e22f57d5959c01f42418cce7d0e52b6e",
+    "verification.json": "7f7b23ea0458bc99252827ef75f25dad43609a2c61f28b86ce4f39d72413cbd8",
+    "review-request.json": "183b4a11d38290c4e0c49e9dcd9f4193e7d7b75cc36b80ebc95f72a5e90b81cb"
+  },
+  "tests": {
+    "gate-tests": {
+      "rc": 0,
+      "log": "test_claim_ancestry_and_source_still_enforced (test_callback_delta.CallbackTests) ... ok\ntest_closed_grammar_delta (test_callback_delta.CallbackTests) ... ok\ntest_exact_runtime_and_native_ancestry (test_callback_delta.CallbackTests) ... ok\ntest_missing_record_and_work_mutation (test_callback_delta.CallbackTests) ... ok\ntest_native_wrong_argv_cwd_work_and_options (test_callback_delta.CallbackTests) ... ok\ntest_observed_callbacks_exact_and_negative_mutations (test_callback_delta.CallbackTests) ... ok\ntest_record_and_native_claim_positive_inert (test_callback_delta.CallbackTests) ... ok\ntest_runtime_requires_recorded_hash (test_callback_delta.CallbackTests) ... ok\ntest_symlink_escape (test_callback_delta.CallbackTests) ... ok\ntest_wrong_source_tool_part_readiness_review_work (test_callback_delta.CallbackTests) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.083s\n\nOK\n",
+      "sha256": "dbb344cd2da2e7423a5c450816d1767d8ea1bbdca06ae8e127b458b23915ac3d"
+    },
+    "runner-tests": {
+      "rc": 0,
+      "log": "{\n  \"state\": \"finished\",\n  \"started\": \"2026-09-19T00:15:31.535383+00:00\",\n  \"runner_pid\": 99984,\n  \"argv\": [\n    \"/usr/bin/python3\",\n    \"-c\",\n    \"import sys;print('inert error fixture');sys.exit(7)\"\n  ],\n  \"cwd\": \"/tmp/tmp89hs6v3g/source\",\n  \"authorization_sha256\": \"inert-fixture-hash\",\n  \"ready_for_build\": false,\n  \"accepted_execution\": true,\n  \"ddr_simulation\": \"SKIPPED BY USER\",\n  \"functional_acceptance\": false,\n  \"native_pid\": 99985,\n  \"ended\": \"2026-09-19T00:15:31.547817+00:00\",\n  \"native_returncode\": 7,\n  \"gate_rejection\": false,\n  \"native_exit_accepted\": false,\n  \"compile_fit_assembly_timing_acceptance\": \"PENDING REPORT REVIEW\"\n}\n{\n  \"state\": \"finished\",\n  \"started\": \"2026-09-19T00:15:31.553893+00:00\",\n  \"runner_pid\": 99984,\n  \"argv\": [\n    \"/usr/bin/python3\",\n    \"-c\",\n    \"import sys;print('inert pass fixture');sys.exit(0)\"\n  ],\n  \"cwd\": \"/tmp/tmpanfhq4kk/source\",\n  \"authorization_sha256\": \"inert-fixture-hash\",\n  \"ready_for_build\": false,\n  \"accepted_execution\": true,\n  \"ddr_simulation\": \"SKIPPED BY USER\",\n  \"functional_acceptance\": false,\n  \"native_pid\": 99986,\n  \"ended\": \"2026-09-19T00:15:31.578617+00:00\",\n  \"native_returncode\": 0,\n  \"gate_rejection\": false,\n  \"native_exit_accepted\": true,\n  \"compile_fit_assembly_timing_acceptance\": \"PENDING REPORT REVIEW\"\n}\n{\n  \"state\": \"finished\",\n  \"started\": \"2026-09-19T00:15:31.584284+00:00\",\n  \"runner_pid\": 99984,\n  \"argv\": [\n    \"/usr/bin/python3\",\n    \"-c\",\n    \"import sys;print('Critical Warning (125091): IA840F_GATE_REJECTED');sys.exit(0)\"\n  ],\n  \"cwd\": \"/tmp/tmpxr1jg5i1/source\",\n  \"authorization_sha256\": \"inert-fixture-hash\",\n  \"ready_for_build\": false,\n  \"accepted_execution\": true,\n  \"ddr_simulation\": \"SKIPPED BY USER\",\n  \"functional_acceptance\": false,\n  \"native_pid\": 99987,\n  \"ended\": \"2026-09-19T00:15:31.609877+00:00\",\n  \"native_returncode\": 0,\n  \"gate_rejection\": true,\n  \"native_exit_accepted\": false,\n  \"compile_fit_assembly_timing_acceptance\": \"PENDING REPORT REVIEW\"\n}\ntest_native_error_propagated (test_runner.RunnerTests) ... ok\ntest_zero_is_exit_only_not_functional_acceptance (test_runner.RunnerTests) ... ok\ntest_zero_rejection_not_accepted (test_runner.RunnerTests) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.079s\n\nOK\n",
+      "sha256": "bbacd2fb26759d9d89ac6153dd222433d6fd3113955d51bb90f1f060551ff00e"
+    },
+    "issuer-tests": {
+      "rc": 0,
+      "log": "AUTHORIZATION ISSUED; NOT STARTED 6014bed99987bb34b2fd144bf2779c1d577dafb59ca9d07fa74013a7ec516672\ntest_positive_and_exclusive_reissue (test_issuer.IssuerTests) ... ok\ntest_review_handoff_source_and_inherited_rejections (test_issuer.IssuerTests) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.017s\n\nOK\n",
+      "sha256": "4b9e668ab1f1370f83fb432d2ce8d4d0c68a1448707251206a84f0c66b431790"
+    }
+  }
+}

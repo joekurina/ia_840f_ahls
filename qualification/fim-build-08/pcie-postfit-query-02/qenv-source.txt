@@ -1,0 +1,283 @@
+#!/bin/bash
+
+# Copyright (c) 2026 Altera Corporation. All rights reserved.
+
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and any partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, the Altera Quartus Prime License Agreement,
+# the Altera IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Altera and sold by Altera or its authorized distributors.  Please
+# refer to the Altera Software License Subscription Agreements 
+# on the Quartus Prime software download page.
+
+if test ! "${QUARTUS_QENV-UNSET}" != UNSET ; then
+	export QUARTUS_QENV=1
+	export QENV_STATUS=0
+
+	if test ! "${QUARTUS_ROOTDIR-UNSET}" != UNSET ; then
+		echo "You must set the QUARTUS_ROOTDIR environment variable"
+		echo "to point to a valid Quartus Prime installation before"
+		echo "sourcing this script!"
+		exit
+	fi
+
+	##### Reset paths
+
+	# Save original paths we inherited from the caller
+	export QUARTUS_ORIG_PATH=$PATH
+
+	# Save original library path if exists
+	if test "${LD_LIBRARY_PATH-UNSET}" != UNSET ; then
+		export QUARTUS_ORIG_LIBPATH=$LD_LIBRARY_PATH
+	fi
+
+	##### Basic settings
+
+	if test ! "${TMP-UNSET}" != UNSET ; then
+		export TMP=/tmp
+	elif test ! -d $TMP ; then
+		export TMP=/tmp
+	fi
+
+	# quartus doesn't support other languages
+	# so if LANG is set make sure its C
+	if test "${LANG-UNSET}" != UNSET ; then
+		if test "$LANG" != "C" ; then export LANG=C ; fi
+	fi
+	# if any LC_* variable is set, set LC_ALL to C to override
+	env | grep LC_ > /dev/null 2>&1
+	if test $? = 0 ; then export LC_ALL=C ; fi
+
+	export QUARTUS_BIT_TYPE=32
+	export UNAME_SYSTEM=`uname -s`
+	export UNAME_REVISION=`uname -r`
+	UNAME_VERSION=`uname -v`
+	export UNAME_VERSION="$UNAME_VERSION"
+
+	if test ! "${CMD_NAME-UNSET}" != UNSET ; then export CMD_NAME=`basename $0` ; fi
+
+	# discover QCORE_ROOTDIR based on QUARTUS_ROOTDIR and set it if the directory exists
+	if [ -d "${QUARTUS_ROOTDIR}/../qcore" ]; then
+		export QCORE_ROOTDIR=$(cd "${QUARTUS_ROOTDIR}/../qcore" 2>/dev/null && pwd)
+	else
+		unset QCORE_ROOTDIR
+	fi
+
+	# discover QSYS_BINDIR based on QUARTUS_ROOTDIR and set it if the directory exists
+	if [ -d "${QUARTUS_ROOTDIR}/../qsys/bin" ]; then
+		export QSYS_BINDIR=$(cd "${QUARTUS_ROOTDIR}/../qsys/bin" 2>/dev/null && pwd)
+	else
+		unset QSYS_BINDIR
+	fi
+
+	# discover VDS_BINDIR based on QUARTUS_ROOTDIR and set it if the directory exists
+	if [ -d "${QUARTUS_ROOTDIR}/../vds/bin" ]; then
+		export VDS_BINDIR=$(cd "${QUARTUS_ROOTDIR}/../vds/bin" 2>/dev/null && pwd)
+	else
+		unset VDS_BINDIR
+	fi
+
+	# discover NIOSV_BINDIR based on QUARTUS_ROOTDIR and set it if the directory exists
+	if [ -d "${QUARTUS_ROOTDIR}/../niosv/bin" ]; then
+		export NIOSV_BINDIR=$(cd "${QUARTUS_ROOTDIR}/../niosv/bin" 2>/dev/null && pwd)
+	else
+		unset NIOSV_BINDIR
+	fi
+
+	# discover SYSCON_BINDIR based on QUARTUS_ROOTDIR and set it if the directory exists
+	if [ -d "${QUARTUS_ROOTDIR}/../syscon/bin" ]; then
+		export SYSCON_BINDIR=$(cd "${QUARTUS_ROOTDIR}/../syscon/bin" 2>/dev/null && pwd)
+	else
+		unset SYSCON_BINDIR
+	fi
+
+    # "riscfree/build_tools/bin"
+	if [ -d "${QUARTUS_ROOTDIR}/../riscfree/build_tools/bin" ]; then
+		export RISCFREE_DIRA=$(cd "${QUARTUS_ROOTDIR}/../riscfree/build_tools/bin" 2>/dev/null && pwd)
+	else
+		unset RISCFREE_DIRA
+	fi
+
+    # "riscfree/debugger/gdbserver-riscv"
+	if [ -d "${QUARTUS_ROOTDIR}/../riscfree/debugger/gdbserver-riscv" ]; then
+		export RISCFREE_DIRB=$(cd "${QUARTUS_ROOTDIR}/../riscfree/debugger/gdbserver-riscv" 2>/dev/null && pwd)
+	else
+		unset RISCFREE_DIRB
+	fi
+
+    # "riscfree/build_tools/cmake/bin"
+	if [ -d "${QUARTUS_ROOTDIR}/../riscfree/build_tools/cmake/bin" ]; then
+		export RISCFREE_DIRC=$(cd "${QUARTUS_ROOTDIR}/../riscfree/build_tools/cmake/bin" 2>/dev/null && pwd)
+	else
+		unset RISCFREE_DIRC
+	fi
+
+    # "riscfree/toolchain/riscv32-unknown-elf/bin"
+	if [ -d "${QUARTUS_ROOTDIR}/../riscfree/toolchain/riscv32-unknown-elf/bin" ]; then
+		export RISCFREE_DIRD=$(cd "${QUARTUS_ROOTDIR}/../riscfree/toolchain/riscv32-unknown-elf/bin" 2>/dev/null && pwd)
+	else
+		unset RISCFREE_DIRD
+	fi
+
+
+	##### Platform settings
+
+	if test $UNAME_SYSTEM = "Linux" ; then
+		export QUARTUS_PLATFORM=linux
+		export PATCH_CMD=""
+		export AWK_CMD="awk"
+		lc_setting=`locale -a | grep en_US$`
+
+	        if test "$lc_setting" != "en_US" ; then
+			lc_setting="en_US.UTF-8"
+		fi
+
+		if test "${LC_CTYPE-UNSET}" != UNSET ; then
+			if test "$LC_CTYPE" = "POSIX" ; then
+				export LC_CTYPE=$lc_setting
+			fi
+			if test "$LC_CTYPE" = "C" ; then
+				export LC_CTYPE=$lc_setting
+			fi
+		else
+			unset LC_ALL
+			export LC_CTYPE=$lc_setting
+		fi
+
+		# Memory manager crashes if LD_ASSUME_KERNEL is used:
+		unset LD_ASSUME_KERNEL
+
+        if [ -f /etc/SuSE-release ]; then
+            suse_ver=`lsb_release -r -s`
+            if [ "$suse_ver" = "11" ]; then
+                export RTLD_DEEPBIND=0
+            fi
+        fi
+	fi
+fi
+
+if test `uname -m` = "x86_64" ; then
+	export QUARTUS_BIT_TYPE=64
+fi
+
+# We don't support processors without SSE 4.2 extensions (e.g. CPUs older than Intel Nehalem).
+cpumodel=`grep 'model name' /proc/cpuinfo | sed -e's/model name.*: //g' | uniq`
+export cpumodel="$cpumodel"
+grep sse4_2 /proc/cpuinfo > /dev/null 2>&1
+if [ $? != 0 ] && [ "${QUARTUS_CPUID_BYPASS}" != "1" ]; then
+	echo ""
+	echo "The Quartus Prime software is optimized for the Intel Nehalem processor"
+	echo "and newer processors.  The required extensions were not found on:"
+	echo "'$cpumodel'"
+	echo ""
+	echo "The Quartus Prime software will not function properly on this processor model."
+	echo "Terminating..."
+	export QENV_STATUS=-1
+fi
+
+##### Determine what bitness executables we should use
+
+QBINDIR32=$QUARTUS_ROOTDIR/$QUARTUS_PLATFORM
+QBINDIR64=$QUARTUS_ROOTDIR/${QUARTUS_PLATFORM}64
+
+# Re-derive QCORE_ROOTDIR from QUARTUS_ROOTDIR if not already set.
+# This handles re-entry when the QUARTUS_QENV guard is skipped (e.g. when
+# quartus_py is invoked again from within an interactive niosv-shell session).
+# QUARTUS_ROOTDIR is always available because the wrapper exports it before
+# sourcing this script.
+if test "${QCORE_ROOTDIR-UNSET}" = UNSET && [ -d "${QUARTUS_ROOTDIR}/../qcore" ]; then
+	QCORE_ROOTDIR=$(cd "${QUARTUS_ROOTDIR}/../qcore" 2>/dev/null && pwd)
+fi
+
+if test "${QCORE_ROOTDIR-UNSET}" != UNSET ; then
+	QCOREBINDIR32=${QCORE_ROOTDIR}/${QUARTUS_PLATFORM}
+	QCOREBINDIR64=${QCORE_ROOTDIR}/${QUARTUS_PLATFORM}64
+fi
+
+if test $QUARTUS_BIT_TYPE = "32" ; then
+    # On a 32-bit system the only option is to use 32-bit
+    if test -d $QBINDIR32 ; then
+        export QUARTUS_BINDIR=$QBINDIR32
+	else
+	    echo "Error: Can not run the 64-bit Quartus Prime software on a 32-bit machine."
+	    export QENV_STATUS=-1
+    fi
+	
+	if test -d $QCOREBINDIR32 ; then
+		export QCORE_BINDIR=$QCOREBINDIR32
+	fi
+else
+    # On a 64-bit system use 64-bit if its present, otherwise use 32-bit
+    if test -d $QBINDIR64 ; then
+        export QUARTUS_BINDIR=$QBINDIR64
+    elif test -d $QBINDIR32 ; then
+        export QUARTUS_BINDIR=$QBINDIR32
+    else
+	    echo "Error: The Quartus Prime software installation is incomplete, please re-install."
+	    export QENV_STATUS=-1
+    fi
+
+	if test -d $QCOREBINDIR64 ; then
+		export QCORE_BINDIR=$QCOREBINDIR64
+	elif test -d $QCOREBINDIR32 ; then
+		export QCORE_BINDIR=$QCOREBINDIR32
+	fi
+fi
+
+
+##### RISCFREE_DIR path setup
+if test "${RISCFREE_DIRD-UNSET}" != UNSET ; then
+	export PATH=${RISCFREE_DIRD}:${PATH}
+fi
+if test "${RISCFREE_DIRC-UNSET}" != UNSET ; then
+	export PATH=${RISCFREE_DIRC}:${PATH}
+fi
+if test "${RISCFREE_DIRB-UNSET}" != UNSET ; then
+	export PATH=${RISCFREE_DIRB}:${PATH}
+fi
+if test "${RISCFREE_DIRA-UNSET}" != UNSET ; then
+	export PATH=${RISCFREE_DIRA}:${PATH}
+fi
+
+##### SYSCON/bin path setup
+if test "${SYSCON_BINDIR-UNSET}" != UNSET ; then
+	export PATH=${SYSCON_BINDIR}:${PATH}
+fi
+
+##### VDS/bin path setup
+if test "${VDS_BINDIR-UNSET}" != UNSET ; then
+	export PATH=${VDS_BINDIR}:${PATH}
+fi
+
+##### NIOSV/bin path setup
+if test "${NIOSV_BINDIR-UNSET}" != UNSET ; then
+	export PATH=${NIOSV_BINDIR}:${PATH}
+fi
+
+##### QSYS/bin path setup
+if test "${QSYS_BINDIR-UNSET}" != UNSET ; then
+	export PATH=${QSYS_BINDIR}:${PATH}
+fi
+
+##### Quartus/Qcore path setup
+
+if test "${QCORE_BINDIR-UNSET}" != UNSET ; then
+	export PATH=${QCORE_BINDIR}:${PATH}
+	export LD_LIBRARY_PATH=${QCORE_BINDIR}${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+fi
+
+export PATH=$QUARTUS_BINDIR:$PATH
+export LD_LIBRARY_PATH=${QUARTUS_BINDIR}${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+
+# Add <qdir>/adm to path, it has some helper tools
+export PATH=$QUARTUS_ROOTDIR/adm:$PATH
+
+if test -f $QUARTUS_ROOTDIR/adm/qtb.sh ; then
+	. $QUARTUS_ROOTDIR/adm/qtb.sh
+fi

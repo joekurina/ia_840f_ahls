@@ -1,0 +1,15 @@
+quartus_sh True /opt/altera/26.1.1/quartus/linux64/quartus_sh 5740e47134517eac623c1391837761d12ab18b99a2db78be790cf764af3e3bce
+quartus_ipgenerate True /opt/altera/26.1.1/quartus/linux64/quartus_ipgenerate ba12d46d14b1e675c88550e3d71f659597595885dfa7027036738a0e09cc3cb5
+quartus_syn True /opt/altera/26.1.1/quartus/linux64/quartus_syn a552780d9319803b701771b70eaa8e42751c99f7b1bc530fac128571697c0ce8
+quartus_fit True /opt/altera/26.1.1/quartus/linux64/quartus_fit 31e90c7dcdaee32f0dea50d633e2b6edc8bac075b44bc5caa278a9aaf016d35c
+quartus_fit2 False /opt/altera/26.1.1/quartus/linux64/quartus_fit2 
+quartus_sta True /opt/altera/26.1.1/quartus/linux64/quartus_sta d675f96e7dffe1f7c736dfe2a20e1d3f4e576a5a53f714a644d2082c00fd4fae
+quartus_asm True /opt/altera/26.1.1/quartus/linux64/quartus_asm 05804d6ea551490177d86a0ca64e994077b88d8fb129ab8e9706a3faa2a3f463
+quartus_cdb True /opt/altera/26.1.1/quartus/linux64/quartus_cdb 4d88f2805ce0c9c50d836a88ee40f5064c550c59f0ba4f0e94d5e187f943cc22
+quartus_pow True /opt/altera/26.1.1/quartus/linux64/quartus_pow ac9f04d1311f4e8e32669b09d38a3804366e7cbeb1775ae8c434df16730ca78c
+quartus_eda True /opt/altera/26.1.1/quartus/linux64/quartus_eda dd825a341c1977cff4b5b15342ceb441e6d21fd3ff7aa5d1364fe6708c6ab381
+quartus_tlg True /opt/altera/26.1.1/quartus/linux64/quartus_tlg e2865fd0647b2404606f48a78c980c97fda38294c72e90666303e98692b02271
+tlg_task.tcl 	flng::set_property -object $task1 -name shell_command_template -value "quartus_tlg --read_settings_files=on --write_settings_files=off --skip_quick_elaboration \"@project\" -c @revision"
+dni_tlg_task.tcl 	flng::set_property -object $task1 -name shell_command_template -value "quartus_tlg --read_settings_files=on --write_settings_files=off --skip_quick_elaboration \"@project\" -c @revision"
+dni_hssi_tool_task.tcl 	flng::set_property -object $task1 -name shell_command_template -value "quartus_tlg --tool=hssi_support_logic  --read_settings_files=on --write_settings_files=off --skip_quick_elaboration \"@project\" -c @revision"
+dni_elaborate_task.tcl     flng::set_property -object $task1 -name shell_command_template -value "quartus_syn --dni --std_pro_lint  --read_settings_files=on --write_settings_files=off  \"@project\" -c @revision @rapid_recompile@optimization_mode@dss_mode"

@@ -1,0 +1,973 @@
+FILE /opt/altera/26.1.1/quartus/common/tcl/internal/flow/compile_flow.tcl
+# Copyright (c) 2020 Intel Corporation. All rights reserved.
+
+# Your use of Intel Corporation's design tools, logic functions
+# and other software and tools, and any partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details, at
+# https://fpgasoftware.intel.com/eula.
+
+
+namespace eval compile_flow {
+    variable flow_id [flng::get_next_available_id -type flow]
+    variable flow [flng::add_object -type flow_definition -number $flow_id -name classic_compile]
+    flng::set_property -object $flow -name identifier -value "Full Compilation"
+    flng::set_property -object $flow -name gui_display -value "Compile Design"
+    flng::set_property -object $flow -name description -value "Run Full Compilation (Classic)"
+    flng::set_property -object $flow -name storage_engine -value "qhd"
+    flng::set_property -object $flow -name enable_pre_post_flow_script -value 1
+
+    variable ipgen [flng::get_objects -type task_definition -name "ipgenerate"]
+    if {$ipgen == ""} {
+        error "Error: unable to find ipgenerate task"
+    } else {
+        lappend task_list $ipgen
+    }
+
+    variable tileip_generation [flng::get_objects -type task_definition -name "tileip_generation"]
+    if {$tileip_generation == ""} {
+        error "Error: unable to find Plan Interface task"
+    } else {
+        lappend task_list $tileip_generation
+    }
+
+    variable qsyn [flng::get_objects -type task_definition -name "synthesis"]
+    if {$qsyn == ""} {
+        error "Error: unable to find synthesis task"
+    } else {
+        lappend task_list $qsyn
+    }
+
+    variable qfit [flng::get_objects -type task_definition -name "fitter"]
+    if {$qfit == ""} {
+        error "Error: unable to find fitter task"
+    } else {
+        lappend task_list $qfit
+    }
+
+    variable fit_fastforward_timing [flng::get_objects -type task_definition -name "fitter_fastforward_timing"]
+    if {$fit_fastforward_timing == ""} {
+        error "Error: unable to find fit_fastforward_timing task."
+    } else {
+        lappend task_list $fit_fastforward_timing
+    }
+
+    variable qsta [flng::get_objects -type task_definition -name "sta_signoff"]
+    if {$qsta == ""} {
+        error "Error: unable to find sta_signoff task"
+    } else {
+        lappend task_list $qsta
+    }
+
+	variable qpow [flng::get_objects -type task_definition -name "power"]
+    if {$qpow == ""} {
+        error "Error: unable to find power analysis task."
+    } else {
+        lappend task_list $qpow
+    }
+
+    variable qasm [flng::get_objects -type task_definition -name "assembler"]
+    if {$qasm == ""} {
+        error "Error: unable to find assembler task."
+    } else {
+        lappend task_list $qasm
+    }
+
+    variable qeda [flng::get_objects -type task_definition -name "eda_netlist_writer"]
+    if {$qeda == ""} {
+        error "Error: unable to find netlist writer task."
+    } else {
+        lappend task_list $qeda
+    }
+
+    variable npp_preprocess [flng::get_objects -type task_definition -name "npp_preprocess"]
+    if {$npp_preprocess == ""} {
+        error "Error: unable to find npp_preprocess task."
+    } else {
+        lappend task_list $npp_preprocess
+    }
+
+    
+    flng::set_property -object $flow -name tasks -value $task_list
+    flng::set_property -object $flow -name prerequisite -value [list "task:eda_netlist_writer,task:fitter_plan" "task:fitter_fastforward_timing,task:fitter_route"]
+    
+    flng::add_property -object $flow -name depends_on:$ipgen -value [list $tileip_generation $qsyn]
+    flng::add_property -object $flow -name depends_on:$tileip_generation -value $qsyn
+    flng::add_property -object $flow -name depends_on:$qsyn -value [list $qfit $qeda]    
+    flng::add_property -object $flow -name depends_on:$qfit -value [list $fit_fastforward_timing $qeda $qasm $qpow $qsta $npp_preprocess]
+
+    flng::add_property -object $flow -name parameters:rapid_recompile -value ""
+    flng::add_property -object $flow -name parameters:optimization_mode -value ""
+
+
+
+    flng::set_property -object $flow -name config_dependency_function -value "compile_flow::config_dependency"
+
+    proc config_dependency {flow_id start_task end_task} {
+        variable eda_inst ""
+        variable qsyn ""
+        variable fitter ""
+        variable fitter_status ""
+	    if {[catch {flng::get_objects -type task -name "eda_netlist_writer" -properties "flow=$flow_id"} eda_inst]} {
+            return "0"
+        }
+        if {[catch {flng::get_objects -type task -name "fitter" -properties "flow=$flow_id"} fitter]} {
+            return "0"
+        }
+        if {[catch {flng::get_objects -type task -name "synthesis" -properties "flow=$flow_id"} qsyn]} {
+           return "0"
+        }
+        if {[catch {flng::get_property -object $fitter -name "status"} fitter_status]} {
+            return "0"
+        }
+        variable fitter_percent 0
+        if {$fitter_status != ""} {
+            if {[catch {flng::get_property -object $fitter_status -name "percent"} fitter_percent]} {
+                set percent 0
+            }
+        }
+
+        if {$end_task == "task_definition:eda_netlist_writer" && $fitter_percent == 0} {
+            flng::set_property -object $flow_id -name prerequisite -value [list "task:eda_netlist_writer,task:synthesis" "task:fitter_fastforward_timing,task:fitter_route"]
+        } else {
+            flng::set_property -object $flow_id -name prerequisite -value [] 
+        }
+        return "1"
+    }
+}
+
+
+
+FILE /opt/altera/26.1.1/quartus/common/tcl/internal/flow/dni_compile_flow.tcl
+# Copyright (c) 2020 Intel Corporation. All rights reserved.
+
+# Your use of Intel Corporation's design tools, logic functions
+# and other software and tools, and any partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details, at
+# https://fpgasoftware.intel.com/eula.
+
+
+###############################################################################
+#
+#
+# File:	    dni_compile_flow	
+#           Compile flow definition using DNI
+#
+# @copyright Intel Corporation, 2020
+#
+#
+###############################################################################
+
+namespace eval dni_design_setup_debug_flow {
+    variable flow_id [flng::get_next_available_id -type flow]
+    variable flow [flng::add_object -type flow_definition -number $flow_id -name "dni_debug_design_setup"]
+    flng::set_property -object $flow -name identifier -value "Debug Design Setup"
+    flng::set_property -object $flow -name description -value "Run debug design setup"
+    flng::set_property -object $flow -name storage_engine -value "dni"
+    flng::add_property -object $flow -name parameters:sdc_file_path -value ""
+    flng::add_property -object $flow -name parameters:annotate_sweep_hint -value ""
+
+    variable task_list [list]
+
+    variable setup_assignment_task [flng::get_objects -type task_definition -name "dni_setup_assignment"]
+    if {$setup_assignment_task == ""} {
+        error "Error: unable to find setup assignment task"
+    } else {
+        lappend task_list $setup_assignment_task
+    }
+
+    variable analysis_elaborate_task [flng::get_objects -type task_definition -name "dni_analysis_and_elaboration"]
+    if {$analysis_elaborate_task == ""} {
+        error "Error: unable to find analyze files task"
+    } else {
+        lappend task_list $analysis_elaborate_task
+    }
+
+    variable partition_task [flng::get_objects -type task_definition -name "dni_partition"]
+    if {$partition_task == ""} {
+        error "Error: unable to find partition task"
+    } else {
+        lappend task_list $partition_task
+    }
+
+    variable read_sdc_task [flng::get_objects -type task_definition -name "dni_read_sdc"]
+    if {$read_sdc_task == ""} {
+        error "Error: unable to find 'dni_read_sdc' task."
+    } else {
+        lappend task_list $read_sdc_task
+    }
+
+    variable sweep_task [flng::get_objects -type task_definition -name "dni_sweep"]
+    if {$sweep_task == ""} {
+        error "Error: unable to find sweep task"
+    } else {
+        lappend task_list $sweep_task
+    }
+
+    variable export_to_qdb_task [flng::get_objects -type task_definition -name "dni_export_to_qdb"]
+    if {$export_to_qdb_task == ""} {
+        error "Error: unable to export to qdb task"
+    } else {
+        lappend task_list $export_to_qdb_task
+    }
+
+    flng::set_property -object $flow -name tasks -value $task_list
+
+    flng::add_property -object $flow -name depends_on:$setup_assignment_task -value $analysis_elaborate_task
+    flng::add_property -object $flow -name depends_on:$analysis_elaborate_task -value $partition_task
+    flng::add_property -object $flow -name depends_on:$partition_task -value $read_sdc_task
+    flng::add_property -object $flow -name depends_on:$read_sdc_task -value $sweep_task
+    flng::add_property -object $flow -name depends_on:$sweep_task -value $export_to_qdb_task
+    flng::add_property -object $flow -name use_dms -value true -value_type bool
+}
+
+namespace eval dni_straight_design_setup_flow {
+    variable flow_id [flng::get_next_available_id -type flow]
+    variable flow [flng::add_object -type flow_definition -number $flow_id -name "dni_straight_design_setup"]
+    flng::set_property -object $flow -name identifier -value "Straight Design Setup"
+    flng::set_property -object $flow -name description -value "Run design setup without intermediate checkpoints"
+    flng::add_property -object $flow -name parameters:sdc_file_path -value ""    
+
+    variable task_list [list]
+
+    variable straight_setup_design_task [flng::get_objects -type task_definition -name "dni_straight_setup_design"]
+    if {$straight_setup_design_task == ""} {
+        error "Error: unable to find straight setup design task"
+    } else {
+        lappend task_list $straight_setup_design_task
+    }
+
+    variable export_to_qdb_task [flng::get_objects -type task_definition -name "dni_export_to_qdb"]
+    if {$export_to_qdb_task == ""} {
+        error "Error: unable to export to qdb task"
+    } else {
+        lappend task_list $export_to_qdb_task
+    }
+
+    flng::set_property -object $flow -name tasks -value $task_list
+    flng::add_property -object $flow -name depends_on:$straight_setup_design_task -value $export_to_qdb_task
+    flng::add_property -object $flow -name use_dms -value true -value_type bool
+}
+
+namespace eval dni_straight_elaborate_to_qdb_flow {
+    variable flow_id [flng::get_next_available_id -type flow]
+    variable flow [flng::add_object -type flow_definition -number $flow_id -name "dni_straight_elaborate_to_qdb"]
+    flng::set_property -object $flow -name identifier -value "Straight Elaborate Design to QDB"
+    flng::set_property -object $flow -name description -value "Run eloabrate design to QDB without intermediate checkpoints"
+    flng::add_property -object $flow -name parameters:sdc_file_path -value ""
+
+
+    variable task_list [list]
+
+    variable straight_elaborate_to_qdb_task [flng::get_objects -type task_definition -name "dni_straight_elaborate_to_qdb"]
+    if {$straight_elaborate_to_qdb_task == ""} {
+        error "Error: unable to find setup design task"
+    } else {
+        lappend task_list $straight_elaborate_to_qdb_task
+    }
+
+    flng::set_property -object $flow -name tasks -value $task_list
+    flng::add_property -object $flow -name use_dms -value true -value_type bool
+}
+
+namespace eval dni_analysis_and_synthesis_flow {
+    variable flow_id [flng::get_next_available_id -type flow]
+    variable flow [flng::add_object -type flow_definition -number $flow_id -name dni_analysis_and_synthesis]
+    flng::set_property -object $flow -name identifier -value "Analysis & Synthesis"
+    flng::set_property -object $flow -name description -value " Analysis and Synthesis"
+    flng::set_property -object $flow -name storage_engine -value "qhd"
+
+    variable dni_elaboration [flng::get_objects -type task_definition -name "dni_elaboration"]
+    if {$dni_elaboration == ""} {
+        error "Error: unable to find elaboration task"
+    } else {
+        lappend task_list $dni_elaboration
+    }
+
+
+    variable dni_synthesis [flng::get_objects -type task_definition -name "dni_synthesis"]
+    if {$dni_synthesis == ""} {
+        error "Error: unable to find synthesis task"
+    } else {
+        lappend task_list $dni_synthesis
+    }
+
+
+    flng::set_property -object $flow -name tasks -value $task_list
+    flng::add_property -object $flow -name depends_on:$dni_elaboration -value [list $dni_synthesis]
+}
+
+
+namespace eval dni_compile_flow {
+    variable flow_id [flng::get_next_available_id -type flow]
+    variable flow [flng::add_object -type flow_definition -number $flow_id -name compile]
+    flng::set_property -object $flow -name identifier -value "Full Compilation"
+    flng::set_property -object $flow -name gui_display -value "Compile Design"
+    flng::set_property -object $flow -name description -value "Run Full Compilation"
+    flng::set_property -object $flow -name storage_engine -value "qhd"
+    flng::set_property -object $flow -name enable_pre_post_flow_script -value 1
+    
+    # Declare flow parameters.  These can be passed in when running the flow in commandline.
+    #
+    # optimization mode: 
+    #     Optimization mode is set with commandline argument when
+    #         running quartus_sh --flow <flowname> 
+    #     -fast_functional_test
+    #     -aggressive_compile_time.
+    #
+    # rapid_recompile:
+    #     quartus_sh --flow recompile activates rapid_recompile.
+    #
+    # dss_mode:
+    #     quartus_sh --flow compile <proj> -c <revision> -dss_mode
+    flng::add_property -object $flow -name parameters:rapid_recompile -value ""
+    flng::add_property -object $flow -name parameters:optimization_mode -value ""
+    flng::add_property -object $flow -name parameters:dss_mode -value ""
+
+    # This is only for the PCC flow. We can specify the entities we want to cache
+    # The format is a comma-delimited list of entity names 
+    #
+    # entities:
+    #     quartus_sh --flow pcc -parameters entities="ip_entity1,ip_entity2"
+    #
+    
+    flng::add_property -object $flow -name parameters:entities -value ""
+
+    variable ipgen [flng::get_objects -type task_definition -name "dni_ipgenerate"]
+    if {$ipgen == ""} {
+        error "Error: unable to find dni_ipgenerate task"
+    } else {
+        lappend task_list $ipgen
+    }
+
+    variable ds_ip_generation [flng::get_objects -type task_definition -name "ds_ip_generation"]
+    if {$ds_ip_generation == ""} {
+        error "Error: unable to find IP Generation task (HSSI Support Logic Generation)"
+    } else {
+        lappend task_list $ds_ip_generation
+    }
+
+    variable dni_tileip_generation [flng::get_objects -type task_definition -name "dni_tileip_generation"]
+    if {$dni_tileip_generation == ""} {
+        error "Error: unable to find Tile IP Generation task"
+    } else {
+        lappend task_list $dni_tileip_generation
+    }
+    
+    variable dni_design_analysis [flng::get_objects -type task_definition -name "dni_design_analysis"]
+    if {$dni_design_analysis == ""} {
+        error "Error: unable to find design analysis task"
+    } else {
+        lappend task_list $dni_design_analysis
+    }
+   
+    variable qsyn_lint [flng::get_objects -type task_definition -name "dni_elaboration_lint"]
+    if {$qsyn_lint == ""} {
+        error "Error: unable to find dni elaboration linter task"
+    } else {
+	    lappend task_list $qsyn_lint
+    }
+
+    variable qsyn [flng::get_objects -type task_definition -name "dni_analysis_and_synthesis"]
+    if {$qsyn == ""} {
+        error "Error: unable to find analysis and synthesis task"
+    } else {
+        lappend task_list $qsyn
+    }
+
+   
+    variable sta_early [flng::get_objects -type task_definition -name "sta_early"]
+    if {$sta_early == ""} {
+        error "Error: unable to find Early Timing Analysis task."
+    } else {
+        lappend task_list $sta_early
+    }
+    
+    variable qfit [flng::get_objects -type task_definition -name "fitter"]
+    if {$qfit == ""} {
+        error "Error: unable to find fitter task"
+    } else {
+        lappend task_list $qfit
+    }
+
+    variable fit_fastforward_timing [flng::get_objects -type task_definition -name "fitter_fastforward_timing"]
+    if {$fit_fastforward_timing == ""} {
+        error "Error: unable to find fit_fastforward_timing task."
+    } else {
+        lappend task_list $fit_fastforward_timing
+    }
+
+    variable qsta [flng::get_objects -type task_definition -name "sta_signoff"]
+    if {$qsta == ""} {
+        error "Error: unable to find sta_signoff task"
+    } else {
+        lappend task_list $qsta
+    }
+
+    variable qpow [flng::get_objects -type task_definition -name "power"]
+    if {$qpow == ""} {
+        error "Error: unable to find power analysis task."
+    } else {
+        lappend task_list $qpow
+    }
+
+    set include_assembler 0
+    set dni_mode_for_regtest 0
+    if { [info exists ::env(DNI_MODE_FOR_REGTEST)] } {
+        set dni_mode_for_regtest [string eq -nocase "ON" $env(DNI_MODE_FOR_REGTEST)]
+    }
+    if {[cfg_is_on "dni_include_assembler_in_flow"] || $dni_mode_for_regtest } {
+        set include_assembler 1
+    }
+    if { $include_assembler } {
+        variable qasm [flng::get_objects -type task_definition -name "assembler"]
+        if {$qasm == ""} {
+            error "Error: unable to find assembler task."
+        } else {
+            lappend task_list $qasm
+        }
+    }
+
+    # EDA Netlist Writer
+    variable qeda [flng::get_objects -type task_definition -name "eda_netlist_writer"]
+    if {$qeda == ""} {
+        error "Error: unable to find netlist writer task."
+    } else {
+        lappend task_list $qeda
+    }
+           
+    # These tasks are not run as part of the flow. User can launch them
+    # manually. 
+    set user_initiated_tasks [list $qsyn_lint]
+    # Simulation
+    if {[cfg_is_on "eda_tool_enable_simulation"]} {
+        variable simulation [flng::get_objects -type task_definition -name "nativelink"]
+        if {$simulation == ""} {
+            error "Error: unable to find Simulation task."
+        } else {
+            lappend task_list $simulation
+            lappend user_initiated_tasks $simulation
+            flng::add_property -object $flow -name asgn_generate_depends_on:$qsyn -value [list $simulation "EDA_SIMULATION_TYPE" "RTL"]
+            flng::add_property -object $flow -name asgn_generate_depends_on:$qeda -value [list $simulation "EDA_SIMULATION_TYPE" "GATE" "EDA_SIMULATION_STAGE_FOR_GATE_LEVEL" "MOST_RECENT"]
+        }
+    }
+
+    flng::set_property -object $flow -name tasks -value $task_list
+    flng::set_property -object $flow -name user_initiated_tasks -value $user_initiated_tasks 
+   
+    set base_ipgen_dependents [list $qsyn $qsyn_lint]
+
+    # {*} splits a list into individual words 
+    set ipgen_dependents [list $ds_ip_generation $dni_tileip_generation {*}$base_ipgen_dependents]
+    
+    flng::set_property -object $flow -name prerequisite -value [list "task:eda_netlist_writer,task:fitter_plan" "task:fitter_fastforward_timing,task:fitter_route"]
+
+    flng::add_property -object $flow -name depends_on:$ipgen -value $ipgen_dependents
+    flng::add_property -object $flow -name depends_on:$ds_ip_generation -value $base_ipgen_dependents 
+    flng::add_property -object $flow -name depends_on:$dni_tileip_generation -value [list $qsyn $dni_design_analysis]
+    set qsyn_dependents [list $qfit $qeda $sta_early]
+    flng::add_property -object $flow -name depends_on:$qsyn -value $qsyn_dependents
+ 
+    if { $include_assembler } {
+        flng::add_property -object $flow -name depends_on:$qfit -value [list $fit_fastforward_timing $qeda $qasm $qpow $qsta]
+    } else {
+        flng::add_property -object $flow -name depends_on:$qfit -value [list $fit_fastforward_timing $qeda $qpow $qsta]
+    }
+
+    flng::add_property -object $flow -name parameters:rapid_recompile -value ""
+    flng::add_property -object $flow -name use_dms -value true -value_type bool
+        
+    
+
+    # Specify call function to dynamically configure dependencies. Function needs to be prefixed
+    # by the namespace.
+    flng::set_property -object $flow -name config_dependency_function -value "dni_compile_flow::config_dependency"
+
+    proc config_dependency {flow_id start_task end_task} {
+        variable eda_inst ""
+        variable qsyn ""
+        variable fitter ""
+        variable fitter_status ""
+	    if {[catch {flng::get_objects -type task -name "eda_netlist_writer" -properties "flow=$flow_id"} eda_inst]} {
+            return "0"
+        }
+        if {[catch {flng::get_objects -type task -name "fitter" -properties "flow=$flow_id"} fitter]} {
+            return "0"
+        }
+        if {[catch {flng::get_objects -type task -name "dni_analysis_and_synthesis" -properties "flow=$flow_id"} qsyn]} {
+           return "0"
+        }
+        if {[catch {flng::get_property -object $fitter -name "status"} fitter_status]} {
+            return "0"
+        }
+        variable fitter_percent 0
+        if {$fitter_status != ""} {
+            if {[catch {flng::get_property -object $fitter_status -name "percent"} fitter_percent]} {
+                set percent 0
+            }
+        }
+
+        if {$end_task == "task_definition:eda_netlist_writer" && $fitter_percent == 0} {
+            flng::set_property -object $flow_id -name prerequisite -value [list "task:eda_netlist_writer,task:dni_analysis_and_synthesis" "task:fitter_fastforward_timing,task:fitter_route"]
+        } else {
+            flng::set_property -object $flow_id -name prerequisite -value [] 
+        }
+        return "1"
+    }
+}
+
+
+
+
+
+
+FILE /opt/altera/26.1.1/quartus/common/tcl/internal/qsh_flowengine.tcl
+##################################################################
+#
+# File name:	QSH_FLOWENGINE.TCL
+#
+#	Description: Script used by "quartus_sh --flowengine"
+#
+#				Copyright (c) Intel Corporation 2020 -.
+#				All rights reserved.
+#
+##################################################################
+
+package require ::quartus::flow
+load dni_dcmd dni
+
+namespace eval qsh_flowengine {
+
+proc display_usage { } {
+	post_message -type info "Expected arguments are --flow <flow_name> <project_name> \[-c <revision>\] \[-start <task>\] \[-end <task>\] \[-resume\] \[-parameters\] \[-print_only\] \[-list_tasks\]\n\
+\t \[-resume\]       Resume a flow that had stopped\n\
+\t \[-list_tasks\]   Display list of available tasks for the specified flow\n\
+\t \[-start <task>\] Begin the flow at the specified start task\n\
+\t \[-end <task>\]   Stop the flow after the specified end task\n\
+\t \[-aggressive_compile_time\]   Set optimization mode to aggressive_compile_time. Applicable only for compile flow.\n\
+\t \[-fast_functional_test\]   Set optimization mode to fast_functional_test. Applicable only for compile flow.\n\
+\t \[-parameters <parameters>\]   Specify the flow parameters using comma separated list of name=value pairs.\n\
+\t \[-print_only\]   Display what will execute. It does not execute the flow
+\t \[-disable_heartbeat\] Turn off ability for GUI to monitor the flow and do not output heartbeat
+\t \[-dss\] Turn on dss mode"
+}
+
+set dni_to_classic_flow [dict create \
+    compile                         classic_compile \
+    dni_analysis_and_synthesis      analysis_and_synthesis \
+    dni_netlist_conversion          netlist_conversion \
+    dni_analysis_and_elaboration    analysis_and_elaboration \
+    dni_implement                   implement \
+    ]
+
+set dni_to_classic_task [dict create \
+    dni_synthesis         synthesis \
+    dni_ipgenerate        ipgenerate \
+    dni_tlg              tlg \
+    dni_tile_ipgeneration tileip_generation \
+    dni_quick_elab        quick_elab \
+    ]
+
+set classic_to_dni_flow [dict create]
+dict for {dni_flow classic_flow} $dni_to_classic_flow {
+    dict set classic_to_dni_flow $classic_flow $dni_flow
+}
+
+set classic_to_dni_task [dict create]
+dict for {dni_task classic_task} $dni_to_classic_task {
+    dict set classic_to_dni_task $classic_task $dni_task
+}
+
+proc list_tasks {flow_id} {
+    set indent " "
+    post_message -type info "The following tasks are available for $flow_id:"
+    set separator "================================================================================"
+    set list_of_tasks $separator 
+    list_tasks_recurse $indent $flow_id list_of_tasks
+    set list_of_tasks_multiline [join $list_of_tasks "\n"]
+    post_message -type info $list_of_tasks_multiline
+    post_message -type info $separator
+}
+
+proc list_tasks_recurse {indent flow_id list_of_tasks_var} {
+    upvar 1 $list_of_tasks_var list_of_tasks
+    set margin "      "
+    set tasks [flng::get_property -object $flow_id -name enabled_execution_order]
+    foreach task $tasks {
+        set task_def [flng::get_property -object $task -name task]
+        set identifier [flng::get_property -object $task_def -name identifier]
+        set name [flng::get_property -object $task_def -name name]
+        set entry [format "%s%-40s%-40s" $margin "$indent$name" $identifier]
+        lappend list_of_tasks $entry 
+
+        set subflow [flng::get_property -object $task -name subflow]
+        if {$subflow != ""} {
+            set new_indent "${indent}    "
+            list_tasks_recurse $new_indent $subflow list_of_tasks
+        }
+    }
+}
+
+# Set each flow parameter in the comma separated list
+# Example: a=b,x=3
+proc set_parameters {flow_obj parameters_string} {
+    set parameter_list [split $parameters_string ',']
+    set num_parameters [llength $parameter_list]
+    foreach parameter $parameter_list {
+        #x=y
+        set name_value [split $parameter "="]
+        if {[llength $name_value] == 2} {
+            set name [lindex $name_value 0]
+            set value [lindex $name_value 1]
+            if {[catch {flng::get_property -object $flow_obj -name parameters:$name} previous_value]} {
+                flng::add_property -object $flow_obj -name parameters:$name -value $value
+            } else {
+                flng::set_property -object $flow_obj -name parameters:$name -value $value
+            }
+        }
+    }
+}
+
+# BEGIN MAIN ----------------------------------------------------------------
+
+# Check arguments
+# Format is:
+#
+#	<flow_name> <project_name> [-c <revision>]
+#
+set argc [ llength $quartus(args) ]
+if { $argc >= 2 || $argc >= 4 } {
+    # 2 arguments: flow revision
+    # 4 arguments: flow proj -c revision
+    # 3 arguments: flow revision -resume
+    # 5 arguments: flow proj -c revision -resume
+	set flow_name [lindex $quartus(args) 0]
+	set project_name [lindex $quartus(args) 1]
+	set root_project_name $project_name
+	
+	if [string compare [file extension $project_name] ""] {
+
+		set project_name [file rootname $project_name]
+        set root_project_name $project_name 
+	}
+
+    # Normalize prepends project_name with
+    # full path of current folder if project_name doest not have any
+    # paths.
+	set project_name [file normalize $project_name]
+	set rev_name [file tail $project_name]
+    set cur_arg_index 2
+
+
+    set list_tasks 0
+    set resume 0
+    set print_only 0
+    set aggressive_compile_time 0
+    set fast_functional_test 0
+    set start ""
+    set enable_monitor_mode 1 
+    set has_bad_arg 0
+    set parameters ""
+    set end ""
+    set enable_dss_mode 0
+    if {$argc > $cur_arg_index } {
+        # Check the new arguments.
+        while {$cur_arg_index < $argc} {
+            set cur_arg [lindex $quartus(args) $cur_arg_index]
+		    if {[string equal -nocase $cur_arg "-c"]} {
+                incr cur_arg_index
+                if {$cur_arg_index < $argc} {
+			        set rev_name [lindex $quartus(args) $cur_arg_index]
+                    if [string compare [file extension $rev_name] ""] {
+                        set rev_name [file tail [file rootname $rev_name]]
+                        post_message -type warning "Ignored file path. Assuming Revision Name = $rev_name"		
+                    }
+                    incr cur_arg_index
+                } else {
+	    		    post_message -type error "Missing revision value"
+		        }
+            } elseif {[string equal -nocase $cur_arg "-resume"]} {
+                set resume 1
+                incr cur_arg_index
+            } elseif {[string equal -nocase $cur_arg "-list_tasks"]} {
+                set list_tasks 1
+                incr cur_arg_index
+            } elseif {[string equal -nocase $cur_arg "-print_only"]} {
+                set print_only 1
+                incr cur_arg_index
+            } elseif {[string equal -nocase $cur_arg "-aggressive_compile_time"]} {
+                set aggressive_compile_time 1
+                incr cur_arg_index
+            } elseif {[string equal -nocase $cur_arg "-fast_functional_test"]} {
+                set fast_functional_test 1
+                incr cur_arg_index
+            } elseif {[string equal -nocase $cur_arg "-dss"]} {
+                set enable_dss_mode 1
+                incr cur_arg_index
+            } elseif {[string equal -nocase $cur_arg "-parameters"]} {
+                incr cur_arg_index
+                if {$cur_arg_index < $argc} {
+			        set parameters [lindex $quartus(args) $cur_arg_index]
+                    incr cur_arg_index
+                } else {
+	    		    post_message -type error "Missing parameters value"
+                }
+            } elseif {[string equal -nocase $cur_arg "-start"]} {
+                incr cur_arg_index
+                if {$cur_arg_index < $argc} {
+			        set start [lindex $quartus(args) $cur_arg_index]
+                    incr cur_arg_index
+                } else {
+	    		    post_message -type error "Missing start value"
+                }
+            } elseif {[string equal -nocase $cur_arg "-disable_heartbeat"]} {
+                set enable_monitor_mode 0
+                incr cur_arg_index
+            } elseif {[string equal -nocase $cur_arg "-end"]} {
+                incr cur_arg_index
+                if {$cur_arg_index < $argc} {
+			        set end [lindex $quartus(args) $cur_arg_index]
+                    incr cur_arg_index
+                } else {
+	    		    post_message -type error "Missing end value"
+                }
+            } else {
+	    		post_message -type error "Unknown argument: $cur_arg"
+                incr cur_arg_index
+                set has_bad_arg 1
+            }
+        }
+    }
+
+    if {$resume == 1 && $start != ""} {
+        post_message -type error "-resume and -start options can not be combined."
+        set has_bad_arg 1
+    }	
+    if {$has_bad_arg == 1 } {
+        display_usage
+        qexit -error
+    }
+	post_message -type info "Project Name = $project_name"
+	post_message -type info "Revision Name = $rev_name"
+	
+} else {
+    display_usage
+	qexit -error
+}
+
+# Create new project if needed and open
+if { ![project_exists $project_name] } {
+	msg_vdebug "Creating Project: $project_name (Rev = $rev_name)" 
+	project_new $project_name -revision $rev_name 
+} else {
+	msg_vdebug "Opening Project: $project_name (Rev = $rev_name)" 
+	project_open $project_name -revision $rev_name -force
+}
+
+if [is_project_open] {
+    set has_errors 0
+
+	# Run process
+    set flow_obj ""
+    set default_run_name [flng::get_default_flow_run_name -flow $flow_name]
+    if {[catch {flng::get_object -type flow -name $default_run_name} flow_obj]} {
+        set new_id [flng::get_next_available_id -type flow]
+        set flow_obj [flng::add_object -type flow -number $new_id -name $default_run_name]
+    } else {
+        msg_vdebug "Reusing an existing flow object: $flow_obj for $default_run_name"
+    }
+    # We reuse the compile flow for recompile ( rapid recompile.)
+    set activate_rapid_recompile 0
+    # Alias dni to compile
+    if {$flow_name == "dni_compile"} {
+        set flow_name = "compile"
+    }
+
+    if {$flow_name == "recompile"} {
+        set flow_name "compile"
+        set activate_rapid_recompile 1
+    }
+
+    # Adjust flow name if dni mode is activated.
+    if {[dni::is_dni_mode]} {
+        if {[dict exist $classic_to_dni_flow $flow_name]} {
+            set flow_name [dict get $classic_to_dni_flow $flow_name]
+            msg_vdebug "dni_mode is active and will use $flow_name flow"
+
+        }
+        if {[dict exist $classic_to_dni_task $start]} {
+            set start [dict get $classic_to_dni_task $start]
+            msg_vdebug "dni_mode is active and will start at $start task"
+        }
+        
+        if {[dict exist $classic_to_dni_task $end]} {
+            set end [dict get $classic_to_dni_task $end]
+            msg_vdebug "dni_mode is active and will end at $end task"
+        }
+    } else {
+        if {[dict exist $dni_to_classic_flow $flow_name]} {
+            set flow_name [dict get $dni_to_classic_flow $flow_name]
+            msg_vdebug "classic_mode is active and will use $flow_name flow"
+        }
+        if {[dict exist $dni_to_classic_task $start]} {
+            set start [dict get $dni_to_classic_task $start]
+            msg_vdebug "classic_mode is active and will start at $start task"
+        }
+        
+        if {[dict exist $dni_to_classic_task $end]} {
+            set end [dict get $dni_to_classic_task $end]
+            msg_vdebug "classic_mode is active and will end at $end task"
+        }
+    }
+
+    set flow_definition [flng::get_objects -type flow_definition -name $flow_name]
+    if {$flow_definition == ""} {
+         post_message -type error "The flow: $flow_name is not a recognized flow."
+         set has_errors 1
+    } else {
+        msg_vdebug "Found flow_definition: $flow_definition for $flow_name"
+        set existing_flow [flng::get_property -object $flow_obj -name flow]
+        if {$existing_flow != $flow_definition} {
+            msg_vdebug "Updating  flow_definition: $existing_flow -> $flow_definition for $default_run_name"
+            flng::set_property -object $flow_obj -name flow -value $flow_definition
+        }
+    }
+    set base_project_name [get_current_project]
+    if {[catch {flng::get_property -object $flow_obj -name parameters::project} existing_param_value]} {
+        flng::add_property -object $flow_obj -name parameters:project -value $base_project_name
+    } else {
+        flng::set_property -object $flow_obj -name parameters:project -value $base_project_name
+    }
+    if {[catch {flng::get_property -object $flow_obj -name parameters:revision} existing_param_value]} {
+        flng::add_property -object $flow_obj -name parameters:revision -value $rev_name
+    } else {
+        flng::set_property -object $flow_obj -name parameters:revision -value $base_project_name
+    }
+
+    if {$parameters != ""} {
+        set_parameters $flow_obj $parameters
+    }
+    
+
+    if {$activate_rapid_recompile == 1} {
+        msg_vdebug "Flow has been configured to run Rapid Recompile"
+        if {[catch {flng::get_property -object $flow_obj -name parameters::rapid_recompile} existing_param_value]} {
+            flng::set_property -object $flow_obj -name parameters:rapid_recompile -value "--recompile"
+        } else {   
+            flng::add_property -object $flow_obj -name parameters:rapid_recompile -value "--recompile"
+        }
+    }
+
+    if {$flow_name == "compile" || $flow_name == "dni_compile" || $flow_name == "classic_compile"} {
+        if {$aggressive_compile_time == 1} {
+            msg_vdebug "Flow has been configured to run with optimization mode set to Aggressive Compile Time"
+            if {[catch {flng::get_property -object $flow_obj -name parameters::optimization_mode} existing_param_value]} {
+                flng::set_property -object $flow_obj -name parameters:optimization_mode -value "--aggressive_compile_time"
+            } else {   
+                flng::add_property -object $flow_obj -name parameters:optimization_mode -value "--aggressive_compile_time"
+            }
+        }
+        if {$fast_functional_test == 1} {
+            msg_vdebug "Flow has been configured to run with optimization mode set to Fast Functional Test"
+            if {[catch {flng::get_property -object $flow_obj -name parameters::optimization_mode} existing_param_value]} {
+                flng::set_property -object $flow_obj -name parameters:optimization_mode -value "--fast_functional_test"
+            } else {   
+                flng::add_property -object $flow_obj -name parameters:optimization_mode -value "--fast_functional_test"
+            }
+        }
+        if {$enable_dss_mode == 1} {
+            msg_vdebug "Flow has been configured to run with dss mode"
+            if {[catch {flng::get_property -object $flow_obj -name parameters::dss_mode} existing_param_value]} {
+                flng::set_property -object $flow_obj -name parameters:dss_mode -value "--dss"
+            } else {   
+                flng::add_property -object $flow_obj -name parameters:dss_mode -value "--dss"
+            }
+        }    }
+
+    set dump_dot [get_ini_var -name "flng_dump_dot"]
+    set print_only_arg [get_ini_var -name "flng_print_only"]
+    if {[string compare -nocase $dump_dot "on"] == 0} {
+		post_message -type info "Writing flow to flng_execution_order.dot"
+        flng::write_repository -file flng_execution_order.dot -format dot
+    }
+
+    
+    if {[string compare -nocase $print_only_arg "on"] == 0} {
+        set print_only 1
+    }
+   
+    if {$list_tasks == 1} {
+        set run_cmd "list_tasks $flow_obj"
+    } else {
+        set run_cmd "flng::run_flow -flow $flow_obj"
+        if {$print_only == 1} {
+            lappend run_cmd "-print_only"
+        }
+        if {$resume == 1} {
+            lappend run_cmd "-resume"
+        }
+        if {$enable_monitor_mode == 0} {
+            lappend run_cmd "-enable_heartbeat"
+            lappend run_cmd "off"
+        }
+        if {$start ne ""} {
+            set start_def [flng::get_objects -type task_definition -name $start]
+            if {[llength $start_def] == 0} {
+		        post_message -type error "The start task: $start is not a recognized task. Please use the -list_tasks option to show the list of available tasks."
+                set has_errors 1
+            } else {
+                lappend run_cmd "-start"
+                lappend run_cmd $start_def
+            }
+        }
+        if {$end ne ""} {
+            set end_def [flng::get_objects -type task_definition -name $end]
+            if {[llength $end_def] == 0} {
+		        post_message -type error "The end task: $end is not a recognized task. Please use the -list_tasks option to show the list of available tasks."
+                set has_errors 1
+            } else {
+                lappend run_cmd "-end"
+                lappend run_cmd $end_def
+            }
+        }
+        if {$has_errors != 0} {
+		    qexit -error
+        }
+    }
+	msg_vdebug "Executing: $run_cmd"
+
+    if { [catch { {*}$run_cmd } result] } {
+		    post_message -type error "Flow $flow_name (for project $project_name) was not successful"
+		    post_message -type error $result
+		    qexit -error
+    }
+
+
+	# Close Project before leaving
+	project_close
+
+} else {
+	post_message -type error "Cannot create or open project $project_name"
+	qexit -error
+}
+}
+# END MAIN ----------------------------------------------------------------
+
+

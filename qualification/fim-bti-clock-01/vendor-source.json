@@ -1,0 +1,202 @@
+[
+  {
+    "path": "/home/uwb_student00/Documents/IA-840f installation/IOFS_BUILD_ROOT/ofs-ia840f/syn/setup/top_loc.tcl",
+    "sha256": "410d418a34c19a04ab575fc8b5fdb4215361564c9d8d5da99a5ec45285257b4d",
+    "hits": [
+      {
+        "line": 105,
+        "text": "set_location_assignment PIN_CC19 -to qsfp_ref_clk"
+      },
+      {
+        "line": 106,
+        "text": "set_location_assignment PIN_BW19 -to \"qsfp_ref_clk(n)\""
+      },
+      {
+        "line": 247,
+        "text": "#On IA-840F we are using USER_CLK for this source as it is a 100Mhz LVDS clock source."
+      },
+      {
+        "line": 254,
+        "text": "set_instance_assignment -name IO_STANDARD \"DIFFERENTIAL LVPECL\" -to qsfp_ref_clk"
+      },
+      {
+        "line": 255,
+        "text": "#The following HSSI_PARAMETER settings are from N6000 original source. In the IA-840F cardtest they are not"
+      },
+      {
+        "line": 257,
+        "text": "set_instance_assignment -name HSSI_PARAMETER \"refclk_divider_enable_termination=enable_term\" -to qsfp_ref_clk"
+      },
+      {
+        "line": 258,
+        "text": "set_instance_assignment -name HSSI_PARAMETER \"refclk_divider_enable_3p3v=disable_3p3v_tol\" -to qsfp_ref_clk"
+      },
+      {
+        "line": 259,
+        "text": "set_instance_assignment -name HSSI_PARAMETER \"refclk_divider_disable_hysteresis=enable_hyst\" -to qsfp_ref_clk"
+      },
+      {
+        "line": 260,
+        "text": "set_instance_assignment -name HSSI_PARAMETER \"refclk_divider_input_freq=156250000\" -to qsfp_ref_clk"
+      },
+      {
+        "line": 261,
+        "text": "set_instance_assignment -name HSSI_PARAMETER \"refclk_divider_powerdown_mode=false\" -to qsfp_ref_clk"
+      },
+      {
+        "line": 262,
+        "text": "set_instance_assignment -name HSSI_PARAMETER \"refclk_divider_use_as_bti_clock=TRUE\" -to qsfp_ref_clk"
+      }
+    ]
+  },
+  {
+    "path": "/home/uwb_student00/Documents/IA-840f installation/IOFS_BUILD_ROOT/ofs-ia840f/syn/setup/eth_top.sdc",
+    "sha256": "272e4cc54df9e4becf52c9c3213786af92e803439723f5a8e02efec475442a8e",
+    "hits": [
+      {
+        "line": 16,
+        "text": "create_clock -name qsfp_ref_clk -period   6.400 -waveform {0.000  3.200} [get_ports {qsfp_ref_clk}]"
+      }
+    ]
+  },
+  {
+    "path": "/home/uwb_student00/Documents/IA-840f installation/IOFS_BUILD_ROOT/ofs-ia840f/syn/syn_top/ofs_top.qsf",
+    "sha256": "6cb7c69119a6538b375a47faa4698608372b4ed0ef79877547c341f2a2e758b3",
+    "hits": [
+      {
+        "line": 9,
+        "text": "set_global_assignment -name DEVICE AGFB027R25A2E2V"
+      },
+      {
+        "line": 18,
+        "text": "set_global_assignment -name PRESERVE_UNUSED_XCVR_CHANNEL ON"
+      },
+      {
+        "line": 62,
+        "text": "#set_global_assignment -name USE_CONFIGURATION_DEVICE OFF"
+      },
+      {
+        "line": 63,
+        "text": "#set_global_assignment -name STRATIXII_CONFIGURATION_DEVICE AUTO"
+      },
+      {
+        "line": 117,
+        "text": "set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ofs_top_sources.tcl"
+      }
+    ]
+  },
+  {
+    "path": "/home/uwb_student00/Documents/IA-840f installation/IOFS_BUILD_ROOT/ofs-ia840f/src/top/top.sv",
+    "sha256": "a01d9caaa644c5f60e029b7e3382237b080be8e0e9eb2e7b5dd7fe788692da50",
+    "hits": [
+      {
+        "line": 30,
+        "text": "                    input                                       qsfp_ref_clk                      ,// QSFP Ethernet reference clock (included even w/o HSSI to PRESERVE_UNUSED_XCVR_CHANNEL)"
+      },
+      {
+        "line": 339,
+        "text": "   .i_hssi_clk_ref         ({3{qsfp_ref_clk}}),"
+      }
+    ]
+  },
+  {
+    "path": "/home/uwb_student00/IA-840f/IOFS_BUILD_ROOT/ofs-ia840f/syn/setup/top_loc.tcl",
+    "sha256": "410d418a34c19a04ab575fc8b5fdb4215361564c9d8d5da99a5ec45285257b4d",
+    "hits": [
+      {
+        "line": 105,
+        "text": "set_location_assignment PIN_CC19 -to qsfp_ref_clk"
+      },
+      {
+        "line": 106,
+        "text": "set_location_assignment PIN_BW19 -to \"qsfp_ref_clk(n)\""
+      },
+      {
+        "line": 247,
+        "text": "#On IA-840F we are using USER_CLK for this source as it is a 100Mhz LVDS clock source."
+      },
+      {
+        "line": 254,
+        "text": "set_instance_assignment -name IO_STANDARD \"DIFFERENTIAL LVPECL\" -to qsfp_ref_clk"
+      },
+      {
+        "line": 255,
+        "text": "#The following HSSI_PARAMETER settings are from N6000 original source. In the IA-840F cardtest they are not"
+      },
+      {
+        "line": 257,
+        "text": "set_instance_assignment -name HSSI_PARAMETER \"refclk_divider_enable_termination=enable_term\" -to qsfp_ref_clk"
+      },
+      {
+        "line": 258,
+        "text": "set_instance_assignment -name HSSI_PARAMETER \"refclk_divider_enable_3p3v=disable_3p3v_tol\" -to qsfp_ref_clk"
+      },
+      {
+        "line": 259,
+        "text": "set_instance_assignment -name HSSI_PARAMETER \"refclk_divider_disable_hysteresis=enable_hyst\" -to qsfp_ref_clk"
+      },
+      {
+        "line": 260,
+        "text": "set_instance_assignment -name HSSI_PARAMETER \"refclk_divider_input_freq=156250000\" -to qsfp_ref_clk"
+      },
+      {
+        "line": 261,
+        "text": "set_instance_assignment -name HSSI_PARAMETER \"refclk_divider_powerdown_mode=false\" -to qsfp_ref_clk"
+      },
+      {
+        "line": 262,
+        "text": "set_instance_assignment -name HSSI_PARAMETER \"refclk_divider_use_as_bti_clock=TRUE\" -to qsfp_ref_clk"
+      }
+    ]
+  },
+  {
+    "path": "/home/uwb_student00/IA-840f/IOFS_BUILD_ROOT/ofs-ia840f/syn/setup/eth_top.sdc",
+    "sha256": "272e4cc54df9e4becf52c9c3213786af92e803439723f5a8e02efec475442a8e",
+    "hits": [
+      {
+        "line": 16,
+        "text": "create_clock -name qsfp_ref_clk -period   6.400 -waveform {0.000  3.200} [get_ports {qsfp_ref_clk}]"
+      }
+    ]
+  },
+  {
+    "path": "/home/uwb_student00/IA-840f/IOFS_BUILD_ROOT/ofs-ia840f/syn/syn_top/ofs_top.qsf",
+    "sha256": "6cb7c69119a6538b375a47faa4698608372b4ed0ef79877547c341f2a2e758b3",
+    "hits": [
+      {
+        "line": 9,
+        "text": "set_global_assignment -name DEVICE AGFB027R25A2E2V"
+      },
+      {
+        "line": 18,
+        "text": "set_global_assignment -name PRESERVE_UNUSED_XCVR_CHANNEL ON"
+      },
+      {
+        "line": 62,
+        "text": "#set_global_assignment -name USE_CONFIGURATION_DEVICE OFF"
+      },
+      {
+        "line": 63,
+        "text": "#set_global_assignment -name STRATIXII_CONFIGURATION_DEVICE AUTO"
+      },
+      {
+        "line": 117,
+        "text": "set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ofs_top_sources.tcl"
+      }
+    ]
+  },
+  {
+    "path": "/home/uwb_student00/IA-840f/IOFS_BUILD_ROOT/ofs-ia840f/src/top/top.sv",
+    "sha256": "a01d9caaa644c5f60e029b7e3382237b080be8e0e9eb2e7b5dd7fe788692da50",
+    "hits": [
+      {
+        "line": 30,
+        "text": "                    input                                       qsfp_ref_clk                      ,// QSFP Ethernet reference clock (included even w/o HSSI to PRESERVE_UNUSED_XCVR_CHANNEL)"
+      },
+      {
+        "line": 339,
+        "text": "   .i_hssi_clk_ref         ({3{qsfp_ref_clk}}),"
+      }
+    ]
+  }
+]

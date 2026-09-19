@@ -1,0 +1,768 @@
+[
+  {
+    "path": "/home/uwb_student00/Documents/IA-840f installation/IOFS_BUILD_ROOT/ofs-ia840f/syn/syn_top/ofs_top_sources.tcl",
+    "sha256": "dd10e7f3872bcd0d1c4f2379d3e7082b3719ea6f322d0781fd627fc70dfcb30b",
+    "hits": [
+      {
+        "line": 46,
+        "text": "set_global_assignment -name SDC_FILE ../setup/fim_dcfifo.sdc"
+      },
+      {
+        "line": 47,
+        "text": "set_global_assignment -name SDC_FILE ../setup/top.sdc"
+      },
+      {
+        "line": 48,
+        "text": "set_global_assignment -name SDC_FILE ../setup/eth_top.sdc"
+      },
+      {
+        "line": 49,
+        "text": "set_global_assignment -name SDC_FILE ../setup/pmci_top.sdc"
+      },
+      {
+        "line": 72,
+        "text": "set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/top_loc.tcl"
+      }
+    ]
+  },
+  {
+    "path": "/home/uwb_student00/Documents/IA-840f installation/IOFS_BUILD_ROOT/ofs-ia840f/syn/setup/top.sdc",
+    "sha256": "7802b46aaba47f8e13942ff62a904bbffa89478c045b0017ce9f69da2924afe1",
+    "hits": [
+      {
+        "line": 15,
+        "text": "source $file_dir/top_sdc_util.tcl"
+      },
+      {
+        "line": 36,
+        "text": "                       -source      [get_pins {pcie_wrapper|pcie_ss_top|pcie_ss|pcie_ss|u_pciess_p0|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst|inclk}] \\"
+      }
+    ]
+  },
+  {
+    "path": "/home/uwb_student00/Documents/IA-840f installation/IOFS_BUILD_ROOT/ofs-ia840f/src/top/top.sv",
+    "sha256": "a01d9caaa644c5f60e029b7e3382237b080be8e0e9eb2e7b5dd7fe788692da50",
+    "hits": [
+      {
+        "line": 1,
+        "text": "// Copyright (C) 2021 Intel Corporation."
+      },
+      {
+        "line": 2,
+        "text": "// SPDX-License-Identifier: MIT"
+      },
+      {
+        "line": 3,
+        "text": ""
+      },
+      {
+        "line": 4,
+        "text": "//"
+      },
+      {
+        "line": 5,
+        "text": "// Description"
+      },
+      {
+        "line": 6,
+        "text": "//-----------------------------------------------------------------------------"
+      },
+      {
+        "line": 7,
+        "text": "//"
+      },
+      {
+        "line": 8,
+        "text": "//   Platform top level module"
+      },
+      {
+        "line": 9,
+        "text": "//"
+      },
+      {
+        "line": 10,
+        "text": "//-----------------------------------------------------------------------------"
+      },
+      {
+        "line": 11,
+        "text": ""
+      },
+      {
+        "line": 12,
+        "text": "                   `include \"fpga_defines.vh\""
+      },
+      {
+        "line": 13,
+        "text": "                    import   ofs_fim_cfg_pkg::*      ;"
+      },
+      {
+        "line": 14,
+        "text": "                    import   ofs_fim_if_pkg::*       ;"
+      },
+      {
+        "line": 15,
+        "text": "                    import   pcie_ss_axis_pkg::*     ;"
+      },
+      {
+        "line": 16,
+        "text": ""
+      },
+      {
+        "line": 17,
+        "text": "`ifdef INCLUDE_HSSI"
+      },
+      {
+        "line": 18,
+        "text": "                   `include  \"ofs_fim_eth_plat_defines.svh\""
+      },
+      {
+        "line": 19,
+        "text": "                    import   ofs_fim_eth_if_pkg::*   ;"
+      },
+      {
+        "line": 20,
+        "text": "`endif"
+      },
+      {
+        "line": 21,
+        "text": ""
+      },
+      {
+        "line": 22,
+        "text": "//-----------------------------------------------------------------------------"
+      },
+      {
+        "line": 23,
+        "text": "// Module ports"
+      },
+      {
+        "line": 24,
+        "text": "//-----------------------------------------------------------------------------"
+      },
+      {
+        "line": 25,
+        "text": ""
+      },
+      {
+        "line": 26,
+        "text": "module top"
+      },
+      {
+        "line": 27,
+        "text": "   import mem_ss_pkg::*;"
+      },
+      {
+        "line": 28,
+        "text": "("
+      },
+      {
+        "line": 29,
+        "text": "                    input                                       SYS_REFCLK                        ,// System Reference Clock (100MHz)"
+      },
+      {
+        "line": 30,
+        "text": "                    input                                       qsfp_ref_clk                      ,// QSFP Ethernet reference clock (included even w/o HSSI to PRESERVE_UNUSED_XCVR_CHANNEL)"
+      },
+      {
+        "line": 31,
+        "text": "                    //input                                       cr3_cpri_reflclk_clk_184_32m      , // 184.32 MHz reference clock for CPRI"
+      },
+      {
+        "line": 32,
+        "text": "                    //input                                       cr3_cpri_reflclk_clk_153_6m       , // 153.6  MHz reference clock for CPRI"
+      },
+      {
+        "line": 33,
+        "text": ""
+      },
+      {
+        "line": 34,
+        "text": "`ifdef INCLUDE_DDR4"
+      },
+      {
+        "line": 35,
+        "text": "                    ofs_ddr_no_ecc_if.emif                      ddr4_mem     [DDR_CHANNEL-1:0]      ,// EMIF DDR4 x32 RDIMM (x8)"
+      },
+      {
+        "line": 36,
+        "text": "                    // ofs_ddr_ecc_if.emif                         ddr4_ecc_mem [DDR_ECC_CHANNEL-1:0]  ,// EMIF DDR4 x40 RDIMM (x8)"
+      },
+      {
+        "line": 37,
+        "text": "//                    ofs_ddr_ecc_if.emif                         ddr4_hps                          ,"
+      },
+      {
+        "line": 38,
+        "text": "`endif"
+      },
+      {
+        "line": 39,
+        "text": ""
+      },
+      {
+        "line": 40,
+        "text": ""
+      },
+      {
+        "line": 41,
+        "text": "`ifdef INCLUDE_HSSI"
+      },
+      {
+        "line": 42,
+        "text": "                    //QSFP control signals"
+      },
+      {
+        "line": 43,
+        "text": "                    //inout  wire                                 qsfpa_i2c_scl                     , // QSFPA I2C SCL, commented out as not used on IA-840F EAU"
+      },
+      {
+        "line": 44,
+        "text": "                    //inout  wire                                 qsfpa_i2c_sda                     , // QSFPA I2C SDA, commented out as not used on IA-840F EAU"
+      },
+      {
+        "line": 45,
+        "text": "                    //inout  wire                                 qsfpb_i2c_scl                     , // QSFPB I2C SCL, commented out as not used on IA-840F EAU"
+      },
+      {
+        "line": 46,
+        "text": "                    //inout  wire                                 qsfpb_i2c_sda                     , // QSFPB I2C SDA, commented out as not used on IA-840F EAU"
+      },
+      {
+        "line": 47,
+        "text": "                    //output wire                                 qsfpa_resetn                      , // QSFPA control, commented out as not used on IA-840F EAU"
+      },
+      {
+        "line": 48,
+        "text": "                    //output wire                                 qsfpa_modeseln                    , // QSFPA control, commented out as not used on IA-840F EAU"
+      },
+      {
+        "line": 49,
+        "text": "                    //input  wire                                 qsfpa_modprsln                    , // QSFPA control, commented out as not used on IA-840F EAU"
+      },
+      {
+        "line": 50,
+        "text": "                    //output wire                                 qsfpa_lpmode                      , // QSFPA control, commented out as not used on IA-840F EAU"
+      },
+      {
+        "line": 51,
+        "text": "                    //input  wire                                 qsfpa_intn                        , // QSFPA control, commented out as not used on IA-840F EAU"
+      },
+      {
+        "line": 52,
+        "text": "                    //input  wire                                 qsfpa_power_good                  , //, commented out as not used on IA-840F EAU"
+      },
+      {
+        "line": 53,
+        "text": "                    //output wire                                 qsfpb_resetn                      , // QSFPB control, commented out as not used on IA-840F EAU"
+      },
+      {
+        "line": 54,
+        "text": "                    //output wire                                 qsfpb_modeseln                    , // QSFPB control, commented out as not used on IA-840F EAU"
+      },
+      {
+        "line": 55,
+        "text": "                    //input  wire                                 qsfpb_modprsln                    , // QSFPB control, commented out as not used on IA-840F EAU"
+      }
+    ]
+  },
+  {
+    "path": "/home/uwb_student00/Documents/IA-840f installation/IOFS_BUILD_ROOT/ofs-ia840f/work-ofs-23.1-2-build/syn/syn_top/output_files/ofs_top.pin",
+    "sha256": "e6772aa71802400adcc73d90789167d8cbb841132f16a5b501b7d3646c4f41a7",
+    "hits": [
+      {
+        "line": 8,
+        "text": " -- Subscription Agreement, the Intel Quartus Prime License Agreement,"
+      },
+      {
+        "line": 16,
+        "text": " -- This is a Quartus Prime output file. It is for reporting purposes only, and is"
+      },
+      {
+        "line": 17,
+        "text": " -- not intended for use as a Quartus Prime input file. This file cannot be used"
+      },
+      {
+        "line": 18,
+        "text": " -- to make Quartus Prime pin assignments - for instructions on how to make pin"
+      },
+      {
+        "line": 19,
+        "text": " -- assignments, please see Quartus Prime help."
+      },
+      {
+        "line": 82,
+        "text": "Quartus Prime Version 23.1.0 Build 115 03/30/2023 Patches 0.02iofs,0.10 SC Pro Edition"
+      },
+      {
+        "line": 745,
+        "text": "qsfp_ref_clk(n)              : BW19      : input  : Differential LVPECL : 0V      : 9A        : Y               : --           "
+      },
+      {
+        "line": 834,
+        "text": "qsfp_ref_clk                 : CC19      : input  : Differential LVPECL : 0V      : 9A        : Y               : --           "
+      }
+    ]
+  },
+  {
+    "path": "/home/uwb_student00/Documents/IA-840f installation/IOFS_BUILD_ROOT/ofs-ia840f/work-ofs-23.1-2-build/syn/syn_top/output_files/ofs_top.fit.rpt",
+    "sha256": "ba2a3c0239359605e661afe20fd6b97bfc66aac612e49330935b789016dcb1ec",
+    "hits": [
+      {
+        "line": 3,
+        "text": "Quartus Prime Version 23.1.0 Build 115 03/30/2023 Patches 0.02iofs,0.10 SC Pro Edition"
+      },
+      {
+        "line": 39,
+        "text": "      29. Fitter Resource Usage Summary"
+      },
+      {
+        "line": 40,
+        "text": "      30. Fitter Resource Utilization by Entity"
+      },
+      {
+        "line": 105,
+        "text": "Subscription Agreement, the Intel Quartus Prime License Agreement,"
+      },
+      {
+        "line": 119,
+        "text": "; Quartus Prime Version           ; 23.1.0 Build 115 03/30/2023 Patches 0.02iofs,0.10 SC Pro Edition ;"
+      },
+      {
+        "line": 123,
+        "text": "; Device                          ; AGFB027R25A2E2V                                                  ;"
+      },
+      {
+        "line": 146,
+        "text": "; Device                                                                       ; AGFB027R25A2E2V                       ;                                       ;"
+      },
+      {
+        "line": 162,
+        "text": "; Configuration clock source                                                   ; OSC_CLK_1_125MHZ                      ; INIT_INTOSC                           ;"
+      },
+      {
+        "line": 214,
+        "text": "; Active Serial clock source                                                   ; AS_FREQ_100MHZ                        ; AS_FREQ_100MHZ                        ;"
+      },
+      {
+        "line": 1399,
+        "text": "; Active Serial clock source  ; 100 MHz Internal Oscillator ;"
+      },
+      {
+        "line": 1400,
+        "text": "; Configuration clock source  ; 125 MHz OSC_CLK_1 pin       ;"
+      },
+      {
+        "line": 1472,
+        "text": "; qsfp_ref_clk           ; CC19  ; 9A       ; 390          ; 140          ; 27           ; 1                     ; 0                  ; no     ; no             ; no       ; Off          ; Differential LVPECL         ; refclk_divider_enable_termination=enable_term ; --                        ; User                 ; no        ;"
+      },
+      {
+        "line": 1473,
+        "text": "; qsfp_ref_clk(n)        ; BW19  ; 9A       ; 390          ; 139          ; 27           ; 0                     ; 0                  ; no     ; no             ; no       ; Off          ; Differential LVPECL         ; unused                                        ; --                        ; User                 ; no        ;"
+      },
+      {
+        "line": 2451,
+        "text": "; BW19     ; 1339       ; 9A       ; qsfp_ref_clk(n)                                                                                                  ; input         ; Differential LVPECL         ; 0V      ; --       ; Y               ; no       ; Off          ; --            ;"
+      },
+      {
+        "line": 2540,
+        "text": "; CC19     ; 1338       ; 9A       ; qsfp_ref_clk                                                                                                     ; input         ; Differential LVPECL         ; 0V      ; --       ; Y               ; no       ; Off          ; --            ;"
+      },
+      {
+        "line": 4400,
+        "text": ";             -- PLL Reference Clock Input 0 source                                     ; pll_clkin_src_ioclkin_2                                                                     ;"
+      },
+      {
+        "line": 4401,
+        "text": ";             -- PLL Reference Clock Input 1 source                                     ; pll_clkin_src_ioclkin_2                                                                     ;"
+      },
+      {
+        "line": 4402,
+        "text": ";             -- CLKIN(0) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4403,
+        "text": ";             -- CLKIN(1) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4404,
+        "text": ";             -- CLKIN(2) source                                                        ; SYS_REFCLK~input                                                                            ;"
+      },
+      {
+        "line": 4405,
+        "text": ";             -- CLKIN(3) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4406,
+        "text": ";             -- CORE_REFCLK source                                                     ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4407,
+        "text": ";             -- PLL_CASCADE_IN source                                                  ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4460,
+        "text": ";             -- PLL Reference Clock Input 0 source                                     ; pll_clkin_src_coreclkin                                                                     ;"
+      },
+      {
+        "line": 4461,
+        "text": ";             -- PLL Reference Clock Input 1 source                                     ; pll_clkin_src_ioclkin_0                                                                     ;"
+      },
+      {
+        "line": 4462,
+        "text": ";             -- CLKIN(0) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4463,
+        "text": ";             -- CLKIN(1) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4464,
+        "text": ";             -- CLKIN(2) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4465,
+        "text": ";             -- CLKIN(3) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4466,
+        "text": ";             -- CORE_REFCLK source                                                     ; SYS_REFCLK~input                                                                            ;"
+      },
+      {
+        "line": 4467,
+        "text": ";             -- PLL_CASCADE_IN source                                                  ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4496,
+        "text": ";             -- PLL Reference Clock Input 0 source                                     ; pll_clkin_src_refclkin                                                                      ;"
+      },
+      {
+        "line": 4497,
+        "text": ";             -- PLL Reference Clock Input 1 source                                     ; pll_clkin_src_refclkin                                                                      ;"
+      },
+      {
+        "line": 4498,
+        "text": ";             -- CLKIN(0) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4499,
+        "text": ";             -- CLKIN(1) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4500,
+        "text": ";             -- CLKIN(2) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4501,
+        "text": ";             -- CLKIN(3) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4502,
+        "text": ";             -- CORE_REFCLK source                                                     ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4503,
+        "text": ";             -- PLL_CASCADE_IN source                                                  ; mem_ss_top|mem_ss_fm_inst|intf_1|intf_1|arch|arch_inst|pll_inst|pll_inst~refclk_Duplicate   ;"
+      },
+      {
+        "line": 4556,
+        "text": ";             -- PLL Reference Clock Input 0 source                                     ; pll_clkin_src_refclkin                                                                      ;"
+      },
+      {
+        "line": 4557,
+        "text": ";             -- PLL Reference Clock Input 1 source                                     ; pll_clkin_src_refclkin                                                                      ;"
+      },
+      {
+        "line": 4558,
+        "text": ";             -- CLKIN(0) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4559,
+        "text": ";             -- CLKIN(1) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4560,
+        "text": ";             -- CLKIN(2) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4561,
+        "text": ";             -- CLKIN(3) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4562,
+        "text": ";             -- CORE_REFCLK source                                                     ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4563,
+        "text": ";             -- PLL_CASCADE_IN source                                                  ; mem_ss_top|mem_ss_fm_inst|intf_0|intf_0|arch|arch_inst|pll_inst|pll_inst~refclk_Duplicate   ;"
+      },
+      {
+        "line": 4616,
+        "text": ";             -- PLL Reference Clock Input 0 source                                     ; pll_clkin_src_refclkin                                                                      ;"
+      },
+      {
+        "line": 4617,
+        "text": ";             -- PLL Reference Clock Input 1 source                                     ; pll_clkin_src_refclkin                                                                      ;"
+      },
+      {
+        "line": 4618,
+        "text": ";             -- CLKIN(0) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4619,
+        "text": ";             -- CLKIN(1) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4620,
+        "text": ";             -- CLKIN(2) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4621,
+        "text": ";             -- CLKIN(3) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4622,
+        "text": ";             -- CORE_REFCLK source                                                     ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4623,
+        "text": ";             -- PLL_CASCADE_IN source                                                  ; mem_ss_top|mem_ss_fm_inst|intf_0|intf_0|arch|arch_inst|pll_inst|pll_inst~refclk             ;"
+      },
+      {
+        "line": 4636,
+        "text": ";             -- PLL Reference Clock Input 0 source                                     ; pll_clkin_src_refclkin                                                                      ;"
+      },
+      {
+        "line": 4637,
+        "text": ";             -- PLL Reference Clock Input 1 source                                     ; pll_clkin_src_refclkin                                                                      ;"
+      },
+      {
+        "line": 4638,
+        "text": ";             -- CLKIN(0) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4639,
+        "text": ";             -- CLKIN(1) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4640,
+        "text": ";             -- CLKIN(2) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4641,
+        "text": ";             -- CLKIN(3) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4642,
+        "text": ";             -- CORE_REFCLK source                                                     ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4643,
+        "text": ";             -- PLL_CASCADE_IN source                                                  ; mem_ss_top|mem_ss_fm_inst|intf_0|intf_0|arch|arch_inst|pll_inst|pll_inst~refclk_Duplicate_3 ;"
+      },
+      {
+        "line": 4656,
+        "text": ";             -- PLL Reference Clock Input 0 source                                     ; pll_clkin_src_refclkin                                                                      ;"
+      },
+      {
+        "line": 4657,
+        "text": ";             -- PLL Reference Clock Input 1 source                                     ; pll_clkin_src_refclkin                                                                      ;"
+      },
+      {
+        "line": 4658,
+        "text": ";             -- CLKIN(0) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4659,
+        "text": ";             -- CLKIN(1) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4660,
+        "text": ";             -- CLKIN(2) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4661,
+        "text": ";             -- CLKIN(3) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4662,
+        "text": ";             -- CORE_REFCLK source                                                     ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4663,
+        "text": ";             -- PLL_CASCADE_IN source                                                  ; mem_ss_top|mem_ss_fm_inst|intf_1|intf_1|arch|arch_inst|pll_inst|pll_inst~refclk             ;"
+      },
+      {
+        "line": 4676,
+        "text": ";             -- PLL Reference Clock Input 0 source                                     ; pll_clkin_src_refclkin                                                                      ;"
+      },
+      {
+        "line": 4677,
+        "text": ";             -- PLL Reference Clock Input 1 source                                     ; pll_clkin_src_refclkin                                                                      ;"
+      },
+      {
+        "line": 4678,
+        "text": ";             -- CLKIN(0) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4679,
+        "text": ";             -- CLKIN(1) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4680,
+        "text": ";             -- CLKIN(2) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4681,
+        "text": ";             -- CLKIN(3) source                                                        ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4682,
+        "text": ";             -- CORE_REFCLK source                                                     ; N/A                                                                                         ;"
+      },
+      {
+        "line": 4683,
+        "text": ";             -- PLL_CASCADE_IN source                                                  ; mem_ss_top|mem_ss_fm_inst|intf_1|intf_1|arch|arch_inst|pll_inst|pll_inst~refclk_Duplicate_3 ;"
+      },
+      {
+        "line": 31707,
+        "text": "Note: Fitter may spread logical memories into multiple blocks to improve timing. The actual required RAM blocks can be found in the Fitter Resource Usage section."
+      },
+      {
+        "line": 32146,
+        "text": "; Fitter Resource Usage Summary                                                                 ;"
+      },
+      {
+        "line": 32148,
+        "text": "; Resource                                                    ; Usage                   ; %     ;"
+      },
+      {
+        "line": 32222,
+        "text": "The Fitter Resource Usage Summary report displays a detailed analysis of logic utilization based on calculations of ALM usage. Refer to <a class=\"xref\" href=\"https://www.intel.com/content/www/us/en/programmable/quartushelp/current/index.htm#mapIdTopics/mwh1465496451103.htm\" target=\"_blank\">Fitter Resource Usage Summary Report</a> in the <i>Intel\u00ae Quartus\u00ae Prime Pro Edition Help</i> for more information."
+      },
+      {
+        "line": 32226,
+        "text": "; Fitter Resource Utilization by Entity                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ;"
+      },
+      {
+        "line": 38804,
+        "text": "; qsfp_ref_clk           ; Input    ; 0                   ; --                 ; --             ; --                                ; --                                  ;"
+      },
+      {
+        "line": 39028,
+        "text": "; qsfp_ref_clk(n)        ; Input    ; 0                   ; --                 ; --             ; --                                ; --                                  ;"
+      },
+      {
+        "line": 39040,
+        "text": "; Routing Resource Type       ; Usage                         ;"
+      },
+      {
+        "line": 39557,
+        "text": "; qsfp_ref_clk                                                                                                                          ; 0                           ;"
+      },
+      {
+        "line": 39984,
+        "text": "; Routing Resource Type       ; Usage                         ;"
+      },
+      {
+        "line": 41545,
+        "text": "Info: Running Quartus Prime Fitter"
+      },
+      {
+        "line": 41601,
+        "text": "    Info (11684): Differential I/O pin \"qsfp_ref_clk\" does not have a complementary pin. As a result, the Fitter automatically creates the complementary pin \"qsfp_ref_clk(n)\" File: /home/testfpga/IOFS_BUILD_ROOT/ofs-ia840f/work-ofs-23.1-2-build/src/top/top.sv Line: 30"
+      },
+      {
+        "line": 41618,
+        "text": "Info (21650): REFCLK qsfp_ref_clk at location CC19 is used to preserve unused channels"
+      },
+      {
+        "line": 41778,
+        "text": "Warning (332049): Ignored create_generated_clock at pcie_ss.sdc(65): Argument -source is not an object ID File: /home/testfpga/IOFS_BUILD_ROOT/ofs-ia840f/work-ofs-23.1-2-build/syn/ip_lib/ipss/pcie/qip/pcie_ss/pcie_ss_100/synth/pcie_ss.sdc Line: 65"
+      },
+      {
+        "line": 41779,
+        "text": "    Info (332050): create_generated_clock -name avmm_clock0 -source p0_axi_lite_clk -master_clock p0_axi_lite_clk -divide_by 2 \\"
+      },
+      {
+        "line": 42145,
+        "text": "Info (332104): Reading SDC File: '../setup/eth_top.sdc'"
+      },
+      {
+        "line": 42146,
+        "text": "Warning (332174): Ignored filter at eth_top.sdc(21): ALTERA_INSERTED_INTOSC_FOR_TRS|divided_osc_clk could not be matched with a clock File: /home/testfpga/IOFS_BUILD_ROOT/ofs-ia840f/work-ofs-23.1-2-build/syn/setup/eth_top.sdc Line: 21"
+      },
+      {
+        "line": 42147,
+        "text": "Warning (332174): Ignored filter at eth_top.sdc(21): get_clocks could not be matched with a clock File: /home/testfpga/IOFS_BUILD_ROOT/ofs-ia840f/work-ofs-23.1-2-build/syn/setup/eth_top.sdc Line: 21"
+      },
+      {
+        "line": 42148,
+        "text": "Warning (332049): Ignored set_clock_groups at eth_top.sdc(21): Argument -group with value get_clocks ALTERA_INSERTED_INTOSC_FOR_TRS|divided_osc_clk could not match any element of the following types: ( clk ) File: /home/testfpga/IOFS_BUILD_ROOT/ofs-ia840f/work-ofs-23.1-2-build/syn/setup/eth_top.sdc Line: 21"
+      },
+      {
+        "line": 42149,
+        "text": "    Info (332050): set_clock_groups -exclusive -group  {get_clocks ALTERA_INSERTED_INTOSC_FOR_TRS|divided_osc_clk} File: /home/testfpga/IOFS_BUILD_ROOT/ofs-ia840f/work-ofs-23.1-2-build/syn/setup/eth_top.sdc Line: 21"
+      },
+      {
+        "line": 42160,
+        "text": "Warning (332174): Ignored filter at eth_top.sdc(28): hssi_wrapper|hssi_ss|hssi_ss_0|U_SRC_RST_CONTROLLER|SS_RST_SEQ|gen_resp_rst_sync[*].resp_rst_sync|dreg[*] could not be matched with a keeper File: /home/testfpga/IOFS_BUILD_ROOT/ofs-ia840f/work-ofs-23.1-2-build/syn/setup/eth_top.sdc Line: 28"
+      },
+      {
+        "line": 42161,
+        "text": "Warning (332174): Ignored filter at eth_top.sdc(28): hssi_wrapper|hssi_ss|hssi_ss_0|U_SRC_RST_CONTROLLER|p*_out_sync_*|din_s1 could not be matched with a keeper File: /home/testfpga/IOFS_BUILD_ROOT/ofs-ia840f/work-ofs-23.1-2-build/syn/setup/eth_top.sdc Line: 28"
+      },
+      {
+        "line": 42162,
+        "text": "Warning (332049): Ignored set_false_path at eth_top.sdc(28): Argument <from> is an empty collection File: /home/testfpga/IOFS_BUILD_ROOT/ofs-ia840f/work-ofs-23.1-2-build/syn/setup/eth_top.sdc Line: 28"
+      },
+      {
+        "line": 42163,
+        "text": "    Info (332050): set_false_path -from [get_keepers -no_duplicates {hssi_wrapper|hssi_ss|hssi_ss_0|U_SRC_RST_CONTROLLER|SS_RST_SEQ|gen_resp_rst_sync[*].resp_rst_sync|dreg[*]}] -to [get_keepers -no_duplicates {hssi_wrapper|hssi_ss|hssi_ss_0|U_SRC_RST_CONTROLLER|p*_out_sync_*|din_s1}] File: /home/testfpga/IOFS_BUILD_ROOT/ofs-ia840f/work-ofs-23.1-2-build/syn/setup/eth_top.sdc Line: 28"
+      },
+      {
+        "line": 42164,
+        "text": "Warning (332049): Ignored set_false_path at eth_top.sdc(28): Argument <to> is an empty collection File: /home/testfpga/IOFS_BUILD_ROOT/ofs-ia840f/work-ofs-23.1-2-build/syn/setup/eth_top.sdc Line: 28"
+      },
+      {
+        "line": 42231,
+        "text": " -source [get_pins {pmci_wrapper|pmci_ss|spi_master|avmms_2_spim_bridge_0|spim_clk|clk}] \\"
+      },
+      {
+        "line": 42234,
+        "text": "Warning (332049): Ignored create_generated_clock at pmci_top.sdc(42): Argument -source is an empty collection File: /home/testfpga/IOFS_BUILD_ROOT/ofs-ia840f/work-ofs-23.1-2-build/syn/setup/pmci_top.sdc Line: 42"
+      },
+      {
+        "line": 42238,
+        "text": " -source [get_pins {pmci_wrapper|pmci_ss|spi_master|avmms_2_spim_bridge_0|spim_clk|q}] \\"
+      },
+      {
+        "line": 42240,
+        "text": "Warning (332049): Ignored create_generated_clock at pmci_top.sdc(47): Argument -source is an empty collection File: /home/testfpga/IOFS_BUILD_ROOT/ofs-ia840f/work-ofs-23.1-2-build/syn/setup/pmci_top.sdc Line: 47"
+      },
+      {
+        "line": 42275,
+        "text": " -source [get_pins {pmci_wrapper|pmci_ss|flash_ctrlr|intel_generic_serial_flash_interface_top_0|qspi_inf_inst|flash_clk_reg|clk}] \\"
+      },
+      {
+        "line": 42278,
+        "text": "Warning (332049): Ignored create_generated_clock at pmci_top.sdc(68): Argument -source is an empty collection File: /home/testfpga/IOFS_BUILD_ROOT/ofs-ia840f/work-ofs-23.1-2-build/syn/setup/pmci_top.sdc Line: 68"
+      },
+      {
+        "line": 42282,
+        "text": " -source [get_pins {pmci_wrapper|pmci_ss|flash_ctrlr|intel_generic_serial_flash_interface_top_0|qspi_inf_inst|flash_clk_reg|q}] \\"
+      },
+      {
+        "line": 42284,
+        "text": "Warning (332049): Ignored create_generated_clock at pmci_top.sdc(73): Argument -source is an empty collection File: /home/testfpga/IOFS_BUILD_ROOT/ofs-ia840f/work-ofs-23.1-2-build/syn/setup/pmci_top.sdc Line: 73"
+      },
+      {
+        "line": 42408,
+        "text": "    Info (332111):    6.400 qsfp_ref_clk"
+      },
+      {
+        "line": 42695,
+        "text": "Info: Quartus Prime Fitter was successful. 0 errors, 537 warnings"
+      }
+    ]
+  }
+]

@@ -1,0 +1,601 @@
+INSTRUCTIONS # Quartus Pro 26.1.1 and Questa FPGA Edition
+
+## Installation and license
+
+- Installation: `/opt/altera/26.1.1`
+- Quartus: **26.1.1 Build 130, Pro Edition**
+- Simulator: **Questa Altera FPGA Edition 2025.3** (`questa_fe`)
+- Installed device family: **Agilex 7**
+- License: `/home/uwb_student00/quartus_26/LR-191011_License.dat`
+- License expiration: **December 16, 2026**
+- License type: node-locked evaluation, tied to this workstation's NIC MAC address `00:be:43:b7:3a:b3`.
+
+The license includes Quartus Standard/Pro and Questa FPGA Edition. Renew or replace the license before it expires.
+
+## 1. Configure your terminal
+
+Run this before using the tools:
+
+```bash
+export QUARTUS_ROOTDIR_OVERRIDE=/opt/altera/26.1.1/quartus
+export PATH="/opt/altera/26.1.1/quartus/bin:/opt/altera/26.1.1/questa_fe/bin:$PATH"
+
+export LM_LICENSE_FILE="$HOME/quartus_26/LR-191011_License.dat"
+export MGLS_LICENSE_FILE="$LM_LICENSE_FILE"
+export SALT_LICENSE_SERVER="$LM_LICENSE_FILE"
+```
+
+**Important:** This Questa release requires `SALT_LICENSE_SERVER`. During verification, simulation failed with only `LM_LICENSE_FILE` and `MGLS_LICENSE_FILE`, then passed after setting `SALT_LICENSE_SERVER` to the license file.
+
+### Make the settings persistent
+
+Edit `~/.bashrc` and replace the old Quartus/license exports with the block above. At verification time, the old settings referenced:
+
+- `/opt/intelFPGA_pro/23.1/quartus`
+- `/opt/intelFPGA_pro/23.1/questa_fe`
+- `/home/uwb_student00/IA-840f/LR-157262_License.dat`
+
+In particular, an old `QUARTUS_ROOTDIR_OVERRIDE` redirects even an explicitly invoked new Quartus launcher to the old installation.
+
+After saving, open a new terminal or run:
+
+```bash
+source ~/.bashrc
+hash -r
+```
+
+Verify tool selection:
+
+```bash
+command -v quartus_sh
+quartus_sh --version
+command -v vsim
+vsim -version
+```
+
+Expected versions: Quartus **26.1.1 Build 130** and Questa FPGA Edition **2025.3**. Run development tools as your normal user; root is not needed for license checkout, compilation, or simulation.
+
+## 2. Use Quartus
+
+### Graphical interface
+
+From a desktop terminal with a working display:
+
+```bash
+quartus
+```
+
+Open your project's `.qpf` file. GUI operation was not verified in the headless SSH session.
+
+### Command-line compilation
+
+From the directory containing your project, substitute its actual name for `my_project`:
+
+```bash
+quartus_sh --flow compile my_project
+```
+
+For a specific revision:
+
+```bash
+quartus_sh --flow compile my_project -c my_revision
+```
+
+Check the compilation reports and timing results in the project's configured output directory, commonly `output_files/`. Before programming a real board, use its correct FPGA part, pin assignments, timing constraints, Reset Release IP, and power-management settings.
+
+## 3. Use Questa FPGA Edition
+
+From your simulation working directory, compile your design and testbench. Replace the example filenames and top-level testbench name with your own:
+
+```bash
+vlib work
+vlog -sv design.sv testbench.sv
+vsim -c work.tb -do 'run -all; quit -f'
+```
+
+Create `work` only if it does not already exist. For VHDL, compile sources using `vcom` instead of `vlog`.
+
+The testbench should terminate or otherwise stop the simulation after checking its results. Inspect the transcript for errors and assertion failures; for automated testing, make the testbench/script return a nonzero exit code on failure.
+
+For interactive graphical simulation with a working display:
+
+```bash
+vsim work.tb
+```
+
+For designs containing Altera IP, use the IP/project-generated simulation setup scripts and required simulation libraries, rather than only compiling the top-level HDL files.
+
+## 4. Check programming hardware
+
+```bash
+jtagconfig
+quartus_pgm --list
+```
+
+At verification time, both reported **No JTAG hardware available**. Connect and power the board and its supported JTAG connection, then repeat these checks. If a cable is attached but not visible, investigate USB visibility, cable drivers/permissions, and JTAG server configuration.
+
+From a graphical desktop, launch the programmer with:
+
+```bash
+quartus_pgm
+```
+
+Select the correct hardware and a programming file built for the actual board. Hardware programming and board functionality have not yet been verified.
+
+## 5. Verification performed on September 17, 2026
+
+The following checks used the installation and license paths documented above:
+
+| Check | Result |
+| --- | --- |
+| Quartus version | 26.1.1 Build 130 |
+| Agilex 7 device database | Installed; 2,811 device entries |
+| Small counter synthesis | Passed |
+| Placement and routing | Passed; zero errors or warnings |
+| Timing analysis at 100 MHz | Passed; setup slack +7.284 ns, hold slack +0.124 ns |
+| Assembler/programming-file generation | Passed; generated `smoke.sof` |
+| Questa FPGA Edition simulation | Passed; counter reached expected value 10; zero errors |
+| JTAG visibility | No hardware detected |
+| GUI and real-board operation | Not verified |
+
+The compile test targeted `AGIA027R31A1E1VC` with virtual I/O pins. It generated warnings about missing Reset Release IP and board-specific power-management settings. **Its `smoke.sof` is a toolchain test artifact, not a programming file for the workstation's board.**
+
+Verification sources and reports were left in `/tmp/opencode/altera_verify/`, including:
+
+- `smoke.sv`: counter and self-checking testbench
+- `compile.tcl` and `smoke.sdc`: Quartus test setup
+- `compile.log`: synthesis, fitting, and timing results
+- `assembler.log`: successful standalone assembler run
+- `transcript`: Questa simulation output
+- `output_files/`: Quartus reports and test programming file
+
+The full-flow command reached the execution time limit after timing analysis; the assembler was then run separately and completed successfully. Temporary files may be removed by system cleanup.
+
+## Troubleshooting
+
+### Quartus reports version 23.1
+
+Check `QUARTUS_ROOTDIR_OVERRIDE` and `PATH`, then reapply the environment block in section 1. An absolute path to the new launcher alone does not override an old `QUARTUS_ROOTDIR_OVERRIDE`.
+
+### Questa reports an invalid license environment
+
+Verify:
+
+```bash
+printenv LM_LICENSE_FILE MGLS_LICENSE_FILE SALT_LICENSE_SERVER
+test -r "$SALT_LICENSE_SERVER" && printf 'License file is readable\n'
+```
+
+All three variables should reference the current `LR-191011_License.dat` file. Launch Questa from the configured terminal so it inherits these settings.
+
+### License checkout fails after previously working
+
+Check the error message, license expiration, system date, file readability, and workstation host-ID match. This license expires December 16, 2026 and is tied to this machine. Installing the software on another host does not transfer the license.
+
+WORK05 EXISTS False
+FILE syn/board/ia840f/syn_top/build_env_db.txt # Build configuration written by build_fim.sh. This file is loaded
+# into the Quartus project by config_env.tcl.
+
+BUILD_ROOT_REL=../../../..
+BITSTREAM_ID=05010202599ac052
+BITSTREAM_MD=0000000002609181
+BITSTREAM_INFO=0000000000000001
+Q_REVISION=ofs_top
+Q_PR_REVISION=ofs_pr_afu
+Q_PR_PARTITION_NAME=green_region
+
+FILE syn/board/ia840f/syn_top/ofs_top.qsf # Source-only board candidate; legacy LAST_QUARTUS_VERSION is provenance, not qualification.
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/build_gate.tcl
+# Copyright (C) 2021-2023 Intel Corporation
+# SPDX-License-Identifier: MIT
+
+############################################################################################
+# FPGA Device
+############################################################################################
+
+set_global_assignment -name FAMILY "Agilex 7"
+set_global_assignment -name DEVICE AGFB027R25A2E2V
+
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "1.2 V"
+
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+#set_global_assignment -name RESERVE_DATA0_AFTER_CONFIGURATION "USE AS REGULAR IO" #Commented out as not in 840f
+#todo:
+set_global_assignment -name PRESERVE_UNUSED_XCVR_CHANNEL ON
+
+############################################################################################
+# Synthesis Options
+############################################################################################
+set_global_assignment -name TOP_LEVEL_ENTITY top
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name OPTIMIZATION_TECHNIQUE SPEED
+set_global_assignment -name OPTIMIZE_POWER_DURING_SYNTHESIS OFF
+set_global_assignment -name OPTIMIZE_POWER_DURING_FITTING OFF
+set_global_assignment -name ALLOW_REGISTER_RETIMING ON
+set_global_assignment -name ROUTER_TIMING_OPTIMIZATION_LEVEL MAXIMUM
+set_global_assignment -name SYNTH_TIMING_DRIVEN_SYNTHESIS ON
+set_global_assignment -name MUX_RESTRUCTURE ON
+
+set_global_assignment -name REMOVE_DUPLICATE_REGISTERS OFF -to rst_n_sys_afu
+set_global_assignment -name REMOVE_DUPLICATE_REGISTERS OFF -to rst_n_sys_mem
+set_global_assignment -name REMOVE_DUPLICATE_REGISTERS OFF -to rst_n_sys_pcie
+
+set_global_assignment -name LAST_QUARTUS_VERSION "26.1.1 Pro Edition"
+
+set_global_assignment -name FLOW_DISABLE_ASSEMBLER OFF
+set_global_assignment -name FLOW_ENABLE_INTERACTIVE_TIMING_ANALYZER OFF
+set_global_assignment -name SEED 1
+
+############################################################################################
+# PWR MGMT
+############################################################################################
+# todo
+set_global_assignment -name PWRMGT_DEVICE_ADDRESS_IN_PMBUS_SLAVE_MODE 01
+set_global_assignment -name VID_OPERATION_MODE "PMBUS SLAVE"
+#set_global_assignment -name PWRMGT_BUS_SPEED_MODE "100 KHZ" #Commented out as not in 840f
+set_global_assignment -name PWRMGT_VOLTAGE_OUTPUT_FORMAT "LINEAR FORMAT"
+set_global_assignment -name PWRMGT_LINEAR_FORMAT_N "-12"
+
+############################################################################################
+# Configuration Interface
+############################################################################################
+# todo
+#set_global_assignment -name AUTO_RESTART_CONFIGURATION OFF
+#set_global_assignment -name ENABLE_CONFIGURATION_PINS OFF
+#set_global_assignment -name ENABLE_BOOT_SEL_PIN OFF
+set_global_assignment -name STRATIXV_CONFIGURATION_SCHEME "ACTIVE SERIAL X4"
+#set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+#set_global_assignment -name STRATIXII_CONFIGURATION_DEVICE AUTO
+#set_global_assignment -name GENERATE_PR_RBF_FILE ON
+set_global_assignment -name ENABLE_ED_CRC_CHECK ON
+set_global_assignment -name MINIMUM_SEU_INTERVAL 0
+#set_global_assignment -name MINIMUM_SEU_INTERVAL 479
+#set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_100MHZ # Setting for Agilex DevKit
+#set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_115MHZ_IOSC
+set_global_assignment -name DEVICE_INITIALIZATION_CLOCK OSC_CLK_1_125MHZ
+#set_global_assignment -name DEVICE_INITIALIZATION_CLOCK OSC_CLK_1_25MHZ
+#set_global_assignment -name DEVICE_INITIALIZATION_CLOCK INIT_INTOSC
+set_global_assignment -name USE_PWRMGT_SCL SDM_IO14
+set_global_assignment -name USE_PWRMGT_SDA SDM_IO11
+set_global_assignment -name USE_CONF_DONE SDM_IO16
+set_global_assignment -name USE_PWRMGT_ALERT SDM_IO12
+set_global_assignment -name USE_INIT_DONE SDM_IO0
+#set_global_assignment -name USE_NCATTRIP SDM_IO9
+#set_global_assignment -name USE_HPS_COLD_RESET SDM_IO7
+#set_global_assignment -name HPS_INITIALIZATION "AFTER INIT_DONE"
+#set_global_assignment -name HPS_DAP_SPLIT_MODE "HPS PINS"
+#set_global_assignment -name HPS_DAP_SPLIT_MODE "SDM PINS"
+#set_global_assignment -name HPS_DAP_NO_CERTIFICATE on
+set_global_assignment -name GENERATE_RBF_FILE ON
+
+set_global_assignment -name GENERATE_COMPRESSED_SOF ON
+
+#840F section
+set_global_assignment -name SDM_DIRECT_TO_FACTORY_IMAGE SDM_IO13
+
+############################################################################################
+# Verilog Macros
+############################################################################################
+set_global_assignment -name VERILOG_MACRO "INCLUDE_USER_CLK"
+set_global_assignment -name VERILOG_MACRO "DDR4_NUM_MEM_GROUPS=2"
+set_global_assignment -name VERILOG_MACRO "INCLUDE_IA840F"
+set_global_assignment -name VERILOG_MACRO "INCLUDE_DDR4"             # Includes the MEM SS and the AXI-MM datapath
+#PMCI IP is removed in IA-840F port as not supported and access will be provided via separate BittWare BMC subsystem IP. 
+#set_global_assignment -name VERILOG_MACRO "INCLUDE_PMCI"             # Includes PMCI SS in the fim
+set_global_assignment -name VERILOG_MACRO "INCLUDE_PR"               # INCLUDE_PR removes PR IP instatiation in port_gasket. To disable PR, remove INCLUDE_PR & pr_assignments.tcl from .qsf  
+#set_global_assignment -name VERILOG_MACRO "INCLUDE_HSSI"             # Includes HSSI SS and HE-HSSI logic into the design
+set_global_assignment -name VERILOG_MACRO "DISABLE_HE_HSSI_CRC"      # Disables CRC generation from HE-HSSI traffic generation
+set_global_assignment -name VERILOG_MACRO "INCLUDE_PCIE_SS"          # Instantiates the PCIE SS (Gen4) when enabled, else instantiates PCIE Gen3 (should only be disabled in unit test sim only).   
+set_global_assignment -name VERILOG_MACRO "INCLUDE_REMOTE_STP"       # Includes Remote SignalTap support in PR Region
+#set_global_assignment -name VERILOG_MACRO "INCLUDE_HPS"              # Includes Hard Processor System in the fim
+#set_global_assignment -name VERILOG_MACRO "INCLUDE_UART"             # Includes Soft UART accessible from PCIe
+
+# Compile time Verilog Macros
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../../../shared_config/compile_flags.tcl
+
+############################################################################################
+# Design Files
+############################################################################################
+
+# Ensure that variables such as BUILD_ROOT_REL are set (must be relative)
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/config_env.tcl
+
+# RTL and IP files use BUILD_ROOT_REL env variable, which is set only after config_env.tcl is evaluated. 
+# Move global assignment into separate tcl file to ensure availability of BUILD_ROOT_REL after evaluation.
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ofs_top_sources.tcl
+
+
+############################################################################################
+# VAB Assignments 
+############################################################################################
+set_global_assignment -name ENABLE_MULTI_AUTHORITY ON
+set_global_assignment -name OPTIMIZATION_MODE "HIGH PERFORMANCE EFFORT" -comment "Use High Performance Effort optimization mode when optimizing for performance. Superior Performance optimization mode has been deprecated and will be removed in 27.1.1."
+
+FILE syn/board/ia840f/setup/build_gate.tcl # Experimental project management / RTL generation is not build readiness.
+# The validator inspects the actual Linux parent executable and argv, not a
+# stage environment variable or a mutable Quartus Tcl executable-name label.
+set ia840f_ready_for_build false
+set ia840f_gate [file normalize [file join [file dirname [info script]] ../../../../ofs-common/tools/ofss_config/ia840f_experimental_gate.py]]
+if {[catch {exec python3 $ia840f_gate quartus 2>@1} ia840f_gate_result]} {
+    # Quartus may downgrade the error below to warning 125091 and exit 0.
+    # Native setup monitors this stable stderr marker and fails before its next
+    # stage. This is deliberately not an unverified vendor qexit invocation.
+    puts stderr "IA840F_GATE_REJECTED: $ia840f_gate_result"
+    error "IA840F NOT READY: $ia840f_gate_result. Child-IP/generated-interface, memory and BMC/FLR qualification remain unperformed."
+}
+unset ia840f_gate ia840f_gate_result
+
+SYMLINKS {
+  "quartus_proj_dir": "syn/board/ia840f/syn_top",
+  "syn/board/ia840f/setup/config_env.tcl": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/ofs-common/scripts/common/syn/config_env.tcl",
+  "syn/board/ia840f/syn_top/mem_ss.ip": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/board/ia840f/syn_top/../../../../ipss/mem/qip/mem_ss/mem_ss.ip",
+  "syn/board/ia840f/syn_top/ofs_partial_reconfig/ofs_sta_report_script_pr.tcl": "../../../../../ofs-common/scripts/common/syn/ofs_sta_report_script_pr.tcl",
+  "syn/board/ia840f/syn_top/ofs_partial_reconfig/user_clock_freqs_compute.tcl": "../../../../../ofs-common/scripts/common/syn/user_clock_freqs_compute.tcl",
+  "syn/board/ia840f/syn_top/ofs_partial_reconfig/report_timing.tcl": "../../../../../ofs-common/scripts/common/syn/report_timing.tcl",
+  "syn/board/ia840f/syn_top/ofs_partial_reconfig/user_clocks.sdc": "../../../../../ofs-common/scripts/common/syn/user_clocks.sdc",
+  "syn/board/ia840f/syn_top/ofs_partial_reconfig/gen_gbs.tcl": "../../../../../ofs-common/scripts/common/syn/gen_gbs.tcl",
+  "syn/board/ia840f/syn_top/ofs_partial_reconfig/tcl_lib": "../../../../../ofs-common/scripts/common/syn/tcl_lib",
+  "syn/board/ia840f/syn_top/afu_with_pim/afu/hw/dummy_afu.json": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/pim/dummy_afu/dummy_afu.json"
+}
+AUTH {
+  "schema": 1,
+  "approved": true,
+  "ready_for_build": false,
+  "target": "ia840f",
+  "part": "AGFB027R25A2E2V",
+  "toolchain": "Quartus Prime Pro 26.1.1 Build 130",
+  "source": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach",
+  "work": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04",
+  "pim": "/home/uwb_student00/ahls/new_BSP/ofs-platform-afu-bbb",
+  "permissions": [
+    "setup",
+    "generate",
+    "headers"
+  ],
+  "tools": {
+    "quartus_sh": {
+      "path": "/opt/altera/26.1.1/quartus/bin/quartus_sh",
+      "sha256": "06c1bd805bc078d9636015c472e09a054160c405f3f06b7c555e7a4b6f7d3f14"
+    },
+    "quartus_ipgenerate": {
+      "path": "/opt/altera/26.1.1/quartus/bin/quartus_ipgenerate",
+      "sha256": "06c1bd805bc078d9636015c472e09a054160c405f3f06b7c555e7a4b6f7d3f14"
+    },
+    "ip-deploy": {
+      "path": "/opt/altera/26.1.1/quartus/sopc_builder/bin/ip-deploy",
+      "sha256": "1efda0f5e1fd1a47207cf07b4726b19128dde1864ffc31eda98d0ace9d75447f"
+    },
+    "qsys-script": {
+      "path": "/opt/altera/26.1.1/quartus/sopc_builder/bin/qsys-script",
+      "sha256": "ac302a575e6b62ec49fafbba45ee2042ceb01f933069fa84dfd0ea91db2edd95"
+    },
+    "PACSign": {
+      "path": "/usr/bin/PACSign",
+      "sha256": "20a5d50a406a478870de2a6b975ef53c3325dadd8dfe5f03a8d01588e5075938"
+    },
+    "packager": {
+      "path": "/usr/bin/packager",
+      "sha256": "3a3e8a5d1747f8f0c7bc6b7663452032b9b6ceaf1477e247c5e6a1c3a940be00"
+    },
+    "afu_json_mgr": {
+      "path": "/usr/bin/afu_json_mgr",
+      "sha256": "7e940ade3279ab219230b67237b2d0991d39a0c4224778502aeeec886e9003eb"
+    },
+    "afu_synth_setup": {
+      "path": "/usr/bin/afu_synth_setup",
+      "sha256": "a18cbeaba213020ba34115c389245335c53e5d76d20a46bc13d2f839b771a332"
+    }
+  },
+  "quartus_tools": {
+    "quartus_sh": {
+      "path": "/opt/altera/26.1.1/quartus/linux64/quartus_sh",
+      "sha256": "5740e47134517eac623c1391837761d12ab18b99a2db78be790cf764af3e3bce"
+    },
+    "quartus_ipgenerate": {
+      "path": "/opt/altera/26.1.1/quartus/linux64/quartus_ipgenerate",
+      "sha256": "ba12d46d14b1e675c88550e3d71f659597595885dfa7027036738a0e09cc3cb5"
+    },
+    "ip-deploy": {
+      "path": "/opt/altera/26.1.1/qsys/bin/ip-deploy",
+      "sha256": "5494247412c9c4d56956131d9f4e176705fde2e4782da1bef5fe63715bcc2199"
+    },
+    "qsys-script": {
+      "path": "/opt/altera/26.1.1/qsys/bin/qsys-script",
+      "sha256": "a0c811ed4010961b2ae4e92711492a172be969c900709b380f3c66db875d3f75"
+    },
+    "PACSign": {
+      "path": "/usr/bin/PACSign",
+      "sha256": "20a5d50a406a478870de2a6b975ef53c3325dadd8dfe5f03a8d01588e5075938"
+    },
+    "packager": {
+      "path": "/usr/bin/packager",
+      "sha256": "3a3e8a5d1747f8f0c7bc6b7663452032b9b6ceaf1477e247c5e6a1c3a940be00"
+    },
+    "afu_json_mgr": {
+      "path": "/usr/bin/afu_json_mgr",
+      "sha256": "7e940ade3279ab219230b67237b2d0991d39a0c4224778502aeeec886e9003eb"
+    },
+    "afu_synth_setup": {
+      "path": "/usr/bin/afu_synth_setup",
+      "sha256": "a18cbeaba213020ba34115c389245335c53e5d76d20a46bc13d2f839b771a332"
+    }
+  },
+  "quartus_contexts": [
+    {
+      "executable": "/opt/altera/26.1.1/quartus/linux64/quartus_sh",
+      "sha256": "5740e47134517eac623c1391837761d12ab18b99a2db78be790cf764af3e3bce",
+      "argv": [
+        "quartus_sh",
+        "--prepare",
+        "-r",
+        "ofs_top",
+        "ofs_top"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/board/ia840f/syn_top",
+      "kind": "prepare"
+    },
+    {
+      "executable": "/opt/altera/26.1.1/quartus/linux64/quartus_sh",
+      "sha256": "5740e47134517eac623c1391837761d12ab18b99a2db78be790cf764af3e3bce",
+      "argv": [
+        "quartus_sh",
+        "--prepare",
+        "-r",
+        "ofs_pr_afu",
+        "ofs_top"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/board/ia840f/syn_top",
+      "kind": "prepare"
+    },
+    {
+      "executable": "/opt/altera/26.1.1/quartus/linux64/quartus_ipgenerate",
+      "sha256": "ba12d46d14b1e675c88550e3d71f659597595885dfa7027036738a0e09cc3cb5",
+      "argv": [
+        "quartus_ipgenerate",
+        "-t",
+        "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/emit_project_ip.tcl",
+        "--project=ofs_top",
+        "--revision=ofs_top",
+        "--mode=ip_lib"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/board/ia840f/syn_top",
+      "kind": "ip_lib"
+    },
+    {
+      "executable": "/opt/altera/26.1.1/quartus/linux64/quartus_sh",
+      "sha256": "5740e47134517eac623c1391837761d12ab18b99a2db78be790cf764af3e3bce",
+      "argv": [
+        "quartus_sh",
+        "-t",
+        "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/emit_project_macros.tcl",
+        "--project=ofs_top",
+        "--revision=ofs_top",
+        "--mode=txt",
+        "--output=/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/src/top/ofs_agilex.macros"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/board/ia840f/syn_top",
+      "kind": "pim_macros"
+    },
+    {
+      "executable": "/opt/altera/26.1.1/quartus/linux64/quartus_ipgenerate",
+      "sha256": "ba12d46d14b1e675c88550e3d71f659597595885dfa7027036738a0e09cc3cb5",
+      "argv": [
+        "quartus_ipgenerate",
+        "-t",
+        "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/ofs-common/scripts/common/syn/emit_project_ip.tcl",
+        "--project=ofs_top",
+        "--revision=ofs_top",
+        "--output=project_ip_for_generation.tcl"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/board/ia840f/syn_top",
+      "kind": "project_ip"
+    },
+    {
+      "executable": "/opt/altera/26.1.1/quartus/linux64/quartus_ipgenerate",
+      "sha256": "ba12d46d14b1e675c88550e3d71f659597595885dfa7027036738a0e09cc3cb5",
+      "argv": [
+        "quartus_ipgenerate",
+        "ofs_top",
+        "-c",
+        "ofs_top",
+        "--generate_project_ip_files",
+        "--synthesis=verilog",
+        "--simulation=verilog",
+        "--simulator=modelsim",
+        "--parallel=off"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/board/ia840f/syn_top",
+      "kind": "generate"
+    },
+    {
+      "executable": "/opt/altera/26.1.1/quartus/linux64/quartus_sh",
+      "sha256": "5740e47134517eac623c1391837761d12ab18b99a2db78be790cf764af3e3bce",
+      "argv": [
+        "quartus_sh",
+        "-t",
+        "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/ofs-common/scripts/common/syn/ip_get_cfg/gen_ofs_ip_cfg_db.tcl",
+        "--project=ofs_top",
+        "--revision=ofs_top"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/board/ia840f/syn_top",
+      "kind": "headers"
+    }
+  ]
+}
+CALLBACKS
+/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/shared_config/afu_design_files.tcl     set sr_afu_name  [exec basename $env(OFS_BUILD_TAG_SR_AFU)]
+    set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/sr_afu/$sr_afu_name/sources.tcl
+#set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/common/mem_tg/mem_tg_design_files.tcl
+    set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/common/mem_tg/mem_tg_design_files.tcl
+/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/shared_config/afu_if_design_files.tcl set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/fpga_family/agilex/ofs_common_agilex_if_design_files.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/common/ofs_common_if_design_files.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/common/includes/pcie_afu_if_design_files.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/common/lib/pcie_shims/files_quartus.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ipss/hssi/eth_afu_if_design_files.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ipss/pcie/pcie_ss_design_files.tcl
+/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/shared_config/post_module_hook.tcl ## This script is invoked as the POST_MODULE_SCRIPT_FILE. It creates an SOF
+set module [lindex $quartus(args) 0]
+set proj [lindex $quartus(args) 1]
+set rev [lindex $quartus(args) 2]
+   if {[catch {exec grep "Total.*HPS" ./output_files/ofs_top.fit.rpt | sed -r {s/.*([0-1]) \/ [0-1].*/\1/}} hps_present]} {
+              if {[catch {qexec "quartus_pfg -c $no_hex_sof $output_sof -o hps_path=$hexfile"} result]} {
+# Invoke the platform-independent POST_MODULE_SCRIPT_FILE. Most platforms should
+/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/board/ia840f/setup/afu_design_files.tcl set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/syn/board/ia840f/setup/bwbmc_design_files.tcl
+#set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/common/mem_tg/mem_tg_design_files.tcl
+    set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/common/mem_tg/mem_tg_design_files.tcl
+/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/board/ia840f/setup/build_gate.tcl if {[catch {exec python3 $ia840f_gate quartus 2>@1} ia840f_gate_result]} {
+/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/board/ia840f/syn_top/ofs_pr_afu.qsf set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/build_gate.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../../../shared_config/suppress_warning.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE fim_project_macros.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE fim_base_ip.tcl
+set_global_assignment -name POST_FLOW_SCRIPT_FILE quartus_sh:ofs_partial_reconfig/gen_gbs.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/config_env.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ofs_pr_afu_sources.tcl
+/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/board/ia840f/syn_top/ofs_pr_afu_sources.tcl     set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ofs_ip_cfg_db/ip_gen_sv_wrapper_inc.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/syn/shared_config/afu_if_design_files.tcl
+    set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/common/ofs_common_design_files.tcl
+    set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/fpga_family/agilex/ofs_common_agilex_design_files.tcl
+    set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ipss/hssi/eth_design_files.tcl
+    set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ipss/pcie/pcie_ss_design_files.tcl
+    set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/fpga_family/agilex/hssi_ss/hssi_wrapper_design_files.tcl
+    set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/syn/board/ia840f/setup/afu_design_files.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/fpga_family/agilex/afu_main.tcl
+/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/board/ia840f/syn_top/ofs_top.qsf set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/build_gate.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../../../shared_config/compile_flags.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/config_env.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ofs_top_sources.tcl
+/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/board/ia840f/syn_top/ofs_top_sources.tcl set_global_assignment -name SOURCE_TCL_SCRIPT_FILE "$::env(BUILD_ROOT_REL)/ofs-common/scripts/common/syn/ip_get_cfg/ofs_ip_cfg_db.tcl"
+set_global_assignment -name POST_MODULE_SCRIPT_FILE "quartus_sh:$::env(BUILD_ROOT_REL)/syn/shared_config/post_module_hook.tcl"
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/syn/shared_config/afu_if_design_files.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/common/ofs_common_design_files.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/fpga_family/agilex/ofs_common_agilex_design_files.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ipss/pcie/pcie_ss_design_files.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ipss/hssi/eth_design_files.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/fpga_family/agilex/hssi_ss/hssi_wrapper_design_files.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/syn/board/ia840f/setup/afu_design_files.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/src/pd_qsys/fabric/fabric_design_files.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ipss/mem/mem_design_files.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ipss/pmci/pmci_design_files.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/fpga_family/agilex/hps/hps_design_files.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/fpga_family/agilex/uart/uart_design_files.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/ofs-common/src/fpga_family/agilex/afu_main.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE $::env(BUILD_ROOT_REL)/syn/shared_config/suppress_warning.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/pr_assignments.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/top_loc.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/emif_loc.tcl
+/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/board/ia840f/syn_top/ofs_partial_reconfig/gen_gbs.tcl ## The script can be invoked automatically as a POST_FLOW_SCRIPT_FILE or
+    set project [lindex $::quartus(args) 1]
+    set revision [lindex $::quartus(args) 2]
+    post_message [exec {*}$cmd 2>@1]
+/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/board/ia840f/syn_top/afu_with_pim/pim.tcl set_global_assignment -name SOURCE_TCL_SCRIPT_FILE afu_with_pim/afu/build/platform/platform_if_addenda.qsf
+/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/build/platform/ofs_plat_if/par/user_clock_config.tcl     if {[info exists quartus(nameofexecutable)]} {
+        set cur_tool $quartus(nameofexecutable)
+/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/board/ia840f/syn_top/afu_with_pim/pim_template/hw/lib/build/platform/ofs_plat_if/par/platform_if_addenda.qsf set_global_assignment -name SOURCE_TCL_SCRIPT_FILE "${THIS_DIR}/afu_json.tcl"
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE "${THIS_DIR}/user_clock_config.tcl"
+/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/board/ia840f/syn_top/afu_with_pim/afu/build/platform/platform_if_addenda.qsf set_global_assignment -name SOURCE_TCL_SCRIPT_FILE "${THIS_DIR}/ofs_plat_if/par/platform_if_addenda.qsf"
+/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/board/ia840f/syn_top/afu_with_pim/afu/build/platform/ofs_plat_if/par/user_clock_config.tcl     if {[info exists quartus(nameofexecutable)]} {
+        set cur_tool $quartus(nameofexecutable)
+/home/uwb_student00/ahls/new_BSP/work_ia840f_ipgen_04/syn/board/ia840f/syn_top/afu_with_pim/afu/build/platform/ofs_plat_if/par/platform_if_addenda.qsf set_global_assignment -name SOURCE_TCL_SCRIPT_FILE "${THIS_DIR}/afu_json.tcl"
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE "${THIS_DIR}/user_clock_config.tcl"

@@ -1,0 +1,73 @@
+#!/bin/bash
+
+# Copyright (c) 2026 Altera Corporation. All rights reserved.
+
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and any partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, the Altera Quartus Prime License Agreement,
+# the Altera IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Altera and sold by Altera or its authorized distributors.  Please
+# refer to the Altera Software License Subscription Agreements 
+# on the Quartus Prime software download page.
+
+# Bash uses $IFS (Internal Field Separator) variable to determine what the
+# field separators are. By default $IFS is set to the space character.
+# Setting IFS= disable the default behaviour within this script and its
+# included scripts to support use of path with spaces.
+IFS=
+
+# Ignore external setting of QUARTUS_ROOTDIR, but allow
+# user to force a location using QUARTUS_ROOTDIR_VERRIDE
+if test "${QUARTUS_ROOTDIR_OVERRIDE-UNSET}" != UNSET ; then
+	export QUARTUS_ROOTDIR=$QUARTUS_ROOTDIR_OVERRIDE
+else
+	export SCRIPT_PATH=`dirname $0`
+
+	if test -z "$SCRIPT_PATH" ; then
+		# in case the dirname doesn't work, use "which" (slower)
+		export SCRIPT_PATH=`which $0 2>&1 | tail -1`
+	fi
+
+	if test "$SCRIPT_PATH" = "." -o -z "$SCRIPT_PATH" ; then
+		export QUARTUS_ROOTDIR=`dirname \`pwd\``
+	else
+		export QUARTUS_ROOTDIR=`dirname $SCRIPT_PATH`
+	fi
+
+	if test "$QUARTUS_ROOTDIR" = ".." ; then
+		export QUARTUS_ROOTDIR=`dirname \`pwd\``
+	fi
+fi
+
+if test `case "$QUARTUS_ROOTDIR" in /*) echo match ;; *) echo nomatch ;; esac` = "nomatch" ; then
+	export QUARTUS_ROOTDIR=`(cd $QUARTUS_ROOTDIR ; pwd)`
+fi
+
+export CMD_NAME=`basename $0`
+
+# Need this so shell won't try to match a * or ? inside a quoted arg
+set -f
+
+export cmd_line=''
+for cmd in "$@" ; do
+    if test "${cmd:0:1}" = "\""; then
+	    cmd_line="$cmd_line \\\"$cmd\\\""
+    else
+        cmd_line="$cmd_line \"$cmd\""
+    fi
+done
+
+. $QUARTUS_ROOTDIR/adm/qenv.sh
+
+if test $QENV_STATUS != 0 ; then
+    echo "Failed to launch cmd: $CMD_NAME $cmd_line"
+    exit $QENV_STATUS ; 
+fi
+
+eval exec "$CMD_NAME $cmd_line"

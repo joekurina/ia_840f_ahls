@@ -1,0 +1,17 @@
+# REVIEW CANDIDATE ONLY. Do not source until fitted connectivity and
+# installed command support are verified in a source-bound scratch query.
+# Vendor SDC provides divide_by 2; final STA provides the existing master.
+# The target below is the vendor SDC pin spelling, NOT verified post-fit.
+error "PCIe divider candidate not qualified: verify fitted input/output pins first"
+
+set csr_master [get_clocks {sys_pll|iopll_0_clk_100m}]
+set csr_source [get_pins {sys_pll|iopll_0|tennm_pll|outclk[2]}]
+set div_output [get_pins {pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst|clock_div2}]
+foreach col [list $csr_master $csr_source $div_output] {
+    if {[get_collection_size $col] != 1} {
+        error "PCIe divider candidate requires exactly one verified object per collection"
+    }
+}
+create_generated_clock -name ia840f_pcie_avmm_clock0 \
+    -source $csr_source -master_clock $csr_master -divide_by 2 $div_output
+# No frequency override, no false path, no asynchronous group added.

@@ -1,0 +1,40 @@
+--- a/ofs-common/tools/ofss_config/ia840f_compile_gate.py
++++ b/ofs-common/tools/ofss_config/ia840f_compile_gate.py
+@@ -1,4 +1,4 @@
+-"""Work05-only native compile authorization. Not functional readiness or sandboxing.
++"""Work06-only native compile authorization. Not functional readiness or sandboxing.
+ 
+ Trusted installed native flow children use a finite source-derived context table,
+ AND must descend from the exclusive native invocation. No arbitrary standalone
+@@ -12,9 +12,9 @@
+ 
+ BASE = common.BASE
+ SOURCE = common.SOURCE
+-WORK = BASE / 'work_ia840f_fim_05'
++WORK = BASE / 'work_ia840f_fim_06'
+ PROJECT = WORK / 'syn/board/ia840f/syn_top'
+-EVIDENCE = BASE / 'qualification/fim-build-05'
++EVIDENCE = BASE / 'qualification/fim-build-06'
+ RECORD = EVIDENCE / 'compile-authorization.json'
+ CLAIM = EVIDENCE / 'native-compile.claim.json'
+ TOP = './ofs-common/scripts/common/syn/build_top.sh'
+@@ -76,10 +76,18 @@
+         commands.append(['quartus_fit'] + settings + tail + ['--fastforward', '--continue_flow'])
+         for flag in ('--post_syn', '--mode=implement', '--mode=finalize'):
+             commands.append(['quartus_sta'] + tail + [flag])
++    # Installed libsys_flow.so formats the native task IPC prefix exactly here.
++    # Work05 observed flow 17 for ipgenerate and syn. Pin that literal, never
++    # strip flags or accept arbitrary flow IDs. All tails remain finite.
++    commands += [[args[0], '--ipc_flow=17', '--ipc_mode'] + args[1:]
++                 for args in commands[1:]]
+     for root in ('../../../..', str(WORK)):
+         scripts = root + '/ofs-common/scripts/common/syn/'
+         for module in ('quartus_ipgenerate', 'quartus_syn', 'quartus_fit', 'quartus_sta', 'quartus_asm', 'quartus_tlg', 'quartus_pow', 'quartus_eda'):
+-            commands.append(['quartus_sh', '-t', root + '/syn/shared_config/post_module_hook.tcl', module, 'ofs_top', 'ofs_top'])
++            # Observed post-IP hook; same installed post-module constructor
++            # handles only these existing source-bound module/path alternatives.
++            for prefix in ([], ['--ipc_mode']):
++                commands.append(['quartus_sh'] + prefix + ['-t', root + '/syn/shared_config/post_module_hook.tcl', module, 'ofs_top', 'ofs_top'])
+         commands += [
+             ['quartus_sh', '-t', scripts + 'emit_project_macros.tcl', '--project=ofs_top', '--revision=ofs_top', '--output=fim_project_macros.tcl', '--mode=tcl'],
+             ['quartus_sh', '-t', scripts + 'generate_pr_usage_for_asp.tcl', '--project=ofs_top', '--revision=ofs_top', '--output=ofs_ip_cfg_db/ofs_fim_util_asp.qprs'],

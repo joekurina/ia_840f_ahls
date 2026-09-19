@@ -1,0 +1,31 @@
+--- maintained/ia840f_experimental_gate.py
++++ candidate/ia840f_experimental_gate.py
+@@ -288,7 +288,7 @@
+ 
+ def main():
+     try:
+-        if sys.argv[1:] == ['quartus'] and Path.cwd() == BASE / 'work_ia840f_fim_05/syn/board/ia840f/syn_top':
++        if sys.argv[1:] == ['quartus'] and Path.cwd() == BASE / 'work_ia840f_fim_07/syn/board/ia840f/syn_top':
+             import ia840f_compile_gate
+             ia840f_compile_gate.quartus_context()
+         elif sys.argv[1:] == ['run-native-compile']:
+--- work06/ia840f_compile_gate.py
++++ candidate/ia840f_compile_gate.py
+@@ -1,4 +1,4 @@
+-"""Work06-only native compile authorization. Not functional readiness or sandboxing.
++"""Work07-only native compile authorization. Not functional readiness or sandboxing.
+ 
+ Trusted installed native flow children use a finite source-derived context table,
+ AND must descend from the exclusive native invocation. No arbitrary standalone
+@@ -12,9 +12,9 @@
+ 
+ BASE = common.BASE
+ SOURCE = common.SOURCE
+-WORK = BASE / 'work_ia840f_fim_06'
++WORK = BASE / 'work_ia840f_fim_07'
+ PROJECT = WORK / 'syn/board/ia840f/syn_top'
+-EVIDENCE = BASE / 'qualification/fim-build-06'
++EVIDENCE = BASE / 'qualification/fim-build-07'
+ RECORD = EVIDENCE / 'compile-authorization.json'
+ CLAIM = EVIDENCE / 'native-compile.claim.json'
+ TOP = './ofs-common/scripts/common/syn/build_top.sh'

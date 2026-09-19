@@ -1,0 +1,2170 @@
+    IA-840f
+      PCIe FPGA Card
+
+Hardware Reference Guide
+IA-840f Hardware Reference Guide
+
+Document Revision: 03-Sep-2025
+Hardware Revisions: Rev 2 and Rev 3
+BittWare
+45 South Main Street, Suite L100
+Concord, NH 03301 USA
++1 (603) 226 0404
+
+Intellectual Property
+Copyright © 2025, BittWare, a Molex company
+All rights reserved. All names, images and logos identifying BittWare or third parties and their products and
+services are subject to copyright, design rights and trademarks of BittWare and/or third parties. Nothing
+contained in these terms shall be construed as conferring by implication or otherwise any license or right to
+use any trademark, patent, design right or copyright of BittWare, or any other third party.
+
+Trademarks
+Agilex is a registered trademark of Intel Corp. All other trademarks are the property of their respective hold-
+ers.
+
+Disclaimer
+BittWare assumes no responsibility for any inaccuracies, errors, or omissions that may be in this manual. In
+no event will BittWare be liable for direct, indirect, special, incidental, or consequential damages resulting
+from any defect or omission in this manual. BittWare reserves the right to revise this document and to make
+changes from time to time in the content hereof without obligation of BittWare to notify any person or per-
+sons of such revision or changes.
+
+Country of Origin
+The IA-840f’s Country of Origin is the United States of America.
+
+
+
+
+  © 2025 BittWare, a Molex company                                                                           2
+Compliance
+The IA-840f product is Industrial (Class A) electromagnetic wave suitability equipment and is inten-
+ded for use in industrial, business, and commercial environments. In a residential environment this
+device might cause radio interference, which may require the user to take adequate corrective meas-
+ures. It has been tested against the following specifications:
+    l   FCC (USA) 47CFR15.107 / 47CFR15.109
+    l   CE (Europe) EN55032:2015 / EN55035:2017 / EN61000-3-2:2019 + A1:2021 / EN610003-3:2013
+        + A1:2019
+    l   UKCA (United Kingdom) BS EN55032:2015 / BS EN55035:2017 / BS EN61000-3-2:2019 +
+        A1:2021 / BS EN610003-3:2013 + A1:2019
+    l   ICES (Canada) ICES-003 Issue 7
+    l   RCM (Aus/NZ)
+    l   Safety: CE (Europe) EN IEC 62368-1:2018 / EN IEC 62368-1:2020 + A11:2020 with national dif-
+        ferences for Australia, New Zealand, EU Group, Singapore, United States, Canada and UK
+    l   Safety: AS/NZS 62368-1:2022
+    l   Safety: CSA/UL 62368-1:2019
+    l   Safety: UKCA (United Kingdom) BS EN IEC 62368-1:2018 / BS EN IEC 62368-1:2020 +
+        A11:2020
+    l   CB Scheme Certificate No. DK-141340-UL
+    l   RoHS compliant to the 2011/65/EU + 2015/863 directive
+
+Federal Communications Commission (FCC) statement
+This equipment has been tested and found to comply with the limits for a Class A digital device, pursuant
+to part 15 of the FCC Rules. These limits are designed to provide reasonable protection against harmful
+interference when the equipment is operated in a commercial environment. This equipment generates,
+uses, and can radiate radio frequency energy and, if not installed and used in accordance with the
+instruction manual, may cause harmful interference to radio communications. Operation of this equip-
+ment in a residential area is likely to cause harmful interference in which case the user will be required to
+correct the interference at his own expense
+This device complies with Part 15 of the FCC rules. Operation is subject to the following two conditions:
+(1) this device may not cause harmful interference, and (2) this device must accept any interference
+received, including interference that may cause undesired operation
+
+
+                                   CAN ICES-3 (A)/NMB-3 (A)
+
+For further information about REACH or conflicting minerals, please contact the Molex Compliance
+Group.
+
+
+
+
+© 2025 BittWare, a Molex company                                                                            3
+         Contents
+            1 Introduction                                               11
+
+              1.1 Revision History                                       12
+                1.1.1 Board Revisions                                    12
+                1.1.2 Document Revisions                                 12
+              1.2 Related Documentation                                  14
+              1.3 Abbreviations & Definitions                            14
+              1.4 Contact BittWare                                       15
+              1.5 Customer Feedback                                      15
+            2 Board Overview                                             16
+              2.1 Key Features                                           17
+              2.2 Block Diagram                                          18
+              2.3 Board Layout                                           20
+              2.4 Key Components                                         22
+              2.5 Programmable Devices                                   23
+              2.6 Board Options and Variants                             23
+              2.7 Development Tools, Example Designs, and IP             24
+              2.8 TeraBox Server Integration                             24
+            3 Board Setup                                                25
+              3.1 Handling, Unpacking, and Shipping Tips                 26
+                3.1.1 ESD Handling Tips                                  26
+                3.1.2 Unpacking the IA-840f                              26
+                3.1.3 Handling Instructions for Connectors and Cabling   26
+                3.1.4 Shipping the IA-840f                               27
+                3.1.5 Hot Surface Warning                                27
+                3.1.6 Locating the Card Serial Number                    27
+
+
+
+
+© 2025 BittWare, a Molex company                                              4
+              3.2 Where to find:                                  28
+              3.3 Warranty                                        28
+              3.4 RMA - Returning Your Product to BittWare        29
+              3.5 Card Test                                       29
+              3.6 FPGA Configuration                              29
+            4 FPGA                                                31
+              4.1 User FPGA Supported Devices                     32
+              4.2 FPGA Implementation Details                     32
+               4.2.1 FPGA Bank Usage                              32
+               4.2.2 FPGA Hard IP Usage                           33
+            5 PCIe Interface                                      34
+              5.1 Mechanical Details                              35
+                5.1.1 PCIe Card Form Factor                       35
+                5.1.2 PCIe Host Interface                         35
+                5.1.3 PCIe Endpoint Characteristics               35
+              5.2 Interface Description                           36
+                5.2.1 PCIe Enumeration                            36
+                5.2.2 SMBus Features                              36
+                5.2.3 PCIe Reset Requirements                     36
+            6 External Interfaces                                 37
+              6.1 QSFP-DD                                         38
+                6.1.1 Supported Speeds                            38
+                6.1.2 Hard IP MAC Core Availability               38
+                6.1.3 FPGA to QSFP Pin Mapping                    39
+                6.1.4 QSFP-DD Control Signals                     43
+                6.1.5 Validated Cables and Transceiver Settings   44
+              6.2 GPIO                                            44
+            7 Memory                                              47
+              7.1 DDR4                                            48
+                7.1.1 DDR4 QSYS Parameter Files                   48
+                7.1.2 DIMM Support                                48
+              7.2 Flash                                           49
+
+
+
+
+© 2025 BittWare, a Molex company                                       5
+            8 Clocking                                    50
+              8.1 Clock Circuitry                         51
+              8.2 Clock Sources                           52
+                8.2.1 PCIe Clock                          52
+                8.2.2 User Clock                          52
+                8.2.3 Network Clock                       52
+              8.3 Programmable Clock Device               53
+              8.4 Timestamp and Synchronization           53
+                8.4.1 1 PPS Input (J14)                   54
+                8.4.2 External Clock Input (J16)          54
+              8.5 Startup Sequence                        54
+            9 Card Management                             57
+              9.1 Max 10 FPGA                             58
+              9.2 Board Managment Controller (BMC)        58
+                9.2.1 Features                            58
+                9.2.2 BMC Utilities                       58
+                9.2.3 Unused FPGA Pins                    59
+              9.3 FPGA Access to the Max 10 and the BMC   59
+              9.4 I2C Devices                             60
+                9.4.1 PCIe I2C                            60
+                9.4.2 Shared I2C                          60
+                9.4.3 VPD EPROM                           62
+                9.4.4 FRU PROM (EEPROM)                   62
+              9.5 HPS Signals                             62
+              9.6 SmartVID                                63
+              9.7 LEDs                                    63
+                9.7.1 Configuration Status LEDs           63
+                9.7.2 BMC Status LEDs                     64
+                9.7.3 FPGA User LEDs                      64
+              9.8 Jumpers and Switches                    65
+            10 USB Connectivity                           66
+              10.1 Overview                               67
+
+
+
+
+© 2025 BittWare, a Molex company                               6
+              10.2 Board Features Accessible via USB     67
+                10.2.1 Max 10 and BMC USB Connectivity   68
+                10.2.2 On-board USB-Blaster II           68
+                10.2.3 USB-to-UART                       69
+              10.3 USB Connectors                        69
+              10.4 JTAG Utilities                        70
+            11 Power                                     71
+              11.1 Power Specifications                  72
+              11.2 Power Sources                         72
+                11.2.1 8-Pin Power Connector             73
+                11.2.2 6-Pin Power Connector             74
+              11.3 Power Requirements                    74
+              11.4 Power Monitoring                      74
+            12 Mechanical                                75
+              12.1 Chassis Requirements                  76
+                12.1.1 PCI Express                       76
+                12.1.2 PCIe Bracket                      76
+              12.2 Airflow                               77
+              12.3 Card Dimensions                       77
+            Appendix A: PROM Format                      78
+
+
+
+
+© 2025 BittWare, a Molex company                              7
+         List of Figures
+            Figure 1: IA-840f Block Diagram                              18
+
+            Figure 2: IA-840f Functional Block Diagram                   19
+            Figure 3: Top View                                           20
+            Figure 4: Bottom View                                        20
+            Figure 5: Front Panel View                                   21
+            Figure 6: FPGA Bank Usage                                    33
+            Figure 7: GPIO Block Diagram: Single-Ended Build Option      45
+            Figure 8: GPIO Block Diagram: LVDS Build Option              45
+            Figure 9: Clock Circuitry                                    51
+            Figure 10: Location of the IPEX MHF3 Timestamp Connectors    53
+            Figure 11: Location of the SMB Inputs on the Front Panel     54
+            Figure 12: IA-840f Startup Timing                            55
+            Figure 13: I2C Device Diagram                                61
+            Figure 14: LED locations, bottom side of PCB                 63
+            Figure 15: USB Interface                                     68
+            Figure 16: External Power Connector Location                 73
+            Figure 17: 8-pin External Power Connector                    73
+            Figure 18: 6-pin Auxiliary Power Connector Receptacle Side   74
+            Figure 19: PCIe Faceplate (Standard)                         76
+            Figure 20: PCIe Faceplate (Timing Option)                    76
+            Figure 21: Preliminary thermal resistance vs. airflow plot   77
+
+
+
+
+© 2025 BittWare, a Molex company                                              8
+         List of Tables
+            Table 1: Hardware revisions                                     12
+
+            Table 2: Document revisions                                     12
+            Table 3: Component List                                         22
+            Table 4: Connector List                                         22
+            Table 5: Supported FPGA Devices                                 32
+            Table 6: FPGA Bank Usage                                        32
+            Table 7: FPGA Hard IP                                           33
+            Table 8: Transceiver speed and MAC Core availability            38
+            Table 9: QSFP Pin Mapping                                       39
+            Table 10: QSFP-DD 0 Pinout Table (Rev 2 and Rev 3 compatible)   40
+            Table 11: QSFP-DD 1 Pinout Table (Rev 2 and Rev 3 compatible)   41
+            Table 12: QSFP-DD 2 Pinout Table                                42
+            Table 13: QSFP-DD Control Signals                               43
+            Table 14: QSFP Cables                                           44
+            Table 15: GPIO connector pinout and FPGA pin mapping            44
+            Table 16: Unused BMC Pins                                       59
+            Table 17: Other Unused Pins                                     59
+            Table 18: FPGA-to-BMC I2C Signals                               62
+            Table 19: ID PROM Data                                          62
+            Table 20: HPS Signal Connections                                62
+            Table 21: Configuration Status LEDs                             63
+            Table 22: BMC Status LEDs                                       64
+            Table 23: FPGA User LEDs                                        64
+
+
+
+
+© 2025 BittWare, a Molex company                                                 9
+            Table 24: Max Power Consumption Estimate                                         72
+            Table 25: 8-pin Auxiliary Power Connector Receptacle Side Pinout (source: PCIe
+            Specification Revi-sion 1.0)                                                     73
+            Table 26: 6-pin Auxiliary Power Connector Pinout                                 74
+            Table 27: VPD EPROM Format                                                       78
+
+
+
+
+© 2025 BittWare, a Molex company                                                                  10
+1 Introduction
+
+This Hardware Reference Guide describes the components and interfaces on Hardware Revisions 2 and 3
+of the IA-840f.
+
+  1.1 Revision History                                                                           12
+  1.2 Related Documentation                                                                      14
+  1.3 Abbreviations & Definitions                                                                14
+  1.4 Contact BittWare                                                                           15
+  1.5 Customer Feedback                                                                          15
+
+
+
+
+  © 2025 BittWare, a Molex company                                                              11
+1.1 Revision History
+1.1.1 Board Revisions
+The table below lists the hardware revisions for the IA-840f and the differences between them.
+
+                                       Table 1: Hardware revisions
+
+                   Hardware
+  Release Date                  Notes/Changes
+                   Revision
+  5-Nov-2021       0            Early Access Unit release
+  03-Jun-2022      1            Hardware Revision 1
+  22-Jun-2023      2            Hardware Revision 2
+  15-Jan-2024      3            Hardware Revision 3; reroute QSFP-DD 2; remove MCIO
+
+
+
+1.1.2 Document Revisions
+The table below lists the revision history of this document.
+
+                                       Table 2: Document revisions
+
+                 Document
+Release Date                  Notes/Changes
+                 Revision
+5-Nov-2021       0.0          Early Access Unit release
+24-Nov-2021      0.1          Early Access Unit release
+09-Dec-2021      0.2          Early Access Unit release
+19-Jan-2022      0.3          Clarify description of Hard IP MAC availability for QSFP-DDs
+17-Jun-2022      1.0          Revision 1 release
+                              Update QSFP-DD control signal table, Update MCIO section, add GPIO
+17-Oct-2022      1.1          expander detail, update USB connectivity block diagram, add HPS connectivity
+                              section
+27-Oct-2022      1.2          Update FPGA part number
+7-Nov-2022       1.3          Add VPD PROM format details
+17-Jan-2023      1.4          Add unused FPGA pins
+17-Apr-2023      1.5          Update Bottom View layout diagram; add unused FPGA pins
+8-May-2023       1.6          Updated Shared I2C and added note about QSFP-DD Hard IP usage.
+14-Jun-2023      1.7          Update PCI root port support
+21-Jun-2023      1.8          Correct QSFP numbering in QSFP-DD Control Signals table
+11-Jul-2023      1.9          Update MCIO port details
+                              Rev. 2 hardware release
+28-Jul-2023      2.0
+                              Add section on PCIe clocking and startup
+
+
+
+
+© 2025 BittWare, a Molex company                                                                             12
+                Document
+Release Date                Notes/Changes
+                Revision
+                            Rev. 3 hardware release
+17-Aug-2023     3.0         Document QSFP-DD 2 routing change
+                            Remove MCIOs
+27-Mar-2025     3.1         Add instructions for handling connectors and cables
+                            Add detail to Power Specifications
+07-Jul-2025     3.2
+                            Update DDR4 DIMM specs
+
+
+
+
+© 2025 BittWare, a Molex company                                                  13
+1.2 Related Documentation
+Refer to the following documents for more information about the IA-840f:
+   l   IA-840f Getting Started Guide
+   l   IA-840f BMC Reference Guide
+   l   IA-840f FPGA Developer Reference Guide
+   l   SDK and IA-840f CSP Reference Guide
+   l   Intel Agilex FPGA documentation
+
+1.3 Abbreviations & Definitions
+   l   BMC Board Management Controller
+   l   CSP Card Support Package
+   l   CvP Configuration Via Protocol
+   l   DDR Double Data Rate
+   l   FPGA Field Programmable Gate Array
+   l   Gb Gigabit
+   l   GB Gigabyte
+   l   I2C Inter-IC bus (standard)
+   l   IO Input/Outputs
+   l   IP Intellectual Property
+   l   JTAG Joint Test Action Group (boundary scan standard)
+   l   LED Light Emitting Diode
+   l   MCTP Management Component Transfer Protocol
+   l   MT/s Mega Transfers per second
+   l   PLDM Platform Level Data Model
+   l   POF Programmer Object File
+   l   PRPartial Reconfiguration
+   l   QSFP Quad Small Form-factor Pluggable
+   l   QSFP28 28GHz version of QSFP
+   l   QSFP-DD QSFP Double Density
+   l   SDRAM Synchronous Dynamic Random-Access Memory
+   l   SOF SRAM Object File
+   l   SPI Serial Peripheral Interface
+   l   PROM Programmable Read-Only Memory
+   l   QSPI Quad Serial Peripheral Interface
+   l   TCXO Temperature Compensated Xtal (crystal) Oscillator
+   l   VID Voltage IDentification
+
+
+
+
+© 2025 BittWare, a Molex company                                           14
+1.4 Contact BittWare
+BittWare is dedicated to providing customers with superior technical support:
+   l   BittWare Developer Site: The BittWare Developer Site provides online access to our technical
+       support resources. Go to developer.bittware.com to register for an account. Once you have set up
+       an account, you will have access to BITTS (the BittWare Issue Tracking and Technical Support
+       site), BittWare product documentation, software downloads, release notes, and examples. When
+       you are logged into the Developer Site, follow the "Issue Tracking" link at the top right of the
+       screen to access BITTS.
+   l   BittWare’s website: Our website at www.bittware.com provides a variety of literature, including
+       whitepapers, datasheets, and articles.
+   l   Phone: You can also call us directly at +1 (603) 226 0404 between the hours of 8:30 a.m.– 5:00
+       p.m. (US Eastern Time) or +44 (0) 1236 373500 between the hours of 8:30 a.m. – 5:00 p.m. (UK
+       GMT).
+
+
+
+1.5 Customer Feedback
+Thank you for using BittWare products. We appreciate you choosing BittWare for your FPGA devel-
+opment.
+If you have a few minutes to spare, we would love to hear from you about your experience with our
+products or our staff. We know your time is valuable; we would be grateful for any comment at all.
+   l   Please email us at support@bittware.com for any type of feedback.
+   l   Or, let us know about a recent Technical Support inquiry at http://koch.link/bwsupportfeedback.
+
+
+
+
+© 2025 BittWare, a Molex company                                                                         15
+2 Board Overview
+
+The IA-840f is a full-height, ¾-length, double-width, PCIe Gen4 x16 card with an Intel Agilex FPGA. The
+FPGA is connected to three QSFP-DD ports and up to 128GB DDR4. The IA-840f supports both active and
+passive cooling options.
+
+   2.1 Key Features                                                                                 17
+   2.2 Block Diagram                                                                                18
+   2.3 Board Layout                                                                                 20
+   2.4 Key Components                                                                               22
+   2.5 Programmable Devices                                                                         23
+   2.6 Board Options and Variants                                                                   23
+   2.7 Development Tools, Example Designs, and IP                                                   24
+   2.8 TeraBox Server Integration                                                                   24
+
+
+
+
+  © 2025 BittWare, a Molex company                                                                  16
+2.1 Key Features
+   l   Form Factor: Double width (34.80 mm), full height (111.15 mm), GPU form factor length (266.70
+       mm), i.e., ¾ length
+   l   FPGA: Intel Agilex AGF027 FPGA
+   l   Network IOs: 3 QSFP-DD ports supporting 200/100/40/10 Gb Ethernet
+          l Each QSFP-DD supports 2x 100GbE, 2x 40GbE, 8x 25GbE, or 8x 10GbE1
+
+          l Multi-rate hard MAC+FEC for 10/25/100GbE
+
+   l   Memory Banks:
+          l 2x 288-pin DIMM slots, each supporting up to 16GB (default 16GB) x72 DDR4 SDRAM
+
+             modules
+          l 2x banks on-board DDR4 (default 16GB) x72, up to 32 GB each
+
+   l   FPGA Configuration:
+          l Power-on FPGA configuration from flash, dual image
+
+          l USB-Blaster II Interface for FPGA JTAG access
+
+   l   Board Management Controller (BMC):
+          l Voltage, current, temperature monitoring
+
+          l Power sequencing and reset
+
+          l Field upgrades
+
+          l FPGA configuration and control
+
+          l Clock configuration
+
+          l Low bandwidth BMC-FPGA comms with SPI link
+
+          l USB 2.0
+
+          l PLDM support
+
+   l   USB connectivity:
+          l USB access to BMC, USB-JTAG, USB-UART
+
+
+
+
+1 From an E-Tile perspective, one QSFPDD supports 2x100GbE Hard IP while the other two support
+1x100GbE Hard IP.
+
+
+© 2025 BittWare, a Molex company                                                                  17
+2.2 Block Diagram
+The diagram below shows the key functional features of the IA-840f. The FPGA is used to implement the
+PCIe Gen4, DDR4, QSFP-DD, and Board Management Controller interfaces while leaving ample room
+for user applications. The board is also designed to efficiently handle cooling for higher powered FPGA
+applications while maintaining high throughput.
+
+                                   Figure 1: IA-840f Block Diagram
+
+
+
+
+   Note: Refer to the images in the Board Layout section for actual component and connector loc-
+   ations.
+
+
+
+
+© 2025 BittWare, a Molex company                                                                    18
+                              Figure 2: IA-840f Functional Block Diagram
+
+
+
+
+© 2025 BittWare, a Molex company                                           19
+2.3 Board Layout
+This section shows where the main components on the IA-840f are located. Each of these are described
+in more detail later in this document.
+
+                                         Figure 3: Top View
+
+
+
+
+                                       Figure 4: Bottom View
+
+
+
+
+© 2025 BittWare, a Molex company                                                                 20
+                                   Figure 5: Front Panel View
+
+
+
+
+© 2025 BittWare, a Molex company                                21
+2.4 Key Components
+The tables below list the manufacturer and part number of the board’s key components and connectors.
+
+                                           Table 3: Component List
+
+ Component                       Part Number                              Manufacturer
+ Agilex FPGA                     FPGA part number is order dependent.     Intel
+ Flash                           MT25QU02GCBB8E12-0SIT                    Micron
+ DDR4                            MT40A2G8JC-062E:E                        Micron
+ I2C expander                    TCA9554PW                                Texas Instruments
+ MAC ID PROM                     AT24C16C-STUM                            Microchip Technology
+ MAX 10 FPGA                     10M25DAF256C8G                           Intel
+ 48MHz clock (Y1)                ECS-480-8-33B-CWN-TR                     ECS
+ Clock (Y2)                      ABMM-12.000MHZ-N2-T                      Abracon
+ 24MHz clock (Y3)                XTALSC320X500X135-2N-445
+ Crystal Oscillator (Y4)         511RAB100M000BAGR                        Silicon Labs
+ Clock (Y5)                      LFXTAL072604Reel                         IQD Frequency Products
+ Jitter Cleaner                  SI5397A-A-GMR                            Silicon Labs
+
+
+
+                                            Table 4: Connector List
+
+    Connector                           Part Number                     Manufacturer
+    QSFP-DD 0 (J5)
+    QSFP-DD 1 (J8)                      202718-0100                     Molex
+    QSFP-DD 2 (J9)
+    USB out (J7)
+    USB in (J10)                        2012670005                      Molex
+    USB (J13)
+    External power 8-pin (J1)           45732-0001
+                                                                        Molex
+    External power 6-pin (J11)          45586-0005
+    DIMM 0 (J15)
+                                        78730-1002                      Molex
+    DIMM 1 (J3)
+    1 PPS (J14)
+                                        RECE-20369-001E-01              TAOGLAS
+    Ext. clock (J16)
+    JTAG (J17)                          2-1734592-4                     TE Connectivity
+    FPC connector (J18)                 5051106091                      Molex
+    GPIO (J24)                          5040501291                      Molex
+
+
+
+
+© 2025 BittWare, a Molex company                                                                   22
+2.5 Programmable Devices
+The following table describes the programmable non-volatile devices on the IA-840f.
+
+                                    Programming
+Device          Description                             Usage
+                                    Method(s)
+                Local micro-
+                                    BittWare factory-   Stores code and configuration options. Clock con-
+BMC             controller, flash
+                                    programmed          figuration stored in local flash. FRU data.
+                based
+                              USB (via BMC) or
+Configuration   FPGA boot con-
+                              PCIe or           Two images: factory and application
+Flash           figuration
+                              pre-programmed
+                                                The FPGA will read the base MAC ID and can use 24
+                                                sequential addresses. The serial number can be read
+MAC ID &      Contains unique                   and used for software feature licensing. The MAC PROM
+                              Base MAC ID fact-
+Serial Number 128-bit serial                    is programmed at BittWare’s factory with card unique
+                              ory programmed
+PROM          number                            information. For more information about the MAC PROM,
+                                                and how to access its content, see VPD EPROM and
+                                                Appendix A: PROM Format.
+                              Written by BMC
+Si5395 clock
+              Jitter cleaner  during power-up    Stored in BMC, user writable
+generator
+                              sequence
+
+
+
+Letter of Volatility: Please contact BittWare support if you need a letter of volatility for this board.
+
+2.6 Board Options and Variants
+This Hardware Reference Guide describes a default hardware configuration of the IA-840f. Keep in mind
+that your board may be configured differently.
+
+
+
+
+© 2025 BittWare, a Molex company                                                                            23
+2.7 Development Tools, Example Designs, and IP
+BittWare offers several soft deliverables to help customers develop their FPGA applications:
+   l   The BittWare Software Development Kit (SDK) is a cross-platform collection of drivers, libraries,
+       modules, and utilities that aid you in debugging and developing applications using BittWare PCIe
+       cards. The SDK is free for 1 year, then requires a yearly maintenance fee.
+   l   The BittWare Card Support Package (CSP) for the SDK contains card specific FPGA Gateware
+       and Software to develop on your FPGA cards. The CSP contains several items specific to your
+       FPGA card:
+          l   Card Test (previously known as Built-In Self-Test, or BIST)
+          l   Card Documentation
+           l BittWare Gateware & Software Example designs
+
+           l Software utilities
+
+   l   Intel Quartus Prime Pro licenses – 1-year node-locked Developer Kit Licenses - Includes OpenCL
+       support. Downloads, documentation, and support are available at Intel.com.
+   l   Intel FPGA IP cores – Many FPGA IP blocks are available as part of Intel Quartus Prime Pro; how-
+       ever, some others are add-on purchases. Downloads, documentation, and support are available
+       at Intel.com.
+BittWare also works very closely with FPGA IP developers for solutions based on DPDK, NVMe, etc.
+Visit our Partner IP and Solutions page on our website or contact your BittWare sales representative for
+more information.
+
+2.8 TeraBox Server Integration
+When it comes to development, TeraBox servers are delivered pre-integrated with your choice of Bitt-
+Ware FPGA accelerators. The TeraBox servers are pre-configured with your choice of operating system
+and FPGA development tools. This allows you to develop and deploy quicker with reduced risk and cost.
+TeraBox servers are also deployment-ready for mission-critical applications. BittWare can take care of
+qualification testing as well as branding. TeraBox servers can be configured to include your host-based
+application as well as pre-loaded FPGA bitstreams executables, which translates to the servers being
+ready to run as soon as your customer receives them.
+BittWare supports a variety of leading server vendors. As part of Molex, we can handle global supply
+chain and logistics. We can cater to a range of application environments such as data center and at the
+edge. Lastly, through OEM programs, you have the option of purchasing selected TeraBox servers dir-
+ectly from server vendors such as Dell, HPE, and Lenovo.
+
+
+
+
+© 2025 BittWare, a Molex company                                                                      24
+3 Board Setup
+
+This section explains how to handle your FPGA card and where to find instructions for setting it up.
+
+   3.1 Handling, Unpacking, and Shipping Tips                                                          26
+   3.2 Where to find:                                                                                  28
+   3.3 Warranty                                                                                        28
+   3.4 RMA - Returning Your Product to BittWare                                                        29
+   3.5 Card Test                                                                                       29
+   3.6 FPGA Configuration                                                                              29
+
+
+
+
+  © 2025 BittWare, a Molex company                                                                     25
+3.1 Handling, Unpacking, and Shipping Tips
+
+           Warning! The IA-840f contains electro-static discharge (ESD) sensitive devices. Be sure to follow
+           the standard handling procedures for ESD sensitive devices, taking proper precautions to ground
+           yourself and the work area before removing the board from its static shielding bag. If you fail to fol-
+           low proper handling procedures, you could damage the board.
+
+
+
+3.1.1 ESD Handling Tips
+Effective ESD control and proper ESD handling will maintain the reliability of your BittWare
+products. Please follow the guidelines listed below to avoid ESD damage to the IA-840f.
+   l   Transport the board only in ESD shielding bags or shielding containers.
+   l   Do not remove the board from its static shielding bag when outside an EPA (ESD Protected Area).
+   l   Wear a grounding wrist strap when handling the board. BittWare also recommends using foot/heel
+       straps in combination with static dissipative flooring.
+   l   When handling the board, hold it by its edges, being careful not to touch any of its components.
+   l   All work benches should be properly grounded and have a conductive surface to eliminate ESD.
+       Placing the board on top of the static shielding bag does not offer any ESD protection.
+
+  Note: For more information on development of an ESD Control program, contact BittWare or refer
+  to ANSI/ESD S20.20-2007.
+
+
+3.1.2 Unpacking the IA-840f
+To unpack the card:
+  1. Observe all precautions described in the ESD Handling Tips above to prevent damage from elec-
+     tro-static discharge (ESD).
+  2. Carefully remove the card from the shipping box. Save the box and packing materials in case you
+     need to reship the card.
+  3. Carefully examine the card, checking for damage. If the board is damaged, do not install it.
+     Contact BittWare technical support.
+
+3.1.3 Handling Instructions for Connectors and Cabling
+QSFP/QSFP-DD Insertion Instructions:
+  1. Before handling QSFP/QSFP-DD modules, ensure you are following proper electrostatic dis-
+     charge (ESD) precautions to prevent damage.
+  2. Remove the QSFP/QSFP-DD module from its protective packaging and remove any dust cover if
+     present.
+  3. Hold the QSFP/QSFP-DD module between your thumb and forefinger, ensuring correct ori-
+     entation with the keying on the module aligning with the keying on the cage.
+
+
+
+
+© 2025 BittWare, a Molex company                                                                                     26
+  4. Gently insert the QSFP/QSFP-DD module into the cage, making sure it is right side up and cor-
+     rectly aligned. If resistance is felt, do not force the module; double-check the alignment and try
+     again.
+  5. Apply even pressure until the module clicks into place, indicating it is fully seated. The maximum
+     insertion force should not exceed 90 N as per QSFP-DD MSA limits.
+QSFP/QSFP-DD Removal Instructions:
+  1. To remove a QSFP/QSFP-DD module, first secure the cable or module within your hand.
+  2. Pull the latch release away from the cage until the module is released from the cage's latching
+     mechanism.
+  3. Once unlatched, gently pull the QSFP/QSFP-DD module straight out of the cage. The maximum
+     extraction force should not exceed 50 N as per QSFP-DD MSA limits.
+Additional Notes:
+   l   QSFP/QSFP-DD modules are keyed to prevent incorrect insertion. If resistance is encountered,
+       ensure the module is not upside down and that it is aligned correctly before reinserting.
+   l   The insertion and removal cycles for a QSFP/QSFP-DD module are rated for 50 cycles as defined
+       by the QSFP-DD MSA.
+
+3.1.4 Shipping the IA-840f
+Should you need to ship the IA-840f back to BittWare, please pack it in its original packaging to avoid
+damage during shipping.
+If you are shipping the card as part of an integrated server, it is your responsibility to ensure that the
+bracket, packaging, and shipping materials are adequate to prevent damage during shipment. When Bitt-
+Ware provides systems pre-integrated into a server, we ship the integrated product on a pallet to min-
+imize the chance of damage. We recommend this method for customer shipments of integrated systems
+as well.
+
+3.1.5 Hot Surface Warning
+When the IA-840f is operational, the card generates heat. The heat is dispersed using various heatsinks
+and the rear stiffening frame. Take care on any IA-840f exposed metal surface as it may be too hot to
+touch.
+
+3.1.6 Locating the Card Serial Number
+Every BittWare card has a unique serial number that helps identify the card's history and revision. You
+will need to supply your card's serial number for any support ticket and RMA request. The image below
+shows where the serial number is located on the IA-840f:
+
+
+
+
+© 2025 BittWare, a Molex company                                                                          27
+You can also use the bw_card_list command in the BittWare SDK to look up the card's serial number.
+The command will list all installed cards and their serial numbers. You will need to have the card plugged
+in via USB or have BMC-over-PCIe implemented in your FPGA design.
+
+3.2 Where to find:
+   l   Installation Instructions: To get started with your board, we recommend following the install-
+       ation procedure in the IA-840f Getting Started Guide. The Getting Started Guide is available on
+       the Developer Site on the product page for the IA-840f.
+   l   Development Tools: The BittWare SDK is a suite of development tools that provides the main
+       interface between the IA-840f and the host system. When your maintenance is active, you can
+       download the SDK latest version and view the SDK documentation on the SDK Support Center
+       section of the Developer Site.
+   l   FPGA Card Test, Examples, and Software Utility: These items are available in the IA-840f
+       Card Support Package for the BittWare SDK. A variety of examples and reference designs are
+       available for you to use as a starting point. You can download these from the IA-840f product page
+       on the BittWare Developer Site.
+   l   Card Documentation: All card documentation is available for download on the IA-840f product
+       page on the BittWare Developer Site.
+
+   Note: The latest versions of the Software Developer Kit and the Card Support Package are only
+   available to customers with an active SDK maintenance contract.
+
+
+3.3 Warranty
+This section outlines the handling guidelines that are allowed within the warranty. Follow the ESD Hand-
+ling Tipsat all times. Do not move or replace any component that was installed by BittWare (DIMMs,
+
+
+
+© 2025 BittWare, a Molex company                                                                       28
+cables, etc.) without reaching out to BittWare support. The support team will ensure these parts are
+replaced safely to avoid any possible damage to the card; in many cases an RMA will be required. Mov-
+ing these components without recommendation from the support team will void the warranty of the card.
+Other components that were not pre-installed (QSFPs, MCIO cables, etc.) can be moved or replaced.
+Installing DIMMs at the customer location will void the BittWare hardware warranty. If you suspect an
+issue with your DIMM, please contact BittWare for support.
+For any clarification on operations allowed under the warranty, please reach out to BittWare.
+See Contacting BittWare for instructions on how to contact BittWare Support to ask technical questions.
+
+3.4 RMA - Returning Your Product to BittWare
+Before BittWare issues an RMA, we will attempt to fix any issues remotely. We also capture as much
+debugging information as possible to help our production team replicate the issue at our factory. This
+process ensures a quicker resolution, and in many cases avoids having to return the card back to Bitt-
+Ware.
+RMA resolution time varies depending on the issue and the amount of investigation, retest, and rework
+required. The lead time for replacement parts and the availability of our rework factory also impacts the
+RMA resolution time. We can estimate the RMA resolution time when we receive the RMA board at our
+factory.
+See Contacting BittWare for instructions on how to contact BittWare Support to request an RMA.
+
+3.5 Card Test
+The IA-840f is delivered preprogrammed with a Card Test application that verifies the key features of the
+product. Refer to the BittWare IA-840f Getting Started Guide for instructions on how to run the Card Test
+application. The Card Test is a useful example of how to use all the features of the IA-840f.
+The Card Test is available for download on the BittWare Developer Site. It is packaged as an RPM
+(RedHat Package Manager). The RPM contains both binary files to run the Card Test on 64-bit
+CentOS/RedHat 7 and the Card Test design source code (FPGA firmware, host software and PCIe
+driver).
+The Card Test design demonstrates how to use all board features and should be used by HDL
+developers as the main reference and documentation. The Card Test is an example design which
+instan-tiates Intel IP blocks as required for the IA-840f hardware. The Card Test contains IP to access
+the fea-tures of the Board Management Controller (BMC), the Max 10 FPGA (USB Blaster), the DIMM
+interface (using Intel’s Memory Controller IP), the Intel PCIe Hard IP, etc.
+
+3.6 FPGA Configuration
+The IA-840f automatically loads an FPGA design from Flash at power on. There are several ways to pro-
+gram the FPGA:
+JTAG Chain using on-board USB-Blaster II – The IA-840f features a Max 10 FPGA which hosts a
+USB-Blaster II to access the FPGA JTAG chain. Connecting to the board via USB allows access to the
+JTAG chain with Quartus Programmer. Using this method, you can reconfigure the FPGA directly. The
+
+
+
+
+© 2025 BittWare, a Molex company                                                                          29
+JTAG chain also provides debug access to the board and enables the use of various JTAG-based
+debug utilities such as Intel’s Signal Tap Logic Analyzer and Intel’s System Console.
+User Flash Interface – There are currently two ways in which the QSPI Flash can be programmed: Pro-
+gramming via JTAG (using the Quartus programming tools and a .jic file) or programming via the SDM
+(using the Intel SDM Mailbox Client IP block within the FPGA design). The latter method requires a .rpd
+file. Once the user design has reprogrammed the flash, the FPGA will be configured with the updated
+design at the next power cycle or after you launch a soft reconfigure request. For more detail on pro-
+gramming the flash, refer to the IA-840f FPGA Developer Guide.
+Soft Reconfigure – Issue a command to the SDM Mailbox Client to trigger a reconfiguration of the
+FPGA from one of the two bitstreams stored in flash.
+For details on FPGA configuration, refer to the IA-840f FPGA Developer Guide.
+
+
+
+
+© 2025 BittWare, a Molex company                                                                    30
+4 FPGA
+
+ 4.1 User FPGA Supported Devices   32
+ 4.2 FPGA Implementation Details   32
+
+
+
+
+© 2025 BittWare, a Molex company   31
+4.1 User FPGA Supported Devices
+The following is a list of FPGA devices that this card supports:
+
+                                    Table 5: Supported FPGA Devices
+
+    Part Number                         Description
+    AGFB027R25A2E2V (default)           Intel Agilex AGF027 in an R2581A package
+    AGFA022R25A1E1V                     Intel Agilex AFG022
+
+
+
+
+4.2 FPGA Implementation Details
+4.2.1 FPGA Bank Usage
+The FPGA banks are powered by the supplies as detailed in FPGA Bank Usage. FPGA core voltage
+(Vcore) is 0.81V by default and adjusted automatically to the appropriate VID level by the BMC
+
+                                       Table 6: FPGA Bank Usage
+
+                  Signals                       Bank                Bank IO Voltage
+                  QSFP-DD 0                     9A                  0.9 V
+                  QSFP-DD 1                     9A                  0.9 V
+                  QSFP-DD 2                     9A                  0.9 V
+                  PCIe x16 Port                 10A                 0.9 V
+                  HPS                           HPS                 1.8 V
+                  FPGA Configuration I/O        SDM                 1.8 V
+                  AS interface                  SDM                 1.8 V
+                  LEDS                          3A                  1.2 V
+                  General I/Os                  3A                  1.2 V
+                  DDR4 DIMM P0                  2E, 2F              1.2 V
+                  DDR4 Bank P1                  2F, 2C              1.2 V
+                  DDR4 DIMM P2                  3C, 3F              1.2 V
+                  DDR4 Bank P3                  3C, 3D              1.2 V
+
+
+
+
+© 2025 BittWare, a Molex company                                                                 32
+                                    Figure 6: FPGA Bank Usage
+
+
+
+
+4.2.2 FPGA Hard IP Usage
+The IA-840f uses the following IP on the FPGA:
+
+                                       Table 7: FPGA Hard IP
+
+   Hard IP                                       Usage
+   Multi-rate hard MAC+FEC for 10/25/100GbE      Four Hard IP shared across 3x QSFP-DD channels
+   PCIe                                          x16 Gen4 interface
+
+
+
+
+© 2025 BittWare, a Molex company                                                                  33
+5 PCIe Interface
+
+ 5.1 Mechanical Details             35
+ 5.2 Interface Description          36
+
+
+
+
+ © 2025 BittWare, a Molex company   34
+5.1 Mechanical Details
+5.1.1 PCIe Card Form Factor
+The IA-840f is a full-height, ¾ length (GPU length), double-width PCIe add-in card with a 16-lane elec-
+trical and 16-lane mechanical interface. The PCIe interface complies with the PCIe 4.0 specification.
+
+5.1.2 PCIe Host Interface
+The IA-840f card has a 16-lane mechanical and electrical PCIe 4.0 interface. The IA-840f does not fea-
+ture a dedicated PCIe device for PCIe host transfers; the user FPGA design must include the Intel PCIe
+Hard IP core.
+Intel supports multiple configurations of the PCIe core as part of QSYS. Users can set up the Intel IP
+core for anything from 1 lane at PCIe 1.0 to 16 lanes at PCIe 4.0.
+The PCIe interface capabilities and features are:
+   l   Host PCIe bandwidth up to 32 GB/s (16 lanes at 16Gbps – PCIe 4.0)1
+
+5.1.3 PCIe Endpoint Characteristics
+The card is preprogrammed with the Card Test when shipped from the BittWare factory. When con-
+nected to a PCIe host, the card will enumerate on the PCIe bus with the following details:
+   l   PCI Vendor ID: 0x12ba
+   l   PCI Device ID: 0x70
+The PCIe end-points properties are accessible with the lspci command on Linux or using the Windows
+Hardware Manager.
+
+
+
+
+1Maximum theoretical data rate for 16 lanes of PCIe 4.0, the actual host bandwidth depends on the host
+
+hardware (motherboard, chipset, processor, etc.), the PCIe IP settings and the FPGA design itself.
+
+
+
+© 2025 BittWare, a Molex company                                                                         35
+5.2 Interface Description
+5.2.1 PCIe Enumeration
+The PCIe specification requires that a PCIe endpoint be ready for PCIe enumeration within 100ms of the
+host system powering on. Agilex by default uses an autonomous HIP mode which brings up PCIe before
+the rest of the FPGA is configured. For FPGA cards, it means that the FPGA should be configured and
+out of reset within 100ms of power on. However, this requirement is more often widened by host servers
+and workstations effectively allowing the FPGA for more to complete its configuration.
+
+FPGA Configuration Time
+An FPGA programming file for the Agilex uses [TBD] bytes in flash. The QSPI interface support read
+speeds of 50 Mb/s. Therefore, it would take [TBD] ms for an FPGA configuration from flash with an
+uncompressed bitstream.
+
+5.2.2 SMBus Features
+The SMBus signals are connected to the BMC, reserved for future use. [TBD]
+
+5.2.3 PCIe Reset Requirements
+Since the IA-840f is a PCIe card, it is a slave to a host processor that is the root complex of the PCIe bus.
+Therefore, the reset for this board comes through the PCIe bus from the host.
+The mechanism that supports a reliable initialization of the firmware and software running on the IA-840f
+is as follows:
+  1. The board powers up and supplies are sequenced by the BMC, after which the board comes out
+     of reset.
+  2. When the power supplies are stable, the BMC green LED comes on (D15), the configuration logic
+     is released, and the FPGA configuration starts.
+  3. The BMC then programs the clock chip.
+  4. After FPGA configuration, PCIe training and reset should occur.
+  5. The release of the PCIe reset by the host also deactivates the global reset to the internal FPGA
+     design.
+  6. After PCIe enumeration, a soft reset comes from the PCIe core to the rest of the internal FPGA
+     logic to start the firmware.
+
+
+
+
+© 2025 BittWare, a Molex company                                                                          36
+6 External Interfaces
+
+ 6.1 QSFP-DD                        38
+ 6.2 GPIO                           44
+
+
+
+
+ © 2025 BittWare, a Molex company   37
+6.1 QSFP-DD
+The IA-840f features three QSFP-DD ports. The QSFP-DD high speed interfaces are directly driven
+from IP within the user FPGA design. Intel provides IP cores for multiple high-speed protocols com-
+patible with the IA-840f which all have their own reference clock requirements. The IA-840f is populated
+with an on-board frequency clock device which, by default, feeds three independent 156.25 MHz (for
+100/40/10 GbE) to all three of the dedicated transceiver IP reference clock FPGA pins.
+BittWare allocates 24 dedicated MAC addresses per IA-840f. These addresses are programmed in the
+ID PROM.
+
+   Note: If transceivers are not being used they should be put in Safe Preservation mode. E-tile trans-
+   ceivers that are in the design but not receiving data should be put in Transceiver Protection mode.
+   For more details, see the FPGA Developer Reference Guide.
+
+
+6.1.1 Supported Speeds
+A range of protocols can be implemented using Intel’s IP core QSYS library. For such IP cores, different
+reference clock frequencies might be required. The QSYS IP Library contains several pre-set files and
+automated rule checks which enable the IA-840f user to quickly target the FPGA with multiple network
+protocols.
+
+6.1.2 Hard IP MAC Core Availability
+A total of four 100GbE Hard IP MAC cores are available to the QSFP-DDs. For 100GbE, the top QSFP-
+DD can have one hard 100GbE MAC, the center QSFP-DD can have two hard MACs, and the bottom
+QSFP-DD can have one hard MAC (see Transceiver speed and MAC Core availability below). If you
+would like 100GbE MACs on the other two interfaces, you will need Soft IP MACs.
+The hard MACs can also be used for 10/25GbE on all QSFP-DD lanes, even if they are concurrently
+being used for 100GbE. For example, you can run 24 ports of 10/25GbE or 4 ports of 100GbE and 8
+ports of 10/25GbE.
+
+                         Table 8: Transceiver speed and MAC Core availability
+
+QSFP-DD Port Number                   Data Rate                            MAC Core Availability
+QSFP-DD 0                             25.78125 Gbps/lane (100/40/10 GbE) 1x 100 GbE Hard IP MAC Core
+                                                                         2x 100 GbE Hard IP MAC
+QSFP-DD 1                             25.78125 Gbps/lane (100/40/10 GbE)
+                                                                         Cores
+QSFP-DD 2 (closest to the PCIe fin-   25.78125 Gbps/lane (100/40/10 GbE)
+                                                                         1x 100 GbE Hard IP MAC Core
+gers)                                 -
+
+
+
+
+   Note: On Rev 2 boards, due to the routing of the QSFP-DD cages, only QSFP28 modules inserted
+   in QSFP-DD port0 and QSFP-DD port 1 will have access to a 100GbE Hard IP MAC Core. For
+
+
+
+
+© 2025 BittWare, a Molex company                                                                      38
+   100GbE with QSFP28s in QSFP-DD port 2, you will need a soft IP core. On Rev 3 boards, all three
+   QSFP ports support QSFP28s. See QSFP-DD 2 Pinout Table for details.
+
+
+6.1.3 FPGA to QSFP Pin Mapping
+The twenty-four SerDes bidirectional lanes are connected to a single FPGA transceiver quad (9A). It is
+designed for up to 28Gbps NRZ. The traces are designed to meet the OIF CEI-28G-VSR specification
+requirements.
+The Intel QSF constraints file is the point of reference for pin mappings; however, QSFP Pin Mapping
+illustrates how the QSFP-DD spec pin naming correlates to the design naming.
+
+                                       Table 9: QSFP Pin Mapping
+
+         QSFP-DD specification name                        FPGA signal name FPGA pin mapping
+         QSFP-DD P0
+         pin 17 Rx1p Receiver Non-Inverted Data Output     QSFP0_RX[0]      BV8
+         pin 18 Rx1n Receiver Inverted Data Output         QSFP0_RX[0](n)   BT10
+         pin 36 Tx1p Transmitter Non-Inverted Data Input   QSFP0_TX[0]      BV1
+         pin 37 Tx1n Transmitter Inverted Data Input       QSFP0_TX[0](n)   BT2
+         QSFP-DD P1
+         pin 17 Rx1p Receiver Non-Inverted Data Output     QSFP1_RX[0]      DL8
+         pin 18 Rx1n Receiver Inverted Data Output         QSFP1_RX[0](n)   DJ10
+         pin 36 Tx1p Transmitter Non-Inverted Data Input   QSFP1_TX[0]      DL1
+         pin 37 Tx1n Transmitter Inverted Data Input       QSFP1_TX[0](n)   DJ2
+         QSFP-DD P2
+         pin 17 Rx1p Receiver Non-Inverted Data Output     QSFP2_RX[0]      FE8
+         pin 18 Rx1n Receiver Inverted Data Output         QSFP2_RX[0](n)   FC10
+         pin 36 Tx1p Transmitter Non-Inverted Data Input   QSFP2_TX[0]      FE1
+         pin 37 Tx1n Transmitter Inverted Data Input       QSFP2_TX[0](n)   FC2
+
+
+
+
+© 2025 BittWare, a Molex company                                                                     39
+                  Table 10: QSFP-DD 0 Pinout Table (Rev 2 and Rev 3 compatible)
+
+                          Direction To   FPGA Pin Loca-                           QSFP
+ Signal                                                   FPGA Pin Name
+                          FPGA           tion                                     pin
+ QSFP_CLK0_P              Input          PIN_CE18         QSFPDD0_REFCLK          N/A
+ QSFP_CLK0_N              Input          PIN_CA18         QSFPDD0_REFCLK(n)       N/A
+ QSFP0_RX_P0              Input          PIN_BV8          QSFPDD0_RX_P[0]         17
+ QSFP0_RX_N0              Input          PIN_BT10         QSFPDD0_RX_N[0]         18
+ QSFP0_RX_P1              Input          PIN_BY13         QSFPDD0_RX_P[1]         22
+ QSFP0_RX_N1              Input          PIN_CB15         QSFPDD0_RX_N[1]         21
+ QSFP0_RX_P2              Input          PIN_CF8          QSFPDD0_RX_P[2]         14
+ QSFP0_RX_N2              Input          PIN_CD10         QSFPDD0_RX_N[2]         15
+ QSFP0_RX_P3              Input          PIN_CH13         QSFPDD0_RX_P[3]         25
+ QSFP0_RX_N3              Input          PIN_CK15         QSFPDD0_RX_N[3]         24
+ QSFP0_TX_P0              Output         PIN_BV1          QSFPDD0_TX_P[0]         36
+ QSFP0_TX_N0              Output         PIN_BT2          QSFPDD0_TX_N[0]         37
+ QSFP0_TX_P1              Output         PIN_BY4          QSFPDD0_TX_P[1]         3
+ QSFP0_TX_N1              Output         PIN_CB6          QSFPDD0_TX_N[1]         2
+ QSFP0_TX_P2              Output         PIN_CF1          QSFPDD0_TX_P[2]         33
+ QSFP0_TX_N2              Output         PIN_CD2          QSFPDD0_TX_N[2]         34
+ QSFP0_TX_P3              Output         PIN_CH4          QSFPDD0_TX_P[3]         6
+ QSFP0_TX_N3              Output         PIN_CK6          QSFPDD0_TX_N[3]         5
+ QSFP0_RX_P4              Input          PIN_CR8          QSFPDD0_RX_P[4]         55
+ QSFP0_RX_N4              Input          PIN_CN10         QSFPDD0_RX_N[4]         56
+ QSFP0_RX_P5              Input          PIN_CU13         QSFPDD0_RX_P[5]         60
+ QSFP0_RX_N5              Input          PIN_CW15         QSFPDD0_RX_N[5]         59
+ QSFP0_RX_P6              Input          PIN_DC8          QSFPDD0_RX_P[6]         52
+ QSFP0_RX_N6              Input          PIN_DA10         QSFPDD0_RX_N[6]         53
+ QSFP0_RX_P7              Input          PIN_DE13         QSFPDD0_RX_P[7]         63
+ QSFP0_RX_N7              Input          PIN_DG15         QSFPDD0_RX_N[7]         62
+ QSFP0_TX_P4              Output         PIN_CR1          QSFPDD0_TX_P[4]         74
+ QSFP0_TX_N4              Output         PIN_CN2          QSFPDD0_TX_N[4]         75
+ QSFP0_TX_P5              Output         PIN_CU4          QSFPDD0_TX_P[5]         41
+ QSFP0_TX_N5              Output         PIN_CW6          QSFPDD0_TX_N[5]         40
+ QSFP0_TX_P6              Output         PIN_DC1          QSFPDD0_TX_P[6]         71
+ QSFP0_TX_N6              Output         PIN_DA2          QSFPDD0_TX_N[6]         72
+ QSFP0_TX_P7              Output         PIN_DE4          QSFPDD0_TX_P[7]         44
+ QSFP0_TX_N7              Output         PIN_DG6          QSFPDD0_TX_N[7]         43
+
+
+
+
+© 2025 BittWare, a Molex company                                                         40
+                  Table 11: QSFP-DD 1 Pinout Table (Rev 2 and Rev 3 compatible)
+
+                         Direction To    FPGA Pin Loca-                           QSFP
+ Signal                                                   FPGA Pin Name
+                         FPGA            tion                                     pin
+ QSFP_CLK1_P             Input           PIN_CC19         QSFPDD1_REFCLK          N/A
+ QSFP_CLK1_N             Input           PIN_BW19         QSFPDD1_REFCLK(n)       N/A
+ QSFP1_RX_P0             Input           PIN_DL8          QSFPDD1_RX_P[0]         17
+ QSFP1_RX_N0             Input           PIN_DJ10         QSFPDD1_RX_N[0]         18
+ QSFP1_RX_P1             Input           PIN_DN13         QSFPDD1_RX_P[1]         22
+ QSFP1_RX_N1             Input           PIN_DT15         QSFPDD1_RX_N[1]         21
+ QSFP1_RX_P2             Input           PIN_DY8          QSFPDD1_RX_P[2]         14
+ QSFP1_RX_N2             Input           PIN_DV10         QSFPDD1_RX_N[2]         15
+ QSFP1_RX_P3             Input           PIN_EB13         QSFPDD1_RX_P[3]         25
+ QSFP1_RX_N3             Input           PIN_ED15         QSFPDD1_RX_N[3]         24
+ QSFP1_TX_P0             Output          PIN_DL1          QSFPDD1_TX_P[0]         36
+ QSFP1_TX_N0             Output          PIN_DJ2          QSFPDD1_TX_N[0]         37
+ QSFP1_TX_P1             Output          PIN_DN4          QSFPDD1_TX_P[1]         3
+ QSFP1_TX_N1             Output          PIN_DT6          QSFPDD1_TX_N[1]         2
+ QSFP1_TX_P2             Output          PIN_DY1          QSFPDD1_TX_P[2]         33
+ QSFP1_TX_N2             Output          PIN_DV2          QSFPDD1_TX_N[2]         34
+ QSFP1_TX_P3             Output          PIN_EB4          QSFPDD1_TX_P[3]         6
+ QSFP1_TX_N3             Output          PIN_ED6          QSFPDD1_TX_N[3]         5
+ QSFP1_RX_P4             Input           PIN_EH8          QSFPDD1_RX_P[4]         55
+ QSFP1_RX_N4             Input           PIN_EF10         QSFPDD1_RX_N[4]         56
+ QSFP1_RX_P5             Input           PIN_EK13         QSFPDD1_RX_P[5]         60
+ QSFP1_RX_N5             Input           PIN_EM15         QSFPDD1_RX_N[5]         59
+ QSFP1_RX_P6             Input           PIN_ET8          QSFPDD1_RX_P[6]         52
+ QSFP1_RX_N6             Input           PIN_EP10         QSFPDD1_RX_N[6]         53
+ QSFP1_RX_P7             Input           PIN_EV13         QSFPDD1_RX_P[7]         63
+ QSFP1_RX_N7             Input           PIN_FA15         QSFPDD1_RX_N[7]         62
+ QSFP1_TX_P4             Output          PIN_EH1          QSFPDD1_TX_P[4]         74
+ QSFP1_TX_N4             Output          PIN_EF2          QSFPDD1_TX_N[4]         75
+ QSFP1_TX_P5             Output          PIN_EK4          QSFPDD1_TX_P[5]         41
+ QSFP1_TX_N5             Output          PIN_EM6          QSFPDD1_TX_N[5]         40
+ QSFP1_TX_P6             Output          PIN_ET1          QSFPDD1_TX_P[6]         71
+ QSFP1_TX_N6             Output          PIN_EP2          QSFPDD1_TX_N[6]         72
+ QSFP1_TX_P7             Output          PIN_EV4          QSFPDD1_TX_P[7]         44
+ QSFP1_TX_N7             Output          PIN_FA6          QSFPDD1_TX_N[7]         43
+
+
+
+
+© 2025 BittWare, a Molex company                                                         41
+The following table includes the FPGA pinout for both Rev 2 and Rev 3 cards. Ensure you are using the
+column that matches the hardware revision of your card.
+
+                                   Table 12: QSFP-DD 2 Pinout Table
+
+                                     FPGA Pin Loca- FPGA Pin Loca-
+                    Direction To                                                             QSFP
+Signal                               tion           tion              FPGA Pin Name
+                    FPGA                                                                     pin
+                                     Rev 2          Rev 3
+QSFP_CLK2_P         Input            PIN_BL17       PIN_BL17          QSFPDD2_REFCLK         N/A
+QSFP_CLK2_N         Input            PIN_BJ15       PIN_BJ15          QSFPDD2_REFCLK(n)      N/A
+QSFP2_RX_P0         Input            PIN_FE8        PIN_GA8           QSFPDD2_RX_P[0]        17
+QSFP2_RX_N0         Input            PIN_FC10       PIN_FW10          QSFPDD2_RX_N[0]        18
+QSFP2_RX_P1         Input            PIN_FG13       PIN_GD13          QSFPDD2_RX_P[1]        22
+QSFP2_RX_N1         Input            PIN_FJ15       PIN_GF15          QSFPDD2_RX_N[1]        21
+QSFP2_RX_P2         Input            PIN_FN8        PIN_GL8           QSFPDD2_RX_P[2]        14
+QSFP2_RX_N2         Input            PIN_FL10       PIN_GH10          QSFPDD2_RX_N[2]        15
+QSFP2_RX_P3         Input            PIN_FR13       PIN_GN13          QSFPDD2_RX_P[3]        25
+QSFP2_RX_N3         Input            PIN_FU15       PIN_GT15          QSFPDD2_RX_N[3]        24
+QSFP2_TX_P0         Output           PIN_FE1        PIN_GA1           QSFPDD2_TX_P[0]        36
+QSFP2_TX_N0         Output           PIN_FC2        PIN_FW2           QSFPDD2_TX_N[0]        37
+QSFP2_TX_P1         Output           PIN_FG4        PIN_GD4           QSFPDD2_TX_P[1]        3
+QSFP2_TX_N1         Output           PIN_FJ6        PIN_GF6           QSFPDD2_TX_N[1]        2
+QSFP2_TX_P2         Output           PIN_FN1        PIN_GL1           QSFPDD2_TX_P[2]        33
+QSFP2_TX_N2         Output           PIN_FL2        PIN_GH2           QSFPDD2_TX_N[2]        34
+QSFP2_TX_P3         Output           PIN_FR4        PIN_GN4           QSFPDD2_TX_P[3]        6
+QSFP2_TX_N3         Output           PIN_FU6        PIN_GT6           QSFPDD2_TX_N[3]        5
+QSFP2_RX_P4         Input            PIN_GA8        PIN_FE8           QSFPDD2_RX_P[4]        55
+QSFP2_RX_N4         Input            PIN_FW10       PIN_FC10          QSFPDD2_RX_N[4]        56
+QSFP2_RX_P5         Input            PIN_GD13       PIN_FG13          QSFPDD2_RX_P[5]        60
+QSFP2_RX_N5         Input            PIN_GF15       PIN_FJ15          QSFPDD2_RX_N[5]        59
+QSFP2_RX_P6         Input            PIN_GL8        PIN_FN8           QSFPDD2_RX_P[6]        52
+QSFP2_RX_N6         Input            PIN_GH10       PIN_FL10          QSFPDD2_RX_N[6]        53
+QSFP2_RX_P7         Input            PIN_GN13       PIN_FR13          QSFPDD2_RX_P[7]        63
+QSFP2_RX_N7         Input            PIN_GT15       PIN_FU15          QSFPDD2_RX_N[7]        62
+QSFP2_TX_P4         Output           PIN_GA1        PIN_FE1           QSFPDD2_TX_P[4]        74
+QSFP2_TX_N4         Output           PIN_FW2        PIN_FC2           QSFPDD2_TX_N[4]        75
+QSFP2_TX_P5         Output           PIN_GD4        PIN_FG4           QSFPDD2_TX_P[5]        41
+QSFP2_TX_N5         Output           PIN_GF6        PIN_FJ6           QSFPDD2_TX_N[5]        40
+QSFP2_TX_P6         Output           PIN_GL1        PIN_FN1           QSFPDD2_TX_P[6]        71
+QSFP2_TX_N6         Output           PIN_GH2        PIN_FL2           QSFPDD2_TX_N[6]        72
+QSFP2_TX_P7         Output           PIN_GN4        PIN_FR4           QSFPDD2_TX_P[7]        44
+QSFP2_TX_N7         Output           PIN_GT6        PIN_FU6           QSFPDD2_TX_N[7]        43
+
+
+
+
+© 2025 BittWare, a Molex company                                                                    42
+6.1.4 QSFP-DD Control Signals
+The BMC controls access to the QSFP-DDs control/status signals. QSFP-DD control signals are con-
+nected to the BMC and FPGA via the I2C shared bus. See I2C Devices for more detail.
+
+                                   Table 13: QSFP-DD Control Signals
+
+                                             Direction to
+Signal Name              Description                         Connected to                         Channel/Bit
+                                             Module
+QSFP0_I2C_SCL            I2C Clock           Input
+                                                             Shared I2C Mux – 0x72                0
+QSFP0_I2C_SDA            I2C Data            Bidirectional
+QSFP0_MOD_PRS_L          Low Power Mode      Input                                                IO0_0
+QSFP0_INT_L              Reset               Input           GPIO Expander – 0x21(connected to    IO0_1
+QSFP0_LP_MODE            Module installed    Output          shared I2C mux Channel 7)            IO0_2
+QSFP0_RST_L              Interrupt           Output                                               IO0_3
+
+QSFP1_I2C_SCL            I2C Clock           Input
+                                                             Shared I2C Mux – 0x72                1
+QSFP1_I2C_SDA            I2C Data            Bidirectional
+QSFP1_MOD_PRS_L          Low Power Mode      Input                                                IO0_4
+QSFP1_INT_L              Reset               Input           GPIO Expander – 0x21 (connected to   IO0_5
+QSFP1_LP_MODE            Module installed    Output          shared I2C mux Channel 7)            IO0_6
+QSFP1_RST_L              Interrupt           Output                                               IO0_7
+
+QSFP2_I2C_SCL            I2C Clock           Input
+                                                             Shared I2C Mux – 0x72                2
+QSFP2_I2C_SDA            I2C Data            Bidirectional
+QSFP2_MOD_PRS_L          Low Power Mode      Input                                                IO0_10
+QSFP2_INT_L              Reset               Input           GPIO Expander – 0x21(connected to    IO0_11
+QSFP2_LP_MODE            Module installed    Output          shared I2C mux Channel 7)            IO0_12
+QSFP2_RST_L              Interrupt           Output                                               IO0_13
+
+
+
+The GPIO expander (mentioned in the table above) passes an interrupt to the following two locations:
+   l   BMC pin 5 (3V3 logic level)
+   l   FPGA pin A51 signal name GPIO_IRQ (this is level translated version of above to 1V2 levels)
+
+
+
+
+© 2025 BittWare, a Molex company                                                                            43
+6.1.5 Validated Cables and Transceiver Settings
+BittWare has tested the following cables on the IA-840f using a test FPGA design compiled with the
+transceiver settings listed in the tables below. When developing your FPGA design, BittWare recom-
+mends you use the cables listed and corresponding settings.
+If the exact same hardware is not available, BittWare expects that the transceiver settings in the FPGA
+design will have to be tuned for your hardware. For optical hardware, the FPGA IP settings are likely to
+be the same as BittWare’s. For copper hardware, the FPGA IP settings might require manual tuning
+using the iBERT IP and settings sweeps.
+
+                                             Table 14: QSFP Cables
+
+XCVR                                 Tx Set-
+          Rate      Description                   Rx Settings           BER        Mfg.        Mfg. Part No.
+Type                                 tings
+                                                  PMA Bringup using
+QSFP-               Direct Attach                                       4.431E-
+          25Gbps                     Default      Static Temperature               Molex       2015913010
+DD                  Copper 1m                                           16
+                                                  Flow (STF)
+                                                  PMA Bringup using
+QSFP-               Direct Attach                                       4.431E-
+          25Gbps                     Default      Static Temperature               Molex       2015913030
+DD                  Copper 3m                                           16
+                                                  Flow (STF)
+                                                  PMA Bringup using                            GQD-
+QSFP-               Active Optical                                      4.431E-
+          25Gbps                     Default      Static Temperature               Gigalight   MDO201-
+DD                  Cable 5m                                            16
+                                                  Flow (STF)                                   005CA
+
+
+
+
+6.2 GPIO
+A 12-pin connector (J24) routes eight general-purpose I/O signals to the FPGA. The IA-840f has two
+build options for GPIO: single-ended and LVDS. Direction of the GPIO buffer is controlled by External_
+GPIO_Direction (I2C GPIO EXPANDER) at address 0x20 on a shared bus. The table below details how
+each direction control bit is mapped to a GPIO signal. A logic high on the direction control bit configures
+I/O as an input to the FPGA. A logic low will be an output from the FPGA.
+
+                        Table 15: GPIO connector pinout and FPGA pin mapping
+         GPIO Pin GPIO Signal         FPGA Signal Name FPGA Pin (Bank 3A) Direction Control
+         1          EXT_LT_GPIO0      EXT_GPIO0             W56                   EXT_DIR_0
+         2          EXT_LT_GPIO1      EXT_GPIO1             G46                   EXT_DIR_1
+         4          EXT_LT_GPIO2      EXT_GPIO2             J53                   EXT_DIR_2
+         5          EXT_LT_GPIO3      EXT_GPIO3             L46                   EXT_DIR_3
+         7          EXT_LT_GPIO4      EXT_GPIO4             G48                   EXT_DIR_4
+         8          EXT_LT_GPIO5      EXT_GPIO5             U51                   EXT_DIR_5
+         10         EXT_LT_GPIO6      EXT_GPIO6             A57                   EXT_DIR_6
+         11         EXT_LT_GPIO7      EXT_GPIO7             C50                   EXT_DIR_7
+
+
+
+
+© 2025 BittWare, a Molex company                                                                          44
+All GPIO are configured as outputs by default1.
+
+                       Figure 7: GPIO Block Diagram: Single-Ended Build Option
+
+
+
+
+                           Figure 8: GPIO Block Diagram: LVDS Build Option
+
+
+
+
+1Not all defaults are implemented in the current BMC release (version 1.3.2). Default settings will be
+
+updated in subsequent BMC builds.
+
+
+© 2025 BittWare, a Molex company                                                                         45
+You must set the configuration of External_GPIO_Direction (I2C GPIO EXPANDER) at address 0x20 to
+0x11 and output 0x11. In future BMC builds, setting up this GPIO will not be required, since the BMC will
+set this configuration by default.
+
+
+
+
+© 2025 BittWare, a Molex company                                                                      46
+7 Memory
+
+ 7.1 DDR4                           48
+ 7.2 Flash                          49
+
+
+
+
+ © 2025 BittWare, a Molex company   47
+7.1 DDR4
+The IA-840f has four banks of DDR4: two DIMMs, and two on-board/discrete banks. The memory inter-
+face for all four banks is 72-bit wide data (64 data + 8 ECC). The card supports the following DDR4 vari-
+ants:
+
+                        FPGA speed
+                                          Discrete            RDIMMS
+                        Grade
+                        -2                16G DDR-2666        16G DDR-2666
+                        -2                32G DDR-2400
+                        -1                16G DDR-3200        16G DDR-3200
+                        -1                32G DDR-2666
+
+
+
+
+   Note: Early Access Units (EAUs) have 16G DDR-2666 by default for all four banks.
+
+
+7.1.1 DDR4 QSYS Parameter Files
+QSYS parameter files (QPRS) for the DDR4 banks can be generated from the BittWare Card Test
+memory IP files. Instantiate the “Agilex External Memory Interfaces” (or EMIF) within the FPGA design
+and use the parameters from these QPRS files.
+
+7.1.2 DIMM Support
+BittWare supports multiple DDR4 DIMMs as documented earlier in this section. BittWare does not sup-
+port customers with non-standard or non-validated DIMMs installed. The FPGA card might not work for
+DIMM configurations not validated by BittWare (different manufacturer, depth, speed, 4-bit vs. 8-bit
+chips, etc.).
+Additionally, BittWare strongly recommends customers buy supported DIMMs pre-installed on their
+FPGA cards. BittWare manufacturing will safely install and extensively test the DIMMs as part of Bit-
+tWare’s standard production processes.
+Customers should also know that BittWare does not test nor support the DIMM sites for any other oper-
+ations beside standard memory banks. Using the DIMM sites for non-standard operations can lead to
+card permanent damage, is not supported, and might void the board warranty.
+Contact BittWare Technical Support on BITTS for details.
+
+
+
+
+© 2025 BittWare, a Molex company                                                                        48
+7.2 Flash
+The 2Gb Flash is used for storing FPGA images. At least two images can be stored into QSPI. There are
+currently two ways in which the QSPI Flash can be programmed: Programming via JTAG (using the
+Quartus programming tools and a .jic file) or programming via the SDM (using the SDM Mailbox IP within
+the FPGA design). The latter method requires a .rpd file.
+For instructions on programming the flash, refer to the IA-840f FPGA Developer Guide.
+
+
+
+
+© 2025 BittWare, a Molex company                                                                   49
+8 Clocking
+
+ 8.1 Clock Circuitry                 51
+ 8.2 Clock Sources                   52
+ 8.3 Programmable Clock Device       53
+ 8.4 Timestamp and Synchronization   53
+ 8.5 Startup Sequence                54
+
+
+
+
+ © 2025 BittWare, a Molex company    50
+8.1 Clock Circuitry
+The clocking circuit on this board provides flexible and quality clock sources to the FPGA and associated
+circuitry without adding significant cost. Clock Circuitryillustrates the clock design.
+The following clocks sources are available to the FPGA design:
+   l   PCIe Clocks
+   l   User Clock
+   l   Memory and General FPGA Clocks
+   l   Network Clock
+   l   1PPS External Synchronization Input
+   l   External Clock Input
+
+
+
+                                        Figure 9: Clock Circuitry
+
+
+
+
+© 2025 BittWare, a Molex company                                                                      51
+8.2 Clock Sources
+8.2.1 PCIe Clock
+The PCIe clock is 100MHz and is provided by the host motherboard by default, or an on board source for
+standalone applications . This clock is routed to an IDT 9DML2855 and duplicated six times to provide a
+PCIe clock to all PCIe resources on board:
+   l   FPGA SerDes banks for the PCIe host interface
+   l   Two LMK00334RTVR clock buffers
+The Intel PCIe IP must use these reference clocks. Each output uses the 1.8V HCSL I/O standard.
+See the PCIe standard specification for more information.
+   l   FPGA pin name (QSF) for PCIe host I/F (on-board PCIe clock buffer): pcie_refclk[0]
+   l   FPGA pin name (QSF) for PCIe host I/F (on-board PCIe clock buffer): pcie_refclk[1]
+
+8.2.2 User Clock
+An on-board clocking circuit feeds a 100MHz LVDS DC coupled clock signal to the FPGA. This clock is
+for general clocking of the fabric.
+This clock is sourced from an output of a Silicon Laboratories Si5397A synthesizer fed by a 48MHz crys-
+tal oscillator. The Si5397A is I2C controllable from the BMC (it is not recommended that this clock is
+changed from its default frequency; however, if this is required contact BittWare for details).
+FPGA pin name (QSF): usr_refclk0
+
+8.2.3 Network Clock
+The three QSFP-DD modules are driven from dedicated FPGA transceivers. These transceivers require
+a dedicated reference clock pin to use the cleanest clock source and hence support the highest of I/O
+standards with tight jitter tolerances.
+The Si5397 is I2C controllable from the BMC. The Card Support Package design demonstrates how to
+program the Si5397A using a configuration file generated through the Skyworks ClockBuilder utility.
+Instructions on how to generate new configuration files for the Skyworks parts can be found on the Bitt-
+Ware Developer Site.
+The Si5397 can be configured to generate its outputs (the transceiver reference clocks for the QSFP-
+DDs) from a combination of its inputs (an on-board crystal in free running mode and three recovered
+clocks from the FPGA).
+
+Network Power-on Clock (From Si5397)
+Each QSFP-DD bank is fed by one of the Si5397’s LVPECL coupled clock output signals. The Si5397
+outputs 156.25 MHz by default at power-on. The Si5397 can be reprogrammed via I2C from the BMC;
+refer to the Si5397 datasheet for details.
+FPGA pin name (QSF): xcvr_refclk_0, xcvr_refclk_1, xcvr_refclk_2, xcvr_refclk_3
+
+
+
+
+© 2025 BittWare, a Molex company                                                                       52
+Network Recovered Clock (From Si5397)
+Each QSFP-DD bank is fed by one of the Si5397’s LVPECL coupled clock output signals. The Si5397 is
+used to recover the network clock from the QSFP-DD. The Si5397 is blank at power-on and can be pro-
+grammed via I2C from the BMC; refer to the Si5397 datasheet for details.
+FPGA pin name (QSF): rcvrd_refclk_0, rcvrd_refclk_1, rcvrd_refclk_2, rcvrd_refclk_3
+
+8.3 Programmable Clock Device
+The Si5397 Silabs clock device is controllable via I2C from the BMC. You can create your own clock con-
+figurations using a utility from Skyworks called "Clock Builder Desktop Software (Si5397)." Refer to Bit-
+tWare’s Clock Builder Quick Start Guide for information on reprogramming the clock.
+The Skyworks part number for this clock device is: SI5397A-A-GM
+
+8.4 Timestamp and Synchronization
+The IA-840f has a build option to include 1PPS and 10MHz reference clock inputs. If the board is con-
+figured with this option, it has IPEX MHF3 connectors toward the back of the board. There are two build
+options for the connectors:
+   l   IPEX MHF3 connectors only
+   l   IPEX MHF3 connectors wired to two SMB inputs on the faceplate
+
+                     Figure 10: Location of the IPEX MHF3 Timestamp Connectors
+
+
+
+
+© 2025 BittWare, a Molex company                                                                      53
+                        Figure 11: Location of the SMB Inputs on the Front Panel
+
+
+
+
+8.4.1 1 PPS Input (J14)
+The 1PPS signal can be used to provide a means of synchronizing the FPGA timing to an external timing
+signal. It is an optocoupled input and supports levels of 5.5V. The PPS input is a 10kΩ terminated digital
+input with a range of 3.3V to 5V. It uses an IPEX MHF3 connector on the PCB that can be wired to a con-
+nector directly accessible from the PCIe faceplate (as a board configuration option).
+FPGA signal name: U1PPS
+
+8.4.2 External Clock Input (J16)
+The 10 MHz external clock input can be used to provide a means of synchronizing the FPGA timing to an
+external timing signal. The clock input can be a sine wave that is 1.41Vpp down to 100mVpp (7dBm to -
+16dBm) into a 50Ω load or up to 5V. It uses an IPEX MHF3 connector on the PCB that can be wired to a
+connector directly accessible from the PCIe faceplate (as a board configuration option).
+The External Clock is buffered and is connected to an input of the Si5397 jitter cleaner and clock gen-
+erator as well as to the FPGA fabric.
+FPGA signal name: CLKA
+
+8.5 Startup Sequence
+The IA-840f operates on the PCIe bus. TPVPERL is defined in PCIe CEM to be a minimum of 100ms
+from 3.3V/12 volts being stable to when PERST# is de-asserted. Note this is a minimum time as defined
+in the specification. The IA-840f configuration is based on the use of an Active Serial x4 QSPI flash inter-
+face, which is a serial x4 interface.
+The Agilex series FPGA configuration bitstreams that include PCIe default to activating the PCI HIP
+Autonomous mode. This mode means that in the period between the initial FPGA section of the bit-
+stream and the completion of the bitstream load when the device enters user mode, the PCIe HIP will
+return retry requests for configuration TLPs. This extends the PCIe enumeration window timing.
+
+
+
+
+© 2025 BittWare, a Molex company                                                                          54
+The default factory clock file programmed into the IA-840f at cold boot from the BMC is set to enable test-
+ing of the recovered clocks. With this programming file the initialization of the clocks at cold boot waits on
+recovered clocks that are not present until the FPGA is configured fully. This results in an overall startup
+time that is up to 5.5 seconds in total.
+In the majority of desktop class systems, the IA-840f will miss the PCIe enumeration and will require a
+warm restart to see the IA-840f enumerated on the PCIe bus. In server class systems the window for
+enumeration is generally much longer. In server class system testing, the IA-840f has been shown to reli-
+ably enumerate from cold boot. In some desktop class systems, the 5.5 second timing results in the host
+motherboard disabling the PCIe clock to the physical slot because it does not detect the presence of a
+PCIe device. To then detect the IA-840f on the PCIe bus, it can require two or three warm restarts.
+
+                                      Figure 12: IA-840f Startup Timing
+
+
+
+
+Cards are tested in production using the recovered clock settings in the Si5397 clock chip. After burn-in,
+test clocks will be re-programmed with a register set that does not rely on recovered clocks or an
+external reference clock. This results in a much faster up time: approximately 2 seconds compared to
+5.5 seconds. The diagram above shows the faster bring up. If your application or design does require the
+use of the recovered clock feature, this can be achieved by updating clock registers but will have a
+slower startup time.
+The IA-840f startup timing is shown in the diagram when the clock file with the recovered clocks
+removed is used. This is a sample system we use in our labs.
+The following clock files are used:
+    l   Si5397-RevA-IA-840-840_R1_base-R3
+        This file uses the recovered clocks in generation of transceiver clocks. It also accepts an external
+        reference clock.
+    l   Si5397-RevA-IA-840-840_R1_base-R3_NO_input
+        This file does not use any inputs (three recovered clocks and external reference clock). This is
+        what will be programmed in cards when they leave the factory.
+
+
+
+
+© 2025 BittWare, a Molex company                                                                           55
+On the developer website also included is the project file for the Silicon Labs tool used to generate
+register sets. Use Clock Builder Pro version 4.9.
+Here is an example of commands to reprogram clock settings if required.
+   l   bw_bmc_clock_programmer -i USB program Si5397A Si5397-RevA-IA-840-840_R1_base-R3_
+       NO_input.h
+   l   bw_bmc_clock_programmer -i USB reload Si5397A
+   l   bw_bmc_clock_programmer -i USB display
+For more information, refer to the IA-840f BMC Reference Guide.
+
+
+
+
+© 2025 BittWare, a Molex company                                                                        56
+9 Card Management
+
+ 9.1 Max 10 FPGA                             58
+ 9.2 Board Managment Controller (BMC)        58
+ 9.3 FPGA Access to the Max 10 and the BMC   59
+ 9.4 I2C Devices                             60
+ 9.5 HPS Signals                             62
+ 9.6 SmartVID                                63
+ 9.7 LEDs                                    63
+ 9.8 Jumpers and Switches                    65
+
+
+
+
+ © 2025 BittWare, a Molex company            57
+9.1 Max 10 FPGA
+An on-board Max 10 FPGA is used to control the JTAG chain (USB-Blaster II for Signal Tap, In-System
+Sources & Probes, Transceiver Toolkit, etc.)
+
+9.2 Board Managment Controller (BMC)
+The IA-840f features an advanced system monitoring subsystem, similar to those typically found on
+today’s server platforms. At the heart of the board’s monitoring system lies a Board Management Con-
+troller (BMC), which accepts PLDM commands. The BMC provides a wealth of features, including con-
+trol of power and resets, monitoring of board sensors, FPGA boot loader, voltage overrides,
+configuration of programmable clocks, access to I2C bus components, field upgrades, and PLDM mes-
+saging. Access to the BMC is via PCIe or USB. The BittWare SDK also provides utilities and libraries for
+communicating with the BMC components at a higher, more abstract level, allowing developers to
+remotely monitor the health of the board. Refer to the BMC Reference Guide for more detail.
+
+9.2.1 Features
+The BMC subsystem is used to control:
+   l   Power and reset sequencing
+   l   Board support peripherals (such as programmable clock synthesizers)
+   l   MCTP/PLDM support
+From an environmental perspective, the BMC provides via PLDM:
+   l   Power supply monitoring
+   l   Current monitoring
+   l   Power supply failure logging (volatile)
+   l   Power consumption and temperature monitoring (FPGA, QSFP28 modules temperatures)
+   l   Over temperature trip protection (FPGA blanks) and logging (volatile)
+This environmental information is accessed via the software board monitor utility which runs over the
+USB connection.
+The BMC monitors the FPGA and the board temperature along with voltage, current, and power. The
+BMC has access to several on-board sensors and implements a shutdown if levels are too high. For a
+complete list of these sensors and their shutdown values, refer to the BMC Reference Guide for IA-840f.
+
+9.2.2 BMC Utilities
+The SDK contains a library for communicating with the BMC via any available data path, including USB
+or BMC-over-PCIe. Refer to the BittWare SDK User’s Guide for a list of features and description of the
+library functions.
+The SDK has the following utilities for working with the BMC:
+   l   bw_bmc_upgrade: View BMC information, update firmware, reboot the BMC
+   l   bw_bmc_monitor: monitor sensors on the card
+   l   bw_card_list: list cards in the system and view manufacturing information
+
+
+
+© 2025 BittWare, a Molex company                                                                        58
+    l   bw_bmc_configure: various capabilities, including configure the FPGA, view errors, reboot the
+        BMC
+    l   bw_bmc_clock_program: re-program configurable clocks, view clock configuration
+
+9.2.3 Unused FPGA Pins
+Access to the BMC and its associated peripheral devices is possible from the FPGA design.
+Important: If a user FPGA design does not connect to the BMC, the design must disable access to the
+FPGA-to-BMC interface by pulling the following pins high.
+
+                                       Table 16: Unused BMC Pins
+
+    FPGA Pin        Signal Name               Setting
+    FPGA/BMC shared I2C bus and Control
+    N55             FPGA_I2C_SCL              Set high impedance if not being used (board has 10K pull-up)
+    N49             FPGA_I2C_SDA              Set high impedance if not being used (Board has 10K pull-up)
+    N53             FPGA_I2C_MUX_GNT          Set high impedance if not being used
+    C56             FPGA_I2C_REQ_L            Set High if not being used
+    FPGA SPI-BMC interface available in FPGA
+    N57           FPGA_BMC_MST_EN_L Set High if not being used
+    BMC output to FPGA (reset)
+                                    Pin is controlled with BMC effector
+    L54          BMC_FPGA_RST_N     Pin must only be an input to FPGA design
+                                    Active low reset
+
+
+
+The following pins must be driven low at all times:
+
+                                       Table 17: Other Unused Pins
+
+                               FPGA Pin Signal Name Setting
+                               A49         NC            Drive low at all times
+                               C46         NC            Drive low at all times
+
+
+
+If you need to use any of these interfaces, refer to the IA-840f FPGA Developer Guide.
+There is no requirement to drive any of the other unused pins to a specific level, as long as the pins listed
+above are correctly driven.
+
+9.3 FPGA Access to the Max 10 and the BMC
+You can access the BMC and the Max 10 both via USB and from within your FPGA IP.
+For USB access to the BMC, a front panel micro-USB connector is provided for general monitoring
+and control. (See USB Connectivity)
+
+
+
+
+© 2025 BittWare, a Molex company                                                                             59
+For USB access to the Max 10, the same USB interface is also used. The USB interface provides
+JTAG access to the FPGA and flash via a USB-Blaster-II (driver installed as part of the Quartus install-
+ation). A FPGA-driven UART is also provided. See the USB Connectivity section (driver available on
+the FTDI website).
+For FPGA IP access to the BMC, refer to the FPGA Developer Reference Guide.
+
+9.4 I2C Devices
+One of the BMC’s hardware I2C ports is directly connected to the PCIe bus for system management sup-
+port and another is connected to a variety of components on board for status & control. All local devices,
+DIMMs, and QSFP-DDs support 100 kHz operation.
+
+9.4.1 PCIe I2C
+An I2C port is routed to the PCIe fingers from the BMC. This interface is used for system level monitoring
+and control through such protocol as PLDM and IPMI. It is an isolated interface since in some systems,
+the signals may be active.
+
+9.4.2 Shared I2C
+The BMC and FPGA share an I2C bus that allows for the two devices to communicate with the QSFPs
+and the on- board EEPROM. The BMC is the default master of the bus, and the FPGA is required to
+request permission to gain control. On both I2C lines, SDA and SCL do not instantiate pull-ups in the
+FPGA.
+
+
+
+
+© 2025 BittWare, a Molex company                                                                        60
+                                   Figure 13: I2C Device Diagram
+
+
+
+
+© 2025 BittWare, a Molex company                                   61
+                                   Table 18: FPGA-to-BMC I2C Signals
+
+                                   Signal Name                  Pin Number
+                                   FPGA_I2C_REQ_L               C56
+                                   FPGA_I2C_MUX_GNT             N53
+
+
+
+9.4.3 VPD EPROM
+The EPROM is reserved for VPD (Vital Product Data) information and BittWare board information. The
+EPROM is programmed by BittWare at the time of shipment and then configured to be read-only.
+The I2C address for this chip is 0x57, see the “Device Addressing” section of the Atmel AT24C16C data-
+sheet for further details.
+The PROM is read-only. For customer production deployments, BittWare can pre-program customer
+specific information in the reserved locations of the PROM or enable customers to write these locations.
+
+                                        Table 19: ID PROM Data
+
+                            Address (hex)              Contents
+                            0x57                       Bittware Fields
+                            0x50-0x56                  Reserved
+
+
+
+PROM format is defined in Appendix A. Use the card list tool (bw_card_list) in the BittWare SDK to
+access your card's base MAC address.
+
+9.4.4 FRU PROM (EEPROM)
+The EEPROM is accessible via the BMC. The data format is defined in https://www.d-
+mtf.org/sites/default/files/standards/documents/DSP0257_1.0.0.pdf.
+
+9.5 HPS Signals
+The IA-840f supports the following HPS connectivity:
+
+                                    Table 20: HPS Signal Connections
+
+       Signal Name         FPGA Function         Bank     FPGA Pin Description
+       TxD_UART_FPGA       UART0_RX              HPS      L3             Connects to USB FTDI UART
+       RxD_UART_FPGA       UART0_TX              HPS      BF12           Connects to USB FTDI UART
+       HPS_CLK             HPS CLK               HPS      BD21           25Mhz clock sourced from MAX10
+       HPS_reset           HPS COLD RESET        SDM      GW56           Sourced from MAX10
+
+
+
+
+© 2025 BittWare, a Molex company                                                                          62
+9.6 SmartVID
+The Agilex FPGA on the IA-840f employs SmartVID to compensate for process variation by using
+voltage adaptation. The use of SmartVID is mandatory and requires certain entries in the Quartus Set-
+tings File (QSF). Please refer to the IA-840f FPGA Developer Reference Guide for details.
+Intel Agilex Power Management User Guide: https://www.in-
+tel.com/content/dam/www/programmable/us/en/pdfs/literature/hb/agilex/ug-ag-pwr.pdf
+
+9.7 LEDs
+The IA-840f has six LEDs. The Max 10 FPGA reflects system status on LEDs D10 and D11, the BMC
+uses D14 and D15 for reporting its status, and the User FPGA can drive D4 and D5.
+
+                             Figure 14: LED locations, bottom side of PCB
+
+
+
+
+9.7.1 Configuration Status LEDs
+The LEDs in the following table are bi-color red and green and show configuration status.
+
+                                    Table 21: Configuration Status LEDs
+
+        LED    Color     Sequence       Description
+
+        D11    Green     Fixed on       FPGA Configured
+
+
+
+
+© 2025 BittWare, a Molex company                                                                    63
+         LED     Color    Sequence      Description
+                 Red      Heartbeat     FPGA Unconfigured
+                 OFF      NA
+                 Green    Flashing      Blaster Activity
+         D10     Red      NA
+                 OFF      NA
+
+
+
+9.7.2 BMC Status LEDs
+The two LEDs shown in the following table are either red or green and define the BMC behavior.
+
+                                       Table 22: BMC Status LEDs
+
+  LED    Color      Sequence     Description
+         Red        Fixed on     Power is down. BMC Failure condition.
+         Red        Flashing     BMC is holding the power OFF (input power fault, fatal threshold breach or
+  D14
+                                 user turned power off).
+
+         OFF        NA
+         Green      Fixed on     Power is up. BMC failure condition.
+  D15    Green      Flashing     Power is up. BMC running & card is ready for operations.
+         OFF        NA
+
+
+
+9.7.3 FPGA User LEDs
+The user has access to two LEDs driven directly from the FPGA. FPGA User LEDs lists the signal
+names for these User LEDs. LED locations, bottom side of PCB shows their locations.
+
+                                       Table 23: FPGA User LEDs
+
+        LED      Signal               FPGA Pin     Color   Behavior
+                 LED0_G               U47          Green   Active Low
+        D4
+                 LED0_R               W46          Red     Active Low
+                 LED1_G               J51          Green   Active Low
+        D5
+                 LED1_R               G50          Red     Active Low
+
+
+
+
+© 2025 BittWare, a Molex company                                                                              64
+9.8 Jumpers and Switches
+The IA-840f has the following jumpers:
+   l   J2: BMC programming (Factory use only)
+   l   J19: I2C debug (Factory use only, header not installed)
+
+
+
+
+© 2025 BittWare, a Molex company                                 65
+10 USB Connectivity
+
+ 10.1 Overview                            67
+ 10.2 Board Features Accessible via USB   67
+ 10.3 USB Connectors                      69
+ 10.4 JTAG Utilities                      70
+
+
+
+
+ © 2025 BittWare, a Molex company         66
+10.1 Overview
+The IA-840f features multiple USB devices which are all accessible (through a USB hub) from either the
+front panel or the rear panel Type-C connectors.
+The USB connectors on the rear panel can be used to connect to a motherboard internal USB connector
+or to daisy chain up to four boards together (for example to access multiple boards in a server with a
+single motherboard internal USB connector).
+
+   Note: For more information on deployment solutions in a BittWare TeraBox FPGA server, visit the
+   TeraBox section on the BittWare website or contact your BittWare Sales representative for more
+   information.
+
+Both the front and rear USB connectors give access to the same USB devices:
+  1. USB-Blaster II for JTAG access to the FPGA
+  2. BMC for access to control and status port
+  3. And a FPGA user-controller UART
+The USB front panel header and the USB IN rear panel share the up-stream bus into the USB hub. The
+front panel USB has priority over the rear panel USB. Plugging a cable into the front panel will dis-
+connect USB traffic routed through the rear connector.
+
+10.2 Board Features Accessible via USB
+The USB port provides access to the BMC, USB UART, and USB Blaster. The IA-840f Max 10 FPGA
+allows multiple entry points to access the configuration hardware (as well as monitoring and debug fea-
+tures). Front and rear panel USB ports offer identical functionalities. Only one interface can be used at
+any one time; the switchover is managed by an automatic circuitry. If both USB ports are connected, the
+front panel USB takes precedence. In addition, it is possible to daisy chain up to four IA-840f boards
+within the same system accessed by a single front or rear panel USB connector.
+
+
+
+
+© 2025 BittWare, a Molex company                                                                       67
+                                         Figure 15: USB Interface
+
+
+
+
+10.2.1 Max 10 and BMC USB Connectivity
+The IA-840f board provides access to the Max 10 FPGA and the BMC via USB (see FPGA Access to
+the Max 10 and the BMC).
+
+10.2.2 On-board USB-Blaster II
+The IA-840f features an on-board USB-Blaster II part. It enables the IA-840f user access to the FPGA
+JTAG Chain for FPGA programming purposes using the Quartus Programmer or for debug purposes
+using the Quartus JTAG based utilities.
+The USB-Blaster II requires drivers to be loaded, they are supplied with the Intel Quartus tool chain. The
+USB-Blaster II device drivers require manual installation so that the cable will be properly recognized.
+If additional information on the installation for a particular operating system is needed, please consult the
+Intel Quartus Software and Device Support Release Notes for the specific version of Quartus.
+
+
+
+
+© 2025 BittWare, a Molex company                                                                          68
+Quartus uses the built-in USB devices driver on Linux to access the USB-Blaster II device. By default,
+root is the only user allowed to use these devices. Permissions must be changed on the ports before the
+USB-Blaster II can be used to program devices with Quartus software.
+
+10.2.3 USB-to-UART
+The FPGA design can implement a UART which will be accessible through USB; the board features a
+FT234XD chip. Please download and install this chip’s driver from the FTDI website.
+FPGA pin name (QSF): RxD_UART_FPGA, TxD_UART_FPGA
+
+10.3 USB Connectors
+The front panel features a USB header (J13 - see Top View) below the QSFP cages. Two Molex USB C
+connectors are on the rear panel for daisy chaining.
+The front panel USB is multiplexed with the USB IN connector (J10) on the rear. A USB OUT connector
+(J7) on the rear of the board allows USB traffic to be routed out of the USB hub on the IA-840f and con-
+nect to a IA-840f downstream. A daisy chain of up to 4 IA-840fs can be formed as illustrated below.
+
+
+
+
+© 2025 BittWare, a Molex company                                                                      69
+10.4 JTAG Utilities
+The USB-Blaster II interface provides access to the FPGA JTAG chain and allows you to reprogram the
+FPGA using the Quartus Programmer Tool.
+Intel provides several other debug tools which use the JTAG chain:
+   l   Signal Tap II Logic Analyzer
+   l   Transceiver Toolkit
+   l   External Memory Interface Toolkit
+   l   In-System Sources and Probes Editor
+Refer to Intel’s documentation for details on how to use these tools.
+
+   Note: for installation on Linux, please refer to “Intel® FPGA Download Cable (formerly USB-
+   Blaster) Driver for Linux” on the Intel website.
+
+The Quartus installation folder includes the USB-Blaster II drivers. BittWare recommends setting the
+JTAG clock speed to 16M. See the Getting Started Guide for details.
+
+
+
+
+© 2025 BittWare, a Molex company                                                                       70
+11 Power
+
+ 11.1 Power Specifications          72
+ 11.2 Power Sources                 72
+ 11.3 Power Requirements            74
+ 11.4 Power Monitoring              74
+
+
+
+
+ © 2025 BittWare, a Molex company   71
+11.1 Power Specifications
+The IA-840f board is designed to support a typical operating power consumption of 225W. The standard
+Fan/Heatsink COTS solution supports 225 Watts cooling with an ambient inlet temperature up to 35C.
+Under these conditions the FPGA die temperature will typically be kept below an operating junction tem-
+perature of 85C.
+You can read the FPGA fabric temperature via the BMC and estimate the power required by the FPGA
+using Intel’s EPE tool available on the Intel website.
+
+                             Table 24: Max Power Consumption Estimate
+
+                             Device                        Max Power
+                             Agilex                        177W
+                             DDR4 (4 off)                  18W
+                             QSFP-DD (3 off)               30W
+                             Logic                         10W
+                             PSU (85% efficiency)          41W
+                             Total @85% PSU efficiency     225W
+
+
+
+Important: The 177W max is an aggregate estimate for FPGA core power. Because the FPGA's core
+supply is derived only from 12V EXT2, the EXT2 current limit then limits the max core current that can be
+drawn before a BMC fatal threshold is detected and the board is shut down. For a more granular look at
+thresholds, you can report the full list via the BMC PLDM accesses using the bw_card_monitor utility:
+bw_card_monitor -i USB -c 0 -s thresholds -g All
+Another option for reporting thresholds is the SDK provided utility bw_bmc_pldm_sensor.
+
+11.2 Power Sources
+The IA-840f is powered from the host motherboard PCIe slot power supplies as well as through two
+external PCIe 12V power supplies. External Power Connector Location shows the location of both
+external power connectors on top side of the board.
+
+   Note: Both external power cables must be plugged in. The IA-840f will not power-on unless all
+   three supplies (PCIe and both external power cables) are active.
+
+
+
+
+© 2025 BittWare, a Molex company                                                                      72
+                             Figure 16: External Power Connector Location
+
+
+
+
+11.2.1 8-Pin Power Connector
+The pinout for the 8-pin connector is shown in the following image and table:
+
+                               Figure 17: 8-pin External Power Connector
+
+
+
+
+ Table 25: 8-pin Auxiliary Power Connector Receptacle Side Pinout (source: PCIe Specification Revi-
+                                             sion 1.0)
+
+                                   Pin    Signal     Pin     Signal
+                                   1      +12V       5       GND
+                                   2      +12V       6       SENSE0
+                                   3      +12V       7       GND
+                                   4      SENSE1     8       GND
+
+
+
+
+© 2025 BittWare, a Molex company                                                                  73
+11.2.2 6-Pin Power Connector
+The pinout for the 6-pin connector is shown in the following image and table:
+
+                      Figure 18: 6-pin Auxiliary Power Connector Receptacle Side
+
+
+
+
+                            Table 26: 6-pin Auxiliary Power Connector Pinout
+
+                                     Pin    Signal   Pin     Signal
+                                     1      +12V     4       GND
+                                     2      +12V     5       SENSE
+                                     3      +12V     6       GND
+
+
+
+
+11.3 Power Requirements
+Power requirements for the IA-840f are application-specific. The card power draw might go from low, if
+the FPGA is unconfigured, to medium when the FPGA is programmed with an FPGA design. FPGA
+designs with high resource utilization, high toggle rate, and high clock frequency will increase the card
+power draw, which might approach the card’s max power.
+
+
+   Warning! Be sure the IA-840f does not go from high power to no power all at once as it may cause
+   a voltage spike on the FPGA core supply that could damage the FPGA.
+
+
+If you are doing high power designs, you should not turn your designs on or off all at once; instead, ramp
+up and ramp down. If you have a runaway FPGA you need to shut off, you can help prevent damage by
+lowering the core voltage via the BMC before shutting down the FPGA.
+
+11.4 Power Monitoring
+As noted in Card Management, the BMC monitors the power supplies in real time. You can use the
+SDK’s BMC utility to read the values, or you can use MCTP/PLDM, as described in the BMC Reference
+Guide for IA-840f. The BMC Reference Guide also lists the sensors that the BMC is monitoring.
+
+
+
+
+© 2025 BittWare, a Molex company                                                                        74
+12 Mechanical
+
+ 12.1 Chassis Requirements          76
+ 12.2 Airflow                       77
+ 12.3 Card Dimensions               77
+
+
+
+
+ © 2025 BittWare, a Molex company   75
+12.1 Chassis Requirements
+12.1.1 PCI Express
+The IA-840f is capable of PCIe Gen 1/2/3/4 with 1/2/4/8/16 lanes. The card requires a x16 PCIe slot for
+mechanical compatibility.
+
+12.1.2 PCIe Bracket
+The card ships with a PCIe faceplate bracket matching the card configuration. The examples below
+show the standard faceplate for a card configured with three front panel QSFP-DDs and a USB port, and
+the faceplate for the timing option.
+
+                                   Figure 19: PCIe Faceplate (Standard)
+
+
+
+
+                               Figure 20: PCIe Faceplate (Timing Option)
+
+
+
+
+© 2025 BittWare, a Molex company                                                                      76
+12.2 Airflow
+ The IA-840f can be fitted with a passive or active heatsink depending on the environment where the
+card will be installed. Be sure that the installation has sufficient airflow and that the power consumption
+is limited to keep the card within its operating temperature limits. The BMC monitors the FPGA tem-
+perature. Refer to your card’s BMC Reference Guide for details.
+
+                         Figure 21: Preliminary thermal resistance vs. airflow plot
+
+
+
+
+12.3 Card Dimensions
+The IA-840f is a full height (111.15mm), GPU length (266.70mm), dual-slot (34.80mm top side com-
+ponent height) PCIe add-in card.
+
+
+
+
+© 2025 BittWare, a Molex company                                                                          77
+Appendix A: PROM Format
+
+This section details the format of the VPD EPROM. The EPROM is reserved for VPD (Vital Product Data)
+information and BittWare board information. The format is a fixed offset format fit in a 256 byte range. The
+first 4 bytes are a signature (“BWPF”) that lets software know the format; this along with the format version
+will allow for compatible future changes.
+
+                                      Table 27: VPD EPROM Format
+     Address    Length    Value                                Type
+     0          4         Signature “BWPF”                     String fixed value
+     4          1         Format version                       Int
+     5          15        Serial Number                        String
+     20         48        Product Code                         String
+     68         10        Revision                             String in the format of 0.1.2.3.4
+     78         8         Manufacture Date                     64-bit Unix time format
+     86         6         Base MAC                             MAC format: MAC address stored at 6 bytes
+     92         1         Number of sequential MAC addresses   Integer
+     93         16        UUID                                 UUID format stored as array of 16 bytes
+     109        19        Reserved                             Reserved
+     128        128       Customer Data                        Customer defined
+
+
+
+* String format: NULL (0) terminated ASCII encoded string
+
+
+
+
+  © 2025 BittWare, a Molex company                                                                         78
+

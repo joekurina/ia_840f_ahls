@@ -1,0 +1,107 @@
+IA840F_GATE_REJECTED: IA840F EXPERIMENTAL GATE: unapproved checkout location
+child process exited abnormally
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+    Info: Copyright (C) 2026  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Fri Sep 18 20:55:26 2026
+    Info: System process ID: 123478
+Info: Command: quartus_sta -t /home/uwb_student00/ahls/new_BSP/qualification/fim-build-08/pcie-postfit-query-01/query.tcl
+Info: Using INI file /home/uwb_student00/ahls/new_BSP/qualification/fim-build-08/pcie-postfit-query-01/scratch/syn/board/ia840f/syn_top/quartus.ini
+Info: Setting ::env(BUILD_ROOT_REL)=../../../..
+Info: Setting ::env(BITSTREAM_ID)=05010202599ac052
+Info: Setting ::env(BITSTREAM_MD)=0000000002609181
+Info: Setting ::env(BITSTREAM_INFO)=0000000000000001
+Info: Setting ::env(Q_REVISION)=ofs_top
+Info: Setting ::env(Q_PR_REVISION)=ofs_pr_afu
+Info: Setting ::env(Q_PR_PARTITION_NAME)=green_region
+Info: Setting ::env(FME_IFC_ID)=99a088cb-00d7-5f59-a81d-1f1e9046ca78
+Info: BUILD_ROOT_REL is ../../../..
+Info: Compiling PR Base revision...
+Critical Warning (125091): Tcl error: IA840F NOT READY: IA840F EXPERIMENTAL GATE: unapproved checkout location
+child process exited abnormally. Child-IP/generated-interface, memory and BMC/FLR qualification remain unperformed.
+    while executing
+"error "IA840F NOT READY: $ia840f_gate_result. Child-IP/generated-interface, memory and BMC/FLR qualification remain unperformed.""
+    invoked from within
+"if {[catch {exec python3 $ia840f_gate quartus 2>@1} ia840f_gate_result]} {
+    # Quartus may downgrade the error below to warning 125091 and exit 0.
+ ..."
+    (file "../setup/build_gate.tcl" line 6)
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/build_gate.tcl
+Warning (125092): Tcl Script file ../../../shared_config/compile_flags.tcl not found.
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../../../shared_config/compile_flags.tcl
+Warning (125092): Tcl Script file ../../../../ofs-common/scripts/common/syn/ip_get_cfg/ofs_ip_cfg_db.tcl not found.
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE "../../../../ofs-common/scripts/common/syn/ip_get_cfg/ofs_ip_cfg_db.tcl"
+Warning (125092): Tcl Script file ../../../../syn/shared_config/afu_if_design_files.tcl not found.
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../../../../syn/shared_config/afu_if_design_files.tcl
+Warning (125092): Tcl Script file ../../../../ofs-common/src/common/ofs_common_design_files.tcl not found.
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE "../../../../ofs-common/src/common/ofs_common_design_files.tcl"
+Warning (125092): Tcl Script file ../../../../ofs-common/src/fpga_family/agilex/ofs_common_agilex_design_files.tcl not found.
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE "../../../../ofs-common/src/fpga_family/agilex/ofs_common_agilex_design_files.tcl"
+Warning (125092): Tcl Script file ../../../../ipss/pcie/pcie_ss_design_files.tcl not found.
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../../../../ipss/pcie/pcie_ss_design_files.tcl
+Warning (125092): Tcl Script file ../../../../ipss/hssi/eth_design_files.tcl not found.
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../../../../ipss/hssi/eth_design_files.tcl
+Warning (125092): Tcl Script file ../../../../ofs-common/src/fpga_family/agilex/hssi_ss/hssi_wrapper_design_files.tcl not found.
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE "../../../../ofs-common/src/fpga_family/agilex/hssi_ss/hssi_wrapper_design_files.tcl"
+Critical Warning (125091): Tcl error: IA840F BMC local implementation missing: ip/arbiter/arbiter_hw.tcl
+    while executing
+"error "IA840F BMC local implementation missing: $ia840f_bmc_source""
+    ("foreach" body line 3)
+    invoked from within
+"foreach ia840f_bmc_source {
+    ip/arbiter/arbiter_hw.tcl
+    ip/arbiter/hdl/arbiter_v2.vhd
+    ip/common/rtl/pkg_global.vhd
+    ip/common/rtl/arbiter..."
+    (file "../../../../syn/board/ia840f/setup/bwbmc_design_files.tcl" line 8)
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../../../../syn/board/ia840f/setup/bwbmc_design_files.tcl
+Warning (125092): Tcl Script file ../../../../ofs-common/src/common/mem_tg/mem_tg_design_files.tcl not found.
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE "../../../../ofs-common/src/common/mem_tg/mem_tg_design_files.tcl"
+Warning (125092): Tcl Script file ../../../../src/pd_qsys/fabric/fabric_design_files.tcl not found.
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../../../../src/pd_qsys/fabric/fabric_design_files.tcl
+Warning (125092): Tcl Script file ../../../../ipss/mem/mem_design_files.tcl not found.
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../../../../ipss/mem/mem_design_files.tcl
+Warning (125092): Tcl Script file ../../../../ipss/pmci/pmci_design_files.tcl not found.
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../../../../ipss/pmci/pmci_design_files.tcl
+Warning (125092): Tcl Script file ../../../../ofs-common/src/fpga_family/agilex/hps/hps_design_files.tcl not found.
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE "../../../../ofs-common/src/fpga_family/agilex/hps/hps_design_files.tcl"
+Warning (125092): Tcl Script file ../../../../ofs-common/src/fpga_family/agilex/uart/uart_design_files.tcl not found.
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE "../../../../ofs-common/src/fpga_family/agilex/uart/uart_design_files.tcl"
+Warning (125092): Tcl Script file ../../../../ofs-common/src/fpga_family/agilex/afu_main.tcl not found.
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE "../../../../ofs-common/src/fpga_family/agilex/afu_main.tcl"
+Warning (125092): Tcl Script file ../../../../syn/shared_config/suppress_warning.tcl not found.
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../../../../syn/shared_config/suppress_warning.tcl
+Error (23035): Tcl error: SOURCE_BOUND_GATE_REJECTION_STOP
+    while executing
+"error "SOURCE_BOUND_GATE_REJECTION_STOP""
+    invoked from within
+"if {[info exists ia840f_gate_result]} {error "SOURCE_BOUND_GATE_REJECTION_STOP"}"
+    (file "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-08/pcie-postfit-query-01/query.tcl" line 4)
+------------------------------------------------
+SOURCE_BOUND_GATE_REJECTION_STOP
+    while executing
+"error "SOURCE_BOUND_GATE_REJECTION_STOP""
+    invoked from within
+"if {[info exists ia840f_gate_result]} {error "SOURCE_BOUND_GATE_REJECTION_STOP"}"
+    (file "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-08/pcie-postfit-query-01/query.tcl" line 4)
+------------------------------------------------
+Error (23031): Evaluation of Tcl script /home/uwb_student00/ahls/new_BSP/qualification/fim-build-08/pcie-postfit-query-01/query.tcl unsuccessful
+Error: Quartus Prime Timing Analyzer was unsuccessful. 2 errors, 18 warnings
+    Error: Peak virtual memory: 1537 megabytes
+    Error: Processing ended: Fri Sep 18 20:55:27 2026
+    Error: Elapsed time: 00:00:01
+    Error: System process ID: 123478

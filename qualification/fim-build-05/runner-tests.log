@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 148, in _get_module_details
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "/usr/lib/python3.13/unittest/__init__.py", line 57, in <module>
+    from .case import (addModuleCleanup, TestCase, FunctionTestCase, SkipTest, skip,
+                       skipIf, skipUnless, expectedFailure, doModuleCleanups,
+                       enterModuleContext)
+  File "/usr/lib/python3.13/unittest/case.py", line 6, in <module>
+    import pprint
+  File "/usr/lib/python3.13/pprint.py", line 38, in <module>
+    import dataclasses as _dataclasses
+  File "/usr/lib/python3.13/dataclasses.py", line 5, in <module>
+    import inspect
+  File "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim-build-05/inspect.py", line 4, in <module>
+    print('INSTRUCTIONS',Path('/home/uwb_student00/quartus_26/instructions.md').read_text())
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 548, in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_abc.py", line 632, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 539, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/uwb_student00/quartus_26/instructions.md'
