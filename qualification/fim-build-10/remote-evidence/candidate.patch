@@ -1,0 +1,36 @@
+--- a/ofs-common/tools/ofss_config/ia840f_experimental_gate.py
++++ b/ofs-common/tools/ofss_config/ia840f_experimental_gate.py
+@@ -288,7 +288,7 @@
+ 
+ def main():
+     try:
+-        if sys.argv[1:] == ['quartus'] and Path.cwd() == BASE / 'work_ia840f_fim_09/syn/board/ia840f/syn_top':
++        if sys.argv[1:] == ['quartus'] and Path.cwd() == BASE / 'work_ia840f_fim_10/syn/board/ia840f/syn_top':
+             import ia840f_compile_gate
+             ia840f_compile_gate.quartus_context()
+         elif sys.argv[1:] == ['run-native-compile']:
+--- a/ofs-common/tools/ofss_config/ia840f_compile_gate.py
++++ b/ofs-common/tools/ofss_config/ia840f_compile_gate.py
+@@ -12,9 +12,9 @@
+ 
+ BASE = common.BASE
+ SOURCE = common.SOURCE
+-WORK = BASE / 'work_ia840f_fim_09'
++WORK = BASE / 'work_ia840f_fim_10'
+ PROJECT = WORK / 'syn/board/ia840f/syn_top'
+-EVIDENCE = BASE / 'qualification/fim-build-09'
++EVIDENCE = BASE / 'qualification/fim-build-10'
+ RECORD = EVIDENCE / 'compile-authorization.json'
+ CLAIM = EVIDENCE / 'native-compile.claim.json'
+ TOP = './ofs-common/scripts/common/syn/build_top.sh'
+--- a/syn/board/ia840f/syn_top/ofs_top.qsf
++++ b/syn/board/ia840f/syn_top/ofs_top.qsf
+@@ -41,7 +41,7 @@
+ 
+ set_global_assignment -name FLOW_DISABLE_ASSEMBLER OFF
+ set_global_assignment -name FLOW_ENABLE_INTERACTIVE_TIMING_ANALYZER OFF
+-set_global_assignment -name SEED 1
++set_global_assignment -name SEED 2
+ 
+ ############################################################################################
+ # PWR MGMT

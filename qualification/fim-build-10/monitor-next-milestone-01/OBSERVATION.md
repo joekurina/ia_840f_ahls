@@ -1,0 +1,17 @@
+# Work10 observation — fitter still running
+
+Verified observation window: 2026-09-19 05:50:09.872208–05:54:10.616929 UTC, six samples. The renewed normal SSH/tmux monitor invocation was explicitly tool-approved and executed in its own window `ia840f_mailbox_monitored_01:work10-milestone-01`, pane `%377`; execution `%375` and observer `%376` were not touched.
+
+## Actual result
+- Host `Agilex7Workstation`, UID 1000 verified. Runner 140682/start 8387716, native 140684/start 8387852, and flow 140702/start 8388162 still match the original execution.
+- Synthesis completed successfully: 0 errors, 34 warnings. Native report timestamp Fri Sep 18 22:38:37 2026. This is newer progress than the previous synthesis-running handoff.
+- Current process: `/opt/altera/26.1.1/quartus/linux64/quartus_fit`, PID 142018/start ticks 8435815, parent 140702. Exact argv, cwd, executable hash and ancestry are in `transfer-verification.json` and `readback/samples.jsonl`. Its CPU ticks increased by 171849 across the observation; final process state R. No further successful-stage milestone appeared within the bounded window.
+- Actual `ofs_top.fit.plan.rpt` exists, 2782769 bytes; its final messages include finished register packing (2883 RAM registers, 2920 MLAB registers), additional IOPLL crossing slack, and high-frequency FIM-user-clock constraints. This is not proof of completed placement/routing.
+- Status remains `running`; no final native exit, final fitter/STA/assembler reports, or SOF/RBF/MSF/PMSF images were captured. The flow report's Successful label describes the earlier synthesis phase, not the full compile.
+- Error/Fatal, Critical Warning 125091, IA840F_GATE_REJECTED, IA840F NOT READY, and IA840F EXPERIMENTAL GATE marker counts are zero across captured reports/native output. Other warnings exist, including fitter Critical Warning 20727 for unused PR/reserved-partition inputs.
+- No final Work10 setup/hold WNS, TNS, endpoint or constraint-completeness results yet exist in this snapshot. Do not compare interim fitter data to supplied Work09 baseline EMIF0 -0.435 ns, EMIF1 -0.313 ns, hold -0.004 ns, one unconstrained clock/two inputs/two outputs as if final. S1/TRS, PCIe divider and BMC IRQ/JTAG remain unresolved. Readiness, timing, constraint and functional acceptance remain false.
+
+## Evidence verification
+The producer's unique remote buffer was exported using tmux-only SSH transport; its exact name and transfer metadata are recorded in `transfer-verification.json`. Transfer SHA256: `c55dd8223a9b447492a94db56d00ebd102e8155daa22f4c0d3ef57634c103820`. All 14 exported files were checked against remote SHA256 and byte size, written to `readback/`, then read back and verified. The remote observer source exactly matches the reviewed local `monitor.py`. One report snapshot was exported, not repeated large report bodies per sample.
+
+Exact launch argv is recorded in `launch-command.json`; capture/export argv is in `transfer-verification.json`. Local additions: launch metadata, pane capture, compressed export, `retrieve.py`, verification JSON, `readback/`, and this report. Remote additions are confined to the exclusive `qualification/fim-build-10/monitor-next-milestone-01` evidence directory and owned tmux window/buffer. No build restart/stop, WORK/SOURCE edits, gate changes, DDR simulation, hardware actions, installs, permissions, commits, or Query04 operation occurred.

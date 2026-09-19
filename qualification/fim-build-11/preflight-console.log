@@ -1,0 +1,252 @@
+INSTRUCTIONS # Quartus Pro 26.1.1 and Questa FPGA Edition
+
+## Installation and license
+
+- Installation: `/opt/altera/26.1.1`
+- Quartus: **26.1.1 Build 130, Pro Edition**
+- Simulator: **Questa Altera FPGA Edition 2025.3** (`questa_fe`)
+- Installed device family: **Agilex 7**
+- License: `/home/uwb_student00/quartus_26/LR-191011_License.dat`
+- License expiration: **December 16, 2026**
+- License type: node-locked evaluation, tied to this workstation's NIC MAC addre
+ss `00:be:43:b7:3a:b3`.
+
+The license includes Quartus Standard/Pro and Questa FPGA Edition. Renew or repl
+ace the license before it expires.
+
+## 1. Configure your terminal
+
+Run this before using the tools:
+
+```bash
+export QUARTUS_ROOTDIR_OVERRIDE=/opt/altera/26.1.1/quartus
+export PATH="/opt/altera/26.1.1/quartus/bin:/opt/altera/26.1.1/questa_fe/bin:$PA
+TH"
+
+export LM_LICENSE_FILE="$HOME/quartus_26/LR-191011_License.dat"
+export MGLS_LICENSE_FILE="$LM_LICENSE_FILE"
+export SALT_LICENSE_SERVER="$LM_LICENSE_FILE"
+```
+
+**Important:** This Questa release requires `SALT_LICENSE_SERVER`. During verifi
+cation, simulation failed with only `LM_LICENSE_FILE` and `MGLS_LICENSE_FILE`, t
+hen passed after setting `SALT_LICENSE_SERVER` to the license file.
+
+### Make the settings persistent
+
+Edit `~/.bashrc` and replace the old Quartus/license exports with the block abov
+e. At verification time, the old settings referenced:
+
+- `/opt/intelFPGA_pro/23.1/quartus`
+- `/opt/intelFPGA_pro/23.1/questa_fe`
+- `/home/uwb_student00/IA-840f/LR-157262_License.dat`
+
+In particular, an old `QUARTUS_ROOTDIR_OVERRIDE` redirects even an explicitly in
+voked new Quartus launcher to the old installation.
+
+After saving, open a new terminal or run:
+
+```bash
+source ~/.bashrc
+hash -r
+```
+
+Verify tool selection:
+
+```bash
+command -v quartus_sh
+quartus_sh --version
+command -v vsim
+vsim -version
+```
+
+Expected versions: Quartus **26.1.1 Build 130** and Questa FPGA Edition **2025.3
+**. Run development tools as your normal user; root is not needed for license ch
+eckout, compilation, or simulation.
+
+## 2. Use Quartus
+
+### Graphical interface
+
+From a desktop terminal with a working display:
+
+```bash
+quartus
+```
+
+Open your project's `.qpf` file. GUI operation was not verified in the headless
+SSH session.
+
+### Command-line compilation
+
+From the directory containing your project, substitute its actual name for `my_p
+roject`:
+
+```bash
+quartus_sh --flow compile my_project
+```
+
+For a specific revision:
+
+```bash
+quartus_sh --flow compile my_project -c my_revision
+```
+
+Check the compilation reports and timing results in the project's configured out
+put directory, commonly `output_files/`. Before programming a real board, use it
+s correct FPGA part, pin assignments, timing constraints, Reset Release IP, and
+power-management settings.
+
+## 3. Use Questa FPGA Edition
+
+From your simulation working directory, compile your design and testbench. Repla
+ce the example filenames and top-level testbench name with your own:
+
+```bash
+vlib work
+vlog -sv design.sv testbench.sv
+vsim -c work.tb -do 'run -all; quit -f'
+```
+
+Create `work` only if it does not already exist. For VHDL, compile sources using
+ `vcom` instead of `vlog`.
+
+The testbench should terminate or otherwise stop the simulation after checking i
+ts results. Inspect the transcript for errors and assertion failures; for automa
+ted testing, make the testbench/script return a nonzero exit code on failure.
+
+For interactive graphical simulation with a working display:
+
+```bash
+vsim work.tb
+```
+
+For designs containing Altera IP, use the IP/project-generated simulation setup
+scripts and required simulation libraries, rather than only compiling the top-le
+vel HDL files.
+
+## 4. Check programming hardware
+
+```bash
+jtagconfig
+quartus_pgm --list
+```
+
+At verification time, both reported **No JTAG hardware available**. Connect and
+power the board and its supported JTAG connection, then repeat these checks. If
+a cable is attached but not visible, investigate USB visibility, cable drivers/p
+ermissions, and JTAG server configuration.
+
+From a graphical desktop, launch the programmer with:
+
+```bash
+quartus_pgm
+```
+
+Select the correct hardware and a programming file built for the actual board. H
+ardware programming and board functionality have not yet been verified.
+
+## 5. Verification performed on September 17, 2026
+
+The following checks used the installation and license paths documented above:
+
+| Check | Result |
+| --- | --- |
+| Quartus version | 26.1.1 Build 130 |
+| Agilex 7 device database | Installed; 2,811 device entries |
+| Small counter synthesis | Passed |
+| Placement and routing | Passed; zero errors or warnings |
+| Timing analysis at 100 MHz | Passed; setup slack +7.284 ns, hold slack +0.124
+ns |
+| Assembler/programming-file generation | Passed; generated `smoke.sof` |
+| Questa FPGA Edition simulation | Passed; counter reached expected value 10; ze
+ro errors |
+| JTAG visibility | No hardware detected |
+| GUI and real-board operation | Not verified |
+
+The compile test targeted `AGIA027R31A1E1VC` with virtual I/O pins. It generated
+ warnings about missing Reset Release IP and board-specific power-management set
+tings. **Its `smoke.sof` is a toolchain test artifact, not a programming file fo
+r the workstation's board.**
+
+Verification sources and reports were left in `/tmp/opencode/altera_verify/`, in
+cluding:
+
+- `smoke.sv`: counter and self-checking testbench
+- `compile.tcl` and `smoke.sdc`: Quartus test setup
+- `compile.log`: synthesis, fitting, and timing results
+- `assembler.log`: successful standalone assembler run
+- `transcript`: Questa simulation output
+- `output_files/`: Quartus reports and test programming file
+
+The full-flow command reached the execution time limit after timing analysis; th
+e assembler was then run separately and completed successfully. Temporary files
+may be removed by system cleanup.
+
+## Troubleshooting
+
+### Quartus reports version 23.1
+
+Check `QUARTUS_ROOTDIR_OVERRIDE` and `PATH`, then reapply the environment block
+in section 1. An absolute path to the new launcher alone does not override an ol
+d `QUARTUS_ROOTDIR_OVERRIDE`.
+
+### Questa reports an invalid license environment
+
+Verify:
+
+```bash
+printenv LM_LICENSE_FILE MGLS_LICENSE_FILE SALT_LICENSE_SERVER
+test -r "$SALT_LICENSE_SERVER" && printf 'License file is readable\n'
+```
+
+All three variables should reference the current `LR-191011_License.dat` file. L
+aunch Questa from the configured terminal so it inherits these settings.
+
+### License checkout fails after previously working
+
+Check the error message, license expiration, system date, file readability, and
+workstation host-ID match. This license expires December 16, 2026 and is tied to
+ this machine. Installing the software on another host does not transfer the lic
+ense.
+
+SOURCE {
+  "syn/board/ia840f/setup/emif_loc.tcl": "a48a84b89fd6c5d5fd36c87cfe5c7d03264f3d
+ea08ea6a447151351a21b523c3",
+  "syn/board/ia840f/source_manifest.json": "82d5dabdc760bb24128ab0c9a5c96650da2d
+72f6d16f88f2d0d1780e4e745b0e",
+  "ofs-common/src/fpga_family/agilex/mem_ss/mem_ss_top.sv": "b9b0deb0582d554cb21
+78ed4ee090c088d9841951b19d1223cd4ca96bd9498a1",
+  "ofs-common/tools/ofss_config/ia840f_experimental_gate.py": "ded3e1213e9bbfce5
+335070c65553ff5d40a5e30eb46f8845ccc0c23f66aa365",
+  "ofs-common/tools/ofss_config/ia840f_compile_gate.py": "1f147c46af7fe3e34e65ea
+beb6519fef0d6ff80ef7adc0a882e707caaeef3135",
+  "ofs-common/tools/ofss_config/test_ia840f_compile_gate.py": "d53dd05b86fbb9339
+3033b6aef170e31ab7fbd517a0fb00259ffc603268e26e2",
+  "ofs-common/scripts/common/syn/build_fim_compile.sh": "0514c9be94702a7ec87e16d
+6e90d844e37a48d097aecc73a0a731331650c7c07",
+  "src/board/ia840f/top.sv": "6061a38dd44ed4ae935f3b0ee89a664139205446b94a441ea3
+84e921b7be0a9d",
+  "syn/board/ia840f/setup/top_loc.tcl": "07a08b895a30f12c9553647073ec6a8d7243f2c
+a92ce70fd0b1ae5bd698a5be2",
+  "syn/board/ia840f/syn_top/ofs_top_sources.tcl": "2056aeb757e8e27eff0aa2589f6e9
+97a52595b095ca18802ecad1819665ba2aa",
+  "syn/board/ia840f/setup/bti_refclk.sdc": "01b76a80f664c4ec0bf553874c68c7f71878
+642f205080e29727e50ce71c3cac",
+  "syn/board/ia840f/syn_top/ofs_top.qsf": "35e3d429ab77bd51f64beec6724138dc654be
+3e8f17aa5ab1d8955884b9b2293"
+}
+HELPERS {
+  "stage_remote.py": "45ad28ac249934a1040e8842256534179bb1cae497bdab04f06793bc00
+bed077",
+  "prepare_handoff_remote.py": "726c24cc1cb3caf8eae4f6669da90225a30880a689b43e48
+d8dad510e80b18c2",
+  "issue_authorization.py": "c01c585bd2ac2193f46df49f2630cb9ae56c875e392a849c4b8
+ee77b70ba81f1",
+  "launch_native_compile.py": "31beb72d84a1a5bafc4226f7145a8a0414dc8883b44a36825
+fae089756581895",
+  "test_real_dispatch.py": "d2ba0baa8e56a8f89e89e604a0bc0941b030371d8ac12010f19e
+bdc352759130"
+}
+PREFLIGHT PASS
+[uwb_student00@Agilex7Workstation ~]$

@@ -1,0 +1,32 @@
+--- a/ofs-common/tools/ofss_config/ia840f_experimental_gate.py
++++ b/ofs-common/tools/ofss_config/ia840f_experimental_gate.py
+@@ -288,7 +288,7 @@
+ 
+ def main():
+     try:
+-        if sys.argv[1:] == ['quartus'] and Path.cwd() == BASE / 'work_ia840f_fim_10/syn/board/ia840f/syn_top':
++        if sys.argv[1:] == ['quartus'] and Path.cwd() == BASE / 'work_ia840f_fim_11/syn/board/ia840f/syn_top':
+             import ia840f_compile_gate
+             ia840f_compile_gate.quartus_context()
+         elif sys.argv[1:] == ['run-native-compile']:
+--- a/ofs-common/tools/ofss_config/ia840f_compile_gate.py
++++ b/ofs-common/tools/ofss_config/ia840f_compile_gate.py
+@@ -12,9 +12,9 @@
+ 
+ BASE = common.BASE
+ SOURCE = common.SOURCE
+-WORK = BASE / 'work_ia840f_fim_10'
++WORK = BASE / 'work_ia840f_fim_11'
+ PROJECT = WORK / 'syn/board/ia840f/syn_top'
+-EVIDENCE = BASE / 'qualification/fim-build-10'
++EVIDENCE = BASE / 'qualification/fim-build-11'
+ RECORD = EVIDENCE / 'compile-authorization.json'
+ CLAIM = EVIDENCE / 'native-compile.claim.json'
+ TOP = './ofs-common/scripts/common/syn/build_top.sh'
+--- a/syn/board/ia840f/syn_top/ofs_top.qsf
++++ b/syn/board/ia840f/syn_top/ofs_top.qsf
+@@ -126,3 +126,4 @@
+ # VAB Assignments 
+ ############################################################################################
+ set_global_assignment -name ENABLE_MULTI_AUTHORITY ON
++set_global_assignment -name TDC_AGGRESSIVE_HOLD_CLOSURE_EFFORT ON

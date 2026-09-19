@@ -1,0 +1,147 @@
+{
+  "time": "2026-09-19T07:15:18.448217+00:00",
+  "live_claim_verified": true,
+  "synthesis_ancestry": [
+    [
+      {
+        "pid": 152020,
+        "start_ticks": "9009427",
+        "exe": "/opt/altera/26.1.1/quartus/linux64/quartus_syn",
+        "argv": [
+          "quartus_syn",
+          "--ipc_flow=17",
+          "--ipc_mode",
+          "--read_settings_files=on",
+          "--write_settings_files=off",
+          "ofs_top",
+          "-c",
+          "ofs_top"
+        ],
+        "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_11/syn/board/ia840f/syn_top"
+      },
+      {
+        "pid": 151888,
+        "start_ticks": "9008492",
+        "exe": "/opt/altera/26.1.1/quartus/linux64/quartus_sh",
+        "argv": [
+          "quartus_sh",
+          "--flow",
+          "compile",
+          "ofs_top",
+          "-c",
+          "ofs_top"
+        ],
+        "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_11/syn/board/ia840f/syn_top"
+      },
+      {
+        "pid": 151887,
+        "start_ticks": "9008455",
+        "exe": "/usr/bin/python3.9",
+        "argv": [
+          "python3",
+          "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/tools/ofss_config/ia840f_experimental_gate.py",
+          "run-native-compile"
+        ],
+        "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_11/syn/board/ia840f/syn_top"
+      },
+      {
+        "pid": 151879,
+        "start_ticks": "9008319",
+        "exe": "/usr/bin/bash",
+        "argv": [
+          "/bin/bash",
+          "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/build_fim_compile.sh",
+          "ia840f",
+          "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_11"
+        ],
+        "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_11/syn/board/ia840f/syn_top"
+      },
+      {
+        "pid": 151870,
+        "start_ticks": "9008184",
+        "exe": "/usr/bin/bash",
+        "argv": [
+          "/bin/bash",
+          "./ofs-common/scripts/common/syn/build_top.sh",
+          "--stage=compile",
+          "-k",
+          "-p",
+          "ia840f",
+          "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_11"
+        ],
+        "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach"
+      },
+      {
+        "pid": 151868,
+        "start_ticks": "9008051",
+        "exe": "/usr/bin/python3.9",
+        "argv": [
+          "/usr/bin/python3",
+          "launch_native_compile.py"
+        ],
+        "cwd": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-11"
+      },
+      {
+        "pid": 151863,
+        "start_ticks": "9007772",
+        "exe": "/usr/bin/python3.9",
+        "argv": [
+          "/usr/bin/python3",
+          "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-11/execute_reviewed.py"
+        ],
+        "cwd": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-11"
+      },
+      {
+        "pid": 151838,
+        "start_ticks": "9007764",
+        "exe": "/usr/bin/bash",
+        "argv": [
+          "bash",
+          "-c",
+          "python3 -c 'import base64;exec(compile(base64.b64decode('\"'\"'aW1wb3J0IHN1YnByb2Nlc3M7ZXhlYyhjb21waWxlKHN1YnByb2Nlc3MuY2hlY2tfb3V0cHV0KFsndG11eCcsJ3NhdmUtYnVmZmVyJywnLWInLCd3b3JrMTEtZXhlY3V0ZS10cmFuc2Zlci0wMScsJy0nXSksJ3RyYW5zZmVyX2FuZF9leGVjdXRlLnB5JywnZXhlYycpKQ=='\"'\"'),\"owned-operation\",\"exec\"))'; exec bash"
+        ],
+        "cwd": "/home/uwb_student00"
+      },
+      {
+        "pid": 7828,
+        "start_ticks": "19153",
+        "exe": "/usr/bin/tmux",
+        "argv": [
+          "tmux",
+          "new-session",
+          "-d",
+          "-s",
+          "ia840f_goal_preflight",
+          "bash --noprofile --norc"
+        ],
+        "cwd": "/home/uwb_student00"
+      }
+    ]
+  ],
+  "rejection_counts": {
+    "IA840F_GATE_REJECTED": 0,
+    "IA840F NOT READY": 0,
+    "IA840F EXPERIMENTAL GATE:": 0,
+    "Critical Warning (125091)": 0
+  },
+  "status": {
+    "state": "running",
+    "started": "2026-09-19T07:14:14.987357+00:00",
+    "runner_pid": 151868,
+    "argv": [
+      "./ofs-common/scripts/common/syn/build_top.sh",
+      "--stage=compile",
+      "-k",
+      "-p",
+      "ia840f",
+      "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_11"
+    ],
+    "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach",
+    "authorization_sha256": "c8efbbfc0c850b95ffe21746b123717f388bfece3c0d822bd3754f182d838213",
+    "ready_for_build": false,
+    "accepted_execution": true,
+    "ddr_simulation": "SKIPPED BY USER",
+    "functional_acceptance": false,
+    "native_pid": 151870
+  }
+}

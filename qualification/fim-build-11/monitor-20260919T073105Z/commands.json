@@ -1,0 +1,12 @@
+[
+  [
+    "ssh",
+    "uwb_student00@100.101.227.97",
+    "tmux load-buffer -b monitor-20260919T073105Z-script -"
+  ],
+  [
+    "ssh",
+    "uwb_student00@100.101.227.97",
+    "tmux new-window -d -P -F '#{window_id} #{pane_id}' -t ia840f_mailbox_monitored_01 -n monitor-20260919T073105Z 'python3 -c '\"'\"'import subprocess;exec(compile(subprocess.check_output([\"tmux\",\"save-buffer\",\"-b\",\"monitor-20260919T073105Z-script\",\"-\"]),\"monitor-transport\",\"exec\"))'\"'\"'; exec bash'"
+  ]
+]

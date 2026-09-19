@@ -1,0 +1,284 @@
+{
+  "observed_utc": "2026-09-19T04:08:34.450402+00:00",
+  "files": {
+    "run/status.json": {
+      "sha256": "79dd1696a0ff70cb965e865f016f9a0e7056cee0c5ce08eb866861542b2628ec",
+      "text": "{\n  \"state\": \"running\",\n  \"started\": \"2026-09-19T04:06:34.229375+00:00\",\n  \"runner_pid\": 124991,\n  \"argv\": [\n    \"./ofs-common/scripts/common/syn/build_top.sh\",\n    \"--stage=compile\",\n    \"-k\",\n    \"-p\",\n    \"ia840f\",\n    \"/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09\"\n  ],\n  \"cwd\": \"/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach\",\n  \"authorization_sha256\": \"e6cf0894d44051d3dd7a74fde02036350f560764ebcb75df2ad255edb911c4f0\",\n  \"ready_for_build\": false,\n  \"accepted_execution\": true,\n  \"ddr_simulation\": \"SKIPPED BY USER\",\n  \"functional_acceptance\": false,\n  \"native_pid\": 125051\n}"
+    },
+    "run/invocation.json": {
+      "sha256": "17462af144671487207247ea19307df3f61716ca7a760c5568bdd150375461f7",
+      "text": "{\n  \"state\": \"starting\",\n  \"started\": \"2026-09-19T04:06:34.229375+00:00\",\n  \"runner_pid\": 124991,\n  \"argv\": [\n    \"./ofs-common/scripts/common/syn/build_top.sh\",\n    \"--stage=compile\",\n    \"-k\",\n    \"-p\",\n    \"ia840f\",\n    \"/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09\"\n  ],\n  \"cwd\": \"/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach\",\n  \"authorization_sha256\": \"e6cf0894d44051d3dd7a74fde02036350f560764ebcb75df2ad255edb911c4f0\",\n  \"ready_for_build\": false,\n  \"accepted_execution\": true,\n  \"ddr_simulation\": \"SKIPPED BY USER\",\n  \"functional_acceptance\": false,\n  \"environment\": {\n    \"OFS_ROOTDIR\": \"/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach\",\n    \"OFS_PLATFORM_AFU_BBB\": \"/home/uwb_student00/ahls/new_BSP/ofs-platform-afu-bbb\",\n    \"QUARTUS_ROOTDIR_OVERRIDE\": \"/opt/altera/26.1.1/quartus\",\n    \"PATH\": \"/opt/altera/26.1.1/quartus/bin:/opt/altera/26.1.1/quartus/sopc_builder/bin:/usr/local/bin:/usr/bin:/bin\",\n    \"LM_LICENSE_FILE\": \"/home/uwb_student00/quartus_26/LR-191011_License.dat\",\n    \"MGLS_LICENSE_FILE\": \"/home/uwb_student00/quartus_26/LR-191011_License.dat\",\n    \"SALT_LICENSE_SERVER\": \"/home/uwb_student00/quartus_26/LR-191011_License.dat\"\n  }\n}"
+    },
+    "native-compile.claim.json": {
+      "sha256": "9b4910b610abae715b1fb9d4070262891c80583157089bd7d07b36272823d9f9",
+      "text": "{\"record_sha256\": \"e6cf0894d44051d3dd7a74fde02036350f560764ebcb75df2ad255edb911c4f0\", \"pid\": 125051, \"start_time\": \"7882108\"}"
+    },
+    "consumed-reviews.json": {
+      "sha256": "92459e2453278a600c681a904b429563f2bcdeff328c2b6588fffbdaf0888162",
+      "text": "{\n  \"timing_review\": {\n    \"accepted\": true,\n    \"files\": {\n      \"src/board/ia840f/top.sv\": \"6061a38dd44ed4ae935f3b0ee89a664139205446b94a441ea384e921b7be0a9d\",\n      \"syn/board/ia840f/setup/top_loc.tcl\": \"07a08b895a30f12c9553647073ec6a8d7243f2ca92ce70fd0b1ae5bd698a5be2\",\n      \"syn/board/ia840f/syn_top/ofs_top_sources.tcl\": \"2056aeb757e8e27eff0aa2589f6e997a52595b095ca18802ecad1819665ba2aa\",\n      \"syn/board/ia840f/setup/bti_refclk.sdc\": \"01b76a80f664c4ec0bf553874c68c7f71878642f205080e29727e50ce71c3cac\",\n      \"syn/board/ia840f/syn_top/ofs_top.qsf\": \"ea5b7bfd3f1d5f35092afe7db1a0497033ed8d08d85b5fa82d4c8d7a16a243c3\"\n    }\n  },\n  \"gate_review\": {\n    \"accepted\": true,\n    \"files\": {\n      \"ofs-common/tools/ofss_config/ia840f_experimental_gate.py\": \"4d552ad4aca740501e29578608a4d023acc930e607eb4600d2f60da951ef8b0b\",\n      \"ofs-common/tools/ofss_config/ia840f_compile_gate.py\": \"fa62f29c9d4beab38bf8566f4b2ab4518deb50a56e1afdcb768b298a059610b6\",\n      \"ofs-common/tools/ofss_config/test_ia840f_compile_gate.py\": \"d53dd05b86fbb93393033b6aef170e31ab7fbd517a0fb00259ffc603268e26e2\",\n      \"ofs-common/scripts/common/syn/build_fim_compile.sh\": \"0514c9be94702a7ec87e16d6e90d844e37a48d097aecc73a0a731331650c7c07\"\n    }\n  },\n  \"handoff_files\": {\n    \"issue_authorization.py\": \"83c1fd4a165e9842e7b8c5d83548bd01378ae6c89411984ad5c3969fb9af7495\",\n    \"launch_native_compile.py\": \"205f0f407fcc5ac166b45c9e5a5da6aa468a254bf693027286b36027b98421c7\",\n    \"compile-authorization.draft.json\": \"1beb87ed2dbab43412b8e4bd94da5d06364341ee4deb89bb3587b03808b3cb66\"\n  },\n  \"review_provenance\": {\n    \"spec-review.md\": {\n      \"sha256\": \"825d42e51054b050794f69959da8db047daf6dfce6ff08c409d6163f95b6e462\",\n      \"local_path\": \"/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim-build-09/spec-review.md\",\n      \"remote_path\": \"/home/uwb_student00/ahls/new_BSP/qualification/fim-build-09/spec-review.md\"\n    },\n    \"quality-review.md\": {\n      \"sha256\": \"779da8ec91d2935139b012607821dbef79826435b282aaebd456c494e4e24b1d\",\n      \"local_path\": \"/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim-build-09/quality-review.md\",\n      \"remote_path\": \"/home/uwb_student00/ahls/new_BSP/qualification/fim-build-09/quality-review.md\"\n    }\n  },\n  \"parent_disposition\": {\n    \"accepted_for\": \"experimental execution only\",\n    \"explicit_parent_acceptance\": true,\n    \"ready_for_build\": false,\n    \"timing_accepted\": false,\n    \"functional_acceptance\": false,\n    \"open_gaps\": [\n      \"S1/TRS fitted-resource and exception applicability\",\n      \"physically fitted unconstrained PCIe divider\",\n      \"BMC IRQ/JTAG timing policy\",\n      \"other inherited constraint completeness\"\n    ],\n    \"historical_correction\": \"fim-build-08/timing-review-01/REPORT.md exists; previous absence claim is incorrect\"\n  },\n  \"recorded_utc\": \"2026-09-19T04:05:35.554165+00:00\"\n}\n"
+    },
+    "issuance.log": {
+      "sha256": "4fd9860821b56238850b3a87b464b9359c4774a61b78c8fecb2cf8e9cbb5259f",
+      "text": "AUTHORIZATION ISSUED; NOT STARTED e6cf0894d44051d3dd7a74fde02036350f560764ebcb75df2ad255edb911c4f0\n"
+    },
+    "runner-console.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "text": ""
+    }
+  },
+  "authorization_sha256": "e6cf0894d44051d3dd7a74fde02036350f560764ebcb75df2ad255edb911c4f0",
+  "authorization_flags": {
+    "approved": true,
+    "accepted_execution": true,
+    "ready_for_build": false,
+    "source_review_consumed": true,
+    "gate_review_consumed": true
+  },
+  "overlay_readback": {
+    "syn/board/ia840f/setup/emif_loc.tcl": {
+      "expected": "a48a84b89fd6c5d5fd36c87cfe5c7d03264f3dea08ea6a447151351a21b523c3",
+      "source": "a48a84b89fd6c5d5fd36c87cfe5c7d03264f3dea08ea6a447151351a21b523c3",
+      "work": "a48a84b89fd6c5d5fd36c87cfe5c7d03264f3dea08ea6a447151351a21b523c3"
+    },
+    "syn/board/ia840f/source_manifest.json": {
+      "expected": "82d5dabdc760bb24128ab0c9a5c96650da2d72f6d16f88f2d0d1780e4e745b0e",
+      "source": "82d5dabdc760bb24128ab0c9a5c96650da2d72f6d16f88f2d0d1780e4e745b0e",
+      "work": "82d5dabdc760bb24128ab0c9a5c96650da2d72f6d16f88f2d0d1780e4e745b0e"
+    },
+    "ofs-common/src/fpga_family/agilex/mem_ss/mem_ss_top.sv": {
+      "expected": "b9b0deb0582d554cb2178ed4ee090c088d9841951b19d1223cd4ca96bd9498a1",
+      "source": "b9b0deb0582d554cb2178ed4ee090c088d9841951b19d1223cd4ca96bd9498a1",
+      "work": "b9b0deb0582d554cb2178ed4ee090c088d9841951b19d1223cd4ca96bd9498a1"
+    },
+    "ofs-common/tools/ofss_config/ia840f_experimental_gate.py": {
+      "expected": "4d552ad4aca740501e29578608a4d023acc930e607eb4600d2f60da951ef8b0b",
+      "source": "4d552ad4aca740501e29578608a4d023acc930e607eb4600d2f60da951ef8b0b",
+      "work": "4d552ad4aca740501e29578608a4d023acc930e607eb4600d2f60da951ef8b0b"
+    },
+    "ofs-common/tools/ofss_config/ia840f_compile_gate.py": {
+      "expected": "fa62f29c9d4beab38bf8566f4b2ab4518deb50a56e1afdcb768b298a059610b6",
+      "source": "fa62f29c9d4beab38bf8566f4b2ab4518deb50a56e1afdcb768b298a059610b6",
+      "work": "fa62f29c9d4beab38bf8566f4b2ab4518deb50a56e1afdcb768b298a059610b6"
+    },
+    "ofs-common/tools/ofss_config/test_ia840f_compile_gate.py": {
+      "expected": "d53dd05b86fbb93393033b6aef170e31ab7fbd517a0fb00259ffc603268e26e2",
+      "source": "d53dd05b86fbb93393033b6aef170e31ab7fbd517a0fb00259ffc603268e26e2",
+      "work": "d53dd05b86fbb93393033b6aef170e31ab7fbd517a0fb00259ffc603268e26e2"
+    },
+    "ofs-common/scripts/common/syn/build_fim_compile.sh": {
+      "expected": "0514c9be94702a7ec87e16d6e90d844e37a48d097aecc73a0a731331650c7c07",
+      "source": "0514c9be94702a7ec87e16d6e90d844e37a48d097aecc73a0a731331650c7c07",
+      "work": "0514c9be94702a7ec87e16d6e90d844e37a48d097aecc73a0a731331650c7c07"
+    },
+    "src/board/ia840f/top.sv": {
+      "expected": "6061a38dd44ed4ae935f3b0ee89a664139205446b94a441ea384e921b7be0a9d",
+      "source": "6061a38dd44ed4ae935f3b0ee89a664139205446b94a441ea384e921b7be0a9d",
+      "work": "6061a38dd44ed4ae935f3b0ee89a664139205446b94a441ea384e921b7be0a9d"
+    },
+    "syn/board/ia840f/setup/top_loc.tcl": {
+      "expected": "07a08b895a30f12c9553647073ec6a8d7243f2ca92ce70fd0b1ae5bd698a5be2",
+      "source": "07a08b895a30f12c9553647073ec6a8d7243f2ca92ce70fd0b1ae5bd698a5be2",
+      "work": "07a08b895a30f12c9553647073ec6a8d7243f2ca92ce70fd0b1ae5bd698a5be2"
+    },
+    "syn/board/ia840f/syn_top/ofs_top_sources.tcl": {
+      "expected": "2056aeb757e8e27eff0aa2589f6e997a52595b095ca18802ecad1819665ba2aa",
+      "source": "2056aeb757e8e27eff0aa2589f6e997a52595b095ca18802ecad1819665ba2aa",
+      "work": "2056aeb757e8e27eff0aa2589f6e997a52595b095ca18802ecad1819665ba2aa"
+    },
+    "syn/board/ia840f/setup/bti_refclk.sdc": {
+      "expected": "01b76a80f664c4ec0bf553874c68c7f71878642f205080e29727e50ce71c3cac",
+      "source": "01b76a80f664c4ec0bf553874c68c7f71878642f205080e29727e50ce71c3cac",
+      "work": "01b76a80f664c4ec0bf553874c68c7f71878642f205080e29727e50ce71c3cac"
+    },
+    "syn/board/ia840f/syn_top/ofs_top.qsf": {
+      "expected": "ea5b7bfd3f1d5f35092afe7db1a0497033ed8d08d85b5fa82d4c8d7a16a243c3",
+      "source": "ea5b7bfd3f1d5f35092afe7db1a0497033ed8d08d85b5fa82d4c8d7a16a243c3",
+      "work": "b1463f13ef59157920550c3f654a181993571d02856a980f08ef1d8777648cff"
+    }
+  },
+  "overlay_matches_after_native_start": false,
+  "changed_overlay_files": [
+    "ofs-common/tools/ofss_config/ia840f_experimental_gate.py",
+    "ofs-common/tools/ofss_config/ia840f_compile_gate.py",
+    "syn/board/ia840f/syn_top/ofs_top.qsf"
+  ],
+  "qsf_optimization": [
+    "set_global_assignment -name OPTIMIZATION_MODE \"SUPERIOR PERFORMANCE WITH MAXIMUM PLACEMENT EFFORT\""
+  ],
+  "processes": [
+    {
+      "pid": 124991,
+      "ppid": 124248,
+      "start_ticks": "7881963",
+      "argv": [
+        "python3",
+        "launch_native_compile.py"
+      ],
+      "exe": "/usr/bin/python3.9",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-09"
+    },
+    {
+      "pid": 125051,
+      "ppid": 124991,
+      "start_ticks": "7882108",
+      "argv": [
+        "/bin/bash",
+        "./ofs-common/scripts/common/syn/build_top.sh",
+        "--stage=compile",
+        "-k",
+        "-p",
+        "ia840f",
+        "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09"
+      ],
+      "exe": "/usr/bin/bash",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach"
+    },
+    {
+      "pid": 125059,
+      "ppid": 125051,
+      "start_ticks": "7882241",
+      "argv": [
+        "/bin/bash",
+        "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/build_fim_compile.sh",
+        "ia840f",
+        "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09"
+      ],
+      "exe": "/usr/bin/bash",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top"
+    },
+    {
+      "pid": 125060,
+      "ppid": 125051,
+      "start_ticks": "7882241",
+      "argv": [
+        "tee",
+        "-a",
+        "-i",
+        "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/build_fim_work_ia840f_fim_09.log"
+      ],
+      "exe": "/usr/bin/tee",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach"
+    },
+    {
+      "pid": 125067,
+      "ppid": 125059,
+      "start_ticks": "7882377",
+      "argv": [
+        "python3",
+        "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/tools/ofss_config/ia840f_experimental_gate.py",
+        "run-native-compile"
+      ],
+      "exe": "/usr/bin/python3.9",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top"
+    },
+    {
+      "pid": 125068,
+      "ppid": 125067,
+      "start_ticks": "7882414",
+      "argv": [
+        "quartus_sh",
+        "--flow",
+        "compile",
+        "ofs_top",
+        "-c",
+        "ofs_top"
+      ],
+      "exe": "/opt/altera/26.1.1/quartus/linux64/quartus_sh",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top"
+    },
+    {
+      "pid": 125101,
+      "ppid": 125068,
+      "start_ticks": "7883313",
+      "argv": [
+        "quartus_syn",
+        "--ipc_flow=17",
+        "--ipc_mode",
+        "--read_settings_files=on",
+        "--write_settings_files=off",
+        "ofs_top",
+        "-c",
+        "ofs_top"
+      ],
+      "exe": "/opt/altera/26.1.1/quartus/linux64/quartus_syn",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top"
+    }
+  ],
+  "native_log_bytes": 2101358,
+  "native_log_tail": [
+    "Warning (13469): Verilog HDL assignment warning at mode_lpbk.sv(313): truncated value with size 32 to match size of target (5) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_lpbk.sv Line: 313",
+    "Warning (13469): Verilog HDL assignment warning at mode_lpbk.sv(329): truncated value with size 8 to match size of target (7) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_lpbk.sv Line: 329",
+    "Warning (13469): Verilog HDL assignment warning at mode_lpbk.sv(345): truncated value with size 32 to match size of target (8) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_lpbk.sv Line: 345",
+    "Warning (13469): Verilog HDL assignment warning at mode_lpbk.sv(386): truncated value with size 32 to match size of target (16) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_lpbk.sv Line: 386",
+    "Warning (13469): Verilog HDL assignment warning at mode_lpbk.sv(387): truncated value with size 17 to match size of target (16) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_lpbk.sv Line: 387",
+    "Warning (13469): Verilog HDL assignment warning at mode_lpbk.sv(416): truncated value with size 32 to match size of target (8) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_lpbk.sv Line: 416",
+    "Warning (13469): Verilog HDL assignment warning at mode_lpbk.sv(506): truncated value with size 32 to match size of target (5) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_lpbk.sv Line: 506",
+    "Warning (13469): Verilog HDL assignment warning at mode_lpbk.sv(508): truncated value with size 64 to match size of target (51) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_lpbk.sv Line: 508",
+    "Warning (13469): Verilog HDL assignment warning at mode_lpbk.sv(568): truncated value with size 32 to match size of target (8) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_lpbk.sv Line: 568",
+    "Warning (13469): Verilog HDL assignment warning at mode_atomic.sv(79): truncated value with size 32 to match size of target (5) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_atomic.sv Line: 79",
+    "Warning (13469): Verilog HDL assignment warning at mode_atomic.sv(81): truncated value with size 64 to match size of target (51) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_atomic.sv Line: 81",
+    "Warning (13469): Verilog HDL assignment warning at mode_atomic.sv(100): truncated value with size 7 to match size of target (6) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_atomic.sv Line: 100",
+    "Warning (13469): Verilog HDL assignment warning at mode_atomic.sv(131): truncated value with size 32 to match size of target (8) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_atomic.sv Line: 131",
+    "Warning (13469): Verilog HDL assignment warning at mode_atomic.sv(193): truncated value with size 64 to match size of target (51) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_atomic.sv Line: 193",
+    "Warning (13469): Verilog HDL assignment warning at mode_atomic.sv(206): truncated value with size 64 to match size of target (51) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_atomic.sv Line: 206",
+    "Warning (13469): Verilog HDL assignment warning at mode_atomic.sv(223): truncated value with size 11 to match size of target (10) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_atomic.sv Line: 223",
+    "Warning (13469): Verilog HDL assignment warning at mode_atomic.sv(226): truncated value with size 7 to match size of target (6) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_atomic.sv Line: 226",
+    "Warning (13469): Verilog HDL assignment warning at mode_atomic.sv(237): truncated value with size 11 to match size of target (10) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_atomic.sv Line: 237",
+    "Warning (13469): Verilog HDL assignment warning at mode_rdwr.sv(96): truncated value with size 32 to match size of target (5) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_rdwr.sv Line: 96",
+    "Warning (13469): Verilog HDL assignment warning at mode_rdwr.sv(99): truncated value with size 64 to match size of target (28) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_rdwr.sv Line: 99",
+    "Warning (13469): Verilog HDL assignment warning at mode_rdwr.sv(124): truncated value with size 8 to match size of target (7) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_rdwr.sv Line: 124",
+    "Warning (13469): Verilog HDL assignment warning at mode_rdwr.sv(155): truncated value with size 32 to match size of target (8) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_rdwr.sv Line: 155",
+    "Warning (13469): Verilog HDL assignment warning at mode_rdwr.sv(199): truncated value with size 32 to match size of target (5) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_rdwr.sv Line: 199",
+    "Warning (13469): Verilog HDL assignment warning at mode_rdwr.sv(200): truncated value with size 32 to match size of target (5) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_rdwr.sv Line: 200",
+    "Warning (13469): Verilog HDL assignment warning at mode_rdwr.sv(203): truncated value with size 64 to match size of target (28) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_rdwr.sv Line: 203",
+    "Warning (13469): Verilog HDL assignment warning at mode_rdwr.sv(229): truncated value with size 8 to match size of target (7) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_rdwr.sv Line: 229",
+    "Warning (13469): Verilog HDL assignment warning at mode_rdwr.sv(270): truncated value with size 32 to match size of target (8) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_rdwr.sv Line: 270",
+    "Warning (13469): Verilog HDL assignment warning at mode_rdwr.sv(287): truncated value with size 32 to match size of target (7) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_rdwr.sv Line: 287",
+    "Warning (13469): Verilog HDL assignment warning at mode_rdwr.sv(295): truncated value with size 6 to match size of target (5) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/mode_rdwr.sv Line: 295",
+    "Warning (13469): Verilog HDL assignment warning at he_lb_engines.sv(288): truncated value with size 70 to match size of target (57) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/he_lb_engines.sv Line: 288",
+    "Warning (13469): Verilog HDL assignment warning at he_lb_engines.sv(327): truncated value with size 21 to match size of target (20) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/he_lb_engines.sv Line: 327",
+    "Warning (13469): Verilog HDL assignment warning at he_lb_engines.sv(330): truncated value with size 21 to match size of target (20) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/he_lb_engines.sv Line: 330",
+    "Warning (13469): Verilog HDL assignment warning at he_lb_engines.sv(346): truncated value with size 16 to match size of target (15) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/he_lb_engines.sv Line: 346",
+    "Warning (13469): Verilog HDL assignment warning at he_lb_engines.sv(484): truncated value with size 32 to match size of target (16) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/he_lb_engines.sv Line: 484",
+    "Warning (13469): Verilog HDL assignment warning at he_lb_engines.sv(485): truncated value with size 17 to match size of target (16) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/he_lb_engines.sv Line: 485",
+    "Warning (13469): Verilog HDL assignment warning at he_lb_engines.sv(491): truncated value with size 32 to match size of target (16) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/he_lb_engines.sv Line: 491",
+    "Warning (13469): Verilog HDL assignment warning at he_lb_engines.sv(492): truncated value with size 17 to match size of target (16) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/he_lb_engines.sv Line: 492",
+    "Warning (13469): Verilog HDL assignment warning at he_lb_engines.sv(499): truncated value with size 32 to match size of target (16) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/he_lb_engines.sv Line: 499",
+    "Warning (13469): Verilog HDL assignment warning at he_lb_engines.sv(500): truncated value with size 17 to match size of target (16) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/he_lb_engines.sv Line: 500",
+    "Warning (13469): Verilog HDL assignment warning at he_lb_engines.sv(506): truncated value with size 32 to match size of target (16) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/he_lb_engines.sv Line: 506",
+    "Warning (13469): Verilog HDL assignment warning at he_lb_engines.sv(507): truncated value with size 17 to match size of target (16) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/he_lb_engines.sv Line: 507",
+    "Warning (16788): Net \"eng_done[3]\" does not have a driver at he_lb_engines.sv(84) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/he_lb_engines.sv Line: 84",
+    "Warning (16788): Net \"host_mem[2].aw.id[7]\" does not have a driver at he_lb_engines.sv(93) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/he_lb/he_lb_engines.sv Line: 93",
+    "Warning (16788): Net \"afu_ext_mem_if[1].awvalid\" does not have a driver at port_afu_instances.sv(193) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/fpga_family/agilex/port_gasket/afu_main_std_exerciser/fim_compile/port_afu_instances.sv Line: 193",
+    "Info (19337): VHDL info at sld_jtag_endpoint_adapter.vhd(96): executing entity \"sld_jtag_endpoint_adapter(sld_ir_width=1,sld_auto_instance_index=\"NO\",sld_node_info_internal=4222464)(1,1)(1,2)\" with architecture \"rtl\" File: /opt/altera/26.1.1/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter.vhd Line: 96",
+    "Info (19337): VHDL info at altera_sld_agent_endpoint.vhd(122): executing entity \"altera_sld_agent_endpoint(mfr_code=110,type_code=8,instance=0,ir_width=1)(1,1)(1,1)(1,1)\" with architecture \"rtl\" File: /opt/altera/26.1.1/quartus/libraries/megafunctions/altera_sld_agent_endpoint.vhd Line: 122",
+    "Info (19337): VHDL info at altera_fabric_endpoint.vhd(126): executing entity \"altera_fabric_endpoint(send_width=3,receive_width=24,settings=\"{fabric sld dir agent mfr_code 110 type_code 8 version 0 instance 0 ir_width 1 bridge_agent 0 prefer_host { } type_name {0} instance_name {0} psig 9b67919e}\")(1,156)\" with architecture \"rtl\" File: /opt/altera/26.1.1/quartus/libraries/megafunctions/altera_fabric_endpoint.vhd Line: 126",
+    "Info (19337): VHDL info at altera_sld_host_endpoint.vhd(122): executing entity \"altera_sld_host_endpoint(control=\"hubctrl\",name=\"soft_jtag\",host_priority=200,use_tck_ena=1)(1,7)(1,9)(1,1)(1,1)\" with architecture \"rtl\" File: /opt/altera/26.1.1/quartus/libraries/megafunctions/altera_sld_host_endpoint.vhd Line: 122",
+    "Info (19337): VHDL info at altera_fabric_endpoint.vhd(126): executing entity \"altera_fabric_endpoint(receive_width=1,num_clocks=1,settings=\"{fabric sld dir host enable_jtag_io_selection 0 control {hubctrl} name {soft_jtag} host_priority 200 bridge_host 0 use_tck_ena 1 negedge_tdo_latch 0 type_name {0} instance_name {0} cltap_connection 0 clock_rate_clock 0 psig 5850bc6d}\")(1,233)\" with architecture \"rtl\" File: /opt/altera/26.1.1/quartus/libraries/megafunctions/altera_fabric_endpoint.vhd Line: 126",
+    "Info (19337): VHDL info at altera_debug_config_reset_release_endpoint.vhd(122): executing entity \"altera_debug_config_reset_release_endpoint(is_source=1)(1,1)(1,1)\" with architecture \"rtl\" File: /opt/altera/26.1.1/quartus/libraries/megafunctions/altera_debug_config_reset_release_endpoint.vhd Line: 122",
+    "Info (19337): VHDL info at altera_fabric_endpoint.vhd(126): executing entity \"altera_fabric_endpoint(send_width=1,receive_width=0,settings=\"{fabric config_reset_release dir agent is_source 1 type_name {0} instance_name {0} psig b8c6ebcb}\")(1,97)\" with architecture \"rtl\" File: /opt/altera/26.1.1/quartus/libraries/megafunctions/altera_fabric_endpoint.vhd Line: 126",
+    "Info (22567): Verilog HDL info at shift.sv(20): extracting RAM for identifier 'shift_register' File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/fpga_family/agilex/user_clock/qph_user_clk_iopll_reconfig/altera_iopll_reconfig_1940/synth/shift.sv Line: 20",
+    "Warning (16788): Net \"csr_reg[7][23][63]\" does not have a driver at pg_csr.sv(69) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/port_gasket/pg_csr.sv Line: 69",
+    "Warning (13469): Verilog HDL assignment warning at port_reset_fsm.sv(176): truncated value with size 2 to match size of target (1) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/port_gasket/port_reset_fsm.sv Line: 176",
+    "Warning (13469): Verilog HDL assignment warning at axi_lite2mmio.sv(36): truncated value with size 21 to match size of target (17) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/lib/bridges/axi_lite2mmio.sv Line: 36",
+    "Warning (13469): Verilog HDL assignment warning at axi_lite2mmio.sv(67): truncated value with size 21 to match size of target (17) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/common/lib/bridges/axi_lite2mmio.sv Line: 67",
+    "Warning (16788): Net \"int_mgmt_valid\" does not have a driver at intel_st_dbg_if_top.sv(636) File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/fpga_family/agilex/remote_stp/ip/remote_debug_jtag_only/jop_blaster/intel_st_dbg_if_206/synth/intel_st_dbg_if_top.sv Line: 636",
+    "Info (22567): Verilog HDL info at jop_blaster_altera_avalon_sc_fifo_1932_onpcouq.v(127): extracting RAM for identifier 'infer_mem' File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/fpga_family/agilex/remote_stp/ip/remote_debug_jtag_only/jop_blaster/altera_avalon_sc_fifo_1932/synth/jop_blaster_altera_avalon_sc_fifo_1932_onpcouq.v Line: 127",
+    "Info (22567): Verilog HDL info at jop_blaster_altera_avalon_sc_fifo_1932_onpcouq.v(127): extracting RAM for identifier 'infer_mem' File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/fpga_family/agilex/remote_stp/ip/remote_debug_jtag_only/jop_blaster/altera_avalon_sc_fifo_1932/synth/jop_blaster_altera_avalon_sc_fifo_1932_onpcouq.v Line: 127",
+    "Info (22567): Verilog HDL info at jop_blaster_altera_merlin_width_adapter_1970_s47bt7a.sv(445): extracting RAM for identifier 'data_array' File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/fpga_family/agilex/remote_stp/ip/remote_debug_jtag_only/jop_blaster/altera_merlin_width_adapter_1970/synth/jop_blaster_altera_merlin_width_adapter_1970_s47bt7a.sv Line: 445",
+    "Info (22567): Verilog HDL info at jop_blaster_altera_merlin_width_adapter_1970_s47bt7a.sv(449): extracting RAM for identifier 'user_data_array' File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/fpga_family/agilex/remote_stp/ip/remote_debug_jtag_only/jop_blaster/altera_merlin_width_adapter_1970/synth/jop_blaster_altera_merlin_width_adapter_1970_s47bt7a.sv Line: 449",
+    "Info (22567): Verilog HDL info at jop_blaster_altera_merlin_width_adapter_1970_s47bt7a.sv(450): extracting RAM for identifier 'byteen_array' File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/fpga_family/agilex/remote_stp/ip/remote_debug_jtag_only/jop_blaster/altera_merlin_width_adapter_1970/synth/jop_blaster_altera_merlin_width_adapter_1970_s47bt7a.sv Line: 450",
+    "Info (22567): Verilog HDL info at jop_blaster_altera_merlin_width_adapter_1970_rywsvbq.sv(445): extracting RAM for identifier 'data_array' File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/fpga_family/agilex/remote_stp/ip/remote_debug_jtag_only/jop_blaster/altera_merlin_width_adapter_1970/synth/jop_blaster_altera_merlin_width_adapter_1970_rywsvbq.sv Line: 445",
+    "Info (22567): Verilog HDL info at jop_blaster_altera_merlin_width_adapter_1970_rywsvbq.sv(449): extracting RAM for identifier 'user_data_array' File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/fpga_family/agilex/remote_stp/ip/remote_debug_jtag_only/jop_blaster/altera_merlin_width_adapter_1970/synth/jop_blaster_altera_merlin_width_adapter_1970_rywsvbq.sv Line: 449",
+    "Info (22567): Verilog HDL info at jop_blaster_altera_merlin_width_adapter_1970_rywsvbq.sv(450): extracting RAM for identifier 'byteen_array' File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/fpga_family/agilex/remote_stp/ip/remote_debug_jtag_only/jop_blaster/altera_merlin_width_adapter_1970/synth/jop_blaster_altera_merlin_width_adapter_1970_rywsvbq.sv Line: 450",
+    "Info (22567): Verilog HDL info at remote_debug_jtag_only_altera_avalon_sc_fifo_1932_22gxxgi.v(127): extracting RAM for identifier 'infer_mem' File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/fpga_family/agilex/remote_stp/remote_debug_jtag_only/altera_avalon_sc_fifo_1932/synth/remote_debug_jtag_only_altera_avalon_sc_fifo_1932_22gxxgi.v Line: 127",
+    "Info (22567): Verilog HDL info at remote_debug_jtag_only_altera_avalon_sc_fifo_1932_22gxxgi.v(127): extracting RAM for identifier 'infer_mem' File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/ofs-common/src/fpga_family/agilex/remote_stp/remote_debug_jtag_only/altera_avalon_sc_fifo_1932/synth/remote_debug_jtag_only_altera_avalon_sc_fifo_1932_22gxxgi.v Line: 127",
+    "Info (19337): VHDL info at altera_config_stream_endpoint.vhd(122): executing entity \"altera_config_stream_endpoint(has_stream=2,stream_width=32)(1,1)(1,1)\" with architecture \"rtl\" File: /opt/altera/26.1.1/quartus/libraries/megafunctions/altera_config_stream_endpoint.vhd Line: 122",
+    "Info (19337): VHDL info at altera_fabric_endpoint.vhd(126): executing entity \"altera_fabric_endpoint(send_width=71,receive_width=38,num_clocks=1,settings=\"{fabric mailbox dir agent ready_latency 0 has_urgent 0 has_status 0 has_stream 2 max_size 256 stream_width 32 type_name {0} instance_name {0} clock_rate_clk 0 psig 9cc8a0fb}\")(1,173)\" with architecture \"rtl\" File: /opt/altera/26.1.1/quartus/libraries/megafunctions/altera_fabric_endpoint.vhd Line: 126",
+    "Info (22567): Verilog HDL info at apf_altera_avalon_sc_fifo_1932_onpcouq.v(127): extracting RAM for identifier 'infer_mem' File: /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/src/pd_qsys/fabric/apf/alter"
+  ],
+  "diagnostics": [],
+  "ready_for_build": false,
+  "timing_accepted": false,
+  "functional_acceptance": false
+}

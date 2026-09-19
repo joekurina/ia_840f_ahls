@@ -1,0 +1,25 @@
+--- reviewed QSF
++++ native WORK QSF
+@@ -24,7 +24,6 @@
+ ############################################################################################
+ set_global_assignment -name TOP_LEVEL_ENTITY top
+ set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+-set_global_assignment -name OPTIMIZATION_MODE "SUPERIOR PERFORMANCE WITH MAXIMUM PLACEMENT EFFORT"
+ set_global_assignment -name OPTIMIZATION_TECHNIQUE SPEED
+ set_global_assignment -name OPTIMIZE_POWER_DURING_SYNTHESIS OFF
+ set_global_assignment -name OPTIMIZE_POWER_DURING_FITTING OFF
+@@ -37,7 +36,7 @@
+ set_global_assignment -name REMOVE_DUPLICATE_REGISTERS OFF -to rst_n_sys_mem
+ set_global_assignment -name REMOVE_DUPLICATE_REGISTERS OFF -to rst_n_sys_pcie
+ 
+-set_global_assignment -name LAST_QUARTUS_VERSION "22.3.0 SP0.31,0.35 Pro Edition"
++set_global_assignment -name LAST_QUARTUS_VERSION "26.1.1 Pro Edition"
+ 
+ set_global_assignment -name FLOW_DISABLE_ASSEMBLER OFF
+ set_global_assignment -name FLOW_ENABLE_INTERACTIVE_TIMING_ANALYZER OFF
+@@ -126,3 +125,5 @@
+ # VAB Assignments 
+ ############################################################################################
+ set_global_assignment -name ENABLE_MULTI_AUTHORITY ON
++set_global_assignment -name OPTIMIZATION_MODE "HIGH PERFORMANCE EFFORT" -comment "Use High Performance Effort optimization mode when optimizing for performance. Superior Performance with Maximum Placement Effort optimization mode has been deprecated and will be removed in 27.1.1."
++set_global_assignment -name GLOBAL_PLACEMENT_EFFORT "MAXIMUM EFFORT"

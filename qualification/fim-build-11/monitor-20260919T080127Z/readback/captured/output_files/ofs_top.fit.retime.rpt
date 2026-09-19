@@ -1,0 +1,590 @@
+Fitter Retime Stage Report for ofs_top
+Sat Sep 19 00:58:14 2026
+Quartus Prime Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Hyper-Retimer Settings
+  3. Reset Sequence Requirement
+  4. Retiming Limit Summary
+  5. Critical Chain Summary for Clock Domain local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk
+  6. Critical Chain Summary for Clock Domain local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk
+  7. Clock Domain sys_pll|iopll_0_clk_sys (Meets timing requirements: No further analysis performed.)
+  8. Clock Domain pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15 (Meets timing requirements: No further analysis performed.)
+  9. Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0 (Meets timing requirements: No further analysis performed.)
+ 10. Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_0 (Meets timing requirements: No further analysis performed.)
+ 11. Clock Domain afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_outclk1 (Meets timing requirements: No further analysis performed.)
+ 12. Clock Domain afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_outclk0 (Meets timing requirements: No further analysis performed.)
+ 13. Clock Domain sys_pll|iopll_0_clk_100m (Meets timing requirements: No further analysis performed.)
+ 14. Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0 to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk (Meets timing requirements: No further analysis performed.)
+ 15. Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_0 to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk (Meets timing requirements: No further analysis performed.)
+ 16. Clock Domain altera_int_osc_clk (Meets timing requirements: No further analysis performed.)
+ 17. Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_0 (Meets timing requirements: No further analysis performed.)
+ 18. Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_0 (Meets timing requirements: No further analysis performed.)
+ 19. Clock Domain sys_pll|iopll_0_clk_sys_div2 (Meets timing requirements: No further analysis performed.)
+ 20. Clock Domain sys_pll|iopll_0_clk_sys_div4 (Meets timing requirements: No further analysis performed.)
+ 21. Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_0 to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk (Meets timing requirements: No further analysis performed.)
+ 22. Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_0 to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk (Meets timing requirements: No further analysis performed.)
+ 23. Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk (Meets timing requirements: No further analysis performed.)
+ 24. Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk (Meets timing requirements: No further analysis performed.)
+ 25. Clock Domain local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock (Meets timing requirements: No further analysis performed.)
+ 26. Clock Domain altera_reserved_tck (Meets timing requirements: No further analysis performed.)
+ 27. Transfer from sys_pll|iopll_0_clk_100m to altera_int_osc_clk (Meets timing requirements: No further analysis performed.)
+ 28. Clock Domain bwbmc_fpga_max_sclk (Meets timing requirements: No further analysis performed.)
+ 29. Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock (Meets timing requirements: No further analysis performed.)
+ 30. Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock (Meets timing requirements: No further analysis performed.)
+ 31. Transfer from altera_int_osc_clk to sys_pll|iopll_0_clk_100m (Meets timing requirements: No further analysis performed.)
+ 32. Hyper-Retimer INI Usage
+ 33. Retime Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2026  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++--------------------------------------------------+
+; Hyper-Retimer Settings                           ;
++------------------------+---------+---------------+
+; Option                 ; Setting ; Default Value ;
++------------------------+---------+---------------+
+; Enable Auto-Pipelining ; On      ; On            ;
++------------------------+---------+---------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Reset Sequence Requirement                                                                                                                                                    ;
++-------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------+
+; Clock Name                                                                                                                                      ; Number of additional cycles ;
++-------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------+
+; sys_pll|iopll_0_refclk                                                                                                                          ; 0                           ;
+; sys_pll|iopll_0_n_cnt_clk                                                                                                                       ; 0                           ;
+; sys_pll|iopll_0_m_cnt_clk                                                                                                                       ; 0                           ;
+; sys_pll|iopll_0_clk_sys                                                                                                                         ; 6                           ;
+; sys_pll|iopll_0_clk_100m                                                                                                                        ; 2                           ;
+; sys_pll|iopll_0_clk_sys_div2                                                                                                                    ; 0                           ;
+; sys_pll|iopll_0_clk_sys_div4                                                                                                                    ; 0                           ;
+; afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_n_cnt_clk                                                     ; 0                           ;
+; afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_m_cnt_clk                                                     ; 0                           ;
+; afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_outclk0                                                       ; 0                           ;
+; afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_outclk1                                                       ; 0                           ;
+; pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|rx_pma_parallel_clk|ch15 ; 0                           ;
+; pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|rx_pcs_x2_clk|ch15       ; 0                           ;
+; pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15  ; 4                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_vco_clk                                                                      ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_vco_clk_1                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_vco_clk_2                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk                                                                 ; 3                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_0                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_1                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_2                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_0                                                                  ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_1                                                                  ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_2                                                                  ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_0                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_1                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_2                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_3                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_4                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_5                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_6                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_7                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_8                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_9                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_10                                                                    ; 0                           ;
+; ddr4_mem[0].dqs[0]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[0].dqs[1]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[0].dqs[2]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[0].dqs[3]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[0].dqs[4]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[0].dqs[5]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[0].dqs[6]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[0].dqs[7]_IN                                                                                                                           ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_ref_clock                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_vco_clk                                                                      ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_vco_clk_1                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_vco_clk_2                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk                                                                 ; 3                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_0                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_1                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_2                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0                                                                  ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_1                                                                  ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_2                                                                  ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_0                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_1                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_2                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_3                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_4                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_5                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_6                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_7                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_8                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_9                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_10                                                                    ; 0                           ;
+; ddr4_mem[1].dqs[0]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[1].dqs[1]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[1].dqs[2]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[1].dqs[3]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[1].dqs[4]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[1].dqs[5]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[1].dqs[6]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[1].dqs[7]_IN                                                                                                                           ; 0                           ;
+; PCIE_REFCLK0                                                                                                                                    ; 0                           ;
+; PCIE_REFCLK1                                                                                                                                    ; 0                           ;
+; altera_reserved_tck                                                                                                                             ; 0                           ;
+; qsfp_ref_clk                                                                                                                                    ; 0                           ;
+; bwbmc_fpga_max_sclk                                                                                                                             ; 0                           ;
+; altera_int_osc_clk                                                                                                                              ; 2                           ;
++-------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------+
+Note: Due to retiming optimizations, a clock domain may require a longer reset sequence to ensure correct functionality.  The table above indicates the minimum number of additional reset sequence cycles needed for each clock domain.
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Retiming Limit Summary                                                                                                                                                                                                                                                                                                                                                          ;
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+; Clock Transfer                                                                                                                                                                  ; Limiting Reason                                           ; Recommendation                                                                                                                    ;
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+; Clock Domain local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk                                                                                    ; RTL Loop                                                  ; The critical chain has a RTL loop that restricts retiming.                                                                        ;
+;                                                                                                                                                                                 ;                                                           ;    Reduce the delay of 'Long Paths' in the loop                                                                                   ;
+;                                                                                                                                                                                 ;                                                           ;   or insert more pipeline stages in 'Long Paths' in the loop                                                                      ;
+;                                                                                                                                                                                 ;                                                           ;   or see the Stratix 10 High Performance Design Handbook for information about restructuring RTL loops                            ;
+; Clock Domain local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk                                                                                    ; Insufficient Registers                                    ; See the Fast Forward Timing Closure Recommendations report for step-by-step suggestions for RTL changes and estimated performance ;
+; Clock Domain sys_pll|iopll_0_clk_sys                                                                                                                                            ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Clock Domain pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15                     ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0 ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_0 ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Clock Domain afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_outclk1                                                                          ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Clock Domain afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_outclk0                                                                          ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Clock Domain sys_pll|iopll_0_clk_100m                                                                                                                                           ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0 to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_0 to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Clock Domain altera_int_osc_clk                                                                                                                                                 ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_0   ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_0   ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Clock Domain sys_pll|iopll_0_clk_sys_div2                                                                                                                                       ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Clock Domain sys_pll|iopll_0_clk_sys_div4                                                                                                                                       ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_0 to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk   ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_0 to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk   ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk   ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk   ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Clock Domain local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock                                                                                       ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Clock Domain altera_reserved_tck                                                                                                                                                ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Transfer from sys_pll|iopll_0_clk_100m to altera_int_osc_clk                                                                                                                    ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Clock Domain bwbmc_fpga_max_sclk                                                                                                                                                ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock   ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock   ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
+; Transfer from altera_int_osc_clk to sys_pll|iopll_0_clk_100m                                                                                                                    ; Meets timing requirements: No further analysis performed. ; None                                                                                                                              ;
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+
+
+Critical Chain Summary for Clock Domain local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk
+===============================================================================
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Recommendations for Critical Chain                                                                                                                                                ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Recommendation                                                                                                                                                                    ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; The critical chain is limited by: RTL Loop                                                                                                                                        ;
+;                                                                                                                                                                                   ;
+; The critical chain has a RTL loop that restricts retiming.                                                                                                                        ;
+;    Reduce the delay of 'Long Paths' in the loop                                                                                                                                   ;
+;   or insert more pipeline stages in 'Long Paths' in the loop                                                                                                                      ;
+;   or see the Stratix 10 High Performance Design Handbook for information about restructuring RTL loops                                                                            ;
+;    Refer to <i>Loops</i> in the <a href='https://docs.altera.com/r/docs/683353/current/'>Altera Hyperflex Architecture High-Performance Design Handbook</a> for more information. ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Critical Chain Details                                                                                                                                                                                                                                ;
++----------------------+-------------------------+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Path Info            ; Register                ; Register ID ; Element                                                                                                                                                                                ;
++----------------------+-------------------------+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Long Path (Critical) ; ALM Register            ; #1          ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[1]~SynDup_8                                              ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[1]~SynDup_8|q                                            ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[1]~SynDup_8~_LAB_RE_X260_Y11_N0_I95                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[1]~SynDup_8~_C1_X260_Y10_N0_I5                           ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[1]~SynDup_8~_R0_X260_Y10_N0_I7                           ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[1]~SynDup_8~_LOCAL_INTERCONNECT_X260_Y10_N0_I34          ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[1]~SynDup_8~_BLOCK_INPUT_MUX_PASSTHROUGH_X260_Y10_N0_I29 ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[1]~SynDup_8~_LAB_RE_X260_Y10_N0_I28                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_670~0_RESYN_4|datab                                                              ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_670~0_RESYN_4|combout                                                            ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_670~0_RESYN_4~_LAB_RE_X260_Y10_N0_I137                                           ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_670~0_RESYN_4~_C1_X260_Y9_N0_I13                                                 ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_670~0_RESYN_4~_LOCAL_INTERCONNECT_X260_Y9_N0_I29                                 ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_670~0_RESYN_4~_BLOCK_INPUT_MUX_PASSTHROUGH_X260_Y9_N0_I32                        ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_670~0_RESYN_4~_LAB_RE_X260_Y9_N0_I34                                             ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|i4146|datac                                                                                               ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|i4146|combout                                                                                             ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|i4146~cw_ml_mlab/laboutt[16]                                                                              ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|i4146~LAB_RE_X260_Y9_N0_I105                                                                              ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|i4146~C1_X260_Y9_N0_I16                                                                                   ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|i4146~R2_X259_Y10_N0_I9                                                                                   ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|i4146~R0_X258_Y10_N0_I33                                                                                  ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|i4146~LOCAL_INTERCONNECT_X258_Y10_N0_I78                                                                  ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|i4146~BLOCK_INPUT_MUX_PASSTHROUGH_X258_Y10_N0_I63                                                         ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|i4146~LAB_RE_X258_Y10_N0_I57                                                                              ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|effective_banks_read[0]~xsyn|datad                                                                        ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|effective_banks_read[0]~xsyn|combout                                                                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|effective_banks_read[0]~xsyn~cw_ml_mlab/lab_lut6outb[2]                                                   ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|effective_banks_read[0]~xsyn~_LAB_RE_X258_Y10_N0_I146                                                     ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|effective_banks_read[0]~xsyn~_C1_X258_Y10_N0_I26                                                          ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|effective_banks_read[0]~xsyn~_C1_X258_Y11_N0_I26                                                          ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|effective_banks_read[0]~xsyn~_R2_X259_Y12_N0_I12                                                          ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|effective_banks_read[0]~xsyn~_LOCAL_INTERCONNECT_X260_Y12_N0_I54                                          ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|effective_banks_read[0]~xsyn~_BLOCK_INPUT_MUX_PASSTHROUGH_X260_Y12_N0_I21                                 ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|effective_banks_read[0]~xsyn~_LAB_RE_X260_Y12_N0_I20                                                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_0~0|datab                                                                        ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_0~0|combout                                                                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_0~0~cw_ml_mlab/laboutt[10]                                                       ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_0~0~_LAB_RE_X260_Y12_N0_I99                                                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_0~0~_R0_X260_Y12_N0_I19                                                          ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_0~0~_R0_X260_Y12_N0_I52                                                          ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_0~0~_R0_X260_Y12_N0_I48                                                          ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_0~0~_R2_X259_Y12_N0_I9                                                           ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_0~0~_LOCAL_INTERCONNECT_X258_Y12_N0_I35                                          ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_0~0~_BLOCK_INPUT_MUX_PASSTHROUGH_X258_Y12_N0_I39                                 ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_0~0~_LAB_RE_X258_Y12_N0_I33                                                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_0~4xsyn|datad                                                                    ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_0~4xsyn|combout                                                                  ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_0~4xsyn~cw_ml_mlab/laboutt[16]                                                   ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_0~4xsyn~_LAB_RE_X258_Y12_N0_I105                                                 ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_0~4xsyn~_R0_X258_Y12_N0_I28                                                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_0~4xsyn~_R1_X259_Y12_N0_I26                                                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_0~4xsyn~_LOCAL_INTERCONNECT_X259_Y12_N0_I54                                      ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_0~4xsyn~_BLOCK_INPUT_MUX_PASSTHROUGH_X259_Y12_N0_I58                             ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|Mux_0~4xsyn~_LAB_RE_X259_Y12_N0_I56                                                  ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1404~2|datae                                                                        ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1404~2|combout                                                                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1404~2~cw_la_lab/lab_lut6outb[2]                                                    ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1404~2~_LAB_RE_X259_Y12_N0_I146                                                     ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1404~2~_C1_X259_Y11_N0_I29                                                          ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1404~2~_LOCAL_INTERCONNECT_X259_Y11_N0_I59                                          ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1404~2~_BLOCK_INPUT_MUX_PASSTHROUGH_X259_Y11_N0_I73                                 ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1404~2~_LAB_RE_X259_Y11_N0_I77                                                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1404~2xsyn|datac                                                                    ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1404~2xsyn|combout                                                                  ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1404~2xsyn~cw_la_lab/laboutb[18]                                                    ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1404~2xsyn~_LAB_RE_X259_Y11_N0_I127                                                 ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1404~2xsyn~_R4_X256_Y11_N0_I9                                                       ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1404~2xsyn~_LOCAL_INTERCONNECT_X255_Y11_N0_I79                                      ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1404~2xsyn~_BLOCK_INPUT_MUX_PASSTHROUGH_X255_Y11_N0_I58                             ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1404~2xsyn~_LAB_RE_X255_Y11_N0_I56                                                  ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1478~1|datae                                                                        ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1478~1|combout                                                                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1478~1~cw_ml_mlab/lab_lut6outb[2]                                                   ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1478~1~_LAB_RE_X255_Y11_N0_I146                                                     ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1478~1~_R1_X256_Y11_N0_I28                                                          ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1478~1~_R0_X256_Y11_N0_I48                                                          ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1478~1~_R0_X256_Y11_N0_I30                                                          ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1478~1~_R0_X256_Y11_N0_I13                                                          ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1478~1~_R0_X256_Y11_N0_I66                                                          ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1478~1~_LOCAL_INTERCONNECT_X256_Y11_N0_I72                                          ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1478~1~_BLOCK_INPUT_MUX_PASSTHROUGH_X256_Y11_N0_I60                                 ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1478~1~_LAB_RE_X256_Y11_N0_I59                                                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1378~7xsyn|dataa                                                                    ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1378~7xsyn|combout                                                                  ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1378~7xsyn~cw_la_lab/laboutb[10]                                                    ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1378~7xsyn~_LAB_RE_X256_Y11_N0_I119                                                 ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1378~7xsyn~_R1_X257_Y11_N0_I30                                                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1378~7xsyn~_R1_X258_Y11_N0_I30                                                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1378~7xsyn~_R1_X259_Y11_N0_I30                                                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1378~7xsyn~_R1_X260_Y11_N0_I30                                                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1378~7xsyn~_LOCAL_INTERCONNECT_X260_Y11_N0_I61                                      ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1378~7xsyn~_BLOCK_INPUT_MUX_PASSTHROUGH_X260_Y11_N0_I13                             ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|i1378~7xsyn~_LAB_RE_X260_Y11_N0_I12                                                  ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[1]~SynDup_8|d                                            ;
+; Long Path (Critical) ; ALM Register            ; #1          ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_0|msa_0|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[1]~SynDup_8                                              ;
++----------------------+-------------------------+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
+
+Critical Chain Summary for Clock Domain local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk
+===============================================================================
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Recommendations for Critical Chain                                                                                                                                                                 ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Recommendation                                                                                                                                                                                     ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; The critical chain is limited by: Insufficient Registers                                                                                                                                           ;
+;                                                                                                                                                                                                    ;
+; Reduce the delay of 'Long Paths' in the chain                                                                                                                                                      ;
+;   or insert more pipeline stages for 'Long Paths' in the chain                                                                                                                                     ;
+;   or remove retiming restrictions                                                                                                                                                                  ;
+;    Refer to <i>Insufficient Registers</i> in the <a href='https://docs.altera.com/r/docs/683353/current/'>Altera Hyperflex Architecture High-Performance Design Handbook</a> for more information. ;
+;                                                                                                                                                                                                    ;
+; Retiming Restrictions at Register #1:                                                                                                                                                              ;
+;  local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[0]~SynDup_8                                                         ;
+;   Node uses an asynchronous clear port                                                                                                                                                             ;
+;                                                                                                                                                                                                    ;
+; Retiming Restrictions at Register #2:                                                                                                                                                              ;
+;  local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[0]~SynDup_8RTM                                                      ;
+;   Node uses an asynchronous clear port                                                                                                                                                             ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Critical Chain Details                                                                                                                                                                                                                                     ;
++----------------------+-------------------------+-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Path Info            ; Register                ; Register ID ; Element                                                                                                                                                                                     ;
++----------------------+-------------------------+-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Retiming Restriction ; ALM Register            ; #1          ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[0]~SynDup_8                                                   ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[0]~SynDup_8|q                                                 ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[0]~SynDup_8~_LAB_RE_X181_Y15_N0_I94                           ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[0]~SynDup_8~_R0_X181_Y15_N0_I9                                ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[0]~SynDup_8~_R4_X182_Y15_N0_I9                                ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[0]~SynDup_8~_LOCAL_INTERCONNECT_X185_Y15_N0_I79               ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[0]~SynDup_8~_BLOCK_INPUT_MUX_PASSTHROUGH_X185_Y15_N0_I3       ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[0]~SynDup_8~_LAB_RE_X185_Y15_N0_I7                            ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_670~0_RESYN|dataf                                                                     ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_670~0_RESYN|combout                                                                   ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_670~0_RESYN~_LAB_RE_X185_Y15_N0_I134                                                  ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_670~0_RESYN~_LOCAL_INTERCONNECT_X185_Y15_N0_I5                                        ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_670~0_RESYN~_BLOCK_INPUT_MUX_PASSTHROUGH_X185_Y15_N0_I70                              ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_670~0_RESYN~_LAB_RE_X185_Y15_N0_I70                                                   ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|i5276~0|datad                                                                                                  ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|i5276~0|combout                                                                                                ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|i5276~0~_LAB_RE_X185_Y15_N0_I142                                                                               ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|i5276~0~_LOCAL_INTERCONNECT_X185_Y15_N0_I71                                                                    ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|i5276~0~_BLOCK_INPUT_MUX_PASSTHROUGH_X185_Y15_N0_I35                                                           ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|i5276~0~_LAB_RE_X185_Y15_N0_I39                                                                                ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|cmd_fifo_takes_rdcmd|datae                                                                                     ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|cmd_fifo_takes_rdcmd|combout                                                                                   ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|cmd_fifo_takes_rdcmd~cw_la_lab/laboutt[18]                                                                     ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|cmd_fifo_takes_rdcmd~LAB_RE_X185_Y15_N0_I107                                                                   ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|cmd_fifo_takes_rdcmd~R0_X185_Y15_N0_I33                                                                        ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|cmd_fifo_takes_rdcmd~R1_X186_Y15_N0_I39                                                                        ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|cmd_fifo_takes_rdcmd~LOCAL_INTERCONNECT_X186_Y15_N0_I64                                                        ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|cmd_fifo_takes_rdcmd~BLOCK_INPUT_MUX_PASSTHROUGH_X186_Y15_N0_I66                                               ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|cmd_fifo_takes_rdcmd~LAB_RE_X186_Y15_N0_I64                                                                    ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|effective_banks_read[0]~xsyn|datae                                                                             ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|effective_banks_read[0]~xsyn|combout                                                                           ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|effective_banks_read[0]~xsyn~cw_ml_mlab/laboutb[14]                                                            ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|effective_banks_read[0]~xsyn~_LAB_RE_X186_Y15_N0_I123                                                          ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|effective_banks_read[0]~xsyn~_R4_X183_Y15_N0_I8                                                                ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|effective_banks_read[0]~xsyn~_R0_X182_Y15_N0_I57                                                               ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|effective_banks_read[0]~xsyn~_R0_X182_Y15_N0_I21                                                               ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|effective_banks_read[0]~xsyn~_LOCAL_INTERCONNECT_X182_Y15_N0_I51                                               ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|effective_banks_read[0]~xsyn~_BLOCK_INPUT_MUX_PASSTHROUGH_X182_Y15_N0_I53                                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|effective_banks_read[0]~xsyn~_LAB_RE_X182_Y15_N0_I52                                                           ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_0~0|datab                                                                             ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_0~0|combout                                                                           ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_0~0~cw_ml_mlab/lab_lut5outb[1]                                                        ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_0~0~_LAB_RE_X182_Y15_N0_I140                                                          ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_0~0~_R1_X182_Y15_N0_I26                                                               ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_0~0~_R1_X181_Y15_N0_I26                                                               ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_0~0~_LOCAL_INTERCONNECT_X180_Y15_N0_I46                                               ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_0~0~_BLOCK_INPUT_MUX_PASSTHROUGH_X180_Y15_N0_I57                                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_0~0~_LAB_RE_X180_Y15_N0_I61                                                           ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_0~4xsyn|datac                                                                         ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_0~4xsyn|combout                                                                       ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_0~4xsyn~cw_ml_mlab/laboutb[11]                                                        ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_0~4xsyn~_LAB_RE_X180_Y15_N0_I120                                                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_0~4xsyn~_LOCAL_INTERCONNECT_X180_Y15_N0_I59                                           ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_0~4xsyn~_BLOCK_INPUT_MUX_PASSTHROUGH_X180_Y15_N0_I69                                  ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_0~4xsyn~_LAB_RE_X180_Y15_N0_I68                                                       ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1404~2|datab                                                                             ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1404~2|combout                                                                           ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1404~2~cw_ml_mlab/lab_lut5outb[3]                                                        ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1404~2~_LAB_RE_X180_Y15_N0_I142                                                          ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1404~2~_R1_X181_Y15_N0_I35                                                               ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1404~2~_LOCAL_INTERCONNECT_X181_Y15_N0_I71                                               ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1404~2~_BLOCK_INPUT_MUX_PASSTHROUGH_X181_Y15_N0_I42                                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1404~2~_LAB_RE_X181_Y15_N0_I40                                                           ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1404~2xsyn|datae                                                                         ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1404~2xsyn|combout                                                                       ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1404~2xsyn~cw_la_lab/laboutb[2]                                                          ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1404~2xsyn~_LAB_RE_X181_Y15_N0_I111                                                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1404~2xsyn~_R2_X180_Y15_N0_I10                                                           ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1404~2xsyn~_C1_X179_Y14_N0_I21                                                           ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1404~2xsyn~_R0_X179_Y14_N0_I34                                                           ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1404~2xsyn~_LOCAL_INTERCONNECT_X179_Y14_N0_I10                                           ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1404~2xsyn~_BLOCK_INPUT_MUX_PASSTHROUGH_X179_Y14_N0_I11                                  ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1404~2xsyn~_LAB_RE_X179_Y14_N0_I15                                                       ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1463~1|datae                                                                             ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1463~1|combout                                                                           ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1463~1~_LAB_RE_X179_Y14_N0_I130                                                          ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1463~1~_LOCAL_INTERCONNECT_X179_Y14_N0_I18                                               ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1463~1~_BLOCK_INPUT_MUX_PASSTHROUGH_X179_Y14_N0_I16                                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1463~1~_LAB_RE_X179_Y14_N0_I18                                                           ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1487~1|datac                                                                             ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1487~1|combout                                                                           ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1487~1~_LAB_RE_X179_Y14_N0_I136                                                          ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1487~1~_LOCAL_INTERCONNECT_X179_Y14_N0_I19                                               ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1487~1~_BLOCK_INPUT_MUX_PASSTHROUGH_X179_Y14_N0_I5                                       ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1487~1~_LAB_RE_X179_Y14_N0_I4                                                            ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1378~7xsyn|datab                                                                         ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1378~7xsyn|combout                                                                       ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1378~7xsyn~cw_la_lab/laboutt[1]                                                          ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1378~7xsyn~_LAB_RE_X179_Y14_N0_I90                                                       ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1378~7xsyn~_C1_X179_Y14_N0_I2                                                            ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1378~7xsyn~_R6_X180_Y15_N0_I0                                                            ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1378~7xsyn~_LOCAL_INTERCONNECT_X185_Y15_N0_I0                                            ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1378~7xsyn~_BLOCK_INPUT_MUX_PASSTHROUGH_X185_Y15_N0_I19                                  ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|i1378~7xsyn~_LAB_RE_X185_Y15_N0_I23                                                       ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[1]~SynDup_8RTMUX|datae                                        ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[1]~SynDup_8RTMUX|combout                                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[1]~SynDup_8RTMUX~cw_la_lab/lab_lut5outt[2]                    ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[1]~SynDup_8RTMUX~_LAB_RE_X185_Y15_N0_I131                     ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[1]~SynDup_8RTMUX~_LOCAL_INTERCONNECT_X185_Y15_N0_I25          ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[1]~SynDup_8RTMUX~_BLOCK_INPUT_MUX_PASSTHROUGH_X185_Y15_N0_I50 ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[1]~SynDup_8RTMUX~_LAB_RE_X185_Y15_N0_I48                      ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_670~1|datae                                                                           ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|Mux_670~1|combout                                                                         ;
+; Long Path (Critical) ;                         ;             ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[0]~SynDup_8RTM|d                                              ;
+; Retiming Restriction ; ALM Register            ; #2          ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|msa_1|msa_1|msa_adapter|wrreq_bank_spreading|wrreq_select_bank_fifo_read[0]~SynDup_8RTM                                                ;
++----------------------+-------------------------+-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
+
+Clock Domain sys_pll|iopll_0_clk_sys (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Clock Domain pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15 (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0 (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_0 (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Clock Domain afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_outclk1 (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Clock Domain afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_outclk0 (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Clock Domain sys_pll|iopll_0_clk_100m (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0 to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_0 to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Clock Domain altera_int_osc_clk (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_0 (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_0 (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Clock Domain sys_pll|iopll_0_clk_sys_div2 (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Clock Domain sys_pll|iopll_0_clk_sys_div4 (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_0 to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_0 to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Clock Domain local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Clock Domain altera_reserved_tck (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from sys_pll|iopll_0_clk_100m to altera_int_osc_clk (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Clock Domain bwbmc_fpga_max_sclk (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from altera_int_osc_clk to sys_pll|iopll_0_clk_100m (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Hyper-Retimer INI Usage                                                                                         ;
++----------------------+------------------------------------------------------------------------------------------+
+; Option               ; Usage                                                                                    ;
++----------------------+------------------------------------------------------------------------------------------+
+; Initialization file: ; /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_11/syn/board/ia840f/syn_top/quartus.ini ;
++----------------------+------------------------------------------------------------------------------------------+
+
+
++-----------------+
+; Retime Messages ;
++-----------------+
+Info: Loading device exerciser AFU...
+Info: Compiling PR Base revision...
+Info (20030): Parallel compilation is enabled and will use 18 of the 18 processors detected
+Info: *******************************************************************
+Info: Running Quartus Prime Fitter
+    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+    Info: Processing started: Sat Sep 19 00:22:18 2026
+    Info: System process ID: 153603
+Info: Command: quartus_fit --read_settings_files=on --write_settings_files=off ofs_top -c ofs_top
+Info: Using INI file /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_11/syn/board/ia840f/syn_top/quartus.ini
+Info: qfit2_default_script.tcl version: #1
+Info: Project  = ofs_top
+Info: Revision = ofs_top
+Info (17966): Starting Hyper-Retimer operations.
+Info (17968): Completed Hyper-Retimer operations.
+Info (18821): Fitter Hyper-Retimer operations ending: elapsed time is 00:01:35
+Info: Adding extra slack to base iopll clock crossings...
+Info: Applying high frequency constraint to FIM user clock during quartus_fit.
+
+

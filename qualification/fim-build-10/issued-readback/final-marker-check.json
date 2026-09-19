@@ -1,0 +1,146 @@
+{
+  "time": "2026-09-19T05:31:58.288429+00:00",
+  "live_claim_verified": true,
+  "synthesis_ancestry": [
+    [
+      {
+        "pid": 140735,
+        "start_ticks": "8389066",
+        "exe": "/opt/altera/26.1.1/quartus/linux64/quartus_syn",
+        "argv": [
+          "quartus_syn",
+          "--ipc_flow=17",
+          "--ipc_mode",
+          "--read_settings_files=on",
+          "--write_settings_files=off",
+          "ofs_top",
+          "-c",
+          "ofs_top"
+        ],
+        "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_10/syn/board/ia840f/syn_top"
+      },
+      {
+        "pid": 140702,
+        "start_ticks": "8388162",
+        "exe": "/opt/altera/26.1.1/quartus/linux64/quartus_sh",
+        "argv": [
+          "quartus_sh",
+          "--flow",
+          "compile",
+          "ofs_top",
+          "-c",
+          "ofs_top"
+        ],
+        "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_10/syn/board/ia840f/syn_top"
+      },
+      {
+        "pid": 140701,
+        "start_ticks": "8388125",
+        "exe": "/usr/bin/python3.9",
+        "argv": [
+          "python3",
+          "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/tools/ofss_config/ia840f_experimental_gate.py",
+          "run-native-compile"
+        ],
+        "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_10/syn/board/ia840f/syn_top"
+      },
+      {
+        "pid": 140693,
+        "start_ticks": "8387989",
+        "exe": "/usr/bin/bash",
+        "argv": [
+          "/bin/bash",
+          "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/build_fim_compile.sh",
+          "ia840f",
+          "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_10"
+        ],
+        "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_10/syn/board/ia840f/syn_top"
+      },
+      {
+        "pid": 140684,
+        "start_ticks": "8387852",
+        "exe": "/usr/bin/bash",
+        "argv": [
+          "/bin/bash",
+          "./ofs-common/scripts/common/syn/build_top.sh",
+          "--stage=compile",
+          "-k",
+          "-p",
+          "ia840f",
+          "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_10"
+        ],
+        "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach"
+      },
+      {
+        "pid": 140682,
+        "start_ticks": "8387716",
+        "exe": "/usr/bin/python3.9",
+        "argv": [
+          "/usr/bin/python3",
+          "launch_native_compile.py"
+        ],
+        "cwd": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-10"
+      },
+      {
+        "pid": 140678,
+        "start_ticks": "8387445",
+        "exe": "/usr/bin/python3.9",
+        "argv": [
+          "python3",
+          "-c",
+          "import zlib,base64;exec(compile(zlib.decompress(base64.b64decode('eJyNVtuO2zYQffdXCOgDpUKSnSBNGi300CbedoHNZrH2NgFcQaAlymJXElmS8soJ8u+d0c2rxE7z4AvJIWfmzJlDZkqUlqQmL/jW4qUUyli3MJz1/4V29UG7/2hRuTnVaOZqkTww4+p6K5VImNZuSg0zvGSzmxA322Sei5LN68dtrE2dssosFnOaF3pescf499UtcS6W4c2c/FvTgmc8oYaLap7x0tvWvEi9Zwty8QYNRKY9umteeTLhzKPG0CQnFx9w6VGoh5jTX18sshh2xrBnpnMaFrTcptSSQR+vD5PPf3lpt5FJx1eMpvH2YJi2HcfPWZPyHdPGdmZUawY5d/n5O2ZyoU1FS2Y7YUh+2/GCNa8+gFtt2oCJRasUIELTmqdo9WyxWAyzrNpzJSpctcn63f1HcnQxYucnOUseYlEbWRt7Q0xZN8QlKdeyoAevBBO6YzDjSfj6aUUi17DGhGtVM8fXRnHZRtcDUVJebEUTl6LiRiiWxotnZCbQTcqVvXRmj9zklr2cE9awpMY0PKlYVvBdbvxC7IjjC8kqmzTEsai2YCqYWUACcJZCmCFMXPRDphQOZ5ZUvDL2+dpDnZWpdfz85ZxXEHSdoGPtlynpC4JJ2Y6bFbXOu+RmViaUhfBbvLI2JBGlhAp4tIa6KP6pLYGPzARgKhjtmdfb+ElBeTmsTTZ4XOuaVgmDXJMHWFV1RaKgr0slDGKDTh2fNVwbIImLw5lFE3QRbqIuMIlR9RljLSGRXSG2NtksvNfRz8QB1CyjDvhjAdYhFAEzLXj1YMsWfugCqnb7EIdJiSuMTPnpAwu4sbfk70VnrMNN46csESmzAX2hdEgUA6oksLWNq8G48FiLZ1YToXf4Q4YSzMFL3bx8MZaEoD0EY8FeGz209KXVoStn4/jHErTNGRshoacAuoLWVZLHHfbxgL08kGgSiXacoAPPpxKoldqfieQpCWR7tNtCEcAXlAriJgHu+QL1h7ASJqEi71dLzNW97XrmWoiHWrZTTiChdFCcY/06V273M7MU23P2qEMkA9ScptpG9idAv7pkqdevd2SZkLFnoHRzTKS32xA4GFQr7sck8rlhJdRq4BDIDTiQ0JS5K08fkQPEIkPZKtj/n5Aqmplv4z/VDa3p6VSwZVHofWhAcGIvXOhD+0MnsXAaKMbcCAEaDRMaqlllHMTAuehvgl5ger/xDiQf5QF/2/4XahLid8R98Xr+nV4+VQKD6KEnvwvUX98tl6vg6Uwno7zag+AIdbDfzI3bRrUhWtQqYXF3DZBoYyI49nt7n67dXr1zW1Q3wNlyPMQZKdcad3fReABUrt8zXSDRhA+9TcqwKViVHMbjTzFiwihDt0XflG3RoBuHhu7GEepOawnDo7N2X+TvaVGzr85HQ0gSKALphWE3HALqvAIpsC543Odm098geCK4a4493+fVW0MsX0467Nen54Dncf7ofLy0BvV+cmf1rJlcWlnQcjGtSwlis2cKeMhAcfBicQk+VUgwPFr88U8lHu1xgF+fRMX82iSOz7WA9EqKdxTJ6qKIe1ZtqWatcAcEXwaL1xaGyFJo9kSolPTWLQ+ABIpDwwcFhHqGIHD8yIevbU8QBcwHIQrOKpQ7qt2wL+gk5pwKwn0q4k5Ah4YfsMPmPMSARdw2MwkuaaHZFzdzOYZmwufO8Bwgl/fX19bt3fLy+uqPP9fWX8u7q8ur5VsyveW/qe30FbLtKgovj+DJqwlubXuDknbkjtsewOKppsBt1Ard+WQjt3/YwMftHzVPPK3Wb9/fr91WI4aQ0cWPCfIJSbvoWwANoVYSHO2Bm1F377aTX4McAamsFugR26vV6h6hHAt53vsZuAHCiikPURHFedBBRlTyFJCEFsW32J9/C/wIvEfO3N3f3CzvrOXHqzVxVTKNvXMKDyKVOLP/AJcfdeQ=')),\"work10_execution\",\"exec\"))"
+        ],
+        "cwd": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-10"
+      },
+      {
+        "pid": 140299,
+        "start_ticks": "8380599",
+        "exe": "/usr/bin/bash",
+        "argv": [
+          "bash"
+        ],
+        "cwd": "/home/uwb_student00"
+      },
+      {
+        "pid": 7828,
+        "start_ticks": "19153",
+        "exe": "/usr/bin/tmux",
+        "argv": [
+          "tmux",
+          "new-session",
+          "-d",
+          "-s",
+          "ia840f_goal_preflight",
+          "bash --noprofile --norc"
+        ],
+        "cwd": "/home/uwb_student00"
+      }
+    ]
+  ],
+  "rejection_counts": {
+    "IA840F_GATE_REJECTED": 0,
+    "IA840F NOT READY": 0,
+    "IA840F EXPERIMENTAL GATE:": 0,
+    "Critical Warning (125091)": 0
+  },
+  "status": {
+    "state": "running",
+    "started": "2026-09-19T05:30:51.670057+00:00",
+    "runner_pid": 140682,
+    "argv": [
+      "./ofs-common/scripts/common/syn/build_top.sh",
+      "--stage=compile",
+      "-k",
+      "-p",
+      "ia840f",
+      "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_10"
+    ],
+    "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach",
+    "authorization_sha256": "dac6fb16074cbec5684f1e2ac7c99a06146937809e8b3de154efc4789c255052",
+    "ready_for_build": false,
+    "accepted_execution": true,
+    "ddr_simulation": "SKIPPED BY USER",
+    "functional_acceptance": false,
+    "native_pid": 140684
+  }
+}

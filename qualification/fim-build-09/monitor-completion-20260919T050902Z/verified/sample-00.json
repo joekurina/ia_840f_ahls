@@ -1,0 +1,281 @@
+{
+  "utc": "2026-09-19T05:09:07.170118+00:00",
+  "processes": [
+    {
+      "pid": 124991,
+      "ppid": 124248,
+      "state": "S",
+      "start_ticks": 7881963,
+      "cpu_ticks": 143,
+      "exe": "/usr/bin/python3.9",
+      "exe_sha256": "7a95e551de45a54b3b6819d80e71a7262cd7138c2a4f1ec905b4cc8895a034c2",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-09",
+      "argv": "python3 launch_native_compile.py "
+    },
+    {
+      "pid": 125051,
+      "ppid": 124991,
+      "state": "S",
+      "start_ticks": 7882108,
+      "cpu_ticks": 0,
+      "exe": "/usr/bin/bash",
+      "exe_sha256": "ec6d007d48ef11bc47ad3f372b4b20ff2f0d4e63867e7e4cc0f1b17b19fa88b2",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach",
+      "argv": "/bin/bash ./ofs-common/scripts/common/syn/build_top.sh --stage=compile -k -p ia840f /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09 "
+    },
+    {
+      "pid": 125059,
+      "ppid": 125051,
+      "state": "S",
+      "start_ticks": 7882241,
+      "cpu_ticks": 0,
+      "exe": "/usr/bin/bash",
+      "exe_sha256": "ec6d007d48ef11bc47ad3f372b4b20ff2f0d4e63867e7e4cc0f1b17b19fa88b2",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top",
+      "argv": "/bin/bash /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/build_fim_compile.sh ia840f /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09 "
+    },
+    {
+      "pid": 125060,
+      "ppid": 125051,
+      "state": "S",
+      "start_ticks": 7882241,
+      "cpu_ticks": 1,
+      "exe": "/usr/bin/tee",
+      "exe_sha256": "e7ed377ba062b63aa0e7679b158d1d0bd58d335193327f0002d68b0c5196bd21",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach",
+      "argv": "tee -a -i /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/build_fim_work_ia840f_fim_09.log "
+    },
+    {
+      "pid": 125067,
+      "ppid": 125059,
+      "state": "S",
+      "start_ticks": 7882377,
+      "cpu_ticks": 38,
+      "exe": "/usr/bin/python3.9",
+      "exe_sha256": "7a95e551de45a54b3b6819d80e71a7262cd7138c2a4f1ec905b4cc8895a034c2",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top",
+      "argv": "python3 /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/tools/ofss_config/ia840f_experimental_gate.py run-native-compile "
+    },
+    {
+      "pid": 125068,
+      "ppid": 125067,
+      "state": "S",
+      "start_ticks": 7882414,
+      "cpu_ticks": 2439,
+      "exe": "/opt/altera/26.1.1/quartus/linux64/quartus_sh",
+      "exe_sha256": "5740e47134517eac623c1391837761d12ab18b99a2db78be790cf764af3e3bce",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top",
+      "argv": "quartus_sh --flow compile ofs_top -c ofs_top "
+    },
+    {
+      "pid": 134880,
+      "ppid": 125068,
+      "state": "R",
+      "start_ticks": 8225033,
+      "cpu_ticks": 63134,
+      "exe": "/opt/altera/26.1.1/quartus/linux64/quartus_asm",
+      "exe_sha256": "05804d6ea551490177d86a0ca64e994077b88d8fb129ab8e9706a3faa2a3f463",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top",
+      "argv": "quartus_asm --ipc_flow=17 --ipc_mode --read_settings_files=on --write_settings_files=off ofs_top -c ofs_top "
+    }
+  ],
+  "files": [
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-09/run/native.log",
+      "size": 3039342,
+      "mtime_ns": 1789794477684847067,
+      "sha256": "8a0f1bd74ceaffbe632fb041c650ab4ee90b2de2cd0ca685c50384def702588e",
+      "tail": [
+        "    Info: Processing started: Fri Sep 18 22:03:44 2026",
+        "    Info: System process ID: 134880",
+        "Info: Command: quartus_asm --read_settings_files=on --write_settings_files=off ofs_top -c ofs_top",
+        "Info: Using INI file /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top/quartus.ini",
+        "Info (16677): Loading final database.",
+        "Info (16734): Loading \"final\" snapshot for partition \"root_partition\".",
+        "Info (16734): Loading \"final\" snapshot for partition \"green_region\".",
+        "Info (16734): Loading \"final\" snapshot for partition \"auto_fab_1\".",
+        "Info (16734): Loading \"final\" snapshot for partition \"auto_fab_0\".",
+        "Info (16678): Successfully loaded final database: elapsed time is 00:00:19.",
+        "Info (20553): Using Static Region Mask Hash E583F32DD22C8009D86B30D21E1195985C7535FB9383407F2E42BA24E1A58FFF8D8784DA97C321F84433A09FF3C6C799",
+        "Info (20553): Using PR Region: ofs_top.green_region Hash A3320A397526121E4500853D"
+      ]
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-09/run/status.json",
+      "size": 596,
+      "mtime_ns": 1789790794233598838,
+      "sha256": "79dd1696a0ff70cb965e865f016f9a0e7056cee0c5ce08eb866861542b2628ec",
+      "tail": [
+        "    \"-p\",",
+        "    \"ia840f\",",
+        "    \"/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09\"",
+        "  ],",
+        "  \"cwd\": \"/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach\",",
+        "  \"authorization_sha256\": \"e6cf0894d44051d3dd7a74fde02036350f560764ebcb75df2ad255edb911c4f0\",",
+        "  \"ready_for_build\": false,",
+        "  \"accepted_execution\": true,",
+        "  \"ddr_simulation\": \"SKIPPED BY USER\",",
+        "  \"functional_acceptance\": false,",
+        "  \"native_pid\": 125051",
+        "}"
+      ]
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-09/run/invocation.json",
+      "size": 1181,
+      "mtime_ns": 1789790794231598831,
+      "sha256": "17462af144671487207247ea19307df3f61716ca7a760c5568bdd150375461f7",
+      "tail": [
+        "  \"ddr_simulation\": \"SKIPPED BY USER\",",
+        "  \"functional_acceptance\": false,",
+        "  \"environment\": {",
+        "    \"OFS_ROOTDIR\": \"/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach\",",
+        "    \"OFS_PLATFORM_AFU_BBB\": \"/home/uwb_student00/ahls/new_BSP/ofs-platform-afu-bbb\",",
+        "    \"QUARTUS_ROOTDIR_OVERRIDE\": \"/opt/altera/26.1.1/quartus\",",
+        "    \"PATH\": \"/opt/altera/26.1.1/quartus/bin:/opt/altera/26.1.1/quartus/sopc_builder/bin:/usr/local/bin:/usr/bin:/bin\",",
+        "    \"LM_LICENSE_FILE\": \"/home/uwb_student00/quartus_26/LR-191011_License.dat\",",
+        "    \"MGLS_LICENSE_FILE\": \"/home/uwb_student00/quartus_26/LR-191011_License.dat\",",
+        "    \"SALT_LICENSE_SERVER\": \"/home/uwb_student00/quartus_26/LR-191011_License.dat\"",
+        "  }",
+        "}"
+      ]
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-09/runner-console.log",
+      "size": 0,
+      "mtime_ns": 1789790792777593605,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tail": []
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top/output_files/ofs_top.fit.summary",
+      "size": 719,
+      "mtime_ns": 1789793930950879453,
+      "sha256": "0e69a79e503d4b2076048a2ed3f116fd5a5364eec0b39732771ba7a67e5fcbe8",
+      "tail": [
+        "Device Status : Final",
+        "Logic utilization (in ALMs) : 86,241 / 912,800 ( 9 % )",
+        "Total dedicated logic registers : 224919",
+        "Total pins : 321 / 886 ( 36 % )",
+        "Total block memory bits : 2,306,508 / 271,810,560 ( < 1 % )",
+        "Total RAM Blocks : 664 / 13,272 ( 5 % )",
+        "Total DSP Blocks : 0 / 8,528 ( 0 % )",
+        "Total HSSI P-Tiles : 1 / 2 ( 50 % )",
+        "Total HSSI E-Tile Channels : 0 / 24 ( 0 % )",
+        "Total HSSI HPS : 0 / 1 ( 0 % )",
+        "Total HSSI EHIPs : 0 / 4 ( 0 % )",
+        "Total PLLs : 8 / 36 ( 22 % )"
+      ]
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top/output_files/ofs_top.flow.rpt",
+      "size": 228197,
+      "mtime_ns": 1789794175509759585,
+      "sha256": "47362ab5b49c0fb4e96d378b12686342b299321ef6f9651e188b66b5331f3eaf",
+      "tail": [
+        "associated documentation or information are expressly subject ",
+        "to the terms and conditions of the Altera Program License ",
+        "Subscription Agreement, the Altera Quartus Prime License Agreement,",
+        "the Altera IP License Agreement, or other applicable license",
+        "agreement, including, without limitation, that your use is for",
+        "the sole purpose of programming logic devices manufactured by",
+        "Altera and sold by Altera or its authorized distributors.  Please",
+        "refer to the Altera Software License Subscription Agreements ",
+        "on the Quartus Prime software download page.",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top/output_files/ofs_top.sta.summary",
+      "size": 58660,
+      "mtime_ns": 1789794143017642651,
+      "sha256": "4d762e6962a5c561936c750c63cd778bb30c461348161c7940cacad836afec63",
+      "tail": [
+        "Slack : Invalid clock",
+        "",
+        "Type  : Net Delay 'set_net_delay'",
+        "Slack : Invalid clock",
+        "",
+        "Type  : Net Delay 'set_net_delay'",
+        "Slack : Invalid clock",
+        "",
+        "------------------------------------------------------------",
+        "Info: see the \"DDR report\" for DDR timing results",
+        "------------------------------------------------------------",
+        "------------------------------------------------------------"
+      ]
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top/output_files/ofs_top.syn.summary",
+      "size": 362,
+      "mtime_ns": 1789791267498299705,
+      "sha256": "7db170b5123f0cea9ce2c0d51737c3fe5030699120b8d5d3caa39e5416dfc090",
+      "tail": [
+        "Synthesis Status : Successful - Fri Sep 18 21:14:26 2026",
+        "Revision Name : ofs_top",
+        "Top-level Entity Name : top",
+        "Family : Agilex 7",
+        "Quartus Prime Version : 26.1.1 Build 130 08/06/2026 SC Pro Edition",
+        "Device : AGFB027R25A2E2V",
+        "Logic utilization estimate (in ALMs) : 79,769 / 912,800 ( 9 % )",
+        "Total dedicated logic registers : 219618",
+        "Estimated DSP Blocks Post-Merging : 0"
+      ]
+    }
+  ],
+  "diagnostics": [],
+  "status": {
+    "state": "running",
+    "started": "2026-09-19T04:06:34.229375+00:00",
+    "runner_pid": 124991,
+    "argv": [
+      "./ofs-common/scripts/common/syn/build_top.sh",
+      "--stage=compile",
+      "-k",
+      "-p",
+      "ia840f",
+      "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09"
+    ],
+    "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach",
+    "authorization_sha256": "e6cf0894d44051d3dd7a74fde02036350f560764ebcb75df2ad255edb911c4f0",
+    "ready_for_build": false,
+    "accepted_execution": true,
+    "ddr_simulation": "SKIPPED BY USER",
+    "functional_acceptance": false,
+    "native_pid": 125051
+  },
+  "milestones": [
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-09/run/native.log",
+      "line": 8144,
+      "text": "Info (12262): Starting Fitter periphery placement operations"
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-09/run/native.log",
+      "line": 8890,
+      "text": "Info (170137): Fitter placement was successful"
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-09/run/native.log",
+      "line": 8933,
+      "text": "Info: Quartus Prime Fitter was successful. 0 errors, 202 warnings"
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-09/run/native.log",
+      "line": 10241,
+      "text": "Info: Quartus Prime Timing Analyzer was successful. 0 errors, 240 warnings"
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-09/run/native.log",
+      "line": 10727,
+      "text": "Info: Quartus Prime Timing Analyzer was successful. 0 errors, 181 warnings"
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top/output_files/ofs_top.fit.summary",
+      "line": 1,
+      "text": "Fitter Status : Successful - Fri Sep 18 21:58:49 2026"
+    }
+  ]
+}

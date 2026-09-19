@@ -1,0 +1,13 @@
+{
+  "load": [
+    "ssh",
+    "uwb_student00@100.101.227.97",
+    "tmux",
+    "load-buffer",
+    "-b",
+    "monitor-20260919T072317Z-script",
+    "-"
+  ],
+  "new_window": "tmux new-window -d -P -F '#{window_id} #{pane_id}' -t ia840f_mailbox_monitored_01 -n monitor-20260919T072317Z 'bash -lc '\"'\"'eval \"$(tmux show-buffer -b monitor-20260919T072317Z-script)\"; sleep 600'\"'\"''",
+  "result": "@398 %398\n"
+}

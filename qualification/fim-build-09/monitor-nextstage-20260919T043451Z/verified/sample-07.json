@@ -1,0 +1,349 @@
+{
+  "utc": "2026-09-19T04:39:06.485478+00:00",
+  "processes": [
+    {
+      "pid": 124991,
+      "ppid": 124248,
+      "state": "S",
+      "start_ticks": 7881963,
+      "cpu_ticks": 143,
+      "exe": "/usr/bin/python3.9",
+      "exe_sha256": "7a95e551de45a54b3b6819d80e71a7262cd7138c2a4f1ec905b4cc8895a034c2",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-09",
+      "argv": "python3 launch_native_compile.py "
+    },
+    {
+      "pid": 125051,
+      "ppid": 124991,
+      "state": "S",
+      "start_ticks": 7882108,
+      "cpu_ticks": 0,
+      "exe": "/usr/bin/bash",
+      "exe_sha256": "ec6d007d48ef11bc47ad3f372b4b20ff2f0d4e63867e7e4cc0f1b17b19fa88b2",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach",
+      "argv": "/bin/bash ./ofs-common/scripts/common/syn/build_top.sh --stage=compile -k -p ia840f /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09 "
+    },
+    {
+      "pid": 125059,
+      "ppid": 125051,
+      "state": "S",
+      "start_ticks": 7882241,
+      "cpu_ticks": 0,
+      "exe": "/usr/bin/bash",
+      "exe_sha256": "ec6d007d48ef11bc47ad3f372b4b20ff2f0d4e63867e7e4cc0f1b17b19fa88b2",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top",
+      "argv": "/bin/bash /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/build_fim_compile.sh ia840f /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09 "
+    },
+    {
+      "pid": 125060,
+      "ppid": 125051,
+      "state": "S",
+      "start_ticks": 7882241,
+      "cpu_ticks": 1,
+      "exe": "/usr/bin/tee",
+      "exe_sha256": "e7ed377ba062b63aa0e7679b158d1d0bd58d335193327f0002d68b0c5196bd21",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach",
+      "argv": "tee -a -i /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/build_fim_work_ia840f_fim_09.log "
+    },
+    {
+      "pid": 125067,
+      "ppid": 125059,
+      "state": "S",
+      "start_ticks": 7882377,
+      "cpu_ticks": 38,
+      "exe": "/usr/bin/python3.9",
+      "exe_sha256": "7a95e551de45a54b3b6819d80e71a7262cd7138c2a4f1ec905b4cc8895a034c2",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top",
+      "argv": "python3 /home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/tools/ofss_config/ia840f_experimental_gate.py run-native-compile "
+    },
+    {
+      "pid": 125068,
+      "ppid": 125067,
+      "state": "S",
+      "start_ticks": 7882414,
+      "cpu_ticks": 1413,
+      "exe": "/opt/altera/26.1.1/quartus/linux64/quartus_sh",
+      "exe_sha256": "5740e47134517eac623c1391837761d12ab18b99a2db78be790cf764af3e3bce",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top",
+      "argv": "quartus_sh --flow compile ofs_top -c ofs_top "
+    },
+    {
+      "pid": 126976,
+      "ppid": 125068,
+      "state": "R",
+      "start_ticks": 7930670,
+      "cpu_ticks": 711687,
+      "exe": "/opt/altera/26.1.1/quartus/linux64/quartus_fit",
+      "exe_sha256": "31e90c7dcdaee32f0dea50d633e2b6edc8bac075b44bc5caa278a9aaf016d35c",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top",
+      "argv": "quartus_fit --ipc_flow=17 --ipc_mode --read_settings_files=on --write_settings_files=off ofs_top -c ofs_top "
+    }
+  ],
+  "files": [
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-09/run/native.log",
+      "size": 2535534,
+      "mtime_ns": 1789792257228859957,
+      "sha256": "ce9a2e58bba8e724fb01ca53ba87060487f792ac0fe367a70f263ecf758d9d3f",
+      "tail": [
+        "    Info (18386): pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|m3_149_1__hssi_dcm__pld_pcs_tx_clk_out2_dcm (1 fanout) drives clock sector (0, 3)",
+        "    Info (18386): pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|m3_44_1__hssi_dcm__pld_pcs_tx_clk_out2_dcm (1 fanout) drives clock sector (0, 1)",
+        "    Info (18386): pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|m3_90_1__hssi_dcm__pld_pcs_tx_clk_out2_dcm (1 fanout) drives clock sector (0, 2)",
+        "    Info (18386): pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|m3_10_1__hssi_dcm__pld_pcs_tx_clk_out2_dcm (1 fanout) drives clock sector (0, 0)",
+        "    Info (18386): pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|m3_115_1__hssi_dcm__pld_pcs_tx_clk_out2_dcm (1 fanout) drives clock sector (0, 2)",
+        "    Info (18386): auto_fab_0|alt_sld_fab_0|alt_sld_fab_0|intosc|clk (2307 fanout) drives clock sector (0, 0)",
+        "    Info (18386): SYS_REFCLK (1 fanout) drives clock sector (1, 7)",
+        "    Info (18386): ddr4_mem_ref_clk[0].clk (96 fanout) drives clock sector (3, 0)",
+        "    Info (18386): pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|m3_75_1__hssi_dcm__pld_pcs_tx_clk_out2_dcm (1 fanout) drives clock sector (0, 1)",
+        "    Info (18386): pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|m3_109_1__hssi_dcm__pld_pcs_tx_clk_out2_dcm (1 fanout) drives clock sector (0, 2)",
+        "    Info (18386): pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|m3_35_1__hssi_dcm__pld_pcs_tx_clk_out2_dcm (1 fanout) drives clock sector (0, 0)",
+        "    Info (18386): "
+      ]
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-09/run/status.json",
+      "size": 596,
+      "mtime_ns": 1789790794233598838,
+      "sha256": "79dd1696a0ff70cb965e865f016f9a0e7056cee0c5ce08eb866861542b2628ec",
+      "tail": [
+        "    \"-p\",",
+        "    \"ia840f\",",
+        "    \"/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09\"",
+        "  ],",
+        "  \"cwd\": \"/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach\",",
+        "  \"authorization_sha256\": \"e6cf0894d44051d3dd7a74fde02036350f560764ebcb75df2ad255edb911c4f0\",",
+        "  \"ready_for_build\": false,",
+        "  \"accepted_execution\": true,",
+        "  \"ddr_simulation\": \"SKIPPED BY USER\",",
+        "  \"functional_acceptance\": false,",
+        "  \"native_pid\": 125051",
+        "}"
+      ]
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-09/run/invocation.json",
+      "size": 1181,
+      "mtime_ns": 1789790794231598831,
+      "sha256": "17462af144671487207247ea19307df3f61716ca7a760c5568bdd150375461f7",
+      "tail": [
+        "  \"ddr_simulation\": \"SKIPPED BY USER\",",
+        "  \"functional_acceptance\": false,",
+        "  \"environment\": {",
+        "    \"OFS_ROOTDIR\": \"/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach\",",
+        "    \"OFS_PLATFORM_AFU_BBB\": \"/home/uwb_student00/ahls/new_BSP/ofs-platform-afu-bbb\",",
+        "    \"QUARTUS_ROOTDIR_OVERRIDE\": \"/opt/altera/26.1.1/quartus\",",
+        "    \"PATH\": \"/opt/altera/26.1.1/quartus/bin:/opt/altera/26.1.1/quartus/sopc_builder/bin:/usr/local/bin:/usr/bin:/bin\",",
+        "    \"LM_LICENSE_FILE\": \"/home/uwb_student00/quartus_26/LR-191011_License.dat\",",
+        "    \"MGLS_LICENSE_FILE\": \"/home/uwb_student00/quartus_26/LR-191011_License.dat\",",
+        "    \"SALT_LICENSE_SERVER\": \"/home/uwb_student00/quartus_26/LR-191011_License.dat\"",
+        "  }",
+        "}"
+      ]
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-09/runner-console.log",
+      "size": 0,
+      "mtime_ns": 1789790792777593605,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tail": []
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top/output_files/ofs_top.drc.partitioned.rpt",
+      "size": 7549,
+      "mtime_ns": 1789791075379609254,
+      "sha256": "35a98597c3d150a3798a5fe706d7269d85a8a503c1a21113e1a56fb7e553fc04",
+      "tail": [
+        "",
+        "Status:\t\tPASS",
+        "Severity:\t\tLow",
+        "Number of violations: \t0",
+        "Rule Parameters:      \t",
+        "\t\tmax_violations = 5000",
+        "\t\tRAM_Inference_High_Fanout_Net_Threshold = 2000",
+        "+------------------------------------------------------------+",
+        "; TMC-20051 - RAM Control Signals Driven by High Fan-Out Net ;",
+        "+------------------------------------------------------------+",
+        "",
+        ""
+      ]
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top/output_files/ofs_top.drc.synthesized.rpt",
+      "size": 22658,
+      "mtime_ns": 1789791273825322444,
+      "sha256": "33d6cbab548cf6a4bfea78881cca2450087c624c3fdb173dd4c2a7c16e01ed8a",
+      "tail": [
+        "Severity:\t\tLow",
+        "Number of violations: \t0",
+        "Rule Parameters:      \t",
+        "\t\tmax_violations = 5000",
+        "\t\tDSP_High_Fanout_Net_Threshold = 500",
+        "\t\tDSP_Chain_Threshold = 2",
+        "\t\tDSP_Check_User_WYSIWYGs = True",
+        "+---------------------------------------------------+",
+        "; TMC-20053 - DSP Inputs Driven by High Fan-Out Net ;",
+        "+---------------------------------------------------+",
+        "",
+        ""
+      ]
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top/output_files/ofs_top.fit.plan.rpt",
+      "size": 2782769,
+      "mtime_ns": 1789791877531493577,
+      "sha256": "b8c7e11fe4b3a9e7292c1a3ae6f75343d5f5758b8564b8ab77d26629f07192e8",
+      "tail": [
+        "    Info (332111): 14100.000 sys_pll|iopll_0_m_cnt_clk",
+        "    Info (332111):  100.000 sys_pll|iopll_0_n_cnt_clk",
+        "    Info (332111):   10.000 sys_pll|iopll_0_refclk",
+        "Info (176233): Starting register packing",
+        "Info (176235): Finished register packing",
+        "    Extra Info (176218): Packed 2883 registers into blocks of type Block RAM",
+        "    Extra Info (176218): Packed 2920 registers into blocks of type MLAB cell",
+        "Info: Adding extra slack to base iopll clock crossings...",
+        "Info: Applying high frequency constraint to FIM user clock during quartus_fit.",
+        "Info (20273): Intermediate fitter snapshots will not be committed because ENABLE_INTERMEDIATE_SNAPSHOTS QSF assignment is disabled during compilation.",
+        "",
+        ""
+      ]
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top/output_files/ofs_top.flow.rpt",
+      "size": 226059,
+      "mtime_ns": 1789791274942326458,
+      "sha256": "f2bff024d87bdcc1378df034ba5ef0fc7f46381a87e54df9d6dedc871de9eb81",
+      "tail": [
+        "associated documentation or information are expressly subject ",
+        "to the terms and conditions of the Altera Program License ",
+        "Subscription Agreement, the Altera Quartus Prime License Agreement,",
+        "the Altera IP License Agreement, or other applicable license",
+        "agreement, including, without limitation, that your use is for",
+        "the sole purpose of programming logic devices manufactured by",
+        "Altera and sold by Altera or its authorized distributors.  Please",
+        "refer to the Altera Software License Subscription Agreements ",
+        "on the Quartus Prime software download page.",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top/output_files/ofs_top.ipg.rpt",
+      "size": 935,
+      "mtime_ns": 1789790801935626519,
+      "sha256": "c20732cd095da0a292dc7bddb7804848fc95dc29a188ad14333838b7340afe4b",
+      "tail": [
+        "",
+        "",
+        "+------------------------------------+",
+        "; Generation Stages                  ;",
+        "+-----------------+------------------+",
+        "; Stage           ; Elapsed Time (s) ;",
+        "+-----------------+------------------+",
+        "; Qsys Validation ; 0                ;",
+        "; Qsys Generation ; 0                ;",
+        "+-----------------+------------------+",
+        "",
+        ""
+      ]
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top/output_files/ofs_top.sdc_constraints.rpt",
+      "size": 2746,
+      "mtime_ns": 1789791274940326451,
+      "sha256": "774d3d1b8a04f059302f44882539cbc447c9cb4fe7597fdd0f835280290e889f",
+      "tail": [
+        "",
+        "",
+        "+--------------------------------------------------------------------------------------------------------------------------------------------------------+",
+        "; Post-Synthesis Constraints                                                                                                                             ;",
+        "+---------------+--------------------------+-------------------------------------------------------------------------------------------------+-----------+",
+        "; Constraint ID ; Command                  ; Value and Target Options                                                                        ; File Name ;",
+        "+---------------+--------------------------+-------------------------------------------------------------------------------------------------+-----------+",
+        "; 0             ; SDC::stmt_of_source_file ; [-qip] { dni/sandboxes/Agilex7Workstation_125101_0/sld/ipgen/alt_sld_fab_0/alt_sld_fab_0.qip }  ; :0        ;",
+        "; 1             ; SDC::stmt_of_source_file ; [-qip] { dni/sandboxes/Agilex7Workstation_125101_0/sld/ipgen/alt_sld_fab_1/alt_sld_fab_1.qip }  ; :0        ;",
+        "+---------------+--------------------------+-------------------------------------------------------------------------------------------------+-----------+",
+        "",
+        ""
+      ]
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top/output_files/ofs_top.syn.ae.rpt",
+      "size": 28308201,
+      "mtime_ns": 1789791076241612352,
+      "sha256": "619e1b8b0e907d86845275fd498b378e7634befd5fefc3c0066ac45186126605",
+      "tail": [
+        "Info (19337): VHDL info at sld_jtag_hub.vhd(89): executing entity \"sld_jtag_hub(device_family=\"Agilex 7\",n_nodes=1,n_sel_bits=1,n_node_ir_bits=4,node_info=\"00000000010000000110111000000000\",broadcast_feature=0,force_pre_1_4_feature=0,enable_soft_core_controller=1,negedge_tdo_latch=0,bridge_start_index=2)(1,8)(31,0)\" with architecture \"rtl\" File: /opt/altera/26.1.1/quartus/libraries/megafunctions/sld_jtag_hub.vhd Line: 89",
+        "Info (19337): VHDL info at sld_rom_sr.vhd(5): executing entity \"sld_rom_sr(n_bits=64)\" with architecture \"INFO_REG\" File: /opt/altera/26.1.1/quartus/libraries/megafunctions/sld_rom_sr.vhd Line: 5",
+        "Info: DA report generation in native DNI mode",
+        "Info (21615): Running Design Assistant Rules for snapshot 'partitioned'",
+        "Info: No waiver waived any violations",
+        "Info (22360): Design Assistant Results: 10 of 10 enabled rules passed, and 1 rules was disabled, in snapshot 'partitioned'",
+        "Info (21661): Design Assistant Results: 0 of 1 High severity rules issued violations in snapshot 'partitioned'",
+        "Info (21621): Design Assistant Results: 0 of 1 Medium severity rules issued violations in snapshot 'partitioned'",
+        "Info (21622): Design Assistant Results: 0 of 8 Low severity rules issued violations in snapshot 'partitioned'",
+        "Warning (23762): Hierarchies were optimized away during sweep. For details, refer to \" Hierarchies Optimized Away During Sweep \" report.",
+        "",
+        ""
+      ]
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top/output_files/ofs_top.syn.rpt",
+      "size": 50916733,
+      "mtime_ns": 1789791274937326440,
+      "sha256": "32b6cb880679494af59028face4e16eb31ae1b9b159bb26c01057517bf5d57b2",
+      "tail": [
+        "Info: No waiver waived any violations",
+        "Info (22360): Design Assistant Results: 7 of 13 enabled rules passed, and 7 rules was disabled, in snapshot 'synthesized'",
+        "Info (21661): Design Assistant Results: 0 of 1 High severity rules issued violations in snapshot 'synthesized'",
+        "Info (21621): Design Assistant Results: 2 of 6 Medium severity rules issued violations in snapshot 'synthesized'. Please refer to DRC report '/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top/output_files/ofs_top.drc.synthesized.rpt' for more information",
+        "Info (21622): Design Assistant Results: 4 of 6 Low severity rules issued violations in snapshot 'synthesized'. Please refer to DRC report '/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top/output_files/ofs_top.drc.synthesized.rpt' for more information",
+        "Info: Quartus Prime Synthesis was successful. 0 errors, 34 warnings",
+        "    Info: Peak virtual memory: 5688 megabytes",
+        "    Info: Processing ended: Fri Sep 18 21:14:34 2026",
+        "    Info: Elapsed time: 00:07:47",
+        "    Info: System process ID: 125101",
+        "",
+        ""
+      ]
+    },
+    {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09/syn/board/ia840f/syn_top/output_files/ofs_top.syn.summary",
+      "size": 362,
+      "mtime_ns": 1789791267498299705,
+      "sha256": "7db170b5123f0cea9ce2c0d51737c3fe5030699120b8d5d3caa39e5416dfc090",
+      "tail": [
+        "Synthesis Status : Successful - Fri Sep 18 21:14:26 2026",
+        "Revision Name : ofs_top",
+        "Top-level Entity Name : top",
+        "Family : Agilex 7",
+        "Quartus Prime Version : 26.1.1 Build 130 08/06/2026 SC Pro Edition",
+        "Device : AGFB027R25A2E2V",
+        "Logic utilization estimate (in ALMs) : 79,769 / 912,800 ( 9 % )",
+        "Total dedicated logic registers : 219618",
+        "Estimated DSP Blocks Post-Merging : 0"
+      ]
+    }
+  ],
+  "diagnostics": [],
+  "status": {
+    "state": "running",
+    "started": "2026-09-19T04:06:34.229375+00:00",
+    "runner_pid": 124991,
+    "argv": [
+      "./ofs-common/scripts/common/syn/build_top.sh",
+      "--stage=compile",
+      "-k",
+      "-p",
+      "ia840f",
+      "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_09"
+    ],
+    "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach",
+    "authorization_sha256": "e6cf0894d44051d3dd7a74fde02036350f560764ebcb75df2ad255edb911c4f0",
+    "ready_for_build": false,
+    "accepted_execution": true,
+    "ddr_simulation": "SKIPPED BY USER",
+    "functional_acceptance": false,
+    "native_pid": 125051
+  }
+}
