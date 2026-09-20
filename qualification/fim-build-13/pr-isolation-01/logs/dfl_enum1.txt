@@ -1,0 +1,26 @@
+[    0.302357] acpi PNP0A08:00: _OSC: platform does not support [SHPCHotplug PME AER LTR DPC]
+[    0.309952] acpi PNP0A08:01: _OSC: platform does not support [SHPCHotplug PME AER LTR DPC]
+[    0.314713] acpi PNP0A08:02: _OSC: platform does not support [SHPCHotplug PME AER LTR DPC]
+[    0.318472] acpi PNP0A08:03: _OSC: platform does not support [SHPCHotplug PME AER LTR DPC]
+== dfl devices ==
+dfl_dev.0 type=0x1 fid=0x14 uio=uio
+dfl_dev.1 type=0x0 fid=0x0 uio=-
+dfl_dev.2 type=0x0 fid=0x0 uio=-
+dfl_dev.3 type=0x0 fid=0x0 uio=-
+dfl_dev.4 type=0x0 fid=0x0 uio=-
+dfl_dev.5 type=0x0 fid=0x9 uio=-
+dfl_dev.6 type=0x0 fid=0x0 uio=-
+dfl_dev.7 type=0x0 fid=0x14 uio=-
+dfl_dev.8 type=0x0 fid=0x24 uio=-
+
+== fpga_manager fpga0 ==
+device -> /sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0/fpga_region/region0/dfl-fme.0/dfl-fme-mgr.0
+
+== dmesg AER/PCIe errors (last boot) ==
+
+== PR_MGMT registers ==
+no PR dfl_dev UIO — falling back to BAR0 0x70000
+Traceback (most recent call last):
+  File "/tmp/fim13-gates/dfl_enum.py", line 78, in <module>
+    m = mmap.mmap(fd, 0x80000)
+PermissionError: [Errno 13] Permission denied

@@ -1,0 +1,25 @@
+++ date -u +%FT%TZ
++ echo '=== 2026-09-20T05:08:34Z PR attempt 4: pre-reset + live sample ==='
+=== 2026-09-20T05:08:34Z PR attempt 4: pre-reset + live sample ===
++ sudo -n python3 /tmp/fim13-gates/pr_probe.py pre
+PRE t=1789880914 CTRL=0x3000 STS=0x51101ff ERR=0x8 host=1 prog=1 pass=1 errb=0 crc=0 incompat=0
+reset engine
+PRE-POSTRESET t=1789880915 CTRL=0x0 STS=0x101ff ERR=0x9 host=1 prog=1 pass=0 errb=0 crc=0 incompat=0
++ SPID=4472
++ echo 'sampler pid 4472'
+sampler pid 4472
++ sudo -n timeout 180 fpgaconf /tmp/fim13-gates/pr/ahls_afu.gbs
++ sudo -n nohup python3 /tmp/fim13-gates/pr_probe.py sample
+plugin.c:67:vfio_plugin_initialize() **ERROR** : error with vfio_pci_discover
+reconf.c:352:xfpga_fpgaReconfigureSlot() **ERROR** : Failed to reconfigure bitstream: Connection timed out
+Error writing bitstream to FPGA: exception
++ echo FPGACONF_RC=5
+FPGACONF_RC=5
++ kill 4472
++ sudo -n python3 /tmp/fim13-gates/pr_probe.py post
+POST t=1789880923 CTRL=0x0 STS=0x1ff ERR=0x0 host=1 prog=0 pass=0 errb=0 crc=0 incompat=0
+POST t=1789880924 CTRL=0x0 STS=0x1ff ERR=0x0 host=1 prog=0 pass=0 errb=0 crc=0 incompat=0
+POST t=1789880925 CTRL=0x0 STS=0x1ff ERR=0x0 host=1 prog=0 pass=0 errb=0 crc=0 incompat=0
++ echo '=== done ==='
+=== done ===
+RC=0
