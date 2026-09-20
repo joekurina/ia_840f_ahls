@@ -1,0 +1,25 @@
+=== RSU invocation ===
+bw_agilex_flash_programmer -i PCI -c 0 rsu_image_update -a 0x04000000  (tmux fim13_rsu_01, 2026-09-19 ~18:33 PDT)
+
+=== post-RSU PCIe state ===
+0000:4f:00.1 Processing accelerators [1200]: BittWare, Inc. Device [12ba:0070] (rev ff)
+
+=== dmesg tail ===
+[156093.890735] pci 0000:02:00.0: PCI bridge to [bus 03]
+[156093.891212] pcieport 10000:00:02.0: bridge window [io  0x1000-0x0fff] to [bus 01] add_size 1000
+[156093.891219] pcieport 10000:00:03.0: bridge window [io  0x1000-0x0fff] to [bus 02] add_size 1000
+[156093.891226] pcieport 10000:00:02.0: bridge window [io  size 0x1000]: can't assign; no space
+[156093.891230] pcieport 10000:00:02.0: bridge window [io  size 0x1000]: failed to assign
+[156093.891233] pcieport 10000:00:03.0: bridge window [io  size 0x1000]: can't assign; no space
+[156093.891236] pcieport 10000:00:03.0: bridge window [io  size 0x1000]: failed to assign
+[156093.891239] pcieport 10000:00:03.0: bridge window [io  size 0x1000]: can't assign; no space
+[156093.891242] pcieport 10000:00:03.0: bridge window [io  size 0x1000]: failed to assign
+[156093.891245] pcieport 10000:00:02.0: bridge window [io  size 0x1000]: can't assign; no space
+[156093.891247] pcieport 10000:00:02.0: bridge window [io  size 0x1000]: failed to assign
+[156144.262738] vfio-pci 0000:4f:00.1: No device request channel registered, blocked until released by user
+=== post-reboot no-enumeration state (Sat Sep 19 06:48:03 PM PDT 2026) ===
+lspci accel devices: NONE
+root port 4e:00.0: absent (slot hidden by BIOS after failed boot train)
+JTAG: chain OK; volatile JTAG program ofs_top.sof@2 RC=0 (fabric configures)
+PCIe after JTAG config + rescan: no train (root port disabled)
+conclusion: warm reboot insufficient; need cold power cycle; flash P1 readback-verified
