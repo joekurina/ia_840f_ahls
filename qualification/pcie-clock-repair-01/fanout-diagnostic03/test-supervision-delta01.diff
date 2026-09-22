@@ -1,0 +1,11 @@
+--- fanout-diagnostic02/test-supervision.py
++++ fanout-diagnostic03/test-supervision.py
+@@ -29,7 +29,7 @@
+ 
+ def trial(scratch, phase, case, legacy=False):
+     parent=ROOT.parent/'experiment01' if legacy else ROOT
+-    suffix='01'
++    suffix='03'
+     module='ia840f_clock_'+phase+suffix+'_gate'
+     fake=types.ModuleType(module);fake.validate=lambda **k:None;fake.identity=lambda p:None
+     source=parent/'run-query.py'

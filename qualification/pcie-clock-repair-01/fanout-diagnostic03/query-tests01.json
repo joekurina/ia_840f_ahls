@@ -1,0 +1,412 @@
+{
+  "scope": "INERT API scenarios; not Quartus matcher/graph/representation proof",
+  "source_sha256": {
+    "query.tcl": "22e5f6e05913325fa14a8753cda91c63bef98bec7893e333972f721e7c6e06b9",
+    "clock-repair.tcl": "8486a48acbe4f024beecefb95d09eeab69ce0331d3f16d4a1f9c0591cdb117f2",
+    "known-receivers.tcl": "3bca69f770cba775919b7134822ae5eedcb324c1a25ed5540b781667d798ef6a"
+  },
+  "test_source_sha256": "3d92b6e01a54bad865a11d8c086416e3f45bf9e79530396c042651427ae2fd8a",
+  "count": 25,
+  "tests": [
+    {
+      "case": "aliases",
+      "pass": true,
+      "tcl_rc": 0,
+      "message": "",
+      "records": {
+        "FANOUT_COUNT": 4,
+        "LOOKUP_INPUT": 6,
+        "CELL_REGISTER_MAP": 32,
+        "REGISTER": 32,
+        "CLOCK_INPUT": 32,
+        "DIAGNOSTIC_STATUS": 1,
+        "INCOMPLETE": 0,
+        "TILE": 1
+      }
+    },
+    {
+      "case": "same_names",
+      "pass": true,
+      "tcl_rc": 0,
+      "message": "",
+      "records": {
+        "FANOUT_COUNT": 4,
+        "LOOKUP_INPUT": 6,
+        "CELL_REGISTER_MAP": 32,
+        "REGISTER": 32,
+        "CLOCK_INPUT": 32,
+        "DIAGNOSTIC_STATUS": 1,
+        "INCOMPLETE": 0,
+        "TILE": 1
+      }
+    },
+    {
+      "case": "dialect_tcl",
+      "pass": true,
+      "tcl_rc": 0,
+      "message": "",
+      "records": {
+        "FANOUT_COUNT": 4,
+        "LOOKUP_INPUT": 6,
+        "CELL_REGISTER_MAP": 32,
+        "REGISTER": 32,
+        "CLOCK_INPUT": 32,
+        "DIAGNOSTIC_STATUS": 1,
+        "INCOMPLETE": 0,
+        "TILE": 1
+      }
+    },
+    {
+      "case": "all_zero",
+      "pass": true,
+      "tcl_rc": 0,
+      "message": "",
+      "records": {
+        "FANOUT_COUNT": 4,
+        "LOOKUP_INPUT": 6,
+        "CELL_REGISTER_MAP": 32,
+        "REGISTER": 32,
+        "CLOCK_INPUT": 32,
+        "DIAGNOSTIC_STATUS": 1,
+        "INCOMPLETE": 0,
+        "TILE": 1
+      }
+    },
+    {
+      "case": "buried_zero",
+      "pass": true,
+      "tcl_rc": 0,
+      "message": "",
+      "records": {
+        "FANOUT_COUNT": 4,
+        "LOOKUP_INPUT": 6,
+        "CELL_REGISTER_MAP": 32,
+        "REGISTER": 31,
+        "CLOCK_INPUT": 32,
+        "DIAGNOSTIC_STATUS": 1,
+        "INCOMPLETE": 0,
+        "TILE": 1
+      }
+    },
+    {
+      "case": "buried_multiple",
+      "pass": true,
+      "tcl_rc": 0,
+      "message": "",
+      "records": {
+        "FANOUT_COUNT": 4,
+        "LOOKUP_INPUT": 6,
+        "CELL_REGISTER_MAP": 32,
+        "REGISTER": 33,
+        "CLOCK_INPUT": 32,
+        "DIAGNOSTIC_STATUS": 1,
+        "INCOMPLETE": 0,
+        "TILE": 1
+      }
+    },
+    {
+      "case": "forward_over",
+      "pass": true,
+      "tcl_rc": 1,
+      "message": "CLOCK_REPAIR_REJECT contrast observation incomplete; inspect retained counts and records",
+      "records": {
+        "FANOUT_COUNT": 4,
+        "LOOKUP_INPUT": 6,
+        "CELL_REGISTER_MAP": 32,
+        "REGISTER": 32,
+        "CLOCK_INPUT": 32,
+        "DIAGNOSTIC_STATUS": 1,
+        "INCOMPLETE": 1,
+        "TILE": 1
+      }
+    },
+    {
+      "case": "forward_duplicate",
+      "pass": true,
+      "tcl_rc": 1,
+      "message": "CLOCK_REPAIR_REJECT contrast observation incomplete; inspect retained counts and records",
+      "records": {
+        "FANOUT_COUNT": 4,
+        "LOOKUP_INPUT": 6,
+        "CELL_REGISTER_MAP": 32,
+        "REGISTER": 32,
+        "CLOCK_INPUT": 32,
+        "DIAGNOSTIC_STATUS": 1,
+        "INCOMPLETE": 1,
+        "TILE": 1
+      }
+    },
+    {
+      "case": "group_missing",
+      "pass": true,
+      "tcl_rc": 1,
+      "message": "CLOCK_REPAIR_REJECT contrast observation incomplete; inspect retained counts and records",
+      "records": {
+        "FANOUT_COUNT": 4,
+        "LOOKUP_INPUT": 6,
+        "CELL_REGISTER_MAP": 0,
+        "REGISTER": 0,
+        "CLOCK_INPUT": 0,
+        "DIAGNOSTIC_STATUS": 1,
+        "INCOMPLETE": 5,
+        "TILE": 1
+      }
+    },
+    {
+      "case": "group_over",
+      "pass": true,
+      "tcl_rc": 1,
+      "message": "CLOCK_REPAIR_REJECT contrast observation incomplete; inspect retained counts and records",
+      "records": {
+        "FANOUT_COUNT": 4,
+        "LOOKUP_INPUT": 6,
+        "CELL_REGISTER_MAP": 0,
+        "REGISTER": 0,
+        "CLOCK_INPUT": 0,
+        "DIAGNOSTIC_STATUS": 1,
+        "INCOMPLETE": 9,
+        "TILE": 1
+      }
+    },
+    {
+      "case": "tile_missing",
+      "pass": true,
+      "tcl_rc": 1,
+      "message": "CLOCK_REPAIR_REJECT contrast observation incomplete; inspect retained counts and records",
+      "records": {
+        "FANOUT_COUNT": 4,
+        "LOOKUP_INPUT": 6,
+        "CELL_REGISTER_MAP": 32,
+        "REGISTER": 32,
+        "CLOCK_INPUT": 32,
+        "DIAGNOSTIC_STATUS": 1,
+        "INCOMPLETE": 1,
+        "TILE": 0
+      }
+    },
+    {
+      "case": "wrong_cell_type",
+      "pass": true,
+      "tcl_rc": 1,
+      "message": "CLOCK_REPAIR_REJECT contrast observation incomplete; inspect retained counts and records",
+      "records": {
+        "FANOUT_COUNT": 4,
+        "LOOKUP_INPUT": 6,
+        "CELL_REGISTER_MAP": 31,
+        "REGISTER": 31,
+        "CLOCK_INPUT": 31,
+        "DIAGNOSTIC_STATUS": 1,
+        "INCOMPLETE": 1,
+        "TILE": 1
+      }
+    },
+    {
+      "case": "pins_over",
+      "pass": true,
+      "tcl_rc": 1,
+      "message": "CLOCK_REPAIR_REJECT contrast observation incomplete; inspect retained counts and records",
+      "records": {
+        "FANOUT_COUNT": 4,
+        "LOOKUP_INPUT": 6,
+        "CELL_REGISTER_MAP": 31,
+        "REGISTER": 31,
+        "CLOCK_INPUT": 31,
+        "DIAGNOSTIC_STATUS": 1,
+        "INCOMPLETE": 1,
+        "TILE": 1
+      }
+    },
+    {
+      "case": "buried_over",
+      "pass": true,
+      "tcl_rc": 1,
+      "message": "CLOCK_REPAIR_REJECT contrast observation incomplete; inspect retained counts and records",
+      "records": {
+        "FANOUT_COUNT": 4,
+        "LOOKUP_INPUT": 6,
+        "CELL_REGISTER_MAP": 31,
+        "REGISTER": 31,
+        "CLOCK_INPUT": 32,
+        "DIAGNOSTIC_STATUS": 1,
+        "INCOMPLETE": 1,
+        "TILE": 1
+      }
+    },
+    {
+      "case": "reverse_wrong",
+      "pass": true,
+      "tcl_rc": 1,
+      "message": "CLOCK_REPAIR_REJECT contrast observation incomplete; inspect retained counts and records",
+      "records": {
+        "FANOUT_COUNT": 4,
+        "LOOKUP_INPUT": 6,
+        "CELL_REGISTER_MAP": 32,
+        "REGISTER": 32,
+        "CLOCK_INPUT": 32,
+        "DIAGNOSTIC_STATUS": 1,
+        "INCOMPLETE": 1,
+        "TILE": 1
+      }
+    },
+    {
+      "case": "reverse_over",
+      "pass": true,
+      "tcl_rc": 1,
+      "message": "CLOCK_REPAIR_REJECT contrast observation incomplete; inspect retained counts and records",
+      "records": {
+        "FANOUT_COUNT": 4,
+        "LOOKUP_INPUT": 6,
+        "CELL_REGISTER_MAP": 32,
+        "REGISTER": 32,
+        "CLOCK_INPUT": 32,
+        "DIAGNOSTIC_STATUS": 1,
+        "INCOMPLETE": 2,
+        "TILE": 1
+      }
+    },
+    {
+      "case": "buried_error",
+      "pass": true,
+      "tcl_rc": 1,
+      "message": "MOCK_BURIED_ERROR",
+      "records": {
+        "FANOUT_COUNT": 4,
+        "LOOKUP_INPUT": 6,
+        "CELL_REGISTER_MAP": 0,
+        "REGISTER": 0,
+        "CLOCK_INPUT": 1,
+        "DIAGNOSTIC_STATUS": 0,
+        "INCOMPLETE": 0,
+        "TILE": 1
+      }
+    },
+    {
+      "case": "fanout_error",
+      "pass": true,
+      "tcl_rc": 1,
+      "message": "MOCK_FANOUT_ERROR",
+      "records": {
+        "FANOUT_COUNT": 1,
+        "LOOKUP_INPUT": 0,
+        "CELL_REGISTER_MAP": 0,
+        "REGISTER": 0,
+        "CLOCK_INPUT": 0,
+        "DIAGNOSTIC_STATUS": 0,
+        "INCOMPLETE": 0,
+        "TILE": 0
+      }
+    },
+    {
+      "case": "root_missing",
+      "pass": true,
+      "tcl_rc": 1,
+      "message": "CLOCK_REPAIR_REJECT root identity {keeper_root}",
+      "records": {
+        "FANOUT_COUNT": 0,
+        "LOOKUP_INPUT": 0,
+        "CELL_REGISTER_MAP": 0,
+        "REGISTER": 0,
+        "CLOCK_INPUT": 0,
+        "DIAGNOSTIC_STATUS": 0,
+        "INCOMPLETE": 0,
+        "TILE": 0
+      }
+    },
+    {
+      "case": "preexisting_clock",
+      "pass": true,
+      "tcl_rc": 1,
+      "message": "CLOCK_REPAIR_REJECT baseline clock changed",
+      "records": {
+        "FANOUT_COUNT": 0,
+        "LOOKUP_INPUT": 0,
+        "CELL_REGISTER_MAP": 0,
+        "REGISTER": 0,
+        "CLOCK_INPUT": 0,
+        "DIAGNOSTIC_STATUS": 0,
+        "INCOMPLETE": 0,
+        "TILE": 0
+      }
+    },
+    {
+      "case": "wrong_cwd",
+      "pass": true,
+      "tcl_rc": 1,
+      "message": "CLOCK_REPAIR_REJECT unexpected project path",
+      "records": {
+        "FANOUT_COUNT": 0,
+        "LOOKUP_INPUT": 0,
+        "CELL_REGISTER_MAP": 0,
+        "REGISTER": 0,
+        "CLOCK_INPUT": 0,
+        "DIAGNOSTIC_STATUS": 0,
+        "INCOMPLETE": 0,
+        "TILE": 0
+      }
+    },
+    {
+      "case": "old_cwd",
+      "pass": true,
+      "tcl_rc": 1,
+      "message": "CLOCK_REPAIR_REJECT unexpected project path",
+      "records": {
+        "FANOUT_COUNT": 0,
+        "LOOKUP_INPUT": 0,
+        "CELL_REGISTER_MAP": 0,
+        "REGISTER": 0,
+        "CLOCK_INPUT": 0,
+        "DIAGNOSTIC_STATUS": 0,
+        "INCOMPLETE": 0,
+        "TILE": 0
+      }
+    },
+    {
+      "case": "spent",
+      "pass": true,
+      "tcl_rc": 1,
+      "message": "CLOCK_REPAIR_REJECT spent reports directory",
+      "records": {
+        "FANOUT_COUNT": 0,
+        "LOOKUP_INPUT": 0,
+        "CELL_REGISTER_MAP": 0,
+        "REGISTER": 0,
+        "CLOCK_INPUT": 0,
+        "DIAGNOSTIC_STATUS": 0,
+        "INCOMPLETE": 0,
+        "TILE": 0
+      }
+    },
+    {
+      "case": "project_error",
+      "pass": true,
+      "tcl_rc": 1,
+      "message": "MOCK_PROJECT_ERROR",
+      "records": {
+        "FANOUT_COUNT": 0,
+        "LOOKUP_INPUT": 0,
+        "CELL_REGISTER_MAP": 0,
+        "REGISTER": 0,
+        "CLOCK_INPUT": 0,
+        "DIAGNOSTIC_STATUS": 0,
+        "INCOMPLETE": 0,
+        "TILE": 0
+      }
+    },
+    {
+      "case": "gate_sentinel",
+      "pass": true,
+      "tcl_rc": 1,
+      "message": "SOURCE_BOUND_GATE_REJECTION_STOP",
+      "records": {
+        "FANOUT_COUNT": 0,
+        "LOOKUP_INPUT": 0,
+        "CELL_REGISTER_MAP": 0,
+        "REGISTER": 0,
+        "CLOCK_INPUT": 0,
+        "DIAGNOSTIC_STATUS": 0,
+        "INCOMPLETE": 0,
+        "TILE": 0
+      }
+    }
+  ]
+}

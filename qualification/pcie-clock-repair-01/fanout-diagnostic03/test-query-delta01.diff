@@ -1,0 +1,20 @@
+--- fanout-diagnostic02/test-query.py
++++ fanout-diagnostic03/test-query.py
+@@ -5,7 +5,7 @@
+ from pathlib import Path
+ import ctypes,ctypes.util,hashlib,json,sys
+ ROOT=Path(__file__).resolve().parent
+-REMOTE='/home/uwb_student00/ahls/new_BSP/qualification/pcie-clock-repair-01/fanout-diagnostic02'
++REMOTE='/home/uwb_student00/ahls/new_BSP/qualification/pcie-clock-repair-01/fanout-diagnostic03'
+ lib=ctypes.CDLL(ctypes.util.find_library('tcl8.6'))
+ lib.Tcl_CreateInterp.restype=ctypes.c_void_p
+ lib.Tcl_Eval.argtypes=[ctypes.c_void_p,ctypes.c_char_p];lib.Tcl_Eval.restype=ctypes.c_int
+@@ -159,7 +159,7 @@
+     try:
+         cwd=REMOTE+'/scratch/syn/board/ia840f/syn_top'
+         if case=='wrong_cwd':cwd+='_WRONG'
+-        if case=='old_cwd':cwd=cwd.replace('fanout-diagnostic02','fanout-diagnostic01')
++        if case=='old_cwd':cwd=cwd.replace('fanout-diagnostic03','fanout-diagnostic02')
+         for s in [f'set case {literal(case)};set root {literal(REMOTE)};set cwd {literal(cwd)}',MOCK]:
+             rc,msg=ev(p,s);assert rc==0,msg
+         rc,msg=ev(p,'source '+literal(d/'query.tcl'))

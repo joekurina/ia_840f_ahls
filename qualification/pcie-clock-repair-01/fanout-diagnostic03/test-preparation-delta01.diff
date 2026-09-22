@@ -1,0 +1,27 @@
+--- fanout-diagnostic02/test-preparation.py
++++ fanout-diagnostic03/test-preparation.py
+@@ -4,13 +4,13 @@
+ import ast,hashlib,json,os,runpy,socket,subprocess,sys,tempfile
+ from unittest.mock import patch
+ ROOT=Path(__file__).resolve().parent
+-EXPECTED=Path('/home/uwb_student00/ahls/new_BSP/qualification/pcie-clock-repair-01/fanout-diagnostic02')
++EXPECTED=Path('/home/uwb_student00/ahls/new_BSP/qualification/pcie-clock-repair-01/fanout-diagnostic03')
+ def existing_leaf(script,legacy):
+     ns=runpy.run_path(str(script));g=ns['main'].__globals__
+     with tempfile.TemporaryDirectory(prefix='ia840f-preparer-fixture-',dir='/home/joe/.hermes/cache/scratch') as tmp:
+         leaf=Path(tmp)/'existing';leaf.mkdir();(leaf/'sentinel').write_bytes(b'PRESERVE')
+         g['E']=leaf;g['__name__']='__main__'
+-        payload=json.dumps({k:{} for k in ('query.tcl','run-query.py','ia840f_clock_fanout02_gate.py','AUTHORITY.md','SPEC.md','clock-repair.tcl','known-receivers.tcl')}).encode()
++        payload=json.dumps({k:{} for k in ('query.tcl','run-query.py','ia840f_clock_fanout03_gate.py','AUTHORITY.md','SPEC.md','clock-repair.tcl','known-receivers.tcl')}).encode()
+         calls=[]
+         def output(args,**kwargs):
+             calls.append(args)
+@@ -31,7 +31,7 @@
+     new=runpy.run_path(str(ROOT/'prepare01.py'))
+     assert new['E']==EXPECTED and new['OWNED'] is False
+     sys.path.insert(0,str(ROOT));sys.dont_write_bytecode=True
+-    for name in ('run-query.py','ia840f_clock_fanout02_gate.py'):
++    for name in ('run-query.py','ia840f_clock_fanout03_gate.py'):
+         ns=runpy.run_path(str(ROOT/name));assert ns['E']==EXPECTED
+     rows.append({'case':'preparer_runner_gate_roots_equal','pass':True})
+     rows.append(existing_leaf(ROOT/'prepare01.py',False))

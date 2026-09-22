@@ -1,0 +1,26 @@
+--- fanout-diagnostic02/query.tcl
++++ fanout-diagnostic03/query.tcl
+@@ -4,7 +4,7 @@
+ source [file join [file dirname [info script]] clock-repair.tcl]
+ source [file join [file dirname [info script]] known-receivers.tcl]
+ namespace eval ::ia840f_fanout_contrast {
+-    variable E /home/uwb_student00/ahls/new_BSP/qualification/pcie-clock-repair-01/fanout-diagnostic02
++    variable E /home/uwb_student00/ahls/new_BSP/qualification/pcie-clock-repair-01/fanout-diagnostic03
+     variable audit
+     variable complete 1
+     variable mapping_supported 1
+@@ -156,11 +156,11 @@
+                 set type [get_cell_info -wysiwyg_type $cell]
+                 emit CELL $group $name $type
+                 if {$type ne "tennm_ff"} {problem physical_cell_type $name;continue}
+-                set pins [get_cell_info -pins $cell]
+-                set pi [observe "pins:$name" $pins 32 pin]
++                set ia840f_fc_cell_pin_collection [get_cell_info -pins $cell]
++                set pi [observe "pins:$name" $ia840f_fc_cell_pin_collection 32 pin]
+                 if {![dict get $pi complete]} {continue}
+                 set inputs {}
+-                foreach_in_collection pin $pins {
++                foreach_in_collection pin $ia840f_fc_cell_pin_collection {
+                     if {[get_pin_info -is_in_pin $pin] && [get_pin_info -is_clock_pin $pin]} {
+                         set pn [get_pin_info -name $pin];lappend inputs $pn
+                         # Same single-pin-ID get_fanins call already exercised in Q2.
