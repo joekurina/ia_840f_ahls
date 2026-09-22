@@ -1,6 +1,31 @@
 # General-purpose IA-840F feature matrix
 
-## Active AHLS / OFS / OPAE source project
+## Current execution checkpoint — source-resume-01
+
+**Not hardware-qualified.** W13 FIM and the sanctioned persona have compiled
+artifacts; neither is accepted as timing-clean. This section supersedes the
+older Work04/source-only snapshots below without reclassifying skipped tests.
+See [continuation evidence](../qualification/source-resume-01/REPORT.md).
+
+[Independent spec PASS, quality APPROVED and parent acceptance](../qualification/offline-milestone-review-01/ACCEPTANCE.md)
+close the bounded offline gates only. Pre-review reports remain byte-preserved;
+current statuses below supersede their pending-review wording.
+
+| Function | Current evidence | Remaining boundary |
+|---|---|---|
+| W13 FIM / persona | Existing artifacts preserved, source identity checked | W13 -0.004 ns hold; persona -0.336 ns setup, -0.004 ns hold, -0.029 ns pulse width; timing not accepted |
+| DFL UART | False advertisement diagnosed; 12 offline contract fixtures pass | Disabled real UART is advertised by dummy ID 0x24. Scope decision required; no RTL/driver fix applied. [Report](../qualification/dfl-uart-fix-01/REPORT.md) |
+| DFL permissions | Successor02 staged policy independently accepted; captured PF0 BDF and all PCI IDs; 21 inert fixtures pass | Candidate01 rejected; unrelated fallback preserved. Native required-node detection UNVERIFIED; native validation/activation NOT RUN. No VFIO grant. [Acceptance](../qualification/dfl-udev-fix-02/ACCEPTANCE.md) |
+| AHLS PF/VF/BAR routing | PF0 VF0 BAR0 → PIM channel 0 → AHLS; OPAE VFIO standalone-AFU path source-established | Current image/VF binding/BDF/BAR allocation/clock/reset state not live-verified. PF0+0x80000 is protocol checker, not AFU. [Map](../qualification/ahls-host-offline-01/HOST-ACCESS-MAP.md) |
+| Host test | Additive exact-checksum, aligned, clear-on-read-aware test independently accepted offline; fresh CTest 2/2; native OPAE compile/link pass | No native FPGA-access executable run. Q1/Q2 test-hardening follow-ups retained; hardware gates remain. [Acceptance](../qualification/ahls-host-offline-01/ACCEPTANCE.md) |
+| OPAE library evidence | Core identity plus selected plugin/support code sections reconciled; ELF supplement independently reviewed | Full dependency/runtime footprint NOT closed; xfpga accesses devices before token filtering. [Supplement](../qualification/opae-backend-binding-01/ACCEPTANCE.md) |
+| Both DDR channels | Existing vendor-derived implementation; simulation SKIPPED BY USER | Full [DDR hardware gate](ddr-hardware-validation-gate.md) NOT RUN/qualified |
+| Host transfers / memory data path | Current AHLS qualification top ties memory masters idle | Reference transfer/memory integration and data-verification tests remain; CSR success cannot qualify DMA |
+| Runtime PR | Historical failure remains unresolved | No PR retry, reset, or cause exclusion authorized by this continuation |
+| Sustained operation / durable boot | Historical programming records preserved | Final exact-image flash/power-cycle and full matrix NOT qualified |
+| Remote safety | No hardware operations during continuation | Specific finite-operation authorization and independently verified host recovery required |
+
+## Historical Work04 AHLS / OFS / OPAE source snapshot
 
 **Generated candidate; not build-ready.** Work04 IP/RTL and headers executed successfully (not FIM synthesis). [FIM integration 05](../qualification/fim-integration-05/report.md) corrects the proven DDR pin-target/CS_N/QoS source defects with bounded static checks. DDR simulation is **SKIPPED BY USER**, not passed and not a compile prerequisite. Compile/fit/timing and hardware qualification remain unperformed. The explicit AHLS target correction governs the active implementation; the earlier standard/USM ASP work below remains reference-only. Requested Quartus Pro **26.1.1** is unchanged. Pinned donors are not a vendor-qualified combined release. See [scope](ahls-scope.md), [source lock](../sources.lock.json) and [integration status](vendor-integration-status.md).
 

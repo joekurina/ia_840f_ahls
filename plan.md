@@ -8,6 +8,30 @@
 
 **Tech stack:** AGFB027R25A2E2V, P-Tile Gen4 x16, two distinct 16 GiB DDR4 channels (discrete and RDIMM), pinned OFS FIM/common/PIM, Altera AHLS, intended Quartus Prime Pro 26.1.1, Linux DFL and OPAE.
 
+## Current continuation checkpoint
+
+The active `GOAL-PROMPT.md` supersedes this plan's original source-only and
+no-commit authorization wording. Source-side continuation and milestone
+commits/pushes are authorized; live installation, device access, PR/programming
+and recovery remain separately gated. Host-local JTAG/BMC is not independent
+host recovery. Gen3 x16 is the expected workstation link, not a fault.
+
+[Source-resume-01](qualification/source-resume-01/REPORT.md) records the current
+checkpoint: W13/persona artifacts preserved; false UART advertisement
+identified (scope decision pending); udev candidate offline-tested but not
+activated; PF0 VF0 BAR0 source/OPAE mapping; additive exact-numerical host test
+offline-tested and natively linked, never run on hardware. Negative W13/persona
+timing remains unaccepted. DDR simulation remains SKIPPED BY USER. The older
+stage descriptions below are implementation history/templates, not permission
+to repeat completed work or launch their hardware commands.
+
+The [parent acceptance record](qualification/offline-milestone-review-01/ACCEPTANCE.md)
+now closes the separate source-evidence, UART-diagnosis, staged-udev and offline
+host-software review gates (spec PASS, quality APPROVED). Fresh local checks:
+CTest 2/2, UART 12/12 and udev 21/21. Native hardware execution remains blocked;
+the explicit UART scope decision is still required. Original bound reports are
+preserved, including their pre-review status wording and rejected candidate01.
+
 ## 1. Authorization and acceptance model
 
 **Current state: source-only; `ready_for_build: false`.** Creating this plan authorizes no workstation access, setup/configuration, IP generation, compilation, simulation, tests, installation, programming, commits or pushes. No gate is changed by this plan. Earlier standard/USM oneAPI trees remain reference-only, not active build/test targets; see [AHLS scope](docs/ahls-scope.md).
@@ -282,6 +306,17 @@ Measure throughput/latency only after correctness passes. Record transfer size, 
 For each stage, preserve exact commands, exit status, complete logs, source/tool hashes and the first relevant failure. Do not silently retry with another target, disabled PF1, dropped BAR2, reduced memory capacity, invented pin assignments, old PR artifacts or a different toolchain. Diagnose and obtain approval for scope changes. On hardware timeout, do not free potentially live DMA buffers; retain ownership until a proven recovery/quiescence procedure completes.
 
 **Release checklist:**
+
+Current §9 disposition: final release remains **BLOCKED / NOT QUALIFIED**.
+Offline review acceptance is recorded [separately](qualification/offline-milestone-review-01/ACCEPTANCE.md);
+it does not check off the hardware release criteria below.
+The new [host evidence](qualification/ahls-host-offline-01/REPORT.md) closes an
+offline software checkpoint only. [UART](qualification/dfl-uart-fix-01/REPORT.md)
+and [udev successor02](qualification/dfl-udev-fix-02/REPORT.md) have separate dispositions;
+neither is live-verified. Existing compile success does not clear the recorded
+timing failures. All hardware matrix checks below remain unchecked. Historical
+bare-RPD/reboot instructions are withdrawn, as marked in the recovery document.
+
 
 - [ ] Source pins and current/donor provenance reconciled.
 - [ ] Generated memory/PCIe/BMC/AHLS contracts reviewed.
