@@ -1,0 +1,1 @@
+cmd_/home/uwb_student00/linux-dfl-backport/8250_dfl.o := ld -m elf_x86_64 -z noexecstack --no-warn-rwx-segments   -r -o /home/uwb_student00/linux-dfl-backport/8250_dfl.o @/home/uwb_student00/linux-dfl-backport/8250_dfl.mod 

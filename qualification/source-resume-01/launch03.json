@@ -1,0 +1,32 @@
+[
+  {
+    "argv": [
+      "tmux",
+      "load-buffer",
+      "-b",
+      "ia840f_source_resume_01_input03",
+      "-"
+    ],
+    "rc": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "tmux",
+      "new-window",
+      "-d",
+      "-P",
+      "-F",
+      "#{window_id} #{pane_id}",
+      "-t",
+      "ia840f_mailbox_monitored_01",
+      "-n",
+      "source_resume_03",
+      "tmux save-buffer -b ia840f_source_resume_01_input03 - | python3 -B; exec bash"
+    ],
+    "rc": 0,
+    "stdout": "@11 %11\n",
+    "stderr": ""
+  }
+]

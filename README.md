@@ -1,10 +1,51 @@
 # IA-840F OFS / Altera AHLS source project
 
-**Active target: Altera AHLS-generated RTL integrated into an OFS AFU through PIM, with OPAE/DFL host access. Not an Intel oneAPI compiler/runtime BSP. Source preparation in progress; not build-ready.**
+**Active target: Altera AHLS-generated RTL integrated into an OFS AFU through PIM, with OPAE/DFL host access. Not an Intel oneAPI compiler/runtime BSP. W13 FIM and sanctioned persona artifacts exist; timing and hardware acceptance remain incomplete.**
+
+## Current qualification checkpoint
+
+[GOAL-PROMPT.md](GOAL-PROMPT.md) governs execution and safety. The
+[source-side continuation report](qualification/source-resume-01/REPORT.md)
+and [feature matrix](docs/feature-matrix.md) distinguish actual results from
+blocked hardware checks. No FPGA operation was performed during that continuation.
+
+The separate offline gates now have **spec PASS and quality APPROVED**;
+[parent acceptance](qualification/offline-milestone-review-01/ACCEPTANCE.md)
+records exact review bindings and the final fresh test receipts. Bound reports
+retain their earlier pending-review wording as immutable history.
+
+- Source-proven AFU path: **PF0 VF0 BAR0**, not the PF0 protocol-checker window.
+  See the [host access map](qualification/ahls-host-offline-01/HOST-ACCESS-MAP.md).
+- The additive exact-numerical host test passed its inert C/API suites and
+  compiled/linked against native OPAE; the native binary was **not executed**.
+- UART false advertisement is diagnosed; the required feature-scope decision
+  is unanswered, so no RTL/driver correction is applied.
+- [Udev successor02](qualification/dfl-udev-fix-02/REPORT.md) narrows the
+  rejected candidate's board scope; 21 inert tests pass. It is not installed
+  or native/live-verified; independent approval covers staged/inert scope only.
+- W13/persona timing failures, live OPAE, DDR, host transfers, PR, sustained
+  operation and final durable-boot acceptance remain unresolved.
+
+## Evidence and repository policy
+
+Project-requested qualification reports, finite test sources, commands,
+results and SHA256 inventories are retained under `qualification/<run-id>/`.
+Files **over 2 MB stay local-only**, excluded by the applicable `.gitignore`
+and SHA256-referenced by reports; compact lossless evidence archives may be
+tracked when under the cap. Bitstreams, licensed binaries/installers, license
+files, secrets, compiler build directories and internal agent transcripts are
+not repository deliverables. Preserve failed attempts and accepted provenance;
+commit only independently reviewed milestones. This project-local evidence
+policy is explicitly required by the goal, not permission to scatter internal
+agent scratch files through the repository.
 
 The BittWare vendor platform remains the authority for device, pins, memory, PCIe identities/apertures, clocks/reset and management. Modern OFS provides reference infrastructure. No application-specific accelerator, fixed queue protocol or stream width is imposed.
 
-## Active layout
+## Historical source-preparation layout
+
+The source-only status claims in this section describe the earlier preparation
+stage. Use the current checkpoint above and the feature matrix for execution
+status; old handoffs do not authorize rebuilding or hardware access.
 
 - `sources.lock.json`: exact donor pins and source-only policy; Quartus Pro **26.1.1** remains intended.
 - `ofs-agx7-pcie-attach/`: pinned `ofs-2025.1-1` FIM and its FIM-common dependency.
@@ -36,8 +77,13 @@ Unresolved contracts include modern mixed-memory presets/ports, PF1 PCIe apertur
 
 AHLS documentation requires **Quartus Pro 26.1 for Agilex 7**. This supports the selected toolchain family, but does not by itself qualify patch 26.1.1 with the pinned OFS FIM (documented for 25.1) or old BittWare IP. The workstation installation has not been inspected in this task. No downgrade to an older oneAPI-compatible stack is requested or applied.
 
-## Execution boundary
+## Historical execution boundary — superseded by GOAL-PROMPT.md
 
-**No builds, configure/setup flows, IP generation, simulation/tests, workstation access, installation, programming, commits or pushes.** Board-local gates remain closed and cannot establish readiness by themselves. Direct invocation of untouched upstream scripts is also unauthorized.
+The original source-only restriction is superseded for resumed project work.
+Ordinary in-scope source correction, offline tests, justified generation/builds
+and reviewed milestone commit/push are authorized by GOAL-PROMPT.md. Live
+device access, system-rule activation, programming and disruptive recovery
+remain separately gated. Never rebuild unchanged artifacts, bypass a native
+source-bound guard, or treat successful compilation as live authorization.
 
 Original vendor and sibling donor repositories remain read-only. Existing static inventory utilities inspect source/XML/hash consistency; their prior ASP results are historical evidence, not AHLS integration qualification. No compiler-generated or hardware-validated support is claimed.
