@@ -1,0 +1,111 @@
+{
+  "scope": "Parent native-data observation only; independent result review pending",
+  "audit_sha256": "45e701c10111b05f6de3972fbda5eaee022e7de503cca1a1ae648017c352d85a",
+  "records": 473,
+  "clocks": 81,
+  "clock_C": {
+    "type": "generated",
+    "period": "19.858",
+    "waveform": "0.000 9.929 ",
+    "targets": "pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst|clock_div2",
+    "generated": "sys_pll|iopll_0_clk_100m pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst|inclk 2 1"
+  },
+  "master_M": {
+    "type": "generated",
+    "period": "9.929",
+    "waveform": "0.000 4.964 ",
+    "targets": "{sys_pll|iopll_0|tennm_pll|outclk[2]}",
+    "generated": "sys_pll|iopll_0_n_cnt_clk sys_pll|iopll_0|tennm_pll~ncntr_reg 14 141"
+  },
+  "corner_begin": [
+    [
+      "CORNER_BEGIN",
+      "0",
+      "session_object",
+      "2_slow_vid2_100c"
+    ],
+    [
+      "CORNER_BEGIN",
+      "1",
+      "session_object",
+      "2_slow_vid2b_100c"
+    ],
+    [
+      "CORNER_BEGIN",
+      "2",
+      "session_object",
+      "MIN_fast_vid2a_0c"
+    ],
+    [
+      "CORNER_BEGIN",
+      "3",
+      "session_object",
+      "MIN_fast_vid2a_100c"
+    ],
+    [
+      "CORNER_BEGIN",
+      "4",
+      "session_object",
+      "MIN_fast_vid2_100c"
+    ]
+  ],
+  "corner_complete": [
+    [
+      "CORNER_COMPLETE",
+      "0",
+      "no_timing_acceptance"
+    ],
+    [
+      "CORNER_COMPLETE",
+      "1",
+      "no_timing_acceptance"
+    ],
+    [
+      "CORNER_COMPLETE",
+      "2",
+      "no_timing_acceptance"
+    ],
+    [
+      "CORNER_COMPLETE",
+      "3",
+      "no_timing_acceptance"
+    ],
+    [
+      "CORNER_COMPLETE",
+      "4",
+      "no_timing_acceptance"
+    ]
+  ],
+  "receiver_completion": [
+    [
+      "RECEIVERS_COMPLETE",
+      "candidate",
+      "32",
+      "no_domain_or_timing_acceptance"
+    ]
+  ],
+  "clock_inventory_delta": [
+    [
+      "CLOCK_INVENTORY_DELTA",
+      "baseline_only {} observed_only {} intersection {PCIE_REFCLK0 PCIE_REFCLK1 afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_m_cnt_clk afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_n_cnt_clk afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_outclk0 afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_outclk1 altera_int_osc_clk altera_reserved_tck bwbmc_fpga_max_sclk {ddr4_mem[0].dqs[0]_IN} {ddr4_mem[0].dqs[1]_IN} {ddr4_mem[0].dqs[2]_IN} {ddr4_mem[0].dqs[3]_IN} {ddr4_mem[0].dqs[4]_IN} {ddr4_mem[0].dqs[5]_IN} {ddr4_mem[0].dqs[6]_IN} {ddr4_mem[0].dqs[7]_IN} {ddr4_mem[1].dqs[0]_IN} {ddr4_mem[1].dqs[1]_IN} {ddr4_mem[1].dqs[2]_IN} {ddr4_mem[1].dqs[3]_IN} {ddr4_mem[1].dqs[4]_IN} {ddr4_mem[1].dqs[5]_IN} {ddr4_mem[1].dqs[6]_IN} {ddr4_mem[1].dqs[7]_IN} local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_0 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_1 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_2 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_0 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_1 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_2 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_vco_clk local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_vco_clk_1 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_vco_clk_2 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_0 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_1 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_10 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_2 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_3 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_4 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_5 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_6 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_7 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_8 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_9 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_0 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_1 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_2 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_1 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_2 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_ref_clock local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_vco_clk local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_vco_clk_1 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_vco_clk_2 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_0 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_1 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_10 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_2 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_3 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_4 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_5 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_6 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_7 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_8 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_9 pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|avmm_clock0 pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|rx_pcs_x2_clk|ch15 pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|rx_pma_parallel_clk|ch15 pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15 qsfp_ref_clk sys_pll|iopll_0_clk_100m sys_pll|iopll_0_clk_sys sys_pll|iopll_0_clk_sys_div2 sys_pll|iopll_0_clk_sys_div4 sys_pll|iopll_0_m_cnt_clk sys_pll|iopll_0_n_cnt_clk sys_pll|iopll_0_refclk}"
+    ],
+    [
+      "CLOCK_INVENTORY_DELTA",
+      "baseline_only {} observed_only {} intersection {PCIE_REFCLK0 PCIE_REFCLK1 afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_m_cnt_clk afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_n_cnt_clk afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_outclk0 afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_outclk1 altera_int_osc_clk altera_reserved_tck bwbmc_fpga_max_sclk {ddr4_mem[0].dqs[0]_IN} {ddr4_mem[0].dqs[1]_IN} {ddr4_mem[0].dqs[2]_IN} {ddr4_mem[0].dqs[3]_IN} {ddr4_mem[0].dqs[4]_IN} {ddr4_mem[0].dqs[5]_IN} {ddr4_mem[0].dqs[6]_IN} {ddr4_mem[0].dqs[7]_IN} {ddr4_mem[1].dqs[0]_IN} {ddr4_mem[1].dqs[1]_IN} {ddr4_mem[1].dqs[2]_IN} {ddr4_mem[1].dqs[3]_IN} {ddr4_mem[1].dqs[4]_IN} {ddr4_mem[1].dqs[5]_IN} {ddr4_mem[1].dqs[6]_IN} {ddr4_mem[1].dqs[7]_IN} local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_0 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_1 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_2 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_0 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_1 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_2 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_vco_clk local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_vco_clk_1 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_vco_clk_2 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_0 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_1 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_10 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_2 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_3 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_4 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_5 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_6 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_7 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_8 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_9 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_0 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_1 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_2 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_1 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_2 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_ref_clock local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_vco_clk local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_vco_clk_1 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_vco_clk_2 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_0 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_1 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_10 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_2 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_3 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_4 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_5 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_6 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_7 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_8 local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_9 pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|avmm_clock0 pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|rx_pcs_x2_clk|ch15 pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|rx_pma_parallel_clk|ch15 pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15 qsfp_ref_clk sys_pll|iopll_0_clk_100m sys_pll|iopll_0_clk_sys sys_pll|iopll_0_clk_sys_div2 sys_pll|iopll_0_clk_sys_div4 sys_pll|iopll_0_m_cnt_clk sys_pll|iopll_0_n_cnt_clk sys_pll|iopll_0_refclk}"
+    ]
+  ],
+  "negative_domain_summaries": [
+    {
+      "corner_index": "4",
+      "kind": "hold",
+      "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0",
+      "slack": "-0.004",
+      "tns": "-0.004",
+      "negative_endpoints": "1",
+      "model": "Fast vid2 100C Model"
+    }
+  ],
+  "fifo_summary_rows": 40,
+  "minimum_observed_fifo_slack_ns": "15.229",
+  "timing_accepted": false
+}

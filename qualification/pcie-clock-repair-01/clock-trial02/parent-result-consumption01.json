@@ -1,0 +1,65 @@
+{
+  "utc": "2026-09-22T17:37:01.070133+00:00",
+  "decision": "ACCEPT narrow actual native clock/constraint evidence; production correction and changed-fit PREPARATION justified, not source promotion/build authorization/timing/hardware acceptance",
+  "review_bindings": {
+    "result-independent-review01.md": "26da6c05e8b74e51411b304e0f6584366dd8c6ae3ce008ce23ac998750e3c0f3",
+    "production-delta-recommendation01.md": "75a0a4e7b118b1a8789d2b7aed64a88b61e50a93ef24bbcb639f9cd5a6f94c95"
+  },
+  "freeze_sha256": "0674f73b1a11fda75b63d30ee91f907259a65229a35b2855ce80f714724396ce",
+  "preparation_archive_sha256": "0894077b821624673b4e5f797db4606722a9270cd934a1ab5bc2afdde287ab52",
+  "result_archive_sha256": "1619230e6582918bc8eb51e3f05c0514348f4b34c7f0afb6535bd1e5cb4d533f",
+  "result_manifest_sha256": "f0dd91835a63a5f9b09bacd7a07aa1935d1effb1cf6943848534f9983d8ed2a7",
+  "parent_checks": {
+    "frozen_files": 152,
+    "verified_exports": {
+      "preparation": 21,
+      "result": 86
+    },
+    "native_status": {
+      "effective_rc": 0,
+      "errors": [],
+      "native_rc": 0,
+      "abort_reason": null,
+      "timing_accepted": false,
+      "termination_confirmed": true
+    },
+    "native_inventory_count": 81,
+    "clock_C": {
+      "type": "generated",
+      "period": "19.858",
+      "waveform": "0.000 9.929 ",
+      "targets": "pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst|clock_div2",
+      "generated": "sys_pll|iopll_0_clk_100m pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst|inclk 2 1"
+    },
+    "native_corner_objects": [
+      "2_slow_vid2_100c",
+      "2_slow_vid2b_100c",
+      "MIN_fast_vid2a_0c",
+      "MIN_fast_vid2a_100c",
+      "MIN_fast_vid2_100c"
+    ],
+    "negative_domain_summary": [
+      [
+        "4",
+        "hold",
+        "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0",
+        "-0.004"
+      ]
+    ],
+    "known_receiver_completion": true,
+    "existing_compile_anchors_verified": 4,
+    "source_top_sdc_unchanged": true
+  },
+  "limits": [
+    "Original80+C and known32+T propagation accepted;459-node full clock-load classification not proven",
+    "Eight recovered FIFO assignments numeric in5corners accepted;netdelay minimum15.229ns",
+    "Skew summary only;no latest/earliest detail-count or complete coverage acceptance",
+    "Sampled exception/path evidence;no exhaustive changed-cut/CDC acceptance;overridden multicycles earn no credit",
+    "EMIF1hold\u22120.004ns,remainingunconstrainedports/registers and HighDRC/CDC remain",
+    "Attemptspent; no rerun,hardware,sourcepromotion orfit"
+  ],
+  "ready_for_build": false,
+  "new_native_authorized": false,
+  "timing_accepted": false,
+  "hardware_qualified": false
+}

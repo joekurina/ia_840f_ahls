@@ -16,7 +16,17 @@ commits/pushes are authorized; live installation, device access, PR/programming
 and recovery remain separately gated. Host-local JTAG/BMC is not independent
 host recovery. Gen3 x16 is the expected workstation link, not a fault.
 
-[Source-resume-01](qualification/source-resume-01/REPORT.md) records the current
+### Latest checkpoint — clock-trial02 native result
+
+The [candidate-only clock trial](qualification/pcie-clock-repair-01/clock-trial02/RESULT.md) completed once with native/effective/outer rc0, confirmed termination and unchanged original Work14/SOURCE/PIM inventories. Package/issuer milestone `a12310a9609f8a80fa3e7d86e6bc92182a99e91c` is published. [Independent actual-result review is consumed](qualification/pcie-clock-repair-01/clock-trial02/RESULT-ACCEPTANCE.md): the corrected clock, known32+T propagation, and all eight formerly invalid FIFO net-delay assignments now numerically evaluated with positive slack across five corner iterations are accepted within the pilot scope. These observations do not accept complete coverage or timing; EMIF1 hold−0.004ns remains.
+
+The narrow result milestone is accepted for publication. The next gate is exact source review of the minimal production-SDC correction identified by the consumed conditional recommendation. Only a justified, reviewed source correction may proceed into the existing fresh changed-design Work14 compile route. No original-baseline rerun, unchanged fit retry, new reporting framework, source promotion or hardware action is authorized by this checkpoint. `ready_for_build=false`; workstation recovery/backend and all real hardware qualification criteria remain unresolved.
+
+### Earlier source and diagnostic history
+
+The following records preserve earlier checkpoints; their next-action wording is superseded by the latest checkpoint above.
+
+[Source-resume-01](qualification/source-resume-01/REPORT.md) records the earlier
 checkpoint: W13/persona artifacts preserved; false UART advertisement
 identified and now corrected in locally maintained source under the vendor
 UART-absent convention; udev candidate offline-tested but not

@@ -1,21 +1,23 @@
-# Clock-trial02 — package and one-use issuer accepted; not issued
+# Clock-trial02 — native result independently accepted within scope
 
-Active successor to unissued clock-trial01. User's speed/native-iteration direction governs: no continued experiment04 framework expansion and no original-baseline rerun. Read SUCCESSOR.md and prepared-readback01/SPEC.md.
+**Goal incomplete. Timing NOT ACCEPTED; hardware NOT RUN/QUALIFIED; ready_for_build=false. Trial SPENT: never rerun or reissue.**
 
-The parent consumed all clock-trial01 reports. SPEC PASS was not accepted because parallel design review found the insertion/final-SDC inventory mismatch. Source evidence confirmed normal later clocks. trial01 remains unchanged, unissued and unrun; do not launch it.
+## Accepted native result
 
-## Concrete progress
+[RESULT-ACCEPTANCE.md](RESULT-ACCEPTANCE.md) records parent consumption of the completed result review and conditional production recommendation. No reviews remain pending in deleg_6a5a7667. The parent reverified152 frozen files,21 preparation exports and86 result exports, with exact review hashes in parent-result-consumption01.json.
 
-- Additive verify_created_final_v3 compares final state against the pinned original final80-clock inventory plus C. Complete accepted guard02 remains an unchanged prefix; immediate insertion delta and every generated-C postcondition preserved. No exception or clock-policy change.
-- Nine focused boundary tests pass, including old-fail/new-pass late-clock case, missing/extra/changed clocks, generated-C faults and rejected retry. Fixture-only missing audit-handle failure preserved. Three actual Tcl entry checks pass; Python3.9 AST passes. Not native evidence.
-- Fresh remote ordinary-file preparation finished @55/%55, rc0 and shell returned. No vendor invocation, issuer or authorization. Parent verified all21 exports, full input bindings and inverse SDC delta. Original Work14/SOURCE/PIM unchanged and identical to accepted diagnostic03 inventory. Missing-auth runner/dispatcher each rc1.
-- ArchiveSHA 0894077b821624673b4e5f797db4606722a9270cd934a1ab5bc2afdde287ab52; manifestSHA 97f9c0664a266ef77d2025c710bd12078728e079dc75feec23b0e3a595ed6e22; candidateSHA c2fbb6e73f56aa4a8a212edade169e0b547286573662fc996c1196516f12fbc4. Candidate7891files/7768callbackfiles/10links. HelperSHA e0ca71dede69ea61942cf1dd52c9df8ae2580c7d2ec5f167d30800d0684964c1.
-- Frozen46files: review-freeze01.json SHA 81d6f0aaccf8610689b15dc0b911cdd85e3d0838e1413d75ea8c5f53158154c2. Do not edit frozen inputs.
+One candidate-only copied-Work14 STA ran in owned @56/%56, native/effective/outer0/0/0, PID23848, 2026-09-22T17:13:12.813331Z–17:14:42.458290Z. Termination is confirmed; no final live PIDs or supervision errors. Captured before/after comparisons preserve Work14/SOURCE/PIM. Status @57/%57 independently recorded no live group. No source promotion, refit or hardware action occurred.
 
-## Active review and next step
+The generated C passes its native guard: master M, source D|inclk, target D|clock_div2, divide/multiply2/1, period19.858ns, waveform0.000/9.929ns. Original80 definitions remain plus C; known32 receivers and tile T have C. All8 formerly invalid FIFO net-delay assignments are numerical in5 actual corners, minimum slack15.229ns. This is narrow constraint evidence, not complete459-node clock-load classification, exception coverage or timing qualification.
 
-Formal actual-prepared SPEC deleg_2354f255 passed; reportSHA150bacc2bc29fc001c53e624a49572d948f4280eac0332c49c3849390ace970a. Parent reverified46frozen files,21exports/candidate/guard-prefix and predecessor40files; consumed in parent-spec-consumption01.json (SHAcba79f6157a136b79efc174802df6ea129305a20daa6696bc114395931be8761). QUALITY deleg_6b9ac7c9 APPROVED (reportSHA79110dcc08890bc9311d9caaa824418bc6bd4a313b10588d7b1c7815184ac487); parent consumed in parent-consumption01.json and ACCEPTANCE.md after all46/21bindings and predecessor40 reverified. Package accepted prospectively only. No review pending or duplicate dispatch. Publication and one-use issuance remain before native execution; actual issuer inspection is complete as recorded below. No approval inherited from trial01.
+## Limits retained
 
-Parent inspected diagnostic03's issuer source and actual prepared successor native-lifetime/buffer/result boundaries (launch-boundary-inspection01.json). The actual issue-launch01.py is now separately parent-inspected (issuer-inspection01.json): only root/buffer/token/marker and current immutable candidate/review bindings differ from the precedent; normalized AST and Python3.9 grammar verified. Execution remains unissued, conditional on publication and live preflight. Preliminary publication audit (outside repository) is /home/joe/.hermes/cache/scratch/ia840f-clock-trial02-publication-kp8_zr1k/preliminary-audit.json:91prospective files,2oversized candidate JSONs excluded; only capturedtop.sdc/retargetdiff whitespace; that preliminary pass left the index untouched. Final selected set now adds consumed reviews/acceptance, actual issuer inspection, status and only reused component/test provenance; unrelated paused-framework work is excluded. trial01/next-fit-reuse.md supplies existing Work14 generated-input/compile-package route; four issuer/runner/gate source anchors verified locally. Follow that route only after actual clock-result and exact production-SDC review. No new build framework or unchanged full-fit retry.
+Skew is summary-only; empty SKEW_RETURN does not establish zero paths or unsaturated latest/earliest coverage. Exception/timing reports are bounded samples; overridden multicycles earn no safety credit. EMIF1hold−0.004ns,370 no_clock findings, unconstrained ports and HighCDC/DRC remain. Native0errors/187warnings is not timing acceptance.
 
-ready_for_build=false. No native candidate trial, fit, maintained-source promotion, timing acceptance or hardware operation. EMIF1hold−0.004ns and High CDC/DRC findings remain. Real hardware/DDR/transfers/AHLS/PR/sustained/QSPI criteria and independent-recovery prerequisites unchanged. Last published HEAD remains6f6dae67e6f141ce821898169ba8d29165a7359b; current trial packages uncommitted.
+## Publication and next concrete gate
+
+The package and separately inspected issuer were published in a12310a9609f8a80fa3e7d86e6bc92182a99e91c. The narrow accepted-result milestone is now being published separately. Result archive SHA2561619230e6582918bc8eb51e3f05c0514348f4b34c7f0afb6535bd1e5cb4d533f retains86 exports/79 reports losslessly; README.md documents the2MB cap and local-only raw report tables. Frozen native bytes remain unchanged.
+
+Next: author and independently review the minimal production clock-definition correction at the normal SDC loading boundary, then prepare a fresh changed-design fit using the existing Work14 input-copy/compile machinery. No new framework, original-baseline rerun, unchanged fit retry, exception cleanup or guessed fitter setting. Do not transplant the scratch helper or its fixed old-fit inventory into production.
+
+Trial01 remains superseded, unissued and unrun. All older native attempts remain spent. Independent host recovery/backend, matching persona, full timing/CDC/DRC, DDR/transfers/AHLS/PR/sustained/QSPI qualification remain open.
