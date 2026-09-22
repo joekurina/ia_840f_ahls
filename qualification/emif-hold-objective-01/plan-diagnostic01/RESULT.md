@@ -1,0 +1,7 @@
+# Plan diagnostic01 — parent-stopped, incomplete
+
+Native return−15, effective/outer143. The one-use attempt is spent. Gate rejected a copied Fitter message database removed before QSF validation; Quartus downgraded the rejection to125091 and continued. Parent sent SIGTERM through a pidfd bound to the exact owned Fitter PID/start ticks. Existing supervision confirmed termination, no live descendants, no supervision errors; passive process audit found no Quartus/qsys tools. Work15, maintained SOURCE and PIM inventories remained unchanged.
+
+No exact hold setter marker or callback report was obtained; no hold objective or timing acceptance. `result01.json.gz` losslessly retains7 exports. `parent-stop-request01.json` records intentional termination, distinct from the supervisor's null abort_reason. `drift01.json` measured561 changed/deleted copied database entries, all under QDB output stages (_all/final/legacy/placed/planned/retimed/routed); none in synthesized, partitioned or source stages. The reused STA callback binding was inappropriate for a Fitter stage that invalidates its prior outputs.
+
+Successor02 retains every prelaunch hash, source/partitioned/synthesized QDB input hash and process/ancestry/resource/one-use check. Only known Fitter output stages are omitted from its runtime callback inventory. A fresh original Work15 copy is required; this interrupted scratch is not reused. No source-SPEC/QUALITY loop or timing waiver is claimed; independent actual failed-result review follows separately.

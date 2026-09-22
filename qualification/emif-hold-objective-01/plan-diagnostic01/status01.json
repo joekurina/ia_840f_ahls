@@ -1,0 +1,90 @@
+{
+  "batch": "ia840f_emif_plan01_status01",
+  "files": {
+    "authorization.json": {
+      "json": {
+        "approved": true,
+        "candidate_sha256": "e8c5c6e0c2a198aa7fd620ecbfc110b050aaffedd6d317ab411b964aa13eb63f",
+        "permission": "exact-offline-emif-plan01"
+      },
+      "sha256": "c0b5ad57203eb7f4ae18f620cda4ccd9dba5ead78ba006e20388d2fc7c81d538"
+    },
+    "launch01/issuance.json": {
+      "json": {
+        "authorization_sha256": "c0b5ad57203eb7f4ae18f620cda4ccd9dba5ead78ba006e20388d2fc7c81d538",
+        "candidate_sha256": "e8c5c6e0c2a198aa7fd620ecbfc110b050aaffedd6d317ab411b964aa13eb63f",
+        "native_started_at_receipt": false,
+        "originals_unchanged_before_launch": true,
+        "pane": "%80",
+        "reviews": {
+          "AUTHORITY.md": "b9d2f464b2ee1b36ee7e8bc5a270926f050e0f85f39fc3d07f8b070537aff215",
+          "parent-preparation02.json": "76a20c64d64be5880913f3f6fcb4fb01992b4a0fc4fa69f32645fb87da479018",
+          "prepared-manifest02.json": "df8fc2b0e60be98b19551e4f3fcdb3dc69de288fe332d7d64462240ec734dc1d"
+        },
+        "runner_argv": [
+          "python3",
+          "-B",
+          "/home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic01/run-query.py"
+        ],
+        "runner_cwd": "/home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic01",
+        "utc": "2026-09-22T19:46:12.285187+00:00"
+      },
+      "sha256": "be2e1f1681233e76c0057c41a787b9ebc7ae9d866ff88d50c9ae075d08e34e6c"
+    },
+    "native-process.json": {
+      "json": {
+        "argv": [
+          "/opt/altera/26.1.1/quartus/bin/quartus_fit",
+          "--plan",
+          "--read_settings_files=on",
+          "--write_settings_files=off",
+          "ofs_top",
+          "-c",
+          "ofs_top"
+        ],
+        "cwd": "/home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic01/scratch/syn/board/ia840f/syn_top",
+        "pid": 36100,
+        "start": "2026-09-22T19:46:15.331956+00:00"
+      },
+      "sha256": "f04e591d32eb52a64228a02081402c4b3f221ec2c1c2610410992da69f7bc52a"
+    },
+    "query.claim": {
+      "json": {
+        "argv": [
+          "python3",
+          "-B",
+          "/home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic01/run-query.py"
+        ],
+        "cwd": "/home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic01",
+        "exe": "/usr/bin/python3.9",
+        "pid": 36061,
+        "ppid": 36034,
+        "start_ticks": "6963733"
+      },
+      "sha256": "b386666aecd857a20debe8043b7b1d50f76d7f134e2a6a81d3d65663b95956f5"
+    }
+  },
+  "log_bytes": 4373,
+  "log_tail": "IA840F_GATE_REJECTED: [Errno 2] No such file or directory: '/home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic01/scratch/syn/board/ia840f/syn_top/qdb/_compiler/ofs_top/_flat/26.1.1/legacy/1/ofs_top.fit.qmsgdb'\nchild process exited abnormally\nInfo: Setting ::env(BUILD_ROOT_REL)=../../../..\nInfo: Setting ::env(BITSTREAM_ID)=05010202599ac052\nInfo: Setting ::env(BITSTREAM_MD)=0000000002609181\nInfo: Setting ::env(BITSTREAM_INFO)=0000000000000001\nInfo: Setting ::env(Q_REVISION)=ofs_top\nInfo: Setting ::env(Q_PR_REVISION)=ofs_pr_afu\nInfo: Setting ::env(Q_PR_PARTITION_NAME)=green_region\nInfo: Setting ::env(FME_IFC_ID)=fd2baeed-3092-5735-90c9-52ef20542b75\nInfo: BUILD_ROOT_REL is ../../../..\nInfo: Loading PIM-based AFU...\nInfo: Compiling PR Base revision...\nCritical Warning (125091): Tcl error: IA840F NOT READY: [Errno 2] No such file or directory: '/home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic01/scratch/syn/board/ia840f/syn_top/qdb/_compiler/ofs_top/_flat/26.1.1/legacy/1/ofs_top.fit.qmsgdb'\nchild process exited abnormally. Child-IP/generated-interface, memory and BMC/FLR qualification remain unperformed.\n    while executing\n\"error \"IA840F NOT READY: $ia840f_gate_result. Child-IP/generated-interface, memory and BMC/FLR qualification remain unperformed.\"\"\n    invoked from within\n\"if {[catch {exec python3 $ia840f_gate quartus 2>@1} ia840f_gate_result]} {\n    # Quartus may downgrade the error below to warning 125091 and exit 0.\n ...\"\n    (file \"../setup/build_gate.tcl\" line 6)\n    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/build_gate.tcl\nInfo (20030): Parallel compilation is enabled and will use 18 of the 18 processors detected\nInfo: *******************************************************************\nInfo: Running Quartus Prime Fitter\n    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition\n    Info: Copyright (C) 2026  Altera Corporation. All rights reserved.\n    Info: Your use of Altera Corporation's design tools, logic functions \n    Info: and other software and tools, and any partner logic \n    Info: functions, and any output files from any of the foregoing \n    Info: (including device programming or simulation files), and any \n    Info: associated documentation or information are expressly subject \n    Info: to the terms and conditions of the Altera Program License \n    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,\n    Info: the Altera IP License Agreement, or other applicable license\n    Info: agreement, including, without limitation, that your use is for\n    Info: the sole purpose of programming logic devices manufactured by\n    Info: Altera and sold by Altera or its authorized distributors.  Please\n    Info: refer to the Altera Software License Subscription Agreements \n    Info: on the Quartus Prime software download page.\n    Info: Processing started: Tue Sep 22 12:46:15 2026\n    Info: System process ID: 36100\nInfo: Command: quartus_fit --plan --read_settings_files=on --write_settings_files=off ofs_top -c ofs_top\nInfo: Using INI file /home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic01/scratch/syn/board/ia840f/syn_top/quartus.ini\nInfo: qfit2_default_script.tcl version: #1\nInfo: Project  = ofs_top\nInfo: Revision = ofs_top\nInfo (16677): Loading synthesized database.\nInfo (16734): Loading \"synthesized\" snapshot for partition \"root_partition\".\nInfo (16734): Loading \"synthesized\" snapshot for partition \"green_region\".\nInfo (16734): Loading \"synthesized\" snapshot for partition \"auto_fab_1\".\nInfo (16734): Loading \"synthesized\" snapshot for partition \"auto_fab_0\".\nCritical Warning (20727): The design contains Partial Reconfiguration or Reserved Core partitions with unused input ports. Altera recommends to assign unused inputs within the partition to registers with the synthesis noprune attribute.\n    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[0] is dangling on partition green_region.\n    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[1] is dangling on partition green_region.\n    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[2] is dangling on partition green_region.\n    Info (20728): The input port af",
+  "processes": [
+    {
+      "args": "python3 -B /home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic01/run-query.py",
+      "comm": "python3.9",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic01",
+      "exe": "/usr/bin/python3.9",
+      "pid": 36061,
+      "ppid": 36034,
+      "stat": "36061 (python3.9) S 36034 36034 36034 34892 36034 4194304 171243 1049 0 0 885 89 1 2 30 10 1 0 6963733 257142784 6339 18446744073709551615 94745816694784 94745816695161 140720313750368 0 0 0 0 19927040 2 1 0 0 17 18 0 0 0 0 0 94745816706456 94745816707076 94745848737792 140720313758233 140720313758345 140720313758345 140720313761765 0\n"
+    },
+    {
+      "args": "quartus_fit --plan --read_settings_files=on --write_settings_files=off ofs_top -c ofs_top",
+      "comm": "quartus_fit",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic01/scratch/syn/board/ia840f/syn_top",
+      "exe": "/opt/altera/26.1.1/quartus/linux64/quartus_fit",
+      "pid": 36100,
+      "ppid": 36061,
+      "stat": "36100 (quartus_fit) R 36061 36100 36100 0 -1 4194304 254444 40658 0 0 4644 53 169 21 30 10 20 0 6964709 4441169920 744942 18446744073709551615 4194304 4326256 140731105951760 0 0 0 0 3149824 1224 0 0 0 17 4 0 0 0 0 0 4331200 4338896 14966784 140731105959225 140731105959315 140731105959315 140731105963977 0\n"
+    }
+  ],
+  "utc": "2026-09-22T19:47:04.076660+00:00"
+}

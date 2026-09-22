@@ -1,0 +1,78 @@
+IA840F_GATE_REJECTED: [Errno 2] No such file or directory: '/home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic01/scratch/syn/board/ia840f/syn_top/qdb/_compiler/ofs_top/_flat/26.1.1/legacy/1/ofs_top.fit.qmsgdb'
+child process exited abnormally
+Info: Setting ::env(BUILD_ROOT_REL)=../../../..
+Info: Setting ::env(BITSTREAM_ID)=05010202599ac052
+Info: Setting ::env(BITSTREAM_MD)=0000000002609181
+Info: Setting ::env(BITSTREAM_INFO)=0000000000000001
+Info: Setting ::env(Q_REVISION)=ofs_top
+Info: Setting ::env(Q_PR_REVISION)=ofs_pr_afu
+Info: Setting ::env(Q_PR_PARTITION_NAME)=green_region
+Info: Setting ::env(FME_IFC_ID)=fd2baeed-3092-5735-90c9-52ef20542b75
+Info: BUILD_ROOT_REL is ../../../..
+Info: Loading PIM-based AFU...
+Info: Compiling PR Base revision...
+Critical Warning (125091): Tcl error: IA840F NOT READY: [Errno 2] No such file or directory: '/home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic01/scratch/syn/board/ia840f/syn_top/qdb/_compiler/ofs_top/_flat/26.1.1/legacy/1/ofs_top.fit.qmsgdb'
+child process exited abnormally. Child-IP/generated-interface, memory and BMC/FLR qualification remain unperformed.
+    while executing
+"error "IA840F NOT READY: $ia840f_gate_result. Child-IP/generated-interface, memory and BMC/FLR qualification remain unperformed.""
+    invoked from within
+"if {[catch {exec python3 $ia840f_gate quartus 2>@1} ia840f_gate_result]} {
+    # Quartus may downgrade the error below to warning 125091 and exit 0.
+ ..."
+    (file "../setup/build_gate.tcl" line 6)
+    Info (125063): set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/build_gate.tcl
+Info (20030): Parallel compilation is enabled and will use 18 of the 18 processors detected
+Info: *******************************************************************
+Info: Running Quartus Prime Fitter
+    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+    Info: Copyright (C) 2026  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Tue Sep 22 12:46:15 2026
+    Info: System process ID: 36100
+Info: Command: quartus_fit --plan --read_settings_files=on --write_settings_files=off ofs_top -c ofs_top
+Info: Using INI file /home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic01/scratch/syn/board/ia840f/syn_top/quartus.ini
+Info: qfit2_default_script.tcl version: #1
+Info: Project  = ofs_top
+Info: Revision = ofs_top
+Info (16677): Loading synthesized database.
+Info (16734): Loading "synthesized" snapshot for partition "root_partition".
+Info (16734): Loading "synthesized" snapshot for partition "green_region".
+Info (16734): Loading "synthesized" snapshot for partition "auto_fab_1".
+Info (16734): Loading "synthesized" snapshot for partition "auto_fab_0".
+Critical Warning (20727): The design contains Partial Reconfiguration or Reserved Core partitions with unused input ports. Altera recommends to assign unused inputs within the partition to registers with the synthesis noprune attribute.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[0] is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[1] is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[2] is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[3] is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[4] is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[5] is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[6] is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[7] is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[8] is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bresp[0] is dangling on partition green_region.
+    Info (20186): ....
+Info (16678): Successfully loaded synthesized database: elapsed time is 00:00:13.
+Info (16303): High Performance Effort optimization mode selected -- timing performance will be prioritized at the potential cost of increased compilation time
+Info (119006): Selected device AGFB027R25A2E2V for design "ofs_top"
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 100 degrees C
+Warning (18410): WYSIWYG RAM primitive "afu_top|st2mm|axis_tx_msix_bridge|msix_fifo|auto_generated|dpfifo|FIFOram|altera_syncram_impl1|ram_block2a4" "eccstatus" port is not connected File: /home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic01/scratch/syn/board/ia840f/syn_top/tmp-clearbox/ofs_top/24839/altera_syncram_impl_tomd.tdf Line: 186
+Warning (18410): WYSIWYG RAM primitive "afu_top|st2mm|axis_tx_msix_bridge|msix_fifo|auto_generated|dpfifo|FIFOram|altera_syncram_impl1|ram_block2a5" "eccstatus" port is not connected File: /home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic01/scratch/syn/board/ia840f/syn_top/tmp-clearbox/ofs_top/24839/altera_syncram_impl_tomd.tdf Line: 219
+Warning (18410): WYSIWYG RAM primitive "afu_top|st2mm|axis_tx_msix_bridge|msix_fifo|auto_generated|dpfifo|FIFOram|altera_syncram_impl1|ram_block2a6" "eccstatus" port is not connected File: /home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic01/scratch/syn/board/ia840f/syn_top/tmp-clearbox/ofs_top/24839/altera_syncram_impl_tomd.tdf Line: 252
+Warning (18410): WYSIWYG RAM primitive "afu_top|st2mm|axis_tx_msix_bridge|msix_fifo|auto_generated|dpfifo|FIFOram|altera_syncram_impl1|ram_block2a7" "eccstatus" port is not connected File: /home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic01/scratch/syn/board/ia840f/syn_top/tmp-clearbox/ofs_top/24839/altera_syncram_impl_tomd.tdf Line: 285
+Warning (18410): WYSIWYG RAM primitive "afu_top|st2mm|axis_tx_msix_bridge|msix_fifo|auto_generated|dpfifo|FIFOram|altera_syncram_impl1|ram_block2a0" "eccstatus" port is not connected File: /home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic01/scratch/syn/board/ia840f/syn_top/tmp-clearbox/ofs_top/24839/altera_syncram_impl_tomd.tdf Line: 54
+Warning (18410): WYSIWYG RAM primitive "afu_top|st2mm|axis_tx_msix_bridge|msix_fifo|auto_generated|dpfifo|FIFOram|altera_syncram_impl1|ram_block2a1" "eccstatus" port is not connected File: /home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic01/scratch/syn/board/ia840f/syn_top/tmp-clearbox/ofs_top/24839/altera_syncram_impl_tomd.tdf Line: 87
+Warning (18410): WYSIWYG RAM primitive "afu_top|st2mm|axis_tx_msix_bridge|msix_fifo|auto_generated|dpfifo|FIFOram|altera_syncram_impl1|ram_block2a2" "eccstatus" port is not connected File: /home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic01/scratch/syn/board/ia840f/syn_top/tmp-clearbox/ofs_top/24839/altera_syncram_impl_tomd.tdf Line: 120
+Warning (18410): WYSIWYG RAM primitive "afu_top|st2mm|axis_tx_msix_bridge|msix_fifo|auto_generateCONSTRAINT_SUPERVISION {"abort_reason": null, "final_live_pids": [], "native_rc": -15, "native_started": true, "supervision_errors": [], "termination_confirmed": true}
