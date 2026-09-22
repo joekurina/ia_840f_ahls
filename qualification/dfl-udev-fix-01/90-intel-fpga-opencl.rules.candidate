@@ -1,0 +1,5 @@
+# CANDIDATE ONLY: replace the captured local 90-intel-fpga-opencl.rules after approval.
+# IA840F PF0 management nodes only. No sysfs permissions or RUN actions.
+# Existing private group uwb_student00; no group creation or membership change.
+ACTION=="add|change", KERNEL=="dfl-fme.[0-9]*", SUBSYSTEMS=="pci", ATTRS{vendor}=="0x8086", ATTRS{device}=="0xbcce", OWNER="root", GROUP="root", MODE="0600"
+ACTION=="add|change", KERNEL=="dfl-port.[0-9]*", SUBSYSTEMS=="pci", ATTRS{vendor}=="0x8086", ATTRS{device}=="0xbcce", OWNER="root", GROUP="uwb_student00", MODE="0660"

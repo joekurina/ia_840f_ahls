@@ -1,0 +1,16 @@
+--- /etc/udev/rules.d/90-intel-fpga-opencl.rules
++++ candidate/90-intel-fpga-opencl.rules
+@@ -1,8 +1,5 @@
+-# Set device permission to allow regular user to perform PR, required for OpenCL
+-
+-# S10 FME permisison
+-KERNEL=="dfl-fme.[0-9]*", ACTION=="add|change", GROUP="root", MODE="0666", RUN+="/bin/bash -c 'chmod 0666 %S%p/errors/* /dev/%k'"
+-
+-# S10 port permission
+-KERNEL=="dfl-port.[0-9]*", ACTION=="add|change", GROUP="root", MODE="0666", RUN+="/bin/bash -c 'chmod 0666 %S%p/dfl*/userclk/frequency %S%p/errors/* /dev/%k'"
+-
++# CANDIDATE ONLY: replace the captured local 90-intel-fpga-opencl.rules after approval.
++# IA840F PF0 management nodes only. No sysfs permissions or RUN actions.
++# Existing private group uwb_student00; no group creation or membership change.
++ACTION=="add|change", KERNEL=="dfl-fme.[0-9]*", SUBSYSTEMS=="pci", ATTRS{vendor}=="0x8086", ATTRS{device}=="0xbcce", OWNER="root", GROUP="root", MODE="0600"
++ACTION=="add|change", KERNEL=="dfl-port.[0-9]*", SUBSYSTEMS=="pci", ATTRS{vendor}=="0x8086", ATTRS{device}=="0xbcce", OWNER="root", GROUP="uwb_student00", MODE="0660"

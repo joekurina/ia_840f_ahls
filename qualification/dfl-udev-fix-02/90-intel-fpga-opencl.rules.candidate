@@ -1,0 +1,19 @@
+# CANDIDATE ONLY. Snapshot-specific PF0 selection; current identity must be revalidated before approval.
+# BDF from batch03 cached /run/udev/data; IDs from W13 saved core16 PCIe parameters.
+# Jump past the original rules ONLY for the exact intended PF0 DFL node.
+ACTION=="add|change", KERNEL=="dfl-fme.[0-9]*|dfl-port.[0-9]*", SUBSYSTEMS=="pci", KERNELS=="0000:4f:00.0", ATTRS{vendor}=="0x8086", ATTRS{device}=="0xbcce", ATTRS{subsystem_vendor}=="0x8086", ATTRS{subsystem_device}=="0x1771", GOTO="ia840f_dfl_target"
+# BEGIN ORIGINAL: unchanged fallback for all unrelated devices/events.
+# Set device permission to allow regular user to perform PR, required for OpenCL
+
+# S10 FME permisison
+KERNEL=="dfl-fme.[0-9]*", ACTION=="add|change", GROUP="root", MODE="0666", RUN+="/bin/bash -c 'chmod 0666 %S%p/errors/* /dev/%k'"
+
+# S10 port permission
+KERNEL=="dfl-port.[0-9]*", ACTION=="add|change", GROUP="root", MODE="0666", RUN+="/bin/bash -c 'chmod 0666 %S%p/dfl*/userclk/frequency %S%p/errors/* /dev/%k'"
+
+# END ORIGINAL
+GOTO="ia840f_dfl_end"
+LABEL="ia840f_dfl_target"
+KERNEL=="dfl-fme.[0-9]*", OWNER="root", GROUP="root", MODE="0600"
+KERNEL=="dfl-port.[0-9]*", OWNER="root", GROUP="uwb_student00", MODE="0660"
+LABEL="ia840f_dfl_end"
