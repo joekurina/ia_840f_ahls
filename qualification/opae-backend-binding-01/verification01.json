@@ -1,0 +1,58 @@
+{
+  "capture_argv": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=12",
+    "uwb_student00@100.101.227.97",
+    "tmux capture-pane -p -S -20 -t %17"
+  ],
+  "export_argv": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=12",
+    "uwb_student00@100.101.227.97",
+    "tmux save-buffer -b ia840f_opae_binding_01_batch01 -"
+  ],
+  "json_sha256": "426ff18c8b7df72dd8a30e55648f33491af3bb4181ea701fad07f6c14b4a7a17",
+  "gzip_sha256": "3fcf9dda78c4e921d2c0bca6a5ee334d7aea930946023b5d40b0c44c5d17ec6e",
+  "previous_hash_checks": [
+    {
+      "path": "/home/uwb_student00/opae-sdk/build/lib/libopae-u.so",
+      "same_as_previous_capture": true
+    },
+    {
+      "path": "/home/uwb_student00/opae-sdk/build/lib/libopaevfio.so.2.13.0",
+      "same_as_previous_capture": true
+    },
+    {
+      "path": "/usr/lib64/libopaevfio.so.2.13.0",
+      "same_as_previous_capture": true
+    },
+    {
+      "path": "/usr/lib64/opae/libopae-u.so",
+      "same_as_previous_capture": true
+    }
+  ],
+  "pairs": {
+    "uio": {
+      "equal_sections": 20,
+      "total_sections": 22,
+      "different_sections": [
+        ".dynamic",
+        ".dynstr"
+      ]
+    },
+    "vfio_support": {
+      "equal_sections": 19,
+      "total_sections": 21,
+      "different_sections": [
+        ".dynamic",
+        ".dynstr"
+      ]
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "collector_sha256": "47d8b3155243f4ac7be77c3ec24c0a5e78c3505f6a326c6f32aab8c85a0edc09",
+  "calls": [
+    {
+      "argv": [
+        "ssh",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=12",
+        "uwb_student00@100.101.227.97",
+        "tmux list-windows -t ia840f_mailbox_monitored_01 -F '#{window_name} #{window_id} #{pane_id}'"
+      ],
+      "rc": 0,
+      "stdout": "source_resume_01 @9 %9\nsource_resume_02 @10 %10\nsource_resume_03 @11 %11\nsource_resume_04 @12 %12\nhost_compile_01 @13 %13\nsource_resume_05 @14 %14\nsource_resume_06 @15 %15\nsource_resume_07 @16 %16\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "ssh",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=12",
+        "uwb_student00@100.101.227.97",
+        "tmux list-buffers -F '#{buffer_name}'"
+      ],
+      "rc": 0,
+      "stdout": "ia840f_source_resume_01_batch07\nia840f_source_resume_01_input07\nia840f_source_resume_01_batch06\nia840f_source_resume_01_input06\nia840f_source_resume_01_batch05\nia840f_source_resume_01_input05\nia840f_host_native_compile_01\nia840f_host_compile_input01\nia840f_source_resume_01_batch04\nia840f_source_resume_01_input04\nia840f_source_resume_01_batch03\nia840f_source_resume_01_input03\nia840f_source_resume_01_batch02\nia840f_source_resume_01_input02\nia840f_source_resume_01_batch01\nia840f_source_resume_01_input01\nia840f_crash_logs_20260921_batch03\nia840f_crash_logs_20260921_batch02\nia840f_crash_logs_20260921_batch01\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "ssh",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=12",
+        "uwb_student00@100.101.227.97",
+        "tmux load-buffer -b ia840f_opae_binding_01_input01 -"
+      ],
+      "rc": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "ssh",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=12",
+        "uwb_student00@100.101.227.97",
+        "tmux new-window -d -P -F '#{window_id} #{pane_id}' -t ia840f_mailbox_monitored_01 -n opae_binding_01 'tmux save-buffer -b ia840f_opae_binding_01_input01 - | python3 -B; exec bash'"
+      ],
+      "rc": 0,
+      "stdout": "@17 %17\n",
+      "stderr": ""
+    }
+  ]
+}
