@@ -18,7 +18,8 @@ host recovery. Gen3 x16 is the expected workstation link, not a fault.
 
 [Source-resume-01](qualification/source-resume-01/REPORT.md) records the current
 checkpoint: W13/persona artifacts preserved; false UART advertisement
-identified (scope decision pending); udev candidate offline-tested but not
+identified and now corrected in locally maintained source under the vendor
+UART-absent convention; udev candidate offline-tested but not
 activated; PF0 VF0 BAR0 source/OPAE mapping; additive exact-numerical host test
 offline-tested and natively linked, never run on hardware. Negative W13/persona
 timing remains unaccepted. DDR simulation remains SKIPPED BY USER. The older
@@ -29,8 +30,12 @@ The [parent acceptance record](qualification/offline-milestone-review-01/ACCEPTA
 now closes the separate source-evidence, UART-diagnosis, staged-udev and offline
 host-software review gates (spec PASS, quality APPROVED). Fresh local checks:
 CTest 2/2, UART 12/12 and udev 21/21. Native hardware execution remains blocked;
-the explicit UART scope decision is still required. Original bound reports are
-preserved, including their pre-review status wording and rejected candidate01.
+the UART scope decision is resolved and its [one-token source correction](qualification/dfl-uart-fix-02/ACCEPTANCE.md)
+is independently accepted. Original bound reports are preserved, including
+pre-review status wording and rejected candidate01. Joe has now explicitly
+approved flash programming and host reboot once the build is ready; independent
+host recovery and the finite source-supported live procedure remain prerequisites.
+The source correction itself does not qualify a new build, timing or hardware.
 
 ## 1. Authorization and acceptance model
 

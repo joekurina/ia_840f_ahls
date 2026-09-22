@@ -18,8 +18,10 @@ retain their earlier pending-review wording as immutable history.
   See the [host access map](qualification/ahls-host-offline-01/HOST-ACCESS-MAP.md).
 - The additive exact-numerical host test passed its inert C/API suites and
   compiled/linked against native OPAE; the native binary was **not executed**.
-- UART false advertisement is diagnosed; the required feature-scope decision
-  is unanswered, so no RTL/driver correction is applied.
+- [UART-absent source correction](qualification/dfl-uart-fix-02/ACCEPTANCE.md)
+  is independently accepted: only the dummy feature ID changes from 0x24 to
+  the vendor's ID 0. UART/HPS remain absent; chain links and clocks are retained.
+  Native build, timing and live behavior are not qualified by this source gate.
 - [Udev successor02](qualification/dfl-udev-fix-02/REPORT.md) narrows the
   rejected candidate's board scope; 21 inert tests pass. It is not installed
   or native/live-verified; independent approval covers staged/inert scope only.

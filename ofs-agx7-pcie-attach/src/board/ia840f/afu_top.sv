@@ -744,7 +744,7 @@ end
 
 `else
 dummy_csr #(
-   .FEAT_ID          (12'h24),
+   .FEAT_ID          (12'h0),
    .FEAT_VER         (4'h0),
    .NEXT_DFH_OFFSET  (fabric_width_pkg::apf_uart_slv_next_dfh_offset),
    .END_OF_LIST      (fabric_width_pkg::apf_uart_slv_eol)
