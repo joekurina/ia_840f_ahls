@@ -14,6 +14,7 @@ current statuses below supersede their pending-review wording.
 | Function | Current evidence | Remaining boundary |
 |---|---|---|
 | W13 FIM / persona | Existing artifacts preserved, source identity checked | W13 -0.004 ns hold; persona -0.336 ns setup, -0.004 ns hold, -0.029 ns pulse width; timing not accepted |
+| Work14 UART-absent FIM | Compile package independently accepted; native compile launched once, actual Quartus/synthesis processes verified | Build/fit/STA/assembly results pending; no hardware deployment. [Launch evidence](../qualification/fim-build-14/RUNNING.md) |
 | DFL UART | UART-absent scope resolved; vendor ID-zero correction independently accepted, exact one-token static checks pass | Placeholder and generated chain links retained; UART/HPS remain absent. No dummy-CSR simulation. New native build/timing/live behavior not qualified. [Acceptance](../qualification/dfl-uart-fix-02/ACCEPTANCE.md) |
 | DFL permissions | Successor02 staged policy independently accepted; captured PF0 BDF and all PCI IDs; 21 inert fixtures pass | Candidate01 rejected; unrelated fallback preserved. Native required-node detection UNVERIFIED; native validation/activation NOT RUN. No VFIO grant. [Acceptance](../qualification/dfl-udev-fix-02/ACCEPTANCE.md) |
 | AHLS PF/VF/BAR routing | PF0 VF0 BAR0 → PIM channel 0 → AHLS; OPAE VFIO standalone-AFU path source-established | Current image/VF binding/BDF/BAR allocation/clock/reset state not live-verified. PF0+0x80000 is protocol checker, not AFU. [Map](../qualification/ahls-host-offline-01/HOST-ACCESS-MAP.md) |

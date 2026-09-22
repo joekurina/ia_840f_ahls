@@ -37,6 +37,12 @@ approved flash programming and host reboot once the build is ready; independent
 host recovery and the finite source-supported live procedure remain prerequisites.
 The source correction itself does not qualify a new build, timing or hardware.
 
+The [Work14 compile package](qualification/fim-build-14/COMPILE-PACKAGE-ACCEPTANCE.md)
+is now independently accepted. Its fresh native full-FIM compile started once
+at 2026-09-21 21:34:56 PDT; [launch/process evidence](qualification/fim-build-14/RUNNING.md)
+confirms the actual Quartus flow and synthesis in Work14. Do not reissue or
+restart the consumed run. Fit/STA/assembly and all hardware results remain pending.
+
 ## 1. Authorization and acceptance model
 
 **Current state: source-only; `ready_for_build: false`.** Creating this plan authorizes no workstation access, setup/configuration, IP generation, compilation, simulation, tests, installation, programming, commits or pushes. No gate is changed by this plan. Earlier standard/USM oneAPI trees remain reference-only, not active build/test targets; see [AHLS scope](docs/ahls-scope.md).

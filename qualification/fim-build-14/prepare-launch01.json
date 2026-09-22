@@ -1,0 +1,48 @@
+{
+  "payload_sha256": "0e782f0fcea59522a51ccd80446b163ef4d2743ed7dfb7fd97a8651822514d15",
+  "script_sha256": "d9f1c2cf39d41178ab50cee88b3fb02ce4a9466627fd2cebe97e8f45281b3116",
+  "steps": [
+    {
+      "argv": [
+        "tmux",
+        "load-buffer",
+        "-b",
+        "ia840f_fim14_prepare01_payload",
+        "-"
+      ],
+      "rc": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "tmux",
+        "load-buffer",
+        "-b",
+        "ia840f_fim14_prepare01_script",
+        "-"
+      ],
+      "rc": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "tmux",
+        "new-window",
+        "-d",
+        "-P",
+        "-F",
+        "#{window_id} #{pane_id}",
+        "-t",
+        "ia840f_mailbox_monitored_01",
+        "-n",
+        "fim14_prepare01",
+        "tmux save-buffer -b ia840f_fim14_prepare01_script - | python3 -B - 0e782f0fcea59522a51ccd80446b163ef4d2743ed7dfb7fd97a8651822514d15; exec bash"
+      ],
+      "rc": 0,
+      "stdout": "@19 %19\n",
+      "stderr": ""
+    }
+  ]
+}

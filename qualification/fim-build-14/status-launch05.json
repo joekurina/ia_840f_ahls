@@ -1,0 +1,35 @@
+{
+  "script_sha256": "593158dd70ba135107dc8e2fb5f33703cb8d293bc7f1876a35d4dd63d6decb38",
+  "steps": [
+    {
+      "argv": [
+        "tmux",
+        "load-buffer",
+        "-b",
+        "ia840f_fim14_status05_script",
+        "-"
+      ],
+      "rc": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "tmux",
+        "new-window",
+        "-d",
+        "-P",
+        "-F",
+        "#{window_id} #{pane_id}",
+        "-t",
+        "ia840f_mailbox_monitored_01",
+        "-n",
+        "fim14_status05",
+        "tmux save-buffer -b ia840f_fim14_status05_script - | python3 -B; exec bash"
+      ],
+      "rc": 0,
+      "stdout": "@24 %24\n",
+      "stderr": ""
+    }
+  ]
+}

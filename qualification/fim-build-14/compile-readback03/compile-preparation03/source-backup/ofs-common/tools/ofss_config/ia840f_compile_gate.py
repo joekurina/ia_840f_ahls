@@ -12,9 +12,9 @@ import ia840f_experimental_gate as common
 
 BASE = common.BASE
 SOURCE = common.SOURCE
-WORK = BASE / 'work_ia840f_fim_14'
+WORK = BASE / 'work_ia840f_fim_13'
 PROJECT = WORK / 'syn/board/ia840f/syn_top'
-EVIDENCE = BASE / 'qualification/fim-build-14'
+EVIDENCE = BASE / 'qualification/fim-build-13'
 RECORD = EVIDENCE / 'compile-authorization.json'
 CLAIM = EVIDENCE / 'native-compile.claim.json'
 TOP = './ofs-common/scripts/common/syn/build_top.sh'

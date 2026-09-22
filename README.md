@@ -22,6 +22,10 @@ retain their earlier pending-review wording as immutable history.
   is independently accepted: only the dummy feature ID changes from 0x24 to
   the vendor's ID 0. UART/HPS remain absent; chain links and clocks are retained.
   Native build, timing and live behavior are not qualified by this source gate.
+- [Work14 compile package](qualification/fim-build-14/COMPILE-PACKAGE-ACCEPTANCE.md)
+  passed independent reviews; its native full-FIM compile is
+  [running at the verified launch snapshot](qualification/fim-build-14/RUNNING.md).
+  Build results, timing and hardware acceptance remain pending; W13 is preserved.
 - [Udev successor02](qualification/dfl-udev-fix-02/REPORT.md) narrows the
   rejected candidate's board scope; 21 inert tests pass. It is not installed
   or native/live-verified; independent approval covers staged/inert scope only.

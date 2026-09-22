@@ -288,7 +288,7 @@ def run_post_setup_quartus(name, args):
 
 def main():
     try:
-        if sys.argv[1:] == ['quartus'] and Path.cwd() == BASE / 'work_ia840f_fim_14/syn/board/ia840f/syn_top':
+        if sys.argv[1:] == ['quartus'] and Path.cwd() == BASE / 'work_ia840f_fim_13/syn/board/ia840f/syn_top':
             import ia840f_compile_gate
             ia840f_compile_gate.quartus_context()
         elif sys.argv[1:] == ['run-native-compile']:

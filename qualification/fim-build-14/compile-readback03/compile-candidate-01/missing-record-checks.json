@@ -1,0 +1,58 @@
+{
+  "no_native_log_claim_or_run": true,
+  "results": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/tools/ofss_config/ia840f_experimental_gate.py",
+        "quartus"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_14/syn/board/ia840f/syn_top",
+      "name": "dispatcher",
+      "rc": 1,
+      "stderr": "[Errno 2] No such file or directory: '/home/uwb_student00/ahls/new_BSP/qualification/fim-build-14/compile-authorization.json'\n",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "./ofs-common/scripts/common/syn/build_top.sh",
+        "--stage=compile",
+        "-k",
+        "-p",
+        "ia840f",
+        "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_14"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach",
+      "name": "native-top",
+      "rc": 1,
+      "stderr": "[Errno 2] No such file or directory: '/home/uwb_student00/ahls/new_BSP/qualification/fim-build-14/compile-authorization.json'\n",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/build_fim_compile.sh",
+        "ia840f",
+        "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_14"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach",
+      "name": "native-child",
+      "rc": 1,
+      "stderr": "[Errno 2] No such file or directory: '/home/uwb_student00/ahls/new_BSP/qualification/fim-build-14/compile-authorization.json'\n",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "/opt/altera/26.1.1/quartus/bin/tclsh",
+        "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_14/syn/board/ia840f/setup/build_gate.tcl"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_14/syn/board/ia840f/syn_top",
+      "name": "tcl-helper",
+      "rc": 1,
+      "stderr": "IA840F_GATE_REJECTED: [Errno 2] No such file or directory: '/home/uwb_student00/ahls/new_BSP/qualification/fim-build-14/compile-authorization.json'\nchild process exited abnormally\nIA840F NOT READY: [Errno 2] No such file or directory: '/home/uwb_student00/ahls/new_BSP/qualification/fim-build-14/compile-authorization.json'\nchild process exited abnormally. Child-IP/generated-interface, memory and BMC/FLR qualification remain unperformed.\n    while executing\n\"error \"IA840F NOT READY: $ia840f_gate_result. Child-IP/generated-interface, memory and BMC/FLR qualification remain unperformed.\"\"\n    invoked from within\n\"if {[catch {exec python3 $ia840f_gate quartus 2>@1} ia840f_gate_result]} {\n    # Quartus may downgrade the error below to warning 125091 and exit 0.\n ...\"\n    (file \"/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_14/syn/board/ia840f/setup/build_gate.tcl\" line 6)\n",
+      "stdout": ""
+    }
+  ],
+  "source_unchanged": true,
+  "work_unchanged": true
+}
