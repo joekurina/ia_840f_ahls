@@ -1,0 +1,137 @@
+{
+  "status": "TIMING NOT ACCEPTED; negative hold slack remains",
+  "source_sha256": "21b3a56b7a7380e8e63c5420301f4fa14e2e409414962063e2038c5f4f4d198b",
+  "parsed_blocks": 743,
+  "type_counts": {
+    "Fast vid2 100C Model Max Skew": 94,
+    "Fast vid2a 0C Model Max Skew": 94,
+    "Fast vid2a 100C Model Max Skew": 94,
+    "Hold": 17,
+    "Minimum Pulse Width": 73,
+    "Net Delay": 146,
+    "Recovery": 10,
+    "Removal": 10,
+    "Setup": 17,
+    "Slow vid2 100C Model Max Skew": 94,
+    "Slow vid2b 100C Model Max Skew": 94
+  },
+  "worst_by_type": {
+    "Setup": {
+      "type": "Setup 'pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15'",
+      "slack": "0.015",
+      "source_line": 5,
+      "tns": "0.000",
+      "corner": "Slow vid2 100C Model"
+    },
+    "Hold": {
+      "type": "Hold 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0'",
+      "slack": "-0.004",
+      "source_line": 90,
+      "tns": "-0.004",
+      "corner": "Fast vid2 100C Model"
+    },
+    "Recovery": {
+      "type": "Recovery 'pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15'",
+      "slack": "0.214",
+      "source_line": 175,
+      "tns": "0.000",
+      "corner": "Slow vid2b 100C Model"
+    },
+    "Removal": {
+      "type": "Removal 'sys_pll|iopll_0_clk_sys'",
+      "slack": "0.132",
+      "source_line": 225,
+      "tns": "0.000",
+      "corner": "Fast vid2a 0C Model"
+    },
+    "Minimum Pulse Width": {
+      "type": "Minimum Pulse Width 'altera_int_osc_clk'",
+      "slack": "0.000",
+      "source_line": 275,
+      "tns": "0.000",
+      "corner": "Slow vid2 100C Model"
+    },
+    "Slow vid2 100C Model Max Skew": {
+      "type": "Slow vid2 100C Model Max Skew 'set_max_skew'",
+      "slack": "1.158",
+      "source_line": 640
+    },
+    "Slow vid2b 100C Model Max Skew": {
+      "type": "Slow vid2b 100C Model Max Skew 'set_max_skew'",
+      "slack": "1.163",
+      "source_line": 922
+    },
+    "Fast vid2a 0C Model Max Skew": {
+      "type": "Fast vid2a 0C Model Max Skew 'set_max_skew'",
+      "slack": "1.294",
+      "source_line": 1204
+    },
+    "Fast vid2a 100C Model Max Skew": {
+      "type": "Fast vid2a 100C Model Max Skew 'set_max_skew'",
+      "slack": "1.251",
+      "source_line": 1486
+    },
+    "Fast vid2 100C Model Max Skew": {
+      "type": "Fast vid2 100C Model Max Skew 'set_max_skew'",
+      "slack": "1.249",
+      "source_line": 1768
+    },
+    "Net Delay": {
+      "type": "Net Delay 'set_net_delay'",
+      "slack": "1.023",
+      "source_line": 2050
+    }
+  },
+  "negative_slack_blocks": [
+    {
+      "type": "Hold 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0'",
+      "slack": "-0.004",
+      "source_line": 90,
+      "tns": "-0.004",
+      "corner": "Fast vid2 100C Model"
+    }
+  ],
+  "nonnumeric_slack_blocks": [
+    {
+      "type": "Net Delay 'set_net_delay'",
+      "slack": "Invalid clock",
+      "source_line": 2464
+    },
+    {
+      "type": "Net Delay 'set_net_delay'",
+      "slack": "Invalid clock",
+      "source_line": 2467
+    },
+    {
+      "type": "Net Delay 'set_net_delay'",
+      "slack": "Invalid clock",
+      "source_line": 2470
+    },
+    {
+      "type": "Net Delay 'set_net_delay'",
+      "slack": "Invalid clock",
+      "source_line": 2473
+    },
+    {
+      "type": "Net Delay 'set_net_delay'",
+      "slack": "Invalid clock",
+      "source_line": 2476
+    },
+    {
+      "type": "Net Delay 'set_net_delay'",
+      "slack": "Invalid clock",
+      "source_line": 2479
+    },
+    {
+      "type": "Net Delay 'set_net_delay'",
+      "slack": "Invalid clock",
+      "source_line": 2482
+    },
+    {
+      "type": "Net Delay 'set_net_delay'",
+      "slack": "Invalid clock",
+      "source_line": 2485
+    }
+  ],
+  "scope": "All blocks in full Timing Analyzer summary; full constraints/exception/DDR review pending. Tool success is not timing acceptance."
+}

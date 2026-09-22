@@ -23,9 +23,12 @@ retain their earlier pending-review wording as immutable history.
   the vendor's ID 0. UART/HPS remain absent; chain links and clocks are retained.
   Native build, timing and live behavior are not qualified by this source gate.
 - [Work14 compile package](qualification/fim-build-14/COMPILE-PACKAGE-ACCEPTANCE.md)
-  passed independent reviews; its native full-FIM compile is
-  [running at the verified launch snapshot](qualification/fim-build-14/RUNNING.md).
-  Build results, timing and hardware acceptance remain pending; W13 is preserved.
+  passed independent reviews; its [native compile completed with exit 0](qualification/fim-build-14/RESULT.md)
+  and successful assembly. [Independent result review is consumed](qualification/fim-build-14/RESULT-ACCEPTANCE.md):
+  timing remains failed (−0.004 ns EMIF1 hold, an unconstrained PCIe divider,
+  and unresolved constraint/CDC findings).
+  Work14 has a new FIM interface UUID, so the W13 persona is not a matching
+  PR artifact. W13 is preserved; no hardware deployment occurred.
 - [Udev successor02](qualification/dfl-udev-fix-02/REPORT.md) narrows the
   rejected candidate's board scope; 21 inert tests pass. It is not installed
   or native/live-verified; independent approval covers staged/inert scope only.

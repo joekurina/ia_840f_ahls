@@ -40,8 +40,14 @@ The source correction itself does not qualify a new build, timing or hardware.
 The [Work14 compile package](qualification/fim-build-14/COMPILE-PACKAGE-ACCEPTANCE.md)
 is now independently accepted. Its fresh native full-FIM compile started once
 at 2026-09-21 21:34:56 PDT; [launch/process evidence](qualification/fim-build-14/RUNNING.md)
-confirms the actual Quartus flow and synthesis in Work14. Do not reissue or
-restart the consumed run. Fit/STA/assembly and all hardware results remain pending.
+confirms the actual Quartus flow and synthesis in Work14. The [native run completed](qualification/fim-build-14/RESULT.md)
+at 22:27:14 PDT with exit 0 and successful assembly. Do not reissue or restart
+the consumed run. [Independent result review is consumed](qualification/fim-build-14/RESULT-ACCEPTANCE.md);
+timing remains FAIL / NOT accepted (−0.004 ns EMIF1 hold, unconstrained PCIe
+divider and unresolved constraint/CDC findings). Next: trace the obsolete PCIe
+divider binding and dependent exceptions before a narrow correction; do not
+repeat already-effective hold settings. Work14's new FIM interface does not
+match the existing W13 persona. All hardware gates remain open.
 
 ## 1. Authorization and acceptance model
 

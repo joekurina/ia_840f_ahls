@@ -1,0 +1,41 @@
+{
+  "batch": "ia840f_fim14_reports13",
+  "files": {
+    "output_files/ofs_top.drc.partitioned.rpt": {
+      "gzip_sha256": "ea4f81a503235b4c1f90940ca01c9773fa83937f2b6331f4de1ba948a8df08d9",
+      "gzip_size": 1385,
+      "mtime_ns": 1790051972482435169,
+      "sha256": "f197be4fa1e6fd071810a71805b1aa55b882c0b6334373ebf3a97d01bf4cb88b",
+      "size": 7549
+    },
+    "output_files/ofs_top.drc.synthesized.rpt": {
+      "gzip_sha256": "e4b8f75dc2638c9e2880fef721638639ab88c2a79f300382c68ff05dc304a21a",
+      "gzip_size": 2828,
+      "mtime_ns": 1790052114963864808,
+      "sha256": "886def65c549dbb92ce5db648829e87f736619208bbd6f6fcde2dbfc9a1eb2ca",
+      "size": 23251
+    },
+    "output_files/ofs_top.sdc_constraints.rpt": {
+      "gzip_sha256": "68b712b0c5a2edc9a208edcca44e57135e72cd8036d3386ff0ad033eb9b40765",
+      "gzip_size": 381,
+      "mtime_ns": 1790054799572968963,
+      "sha256": "6acb2cdff7589609383425b4c97d6ae967842a98276cb095962c132e4ae16bef",
+      "size": 2714
+    },
+    "output_files/ofs_top.tq.drc.signoff.rpt": {
+      "gzip_sha256": "3ebad280a63876df759f99b72f91c16c6a3dfcaa53ddb6e1240e685111421a8f",
+      "gzip_size": 34404,
+      "mtime_ns": 1790054412689803887,
+      "sha256": "5e9a16353d01da508f057bdd04d40a830b664f15b5516541accea4bc3f8e705e",
+      "size": 835792
+    }
+  },
+  "pane": "%32",
+  "root": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_14/syn/board/ia840f/syn_top",
+  "time": "2026-09-22T05:31:20.327077+00:00",
+  "script_sha256": "e9338d20fbcb433f15a83bec1216a2a68106d45097d2f0b9b6b56b6f0be739a2",
+  "source": "#!/usr/bin/env python3\n\"\"\"Finite completed-report capture only; no vendor or device commands.\"\"\"\nimport base64\nimport datetime\nimport gzip\nimport hashlib\nimport json\nimport os\nfrom pathlib import Path\nimport socket\nimport subprocess\n\nROOT = Path('/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_14/syn/board/ia840f/syn_top')\nBATCH = 'ia840f_fim14_reports13'\nFILES = ['output_files/ofs_top.tq.drc.signoff.rpt', 'output_files/ofs_top.sdc_constraints.rpt', 'output_files/ofs_top.drc.partitioned.rpt', 'output_files/ofs_top.drc.synthesized.rpt']\nif socket.gethostname() != 'Agilex7Workstation' or os.getuid() != 1000 or not os.environ.get('TMUX'):\n    raise RuntimeError('unexpected host/session')\nsession = subprocess.check_output(['tmux', 'display-message', '-p', '-t', os.environ['TMUX_PANE'], '#S'], text=True).strip()\nif session != 'ia840f_mailbox_monitored_01':\n    raise RuntimeError('unexpected owned session')\nresult = dict(batch=BATCH, time=datetime.datetime.now(datetime.timezone.utc).isoformat(), pane=os.environ['TMUX_PANE'], root=str(ROOT), files={})\ntotal = 0\nfor rel in FILES:\n    path = ROOT / rel\n    if not path.is_file() or path.is_symlink() or not path.resolve().is_relative_to(ROOT):\n        raise RuntimeError('not an allowed ordinary file: ' + rel)\n    before = path.stat()\n    if before.st_size > 65000000:\n        raise RuntimeError('file exceeds bound: ' + rel)\n    total += before.st_size\n    if total > 80000000:\n        raise RuntimeError('total exceeds bound')\n    data = path.read_bytes()\n    after = path.stat()\n    if (before.st_size, before.st_mtime_ns, before.st_ino) != (after.st_size, after.st_mtime_ns, after.st_ino) or len(data) != before.st_size:\n        raise RuntimeError('report changed during capture: ' + rel)\n    packed = gzip.compress(data, mtime=0)\n    result['files'][rel] = dict(size=len(data), sha256=hashlib.sha256(data).hexdigest(), mtime_ns=before.st_mtime_ns, gzip_size=len(packed), gzip_sha256=hashlib.sha256(packed).hexdigest(), gzip_base64=base64.b64encode(packed).decode())\nraw = json.dumps(result, sort_keys=True).encode()\nblob = gzip.compress(raw, mtime=0)\nsubprocess.run(['tmux', 'load-buffer', '-b', BATCH, '-'], input=blob, check=True)\nprint('REPORTS13 JSON_SHA256', hashlib.sha256(raw).hexdigest(), 'GZIP_SHA256', hashlib.sha256(blob).hexdigest(), flush=True)\n",
+  "window": "@32 %32",
+  "transport_json_sha256": "17561f15751f9353f5b2a69e001212281535952623aa3202dfd87300629e0e7e",
+  "transport_gzip_sha256": "d4a3e0c99ee56670aaf76d87453b34448ef7de6d654a95ca541c411966a3c5d7"
+}

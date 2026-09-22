@@ -1,0 +1,190 @@
+{
+  "time": "2026-09-22T05:22:44.503097+00:00",
+  "window": "@29 %29",
+  "template": "status07-summary.json:source",
+  "substitutions": {
+    "status07": "status10",
+    "STATUS07": "STATUS10"
+  },
+  "script_sha256": "aa937f3d103127067ca8da90f6b5923c7b2e1926883ef8a9b9a8b04806c32492",
+  "json_sha256": "2702b6d84041ee88ba2a4caa6f53b8188a41893b660ddea427d85aa3665f98b2",
+  "gzip_sha256": "d674e19e5700d2bab0808721ea95a2b0d2a89c8b2d3ad479e832c3fe66b92ec3",
+  "status": {
+    "state": "running",
+    "started": "2026-09-22T04:34:56.210165+00:00",
+    "runner_pid": 7618,
+    "argv": [
+      "./ofs-common/scripts/common/syn/build_top.sh",
+      "--stage=compile",
+      "-k",
+      "-p",
+      "ia840f",
+      "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_14"
+    ],
+    "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach",
+    "authorization_sha256": "42cb4974f9e6aba80aa25e5df385de1faac09251dd6695123448d0db931127be",
+    "ready_for_build": false,
+    "accepted_execution": true,
+    "ddr_simulation": "SKIPPED BY USER",
+    "functional_acceptance": false,
+    "native_pid": 7625
+  },
+  "processes": [
+    {
+      "pid": "7644",
+      "exe": "/opt/altera/26.1.1/quartus/linux64/quartus_sh",
+      "argv": [
+        "quartus_sh",
+        "--flow",
+        "compile",
+        "ofs_top",
+        "-c",
+        "ofs_top"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_14/syn/board/ia840f/syn_top",
+      "ps": "   7644    7643 Sl+   0.7 570176 quartus_sh     quartus_sh --flow compile ofs_top -c ofs_top",
+      "start_ticks": "1497124",
+      "cpu_ticks": 2026,
+      "cpu_ticks_delta": 362
+    },
+    {
+      "pid": "10955",
+      "exe": "/opt/altera/26.1.1/quartus/linux64/quartus_asm",
+      "argv": [
+        "quartus_asm",
+        "--ipc_flow=17",
+        "--ipc_mode",
+        "--read_settings_files=on",
+        "--write_settings_files=off",
+        "ofs_top",
+        "-c",
+        "ofs_top"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_14/syn/board/ia840f/syn_top",
+      "ps": "  10955    7644 Rl+   373 9853428 quartus_asm   quartus_asm --ipc_flow=17 --ipc_mode --read_settings_files=on --write_settings_files=off ofs_top -c ofs_top",
+      "start_ticks": "1773484",
+      "cpu_ticks": 38137
+    }
+  ],
+  "reports": {
+    "launch04/launch.log": {
+      "size": 157,
+      "size_delta": 0,
+      "new_diagnostics": []
+    },
+    "run/native.log": {
+      "size": 3158126,
+      "size_delta": 524288,
+      "new_diagnostics": [
+        "Info (23030): Evaluation of Tcl script ../../../../ofs-common/scripts/common/syn/create_sdc_for_pr_compile.tcl was successful",
+        "Info: Quartus Prime Timing Analyzer was successful. 0 errors, 201 warnings",
+        "    Info: Processing ended: Mon Sep 21 22:20:57 2026",
+        "    Info: Elapsed time: 00:00:35",
+        "    Info: Processing started: Mon Sep 21 22:20:59 2026",
+        "Info (23030): Evaluation of Tcl script ../../../../ofs-common/scripts/common/syn/emit_project_ip.tcl was successful",
+        "Info: Quartus Prime IP Generation Tool was successful. 0 errors, 0 warnings",
+        "    Info: Processing ended: Mon Sep 21 22:21:02 2026",
+        "    Info: Elapsed time: 00:00:03",
+        "Info (23030): Evaluation of Tcl script ../../../../syn/shared_config/post_module_hook.tcl was successful",
+        "Info: Quartus Prime Shell was successful. 0 errors"
+      ]
+    },
+    "output_files/ofs_top.drc.synthesized.rpt": {
+      "size": 23251,
+      "size_delta": 0,
+      "new_diagnostics": []
+    },
+    "output_files/ofs_top.fit.finalize.rpt": {
+      "size": 79919,
+      "size_delta": 79919,
+      "new_diagnostics": []
+    },
+    "output_files/ofs_top.fit.place.rpt": {
+      "size": 8408091,
+      "size_delta": 0,
+      "new_diagnostics": []
+    },
+    "output_files/ofs_top.fit.plan.rpt": {
+      "size": 3320622,
+      "size_delta": 0,
+      "new_diagnostics": []
+    },
+    "output_files/ofs_top.fit.retime.rpt": {
+      "size": 272738,
+      "size_delta": 0,
+      "new_diagnostics": []
+    },
+    "output_files/ofs_top.fit.route.rpt": {
+      "size": 230706,
+      "size_delta": 0,
+      "new_diagnostics": []
+    },
+    "output_files/ofs_top.fit.rpt": {
+      "size": 19940793,
+      "size_delta": 19940793,
+      "new_diagnostics": [
+        "Info (11888): Total time spent on timing analysis during Placement is 0.07 seconds.",
+        "Info (18259): Fitter Physical Synthesis operations ending: elapsed time is 00:00:34",
+        "Info (22300): Design uses Placement Effort Multiplier = 1.0.",
+        "Info (170193): Fitter routing operations beginning",
+        "Info (170239): Router is attempting to preserve 0.02 percent of routes from an earlier compilation, a user specified Routing Constraints File, or internal routing requirements.",
+        "Info (11888): Total time spent on timing analysis during Routing is 35.29 seconds.",
+        "Info (16607): Fitter routing operations ending: elapsed time is 00:03:50",
+        "Info (17968): Completed Hyper-Retimer operations.",
+        "Info (18821): Fitter Hyper-Retimer operations ending: elapsed time is 00:01:04",
+        "Info (18259): Fitter Physical Synthesis operations ending: elapsed time is 00:00:26",
+        "Info (16557): Fitter post-fit operations ending: elapsed time is 00:05:56",
+        "Info (20274): Successfully committed final database.",
+        "Info: Quartus Prime Fitter was successful. 0 errors, 222 warnings",
+        "    Info: Processing ended: Mon Sep 21 22:16:50 2026",
+        "    Info: Elapsed time: 00:34:49"
+      ]
+    },
+    "output_files/ofs_top.fit.summary": {
+      "size": 722,
+      "size_delta": 722,
+      "new_diagnostics": [
+        "Fitter Status : Successful - Mon Sep 21 22:16:47 2026"
+      ],
+      "text": "Fitter Status : Successful - Mon Sep 21 22:16:47 2026\nQuartus Prime Version : 26.1.1 Build 130 08/06/2026 SC Pro Edition\nRevision Name : ofs_top\nTop-level Entity Name : top\nFamily : Agilex 7\nDevice : AGFB027R25A2E2V\nTiming Models : Final\nPower Models : Final\nDevice Status : Final\nLogic utilization (in ALMs) : 66,389 / 912,800 ( 7 % )\nTotal dedicated logic registers : 173640\nTotal pins : 321 / 886 ( 36 % )\nTotal block memory bits : 1,553,884 / 271,810,560 ( < 1 % )\nTotal RAM Blocks : 302 / 13,272 ( 2 % )\nTotal DSP Blocks : 12 / 8,528 ( < 1 % )\nTotal HSSI P-Tiles : 1 / 2 ( 50 % )\nTotal HSSI E-Tile Channels : 0 / 24 ( 0 % )\nTotal HSSI HPS : 0 / 1 ( 0 % )\nTotal HSSI EHIPs : 0 / 4 ( 0 % )\nTotal PLLs : 8 / 36 ( 22 % )\n"
+    },
+    "output_files/ofs_top.flow.rpt": {
+      "size": 231347,
+      "size_delta": 2138,
+      "new_diagnostics": []
+    },
+    "output_files/ofs_top.sta.rpt": {
+      "size": 48068193,
+      "size_delta": 48068193,
+      "new_diagnostics": []
+    },
+    "output_files/ofs_top.sta.summary": {
+      "size": 57622,
+      "size_delta": 57622,
+      "new_diagnostics": [],
+      "text": "lay'\nSlack : 2.651\n\nType  : Net Delay 'set_net_delay'\nSlack : 2.673\n\nType  : Net Delay 'set_net_delay'\nSlack : 2.674\n\nType  : Net Delay 'set_net_delay'\nSlack : 2.717\n\nType  : Net Delay 'set_net_delay'\nSlack : 2.725\n\nType  : Net Delay 'set_net_delay'\nSlack : 2.726\n\nType  : Net Delay 'set_net_delay'\nSlack : 2.923\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.363\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.382\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.400\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.405\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.412\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.418\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.418\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.420\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.422\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.424\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.426\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.426\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.427\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.442\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.450\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.451\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.459\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.460\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.461\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.461\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.461\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.464\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.470\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.471\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.482\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.487\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.515\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.518\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.547\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.557\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.569\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.573\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.573\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.574\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.578\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.587\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.588\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.598\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.604\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.606\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.609\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.623\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.639\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.648\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.649\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.651\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.651\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.674\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.680\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.680\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.680\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.681\n\nType  : Net Delay 'set_net_delay'\nSlack : 7.688\n\nType  : Net Delay 'set_net_delay'\nSlack : 79.466\n\nType  : Net Delay 'set_net_delay'\nSlack : 79.484\n\nType  : Net Delay 'set_net_delay'\nSlack : 79.491\n\nType  : Net Delay 'set_net_delay'\nSlack : 79.503\n\nType  : Net Delay 'set_net_delay'\nSlack : 79.669\n\nType  : Net Delay 'set_net_delay'\nSlack : 79.673\n\nType  : Net Delay 'set_net_delay'\nSlack : 79.744\n\nType  : Net Delay 'set_net_delay'\nSlack : 79.752\n\nType  : Net Delay 'set_net_delay'\nSlack : Invalid clock\n\nType  : Net Delay 'set_net_delay'\nSlack : Invalid clock\n\nType  : Net Delay 'set_net_delay'\nSlack : Invalid clock\n\nType  : Net Delay 'set_net_delay'\nSlack : Invalid clock\n\nType  : Net Delay 'set_net_delay'\nSlack : Invalid clock\n\nType  : Net Delay 'set_net_delay'\nSlack : Invalid clock\n\nType  : Net Delay 'set_net_delay'\nSlack : Invalid clock\n\nType  : Net Delay 'set_net_delay'\nSlack : Invalid clock\n\n------------------------------------------------------------\nInfo: see the \"DDR report\" for DDR timing results\n------------------------------------------------------------\n------------------------------------------------------------\n"
+    },
+    "output_files/ofs_top.syn.ae.rpt": {
+      "size": 29693655,
+      "size_delta": 0,
+      "new_diagnostics": []
+    },
+    "output_files/ofs_top.syn.rpt": {
+      "size": 54681393,
+      "size_delta": 0,
+      "new_diagnostics": []
+    },
+    "output_files/ofs_top.syn.summary": {
+      "size": 363,
+      "size_delta": 0,
+      "new_diagnostics": [],
+      "text": "Synthesis Status : Successful - Mon Sep 21 21:41:48 2026\nRevision Name : ofs_top\nTop-level Entity Name : top\nFamily : Agilex 7\nQuartus Prime Version : 26.1.1 Build 130 08/06/2026 SC Pro Edition\nDevice : AGFB027R25A2E2V\nLogic utilization estimate (in ALMs) : 62,192 / 912,800 ( 7 % )\nTotal dedicated logic registers : 169070\nEstimated DSP Blocks Post-Merging : 12\n"
+    }
+  },
+  "missing": [
+    "run/native-status.json",
+    "launch04/launch-error.json"
+  ],
+  "prior_snapshot": "2026-09-22T05:12:47.593800+00:00",
+  "elapsed_since_prior_seconds": 596.909297
+}
