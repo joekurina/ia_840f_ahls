@@ -1,0 +1,3 @@
+# Plan diagnostic03: inline diagnostic packaging only
+
+Predecessor02 completed native rc3 after emitting the exact hold setter but failed external source of diagnostic.tcl: Fitter requires sourced entity dependencies in its project database. Do not resynthesize merely to register a reporting helper. Embed the byte-equivalent namespace/procedure definitions inline at the same conditional insertion instead. No change to the vendor setter, clocks, exceptions, seed, parameters or callback API/report grammar. Same process/resource/prelaunch/runtime-output gates, fresh Work15 copy; no reuse of failed database/authority. Plan is an acquisition experiment, not timing acceptance. Actual-result review remains required, not another source/mock approval loop.

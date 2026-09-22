@@ -1,0 +1,7 @@
+# Plan diagnostic03 — exact copied Work15 native iteration
+
+Standing GOAL-PROMPT and fim-build-15/ITERATION-AUTHORITY.md authorize safe native iteration without another source-SPEC/QUALITY loop. Parent consumes NATIVE-NEXT-STEP.md narrowly. One fresh independent Work15/PIM copy, one native quartus_fit --plan command. No synthesis/place/route/finalize/assembly, clock/exception/parameter/seed change, hardware/device access or maintained-source promotion.
+
+The only constraint-source addition logs the vendor's actual exact EMIF1 core→PHY hold setter immediately after its unchanged call. A documented pre-deletion callback is a bounded reporting experiment (at most8 report attempts), not an established post-update reporting point. Missing/non-singleton setter observations, absent callback/report or errors remain incomplete evidence; issued uncertainty is not automatically total effective uncertainty. No recursive timing update, TimeQuestInfo spoof or hidden tuning override.
+
+Reuse the existing runner supervision and gate with exact Plan argv/paths/tool/input hashes, owned tmux/ancestry,80GB available RAM,20GB free disk,1800s native wall cap,64GiB address-space cap and1GiB individual-file/report accounting cap. Preserve original Work15, SOURCE and PIM and the fresh attempt if anything fails. Source guards are not OS sandboxing. Native result needs independent review. Readiness, timing, functional and hardware acceptance remain false.
