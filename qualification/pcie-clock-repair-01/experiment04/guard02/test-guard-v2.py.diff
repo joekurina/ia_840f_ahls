@@ -1,0 +1,53 @@
+--- ../test-guard-v2.py
++++ test-guard-v2.py
+@@ -20,8 +20,8 @@
+ set serial 0
+ set collections [dict create]
+ set events {}
+-proc puts {args} {lappend ::events [lindex $args end]}
+-proc flush {args} {}
++proc puts {args} {lappend ::events [list puts [lindex $args end]]}
++proc flush {args} {lappend ::events [list flush {*}$args]}
+ proc collection {objects} {
+     set key COL[incr ::serial];dict set ::collections $key $objects;return $key
+ }
+@@ -47,6 +47,8 @@
+     set name [lindex [lindex $args end] 0]
+     foreach {id side} {PIN_I input PIN_O output} {
+         if {$name eq [node_name $id]} {
++            if {$side eq "output" && $::calls && $::fault eq "post_output_missing"} {return [collection {}]}
++            if {$side eq "output" && $::calls && $::fault eq "post_output_multiple"} {return [collection {PIN_O PIN_O}]}
+             if {$::fault eq "${side}_missing"} {return [collection {}]}
+             if {$::fault eq "${side}_multiple"} {return [collection [list $id $id]]}
+             return [collection [list $id]]
+@@ -166,6 +168,7 @@
+     post = ['wrong_propagation', 'wrong_type', 'multiple_targets', 'wrong_target', 'wrong_master', 'wrong_source', 'wrong_period', 'wrong_waveform', 'wrong_phase', 'wrong_divide', 'wrong_multiply', 'inverted', 'other_clock_mutation']
+     cases += [(f, f, 'apply_v2', True, 0) for f in pre]
+     cases += [(f, f, 'apply_v2', True, 1) for f in post]
++    cases += [(f, f, 'apply_v2', True, 1) for f in ['post_output_missing', 'post_output_multiple']]
+     for name, fault, entry, reject, calls in cases:
+         interp = LIB.Tcl_CreateInterp()
+         try:
+@@ -185,7 +188,21 @@
+                 rr, rm = evaluate(interp, '::ia840f_clock_repair::apply_v2')
+                 if rr != 1 or 'second invocation' not in rm or int(evaluate(interp, 'set calls')[1]) != 1:
+                     raise RuntimeError('rerun was not rejected')
+-            records.append({'case': name, 'pass': True, 'expected_rejection': reject, 'create_calls': actual_calls})
++            ordered = False
++            if fault in ('post_output_missing', 'post_output_multiple'):
++                count = 0 if fault == 'post_output_missing' else 2
++                check = ('expr {[lindex $::events end-1] eq [list puts [list CLOCK_REPAIR_COUNT_V2 post-output-pin '
++                         + str(count) + ' cap 32]] && [lindex $::events end] eq {flush stdout}'
++                         + ' && $::ia840f_clock_repair::created == 1}')
++                rr, rm = evaluate(interp, check)
++                if rr or rm != '1':
++                    raise RuntimeError((name, 'missing count/flush ordering or created flag', rm))
++                rr, rm = evaluate(interp, '::ia840f_clock_repair::apply_v2')
++                if rr != 1 or 'second invocation' not in rm or int(evaluate(interp, 'set calls')[1]) != 1:
++                    raise RuntimeError('postfailure rerun was not rejected')
++                ordered = True
++            records.append({'case': name, 'pass': True, 'expected_rejection': reject,
++                            'create_calls': actual_calls, 'post_pin_count_flush_order': ordered})
+         finally:
+             LIB.Tcl_DeleteInterp(interp)
+     print(json.dumps({'scope': 'inert control/guard tests, not native semantics or insertion-state proof', 'count': len(records), 'tests': records, 'helper_sha256': hashlib.sha256((ROOT/'clock-repair.tcl').read_bytes()).hexdigest(), 'test_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}, indent=2))

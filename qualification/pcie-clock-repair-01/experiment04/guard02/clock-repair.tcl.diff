@@ -1,0 +1,27 @@
+--- ../clock-repair.tcl
++++ clock-repair.tcl
+@@ -183,8 +183,23 @@
+             set ia4_mrq [half_quantum_v2 $ia4_mrise];set ia4_crq [half_quantum_v2 $ia4_crise];set ia4_cfq [half_quantum_v2 $ia4_cfall]
+             require [expr {abs(double($ia4_crise)-double($ia4_mrise)) <= $ia4_crq+$ia4_mrq+1e-12 && abs(double($ia4_cfall)-double($ia4_mrise)-double($ia4_mp)) <= $ia4_cfq+$ia4_mrq+$ia4_mq+1e-12}] "generated waveform relation"
+         }
+-        set ia4_output [one_pin "$D|clock_div2" 0]
++        set ia4_output [post_output_pin_v2]
+         require [expr {[raw_names_v2 [get_clocks -nowarn -of_objects $ia4_output] clock output_propagation 256] eq [list $C]}] "output propagation"
+         puts [list CLOCK_REPAIR_VERIFIED_V2 $C no_timing_acceptance];flush stdout
+     }
+ }
++
++
++namespace eval ::ia840f_clock_repair {
++    proc post_output_pin_v2 {} {
++        variable D
++        set ia4_name "$D|clock_div2"
++        set ia4_collection [get_pins -nowarn [list $ia4_name]]
++        set ia4_names [raw_names_v2 $ia4_collection node post-output-pin 32]
++        require [expr {$ia4_names eq [list $ia4_name]}] "post output pin identity/cardinality actual=[llength $ia4_names] expected=1"
++        foreach_in_collection ia4_pin $ia4_collection {
++            require [expr {[get_pin_info -name $ia4_pin] eq $ia4_name && [get_pin_info -is_clock_pin $ia4_pin] && ![get_pin_info -is_in_pin $ia4_pin] && [get_pin_info -is_out_pin $ia4_pin]}] "post output pin direction/type/name"
++        }
++        return $ia4_collection
++    }
++}
