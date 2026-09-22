@@ -1,0 +1,11 @@
+--- fanout-diagnostic01/test-supervision.py
++++ fanout-diagnostic02/test-supervision.py
+@@ -45,7 +45,7 @@
+     identity={'exe':'INERT','argv':['INERT'],'cwd':str(E),'pid':os.getpid()}
+     g['identity']=lambda pid:identity
+     reports=E/'reports';ready=E/'ready';desc=E/'descendant-pid'
+-    report_init="from pathlib import Path;import os,signal,time,sys;E=Path("+repr(str(E))+");(E/'reports').mkdir();(E/'reports'/'timing.rpt').write_text('INERT ONLY');print('IA840F_FANOUT_DIAGNOSTIC_COMPLETE',flush=True);\n"
++    report_init="from pathlib import Path;import os,signal,time,sys;E=Path("+repr(str(E))+");(E/'reports').mkdir();(E/'reports'/'timing.rpt').write_text('INERT ONLY');print('IA840F_FANOUT_CONTRAST_COMPLETE',flush=True);\n"
+     # main checks E.name, not our mock phase labels. No result is a native result.
+     code=report_init
+     has_desc=case in ('metadata-failure','leader-zero-descendant','leader-seven-descendant','wall-descendant')
