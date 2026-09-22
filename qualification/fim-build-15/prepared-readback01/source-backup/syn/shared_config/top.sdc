@@ -32,10 +32,9 @@ create_clock -name {altera_reserved_tck}  -period 100.000 -waveform {0.000 50.00
 #**************************************************************
 # Create Generated Clock
 #**************************************************************
-create_generated_clock -name {pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|avmm_clock0} \
-    -source [get_pins {pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst|inclk}] \
-    -master_clock {sys_pll|iopll_0_clk_100m} -divide_by 2 \
-    [get_pins {pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst|clock_div2}]
+create_generated_clock -add -name pcie_wrapper|pcie_ss.top|*|pcie_ss|avmm_clock0 \
+                       -source      [get_pins {pcie_wrapper|pcie_ss.top|*|pcie_ss|u_pciess_p0|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst|inclk}] \
+                       -divide_by 2 [get_pins {pcie_wrapper|pcie_ss.top|*|pcie_ss|u_pciess_p0|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst|clock_div2}]
 
 
 #**************************************************************

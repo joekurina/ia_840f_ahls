@@ -1,0 +1,151 @@
+{
+  "utc": "2026-09-22T19:22:38.821133+00:00",
+  "delegation": "deleg_6a2be4c6",
+  "verdict": "ACCEPT native execution/result evidence and narrow fresh-fit PCIe clock progress; timing FAIL; no hardware qualification",
+  "reviews": {
+    "result-independent-review01.md": "e0205b3987853e0fb31d6959b9d30313fe4792db194432242dc3d23931101067",
+    "next-iteration-recommendation01.md": "fa697d87508f89a0b94f8cc4c6cb4cf3be37f37dae4f9cd38584c839bba04454",
+    "warning-review01/parent-consumption01.json": "73f2e30064a7f3b70f43a41727f4141781122a0f3edae12057e8ae2f4f22a9a4"
+  },
+  "frozen_count": 55,
+  "freeze_sha256": "19c437d633242ebb91629d3f5c3dff772ee964cefaca562a7c24a47eaa3ca2bf",
+  "verified_archives": {
+    "preparation01.json.gz": {
+      "sha256": "0b7aae6d8a878ac0231af8c97a2a7f65cf6a7e2759fd4a53d8e44d8b5973bac2",
+      "files": 19
+    },
+    "reports01.json.gz": {
+      "sha256": "5ef103998c4d8ebe0a30ff0309a759c408f9ad7445c8cbac0f1786824d6d4751",
+      "files": 9
+    },
+    "completion01.json.gz": {
+      "sha256": "ab80374ebd6145a8cf87c1f52e86d82072bd94535f74afff8d4cea71de87811a",
+      "files": 16
+    }
+  },
+  "clock_count_before": 80,
+  "clock_count_after": 81,
+  "original_clock_fields_unchanged": true,
+  "added_clock": {
+    "Clock Name": "pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|avmm_clock0",
+    "Type": "Generated",
+    "Period": "19.858",
+    "Frequency": "50.36 MHz",
+    "Rise": "0.000",
+    "Fall": "9.929",
+    "Duty Cycle": "",
+    "Divide by": "2",
+    "Multiply by": "1",
+    "Phase": "",
+    "Offset": "",
+    "Edge List": "",
+    "Edge Shift": "",
+    "Inverted": "false",
+    "Master": "sys_pll|iopll_0_clk_100m",
+    "Source": "pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst|inclk",
+    "Targets": "{ pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst|clock_div2 }"
+  },
+  "net_delay_assignment_keys_unchanged": true,
+  "net_delay_assignments": 146,
+  "recovered_fifo_assignments": [
+    {
+      "Name": "set_net_delay",
+      "Slack": "15.579",
+      "Required": "15.886",
+      "Actual": "0.307",
+      "From": "[get_keepers {pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|u_pciess_cplto_if|cplto_fifo_lite_inst|auto_generated|ws_dgrp|dffpipe*|dffe*}]",
+      "To": "[get_keepers {pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|u_pciess_cplto_if|cplto_fifo_lite_inst|auto_generated|ws_dgrp|dffpipe*|dffe*}]",
+      "Type": "max",
+      "SDC Location": "../../../../ipss/pcie/qip/pcie_ss/intel_pcie_ss_axi_500/synth/pcie_ss.sdc:639",
+      "Worst-Case Operating Conditions": "Slow vid2 100C Model"
+    },
+    {
+      "Name": "set_net_delay",
+      "Slack": "15.369",
+      "Required": "15.886",
+      "Actual": "0.517",
+      "From": "[get_keepers {pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|u_pciess_cplto_if|cplto_fifo_lite_inst|auto_generated|*rdptr_g*}]",
+      "To": "[get_keepers {pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|u_pciess_cplto_if|cplto_fifo_lite_inst|auto_generated|ws_dgrp|dffpipe*|dffe*}]",
+      "Type": "max",
+      "SDC Location": "../../../../ipss/pcie/qip/pcie_ss/intel_pcie_ss_axi_500/synth/pcie_ss.sdc:631",
+      "Worst-Case Operating Conditions": "Slow vid2 100C Model"
+    },
+    {
+      "Name": "set_net_delay",
+      "Slack": "15.543",
+      "Required": "15.886",
+      "Actual": "0.343",
+      "From": "[get_keepers {pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|u_pciess_cplto_if|cplto_fifo_avmm_inst|auto_generated|rs_dgwp|dffpipe*|dffe*}]",
+      "To": "[get_keepers {pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|u_pciess_cplto_if|cplto_fifo_avmm_inst|auto_generated|rs_dgwp|dffpipe*|dffe*}]",
+      "Type": "max",
+      "SDC Location": "../../../../ipss/pcie/qip/pcie_ss/intel_pcie_ss_axi_500/synth/pcie_ss.sdc:639",
+      "Worst-Case Operating Conditions": "Slow vid2 100C Model"
+    },
+    {
+      "Name": "set_net_delay",
+      "Slack": "15.401",
+      "Required": "15.886",
+      "Actual": "0.485",
+      "From": "[get_keepers {pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|u_pciess_cplto_if|cplto_fifo_avmm_inst|auto_generated|delayed_wrptr_g*}]",
+      "To": "[get_keepers {pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|u_pciess_cplto_if|cplto_fifo_avmm_inst|auto_generated|rs_dgwp|dffpipe*|dffe*}]",
+      "Type": "max",
+      "SDC Location": "../../../../ipss/pcie/qip/pcie_ss/intel_pcie_ss_axi_500/synth/pcie_ss.sdc:631",
+      "Worst-Case Operating Conditions": "Slow vid2 100C Model"
+    },
+    {
+      "Name": "set_net_delay",
+      "Slack": "15.568",
+      "Required": "15.886",
+      "Actual": "0.318",
+      "From": "[get_keepers {pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|EP_CFG_IF.u_pciess_cfg_if|u_user_avmm_clk_to_axi_lite_clk_fifo|auto_generated|ws_dgrp|dffpipe*|dffe*}]",
+      "To": "[get_keepers {pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|EP_CFG_IF.u_pciess_cfg_if|u_user_avmm_clk_to_axi_lite_clk_fifo|auto_generated|ws_dgrp|dffpipe*|dffe*}]",
+      "Type": "max",
+      "SDC Location": "../../../../ipss/pcie/qip/pcie_ss/intel_pcie_ss_axi_500/synth/pcie_ss.sdc:639",
+      "Worst-Case Operating Conditions": "Slow vid2 100C Model"
+    },
+    {
+      "Name": "set_net_delay",
+      "Slack": "15.370",
+      "Required": "15.886",
+      "Actual": "0.516",
+      "From": "[get_keepers {pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|EP_CFG_IF.u_pciess_cfg_if|u_user_avmm_clk_to_axi_lite_clk_fifo|auto_generated|*rdptr_g*}]",
+      "To": "[get_keepers {pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|EP_CFG_IF.u_pciess_cfg_if|u_user_avmm_clk_to_axi_lite_clk_fifo|auto_generated|ws_dgrp|dffpipe*|dffe*}]",
+      "Type": "max",
+      "SDC Location": "../../../../ipss/pcie/qip/pcie_ss/intel_pcie_ss_axi_500/synth/pcie_ss.sdc:631",
+      "Worst-Case Operating Conditions": "Slow vid2 100C Model"
+    },
+    {
+      "Name": "set_net_delay",
+      "Slack": "15.625",
+      "Required": "15.886",
+      "Actual": "0.261",
+      "From": "[get_keepers {pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|EP_CFG_IF.u_pciess_cfg_if|u_axi_lite_clk_to_user_avmm_clk_fifo|auto_generated|rs_dgwp|dffpipe*|dffe*}]",
+      "To": "[get_keepers {pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|EP_CFG_IF.u_pciess_cfg_if|u_axi_lite_clk_to_user_avmm_clk_fifo|auto_generated|rs_dgwp|dffpipe*|dffe*}]",
+      "Type": "max",
+      "SDC Location": "../../../../ipss/pcie/qip/pcie_ss/intel_pcie_ss_axi_500/synth/pcie_ss.sdc:639",
+      "Worst-Case Operating Conditions": "Slow vid2 100C Model"
+    },
+    {
+      "Name": "set_net_delay",
+      "Slack": "15.377",
+      "Required": "15.886",
+      "Actual": "0.509",
+      "From": "[get_keepers {pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|EP_CFG_IF.u_pciess_cfg_if|u_axi_lite_clk_to_user_avmm_clk_fifo|auto_generated|delayed_wrptr_g*}]",
+      "To": "[get_keepers {pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|EP_CFG_IF.u_pciess_cfg_if|u_axi_lite_clk_to_user_avmm_clk_fifo|auto_generated|rs_dgwp|dffpipe*|dffe*}]",
+      "Type": "max",
+      "SDC Location": "../../../../ipss/pcie/qip/pcie_ss/intel_pcie_ss_axi_500/synth/pcie_ss.sdc:631",
+      "Worst-Case Operating Conditions": "Slow vid2 100C Model"
+    }
+  ],
+  "recovered_minimum_slack_ns": "15.369",
+  "remaining_hold_slack_ns": "-0.004",
+  "high_rules_failing": 7,
+  "high_violations": 34,
+  "waived": 0,
+  "new_interface_uuid": "fd2baeed-3092-5735-90c9-52ef20542b75",
+  "postflight_summary_sha256": "25d76055d741b6f75821c3ba95c875c74bd409ad536e1852e607e4bdbb207c8b",
+  "next_step": "Resolve effective Fitter-only hold objective/control from actual consumed EMIF sources; no guessed assignment, unchanged rebuild, seed sweep or hold waiver",
+  "timing_accepted": false,
+  "hardware_qualified": false,
+  "ready_for_build": false
+}

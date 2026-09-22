@@ -16,7 +16,13 @@ commits/pushes are authorized; live installation, device access, PR/programming
 and recovery remain separately gated. Host-local JTAG/BMC is not independent
 host recovery. Gen3 x16 is the expected workstation link, not a fault.
 
-### Latest checkpoint — clock-trial02 native result
+### Latest checkpoint — Work15 actual result accepted; timing FAIL
+
+[Work15 result acceptance](qualification/fim-build-15/RESULT-ACCEPTANCE.md) consumes independent actual-native review and the focused next-iteration recommendation. Native compile/fit/STA/assembly finished rc0; the modern PCIe clock is constrained on the fresh fit, original80 clock definitions are unchanged plus C, and all8 formerly invalid FIFO net-delay summaries are numerical (minimum15.369ns). EMIF1 hold remains−0.004ns; 7 High rules/34violations/0waived remain. New FME interface fd2baeed-3092-5735-90c9-52ef20542b75 requires matching persona/release evidence. Hardware NOT RUN/NOT QUALIFIED.
+
+Joe's [native-iteration amendment](qualification/fim-build-15/ITERATION-AUTHORITY.md) supersedes the source-SPEC/QUALITY/mock loop below: Quartus→actual reports→smallest justified correction→Quartus, retaining independent actual-result review and exact execution/preservation/resource checks. Next, resolve the effective EMIF1 Fitter-only hold objective before a controlled tighter-objective experiment. No guessed delay-chain control, unchanged full fit, blind seed sweep, relaxed signoff or new framework. `ready_for_build=false`; recovery/backend and all hardware criteria remain unresolved.
+
+### Historical checkpoint — clock-trial02 native result
 
 The [candidate-only clock trial](qualification/pcie-clock-repair-01/clock-trial02/RESULT.md) completed once with native/effective/outer rc0, confirmed termination and unchanged original Work14/SOURCE/PIM inventories. Package/issuer milestone `a12310a9609f8a80fa3e7d86e6bc92182a99e91c` is published. [Independent actual-result review is consumed](qualification/pcie-clock-repair-01/clock-trial02/RESULT-ACCEPTANCE.md): the corrected clock, known32+T propagation, and all eight formerly invalid FIFO net-delay assignments now numerically evaluated with positive slack across five corner iterations are accepted within the pilot scope. These observations do not accept complete coverage or timing; EMIF1 hold−0.004ns remains.
 

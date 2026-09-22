@@ -14,7 +14,11 @@ The generated C passes its native guard: master M, source D|inclk, target D|cloc
 
 Skew is summary-only; empty SKEW_RETURN does not establish zero paths or unsaturated latest/earliest coverage. Exception/timing reports are bounded samples; overridden multicycles earn no safety credit. EMIF1hold−0.004ns,370 no_clock findings, unconstrained ports and HighCDC/DRC remain. Native0errors/187warnings is not timing acceptance.
 
-## Publication and next concrete gate
+## Successor completed — timing still FAIL
+
+Native-result milestone published77a5339e765ad89d130face4740f2f5d506dc3bb. Joe then explicitly stopped repeated source/mock review. The minimal native-supported clock declaration is integrated; Work15 completed native rc0 and its narrow fresh-fit clock/result evidence is independently reviewed and parent-accepted. EMIF1 hold−0.004ns and CDC/DRC/coverage failures remain. See ../../fim-build-15/RESULT-ACCEPTANCE.md and ITERATION-AUTHORITY.md. This supersedes older next-source-review wording below. Do not rerun trial02 or Work15.
+
+## Publication and prior next-gate wording
 
 The package and separately inspected issuer were published in a12310a9609f8a80fa3e7d86e6bc92182a99e91c. The narrow accepted-result milestone is now being published separately. Result archive SHA2561619230e6582918bc8eb51e3f05c0514348f4b34c7f0afb6535bd1e5cb4d533f retains86 exports/79 reports losslessly; README.md documents the2MB cap and local-only raw report tables. Frozen native bytes remain unchanged.
 
