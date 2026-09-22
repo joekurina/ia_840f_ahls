@@ -1,0 +1,1135 @@
+{
+  "offline_only": true,
+  "total_process_cases": 160,
+  "injected_API_failures": 151,
+  "scenarios": [
+    "pass",
+    "zero",
+    "multiple",
+    "wrong_uuid",
+    "wrong_result",
+    "malformed BDF"
+  ],
+  "records": [
+    {
+      "scenario": "pass",
+      "fail_at": 0,
+      "rc": 0,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 11: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test PASSED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=151 starts=12 result_reads=12 failure_injected=0\n",
+      "stderr": ""
+    },
+    {
+      "scenario": "zero",
+      "fail_at": 0,
+      "rc": 1,
+      "stdout": "FPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=11 starts=0 result_reads=0 failure_injected=0\n",
+      "stderr": "FAIL enumeration: exactly one AHLS VF required at 0000:ab:1f.7; matches=0. No fallback.\n"
+    },
+    {
+      "scenario": "multiple",
+      "fail_at": 0,
+      "rc": 1,
+      "stdout": "FPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=12 starts=0 result_reads=0 failure_injected=0\n",
+      "stderr": "FAIL enumeration: exactly one AHLS VF required at 0000:ab:1f.7; matches=2. No fallback.\n"
+    },
+    {
+      "scenario": "wrong_uuid",
+      "fail_at": 0,
+      "rc": 1,
+      "stdout": "FPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=18 starts=0 result_reads=0 failure_injected=0\n",
+      "stderr": "FAIL AFU identity: -2\n"
+    },
+    {
+      "scenario": "wrong_result",
+      "fail_at": 0,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=30 starts=1 result_reads=1 failure_injected=0\n",
+      "stderr": "FAIL case 0 rc=-5 observed=0x00000009 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 1,
+      "rc": 1,
+      "stdout": "INJECT 1 fpgaGetProperties\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=1 starts=0 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaGetProperties(NULL,&props): inert injected API error (3)\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 2,
+      "rc": 1,
+      "stdout": "INJECT 2 fpgaPropertiesSetObjectType\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=3 starts=0 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaPropertiesSetObjectType(props,FPGA_ACCELERATOR): inert injected API error (3)\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 3,
+      "rc": 1,
+      "stdout": "INJECT 3 fpgaPropertiesSetGUID\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=4 starts=0 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaPropertiesSetGUID(props,guid): inert injected API error (3)\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 4,
+      "rc": 1,
+      "stdout": "INJECT 4 fpgaPropertiesSetSegment\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=5 starts=0 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaPropertiesSetSegment(props,segment): inert injected API error (3)\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 5,
+      "rc": 1,
+      "stdout": "INJECT 5 fpgaPropertiesSetBus\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=6 starts=0 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaPropertiesSetBus(props,bus): inert injected API error (3)\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 6,
+      "rc": 1,
+      "stdout": "INJECT 6 fpgaPropertiesSetDevice\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=7 starts=0 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaPropertiesSetDevice(props,dev): inert injected API error (3)\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 7,
+      "rc": 1,
+      "stdout": "INJECT 7 fpgaPropertiesSetFunction\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=8 starts=0 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaPropertiesSetFunction(props,func): inert injected API error (3)\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 8,
+      "rc": 1,
+      "stdout": "INJECT 8 fpgaPropertiesSetVendorID\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=9 starts=0 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaPropertiesSetVendorID(props,0x8086): inert injected API error (3)\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 9,
+      "rc": 1,
+      "stdout": "INJECT 9 fpgaPropertiesSetDeviceID\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=10 starts=0 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaPropertiesSetDeviceID(props,0xbccf): inert injected API error (3)\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 10,
+      "rc": 1,
+      "stdout": "INJECT 10 fpgaEnumerate\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=11 starts=0 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaEnumerate: inert injected API error (3)\nFAIL enumeration: exactly one AHLS VF required at 0000:ab:1f.7; matches=0. No fallback.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 11,
+      "rc": 1,
+      "stdout": "INJECT 11 fpgaOpen\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=13 starts=0 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaOpen(token,&handle,0): inert injected API error (3)\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 12,
+      "rc": 1,
+      "stdout": "INJECT 12 fpgaMapMMIO\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=15 starts=0 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaMapMMIO(handle,0,NULL): inert injected API error (3)\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 13,
+      "rc": 1,
+      "stdout": "INJECT 13 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=17 starts=0 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL AFU identity: -1\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 14,
+      "rc": 1,
+      "stdout": "INJECT 14 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=18 starts=0 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL AFU identity: -1\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 15,
+      "rc": 1,
+      "stdout": "INJECT 15 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=19 starts=0 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL AFU identity: -1\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 16,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nINJECT 16 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=20 starts=0 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 0 rc=-1 observed=0x00000000 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 17,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nINJECT 17 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=21 starts=0 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 0 rc=-1 observed=0x00000000 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 18,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nINJECT 18 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=22 starts=0 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 0 rc=-1 observed=0x00000000 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 19,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nINJECT 19 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=23 starts=0 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 0 rc=-1 observed=0x00000000 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 20,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nINJECT 20 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=24 starts=0 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 0 rc=-1 observed=0x00000000 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 21,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nINJECT 21 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=25 starts=0 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 0 rc=-1 observed=0x00000000 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 22,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nINJECT 22 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=26 starts=1 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 0 rc=-1 observed=0x00000000 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 23,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nINJECT 23 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=27 starts=1 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 0 rc=-1 observed=0x00000000 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 24,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nINJECT 24 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=28 starts=1 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 0 rc=-1 observed=0x00000000 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 25,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nINJECT 25 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=29 starts=1 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 0 rc=-1 observed=0x00000000 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 26,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nINJECT 26 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=30 starts=1 result_reads=0 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 0 rc=-1 observed=0x00000000 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 27,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nINJECT 27 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=31 starts=1 result_reads=1 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 1 rc=-1 observed=0x00000000 expected=0x00000010. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 28,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nINJECT 28 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=32 starts=1 result_reads=1 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 1 rc=-1 observed=0x00000000 expected=0x00000010. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 29,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nINJECT 29 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=33 starts=1 result_reads=1 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 1 rc=-1 observed=0x00000000 expected=0x00000010. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 30,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nINJECT 30 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=34 starts=1 result_reads=1 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 1 rc=-1 observed=0x00000000 expected=0x00000010. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 31,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nINJECT 31 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=35 starts=1 result_reads=1 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 1 rc=-1 observed=0x00000000 expected=0x00000010. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 32,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nINJECT 32 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=36 starts=1 result_reads=1 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 1 rc=-1 observed=0x00000000 expected=0x00000010. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 33,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nINJECT 33 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=37 starts=2 result_reads=1 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 1 rc=-1 observed=0x00000000 expected=0x00000010. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 34,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nINJECT 34 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=38 starts=2 result_reads=1 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 1 rc=-1 observed=0x00000000 expected=0x00000010. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 35,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nINJECT 35 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=39 starts=2 result_reads=1 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 1 rc=-1 observed=0x00000000 expected=0x00000010. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 36,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nINJECT 36 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=40 starts=2 result_reads=1 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 1 rc=-1 observed=0x00000000 expected=0x00000010. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 37,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nINJECT 37 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=41 starts=2 result_reads=1 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 1 rc=-1 observed=0x00000000 expected=0x00000010. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 38,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nINJECT 38 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=42 starts=2 result_reads=2 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 2 rc=-1 observed=0x00000000 expected=0x00000030. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 39,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nINJECT 39 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=43 starts=2 result_reads=2 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 2 rc=-1 observed=0x00000000 expected=0x00000030. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 40,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nINJECT 40 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=44 starts=2 result_reads=2 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 2 rc=-1 observed=0x00000000 expected=0x00000030. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 41,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nINJECT 41 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=45 starts=2 result_reads=2 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 2 rc=-1 observed=0x00000000 expected=0x00000030. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 42,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nINJECT 42 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=46 starts=2 result_reads=2 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 2 rc=-1 observed=0x00000000 expected=0x00000030. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 43,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nINJECT 43 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=47 starts=2 result_reads=2 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 2 rc=-1 observed=0x00000000 expected=0x00000030. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 44,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nINJECT 44 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=48 starts=3 result_reads=2 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 2 rc=-1 observed=0x00000000 expected=0x00000030. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 45,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nINJECT 45 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=49 starts=3 result_reads=2 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 2 rc=-1 observed=0x00000000 expected=0x00000030. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 46,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nINJECT 46 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=50 starts=3 result_reads=2 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 2 rc=-1 observed=0x00000000 expected=0x00000030. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 47,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nINJECT 47 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=51 starts=3 result_reads=2 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 2 rc=-1 observed=0x00000000 expected=0x00000030. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 48,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nINJECT 48 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=52 starts=3 result_reads=2 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 2 rc=-1 observed=0x00000000 expected=0x00000030. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 49,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nINJECT 49 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=53 starts=3 result_reads=3 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 3 rc=-1 observed=0x00000000 expected=0x00000030. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 50,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nINJECT 50 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=54 starts=3 result_reads=3 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 3 rc=-1 observed=0x00000000 expected=0x00000030. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 51,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nINJECT 51 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=55 starts=3 result_reads=3 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 3 rc=-1 observed=0x00000000 expected=0x00000030. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 52,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nINJECT 52 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=56 starts=3 result_reads=3 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 3 rc=-1 observed=0x00000000 expected=0x00000030. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 53,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nINJECT 53 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=57 starts=3 result_reads=3 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 3 rc=-1 observed=0x00000000 expected=0x00000030. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 54,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nINJECT 54 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=58 starts=3 result_reads=3 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 3 rc=-1 observed=0x00000000 expected=0x00000030. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 55,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nINJECT 55 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=59 starts=4 result_reads=3 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 3 rc=-1 observed=0x00000000 expected=0x00000030. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 56,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nINJECT 56 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=60 starts=4 result_reads=3 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 3 rc=-1 observed=0x00000000 expected=0x00000030. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 57,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nINJECT 57 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=61 starts=4 result_reads=3 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 3 rc=-1 observed=0x00000000 expected=0x00000030. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 58,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nINJECT 58 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=62 starts=4 result_reads=3 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 3 rc=-1 observed=0x00000000 expected=0x00000030. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 59,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nINJECT 59 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=63 starts=4 result_reads=3 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 3 rc=-1 observed=0x00000000 expected=0x00000030. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 60,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nINJECT 60 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=64 starts=4 result_reads=4 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 4 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 61,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nINJECT 61 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=65 starts=4 result_reads=4 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 4 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 62,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nINJECT 62 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=66 starts=4 result_reads=4 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 4 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 63,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nINJECT 63 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=67 starts=4 result_reads=4 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 4 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 64,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nINJECT 64 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=68 starts=4 result_reads=4 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 4 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 65,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nINJECT 65 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=69 starts=4 result_reads=4 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 4 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 66,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nINJECT 66 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=70 starts=5 result_reads=4 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 4 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 67,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nINJECT 67 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=71 starts=5 result_reads=4 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 4 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 68,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nINJECT 68 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=72 starts=5 result_reads=4 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 4 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 69,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nINJECT 69 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=73 starts=5 result_reads=4 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 4 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 70,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nINJECT 70 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=74 starts=5 result_reads=4 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 4 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 71,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nINJECT 71 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=75 starts=5 result_reads=5 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 5 rc=-1 observed=0x00000000 expected=0xfffffff0. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 72,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nINJECT 72 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=76 starts=5 result_reads=5 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 5 rc=-1 observed=0x00000000 expected=0xfffffff0. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 73,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nINJECT 73 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=77 starts=5 result_reads=5 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 5 rc=-1 observed=0x00000000 expected=0xfffffff0. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 74,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nINJECT 74 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=78 starts=5 result_reads=5 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 5 rc=-1 observed=0x00000000 expected=0xfffffff0. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 75,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nINJECT 75 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=79 starts=5 result_reads=5 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 5 rc=-1 observed=0x00000000 expected=0xfffffff0. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 76,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nINJECT 76 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=80 starts=5 result_reads=5 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 5 rc=-1 observed=0x00000000 expected=0xfffffff0. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 77,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nINJECT 77 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=81 starts=6 result_reads=5 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 5 rc=-1 observed=0x00000000 expected=0xfffffff0. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 78,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nINJECT 78 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=82 starts=6 result_reads=5 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 5 rc=-1 observed=0x00000000 expected=0xfffffff0. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 79,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nINJECT 79 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=83 starts=6 result_reads=5 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 5 rc=-1 observed=0x00000000 expected=0xfffffff0. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 80,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nINJECT 80 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=84 starts=6 result_reads=5 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 5 rc=-1 observed=0x00000000 expected=0xfffffff0. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 81,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nINJECT 81 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=85 starts=6 result_reads=5 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 5 rc=-1 observed=0x00000000 expected=0xfffffff0. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 82,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nINJECT 82 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=86 starts=6 result_reads=6 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 6 rc=-1 observed=0x00000000 expected=0x00000700. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 83,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nINJECT 83 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=87 starts=6 result_reads=6 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 6 rc=-1 observed=0x00000000 expected=0x00000700. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 84,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nINJECT 84 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=88 starts=6 result_reads=6 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 6 rc=-1 observed=0x00000000 expected=0x00000700. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 85,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nINJECT 85 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=89 starts=6 result_reads=6 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 6 rc=-1 observed=0x00000000 expected=0x00000700. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 86,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nINJECT 86 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=90 starts=6 result_reads=6 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 6 rc=-1 observed=0x00000000 expected=0x00000700. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 87,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nINJECT 87 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=91 starts=6 result_reads=6 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 6 rc=-1 observed=0x00000000 expected=0x00000700. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 88,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nINJECT 88 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=92 starts=7 result_reads=6 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 6 rc=-1 observed=0x00000000 expected=0x00000700. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 89,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nINJECT 89 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=93 starts=7 result_reads=6 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 6 rc=-1 observed=0x00000000 expected=0x00000700. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 90,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nINJECT 90 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=94 starts=7 result_reads=6 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 6 rc=-1 observed=0x00000000 expected=0x00000700. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 91,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nINJECT 91 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=95 starts=7 result_reads=6 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 6 rc=-1 observed=0x00000000 expected=0x00000700. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 92,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nINJECT 92 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=96 starts=7 result_reads=6 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 6 rc=-1 observed=0x00000000 expected=0x00000700. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 93,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nINJECT 93 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=97 starts=7 result_reads=7 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 7 rc=-1 observed=0x00000000 expected=0x0000ff00. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 94,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nINJECT 94 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=98 starts=7 result_reads=7 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 7 rc=-1 observed=0x00000000 expected=0x0000ff00. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 95,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nINJECT 95 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=99 starts=7 result_reads=7 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 7 rc=-1 observed=0x00000000 expected=0x0000ff00. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 96,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nINJECT 96 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=100 starts=7 result_reads=7 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 7 rc=-1 observed=0x00000000 expected=0x0000ff00. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 97,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nINJECT 97 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=101 starts=7 result_reads=7 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 7 rc=-1 observed=0x00000000 expected=0x0000ff00. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 98,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nINJECT 98 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=102 starts=7 result_reads=7 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 7 rc=-1 observed=0x00000000 expected=0x0000ff00. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 99,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nINJECT 99 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=103 starts=8 result_reads=7 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 7 rc=-1 observed=0x00000000 expected=0x0000ff00. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 100,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nINJECT 100 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=104 starts=8 result_reads=7 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 7 rc=-1 observed=0x00000000 expected=0x0000ff00. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 101,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nINJECT 101 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=105 starts=8 result_reads=7 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 7 rc=-1 observed=0x00000000 expected=0x0000ff00. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 102,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nINJECT 102 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=106 starts=8 result_reads=7 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 7 rc=-1 observed=0x00000000 expected=0x0000ff00. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 103,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nINJECT 103 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=107 starts=8 result_reads=7 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 7 rc=-1 observed=0x00000000 expected=0x0000ff00. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 104,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nINJECT 104 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=108 starts=8 result_reads=8 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 8 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 105,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nINJECT 105 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=109 starts=8 result_reads=8 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 8 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 106,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nINJECT 106 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=110 starts=8 result_reads=8 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 8 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 107,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nINJECT 107 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=111 starts=8 result_reads=8 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 8 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 108,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nINJECT 108 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=112 starts=8 result_reads=8 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 8 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 109,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nINJECT 109 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=113 starts=8 result_reads=8 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 8 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 110,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nINJECT 110 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=114 starts=9 result_reads=8 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 8 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 111,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nINJECT 111 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=115 starts=9 result_reads=8 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 8 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 112,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nINJECT 112 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=116 starts=9 result_reads=8 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 8 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 113,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nINJECT 113 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=117 starts=9 result_reads=8 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 8 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 114,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nINJECT 114 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=118 starts=9 result_reads=8 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 8 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 115,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nINJECT 115 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=119 starts=9 result_reads=9 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 9 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 116,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nINJECT 116 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=120 starts=9 result_reads=9 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 9 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 117,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nINJECT 117 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=121 starts=9 result_reads=9 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 9 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 118,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nINJECT 118 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=122 starts=9 result_reads=9 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 9 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 119,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nINJECT 119 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=123 starts=9 result_reads=9 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 9 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 120,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nINJECT 120 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=124 starts=9 result_reads=9 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 9 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 121,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nINJECT 121 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=125 starts=10 result_reads=9 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 9 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 122,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nINJECT 122 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=126 starts=10 result_reads=9 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 9 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 123,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nINJECT 123 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=127 starts=10 result_reads=9 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 9 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 124,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nINJECT 124 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=128 starts=10 result_reads=9 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 9 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 125,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nINJECT 125 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=129 starts=10 result_reads=9 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 9 rc=-1 observed=0x00000000 expected=0x00000000. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 126,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nINJECT 126 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=130 starts=10 result_reads=10 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 10 rc=-1 observed=0x00000000 expected=0x00000010. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 127,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nINJECT 127 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=131 starts=10 result_reads=10 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 10 rc=-1 observed=0x00000000 expected=0x00000010. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 128,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nINJECT 128 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=132 starts=10 result_reads=10 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 10 rc=-1 observed=0x00000000 expected=0x00000010. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 129,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nINJECT 129 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=133 starts=10 result_reads=10 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 10 rc=-1 observed=0x00000000 expected=0x00000010. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 130,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nINJECT 130 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=134 starts=10 result_reads=10 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 10 rc=-1 observed=0x00000000 expected=0x00000010. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 131,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nINJECT 131 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=135 starts=10 result_reads=10 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 10 rc=-1 observed=0x00000000 expected=0x00000010. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 132,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nINJECT 132 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=136 starts=11 result_reads=10 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 10 rc=-1 observed=0x00000000 expected=0x00000010. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 133,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nINJECT 133 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=137 starts=11 result_reads=10 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 10 rc=-1 observed=0x00000000 expected=0x00000010. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 134,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nINJECT 134 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=138 starts=11 result_reads=10 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 10 rc=-1 observed=0x00000000 expected=0x00000010. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 135,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nINJECT 135 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=139 starts=11 result_reads=10 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 10 rc=-1 observed=0x00000000 expected=0x00000010. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 136,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nINJECT 136 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=140 starts=11 result_reads=10 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 10 rc=-1 observed=0x00000000 expected=0x00000010. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 137,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 11: a=3 b=5 mode=0\nINJECT 137 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=141 starts=11 result_reads=11 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 11 rc=-1 observed=0x00000000 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 138,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 11: a=3 b=5 mode=0\nINJECT 138 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=142 starts=11 result_reads=11 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 11 rc=-1 observed=0x00000000 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 139,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 11: a=3 b=5 mode=0\nINJECT 139 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=143 starts=11 result_reads=11 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 11 rc=-1 observed=0x00000000 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 140,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 11: a=3 b=5 mode=0\nINJECT 140 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=144 starts=11 result_reads=11 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 11 rc=-1 observed=0x00000000 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 141,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 11: a=3 b=5 mode=0\nINJECT 141 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=145 starts=11 result_reads=11 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 11 rc=-1 observed=0x00000000 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 142,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 11: a=3 b=5 mode=0\nINJECT 142 fpgaWriteMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=146 starts=11 result_reads=11 failure_injected=1\n",
+      "stderr": "FAIL fpgaWriteMMIO64: inert injected API error (3)\nFAIL case 11 rc=-1 observed=0x00000000 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 143,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 11: a=3 b=5 mode=0\nINJECT 143 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=147 starts=12 result_reads=11 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 11 rc=-1 observed=0x00000000 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 144,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 11: a=3 b=5 mode=0\nINJECT 144 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=148 starts=12 result_reads=11 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 11 rc=-1 observed=0x00000000 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 145,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 11: a=3 b=5 mode=0\nINJECT 145 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=149 starts=12 result_reads=11 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 11 rc=-1 observed=0x00000000 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 146,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 11: a=3 b=5 mode=0\nINJECT 146 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=150 starts=12 result_reads=11 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 11 rc=-1 observed=0x00000000 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 147,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 11: a=3 b=5 mode=0\nINJECT 147 fpgaReadMMIO64\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=151 starts=12 result_reads=11 failure_injected=1\n",
+      "stderr": "FAIL fpgaReadMMIO64: inert injected API error (3)\nFAIL case 11 rc=-1 observed=0x00000000 expected=0x00000008. Stop; no retry/reset.\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 148,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 11: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nINJECT 148 fpgaUnmapMMIO\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=151 starts=12 result_reads=12 failure_injected=1\n",
+      "stderr": "FAIL fpgaUnmapMMIO: inert injected API error (3)\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 149,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 11: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nINJECT 149 fpgaClose\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=151 starts=12 result_reads=12 failure_injected=1\n",
+      "stderr": "FAIL fpgaClose: inert injected API error (3)\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 150,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 11: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nINJECT 150 fpgaDestroyToken\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=151 starts=12 result_reads=12 failure_injected=1\n",
+      "stderr": "FAIL fpgaDestroyToken: inert injected API error (3)\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 151,
+      "rc": 1,
+      "stdout": "FPGA Test case 0: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nFPGA Test case 1: a=3 b=5 mode=1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 2: a=-9 b=7 mode=0\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 3: a=9 b=-7 mode=1\nPASS checksum=0x00000030; fresh completion\nFPGA Test case 4: a=0 b=0 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 5: a=0 b=3 mode=1\nPASS checksum=0xfffffff0; fresh completion\nFPGA Test case 6: a=1000 b=2000 mode=0\nPASS checksum=0x00000700; fresh completion\nFPGA Test case 7: a=1064 b=2000 mode=0\nPASS checksum=0x0000ff00; fresh completion\nFPGA Test case 8: a=2147483640 b=1 mode=0\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 9: a=-2147483641 b=1 mode=1\nPASS checksum=0x00000000; fresh completion\nFPGA Test case 10: a=3 b=5 mode=-1\nPASS checksum=0x00000010; fresh completion\nFPGA Test case 11: a=3 b=5 mode=0\nPASS checksum=0x00000008; fresh completion\nINJECT 151 fpgaDestroyProperties\nFPGA Test FAILED (CSR/numerical only; DDR and transfers not covered)\nMOCK_SUMMARY calls=151 starts=12 result_reads=12 failure_injected=1\n",
+      "stderr": "FAIL fpgaDestroyProperties: inert injected API error (3)\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 0,
+      "rc": 2,
+      "stdout": "",
+      "stderr": "Usage (separately authorized hardware only): /home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-host-offline-01/build/test_opae_frontend --run-qualified-csr-test dddd:bb:dd.f\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 0,
+      "rc": 2,
+      "stdout": "",
+      "stderr": "Usage (separately authorized hardware only): /home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-host-offline-01/build/test_opae_frontend --run-qualified-csr-test dddd:bb:dd.f\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 0,
+      "rc": 2,
+      "stdout": "",
+      "stderr": "Usage (separately authorized hardware only): /home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-host-offline-01/build/test_opae_frontend --run-qualified-csr-test dddd:bb:dd.f\n"
+    },
+    {
+      "scenario": "pass",
+      "fail_at": 0,
+      "rc": 2,
+      "stdout": "",
+      "stderr": "Usage (separately authorized hardware only): /home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-host-offline-01/build/test_opae_frontend --run-qualified-csr-test dddd:bb:dd.f\n"
+    }
+  ]
+}

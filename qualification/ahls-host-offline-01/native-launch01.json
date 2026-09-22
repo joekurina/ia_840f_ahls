@@ -1,0 +1,32 @@
+[
+  {
+    "argv": [
+      "tmux",
+      "load-buffer",
+      "-b",
+      "ia840f_host_compile_input01",
+      "-"
+    ],
+    "rc": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "tmux",
+      "new-window",
+      "-d",
+      "-P",
+      "-F",
+      "#{window_id} #{pane_id}",
+      "-t",
+      "ia840f_mailbox_monitored_01",
+      "-n",
+      "host_compile_01",
+      "tmux save-buffer -b ia840f_host_compile_input01 - | python3 -B; exec bash"
+    ],
+    "rc": 0,
+    "stdout": "@13 %13\n",
+    "stderr": ""
+  }
+]

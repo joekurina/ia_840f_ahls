@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-host-offline-01/build",
+    "--parallel",
+    "2"
+  ],
+  "rc": 2,
+  "stdout": "[ 25%] Building C object CMakeFiles/ahls_qualification_core.dir/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/ahls_qualification_core.c.o\n[ 50%] Linking C static library libahls_qualification_core.a\n[ 50%] Built target ahls_qualification_core\n[ 75%] Building C object CMakeFiles/test_ahls_qualification.dir/test_ahls_qualification.c.o\n",
+  "stderr": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/offline/test_ahls_qualification.c: In function \u2018pause_tick\u2019:\n/home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/offline/test_ahls_qualification.c:56:5: error: this \u2018if\u2019 clause does not guard... [-Werror=misleading-indentation]\n   56 |     if(!f->stall_clock)f->time+=ms;return 0;\n      |     ^~\n/home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/offline/test_ahls_qualification.c:56:36: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the \u2018if\u2019\n   56 |     if(!f->stall_clock)f->time+=ms;return 0;\n      |                                    ^~~~~~\ncc1: all warnings being treated as errors\ngmake[2]: *** [CMakeFiles/test_ahls_qualification.dir/build.make:79: CMakeFiles/test_ahls_qualification.dir/test_ahls_qualification.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:122: CMakeFiles/test_ahls_qualification.dir/all] Error 2\ngmake: *** [Makefile:101: all] Error 2\n"
+}
