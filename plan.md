@@ -49,6 +49,12 @@ divider binding and dependent exceptions before a narrow correction; do not
 repeat already-effective hold settings. Work14's new FIM interface does not
 match the existing W13 persona. All hardware gates remain open.
 
+The [PCIe binding source investigation](qualification/pcie-clock-binding-01/DISPOSITION.md)
+is complete: obsolete hierarchy is confirmed, but final pin/master/receiver
+bindings and dependent exceptions remain unresolved. No correction is applied.
+The next bounded offline fitted-database inspection needs resolution of the
+earlier Query04-specific tool-approval stop; no renamed retry or blind edit.
+
 ## 1. Authorization and acceptance model
 
 **Current state: source-only; `ready_for_build: false`.** Creating this plan authorizes no workstation access, setup/configuration, IP generation, compilation, simulation, tests, installation, programming, commits or pushes. No gate is changed by this plan. Earlier standard/USM oneAPI trees remain reference-only, not active build/test targets; see [AHLS scope](docs/ahls-scope.md).
