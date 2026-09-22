@@ -1,0 +1,54 @@
+--- failed/prepare01.py
++++ prepare02.py
+@@ -5,8 +5,9 @@
+ from typing import Any
+ B=Path('/home/uwb_student00/ahls/new_BSP')
+ W=B/'work_ia840f_fim_14';S=B/'ofs-agx7-pcie-attach';P=B/'ofs-platform-afu-bbb'
+-E=B/'qualification/pcie-clock-repair-01/experiment03/baseline'
+-BATCH='ia840f_clock_fanout01_preparation01'
++E=B/'qualification/pcie-clock-repair-01/fanout-diagnostic01'
++BATCH='ia840f_clock_fanout01_preparation02'
++OWNED=False
+ 
+ def sha(p):
+     h=hashlib.sha256()
+@@ -29,10 +30,11 @@
+     with (E/name).open('x') as f:json.dump(obj,f,indent=2,sort_keys=True)
+ 
+ def main():
++    global OWNED
+     if socket.gethostname()!='Agilex7Workstation' or os.getuid()!=1000 or not os.environ.get('TMUX') or sys.flags.optimize:
+         raise RuntimeError('wrong host/user/session/python')
+     if subprocess.check_output(['tmux','display-message','-p','-t',os.environ['TMUX_PANE'],'#S'],text=True).strip()!='ia840f_mailbox_monitored_01':raise RuntimeError('wrong tmux session')
+-    payload=subprocess.check_output(['tmux','save-buffer','-b','ia840f_clock_fanout01_inputs01','-'])
++    payload=subprocess.check_output(['tmux','save-buffer','-b','ia840f_clock_fanout01_inputs02','-'])
+     if hashlib.sha256(payload).hexdigest()!=sys.argv[1]:raise RuntimeError('payload digest')
+     inputs=json.loads(payload)
+     if set(inputs)!= {'query.tcl','run-query.py','ia840f_clock_fanout01_gate.py','AUTHORITY.md','SPEC.md','clock-repair.tcl','known-receivers.tcl'}:raise RuntimeError('payload scope')
+@@ -45,8 +47,9 @@
+         if sha(W/rel)!=digest:raise RuntimeError('Work14 result drift '+rel)
+     before={str(root):inv(root) for root in (W,S,P)}
+     E.mkdir(parents=True, exist_ok=False)
++    OWNED=True
+     (E/'preservation.json.gz').write_bytes(gzip.compress(json.dumps(before,sort_keys=True).encode(),mtime=0))
+-    (E/'prepare01.py').write_bytes(subprocess.check_output(['tmux','save-buffer','-b','ia840f_clock_fanout01_prepare01_script','-']))
++    (E/'prepare02.py').write_bytes(subprocess.check_output(['tmux','save-buffer','-b','ia840f_clock_fanout01_prepare02_script','-']))
+     for name,v in inputs.items():
+         data=base64.b64decode(v['base64'])
+         if hashlib.sha256(data).hexdigest()!=v['sha256']:raise RuntimeError('input hash')
+@@ -105,7 +108,7 @@
+     checks.update(donors_unchanged=True,copies_initially_hash_identical=True,vendor_launched=False,authorization_issued=False,pane=os.environ['TMUX_PANE'],time=datetime.datetime.now(datetime.timezone.utc).isoformat())
+     put('tests.json',checks);put('path-relocations.json',changes)
+     exports={}
+-    for name in ('candidate.json','tests.json','path-relocations.json','query.tcl','run-query.py','ia840f_clock_fanout01_gate.py','ia840f_experimental_gate.py','prepare01.py','AUTHORITY.md','SPEC.md','clock-repair.tcl','known-receivers.tcl','constraint-delta.json','top.sdc'):
++    for name in ('candidate.json','tests.json','path-relocations.json','query.tcl','run-query.py','ia840f_clock_fanout01_gate.py','ia840f_experimental_gate.py','prepare02.py','AUTHORITY.md','SPEC.md','clock-repair.tcl','known-receivers.tcl','constraint-delta.json','top.sdc'):
+         data=(E/name).read_bytes();exports[name]={'sha256':hashlib.sha256(data).hexdigest(),'bytes':len(data),'base64':base64.b64encode(data).decode()}
+     blob=gzip.compress(json.dumps({'batch':BATCH,'files':exports},sort_keys=True).encode(),mtime=0)
+     subprocess.run(['tmux','load-buffer','-b',BATCH,'-'],input=blob,check=True)
+@@ -114,5 +117,5 @@
+ if __name__=='__main__':
+     try:main()
+     except Exception as exc:
+-        if E.is_dir() and not (E/'preparation-error.json').exists():put('preparation-error.json',{'error':repr(exc),'traceback':traceback.format_exc()})
++        if OWNED and E.is_dir() and not (E/'preparation-error.json').exists():put('preparation-error.json',{'error':repr(exc),'traceback':traceback.format_exc()})
+         raise

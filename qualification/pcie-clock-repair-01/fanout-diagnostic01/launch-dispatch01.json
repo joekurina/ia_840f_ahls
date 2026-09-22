@@ -1,0 +1,13 @@
+{
+  "utc": "2026-09-22T11:27:54.093152+00:00",
+  "window_pane": "@49 %49",
+  "issuer_sha256": "519f50ee7fcd2c4b195f56ab0e224b10ad96f367581382ccf046ac626d3deac8",
+  "payload_sha256": "423aaa83240cc3660ef6ce75c5ea982b4ca2533b7879429ddc8b19468c0ea6d5",
+  "buffers": [
+    "ia840f_clock_fanout01_launch01_payload",
+    "ia840f_clock_fanout01_launch01_script"
+  ],
+  "transport_readback_equal": true,
+  "command": "set -o pipefail; tmux save-buffer -b ia840f_clock_fanout01_launch01_script - | python3 -B - 423aaa83240cc3660ef6ce75c5ea982b4ca2533b7879429ddc8b19468c0ea6d5; rc=$?; printf \"FANOUT01_OUTER_RC=%s\\n\" \"$rc\"; exec bash",
+  "scope": "Dispatch of inspected one-use issuer; issuance/native success must be observed separately"
+}

@@ -1,0 +1,153 @@
+{
+  "scope": "INERT full actual Tcl entry and mocked API semantics; no native validation",
+  "prepared": true,
+  "count": 18,
+  "tests": [
+    {
+      "case": "normal",
+      "rc": 0,
+      "diagnostic_marker_count": 1,
+      "fanout_records": "{FANOUT_COUNT pin 0 cap 4096} {FANOUT_COUNT keeper 34 cap 4096}",
+      "status": "{DIAGNOSTIC_STATUS complete 1 pin_supported_by_known 0 keeper_supported_by_known 1 no_collector_acceptance no_comparison_acceptance}",
+      "pass": true
+    },
+    {
+      "case": "both_zero",
+      "rc": 0,
+      "diagnostic_marker_count": 1,
+      "fanout_records": "{FANOUT_COUNT pin 0 cap 4096} {FANOUT_COUNT keeper 0 cap 4096}",
+      "status": "{DIAGNOSTIC_STATUS complete 1 pin_supported_by_known 0 keeper_supported_by_known 0 no_collector_acceptance no_comparison_acceptance}",
+      "pass": true
+    },
+    {
+      "case": "both_equal",
+      "rc": 0,
+      "diagnostic_marker_count": 1,
+      "fanout_records": "{FANOUT_COUNT pin 34 cap 4096} {FANOUT_COUNT keeper 34 cap 4096}",
+      "status": "{DIAGNOSTIC_STATUS complete 1 pin_supported_by_known 1 keeper_supported_by_known 1 no_collector_acceptance no_comparison_acceptance}",
+      "pass": true
+    },
+    {
+      "case": "pin_subset",
+      "rc": 0,
+      "diagnostic_marker_count": 1,
+      "fanout_records": "{FANOUT_COUNT pin 2 cap 4096} {FANOUT_COUNT keeper 34 cap 4096}",
+      "status": "{DIAGNOSTIC_STATUS complete 1 pin_supported_by_known 0 keeper_supported_by_known 1 no_collector_acceptance no_comparison_acceptance}",
+      "pass": true
+    },
+    {
+      "case": "missing_known",
+      "rc": 0,
+      "diagnostic_marker_count": 1,
+      "fanout_records": "{FANOUT_COUNT pin 0 cap 4096} {FANOUT_COUNT keeper 33 cap 4096}",
+      "status": "{DIAGNOSTIC_STATUS complete 1 pin_supported_by_known 0 keeper_supported_by_known 0 no_collector_acceptance no_comparison_acceptance}",
+      "pass": true
+    },
+    {
+      "case": "pin_cap",
+      "rc": 1,
+      "diagnostic_marker_count": 0,
+      "fanout_records": "{FANOUT_COUNT pin 4097 cap 4096} {FANOUT_COUNT keeper 34 cap 4096}",
+      "status": "{DIAGNOSTIC_STATUS complete 0 pin_supported_by_known 0 keeper_supported_by_known 0 no_collector_acceptance no_comparison_acceptance}",
+      "pass": true
+    },
+    {
+      "case": "keeper_cap",
+      "rc": 1,
+      "diagnostic_marker_count": 0,
+      "fanout_records": "{FANOUT_COUNT pin 0 cap 4096} {FANOUT_COUNT keeper 4097 cap 4096}",
+      "status": "{DIAGNOSTIC_STATUS complete 0 pin_supported_by_known 0 keeper_supported_by_known 0 no_collector_acceptance no_comparison_acceptance}",
+      "pass": true
+    },
+    {
+      "case": "duplicate_load",
+      "rc": 1,
+      "diagnostic_marker_count": 0,
+      "fanout_records": "{FANOUT_COUNT pin 0 cap 4096} {FANOUT_COUNT keeper 35 cap 4096}",
+      "status": "{DIAGNOSTIC_STATUS complete 0 pin_supported_by_known 0 keeper_supported_by_known 0 no_collector_acceptance no_comparison_acceptance}",
+      "pass": true
+    },
+    {
+      "case": "keeper_missing",
+      "rc": 1,
+      "diagnostic_marker_count": 0,
+      "fanout_records": "{FANOUT_COUNT pin 0 cap 4096}",
+      "status": "",
+      "pass": true
+    },
+    {
+      "case": "keeper_duplicate",
+      "rc": 1,
+      "diagnostic_marker_count": 0,
+      "fanout_records": "{FANOUT_COUNT pin 0 cap 4096}",
+      "status": "",
+      "pass": true
+    },
+    {
+      "case": "group_wrong",
+      "rc": 1,
+      "diagnostic_marker_count": 0,
+      "fanout_records": "{FANOUT_COUNT pin 0 cap 4096} {FANOUT_COUNT keeper 34 cap 4096}",
+      "status": "",
+      "pass": true
+    },
+    {
+      "case": "wrong_reverse",
+      "rc": 1,
+      "diagnostic_marker_count": 0,
+      "fanout_records": "{FANOUT_COUNT pin 0 cap 4096} {FANOUT_COUNT keeper 34 cap 4096}",
+      "status": "",
+      "pass": true
+    },
+    {
+      "case": "api_error",
+      "rc": 1,
+      "diagnostic_marker_count": 0,
+      "fanout_records": "",
+      "status": "",
+      "pass": true
+    },
+    {
+      "case": "existing_clock",
+      "rc": 1,
+      "diagnostic_marker_count": 0,
+      "fanout_records": "",
+      "status": "",
+      "pass": true
+    },
+    {
+      "case": "old_root",
+      "rc": 1,
+      "diagnostic_marker_count": 0,
+      "fanout_records": "",
+      "status": "",
+      "pass": true
+    },
+    {
+      "case": "wrong_root",
+      "rc": 1,
+      "diagnostic_marker_count": 0,
+      "fanout_records": "",
+      "status": "",
+      "pass": true
+    },
+    {
+      "case": "spent",
+      "rc": 1,
+      "diagnostic_marker_count": 0,
+      "fanout_records": "",
+      "status": "",
+      "pass": true
+    },
+    {
+      "case": "project_sentinel",
+      "rc": 1,
+      "diagnostic_marker_count": 0,
+      "fanout_records": "",
+      "status": "",
+      "pass": true
+    }
+  ],
+  "query_sha256": "16ec28ff6ed66b9867338b09d4d12af0c3fa12d5926efd3b85cdc0c47edd0086",
+  "test_sha256": "1131838518fa8b9d2493a88256601536a93cec53320965c96dc03ebf998f1ce9"
+}
