@@ -1,0 +1,9 @@
+--- Work16/ofs_top.qsf
++++ Work17/ofs_top.qsf
+@@ -128,3 +128,6 @@
+ set_global_assignment -name TDC_AGGRESSIVE_HOLD_CLOSURE_EFFORT ON
+ set_global_assignment -name OPTIMIZATION_MODE "HIGH PERFORMANCE EFFORT" -comment "Use High Performance Effort optimization mode when optimizing for performance. Superior Performance with Maximum Placement Effort optimization mode has been deprecated and will be removed in 27.1.1."
+ set_global_assignment -name GLOBAL_PLACEMENT_EFFORT "MAXIMUM EFFORT"
++
++# Work17: retain intermediate snapshots for exact EMIF path-stage diagnosis.
++set_global_assignment -name ENABLE_INTERMEDIATE_SNAPSHOTS ON

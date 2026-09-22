@@ -1,0 +1,9 @@
+# Work17 diagnostic iteration authority
+
+Joe's standing GOAL-PROMPT.md approval and explicit Quartus→reports→correction→Quartus direction authorize this finite ordinary source/build iteration. No new source-SPEC/QUALITY approvals are claimed. The parent alone operates the remote workstation in owned tmux, using the established single-use native full-compile machinery and exact135-context grammar.
+
+Work16's native evidence shows unchanged failing EMIF1 hold. The consumed next-iteration recommendation, ../fim-build-16/next-iteration-recommendation01.md (deleg_afffd24d), supports one observability delta: ENABLE_INTERMEDIATE_SNAPSHOTS ON in the fresh WORK17 QSF. This is not a timing fix. Original Work16, Work15, PIM and all frozen evidence stay untouched. SOURCE QSF and top.sdc stay unchanged; only two source execution gates are mechanically retargeted. Preserve10ps Fitter-only experiment, seed2, optimization settings, all clocks/DDR/PR/PCIe and final signoff.
+
+Prepare/verify a fresh work_ia840f_fim_17 and qualification/fim-build-17, then separately issue one source-bound full compile under parent exact-binding acceptance. No authorization before all package/preflight checks pass. ready_for_build, timing and hardware qualification remain false. No hardware, drivers, devices, OPAE, MMIO, JTAG, programming, resets, reboots or services are in scope. Resource/process/single-use checks remain intact. A timeout means state unknown; never duplicate.
+
+After completed native snapshots and reports, a separately bound finite quartus_sta comparison may inspect the exact UFI→PHY path at actual post-route/final snapshots and Fast vid2100C. This compile authority does not authorize unseen standalone STA commands; their actual snapshot identities/commands must first be bound. Do not demand inaccessible Fitter total uncertainty, repeat Plan callbacks, relax signoff or sweep seeds.

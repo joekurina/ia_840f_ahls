@@ -1,0 +1,845 @@
+{
+  "utc": "2026-09-22T23:00:06.300328+00:00",
+  "native": {
+    "accepted_execution": true,
+    "argv": [
+      "./ofs-common/scripts/common/syn/build_top.sh",
+      "--stage=compile",
+      "-k",
+      "-p",
+      "ia840f",
+      "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_17"
+    ],
+    "authorization_sha256": "22cf3d1428e9a6de430bcad40f477374cf9e25a3a1de22f4b444306c701cbcce",
+    "compile_fit_assembly_timing_acceptance": "PENDING REPORT REVIEW",
+    "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach",
+    "ddr_simulation": "SKIPPED BY USER",
+    "ended": "2026-09-22T22:52:32.275642+00:00",
+    "functional_acceptance": false,
+    "gate_rejection": false,
+    "native_exit_accepted": true,
+    "native_pid": 50260,
+    "native_returncode": 0,
+    "ready_for_build": false,
+    "runner_pid": 50222,
+    "started": "2026-09-22T22:00:01.335334+00:00",
+    "state": "finished"
+  },
+  "summary_sha256": "5d155eb3f7873329912e99966380fc3c4841be3a0fc917fa862e148bf3bee869",
+  "sta_summary_byte_identical_work16": true,
+  "summary_rows": 788,
+  "negative_rows": [
+    {
+      "type": "Hold 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0'",
+      "slack": -0.004
+    }
+  ],
+  "minima": {
+    "Setup": {
+      "type": "Setup 'sys_pll|iopll_0_clk_sys'",
+      "slack": 0.151
+    },
+    "Hold": {
+      "type": "Hold 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0'",
+      "slack": -0.004
+    },
+    "Recovery": {
+      "type": "Recovery 'pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15'",
+      "slack": 0.274
+    },
+    "Removal": {
+      "type": "Removal 'altera_int_osc_clk'",
+      "slack": 0.137
+    },
+    "Minimum Pulse Width": {
+      "type": "Minimum Pulse Width 'altera_int_osc_clk'",
+      "slack": 0.0
+    }
+  },
+  "five_hold_detail_blocks_byte_identical_work16": [
+    [
+      5111,
+      5227
+    ],
+    [
+      35547,
+      35663
+    ],
+    [
+      65965,
+      66081
+    ],
+    [
+      96376,
+      96492
+    ],
+    [
+      126779,
+      126895
+    ]
+  ],
+  "drc": {
+    "rules": 88,
+    "failed": 23,
+    "high_failed_rules": 7,
+    "high_violations": 34,
+    "waived": 0,
+    "rows": [
+      {
+        "line": 127,
+        "rule": "CDC-50001 - 1-Bit Asynchronous Transfer Not Synchronized",
+        "severity": "High",
+        "violations_raw": "13",
+        "violations": 13,
+        "waived": 0
+      },
+      {
+        "line": 128,
+        "rule": "CDC-50004 - MUX-type CDC Transfer with Insufficient Constraints",
+        "severity": "High",
+        "violations_raw": "7",
+        "violations": 7,
+        "waived": 0
+      },
+      {
+        "line": 129,
+        "rule": "TMC-20027 - Collection Filter Matching Multiple Types",
+        "severity": "High",
+        "violations_raw": "5",
+        "violations": 5,
+        "waived": 0
+      },
+      {
+        "line": 130,
+        "rule": "RES-50001 - Asynchronous Reset Is Not Synchronized",
+        "severity": "High",
+        "violations_raw": "4",
+        "violations": 4,
+        "waived": 0
+      },
+      {
+        "line": 131,
+        "rule": "CDC-50007 - CDC Bus Constructed with Multi-bit Synchronizer Chains with Insufficient Constraints",
+        "severity": "High",
+        "violations_raw": "2",
+        "violations": 2,
+        "waived": 0
+      },
+      {
+        "line": 132,
+        "rule": "CDC-50012 - Multiple Clock Domains Driving a Synchronizer Chain",
+        "severity": "High",
+        "violations_raw": "2",
+        "violations": 2,
+        "waived": 0
+      },
+      {
+        "line": 133,
+        "rule": "CDC-50003 - CE-Type CDC Transfer with Insufficient Constraints",
+        "severity": "High",
+        "violations_raw": "1",
+        "violations": 1,
+        "waived": 0
+      },
+      {
+        "line": 134,
+        "rule": "BBD-60000 - Partial Reconfiguration or Reserved Core Input/Output Ports not Directly Registered",
+        "severity": "Medium",
+        "violations_raw": "1,518",
+        "violations": 1518,
+        "waived": 0
+      },
+      {
+        "line": 135,
+        "rule": "BBD-60002 - Partial Reconfiguration or Reserved Core Output Port(s) is Driven by a Constant",
+        "severity": "Medium",
+        "violations_raw": "1,484",
+        "violations": 1484,
+        "waived": 0
+      },
+      {
+        "line": 136,
+        "rule": "BBD-60001 - Partial Reconfiguration or Reserved Core Input Port(s) does not Drive a Register",
+        "severity": "Medium",
+        "violations_raw": "1,074",
+        "violations": 1074,
+        "waived": 0
+      },
+      {
+        "line": 137,
+        "rule": "TMC-20025 - Ignored or Overridden Constraints",
+        "severity": "Medium",
+        "violations_raw": "117",
+        "violations": 117,
+        "waived": 0
+      },
+      {
+        "line": 138,
+        "rule": "TMC-20026 - Empty Collection Due To Unmatched Filter",
+        "severity": "Medium",
+        "violations_raw": "59",
+        "violations": 59,
+        "waived": 0
+      },
+      {
+        "line": 139,
+        "rule": "RDC-50003 - Multiple Asynchronous Reset Synchronizers in the Same Clock Domain",
+        "severity": "Medium",
+        "violations_raw": "6",
+        "violations": 6,
+        "waived": 0
+      },
+      {
+        "line": 140,
+        "rule": "CLK-30032 - Improper Clock Targets",
+        "severity": "Medium",
+        "violations_raw": "1",
+        "violations": 1,
+        "waived": 0
+      },
+      {
+        "line": 141,
+        "rule": "LNT-30023 - Reset Nets with Polarity Conflict",
+        "severity": "Medium",
+        "violations_raw": "1",
+        "violations": 1,
+        "waived": 0
+      },
+      {
+        "line": 142,
+        "rule": "CDC-50101 - Intra-Clock False Path Synchronizer",
+        "severity": "Low",
+        "violations_raw": "26",
+        "violations": 26,
+        "waived": 0
+      },
+      {
+        "line": 143,
+        "rule": "CDC-50008 - CDC Bus Constructed with Multi-bit Synchronizer Chains",
+        "severity": "Low",
+        "violations_raw": "16",
+        "violations": 16,
+        "waived": 0
+      },
+      {
+        "line": 144,
+        "rule": "FLP-40006 - Pipelining Registers That Might Be Recoverable",
+        "severity": "Low",
+        "violations_raw": "16",
+        "violations": 16,
+        "waived": 0
+      },
+      {
+        "line": 145,
+        "rule": "RES-50101 - Intra-Clock False Path Reset Synchronizer",
+        "severity": "Low",
+        "violations_raw": "10",
+        "violations": 10,
+        "waived": 0
+      },
+      {
+        "line": 146,
+        "rule": "CDC-50102 - Synchronizer after CDC Topology with Control Signal",
+        "severity": "Low",
+        "violations_raw": "8",
+        "violations": 8,
+        "waived": 0
+      },
+      {
+        "line": 147,
+        "rule": "TMC-20604 - Registers with High Timing Path Endpoint Span",
+        "severity": "Low",
+        "violations_raw": "6",
+        "violations": 6,
+        "waived": 0
+      },
+      {
+        "line": 148,
+        "rule": "LNT-30010 - Nets Driving both Reset and Clock Enable Signals",
+        "severity": "Low",
+        "violations_raw": "5",
+        "violations": 5,
+        "waived": 0
+      },
+      {
+        "line": 149,
+        "rule": "TMC-20603 - Registers with High Immediate Fan-Out Span",
+        "severity": "Low",
+        "violations_raw": "1",
+        "violations": 1,
+        "waived": 0
+      },
+      {
+        "line": 150,
+        "rule": "CDC-50002 - 1-Bit Asynchronous Transfer with Insufficient Constraints",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 151,
+        "rule": "CDC-50005 - CDC Bus Constructed with Multi-bit Synchronizer Chains of Different Lengths",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 152,
+        "rule": "CDC-50006 - CDC Bus Constructed with Unsynchronized Registers",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 153,
+        "rule": "CDC-50011 - Combinational Logic Before Synchronizer Chain",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 154,
+        "rule": "CLK-30026 - Missing Clock Assignment",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 155,
+        "rule": "CLK-30027 - Multiple Clock Assignments Found",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 156,
+        "rule": "CLK-30028 - Invalid Generated Clock",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 157,
+        "rule": "CLK-30029 - Invalid Clock Assignments",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 158,
+        "rule": "CLK-30030 - PLL Setting Violation",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 159,
+        "rule": "CLK-30033 - Invalid Clock Group Assignment",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 160,
+        "rule": "CLK-30034 - Clock Pairs Missing Logically Exclusive Clock Group Assignment",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 161,
+        "rule": "CLK-30035 - Clock Pairs Missing Physically Exclusive Clock Group Assignment",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 162,
+        "rule": "CLK-30042 - Incorrect Clock Group Type",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 163,
+        "rule": "RES-50002 - Asynchronous Reset is Insufficiently Synchronized",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 164,
+        "rule": "RES-50003 - Asynchronous Reset with Insufficient Constraints",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 165,
+        "rule": "RES-50004 - Multiple Asynchronous Resets within Reset Synchronizer Chain",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 166,
+        "rule": "TMC-20011 - Missing Input Delay Constraint",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 167,
+        "rule": "TMC-20012 - Missing Output Delay Constraint",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 168,
+        "rule": "TMC-20013 - Partial Input Delay",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 169,
+        "rule": "TMC-20014 - Partial Output Delay",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 170,
+        "rule": "TMC-20015 - Inconsistent Min-Max Delay",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 171,
+        "rule": "TMC-20016 - Invalid Reference Pin",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 172,
+        "rule": "TMC-20017 - Loops Detected",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 173,
+        "rule": "TMC-20019 - Partial Multicycle Assignment",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 174,
+        "rule": "TMC-20022 - I/O Delay Assignment Missing Parameters",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 175,
+        "rule": "TMC-20023 - Invalid Set Net Delay Assignment",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 176,
+        "rule": "TMC-30041 - Constraint with Invalid Clock Reference",
+        "severity": "High",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 177,
+        "rule": "CDC-50103 - Unsynchronized Intra-Clock Forced Synchronizer",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 178,
+        "rule": "CLK-30031 - Input Delay Assigned to Clock",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 179,
+        "rule": "FLP-10000 - Physical RAM with Utilization Below Threshold",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 180,
+        "rule": "FLP-10501 - Top-Level Ports Without Pin Location Assignment",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 181,
+        "rule": "TMC-20018 - Unsupported Latches Detected",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 182,
+        "rule": "TMC-20021 - Partial Min-Max Delay Assignment",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 183,
+        "rule": "TMC-20024 - Synchronous Data Delay Assignment",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 184,
+        "rule": "TMC-20200 - Paths Failing Setup Analysis with Impossible Requirements",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 185,
+        "rule": "TMC-20201 - Paths Failing Setup Analysis with High Clock Skew",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 186,
+        "rule": "TMC-20204 - Endpoints of Paths Failing Setup Analysis with Retiming Restrictions",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 187,
+        "rule": "TMC-20205 - Endpoints of Paths Failing Setup Analysis with Explicit Power-Up States that Restrict Retiming",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 188,
+        "rule": "TMC-20206 - DSP Blocks with Unregistered Outputs that are the Source of Paths Failing Setup Analysis",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 189,
+        "rule": "TMC-20207 - DSP Blocks with Unregistered Inputs that are the Destination of Paths Failing Setup Analysis",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 190,
+        "rule": "TMC-20208 - RAM Blocks with Unregistered Outputs that are the Source of Paths Failing Setup Analysis",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 191,
+        "rule": "TMC-20209 - Paths Failing Setup Analysis with High Routing Delay due to Congestion",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 192,
+        "rule": "TMC-20210 - Paths Failing Setup Analysis with High Routing Delay Added for Hold",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 193,
+        "rule": "TMC-20212 - Paths Failing Setup Analysis with Global Routing in Data Path",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 194,
+        "rule": "TMC-20213 - Paths Failing Setup Analysis with Locally Routed Clock",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 195,
+        "rule": "TMC-20214 - Buses with Incoming Paths Failing Setup Analysis with Multiple Sequential Adder Chains",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 196,
+        "rule": "TMC-20215 - Buses with Incoming Paths Failing Setup Analysis with Multipliers Implemented in Logic",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 197,
+        "rule": "TMC-20216 - Paths Failing Setup Analysis with Inferred-RAM Shift Register Endpoints",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 198,
+        "rule": "TMC-20217 - Paths Failing Setup Analysis with Clock-As-Data",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 199,
+        "rule": "TMC-20219 - DSP Blocks with Restricted Fmax below Required Fmax",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 200,
+        "rule": "TMC-20220 - RAM Blocks with Restricted Fmax below Required Fmax",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 201,
+        "rule": "TMC-20221 - Nodes Failing Minimum Pulse Width Due to Clock Pulse Collapse",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 202,
+        "rule": "TMC-20312 - Paths Failing Hold Analysis with Global Routing in Data Path",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 203,
+        "rule": "TMC-20313 - Paths Failing Hold Analysis with Locally Routed Clock",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 204,
+        "rule": "TMC-20712 - Paths Failing Recovery Analysis with Global Routing in Data Path",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 205,
+        "rule": "TMC-20713 - Paths Failing Recovery Analysis with Locally Routed Clock",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 206,
+        "rule": "TMC-20812 - Paths Failing Removal Analysis with Global Routing in Data Path",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 207,
+        "rule": "TMC-20813 - Paths Failing Removal Analysis with Locally Routed Clock",
+        "severity": "Medium",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 208,
+        "rule": "RES-50010 - Reset Synchronizer Chains with Constant Output",
+        "severity": "Low",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 209,
+        "rule": "TMC-20020 - Invalid Multicycle Assignment",
+        "severity": "Low",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 210,
+        "rule": "TMC-20550 - Automatically Selected Duplication Candidate Rejected for Placement Constraint",
+        "severity": "Low",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 211,
+        "rule": "TMC-20551 - Automatically Selected Duplication Candidate Likely Requires More Duplication",
+        "severity": "Low",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 212,
+        "rule": "TMC-20552 - User Selected Duplication Candidate was Rejected",
+        "severity": "Low",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 213,
+        "rule": "TMC-20601 - Registers with High Immediate Fan-Out Tension",
+        "severity": "Low",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      },
+      {
+        "line": 214,
+        "rule": "TMC-20602 - Registers with High Timing Path Endpoint Tension",
+        "severity": "Low",
+        "violations_raw": "0",
+        "violations": 0,
+        "waived": 0
+      }
+    ]
+  },
+  "snapshot_stage_counts": {
+    "_all": 18,
+    "final": 197,
+    "legacy": 28,
+    "partitioned": 151,
+    "placed": 187,
+    "planned": 161,
+    "retimed": 189,
+    "routed": 187,
+    "source": 286,
+    "synthesized": 135
+  },
+  "fme_ifc_id": "33f9e51f-aa64-5620-b9c0-714a0ddf485c",
+  "preservation": {
+    "original_work16_recorded_bindings_unchanged": true,
+    "original_work16_full_prelaunch_inventory_available": false,
+    "pim_full_unchanged": true,
+    "deltas": {
+      "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach": {
+        "build_fim_work_ia840f_fim_17.log": {
+          "actual": {
+            "sha256": "9385753abc5ac001aa50762b2d14581450b287f7b833ccc4e6c80da423e30bfc"
+          },
+          "expected": null
+        }
+      },
+      "/home/uwb_student00/ahls/new_BSP/ofs-platform-afu-bbb": {}
+    },
+    "work_input_deltas": {
+      "syn/board/ia840f/syn_top/build_env_db.txt": {
+        "after": {
+          "sha256": "9017e6f68b774f7f5280c1d37e44f176286ae8e63b606087bf2a9ca225011501"
+        },
+        "before": {
+          "sha256": "d820e06d7ec992b8eea28fb0ad8b6cb323cb4c6333af170ac8ccc4beec6c4a08"
+        }
+      },
+      "syn/board/ia840f/syn_top/fme_id.mif": {
+        "after": {
+          "sha256": "0ae0981eadd0933b476f061b9938eec735dd251f75aa080fad693ab82aa02c54"
+        },
+        "before": {
+          "sha256": "cb0e4c42470803979c43c06f52eb3aacc3efd7b5c6551aef83a0402b735a143e"
+        }
+      }
+    },
+    "native_tools_active": []
+  },
+  "timing_accepted": false,
+  "hardware_qualified": false,
+  "independent_result_review": "pending"
+}

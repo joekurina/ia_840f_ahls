@@ -1,0 +1,108 @@
+--- Work16/prepare-native01.py
++++ Work17/prepare-native01.py
+@@ -1,13 +1,13 @@
+ #!/usr/bin/env python3
+-"""Work15 input-copy/integration recipe reused for one hold-margin Work16.
++"""Work16 input-copy recipe reused for one snapshot-only diagnostic Work17.
+ Ordinary files only; no vendor invocation or authorization issuance here.
+ """
+ import base64, copy, datetime, gzip, hashlib, importlib.util, json, os, shutil, socket, stat, subprocess, sys, traceback
+ from pathlib import Path
+ sys.dont_write_bytecode=True
+-B=Path('/home/uwb_student00/ahls/new_BSP'); C=B/'ofs-agx7-pcie-attach'; OLD=B/'work_ia840f_fim_15'; W=B/'work_ia840f_fim_16'; E=B/'qualification/fim-build-16'; P=E/'compile-candidate-01'
+-INPUT='ia840f_fim16_prepare01_inputs'; OUTPUT='ia840f_fim16_prepare01_output'; OWNED=False
+-RECORD=B/'qualification/fim-build-15/compile-authorization.json'
++B=Path('/home/uwb_student00/ahls/new_BSP'); C=B/'ofs-agx7-pcie-attach'; OLD=B/'work_ia840f_fim_16'; W=B/'work_ia840f_fim_17'; E=B/'qualification/fim-build-17'; P=E/'compile-candidate-01'
++INPUT='ia840f_fim17_prepare01_inputs'; OUTPUT='ia840f_fim17_prepare01_output'; OWNED=False
++RECORD=B/'qualification/fim-build-16/compile-authorization.json'
+ GATES=('ia840f_compile_gate.py','ia840f_experimental_gate.py')
+ def require(ok,msg):
+     if not ok: raise RuntimeError(msg)
+@@ -43,12 +43,12 @@
+     r['mem_available_bytes']=int(mem['MemAvailable'].split()[0])*1024;r['free_disk_bytes']=shutil.disk_usage(B).free
+     require(r['mem_available_bytes']>=80000000000 and r['free_disk_bytes']>=20000000000,'resource headroom')
+     raw=subprocess.check_output(['tmux','save-buffer','-b',INPUT,'-']);require(len(sys.argv)==2 and hashlib.sha256(raw).hexdigest()==sys.argv[1],'payload hash')
+-    payload=json.loads(raw);expected={'top.sdc','ITERATION-AUTHORITY.md','iteration-basis.md','issue_authorization.py','launch_native_compile.py','prepare-native01.py'}|{'gate-copy/'+x for x in GATES}
++    payload=json.loads(raw);expected={'ofs_top.qsf','top.sdc','ITERATION-AUTHORITY.md','iteration-basis.md','issue_authorization.py','launch_native_compile.py','prepare-native01.py'}|{'gate-copy/'+x for x in GATES}
+     require(set(payload)==expected,'payload scope')
+     blobs={}
+     for name,item in payload.items():
+         b=base64.b64decode(item['base64'],validate=True);require(len(b)==item['bytes'] and hashlib.sha256(b).hexdigest()==item['sha256'],'payload member mismatch');blobs[name]=b
+-    require(sha(RECORD)=='c691e5faa2a0260397f3683d88fd4fb1c8814d195ee028997d6c812a535d49b2','issued Work15 record mismatch')
++    require(sha(RECORD)=='1c2326b7814574e4039e155a7fcb3ed2578ba9cfb827cb39295d89da6c1bea84','issued Work16 record mismatch')
+     old=json.loads(RECORD.read_text())
+     sys.path.insert(0,str(C/'ofs-common/tools/ofss_config'));import ia840f_experimental_gate as common
+     before={t:common.inventory(C/t) for t in common.TREES};require(before==old['source_sha256'],'SOURCE drift');require(common.inventory(common.PIM)==old['pim_sha256'],'PIM drift')
+@@ -58,8 +58,8 @@
+     actual={k:({'symlink':original_full[k]['link']} if 'link' in original_full[k] else original_full[k]) for k in old['work_inventory']}
+     require(not any(set(Path(k).parts)&{'db','qdb','output_files','incremental_db'} for k in actual),'recorded outputs/databases')
+     drift={k:{'old':v,'current':actual[k]} for k,v in old['work_inventory'].items() if v!=actual[k]}
+-    meta={'syn/board/ia840f/syn_top/build_env_db.txt': '761299684507b62ff420d99f11c6b32f69c9f036fb770205bf9b17e8e84ade43', 'syn/board/ia840f/syn_top/fme_id.mif': '261c685f9e94da7e7f38bb043ce0311465eca6340a438c9d18a1df798870169d'}
+-    require(set(drift)==set(meta) and all(drift[k]['current']=={'sha256':v} for k,v in meta.items()),'unexpected Work15 metadata delta')
++    meta={'syn/board/ia840f/syn_top/build_env_db.txt': 'd820e06d7ec992b8eea28fb0ad8b6cb323cb4c6333af170ac8ccc4beec6c4a08', 'syn/board/ia840f/syn_top/fme_id.mif': 'cb0e4c42470803979c43c06f52eb3aacc3efd7b5c6551aef83a0402b735a143e'}
++    require(set(drift)==set(meta) and all(drift[k]['current']=={'sha256':v} for k,v in meta.items()),'unexpected Work16 metadata delta')
+     E.mkdir();OWNED=True;W.mkdir()
+     for name,b in blobs.items():save(P/name,b)
+     reloc={}
+@@ -73,25 +73,31 @@
+             b=dst.read_bytes()
+             if str(OLD).encode() in b:
+                 b.decode('utf-8');changed=b.replace(str(OLD).encode(),str(W).encode());dst.write_bytes(changed);shutil.copystat(src,dst);reloc[rel]={'kind':'text-root-only','before':item['sha256'],'after':sha(dst)}
+-    overlays={'syn/shared_config/top.sdc':'top.sdc',**{'ofs-common/tools/ofss_config/'+n:'gate-copy/'+n for n in GATES}}
++    overlays={'ofs-common/tools/ofss_config/'+n:'gate-copy/'+n for n in GATES}
+     delta={}
+     for rel,name in overlays.items():
+         require((C/rel).is_file() and not (C/rel).is_symlink() and (W/rel).is_file() and not (W/rel).is_symlink(),'overlay target')
+         delta[rel]={'old':sha(C/rel),'new':hashlib.sha256(blobs[name]).hexdigest()}
+         save(E/'source-backup'/rel,(C/rel).read_bytes())
+-    require(delta['syn/shared_config/top.sdc']['old']=='b706fc11fbaa2896f66c967c96111e375c450c21b52bb6d6c57d2135dfafc3fc','top SDC original')
+-    require(delta['syn/shared_config/top.sdc']['new']=='3114ebbe41a5ebfba0e2c266135fa45ff3825f884512a90cb394327ceb804814','top SDC candidate')
++    require(sha(C/'syn/shared_config/top.sdc')==sha(W/'syn/shared_config/top.sdc')==hashlib.sha256(blobs['top.sdc']).hexdigest()=='3114ebbe41a5ebfba0e2c266135fa45ff3825f884512a90cb394327ceb804814','SDC must remain unchanged')
++    qrel='syn/board/ia840f/syn_top/ofs_top.qsf';qb=(W/qrel).read_bytes()
++    require(hashlib.sha256(qb).hexdigest()=='d72f033986ea4a020a9d60b3c11af074dd9de3cff23534b4052750291e67fb41','copied QSF baseline')
++    require(blobs['ofs_top.qsf']==qb+b'\n# Work17: retain intermediate snapshots for exact EMIF path-stage diagnosis.\nset_global_assignment -name ENABLE_INTERMEDIATE_SNAPSHOTS ON\n','one-setting QSF delta')
++    require(hashlib.sha256(blobs['ofs_top.qsf']).hexdigest()=='502f55c2eca4441d221851af3dce4431a63f10426a7477b73ec94724e62d3daa','QSF candidate')
++    (W/qrel).write_bytes(blobs['ofs_top.qsf'])
++    require(sha(W/qrel)=='502f55c2eca4441d221851af3dce4431a63f10426a7477b73ec94724e62d3daa','QSF readback')
++    sj(E/'work-qsf-delta.json',{'path':qrel,'old':'d72f033986ea4a020a9d60b3c11af074dd9de3cff23534b4052750291e67fb41','new':'502f55c2eca4441d221851af3dce4431a63f10426a7477b73ec94724e62d3daa','source_qsf_unchanged':True})
+     for rel,name in overlays.items():
+         require(sha(C/rel)==delta[rel]['old'],'source changed before write')
+         (W/rel).write_bytes(blobs[name]);(C/rel).write_bytes(blobs[name]);r['source_modified']=True
+         require(sha(C/rel)==sha(W/rel)==delta[rel]['new'],'overlay readback')
+     after={t:common.inventory(C/t) for t in common.TREES}
+     measured={t+'/'+k:{'old':before[t].get(k),'new':after[t].get(k)} for t in before for k in set(before[t])|set(after[t]) if before[t].get(k)!=after[t].get(k)}
+-    require(measured==delta,'entire SOURCE delta not exact');require(common.inventory(common.PIM)==old['pim_sha256'],'PIM changed');require(full_inventory(OLD)==original_full,'original Work15 changed')
++    require(measured==delta,'entire SOURCE delta not exact');require(common.inventory(common.PIM)==old['pim_sha256'],'PIM changed');require(full_inventory(OLD)==original_full,'original Work16 changed')
+     import ia840f_compile_gate as gate
+     work=gate.work_inventory();require(set(work)==set(actual),'copied input membership changed')
+-    changed={k for k in work if work[k]!=actual[k]};require(changed==set(reloc)|set(overlays),'copied input delta not exact')
+-    sj(E/'metadata-delta.json',drift);sj(E/'relocations.json',reloc);sj(P/'source-inputs/delta-report.json',{'source_delta':delta});sj(P/'source-inputs/integration-receipt.json',{'source_delta':measured,'original_work15_unchanged':True,'pim_unchanged':True,'copied_inputs':len(work),'native_tools_executed':False});sj(P/'source-inputs/source-after.json',after)
++    changed={k for k in work if work[k]!=actual[k]};require(changed==set(reloc)|set(overlays)|{qrel},'copied input delta not exact')
++    sj(E/'metadata-delta.json',drift);sj(E/'relocations.json',reloc);sj(P/'source-inputs/delta-report.json',{'source_delta':delta});sj(P/'source-inputs/integration-receipt.json',{'source_delta':measured,'original_work16_unchanged':True,'pim_unchanged':True,'copied_inputs':len(work),'native_tools_executed':False});sj(P/'source-inputs/source-after.json',after)
+     env=dict(os.environ)
+     for k in list(env):
+         if k.startswith('OFS_BUILD_TAG_') or k in ('SEED','ANALYSIS_AND_ELAB_ONLY','USE_OFSS_CONFIG_SCRIPT','OFS_PRE_SETUP_SCRIPT','OFS_POST_SETUP_SCRIPT','OFS_PRE_COMPILE_SCRIPT','OFS_POST_COMPILE_SCRIPT','AFU_WITH_PIM','BUILD_VAR_SETUP_COMPLETE','BUILD_ROOT_REL','BUILD_ROOT_REL_PRINTED','PYTHONOPTIMIZE','PYTHONPATH'):env.pop(k,None)
+@@ -100,14 +106,14 @@
+     draft=copy.deepcopy(old);draft.update(approved=False,accepted_execution=False,source_review_consumed=False,gate_review_consumed=False,ready_for_build=False,work=str(W),source_sha256=after,work_inventory=work,native_argv=gate.TOP_ARGS)
+     for path in list(draft['dependency_sha256']):
+         if path in {str(C/x) for x in overlays}:draft['dependency_sha256'][path]=sha(path)
+-    for path in (RECORD,P/'ITERATION-AUTHORITY.md',P/'iteration-basis.md',P/'source-inputs/integration-receipt.json',P/'source-inputs/delta-report.json',P/'issue_authorization.py',P/'launch_native_compile.py',P/'prepare-native01.py'):draft['dependency_sha256'][str(path)]=sha(path)
++    for path in (RECORD,P/'ITERATION-AUTHORITY.md',P/'iteration-basis.md',P/'source-inputs/integration-receipt.json',P/'source-inputs/delta-report.json',P/'issue_authorization.py',P/'launch_native_compile.py',P/'prepare-native01.py',P/'ofs_top.qsf',P/'top.sdc'):draft['dependency_sha256'][str(path)]=sha(path)
+     draft['contexts']=[dict(executable='/opt/altera/26.1.1/quartus/linux64/'+args[0],sha256=sha('/opt/altera/26.1.1/quartus/linux64/'+args[0]),argv=args,cwd=str(gate.PROJECT)) for args in gate.allowed_commands()]
+     require(len(draft['contexts'])==135,'native context count')
+     sj(P/'compile-authorization.draft.json',draft)
+     manifest={str(p.relative_to(P)):sha(p) for p in sorted(P.rglob('*')) if p.is_file()};sj(P/'review-package-sha256.json',manifest)
+     spec=importlib.util.spec_from_file_location('issuer16',P/'issue_authorization.py');issuer=importlib.util.module_from_spec(spec);spec.loader.exec_module(issuer)
+     checked,checked_manifest=issuer.preflight();require(checked==draft and checked_manifest==manifest,'issuer preflight')
+-    r.update(complete=True,source_delta=delta,copied_inputs=len(work),original_work15_unchanged=True,pim_unchanged=True,native_contexts=135,package_manifest_sha256=sha(P/'review-package-sha256.json'),issuer_nonconsuming_preflight='PASS')
++    r.update(complete=True,source_delta=delta,copied_inputs=len(work),original_work16_unchanged=True,pim_unchanged=True,native_contexts=135,package_manifest_sha256=sha(P/'review-package-sha256.json'),issuer_nonconsuming_preflight='PASS')
+ except BaseException as exc:r.update(error=repr(exc),traceback=traceback.format_exc())
+ finally:
+     r['ended']=datetime.datetime.now(datetime.timezone.utc).isoformat()
+@@ -119,5 +125,5 @@
+                 b=p.read_bytes();require(len(b)<2000000,'export over cap');exports[str(p.relative_to(E))]=dict(bytes=len(b),sha256=hashlib.sha256(b).hexdigest(),base64=base64.b64encode(b).decode())
+     blob=gzip.compress(json.dumps(dict(batch=OUTPUT,result=r,files=exports),sort_keys=True).encode(),mtime=0)
+     subprocess.run(['tmux','load-buffer','-b',OUTPUT,'-'],input=blob,check=True)
+-    print('WORK16_PREPARATION_COMPLETE',r['complete'],hashlib.sha256(blob).hexdigest(),flush=True);print(json.dumps(r,indent=2),flush=True)
++    print('WORK17_PREPARATION_COMPLETE',r['complete'],hashlib.sha256(blob).hexdigest(),flush=True);print(json.dumps(r,indent=2),flush=True)
+ if not r['complete']:sys.exit(1)

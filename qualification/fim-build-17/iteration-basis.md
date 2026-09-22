@@ -1,0 +1,9 @@
+# Work17 basis — observe path evolution, not increase margin
+
+Work16's complete timing summary and the reported bit243 core→UFI→PHY failing path remain unchanged from Work15, despite Fitter10ps setter issuance. Final STA skipped the overlay. Neither a bigger margin nor physical-edge override has a justified corrective mechanism. [Recommendation](../fim-build-16/next-iteration-recommendation01.md), [binding consumption](parent-recommendation-consumption01.json)
+
+The installed Agilex7 assignment list includes ENABLE_INTERMEDIATE_SNAPSHOTS; Work16 explicitly reported intermediate commitments disabled. Enable only that setting in the copied work QSF, leaving SOURCE QSF and all SDC byte-identical. SOURCE/WORK QSFs differ by already-recorded native optimization-mode migration; never copy stale local seed1/superior settings over either. Remote source-check01.json binds both actual baselines and completed Work16/no-native-process state.
+
+After this full diagnostic fit, inspect native snapshot names and compare the exact constrained path through the cited UFI input to the PHY endpoint at Fast vid2100C using normal quartus_sta with unchanged signoff SDC. A nonnegative post-route path becoming negative later supports a late-stage origin only if final failure reproduces and physical/delay changes support it. An already-negative route path falsifies that mechanism. Unmatched/renamed path or missing snapshot means acquisition inconclusive, not absent failure. No complete uncertainty-retention claim follows.
+
+Keep seed2, hold/effort settings,10ps Fitter-only overlay, generated PHY, both16GiB DDR instances, clocks, PR/PIM and source routing. Native success, numerical timing, CDC/DRC and hardware are separate. Use existing build machinery and parent exact-delta checks, not another review/mock framework. Work16 actual-result review remains separate from this diagnostic recommendation.

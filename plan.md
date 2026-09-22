@@ -16,11 +16,17 @@ commits/pushes are authorized; live installation, device access, PR/programming
 and recovery remain separately gated. Host-local JTAG/BMC is not independent
 host recovery. Gen3 x16 is the expected workstation link, not a fault.
 
-### Latest accepted checkpoint — Work16 failed-timing result
+### Latest accepted checkpoint — Work17 snapshot-enabled build; timing FAIL
+
+[Work17 result acceptance](qualification/fim-build-17/RESULT-ACCEPTANCE.md) consumes independent review of the completed native compile/fit/STA/assembly: rc0, full flow 0 errors/894 warnings, but EMIF1 hold remains −0.004 ns and the complete STA summary matches Work16. DRC remains23/88failed,7High/34violations/0waived. Intermediate planned/placed/routed/retimed/final snapshots were retained and hash-inventoried. This milestone accepts build/result evidence, not timing closure or a later snapshot-query result.
+
+All5441 original Work16 recorded input/output bindings match; a complete prelaunch Work16 QDB inventory was not exported, so full original-tree preservation is not claimed. PIM is unchanged; SOURCE has two intended gate retargets plus its native build-log addition. Work17 FME33f9e51f-aa64-5620-b9c0-714a0ddf485c still needs matching persona/release qualification. A separate routed/final STA diagnostic and next-correction review are outside this accepted build milestone. Preserve original signoff, seed, DDR/clocks/PR/PIM and the native-iteration priority. No unchanged fit retry, timing waiver or hardware access follows from this acceptance.
+
+### Historical checkpoint — Work16 failed-timing result
 
 [Work16 result acceptance](qualification/fim-build-16/RESULT-ACCEPTANCE.md) consumes independent actual-result review. Native full compile/fit/STA/assembly completed rc0; the exact-pair 10 ps Fitter-only hold experiment did not close EMIF1 hold (−0.004 ns, Fast vid2 100C). The complete STA summary is byte-identical to Work15; setter issuance does not establish retained total uncertainty or a no-op mechanism. Final signoff requirements were unchanged. DRC remains 23/88 failed rules, including 7 High rules / 34 violations / 0 waived. Original Work15/PIM were preserved; SOURCE has the disclosed prelaunch delta plus native log addition.
 
-The [next native recommendation](qualification/fim-build-16/next-iteration-recommendation01.md) is a fresh diagnostic fit retaining intermediate snapshots, then an exact post-route/final path comparison—not a larger margin, seed sweep or signoff waiver. Its separately authorized Work17 is in progress, not accepted. Reuse the native build process; effective absolute Fitter uncertainty is not a prerequisite to this bounded path-evolution observation. `ready_for_build=false`; all live hardware/recovery/backend/DDR/transfer/AHLS/PR/sustained/QSPI gates remain unresolved.
+The [next native recommendation](qualification/fim-build-16/next-iteration-recommendation01.md) is a fresh diagnostic fit retaining intermediate snapshots, then an exact post-route/final path comparison—not a larger margin, seed sweep or signoff waiver. That diagnostic fit is now the separately accepted Work17 build-result checkpoint above; the snapshot query is a distinct result scope. Reuse the native build process; effective absolute Fitter uncertainty is not a prerequisite to this bounded path-evolution observation. `ready_for_build=false`; all live hardware/recovery/backend/DDR/transfer/AHLS/PR/sustained/QSPI gates remain unresolved.
 
 ### Historical checkpoint — Work15 actual result accepted; timing FAIL
 

@@ -1,0 +1,37 @@
+--- fim-build-16/collect_completion01.py
++++ fim-build-17/collect_completion01.py
+@@ -12,9 +12,9 @@
+ from typing import Any
+ 
+ B = Path('/home/uwb_student00/ahls/new_BSP')
+-E = B / 'qualification/fim-build-16'
+-S = B / 'work_ia840f_fim_16/syn/board/ia840f/syn_top'
+-BATCH = 'ia840f_fim16_completion01'
++E = B / 'qualification/fim-build-17'
++S = B / 'work_ia840f_fim_17/syn/board/ia840f/syn_top'
++BATCH = 'ia840f_fim17_completion01'
+ if socket.gethostname() != 'Agilex7Workstation' or os.getuid() != 1000 or not os.environ.get('TMUX'):
+     raise RuntimeError('wrong host/session')
+ if subprocess.check_output(['tmux', 'display-message', '-p', '-t', os.environ['TMUX_PANE'], '#S'], text=True).strip() != 'ia840f_mailbox_monitored_01':
+@@ -58,7 +58,7 @@
+ ps = subprocess.check_output(['ps', '-eo', 'pid,ppid,stat,pcpu,rss,comm,args'], text=True).splitlines()
+ for line in ps[1:]:
+     f = line.split(None, 6)
+-    if len(f) != 7 or not (f[5].startswith(('quartus_', 'qsys-')) or 'work_ia840f_fim_16' in f[6] or 'fim-build-16/compile-candidate-01/launch_native_compile.py' in f[6]):
++    if len(f) != 7 or not (f[5].startswith(('quartus_', 'qsys-')) or 'work_ia840f_fim_17' in f[6] or 'fim-build-17/compile-candidate-01/launch_native_compile.py' in f[6]):
+         continue
+     pid = f[0]
+     item: dict[str, Any] = dict(ps=line)
+--- fim-build-16/collect_reports01.py
++++ fim-build-17/collect_reports01.py
+@@ -10,8 +10,8 @@
+ import socket
+ import subprocess
+ 
+-ROOT = Path('/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_16/syn/board/ia840f/syn_top')
+-BATCH = 'ia840f_fim16_reports01'
++ROOT = Path('/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_17/syn/board/ia840f/syn_top')
++BATCH = 'ia840f_fim17_reports01'
+ FILES = [
+     'output_files/ofs_top.sta.rpt',
+     'output_files/ofs_top.sta.summary',

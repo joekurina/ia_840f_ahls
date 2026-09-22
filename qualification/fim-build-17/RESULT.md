@@ -1,0 +1,13 @@
+# Work17 — completed snapshot-enabled fit; timing FAIL
+
+Native full compile/fit/STA/assembly completed rc0 with no gate rejection, 0 errors/894 full-flow warnings. Start 2026-09-22T22:00:01.335334+00:00; end 22:52:32.275642+00:00. Fitter 0/208, synthesis0/81, assembler0/1 are separate stage counts, not additive. `completion-readback01/evidence/run/status.json` and `native.log` bind these observations. No matching native processes remained in completion/postflight.
+
+The fresh final STA summary is byte-identical to Work16. EMIF1 hold remains **−0.004ns**, Fast vid2 100C, bit243→UFI→PHY, arrival2.964/required2.968ns. All five exact path blocks listed in `parent-observations01.json` match Work16, including the 0.030ns signoff uncertainty. Setup+0.151ns, recovery+0.274ns, removal+0.137ns, MPW0.000ns do not waive hold or coverage failures. DRC23/88failed,7High rules/34violations/0waived. Final report references: `reports01/output_files/ofs_top.sta.rpt:126779–126895`; signoff DRC summary at lines123 onward. These are numerical failed-timing observations, not acceptance.
+
+The intended observability change took effect: FIT184 shows intermediate snapshots On; native.log9043/9147/9170/9177/9183 reports committed planned/placed/routed/retimed/final databases. `postflight02.json.gz` records exact retained QDB paths/hashes. No snapshot timing comparison has yet been run. Do not rerun this full compile.
+
+Preservation: full SOURCE/PIM and Work17 inventories captured. SOURCE differs from prior baseline only by the disclosed two gate retargets plus native-created `build_fim_work_ia840f_fim_17.log`; PIM unchanged. All5,441 original Work16 input/completed-output bindings match. A complete prelaunch Work16 QDB inventory was not exported, so complete original Work16-tree preservation is NOT claimed postrun. Work17's two UUID metadata files changed normally; new interface33f9e51f-aa64-5620-b9c0-714a0ddf485c is not the programmed image or a qualified persona match.
+
+Collector01 failed its stage-report size cap before export; successor02 used exact independently captured report sizes and completed. No vendor operation was launched by collectors. Archives/manifests bind20 preparation,16 completion,9 final-report and4 stage-report exports. Raw images/QDBs remain remote; recorded hashes are not hardware qualification.
+
+**Independent actual-result review pending. Timing FAIL; ready_for_build=false; hardware NOT RUN / NOT QUALIFIED.** DDR simulation remains SKIPPED BY USER. Next native operation is a separately bound, preserved-copy routed/final exact-path STA comparison under original signoff—not a larger margin or unchanged fit.
