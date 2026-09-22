@@ -1,0 +1,9 @@
+# Plan diagnostic02 — spent native rc3; partial setter evidence
+
+**Superseding result:** ended20:01:26UTC, native/effective3, termination/original preservation confirmed. External diagnostic helper source was rejected by the project database. See RESULT.md; no timing/effective-objective acceptance. Actual-result review deleg_80a172fb COMPLETE and parent-consumed; see RESULT-ACCEPTANCE.md and parent-result-consumption01.json. The startup snapshot below is historical, not current process state.
+
+One-use native Plan launch issued and verified at 2026-09-22T19:53:33.229995+00:00. Owned tmux @85/%85. Candidate SHA256 `518cfb3c3be830a87d4fe6dd0b3d3510081070cac30c1a922a6c8fc3825350de`; prepared archive SHA256 `44d5f08cea2a5571b6103871f9549bd0625141782457dcccb157be2210f45b50`. Actual command is quartus_fit --plan --read_settings_files=on --write_settings_files=off ofs_top -c ofs_top in the exclusive copied Work15 project. Native process and authorization are recorded in status01.json. No gate rejection observed in this startup snapshot.
+
+Fresh original Work15/SOURCE/PIM before inventories verified unchanged. All7885 prelaunch files still bound;7071 runtime callback files,10 links.691 known copied Fitter-output-stage entries omitted only from callback binding;572 source/partitioned/synthesized database inputs remain bound and unchanged. Predecessor01 is spent: parent-stopped native−15/effective143, termination/preservation confirmed, no objective evidence. Its independent failed-result review runs separately, not a source approval gate.
+
+Only diagnostic logging/callback added to copied EMIF1 SDC; all timing setters/exceptions/parameters and seed2 unchanged. Callback lifecycle/report availability are experimental observations, not assumptions. No final-fit timing, source promotion, hardware or functional acceptance. Original Work15 timing FAIL−0.004ns persists. Readiness false. Do not relaunch or edit this attempt.

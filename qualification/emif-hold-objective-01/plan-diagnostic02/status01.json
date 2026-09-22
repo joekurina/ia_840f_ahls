@@ -1,0 +1,90 @@
+{
+  "batch": "ia840f_emif_plan02_status01",
+  "files": {
+    "authorization.json": {
+      "json": {
+        "approved": true,
+        "candidate_sha256": "518cfb3c3be830a87d4fe6dd0b3d3510081070cac30c1a922a6c8fc3825350de",
+        "permission": "exact-offline-emif-plan02"
+      },
+      "sha256": "d81a6262c10d98b44b7e954507079c86ef9ce620610516d4ceb725212047ff57"
+    },
+    "launch01/issuance.json": {
+      "json": {
+        "authorization_sha256": "d81a6262c10d98b44b7e954507079c86ef9ce620610516d4ceb725212047ff57",
+        "candidate_sha256": "518cfb3c3be830a87d4fe6dd0b3d3510081070cac30c1a922a6c8fc3825350de",
+        "native_started_at_receipt": false,
+        "originals_unchanged_before_launch": true,
+        "pane": "%85",
+        "reviews": {
+          "AUTHORITY.md": "d26a661558f0785f39566e6c7bec4b3afbe1ecbdcd22467af120962f0bf11741",
+          "parent-preparation02.json": "5cb4c5577223de508ba5056e232a131e0788e24e16ff8a8ba3a06a82ddb59969",
+          "prepared-manifest02.json": "58650dca036eba82f1c5fe91e25d63c831f93d503a283d19f7f5c7a72e3ddc13"
+        },
+        "runner_argv": [
+          "python3",
+          "-B",
+          "/home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic02/run-query.py"
+        ],
+        "runner_cwd": "/home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic02",
+        "utc": "2026-09-22T19:52:52.849397+00:00"
+      },
+      "sha256": "7fe8152592cf67e53456a5ebcf82b7c9b458ae7d137a8116006eae82a07f511c"
+    },
+    "native-process.json": {
+      "json": {
+        "argv": [
+          "/opt/altera/26.1.1/quartus/bin/quartus_fit",
+          "--plan",
+          "--read_settings_files=on",
+          "--write_settings_files=off",
+          "ofs_top",
+          "-c",
+          "ofs_top"
+        ],
+        "cwd": "/home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic02/scratch/syn/board/ia840f/syn_top",
+        "pid": 37561,
+        "start": "2026-09-22T19:52:55.847156+00:00"
+      },
+      "sha256": "b40da4969a3ed5c8bf089b9842da9ec8783b66525472f3108fd7ff1c3e39c6ab"
+    },
+    "query.claim": {
+      "json": {
+        "argv": [
+          "python3",
+          "-B",
+          "/home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic02/run-query.py"
+        ],
+        "cwd": "/home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic02",
+        "exe": "/usr/bin/python3.9",
+        "pid": 37555,
+        "ppid": 37529,
+        "start_ticks": "7003793"
+      },
+      "sha256": "274dcc0f2a04796ce8c770f00e2b1c4c6abf473cbb8413cefd933f661339c1c6"
+    }
+  },
+  "log_bytes": 4096,
+  "log_tail": "Info: Setting ::env(BUILD_ROOT_REL)=../../../..\nInfo: Setting ::env(BITSTREAM_ID)=05010202599ac052\nInfo: Setting ::env(BITSTREAM_MD)=0000000002609181\nInfo: Setting ::env(BITSTREAM_INFO)=0000000000000001\nInfo: Setting ::env(Q_REVISION)=ofs_top\nInfo: Setting ::env(Q_PR_REVISION)=ofs_pr_afu\nInfo: Setting ::env(Q_PR_PARTITION_NAME)=green_region\nInfo: Setting ::env(FME_IFC_ID)=fd2baeed-3092-5735-90c9-52ef20542b75\nInfo: BUILD_ROOT_REL is ../../../..\nInfo: Loading PIM-based AFU...\nInfo: Compiling PR Base revision...\nInfo (20030): Parallel compilation is enabled and will use 18 of the 18 processors detected\nInfo: *******************************************************************\nInfo: Running Quartus Prime Fitter\n    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition\n    Info: Copyright (C) 2026  Altera Corporation. All rights reserved.\n    Info: Your use of Altera Corporation's design tools, logic functions \n    Info: and other software and tools, and any partner logic \n    Info: functions, and any output files from any of the foregoing \n    Info: (including device programming or simulation files), and any \n    Info: associated documentation or information are expressly subject \n    Info: to the terms and conditions of the Altera Program License \n    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,\n    Info: the Altera IP License Agreement, or other applicable license\n    Info: agreement, including, without limitation, that your use is for\n    Info: the sole purpose of programming logic devices manufactured by\n    Info: Altera and sold by Altera or its authorized distributors.  Please\n    Info: refer to the Altera Software License Subscription Agreements \n    Info: on the Quartus Prime software download page.\n    Info: Processing started: Tue Sep 22 12:52:56 2026\n    Info: System process ID: 37561\nInfo: Command: quartus_fit --plan --read_settings_files=on --write_settings_files=off ofs_top -c ofs_top\nInfo: Using INI file /home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic02/scratch/syn/board/ia840f/syn_top/quartus.ini\nInfo: qfit2_default_script.tcl version: #1\nInfo: Project  = ofs_top\nInfo: Revision = ofs_top\nInfo (16677): Loading synthesized database.\nInfo (16734): Loading \"synthesized\" snapshot for partition \"root_partition\".\nInfo (16734): Loading \"synthesized\" snapshot for partition \"green_region\".\nInfo (16734): Loading \"synthesized\" snapshot for partition \"auto_fab_1\".\nInfo (16734): Loading \"synthesized\" snapshot for partition \"auto_fab_0\".\nCritical Warning (20727): The design contains Partial Reconfiguration or Reserved Core partitions with unused input ports. Altera recommends to assign unused inputs within the partition to registers with the synthesis noprune attribute.\n    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[0] is dangling on partition green_region.\n    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[1] is dangling on partition green_region.\n    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[2] is dangling on partition green_region.\n    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[3] is dangling on partition green_region.\n    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[4] is dangling on partition green_region.\n    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[5] is dangling on partition green_region.\n    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[6] is dangling on partition green_region.\n    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[7] is dangling on partition green_region.\n    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[8] is dangling on partition green_region.\n    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|e",
+  "processes": [
+    {
+      "args": "python3 -B /home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic02/run-query.py",
+      "comm": "python3.9",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic02",
+      "exe": "/usr/bin/python3.9",
+      "pid": 37555,
+      "ppid": 37529,
+      "stat": "37555 (python3.9) S 37529 37529 37529 34897 37529 4194304 161651 1051 0 0 881 83 1 3 30 10 1 0 7003793 257142784 6328 18446744073709551615 94355709964288 94355709964665 140721516683568 0 0 0 0 19927040 2 1 0 0 17 22 0 0 0 0 0 94355709975960 94355709976580 94355735310336 140721516691993 140721516692105 140721516692105 140721516695525 0\n"
+    },
+    {
+      "args": "quartus_fit --plan --read_settings_files=on --write_settings_files=off ofs_top -c ofs_top",
+      "comm": "quartus_fit",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/plan-diagnostic02/scratch/syn/board/ia840f/syn_top",
+      "exe": "/opt/altera/26.1.1/quartus/linux64/quartus_fit",
+      "pid": 37561,
+      "ppid": 37555,
+      "stat": "37561 (quartus_fit) R 37555 37561 37561 0 -1 4194304 258419 38803 0 0 3518 54 160 20 30 10 20 0 7004761 4442157056 743014 18446744073709551615 4194304 4326256 140724267248528 0 0 0 0 3149824 1224 0 0 0 17 15 0 0 0 0 0 4331200 4338896 5263360 140724267257145 140724267257235 140724267257235 140724267261897 0\n"
+    }
+  ],
+  "utc": "2026-09-22T19:53:33.229995+00:00"
+}
