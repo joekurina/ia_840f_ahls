@@ -1,0 +1,312 @@
+[
+  {
+    "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/releases?per_page=10",
+    "status": 200,
+    "retrieved_utc": "2026-09-22T06:17:54.885401+00:00",
+    "sha256": "bc1b0eeaaabe7af26cd8a9e5e0fe1bb0c736b4ac78faf63b5a43df53a3cc56d3",
+    "data": [
+      {
+        "name": "ofs-2025.1-1 Release for Agilex 7 PCIe Attach Reference Shells",
+        "tag_name": "ofs-2025.1-1",
+        "published_at": "2025-07-03T18:39:38Z",
+        "draft": false,
+        "prerelease": false,
+        "body": "# OFS 2025.1-1\r\n## Summary: OFS 2025.1-1 Release for Agilex<sup>&trade;</sup> 7 PCIe Attach FPGAs\r\n\r\n- Boards Targeted: \r\n    - Agilex\u2122 7 FPGA I-Series Development Kit (2x R-Tile, F-Tile)\r\n    - Agilex\u2122 7 FPGA F-Series Development Kit (2x F-Tile)\r\n    - Intel\u00ae FPGA SmartNIC N6001-PL/N6000-PL (P-Tile, E-Tile)\r\n- Board Management Controller (BMC):\r\n    - MAX\u00ae 10 Nios\u00ae Firmware Version: 3.15.2 (Intel\u00ae FPGA SmartNIC N6001-PL/N6000-PL only)\r\n    - MAX\u00ae 10 Build Version: 3.15.2 (Intel\u00ae FPGA SmartNIC N6001-PL/N6000-PL only)\r\n\r\n  > Agilex\u2122 7 FPGA F-Series and I-Series Development Kits do not utilize an OFS compatible BMC, thus certain features such as remote system update are not supported.\r\n\r\n- Quartus<sup>&reg;</sup> Prime Pro Version: 25.1\r\n\r\n- Quartus Prime Pro License File: [quartus-0.0-0.02iofs-linux.run](https://github.com/OFS/ofs-agx7-pcie-attach/tree/release/ofs-2025.1/license)\r\n- Quartus Prime Pro Patches: None\r\n- OS Tested: Red Hat<sup>&reg;</sup> Enterprise Linux<sup>&reg;</sup> 9.4\r\n- OPAE Version: 2.14.0-3\r\n- Kernel Version: 5.14.0 \r\n- OFS Agilex<sup>&trade;</sup> 7 PCIe Attach FIM Github Branch: https://github.com/OFS/ofs-agx7-pcie-attach/tree/release/ofs-2025.1\r\n- OFS Agilex<sup>&trade;</sup> 7 PCIe Attach FIM Github Tag: https://github.com/OFS/ofs-agx7-pcie-attach/releases/tag/ofs-2025.1-1\r\n- OFS FIM_COMMON Github Tag: https://github.com/OFS/ofs-fim-common/releases/tag/ofs-2025.1-1 \r\n\r\n> Note: OneAPI has not been validated with this release. If you are using OneAPI please use the OFS 2024.2-1 release.\r\n\r\n### OPAE SDK (UPDATE): \r\n- OPAE SDK Branch: https://github.com/OFS/opae-sdk/tree/release/2.14.0\r\n- OPAE SDK Tag: https://github.com/OFS/opae-sdk/releases/tag/2.14.0-3\r\n\r\n### OPAE SIM: \r\n- OPAE SIM Branch: https://github.com/OFS/opae-sim/tree/release/2.14.0\r\n- OPAE SIM Tag: https://github.com/OFS/opae-sim/releases/tag/2.14.0-1\t\r\n\r\n### Driver :\r\n- Kernel Driver Branch: https://github.com/OFS/linux-dfl-backport/tree/intel/fpga-ofs-dev-6.6-lts\r\n- Kernel Driver Tag: https://github.com/OFS/linux-dfl-backport/releases/tag/intel-1.12.0-3\r\n\r\nThis page provides up-to-date information about the Open FPGA Stack (OFS) for Agilex<sup>&trade;</sup> 7 PCIe Attach devices. This project targets the:\r\n- Agilex<sup>&trade;</sup> 7 FPGA I-Series Development Kit (2xR-Tile, F-Tile)\r\n- Agilex<sup>&trade;</sup> 7 FPGA F-Series Development Kit (2xF-Tile)\r\n- Intel\u00ae FPGA SmartNIC N6001-PL/N6000-PL\r\n\r\nThe summary of OFS framework features are shown below.  To find out more about these platforms refer to the documentation below:\r\n* [Intel\u00ae FPGA SmartNIC N6001-PL Platform Product Brief](https://www.intel.com/content/www/us/en/content-details/779620/a-smartnic-for-accelerating-communications-and-networking-workloads.html)\r\n* [Intel\u00ae FPGA SmartNIC N6000-PL/N6001-PL](https://www.intel.com/content/www/us/en/products/details/fpga/platforms/smartnic/n6000-pl-platform.html)\r\n* [Agilex\u2122 7 FPGA F-Series Development Kit (2xF-Tile) User Guide](https://www.intel.com/content/www/us/en/docs/programmable/739942/current/overview.html)\r\n* [Agilex\u2122 7 FPGA I-Series Development Kit (2xR-Tile, F-Tile) User Guide](https://www.intel.com/content/www/us/en/docs/programmable/683288/current/overview.html)\r\n\r\n\r\n**OFS Agilex<sup>&trade;</sup>7 PCIe Attach Reference Shell Key Features**\r\n\r\n| Key Feature |  I-Series (2xR-Tile, 1xF-Tile) | F-Series (2xF-Tile)  | F-Series (1xP-Tile, 1xE-Tile) | M-Series (3x F-Tile & 1x R-Tile) (Pre-Release)<sup>2</sup> |\r\n| :-: | :-- | :-- | :-- | --- |\r\n| Target OPN | AGIB027R29A1E1VB  | AGFD023R24C2E1VC | AGFB014R24A2E2V | AGMF039R47A1E2VR0 |\r\n| Target Board | [DK-DEV-AGI027-RA (Production Kit)](https://www.intel.com/content/www/us/en/docs/programmable/739942/current/overview.html) | [DK-DEV-AGF023FA (Production Kit)](https://www.intel.com/content/www/us/en/docs/programmable/739942/current/overview.html) | &bull; [Intel\u00ae FPGA SmartNIC N6001-PL](https://www.intel.com/content/www/us/en/content-details/779620/a-smartnic-for-accelerating-communications-and-networking-workloads.html)</br>&bull; [Intel\u00ae 7 FPGA SmartNIC N6000-PL](https://www.intel.com/content/www/us/en/products/details/fpga/platforms/smartnic/n6000-pl-platform.html) | [DK-DEV-AGM039FES](https://www.intel.com/content/www/us/en/products/details/fpga/development-kits/agilex/agm039.html)\r\n| PCIe | R-tile PCIe 1xGen5x16<br>R-tile PCIe 2xGen5x8<br>R-tile PCIe 1xGen4x16 | F-tile PCIe Gen4x16 | P-tile PCIe Gen4x16 | R-tile PCI Gen5x16 (Validated on Gen4x16 sever) |\r\n| Virtualization | 5 physical functions/3 virtual functions with ability to expand | 5 physical functions/3 virtual functions with ability to expand | 5 physical functions/3 virtual functions with ability to expand | 5 physical functions/3 virtual functions with ability to expand |\r\n| Memory | Four Fabric DDR4 channels consisting of:<br>&nbsp;&nbsp;&nbsp;&nbsp;&bull; Two x64 (no ECC), 2666 MHz, 8GB Component memory<br>&nbsp;&nbsp;&nbsp;&nbsp;&bull; Two x64 (no ECC), 2666 MHz, 8GB UDIMM memory <br><br>OR<br><br>Three Fabric DDR4 channels consisting of:<br>&nbsp;&nbsp;&nbsp;&nbsp;&bull; Two x64 (no ECC), 2666 MHz, 8GB Component memory<br>&nbsp;&nbsp;&nbsp;&nbsp;&bull; One x64 (no ECC), 2666 MHz, 8GB RDIMM memory <sup>**1**</sup> | 2 DDR Channels:<br>&bull; One HPS DDR4 bank, x40 (x32 Data and x8 ECC), 2400 MHz, 1GB each<br>&bull; 1 Fabric DDR4 banks, x64 (no ECC), 2400 MHz, 8GB RDIMM memory | 5 DDR Channels:<br>&bull; One HPS DDR4 bank, x40 (x32 Data and x8 ECC), 1200 MHz, 1GB each<br>&bull; Four Fabric DDR4 banks, x32 (no ECC), 1200 MHz, 4GB | 32 HBM channels |\r\n| Ethernet | 2x4x25GbE, 2x200GbE, 2x400GbE | 2x4x25GbE | &bull; N6001-PL: 2x4x25GbE, 2x4x10GbE, or 2x100GbE </br>&bull; N6000-PL: 4x100GbE | Not Supported |\r\n| Hard Processor System | Not enabled | 64-bit quad core Arm\u00ae Cortex\u00ae-A53 MPCore with integrated peripherals. | 64-bit quad core Arm\u00ae Cortex\u00ae-A53 MPCore with integrated peripherals. | Not Supported |\r\n| Configuration and Board Manageability | &bull; FPGA Management Engine that provides general control of common FPGA tasks (ex. error reporting, partial reconfiguration)<br>&bull; Platform Management Controller Interface (PMCI) Module for Board Management Controller | &bull; FPGA Management Engine that provides general control of common FPGA tasks (ex. error reporting, partial reconfiguration)<br>&bull; Platform Controller Management Interface (PMCI) Module for Board Management Controller | &bull; FPGA Management Engine that provides general control of common FPGA tasks (ex. error reporting, partial reconfiguration)<br>&bull; Platform Controller Management Interface (PMCI) Module for Board Management Controller | Not Supported |\r\n| Partial Reconfiguration | Supported | Supported | Supported | Not Supported |\r\n| OneAPI | Not supported in this release. Please use OFS Version 2024.2-1 for OneAPI support. | Not supported | Not supported in this release. Please use OFS Version 2024.2-1 for OneAPI support. | Not Supported |\r\n| Software Support | &bull; Linux DFL drivers targeting OFS FIMs<br>&bull; OPAE Software Development Kit<br>&bull; OPAE Tools | &bull; Linux DFL drivers targeting OFS FIMs<br>&bull; OPAE Software Development Kit<br>&bull; OPAE Tools | &bull; Linux DFL drivers targeting OFS FIMs<br>&bull; OPAE Software Development Kit<br>&bull; OPAE Tools | &bull; Linux DFL drivers targeting OFS FIMs<br>&bull; OPAE Software Development Kit<br>&bull; OPAE Tools |\r\n\r\n<sup>**1**</sup> The default OFS shell design targeting the Agilex\u2122 7 FPGA I-Series Development Kit (2x R-Tile and 1xF-Tile) was validated with two Micron MTA8ATF1G64AZ-2G6E1 DDR4 SDRAM UDIMM modules in DIMM slots A and B. Note that the DK-DEV-AGI027RA development kit comes with a single 16GB RDIMM module. If you plan to use the single RDIMM module that comes with the development kit, refer to the [Shell Developer Guide: OFS for Agilex\u2122 7 PCIe Attach (2xR-tile, F-tile) FPGAs](https://ofs.github.io/ofs-2024.3-1/hw/iseries_devkit/dev_guides/fim_dev/ug_ofs_iseries_dk_fim_dev/) for instructions on building a shell design for the RDIMM configuration.\r\n\r\n<sup>**2**</sup> The M-Series Develpoment Kit reference shell design is a pre-release reference design that is provided AS-IS with no active support and limited collateral found in the [OFS AGX7 PCIe Attach README](https://github.com/OFS/ofs-agx7-pcie-attach/blob/release/ofs-2024.3/README.md)\r\n\r\n**The OFS hardware framework also provides:**\r\n- Support for unit test simulation (using Synopsys<sup>&reg;</sup> VCS<sup>&reg;</sup> or Siemens<sup>&reg;</sup> Questa<sup>&trade;</sup> simulators)\r\n- Host exercisers that allow you to test interfaces on the FPGA\r\n\r\n> **Note:** UVM simulation framework is removed from OFS 2025.1.\r\n\r\n**The OFS software framework provides:**\r\n- FPGA platform Linux drivers that are being upstreamed to linux.org\r\n- A programmable software development kit and userspace tools for managing the FPGA\r\n\r\n**Important: If you would like to begin evaluating the default shells that have been pre-built from this repository, please scroll down to the \"assets\" section below which contains the FPGA binary/POF/SOF along with the applicable Linux driver and Open Programmable Acceleration Engine (OPAE) software development kit (SDK) packages.**\r\n\r\n## **New Updates for ofs-2025.1-1 Release**\r\n* Quartus Version moved to 25.1\r\n* F-Series Development Kit shell reference design now targets the production development kit (UPDATE) [DK-DEV-AGI027-RA (Production Kit)](https://www.intel.com/content/www/us/en/docs/programmable/739942/current/overview.html)\r\n* JTAG based STP enabled in AFU region and set to as default in FIMs\r\n* UVM verification tree removed from repository\r\n\r\n\r\n## **Known Issues**\r\n<b>This table describes the known issues for the 2025.1 OFS Release targeting Agilex<sup>&trade;</sup> 7 devices.</b>\r\n\r\n| ID | Known Issues | Workaround | Status | Platform Target Affected |\r\n| --- | --- | --- | --- | --- |\r\n| 14025091098 | HSSI unit tests failing on Fseries-dk after the upgrade to the production devkit| This issue is confined to the simulation environment, discussion with IP team  | Will fix next release | Agilex 7 F-Tile Development Kit |\r\n| 14024332744 | DRC High Severity Warnings reported in default OFS shell compilation reports | None; you may ignore these warnings. | Waiver file added, but only picks up by GUI compile, HSD with Quartus. Will be fixed next release | All |\r\n| 16024552556 | Partial Reconfiguration Region Root Key Hash (RKH) reports incorrect value after SR RKH update. | Update the PR RKH after updating the SR RKH for the PR SDM root entry hash to report the proper PR RKH value. | No future fix | N6000 \\| N6001 |\r\n| 16024552556 | Static Region Root Key Hash (SR RKH) fails programming when using vabtool; reports error `Could not glob sdm SR provision status. Sysfs node not found` | Increase the delay when running the rsu command in the [vabtool](https://github.com/OFS/opae-sdk/blob/release/2.14.0/binaries/vabtool/vabtool) file by changing line 338 from `--wait 20` to `--wait 100`. Note that it can take up to 60 seconds after the rsu command for the SR and PR hash to update. | No future fix | N6000 \\| N6001 |\r\n| 14024356807 | High peak memory usage above 100+ GB during OFS compilation causes compilation to fail on systems that do not have sufficient RAM | It is suggested that your system has at least 128 GB of RAM for OFS design compilations. | Planned improvement in future release | All |\r\n| 14024356732 | Dangling PTP Signals in the reference FIM RTL | None. These signals are provided as a reference, but are not used in the OFS reference designs and can be ignored. | Planned to be removed in a future release of OFS | All |\r\n| 14021039281 | Currently there are three errors included as part of the output from the OPAE SDK command \"fpgainfo errors all\" that are not applicable to current platforms. These include PCIe0 Errors, PCIe1 Errors, and First Malformed Req. All three outputs may be safely ignored. | None | No future fix | All |\r\n| 14021146060 | The R-Tile PCIe attach design requires a 16550 UART IP license file to be installed in Quartus Prime Pro even though it is not used in the design. | None | No future fix | I-Series Development Kit |\r\n| 14020129685 | The hssi bandwidth reporting is currently not supported when FIM Ethernet configuration uses 100GbE. | None | No future fix | Intel\u00ae FPGA SmartNIC N6000/1-PL |\r\n| 14018364039 | The OPAE command fpgainfo bmc and fpgainfo temp display a \"CVL\" field that is not utilized by the N6001 design. | None. Ignore \"CVL\" listings. | No future fix | Intel\u00ae FPGA SmartNIC N6001-PL |\r\n| 14021023150 | The fpgainfo phy command reports QSFP as not connected even if Ethernet ports are up because QSFP status is not routed to the FPGA in the Development Kit. | Refer to the Port<x> Status listed in the command to observe the link status. | No future fix | F-Tile Development Kit \\| I-Series Development Kit |\r\n| 16027784703 | PIM local_mem_params test failed on byteEnable test because fseries-dk production devkit ships with RDIMM that doesn't support byte enable | None | Not a bug | F-Tile Development Kit |\r\n| 16027481605 | Remote STP feature of OFS fails on all fims | JTAG based STP is enabled by default on all fims. PR region can be debugged with JTAG STP | Will be fixed | All boards |\r\n| 15016269892 | PCIe Link Speed does not downgrade to Gen3 or Gen4 on I-Series DevKit FIM when built with the Gen5 configuration. | If PCIe Gen4 is required, generate the iseries-dk FIM with PCIe Gen4. This can be done with the [$OFS_ROOTDIR/tools/ofss_config/pcie/pcie_host_gen4.ofss](https://github.com/OFS/ofs-agx7-pcie-attach/blob/release/ofs-2024.3/tools/ofss_config/pcie/pcie_host_gen4.ofss) There is no provided fix for Gen3. | No future fix | I-Series Development Kit |\r\n\r\n\r\n## **Important Notes **\r\n\r\n<a name=\"important_notes\"></a>\r\n\r\nThe following section provides important information about this release:\r\n\r\n| ID | Important Notes |\r\n| --- | --- |\r\n| - | M-Series Development Kit Reference FIM is a pre-release build variant for the M-Series Development Kit. A limited configuration of this shell is available as a pre-release.  This reference FIM has PCIe Gen5x16, High Bandwidth Memory (HBM) and NoC.  Ethernet, DDR Memory, and Partial Reconfiguration are not included in the default shell. As a pre-release, this design is provided AS-IS with no active support and limited collateral found in the [OFS AGX7 PCIe Attach README](https://github.com/OFS/ofs-agx7-pcie-attach/blob/release/ofs-2024.3/README.md) |\r\n| - | The default Memory Subsystem in the OFS iseries-dk Shell Design targets 2 8GB UDIMM modules in DIMM slots A and B. However, the DK-DEV-AGI027RA development kit comes with a single 16GB RDIMM module. If you would like to use only the single RDIMM module that comes with the development kit, you must build the OFS Shell design with the RDIMM configuration. Refer to Section 4.7.3 of the [FPGA Interface Manager Developer Guide for Open FPGA Stack: Agilex\u2122 7 FPGA I-Series Development Kit (2x R-Tile and 1xF-Tile) PCIe Attach](https://ofs.github.io/ofs-2024.3-1/hw/iseries_devkit/dev_guides/fim_dev/ug_ofs_iseries_dk_fim_dev/) for step-by-step instructions |\r\n| - | OneAPI has not been validated with this release. If you wish to use OneAPI, please use OFS Release 2024.2-1 |\r\n| - | When using the PF/VF configuration tool to reconfigure the PF/VF MUX, you must keep at least:</br>&nbsp;&nbsp;&nbsp;&nbsp;&bull; One (1) physical function and one (1) virtual function on PF0.</br>&nbsp;&nbsp;&nbsp;&nbsp;OR</br>&nbsp;&nbsp;&nbsp;&nbsp;&bull; Two (2) physical functions.</br> All other PFs and VFs can be removed if desired. |\r\n| 15012246661 | When enabling cable hotplug IP and ANLT, the E-tile recipe resulting from the ANLT initialization flow is over-written by the hotplug initialization flow. If you require a custom ANLT recipe, then you cannot use hotplug at this time. You can disable hotplug by writing 1 to index-0 of HSSI Hotplug Debug Control Register (offset 0x600B4) followed by a port level reset or analog reset. |\r\n| 15012406417 | If using the Intel\u00ae FPGA SmartNIC N6001-PL Platform (SKU2) for evaluation of the OFS release, ensure DIP Switch SW1.4 on the board is set to convey the correct board type or the OPAE commands could display invalid temperature values for an Intel<sup>&reg;</sup> NIC E810 (SKU1) which is not populated on the SKU2 board.  For Intel\u00ae FPGA SmartNIC N6001-PL Platform (SKU2), SW1.4 must be off (pointing towards the PCIe goldfinger).  Note that a BMC reset is required if you must flip the switch to the correct setting. |\r\n| 14020225084 | The regress_run.py simulation script runs a superset of simulation tests for all configurations available in the ofs-agx7-pcie-attach repository.  You can customize the regress_run.py script to run only the tests applicable to your design by using the -k list option in the script which directs the regression to only pick up tests you have listed in your list.txt file.  Please refer to the FPGA Interface Manager Development Guide for more details. |\r\n",
+        "html_url": "https://github.com/OFS/ofs-agx7-pcie-attach/releases/tag/ofs-2025.1-1"
+      },
+      {
+        "name": "ofs-2024.3-1 Release for Agilex 7 PCIe Attach Reference Shells",
+        "tag_name": "ofs-2024.3-1",
+        "published_at": "2025-02-26T00:53:44Z",
+        "draft": false,
+        "prerelease": false,
+        "html_url": "https://github.com/OFS/ofs-agx7-pcie-attach/releases/tag/ofs-2024.3-1",
+        "body_excerpt": "# OFS 2024.3-1\r\n## Summary: OFS 2024.3-1 Release for Agilex<sup>&trade;</sup> 7 PCIe Attach FPGAs\r\n\r\n- Boards Targeted: \r\n    - Agilex\u2122 7 FPGA I-Series Development Kit (2x R-Tile, F-Tile)\r\n    - Agile"
+      },
+      {
+        "name": "ofs-2024.2-1 Release for Agilex 7 PCIe Attach Reference Shells",
+        "tag_name": "ofs-2024.2-1",
+        "published_at": "2024-07-16T03:59:56Z",
+        "draft": false,
+        "prerelease": false,
+        "html_url": "https://github.com/OFS/ofs-agx7-pcie-attach/releases/tag/ofs-2024.2-1",
+        "body_excerpt": "# OFS 2024.2-1\r\n## Summary: OFS 2024.2-1 Release for Agilex<sup>&reg;</sup> 7 PCIe Attach FPGAs\r\n\r\n- Boards Targeted: \r\n    - Agilex\u00ae 7 FPGA I-Series Development Kit (2x R-Tile, F-Tile)\r\n    - Agilex\u00ae"
+      },
+      {
+        "name": "ofs-2024.1-1 Release for Agilex 7 PCIe Attach Reference Shells",
+        "tag_name": "ofs-2024.1-1",
+        "published_at": "2024-03-20T03:07:00Z",
+        "draft": false,
+        "prerelease": false,
+        "html_url": "https://github.com/OFS/ofs-agx7-pcie-attach/releases/tag/ofs-2024.1-1",
+        "body_excerpt": "# OFS 2024.1-1\r\n## Summary: OFS 2024.1-1 Release for Agilex<sup>&reg;</sup> 7 PCIe Attach FPGAs\r\n\r\nFor the overall release and associated repos please review the [Discussions post](https://github.com/"
+      },
+      {
+        "name": "2023.3-2 OFS Release for Intel Agilex 7 PCIe Attach Reference Shells",
+        "tag_name": "ofs-2023.3-2",
+        "published_at": "2024-02-03T03:48:53Z",
+        "draft": false,
+        "prerelease": false,
+        "html_url": "https://github.com/OFS/ofs-agx7-pcie-attach/releases/tag/ofs-2023.3-2",
+        "body_excerpt": "# OFS 2023.3-2\r\n## Summary: OFS 2023.3-2 Release for Intel<sup>&reg;</sup> Agilex 7 PCIe Attach FPGAs\r\n\r\n- Boards Targeted: \r\n    - Intel Agilex\u00ae 7 FPGA I-Series Development Kit (2x R-Tile, F-Tile)\r\n "
+      },
+      {
+        "name": "2023.3 OFS Release for Intel Agilex 7 PCIe Attach Reference Shells (ofs-2023.3)",
+        "tag_name": "ofs-2023.3-1",
+        "published_at": "2023-12-14T04:23:00Z",
+        "draft": false,
+        "prerelease": false,
+        "html_url": "https://github.com/OFS/ofs-agx7-pcie-attach/releases/tag/ofs-2023.3-1",
+        "body_excerpt": "# OFS 2023.3\r\n## Summary: OFS 2023.3 Release for Intel<sup>&reg;</sup> Agilex 7 PCIe Attach FPGAs\r\n\r\n- Boards Targeted: \r\n    - Intel Agilex\u00ae 7 FPGA I-Series Development Kit (2x R-Tile, F-Tile)\r\n    -"
+      },
+      {
+        "name": "2023.2 OFS Release for Intel Agilex 7 PCIe Attach Reference Shells (ofs-2023.2)",
+        "tag_name": "ofs-2023.2-1",
+        "published_at": "2023-09-16T00:16:10Z",
+        "draft": false,
+        "prerelease": false,
+        "html_url": "https://github.com/OFS/ofs-agx7-pcie-attach/releases/tag/ofs-2023.2-1",
+        "body_excerpt": "# OFS 2023.2\r\n## Summary: OFS 2023.2 Release for Intel<sup>&reg;</sup> Agilex 7 PCIe Attach FPGAs\r\n- Boards Targeted: Intel\u00ae FPGA SmartNIC N6001-PL and Intel Agilex\u00ae 7 FPGA F-Series Development Kit (2"
+      },
+      {
+        "name": "2023.1 OFS Release for Intel Agilex PCIe Attach Reference Shell (ofs-2023.1)",
+        "tag_name": "ofs-2023.1-1",
+        "published_at": "2023-05-26T20:49:36Z",
+        "draft": false,
+        "prerelease": false,
+        "html_url": "https://github.com/OFS/ofs-agx7-pcie-attach/releases/tag/ofs-2023.1-1",
+        "body_excerpt": "# OFS 2023.1\r\n## Summary: OFS 2023.1 Release for Intel<sup>&reg;</sup> Agilex FPGA PCIe Attach shell targeting Intel\u00ae FPGA SmartNIC N6001-PL Development Platform\r\n- Board: Intel\u00ae FPGA SmartNIC N6001-P"
+      }
+    ]
+  },
+  {
+    "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/tags?per_page=30",
+    "status": 200,
+    "retrieved_utc": "2026-09-22T06:17:54.775384+00:00",
+    "sha256": "9d2b60cf55fc9c0c3fe6d599db53399186a1cb1b2932a512d12cef8aa34f03fa",
+    "data": [
+      {
+        "name": "ofs-2025.1-1",
+        "commit": {
+          "sha": "599ac052eafbc9cede22561c099233ae4a54cb7d",
+          "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/599ac052eafbc9cede22561c099233ae4a54cb7d"
+        }
+      },
+      {
+        "name": "ofs-2024.3-1",
+        "commit": {
+          "sha": "e34164bb2ccfbc2203747ee0c69633685c04b240",
+          "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/e34164bb2ccfbc2203747ee0c69633685c04b240"
+        }
+      },
+      {
+        "name": "ofs-2024.2-1",
+        "commit": {
+          "sha": "ab9d0728a68caa353d720c837237f54eb88db6f8",
+          "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/ab9d0728a68caa353d720c837237f54eb88db6f8"
+        }
+      },
+      {
+        "name": "ofs-2024.1-1",
+        "commit": {
+          "sha": "c8e9cc1a3f0a62d6c427a4b301eb86759b7d202b",
+          "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/c8e9cc1a3f0a62d6c427a4b301eb86759b7d202b"
+        }
+      },
+      {
+        "name": "ofs-2023.3-2",
+        "commit": {
+          "sha": "98320089a44e48fc3db375ea5052bd85a93e8083",
+          "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/98320089a44e48fc3db375ea5052bd85a93e8083"
+        }
+      },
+      {
+        "name": "ofs-2023.3-1",
+        "commit": {
+          "sha": "01cd11c5ddb5c90e0886ec4fde29c1479405ff0c",
+          "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/01cd11c5ddb5c90e0886ec4fde29c1479405ff0c"
+        }
+      },
+      {
+        "name": "ofs-2023.2-1",
+        "commit": {
+          "sha": "489c64187887fc7a58c5d04c3be968bef2bde8c6",
+          "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/489c64187887fc7a58c5d04c3be968bef2bde8c6"
+        }
+      },
+      {
+        "name": "ofs-2023.1-1",
+        "commit": {
+          "sha": "45a7dfbcdac16131aabf392457cfbbd51631888e",
+          "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/45a7dfbcdac16131aabf392457cfbbd51631888e"
+        }
+      }
+    ]
+  },
+  {
+    "url": "https://api.github.com/repos/OFS/ofs-fim-common/releases?per_page=10",
+    "status": 200,
+    "retrieved_utc": "2026-09-22T06:17:54.720034+00:00",
+    "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "data": []
+  },
+  {
+    "url": "https://api.github.com/repos/OFS/ofs-fim-common/tags?per_page=30",
+    "status": 200,
+    "retrieved_utc": "2026-09-22T06:17:54.778224+00:00",
+    "sha256": "e4057787675ee247a9a6a864dfa723a8243998def8c2ea207e60aa13bf584333",
+    "data": [
+      {
+        "name": "ofs-fim-common-1.1.0-rc2",
+        "commit": {
+          "sha": "6771509df4ff00ecf0e6e2f4150075ea36e3bd82",
+          "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/6771509df4ff00ecf0e6e2f4150075ea36e3bd82"
+        }
+      },
+      {
+        "name": "ofs-fim-common-1.0.0-rc3",
+        "commit": {
+          "sha": "1803a2b6e2b4c60ffdb9ea97800d72e5dd56e23e",
+          "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/1803a2b6e2b4c60ffdb9ea97800d72e5dd56e23e"
+        }
+      },
+      {
+        "name": "ofs-2025.1-1",
+        "commit": {
+          "sha": "34a8540697fdf3d66fbcaa263fa037bae17cc32f",
+          "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/34a8540697fdf3d66fbcaa263fa037bae17cc32f"
+        }
+      },
+      {
+        "name": "ofs-2024.3-1",
+        "commit": {
+          "sha": "e8e9490d060d1a19945a4a305d27a91a845a7b68",
+          "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/e8e9490d060d1a19945a4a305d27a91a845a7b68"
+        }
+      },
+      {
+        "name": "ofs-2024.2-1",
+        "commit": {
+          "sha": "7b2088f82c930fa733ff0b36596b786821276a79",
+          "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/7b2088f82c930fa733ff0b36596b786821276a79"
+        }
+      },
+      {
+        "name": "ofs-2024.1-1",
+        "commit": {
+          "sha": "374fd3ccb014e31c0b1fad207b1299e8081e4fd9",
+          "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/374fd3ccb014e31c0b1fad207b1299e8081e4fd9"
+        }
+      },
+      {
+        "name": "ofs-2023.3-2",
+        "commit": {
+          "sha": "a065e05577b35b7c36be2dfd04ae907a38899bf4",
+          "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/a065e05577b35b7c36be2dfd04ae907a38899bf4"
+        }
+      },
+      {
+        "name": "ofs-2023.3-1",
+        "commit": {
+          "sha": "5bd3128a97da5d3ca8cb7b2c1e118732e4925798",
+          "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/5bd3128a97da5d3ca8cb7b2c1e118732e4925798"
+        }
+      },
+      {
+        "name": "ofs-2023.2-1",
+        "commit": {
+          "sha": "93b6cb4bff66e83e3b157fe0e6b9bda93224e0eb",
+          "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/93b6cb4bff66e83e3b157fe0e6b9bda93224e0eb"
+        }
+      },
+      {
+        "name": "ofs-2023.1-1",
+        "commit": {
+          "sha": "ea585a4f48d50faf3ae7ecfbec82525a8d22c730",
+          "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/ea585a4f48d50faf3ae7ecfbec82525a8d22c730"
+        }
+      }
+    ]
+  },
+  {
+    "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/releases?per_page=10",
+    "status": 200,
+    "retrieved_utc": "2026-09-22T06:17:54.746100+00:00",
+    "sha256": "f6e2ca00da00b902566658d5828c2fb2cf7178493b56fd76ec8bfd46d7529da6",
+    "data": [
+      {
+        "name": "ofs-2024.3-1",
+        "tag_name": "ofs-2024.3-1",
+        "published_at": "2025-01-21T17:59:37Z",
+        "draft": false,
+        "prerelease": false,
+        "html_url": "https://github.com/OFS/ofs-platform-afu-bbb/releases/tag/ofs-2024.3-1",
+        "body_excerpt": "OFS 24.3 Release tag"
+      }
+    ]
+  },
+  {
+    "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/tags?per_page=30",
+    "status": 200,
+    "retrieved_utc": "2026-09-22T06:17:54.767392+00:00",
+    "sha256": "0dbed5dadba20f06030e21b51c3b856ec8415ec2adfa25236236e9fc7176f077",
+    "data": [
+      {
+        "name": "ofs-2024.3-1",
+        "commit": {
+          "sha": "85b5c4da78da6912ea43b5ec96fdb203e0a0acdf",
+          "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/85b5c4da78da6912ea43b5ec96fdb203e0a0acdf"
+        }
+      },
+      {
+        "name": "ofs-2024.2-1",
+        "commit": {
+          "sha": "e0251f7d00f37176df7f63c15fd9ad4ab609137e",
+          "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/e0251f7d00f37176df7f63c15fd9ad4ab609137e"
+        }
+      },
+      {
+        "name": "ofs-2024.1-1",
+        "commit": {
+          "sha": "6e319451b7594b502ff88ac202d5f0bfc25e662b",
+          "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/6e319451b7594b502ff88ac202d5f0bfc25e662b"
+        }
+      },
+      {
+        "name": "ofs-2023.3-2",
+        "commit": {
+          "sha": "5e4ccb2ee4da258edbadd40e57964b7d3478a46a",
+          "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/5e4ccb2ee4da258edbadd40e57964b7d3478a46a"
+        }
+      },
+      {
+        "name": "ofs-2023.3-1",
+        "commit": {
+          "sha": "167a7be36d2f3421452cbbf7ebf5bf0cee6e7a99",
+          "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/167a7be36d2f3421452cbbf7ebf5bf0cee6e7a99"
+        }
+      },
+      {
+        "name": "ofs-2023.2-1",
+        "commit": {
+          "sha": "4bd1046c98608e55e5a189ad99bbdf3b8fc58757",
+          "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/4bd1046c98608e55e5a189ad99bbdf3b8fc58757"
+        }
+      },
+      {
+        "name": "ofs-2023.1-1",
+        "commit": {
+          "sha": "f4fa3e03f00d6233f9bb73047f5cf200b1a60261",
+          "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/f4fa3e03f00d6233f9bb73047f5cf200b1a60261"
+        }
+      },
+      {
+        "name": "1.0.0-rc3",
+        "commit": {
+          "sha": "6939d262b35a54740708ed086e2f09c7d18ef9f8",
+          "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/6939d262b35a54740708ed086e2f09c7d18ef9f8"
+        }
+      }
+    ]
+  }
+]

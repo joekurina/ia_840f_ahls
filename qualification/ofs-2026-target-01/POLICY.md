@@ -1,0 +1,9 @@
+# Selected OFS target — user-directed prerelease
+
+The user explicitly directed use of the OFS `ofs-2026.1-1` prerelease as the AHLS target, citing [the official examples-afu release](https://github.com/OFS/examples-afu/releases/tag/ofs-2026.1-1). Prerelease labeling is not a reason to reject or defer this target.
+
+The official release page points to examples commit `4a1350e3c9e223d8bac3cb47f756a1d919ef8de1`, already present in the existing source lock. This does **not** mean the current FIM/common/PIM snapshot is the complete matching 2026.1 release. Resolve those exact companion pins and relevant migration differences before integrating them. Keep the IA-840F vendor board constraints, two DDR channels, PF/VF/BMC routing, absent UART/HPS scope, Quartus Pro 26.1.1 and AHLS 2026.1.0 requirements.
+
+Existing lock values and accepted Work14 build evidence describe the actual previous donor basis and remain preserved. Do not relabel those artifacts as 2026.1 builds. The current Work14 copied-database diagnostic is offline evidence collection, not a new full build on the old baseline. No migration or hardware success is claimed by selecting the target.
+
+Independent upstream review is complete and [parent-consumed](DISPOSITION.md). All four recommended immutable pins already match the lock: no donor-pin migration is needed. No matching public four-repository2026 tuple was found in the inspected official refs. Keep the selected2026 examples target and accurate2025.1 FIM/common donor provenance, with the pinned PIM PR-freeze changes; do not relabel this as a jointly qualified release. Fresh official-source checks confirm the inherited obsolete PCIe divider constraint is unchanged upstream. Continue the narrow integration correction and qualification, not a tool downgrade or unchanged full rebuild. No incremental user approval is needed for ordinary safe iteration.

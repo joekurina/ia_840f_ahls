@@ -1,0 +1,2199 @@
+=== SOURCE [7] ===
+Propagated pr_freeze signal to AFU. It's optional to be used in AFU
+
+=== SOURCE [8] ===
+{
+  "ref": "refs/tags/ofs-2026.1-1",
+  "node_id": "REF_kwDOIUPm3bZyZWZzL3RhZ3Mvb2ZzLTIwMjYuMS0x",
+  "url": "https://api.github.com/repos/OFS/examples-afu/git/refs/tags/ofs-2026.1-1",
+  "object": {
+    "sha": "4a1350e3c9e223d8bac3cb47f756a1d919ef8de1",
+    "type": "commit",
+    "url": "https://api.github.com/repos/OFS/examples-afu/git/commits/4a1350e3c9e223d8bac3cb47f756a1d919ef8de1"
+  }
+}
+
+=== SOURCE [9] ===
+# OFS 2025.1-1
+## Summary: OFS 2025.1-1 Release for Agilex<sup>&trade;</sup> 7 PCIe Attach FPGAs
+
+- Boards Targeted: 
+    - Agilex™ 7 FPGA I-Series Development Kit (2x R-Tile, F-Tile)
+    - Agilex™ 7 FPGA F-Series Development Kit (2x F-Tile)
+    - Intel® FPGA SmartNIC N6001-PL/N6000-PL (P-Tile, E-Tile)
+- Board Management Controller (BMC):
+    - MAX® 10 Nios® Firmware Version: 3.15.2 (Intel® FPGA SmartNIC N6001-PL/N6000-PL only)
+    - MAX® 10 Build Version: 3.15.2 (Intel® FPGA SmartNIC N6001-PL/N6000-PL only)
+
+  > Agilex™ 7 FPGA F-Series and I-Series Development Kits do not utilize an OFS compatible BMC, thus certain features such as remote system update are not supported.
+
+- Quartus<sup>&reg;</sup> Prime Pro Version: 25.1
+
+- Quartus Prime Pro License File: [quartus-0.0-0.02iofs-linux.run](https://github.com/OFS/ofs-agx7-pcie-attach/tree/release/ofs-2025.1/license)
+- Quartus Prime Pro Patches: None
+- OS Tested: Red Hat<sup>&reg;</sup> Enterprise Linux<sup>&reg;</sup> 9.4
+- OPAE Version: 2.14.0-3
+- Kernel Version: 5.14.0 
+- OFS Agilex<sup>&trade;</sup> 7 PCIe Attach FIM Github Branch: https://github.com/OFS/ofs-agx7-pcie-attach/tree/release/ofs-2025.1
+- OFS Agilex<sup>&trade;</sup> 7 PCIe Attach FIM Github Tag: https://github.com/OFS/ofs-agx7-pcie-attach/releases/tag/ofs-2025.1-1
+- OFS FIM_COMMON Github Tag: https://github.com/OFS/ofs-fim-common/releases/tag/ofs-2025.1-1 
+
+> Note: OneAPI has not been validated with this release. If you are using OneAPI please use the OFS 2024.2-1 release.
+
+### OPAE SDK (UPDATE): 
+- OPAE SDK Branch: https://github.com/OFS/opae-sdk/tree/release/2.14.0
+- OPAE SDK Tag: https://github.com/OFS/opae-sdk/releases/tag/2.14.0-3
+
+### OPAE SIM: 
+- OPAE SIM Branch: https://github.com/OFS/opae-sim/tree/release/2.14.0
+- OPAE SIM Tag: https://github.com/OFS/opae-sim/releases/tag/2.14.0-1	
+
+### Driver :
+- Kernel Driver Branch: https://github.com/OFS/linux-dfl-backport/tree/intel/fpga-ofs-dev-6.6-lts
+- Kernel Driver Tag: https://github.com/OFS/linux-dfl-backport/releases/tag/intel-1.12.0-3
+
+This page provides up-to-date information about the Open FPGA Stack (OFS) for Agilex<sup>&trade;</sup> 7 PCIe Attach devices. This project targets the:
+- Agilex<sup>&trade;</sup> 7 FPGA I-Series Development Kit (2xR-Tile, F-Tile)
+- Agilex<sup>&trade;</sup> 7 FPGA F-Series Development Kit (2xF-Tile)
+- Intel® FPGA SmartNIC N6001-PL/N6000-PL
+
+The summary of OFS framework features are shown below.  To find out more about these platforms refer to the documentation below:
+* [Intel® FPGA SmartNIC N6001-PL Platform Product Brief](https://www.intel.com/content/www/us/en/content-details/779620/a-smartnic-for-accelerating-communications-and-networking-workloads.html)
+* [Intel® FPGA SmartNIC N6000-PL/N6001-PL](https://www.intel.com/content/www/us/en/products/details/fpga/platforms/smartnic/n6000-pl-platform.html)
+* [Agilex™ 7 FPGA F-Series Development Kit (2xF-Tile) User Guide](https://www.intel.com/content/www/us/en/docs/programmable/739942/current/overview.html)
+* [Agilex™ 7 FPGA I-Series Development Kit (2xR-Tile, F-Tile) User Guide](https://www.intel.com/content/www/us/en/docs/programmable/683288/current/overview.html)
+
+
+**OFS Agilex<sup>&trade;</sup>7 PCIe Attach Reference Shell Key Features**
+
+| Key Feature |  I-Series (2xR-Tile, 1xF-Tile) | F-Series (2xF-Tile)  | F-Series (1xP-Tile, 1xE-Tile) | M-Series (3x F-Tile & 1x R-Tile) (Pre-Release)<sup>2</sup> |
+| :-: | :-- | :-- | :-- | --- |
+| Target OPN | AGIB027R29A1E1VB  | AGFD023R24C2E1VC | AGFB014R24A2E2V | AGMF039R47A1E2VR0 |
+| Target Board | [DK-DEV-AGI027-RA (Production Kit)](https://www.intel.com/content/www/us/en/docs/programmable/739942/current/overview.html) | [DK-DEV-AGF023FA (Production Kit)](https://www.intel.com/content/www/us/en/docs/programmable/739942/current/overview.html) | &bull; [Intel® FPGA SmartNIC N6001-PL](https://www.intel.com/content/www/us/en/content-details/779620/a-smartnic-for-accelerating-communications-and-networking-workloads.html)</br>&bull; [Intel® 7 FPGA SmartNIC N6000-PL](https://www.intel.com/content/www/us/en/products/details/fpga/platforms/smartnic/n6000-pl-platform.html) | [DK-DEV-AGM039FES](https://www.intel.com/content/www/us/en/products/details/fpga/development-kits/agilex/agm039.html)
+| PCIe | R-tile PCIe 1xGen5x16<br>R-tile PCIe 2xGen5x8<br>R-tile PCIe 1xGen4x16 | F-tile PCIe Gen4x16 | P-tile PCIe Gen4x16 | R-tile PCI Gen5x16 (Validated on Gen4x16 sever) |
+| Virtualization | 5 physical functions/3 virtual functions with ability to expand | 5 physical functions/3 virtual functions with ability to expand | 5 physical functions/3 virtual functions with ability to expand | 5 physical functions/3 virtual functions with ability to expand |
+| Memory | Four Fabric DDR4 channels consisting of:<br>&nbsp;&nbsp;&nbsp;&nbsp;&bull; Two x64 (no ECC), 2666 MHz, 8GB Component memory<br>&nbsp;&nbsp;&nbsp;&nbsp;&bull; Two x64 (no ECC), 2666 MHz, 8GB UDIMM memory <br><br>OR<br><br>Three Fabric DDR4 channels consisting of:<br>&nbsp;&nbsp;&nbsp;&nbsp;&bull; Two x64 (no ECC), 2666 MHz, 8GB Component memory<br>&nbsp;&nbsp;&nbsp;&nbsp;&bull; One x64 (no ECC), 2666 MHz, 8GB RDIMM memory <sup>**1**</sup> | 2 DDR Channels:<br>&bull; One HPS DDR4 bank, x40 (x32 Data and x8 ECC), 2400 MHz, 1GB each<br>&bull; 1 Fabric DDR4 banks, x64 (no ECC), 2400 MHz, 8GB RDIMM memory | 5 DDR Channels:<br>&bull; One HPS DDR4 bank, x40 (x32 Data and x8 ECC), 1200 MHz, 1GB each<br>&bull; Four Fabric DDR4 banks, x32 (no ECC), 1200 MHz, 4GB | 32 HBM channels |
+| Ethernet | 2x4x25GbE, 2x200GbE, 2x400GbE | 2x4x25GbE | &bull; N6001-PL: 2x4x25GbE, 2x4x10GbE, or 2x100GbE </br>&bull; N6000-PL: 4x100GbE | Not Supported |
+| Hard Processor System | Not enabled | 64-bit quad core Arm® Cortex®-A53 MPCore with integrated peripherals. | 64-bit quad core Arm® Cortex®-A53 MPCore with integrated peripherals. | Not Supported |
+| Configuration and Board Manageability | &bull; FPGA Management Engine that provides general control of common FPGA tasks (ex. error reporting, partial reconfiguration)<br>&bull; Platform Management Controller Interface (PMCI) Module for Board Management Controller | &bull; FPGA Management Engine that provides general control of common FPGA tasks (ex. error reporting, partial reconfiguration)<br>&bull; Platform Controller Management Interface (PMCI) Module for Board Management Controller | &bull; FPGA Management Engine that provides general control of common FPGA tasks (ex. error reporting, partial reconfiguration)<br>&bull; Platform Controller Management Interface (PMCI) Module for Board Management Controller | Not Supported |
+| Partial Reconfiguration | Supported | Supported | Supported | Not Supported |
+| OneAPI | Not supported in this release. Please use OFS Version 2024.2-1 for OneAPI support. | Not supported | Not supported in this release. Please use OFS Version 2024.2-1 for OneAPI support. | Not Supported |
+| Software Support | &bull; Linux DFL drivers targeting OFS FIMs<br>&bull; OPAE Software Development Kit<br>&bull; OPAE Tools | &bull; Linux DFL drivers targeting OFS FIMs<br>&bull; OPAE Software Development Kit<br>&bull; OPAE Tools | &bull; Linux DFL drivers targeting OFS FIMs<br>&bull; OPAE Software Development Kit<br>&bull; OPAE Tools | &bull; Linux DFL drivers targeting OFS FIMs<br>&bull; OPAE Software Development Kit<br>&bull; OPAE Tools |
+
+<sup>**1**</sup> The default OFS shell design targeting the Agilex™ 7 FPGA I-Series Development Kit (2x R-Tile and 1xF-Tile) was validated with two Micron MTA8ATF1G64AZ-2G6E1 DDR4 SDRAM UDIMM modules in DIMM slots A and B. Note that the DK-DEV-AGI027RA development kit comes with a single 16GB RDIMM module. If you plan to use the single RDIMM module that comes with the development kit, refer to the [Shell Developer Guide: OFS for Agilex™ 7 PCIe Attach (2xR-tile, F-tile) FPGAs](https://ofs.github.io/ofs-2024.3-1/hw/iseries_devkit/dev_guides/fim_dev/ug_ofs_iseries_dk_fim_dev/) for instructions on building a shell design for the RDIMM configuration.
+
+<sup>**2**</sup> The M-Series Develpoment Kit reference shell design is a pre-release reference design that is provided AS-IS with no active support and limited collateral found in the [OFS AGX7 PCIe Attach README](https://github.com/OFS/ofs-agx7-pcie-attach/blob/release/ofs-2024.3/README.md)
+
+**The OFS hardware framework also provides:**
+- Support for unit test simulation (using Synopsys<sup>&reg;</sup> VCS<sup>&reg;</sup> or Siemens<sup>&reg;</sup> Questa<sup>&trade;</sup> simulators)
+- Host exercisers that allow you to test interfaces on the FPGA
+
+> **Note:** UVM simulation framework is removed from OFS 2025.1.
+
+**The OFS software framework provides:**
+- FPGA platform Linux drivers that are being upstreamed to linux.org
+- A programmable software development kit and userspace tools for managing the FPGA
+
+**Important: If you would like to begin evaluating the default shells that have been pre-built from this repository, please scroll down to the "assets" section below which contains the FPGA binary/POF/SOF along with the applicable Linux driver and Open Programmable Acceleration Engine (OPAE) software development kit (SDK) packages.**
+
+## **New Updates for ofs-2025.1-1 Release**
+* Quartus Version moved to 25.1
+* F-Series Development Kit shell reference design now targets the production development kit (UPDATE) [DK-DEV-AGI027-RA (Production Kit)](https://www.intel.com/content/www/us/en/docs/programmable/739942/current/overview.html)
+* JTAG based STP enabled in AFU region and set to as default in FIMs
+* UVM verification tree removed from repository
+
+
+## **Known Issues**
+<b>This table describes the known issues for the 2025.1 OFS Release targeting Agilex<sup>&trade;</sup> 7 devices.</b>
+
+| ID | Known Issues | Workaround | Status | Platform Target Affected |
+| --- | --- | --- | --- | --- |
+| 14025091098 | HSSI unit tests failing on Fseries-dk after the upgrade to the production devkit| This issue is confined to the simulation environment, discussion with IP team  | Will fix next release | Agilex 7 F-Tile Development Kit |
+| 14024332744 | DRC High Severity Warnings reported in default OFS shell compilation reports | None; you may ignore these warnings. | Waiver file added, but only picks up by GUI compile, HSD with Quartus. Will be fixed next release | All |
+| 16024552556 | Partial Reconfiguration Region Root Key Hash (RKH) reports incorrect value after SR RKH update. | Update the PR RKH after updating the SR RKH for the PR SDM root entry hash to report the proper PR RKH value. | No future fix | N6000 \| N6001 |
+| 16024552556 | Static Region Root Key Hash (SR RKH) fails programming when using vabtool; reports error `Could not glob sdm SR provision status. Sysfs node not found` | Increase the delay when running the rsu command in the [vabtool](https://github.com/OFS/opae-sdk/blob/release/2.14.0/binaries/vabtool/vabtool) file by changing line 338 from `--wait 20` to `--wait 100`. Note that it can take up to 60 seconds after the rsu command for the SR and PR hash to update. | No future fix | N6000 \| N6001 |
+| 14024356807 | High peak memory usage above 100+ GB during OFS compilation causes compilation to fail on systems that do not have sufficient RAM | It is suggested that your system has at least 128 GB of RAM for OFS design compilations. | Planned improvement in future release | All |
+| 14024356732 | Dangling PTP Signals in the reference FIM RTL | None. These signals are provided as a reference, but are not used in the OFS reference designs and can be ignored. | Planned to be removed in a future release of OFS | All |
+| 14021039281 | Currently there are three errors included as part of the output from the OPAE SDK command "fpgainfo errors all" that are not applicable to current platforms. These include PCIe0 Errors, PCIe1 Errors, and First Malformed Req. All three outputs may be safely ignored. | None | No future fix | All |
+| 14021146060 | The R-Tile PCIe attach design requires a 16550 UART IP license file to be installed in Quartus Prime Pro even though it is not used in the design. | None | No future fix | I-Series Development Kit |
+| 14020129685 | The hssi bandwidth reporting is currently not supported when FIM Ethernet configuration uses 100GbE. | None | No future fix | Intel® FPGA SmartNIC N6000/1-PL |
+| 14018364039 | The OPAE command fpgainfo bmc and fpgainfo temp display a "CVL" field that is not utilized by the N6001 design. | None. Ignore "CVL" listings. | No future fix | Intel® FPGA SmartNIC N6001-PL |
+| 14021023150 | The fpgainfo phy command reports QSFP as not connected even if Ethernet ports are up because QSFP status is not routed to the FPGA in the Development Kit. | Refer to the Port<x> Status listed in the command to observe the link status. | No future fix | F-Tile Development Kit \| I-Series Development Kit |
+| 16027784703 | PIM local_mem_params test failed on byteEnable test because fseries-dk production devkit ships with RDIMM that doesn't support byte enable | None | Not a bug | F-Tile Development Kit |
+| 16027481605 | Remote STP feature of OFS fails on all fims | JTAG based STP is enabled by default on all fims. PR region can be debugged with JTAG STP | Will be fixed | All boards |
+| 15016269892 | PCIe Link Speed does not downgrade to Gen3 or Gen4 on I-Series DevKit FIM when built with the Gen5 configuration. | If PCIe Gen4 is required, generate the iseries-dk FIM with PCIe Gen4. This can be done with the [$OFS_ROOTDIR/tools/ofss_config/pcie/pcie_host_gen4.ofss](https://github.com/OFS/ofs-agx7-pcie-attach/blob/release/ofs-2024.3/tools/ofss_config/pcie/pcie_host_gen4.ofss) There is no provided fix for Gen3. | No future fix | I-Series Development Kit |
+
+
+## **Important Notes **
+
+<a name="important_notes"></a>
+
+The following section provides important information about this release:
+
+| ID | Important Notes |
+| --- | --- |
+| - | M-Series Development Kit Reference FIM is a pre-release build variant for the M-Series Development Kit. A limited configuration of this shell is available as a pre-release.  This reference FIM has PCIe Gen5x16, High Bandwidth Memory (HBM) and NoC.  Ethernet, DDR Memory, and Partial Reconfiguration are not included in the default shell. As a pre-release, this design is provided AS-IS with no active support and limited collateral found in the [OFS AGX7 PCIe Attach README](https://github.com/OFS/ofs-agx7-pcie-attach/blob/release/ofs-2024.3/README.md) |
+| - | The default Memory Subsystem in the OFS iseries-dk Shell Design targets 2 8GB UDIMM modules in DIMM slots A and B. However, the DK-DEV-AGI027RA development kit comes with a single 16GB RDIMM module. If you would like to use only the single RDIMM module that comes with the development kit, you must build the OFS Shell design with the RDIMM configuration. Refer to Section 4.7.3 of the [FPGA Interface Manager Developer Guide for Open FPGA Stack: Agilex™ 7 FPGA I-Series Development Kit (2x R-Tile and 1xF-Tile) PCIe Attach](https://ofs.github.io/ofs-2024.3-1/hw/iseries_devkit/dev_guides/fim_dev/ug_ofs_iseries_dk_fim_dev/) for step-by-step instructions |
+| - | OneAPI has not been validated with this release. If you wish to use OneAPI, please use OFS Release 2024.2-1 |
+| - | When using the PF/VF configuration tool to reconfigure the PF/VF MUX, you must keep at least:</br>&nbsp;&nbsp;&nbsp;&nbsp;&bull; One (1) physical function and one (1) virtual function on PF0.</br>&nbsp;&nbsp;&nbsp;&nbsp;OR</br>&nbsp;&nbsp;&nbsp;&nbsp;&bull; Two (2) physical functions.</br> All other PFs and VFs can be removed if desired. |
+| 15012246661 | When enabling cable hotplug IP and ANLT, the E-tile recipe resulting from the ANLT initialization flow is over-written by the hotplug initialization flow. If you require a custom ANLT recipe, then you cannot use hotplug at this time. You can disable hotplug by writing 1 to index-0 of HSSI Hotplug Debug Control Register (offset 0x600B4) followed by a port level reset or analog reset. |
+| 15012406417 | If using the Intel® FPGA SmartNIC N6001-PL Platform (SKU2) for evaluation of the OFS release, ensure DIP Switch SW1.4 on the board is set to convey the correct board type or the OPAE commands could display invalid temperature values for an Intel<sup>&reg;</sup> NIC E810 (SKU1) which is not populated on the SKU2 board.  For Intel® FPGA SmartNIC N6001-PL Platform (SKU2), SW1.4 must be off (pointing towards the PCIe goldfinger).  Note that a BMC reset is required if you must flip the switch to the correct setting. |
+| 14020225084 | The regress_run.py simulation script runs a superset of simulation tests for all configurations available in the ofs-agx7-pcie-attach repository.  You can customize the regress_run.py script to run only the tests applicable to your design by using the -k list option in the script which directs the regression to only pick up tests you have listed in your list.txt file.  Please refer to the FPGA Interface Manager Development Guide for more details. |
+
+
+=== SOURCE [10] ===
+[
+  {
+    "name": "ofs-2025.1-1",
+    "commit": {
+      "sha": "599ac052eafbc9cede22561c099233ae4a54cb7d",
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/599ac052eafbc9cede22561c099233ae4a54cb7d"
+    }
+  },
+  {
+    "name": "ofs-2024.3-1",
+    "commit": {
+      "sha": "e34164bb2ccfbc2203747ee0c69633685c04b240",
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/e34164bb2ccfbc2203747ee0c69633685c04b240"
+    }
+  },
+  {
+    "name": "ofs-2024.2-1",
+    "commit": {
+      "sha": "ab9d0728a68caa353d720c837237f54eb88db6f8",
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/ab9d0728a68caa353d720c837237f54eb88db6f8"
+    }
+  },
+  {
+    "name": "ofs-2024.1-1",
+    "commit": {
+      "sha": "c8e9cc1a3f0a62d6c427a4b301eb86759b7d202b",
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/c8e9cc1a3f0a62d6c427a4b301eb86759b7d202b"
+    }
+  },
+  {
+    "name": "ofs-2023.3-2",
+    "commit": {
+      "sha": "98320089a44e48fc3db375ea5052bd85a93e8083",
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/98320089a44e48fc3db375ea5052bd85a93e8083"
+    }
+  },
+  {
+    "name": "ofs-2023.3-1",
+    "commit": {
+      "sha": "01cd11c5ddb5c90e0886ec4fde29c1479405ff0c",
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/01cd11c5ddb5c90e0886ec4fde29c1479405ff0c"
+    }
+  },
+  {
+    "name": "ofs-2023.2-1",
+    "commit": {
+      "sha": "489c64187887fc7a58c5d04c3be968bef2bde8c6",
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/489c64187887fc7a58c5d04c3be968bef2bde8c6"
+    }
+  },
+  {
+    "name": "ofs-2023.1-1",
+    "commit": {
+      "sha": "45a7dfbcdac16131aabf392457cfbbd51631888e",
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/45a7dfbcdac16131aabf392457cfbbd51631888e"
+    }
+  }
+]
+
+=== SOURCE [12] ===
+[
+  {
+    "name": "ofs-fim-common-1.1.0-rc2",
+    "commit": {
+      "sha": "6771509df4ff00ecf0e6e2f4150075ea36e3bd82",
+      "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/6771509df4ff00ecf0e6e2f4150075ea36e3bd82"
+    }
+  },
+  {
+    "name": "ofs-fim-common-1.0.0-rc3",
+    "commit": {
+      "sha": "1803a2b6e2b4c60ffdb9ea97800d72e5dd56e23e",
+      "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/1803a2b6e2b4c60ffdb9ea97800d72e5dd56e23e"
+    }
+  },
+  {
+    "name": "ofs-2025.1-1",
+    "commit": {
+      "sha": "34a8540697fdf3d66fbcaa263fa037bae17cc32f",
+      "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/34a8540697fdf3d66fbcaa263fa037bae17cc32f"
+    }
+  },
+  {
+    "name": "ofs-2024.3-1",
+    "commit": {
+      "sha": "e8e9490d060d1a19945a4a305d27a91a845a7b68",
+      "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/e8e9490d060d1a19945a4a305d27a91a845a7b68"
+    }
+  },
+  {
+    "name": "ofs-2024.2-1",
+    "commit": {
+      "sha": "7b2088f82c930fa733ff0b36596b786821276a79",
+      "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/7b2088f82c930fa733ff0b36596b786821276a79"
+    }
+  },
+  {
+    "name": "ofs-2024.1-1",
+    "commit": {
+      "sha": "374fd3ccb014e31c0b1fad207b1299e8081e4fd9",
+      "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/374fd3ccb014e31c0b1fad207b1299e8081e4fd9"
+    }
+  },
+  {
+    "name": "ofs-2023.3-2",
+    "commit": {
+      "sha": "a065e05577b35b7c36be2dfd04ae907a38899bf4",
+      "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/a065e05577b35b7c36be2dfd04ae907a38899bf4"
+    }
+  },
+  {
+    "name": "ofs-2023.3-1",
+    "commit": {
+      "sha": "5bd3128a97da5d3ca8cb7b2c1e118732e4925798",
+      "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/5bd3128a97da5d3ca8cb7b2c1e118732e4925798"
+    }
+  },
+  {
+    "name": "ofs-2023.2-1",
+    "commit": {
+      "sha": "93b6cb4bff66e83e3b157fe0e6b9bda93224e0eb",
+      "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/93b6cb4bff66e83e3b157fe0e6b9bda93224e0eb"
+    }
+  },
+  {
+    "name": "ofs-2023.1-1",
+    "commit": {
+      "sha": "ea585a4f48d50faf3ae7ecfbec82525a8d22c730",
+      "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/ea585a4f48d50faf3ae7ecfbec82525a8d22c730"
+    }
+  }
+]
+
+=== SOURCE [14] ===
+[
+  {
+    "name": "ofs-2024.3-1",
+    "commit": {
+      "sha": "85b5c4da78da6912ea43b5ec96fdb203e0a0acdf",
+      "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/85b5c4da78da6912ea43b5ec96fdb203e0a0acdf"
+    }
+  },
+  {
+    "name": "ofs-2024.2-1",
+    "commit": {
+      "sha": "e0251f7d00f37176df7f63c15fd9ad4ab609137e",
+      "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/e0251f7d00f37176df7f63c15fd9ad4ab609137e"
+    }
+  },
+  {
+    "name": "ofs-2024.1-1",
+    "commit": {
+      "sha": "6e319451b7594b502ff88ac202d5f0bfc25e662b",
+      "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/6e319451b7594b502ff88ac202d5f0bfc25e662b"
+    }
+  },
+  {
+    "name": "ofs-2023.3-2",
+    "commit": {
+      "sha": "5e4ccb2ee4da258edbadd40e57964b7d3478a46a",
+      "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/5e4ccb2ee4da258edbadd40e57964b7d3478a46a"
+    }
+  },
+  {
+    "name": "ofs-2023.3-1",
+    "commit": {
+      "sha": "167a7be36d2f3421452cbbf7ebf5bf0cee6e7a99",
+      "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/167a7be36d2f3421452cbbf7ebf5bf0cee6e7a99"
+    }
+  },
+  {
+    "name": "ofs-2023.2-1",
+    "commit": {
+      "sha": "4bd1046c98608e55e5a189ad99bbdf3b8fc58757",
+      "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/4bd1046c98608e55e5a189ad99bbdf3b8fc58757"
+    }
+  },
+  {
+    "name": "ofs-2023.1-1",
+    "commit": {
+      "sha": "f4fa3e03f00d6233f9bb73047f5cf200b1a60261",
+      "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/f4fa3e03f00d6233f9bb73047f5cf200b1a60261"
+    }
+  },
+  {
+    "name": "1.0.0-rc3",
+    "commit": {
+      "sha": "6939d262b35a54740708ed086e2f09c7d18ef9f8",
+      "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/6939d262b35a54740708ed086e2f09c7d18ef9f8"
+    }
+  }
+]
+
+=== SOURCE [15] ===
+[
+  {
+    "name": "release/ofs-2023.1",
+    "commit": {
+      "sha": "bfd2ba01d05553f0ec2ea179c7efd0d7341585b2",
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/bfd2ba01d05553f0ec2ea179c7efd0d7341585b2"
+    },
+    "protected": true
+  },
+  {
+    "name": "release/ofs-2023.2",
+    "commit": {
+      "sha": "489c64187887fc7a58c5d04c3be968bef2bde8c6",
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/489c64187887fc7a58c5d04c3be968bef2bde8c6"
+    },
+    "protected": true
+  },
+  {
+    "name": "release/ofs-2023.3",
+    "commit": {
+      "sha": "98320089a44e48fc3db375ea5052bd85a93e8083",
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/98320089a44e48fc3db375ea5052bd85a93e8083"
+    },
+    "protected": true
+  },
+  {
+    "name": "release/ofs-2024.1",
+    "commit": {
+      "sha": "c8e9cc1a3f0a62d6c427a4b301eb86759b7d202b",
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/c8e9cc1a3f0a62d6c427a4b301eb86759b7d202b"
+    },
+    "protected": true
+  },
+  {
+    "name": "release/ofs-2024.2",
+    "commit": {
+      "sha": "ab9d0728a68caa353d720c837237f54eb88db6f8",
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/ab9d0728a68caa353d720c837237f54eb88db6f8"
+    },
+    "protected": true
+  },
+  {
+    "name": "release/ofs-2024.3",
+    "commit": {
+      "sha": "e34164bb2ccfbc2203747ee0c69633685c04b240",
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/e34164bb2ccfbc2203747ee0c69633685c04b240"
+    },
+    "protected": true
+  },
+  {
+    "name": "release/ofs-2025.1",
+    "commit": {
+      "sha": "599ac052eafbc9cede22561c099233ae4a54cb7d",
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits/599ac052eafbc9cede22561c099233ae4a54cb7d"
+    },
+    "protected": true
+  }
+]
+
+=== SOURCE [16] ===
+[
+  {
+    "name": "release/ofs-2023.1",
+    "commit": {
+      "sha": "ce429bd3bf351996e906e5ea129fdc3a4339d666",
+      "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/ce429bd3bf351996e906e5ea129fdc3a4339d666"
+    },
+    "protected": true
+  },
+  {
+    "name": "release/ofs-2023.2",
+    "commit": {
+      "sha": "93b6cb4bff66e83e3b157fe0e6b9bda93224e0eb",
+      "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/93b6cb4bff66e83e3b157fe0e6b9bda93224e0eb"
+    },
+    "protected": true
+  },
+  {
+    "name": "release/ofs-2023.3",
+    "commit": {
+      "sha": "a065e05577b35b7c36be2dfd04ae907a38899bf4",
+      "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/a065e05577b35b7c36be2dfd04ae907a38899bf4"
+    },
+    "protected": true
+  },
+  {
+    "name": "release/ofs-2024.1",
+    "commit": {
+      "sha": "374fd3ccb014e31c0b1fad207b1299e8081e4fd9",
+      "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/374fd3ccb014e31c0b1fad207b1299e8081e4fd9"
+    },
+    "protected": true
+  },
+  {
+    "name": "release/ofs-2024.2",
+    "commit": {
+      "sha": "7b2088f82c930fa733ff0b36596b786821276a79",
+      "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/7b2088f82c930fa733ff0b36596b786821276a79"
+    },
+    "protected": true
+  },
+  {
+    "name": "release/ofs-2024.3",
+    "commit": {
+      "sha": "e8e9490d060d1a19945a4a305d27a91a845a7b68",
+      "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/e8e9490d060d1a19945a4a305d27a91a845a7b68"
+    },
+    "protected": true
+  },
+  {
+    "name": "release/ofs-2025.1",
+    "commit": {
+      "sha": "34a8540697fdf3d66fbcaa263fa037bae17cc32f",
+      "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/34a8540697fdf3d66fbcaa263fa037bae17cc32f"
+    },
+    "protected": true
+  },
+  {
+    "name": "release/1.0.x",
+    "commit": {
+      "sha": "1803a2b6e2b4c60ffdb9ea97800d72e5dd56e23e",
+      "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/1803a2b6e2b4c60ffdb9ea97800d72e5dd56e23e"
+    },
+    "protected": true
+  },
+  {
+    "name": "release/1.1.x",
+    "commit": {
+      "sha": "6771509df4ff00ecf0e6e2f4150075ea36e3bd82",
+      "url": "https://api.github.com/repos/OFS/ofs-fim-common/commits/6771509df4ff00ecf0e6e2f4150075ea36e3bd82"
+    },
+    "protected": true
+  }
+]
+
+=== SOURCE [17] ===
+[
+  {
+    "name": "aditikum/adding-PR-template",
+    "commit": {
+      "sha": "dcc1225f34c21483ad60c1250bfdf254b32b3f76",
+      "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/dcc1225f34c21483ad60c1250bfdf254b32b3f76"
+    },
+    "protected": false
+  },
+  {
+    "name": "enable_hbm_yuan",
+    "commit": {
+      "sha": "eea028a32c81956bb34dd94459bc12a44cac1151",
+      "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/eea028a32c81956bb34dd94459bc12a44cac1151"
+    },
+    "protected": false
+  },
+  {
+    "name": "master",
+    "commit": {
+      "sha": "3c21189e728009d4c492fa2be54c0ab1008b06dc",
+      "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/3c21189e728009d4c492fa2be54c0ab1008b06dc"
+    },
+    "protected": true
+  },
+  {
+    "name": "mcadler/host_chan_err_values",
+    "commit": {
+      "sha": "057eaf5400231ba3fb2bdbd913f003e0b7d935f3",
+      "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/057eaf5400231ba3fb2bdbd913f003e0b7d935f3"
+    },
+    "protected": false
+  },
+  {
+    "name": "mcadler/link2x_proto",
+    "commit": {
+      "sha": "d3aa925afa015246ed7ebd34f4999e575efe6e9a",
+      "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/d3aa925afa015246ed7ebd34f4999e575efe6e9a"
+    },
+    "protected": false
+  },
+  {
+    "name": "mcadler/pf_vf_idx",
+    "commit": {
+      "sha": "e35311cbfda372ab1e56d0b7e8d7142842ae9cd5",
+      "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/e35311cbfda372ab1e56d0b7e8d7142842ae9cd5"
+    },
+    "protected": false
+  },
+  {
+    "name": "nahidhas/update_pim_freeze",
+    "commit": {
+      "sha": "404bfc3c14c9ebe60e7a5c6f9b369402d8889ebb",
+      "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/404bfc3c14c9ebe60e7a5c6f9b369402d8889ebb"
+    },
+    "protected": false
+  },
+  {
+    "name": "nahidhas/update_sdl",
+    "commit": {
+      "sha": "a521c0453ee1d1c0fd2e63a336853b37d4b96727",
+      "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits/a521c0453ee1d1c0fd2e63a336853b37d4b96727"
+    },
+    "protected": false
+  }
+]
+
+=== SOURCE [18] ===
+Merge pull request #27 from OFS/nahidhas/update_pim_freeze
+
+adding PR freeze to pr wrapper
+@@ -29,6 +29,8 @@ interface ofs_plat_if
+     // Required: active low soft reset (clocked by pClk). This reset
+     // is identical to clocks.pClk.reset_n.
+     logic softReset_n;
++    // Optional: if AFU needs to use the PR Freeze signal from FIM FSM
++    logic pr_freeze_to_afu_in;
+     // Required: AFU power state (clocked by pClk)
+     t_ofs_plat_power_state pwrState;
+ 
+
+=== SOURCE [19] ===
+Merge pull request #32 from OFS/update_pr_freeze
+
+Fixing PR freeze bus
+@@ -52,6 +52,7 @@ module port_afu_instances
+    // port_rst_n at this point also includes rst_n. The two are combined
+    // in afu_main().
+    input  logic [PG_NUM_PORTS-1:0] port_rst_n,
++   input logic pr_freeze_to_afu,
+ 
+    // PCIe A ports are the standard TLP channels. All host responses
+    // arrive on the RX A port.
+@@ -49,6 +49,7 @@ module port_afu_instances
+    input  logic uclk_usr_div2,
+ 
+    input  logic rst_n,
++   input logic pr_freeze_to_afu,
+    // port_rst_n at this point also includes rst_n. The two are combined
+    // in afu_main().
+    input  logic [PG_NUM_PORTS-1:0] port_rst_n,
+@@ -47,6 +47,7 @@ module afu_main
+    input  logic uclk_usr_div2,
+ 
+    input  logic rst_n,
++   input  logic pr_freeze_to_afu,
+ `ifdef PLATFORM_FPGA_FAMILY_S10
+    input  logic port_rst_n [PG_NUM_PORTS-1:0],
+    input  logic rst_n_100M,
+@@ -36,6 +36,7 @@ module port_afu_instances
+    input  logic uclk_usr_div2,
+ 
+    input  logic rst_n,
++   input  logic pr_freeze_to_afu,
+    // port_rst_n at this point also includes rst_n. The two are combined
+    // in afu_main().
+    input  logic [PG_NUM_PORTS-1:0] port_rst_n,
+
+=== SOURCE [20] ===
+{
+  "sha": "599ac052eafbc9cede22561c099233ae4a54cb7d",
+  "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/git/trees/599ac052eafbc9cede22561c099233ae4a54cb7d",
+  "tree": [
+    {
+      "path": ".gitattributes",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c18a0216334a21d9813afc0806b90b2127dca0ad",
+      "size": 167,
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/git/blobs/c18a0216334a21d9813afc0806b90b2127dca0ad"
+    },
+    {
+      "path": ".gitmodules",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e06ae837611adf96fbd8d956fafc2a145d2f8e5b",
+      "size": 92,
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/git/blobs/e06ae837611adf96fbd8d956fafc2a145d2f8e5b"
+    },
+    {
+      "path": "LICENSE.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "450d3bcd3e91d3a57d9d55b8380b5f6d4b63e9ff",
+      "size": 1069,
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/git/blobs/450d3bcd3e91d3a57d9d55b8380b5f6d4b63e9ff"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9f470cde7a90da33e63894ade5ac3ef205d2f25e",
+      "size": 6385,
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/git/blobs/9f470cde7a90da33e63894ade5ac3ef205d2f25e"
+    },
+    {
+      "path": "SECURITY.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8cb95e2091ad0a3aa112c669fbcefd310c1926ec",
+      "size": 284,
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/git/blobs/8cb95e2091ad0a3aa112c669fbcefd310c1926ec"
+    },
+    {
+      "path": "ipss",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "86798309ca67f671471f27ddcc7d2b50284d9699",
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/git/trees/86798309ca67f671471f27ddcc7d2b50284d9699"
+    },
+    {
+      "path": "license",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "367ba44f299d115a27ec5c7ab50c9a7c7062271e",
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/git/trees/367ba44f299d115a27ec5c7ab50c9a7c7062271e"
+    },
+    {
+      "path": "ofs-common",
+      "mode": "160000",
+      "type": "commit",
+      "sha": "34a8540697fdf3d66fbcaa263fa037bae17cc32f"
+    },
+    {
+      "path": "sim",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "d6b91e1140275c1708517327afce79e1daa204a0",
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/git/trees/d6b91e1140275c1708517327afce79e1daa204a0"
+    },
+    {
+      "path": "src",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "8e2f8cd61c03221b940b8e3b5609b8a27f9d8931",
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/git/trees/8e2f8cd61c03221b940b8e3b5609b8a27f9d8931"
+    },
+    {
+      "path": "syn",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "e28aa874de26850b1b2b3de91d3024debe28beeb",
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/git/trees/e28aa874de26850b1b2b3de91d3024debe28beeb"
+    },
+    {
+      "path": "tools",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "daf00707c9b836a260074a5a0f68195356daed3d",
+      "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/git/trees/daf00707c9b836a260074a5a0f68195356daed3d"
+    }
+  ],
+  "truncated": false
+}
+
+=== SOURCE [24] ===
+# Copyright (C) 2020 Intel Corporation.
+# SPDX-License-Identifier: MIT
+
+#
+# Description
+#-----------------------------------------------------------------------------
+#
+#   Platform top level SDC 
+#
+#-----------------------------------------------------------------------------
+
+set file_path [file normalize [info script]]
+set file_dir [file dirname $file_path]
+
+source $file_dir/top_sdc_util.tcl
+
+#**************************************************************
+# Time Information
+#**************************************************************
+set_time_format -unit ns -decimal_places 3
+
+#**************************************************************
+# Create Clock
+#**************************************************************
+derive_clock_uncertainty
+
+create_clock -name SYS_REFCLK             -period  10.000 -waveform {0.000  5.000} [get_ports {SYS_REFCLK}]
+create_clock -name PCIE_REFCLK0           -period  10.000 -waveform {0.000  5.000} [get_ports {PCIE_REFCLK0}]
+create_clock -name PCIE_REFCLK1           -period  10.000 -waveform {0.000  5.000} [get_ports {PCIE_REFCLK1}]
+create_clock -name {altera_reserved_tck}  -period 100.000 -waveform {0.000 50.000} [get_ports {altera_reserved_tck}]
+
+#**************************************************************
+# Create Generated Clock
+#**************************************************************
+create_generated_clock -add -name pcie_wrapper|pcie_ss.top|*|pcie_ss|avmm_clock0 \
+                       -source      [get_pins {pcie_wrapper|pcie_ss.top|*|pcie_ss|u_pciess_p0|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst|inclk}] \
+                       -divide_by 2 [get_pins {pcie_wrapper|pcie_ss.top|*|pcie_ss|u_pciess_p0|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst|clock_div2}]
+
+
+#**************************************************************
+# Set Clock Groups
+#**************************************************************
+set_clock_groups -asynchronous -group {altera_reserved_tck}
+set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_sys}
+set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_sys} -group { pcie_wrapper|pcie_ss.top|*|pcie_ss|*|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15}
+set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m } -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|*|intel_pcie_*_ast_qhip|rx_clkout|ch5}
+set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m } -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|*|intel_pcie_rtile_ast_qhip_pld_clkout}
+set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m } -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|*|intel_pcie_rtile_ast_qhip_pld_clkout_slow}
+set_clock_groups -asynchronous -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|avmm_clock0} -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|*|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15}
+set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m} -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|*|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15}
+set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m} -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|avmm_clock0}
+set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m} -group {local_mem_wrapper|mem_ss_top|mem_ss_inst|mem_ss|emif_*|emif_*_phy_clk*}
+
+#**************************************************************
+# Set Multicycle Path
+#**************************************************************
+set_multicycle_path -setup -end -from [get_clocks {*avmm_clock0}] -to [get_clocks {sys_pll|iopll_0_clk_100m}] 2
+set_multicycle_path -hold -end -from [get_clocks {*avmm_clock0}] -to [get_clocks {sys_pll|iopll_0_clk_100m}] 1
+set_multicycle_path -setup -start -from [get_clocks {sys_pll|iopll_0_clk_100m}] -to [get_clocks {*avmm_clock0}] 2
+set_multicycle_path -hold -start -from [get_clocks {sys_pll|iopll_0_clk_100m}] -to [get_clocks {*avmm_clock0}] 1
+
+#**************************************************************
+# Set False Path
+#**************************************************************
+
+#**************************************************************
+# Set Maximum Delay
+# Set Minimum Delay
+#**************************************************************
+#set qsfp_clk sys_pll|iopll_0_clk_100m
+
+#set_output_delay -max 0.1 -source_latency_included -clock $qsfp_clk [get_ports {qsfpa_resetn}]
+#set_output_delay -min 0  -source_latency_included -clock $qsfp_clk [get_ports {qsfpa_resetn}]
+
+#set_output_delay -max 0.1 -source_latency_included -clock $qsfp_clk [get_ports {qsfpa_modeseln}]
+#set_output_delay -min 0  -source_latency_included -clock $qsfp_clk [get_ports {qsfpa_modeseln}]
+
+#set_output_delay -max 0.1 -source_latency_included -clock $qsfp_clk [get_ports {qsfpa_lpmode}]
+#set_output_delay -min 0  -source_latency_included -clock $qsfp_clk [get_ports {qsfpa_lpmode}]
+
+#set_input_delay -max 0.1 -source_latency_included -clock $qsfp_clk [get_ports {qsfpa_modprsln}]
+#set_input_delay -min 0  -source_latency_included -clock $qsfp_clk [get_ports {qsfpa_modprsln}]
+
+#set_input_delay -max 0.1 -source_latency_included -clock $qsfp_clk [get_ports {qsfpa_intn}]
+#set_input_delay -min 0  -source_latency_included -clock $qsfp_clk [get_ports {qsfpa_intn}]
+
+
+#set_output_delay -max 0.1 -source_latency_included -clock $qsfp_clk [get_ports {qsfpb_resetn}]
+#set_output_delay -min 0  -source_latency_included -clock $qsfp_clk [get_ports {qsfpb_resetn}]
+
+#set_output_delay -max 0.1 -source_latency_included -clock $qsfp_clk [get_ports {qsfpb_modeseln}]
+#set_output_delay -min 0  -source_latency_included -clock $qsfp_clk [get_ports {qsfpb_modeseln}]
+
+#set_output_delay -max 0.1 -source_latency_included -clock $qsfp_clk [get_ports {qsfpb_lpmode}]
+#set_output_delay -min 0  -source_latency_included -clock $qsfp_clk [get_ports {qsfpb_lpmode}]
+
+#set_input_delay -max 0.1 -source_latency_included -clock $qsfp_clk [get_ports {qsfpb_modprsln}]
+#set_input_delay -min 0  -source_latency_included -clock $qsfp_clk [get_ports {qsfpb_modprsln}]
+
+#set_input_delay -max 0.1 -source_latency_included -clock $qsfp_clk [get_ports {qsfpb_intn}]
+#set_input_delay -min 0  -source_latency_included -clock $qsfp_clk [get_ports {qsfpb_intn}]
+
+
+
+#---------------------------------------------
+# CDC constraints for reset synchronizers
+#---------------------------------------------
+add_reset_sync_sdc {PCIE_RST_CTRL[*].rst_ctrl|rst_clk100m_resync|resync_chains[0].synchronizer_nocut|*|clrn}	
+add_reset_sync_sdc {PCIE_RST_CTRL[*].rst_ctrl|rst_clk50m_resync|resync_chains[0].synchronizer_nocut|*|clrn}	
+add_reset_sync_sdc {PCIE_RST_CTRL[*].rst_ctrl|rst_clk_sys_resync|resync_chains[0].synchronizer_nocut|*|clrn}	
+add_reset_sync_sdc {PCIE_RST_CTRL[*].rst_ctrl|pwr_good_n_resync|resync_chains[0].synchronizer_nocut|*|clrn}
+add_reset_sync_sdc {PCIE_RST_CTRL[*].rst_ctrl|pwr_good_csr_clk_n_resync|resync_chains[0].synchronizer_nocut|*|clrn}
+add_reset_sync_sdc {PCIE_RST_CTRL[*].rst_ctrl|rst_in_resync|resync_chains[0].synchronizer_nocut|*|clrn}
+add_reset_sync_sdc {PCIE_RST_CTRL[*].rst_ctrl|rst_warm_in_resync|resync_chains[0].synchronizer_nocut*|*|clrn}
+add_reset_sync_sdc {PCIE_RST_CTRL[*].rst_ctrl|rst_clk_ptp_slv_resync|resync_chains[0].synchronizer_nocut*|*|clrn}
+
+
+add_reset_sync_sdc {afu_top|flr_rst_mgr|*pf_flr_resync*|resync_chains[0].synchronizer_nocut|*|clrn}
+add_reset_sync_sdc {afu_top|flr_rst_mgr|*vf_flr_resync*|resync_chains[0].synchronizer_nocut|*|clrn}
+add_reset_sync_sdc {afu_top|st2mm|tx_cdc_fifo|fifo|rst_rclk_resync|resync_chains[0].synchronizer_nocut|*|clrn}
+add_reset_sync_sdc {afu_top|st2mm|tx_cdc_fifo|fifo|dcfifo|dcfifo_component|auto_generated|rdaclr|*|clrn}
+add_reset_sync_sdc {afu_top|st2mm|rx_cdc_fifo|fifo|rst_rclk_resync|resync_chains[0].synchronizer_nocut|*|clrn}
+add_reset_sync_sdc {afu_top|st2mm|rx_cdc_fifo|fifo|dcfifo|dcfifo_component|auto_generated|rdaclr|*|clrn}
+
+add_reset_sync_sdc {mem_ss_top|rst_hs_resync|resync_chains[*].*|*|clrn}
+
+#---------------------------------------------
+# CDC constraints for synchronizers
+#---------------------------------------------
+add_sync_sdc {PCIE_RST_CTRL[*].rst_ctrl|pcie_cold_rst_ack_sync|resync_chains[*].synchronizer_nocut|din_s1}
+add_sync_sdc {afu_top|flr_rst_ctrl|flr_ack_resync|resync_chains[*].synchronizer_nocut|din_s1}
+add_sync_sdc {afu_top|flr_rst_ctrl|clr_ack_resync|resync_chains[*].synchronizer_nocut|din_s1}
+
+add_sync_sdc {mem_ss_top|mem_ss_cal_success_resync|resync_chains[*].synchronizer_nocut|din_s1}
+add_sync_sdc {mem_ss_top|mem_ss_cal_fail_resync|resync_chains[*].synchronizer_nocut|din_s1}
+
+#---------------------------------------------
+# Multicycle path 
+#---------------------------------------------
+   
+#**************************************************************
+# Set Input Delay
+#**************************************************************
+
+#**************************************************************
+# Set Output Delay
+#**************************************************************
+
+
+
+
+=== SOURCE [26] ===
+[submodule "ofs-common"]
+	url = https://github.com/OFS/ofs-fim-common.git
+	path = ofs-common
+
+=== SOURCE [27] ===
+// Copyright (C) 2022 Intel Corporation
+// SPDX-License-Identifier: MIT
+// CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+// SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+// INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+// CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+// POSSIBILITY OF SUCH DAMAGE.
+
+`include "ofs_plat_if.vh"
+
+//
+// ofs_plat_if is the top-level wrapper around all interfaces coming into the
+// AFU PR region.
+//
+// Note that ofs_plat_if and the sub-interfaces it contains instantiate
+// properly configured types with their default parameters. This behavior
+// is crucial in order to enable platform-independent AFUs.
+//
+
+interface ofs_plat_if
+  #(
+    parameter ENABLE_LOG = 0
+    );
+
+    // Required: platform top-level clocks
+    wire t_ofs_plat_std_clocks clocks;
+
+    // Required: active low soft reset (clocked by pClk). This reset
+    // is identical to clocks.pClk.reset_n.
+    logic softReset_n;
+    // Optional: if AFU needs to use the PR Freeze signal from FIM FSM
+    logic pr_freeze_to_afu_in;
+    // Required: AFU power state (clocked by pClk)
+    t_ofs_plat_power_state pwrState;
+
+    // Each sub-interface is a wrapper around a single vector of ports or banks.
+    // Each port or bank in a vector must be the same configuration. Namely,
+    // multiple banks within a local memory interface must all have the same
+    // width and depth. If a platform has more than one configuration of a
+    // class, e.g. both DDR and static RAM, those should be instantiated here
+    // as separate interfaces.
+    //==
+    //== Top-level interface classes will be emitted here, using the template
+    //== between instances of @OFS_PLAT_IF_TEMPLATE@ for each class and group
+    //== number.
+    //==
+    @OFS_PLAT_IF_TEMPLATE@
+
+    ofs_plat_@class@@group@_fiu_if
+      #(
+        .ENABLE_LOG(ENABLE_LOG)
+        )
+        @class@@group@();
+    @OFS_PLAT_IF_TEMPLATE@
+
+endinterface // ofs_plat_if
+
+
+=== SOURCE [29] ===
+# Tutorial
+
+This tree contains [sample workloads](afu_types/), typically written as small examples of specific concepts. The tutorial progresses through defining RTL sources, configuring for simulation or synthesis, and connecting to device interfaces. The designs are deliberately simple, intended to demonstrate simulation, synthesis and the Platform Interface Manager without the details of an actual accelerator getting in the way.
+
+All the designs may either be simulated with ASE or synthesized for FPGA hardware.
+
+The tutorial documentation is written in Markdown. We suggest you pull a local copy of the tutorial in order to compile the examples and that you read the tutorial's documentation with a browser.
+
+## Requirements
+
+All samples depend on proper configuration of OPAE and the hardware build environments.
+
+### Partial Reconfiguration Build Template \(__OPAE\_PLATFORM\_ROOT__\)
+
+The tutorial examples depend on an out-of-tree partial reconfiguration \(PR\) build environment for simulation with ASE and synthesis with Quartus. The tutorial remains relevant even if your target FIM does not use PR. The module hierarchy and ports passed to AFUs are independent of whether there also happens to be a PR boundary around the OFS afu\_top\(\). All of the AFU RTL examples here can be built into OFS FIMs without partial reconfiguration. We use PR in order to simplify the build environment and to focus the tutorial on AFU development without the complication of configuring a full FIM. In addition, ASE configuration scripts currently depend on the PR flow. If you are developing a FIM without PR, we suggest that you pick a different base FIM for working through the tutorial and then switch to your non-PR FIM.
+
+Older OPAE-based releases for PAC cards and the Broadwell integrated Xeon+FPGA that predate OFS may also be used. However, they must be upgraded to a new version of the PIM. A set of update scripts is provided in the [ofs-platform-afu-bbb](https://github.com/OFS/ofs-platform-afu-bbb) repository. The one-time script, [plat\_if\_release/update\_release.sh](https://github.com/OFS/ofs-platform-afu-bbb/blob/master/plat_if_release/update_release.sh), must be run in order to configure both simulation and Quartus environments with the PIM. PAC card releases are equivalent to OFS out-of-tree PR build environments.
+
+In OFS, the out-of-tree build environment can be generated automatically at the end of a FIM compilation by passing the "&#8209;p" switch to ./syn/build_top. With "&#8209;p" set, the tree is stored in \<work dir\>/pr\_build\_template. The pr\_build\_template tree is relocatable and may be moved anywhere in the filesystem. Setting "&#8209;p" runs ./syn/common/scripts/generate\_pr\_release.sh at the end of the FIM build. This script may also be invoked by hand on a completed FIM build's work tree.
+
+__Set the OPAE\_PLATFORM\_ROOT environment variable to the path of an OFS pr\_build\_template tree or to the root of an updated PAC or Xeon+FPGA release.__ You can determine whether OPAE\_PLATFORM\_ROOT points to a valid release tree by confirming that ${OPAE\_PLATFORM\_ROOT}/hw/lib/build/platform/ofs\_plat\_if exists.
+
+### OPAE Software Environment
+
+1. Install the OPAE SDK from packages shipped with a board release or from source, by following the [standard instructions](https://opae.github.io/).
+
+2. If OPAE is installed to standard system directories it may already be found on C and C++ header and library search paths. If not, the installation directories must be added explicitly:
+
+   - Header files from OPAE must either be on the default compiler search paths or on both __C\_INCLUDE\_PATH__ and __CPLUS\_INCLUDE\_PATH__.
+
+   - OPAE libraries must either be on the default linker search paths or on both __LIBRARY\_PATH__ and __LD\_LIBRARY\_PATH__.
+
+3. Install [ASE, the OPAE RTL simulator](https://github.com/OPAE/opae-sim). With the OPAE SDK already installed, build and add ASE to the OPAE tree with:
+
+    ```sh
+    cd opae-sim
+    mkdir build
+    cd build
+    # Set -DCMAKE_INSTALL_PREFIX=<dir> if OPAE is installed in a non-standard location
+    cmake ..
+
+    # This might need to be run as root if OPAE was installed as root
+    make install
+    ```
+
+The tutorial begins with a discussion of [AFU design pattern choices](afu_types).
+
+
+=== SOURCE [35] ===
+{
+  "ref": "refs/tags/ofs-2025.1-1",
+  "node_id": "REF_kwDOJYAmXLZyZWZzL3RhZ3Mvb2ZzLTIwMjUuMS0x",
+  "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/git/refs/tags/ofs-2025.1-1",
+  "object": {
+    "sha": "599ac052eafbc9cede22561c099233ae4a54cb7d",
+    "type": "commit",
+    "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/git/commits/599ac052eafbc9cede22561c099233ae4a54cb7d"
+  }
+}
+
+=== SOURCE [36] ===
+{
+  "ref": "refs/tags/ofs-2025.1-1",
+  "node_id": "REF_kwDOIY-XobZyZWZzL3RhZ3Mvb2ZzLTIwMjUuMS0x",
+  "url": "https://api.github.com/repos/OFS/ofs-fim-common/git/refs/tags/ofs-2025.1-1",
+  "object": {
+    "sha": "34a8540697fdf3d66fbcaa263fa037bae17cc32f",
+    "type": "commit",
+    "url": "https://api.github.com/repos/OFS/ofs-fim-common/git/commits/34a8540697fdf3d66fbcaa263fa037bae17cc32f"
+  }
+}
+
+=== SOURCE [37] ===
+Merge pull request #31 from OFS/update_hybrid_port
+
+updating hybrid afu afu_main.sv to add pr_freeze signals required for…
+@@ -52,6 +52,7 @@ module afu_main
+    input  logic rst_n_100M,
+ `else
+    input  logic [PG_NUM_PORTS-1:0] port_rst_n,
++   input  logic pr_freeze_to_afu,
+ `endif
+ 
+    // PCIe A ports are the standard TLP channels. All host responses
+@@ -52,6 +52,7 @@ module afu_main
+    input  logic rst_n_100M,
+ `else
+    input  logic [PG_NUM_PORTS-1:0] port_rst_n,
++   input  logic pr_freeze_to_afu,
+ `endif
+ 
+    // PCIe A ports are the standard TLP channels. All host responses
+@@ -52,6 +52,7 @@ module port_afu_instances
+    // port_rst_n at this point also includes rst_n. The two are combined
+    // in afu_main().
+    input  logic [PG_NUM_PORTS-1:0] port_rst_n,
++   input  logic pr_freeze_to_afu,
+ 
+    // PCIe A ports are the standard TLP channels. All host responses
+    // arrive on the RX A port.
+
+=== SOURCE [38] ===
+@@ -32,23 +32,23 @@ create_clock -name {altera_reserved_tck}  -period 100.000 -waveform {0.000 50.00
+ #**************************************************************
+ # Create Generated Clock
+ #**************************************************************
+-create_generated_clock -add -name pcie_wrapper|pcie_ss_top|*|pcie_ss|avmm_clock0 \
+-                       -source      [get_pins {pcie_wrapper|pcie_ss_top|*|pcie_ss|u_pciess_p0|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst|inclk}] \
+-                       -divide_by 2 [get_pins {pcie_wrapper|pcie_ss_top|*|pcie_ss|u_pciess_p0|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst|clock_div2}]
++create_generated_clock -add -name pcie_wrapper|pcie_ss.top|*|pcie_ss|avmm_clock0 \
++                       -source      [get_pins {pcie_wrapper|pcie_ss.top|*|pcie_ss|u_pciess_p0|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst|inclk}] \
++                       -divide_by 2 [get_pins {pcie_wrapper|pcie_ss.top|*|pcie_ss|u_pciess_p0|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst|clock_div2}]
+ 
+ 
+ #**************************************************************
+ # Set Clock Groups
+ #**************************************************************
+ set_clock_groups -asynchronous -group {altera_reserved_tck}
+ set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_sys}
+-set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_sys} -group { pcie_wrapper|pcie_ss_top|*|pcie_ss|*|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15}
+-set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m } -group {pcie_wrapper|pcie_ss_top|*|pcie_ss|*|intel_pcie_*_ast_qhip|rx_clkout|ch5}
+-set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m } -group {pcie_wrapper|pcie_ss_top|*|pcie_ss|*|intel_pcie_rtile_ast_qhip_pld_clkout}
+-set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m } -group {pcie_wrapper|pcie_ss_top|*|pcie_ss|*|intel_pcie_rtile_ast_qhip_pld_clkout_slow}
+-set_clock_groups -asynchronous -group {pcie_wrapper|pcie_ss_top|*|pcie_ss|avmm_clock0} -group {pcie_wrapper|pcie_ss_top|*|pcie_ss|*|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15}
+-set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m} -group {pcie_wrapper|pcie_ss_top|*|pcie_ss|*|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15}
+-set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m} -group {pcie_wrapper|pcie_ss_top|*|pcie_ss|avmm_clock0}
++set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_sys} -group { pcie_wrapper|pcie_ss.top|*|pcie_ss|*|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15}
++set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m } -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|*|intel_pcie_*_ast_qhip|rx_clkout|ch5}
++set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m } -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|*|intel_pcie_rtile_ast_qhip_pld_clkout}
++set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m } -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|*|intel_pcie_rtile_ast_qhip_pld_clkout_slow}
++set_clock_groups -asynchronous -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|avmm_clock0} -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|*|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15}
++set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m} -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|*|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15}
++set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m} -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|avmm_clock0}
+ # temporary constraint while mem_tg is fixed to not instantiate dbg fabric
+ set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m} -group {mem_ss_top|mem_ss_fm_inst|mem_ss_fm_0|intf_0_core_usr_clk}
+ 
+
+=== SOURCE [39] ===
+@@ -49,9 +49,7 @@ set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m } -group {pcie_w
+ set_clock_groups -asynchronous -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|avmm_clock0} -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|*|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15}
+ set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m} -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|*|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15}
+ set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m} -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|avmm_clock0}
+-# temporary constraint while mem_tg is fixed to not instantiate dbg fabric
+-set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m} -group {mem_ss_top|mem_ss_fm_inst|mem_ss_fm_0|intf_0_core_usr_clk}
+-
++set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m} -group {local_mem_wrapper|mem_ss_top|mem_ss_inst|mem_ss|emif_*|emif_*_phy_clk*}
+ 
+ #**************************************************************
+ # Set Multicycle Path
+
+=== SOURCE [40] ===
+
+**Supported Operating Systems**
+
+| Operating System | Supported Versions |
+| --- | --- |
+| Red Hat\* Enterprise Linux\* (RHEL) | 9 |
+| SUSE Linux\* Enterprise Server | 15 SP5 |
+| Ubuntu\* | 20.04, 22.04, 24.04 |
+
+**Memory**
+
+A minimum of 64 GB of system memory is required.
+
+**Quartus® Prime Software**
+
+Quartus® Prime software is required for Altera® HLS IP Gen compilation. Different target devices require different editions of the software.
+
+_Quartus® Prime Pro Edition 26.1_ is required for the following devices:
+
+- Agilex™ 3
+- Agilex™ 5
+- Agilex™ 7
+- Arria® 10
+- Stratix® 10
+- Cyclone® 10 GX
+
+_Quartus® Prime Standard Edition 25.1_ is required for the following device:
+
+- Cyclone® V
+
+**Simulation Prerequisites**
+
+_Questa\*-Altera® FPGA and Starter Editions_ or _Siemens\* QuestaSim\*_ is required for Altera® HLS IP Gen simulation compilation.
+
+
+```
+ahls -Xshardware -Xstarget="<​FPGA device family or part number>"...
+```
+
+5. **Integrate your IP into a system with Quartus® Prime or Platform Designer.**
+For details, refer to [Integrating Your RTL IP Core Into a System](https://docs.altera.com/r/~l7TEUAnDx9Ve02N~HACRQ/SD_8ewW5OWFWfrB02U1P1Q).
+
+| Date | Release Version | Changes |\
+| June 2026 | 2026.1 | First major release. |\
+
+=== SOURCE [41] ===
+// Copyright 2020 Intel Corporation
+// SPDX-License-Identifier: MIT
+
+// Description
+//-----------------------------------------------------------------------------
+// Partial Reconfiguration Slot
+//-----------------------------------------------------------------------------
+
+module pr_slot
+  import ofs_fim_eth_if_pkg::*;
+ #(
+   parameter PG_NUM_LINKS      = 1,
+   parameter PG_NUM_PORTS      = 1,  // Number of PCIe VF ports to PR region
+   // PF/VF to which each port is mapped
+   parameter pcie_ss_hdr_pkg::ReqHdr_pf_vf_info_t[PG_NUM_PORTS-1:0] PORT_PF_VF_INFO =
+                {PG_NUM_PORTS{pcie_ss_hdr_pkg::ReqHdr_pf_vf_info_t'(0)}},
+
+   parameter EMIF              = 0,  // Emif enable
+   parameter NUM_MEM_CH        = 2,  // Number of memory channel
+   parameter MM_PL_DEPTH       = 1,  // Memory pipeline depth before PR region crossing
+   parameter ST_PL_DEPTH       = 1,  // PCIe Port pipeline depth before PR region crossing
+   parameter TDATA_WIDTH       = pcie_ss_axis_pkg::TDATA_WIDTH,
+   parameter TUSER_WIDTH       = pcie_ss_axis_pkg::TUSER_WIDTH,
+
+   parameter int PG_NUM_RTABLE_ENTRIES = 3,
+   parameter pf_vf_mux_pkg::t_pfvf_rtable_entry[PG_NUM_RTABLE_ENTRIES-1:0] PG_PFVF_ROUTING_TABLE = {PG_NUM_RTABLE_ENTRIES{pf_vf_mux_pkg::t_pfvf_rtable_entry'(0)}}
+
+)(
+   // Clocks and Resets
+   input                       clk,
+   input                       clk_div2,
+   input                       clk_div4,
+   input                       uclk_usr,
+   input                       uclk_usr_div2,
+   input                       rst_n,
+   input                       softreset,
+   input  logic [PG_NUM_PORTS-1:0] port_rst_n[PG_NUM_LINKS-1:0],
+
+   // PR region freeze signal for isolation
+   input                       pr_freeze,
+   
+   // Memory
+`ifdef INCLUDE_LOCAL_MEM
+   ofs_fim_emif_axi_mm_if.user afu_mem_if  [NUM_MEM_CH-1:0],
+`endif
+
+   // PCIe 
+   pcie_ss_axis_if.source      axi_tx_a_if[PG_NUM_LINKS-1:0],
+   pcie_ss_axis_if.sink        axi_rx_a_if[PG_NUM_LINKS-1:0],
+   pcie_ss_axis_if.source      axi_tx_b_if[PG_NUM_LINKS-1:0],
+   pcie_ss_axis_if.sink        axi_rx_b_if[PG_NUM_LINKS-1:0],
+ 
+   // HSSI
+`ifdef INCLUDE_HSSI
+    ofs_fim_hssi_ss_tx_axis_if.client     hssi_ss_st_tx [MAX_NUM_ETH_CHANNELS-1:0],
+    ofs_fim_hssi_ss_rx_axis_if.client     hssi_ss_st_rx [MAX_NUM_ETH_CHANNELS-1:0],
+    ofs_fim_hssi_fc_if.client             hssi_fc [MAX_NUM_ETH_CHANNELS-1:0],
+    input logic [MAX_NUM_ETH_CHANNELS-1:0] i_hssi_clk_pll,
+`endif
+
+   // JTAG interface for PR region remote STP support
+   ofs_jtag_if.sink            remote_stp_jtag_if
+
+);
+
+   // MM Bridge configurations
+   localparam MM_BYPASS        = 2;
+   localparam MM_SIMPLE_BUFFER = 1;
+   localparam MM_SKID_BUFFER   = 0;
+
+   // ST Bridge configurations
+   localparam ST_BYPASS        = 3;
+   localparam ST_SIMPLE_BUFFER_1 = 2;
+   localparam ST_SIMPLE_BUFFER_0 = 1;
+   localparam ST_SKID_BUFFER   = 0;
+
+   `ifdef INCLUDE_PR
+        localparam PR_FREEZE_DIS = 0;
+   `else 
+        localparam PR_FREEZE_DIS = 1;
+    `endif
+
+   (* altera_attribute = {"-name PRESERVE_REGISTER_SYN_ONLY ON"} *) reg [2:0] pr_freeze_emif_reg;
+   wire pr_freeze_emif_out = pr_freeze_emif_reg[2];
+   logic [MAX_NUM_ETH_CHANNELS-1:0] pr_freeze_hssi;
+   logic [MAX_NUM_ETH_CHANNELS-1:0] softreset_hssi;
+   logic pr_freeze_emif[NUM_MEM_CH-1: 0];
+   logic softreset_emif[NUM_MEM_CH-1: 0];
+
+// ----------------------------------------------------------------------------------------------------
+//  PR Freeze Logic
+//  - Implemented only in Tx direction.
+// ----------------------------------------------------------------------------------------------------
+
+
+// ----------------------------------------------------------------------------------------------------
+// 1. PR Freeze: PCIe ports to PFVF-Mux
+// ----------------------------------------------------------------------------------------------------
+`ifdef INCLUDE_PR 
+    localparam PCIE_RX_REG_MODE    =ST_SKID_BUFFER; 
+    localparam PCIE_TX_REG_MODE    =ST_SKID_BUFFER; 
+`else // INCLUDE_PR
+    localparam PCIE_RX_REG_MODE    =ST_BYPASS; 
+    localparam PCIE_TX_REG_MODE    =ST_BYPASS; 
+`endif //INCLUDE_PR
+
+(* altera_attribute = {"-name PRESERVE_REGISTER_SYN_ONLY ON"} *) reg [3:0] pr_freeze_fnmx_reg;
+wire pr_freeze_fnmx_out = pr_freeze_fnmx_reg[3];
+pcie_ss_axis_if     axi_tx_a_if_t1[PG_NUM_LINKS-1:0]();
+pcie_ss_axis_if     axi_rx_a_if_t1[PG_NUM_LINKS-1:0]();
+pcie_ss_axis_if     axi_tx_b_if_t1[PG_NUM_LINKS-1:0]();
+pcie_ss_axis_if     axi_rx_b_if_t1[PG_NUM_LINKS-1:0]();
+
+logic [PG_NUM_PORTS-1:0] port_rst_n_t1[PG_NUM_LINKS-1:0];
+
+// Flop freeze signal
+always_ff @ (posedge clk) begin
+   pr_freeze_fnmx_reg <= { pr_freeze_fnmx_reg[2:0], pr_freeze };
+end
+
+
+
+for (genvar j=0; j<PG_NUM_LINKS; j++) begin : PORT_RESET
+   always @(posedge clk) begin
+      port_rst_n_t1[j] <= port_rst_n[j];
+   end
+end
+
+for (genvar j=0; j<PG_NUM_LINKS; j++) begin : PCIE_FREEZE_BRIDGE
+   // Port A
+   axis_pcie_pr_freeze_bridge #(
+      .TDATA_WIDTH (TDATA_WIDTH),
+      .TUSER_WIDTH (TUSER_WIDTH),
+      .PL_DEPTH    (ST_PL_DEPTH),
+      .PR_FREEZE_DIS (PR_FREEZE_DIS),
+      .RX_REG_MODE (PCIE_RX_REG_MODE),
+      .TX_REG_MODE (PCIE_TX_REG_MODE)
+   ) pr_frz_afu_pcie_a_port (
+      .port_rst_n  (~softreset),
+      .pr_freeze   (pr_freeze_fnmx_out),
+      .axi_rx_if_s (axi_rx_a_if[j]),    // <--- PCIe SS
+      .axi_tx_if_m (axi_tx_a_if[j]),    // ---> PCIe SS
+      .axi_rx_if_m (axi_rx_a_if_t1[j]), // ---> PR slot AFU
+      .axi_tx_if_s (axi_tx_a_if_t1[j])  // <--- PR slot AFU
+   );
+
+   // Port B
+   axis_pcie_pr_freeze_bridge #(
+      .TDATA_WIDTH (TDATA_WIDTH),
+      .TUSER_WIDTH (TUSER_WIDTH),
+      .PL_DEPTH    (ST_PL_DEPTH),
+      .PR_FREEZE_DIS (PR_FREEZE_DIS),
+      .RX_REG_MODE (PCIE_RX_REG_MODE),
+      .TX_REG_MODE (PCIE_TX_REG_MODE)
+   ) pr_frz_afu_pcie_b_port (
+      .port_rst_n  (~softreset),
+      .pr_freeze   (pr_freeze_fnmx_out),
+      .axi_rx_if_s (axi_rx_b_if[j]),    // <--- PCIe SS
+      .axi_tx_if_m (axi_tx_b_if[j]),    // ---> PCIe SS
+      .axi_rx_if_m (axi_rx_b_if_t1[j]), // ---> PR slot AFU
+      .axi_tx_if_s (axi_tx_b_if_t1[j])  // <--- PR slot AFU
+   );
+
+   // Assign clk & resets to interface package
+   // rst_n from PCIe SS needs to be replaced with port_rst_n
+   assign axi_rx_a_if_t1[j].clk     = axi_rx_a_if[j].clk;
+   assign axi_rx_a_if_t1[j].rst_n   = ~softreset;
+   assign axi_tx_a_if_t1[j].clk     = axi_tx_a_if[j].clk;
+   assign axi_tx_a_if_t1[j].rst_n   = ~softreset;
+
+   assign axi_rx_b_if_t1[j].clk     = axi_rx_b_if[j].clk;
+   assign axi_rx_b_if_t1[j].rst_n   = ~softreset;
+   assign axi_tx_b_if_t1[j].clk     = axi_tx_b_if[j].clk;
+   assign axi_tx_b_if_t1[j].rst_n   = ~softreset;
+
+end //for
+
+// ----------------------------------------------------------------------------------------------------
+// 2. PR Freeze: AFU-MEM_IF to MEM SS
+// ----------------------------------------------------------------------------------------------------
+`ifdef INCLUDE_LOCAL_MEM
+   `ifdef INCLUDE_PR
+        localparam MEM_REG_MODE = ST_SKID_BUFFER;
+   `elsif INCLUDE_HBM
+        localparam MEM_REG_MODE = ST_SKID_BUFFER;
+   `else 
+        localparam MEM_REG_MODE = ST_BYPASS;
+   `endif
+    
+   localparam W_REG_MODE     =MEM_REG_MODE; 
+   localparam R_REG_MODE     =MEM_REG_MODE; 
+   localparam AW_REG_MODE    =MEM_REG_MODE; 
+   localparam B_REG_MODE     =MEM_REG_MODE; 
+   localparam AR_REG_MODE    =MEM_REG_MODE;
+
+   ofs_fim_emif_axi_mm_if #(
+      .AWID_WIDTH   ($bits(afu_mem_if[0].awid)),
+      .AWADDR_WIDTH ($bits(afu_mem_if[0].awaddr)),
+      .AWUSER_WIDTH ($bits(afu_mem_if[0].awuser)),
+      .WDATA_WIDTH  ($bits(afu_mem_if[0].wdata)),
+      .BUSER_WIDTH  ($bits(afu_mem_if[0].buser)),
+      .ARID_WIDTH   ($bits(afu_mem_if[0].arid)),
+      .ARADDR_WIDTH ($bits(afu_mem_if[0].araddr)),
+      .ARUSER_WIDTH ($bits(afu_mem_if[0].aruser)),
+      .RDATA_WIDTH  ($bits(afu_mem_if[0].rdata)),
+      .RUSER_WIDTH  ($bits(afu_mem_if[0].ruser)) 
+   ) afu_main_emif [NUM_MEM_CH-1:0]();
+
+   // Flop freeze signal
+   always_ff @ (posedge clk) begin
+      pr_freeze_emif_reg <= { pr_freeze_emif_reg[1:0], pr_freeze };
+   end
+
+   for (genvar j=0; j<NUM_MEM_CH; j++) begin : afu_mem
+      fim_resync #(
+         .SYNC_CHAIN_LENGTH (2),
+         .WIDTH             (1),
+         .INIT_VALUE        (0),
+         .NO_CUT            (0)
+      ) ddr4_pr_freeze_sync (
+         .clk   (afu_mem_if[j].clk),
+         .reset (1'b0),
+         .d     (pr_freeze_emif_out),
+         .q     (pr_freeze_emif[j])
+      );
+
+      fim_resync #(
+         .SYNC_CHAIN_LENGTH (2),
+         .WIDTH             (1),
+         .INIT_VALUE        (1),
+         .NO_CUT            (0)
+      ) ddr4_softreset_sync (
+         .clk   (afu_mem_if[j].clk),
+         .reset (1'b0),
+         .d     (softreset),
+         .q     (softreset_emif[j])
+      );
+
+      axi_mm_pr_freeze_bridge #(
+         // Register tx signals for freeze logic
+         .NUM_PIPELINES (MM_PL_DEPTH),
+         .AW_REG_MODE (AW_REG_MODE),
+         .W_REG_MODE  (W_REG_MODE),
+         .B_REG_MODE  (B_REG_MODE),
+         .AR_REG_MODE (AR_REG_MODE),
+         .R_REG_MODE  (R_REG_MODE),
+         .PR_FREEZE_DIS (PR_FREEZE_DIS),
+         .ID_WIDTH    ($bits(afu_mem_if[j].arid)),
+         .ADDR_WIDTH  ($bits(afu_mem_if[j].araddr)),
+         .DATA_WIDTH  ($bits(afu_mem_if[j].rdata))
+      ) pr_frz_afu_avmm_if (
+	 .afu_reset (softreset_emif[j]),
+         .pr_freeze (pr_freeze_emif[j]),
+         .m_if      (afu_mem_if[j]),   /* user = master */
+         .s_if      (afu_main_emif[j]) /* emif = slave */
+      );
+   end //for
+`endif
+
+// ----------------------------------------------------------------------------------------------------
+// 3. PR Freeze: HE-HSSI to HSSI-SS Ports (Tx Direction)
+// ----------------------------------------------------------------------------------------------------
+`ifdef INCLUDE_HSSI
+  
+   `ifdef INCLUDE_PR 
+       localparam HSSI_RX_REG_MODE    =ST_SIMPLE_BUFFER_0; 
+       localparam HSSI_TX_REG_MODE    =ST_SKID_BUFFER; 
+   `else // INCLUDE_PR
+       localparam HSSI_RX_REG_MODE    =ST_BYPASS; 
+       localparam HSSI_TX_REG_MODE    =ST_BYPASS; 
+   `endif //INCLUDE_PR
+ 
+   ofs_fim_hssi_ss_tx_axis_if     hssi_afu_st_tx  [MAX_NUM_ETH_CHANNELS-1:0] ();
+   ofs_fim_hssi_ss_rx_axis_if     hssi_afu_st_rx [MAX_NUM_ETH_CHANNELS-1:0] ();
+   ofs_fim_hssi_fc_if             hssi_afu_fc [MAX_NUM_ETH_CHANNELS-1:0] ();
+
+   for (genvar j=0; j<MAX_NUM_ETH_CHANNELS; j++) begin : FREEZE_BRIDGES
+      fim_resync #(
+         .INIT_VALUE (0),
+         .NO_CUT     (0)
+      ) hssi_pr_freeze_rst_n (
+         .clk      (i_hssi_clk_pll[j]),
+         .reset    (1'b0),
+         .d        (softreset),
+         .q        (softreset_hssi[j])
+      );
+
+      fim_resync #(
+         .NO_CUT (0)
+      ) hssi_pr_freeze_resync_inst (
+         .clk      (i_hssi_clk_pll[j]),
+         .reset    (1'b0),
+         .d        (pr_freeze),
+         .q        (pr_freeze_hssi[j])
+      );
+
+      axis_hssi_pr_freeze_bridge #(
+         .TDATA_WIDTH ($bits(hssi_ss_st_tx[j].tx.tdata)),
+         .TUSER_WIDTH ($bits(hssi_ss_st_tx[j].tx.tuser)),
+         .PR_FREEZE_DIS (PR_FREEZE_DIS),
+         .TX_REG_MODE (HSSI_RX_REG_MODE),
+         .RX_REG_MODE (HSSI_TX_REG_MODE)
+        
+      ) pr_frz_hssi_ss_port (
+         .pr_freeze        (pr_freeze_hssi[j]),
+         .afu_reset        (softreset_hssi[j]),
+         .hssi_ss_st_tx    (hssi_ss_st_tx[j]),
+         .hssi_ss_st_rx    (hssi_ss_st_rx[j]),
+         .hssi_fc          (hssi_fc[j]),
+         .i_hssi_clk_pll   (i_hssi_clk_pll[j]),
+         .hssi_afu_st_tx   (hssi_afu_st_tx[j]),
+         .hssi_afu_st_rx   (hssi_afu_st_rx[j]),
+         .hssi_afu_fc      (hssi_afu_fc[j])
+      );
+      
+   end
+`endif
+
+// ----------------------------------------------------------------------------------------------------
+// AFU Instance
+// ----------------------------------------------------------------------------------------------------
+
+//
+// afu_main() is the standard point of AFU-specific logic. The FIM passes all
+// available device interfaces to the AFU, which must either drive or tie them
+// off. AFU's may either connect directly to the devices or use the provided
+// Platform Interface Manager (PIM) abstraction layer, which implements a
+// PIM connector in afu_main(). The PIM's afu_main() then instantiates any
+// PIM-based AFU.
+//
+afu_main #(
+   .PG_NUM_LINKS          (PG_NUM_LINKS),
+   .PG_NUM_PORTS          (PG_NUM_PORTS),
+   .PORT_PF_VF_INFO       (PORT_PF_VF_INFO),
+   .NUM_MEM_CH            (NUM_MEM_CH),
+   .PG_NUM_RTABLE_ENTRIES (PG_NUM_RTABLE_ENTRIES),
+   .PG_PFVF_ROUTING_TABLE (PG_PFVF_ROUTING_TABLE)
+) afu_main (
+   .clk,
+   .clk_div2,
+   .clk_div4,
+   .uclk_usr           (uclk_usr),
+   .uclk_usr_div2      (uclk_usr_div2),
+
+   .rst_n              (!softreset),
+   .port_rst_n         (port_rst_n_t1),
+
+   `ifdef INCLUDE_LOCAL_MEM
+      .ext_mem_if        (afu_main_emif),
+   `endif
+   
+   .afu_axi_rx_a_if    (axi_rx_a_if_t1),
+   .afu_axi_tx_a_if    (axi_tx_a_if_t1),
+   .afu_axi_rx_b_if    (axi_rx_b_if_t1),
+   .afu_axi_tx_b_if    (axi_tx_b_if_t1),
+
+   `ifdef INCLUDE_HSSI
+      .hssi_ss_st_tx    (hssi_afu_st_tx),
+      .hssi_ss_st_rx    (hssi_afu_st_rx),
+      .hssi_fc          (hssi_afu_fc),
+      .i_hssi_clk_pll   (i_hssi_clk_pll),
+   `endif 
+
+   //JTAG signal connection to AFU region for remote SignalTap
+   .remote_stp_jtag_if
+);
+
+endmodule : pr_slot
+
+
+=== SOURCE [42] ===
+// Copyright 2020 Intel Corporation
+// SPDX-License-Identifier: MIT
+
+// Description
+// -----------------------------------------------------------------------------
+//  PIM version of afu_main
+// -----------------------------------------------------------------------------
+
+//
+// Map the FIM's device interfaces to Platform Interface Manager (PIM)
+// interfaces and instantiate a PIM-based AFU.
+//
+
+// OPAE_PLATFORM_GEN is set when a script is generating the PR build environment
+// used with OPAE SDK tools. When set, afu_main acts as a simple template that
+// defines the module but doesn't include an actual AFU.
+`ifndef OPAE_PLATFORM_GEN
+`include "ofs_plat_if.vh"
+`endif
+
+import top_cfg_pkg::*;
+
+// Is the PR build using the PIM? If so, this port_afu_instances() module
+// will be used. If the AFU provides its own port_afu_instances, typically by
+// setting the afu-top-interface class to "afu_main" in the AFU's JSON file,
+// then the code here is disabled. The macro is set by the
+// afu_synth_setup/afu_sim_setup scripts.
+`ifndef AFU_TOP_REQUIRES_AFU_MAIN_IF
+
+module port_afu_instances # (
+   parameter PG_NUM_LINKS    = 1,
+   parameter PG_NUM_PORTS    = 1,
+   // PF/VF to which each port is mapped
+   parameter pcie_ss_hdr_pkg::ReqHdr_pf_vf_info_t[PG_NUM_PORTS-1:0] PORT_PF_VF_INFO =
+                {PG_NUM_PORTS{pcie_ss_hdr_pkg::ReqHdr_pf_vf_info_t'(0)}},
+
+   parameter NUM_MEM_CH      = 0,
+`ifdef INCLUDE_HSSI
+   parameter MAX_ETH_CH      = ofs_fim_eth_plat_if_pkg::MAX_NUM_ETH_CHANNELS,
+`else
+   parameter MAX_ETH_CH      = 0,
+`endif
+
+   // Used in simulation by ASE to emulate multiple links. ASE PCIe emulation
+   // supports only one link. The multi-link ASE environment adds an extra PF/VF
+   // MUX before afu_main() and requires unique VFs across all links.
+   // The parameter is relevant only in multiplexed channel mode, since PF/VF
+   // MUXing is complete already in normal mode before reaching
+   // port_afu_instances.
+   parameter LINK_NUM_FROM_PORT_INFO = 0,
+
+`ifdef OFS_PLAT_HOST_CHAN_MULTIPLEXED
+   // When PCIe is multiplexed here, the incoming channels are
+   // grouped by PCIe links. PF/VF tagged streams remain multiplexed
+   // within each link.
+   parameter NUM_PCIE_STREAMS = PG_NUM_LINKS
+`else
+   // PF/VF MUX in afu_main() splits all links/PFs/VFs into
+   // individual streams and maps them to a linear collection of ports.
+   parameter NUM_PCIE_STREAMS = PG_NUM_PORTS
+`endif
+)(
+   input  logic clk,
+   input  logic clk_div2,
+   input  logic clk_div4,
+   input  logic uclk_usr,
+   input  logic uclk_usr_div2,
+
+   input  logic rst_n,
+   // Both soft reset and global rst_n trigger port_rst_n
+`ifdef OFS_PLAT_HOST_CHAN_MULTIPLEXED
+   // PCIe streams remain mulitplexed -- resets are grouped by PCIe links
+   input  logic [PG_NUM_PORTS-1:0] port_rst_n[PG_NUM_LINKS-1:0],
+`else
+   // Demultiplexed array across link/PF/VF
+   input  logic [PG_NUM_PORTS-1:0] port_rst_n,
+`endif
+
+   // PCIe A ports are the standard TLP channels. All host responses
+   // arrive on the RX A port.
+   pcie_ss_axis_if.source        afu_axi_tx_a_if [NUM_PCIE_STREAMS-1:0],
+   pcie_ss_axis_if.sink          afu_axi_rx_a_if [NUM_PCIE_STREAMS-1:0],
+   // PCIe B ports are a second channel on which reads and interrupts
+   // may be sent from the AFU. To improve throughput, reads on B may flow
+   // around writes on A through PF/VF MUX trees until writes are committed
+   // to the PCIe subsystem. AFUs may tie off the B port and send all
+   // messages to A.
+   pcie_ss_axis_if.source        afu_axi_tx_b_if [NUM_PCIE_STREAMS-1:0],
+   // Write commits are signaled here on the RX B port, indicating the
+   // point at which the A and B channels become ordered within the FIM.
+   // Commits are signaled after tlast of a write on TX A, after arbitration
+   // with TX B within the FIM. The commit is a Cpl (without data),
+   // returning the tag value from the write request. AFUs that do not
+   // need local write commits may ignore this port, but must set
+   // tready to 1.
+   pcie_ss_axis_if.sink          afu_axi_rx_b_if [NUM_PCIE_STREAMS-1:0]
+
+   `ifdef INCLUDE_LOCAL_MEM
+      // Local memory
+     ,ofs_fim_emif_axi_mm_if.user     ext_mem_if [NUM_MEM_CH-1:0]
+   `endif
+
+   `ifdef INCLUDE_HSSI
+     ,ofs_fim_hssi_ss_tx_axis_if.client hssi_ss_st_tx [MAX_ETH_CH-1:0],
+      ofs_fim_hssi_ss_rx_axis_if.client hssi_ss_st_rx [MAX_ETH_CH-1:0],
+      ofs_fim_hssi_fc_if.client         hssi_fc [MAX_ETH_CH-1:0],
+      input logic [MAX_ETH_CH-1:0]      i_hssi_clk_pll
+   `endif
+);
+
+
+`ifndef OPAE_PLATFORM_GEN
+
+//----------------------------------------------
+// Top-level AFU platform interface
+//----------------------------------------------
+
+// OFS platform interface constructs a single interface object that
+// wraps all ports to the AFU.
+ofs_plat_if#(.ENABLE_LOG(1)) plat_ifc();
+
+// Vector of PCIe port resets. When ports are multiplexed, these
+// will be cold and PR reset. When ports are already demultiplexed,
+// these will include function level reset.
+logic [NUM_PCIE_STREAMS-1:0] pcie_stream_rst_n;
+`ifdef OFS_PLAT_HOST_CHAN_MULTIPLEXED
+    for (genvar p = 0; p < NUM_PCIE_STREAMS; p = p + 1) begin : r
+        assign pcie_stream_rst_n[p] = afu_axi_tx_a_if[p].rst_n;
+    end
+`else
+    assign pcie_stream_rst_n = port_rst_n;
+`endif
+
+// Clocks
+ofs_plat_std_clocks_gen_port_resets clocks (
+   .pClk(clk),
+   .pClk_reset_n(pcie_stream_rst_n),
+`ifdef OFS_PLAT_HOST_CHAN_MULTIPLEXED
+   // Pass resets with and without function level reset
+   .pClk_demux_reset_n(port_rst_n),
+`endif
+   .pClkDiv2(clk_div2),
+   .pClkDiv4(clk_div4),
+   .uClk_usr(uclk_usr),
+   .uClk_usrDiv2(uclk_usr_div2),
+   .clocks(plat_ifc.clocks)
+);
+
+// Reset, etc. With multiple ports, a global soft reset doesn't make much
+// sense. The softReset_n signal and reset associated with pClk remain
+// for compatibility. AFUs with multiple PCIe ports should use the reset
+// signal bound to each of the PIM's host channel interfaces as soft
+// reset from the channel.
+assign plat_ifc.softReset_n = plat_ifc.clocks.pClk.reset_n;
+assign plat_ifc.pwrState = 1'b0;
+
+
+//----------------------------------------------
+// AXI-S PCIe channels
+//----------------------------------------------
+
+function automatic pcie_ss_hdr_pkg::ReqHdr_pf_vf_info_t[PG_NUM_PORTS-1:0] gen_link_pf_vf_info(int stream_num);
+    pcie_ss_hdr_pkg::ReqHdr_pf_vf_info_t[PG_NUM_PORTS-1:0] pfvf = PORT_PF_VF_INFO;
+
+    if (LINK_NUM_FROM_PORT_INFO) begin
+        for (int p = 0; p < PG_NUM_PORTS; p = p + 1)
+            pfvf[p].vf_num = pfvf[p].vf_num + (stream_num * PG_NUM_PORTS);
+    end
+
+    return pfvf;
+endfunction // gen_link_pf_vf_info
+
+generate
+   for (genvar s = 0; s < NUM_PCIE_STREAMS; s = s + 1)
+   begin : hc
+       localparam pcie_ss_hdr_pkg::ReqHdr_pf_vf_info_t[PG_NUM_PORTS-1:0] LINK_PORT_PF_VF_INFO =
+           gen_link_pf_vf_info(s);
+
+      // Map the PIM's host_chan interface to the FIM's PCIe SS interface.
+      map_fim_pcie_ss_to_pim_host_chan
+        #(
+          .INSTANCE_NUMBER(s),
+`ifdef OFS_PLAT_HOST_CHAN_MULTIPLEXED
+          .PORT_PF_VF_INFO(LINK_PORT_PF_VF_INFO)
+`else
+          .PF_NUM(PORT_PF_VF_INFO[s].pf_num),
+          .VF_NUM(PORT_PF_VF_INFO[s].vf_num),
+          .VF_ACTIVE(PORT_PF_VF_INFO[s].vf_active)
+`endif
+          )
+       map_host_chan
+         (
+          .clk(plat_ifc.clocks.pClk.clk),
+          .reset_n(pcie_stream_rst_n[s]),
+
+          .pcie_ss_tx_a_st(afu_axi_tx_a_if[s]),
+          .pcie_ss_tx_b_st(afu_axi_tx_b_if[s]),
+          .pcie_ss_rx_a_st(afu_axi_rx_a_if[s]),
+          .pcie_ss_rx_b_st(afu_axi_rx_b_if[s]),
+
+          .port(plat_ifc.host_chan.ports[s])
+          );
+   end
+endgenerate
+
+
+//----------------------------------------------
+// Local memory
+//----------------------------------------------
+
+`ifdef INCLUDE_LOCAL_MEM
+
+generate
+   for (genvar b = 0; b < NUM_MEM_CH; b = b + 1)
+   begin : lm
+      // Map the PIM's local_mem interface to the FIM's AXI-MM interface.
+      map_fim_emif_axi_mm_to_local_mem
+        #(
+          .INSTANCE_NUMBER(b)
+          )
+       map_local_mem
+         (
+          .fim_mem_bank(ext_mem_if[b]),
+          .afu_mem_bank(plat_ifc.local_mem.banks[b])
+          );
+   end
+endgenerate
+
+`endif
+
+
+//----------------------------------------------
+// Ethernet
+//----------------------------------------------
+
+`ifdef INCLUDE_HSSI
+
+generate
+   for (genvar c = 0; c < MAX_ETH_CH; c = c + 1)
+   begin : hssi
+      assign plat_ifc.hssi.channels[c].clk = i_hssi_clk_pll[c];
+      assign plat_ifc.hssi.channels[c].reset_n = hssi_ss_st_rx[c].rst_n;
+
+      ofs_fim_hssi_axis_connect_rx connect_rx (
+         .to_client(plat_ifc.hssi.channels[c].data_rx),
+         .to_mac(hssi_ss_st_rx[c])
+      );
+
+      ofs_fim_hssi_axis_connect_tx connect_tx (
+         .to_client(plat_ifc.hssi.channels[c].data_tx),
+         .to_mac(hssi_ss_st_tx[c])
+      );
+
+      ofs_fim_hssi_connect_fc connect_fc (
+         .to_client(plat_ifc.hssi.channels[c].fc),
+         .to_mac(hssi_fc[c])
+      );
+   end
+endgenerate
+
+`endif // `ifdef INCLUDE_HSSI
+
+
+//----------------------------------------------
+// Other (PIM extension interface)
+//----------------------------------------------
+
+// The extension interface here is a stub that could be used to pass
+// extended state through plat_ifc without modifying the PIM.
+// The "sample_state" is used in examples. We suggest keeping it, even
+// if you update the interface.
+assign plat_ifc.other.ports[0].sample_state = 32'hcafef00d;
+
+
+//----------------------------------------------
+// Instantiate the AFU
+//----------------------------------------------
+
+`PLATFORM_SHIM_MODULE_NAME `PLATFORM_SHIM_MODULE_NAME (
+   .plat_ifc
+);
+
+`endif //  `ifndef OPAE_PLATFORM_GEN
+
+endmodule // port_afu_instances
+
+`endif //  `ifndef AFU_TOP_REQUIRES_AFU_MAIN_IF
+
+
+=== SOURCE [43] ===
+// Copyright 2022 Intel Corporation
+// SPDX-License-Identifier: MIT
+
+// Disable this afu_main() when the FIM provides a shared version of the module.
+// A shared afu_main() instantiates port_afu_instances(), just like the one here.
+`ifndef SHARED_AFU_MAIN_TO_PORT_AFU_INSTANCES
+
+`include "ofs_plat_if.vh"
+
+// Merge HSSI macros from various platforms into a single AFU_MAIN_HAS_HSSI
+`ifdef INCLUDE_HSSI
+  `define AFU_MAIN_HAS_HSSI 1
+`endif
+`ifdef PLATFORM_FPGA_FAMILY_S10
+  `ifdef INCLUDE_HE_HSSI
+    `define AFU_MAIN_HAS_HSSI 1
+  `endif
+`endif
+
+// ========================================================================
+//
+//  The ports in this implementation of afu_main() are complicated because
+//  the code is expected to compile on multiple platforms, each with
+//  subtle variations.
+//
+//  An implementation for a single platform should be simplified by
+//  reducing the ports to only those of the target.
+//
+//  This example currently compiles on OFS for d5005 and n6000.
+//
+// ========================================================================
+
+module afu_main 
+#(
+   parameter PG_NUM_PORTS    = 1,
+   // PF/VF to which each port is mapped
+   parameter pcie_ss_hdr_pkg::ReqHdr_pf_vf_info_t[PG_NUM_PORTS-1:0] PORT_PF_VF_INFO =
+                {PG_NUM_PORTS{pcie_ss_hdr_pkg::ReqHdr_pf_vf_info_t'(0)}},
+
+   parameter NUM_MEM_CH      = 0,
+   parameter MAX_ETH_CH      = ofs_fim_eth_plat_if_pkg::MAX_NUM_ETH_CHANNELS
+)(
+   input  logic clk,
+   input  logic clk_div2,
+   input  logic clk_div4,
+   input  logic uclk_usr,
+   input  logic uclk_usr_div2,
+
+   input  logic rst_n,
+`ifdef PLATFORM_FPGA_FAMILY_S10
+   input  logic port_rst_n [PG_NUM_PORTS-1:0],
+   input  logic rst_n_100M,
+`else
+   input  logic [PG_NUM_PORTS-1:0] port_rst_n,
+   input  logic pr_freeze_to_afu,
+`endif
+
+   // PCIe A ports are the standard TLP channels. All host responses
+   // arrive on the RX A port.
+   pcie_ss_axis_if.source        afu_axi_tx_a_if [PG_NUM_PORTS-1:0],
+   pcie_ss_axis_if.sink          afu_axi_rx_a_if [PG_NUM_PORTS-1:0],
+   // PCIe B ports are a second channel on which reads and interrupts
+   // may be sent from the AFU. To improve throughput, reads on B may flow
+   // around writes on A through PF/VF MUX trees until writes are committed
+   // to the PCIe subsystem. AFUs may tie off the B port and send all
+   // messages to A.
+   pcie_ss_axis_if.source        afu_axi_tx_b_if [PG_NUM_PORTS-1:0],
+   // Write commits are signaled here on the RX B port, indicating the
+   // point at which the A and B channels become ordered within the FIM.
+   // Commits are signaled after tlast of a write on TX A, after arbitration
+   // with TX B within the FIM. The commit is a Cpl (without data),
+   // returning the tag value from the write request. AFUs that do not
+   // need local write commits may ignore this port, but must set
+   // tready to 1.
+   pcie_ss_axis_if.sink          afu_axi_rx_b_if [PG_NUM_PORTS-1:0]
+
+   `ifdef INCLUDE_DDR4
+      // Local memory
+     ,ofs_fim_emif_axi_mm_if.user ext_mem_if [NUM_MEM_CH-1:0]
+   `endif
+   `ifdef PLATFORM_FPGA_FAMILY_S10
+      // S10 uses AVMM for DDR
+     ,ofs_fim_emif_avmm_if.user   ext_mem_if [NUM_MEM_CH-1:0]
+   `endif
+
+   `ifdef AFU_MAIN_HAS_HSSI
+     ,ofs_fim_hssi_ss_tx_axis_if.client hssi_ss_st_tx [MAX_ETH_CH-1:0],
+      ofs_fim_hssi_ss_rx_axis_if.client hssi_ss_st_rx [MAX_ETH_CH-1:0],
+      ofs_fim_hssi_fc_if.client         hssi_fc [MAX_ETH_CH-1:0],
+      input logic [MAX_ETH_CH-1:0]      i_hssi_clk_pll
+   `endif
+
+    // S10 HSSI PTP interface
+   `ifdef INCLUDE_PTP
+     ,ofs_fim_hssi_ptp_tx_tod_if.client       hssi_ptp_tx_tod [MAX_ETH_CH-1:0],
+      ofs_fim_hssi_ptp_rx_tod_if.client       hssi_ptp_rx_tod [MAX_ETH_CH-1:0],
+      ofs_fim_hssi_ptp_tx_egrts_if.client     hssi_ptp_tx_egrts [MAX_ETH_CH-1:0],
+      ofs_fim_hssi_ptp_rx_ingrts_if.client    hssi_ptp_rx_ingrts [MAX_ETH_CH-1:0]
+   `endif
+
+   // JTAG interface for PR region debug
+   `ifdef PLATFORM_FPGA_FAMILY_S10
+      // Old JTAG interface: just wires
+     ,input  logic               sr2pr_tms,
+      input  logic               sr2pr_tdi,
+      output logic               pr2sr_tdo,
+      input  logic               sr2pr_tck,
+      input  logic               sr2pr_tckena
+   `else
+     ,ofs_jtag_if.sink           remote_stp_jtag_if
+   `endif
+   );
+
+    //----------------------------------------------
+    // Merge soft reset and power on reset
+    //----------------------------------------------
+
+    logic rst_n_q1 = 1'b0;
+    logic [PG_NUM_PORTS-1:0] port_rst_n_q1 = {PG_NUM_PORTS{1'b0}};
+    logic [PG_NUM_PORTS-1:0] port_rst_n_q2 = {PG_NUM_PORTS{1'b0}};
+
+    always @(posedge clk) begin
+        rst_n_q1 <= rst_n;
+    end
+
+    for (genvar p = 0; p < PG_NUM_PORTS; p = p + 1) begin : reg_rst
+        always @(posedge clk) begin
+            port_rst_n_q1[p] <= port_rst_n[p] && rst_n_q1;
+            port_rst_n_q2[p] <= port_rst_n_q1[p];
+        end
+    end
+
+
+    //----------------------------------------------
+    // AFUs
+    //----------------------------------------------
+
+    // Instantiate port_afu_instances, using the same interface that the
+    // default afu_main() would use.
+
+    port_afu_instances
+      #(
+        .PG_NUM_PORTS(PG_NUM_PORTS),
+        .PORT_PF_VF_INFO(PORT_PF_VF_INFO),
+        .NUM_MEM_CH(NUM_MEM_CH),
+        .MAX_ETH_CH(MAX_ETH_CH)
+        )
+      port_afu_instances
+       (
+        .port_rst_n(port_rst_n_q2),
+
+        .*
+        );
+
+
+    //----------------------------------------------
+    // Remote Debug JTAG IP instantiation
+    //----------------------------------------------
+
+    wire remote_stp_conf_reset = ~rst_n_q1;
+    `include "ofs_fim_remote_stp_node.vh"
+
+endmodule : afu_main
+
+`endif //  `ifndef SHARED_AFU_MAIN_TO_PORT_AFU_INSTANCES
+
+
+=== SOURCE [44] ===
+// Copyright 2022 Intel Corporation
+// SPDX-License-Identifier: MIT
+
+
+// The PIM's top-level wrapper is included only because it defines the
+// platform macros used below to make the afu_main() port list slightly
+// more portable. Except for those macros it is not needed for the non-PIM
+// AFUs.
+`include "ofs_plat_if.vh"
+
+// Merge HSSI macros from various platforms into a single AFU_MAIN_HAS_HSSI
+`ifdef INCLUDE_HSSI
+  `define AFU_MAIN_HAS_HSSI 1
+`endif
+`ifdef PLATFORM_FPGA_FAMILY_S10
+  `ifdef INCLUDE_HE_HSSI
+    `define AFU_MAIN_HAS_HSSI 1
+  `endif
+`endif
+
+// ========================================================================
+//
+//  The ports in this implementation of afu_main() are complicated because
+//  the code is expected to compile on multiple platforms, each with
+//  subtle variations.
+//
+//  An implementation for a single platform should be simplified by
+//  reducing the ports to only those of the target.
+//
+//  This example currently compiles on OFS for d5005 and n6000.
+//
+// ========================================================================
+
+module port_afu_instances
+#(
+   parameter PG_NUM_LINKS    = 1,
+   parameter PG_NUM_PORTS    = 1,
+   // PF/VF to which each port is mapped
+   parameter pcie_ss_hdr_pkg::ReqHdr_pf_vf_info_t[PG_NUM_PORTS-1:0] PORT_PF_VF_INFO =
+                {PG_NUM_PORTS{pcie_ss_hdr_pkg::ReqHdr_pf_vf_info_t'(0)}},
+
+   parameter NUM_MEM_CH      = 0,
+   parameter MAX_ETH_CH      = ofs_fim_eth_plat_if_pkg::MAX_NUM_ETH_CHANNELS
+)(
+   input  logic clk,
+   input  logic clk_div2,
+   input  logic clk_div4,
+   input  logic uclk_usr,
+   input  logic uclk_usr_div2,
+
+   input  logic rst_n,
+   // port_rst_n at this point also includes rst_n. The two are combined
+   // in afu_main().
+   input  logic [PG_NUM_PORTS-1:0] port_rst_n,
+   input logic pr_freeze_to_afu,
+
+   // PCIe A ports are the standard TLP channels. All host responses
+   // arrive on the RX A port.
+   pcie_ss_axis_if.source        afu_axi_tx_a_if [PG_NUM_PORTS-1:0],
+   pcie_ss_axis_if.sink          afu_axi_rx_a_if [PG_NUM_PORTS-1:0],
+   // PCIe B ports are a second channel on which reads and interrupts
+   // may be sent from the AFU. To improve throughput, reads on B may flow
+   // around writes on A through PF/VF MUX trees until writes are committed
+   // to the PCIe subsystem. AFUs may tie off the B port and send all
+   // messages to A.
+   pcie_ss_axis_if.source        afu_axi_tx_b_if [PG_NUM_PORTS-1:0],
+   // Write commits are signaled here on the RX B port, indicating the
+   // point at which the A and B channels become ordered within the FIM.
+   // Commits are signaled after tlast of a write on TX A, after arbitration
+   // with TX B within the FIM. The commit is a Cpl (without data),
+   // returning the tag value from the write request. AFUs that do not
+   // need local write commits may ignore this port, but must set
+   // tready to 1.
+   pcie_ss_axis_if.sink          afu_axi_rx_b_if [PG_NUM_PORTS-1:0]
+
+   `ifdef INCLUDE_DDR4
+      // Local memory
+     ,ofs_fim_emif_axi_mm_if.user ext_mem_if [NUM_MEM_CH-1:0]
+   `endif
+   `ifdef PLATFORM_FPGA_FAMILY_S10
+      // S10 uses AVMM for DDR
+     ,ofs_fim_emif_avmm_if.user   ext_mem_if [NUM_MEM_CH-1:0]
+   `endif
+
+   `ifdef AFU_MAIN_HAS_HSSI
+     ,ofs_fim_hssi_ss_tx_axis_if.client hssi_ss_st_tx [MAX_ETH_CH-1:0],
+      ofs_fim_hssi_ss_rx_axis_if.client hssi_ss_st_rx [MAX_ETH_CH-1:0],
+      ofs_fim_hssi_fc_if.client         hssi_fc [MAX_ETH_CH-1:0],
+      input logic [MAX_ETH_CH-1:0]      i_hssi_clk_pll
+   `endif
+
+    // S10 HSSI PTP interface
+   `ifdef INCLUDE_PTP
+     ,ofs_fim_hssi_ptp_tx_tod_if.client       hssi_ptp_tx_tod [MAX_ETH_CH-1:0],
+      ofs_fim_hssi_ptp_rx_tod_if.client       hssi_ptp_rx_tod [MAX_ETH_CH-1:0],
+      ofs_fim_hssi_ptp_tx_egrts_if.client     hssi_ptp_tx_egrts [MAX_ETH_CH-1:0],
+      ofs_fim_hssi_ptp_rx_ingrts_if.client    hssi_ptp_rx_ingrts [MAX_ETH_CH-1:0]
+   `endif
+   );
+
+    // ======================================================
+    //
+    // Put a TLP-based hello world on port 0
+    //
+    // ======================================================
+
+    //
+    // This AFU does not use the PIM at all. It consumes and produces
+    // PCIe SS encoded TLP streams.
+    //
+
+    hello_world_tlp
+      #(
+        .PF_ID(PORT_PF_VF_INFO[0].pf_num),
+        .VF_ID(PORT_PF_VF_INFO[0].vf_num),
+        .VF_ACTIVE(PORT_PF_VF_INFO[0].vf_active)
+        )
+      hello_world_tlp
+       (
+        .clk,
+        .rst_n(port_rst_n[0]),
+        .o_tx_if(afu_axi_tx_a_if[0]),
+        .o_tx_b_if(afu_axi_tx_b_if[0]),
+        .i_rx_if(afu_axi_rx_a_if[0]),
+        .i_rx_b_if(afu_axi_rx_b_if[0])
+        );
+
+
+    // ======================================================
+    //
+    // Put the PIM-based hello world on all other ports
+    //
+    // ======================================================
+
+    //
+    // Map the PIM-based hello world to all other available host channel
+    // ports. PIM and non-PIM AFU instances can coexist independently within
+    // the same compilation.
+    //
+
+    generate
+        for (genvar p = 1; p < PG_NUM_PORTS; p = p + 1)
+        begin : pim_afus
+            ofs_plat_host_chan_axis_pcie_tlp_if
+              #(
+                .LOG_CLASS(ofs_plat_log_pkg::HOST_CHAN)
+                )
+              host_chan();
+
+            // Map the PIM's host_chan interface to the FIM's PCIe SS interface.
+            // This transforms the individual PCIe port's FIM interfaces to the
+            // PIM's standard wrapper around the port's RX/TX interfaces.
+            //
+            // This is the same module that the PIM's default afu_main() would
+            // use to set up a full PIM ofs_plat_afu() environment.
+            map_fim_pcie_ss_to_pim_host_chan
+              #(
+                .INSTANCE_NUMBER(p),
+
+                .PF_NUM(PORT_PF_VF_INFO[p].pf_num),
+                .VF_NUM(PORT_PF_VF_INFO[p].vf_num),
+                .VF_ACTIVE(PORT_PF_VF_INFO[p].vf_active)
+                )
+            map_host_chan
+              (
+               .clk(clk),
+               .reset_n(port_rst_n[p]),
+
+               .pcie_ss_tx_a_st(afu_axi_tx_a_if[p]),
+               .pcie_ss_tx_b_st(afu_axi_tx_b_if[p]),
+               .pcie_ss_rx_a_st(afu_axi_rx_a_if[p]),
+               .pcie_ss_rx_b_st(afu_axi_rx_b_if[p]),
+
+               .port(host_chan)
+               );
+
+
+            // ****
+            // Now that we have a standard PIM host_chan, the remainder of the code
+            // is the same as the full ofs_plat_afu() version.
+            // ****
+
+            // Instance of the PIM's standard AXI memory interface. Now that we have
+            // a standard PIM host_chan, the remainder of the code is the same as
+            // the full ofs_plat_afu() version.
+            ofs_plat_axi_mem_if
+              #(
+                // The PIM provides parameters for configuring a standard host
+                // memory DMA AXI memory interface.
+                `HOST_CHAN_AXI_MEM_PARAMS,
+                // PIM interfaces can be configured to log traffic during
+                // simulation. In ASE, see work/log_ofs_plat_host_chan.tsv.
+                .LOG_CLASS(ofs_plat_log_pkg::HOST_CHAN)
+                )
+              host_mem();
+
+            // Instance of the PIM's AXI memory lite interface, which will be
+            // used to implement the AFU's CSR space.
+            ofs_plat_axi_mem_lite_if
+              #(
+                // The AFU choses the data bus width of the interface and the
+                // PIM adjusts the address space to match.
+                `HOST_CHAN_AXI_MMIO_PARAMS(64),
+                // Log MMIO traffic. (See the same parameter above on host_mem.)
+                .LOG_CLASS(ofs_plat_log_pkg::HOST_CHAN)
+                )
+                mmio64_to_afu();
+
+            // Map from TLP to a pair of AXI-MM interfaces
+            ofs_plat_host_chan_as_axi_mem_with_mmio pim_map
+               (
+                .to_fiu(host_chan),
+                .host_mem_to_afu(host_mem),
+                .mmio_to_afu(mmio64_to_afu),
+
+                // These ports would be used if the PIM is told to cross to
+                // a different clock. In this example, native pClk is used.
+                .afu_clk(),
+                .afu_reset_n()
+                );
+
+            // AXI-MM based hello world
+            hello_world_axi hello_afu
+               (
+                .mmio64_to_afu,
+                .host_mem
+                );
+        end // block: pim_afus
+    endgenerate
+
+
+    // ======================================================
+    //
+    // Tie off unused local memory
+    //
+    // ======================================================
+
+    for (genvar c=0; c<NUM_MEM_CH; c++) begin : mb
+     `ifdef INCLUDE_DDR4
+        assign ext_mem_if[c].awvalid = 1'b0;
+        assign ext_mem_if[c].wvalid = 1'b0;
+        assign ext_mem_if[c].arvalid = 1'b0;
+        assign ext_mem_if[c].bready = 1'b1;
+        assign ext_mem_if[c].rready = 1'b1;
+     `endif
+
+     `ifdef PLATFORM_FPGA_FAMILY_S10
+        assign ext_mem_if[c].write = 1'b0;
+        assign ext_mem_if[c].read = 1'b0;
+     `endif
+    end
+
+
+    // ======================================================
+    // Tie off unused HSSI
+    // ======================================================
+
+  `ifdef AFU_MAIN_HAS_HSSI
+    for (genvar c=0; c<MAX_ETH_CH; c++) begin : hssi
+        assign hssi_ss_st_tx[c].tx = '0;
+        assign hssi_fc[c].tx_pause = 0;
+        assign hssi_fc[c].tx_pfc = 0;
+    end
+  `endif
+
+endmodule : port_afu_instances

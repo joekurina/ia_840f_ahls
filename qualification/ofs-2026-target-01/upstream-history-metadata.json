@@ -1,0 +1,301 @@
+[
+  {
+    "url": "https://api.github.com/orgs/OFS/repos?per_page=100",
+    "status": 200,
+    "retrieved_utc": "2026-09-22T06:20:43.752519+00:00",
+    "sha256": "fcf27b2bd53141ddeda9290296d7fc17de9326deb9cdbf9ac75f2e65ed2ea0c7",
+    "data": [
+      {
+        "name": "opae-sdk",
+        "html_url": "https://github.com/OFS/opae-sdk",
+        "default_branch": "master",
+        "archived": false,
+        "pushed_at": "2026-07-10T11:42:38Z"
+      },
+      {
+        "name": "ofs-platform-afu-bbb",
+        "html_url": "https://github.com/OFS/ofs-platform-afu-bbb",
+        "default_branch": "master",
+        "archived": false,
+        "pushed_at": "2026-07-06T16:15:52Z"
+      },
+      {
+        "name": "opae-sim",
+        "html_url": "https://github.com/OFS/opae-sim",
+        "default_branch": "master",
+        "archived": false,
+        "pushed_at": "2025-02-20T22:29:54Z"
+      },
+      {
+        "name": "opae-legacy",
+        "html_url": "https://github.com/OFS/opae-legacy",
+        "default_branch": "master",
+        "archived": true,
+        "pushed_at": "2024-09-02T19:26:59Z"
+      },
+      {
+        "name": "linux-dfl",
+        "html_url": "https://github.com/OFS/linux-dfl",
+        "default_branch": "master",
+        "archived": false,
+        "pushed_at": "2025-02-06T14:07:45Z"
+      },
+      {
+        "name": "linux-dfl-backport",
+        "html_url": "https://github.com/OFS/linux-dfl-backport",
+        "default_branch": "intel/fpga-ofs-dev-6.6-lts",
+        "archived": false,
+        "pushed_at": "2025-08-12T05:52:35Z"
+      },
+      {
+        "name": "dfl-feature-id",
+        "html_url": "https://github.com/OFS/dfl-feature-id",
+        "default_branch": "main",
+        "archived": false,
+        "pushed_at": "2024-09-18T20:11:26Z"
+      },
+      {
+        "name": "examples-afu",
+        "html_url": "https://github.com/OFS/examples-afu",
+        "default_branch": "main",
+        "archived": false,
+        "pushed_at": "2026-08-03T20:21:38Z"
+      },
+      {
+        "name": "ofs-fim-common",
+        "html_url": "https://github.com/OFS/ofs-fim-common",
+        "default_branch": "release/ofs-2025.1",
+        "archived": false,
+        "pushed_at": "2025-07-03T02:29:38Z"
+      },
+      {
+        "name": "ofs-d5005",
+        "html_url": "https://github.com/OFS/ofs-d5005",
+        "default_branch": "release/ofs-2024.1",
+        "archived": true,
+        "pushed_at": "2025-03-24T17:48:30Z"
+      },
+      {
+        "name": ".github",
+        "html_url": "https://github.com/OFS/.github",
+        "default_branch": "main",
+        "archived": false,
+        "pushed_at": "2025-10-01T13:31:10Z"
+      },
+      {
+        "name": "ofs.github.io",
+        "html_url": "https://github.com/OFS/ofs.github.io",
+        "default_branch": "main",
+        "archived": false,
+        "pushed_at": "2025-10-23T15:18:53Z"
+      },
+      {
+        "name": "oneapi-asp",
+        "html_url": "https://github.com/OFS/oneapi-asp",
+        "default_branch": "master",
+        "archived": false,
+        "pushed_at": "2025-01-22T22:30:49Z"
+      },
+      {
+        "name": "meta-ofs",
+        "html_url": "https://github.com/OFS/meta-ofs",
+        "default_branch": "main",
+        "archived": true,
+        "pushed_at": "2024-03-20T22:03:18Z"
+      },
+      {
+        "name": "ofs-agx7-pcie-attach",
+        "html_url": "https://github.com/OFS/ofs-agx7-pcie-attach",
+        "default_branch": "release/ofs-2025.1",
+        "archived": false,
+        "pushed_at": "2025-07-03T02:29:45Z"
+      },
+      {
+        "name": "ofs-f2000x-pl",
+        "html_url": "https://github.com/OFS/ofs-f2000x-pl",
+        "default_branch": "release/ofs-2024.1",
+        "archived": true,
+        "pushed_at": "2025-03-24T17:48:31Z"
+      },
+      {
+        "name": "ofs-agx5-pcie-attach",
+        "html_url": "https://github.com/OFS/ofs-agx5-pcie-attach",
+        "default_branch": "release/ofs-2025.1",
+        "archived": false,
+        "pushed_at": "2025-07-03T02:34:06Z"
+      }
+    ],
+    "capture_note": "Selected metadata fields; response sha256 is original HTTP response"
+  },
+  {
+    "url": "https://api.github.com/repos/OFS/ofs-agx7-pcie-attach/commits?sha=599ac052eafbc9cede22561c099233ae4a54cb7d&path=syn/shared_config/top.sdc&per_page=12",
+    "status": 200,
+    "retrieved_utc": "2026-09-22T06:20:43.530784+00:00",
+    "sha256": "09c472dfac94e51b93030ea6d6fe26b9f4d57875deb28d791d3b04fc9a593842",
+    "data": [
+      {
+        "sha": "7c5b616b4411ab78066c6938985d35acc923f698",
+        "message": "Pin updates needed for 24.3 -- compatible with 24.1 (#1511)\n\n- Clean up some DDR pins that aren't arrays.\r\n- Mark unused (commented out) pins VIRTUAL_PIN. Quartus was binding them to\r\n  random locations.\r\n- inout pins can't be virtual (i2c scl/sda). Bind them to physical pins\r\n  on I-series dev kit.\r\n- Note clk_100m and DDR clocks are asynchronous. This ought to be obvious, but\r\n  they share a few nearby I/O buffers, causing timing errors.",
+        "date": "2024-08-06T21:08:43Z",
+        "html_url": "https://github.com/OFS/ofs-agx7-pcie-attach/commit/7c5b616b4411ab78066c6938985d35acc923f698"
+      },
+      {
+        "sha": "aa850e7b8f24b58a063ae42c324362e2e94101c8",
+        "message": "Add a stub for instantiating the PCIe AXI-S SS instead of DM (#1341)\n\nThere's enough perturbation from the Verilog hierarchy alone to make this\r\na commit of its own. No new features except conditional instantiation of\r\nthe AXI-S stub.",
+        "date": "2024-03-15T16:44:24Z",
+        "html_url": "https://github.com/OFS/ofs-agx7-pcie-attach/commit/aa850e7b8f24b58a063ae42c324362e2e94101c8"
+      },
+      {
+        "sha": "c5ec24617dd0b1ec5f7e4df4da496b9d3bd16551",
+        "message": "updating sdc path to reflect new logic (#1327)",
+        "date": "2024-03-05T17:36:05Z",
+        "html_url": "https://github.com/OFS/ofs-agx7-pcie-attach/commit/c5ec24617dd0b1ec5f7e4df4da496b9d3bd16551"
+      },
+      {
+        "sha": "4d235d8eac179af452a1d7eb0e4dfa7ac9c15a2b",
+        "message": "Add missing aynchronous R-Tile PCIe clock pair (#1303)",
+        "date": "2024-02-22T17:14:58Z",
+        "html_url": "https://github.com/OFS/ofs-agx7-pcie-attach/commit/4d235d8eac179af452a1d7eb0e4dfa7ac9c15a2b"
+      },
+      {
+        "sha": "3c9d35740a3652d9072ddca1d5f242f473ebfd37",
+        "message": "OFS public epoch commit\n\n(initialized from 941a4ae280ff418586c139d345b218b261fc9c96)",
+        "date": "2024-02-09T01:11:23Z",
+        "html_url": "https://github.com/OFS/ofs-agx7-pcie-attach/commit/3c9d35740a3652d9072ddca1d5f242f473ebfd37"
+      }
+    ],
+    "capture_note": "Selected metadata fields; response sha256 is original HTTP response"
+  },
+  {
+    "url": "https://api.github.com/repos/OFS/examples-afu/commits?sha=4a1350e3c9e223d8bac3cb47f756a1d919ef8de1&path=&per_page=12",
+    "status": 200,
+    "retrieved_utc": "2026-09-22T06:20:43.613523+00:00",
+    "sha256": "7b57bb17bf4a798aecd276cc7275fb48d665777a9d551d4a352c02138267ccee",
+    "data": [
+      {
+        "sha": "4a1350e3c9e223d8bac3cb47f756a1d919ef8de1",
+        "message": "Merge pull request #32 from OFS/update_pr_freeze\n\nFixing PR freeze bus",
+        "date": "2026-07-20T22:34:16Z",
+        "html_url": "https://github.com/OFS/examples-afu/commit/4a1350e3c9e223d8bac3cb47f756a1d919ef8de1"
+      },
+      {
+        "sha": "2399360830ce356af4391c074ff0b62e75b2a4e2",
+        "message": "fixing pr freeze",
+        "date": "2026-07-20T22:33:22Z",
+        "html_url": "https://github.com/OFS/examples-afu/commit/2399360830ce356af4391c074ff0b62e75b2a4e2"
+      },
+      {
+        "sha": "718be24b073f72d4a2c49c041513b34121dc5a16",
+        "message": "Merge pull request #31 from OFS/update_hybrid_port\n\nupdating hybrid afu afu_main.sv to add pr_freeze signals required for\u2026",
+        "date": "2026-07-17T22:11:03Z",
+        "html_url": "https://github.com/OFS/examples-afu/commit/718be24b073f72d4a2c49c041513b34121dc5a16"
+      },
+      {
+        "sha": "68763d1b97fd871b70ff86ee8023566586bb0ca8",
+        "message": "updating hybrid afu afu_main.sv to add pr_freeze signals required for some afu",
+        "date": "2026-07-17T22:09:42Z",
+        "html_url": "https://github.com/OFS/examples-afu/commit/68763d1b97fd871b70ff86ee8023566586bb0ca8"
+      },
+      {
+        "sha": "18626c4b60884f9154290b121940da33fef787b0",
+        "message": "Merge pull request #29 from nahidhassan-intel/nahidhas/update_license\n\nupdate license to Altera",
+        "date": "2025-05-28T17:02:44Z",
+        "html_url": "https://github.com/OFS/examples-afu/commit/18626c4b60884f9154290b121940da33fef787b0"
+      },
+      {
+        "sha": "69919d4ce1dcad4bd75916db034e3b13c86bc113",
+        "message": "update license",
+        "date": "2025-05-28T16:57:40Z",
+        "html_url": "https://github.com/OFS/examples-afu/commit/69919d4ce1dcad4bd75916db034e3b13c86bc113"
+      },
+      {
+        "sha": "0ce1d0910e9f1bab7a667106bb332b85b3957984",
+        "message": "Merge pull request #28 from OFS/nahidhas/update_md\n\nUpdate license/security md",
+        "date": "2025-02-20T22:10:02Z",
+        "html_url": "https://github.com/OFS/examples-afu/commit/0ce1d0910e9f1bab7a667106bb332b85b3957984"
+      },
+      {
+        "sha": "62206e8283a7af4965aca31fdc9cfc727f3ecf8d",
+        "message": "Removed LICENSE from pull request",
+        "date": "2025-02-20T22:00:34Z",
+        "html_url": "https://github.com/OFS/examples-afu/commit/62206e8283a7af4965aca31fdc9cfc727f3ecf8d"
+      },
+      {
+        "sha": "d9b714ad5684f362131713743d63dba20ba1fd4e",
+        "message": "update license/security md",
+        "date": "2025-02-20T19:26:50Z",
+        "html_url": "https://github.com/OFS/examples-afu/commit/d9b714ad5684f362131713743d63dba20ba1fd4e"
+      },
+      {
+        "sha": "421b3c09075671adba1d6e2de1c6524a7949d216",
+        "message": "Merge pull request #27 from OFS/njayaraj_minor_fixes\n\nFIx: added parameter PG_NUM_LINKS to match latest afu_main",
+        "date": "2024-12-18T22:08:36Z",
+        "html_url": "https://github.com/OFS/examples-afu/commit/421b3c09075671adba1d6e2de1c6524a7949d216"
+      },
+      {
+        "sha": "e6c4fc7d1504f35e1a1c09b0b27abbb0dd687cb8",
+        "message": "added parameter",
+        "date": "2024-12-18T05:32:19Z",
+        "html_url": "https://github.com/OFS/examples-afu/commit/e6c4fc7d1504f35e1a1c09b0b27abbb0dd687cb8"
+      },
+      {
+        "sha": "4126a5e41f58e89e4acf40e9efa314cd38052958",
+        "message": "Fix compilation on old SLES12 cc (c99 defaults off)",
+        "date": "2024-06-13T12:46:30Z",
+        "html_url": "https://github.com/OFS/examples-afu/commit/4126a5e41f58e89e4acf40e9efa314cd38052958"
+      }
+    ],
+    "capture_note": "Selected metadata fields; response sha256 is original HTTP response"
+  },
+  {
+    "url": "https://api.github.com/repos/OFS/ofs-platform-afu-bbb/commits?sha=3c21189e728009d4c492fa2be54c0ab1008b06dc&path=plat_if_develop/ofs_plat_if/src/rtl/ofs_plat_if.template.sv&per_page=12",
+    "status": 200,
+    "retrieved_utc": "2026-09-22T06:20:43.580015+00:00",
+    "sha256": "4940ef23f2ec73b85a86d80b3c5d91ba5d36fd92e27dab81f27c295a91a6e0a7",
+    "data": [
+      {
+        "sha": "404bfc3c14c9ebe60e7a5c6f9b369402d8889ebb",
+        "message": "adding PR freeze to pr wrapper",
+        "date": "2026-07-06T16:14:14Z",
+        "html_url": "https://github.com/OFS/ofs-platform-afu-bbb/commit/404bfc3c14c9ebe60e7a5c6f9b369402d8889ebb"
+      },
+      {
+        "sha": "8771aa80514ca2e3ed83e48a29a5398b4976e22a",
+        "message": "Use SPDX-License-Identifier instead of long copyright headers",
+        "date": "2022-12-09T18:55:36Z",
+        "html_url": "https://github.com/OFS/ofs-platform-afu-bbb/commit/8771aa80514ca2e3ed83e48a29a5398b4976e22a"
+      },
+      {
+        "sha": "2c44a512aeedb2b6540fdd47ebee5323352b42ac",
+        "message": "Restructure standard clocks into matched pairs of clk and reset_n.",
+        "date": "2020-08-05T20:23:05Z",
+        "html_url": "https://github.com/OFS/ofs-platform-afu-bbb/commit/2c44a512aeedb2b6540fdd47ebee5323352b42ac"
+      },
+      {
+        "sha": "3f98f690afca24255d72fd8d976f6f436142e721",
+        "message": "Switch OFS interfaces to active low reset.\n\n- Match new IP, which will be active low.\n- Legacy ccip_std_afu mode remains active high.\n- Define new resets associated with each incoming clock. Platorms may either map\n  these to global wires in the FIM or generate them inside the PR boundary using\n  local logic (usuall in green_bs).",
+        "date": "2020-04-13T19:39:12Z",
+        "html_url": "https://github.com/OFS/ofs-platform-afu-bbb/commit/3f98f690afca24255d72fd8d976f6f436142e721"
+      },
+      {
+        "sha": "520eba33da6362e03711a79c73baa603145c4c66",
+        "message": "Add \"_fiu\" suffix to base interfaces that cross the PR boundary to make\nit clear which are fixed platform interfaces and which are shimmed AFU\ninterfaces.",
+        "date": "2019-10-06T20:57:29Z",
+        "html_url": "https://github.com/OFS/ofs-platform-afu-bbb/commit/520eba33da6362e03711a79c73baa603145c4c66"
+      },
+      {
+        "sha": "03c21e0edb20c71b636e6723844776c52775e395",
+        "message": "Generalize the Avalon interface beyond just local memory (#2)\n\n- Add macros for connecting instances of the interface. Tasks would have been better,\r\n  since they are part of the language, but tasks within interfaces aren't stable enough\r\n  across the toolchains.\r\n\r\n- Add waitresponsevalid and response to the core OFS Avalon interface definition.\r\n\r\n- Declare clocks in interfaces as wires.",
+        "date": "2019-08-30T17:49:42Z",
+        "html_url": "https://github.com/OFS/ofs-platform-afu-bbb/commit/03c21e0edb20c71b636e6723844776c52775e395"
+      },
+      {
+        "sha": "428c9932cdeac14668d2114f3ed6082292677bc8",
+        "message": "Initial implementation of Platform Interface Manager (PIM) v2.\n\n- PIM v2 is compatible with AFU JSON files from PIM v1.\n- PIM v2 adds the ability to describe an AFU's platform interface using only\n  SystemVerilog. More README files and documentation will follow.\n- Updater scripts for BDX, SKX, PAC A10 and PAC S10 releases inject PIM v2 into\n  the standard afu_sim_setup/afu_synth_setup build environment. The public OPAE SDK\n  is required to use the updated releases. The PAC A10 1.2.1 and PAC S10 2.0.1\n  releases will be compatible as well.",
+        "date": "2019-08-01T21:23:12Z",
+        "html_url": "https://github.com/OFS/ofs-platform-afu-bbb/commit/428c9932cdeac14668d2114f3ed6082292677bc8"
+      }
+    ],
+    "capture_note": "Selected metadata fields; response sha256 is original HTTP response"
+  }
+]

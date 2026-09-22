@@ -1,0 +1,57 @@
+{
+  "local_files": [
+    {
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/sources.lock.json",
+      "bytes": 2929,
+      "sha256": "ebfb5b3909e77e57b925a66f606c0e3a4248cac853642704298596b8acab3685",
+      "sdc_clock_lines": null
+    },
+    {
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/pcie-clock-binding-01/independent-research.md",
+      "bytes": 21160,
+      "sha256": "27150f6a979e761d6207793397a33c72a05f3fa20de28f3f979745413f426547",
+      "sdc_clock_lines": null
+    },
+    {
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-agx7-pcie-attach/syn/shared_config/top.sdc",
+      "bytes": 8874,
+      "sha256": "8255b34c200a46178174b9788bdc9231072ae829f57c34703cc63dd28ab66c3d",
+      "sdc_clock_lines": [
+        "create_generated_clock -add -name pcie_wrapper|pcie_ss.top|*|pcie_ss|avmm_clock0 \\",
+        "                       -source      [get_pins {pcie_wrapper|pcie_ss.top|*|pcie_ss|u_pciess_p0|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst|inclk}] \\",
+        "                       -divide_by 2 [get_pins {pcie_wrapper|pcie_ss.top|*|pcie_ss|u_pciess_p0|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst|clock_div2}]",
+        "",
+        "",
+        "#**************************************************************",
+        "# Set Clock Groups",
+        "#**************************************************************",
+        "set_clock_groups -asynchronous -group {altera_reserved_tck}",
+        "set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_sys}",
+        "set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_sys} -group { pcie_wrapper|pcie_ss.top|*|pcie_ss|*|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15}",
+        "set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m } -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|*|intel_pcie_*_ast_qhip|rx_clkout|ch5}",
+        "set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m } -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|*|intel_pcie_rtile_ast_qhip_pld_clkout}",
+        "set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m } -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|*|intel_pcie_rtile_ast_qhip_pld_clkout_slow}",
+        "set_clock_groups -asynchronous -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|avmm_clock0} -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|*|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15}",
+        "set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m} -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|*|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15}",
+        "set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m} -group {pcie_wrapper|pcie_ss.top|*|pcie_ss|avmm_clock0}",
+        "set_clock_groups -asynchronous -group {sys_pll|iopll_0_clk_100m} -group {local_mem_wrapper|mem_ss_top|mem_ss_inst|mem_ss|emif_*|emif_*_phy_clk*}",
+        "",
+        "#**************************************************************",
+        "# Set Multicycle Path",
+        "#**************************************************************",
+        "set_multicycle_path -setup -end -from [get_clocks {*avmm_clock0}] -to [get_clocks {sys_pll|iopll_0_clk_100m}] 2",
+        "set_multicycle_path -hold -end -from [get_clocks {*avmm_clock0}] -to [get_clocks {sys_pll|iopll_0_clk_100m}] 1",
+        "set_multicycle_path -setup -start -from [get_clocks {sys_pll|iopll_0_clk_100m}] -to [get_clocks {*avmm_clock0}] 2",
+        "set_multicycle_path -hold -start -from [get_clocks {sys_pll|iopll_0_clk_100m}] -to [get_clocks {*avmm_clock0}] 1"
+      ]
+    },
+    {
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/rtl/ofs_plat_if.template.sv",
+      "bytes": 2099,
+      "sha256": "64ba5e88a622df9321d650504df804de67fea15b3ced77cada38bab418f1707c",
+      "sdc_clock_lines": null
+    }
+  ],
+  "upstream_top_sdc_sha256": "8255b34c200a46178174b9788bdc9231072ae829f57c34703cc63dd28ab66c3d",
+  "clock_and_exception_block_lines_35_60_identical": true
+}
