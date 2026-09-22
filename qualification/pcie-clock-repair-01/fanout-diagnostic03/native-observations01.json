@@ -1,0 +1,108 @@
+{
+  "audit_sha256": "2ac1320fe295688a6cf5e300bf09bdc3a759499a3dbc0c2019c00a4dccb63b90",
+  "audit_records": 559,
+  "record_counts": {
+    "BEGIN": 1,
+    "BASELINE_GENERATED_NAME_COUNT": 1,
+    "CLOCK_COUNT": 1,
+    "CLOCK": 80,
+    "COUNT": 148,
+    "SET": 148,
+    "ROOT": 2,
+    "FANOUT_COUNT": 4,
+    "RELATION": 3,
+    "TILE": 1,
+    "KNOWN_MANIFEST_COUNT": 1,
+    "LOOKUP_INPUT": 6,
+    "CELL": 32,
+    "CLOCK_INPUT": 32,
+    "CLOCK_INPUT_COUNT": 32,
+    "CELL_REGISTER_MAP": 32,
+    "REGISTER": 32,
+    "VISITED_COUNT": 1,
+    "DIAGNOSTIC_STATUS": 1,
+    "COMPLETE": 1
+  },
+  "count_set_pairs_checked": 148,
+  "fanouts": {
+    "pin_clock": 0,
+    "pin_all": 459,
+    "keeper_clock": 0,
+    "keeper_all": 459
+  },
+  "default_sets_equal": true,
+  "default_exact_name_set_sha256": "abc890d036cfa941693d691e1aa216adbc8cacbf145e18906bd6bc31def16c08",
+  "lookups": {
+    "lookup:get_cells:raw": 1,
+    "lookup:get_cells:transformed": 0,
+    "lookup:get_keepers:raw": 1,
+    "lookup:get_keepers:transformed": 0,
+    "lookup:get_registers:raw": 1,
+    "lookup:get_registers:transformed": 0
+  },
+  "physical_groups": {
+    "0": 8,
+    "1": 8,
+    "2": 8,
+    "3": 8
+  },
+  "physical_cells": 32,
+  "mapped_registers": 32,
+  "each_cell_one_register_same_exact_name": true,
+  "each_register_default_membership": true,
+  "each_register_filtered_membership": false,
+  "mapped_register_driving_clock_associations_empty": true,
+  "clock_inputs": 32,
+  "each_clock_input_one_expected_divider_fanin": true,
+  "reverse_divider": "pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst~div_reg",
+  "root_observations": [
+    [
+      "ROOT",
+      "pin",
+      "pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst|clock_div2",
+      "driving_clocks",
+      "sys_pll|iopll_0_clk_100m"
+    ],
+    [
+      "ROOT",
+      "keeper",
+      "pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|EP_PFTILE_WRAPPER.gen_pciess.u_pciess_p0|u_pciess|gen_sub.u_hipif|u_pciess_clock_divider|clkdiv_inst~div_reg",
+      "driving_clocks",
+      "sys_pll|iopll_0_clk_100m"
+    ]
+  ],
+  "tile_observation": [
+    [
+      "TILE",
+      "pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|avmm2_3~maib_ss_lib/x0/u5_2/pld_avmm2_clk_rowclk.reg",
+      "memberships",
+      "pin_clock 0 pin_all 1 keeper_clock 0 keeper_all 1",
+      "driving_clocks",
+      ""
+    ]
+  ],
+  "baseline_generated_name_count": 0,
+  "clock_count": 80,
+  "diagnostic_status": [
+    "complete",
+    "1",
+    "mapping_single_register_each",
+    "1",
+    "no_collector_acceptance",
+    "no_comparison_acceptance"
+  ],
+  "completion": [
+    "diagnostic_only",
+    "no_clock_created",
+    "no_timing_acceptance"
+  ],
+  "warnings": {
+    "332049": 133,
+    "332174": 53,
+    "332054": 14,
+    "332060": 1
+  },
+  "native_array_origin_known": false,
+  "complete_clock_only_collector_qualified": false,
+  "independent_result_review": "PENDING"
+}

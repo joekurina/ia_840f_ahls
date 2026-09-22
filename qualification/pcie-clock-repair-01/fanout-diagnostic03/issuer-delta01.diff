@@ -1,0 +1,40 @@
+--- ../fanout-diagnostic02/issue-launch01.py
++++ issue-launch01.py
+@@ -2,10 +2,10 @@
+ """One-shot review transport/issuance, then exec the unchanged reviewed runner."""
+ from pathlib import Path
+ import base64, datetime, gzip, hashlib, json, os, shutil, socket, subprocess, sys
+-E=Path('/home/uwb_student00/ahls/new_BSP/qualification/pcie-clock-repair-01/fanout-diagnostic02')
++E=Path('/home/uwb_student00/ahls/new_BSP/qualification/pcie-clock-repair-01/fanout-diagnostic03')
+ L=E/'launch01'
+-CANDIDATE='a2a1ac74a55d76c5786be5c75517a2860bd53fe4ffc3e0f18720824ac6c77270'
+-REVIEW_HASHES={'prepared-manifest01.json': '69db4cf4a1b7c343ae9f607c9273a08473e1ed2cfcaf88c372c57872b767461f', 'spec-review01.md': '94ef36a0a39a9c09fef580f2250275a9074f63dfa34da615624c785f0450d5d7', 'quality-review01.md': '0bc8ebc3f463f189c3f94af0ebef69b7dd5e77ba5f1d4e668567b7a7c21b45ba', 'parent-consumption01.json': '6793e070867b255995a9ab4d92e2def7b647975f4bdaa75d8ec257e74979a972', 'ACCEPTANCE.md': 'caf06f8357c96f82e20d832c089a708549f4da7831ffc7c6809ddff9517c090f'}
++CANDIDATE='16acaa0babf1103eb573e76459f1e98fafc3aadeeff8b2acb23dd172d61a9949'
++REVIEW_HASHES={'prepared-manifest01.json': '063e0f0baa29c39bd52981ef2b033538fec5068272dc221205c8433b017f3dca', 'spec-review01.md': 'f6fdd7cf2e706dfaf6376fc606280b363c4308436060b98f8d3f6d70225a7594', 'quality-review01.md': '4a655b74a72a46082cecc47818de8137aa01acadd6a5284523cbfa5aada2c6a2', 'parent-consumption01.json': '555d8b331188200c9e110818278de30e359e6fe23312be20476bcf8e96820ea2', 'ACCEPTANCE.md': '460dcd111b7032e7122e59a76e2cac8784cd04c638c5dfd2528ef385db47ced5'}
+ def sha(p):
+     h=hashlib.sha256()
+     with p.open('rb') as f:
+@@ -29,7 +29,7 @@
+         p=E.parent/'experiment03'/'candidate'/name
+         if p.exists() or p.is_symlink():raise RuntimeError('candidate cannot precede baseline '+str(p))
+     if len(sys.argv)!=2:raise RuntimeError('exact payload hash argument required')
+-    raw=subprocess.check_output(['tmux','save-buffer','-b','ia840f_clock_fanout02_launch01_payload','-'])
++    raw=subprocess.check_output(['tmux','save-buffer','-b','ia840f_clock_fanout03_launch01_payload','-'])
+     if hashlib.sha256(raw).hexdigest()!=sys.argv[1]:raise RuntimeError('payload hash')
+     payload=json.loads(raw)
+     if set(payload)!={'prepared-manifest01.json','spec-review01.md','quality-review01.md','parent-consumption01.json','ACCEPTANCE.md'}:raise RuntimeError('review payload scope')
+@@ -60,12 +60,12 @@
+     for name,data in decoded.items():
+         with (L/name).open('xb') as f:f.write(data)
+         if (L/name).read_bytes()!=data:raise RuntimeError('review readback')
+-    auth={'approved':True,'candidate_sha256':CANDIDATE,'permission':'exact-offline-fanout-diagnostic02'}
++    auth={'approved':True,'candidate_sha256':CANDIDATE,'permission':'exact-offline-fanout-diagnostic03'}
+     with (E/'authorization.json').open('x') as f:json.dump(auth,f,indent=2)
+     if json.loads((E/'authorization.json').read_text())!=auth:raise RuntimeError('authorization readback')
+     receipt={'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'pane':os.environ['TMUX_PANE'],'authorization_sha256':sha(E/'authorization.json'),'candidate_sha256':CANDIDATE,'reviews':{k:hashlib.sha256(v).hexdigest() for k,v in decoded.items()},'originals_unchanged_before_launch':True,'native_started_at_receipt':False,'runner_argv':r['runner']['argv'],'runner_cwd':r['runner']['cwd']}
+     with (L/'issuance.json').open('x') as f:json.dump(receipt,f,indent=2)
+-    print('FANOUT02_AUTHORIZATION_ISSUED',json.dumps(receipt),flush=True)
++    print('FANOUT03_AUTHORIZATION_ISSUED',json.dumps(receipt),flush=True)
+     os.chdir(E)
+     os.execv(r['runner']['exe'],r['runner']['argv'])
+ if __name__=='__main__':main()
