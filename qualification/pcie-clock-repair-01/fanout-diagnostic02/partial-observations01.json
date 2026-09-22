@@ -1,0 +1,112 @@
+{
+  "audit_sha256": "c85cdb0d21ac800a732c482f7e5f8e1a4d7f80c67de8cce1850340e600bac285",
+  "audit_lines": 135,
+  "record_counts": {
+    "BEGIN": 1,
+    "BASELINE_GENERATED_NAME_COUNT": 1,
+    "CLOCK_COUNT": 1,
+    "CLOCK": 80,
+    "COUNT": 17,
+    "SET": 17,
+    "ROOT": 2,
+    "FANOUT_COUNT": 4,
+    "RELATION": 3,
+    "TILE": 1,
+    "KNOWN_MANIFEST_COUNT": 1,
+    "LOOKUP_INPUT": 6,
+    "CELL": 1
+  },
+  "clock_inventory_count": 80,
+  "forward_sets": {
+    "pin_clock": {
+      "count": 0,
+      "cap": 4096,
+      "names_count": 0,
+      "unique_count": 0
+    },
+    "pin_all": {
+      "count": 459,
+      "cap": 4096,
+      "names_count": 459,
+      "unique_count": 459
+    },
+    "keeper_clock": {
+      "count": 0,
+      "cap": 4096,
+      "names_count": 0,
+      "unique_count": 0
+    },
+    "keeper_all": {
+      "count": 459,
+      "cap": 4096,
+      "names_count": 459,
+      "unique_count": 459
+    }
+  },
+  "relations_recomputed": [
+    {
+      "a": "pin_clock",
+      "b": "pin_all",
+      "a_only": 0,
+      "b_only": 459,
+      "intersection": 0
+    },
+    {
+      "a": "keeper_clock",
+      "b": "keeper_all",
+      "a_only": 0,
+      "b_only": 459,
+      "intersection": 0
+    },
+    {
+      "a": "pin_all",
+      "b": "keeper_all",
+      "a_only": 0,
+      "b_only": 0,
+      "intersection": 459
+    }
+  ],
+  "lookup_counts": {
+    "lookup:get_cells:raw": 1,
+    "lookup:get_cells:transformed": 0,
+    "lookup:get_keepers:raw": 1,
+    "lookup:get_keepers:transformed": 0,
+    "lookup:get_registers:raw": 1,
+    "lookup:get_registers:transformed": 0
+  },
+  "tile": [
+    [
+      "TILE",
+      "pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|avmm2_3~maib_ss_lib/x0/u5_2/pld_avmm2_clk_rowclk.reg",
+      "memberships",
+      "pin_clock 0 pin_all 1 keeper_clock 0 keeper_all 1",
+      "driving_clocks",
+      ""
+    ]
+  ],
+  "physical_group_counts": {
+    "physical_group:0": 8
+  },
+  "visited_cell_records": 1,
+  "pin_mapping_records": 0,
+  "buried_mapping_records": 0,
+  "query_complete": false,
+  "warning_counts": {
+    "332049": 133,
+    "332174": 53,
+    "332054": 14,
+    "332060": 1
+  },
+  "native_errors": [
+    {
+      "line": 496,
+      "text": "Error (23035): Tcl error: can't set \"pins\": variable is array"
+    },
+    {
+      "line": 520,
+      "text": "Error (23031): Evaluation of Tcl script /home/uwb_student00/ahls/new_BSP/qualification/pcie-clock-repair-01/fanout-diagnostic02/query.tcl unsuccessful"
+    }
+  ],
+  "exception": "can't set \"pins\": variable is array",
+  "interpretation": "Partial observations only; get_cell_info-pins assignment fails inside main at first physical cell. No pin/reverse/buried mapping completion; no validated collector or A/B/timing outcome."
+}
