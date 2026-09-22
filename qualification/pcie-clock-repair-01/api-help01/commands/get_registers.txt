@@ -1,0 +1,65 @@
+---------------------------------------------------------------------------
+
+Usage: get_registers [-h] [-help] [-long_help] [-latches] [-no_duplicates] [-nocase] [-nowarn] [<filter>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -latches: Get only latches that match the filter
+        -no_duplicates: Do not match duplicated register names
+        -nocase: Specifies the matching of node names to be case-insensitive
+        -nowarn: Do not issue warning messages about unmatched patterns
+        <filter>: Valid destinations (string patterns are matched using Tcl string matching)
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sdc_ext 2.0
+
+------------
+Description:
+------------
+
+Returns a collection of registers in the design.
+
+The default matching scheme returns not only registers
+whose names match the specified filter, but also
+returns registers duplicated from these registers
+(cells automatically generated from these registers by
+the Quartus Prime software). Use the -no_duplicates
+option to exclude duplicated registers.
+
+The filter for the collection is a Tcl list of
+wildcards, and must follow standard Tcl or
+Timing Analyzer-extension substitution rules. See help for
+the use_timing_analyzer_style_escaping command for details.
+
+
+--------------
+Example Usage:
+--------------
+
+project_open chiptrip
+create_timing_netlist
+
+set regs [get_registers *reg*]
+foreach_in_collection reg $regs {
+    puts [get_object_info -name $reg]
+}
+
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+
+---------------------------------------------------------------------------
+

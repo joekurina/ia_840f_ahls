@@ -1,0 +1,105 @@
+---------------------------------------------------------------------------
+
+Usage: get_report_panel_data [-h] [-help] [-long_help] [-col <column>] [-col_name <column_name>] [-id <table_id>] [-name <table_name>] [-row <row>] [-row_name <row_name>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -col <column>: column (or X) coordinate
+        -col_name <column_name>: column (or X) name
+        -id <table_id>: id of panel from which to get data
+        -name <table_name>: Name of panel from which to get data
+        -row <row>: row (or Y) coordinate
+        -row_name <row_name>: row (or Y) name
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::report 2.1
+
+------------
+Description:
+------------
+
+Returns non-empty data for the specified row and column of
+the specified panel. If the data is empty or if the row,
+column, or panel do not exist, an error will be generated.
+To properly handle the error, make sure to catch the result
+as in the following example:
+
+if [catch {set data [get_report_panel_data ...]} result] {
+  puts "No data found"
+} else {
+  puts "Got $data"
+}
+
+Using the panel id and row and column indices provides faster 
+data access than using panel, row, and column names.
+
+Panel ids and row and column indices that you have cached may 
+become outdated or invalid if the report is unloaded or reloaded. 
+This error occurs after compilation or with calls to the 
+"project_close", "unload_report", and "load_report" commands.
+
+Panel, row, and panel names support wildcards.
+
+The table of contents portion of the Compilation Report
+window shows short panel names for better readability.
+However, the panel name used by this command is the full
+panel name as shown in the right-hand side frame of the
+Compilation Report window or the .rpt file of the
+corresponding command-line executable. For example, the
+table of contents shows the path "Analysis & Synthesis||Summary".
+However, the corresponding full path used by this Tcl command
+is "Analysis & Synthesis||Analysis & Synthesis Summary".
+
+--------------
+Example Usage:
+--------------
+
+load_package report
+project_open chiptrip
+load_report
+
+# Set panel name and id
+set panel {Flow Settings}
+set id    [get_report_panel_id $panel]
+# Set row name
+set rname {Revision Name}
+
+# Get row 2 - column 1 data
+get_report_panel_data -row 2 -col 1 -id $id
+# Get row {Revision Name} - column 1 data
+get_report_panel_data -row_name $rname -col 1 -id $id
+# Get row {Revision Name} - column {Setting} data
+get_report_panel_data -row_name $rname -col_name Setting -id $id
+# If unsure the case of a row or column name, use glob-style pattern
+get_report_panel_data -row_name {[Rr]evision*} -col_name {[Ss]etting} -id $id
+
+unload_report
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_OK   	0   	INFO: Report automatically reloaded because it was not up-to-date after use of Tcl command "execute_flow" or "execute_module" (which belong to ::quartus::flow package). No action is required.
+TCL_ERROR	1   	ERROR: Found conflicting column options. Specify either the "-col" or "-col_name" option.
+TCL_ERROR	1   	ERROR: Found conflicting row options. Specify either the "-row" or "-row_name" option.
+TCL_ERROR	1   	ERROR: Table is empty. Add rows to the table before accessing its data.
+TCL_ERROR	1   	ERROR: Illegal column name: "<string>".
+TCL_ERROR	1   	ERROR: Illegal column number: <string>. Specify a legal column number from <string> to <string>.
+TCL_ERROR	1   	ERROR: Illegal row name: "<string>".
+TCL_ERROR	1   	ERROR: Illegal row number: <string>. Specify a legal row number from <string> to <string>.
+TCL_ERROR	1   	ERROR: No column option specified.
+TCL_ERROR	1   	ERROR: Can't retrieve data for row and column number. Specify a legal row and column number for the command "get_report_panel_data".
+TCL_ERROR	1   	ERROR: No row option specified.
+TCL_ERROR	1   	ERROR: Can't access report panel. Use this command only for report panels with rows or columns.
+
+---------------------------------------------------------------------------
+

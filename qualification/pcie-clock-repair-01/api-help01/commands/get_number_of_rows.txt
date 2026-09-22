@@ -1,0 +1,82 @@
+---------------------------------------------------------------------------
+
+Usage: get_number_of_rows [-h] [-help] [-long_help] [-id <table_id>] [-name <table_name>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -id <table_id>: Id of panel from which to get data
+        -name <table_name>: Name of panel from which to get data
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::report 2.1
+
+------------
+Description:
+------------
+
+Returns the number of rows for the specified panel.
+
+Using the panel id provides faster data access than using the 
+panel name.
+
+Panel ids that you have cached may become outdated or invalid 
+if the report is unloaded or reloaded. This error occurs 
+after compilation or with calls to the "project_close",
+"unload_report", and "load_report" commands.
+
+Panel names support wildcards.
+
+The table of contents portion of the Compilation Report
+window shows short panel names for better readability.
+However, the panel name used by this command is the full
+panel name as shown in the right-hand side frame of the
+Compilation Report window or the .rpt file of the
+corresponding command-line executable. For example, the
+table of contents shows the path "Analysis & Synthesis||Summary".
+However, the corresponding full path used by this Tcl command
+is "Analysis & Synthesis||Analysis & Synthesis Summary".
+
+--------------
+Example Usage:
+--------------
+
+## Loop through a panel and print out all its row information
+
+load_package report
+project_open chiptrip
+load_report
+
+# Set panel name and id
+set panel   {*Fitter Settings}
+set id      [get_report_panel_id $panel]
+
+# Get the number of rows
+set row_cnt [get_number_of_rows -id $id]
+
+for {set i 0} {$i < $row_cnt} {incr i} {
+    puts [get_report_panel_row -row $i -id $id]
+}
+
+unload_report
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_OK   	0   	INFO: Report automatically reloaded because it was not up-to-date after use of Tcl command "execute_flow" or "execute_module" (which belong to ::quartus::flow package). No action is required.
+TCL_ERROR	1   	ERROR: Can't find the top-level panel. Make sure the loaded report is not empty. You can run a successful compilation to rebuild the report.
+TCL_ERROR	1   	ERROR: Can't find panel: <string>. Specify an existing report panel name.
+TCL_ERROR	1   	ERROR: Report not loaded for revision name: <string>. Type "load_report" to load the report.
+TCL_ERROR	1   	ERROR: Can't access report panel. Use this command only for report panels with rows or columns.
+
+---------------------------------------------------------------------------
+

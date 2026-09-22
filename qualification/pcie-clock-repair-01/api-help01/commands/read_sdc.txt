@@ -1,0 +1,72 @@
+---------------------------------------------------------------------------
+
+Usage: read_sdc [-h] [-help] [-long_help] [-hdl] [-instance <instance_name>] [-no_import] [-no_sdc_promotion] [-post_fit] [-post_syn] [-project_relative] [<file_name>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -hdl: Read SDC commands embedded in HDL
+        -instance <instance_name>: Name of the block for which we are reading the SDC file
+        -no_import: Do not automatically import RTL SDCs from the netlist
+        -no_sdc_promotion: Disable instance-bound scoping of constraints
+        -post_fit: For post_syn STA. Load SDCs as if in post_fit (Includes SDC_FILE, HDL Embedded, Entity)
+        -post_syn: For use with STA on fitter snapshots. Load SDCs as if in post_syn mode
+        -project_relative: If passing in a relative path to a file, interpret that path relative to the current project\'s directory instead of STA\'s current directory
+        <file_name>: Name of the SDC file
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Reads an SDC file with all current constraints and exceptions.
+
+If an SDC file is specified, read_sdc only reads that SDC file.  If
+the -hdl option is specified, read_sdc only reads SDC commands that
+were embedded in HDL.
+
+If no arguments are specified, read_sdc reads the default SDC files
+along with any SDC commands that were embedded in HDL.  If one or more
+SDC_FILE assignments exists in the QSF, read_sdc reads all of them in
+order. Otherwise, read_sdc reads the file <revision>.sdc if it exists.
+
+--------------
+Example Usage:
+--------------
+
+project_new test
+create_timing_netlist
+
+# Read SDC commands from test_constraints.sdc
+read_sdc test_constraints.sdc
+
+# Read SDC commands embedded in HDL
+read_sdc -hdl
+
+update_timing_netlist
+
+report_timing
+
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Can't find file "<string>"
+TCL_ERROR	1   	ERROR: The provided instance name does not exist in the current design.
+TCL_ERROR	1   	ERROR: instance_name must be specified when using no_sdc_promotion.
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+
+---------------------------------------------------------------------------
+

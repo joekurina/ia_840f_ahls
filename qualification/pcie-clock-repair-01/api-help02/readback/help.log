@@ -1,0 +1,485 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+    Info: Copyright (C) 2026  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Tue Sep 22 00:59:17 2026
+    Info: System process ID: 16908
+Info: Command: quartus_sta -t /home/uwb_student00/ahls/new_BSP/qualification/pcie-clock-repair-01/api-help02/help.tcl
+HELP_BEGIN get_collection
+HELP_UNAVAILABLE get_collection {ERROR: Tcl command does not exist or is not supported by Quartus Prime Tcl help: get_collection. Specify an available Quartus Prime Tcl command. Type "info commands" for a list of available commands.
+}
+HELP_END get_collection
+HELP_BEGIN index_collection
+HELP_UNAVAILABLE index_collection {ERROR: Tcl command does not exist or is not supported by Quartus Prime Tcl help: index_collection. Specify an available Quartus Prime Tcl command. Type "info commands" for a list of available commands.
+}
+HELP_END index_collection
+HELP_BEGIN add_to_collection
+---------------------------------------------------------------------------
+
+Usage: add_to_collection [-h] [-help] [-long_help] <collection_obj_1> <collection_obj_2>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        <collection_obj_1>: First object collection
+        <collection_obj_2>: Second object collection
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+This command takes two collections and returns a new
+collection that is a union of the two. The second
+collection is allowed to be a string, whereas the
+first has to be previously-created collection, either
+by passing any of the "get_" functions directly, or by
+passing a variable that contains a collection (see code
+examples for this command). If a collection is used
+for the second argument, the types in the second
+collection must be the same as or a subset of the types
+in the first collection.
+
+If the first collection consists of keepers, the second
+collection can only consist of keepers, registers or ports.
+If the first collection consists of partitions, the second
+collection can only consist of partitions or cells. If
+the first collection consists of nodes, the second collection
+can only consist of nodes, keepers, registers, ports, pins,
+nets or combinational nodes.
+
+--------------
+Example Usage:
+--------------
+
+set kprs1 [get_keepers b*]
+set regs1 [get_registers a*]
+
+set regs_union [add_to_collection $kprs1 $regs1]
+
+#or:
+set regs_union [add_to_collection [get_keepers b*] $regs1]
+
+#or even:
+set regs_union [add_to_collection $kprs1 a*]
+
+# - note that the last statement will actually add all keepers with name a*
+#   not only registers! (will add IOs with name a*, if any)
+
+# Get the first 100 nodes in the collection.
+query_collection $regs_union -limit 100
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Cannot find specified collection. Specify an existing collection.
+
+---------------------------------------------------------------------------
+
+HELP_END add_to_collection
+HELP_BEGIN use_timing_analyzer_style_escaping
+---------------------------------------------------------------------------
+
+Usage: use_timing_analyzer_style_escaping [-h] [-help] [-long_help] [-off] [-on]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -off: Disable this setting.
+        -on: Enable this setting.
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Use Timing Analyzer-style escaping.  (Timing Analyzer-style escaping is enabled by
+default.
+
+The values used to create a collection, whether explicitly using a
+collection command or implicitly as a value specified as a "-from",
+"-to", or similar option to various SDC and report commands, are a Tcl
+list of wildcards.  This includes a single name with an exact match.
+The value must follow standard Tcl substitution rules for Tcl lists
+and "string match" as described below, unless using Timing Analyzer-style
+escaping (default).
+
+For special characters such as '$', the character must be escaped
+using a single '\' character to prevent Tcl from interpreting the word
+after '$' as a Tcl variable, such as: Clk\$Signal.
+
+A '\' character itself must be escaped with another '\' as in the '$'
+case, must be escaped again for the Tcl list, and must be escaped yet
+again for Tcl "string match."  The final result is eight '\'
+characters, such as: Clk\\\\\\\\Signal.
+
+Using Tcl "list" eliminates one level of escaping, since it
+escapes any '\' characters automatically for the Tcl list, such as:
+[list Clk\\\\Signal]
+
+Using '{' and '}' characters also eliminates the need for one or two
+levels of escaping, since '{' and '}' prevent string substitution in
+the contents, such as:
+	[List {Clk\\Signal}]
+	{{Clk\\Signal}}
+
+The use_timing_analyzer_style_escaping option, which is on by default,
+allows the user to specify a name containing '\' characters with only
+two '\' characters in all cases, such as: Clk\\Signal.  The extra '\'
+characters required for Tcl list string substitution and "string
+match" are added automatically by the Timing Analyzer.
+
+To disable Timing Analyzer style string escaping, call
+"use_timing_analyzer_style_escaping -off" before adding any timing
+constraints or exceptions.
+
+--------------
+Example Usage:
+--------------
+
+project_open top
+use_timing_analyzer_style_escaping -on
+create_timing_netlist
+set res [get_cells my_test|special_\\reg]
+query_collection $res -all
+
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+
+---------------------------------------------------------------------------
+
+HELP_END use_timing_analyzer_style_escaping
+HELP_BEGIN get_pins
+---------------------------------------------------------------------------
+
+Usage: get_pins [-h] [-help] [-long_help] [-compatibility_mode] [-hierarchical] [-no_duplicates] [-nocase] [-nowarn] [<filter>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -compatibility_mode: Use simple Tcl matching
+        -hierarchical: Specifies use of a hierarchical searching method
+        -no_duplicates: Do not match duplicated pin names
+        -nocase: Specifies case-insensitive node name matching
+        -nowarn: Do not issue warning messages about unmatched patterns
+        <filter>: Valid destinations (string patterns are matched using Tcl string matching)
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sdc 1.5
+
+------------
+Description:
+------------
+
+Returns a collection of pins in the design. All pin names in the
+collection match the specified pattern. Wildcards can be used to
+select multiple pins at once.
+
+There are three Tcl string matching schemes available with this
+command: the default method, the -hierarchical option, and the
+-compatibility_mode option.
+
+By default, pipe characters are used to separate one hierarchy level
+from the next. They are treated as special characters and are taken
+into account when string matching with wildcards is performed. When
+the default matching scheme is enabled, the specified pattern is
+matched against absolute pin names: the names that include the entire
+hierarchical path. All hierarchy levels in the pattern are matched
+level by level. Pin names of the form <absolute full cell name>|<pin
+suffix> are used for matching. Note that a full cell name can contain
+multiple pipe characters in it to reflect the hierarchy. Any included
+wildcards refer to only one hierarchical level. For example, "*|*" and
+"*|*|*" produce different collections since they refer to the highest
+hierarchical level and second highest hierarchical level respectively.
+
+When using the -hierarchical matching scheme, pipe characters are
+treated as special characters and are taken into account when string
+matching with wildcards is performed. This matching scheme forces the
+search to proceed recursively through the hierarchy. The specified
+pattern is matched against the relative pin names: the immediate names
+that do not include any of the hierarchy information.  Pin names of
+the form <relative short cell name>|<pin suffix> are used for
+matching. Note that a short cell name cannot contain pipe
+characters. Any included wildcards are expanded to match the relative
+pin names.  For example, "*" and "*|*" match exactly the same pins
+since the former is expanded into the latter.
+
+The -compatibility_mode matching scheme uses simple Tcl string matching
+on full, absolute cell names. Pipe characters are not treated as special
+characters when used with wildcards.
+
+The default matching scheme returns not only pins whose names match
+the specified filter, but also pins duplicated from these pins (refers
+to pins are automatically generated by Quartus from the pins).  Use
+-no_duplicates option to not include duplicated pins.
+
+The filter for the collection is a Tcl list of wildcards, and must
+follow standard Tcl or Timing Analyzer-extension substitution rules. See 
+help for the use_timing_analyzer_style_escaping command for details.
+
+--------------
+Example Usage:
+--------------
+
+# Get regout pin of "reg" cell
+get_pins -nocase reg|regout
+# Create a collection of all pins of "reg" cell
+get_pins reg|*
+# Create a collection of all pins on the highest hierarachical level
+set mycollection [get_pins *]
+# Output pin names.
+foreach_in_collection pin $mycollection {
+    puts [get_pin_info -name $pin]
+}
+# Create a collection of all pins in the design
+set fullcollection [get_pins -hierarchical *]
+# Output pin IDs and names.
+foreach_in_collection pin $fullcollection {
+    puts -nonewline $pin
+    puts -nonewline ": "
+    puts [get_pin_info -name $pin]
+}
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+
+---------------------------------------------------------------------------
+
+HELP_END get_pins
+HELP_BEGIN check_timing
+---------------------------------------------------------------------------
+
+Usage: check_timing [-h] [-help] [-long_help] [-append] [-file <name>] [-include <check_list>] [-panel_name <name>] [-stdout]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -append: If output is sent to a file, this option appends the result to that file.  Otherwise, the file is overwritten. This option is not supported for HTML files.
+        -file <name>: Sends the results to an ASCII or HTML file. Depending on the extension
+        -include <check_list>: Checks to perform
+        -panel_name <name>: Sends the results to the panel and specifies the name of the new panel
+        -stdout: Send output to stdout, via messages.  You only need to use this option if you have selected another output format, such as a file, and would also like to receive messages.
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Checks for problems in the design or problems with
+design constraints. The check_timing command performs
+a series of different checks based on user-specified
+variables and options. There is no default list of
+checks. Use the -include option to specify which
+checks to perform. You must preceed check_timing with
+update_timing_netlist.
+
+The no_clock check reports whether registers have at
+least one clock at their clock pin, and that ports
+determined to be clocks have a clock assigned to them,
+and also checks that PLLs have a clock assignment.
+
+The multiple_clock check verifies that registers have
+at most one clock at their clock pin. (When multiple
+clocks reach a register clock pin, it is undefined
+which clock is used for analysis.
+
+The generated_clock check verifies that generated
+clocks are valid. Generated clocks must have a source
+that is triggered by a valid clock.
+
+The no_input_delay check verifies that every input
+port that is not determined to be a clock has an input
+delay assignment.
+
+The no_output_delay check verifies that every output
+port has an output delay constraint.
+
+The partial_input_delay check verifies that input
+delays are complete, and ensures that input delays
+have a rise-min, fall-min, rise-max, and fall-max
+portion set.
+
+The partial_output_delay check verifies that output
+delays are complete, and makes sure that output delays
+have a rise-min, fall-min, rise-max, and fall-max
+portion set.
+
+The io_min_max_delay_consistency check verifies that
+min delay values specified by set_input_delay or
+set_output_delay assignments are less than max delay
+values.
+
+The reference_pin check verifies that reference pins
+specified in set_input_delay and set_output_delay
+using the -reference_pin option are valid. A
+reference_pin is valid if the -clock option specified
+in the same set_input_delay/set_output_delay command
+matches the clock that is in the direct fanin of the
+reference_pin. Being in the direct fanin of the
+reference_pin means that there must be no keepers
+between the clock and the reference_pin.
+
+The latency_override check reports whether the clock
+latency set on a port or pin overrides the more
+generic clock latency set on a clock. Clock latency
+can be set on a clock, where the latency applies to
+all keepers clocked by the clock, whereas clock
+latency can also be set on a port or pin, where the
+latency applies to registers in the fanout of the port
+or pin.
+
+The loops check verifies that there are no strongly
+connected components in the netlist. These loops
+prevent a design from being properly analyzed. The
+loops check also reports if loops exist but were
+marked so that they would not be traversed.
+
+The latches check reports latches in the design and
+warns that latches may not be analyzed properly. For
+best results, change your design to remove latches
+whenever possible.
+
+The pos_neg_clock_domain check determines if any
+register is clocked by both the rising and falling
+edges of the same clock. If this scenario is necessary
+such as in a clock multiplexer, create two separate
+clocks that have similar settings and are assigned to
+the same node.
+
+The pll_cross_check checks the clocks that are
+assigned to a PLL against the PLL settings defined in
+design files. Inconsistent settings or an unmatched
+number of clocks associated with the PLL are reported
+to the user.
+
+The uncertainty check reports each clock-to-clock
+transfer that does not have a clock uncertainty
+assignment set between the two clocks.  When a device
+family has derive_clock_uncertainty support, this
+report also checks if a user-defined
+set_clock_uncertainty assignment has a less than
+recommended clock uncertainty value.
+
+The virtual_clock check reports all unreferenced
+virtual clocks. It also reports if design does not
+have any virtual clock assignment.
+
+The partial_multicycle check ensures that each setup
+multicycle assignment has a corresponding hold
+multicycle assignment, and each hold muticycle
+assignment has a corresponding setup multicycle
+assignment.
+
+The multicycle_consistency check reports all the
+multicycle cases where a setup multicycle does not
+equal one greater than the hold multicycle. Hold
+multicycle assignments are usually one cycle less than
+setup multicycle assignments.
+
+The partial_min_max_delay check verifies that each
+minimum delay assignment has a corresponding maximum
+delay assignment, and vice versa.
+
+The clock_assignments_on_output_ports check reports
+all the clock assignments that have been applied to
+output ports.
+
+The input_delay_assigned_to_clock check verifies that
+no input delay value is set for a clock. Input delays
+set on clock ports are ignored because clock-as-data
+analysis takes precedence.
+
+The internal_io_delay check reports all the IO delays
+that have no specifications for -reference_pin and
+-source_latency_included, and -clock is a clock that
+is not assigned to a top level input or output port.
+
+--------------
+Example Usage:
+--------------
+
+# Constrain design
+create_clock -name clk -period 4.000 -waveform { 0.000 2.000 } [get_ports clk]
+set_input_delay -clock clk2 1.5 [get_ports in*]
+set_output_delay -clock clk 1.6 [get_ports out*]
+set_false_path -from [get_keepers in] -through [get_nets r1] -to [get_keepers out]
+
+# Check if there were any problems
+check_timing -include {loops latches no_input_delay partial_input_delay}
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+
+---------------------------------------------------------------------------
+
+HELP_END check_timing
+HELP_BEGIN report_drc
+HELP_UNAVAILABLE report_drc {ERROR: Tcl command does not exist or is not supported by Quartus Prime Tcl help: report_drc. Specify an available Quartus Prime Tcl command. Type "info commands" for a list of available commands.
+}
+HELP_END report_drc
+IA840F_CLOCK_REPAIR_API_HELP02_COMPLETE
+Info (23030): Evaluation of Tcl script /home/uwb_student00/ahls/new_BSP/qualification/pcie-clock-repair-01/api-help02/help.tcl was successful
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 1397 megabytes
+    Info: Processing ended: Tue Sep 22 00:59:18 2026
+    Info: Elapsed time: 00:00:01
+    Info: System process ID: 16908

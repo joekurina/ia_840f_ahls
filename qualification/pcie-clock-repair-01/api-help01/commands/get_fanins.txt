@@ -1,0 +1,97 @@
+---------------------------------------------------------------------------
+
+Usage: get_fanins [-h] [-help] [-long_help] [-asynch] [-clock] [-inverting_paths] [-no_logic] [-non_inverting_paths] [-stop_at_clocks] [-synch] [-through <names>] <filter>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -asynch: Traverse through asynch edges
+        -clock: Traverse through clock edges
+        -inverting_paths: Only follow inverting combinational paths
+        -no_logic: Do not follow combinational paths
+        -non_inverting_paths: Only follow non-inverting combinational paths
+        -stop_at_clocks: Return clock targets as fanin/fanouts rather than traversing through them
+        -synch: Traverse through synch edges
+        -through <names>: Valid through nodes (string patterns are matched using Tcl string matching)
+        <filter>: Valid starting nodes (string patterns are matched using Tcl string matching or collection)
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sdc_ext 2.0
+
+------------
+Description:
+------------
+
+Returns a collection of fanin ports, registers (and 
+optionally clock targets) reachable from the
+<filter> in the design. When you supply the -no_logic
+option, get_fanins ignores paths that pass through
+combinational logic elements other than buffers and
+inverters.
+
+NOTE: the -no_logic option does not consider
+logic absorbed into the cells of the <filter> nor the
+cells of fanin registers, ports or clock targets.
+
+When you use -synch, -asynch, or -clock options,
+get_fanins traverses the netlist through corresponding
+edges. You can specify more than one of these options.
+If you do not specify any of these three
+options, the command does not ignore any paths.
+
+When the -non_inverting_paths option is used, no_logic
+does not follow any paths that includes odd number of
+inverters. Similarly, when the -inverting_paths option
+is used, no_logic does not follow any paths that
+includes even number of inverters. Both the
+-non_inverting_paths and -inverting_paths options
+require the -no_logic option and are mutually
+exclusive.
+
+When the -through option is used, only the fanins that
+can be reached by going through those nodes are
+returned.
+
+When -stop_at_clocks is used, combinational clock targets may 
+be returned (in addition to clock or non-clock registers 
+and ports), and registers or ports that can only be reached 
+by traversing through a clock target will not be returned.
+
+The filter for the collection is a Tcl list of
+wildcards, and must follow standard Tcl or
+Timing Analyzer-extension substitution rules.  See the help
+for the use_timing_analyzer_style_escaping command for
+details.
+
+
+--------------
+Example Usage:
+--------------
+
+set fanins [get_fanins $item -synch -clock]
+foreach_in_collection fanin_keeper $fanins {
+	lappend fanin_keeper_list [get_node_info $fanin_keeper -name]
+}
+
+set fanins_no_logic [get_fanins $item -no_logic -asynch]
+foreach_in_collection fanin_keeper $fanins_no_logic {
+	lappend fanin_keeper_list_no_logic [get_node_info $fanin_keeper -name]
+}
+
+#-through example
+get_fanins inst18 -through inst11
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+
+---------------------------------------------------------------------------
+

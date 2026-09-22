@@ -1,0 +1,154 @@
+---------------------------------------------------------------------------
+
+Usage: report_max_skew [-h] [-help] [-long_help] [-append] [-detail <summary|path_only|path_and_clock|full_path>] [-file <name>] [-less_than_slack <slack limit>] [-npaths <number>] [-panel_name <name>] [-show_routing] [-stdout]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -append: If output is sent to a file, this option appends the result to that file.  Otherwise, the file is overwritten. This option is not supported for HTML files.
+        -detail <summary|path_only|path_and_clock|full_path>: Option to determine how much detail should be shown in the path report
+        -file <name>: Sends the results to an ASCII or HTML file. Depending on the extension
+        -less_than_slack <slack limit>: Limit the paths reported to those with slack values less than the specified limit.
+        -npaths <number>: Specifies the number of paths to report for each latest and earliest arrival skew result per set_max_skew assignment (default=1)
+        -panel_name <name>: Sends the results to the panel and specifies the name of the new panel
+        -show_routing: Option to display detailed routing in the path report
+        -stdout: Send output to stdout, via messages.  You only need to use this option if you have selected another output format, such as a file, and would also like to receive messages.
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Reports max skew analysis results for all set_max_skew
+commands in a single report. For each valid
+set_max_skew constraint, this command computes skew
+with respect to the latest and the earliest arrival of
+each path.
+
+By default, "Skew for the Latest Arrival" is computed
+by comparing the latest arrival of each path with the
+earliest arrival of the path that has the smallest
+value for early arrival of all other paths included
+in the constraint. Similarly, "Skew for the Earliest
+Arrival" is computed by comparing the earliest arrival
+of each path with the latest arrival of the path that
+has the largest value for late arrival of all other
+paths included in the constraint. No path is compared
+with itself.
+
+Use the -stdout option to direct the report to the Tcl
+console (default), the -file option to write the
+report to a file or the -panel_name option to direct
+the report to the Timing Analyzer graphical user
+interface. You can use these options in any
+combination.
+
+Use the -npaths option to limit the number of path
+result pairs reported for each set_max_skew
+constraint. If you do not specify this option,
+report_max_skew only reports the result pair for the
+single worst-case path. Use the -less_than_slack
+option to limit output to all paths with slack less
+than the specified value, up to the number specified
+with -npaths.
+
+Use the -detail option to specify the desired level of
+report detail. The -detail summary option generates a
+single table listing only the highlights of each path
+(and is the same as -summary option, which this
+replaces. "-detail path_only" (default) reports the
+path from the source to the destination without any
+detail about the clock path. Instead, the clock
+network delay is shown as a single number. "-detail
+path_and_clock" extends the arrival and required paths
+back to the launch and latch clocks. "-detail
+full_path" continues tracing back through generated
+clocks to the underlying base clock.
+
+The -show_routing option displays detailed routing
+information in the path. Lines marked "IC" without the
+option are shown, but only as a placeholder. The
+routing elements for that line are broken out
+individually and listed before the line.
+
+The return value of this command is a two-element
+list. The first number is the number of paths found in
+the analysis. The second is the worst-case slack, in
+terms of the current default time unit.
+
+The "RF" column in the report output uses a two-letter
+symbol to indicate the rise/fall transition that
+occurs at that point in the path.
+
+Possible "RF" values are:
+
+	Value     Description
+	-------   -------------------------------
+	(empty)   Unknown transition
+	R         Rising output
+	F         Falling output
+	RR        Rising input, rising output
+	RF        Rising input, falling output
+	FR        Falling input, rising output
+	FF        Falling input, falling output
+
+
+The "Type" column in the report uses a symbol to
+indicate what type of delay occurs at that point in
+the path.
+
+Possible "Type" values are:
+
+	Value     Description
+	-------   -------------------------------------------------------
+	CELL      Cell delay
+	COMP      PLL clock network compensation delay
+	IC        Interconnect delay
+	iExt      External input delay
+	LOOP      Lumped combinational loop delay
+	oExt      External output delay
+	RE        Routing element (only for paths generated with the
+	          -show_routing option)
+	uTco      Register micro-Tco time
+	uTsu      Register micro-Tsu time
+	uTh       Register micro-Th time
+
+--------------
+Example Usage:
+--------------
+
+project_open my_project
+create_timing_netlist
+read_sdc
+update_timing_netlist
+
+# create max skew constraints
+set_max_skew -from [get_ports data_ports[*]] -to [get_keepers *] 0.200
+set_max_skew -from [get_keepers *] -to [get_ports output_ports[*]] 0.100
+
+# show worst 10 paths for each earliest and latest arrival results
+# per max_skew assignment assuming that their slack is less than 0.100
+report_max_skew -panel_name "Report Max Skew" -npaths 10 -less_than_slack 0.100 -detail full_path
+
+delete_timing_netlist
+project_close
+
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+TCL_ERROR	1   	ERROR: Report database is not open
+
+---------------------------------------------------------------------------
+

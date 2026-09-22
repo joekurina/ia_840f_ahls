@@ -1,0 +1,88 @@
+---------------------------------------------------------------------------
+
+Usage: set_operating_conditions [-h] [-help] [-long_help] [-force_dat] [-grade <c|i|m|e|a>] [-model <fast|slow>] [-speed <speed>] [-temperature <value_in_C>] [-voltage <value_in_mV>] [<list_of_operating_conditions>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -force_dat: Option to force delay annotation (only done when selecting an unanalyzed corner)
+        -grade <c|i|m|e|a>: Option to specify temperature grade
+        -model <fast|slow>: Option to specify timing model
+        -speed <speed>: Speed grade
+        -temperature <value_in_C>: Operating temperature
+        -voltage <value_in_mV>: Operating voltage
+        <list_of_operating_conditions>: list or collection of Operating conditions Tcl objects or names
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Use this command to specify operating conditions different from the
+initial conditions used to create the timing netlist. When a timing
+model is not specified, the slow model is used.
+
+Voltage and temperature options must be used together. These two
+options are not available for all devices. The
+get_available_operating_conditions command returns the list of
+available operating conditions for your device.
+
+Use the -speed option to analyze the design at a different speed grade
+of the selected device.
+
+Use the -grade option to analyze the design at a different temperature
+grade. This option is provided to support what-if analysis and is not
+recommended for final sign-off analysis.
+
+By default, delay annotation is skipped if previously performed.  Use
+-force_dat to rerun delay annotation.
+
+--------------
+Example Usage:
+--------------
+
+#do report timing for different operating conditions one by one
+foreach_in_collection op [get_available_operating_conditions] {
+    set_operating_conditions $op
+    update_timing_netlist
+    report_timing
+}
+
+#set aggregated report timing for all operating conditions when corner aggregation is enabled
+set_operating_conditions [get_available_operating_conditions]
+report_timing
+
+
+#manually set operating conditions
+set_operating_conditions -model fast -temperature 85 -voltage 1200
+update_timing_netlist
+
+#change device speed grade and set operating conditions
+set_operating_conditions -speed 3 -model slow -temperature 0 -voltage 1100
+update_timing_netlist
+
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Cannot set operating conditions for timing netlist created from XML file. Run create_timing_netlist.
+TCL_ERROR	1   	ERROR: Both the -temperature and -voltage options and their values are required.
+TCL_ERROR	1   	ERROR: The ability to select multiple operating conditions at once has been disabled.
+TCL_ERROR	1   	ERROR: Values entered did not match any valid operating conditions. Available operating conditions are: <string>
+TCL_ERROR	1   	ERROR: The <string> device family does not support set_operating_conditions command.
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+TCL_ERROR	1   	ERROR: Illegal value: <string>. Specify an integer ranging from -999999999 to 999999999 for the option -voltage
+TCL_ERROR	1   	ERROR: Unsupported option: "<string>".
+
+---------------------------------------------------------------------------
+

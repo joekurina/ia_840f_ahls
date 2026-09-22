@@ -1,0 +1,62 @@
+---------------------------------------------------------------------------
+
+Usage: report_clocks [-h] [-help] [-long_help] [-append] [-desc] [-file <name>] [-hierarchy] [-panel_name <name>] [-stdout] [-summary] [-tree] [-waveform]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -append: If output is sent to a file, this option appends the result to that file.  Otherwise, the file is overwritten. This option is not supported for HTML files.
+        -desc: Sort the clocks by name in descending order (ascending order is default)
+        -file <name>: Sends the results to an ASCII or HTML file. Depending on the extension
+        -hierarchy: Display a tree view of the clocks
+        -panel_name <name>: Sends the results to the panel and specifies the name of the new panel
+        -stdout: Send output to stdout, via messages.  You only need to use this option if you have selected another output format, such as a file, and would also like to receive messages.
+        -summary: Create a single table with a summary of each clock
+        -tree: alias for hierarchy
+        -waveform: Display the clocks graphically as waveforms
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Report can be directed to the Tcl console ("-stdout", default), a file
+("-file"), the Timing Analyzer graphical interface ("-panel_name"), or any
+combination of the three.
+
+For stdout/file output, the clock details are reported in two sections.
+The first section shows all clocks, their period, and their waveform.
+This includes generated clocks after an update_timing_netlist.  The
+second section shows details for all generated clocks.  For the panel
+report, both sections are combined into a single report.
+
+--------------
+Example Usage:
+--------------
+
+project_open top
+create_timing_netlist
+read_sdc
+update_timing_netlist
+
+report_clocks
+
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+
+---------------------------------------------------------------------------
+

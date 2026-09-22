@@ -1,0 +1,83 @@
+{
+  "scope": "actual inert Python children and mocked gate import; no vendor process or authorization",
+  "count": 11,
+  "tests": [
+    {
+      "phase": "baseline",
+      "case": "success",
+      "rc": 0,
+      "reason": null,
+      "pass": true
+    },
+    {
+      "phase": "baseline",
+      "case": "nonzero",
+      "rc": 7,
+      "reason": null,
+      "pass": true
+    },
+    {
+      "phase": "baseline",
+      "case": "wall",
+      "rc": -15,
+      "reason": "wall-time cap",
+      "pass": true
+    },
+    {
+      "phase": "baseline",
+      "case": "output-cap",
+      "rc": -15,
+      "reason": "report-total cap",
+      "pass": true
+    },
+    {
+      "phase": "baseline",
+      "case": "AST39_inert_import_and_native_error_regex",
+      "pass": true
+    },
+    {
+      "phase": "candidate",
+      "case": "success",
+      "rc": 0,
+      "reason": null,
+      "pass": true
+    },
+    {
+      "phase": "candidate",
+      "case": "nonzero",
+      "rc": 7,
+      "reason": null,
+      "pass": true
+    },
+    {
+      "phase": "candidate",
+      "case": "wall",
+      "rc": -15,
+      "reason": "wall-time cap",
+      "pass": true
+    },
+    {
+      "phase": "candidate",
+      "case": "output-cap",
+      "rc": -15,
+      "reason": "report-total cap",
+      "pass": true
+    },
+    {
+      "phase": "candidate",
+      "case": "AST39_inert_import_and_native_error_regex",
+      "pass": true
+    },
+    {
+      "phase": "candidate",
+      "case": "TERM-resistant_descendant",
+      "leader_rc": -15,
+      "descendant_state": "absent",
+      "pass": true
+    }
+  ],
+  "runner_sha256": {
+    "baseline": "0c1d8e04cd83da927db1408b720182e344053d6a30cfc9a354a49f117ed1656a",
+    "candidate": "2259f63626e5c42d9352966cbf918319449d60a6f8b272be1b70eb29791de02a"
+  }
+}

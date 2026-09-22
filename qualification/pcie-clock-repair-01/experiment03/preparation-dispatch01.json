@@ -1,0 +1,30 @@
+{
+  "utc": "2026-09-22T09:50:51.867230+00:00",
+  "window_pane": "@43 %43",
+  "tmux_session": "ia840f_mailbox_monitored_01",
+  "command": "bash --noprofile --norc -c 'set -o pipefail; tmux save-buffer -b ia840f_clock_baseline03_prepare01_script - | python3 -B - cb83798ac1112532b160c76adfacd229d9ab34bb794592b56124a620c1fe7ee1; rc=$?; if [ \"$rc\" -eq 0 ]; then tmux save-buffer -b ia840f_clock_candidate03_prepare01_script - | python3 -B - e9782ae5c1f5d0771523aa64765b0bdecce90482fd0358c14167b85b92f757ef; rc=$?; fi; printf \"PREP_COMPARE03_OUTER_RC=%s\\n\" \"$rc\"; tmux wait-for -S ia840f_clockcmp03_prepared01; exec bash --noprofile --norc'",
+  "transfers": {
+    "ia840f_clock_baseline03_prepare01_script": {
+      "bytes": 9174,
+      "sha256": "5d53ab7b879cd7719c53e1aa9a6ea0d0c5406979c72393f930862122c1154a3d",
+      "exact_readback": true
+    },
+    "ia840f_clock_baseline03_inputs01": {
+      "bytes": 62314,
+      "sha256": "cb83798ac1112532b160c76adfacd229d9ab34bb794592b56124a620c1fe7ee1",
+      "exact_readback": true
+    },
+    "ia840f_clock_candidate03_prepare01_script": {
+      "bytes": 10097,
+      "sha256": "44aab13465423534b7ea2f024a87213e53784d8210e52b413705d2b85f5f0367",
+      "exact_readback": true
+    },
+    "ia840f_clock_candidate03_inputs01": {
+      "bytes": 63451,
+      "sha256": "e9782ae5c1f5d0771523aa64765b0bdecce90482fd0358c14167b85b92f757ef",
+      "exact_readback": true
+    }
+  },
+  "native_sta_authorized": false,
+  "operation": "ordinary-file preparation only"
+}

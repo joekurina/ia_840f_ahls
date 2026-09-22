@@ -1,0 +1,48 @@
+---------------------------------------------------------------------------
+
+Usage: report_ucp [-h] [-help] [-long_help] [-append] [-file <name>] [-panel_name <name>] [-stdout] [-summary]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -append: If output is sent to a file, this option appends the result to that file.  Otherwise, the file is overwritten. This option is not supported for HTML files.
+        -file <name>: Sends the results to an ASCII or HTML file. Depending on the extension
+        -panel_name <name>: Sends the results to the panel and specifies the name of the new panel
+        -stdout: Send output to stdout, via messages.  You only need to use this option if you have selected another output format, such as a file, and would also like to receive messages.
+        -summary: Generate everything except for the detailed paths panels.
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Reports unconstrained paths.
+
+--------------
+Example Usage:
+--------------
+
+project_open chiptrip
+create_timing_netlist
+read_sdc
+update_timing_netlist
+report_ucp
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+
+---------------------------------------------------------------------------
+

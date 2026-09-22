@@ -1,0 +1,87 @@
+---------------------------------------------------------------------------
+
+Usage: get_clock_domain_info [-h] [-help] [-long_help] [-data_delay] [-edge_slack] [-hold] [-mpw] [-recovery] [-removal] [-setup]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -data_delay: Data Delay Analysis (only applicable for setup and recovery analysis)
+        -edge_slack: Compute edge TNS (this option may significantly increase memory consumption)
+        -hold: Hold Analysis
+        -mpw: Minimum Pulse Width Analysis
+        -recovery: Recovery Analysis
+        -removal: Removal Analysis
+        -setup: Setup Analysis (Default)
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+
+Similar to create_timing_summary, the
+get_clock_domain_info command returns a Tcl list of
+information about each active clock domain: the clock name,
+worst-case slack, endpoint TNS, number of endpoints in the
+domain with negative slack, and the timing model for which
+the worst-case slack is most critical.
+
+If the edge_slack option is specified, an extra entry for
+the edge TNS will be present, placed after the endpoint TNS.
+Computing the edge TNS may result in a significant increase
+in memory consumption.
+
+TNS is total negative slack, and it is the sum of
+all slacks less than zero for either destination
+registers or ports in the clock domain (endpoint TNS)
+or for all edges affecting the clock domain (edge
+TNS).
+
+By default, this command creates a Setup Summary. This
+command can also generate a Hold Summary (-hold),
+Recovery Summary (-recovery), Removal Summary
+(-removal), or Minimum Pulse Width Summary (-mpw).
+
+--------------
+Example Usage:
+--------------
+
+project_open my_project
+
+# Always create the netlist first
+create_timing_netlist
+read_sdc my_project.sdc
+update_timing_netlist
+
+# Get domain summary object
+set domain_list [get_clock_domain_info -setup]
+foreach domain $domain_list {
+    set name [lindex $domain 0]
+    set slack [lindex $domain 1]
+    set keeper_tns [lindex $domain 2]
+
+    puts "Clock $name : Slack = $slack , TNS = $keeper_tns"
+}
+
+# The following command is optional
+delete_timing_netlist
+
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+
+---------------------------------------------------------------------------
+

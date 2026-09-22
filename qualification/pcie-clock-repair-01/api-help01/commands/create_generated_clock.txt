@@ -1,0 +1,144 @@
+---------------------------------------------------------------------------
+
+Usage: create_generated_clock [-h] [-help] [-long_help] [-add] [-divide_by <factor>] [-duty_cycle <percent>] [-edge_shift <shift_list>] [-edges <edge_list>] [-invert] [-master_clock <clock>] [-multiply_by <factor>] [-name <clock_name>] [-offset <time>] [-phase <degrees>] [-source <clock_source>] [<targets>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -add: Add clock to existing clock node
+        -divide_by <factor>: Division factor
+        -duty_cycle <percent>: Specifies the duty cycle as a percentage of the clock period--accepts floating point values
+        -edge_shift <shift_list>: List of edge shifts
+        -edges <edge_list>: List of edge values
+        -invert: Invert the clock waveform
+        -master_clock <clock>: Specifies clock of the source node
+        -multiply_by <factor>: Multiplication factor
+        -name <clock_name>: Name of generated clock
+        -offset <time>: Specifies the offset as an absolute time shift
+        -phase <degrees>: Specifies the phase shift in degrees
+        -source <clock_source>: Source node for the generated clock
+        <targets>: List or collection of targets
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sdc 1.5
+
+------------
+Description:
+------------
+
+Defines an internally generated clock. If -name is not specified, 
+the clock name is the same as the first target in the list or
+collection. The clock name is used to refer to the clock in other
+commands.
+
+If a clock with the same name is already assigned to a given
+target, the create_generated_clock command overwrites the
+existing clock. If a clock with a different name exists on the
+given target, the create_generated_clock command is ignored
+unless the -add option is used. The -add option can be used to
+assign multiple clocks to a pin or port, and is recommended be
+used with -master_clock option.
+
+The source of the generated clock, specified by -source, is a
+port, pin, register, or net in the design. All waveform
+modifications are relative to this point. If more than one clock
+feeds the source node, the -master_clock option must be used to
+specify which clock to modify.
+
+The source latency of the generated clock is based on the clock
+network of the generated clock, and not the clock network of the
+node specified using -source. This latency is added to any
+source latency of the master clock.
+
+If no target is specified, the clock is treated as a virtual clock.
+In that case, the source latency of the generated clock will be 
+equal to the source latency of the master clock, plus any added 
+latency specified with set_clock_latency.
+
+The -divide_by, -multiply_by, -invert, -duty_cycle, -edges, and
+-edge_shift options modify the waveform relative to the waveform
+at the source node.
+
+Clock division and multiplication, using -divide_by and
+-multiply_by, is performed relative to the first rising
+edge. Clock division is based on edges in the master clock
+waveform, and scaled if the division is an odd number. Use the
+-duty_cycle option to specify the new duty cycle for clock
+multiplication. Use the -phase option to specify any phase shift
+relative to the new clock period. Use the -offset option to
+specify an arbitrary offset or time shift. Use the -invert
+option to invert the generated waveform.  The -phase and -duty_cycle
+options may be specified as a decimal value (e.g. 22.5) or
+as a ratio of two numbers (e.g. 45/2).  The latter form may  
+improve Timing Analyzer accuracy when detecting relationships between
+related clocks.
+
+Clock generation can also be specified with the -edges and
+-edge_shift options. The -edges option accepts a list of three
+numbers specifying the master clock edges to use for the first
+rising edge, the next falling edge, and next rising edge. Edges
+of the master clock are labeled according to the first rising
+edge (1), next falling edge (2), next rising edge (3), etc. For
+example, a basic clock divider can be specified equivalently
+with -divide_by 2 or -edges {1 3 5}. The -edge_shift option
+accepts a list of three time values, the amount to shift each of
+the three edges.
+
+The value of the targets is either a collection or a Tcl list of
+wildcards used to create a collection of the appropriate
+type. The values used must follow standard Tcl or
+Timing Analyzer-extension substitution rules. See the help for
+use_timing_analyzer_style_escaping for details.
+
+
+--------------
+Example Usage:
+--------------
+
+# Create a clock and a divide-by-2 generated clock
+create_clock -period 10 [get_ports clk]
+create_generated_clock -divide_by 2 -source [get_ports clk] -name clkdiv [get_registers clkdiv]
+
+# An equivalent generated clock
+create_generated_clock -edges {1 3 5} -source [get_ports clk] -name clkdiv [get_registers clkdiv]
+
+# Specify a clock multipler with a 60% duty cycle
+create_generated_clock -multiply_by 2 -source [get_ports clk] -duty_cycle 60 [get_pins clkmult|combout]
+
+# Specify an inverted divide-by-2 clock relative to the output of the source clock
+create_generated_clock -divide_by 2 -invert -source [get_ports clk] -name nclkdiv [get_registers clkdiv]
+
+# Specify a divide-by-2 clock with a 90-degree phase shift
+create_generated_clock -divide_by 2 -phase 90 -source [get_ports clk] -name clkdiv [get_registers clkdiv]
+
+# Create a divide-by-2 generated clock generated off the falling edge of the source clock
+create_generated_clock -edges {2 4 6} -source [get_ports clk] -name clkfall_div [get_registers clkfall_div]
+
+# Assign two clocks to an input port that are switched externally,
+# along with an internal clock divider.
+create_clock -period 10 -name clk100Mhz [get_ports clk]
+create_clock -period 6.667 -name clk150Mhz -add [get_ports clk]
+create_generated_clock -divide_by 2 -name clk50Mhz -source [get_ports clk] -master_clock clk100Mhz -add [get_registers clkdiv]
+create_generated_clock -divide_by 2 -name clk75Mhz -source [get_ports clk] -master_clock clk150Mhz -add [get_registers clkdiv]
+
+# Create a virtual clock, and two generated clocks that derive from it.
+# This makes the generated clocks related, so crossings between them are not asynchronous.
+create_clock -period 10 -name virtual_base
+create_generated_clock -master_clock virtual_base -divide_by 2 [get_ports clka]
+create_generated_clock -master_clock virtual_base -divide_by 4 [get_ports clkb]
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+
+---------------------------------------------------------------------------
+

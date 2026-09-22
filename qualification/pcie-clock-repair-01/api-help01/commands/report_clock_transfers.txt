@@ -1,0 +1,73 @@
+---------------------------------------------------------------------------
+
+Usage: report_clock_transfers [-h] [-help] [-long_help] [-append] [-file <name>] [-hold] [-panel_name <name>] [-recovery] [-removal] [-setup] [-stdout]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -append: If output is sent to a file, this option appends the result to that file.  Otherwise, the file is overwritten. This option is not supported for HTML files.
+        -file <name>: Sends the results to an ASCII or HTML file. Depending on the extension
+        -hold: Creates a clock transfer summary for hold analysis
+        -panel_name <name>: Sends the results to the panel and specifies the name of the new panel
+        -recovery: Creates a clock transfer summary for recovery analysis
+        -removal: Creates a clock transfer summary for removal analysis
+        -setup: Creates a clock transfer summary for setup analysis
+        -stdout: Send output to stdout, via messages.  You only need to use this option if you have selected another output format, such as a file, and would also like to receive messages.
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+
+Generates a timing report table showing all clock transfers (i.e.,
+data paths between one clock domain and another clock domain).  The
+from and to clocks are shown as well as the number of paths for each
+transfer: RR, RF, FR, FF.  An RF transfer, for example, occurs when
+the source register of path is clocked by the rising edge of its clock
+and the destination register is clocked by the falling edge of its
+clock.
+
+The report also indicates what clock transfers are cut ("false paths")
+by set_clock_groups or clock-to-clock set_false_path commands.  For
+transfers that are not cut, the number of paths reported does not take
+into account paths cut by path-specific set_false_path commands.
+Actual path counts may be lower than reported.
+
+The report can be directed to the Tcl console ("-stdout", default), a
+file ("-file"), the Timing Analyzer graphical user interface
+("-panel_name"), or any combination of the three.
+
+The -setup, -hold, -recovery, and -removal options determine the
+analysis type of the report, particularly the reporting of false_paths
+that apply to only one analysis type.  If you do not specify any of
+these options, a report is generated for each analysis.
+
+--------------
+Example Usage:
+--------------
+
+project_open top
+create_timing_netlist -skip_dat
+report_clock_transfers -panel_name
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+TCL_ERROR	1   	ERROR: Netlist must be updated. Run update_timing_netlist
+
+---------------------------------------------------------------------------
+

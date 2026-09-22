@@ -1,0 +1,95 @@
+---------------------------------------------------------------------------
+
+Usage: report_min_pulse_width [-h] [-help] [-long_help] [-append] [-detail <summary|full_path>] [-file <name>] [-nworst <number>] [-panel_name <name>] [-show_routing] [-split_by_corner] [-stdout] [-type <all|min_period|clock_pulse>] [<targets>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -append: If output is sent to a file, this option appends the result to that file.  Otherwise, the file is overwritten. This option is not supported for HTML files.
+        -detail <summary|full_path>: Option to determine how much detail should be shown in the report
+        -file <name>: Sends the results to an ASCII or HTML file. Depending on the extension
+        -nworst <number>: Specifies the number of pulse width checks to report (default=1)
+        -panel_name <name>: Sends the results to the panel and specifies the name of the new panel
+        -show_routing: Option to display detailed routing in the path report
+        -split_by_corner: When set, running this command with the -panel option creates a folder containing versions of this report for selected multiple operating conditions. This option has no effect when used with the -stdout or -file options.
+        -stdout: Send output to stdout, via messages.  You only need to use this option if you have selected another output format, such as a file, and would also like to receive messages.
+        -type <all|min_period|clock_pulse>: Option to determine the minimum pulse width analysis type
+        <targets>: Either clocks or nodes such as ports and registers.
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Reports the results of minimum pulse width and minimum period checks.
+
+A minimum pulse width check verifies that a clock high ("High") or low
+("Low") pulse sustains long enough to qualify as a recognizable change
+in the clock signal at a register or latch clock pin.  A failed minimum pulse
+width check indicates that the register or latch may not recognize the clock
+transition.  Each node in the design is reported twice per clock
+for minimum pulse width checks: once for the high pulse and once for
+the low pulse. While registers and latches may have a pulse width requirement
+greater than zero, other nodes are checked to ensure the pulse does
+not collapse entirely.
+
+A minimum period check verifies that the clock period ("Period") is
+large enough for the device to operate.  Minimum period checks apply
+to registers and latches.
+
+The results of the minimum pulse width checks can be output to the
+Tcl console ("-stdout," the default), a report panel ("-panel"),
+a file ("-file"), or a combination of the three.
+
+Results are sorted from worst-case slack to best-case slack.  To limit
+the number of checks reported, use the "-nworst" option.
+
+Results can be shown in summary ("-detail summary") or in detail
+("-detail full_path," the default), showing the path details for the
+clock arrival times and how they affect the actual pulse width.
+
+The value of the targets is either a collection or a Tcl list of
+wildcards used to create a collection of the appropriate type.
+The values used must follow standard Tcl or Timing Analyzer-extension
+substitution rules.  See the help for use_timing_analyzer_style_escaping for
+details.
+
+--------------
+Example Usage:
+--------------
+
+project_open top
+create_timing_netlist
+read_sdc
+update_timing_netlist
+
+# Report the worst 100 minimum pulse width checks
+report_min_pulse_width -nworst 100
+
+# Report minimum pulse width checks for the register test_reg[*]
+report_min_pulse_width test_reg[*]
+
+# Output the previous results to a report panel and a file.
+report_min_pulse_width -panel_name "Min Pulse (test_reg)" test_reg[*]
+
+# Output the previous results to a file.
+report_min_pulse_width -file min_pulse_test_reg.txt test_reg[*]
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+TCL_ERROR	1   	ERROR: Report database is not open
+
+---------------------------------------------------------------------------
+

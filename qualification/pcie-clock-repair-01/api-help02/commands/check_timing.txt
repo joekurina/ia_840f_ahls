@@ -1,0 +1,176 @@
+---------------------------------------------------------------------------
+
+Usage: check_timing [-h] [-help] [-long_help] [-append] [-file <name>] [-include <check_list>] [-panel_name <name>] [-stdout]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -append: If output is sent to a file, this option appends the result to that file.  Otherwise, the file is overwritten. This option is not supported for HTML files.
+        -file <name>: Sends the results to an ASCII or HTML file. Depending on the extension
+        -include <check_list>: Checks to perform
+        -panel_name <name>: Sends the results to the panel and specifies the name of the new panel
+        -stdout: Send output to stdout, via messages.  You only need to use this option if you have selected another output format, such as a file, and would also like to receive messages.
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Checks for problems in the design or problems with
+design constraints. The check_timing command performs
+a series of different checks based on user-specified
+variables and options. There is no default list of
+checks. Use the -include option to specify which
+checks to perform. You must preceed check_timing with
+update_timing_netlist.
+
+The no_clock check reports whether registers have at
+least one clock at their clock pin, and that ports
+determined to be clocks have a clock assigned to them,
+and also checks that PLLs have a clock assignment.
+
+The multiple_clock check verifies that registers have
+at most one clock at their clock pin. (When multiple
+clocks reach a register clock pin, it is undefined
+which clock is used for analysis.
+
+The generated_clock check verifies that generated
+clocks are valid. Generated clocks must have a source
+that is triggered by a valid clock.
+
+The no_input_delay check verifies that every input
+port that is not determined to be a clock has an input
+delay assignment.
+
+The no_output_delay check verifies that every output
+port has an output delay constraint.
+
+The partial_input_delay check verifies that input
+delays are complete, and ensures that input delays
+have a rise-min, fall-min, rise-max, and fall-max
+portion set.
+
+The partial_output_delay check verifies that output
+delays are complete, and makes sure that output delays
+have a rise-min, fall-min, rise-max, and fall-max
+portion set.
+
+The io_min_max_delay_consistency check verifies that
+min delay values specified by set_input_delay or
+set_output_delay assignments are less than max delay
+values.
+
+The reference_pin check verifies that reference pins
+specified in set_input_delay and set_output_delay
+using the -reference_pin option are valid. A
+reference_pin is valid if the -clock option specified
+in the same set_input_delay/set_output_delay command
+matches the clock that is in the direct fanin of the
+reference_pin. Being in the direct fanin of the
+reference_pin means that there must be no keepers
+between the clock and the reference_pin.
+
+The latency_override check reports whether the clock
+latency set on a port or pin overrides the more
+generic clock latency set on a clock. Clock latency
+can be set on a clock, where the latency applies to
+all keepers clocked by the clock, whereas clock
+latency can also be set on a port or pin, where the
+latency applies to registers in the fanout of the port
+or pin.
+
+The loops check verifies that there are no strongly
+connected components in the netlist. These loops
+prevent a design from being properly analyzed. The
+loops check also reports if loops exist but were
+marked so that they would not be traversed.
+
+The latches check reports latches in the design and
+warns that latches may not be analyzed properly. For
+best results, change your design to remove latches
+whenever possible.
+
+The pos_neg_clock_domain check determines if any
+register is clocked by both the rising and falling
+edges of the same clock. If this scenario is necessary
+such as in a clock multiplexer, create two separate
+clocks that have similar settings and are assigned to
+the same node.
+
+The pll_cross_check checks the clocks that are
+assigned to a PLL against the PLL settings defined in
+design files. Inconsistent settings or an unmatched
+number of clocks associated with the PLL are reported
+to the user.
+
+The uncertainty check reports each clock-to-clock
+transfer that does not have a clock uncertainty
+assignment set between the two clocks.  When a device
+family has derive_clock_uncertainty support, this
+report also checks if a user-defined
+set_clock_uncertainty assignment has a less than
+recommended clock uncertainty value.
+
+The virtual_clock check reports all unreferenced
+virtual clocks. It also reports if design does not
+have any virtual clock assignment.
+
+The partial_multicycle check ensures that each setup
+multicycle assignment has a corresponding hold
+multicycle assignment, and each hold muticycle
+assignment has a corresponding setup multicycle
+assignment.
+
+The multicycle_consistency check reports all the
+multicycle cases where a setup multicycle does not
+equal one greater than the hold multicycle. Hold
+multicycle assignments are usually one cycle less than
+setup multicycle assignments.
+
+The partial_min_max_delay check verifies that each
+minimum delay assignment has a corresponding maximum
+delay assignment, and vice versa.
+
+The clock_assignments_on_output_ports check reports
+all the clock assignments that have been applied to
+output ports.
+
+The input_delay_assigned_to_clock check verifies that
+no input delay value is set for a clock. Input delays
+set on clock ports are ignored because clock-as-data
+analysis takes precedence.
+
+The internal_io_delay check reports all the IO delays
+that have no specifications for -reference_pin and
+-source_latency_included, and -clock is a clock that
+is not assigned to a top level input or output port.
+
+--------------
+Example Usage:
+--------------
+
+# Constrain design
+create_clock -name clk -period 4.000 -waveform { 0.000 2.000 } [get_ports clk]
+set_input_delay -clock clk2 1.5 [get_ports in*]
+set_output_delay -clock clk 1.6 [get_ports out*]
+set_false_path -from [get_keepers in] -through [get_nets r1] -to [get_keepers out]
+
+# Check if there were any problems
+check_timing -include {loops latches no_input_delay partial_input_delay}
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+
+---------------------------------------------------------------------------
+

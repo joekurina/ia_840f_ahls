@@ -1,0 +1,11 @@
+--- experiment02/query.tcl
++++ experiment03/query.tcl
+@@ -4,7 +4,7 @@
+ source [file join [file dirname [info script]] clock-repair.tcl]
+ namespace eval ::ia840f_constraint_compare {
+     variable audit
+-    variable E /home/uwb_student00/ahls/new_BSP/qualification/pcie-clock-repair-01/experiment01
++    variable E /home/uwb_student00/ahls/new_BSP/qualification/pcie-clock-repair-01/experiment03
+     variable limit 20001
+     proc emit {args} {variable audit; puts $audit $args; flush $audit}
+     proc require {value why} {::ia840f_clock_repair::require $value $why}

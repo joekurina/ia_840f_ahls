@@ -1,0 +1,56 @@
+---------------------------------------------------------------------------
+
+Usage: get_available_operating_conditions [-h] [-help] [-long_help] [-all] [-compile]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -all: Returns all available operating conditions
+        -compile: Returns only the operating conditions that are critical to analyze in the inner loop compilation
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Returns a Tcl collection of available operating conditions for the
+current device. The Tcl collection contains the most extreme operating
+conditions within a user-specified junction temperature range. Use
+the -all option to return all available operating conditions.
+
+--------------
+Example Usage:
+--------------
+
+
+#do report timing for different operating conditions
+foreach_in_collection op [get_available_operating_conditions] {
+    set_operating_conditions $op
+    update_timing_netlist
+    report_timing
+}
+
+#see detailed information about operating conditions
+foreach_in_collection op [get_available_operating_conditions] {
+    puts "Delay Model: [get_operating_conditions_info $op -model]"
+}
+
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+TCL_ERROR	1   	ERROR: VID mode is not supported by part <string>.
+
+---------------------------------------------------------------------------
+

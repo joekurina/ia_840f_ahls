@@ -1,0 +1,85 @@
+---------------------------------------------------------------------------
+
+Usage: use_timing_analyzer_style_escaping [-h] [-help] [-long_help] [-off] [-on]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -off: Disable this setting.
+        -on: Enable this setting.
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Use Timing Analyzer-style escaping.  (Timing Analyzer-style escaping is enabled by
+default.
+
+The values used to create a collection, whether explicitly using a
+collection command or implicitly as a value specified as a "-from",
+"-to", or similar option to various SDC and report commands, are a Tcl
+list of wildcards.  This includes a single name with an exact match.
+The value must follow standard Tcl substitution rules for Tcl lists
+and "string match" as described below, unless using Timing Analyzer-style
+escaping (default).
+
+For special characters such as '$', the character must be escaped
+using a single '\' character to prevent Tcl from interpreting the word
+after '$' as a Tcl variable, such as: Clk\$Signal.
+
+A '\' character itself must be escaped with another '\' as in the '$'
+case, must be escaped again for the Tcl list, and must be escaped yet
+again for Tcl "string match."  The final result is eight '\'
+characters, such as: Clk\\\\\\\\Signal.
+
+Using Tcl "list" eliminates one level of escaping, since it
+escapes any '\' characters automatically for the Tcl list, such as:
+[list Clk\\\\Signal]
+
+Using '{' and '}' characters also eliminates the need for one or two
+levels of escaping, since '{' and '}' prevent string substitution in
+the contents, such as:
+	[List {Clk\\Signal}]
+	{{Clk\\Signal}}
+
+The use_timing_analyzer_style_escaping option, which is on by default,
+allows the user to specify a name containing '\' characters with only
+two '\' characters in all cases, such as: Clk\\Signal.  The extra '\'
+characters required for Tcl list string substitution and "string
+match" are added automatically by the Timing Analyzer.
+
+To disable Timing Analyzer style string escaping, call
+"use_timing_analyzer_style_escaping -off" before adding any timing
+constraints or exceptions.
+
+--------------
+Example Usage:
+--------------
+
+project_open top
+use_timing_analyzer_style_escaping -on
+create_timing_netlist
+set res [get_cells my_test|special_\\reg]
+query_collection $res -all
+
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+
+---------------------------------------------------------------------------
+

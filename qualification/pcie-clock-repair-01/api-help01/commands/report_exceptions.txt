@@ -1,0 +1,265 @@
+---------------------------------------------------------------------------
+
+Usage: report_exceptions [-h] [-help] [-long_help] [-append] [-asynch_clock] [-clock_groups] [-detail <summary|path_summary|path_only|path_and_clock|full_path>] [-fall_from_clock <names>] [-fall_to_clock <names>] [-false_path] [-file <name>] [-from <names>] [-from_clock <names>] [-hold] [-ignored] [-inter_clock] [-intra_clock] [-less_than_slack <slack limit>] [-max_delay] [-min_delay] [-multicycle_path] [-npaths <number>] [-num_exceptions <number>] [-nworst <number>] [-pairs_only] [-panel_name <name>] [-reachability] [-recovery] [-removal] [-report_clock_groups] [-rise_from_clock <names>] [-rise_to_clock <names>] [-setup] [-split_by_corner] [-stdout] [-through <names>] [-to <names>] [-to_clock <names>] [-valid]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -append: If output is sent to a file, this option appends the result to that file.  Otherwise, the file is overwritten. This option is not supported for HTML files.
+        -asynch_clock: Only report paths whose launch and latch clock do not share a common ancestor clock, or were explicitly marked as asynchronous via clock groups
+        -clock_groups: Option to show clock groups in reports. This option also treats clock groups as timing exceptions
+        -detail <summary|path_summary|path_only|path_and_clock|full_path>: Option to determine how much detail should be shown in the path report
+        -fall_from_clock <names>: Valid source clocks (string patterns are matched using Tcl string matching)
+        -fall_to_clock <names>: Valid destination clocks (string patterns are matched using Tcl string matching)
+        -false_path: Option to report false path exceptions
+        -file <name>: Sends the results to an ASCII or HTML file. Depending on the extension
+        -from <names>: Valid sources (string patterns are matched using Tcl string matching)
+        -from_clock <names>: Valid source clocks (string patterns are matched using Tcl string matching)
+        -hold: Option to report clock hold paths
+        -ignored: Option to report only exceptions that are partially or fully ignored
+        -inter_clock: Only report paths whose launch and latch clock are different
+        -intra_clock: Only report paths whose launch and latch clock are the same
+        -less_than_slack <slack limit>: Limit the paths reported to those with slack values less than the specified limit.
+        -max_delay: Option to report maximum delay exceptions
+        -min_delay: Option to report mininum delay exceptions
+        -multicycle_path: Option to report multicycle path exceptions
+        -npaths <number>: Specifies the number of paths to report (default=1, or the same value as nworst, if nworst is specified.  Value of 0 causes all paths to be reported but be wary that this may be slow)
+        -num_exceptions <number>: Option to only show a certain number of exceptions in the report
+        -nworst <number>: Specifies the maximum number of paths to report for each endpoint.  If unspecified, there is no limit.  If nworst is specified, but npaths is not, npaths defaults to the same value as nworst
+        -pairs_only: When set, paths with the same start and end points are considered equivalent.  Only the worst case path for each unique combination is displayed.
+        -panel_name <name>: Sends the results to the panel and specifies the name of the new panel
+        -reachability: Option to report a percent value of how many nodes in an exception's targets are satisfied by the exception
+        -recovery: Option to report recovery paths
+        -removal: Option to report removal paths
+        -report_clock_groups: Option to treat clock groups as exceptions
+        -rise_from_clock <names>: Valid source clocks (string patterns are matched using Tcl string matching)
+        -rise_to_clock <names>: Valid destination clocks (string patterns are matched using Tcl string matching)
+        -setup: Option to report clock setup paths
+        -split_by_corner: When set, running this command with the -panel option creates a folder containing versions of this report for selected multiple operating conditions. This option has no effect when used with the -stdout or -file options.
+        -stdout: Send output to stdout, via messages.  You only need to use this option if you have selected another output format, such as a file, and would also like to receive messages.
+        -through <names>: Valid through nodes (string patterns are matched using Tcl string matching)
+        -to <names>: Valid destinations (string patterns are matched using Tcl string matching)
+        -to_clock <names>: Valid destination clocks (string patterns are matched using Tcl string matching)
+        -valid: Option to report only exceptions that cover valid paths and have been successfully applied
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Reports status and timing analysis results for each timing
+exception in your design. A timing exception is one of:
+set_false_path, set_multicycle_path, set_min_delay, or
+set_max_delay.
+
+The status is relative to the paths covered by the -from, -to,
+and other options. A complete timing exception relative to the
+values specified for the -from and -to options may not actually
+be complete with respect to the full design.
+
+Complete: The exception has not been overridden and is valid
+There are paths affected by this exception.
+
+Partially overridden: The exception includes some paths that
+have been overridden by one or more higher-precedence
+exceptions.
+
+Fully overridden: All paths affected by this exception have been
+overridden by one or more higher-precedence exceptions.
+
+Invalid: No paths are affected by this exception. This occurs
+when a timing exception has valid -from, -to, or -through
+collections, but there are no actual paths from the -from nodes
+to the -to nodes.
+
+Paths will not be analyzed: This exception has no paths for the
+given analysis type (setup/hold/recovery/removal). This occurs when
+a timing exception has paths, but only for analysis types other
+than the type used for the current report.
+
+Use the -valid option to show only exceptions that have the status
+of "Complete" or "Partially overridden". These exceptions cover valid
+paths and have been successfully applied.
+
+Use the -ignored option to show only exceptions that are partially or
+fully ignored. This includes exceptions with the status "Partially
+Overridden", "Fully Overridden", "Invalid", as well as any exceptions
+that have errors and were not included in the analysis.
+
+Use the -setup (default), -hold, -recovery, or -removal options
+to further filter the exceptions reported.
+
+The report can be directed to the Tcl console using -stdout
+(default), a file using -file, the Timing Analyzer graphical user
+interface using -panel_name, or any combination of those three
+options.
+
+You can limit the reporting by this command to specific start
+and end points, using the -from and -to options. You can further
+limit reporting to clocks using the -from_clock and -to_clock
+options, or to specific edges of the clock using the
+-rise_from_clock, -fall_from_clock, -rise_to_clock, and
+-fall_to_clock options. Additionally, the -through option can be
+used to restrict reporting to paths which go through specified
+pins or nets.
+
+To determine which timing exceptions override other timing
+exceptions, use the same -from and -to options that were used
+with the overridden timing exception.
+
+Use the -npaths option to limit the number of paths to report
+per timing exception. If you do not specify this option, only
+the single worst-case path per timing exception is provided. Use
+the -less_than_slack option to limit output to all paths with
+slack less than the specified value, up to the number specified
+by -npaths.
+
+Use the -nworst option to limit the number of paths reported for
+each unique endpoint. If you do not specify this option, the
+number of paths reported for each destination node is bounded
+only by the -npaths option. If this option is used, but -npaths
+is not specified, -npaths defaults to the same value specified
+for -nworst.
+
+Use the "-pairs_only" option to filter the output further, restricting
+the results to only unique combinations of start and end points.
+
+Use the "-num_exceptions" option to limit the report to only show
+a certain number of exceptions. If the limit is not set or set too
+high, the report may need to run for extended durations.
+
+Use the "-reachability" option to determine a percentage of how many
+start and endpoint pairs given by an exception's -from and -to filters
+are satisfied by the exception. If an exception does not have a -from
+target, the reachability ratio measures how many of the -to targets are
+satisfied by the exception, and vise versa for exceptions without a -to
+target. Exceptions without both -from and -to targets are not calculated
+for reachability. An exception that targets clocks or uses wildcards that
+match many nodes likely has a lower reachability than an exception that
+targets specific nodes. To avoid overly-broad exception constraints,
+you should use exceptions with a higher reachability value.
+
+Reachability is calculated differently depending on whether the exception
+is bus-type. A bus-type exception has both -from and -to options declared,
+and they target the same number of nodes. As well, all nodes in the -from option
+must be declared together, and all nodes in the -to option must be declared
+together. Otherwise, the exception is non-bus type. Bus-type reachability
+ratio assumes that each node in the -from target connects with one node in
+the -to target. Non-bus type reachability ratio is typically more pessimistic
+because it assumes that each node in the -from target connects with every
+node in the -to target.
+
+Use the -detail option to specify the desired level of report
+detail. Specifiying "summary" generates a single table listing
+only the highlights of each timing exception (status and
+worst-case slack). Specifying "path_summary" generates a table,
+per timing exception, listing only the highlights of each
+path. Specifying "path_only" reports the path from the source to
+the destination without any detail about the clock
+path. Instead, the clock network delay is shown as a single
+number. This is the default behavior. Specifying
+"path_and_clock" extends the arrival and required paths back to
+the launch and latch clocks. Specifying "full_path" causes
+continued tracing back through generated clocks to the
+underlying base clock.
+
+To treat clock groups as timing exceptions (meaning that they
+override exceptions with a lower priority), use the
+"-report_clock_groups" option.
+
+By default, all exception types are reported, and clock groups are
+reported only if the "-report_clock_groups" option is used. Use a
+combination of "-false_path", "-multicycle_path", "-max_delay",
+"-min_delay", and "-clock_groups" to limit the analysis to specific
+exception types. Note that "-clock_groups" option also treats clock
+groups as timing exceptions.
+
+False path exceptions (set_false_path) are reported as if the
+false path was not applied, similar to the -false_path option
+for report_timing.
+
+The values of the "-from", "-to", and "-through" options are
+either collections or a Tcl list of wildcards used to create
+collections of appropriate types. The values used must follow
+standard Tcl or Timing Analyzer-extension substitution rules. See the
+help for use_timing_analyzer_style_escaping for details.
+
+***************************
+Clock-Domains-Crossing Verification:
+
+To view the effects of clock groups on your design, run
+"report_exceptions -report_clock_groups". If any pair of clocks
+in your design are cut by a set_clock_groups command and NOT
+cut by a set_false_path command, the Report shows paths between
+that pair of clocks as a clock-to-clock exception.
+
+Example:
+set_clock_groups -logically_exclusive -group {clkA clkB} -group {clkC clkD}
+report_exceptions -report_clock_groups -npaths 0 -detail path_only
+
+You might want to run "report_exceptions -report_clock_groups" if:
+
+1. You want to check which paths are cut by a set_clock_groups
+SDC command.
+
+2. You want to cut clock paths, but don't want to add
+set_clock_groups because you're concerned that you might cut
+a path incorrectly. With the "report_exceptions
+-report_clock_groups" command, you can add set_clock_groups
+to split clocks that are truly asynchronous, then add
+set_false_path commands to manually cut what you want, and
+then verify (in the Report) that no paths were found (since
+false paths have priority). If a path is found by the report,
+you can correct that without wasting a compilation concentrating
+on some unrelated false paths.
+
+3. If you use the set_clock_groups command and have some logic
+that is behaving badly and think it's timing related, run the
+"report_exceptions -report_clock_groups" command on that
+hierarchy to verify whether the correct paths have been cut.
+********************************
+
+--------------
+Example Usage:
+--------------
+
+# Reports all timing exceptions for a setup analysis.
+report_exceptions
+
+# Reports all timing exceptions for a hold analysis.
+report_exceptions -hold
+
+# Reports all timing exceptions affecting input paths for
+# recovery analysis, reporting the 10 worst paths per exception.
+report_exceptions -from [all_inputs] -to [all_registers] \
+  -recovery -npaths 10 -detail full_path
+
+# Reports all paths affected by timing exceptions, including
+# all clock-to-clock-paths cut by clock groups.
+report_exceptions -report_clock_groups -npaths 0 -detail path_only
+
+# Reports false path exceptions to determine which ones were overridden by clock groups
+report_exceptions -false_path -report_clock_groups -npaths 20
+
+# Reports only clock groups, multicycle paths, and min delays
+report_exceptions -clock_groups -multicycle_path -min_delay
+
+# Generate a reachability report that shows 10 exceptions
+report_exceptions -reachability -num_exceptions 10
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+
+---------------------------------------------------------------------------
+

@@ -1,0 +1,139 @@
+---------------------------------------------------------------------------
+
+Usage: get_timing_paths [-h] [-help] [-long_help] [-asynch_clock] [-data_delay] [-detail <summary|path_only|path_and_clock|full_path>] [-fall_from <names>] [-fall_from_clock <names>] [-fall_through <names>] [-fall_to <names>] [-fall_to_clock <names>] [-false_path] [-from <names>] [-from_clock <names>] [-hold] [-inter_clock] [-intra_clock] [-less_than_slack <slack limit>] [-npaths <number>] [-nworst <number>] [-pairs_only] [-recovery] [-removal] [-rise_from <names>] [-rise_from_clock <names>] [-rise_through <names>] [-rise_to <names>] [-rise_to_clock <names>] [-setup] [-show_routing] [-through <names>] [-to <names>] [-to_clock <names>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -asynch_clock: Only report paths whose launch and latch clock do not share a common ancestor clock, or were explicitly marked as asynchronous via clock groups
+        -data_delay: Report only paths that are covered by a data delay assignment
+        -detail <summary|path_only|path_and_clock|full_path>: Option to determine how much detail should be shown in the path report
+        -fall_from <names>: Valid sources (string patterns are matched using Tcl string matching)
+        -fall_from_clock <names>: Valid source clocks (string patterns are matched using Tcl string matching)
+        -fall_through <names>: Valid through nodes (string patterns are matched using Tcl string matching)
+        -fall_to <names>: Valid destinations (string patterns are matched using Tcl string matching)
+        -fall_to_clock <names>: Valid destination clocks (string patterns are matched using Tcl string matching)
+        -false_path: Report only paths that are cut by a false path assignment
+        -from <names>: Valid sources (string patterns are matched using Tcl string matching)
+        -from_clock <names>: Valid source clocks (string patterns are matched using Tcl string matching)
+        -hold: Option to report clock hold paths
+        -inter_clock: Only report paths whose launch and latch clock are different
+        -intra_clock: Only report paths whose launch and latch clock are the same
+        -less_than_slack <slack limit>: Limit the paths reported to those with slack values less than the specified limit.
+        -npaths <number>: Specifies the number of paths to report (default=1, or the same value as nworst, if nworst is specified.  Value of 0 causes all paths to be reported but be wary that this may be slow)
+        -nworst <number>: Specifies the maximum number of paths to report for each endpoint.  If unspecified, there is no limit.  If nworst is specified, but npaths is not, npaths defaults to the same value as nworst
+        -pairs_only: When set, paths with the same start and end points are considered equivalent.  Only the worst case path for each unique combination is displayed.
+        -recovery: Option to report recovery paths
+        -removal: Option to report removal paths
+        -rise_from <names>: Valid sources (string patterns are matched using Tcl string matching)
+        -rise_from_clock <names>: Valid source clocks (string patterns are matched using Tcl string matching)
+        -rise_through <names>: Valid through nodes (string patterns are matched using Tcl string matching)
+        -rise_to <names>: Valid destinations (string patterns are matched using Tcl string matching)
+        -rise_to_clock <names>: Valid destination clocks (string patterns are matched using Tcl string matching)
+        -setup: Option to report clock setup paths
+        -show_routing: Option to display detailed routing in the path
+        -through <names>: Valid through nodes (string patterns are matched using Tcl string matching)
+        -to <names>: Valid destinations (string patterns are matched using Tcl string matching)
+        -to_clock <names>: Valid destination clocks (string patterns are matched using Tcl string matching)
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Get a collection of path objects for the worst-case paths.
+
+This command behaves the same as the report_timing command.
+However, instead of reporting the paths, it returns a Tcl
+collection of path objects. You can retrieve path object data
+using the get_path_info and get_point_info commands.
+
+For help on the options shared with report_timing, see the
+report_timing help page.
+
+
+--------------
+Example Usage:
+--------------
+
+# Define a few helper procedures to print out points
+# on a path, and the path itself
+proc get_clock_string { path clk } {
+    set clk_str ""
+    set clk_id [ get_path_info $path -${clk}_clock ]
+
+    if { $clk_id ne "" } {
+        set clk_str [ get_clock_info $clk_id -name ]
+
+        if { [ get_path_info $path -${clk}_clock_is_inverted ] } {
+            append clk_str " (INVERTED)"
+        }
+    }
+
+    return $clk_str
+}
+
+proc print_point { point } {
+    set total     [ get_point_info $point -total    ]
+    set incr      [ get_point_info $point -incr     ]
+    set node_id   [ get_point_info $point -node     ]
+    set type      [ get_point_info $point -type     ]
+    set rf        [ get_point_info $point -rise_fall]
+    set node_name ""
+
+    if { $node_id ne "" } {
+        set node_name [ get_node_info $node_id -name ]
+    }
+
+    puts [format "%10s %8s %2s %-6s %s" $total $incr $rf $type $node_name ]
+}
+
+proc print_path { path } {
+    puts "Slack      : [ get_path_info $path -slack]"
+    puts "To Clock   : [ get_clock_string $path to ]"
+    puts "From Clock : [ get_clock_string $path from]"
+    puts ""
+    puts [format "%10s %8s %-2s %-6s %s" "Total" "Incr" "RF" "Type" "Name"]
+    puts "=================================================================="
+
+    foreach_in_collection pt [ get_path_info $path -arrival_points ] {
+        print_point $pt
+    }
+}
+
+project_open my_project
+
+# Always create the netlist first
+create_timing_netlist
+read_sdc my_project.sdc
+update_timing_netlist
+
+# And now simply iterate over the 10 worst setup paths, printing each path
+foreach_in_collection path [ get_timing_paths -npaths 10 -setup ] {
+    print_path $path
+    puts ""
+}
+
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Option <string> has illegal value: <string>. Specify a legal option value.
+TCL_ERROR	1   	ERROR: Collection type '<string>' is not a valid type for a through collection.  Valid collection types are 'pin' and 'net'
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+TCL_ERROR	1   	ERROR: Report database is not open
+
+---------------------------------------------------------------------------
+

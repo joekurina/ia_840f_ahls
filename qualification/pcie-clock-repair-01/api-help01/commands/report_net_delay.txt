@@ -1,0 +1,64 @@
+---------------------------------------------------------------------------
+
+Usage: report_net_delay [-h] [-help] [-long_help] [-append] [-file <name>] [-nworst <number>] [-panel_name <name>] [-split_by_corner] [-stdout]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -append: If output is sent to a file, this option appends the result to that file.  Otherwise, the file is overwritten. This option is not supported for HTML files.
+        -file <name>: Sends the results to an ASCII or HTML file. Depending on the extension
+        -nworst <number>: Specifies the maximum number of paths to report for each analysis.  If unspecified, there is no limit.
+        -panel_name <name>: Sends the results to the panel and specifies the name of the new panel
+        -split_by_corner: When set, running this command with the -panel option creates a folder containing versions of this report for selected multiple operating conditions. This option has no effect when used with the -stdout or -file options.
+        -stdout: Send output to stdout, via messages.  You only need to use this option if you have selected another output format, such as a file, and would also like to receive messages.
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Reports net delay analysis results based on set_net_delay
+commands. Each set_net_delay command is treated as a separate analysis
+and report_net_delay reports the results of all set_net_delay
+commands in a single report.
+
+The report contains each set_net_delay command with the worst case
+slack result followed by the results of each edge matching the
+criteria set by that set_net_delay command. These results are ordered
+based on the slack value.
+
+Use -nworst option to limit the number of lines reported for a
+set_net_delay command.
+
+--------------
+Example Usage:
+--------------
+
+project_open my_project
+create_timing_netlist
+read_sdc
+update_timing_netlist
+
+set_net_delay -min 0.160 -from [get_pins inst9|combout] -to [get_pins *|dataf]
+set_net_delay -max 0.500 -from inst8|combout
+
+report_net_delay -panel "Net Delay"
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+TCL_ERROR	1   	ERROR: Report database is not open
+
+---------------------------------------------------------------------------
+

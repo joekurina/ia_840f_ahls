@@ -1,0 +1,206 @@
+---------------------------------------------------------------------------
+
+Usage: report_timing [-h] [-help] [-long_help] [-append] [-asynch_clock] [-data_delay] [-detail <summary|path_only|path_and_clock|full_path>] [-extra_info <basic|all|none>] [-fall_from <names>] [-fall_from_clock <names>] [-fall_through <names>] [-fall_to <names>] [-fall_to_clock <names>] [-false_path] [-file <name>] [-from <names>] [-from_clock <names>] [-hold] [-inter_clock] [-intra_clock] [-less_than_slack <slack limit>] [-npaths <number>] [-nworst <number>] [-pairs_only] [-panel_name <name>] [-recovery] [-removal] [-rise_from <names>] [-rise_from_clock <names>] [-rise_through <names>] [-rise_to <names>] [-rise_to_clock <names>] [-setup] [-show_routing] [-split_by_corner] [-stdout] [-through <names>] [-to <names>] [-to_clock <names>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -append: If output is sent to a file, this option appends the result to that file.  Otherwise, the file is overwritten. This option is not supported for HTML files.
+        -asynch_clock: Only report paths whose launch and latch clock do not share a common ancestor clock, or were explicitly marked as asynchronous via clock groups
+        -data_delay: Report only paths that are covered by a data delay assignment
+        -detail <summary|path_only|path_and_clock|full_path>: Option to determine how much detail should be shown in the path report
+        -extra_info <basic|all|none>: Option to determine how much detail should be shown in the Extra Info report
+        -fall_from <names>: Valid sources (string patterns are matched using Tcl string matching)
+        -fall_from_clock <names>: Valid source clocks (string patterns are matched using Tcl string matching)
+        -fall_through <names>: Valid through nodes (string patterns are matched using Tcl string matching)
+        -fall_to <names>: Valid destinations (string patterns are matched using Tcl string matching)
+        -fall_to_clock <names>: Valid destination clocks (string patterns are matched using Tcl string matching)
+        -false_path: Report only paths that are cut by a false path assignment
+        -file <name>: Sends the results to an ASCII or HTML file. Depending on the extension
+        -from <names>: Valid sources (string patterns are matched using Tcl string matching)
+        -from_clock <names>: Valid source clocks (string patterns are matched using Tcl string matching)
+        -hold: Option to report clock hold paths
+        -inter_clock: Only report paths whose launch and latch clock are different
+        -intra_clock: Only report paths whose launch and latch clock are the same
+        -less_than_slack <slack limit>: Limit the paths reported to those with slack values less than the specified limit.
+        -npaths <number>: Specifies the number of paths to report (default=1, or the same value as nworst, if nworst is specified.  Value of 0 causes all paths to be reported but be wary that this may be slow)
+        -nworst <number>: Specifies the maximum number of paths to report for each endpoint.  If unspecified, there is no limit.  If nworst is specified, but npaths is not, npaths defaults to the same value as nworst
+        -pairs_only: When set, paths with the same start and end points are considered equivalent.  Only the worst case path for each unique combination is displayed.
+        -panel_name <name>: Sends the results to the panel and specifies the name of the new panel
+        -recovery: Option to report recovery paths
+        -removal: Option to report removal paths
+        -rise_from <names>: Valid sources (string patterns are matched using Tcl string matching)
+        -rise_from_clock <names>: Valid source clocks (string patterns are matched using Tcl string matching)
+        -rise_through <names>: Valid through nodes (string patterns are matched using Tcl string matching)
+        -rise_to <names>: Valid destinations (string patterns are matched using Tcl string matching)
+        -rise_to_clock <names>: Valid destination clocks (string patterns are matched using Tcl string matching)
+        -setup: Option to report clock setup paths
+        -show_routing: Option to display detailed routing in the path
+        -split_by_corner: When set, running this command with the -panel option creates a folder containing versions of this report for selected multiple operating conditions. This option has no effect when used with the -stdout or -file options.
+        -stdout: Send output to stdout, via messages.  You only need to use this option if you have selected another output format, such as a file, and would also like to receive messages.
+        -through <names>: Valid through nodes (string patterns are matched using Tcl string matching)
+        -to <names>: Valid destinations (string patterns are matched using Tcl string matching)
+        -to_clock <names>: Valid destination clocks (string patterns are matched using Tcl string matching)
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Reports the worst-case paths and associated slack.
+
+Use the "-setup", "-hold", "-recovery", or "-removal" options to
+specify which kind of analysis should be performed.
+
+The report can be directed to the Tcl console ("-stdout", default), a
+file ("-file"), the Timing Analyzer graphical user interface
+("-panel_name"), or any combination of the three.
+
+You can limit the analysis performed by this command to specific
+start and end points, using the "-from" and "-to" options. Use the
+"-rise_from" and "-fall_from" options to limit the analysis to
+endpoints with established high or low starting states. Use the
+"-rise_to" and "-fall_to" options to limit the analysis to
+destination points with high or low ending states.
+
+The analysis can be further limited to clocks using the "-from_clock"
+and "-to_clock"	options, or to specific edges of the clock using the
+"-rise_from_clock", "-fall_from_clock", "-rise_to_clock", and
+"-fall_to_clock" options.
+
+Additionally, the "-through" option can be used to restrict analysis
+to paths which go through specified pins or nets. Use the "-rise_through"
+and "-fall_through" options to limit the analysis to intermediate points
+with high or low ending states.
+
+Use "-npaths" to limit the number of paths to report.  If you do not
+specify this option, only the single worst-case path is provided.  Use
+the "-less_than_slack" option to limit output to all paths with slack
+less than the specified value, up to the number specified by
+"-npaths".
+
+Use "-nworst" to limit the number of paths reported for each unique
+endpoint.  If you do not specify this option, the number of paths
+reported for each destination node is bounded only by the "-npaths"
+option.  If this option is used, but "-npaths" is not specified, then
+"-npaths" defaults to the same value specified for "-nworst".
+
+Use the "-pairs_only" option to filter the output further, restricting
+the results to only unique combinations of start and end points.
+
+Use the "-detail" option to specify the desired level of report
+detail.  "-summary" generates a single table listing only the
+highlights of each path (and is the same as "-summary" option, which
+this replaces). "-path_only" reports the path from the source to the
+destination without any detail about the clock path.  Instead, the
+clock network delay is shown as a single number.  This is the default
+behavior. "-path_and_clock" extends the arrival and required paths back
+to the launch and latch clocks.  "-full_path" continues tracing
+back through generated clocks to the underlying base clock.
+
+The "-show_routing" option displays detailed routing information in
+the path.  Lines that were marked as "IC" without the option are still
+shown, but only as a placeholder.  The routing elements for that line
+are broken out individually and listed before the line.
+
+The "-false_path" option reports only those paths that are normally
+hidden by false_path assignments or clock to clock cuts.  Like the
+default report, this option only reports constrained paths.
+
+The "-data_delay" option reports only those paths that are constrained
+by set_data_delay. Without this option, such paths are excluded from
+the report.
+
+The return value of this command is a two-element list.  The first
+number is the number of paths found in the analysis.  The second is
+the worst-case slack, in terms of the current default time unit.
+
+The "RF" column in the report output uses a two-letter symbol to
+indicate the rise/fall transition that occurs at that point in the
+path.
+
+Possible "RF" values are:
+
+	Value     Description
+	-------   -------------------------------
+	(empty)   Unknown transition
+	R         Rising output
+	F         Falling output
+	RR        Rising input, rising output
+	RF        Rising input, falling output
+	FR        Falling input, rising output
+	FF        Falling input, falling output
+
+
+The "Type" column in the report uses a symbol to indicate what type
+of delay occurs at that point in the path.
+
+Possible "Type" values are:
+
+	Value     Description
+	-------   -------------------------------------------------------
+	CELL      Cell delay
+	COMP      PLL clock network compensation delay
+	IC        Interconnect delay
+	iExt      External input delay
+	LOOP      Lumped combinational loop delay
+	oExt      External output delay
+	RE        Routing element (only for paths generated with the
+	          -show_routing option)
+	uTco      Register micro-Tco time
+	uTsu      Register micro-Tsu time
+	uTh       Register micro-Th time
+
+The values of the "-from", "-to", and "-through" options are either
+collections or a Tcl list of wildcards used to create collections
+of appropriate types. The values used must follow standard Tcl or
+Timing Analyzer-extension substitution rules.  See the help for
+use_timing_analyzer_style_escaping for details.
+
+--------------
+Example Usage:
+--------------
+
+project_open my_project
+
+# Always create the netlist first
+create_timing_netlist
+read_sdc my_project.sdc
+update_timing_netlist
+
+# Run a setup analysis between nodes "foo" and "bar",
+# reporting the worst-case slack if a path is found.
+
+set my_list [report_timing -from foo -to bar]
+set num_paths [lindex $my_list 0]
+set wc_slack [lindex $my_list 1]
+if { $num_paths > 0 } {
+    puts "Worst case slack -from foo -to bar is $wc_slack"
+}
+
+# The following command is optional
+delete_timing_netlist
+
+project_close
+
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Option <string> has illegal value: <string>. Specify a legal option value.
+TCL_ERROR	1   	ERROR: Collection type '<string>' is not a valid type for a through collection.  Valid collection types are 'pin' and 'net'
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+TCL_ERROR	1   	ERROR: Report database is not open
+
+---------------------------------------------------------------------------
+

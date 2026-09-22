@@ -1,0 +1,73 @@
+---------------------------------------------------------------------------
+
+Usage: get_report_panel_names [-h] [-help] [-long_help] [-filter_name <filter_name>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -filter_name <filter_name>: filter the returned list to match the specified panel names
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::report 2.1
+
+------------
+Description:
+------------
+
+Returns a list of panel names for the current report.
+
+The table of contents portion of the Compilation Report
+window shows short panel names for better readability.
+However, each panel name returned by this command is the
+full panel name as shown in the right-hand side frame of the
+Compilation Report window or the .rpt file of the
+corresponding command-line executable. For example, the
+table of contents shows the path "Analysis & Synthesis||Summary".
+However, the corresponding full path returned by this Tcl command
+is "Analysis & Synthesis||Analysis & Synthesis Summary".
+
+--------------
+Example Usage:
+--------------
+
+## Load report database and write Timing Analyzer Summary
+## panel to file in HTML format
+
+load_package report
+project_open chiptrip
+load_report
+
+# Set panel name
+set fmax_panel "Timing Analyzer Summary"
+
+# Iterate through all the accessable panels
+foreach panel [get_report_panel_names] {
+    # If find the panel '*Timing Analyzer Summary', 
+    # write its content to file fmax.htm
+    if {[string match "*$fmax_panel" $panel] == 1} {
+        write_report_panel -file fmax.htm -html $panel
+        break
+    }
+}
+
+unload_report
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_OK   	0   	INFO: Report automatically reloaded because it was not up-to-date after use of Tcl command "execute_flow" or "execute_module" (which belong to ::quartus::flow package). No action is required.
+TCL_ERROR	1   	ERROR: Illegal report panel type.
+TCL_ERROR	1   	ERROR: Can't find panel: <string>. Specify an existing report panel name.
+TCL_ERROR	1   	ERROR: Report not loaded for revision name: <string>. Type "load_report" to load the report.
+
+---------------------------------------------------------------------------
+

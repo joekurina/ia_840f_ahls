@@ -1,0 +1,85 @@
+---------------------------------------------------------------------------
+
+Usage: get_report_panel_id [-h] [-help] [-long_help] <name>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        <name>: Name of panel for which to get id
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::report 2.1
+
+------------
+Description:
+------------
+
+Gets the id of a panel with the specified name.
+
+The panel id is a non-negative integer for an existing panel.
+If the specified panel cannot be found, the id is -1.
+
+Using the panel id provides faster data access than using the 
+panel name.
+
+You can use the "get_report_panel_id" command to check for the 
+existence of a panel.(Refer to the example under the 
+"get_report_panel_id" command.)
+
+Panel ids that you have cached may become outdated or invalid 
+if the report is unloaded or reloaded. This error occurs 
+after compilation or with calls to the "project_close",
+"unload_report", and "load_report" commands.
+
+Panel names support wildcards.
+
+The table of contents portion of the Compilation Report
+window shows short panel names for better readability.
+However, the panel name used by this command is the full
+panel name as shown in the right-hand side frame of the
+Compilation Report window or the .rpt file of the
+corresponding command-line executable. For example, the
+table of contents shows the path "Analysis & Synthesis||Summary".
+However, the corresponding full path used by this Tcl command
+is "Analysis & Synthesis||Analysis & Synthesis Summary".
+
+--------------
+Example Usage:
+--------------
+
+load_package report
+project_open chiptrip
+load_report
+
+# Set panel name
+set panel {Fitter||Fitter Settings}
+# Get the panel id
+set id [get_report_panel_id $panel]
+
+if {$id != -1} {
+    # If panel exists, add a row to it
+    add_row_to_table -id $id {{New Field} Yes No}
+    # Save the changes to the report database
+    save_report_database
+} else {
+    # Otherwise print an error message
+    puts "Error: Table $panel does not exist."
+}
+
+unload_report
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+
+---------------------------------------------------------------------------
+

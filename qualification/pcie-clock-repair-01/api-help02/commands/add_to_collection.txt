@@ -1,0 +1,72 @@
+---------------------------------------------------------------------------
+
+Usage: add_to_collection [-h] [-help] [-long_help] <collection_obj_1> <collection_obj_2>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        <collection_obj_1>: First object collection
+        <collection_obj_2>: Second object collection
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+This command takes two collections and returns a new
+collection that is a union of the two. The second
+collection is allowed to be a string, whereas the
+first has to be previously-created collection, either
+by passing any of the "get_" functions directly, or by
+passing a variable that contains a collection (see code
+examples for this command). If a collection is used
+for the second argument, the types in the second
+collection must be the same as or a subset of the types
+in the first collection.
+
+If the first collection consists of keepers, the second
+collection can only consist of keepers, registers or ports.
+If the first collection consists of partitions, the second
+collection can only consist of partitions or cells. If
+the first collection consists of nodes, the second collection
+can only consist of nodes, keepers, registers, ports, pins,
+nets or combinational nodes.
+
+--------------
+Example Usage:
+--------------
+
+set kprs1 [get_keepers b*]
+set regs1 [get_registers a*]
+
+set regs_union [add_to_collection $kprs1 $regs1]
+
+#or:
+set regs_union [add_to_collection [get_keepers b*] $regs1]
+
+#or even:
+set regs_union [add_to_collection $kprs1 a*]
+
+# - note that the last statement will actually add all keepers with name a*
+#   not only registers! (will add IOs with name a*, if any)
+
+# Get the first 100 nodes in the collection.
+query_collection $regs_union -limit 100
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Cannot find specified collection. Specify an existing collection.
+
+---------------------------------------------------------------------------
+

@@ -1,0 +1,57 @@
+---------------------------------------------------------------------------
+
+Usage: report_sdc [-h] [-help] [-long_help] [-append] [-file <name>] [-ignored] [-panel_name <name>] [-stdout]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -append: If output is sent to a file, this option appends the result to that file.  Otherwise, the file is overwritten. This option is not supported for HTML files.
+        -file <name>: Sends the results to an ASCII or HTML file. Depending on the extension
+        -ignored: Reports full history of assignments to locate ignored ones
+        -panel_name <name>: Sends the results to the panel and specifies the name of the new panel
+        -stdout: Send output to stdout, via messages.  You only need to use this option if you have selected another output format, such as a file, and would also like to receive messages.
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Reports all SDC constraints used in the design. Use the -ignored
+option to report SDC constraints that were ignored and the reason
+they were ignored.
+
+--------------
+Example Usage:
+--------------
+
+project_new test
+create_timing_netlist
+create_clock -period 10 -name clk10 clk
+set_multicycle_path -from [get_cells a] -to [get_cells b]
+update_timing_netlist
+
+report_sdc -panel_name sdc_report_panel
+
+report_timing
+
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+TCL_ERROR	1   	ERROR: Report database is not open
+
+---------------------------------------------------------------------------
+

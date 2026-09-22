@@ -52,8 +52,12 @@ match the existing W13 persona. All hardware gates remain open.
 The [PCIe binding source investigation](qualification/pcie-clock-binding-01/DISPOSITION.md)
 is complete: obsolete hierarchy is confirmed, but final pin/master/receiver
 bindings and dependent exceptions remain unresolved. No correction is applied.
-The next bounded offline fitted-database inspection needs resolution of the
-earlier Query04-specific tool-approval stop; no renamed retry or blind edit.
+Joe explicitly renewed approval for the bounded offline fitted-database inspection
+and continued safe iteration; the earlier Query04 approval stop is cleared.
+[Copied-database diagnostic](qualification/fim-build-14/pcie-postfit-01/AUTHORITY.md)
+preserves Work14 and performs no live FPGA access. The user has also selected
+[OFS ofs-2026.1-1 as the AHLS target](qualification/ofs-2026-target-01/POLICY.md);
+prerelease status is not a blocker. [Companion-source review is complete](qualification/ofs-2026-target-01/DISPOSITION.md): all four recommended pins already match the lock, with no matching public2026 FIM tuple or upstream divider fix in inspected refs. Preserve the honest2025.1 FIM/common donor provenance and selected2026 examples/PIM changes; no pin migration or unchanged rebuild is needed. The [first copied STA query](qualification/fim-build-14/pcie-postfit-01/RESULT.md) resolved the divider input/CSR clock then failed on a Tcl node-versus-collection call, rc3; originals remain unchanged. The [corrected successor](qualification/fim-build-14/pcie-postfit-02/RESULT.md) completed native/outer rc0 with exact divider pins/input clock and all four selected FIFO receiver groups,8 cells each; original trees remain unchanged. Its [actual-result review is consumed](qualification/fim-build-14/pcie-postfit-02/RESULT-ACCEPTANCE.md), published at `686223f0638d37cef8b62410d743030950dd9bfb`. The [isolated comparison predecessor](qualification/pcie-clock-repair-01/experiment01/CURRENT.md) is preserved with QUALITY REQUEST_CHANGES Q1 for incomplete child supervision, without any native run. The [supervision successor](qualification/pcie-clock-repair-01/experiment02/CURRENT.md) was SPEC-rejected for stale Tcl routing before native issuance. [Experiment03](qualification/pcie-clock-repair-01/experiment03/CURRENT.md) fixes the strict query root, passes 14 actual-prepared routing checks plus26 supervision/17 guard/5 gate checks, is remotely prepared/read back, has SPEC PASS and QUALITY APPROVED parent-consumed. Baseline ran once and failed native/effective/outer rc3 at a clock-load cardinality assertion before the count was emitted; termination and original preservation are confirmed. Candidate remains unissued. Failed-result review and fanout-query diagnosis are active. No completed A/B comparison, maintained-source correction, timing acceptance or hardware success is claimed.
 
 ## 1. Authorization and acceptance model
 

@@ -1,0 +1,82 @@
+---------------------------------------------------------------------------
+
+Usage: get_clock_info [-h] [-help] [-long_help] [-child_clocks] [-divide_by] [-duty_cycle] [-edge_shifts] [-edges] [-fall] [-is_inverted] [-latency] [-master_clock] [-master_clock_pin] [-max] [-min] [-multiply_by] [-name] [-nreg_neg] [-nreg_pos] [-offset] [-period] [-phase] [-rise] [-targets] [-type] [-waveform] <clk_object>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -child_clocks: Returns a list of child clock names
+        -divide_by: Return the frequency divider (to the base clock)
+        -duty_cycle: Return the duty cycle
+        -edge_shifts: Return a list of edge shifts that the specified edges are to undergo to yield the final generated clock waveform
+        -edges: Return a list of integer representing edges from the source clock that are to form edges of the generated clock
+        -fall: Return clock fall latency
+        -is_inverted: Return a boolean value to indicate if the generated clock is inverted
+        -latency: Return clock latency
+        -master_clock: Return the master clock name
+        -master_clock_pin: Return the master clock source pin
+        -max: Return max clock latency
+        -min: Return min clock latency
+        -multiply_by: Return the frequency multiplier (to the base clock)
+        -name: Return the clock name
+        -nreg_neg: Return number of registers negatively clocked by clock
+        -nreg_pos: Return number of registers positively clocked by clock
+        -offset: Return the clock offset
+        -period: Return the clock period
+        -phase: Return the clock phase
+        -rise: Return clock rise latency
+        -targets: Return the clock targets collection
+        -type: Return the clock type
+        -waveform: Return the waveform (rise time and fall time)
+        <clk_object>: Clock object
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Returns information about the specified clock (referenced by clock
+ID). Clock IDs can be obtained by Tcl commands such as get_clocks.
+
+The "-type" option returns one of "base", "virtual_base", "generated",
+"virtual_generated".
+
+Options "-name", "-type", "-period", "-duty_cycle", "-waveform",
+"-edges", "-edge_shifts", "-multiply_by", "-divide_by",
+"-is_inverted", "-latency", "-master_clock", and "-targets" are
+mutually exclusive. The "-latency" option requires a specified "-max"
+or "-min" option as well as a "-rise" or "-fall" option.
+
+--------------
+Example Usage:
+--------------
+
+project_open chiptrip
+create_timing_netlist
+set clocks [get_clocks]
+foreach_in_collection clk $clocks {
+    puts "[get_clock_info $clk -name]: [get_clock_info $clk -period]"
+}
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Options are mutually exclusive: <string>. Specify only one of the these options.
+TCL_ERROR	1   	ERROR: Object with ID "<string>" is not an object of type <string>. Specify the ID of an object with the correct type.
+TCL_ERROR	1   	ERROR: Cannot find object of ID "<string>". Specify an existing object ID.
+TCL_ERROR	1   	ERROR: Unsupported object type: <string>. Specify a supported object type.
+
+---------------------------------------------------------------------------
+

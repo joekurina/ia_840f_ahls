@@ -1,0 +1,74 @@
+---------------------------------------------------------------------------
+
+Usage: get_register_info [-h] [-help] [-long_help] [-asynch_edges] [-clock_edges] [-delay_type <max_rise|max_fall|min_rise|min_fall>] [-fanout_edges] [-is_latch] [-is_synchronizer] [-name] [-related_pin <related_pin_value>] [-synch_edges] [-tch] [-tcl] [-tco] [-th] [-tmin] [-tsu] [-type] <reg_object>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -asynch_edges: Return a list of asynchronous edge IDs
+        -clock_edges: Return a list of clock edge IDs
+        -delay_type <max_rise|max_fall|min_rise|min_fall>: Specify which type of micro delay to query
+        -fanout_edges: Return a list of fanout edge IDs
+        -is_latch: Return "1" if this is a latch node, or "0" otherwise
+        -is_synchronizer: Return which stage of a synchronizer chain this register is part of, or "0" if it is not part of a synchronizer chain
+        -name: Return the object name
+        -related_pin <related_pin_value>: Specify which register port you want the tsu/th/tco for
+        -synch_edges: Return a list of synchronous edge IDs
+        -tch: Return the Tch value
+        -tcl: Return the Tcl value
+        -tco: Return the Tco value
+        -th: Return the Th value
+        -tmin: Return the Tmin value
+        -tsu: Return the Tsu value
+        -type: Return the object type
+        <reg_object>: Register object
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Gets information about the specified register (referenced by register
+ID). Register IDs can be obtained by Tcl commands such as
+get_registers.
+
+The -type option returns "reg". The -name, -type, -tco, -tsu, -th,
+-tch, -tcl, -tmin, -clock_edges, -synch_edges, -asynch_edges, -fanout_edges
+and -is_latch options are mutually exclusive.
+
+--------------
+Example Usage:
+--------------
+
+project_open chiptrip
+create_timing_netlist
+set registers [get_registers]
+foreach_in_collection reg $registers {
+    set name [get_register_info $reg -name]
+    set tco [get_register_info $reg -tco]
+    puts "Tco of $name is $tco"
+}
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: delay_type is used without specifying the related_pin. These two options must be used together.
+TCL_ERROR	1   	ERROR: related_pin is used without specifying the delay_type. These two options must be used together.
+TCL_ERROR	1   	ERROR: Object with ID "<string>" is not an object of type <string>. Specify the ID of an object with the correct type.
+TCL_ERROR	1   	ERROR: Cannot find object of ID "<string>". Specify an existing object ID.
+TCL_ERROR	1   	ERROR: Unsupported object type: <string>. Specify a supported object type.
+
+---------------------------------------------------------------------------
+
