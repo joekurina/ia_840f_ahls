@@ -1,0 +1,9 @@
+# Fanout diagnostic01 — failed-result evidence accepted
+
+**Native/effective/outer rc3; INCOMPLETE. Independent review consumed as failed/partial evidence only. Attempt spent.**
+
+Parent decoded/reverified all14 preparation exports and8 result exports, native termination and three original-tree preservation receipts, and reconciled110 SDC mentions/38 filenames against bound copies. [Independent review](result-independent-review01.md) SHA256 `ba605b71b16adfb5eaae517a995e8118cb68c05bfb05d7c644d67604af754a51` and [parent consumption](parent-result-consumption01.json) bind acceptance. Original-QDB-proxy equivalence remains receipt-level evidence; no per-open hash or complete access trace is claimed.
+
+Both specific forward queries returned0. The first physical-cell-as-keeper lookup then failed. No full known32/tile audit, clock-load collector, physical absence, repair, A/B or timing/hardware acceptance follows. The sibling [source diagnosis](../forward-lookup-diagnosis01.md), SHA256 `55a23ac37c58caeb96204e8c552c5cf6ab5e085fd0adeec1993dbfd560f0acf8`, separates the unsupported namespace/matcher assumptions and edge-filter hypothesis. Parent checked its local source bindings; official-PDF natural-bus naming is contextual evidence, not proof of this native session's mode.
+
+A fresh bounded unchanged-constraint representation/filter contrast is justified for preparation and review: cell-derived pins and buried registers; one raw/transformed lookup matrix; same-root filtered/unfiltered fanout. No global mode switch, new clock, cap increase, hierarchy-wide scan, source promotion or fit. Its actual implementation still needs fresh SPEC and QUALITY before a separate one-use issuer. The old experiment03 candidate remains unissued/blocked; its helper's driving-clock/definition precheck cannot be reused unchanged. All hardware qualification and independent recovery gates remain open.

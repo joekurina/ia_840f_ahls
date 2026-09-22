@@ -1,6 +1,6 @@
-# Fanout diagnostic01 — prepared, native NOT RUN
+# Fanout diagnostic01 — failed/partial native evidence accepted
 
-**SPEC PASS and QUALITY APPROVED are [parent-consumed](ACCEPTANCE.md). The one-use diagnostic completed native/effective/outer rc3 in @49/%49; termination and original-tree preservation are verified. [Partial result](RESULT.md) awaits independent review. Attempt spent; no rerun.**
+**SPEC PASS and QUALITY APPROVED are [parent-consumed](ACCEPTANCE.md). The one-use diagnostic completed native/effective/outer rc3 in @49/%49; termination and original-tree preservation are verified. [Failed/partial result evidence is independently accepted](RESULT-ACCEPTANCE.md). Attempt spent; no rerun.**
 
 Measure the exact logical-pin and divider-keeper clock fanouts on a fresh unchanged-SDC Work14 fitted copy; preserve full bounded sets,32 known receivers and the named tile load. No collector is yet qualified; this does not create a clock or enable the experiment03 candidate. [Specification](SPEC.md).
 
@@ -21,4 +21,4 @@ Measure the exact logical-pin and divider-keeper clock fanouts on a fresh unchan
 
 [Preparation correction](PREPARATION-CORRECTION.md) retains the stale relative-root error, an appended error receipt in the old phase, and preflight verification that21 old bound artifacts stayed unchanged and the prospective leaf was absent. prepare02.py fixes the root and unowned error-write path; failed prepare01 is preserved.
 
-Prior baseline failed-result acceptance published at `2a2104387dc0a25b3f96b5bde430f5a7ac449c9d`. The exact diagnostic package is accepted for the bounded offline scope. The issuer has separate parent inspection; dispatch is recorded in launch-dispatch01.json. Issuance and native rc3 are captured; independent failed-result review and source/API diagnosis are active in `deleg_8491f26e` (two local-only leaves). Both forward fanout queries counted0, then the first known-receiver keeper lookup failed. This is not proof of absent loads or an accepted collector. No maintained-source repair, refit, timing/CDC or hardware acceptance. All original mission gates remain open.
+Prior baseline failed-result acceptance published at `2a2104387dc0a25b3f96b5bde430f5a7ac449c9d`. The exact diagnostic package is accepted for the bounded offline scope. The issuer has separate parent inspection; dispatch is recorded in launch-dispatch01.json. Issuance and native rc3 are captured; both `deleg_8491f26e` reviews are complete and parent-consumed. The separate representation/filter successor diagnostic02 is prepared but unpublished, with SPEC review active and no native authorization. Both forward fanout queries counted0, then the first known-receiver keeper lookup failed. This is not proof of absent loads or an accepted collector. No maintained-source repair, refit, timing/CDC or hardware acceptance. All original mission gates remain open.
