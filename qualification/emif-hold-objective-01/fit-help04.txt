@@ -1,0 +1,326 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Fitter
+    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+    Info: Copyright (C) 2026  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Tue Sep 22 12:39:17 2026
+    Info: System process ID: 34927
+Info: Command: quartus_fit -t /home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/fit-help04/api-help.tcl
+BEGIN_HELP register_delete_timing_netlist_callback
+HELP_RESULT register_delete_timing_netlist_callback 0
+---------------------------------------------------------------------------
+
+Usage: register_delete_timing_netlist_callback [-h] [-help] [-long_help] <body>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        <body>: Body of the callback to run
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Use this command to specify a TCL procedure that runs before the
+timing netlist is deleted.
+
+This command can be used to specify a procedure to run, like so:
+
+proc mycallback {
+
+	# This is the body of the delete_timing_netlist callback.
+	...
+}
+register_delete_timing_netlist_callback mycallback
+
+Or, you may specify the procedure directly:
+
+register_delete_timing_netlist_callback {
+
+	# This is the body of the delete_timing_netlist callback.
+	...
+}
+
+--------------
+Example Usage:
+--------------
+
+This command currently contains no example usage.
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+
+---------------------------------------------------------------------------
+
+END_HELP register_delete_timing_netlist_callback
+BEGIN_HELP report_sdc
+HELP_RESULT report_sdc 0
+---------------------------------------------------------------------------
+
+Usage: report_sdc [-h] [-help] [-long_help] [-append] [-file <name>] [-ignored] [-panel_name <name>] [-stdout]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -append: If output is sent to a file, this option appends the result to that file.  Otherwise, the file is overwritten. This option is not supported for HTML files.
+        -file <name>: Sends the results to an ASCII or HTML file. Depending on the extension
+        -ignored: Reports full history of assignments to locate ignored ones
+        -panel_name <name>: Sends the results to the panel and specifies the name of the new panel
+        -stdout: Send output to stdout, via messages.  You only need to use this option if you have selected another output format, such as a file, and would also like to receive messages.
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Reports all SDC constraints used in the design. Use the -ignored
+option to report SDC constraints that were ignored and the reason
+they were ignored.
+
+--------------
+Example Usage:
+--------------
+
+project_new test
+create_timing_netlist
+create_clock -period 10 -name clk10 clk
+set_multicycle_path -from [get_cells a] -to [get_cells b]
+update_timing_netlist
+
+report_sdc -panel_name sdc_report_panel
+
+report_timing
+
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+TCL_ERROR	1   	ERROR: Report database is not open
+
+---------------------------------------------------------------------------
+
+END_HELP report_sdc
+BEGIN_HELP get_clock_uncertainty
+HELP_RESULT get_clock_uncertainty 1
+ERROR: Tcl command does not exist or is not supported by Quartus Prime Tcl help: get_clock_uncertainty. Specify an available Quartus Prime Tcl command. Type "info commands" for a list of available commands.
+
+END_HELP get_clock_uncertainty
+BEGIN_HELP get_clocks
+HELP_RESULT get_clocks 0
+---------------------------------------------------------------------------
+
+Usage: get_clocks [-h] [-help] [-long_help] [-include_generated_clocks] [-nocase] [-nowarn] [-of_objects <object_collection>] [<filter>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -include_generated_clocks: Includes generated clocks derived from the matched clocks
+        -nocase: Specifies the matching of node names to be case-insensitive
+        -nowarn: Do not issue warning messages when querying for clocks
+        -of_objects <object_collection>: Returns all clocks that target (defined on) or drive (determine data frequency of) the nodes in the collection.
+        <filter>: Valid destinations (string patterns are matched using Tcl string matching)
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sdc 1.5
+
+------------
+Description:
+------------
+
+Returns a collection of previously defined clocks in the design. Use a clock
+collection as the -from/to argument of a command (such as set_multicycle_path)
+to refer to all nodes driven by the clocks in the collection.
+
+# The following multicycle constraint applies to all paths ending at registers
+# driven by clk
+set_multicycle_path -to [get_clocks clk] 2
+
+If a filter, which is a Tcl list of wildcards and must follow 
+standard Tcl or Timing Analyzer-extension substitution rules, is specified, then 
+get_clocks returns all previously defined clocks whose names match the filter.
+See the help for use_timing_analyzer_style_escaping for filter rules.
+
+If you use the -of_objects option, you must provide a collection of registers, ports, 
+pins, or cells. The get_clocks command returns a collection of all the previously defined 
+clocks that target these nodes, or if these nodes are not clock targets, all the previously 
+defined clocks that drive these nodes. You cannot use the -of_objects option with the clock 
+name filter. Refer to the long help for examples of using the -of_objects option.
+
+Tip: the get_clocks command can be used as part of SDC commands, as well as for reporting.
+When it is used as part of SDC commands and includes the -include_generated_clocks option,
+the Timing Analyzer needs to analyze the design and may issue warnings about missing clocks.
+The missing clocks might still be created later on in the SDC file and are not
+necessarily indicative of a problem. Use the -nowarn option in this case to suppress
+those warnings. When you use the -nowarn option, pass a node collection generated by another get_*
+ 		collection command as the filter. This way, warnings directly related to the filter resolution are
+ 		still posted.
+
+--------------
+Example Usage:
+--------------
+
+# get clocks that begin with 'c' or 'C', and print out their names and periods: 
+set clocks [get_clocks c* -nocase]
+foreach_in_collection clk $clocks {
+    set name [get_clock_info -name $clk]
+    set period [get_clock_info -period $clk]
+    puts "$name: $period"
+}
+
+# getting the clock that targets a port, and its generated clock: 
+create_clock -name my_clock -period 10.000 [get_ports CLK_100]
+create_generated_clock -name my_gen_clock -divide_by 2 -source [get_ports CLK_100] [get_registers clk_div_reg] 
+get_clocks -nowarn -of_objects [get_ports CLK_100] -include_generated_clocks 
+
+
+# display the name of the clocks that drive registers beginning with 'reg_':
+foreach_in_collection clk_id [get_clocks -nowarn -of_objects [get_registers reg_*]] {
+    puts [get_clock_info -name $clk_id]
+}
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Use the -clock_networks_only option only with the -of_objects option.
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+
+---------------------------------------------------------------------------
+
+END_HELP get_clocks
+BEGIN_HELP get_clock_info
+HELP_RESULT get_clock_info 0
+---------------------------------------------------------------------------
+
+Usage: get_clock_info [-h] [-help] [-long_help] [-child_clocks] [-divide_by] [-duty_cycle] [-edge_shifts] [-edges] [-fall] [-is_inverted] [-latency] [-master_clock] [-master_clock_pin] [-max] [-min] [-multiply_by] [-name] [-nreg_neg] [-nreg_pos] [-offset] [-period] [-phase] [-rise] [-targets] [-type] [-waveform] <clk_object>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -child_clocks: Returns a list of child clock names
+        -divide_by: Return the frequency divider (to the base clock)
+        -duty_cycle: Return the duty cycle
+        -edge_shifts: Return a list of edge shifts that the specified edges are to undergo to yield the final generated clock waveform
+        -edges: Return a list of integer representing edges from the source clock that are to form edges of the generated clock
+        -fall: Return clock fall latency
+        -is_inverted: Return a boolean value to indicate if the generated clock is inverted
+        -latency: Return clock latency
+        -master_clock: Return the master clock name
+        -master_clock_pin: Return the master clock source pin
+        -max: Return max clock latency
+        -min: Return min clock latency
+        -multiply_by: Return the frequency multiplier (to the base clock)
+        -name: Return the clock name
+        -nreg_neg: Return number of registers negatively clocked by clock
+        -nreg_pos: Return number of registers positively clocked by clock
+        -offset: Return the clock offset
+        -period: Return the clock period
+        -phase: Return the clock phase
+        -rise: Return clock rise latency
+        -targets: Return the clock targets collection
+        -type: Return the clock type
+        -waveform: Return the waveform (rise time and fall time)
+        <clk_object>: Clock object
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Returns information about the specified clock (referenced by clock
+ID). Clock IDs can be obtained by Tcl commands such as get_clocks.
+
+The "-type" option returns one of "base", "virtual_base", "generated",
+"virtual_generated".
+
+Options "-name", "-type", "-period", "-duty_cycle", "-waveform",
+"-edges", "-edge_shifts", "-multiply_by", "-divide_by",
+"-is_inverted", "-latency", "-master_clock", and "-targets" are
+mutually exclusive. The "-latency" option requires a specified "-max"
+or "-min" option as well as a "-rise" or "-fall" option.
+
+--------------
+Example Usage:
+--------------
+
+project_open chiptrip
+create_timing_netlist
+set clocks [get_clocks]
+foreach_in_collection clk $clocks {
+    puts "[get_clock_info $clk -name]: [get_clock_info $clk -period]"
+}
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Options are mutually exclusive: <string>. Specify only one of the these options.
+TCL_ERROR	1   	ERROR: Object with ID "<string>" is not an object of type <string>. Specify the ID of an object with the correct type.
+TCL_ERROR	1   	ERROR: Cannot find object of ID "<string>". Specify an existing object ID.
+TCL_ERROR	1   	ERROR: Unsupported object type: <string>. Specify a supported object type.
+
+---------------------------------------------------------------------------
+
+END_HELP get_clock_info
+HELP_ONLY_COMPLETE
+Info (23030): Evaluation of Tcl script /home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/fit-help04/api-help.tcl was successful
+Info: Quartus Prime Fitter was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 1543 megabytes
+    Info: Processing ended: Tue Sep 22 12:39:17 2026
+    Info: Elapsed time: 00:00:00
+    Info: System process ID: 34927

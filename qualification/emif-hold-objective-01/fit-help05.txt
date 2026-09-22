@@ -1,0 +1,197 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Fitter
+    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+    Info: Copyright (C) 2026  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Tue Sep 22 13:29:07 2026
+    Info: System process ID: 39932
+Info: Command: quartus_fit -t /home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/fit-help05/api-help.tcl
+BEGIN_HELP set_clock_uncertainty
+HELP_RESULT set_clock_uncertainty 0
+---------------------------------------------------------------------------
+
+Usage: set_clock_uncertainty [-h] [-help] [-long_help] [-add] [-enable_same_physical_edge] [-fall_from <fall_from_clock>] [-fall_to <fall_to_clock>] [-from <from_clock>] [-hold] [-rise_from <rise_from_clock>] [-rise_to <rise_to_clock>] [-setup] [-to <to_clock>] <uncertainty>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -add: Specifies that this assignment is an addition to the clock uncertainty derived by derive_clock_uncertainty call
+        -enable_same_physical_edge: Enable setting uncertainty value for same physical clock edge
+        -fall_from <fall_from_clock>: Valid destinations (string patterns are matched using Tcl string matching)
+        -fall_to <fall_to_clock>: Valid destinations (string patterns are matched using Tcl string matching)
+        -from <from_clock>: Valid destinations (string patterns are matched using Tcl string matching)
+        -hold: Only apply the uncertainty value to hold and removal checks
+        -rise_from <rise_from_clock>: Valid destinations (string patterns are matched using Tcl string matching)
+        -rise_to <rise_to_clock>: Valid destinations (string patterns are matched using Tcl string matching)
+        -setup: Only apply the uncertainty value to setup and recovery checks
+        -to <to_clock>: Valid destinations (string patterns are matched using Tcl string matching)
+        <uncertainty>: Uncertainty
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sdc 1.5
+
+------------
+Description:
+------------
+
+Specifies clock uncertainty or skew for clocks for
+clock-to-clock transfers. You can specify uncertainty
+separately for setup and hold, and you can specify
+separate rising and falling clock transitions. If you omit 
+to specify -setup or -hold, the uncertainty value will be
+applied to both analysis types. Similarly, if you omit to
+specify rising or falling clock transitions, the uncertainty
+value will be applied to both transitions.
+The setup uncertainty is subtracted from the data required
+time for each applicable path, and the hold
+uncertainty is added to the data required time for
+each applicable path.
+
+The Quartus Prime software computes clock uncertainty for every clock
+transfer. For particular transfers, you can use the set_clock_uncertainty
+assignment to override the automatically derived value, or you can
+specify the -add option to add to the automatically derived value.
+Note that the -add option is only relative to the automatically derived
+value. If multiple set_clock_uncertainty assignments apply to the same
+clock transfer, the later value overrides the earlier ones,
+regardless of whether the -add option was used.
+
+Note: The Timing Analyzer does not apply
+clock uncertainty to transfers involving the same
+physical launch and latch edge (that is, the latch and
+launch edges are the same edge of a clock source and
+occur at the same time) by default. Such transfers 
+typically occur in hold analysis, but may also occur in 
+setup analysis with a multicycle value of 0. You can 
+use the -enable_same_physical_edge option to override this
+behavior.
+
+The values for -from, -to, and similar options are
+either collections or a Tcl list of wildcards used to
+create collections of appropriate types. The values
+used must follow standard Tcl or Timing Analyzer-extension
+substitution rules. See the help for
+use_timing_analyzer_style_escaping for details.
+
+--------------
+Example Usage:
+--------------
+
+set_clock_uncertainty -setup -rise_from clk1 -fall_to clk2 200ps
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+
+---------------------------------------------------------------------------
+
+END_HELP set_clock_uncertainty
+BEGIN_HELP derive_clock_uncertainty
+HELP_RESULT derive_clock_uncertainty 0
+---------------------------------------------------------------------------
+
+Usage: derive_clock_uncertainty [-h] [-help] [-long_help] [-add] [-overwrite]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -add: Adds results to user-defined clock uncertainty assignments
+        -overwrite: Overwrites user-defined clock uncertainty assignments
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sdc_ext 2.0
+
+------------
+Description:
+------------
+
+Applies inter-clock, intra-clock and I/O interface uncertainties based
+on timing model characterization. This command calculates and applies
+setup and hold clock uncertainties for each clock-to-clock transfer
+found in the design. The calculation of the uncertainties is delayed
+until the next update_timing_netlist call.
+
+To get I/O interface uncertainty in addition to inter-clock and
+intra-clock uncertainties, create a virtual clock to represent an
+off-chip clock for input or output delay specification and assign
+delays to input/output ports with set_input_delay and set_output_delay
+commands that specify the virtual clock.
+
+If set_input_delay and set_output_delay commands specifying a non-
+virtual clock are called, derive_clock_uncertainty applies either
+inter-clock or intra-clock uncertainty for that clock transfer since
+those transfers represent a clock-to-clock domain rather than an
+I/O-to-register clock domain.
+		
+The set_clock_uncertainty calls will override the derived values for a
+source clock and destination clock pair unless either the
+set_clock_uncertainty command or the derive_clock_uncertainty command
+specified the -add option, in which case the values are added. Specifying
+the -overwrite option will instead cause all set_clock_uncertainty commands
+to be ignored. Previous set_clock_uncertainty assignments can also be
+manually removed by using the remove_clock_uncertainty command.
+
+Note that this command is called automatically and the user only
+needs to manually call it to specify the -add or -overwrite options.
+
+--------------
+Example Usage:
+--------------
+
+# create a virtual clock
+create_clock -name virtual -period 1
+
+# apply input/output delays with the virtual clock to get
+# I/O interface uncertainties
+set_input_delay -clock virtual -add_delay 0 [all_inputs]
+set_output_delay -clock virtual -add_delay 0 [all_outputs]
+		
+# call derive_clock_uncertainty. results will be calculated 
+# at the next update_timing_netlist call
+derive_clock_uncertainty
+
+update_timing_netlist
+
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+
+---------------------------------------------------------------------------
+
+END_HELP derive_clock_uncertainty
+HELP_ONLY_COMPLETE
+Info (23030): Evaluation of Tcl script /home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/fit-help05/api-help.tcl was successful
+Info: Quartus Prime Fitter was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 1543 megabytes
+    Info: Processing ended: Tue Sep 22 13:29:08 2026
+    Info: Elapsed time: 00:00:01
+    Info: System process ID: 39932

@@ -16,7 +16,13 @@ commits/pushes are authorized; live installation, device access, PR/programming
 and recovery remain separately gated. Host-local JTAG/BMC is not independent
 host recovery. Gen3 x16 is the expected workstation link, not a fault.
 
-### Latest checkpoint — Work15 actual result accepted; timing FAIL
+### Latest accepted checkpoint — Work16 failed-timing result
+
+[Work16 result acceptance](qualification/fim-build-16/RESULT-ACCEPTANCE.md) consumes independent actual-result review. Native full compile/fit/STA/assembly completed rc0; the exact-pair 10 ps Fitter-only hold experiment did not close EMIF1 hold (−0.004 ns, Fast vid2 100C). The complete STA summary is byte-identical to Work15; setter issuance does not establish retained total uncertainty or a no-op mechanism. Final signoff requirements were unchanged. DRC remains 23/88 failed rules, including 7 High rules / 34 violations / 0 waived. Original Work15/PIM were preserved; SOURCE has the disclosed prelaunch delta plus native log addition.
+
+The [next native recommendation](qualification/fim-build-16/next-iteration-recommendation01.md) is a fresh diagnostic fit retaining intermediate snapshots, then an exact post-route/final path comparison—not a larger margin, seed sweep or signoff waiver. Its separately authorized Work17 is in progress, not accepted. Reuse the native build process; effective absolute Fitter uncertainty is not a prerequisite to this bounded path-evolution observation. `ready_for_build=false`; all live hardware/recovery/backend/DDR/transfer/AHLS/PR/sustained/QSPI gates remain unresolved.
+
+### Historical checkpoint — Work15 actual result accepted; timing FAIL
 
 [Work15 result acceptance](qualification/fim-build-15/RESULT-ACCEPTANCE.md) consumes independent actual-native review and the focused next-iteration recommendation. Native compile/fit/STA/assembly finished rc0; the modern PCIe clock is constrained on the fresh fit, original80 clock definitions are unchanged plus C, and all8 formerly invalid FIFO net-delay summaries are numerical (minimum15.369ns). EMIF1 hold remains−0.004ns; 7 High rules/34violations/0waived remain. New FME interface fd2baeed-3092-5735-90c9-52ef20542b75 requires matching persona/release evidence. Hardware NOT RUN/NOT QUALIFIED.
 

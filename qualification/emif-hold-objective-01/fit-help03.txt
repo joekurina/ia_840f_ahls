@@ -1,0 +1,360 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Fitter
+    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+    Info: Copyright (C) 2026  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Tue Sep 22 12:27:18 2026
+    Info: System process ID: 34649
+Info: Command: quartus_fit -t /home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/fit-help03/api-help.tcl
+LOAD_STA_RC=0 MSG=1.0
+BEGIN_HELP create_timing_netlist
+---------------------------------------------------------------------------
+
+Usage: create_timing_netlist [-h] [-help] [-long_help] [-force_dat] [-grade <c|i|m|e|a>] [-model <fast|slow>] [-no_latch] [-post_syn] [-snapshot <snapshot>] [-speed <speed>] [-temperature <value_in_C>] [-voltage <value_in_mV>] [-zero_ic_delays] [<operating_conditions>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -force_dat: Option to force delay annotation
+        -grade <c|i|m|e|a>: Option to specify temperature grade
+        -model <fast|slow>: Option to specify timing model
+        -no_latch: Option to disable the analysis of latches as synchronous elements
+        -post_syn: Option to perform timing analysis on the post-synthesis netlist
+        -snapshot <snapshot>: Snapshot of the design to load
+        -speed <speed>: Speed grade
+        -temperature <value_in_C>: Operating temperature
+        -voltage <value_in_mV>: Operating voltage
+        -zero_ic_delays: Option to set all IC delays to zero
+        <operating_conditions>: Operating conditions Tcl object name string
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Creates the timing netlist by annotating the atom
+netlist with delay information using post-fitting
+results.
+
+Use the -post_syn option to obtain post-synthesis
+results.
+
+In Quartus Prime Pro edition, you can use the -snapshot option
+to specify which netlist you want to perform timing analysis on.
+
+The create_timing_netlist command skips delay
+annotation by default.  Use -force_dat to rerun delay
+annotation. This is required if any delay annotation
+setting is changed in the Quartus Prime project revision
+(e.g. OUTPUT_PIN_LOAD).
+
+Use "-model fast" to run the analysis using the fast
+corner delay models first.  The -temperature,
+-voltage, and -speed, options are also available. See
+help for set_operating_conditions for details on these
+options.
+
+You can use model, temperature and voltage options to
+specify operating conditions while creating timing
+netlist (temperature and voltage options are not
+supported by all families). You can also set operating
+conditions by passing an operating conditions object
+name as a positional argument to create_timing_netlist
+command. After the timing netlist has been created,
+you can use set_operating_conditions command to change
+timing models without deleting and re-creating the
+timing netlist.
+
+Use the -grade option to analyze the design at a
+different temperature grade. This option is provided
+to support what-if analysis and is not recommended for
+final sign-off analysis.
+
+Use the -no_latch option to analyze latches as
+combinational loops instead of synchronous elements.
+
+Use the -zero_ic_delays option to set all IC delays in
+the netlist to zero.
+
+--------------
+Example Usage:
+--------------
+
+project_open my_top
+
+# Create timing netlist before calling
+# any report functions
+create_timing_netlist
+
+# Read SDC and update timing
+read_sdc
+update_timing_netlist
+
+# Ready to call report functions
+report_timing -npaths 1 -clock_setup
+
+# The following command is optional
+delete_timing_netlist
+
+project_close
+
+project_open my_top
+
+# Report worst case period for -9 speed grade
+create_timing_netlist -speed 9
+
+# Read SDC and update timing
+read_sdc
+update_timing_netlist
+
+report_timing -clock_setup -clock_filter clk
+delete_timing_netlist
+
+# Report hold violation for fastest corner
+# Use set_operating_conditions instead
+create_timing_netlist -model fast
+
+# Read SDC and update timing
+read_sdc
+update_timing_netlist
+
+report_timing -clock_hold -clock_filter clk
+delete_timing_netlist
+
+# If Delay Annotation has been run for the fast corner
+# Force Delay Annotation
+create_timing_netlist -model fast -force_dat
+
+# Read SDC and update timing
+read_sdc
+update_timing_netlist
+
+report_timing -clock_hold -clock_filter clk
+delete_timing_netlist
+
+# Report worst case period for post-periphery-placement netlist
+create_timing_netlist -post_fpp
+
+# Read SDC and update timing
+read_sdc
+update_timing_netlist
+
+report_timing -clock_setup -clock_filter clk
+delete_timing_netlist
+
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: The TCL command "<string>" is not supported in quartus_fit. It is only supported in quartus_sta. Please use quartus_sta instead of quartus_fit if you want to use this TCL command.
+TCL_ERROR	1   	ERROR: Can't create timing netlist for device family <string>. Run Analysis and Synthesis (quartus_syn) using this device family as a value for the --family option before running the Timing Analyzer (create_timing_netlist).
+TCL_ERROR	1   	ERROR: The Fast Forward snapshot cannot be used for sign-off timing analysis.  Please see the Fast Forward Timing Closure Recommendations report for performance estimates.
+TCL_ERROR	1   	ERROR: Cannot run the Timing Analyzer (quartus_sta). Periphery placement (quartus_fit --plan) failed or Fitter was not run. Run I/O Assignment Analysis (quartus_fit --plan) successfully before running the Timing Analyzer (create_timing_netlist -post_fpp).
+TCL_ERROR	1   	ERROR: Invalid snapshot "<string>". Available snapshot(s): <string>
+TCL_ERROR	1   	ERROR: Both the -temperature and -voltage options and their values are required.
+TCL_ERROR	1   	ERROR: Can't find active revision. Make sure there is an open, active revision name.
+TCL_ERROR	1   	ERROR: Could not find the <string> timing netlist on disk. Please run this fitter stage first, and make sure you have enabled "Optimize Timing" in Advanced Fitter Settings.
+TCL_ERROR	1   	ERROR: Option -no_latch is not supported for the current family.
+TCL_ERROR	1   	ERROR: Values entered did not match any valid operating conditions. Available operating conditions are: <string>
+TCL_ERROR	1   	ERROR: The <string> device family cannot perform automatic multi-corner timing analysis because the family does not support the set_operating_conditions command.
+TCL_ERROR	1   	ERROR: <string> Device family is not supported by the Timing Analyzer.
+TCL_ERROR	1   	ERROR: Illegal value: <string>. Specify an integer ranging from -999999999 to 999999999 for the option -voltage
+TCL_ERROR	1   	ERROR: The design has not been fully routed. If you want to perform Timing Analysis on an earlier netlist please choose which snapshot to load for analysis. Available snapshot(s): <string>
+TCL_ERROR	1   	ERROR: The design has not been fully routed and retimed to optimize timing. If you want to perform Timing Analysis on an earlier netlist please choose which snapshot to load for analysis. Available snapshot(s): <string>
+TCL_ERROR	1   	ERROR: Cannot run the Timing Analyzer (quartus_sta). Fitter (quartus_fit) failed or was not run. Run the Fitter (quartus_fit) successfully before running the Timing Analyzer (create_timing_netlist).
+TCL_ERROR	1   	ERROR: Cannot run the Timing Analyzer (quartus_sta). Analysis and Synthesis (quartus_syn) failed or was not run. Run Analysis and Synthesis (quartus_syn) successfully before running the Timing Analyzer (create_timing_netlist -post_syn).
+TCL_ERROR	1   	ERROR: Delay annotation not run. Run delay annotation before running the Timing Analyzer (quartus_sta).
+TCL_ERROR	1   	ERROR: You can only specify the -snapshot option when Hierarchical Design is enabled.
+TCL_ERROR	1   	ERROR: Pre-fit timing analysis is not supported for the specified operating conditions. Please use the <string>.
+TCL_ERROR	1   	ERROR: The Synthesis snapshot cannot currently be used for timing analysis.
+TCL_ERROR	1   	ERROR: Timing netlist already exists. Delete the timing netlist before running this command.
+TCL_ERROR	1   	ERROR: Unsupported option: "<string>".
+
+---------------------------------------------------------------------------
+
+END_HELP create_timing_netlist
+BEGIN_HELP read_sdc
+---------------------------------------------------------------------------
+
+Usage: read_sdc [-h] [-help] [-long_help] [-hdl] [-instance <instance_name>] [-no_import] [-no_sdc_promotion] [-post_fit] [-post_syn] [-project_relative] [<file_name>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -hdl: Read SDC commands embedded in HDL
+        -instance <instance_name>: Name of the block for which we are reading the SDC file
+        -no_import: Do not automatically import RTL SDCs from the netlist
+        -no_sdc_promotion: Disable instance-bound scoping of constraints
+        -post_fit: For post_syn STA. Load SDCs as if in post_fit (Includes SDC_FILE, HDL Embedded, Entity)
+        -post_syn: For use with STA on fitter snapshots. Load SDCs as if in post_syn mode
+        -project_relative: If passing in a relative path to a file, interpret that path relative to the current project\'s directory instead of STA\'s current directory
+        <file_name>: Name of the SDC file
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Reads an SDC file with all current constraints and exceptions.
+
+If an SDC file is specified, read_sdc only reads that SDC file.  If
+the -hdl option is specified, read_sdc only reads SDC commands that
+were embedded in HDL.
+
+If no arguments are specified, read_sdc reads the default SDC files
+along with any SDC commands that were embedded in HDL.  If one or more
+SDC_FILE assignments exists in the QSF, read_sdc reads all of them in
+order. Otherwise, read_sdc reads the file <revision>.sdc if it exists.
+
+--------------
+Example Usage:
+--------------
+
+project_new test
+create_timing_netlist
+
+# Read SDC commands from test_constraints.sdc
+read_sdc test_constraints.sdc
+
+# Read SDC commands embedded in HDL
+read_sdc -hdl
+
+update_timing_netlist
+
+report_timing
+
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Can't find file "<string>"
+TCL_ERROR	1   	ERROR: The provided instance name does not exist in the current design.
+TCL_ERROR	1   	ERROR: instance_name must be specified when using no_sdc_promotion.
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+
+---------------------------------------------------------------------------
+
+END_HELP read_sdc
+BEGIN_HELP report_sdc
+---------------------------------------------------------------------------
+
+Usage: report_sdc [-h] [-help] [-long_help] [-append] [-file <name>] [-ignored] [-panel_name <name>] [-stdout]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -append: If output is sent to a file, this option appends the result to that file.  Otherwise, the file is overwritten. This option is not supported for HTML files.
+        -file <name>: Sends the results to an ASCII or HTML file. Depending on the extension
+        -ignored: Reports full history of assignments to locate ignored ones
+        -panel_name <name>: Sends the results to the panel and specifies the name of the new panel
+        -stdout: Send output to stdout, via messages.  You only need to use this option if you have selected another output format, such as a file, and would also like to receive messages.
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Reports all SDC constraints used in the design. Use the -ignored
+option to report SDC constraints that were ignored and the reason
+they were ignored.
+
+--------------
+Example Usage:
+--------------
+
+project_new test
+create_timing_netlist
+create_clock -period 10 -name clk10 clk
+set_multicycle_path -from [get_cells a] -to [get_cells b]
+update_timing_netlist
+
+report_sdc -panel_name sdc_report_panel
+
+report_timing
+
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+TCL_ERROR	1   	ERROR: Report database is not open
+
+---------------------------------------------------------------------------
+
+END_HELP report_sdc
+BEGIN_HELP get_timequest_info
+Error (23035): Tcl error: ERROR: Tcl command does not exist or is not supported by Quartus Prime Tcl help: get_timequest_info. Specify an available Quartus Prime Tcl command. Type "info commands" for a list of available commands.
+
+    while executing
+"help -cmd $c"
+    ("foreach" body line 1)
+    invoked from within
+"foreach c {create_timing_netlist read_sdc report_sdc get_timequest_info get_clock_info get_clocks} { puts "BEGIN_HELP $c"; puts [help -cmd $c]; puts "..."
+    invoked from within
+"if {$rc == 0} { foreach c {create_timing_netlist read_sdc report_sdc get_timequest_info get_clock_info get_clocks} { puts "BEGIN_HELP $c"; puts [help ..."
+    (file "/home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/fit-help03/api-help.tcl" line 1)
+------------------------------------------------
+ERROR: Tcl command does not exist or is not supported by Quartus Prime Tcl help: get_timequest_info. Specify an available Quartus Prime Tcl command. Type "info commands" for a list of available commands.
+
+    while executing
+"help -cmd $c"
+    ("foreach" body line 1)
+    invoked from within
+"foreach c {create_timing_netlist read_sdc report_sdc get_timequest_info get_clock_info get_clocks} { puts "BEGIN_HELP $c"; puts [help -cmd $c]; puts "..."
+    invoked from within
+"if {$rc == 0} { foreach c {create_timing_netlist read_sdc report_sdc get_timequest_info get_clock_info get_clocks} { puts "BEGIN_HELP $c"; puts [help ..."
+    (file "/home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/fit-help03/api-help.tcl" line 1)
+------------------------------------------------
+Error (23031): Evaluation of Tcl script /home/uwb_student00/ahls/new_BSP/qualification/emif-hold-objective-01/fit-help03/api-help.tcl unsuccessful
+Error: Quartus Prime Fitter was unsuccessful. 2 errors, 0 warnings
+    Error: Peak virtual memory: 1543 megabytes
+    Error: Processing ended: Tue Sep 22 12:27:18 2026
+    Error: Elapsed time: 00:00:00
+    Error: System process ID: 34649

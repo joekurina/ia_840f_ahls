@@ -1,0 +1,11 @@
+# Work16 result acceptance — native execution accepted; timing FAIL
+
+**ACCEPT the actual execution and failed-timing evidence only. Timing remains FAIL; ready_for_build=false; hardware NOT RUN / NOT QUALIFIED.** Parent consumed `deleg_91acc7f3`, verified its report and all 62 frozen inputs, and rechecked the 19 preparation / 16 completion / 9 report archive sets. [Independent review](result-independent-review01.md), [parent receipt](parent-result-consumption01.json)
+
+Native full compile, fit, STA and assembly completed with rc0, no captured gate rejection; original signoff requirements were not relaxed. The exact singleton 10 ps Fitter-only setter ran and STA skipped it. The complete summary remains byte-identical to Work15: EMIF1 hold/TNS −0.004 ns at Fast vid2 100C; setup +0.151, recovery +0.274, removal +0.137 and pulse width 0.000 ns do not waive it. Issuance is not proof of retained effective uncertainty or physical-edge applicability; no no-op mechanism is proven. [Review §§2–3](result-independent-review01.md), [frozen observations](parent-observations01.json)
+
+DRC still reports 23/88 failed rules, 7 High rules / 34 violations / 0 waived. Coverage, electrical and PR concerns remain. Original Work15 and PIM were unchanged in full captured inventories. SOURCE contains the declared three-file prelaunch delta plus the disclosed native log addition; the raw three-file-only equality flag is correctly false. Work16's two native metadata deltas are preserved, with unchanged remaining input claims limited to the collector's delta receipt rather than a complete exported after-inventory. [Review §4](result-independent-review01.md), [postflight](postflight-summary01.json)
+
+Compiled FME `ef3f29b8-f48b-5056-9f96-4d4a3351eeae` does not identify a live card or prove persona compatibility. DDR simulation remains skipped by user. No OPAE/MMIO, DDR, transfer, AHLS numerical, PR, sustained or QSPI power-cycle qualification follows. [Review conclusion](result-independent-review01.md)
+
+The practical next-step review was separately consumed for a fresh diagnostic snapshot-enabled fit, not a larger margin or a validated correction. That successor has its own authority and inputs; this result acceptance is not successor or hardware authorization. Preserve Work16 and its spent authorization. [Recommendation](next-iteration-recommendation01.md)

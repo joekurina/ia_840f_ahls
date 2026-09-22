@@ -1,0 +1,21 @@
+--- Work15/top.sdc
++++ Work16/top.sdc
+@@ -148,3 +148,18 @@
+ #**************************************************************
+ 
+ 
++# Work16: bounded EMIF1 Fitter optimization margin; signoff stays unchanged.
++if {[info exists ::TimeQuestInfo(nameofexecutable)] &&
++    $::TimeQuestInfo(nameofexecutable) eq "quartus_fit"} {
++    if {[get_collection_size [get_clocks {local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk}]] != 1 ||
++        [get_collection_size [get_clocks {local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0}]] != 1} {
++        error "IA840F_GATE_REJECTED: Work16 EMIF1 hold-margin clock pair is not singleton"
++    }
++    set_clock_uncertainty -hold -add \
++        -from [get_clocks {local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk}] \
++        -to [get_clocks {local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0}] 10ps
++    post_message -type info "IA840F_EMIF1_HOLD_MARGIN_APPLIED app=quartus_fit additive=10ps from_count=1 to_count=1"
++} elseif {[info exists ::TimeQuestInfo(nameofexecutable)] &&
++          $::TimeQuestInfo(nameofexecutable) eq "quartus_sta"} {
++    post_message -type info "IA840F_EMIF1_HOLD_MARGIN_SKIPPED app=quartus_sta signoff_unchanged"
++}

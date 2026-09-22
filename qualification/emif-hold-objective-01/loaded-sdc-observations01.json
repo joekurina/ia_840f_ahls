@@ -1,0 +1,214 @@
+{
+  "archive_sha256": "5c484ae0efec96cbe3e5370b0d62067e401d46f3bb9a80e9cf07c3cfd3f0f661",
+  "files": 38,
+  "unavailable": {},
+  "commands": [
+    {
+      "file": "03-mem_ss_mem_ss_501_qm5zaka_emif_0_altera_emif_arch_fm_191_ekzngaq.sdc",
+      "line": 67,
+      "text": "derive_clock_uncertainty"
+    },
+    {
+      "file": "03-mem_ss_mem_ss_501_qm5zaka_emif_0_altera_emif_arch_fm_191_ekzngaq.sdc",
+      "line": 779,
+      "text": "      set_clock_uncertainty -10ps -add -enable_same_physical_edge -hold -from [get_clocks $periphery_clock] -to [get_clocks $periphery_clock]"
+    },
+    {
+      "file": "03-mem_ss_mem_ss_501_qm5zaka_emif_0_altera_emif_arch_fm_191_ekzngaq.sdc",
+      "line": 995,
+      "text": "                  # derive_clock_uncertainty for the base value."
+    },
+    {
+      "file": "03-mem_ss_mem_ss_501_qm5zaka_emif_0_altera_emif_arch_fm_191_ekzngaq.sdc",
+      "line": 1005,
+      "text": "                  set_clock_uncertainty -from [get_clocks $local_core_clock] -to   [get_clocks [set local_phy_clk_l_${i_phy_clock}]] -suppress_warnings -setup {*}$add_to_derived $c2p_su"
+    },
+    {
+      "file": "03-mem_ss_mem_ss_501_qm5zaka_emif_0_altera_emif_arch_fm_191_ekzngaq.sdc",
+      "line": 1006,
+      "text": "                  set_clock_uncertainty -from [get_clocks $local_core_clock] -to   [get_clocks [set local_phy_clk_l_${i_phy_clock}]] -suppress_warnings -hold  {*}$add_to_derived $c2p_h"
+    },
+    {
+      "file": "03-mem_ss_mem_ss_501_qm5zaka_emif_0_altera_emif_arch_fm_191_ekzngaq.sdc",
+      "line": 1007,
+      "text": "                  set_clock_uncertainty -to   [get_clocks $local_core_clock] -from [get_clocks [set local_phy_clk_l_${i_phy_clock}]] -suppress_warnings -setup {*}$add_to_derived $p2c_su"
+    },
+    {
+      "file": "03-mem_ss_mem_ss_501_qm5zaka_emif_0_altera_emif_arch_fm_191_ekzngaq.sdc",
+      "line": 1008,
+      "text": "                  set_clock_uncertainty -to   [get_clocks $local_core_clock] -from [get_clocks [set local_phy_clk_l_${i_phy_clock}]] -suppress_warnings -hold  {*}$add_to_derived $p2c_h"
+    },
+    {
+      "file": "03-mem_ss_mem_ss_501_qm5zaka_emif_0_altera_emif_arch_fm_191_ekzngaq.sdc",
+      "line": 1018,
+      "text": "                  set_clock_uncertainty -from [get_clocks $local_core_clock] -to   [get_clocks [set local_phy_clk_${i_phy_clock}]] -suppress_warnings -setup {*}$add_to_derived $c2p_su"
+    },
+    {
+      "file": "03-mem_ss_mem_ss_501_qm5zaka_emif_0_altera_emif_arch_fm_191_ekzngaq.sdc",
+      "line": 1019,
+      "text": "                  set_clock_uncertainty -from [get_clocks $local_core_clock] -to   [get_clocks [set local_phy_clk_${i_phy_clock}]] -suppress_warnings -hold  {*}$add_to_derived $c2p_h"
+    },
+    {
+      "file": "03-mem_ss_mem_ss_501_qm5zaka_emif_0_altera_emif_arch_fm_191_ekzngaq.sdc",
+      "line": 1020,
+      "text": "                  set_clock_uncertainty -to   [get_clocks $local_core_clock] -from [get_clocks [set local_phy_clk_${i_phy_clock}]] -suppress_warnings -setup {*}$add_to_derived $p2c_su"
+    },
+    {
+      "file": "03-mem_ss_mem_ss_501_qm5zaka_emif_0_altera_emif_arch_fm_191_ekzngaq.sdc",
+      "line": 1021,
+      "text": "                  set_clock_uncertainty -to   [get_clocks $local_core_clock] -from [get_clocks [set local_phy_clk_${i_phy_clock}]] -suppress_warnings -hold  {*}$add_to_derived $p2c_h"
+    },
+    {
+      "file": "03-mem_ss_mem_ss_501_qm5zaka_emif_0_altera_emif_arch_fm_191_ekzngaq.sdc",
+      "line": 1056,
+      "text": "      # For these transfers it is safe to use the -add option of set_clock_uncertainty since"
+    },
+    {
+      "file": "03-mem_ss_mem_ss_501_qm5zaka_emif_0_altera_emif_arch_fm_191_ekzngaq.sdc",
+      "line": 1057,
+      "text": "      # we rely on derive_clock_uncertainty for the base value."
+    },
+    {
+      "file": "03-mem_ss_mem_ss_501_qm5zaka_emif_0_altera_emif_arch_fm_191_ekzngaq.sdc",
+      "line": 1064,
+      "text": "                     set_clock_uncertainty -from $src_core_clock_local -to $dst_core_clock_local -setup -add $c2c_same_su"
+    },
+    {
+      "file": "03-mem_ss_mem_ss_501_qm5zaka_emif_0_altera_emif_arch_fm_191_ekzngaq.sdc",
+      "line": 1065,
+      "text": "                     set_clock_uncertainty -from $src_core_clock_local -to $dst_core_clock_local -hold -enable_same_physical_edge -add $c2c_same_h"
+    },
+    {
+      "file": "03-mem_ss_mem_ss_501_qm5zaka_emif_0_altera_emif_arch_fm_191_ekzngaq.sdc",
+      "line": 1068,
+      "text": "                     set_clock_uncertainty -from $src_core_clock_local -to $dst_core_clock_local -setup -add $c2c_diff_su"
+    },
+    {
+      "file": "03-mem_ss_mem_ss_501_qm5zaka_emif_0_altera_emif_arch_fm_191_ekzngaq.sdc",
+      "line": 1069,
+      "text": "                     set_clock_uncertainty -from $src_core_clock_local -to $dst_core_clock_local -hold -add $c2c_diff_h"
+    },
+    {
+      "file": "04-mem_ss_mem_ss_501_qm5zaka_emif_1_altera_emif_arch_fm_191_ym4dzra.sdc",
+      "line": 67,
+      "text": "derive_clock_uncertainty"
+    },
+    {
+      "file": "04-mem_ss_mem_ss_501_qm5zaka_emif_1_altera_emif_arch_fm_191_ym4dzra.sdc",
+      "line": 779,
+      "text": "      set_clock_uncertainty -10ps -add -enable_same_physical_edge -hold -from [get_clocks $periphery_clock] -to [get_clocks $periphery_clock]"
+    },
+    {
+      "file": "04-mem_ss_mem_ss_501_qm5zaka_emif_1_altera_emif_arch_fm_191_ym4dzra.sdc",
+      "line": 995,
+      "text": "                  # derive_clock_uncertainty for the base value."
+    },
+    {
+      "file": "04-mem_ss_mem_ss_501_qm5zaka_emif_1_altera_emif_arch_fm_191_ym4dzra.sdc",
+      "line": 1005,
+      "text": "                  set_clock_uncertainty -from [get_clocks $local_core_clock] -to   [get_clocks [set local_phy_clk_l_${i_phy_clock}]] -suppress_warnings -setup {*}$add_to_derived $c2p_su"
+    },
+    {
+      "file": "04-mem_ss_mem_ss_501_qm5zaka_emif_1_altera_emif_arch_fm_191_ym4dzra.sdc",
+      "line": 1006,
+      "text": "                  set_clock_uncertainty -from [get_clocks $local_core_clock] -to   [get_clocks [set local_phy_clk_l_${i_phy_clock}]] -suppress_warnings -hold  {*}$add_to_derived $c2p_h"
+    },
+    {
+      "file": "04-mem_ss_mem_ss_501_qm5zaka_emif_1_altera_emif_arch_fm_191_ym4dzra.sdc",
+      "line": 1053,
+      "text": "                  set_clock_uncertainty -to   [get_clocks $local_core_clock] -from [get_clocks [set local_phy_clk_l_${i_phy_clock}]] -suppress_warnings -setup {*}$add_to_derived $p2c_su"
+    },
+    {
+      "file": "04-mem_ss_mem_ss_501_qm5zaka_emif_1_altera_emif_arch_fm_191_ym4dzra.sdc",
+      "line": 1054,
+      "text": "                  set_clock_uncertainty -to   [get_clocks $local_core_clock] -from [get_clocks [set local_phy_clk_l_${i_phy_clock}]] -suppress_warnings -hold  {*}$add_to_derived $p2c_h"
+    },
+    {
+      "file": "04-mem_ss_mem_ss_501_qm5zaka_emif_1_altera_emif_arch_fm_191_ym4dzra.sdc",
+      "line": 1064,
+      "text": "                  set_clock_uncertainty -from [get_clocks $local_core_clock] -to   [get_clocks [set local_phy_clk_${i_phy_clock}]] -suppress_warnings -setup {*}$add_to_derived $c2p_su"
+    },
+    {
+      "file": "04-mem_ss_mem_ss_501_qm5zaka_emif_1_altera_emif_arch_fm_191_ym4dzra.sdc",
+      "line": 1065,
+      "text": "                  set_clock_uncertainty -from [get_clocks $local_core_clock] -to   [get_clocks [set local_phy_clk_${i_phy_clock}]] -suppress_warnings -hold  {*}$add_to_derived $c2p_h"
+    },
+    {
+      "file": "04-mem_ss_mem_ss_501_qm5zaka_emif_1_altera_emif_arch_fm_191_ym4dzra.sdc",
+      "line": 1066,
+      "text": "                  set_clock_uncertainty -to   [get_clocks $local_core_clock] -from [get_clocks [set local_phy_clk_${i_phy_clock}]] -suppress_warnings -setup {*}$add_to_derived $p2c_su"
+    },
+    {
+      "file": "04-mem_ss_mem_ss_501_qm5zaka_emif_1_altera_emif_arch_fm_191_ym4dzra.sdc",
+      "line": 1067,
+      "text": "                  set_clock_uncertainty -to   [get_clocks $local_core_clock] -from [get_clocks [set local_phy_clk_${i_phy_clock}]] -suppress_warnings -hold  {*}$add_to_derived $p2c_h"
+    },
+    {
+      "file": "04-mem_ss_mem_ss_501_qm5zaka_emif_1_altera_emif_arch_fm_191_ym4dzra.sdc",
+      "line": 1102,
+      "text": "      # For these transfers it is safe to use the -add option of set_clock_uncertainty since"
+    },
+    {
+      "file": "04-mem_ss_mem_ss_501_qm5zaka_emif_1_altera_emif_arch_fm_191_ym4dzra.sdc",
+      "line": 1103,
+      "text": "      # we rely on derive_clock_uncertainty for the base value."
+    },
+    {
+      "file": "04-mem_ss_mem_ss_501_qm5zaka_emif_1_altera_emif_arch_fm_191_ym4dzra.sdc",
+      "line": 1110,
+      "text": "                     set_clock_uncertainty -from $src_core_clock_local -to $dst_core_clock_local -setup -add $c2c_same_su"
+    },
+    {
+      "file": "04-mem_ss_mem_ss_501_qm5zaka_emif_1_altera_emif_arch_fm_191_ym4dzra.sdc",
+      "line": 1111,
+      "text": "                     set_clock_uncertainty -from $src_core_clock_local -to $dst_core_clock_local -hold -enable_same_physical_edge -add $c2c_same_h"
+    },
+    {
+      "file": "04-mem_ss_mem_ss_501_qm5zaka_emif_1_altera_emif_arch_fm_191_ym4dzra.sdc",
+      "line": 1114,
+      "text": "                     set_clock_uncertainty -from $src_core_clock_local -to $dst_core_clock_local -setup -add $c2c_diff_su"
+    },
+    {
+      "file": "04-mem_ss_mem_ss_501_qm5zaka_emif_1_altera_emif_arch_fm_191_ym4dzra.sdc",
+      "line": 1115,
+      "text": "                     set_clock_uncertainty -from $src_core_clock_local -to $dst_core_clock_local -hold -add $c2c_diff_h"
+    },
+    {
+      "file": "20-sys_pll.sdc",
+      "line": 30,
+      "text": "            set_clock_uncertainty -from [get_clocks {sys_pll|iopll_0_refclk}]   -to [get_clocks {sys_pll|iopll_0_clk_100m}] -add 0.008"
+    },
+    {
+      "file": "20-sys_pll.sdc",
+      "line": 31,
+      "text": "            set_clock_uncertainty -from [get_clocks {sys_pll|iopll_0_clk_100m}] -to [get_clocks {sys_pll|iopll_0_refclk}]   -add 0.008"
+    },
+    {
+      "file": "20-sys_pll.sdc",
+      "line": 33,
+      "text": "            set_clock_uncertainty -from [get_clocks {sys_pll|iopll_0_clk_100m}] -to [get_clocks {sys_pll|iopll_0_clk_50m}]  -add 0.008"
+    },
+    {
+      "file": "20-sys_pll.sdc",
+      "line": 34,
+      "text": "            set_clock_uncertainty -from [get_clocks {sys_pll|iopll_0_clk_50m}]  -to [get_clocks {sys_pll|iopll_0_clk_100m}] -add 0.008"
+    },
+    {
+      "file": "21-sys_pll_altera_iopll_2110_3lkpvti.sdc",
+      "line": 45,
+      "text": "derive_clock_uncertainty"
+    },
+    {
+      "file": "22-qph_user_clk_iopll_RF100M_altera_iopll_2110_6uqudeq.sdc",
+      "line": 45,
+      "text": "derive_clock_uncertainty"
+    },
+    {
+      "file": "32-top.sdc",
+      "line": 25,
+      "text": "derive_clock_uncertainty"
+    }
+  ],
+  "not_transitive_tcl_closure": true,
+  "not_final_effective_objective_proof": true
+}
