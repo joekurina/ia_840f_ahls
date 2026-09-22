@@ -1,0 +1,59 @@
+--- accepted-fanout03/run-query.py
++++ clock-trial01/run-query.py
+@@ -3,10 +3,10 @@
+ from pathlib import Path
+ import signal,time,re
+ import base64, datetime, gzip, hashlib, json, os, resource, socket, subprocess, sys
+-E=Path('/home/uwb_student00/ahls/new_BSP/qualification/pcie-clock-repair-01/fanout-diagnostic03')
++E=Path('/home/uwb_student00/ahls/new_BSP/qualification/pcie-clock-repair-01/clock-trial01')
+ sys.dont_write_bytecode=True
+ sys.path.insert(0,str(E/'scratch/ofs-common/tools/ofss_config'))
+-from ia840f_clock_fanout03_gate import validate,identity
++from ia840f_clock_trial01_gate import validate,identity
+ 
+ def inventory(root):
+     answer={}
+@@ -93,7 +93,7 @@
+     report_files=[]
+     try:
+         text=(E/'query.log').read_text()
+-        if text.count('IA840F_FANOUT_CONTRAST_COMPLETE')!=1:errors.append('missing/duplicate completion marker')
++        if text.count('IA840F_CLOCK_TRIAL_COMPLETE')!=1:errors.append('missing/duplicate completion marker')
+         if re.search(r'Error \(|Fatal|125091|_REJECT|Traceback',text):errors.append('native/query/gate diagnostic')
+         report_files=sorted(p for p in (E/'reports').rglob('*') if p.is_file())
+         if not report_files or len(report_files)>1024:errors.append('report file cardinality/cap')
+@@ -109,9 +109,9 @@
+         p=E/name
+         if not p.is_file():continue
+         data=p.read_bytes();exports[name]={'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest(),'base64':base64.b64encode(data).decode()}
+-    blob=gzip.compress(json.dumps({'batch':'ia840f_clock_fanout03_result01','files':exports},sort_keys=True).encode(),mtime=0)
+-    subprocess.run(['tmux','load-buffer','-b','ia840f_clock_fanout03_result01','-'],input=blob,check=True)
+-    print('FANOUT_CONTRAST_RESULT',effective,'NATIVE_RC',rc,'EXPORT_SHA256',hashlib.sha256(blob).hexdigest(),flush=True)
++    blob=gzip.compress(json.dumps({'batch':'ia840f_clock_trial01_result01','files':exports},sort_keys=True).encode(),mtime=0)
++    subprocess.run(['tmux','load-buffer','-b','ia840f_clock_trial01_result01','-'],input=blob,check=True)
++    print('CLOCK_TRIAL_RESULT',effective,'NATIVE_RC',rc,'EXPORT_SHA256',hashlib.sha256(blob).hexdigest(),flush=True)
+     return effective
+ # Added successor02 functions; predecessor functions remain unmodified.
+ def peek_owned_exit(child):
+@@ -288,7 +288,7 @@
+     report_files=[]
+     try:
+         text=(E/'query.log').read_text()
+-        if text.count('IA840F_FANOUT_CONTRAST_COMPLETE')!=1:errors.append('missing/duplicate completion marker')
++        if text.count('IA840F_CLOCK_TRIAL_COMPLETE')!=1:errors.append('missing/duplicate completion marker')
+         if re.search(r'Error \(|Fatal|125091|_REJECT|Traceback',text):errors.append('native/query/gate diagnostic')
+         report_files=sorted(p for p in (E/'reports').rglob('*') if p.is_file())
+         if not report_files or len(report_files)>1024:errors.append('report file cardinality/cap')
+@@ -304,9 +304,9 @@
+         p=E/name
+         if not p.is_file():continue
+         data=p.read_bytes();exports[name]={'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest(),'base64':base64.b64encode(data).decode()}
+-    blob=gzip.compress(json.dumps({'batch':'ia840f_clock_fanout03_result01','files':exports},sort_keys=True).encode(),mtime=0)
+-    subprocess.run(['tmux','load-buffer','-b','ia840f_clock_fanout03_result01','-'],input=blob,check=True)
+-    print('FANOUT_CONTRAST_RESULT',effective,'NATIVE_RC',rc,'EXPORT_SHA256',hashlib.sha256(blob).hexdigest(),flush=True)
++    blob=gzip.compress(json.dumps({'batch':'ia840f_clock_trial01_result01','files':exports},sort_keys=True).encode(),mtime=0)
++    subprocess.run(['tmux','load-buffer','-b','ia840f_clock_trial01_result01','-'],input=blob,check=True)
++    print('CLOCK_TRIAL_RESULT',effective,'NATIVE_RC',rc,'EXPORT_SHA256',hashlib.sha256(blob).hexdigest(),flush=True)
+     return effective
+ 
+ if __name__=='__main__':

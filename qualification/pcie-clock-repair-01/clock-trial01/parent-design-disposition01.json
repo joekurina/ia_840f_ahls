@@ -1,0 +1,28 @@
+{
+  "utc": "2026-09-22T16:44:49.164878+00:00",
+  "reports": {
+    "spec-review01.md": "414c90b54525ef7fcc6b3bc82008837a50ce85dee19e7f787d156de9193e335e",
+    "fast-route-review.md": "12adfecdeaa489a87c95328a994148713e21a630f1c14d1ca0a5b10c4c0f5bfb",
+    "next-fit-reuse.md": "d13eb444de36eec9e2160f384280103c961380bdc987e47bdcb9a877c0ac0d55"
+  },
+  "disposition": "clock-trial01 frozen/unissued; SPEC PASS not parent-accepted because independent design review exposed insertion/final snapshot mismatch. Correct in fresh clock-trial02; no native trial01 run.",
+  "verified_source_evidence": {
+    "native_log": {
+      "path": "qualification/pcie-clock-repair-01/fanout-diagnostic03/result-readback01/query.log",
+      "sha256": "8661045fe5aae4e282d03500861aad753233f51740552439d47863628f5ff440",
+      "lines": [
+        258,
+        356,
+        483,
+        484
+      ]
+    },
+    "guard02_sha256": "4967de098cd857a936ccaeb16b22092259872292488ca44d5bce46b594af8bdc",
+    "late_clock_sources": {
+      "ofs-agx7-pcie-attach/syn/board/ia840f/setup/bti_refclk.sdc": "01b76a80f664c4ec0bf553874c68c7f71878642f205080e29727e50ce71c3cac",
+      "ofs-agx7-pcie-attach/syn/board/ia840f/setup/bwbmc.sdc": "a98afdd2abd931e7dc1d68475dc979eff0cadf1ca436d1cec15416babd7ec289"
+    }
+  },
+  "frozen_files_unchanged": 40,
+  "next_fit": "Reuse Work14 native compile package after independent actual clock-trial result and exact production-constraint review, not executable now."
+}

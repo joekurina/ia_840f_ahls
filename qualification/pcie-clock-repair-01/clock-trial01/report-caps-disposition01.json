@@ -1,0 +1,112 @@
+{
+  "utc": "2026-09-22T16:41:46.847922+00:00",
+  "delegation": "deleg_db71eeda",
+  "report": "qualification/pcie-clock-repair-01/experiment04/report-caps-design01.md",
+  "report_sha256": "a2fd15a9e3759f838bced7d29c88599463dd0ff40dbb393f2ebf916c9c92e58c",
+  "verified_source_bindings": [
+    {
+      "source": "qualification/pcie-clock-repair-01/native-mapping-disposition03.md",
+      "sha256": "dd00b40ba78960c51d0ac875ad8619f75af3a65d980cf7bac7d34283be6181b7"
+    },
+    {
+      "source": "qualification/pcie-clock-repair-01/experiment04/QUERY-REPORTING03.md",
+      "sha256": "c17f4ef1269efeadfb145460d60211a4170699681456dc6a6de89444f5a8242a"
+    },
+    {
+      "source": "qualification/pcie-clock-repair-01/experiment04/QUERY-STAGES02.md",
+      "sha256": "8595f266847d4cdee31815b2f30461abd1c82f0f46dc958a95de5630715972e5"
+    },
+    {
+      "source": "qualification/pcie-clock-repair-01/experiment03/SPEC.md",
+      "sha256": "bfeea5337982945c4d5d0cfd0133307a8167d6607cc8ae28516c02ce650599ff"
+    },
+    {
+      "source": "qualification/pcie-clock-repair-01/experiment03/baseline/RESULT-ACCEPTANCE.md",
+      "sha256": "51091902df286ccc87e2f6e6fb643977de087ad280190759d36705f3c5f56225"
+    },
+    {
+      "source": "qualification/fim-build-14/reports11/output_files/ofs_top.sta.rpt",
+      "sha256": "8c51a45bcff167fb80feb39a9338c62691401d0fa7be36d7a2caa0d94969c5e6"
+    },
+    {
+      "source": "qualification/fim-build-14/reports13/output_files/ofs_top.tq.drc.signoff.rpt",
+      "sha256": "5e9a16353d01da508f057bdd04d40a830b664f15b5516541accea4bc3f8e705e"
+    },
+    {
+      "source": "qualification/pcie-clock-repair-01/api-help01/commands/report_exceptions.txt",
+      "sha256": "740db7ea29c4766fcd56dab6e1d4ab44d8e7072408abdc39dc33cbfbfc1e2974"
+    },
+    {
+      "source": "qualification/pcie-clock-repair-01/api-help01/commands/report_max_skew.txt",
+      "sha256": "fc5b4c397f637b511284f654630a07454ecb8f7a1cf37136bfe2350907b9006b"
+    },
+    {
+      "source": "qualification/pcie-clock-repair-01/api-help01/commands/report_min_pulse_width.txt",
+      "sha256": "011791d8b14e110aea6d880fc1506d2b4fd0cf25b0b2b119898d9de760ba0524"
+    },
+    {
+      "source": "qualification/pcie-clock-repair-01/api-help01/commands/report_net_delay.txt",
+      "sha256": "2a71a56c22d482516eed89615513dc4a9a4433005429db1ad412b47791b9d4e7"
+    },
+    {
+      "source": "qualification/pcie-clock-repair-01/api-help01/commands/report_sdc.txt",
+      "sha256": "f75e1fe524dfe7e0ec4e0da7f5665fae0e4d256bf359b24db4ec4f96ec857bd6"
+    },
+    {
+      "source": "qualification/pcie-clock-repair-01/api-help01/commands/get_report_panel_names.txt",
+      "sha256": "ea5c5397847480155531f44aaff377570500b5542f5d59fc56408490148709d2"
+    },
+    {
+      "source": "qualification/pcie-clock-repair-01/api-help01/commands/get_report_panel_id.txt",
+      "sha256": "d76041d4e81a65d28b87a43f9303c1a574f2a12f61de8262ff9a010469c2f203"
+    },
+    {
+      "source": "qualification/pcie-clock-repair-01/api-help01/commands/get_number_of_rows.txt",
+      "sha256": "ba0cbc3aa824db6fa0d5203d1efed33c4318e36b56d4901fbd34b3e6e3ab7a6b"
+    },
+    {
+      "source": "qualification/pcie-clock-repair-01/api-help01/commands/get_report_panel_row.txt",
+      "sha256": "5438b3c4cbec2329076842ee7725582ee7efdef0fc2da50ab2499a78b32aa4e1"
+    },
+    {
+      "source": "qualification/pcie-clock-repair-01/api-help01/commands/get_report_panel_data.txt",
+      "sha256": "2056721750a2459fbf487a53b622aa836a09e74a19707ff98842b29791d62bc9"
+    }
+  ],
+  "verified_native_reference_counts": {
+    "mpw_domain_summary_rows": 73,
+    "mpw_types": {
+      "Min Period": 3,
+      "High Pulse": 51,
+      "Low Pulse": 19
+    },
+    "skew_assignment_summary_rows_per_corner": [
+      94,
+      94,
+      94,
+      94,
+      94
+    ],
+    "net_delay_assignment_summary_rows": 146,
+    "net_delay_invalid_clock_rows": 8,
+    "ignored_constraint_drc_rows": 120
+  },
+  "disposition": "Source-grounded interpretation reference retained; paused experiment04 implementation is not resumed. No execution/package/result/timing acceptance.",
+  "adopted": [
+    "Direct retained ASCII acquisition need not wait for an invented panel parser or another help/selector diagnostic.",
+    "Exception counts and per-exception path limits are distinct. A one-path summary is a sample, not exhaustive coverage.",
+    "Skew latest/earliest limits apply per assignment; aggregate return counts are not saturation proof.",
+    "Domain MPW summaries are not individual check coverage.",
+    "Eight invalid-clock baseline rows are assignments, not eight edges; numerical replacement and actual matching coverage require result inspection.",
+    "Native report success and numerical/coverage acceptance remain distinct."
+  ],
+  "not_adopted_for_frozen_trial": [
+    "No new comprehensive per-member/A-B acquisition framework or new inert suites.",
+    "No switch from frozen per-assignment net-delay limit20001 to unbounded default. Any actual cap hit remains explicit and blocks a completeness claim.",
+    "No expansion from sampled exception/domain diagnostics to exhaustive comparison; narrower current trial scope remains explicit.",
+    "No revival of superseded baseline-before-B experiment04 ordering or a new original-baseline run."
+  ],
+  "frozen_trial_files_verified_unchanged": 40,
+  "native_authorized": false,
+  "ready_for_build": false
+}

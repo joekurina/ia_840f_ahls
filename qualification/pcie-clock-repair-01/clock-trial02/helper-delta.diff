@@ -1,0 +1,44 @@
+--- accepted-guard02/clock-repair.tcl
++++ clock-trial02/clock-repair.tcl
+@@ -203,3 +203,41 @@
+         return $ia4_collection
+     }
+ }
++
++
++# Final-SDC boundary uses the pinned final baseline, not insertion-time state.
++# apply_v2 and its immediate C-only delta check remain unchanged above.
++namespace eval ::ia840f_clock_repair {
++    proc verify_created_final_v3 {ia4_final_baseline} {
++        variable D;variable M;variable C;variable created
++        require $created "candidate SDC was not executed"
++        set ia4_after [snapshot_v2]
++        ::ia840f_compare04::verify_clock_inventory candidate $ia4_after $ia4_final_baseline $C
++        set ia4_clocks [get_clocks -nowarn [list $C]]
++        require [expr {[raw_names_v2 $ia4_clocks clock created_name 256] eq [list $C]}] "created name/cardinality"
++        set ia4_md [dict get $ia4_after $M]
++        foreach_in_collection ia4_clock $ia4_clocks {
++            set ia4_cd [dict get $ia4_after $C]
++            require [expr {[dict get $ia4_cd type] eq "generated" && [dict get $ia4_cd targets] eq [list "$D|clock_div2"]}] "created type/target"
++            lassign [dict get $ia4_cd generated] ia4_master ia4_source ia4_divide ia4_multiply
++            require [expr {$ia4_master eq $M && $ia4_source eq "$D|inclk"}] "created source/master"
++            require [expr {[string is integer -strict $ia4_divide] && [string is integer -strict $ia4_multiply] && $ia4_divide == 2 && $ia4_multiply == 1}] "unexpected generated ratio representation"
++            set ia4_inverted [get_clock_info -is_inverted $ia4_clock]
++            set ia4_edges [get_clock_info -edges $ia4_clock]
++            set ia4_shifts [get_clock_info -edge_shifts $ia4_clock]
++            puts [list CLOCK_REPAIR_DEFINITION_V2 name $C definition $ia4_cd master_definition $ia4_md inverted $ia4_inverted edges $ia4_edges edge_shifts $ia4_shifts];flush stdout
++            require [expr {!$ia4_inverted}] "unexpected inversion"
++            set ia4_mp [dict get $ia4_md period];set ia4_cp [dict get $ia4_cd period]
++            set ia4_mq [half_quantum_v2 $ia4_mp];set ia4_cq [half_quantum_v2 $ia4_cp]
++            require [expr {$ia4_mp > 0 && $ia4_cp > 0 && abs(double($ia4_cp)-2.0*double($ia4_mp)) <= $ia4_cq+2.0*$ia4_mq+1e-12}] "generated period relation"
++            set ia4_mw [dict get $ia4_md waveform];set ia4_cw [dict get $ia4_cd waveform]
++            require [expr {[llength $ia4_mw] == 2 && [llength $ia4_cw] == 2}] "waveform cardinality"
++            lassign $ia4_mw ia4_mrise ia4_mfall;lassign $ia4_cw ia4_crise ia4_cfall
++            set ia4_mrq [half_quantum_v2 $ia4_mrise];set ia4_crq [half_quantum_v2 $ia4_crise];set ia4_cfq [half_quantum_v2 $ia4_cfall]
++            require [expr {abs(double($ia4_crise)-double($ia4_mrise)) <= $ia4_crq+$ia4_mrq+1e-12 && abs(double($ia4_cfall)-double($ia4_mrise)-double($ia4_mp)) <= $ia4_cfq+$ia4_mrq+$ia4_mq+1e-12}] "generated waveform relation"
++        }
++        set ia4_output [post_output_pin_v2]
++        require [expr {[raw_names_v2 [get_clocks -nowarn -of_objects $ia4_output] clock output_propagation 256] eq [list $C]}] "output propagation"
++        puts [list CLOCK_REPAIR_VERIFIED_FINAL_V3 $C no_timing_acceptance];flush stdout
++    }
++}

@@ -1,0 +1,15 @@
+# Experiment04 collection component — authoring evidence, not package acceptance
+
+`scope-collections.tcl` implements the conservative-scope portion of the [accepted source recommendation](../native-mapping-disposition03.md#2-minimum-exact-queryhelper-corrections-for-the-future-package): exact O/K roots, two unfiltered native forward calls, retained real collections, bounded native union, full-name baseline comparison and explicit baseline-only/observed-only/intersection records. No transformation of returned indexed names and no suffix stripping or `-no_duplicates` occurs. [Saved add_to_collection API](../api-help02/commands/add_to_collection.txt) supports the union.
+
+`test-scope.py` ran locally with libtcl8.6 and distinct synthetic COL/node/clock handles:26 cases passed, rc0, empty stderr; full output is [scope-tests01.json](scope-tests01.json). These include candidate differences and mixed clock associations, full-name baseline mismatch, raw-count/duplicate/union failures, each cap and its count→flush evidence, and both exact prospective cwd strings versus invalid strings. **The path-selection helper test is not a full query-main/project-open-sentinel entry test.** No vendor/remote/native/hardware action occurred.
+
+The initial missing-module red test is retained in scope-red01.json. scope-failure01.json records a fixture bug: a nested Tcl list was compared against noncanonical literal serialization. The correction compares canonical list construction; no native claim follows. Implementation source remained unchanged for that fixture correction.
+
+## Honest coverage limits
+
+The only clock-association observation in this component is for the whole retained union, explicitly labeled `aggregate_only_not_per_node`. It does not establish per-node associations or a complete clock-only domain. Do not infer those from an aggregate name set. `get_keepers` [documented duplicate matching](../api-help01/commands/get_keepers.txt) is precisely why this component does not reconstruct every member from its string. Known32/T cell-derived mapping, structural adjacency, actual individual available associations and independent C-directed/global path coverage remain separate **unfinished** query/report obligations; they cannot be dropped when assembling the A/B package.
+
+No main query, numerical FIFO assessment, report completeness parser, runner/gate/preparer or issuer has been completed. Candidate differences are retained, not accepted as explained. The full A/B review must resolve any remaining association/coverage gap and reject incomplete comparisons. No full-domain/timing acceptance follows from these26 cases.
+
+Future query inputs must select `guard02/clock-repair.tcl` after its reviews, not the rejected root helper. Data-only expected-baseline.tcl records80 post-full-SDC definitions and459 conservative names. Compare list-valued properties structurally/canonically: native waveform strings can retain trailing whitespace. This reference is not insertion-state proof. Keep original exceptions, all corners and all report/resource caps.
