@@ -10,4 +10,4 @@ Individual tracked files are capped at2,000,000bytes. Large decoded reports and 
 
 `result-review-freeze01.json` binds all106 reviewed local files, including ignored decoded payloads. Keep raw whitespace/line endings unchanged. Collector01's failed size-bound acquisition is preserved beside successor02; no native build retry occurred.
 
-The separately executed snapshot-compare01 diagnostic is **outside this build milestone** and awaits its own result review/acceptance/publication. Current local orchestration is in CURRENT.md; no later-state handoff retroactively changes the frozen evidence.
+The separately executed snapshot-compare01 diagnostic is **outside the build milestone**; its narrow result evidence is now independently accepted in snapshot-compare01/RESULT-ACCEPTANCE.md. Current local orchestration is in CURRENT.md; no later-state handoff retroactively changes the frozen evidence.

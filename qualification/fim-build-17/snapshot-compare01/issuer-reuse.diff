@@ -1,0 +1,57 @@
+--- fanout03/issue-launch01.py
++++ snapshot01/issue-launch01.py
+@@ -1,11 +1,11 @@
+ #!/usr/bin/env python3
+-"""One-shot review transport/issuance, then exec the unchanged reviewed runner."""
++"""One-shot parent-bound native diagnostic issuance; reuse prepared runner."""
+ from pathlib import Path
+ import base64, datetime, gzip, hashlib, json, os, shutil, socket, subprocess, sys
+-E=Path('/home/uwb_student00/ahls/new_BSP/qualification/pcie-clock-repair-01/fanout-diagnostic03')
++E=Path('/home/uwb_student00/ahls/new_BSP/qualification/fim-build-17/snapshot-compare01')
+ L=E/'launch01'
+-CANDIDATE='16acaa0babf1103eb573e76459f1e98fafc3aadeeff8b2acb23dd172d61a9949'
+-REVIEW_HASHES={'prepared-manifest01.json': '063e0f0baa29c39bd52981ef2b033538fec5068272dc221205c8433b017f3dca', 'spec-review01.md': 'f6fdd7cf2e706dfaf6376fc606280b363c4308436060b98f8d3f6d70225a7594', 'quality-review01.md': '4a655b74a72a46082cecc47818de8137aa01acadd6a5284523cbfa5aada2c6a2', 'parent-consumption01.json': '555d8b331188200c9e110818278de30e359e6fe23312be20476bcf8e96820ea2', 'ACCEPTANCE.md': '460dcd111b7032e7122e59a76e2cac8784cd04c638c5dfd2528ef385db47ced5'}
++CANDIDATE='8d557cef3d27a09de294dd461eac7bbaeb23ce8e9005a5922ceb5a3ca0606729'
++BOUND_RECORDS={'prepared-manifest01.json': '877d9db3bd2eacb513ad2fcef3ac6a11c79db0ea07df5d6f9e059737d7820e05', 'parent-preparation01.json': '35237ccb1be6e820774c9dbc11d8f2708ee584b5e7b51004a81c95ef79294343'}
+ def sha(p):
+     h=hashlib.sha256()
+     with p.open('rb') as f:
+@@ -25,19 +25,16 @@
+     if E.resolve()!=E or not E.is_dir():raise RuntimeError('attempt root')
+     for p in [L]+[E/n for n in ('authorization.json','query.claim','query.log','native-process.json','native-result.json','execution-status.json','preservation-after.json','report-manifest.json','reports')]:
+         if p.exists() or p.is_symlink():raise RuntimeError('consumed/existing '+str(p))
+-    for name in ('authorization.json','query.claim','query.log'):
+-        p=E.parent/'experiment03'/'candidate'/name
+-        if p.exists() or p.is_symlink():raise RuntimeError('candidate cannot precede baseline '+str(p))
+     if len(sys.argv)!=2:raise RuntimeError('exact payload hash argument required')
+-    raw=subprocess.check_output(['tmux','save-buffer','-b','ia840f_clock_fanout03_launch01_payload','-'])
++    raw=subprocess.check_output(['tmux','save-buffer','-b','ia840f_w17snapshot01_launch01_payload','-'])
+     if hashlib.sha256(raw).hexdigest()!=sys.argv[1]:raise RuntimeError('payload hash')
+     payload=json.loads(raw)
+-    if set(payload)!={'prepared-manifest01.json','spec-review01.md','quality-review01.md','parent-consumption01.json','ACCEPTANCE.md'}:raise RuntimeError('review payload scope')
++    if set(payload)!=set(BOUND_RECORDS):raise RuntimeError('parent-record payload scope')
+     decoded={}
+     for name,item in payload.items():
+         data=base64.b64decode(item['base64'],validate=True)
+         if hashlib.sha256(data).hexdigest()!=item['sha256']:raise RuntimeError('review bytes '+name)
+-        if name in REVIEW_HASHES and item['sha256']!=REVIEW_HASHES[name]:raise RuntimeError('review identity '+name)
++        if name in BOUND_RECORDS and item['sha256']!=BOUND_RECORDS[name]:raise RuntimeError('review identity '+name)
+         decoded[name]=data
+     manifest=json.loads(decoded['prepared-manifest01.json'])
+     for name,item in manifest.items():
+@@ -60,12 +57,12 @@
+     for name,data in decoded.items():
+         with (L/name).open('xb') as f:f.write(data)
+         if (L/name).read_bytes()!=data:raise RuntimeError('review readback')
+-    auth={'approved':True,'candidate_sha256':CANDIDATE,'permission':'exact-offline-fanout-diagnostic03'}
++    auth={'approved':True,'candidate_sha256':CANDIDATE,'permission':'exact-offline-w17snapshot01'}
+     with (E/'authorization.json').open('x') as f:json.dump(auth,f,indent=2)
+     if json.loads((E/'authorization.json').read_text())!=auth:raise RuntimeError('authorization readback')
+-    receipt={'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'pane':os.environ['TMUX_PANE'],'authorization_sha256':sha(E/'authorization.json'),'candidate_sha256':CANDIDATE,'reviews':{k:hashlib.sha256(v).hexdigest() for k,v in decoded.items()},'originals_unchanged_before_launch':True,'native_started_at_receipt':False,'runner_argv':r['runner']['argv'],'runner_cwd':r['runner']['cwd']}
++    receipt={'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'pane':os.environ['TMUX_PANE'],'authorization_sha256':sha(E/'authorization.json'),'candidate_sha256':CANDIDATE,'parent_records':{k:hashlib.sha256(v).hexdigest() for k,v in decoded.items()},'originals_unchanged_before_launch':True,'native_started_at_receipt':False,'runner_argv':r['runner']['argv'],'runner_cwd':r['runner']['cwd']}
+     with (L/'issuance.json').open('x') as f:json.dump(receipt,f,indent=2)
+-    print('FANOUT03_AUTHORIZATION_ISSUED',json.dumps(receipt),flush=True)
++    print('W17SNAPSHOT01_AUTHORIZATION_ISSUED',json.dumps(receipt),flush=True)
+     os.chdir(E)
+     os.execv(r['runner']['exe'],r['runner']['argv'])
+ if __name__=='__main__':main()
