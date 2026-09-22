@@ -1,0 +1,41 @@
+--- pcie-postfit-01/query.tcl
++++ pcie-postfit-02/query.tcl
+@@ -7,9 +7,8 @@
+ read_sdc
+ update_timing_netlist
+ namespace eval ::ia840f_w14_query {
+-    proc targets {nodes label} {
+-        set names {}
+-        foreach_in_collection n $nodes {lappend names [get_node_info -name $n]}
++    # Accept a plain Tcl list of names, never a node-as-collection handle.
++    proc targets {names label} {
+         set count 0
+         foreach_in_collection c [get_clocks *] {
+             foreach_in_collection t [get_clock_info -targets $c] {
+@@ -24,14 +23,16 @@
+     }
+     proc clock_fanins {pin label} {
+         set ns [get_fanins -clock -stop_at_clocks $pin]
++        set names {}
+         set count 0
+         foreach_in_collection n $ns {
+             incr count
+             if {$count > 32} {error "FANIN_OUTPUT_BOUND_EXCEEDED"}
++            lappend names [get_node_info -name $n]
+             puts "$label FANIN {[get_node_info -name $n]}"
+         }
+         puts "$label FANIN_COUNT $count"
+-        targets $ns $label
++        targets $names $label
+     }
+     proc inspect_cell {cell label all_pins} {
+         puts "$label CELL {[get_cell_info -name $cell]} TYPE {[get_cell_info -wysiwyg_type $cell]}"
+@@ -43,7 +44,7 @@
+             if {$all_pins || ($input && $clock)} {
+                 set pn [get_pin_info -name $p]
+                 puts "$label PIN {$pn} INPUT $input OUTPUT [get_pin_info -is_out_pin $p] CLOCK_PIN $clock NET_ID {[get_pin_info -net $p]}"
+-                if {[get_pin_info -is_out_pin $p]} {targets $p "$label OUTPUT {$pn}"}
++                if {[get_pin_info -is_out_pin $p]} {targets [list $pn] "$label OUTPUT {$pn}"}
+                 if {$input && $clock} {
+                     incr clock_inputs
+                     clock_fanins $p "$label INPUT {$pn}"
