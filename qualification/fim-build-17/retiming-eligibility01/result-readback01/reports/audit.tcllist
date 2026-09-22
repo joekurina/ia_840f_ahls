@@ -1,0 +1,13 @@
+BEGIN assignment ALLOW_REGISTER_RETIMING post_synthesis no_assignment_write no_fit no_hardware
+METADATA_LENGTH 462 cap 65536
+ASSIGNMENT_INFO {Name: ALLOW_REGISTER_RETIMING
+Type: Global, Instance
+Legal values: On, Off
+Description: Controls whether the Compiler is allowed to retime registers to improve design performance.  When register retiming is allowed, the Compiler may perform optimizations that move combinational logic across register boundaries, maintaining the overall logic of the design component but also balancing the data path delays between each register. This setting affects the Fitter.}
+FAMILY_FIT_INSTANCE_COUNT 145
+INSTANCE_MEMBERSHIP ALLOW_REGISTER_RETIMING 1
+NETLIST_BEGIN post_syn
+REGISTER_RAW_COUNT 1 cap 64 selector {local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|hmc.amm.amm.data_if_inst|amm_writedata_0_r[0][243]}
+REGISTER_NAME {local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|hmc.amm.amm.data_if_inst|amm_writedata_0_r[0][243]}
+ELIGIBILITY_INPUTS instance_membership 1 register_raw_count 1 exact_name_count 1 applicability_and_legal_OFF_require_parent_review
+COMPLETE diagnostic_only no_assignment_changed no_timing_acceptance no_hardware_qualification

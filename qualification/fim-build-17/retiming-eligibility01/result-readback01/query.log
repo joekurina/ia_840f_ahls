@@ -1,0 +1,78 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+    Info: Copyright (C) 2026  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Tue Sep 22 16:30:58 2026
+    Info: System process ID: 64900
+Info: Command: quartus_sta -t /home/uwb_student00/ahls/new_BSP/qualification/fim-build-17/retiming-eligibility01/query.tcl
+Info: Using INI file /home/uwb_student00/ahls/new_BSP/qualification/fim-build-17/retiming-eligibility01/scratch/syn/board/ia840f/syn_top/quartus.ini
+W17_RETIME_ELIG_AUDIT BEGIN assignment ALLOW_REGISTER_RETIMING post_synthesis no_assignment_write no_fit no_hardware
+Info: Setting ::env(BUILD_ROOT_REL)=../../../..
+Info: Setting ::env(BITSTREAM_ID)=05010202599ac052
+Info: Setting ::env(BITSTREAM_MD)=0000000002609181
+Info: Setting ::env(BITSTREAM_INFO)=0000000000000001
+Info: Setting ::env(Q_REVISION)=ofs_top
+Info: Setting ::env(Q_PR_REVISION)=ofs_pr_afu
+Info: Setting ::env(Q_PR_PARTITION_NAME)=green_region
+Info: Setting ::env(FME_IFC_ID)=33f9e51f-aa64-5620-b9c0-714a0ddf485c
+Info: BUILD_ROOT_REL is ../../../..
+Info: Loading PIM-based AFU...
+Info: Compiling PR Base revision...
+W17_RETIME_ELIG_AUDIT METADATA_LENGTH 462 cap 65536
+W17_RETIME_ELIG_AUDIT ASSIGNMENT_INFO {Name: ALLOW_REGISTER_RETIMING
+Type: Global, Instance
+Legal values: On, Off
+Description: Controls whether the Compiler is allowed to retime registers to improve design performance.  When register retiming is allowed, the Compiler may perform optimizations that move combinational logic across register boundaries, maintaining the overall logic of the design component but also balancing the data path delays between each register. This setting affects the Fitter.}
+W17_RETIME_ELIG_AUDIT FAMILY_FIT_INSTANCE_COUNT 145
+W17_RETIME_ELIG_AUDIT INSTANCE_MEMBERSHIP ALLOW_REGISTER_RETIMING 1
+W17_RETIME_ELIG_AUDIT NETLIST_BEGIN post_syn
+Info (23651): Timing Analyzer is running on the synthesized snapshot. By default, only clocks that are defined via SDC on RTL or Synthesis SDC files are available. For information about loading additional SDC files, review the documentation for read_sdc in the Scripting User Guide. Currently, IP support for Timing Analysis on the synthesized snapshot is limited, so IP generated clocks may not be present.
+Info (20030): Parallel compilation is enabled and will use 18 of the 18 processors detected
+Info (16677): Loading synthesized database.
+Info (16734): Loading "synthesized" snapshot for partition "root_partition".
+Info (16734): Loading "synthesized" snapshot for partition "green_region".
+Info (16734): Loading "synthesized" snapshot for partition "auto_fab_1".
+Info (16734): Loading "synthesized" snapshot for partition "auto_fab_0".
+Critical Warning (20727): The design contains Partial Reconfiguration or Reserved Core partitions with unused input ports. Altera recommends to assign unused inputs within the partition to registers with the synthesis noprune attribute.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[0] is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[1] is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[2] is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[3] is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[4] is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[5] is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[6] is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[7] is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bid[8] is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|ext_mem_if[1].bresp[0] is dangling on partition green_region.
+    Info (20186): ....
+Info (16678): Successfully loaded synthesized database: elapsed time is 00:00:13.
+Info (119006): Selected device AGFB027R25A2E2V for design "ofs_top"
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 100 degrees C
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 100 degrees C
+W17_RETIME_ELIG_AUDIT REGISTER_RAW_COUNT 1 cap 64 selector {local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|hmc.amm.amm.data_if_inst|amm_writedata_0_r[0][243]}
+W17_RETIME_ELIG_AUDIT REGISTER_NAME {local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|hmc.amm.amm.data_if_inst|amm_writedata_0_r[0][243]}
+W17_RETIME_ELIG_AUDIT ELIGIBILITY_INPUTS instance_membership 1 register_raw_count 1 exact_name_count 1 applicability_and_legal_OFF_require_parent_review
+W17_RETIME_ELIG_AUDIT COMPLETE diagnostic_only no_assignment_changed no_timing_acceptance no_hardware_qualification
+IA840F_W17_RETIME_ELIG_COMPLETE
+Info (23030): Evaluation of Tcl script /home/uwb_student00/ahls/new_BSP/qualification/fim-build-17/retiming-eligibility01/query.tcl was successful
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 7368 megabytes
+    Info: Processing ended: Tue Sep 22 16:33:32 2026
+    Info: Elapsed time: 00:02:34
+    Info: System process ID: 64900
+CONSTRAINT_SUPERVISION {"abort_reason": null, "final_live_pids": [], "native_rc": 0, "native_started": true, "supervision_errors": [], "termination_confirmed": true}

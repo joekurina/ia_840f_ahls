@@ -1,0 +1,178 @@
+--- snapshot-compare01/run-query.py
++++ retiming-eligibility01/run-query.py
+@@ -3,10 +3,10 @@
+ from pathlib import Path
+ import signal,time,re
+ import base64, datetime, gzip, hashlib, json, os, resource, socket, subprocess, sys
+-E=Path('/home/uwb_student00/ahls/new_BSP/qualification/fim-build-17/snapshot-compare01')
++E=Path('/home/uwb_student00/ahls/new_BSP/qualification/fim-build-17/retiming-eligibility01')
+ sys.dont_write_bytecode=True
+ sys.path.insert(0,str(E/'scratch/ofs-common/tools/ofss_config'))
+-from ia840f_w17snapshot01_gate import validate,identity
++from ia840f_w17retimeelig01_gate import validate,identity
+ 
+ def inventory(root):
+     answer={}
+@@ -93,7 +93,7 @@
+     report_files=[]
+     try:
+         text=(E/'query.log').read_text()
+-        if text.count('IA840F_W17_SNAPSHOT_COMPLETE')!=1:errors.append('missing/duplicate completion marker')
++        if text.count('IA840F_W17_RETIME_ELIG_COMPLETE')!=1:errors.append('missing/duplicate completion marker')
+         if re.search(r'Error \(|Fatal|125091|_REJECT|Traceback',text):errors.append('native/query/gate diagnostic')
+         report_files=sorted(p for p in (E/'reports').rglob('*') if p.is_file())
+         if not report_files or len(report_files)>1024:errors.append('report file cardinality/cap')
+@@ -109,9 +109,9 @@
+         p=E/name
+         if not p.is_file():continue
+         data=p.read_bytes();exports[name]={'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest(),'base64':base64.b64encode(data).decode()}
+-    blob=gzip.compress(json.dumps({'batch':'ia840f_w17snapshot01_result01','files':exports},sort_keys=True).encode(),mtime=0)
+-    subprocess.run(['tmux','load-buffer','-b','ia840f_w17snapshot01_result01','-'],input=blob,check=True)
+-    print('W17_SNAPSHOT_RESULT',effective,'NATIVE_RC',rc,'EXPORT_SHA256',hashlib.sha256(blob).hexdigest(),flush=True)
++    blob=gzip.compress(json.dumps({'batch':'ia840f_w17retimeelig01_result01','files':exports},sort_keys=True).encode(),mtime=0)
++    subprocess.run(['tmux','load-buffer','-b','ia840f_w17retimeelig01_result01','-'],input=blob,check=True)
++    print('W17_RETIME_ELIG_RESULT',effective,'NATIVE_RC',rc,'EXPORT_SHA256',hashlib.sha256(blob).hexdigest(),flush=True)
+     return effective
+ # Added successor02 functions; predecessor functions remain unmodified.
+ def peek_owned_exit(child):
+@@ -288,7 +288,7 @@
+     report_files=[]
+     try:
+         text=(E/'query.log').read_text()
+-        if text.count('IA840F_W17_SNAPSHOT_COMPLETE')!=1:errors.append('missing/duplicate completion marker')
++        if text.count('IA840F_W17_RETIME_ELIG_COMPLETE')!=1:errors.append('missing/duplicate completion marker')
+         if re.search(r'Error \(|Fatal|125091|_REJECT|Traceback',text):errors.append('native/query/gate diagnostic')
+         report_files=sorted(p for p in (E/'reports').rglob('*') if p.is_file())
+         if not report_files or len(report_files)>1024:errors.append('report file cardinality/cap')
+@@ -304,9 +304,9 @@
+         p=E/name
+         if not p.is_file():continue
+         data=p.read_bytes();exports[name]={'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest(),'base64':base64.b64encode(data).decode()}
+-    blob=gzip.compress(json.dumps({'batch':'ia840f_w17snapshot01_result01','files':exports},sort_keys=True).encode(),mtime=0)
+-    subprocess.run(['tmux','load-buffer','-b','ia840f_w17snapshot01_result01','-'],input=blob,check=True)
+-    print('W17_SNAPSHOT_RESULT',effective,'NATIVE_RC',rc,'EXPORT_SHA256',hashlib.sha256(blob).hexdigest(),flush=True)
++    blob=gzip.compress(json.dumps({'batch':'ia840f_w17retimeelig01_result01','files':exports},sort_keys=True).encode(),mtime=0)
++    subprocess.run(['tmux','load-buffer','-b','ia840f_w17retimeelig01_result01','-'],input=blob,check=True)
++    print('W17_RETIME_ELIG_RESULT',effective,'NATIVE_RC',rc,'EXPORT_SHA256',hashlib.sha256(blob).hexdigest(),flush=True)
+     return effective
+ 
+ if __name__=='__main__':
+--- snapshot-compare01/prepare01.py
++++ retiming-eligibility01/prepare01.py
+@@ -5,8 +5,8 @@
+ from typing import Any
+ B=Path('/home/uwb_student00/ahls/new_BSP')
+ W=B/'work_ia840f_fim_17';S=B/'ofs-agx7-pcie-attach';P=B/'ofs-platform-afu-bbb'
+-E=B/'qualification/fim-build-17/snapshot-compare01'
+-BATCH='ia840f_w17snapshot01_preparation01'
++E=B/'qualification/fim-build-17/retiming-eligibility01'
++BATCH='ia840f_w17retimeelig01_preparation01'
+ OWNED=False
+ 
+ def sha(p):
+@@ -34,10 +34,10 @@
+     if socket.gethostname()!='Agilex7Workstation' or os.getuid()!=1000 or not os.environ.get('TMUX') or sys.flags.optimize:
+         raise RuntimeError('wrong host/user/session/python')
+     if subprocess.check_output(['tmux','display-message','-p','-t',os.environ['TMUX_PANE'],'#S'],text=True).strip()!='ia840f_mailbox_monitored_01':raise RuntimeError('wrong tmux session')
+-    payload=subprocess.check_output(['tmux','save-buffer','-b','ia840f_w17snapshot01_inputs01','-'])
++    payload=subprocess.check_output(['tmux','save-buffer','-b','ia840f_w17retimeelig01_inputs01','-'])
+     if hashlib.sha256(payload).hexdigest()!=sys.argv[1]:raise RuntimeError('payload digest')
+     inputs=json.loads(payload)
+-    if set(inputs)!= {'query.tcl','run-query.py','ia840f_w17snapshot01_gate.py','AUTHORITY.md','baseline.json.gz'}:raise RuntimeError('payload scope')
++    if set(inputs)!= {'query.tcl','run-query.py','ia840f_w17retimeelig01_gate.py','AUTHORITY.md','baseline.json.gz'}:raise RuntimeError('payload scope')
+     if E.exists() or E.is_symlink():raise RuntimeError('attempt already exists')
+     mem=dict(line.split(':',1) for line in Path('/proc/meminfo').read_text().splitlines())
+     if int(mem['MemAvailable'].split()[0])*1024<80000000000 or shutil.disk_usage(B).free<20000000000:raise RuntimeError('headroom')
+@@ -52,7 +52,7 @@
+     E.mkdir(parents=True, exist_ok=False)
+     OWNED=True
+     (E/'preservation.json.gz').write_bytes(gzip.compress(json.dumps(before,sort_keys=True).encode(),mtime=0))
+-    (E/'prepare01.py').write_bytes(subprocess.check_output(['tmux','save-buffer','-b','ia840f_w17snapshot01_prepare01_script','-']))
++    (E/'prepare01.py').write_bytes(subprocess.check_output(['tmux','save-buffer','-b','ia840f_w17retimeelig01_prepare01_script','-']))
+     for name,v in inputs.items():
+         data=base64.b64decode(v['base64'])
+         if hashlib.sha256(data).hexdigest()!=v['sha256']:raise RuntimeError('input hash')
+@@ -87,9 +87,9 @@
+     g=E/'scratch/ofs-common/tools/ofss_config';dispatcher=g/'ia840f_experimental_gate.py'
+     text=dispatcher.read_text();anchor='def main():\n    try:\n'
+     if text.count(anchor)!=1:raise RuntimeError('dispatcher insertion anchor')
+-    addition=f"        if sys.argv[1:] == ['quartus'] and Path.cwd() == Path({str(E/'scratch/syn/board/ia840f/syn_top')!r}):\n            import ia840f_w17snapshot01_gate\n            ia840f_w17snapshot01_gate.validate(runtime=True)\n            return 0\n"
++    addition=f"        if sys.argv[1:] == ['quartus'] and Path.cwd() == Path({str(E/'scratch/syn/board/ia840f/syn_top')!r}):\n            import ia840f_w17retimeelig01_gate\n            ia840f_w17retimeelig01_gate.validate(runtime=True)\n            return 0\n"
+     dispatcher.write_text(text.replace(anchor,anchor+addition))
+-    shutil.copy2(E/'ia840f_w17snapshot01_gate.py',g/'ia840f_w17snapshot01_gate.py')
++    shutil.copy2(E/'ia840f_w17retimeelig01_gate.py',g/'ia840f_w17retimeelig01_gate.py')
+     shutil.copy2(dispatcher,E/'ia840f_experimental_gate.py')
+     inventory={};links={}
+     for name in ('scratch','pim'):
+@@ -97,8 +97,8 @@
+             absolute=str(E/name/rel)
+             if 'link' in v:links[absolute]=v['link']
+             else:inventory[absolute]=v['sha256']
+-    for f in [E/n for n in ('query.tcl','run-query.py','ia840f_w17snapshot01_gate.py','AUTHORITY.md','baseline.json.gz','constraint-delta.json','top.sdc','preservation.json.gz')]+[Path('/opt/altera/26.1.1/quartus/bin/quartus_sta'),Path('/opt/altera/26.1.1/quartus/linux64/quartus_sta')]:inventory[str(f)]=sha(f)
+-    r: dict[str,Any]=dict(schema=1,approved=False,ready_for_build=False,target='ia840f',part='AGFB027R25A2E2V',permission='exact-offline-w17snapshot01',database_origin=str(W),argv=['/opt/altera/26.1.1/quartus/bin/quartus_sta','-t',str(E/'query.tcl')],runtime_argv=['quartus_sta','-t',str(E/'query.tcl')],executable='/opt/altera/26.1.1/quartus/linux64/quartus_sta',cwd=str(E/'scratch/syn/board/ia840f/syn_top'),runner=dict(exe=str(Path(sys.executable).resolve()),argv=['python3','-B',str(E/'run-query.py')],cwd=str(E)),files=inventory,callback_files={p:h for p,h in inventory.items() if Path(p).suffix not in {'.qpf','.rpt','.log','.summary'}},links=links)
++    for f in [E/n for n in ('query.tcl','run-query.py','ia840f_w17retimeelig01_gate.py','AUTHORITY.md','baseline.json.gz','constraint-delta.json','top.sdc','preservation.json.gz')]+[Path('/opt/altera/26.1.1/quartus/bin/quartus_sta'),Path('/opt/altera/26.1.1/quartus/linux64/quartus_sta')]:inventory[str(f)]=sha(f)
++    r: dict[str,Any]=dict(schema=1,approved=False,ready_for_build=False,target='ia840f',part='AGFB027R25A2E2V',permission='exact-offline-w17retimeelig01',database_origin=str(W),argv=['/opt/altera/26.1.1/quartus/bin/quartus_sta','-t',str(E/'query.tcl')],runtime_argv=['quartus_sta','-t',str(E/'query.tcl')],executable='/opt/altera/26.1.1/quartus/linux64/quartus_sta',cwd=str(E/'scratch/syn/board/ia840f/syn_top'),runner=dict(exe=str(Path(sys.executable).resolve()),argv=['python3','-B',str(E/'run-query.py')],cwd=str(E)),files=inventory,callback_files={p:h for p,h in inventory.items() if Path(p).suffix not in {'.qpf','.rpt','.log','.summary'}},links=links)
+     put('candidate.json',r)
+     checks: dict[str,Any]={}
+     for label,args,cwd in [('runner',['python3','-B',str(E/'run-query.py')],E),('dispatcher',['python3','-B',str(dispatcher),'quartus'],Path(r['cwd']))]:
+@@ -111,7 +111,7 @@
+     checks.update(donors_unchanged=True,copies_initially_hash_identical=True,vendor_launched=False,authorization_issued=False,pane=os.environ['TMUX_PANE'],time=datetime.datetime.now(datetime.timezone.utc).isoformat())
+     put('tests.json',checks);put('path-relocations.json',changes)
+     exports={}
+-    for name in ('candidate.json','tests.json','path-relocations.json','query.tcl','run-query.py','ia840f_w17snapshot01_gate.py','ia840f_experimental_gate.py','prepare01.py','AUTHORITY.md','baseline.json.gz','constraint-delta.json','top.sdc','preservation.json.gz'):
++    for name in ('candidate.json','tests.json','path-relocations.json','query.tcl','run-query.py','ia840f_w17retimeelig01_gate.py','ia840f_experimental_gate.py','prepare01.py','AUTHORITY.md','baseline.json.gz','constraint-delta.json','top.sdc','preservation.json.gz'):
+         data=(E/name).read_bytes();exports[name]={'sha256':hashlib.sha256(data).hexdigest(),'bytes':len(data),'base64':base64.b64encode(data).decode()}
+     blob=gzip.compress(json.dumps({'batch':BATCH,'files':exports},sort_keys=True).encode(),mtime=0)
+     subprocess.run(['tmux','load-buffer','-b',BATCH,'-'],input=blob,check=True)
+--- snapshot-compare01/ia840f_w17snapshot01_gate.py
++++ retiming-eligibility01/ia840f_w17retimeelig01_gate.py
+@@ -1,6 +1,6 @@
+ import hashlib,json,os,sys
+ from pathlib import Path
+-E=Path('/home/uwb_student00/ahls/new_BSP/qualification/fim-build-17/snapshot-compare01')
++E=Path('/home/uwb_student00/ahls/new_BSP/qualification/fim-build-17/retiming-eligibility01')
+ P=E/'scratch/syn/board/ia840f/syn_top'
+ def sha(p):
+  h=hashlib.sha256()
+@@ -14,31 +14,31 @@
+          'exe':str((p/'exe').resolve()),'argv':(p/'cmdline').read_bytes().rstrip(b'\0').decode().split('\0'),'cwd':str((p/'cwd').resolve())}
+ def check_ancestry(r, parent, claim, lookup=identity):
+  live=lookup(claim['pid'])
+- if live!=claim:raise ValueError('W17SNAPSHOT01_REJECT stale runner claim')
+- if any(live[k]!=r['runner'][k] for k in ('exe','argv','cwd')):raise ValueError('W17SNAPSHOT01_REJECT runner context')
++ if live!=claim:raise ValueError('W17RETIMEELIG01_REJECT stale runner claim')
++ if any(live[k]!=r['runner'][k] for k in ('exe','argv','cwd')):raise ValueError('W17RETIMEELIG01_REJECT runner context')
+  seen=set();pid=parent
+  while pid>1 and pid not in seen:
+   seen.add(pid)
+   if pid==claim['pid']:return
+   pid=lookup(pid)['ppid']
+- raise ValueError('W17SNAPSHOT01_REJECT unrelated ancestry')
++ raise ValueError('W17RETIMEELIG01_REJECT unrelated ancestry')
+ def validate(runtime=False):
+  r=json.loads((E/'candidate.json').read_text())
+  a=E/'authorization.json'
+- if not a.is_file():raise ValueError('W17SNAPSHOT01_REJECT missing reviewed authorization')
++ if not a.is_file():raise ValueError('W17RETIMEELIG01_REJECT missing reviewed authorization')
+  auth=json.loads(a.read_text())
+- expected={'approved':True,'candidate_sha256':sha(E/'candidate.json'),'permission':'exact-offline-w17snapshot01'}
+- if auth!=expected:raise ValueError('W17SNAPSHOT01_REJECT authorization binding')
+- if r['ready_for_build'] is not False or r['part']!='AGFB027R25A2E2V':raise ValueError('W17SNAPSHOT01_REJECT target/readiness')
++ expected={'approved':True,'candidate_sha256':sha(E/'candidate.json'),'permission':'exact-offline-w17retimeelig01'}
++ if auth!=expected:raise ValueError('W17RETIMEELIG01_REJECT authorization binding')
++ if r['ready_for_build'] is not False or r['part']!='AGFB027R25A2E2V':raise ValueError('W17RETIMEELIG01_REJECT target/readiness')
+  for filename,digest in r['callback_files' if runtime else 'files'].items():
+-  if sha(filename)!=digest:raise ValueError('W17SNAPSHOT01_REJECT source binding '+filename)
++  if sha(filename)!=digest:raise ValueError('W17RETIMEELIG01_REJECT source binding '+filename)
+  for filename,target in r['links'].items():
+-  if os.readlink(filename)!=target:raise ValueError('W17SNAPSHOT01_REJECT link binding '+filename)
++  if os.readlink(filename)!=target:raise ValueError('W17RETIMEELIG01_REJECT link binding '+filename)
+  if runtime:
+   check_ancestry(r,os.getppid(),json.loads((E/'query.claim').read_text()))
+   proc=Path('/proc')/str(os.getppid())
+   exe=str((proc/'exe').resolve());argv=(proc/'cmdline').read_bytes().rstrip(b'\0').decode().split('\0')
+-  if exe!=r['executable'] or argv!=r['runtime_argv'] or (proc/'cwd').resolve()!=P:raise ValueError('W17SNAPSHOT01_REJECT runtime context')
++  if exe!=r['executable'] or argv!=r['runtime_argv'] or (proc/'cwd').resolve()!=P:raise ValueError('W17RETIMEELIG01_REJECT runtime context')
+  return r
+ if __name__=='__main__':
+  try:validate(runtime=True)
