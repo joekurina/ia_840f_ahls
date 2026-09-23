@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.16)
+# Compiler environment: source the installed HLS IP Gen fpgavars.sh first.
+set(CMAKE_CXX_COMPILER ahls)
+project(ia840f_ahls_memory LANGUAGES CXX)
+set(FPGA_DEVICE "AGFB027R25A2E2V" CACHE STRING "Explicit FPGA part, not a BSP")
+if(NOT FPGA_DEVICE STREQUAL "AGFB027R25A2E2V")
+  message(FATAL_ERROR "This integration targets the IA840F part AGFB027R25A2E2V")
+endif()
+add_executable(report EXCLUDE_FROM_ALL src/mmhost_ia840f.cpp)
+target_include_directories(report PRIVATE include)
+target_compile_options(report PRIVATE -Wall)
+target_compile_definitions(report PRIVATE FPGA_HARDWARE)
+target_link_options(report PRIVATE -Xshardware "-Xstarget=${FPGA_DEVICE}" -fsycl-link=early)
+set_target_properties(report PROPERTIES OUTPUT_NAME "mmhost_ia840f.report")
+# No hardware, emulator or simulator executable is run by this project.

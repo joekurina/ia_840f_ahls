@@ -1,0 +1,5 @@
+# AHLS2026.1 memory-IP generation
+
+The native CMake report target completed rc0 for the additive sample in ../../afu/ahls_memory. Compiler version2026.1.0 and the inner aoc command both bind AGFB027R25A2E2V. The actual generated template exports two34-bit byte-addressed256-bit data Avalon-MM hosts with32 byte enables and4-bit burst counts, plus64-bit CSR with5-bit address and8 byte enables, clock/resetn/freeze, IRQ and device-exception bus. Ports and register headers are captured under artifacts/build/mmhost_ia840f.report.prj. Generated inventory records251files in result01.json.gz, SHA2569fc5b99048d45ba2632127eec48fcdfbb40bddcb89a44e7f320c2853ea50fe59.
+
+This is IP-generation evidence only. No report executable was run, no emulator/simulator/hardware result is claimed, and the IP has not yet been imported into Quartus25.1 or built into a persona. The original sample uses signed int addition: future host vectors must keep sums within signed32-bit range unless the kernel is explicitly changed. The deployed OPAE host and DMA/width adaptation remain unimplemented. Independent evidence review pending.
