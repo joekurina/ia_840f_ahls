@@ -1,0 +1,105 @@
+{
+  "review_sha256": "11aca920d44f875204431244c6a69a546803ef72436c5e79b764400e033e2970",
+  "review_package_sha256": "08476221571779c6bdbd93d60c6166b4dd848fe4a12b35270719be7cbba1d773",
+  "frozen_files_verified": 28,
+  "embedded_source_payloads_verified": 125,
+  "attempts": {
+    "red01": {
+      "native_rcs": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "outer_rc": 1,
+      "unit_pass": false,
+      "inputs": 25
+    },
+    "green01": {
+      "native_rcs": [
+        0,
+        0,
+        0,
+        2
+      ],
+      "outer_rc": 2,
+      "unit_pass": false,
+      "inputs": 25
+    },
+    "green02": {
+      "native_rcs": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "outer_rc": 1,
+      "unit_pass": false,
+      "inputs": 25
+    },
+    "red02": {
+      "native_rcs": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "outer_rc": 1,
+      "unit_pass": false,
+      "inputs": 25
+    },
+    "green03": {
+      "native_rcs": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "outer_rc": 0,
+      "unit_pass": true,
+      "inputs": 25
+    }
+  },
+  "final_pair_only_delta": [
+    "csr_mgr.sv"
+  ],
+  "exact_guard_score": [
+    {
+      "checks": 56,
+      "rejected_writes": 32,
+      "rejected_reads": 4,
+      "rejected_go": 20,
+      "queue_accepts": 20
+    }
+  ],
+  "positive_score": [
+    {
+      "cases": 8,
+      "cycles": 8626,
+      "checks": 110977,
+      "AR": 19,
+      "AW": 19,
+      "R": 3397,
+      "W": 3397,
+      "B": 19,
+      "success": 8,
+      "errors": 0,
+      "held": 0,
+      "r_stalls": 3069,
+      "w_stalls": 4908,
+      "max_buffered": 38,
+      "high_source": 4,
+      "high_dest": 4
+    }
+  ],
+  "review_findings_retained": [
+    "F1 unisolated dynamic predicates/source-only",
+    "F2 runner positive guard-floor vs exact totals"
+  ],
+  "predecessor_routing_commit": "f9a860d86168d6b468eb4f4bcee35baccf79e45a",
+  "hardware_acceptance": false
+}

@@ -1,0 +1,128 @@
+--- a/csr_mgr.sv
++++ b/csr_mgr.sv
+@@ -82,6 +82,90 @@
+     assign dma_csr_map.header.rsvd_1 = 'hDEAD_BEEF_ABCD_EF01;
+     assign dma_csr_map.header.rsvd_2 = 'hBADD_C0DE_FEDC_BA10;
+ 
++
++    // IA840F admission: retain raw CSR widths until checks complete.
++    // These limits follow the actual AXI_LEN_W+1 request/reply counters.
++    localparam logic [63:0] MAX_DESCRIPTOR_BEATS =
++        ((64'd1 << (AXI_LEN_W+1))-1) * (64'd1 << AXI_LEN_W);
++    logic src_fresh, dest_fresh, length_fresh;
++    logic read_access_ok, write_access_ok, write_value_ok;
++    logic [1:0] write_response;
++
++    function automatic bit csr_address_ok(input logic [63:0] a);
++        return (a[2:0] == 0) && ((a >> 3) <= DMA_WR_DEST_PERF_CNTR);
++    endfunction
++    function automatic bit csr_writable(input logic [63:0] a);
++        return a == 8*DMA_SRC_ADDR || a == 8*DMA_DEST_ADDR ||
++               a == 8*DMA_LENGTH || a == 8*DMA_DESCRIPTOR_CONTROL ||
++               a == 8*DMA_CONTROL;
++    endfunction
++    function automatic bit descriptor_ok(input logic [63:0] command);
++        logic [64:0] src_start, dst_start, src_end, dst_end, nbytes;
++        logic [64:0] host_start, host_end, ddr_start, ddr_end;
++        logic [1:0] mode;
++        src_start = {1'b0, 64'(dma_csr_map.descriptor.src_addr)};
++        dst_start = {1'b0, 64'(dma_csr_map.descriptor.dest_addr)};
++        nbytes = 65'(dma_csr_map.descriptor.length) * AXI_MM_DATA_W_BYTES;
++        src_end = src_start + nbytes - 1;
++        dst_end = dst_start + nbytes - 1;
++        mode = command[27:26];
++        host_start = (mode == HOST_TO_DDR) ? src_start : dst_start;
++        host_end = (mode == HOST_TO_DDR) ? src_end : dst_end;
++        ddr_start = (mode == HOST_TO_DDR) ? dst_start : src_start;
++        ddr_end = (mode == HOST_TO_DDR) ? dst_end : src_end;
++        return src_fresh && dest_fresh && length_fresh &&
++               dma_csr_map.descriptor.length != 0 &&
++               dma_csr_map.descriptor.length <= MAX_DESCRIPTOR_BEATS &&
++               (src_start % AXI_MM_DATA_W_BYTES == 0) &&
++               (dst_start % AXI_MM_DATA_W_BYTES == 0) &&
++               (host_start >> HOST_ADDR_W) == 0 &&
++               (host_end >> HOST_ADDR_W) == 0 &&
++               (ddr_start >> DDR_BANK_ADDR_W) < MAX_DLA_INSTANCES &&
++               (ddr_end >> DDR_BANK_ADDR_W) == (ddr_start >> DDR_BANK_ADDR_W) &&
++               !dma_csr_status.descriptor_fifo_full &&
++               !dma_csr_status.rd_rsp_err && !dma_csr_status.wr_rsp_err &&
++               dma_csr_map.control == 0;
++    endfunction
++
++    assign read_access_ok = csr_address_ok(mmio64_reg.ar.addr) &&
++                            mmio64_reg.ar.size == 3;
++    assign write_access_ok = csr_address_ok(mmio64_reg.aw.addr) &&
++                             csr_writable(mmio64_reg.aw.addr) &&
++                             mmio64_reg.aw.size == 3 && (&mmio64_reg.w.strb);
++    always_comb begin
++        write_value_ok = 1'b0;
++        case (mmio64_reg.aw.addr)
++          8*DMA_SRC_ADDR: write_value_ok = (mmio64_reg.w.data >> SRC_ADDR_W) == 0;
++          8*DMA_DEST_ADDR: write_value_ok = (mmio64_reg.w.data >> DEST_ADDR_W) == 0;
++          8*DMA_LENGTH: write_value_ok = mmio64_reg.w.data != 0 &&
++                                         mmio64_reg.w.data <= MAX_DESCRIPTOR_BEATS &&
++                                         (mmio64_reg.w.data >> LENGTH_W) == 0;
++          8*DMA_DESCRIPTOR_CONTROL:
++            write_value_ok = ((mmio64_reg.w.data & ~64'h000000008c000000) == 0) &&
++                (mmio64_reg.w.data[27:26] == HOST_TO_DDR ||
++                 mmio64_reg.w.data[27:26] == DDR_TO_HOST) &&
++                (!mmio64_reg.w.data[31] || descriptor_ok(mmio64_reg.w.data));
++          // Legacy control behavior is retained; not a qualified drain/reset ABI.
++          8*DMA_CONTROL: write_value_ok = (mmio64_reg.w.data >> 32) == 0;
++          default: write_value_ok = 1'b0;
++        endcase
++        write_response = !write_access_ok ? DECERR : (!write_value_ok ? SLVERR : OKAY);
++    end
++
++    always_ff @(posedge clk) begin
++        if (!reset_n) begin
++            src_fresh <= 0; dest_fresh <= 0; length_fresh <= 0;
++        end else if (is_csr_write && write_access_ok) begin
++            case (mmio64_reg.aw.addr)
++              8*DMA_SRC_ADDR: src_fresh <= write_value_ok;
++              8*DMA_DEST_ADDR: dest_fresh <= write_value_ok;
++              8*DMA_LENGTH: length_fresh <= write_value_ok;
++              8*DMA_DESCRIPTOR_CONTROL: if (mmio64_reg.w.data[31]) begin
++                  src_fresh <= 0; dest_fresh <= 0; length_fresh <= 0;
++              end
++            endcase
++        end
++    end
+ 
+     // Read only fixed register assignments
+     assign dma_csr_map.status.wr_dest_perf_cntr             = dma_csr_status.wr_dest_perf_cntr;
+@@ -188,9 +272,9 @@
+             mmio64_reg.r.user <= mmio64_reg.ar.user;
+ 
+             // AXI addresses are always in byte address space. Ignore the
+-            // low 3 bits to index 64 bit CSRs. Ignore high bits and let the
+-            // address space wrap.
+-            case (mmio64_reg.ar.addr[7:3])
++            // low 3 bits only after full-address and access-shape validation.
++            mmio64_reg.r.resp <= read_access_ok ? OKAY : DECERR;
++            if (read_access_ok) case (mmio64_reg.ar.addr[7:3])
+               DMA_DFH:                 mmio64_reg.r.data <= dma_csr_map.header.dfh;
+               DMA_GUID_L:              mmio64_reg.r.data <= dma_csr_map.header.guid_l;
+               DMA_GUID_H:              mmio64_reg.r.data <= dma_csr_map.header.guid_h;
+@@ -277,6 +361,7 @@
+             mmio64_reg.b <= '0;
+             mmio64_reg.b.id <= mmio64_reg.aw.id;
+             mmio64_reg.b.user <= mmio64_reg.aw.user;
++            mmio64_reg.b.resp <= write_response;
+         end else if (mmio64_to_afu.bready) begin
+             // If a write response was pending it completed
+             mmio64_reg.bvalid <= 1'b0;
+@@ -299,10 +384,9 @@
+             dma_csr_map.descriptor.descriptor_control.go <= 'b0;
+         end
+ 
+-        if (is_csr_write) begin
+-            // AXI addresses are always in byte address space. Ignore the
+-            // low 3 bits to index 64 bit CSRs. Ignore high bits and let the
+-            // address space wrap.
++        if (is_csr_write && write_response == OKAY) begin
++            // Validate the full byte address before narrowing the index. Ignore the
++            // low 3 bits only after full-address and access-shape validation.
+             case (mmio64_reg.aw.addr[7:3])
+               DMA_SRC_ADDR:           dma_csr_map.descriptor.src_addr           <= mmio64_reg.w.data[$bits(dma_csr_map.descriptor.src_addr)-1 : 0];
+               DMA_DEST_ADDR:          dma_csr_map.descriptor.dest_addr          <= mmio64_reg.w.data[$bits(dma_csr_map.descriptor.dest_addr)-1 : 0];
