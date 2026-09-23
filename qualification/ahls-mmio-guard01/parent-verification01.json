@@ -1,0 +1,129 @@
+{
+  "runs": [
+    {
+      "run": "red01",
+      "native": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "outer": 1,
+      "unit_pass": false,
+      "errors": [
+        {
+          "log": "vsim.log",
+          "line": "# ** Fatal: AHLS_GUARD_FAIL guard write addr=30080 expected=3 actual=0 time=4275000"
+        },
+        {
+          "log": "vsim.log",
+          "line": "# Errors: 1, Warnings: 255"
+        }
+      ]
+    },
+    {
+      "run": "green01",
+      "native": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "outer": 1,
+      "unit_pass": false,
+      "errors": [
+        {
+          "log": "vsim.log",
+          "line": "# ** Fatal: AHLS_GUARD_FAIL guard write addr=30080 expected=3 actual=0 time=4335000"
+        },
+        {
+          "log": "vsim.log",
+          "line": "# Errors: 1, Warnings: 255"
+        }
+      ]
+    },
+    {
+      "run": "green02",
+      "native": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "outer": 1,
+      "unit_pass": false,
+      "errors": [
+        {
+          "log": "vsim.log",
+          "line": "# ** Fatal: AHLS_GUARD_FAIL kernel pointer canary unchanged time=4370000"
+        },
+        {
+          "log": "vsim.log",
+          "line": "# Errors: 1, Warnings: 255"
+        }
+      ]
+    },
+    {
+      "run": "red02",
+      "native": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "outer": 1,
+      "unit_pass": false,
+      "errors": [
+        {
+          "log": "vsim.log",
+          "line": "# ** Fatal: AHLS_GUARD_FAIL guard write addr=30080 expected=3 actual=0 time=4275000"
+        },
+        {
+          "log": "vsim.log",
+          "line": "# Errors: 1, Warnings: 255"
+        }
+      ]
+    },
+    {
+      "run": "green03",
+      "native": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "outer": 0,
+      "unit_pass": true,
+      "errors": []
+    }
+  ],
+  "payloads_verified": 2645,
+  "final_guard_score": [
+    [
+      "11",
+      "5",
+      "107"
+    ]
+  ],
+  "final_numeric_score": [
+    {
+      "cases": 4,
+      "elements": 91,
+      "copied_bytes": 1088,
+      "dma": 16,
+      "checks": 2821,
+      "mmio_reads": 275,
+      "mmio_writes": 97,
+      "bank0_W": 18,
+      "bank1_W": 31
+    }
+  ],
+  "read_only_kernel_argument_observation": true,
+  "physical_mmio": false,
+  "hardware_accepted": false
+}

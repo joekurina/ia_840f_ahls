@@ -1,0 +1,11 @@
+# Full-address MMIO guard and persistent posted-error telemetry
+
+Correct the demonstrated low17-bit PD alias at the actual20-bit/64-bit AXI-Lite boundary, without changing the generated fabric or underlying CSR/kernel/DMA. Preserve original tops/tests. This stage is CPU-only native simulation, no device/MMIO operation.
+
+Forward only [0,0x10000) DMA/identity and [0x10000,0x10100) kernel apertures. Require aligned full64-bit reads/writes and full write strobes, consistent with the captured DMA CSR and current host-test contract. The inner DMA manager still validates individual registers/descriptor values. Unknown high addresses, bad formats and writes to the new read-only diagnostics do not reach the fabric. Kernel argument/control value validation and DMA lifecycle are not added by this gate.
+
+New AFU-relative read-only diagnostics:0x20000 magic MMIOGRD1;0x20008 saturated32-bit read-fault count in upperhalf/write-fault count in lowerhalf;0x20010 first write fault;0x20018 first read fault. Fault word bit63 valid,33:32 actual/supplied response,27:24 reason(1address,2format,3read-only,4forwarded response),19:0 full address. Other bitszero. Reads are nondestructive; counters/first records persist until reset. No live-reset permission follows.
+
+Independent AW/W capture, retained requests and B/R responses; one operation at a time. Read admission waits behind writes already presented/accepted at this interface. This is not proof of PCIe arrival ordering, a CPU fence, global DMA drain, stopping clocks or reset-under-traffic. Event saturation/extreme lifetime and arbitrary malformed peers are not claimed by directed tests.
+
+Baseline and candidate use the same actual kernel/DMA/fabric/PIM-bank simulation with synthetic byte memories; baseline guard is transparent. Demonstrate the alias failure, then reject it before side effects, retain readable first fault/counts (including downstream CSR rejection), exercise AW/W order and response stalls, and keep all four numerical cases. The kernel pointer canary is observed read-only at its source-identified buffered RTL registers because its CSR reads return status, not the pointer. No internal register is driven or forced. No primary PCIe mapper or physical DDR model is executed. DDR simulation remains SKIPPED BY USER; fullFIM/mapped/timing/OPAE/hardware remain open.
