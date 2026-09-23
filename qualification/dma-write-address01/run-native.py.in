@@ -1,0 +1,121 @@
+import os,socket,json,hashlib,base64,subprocess,time,signal,resource,shutil
+from pathlib import Path
+from datetime import datetime,timezone
+C=@CONFIG@
+assert socket.gethostname()=="Agilex7Workstation" and os.getuid()==1000 and os.environ.get("TMUX")
+B=Path("/home/uwb_student00/ahls/new_BSP")
+R=B/"work_dma_write_address01"/C["run"]
+assert not R.exists()
+available=int(next(x.split()[1] for x in Path("/proc/meminfo").read_text().splitlines() if x.startswith("MemAvailable:")))*1024
+assert available>80_000_000_000 and shutil.disk_usage(B).free>5_000_000_000
+for p,h in C["originals"].items(): assert hashlib.sha256(Path(p).read_bytes()).hexdigest()==h
+for p,v in C["tools"].items(): assert hashlib.sha256(Path(p).read_bytes()).hexdigest()==v["sha256"]
+active_native=[]
+for p in Path("/proc").iterdir():
+ if not p.name.isdigit():continue
+ try:
+  exe=os.readlink(p/"exe")
+  if any(n in Path(exe).name for n in ("quartus","qsys","aoc","vsim","vlog","vopt")):
+   active_native.append({"pid":p.name,"exe":exe})
+ except (FileNotFoundError,ProcessLookupError,PermissionError):pass
+assert not active_native,active_native
+R.mkdir(parents=True,exist_ok=False)
+for name,entry in C["sources"].items():
+ b=base64.b64decode(entry["base64"],validate=True);assert hashlib.sha256(b).hexdigest()==entry["sha256"]
+ (R/name).write_bytes(b)
+for name,entry in C["sources"].items(): assert hashlib.sha256((R/name).read_bytes()).hexdigest()==entry["sha256"]
+(R/"home").mkdir();(R/"tmp").mkdir()
+(R/"modelsim.ini").write_bytes(Path(C["modelsim_ini_path"]).read_bytes())
+toolroot=Path("/opt/altera/25.1/questa_fe/linux_x86_64")
+license_path="/home/uwb_student00/quartus_25/LR-191011_License.dat"
+env={"HOME":str(R/"home"),"USER":"uwb_student00","LOGNAME":"uwb_student00","LANG":"C","PATH":str(toolroot)+":/usr/bin:/bin","TMPDIR":str(R/"tmp"),"MODEL_TECH":str(toolroot),"MTI_HOME":str(toolroot.parent),"MODELSIM":str(R/"modelsim.ini"),"QUARTUS_ROOTDIR_OVERRIDE":"/opt/altera/25.1/quartus","LM_LICENSE_FILE":license_path,"MGLS_LICENSE_FILE":license_path,"SALT_LICENSE_SERVER":license_path}
+cpus=set(sorted(os.sched_getaffinity(0))[:2])
+result={"run":C["run"],"started":datetime.now(timezone.utc).isoformat(),"cwd":str(R),"inputs":{k:v["sha256"] for k,v in C["sources"].items()},"originals":C["originals"],"tools":C["tools"],"cpu_affinity":sorted(cpus),"address_space_limit":16*1024**3,"mem_available_before":available,"commands":[],"hardware_access":False,"ddr_simulation":"SKIPPED BY USER","scope":"complete donor writer AW scheduling unit; WREADY always high; no B responses, DMA top, PIM mapper or DDR model","complete":False}
+for name in ("vopt","vsimk"):
+ p=toolroot/name
+ if p.is_file(): result["tools"][str(p)]={"sha256":hashlib.sha256(p.read_bytes()).hexdigest(),"bytes":p.stat().st_size}
+def persist(): (R/"status.json").write_text(json.dumps(result,indent=2)+"\n")
+
+def live_group(gid):
+ out=[]
+ for p in Path("/proc").iterdir():
+  if not p.name.isdigit():continue
+  try:
+   parts=(p/"stat").read_text().rsplit(")",1)[1].split()
+   if int(parts[2])==gid and parts[0]!="Z":out.append(int(p.name))
+  except (FileNotFoundError,ProcessLookupError,PermissionError):pass
+ return out
+
+def limit_child():
+ os.sched_setaffinity(0,cpus)
+ resource.setrlimit(resource.RLIMIT_AS,(16*1024**3,16*1024**3))
+ resource.setrlimit(resource.RLIMIT_CORE,(0,0))
+
+def native(label,argv):
+ rec={"label":label,"argv":argv,"started":datetime.now(timezone.utc).isoformat()};result["commands"].append(rec);persist()
+ timedout=False;descendants_after_leader=False;p=None
+ with (R/(label+".log")).open("xb") as log:
+  try:
+   p=subprocess.Popen(argv,cwd=R,env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True,preexec_fn=limit_child)
+   rec["pid"]=p.pid;rec["start_ticks"]=(Path("/proc")/str(p.pid)/"stat").read_text().rsplit(")",1)[1].split()[19];persist()
+   deadline=time.monotonic()+120
+   while os.waitid(os.P_PID,p.pid,os.WEXITED|os.WNOHANG|os.WNOWAIT) is None:
+    if time.monotonic()>deadline:timedout=True;break
+    time.sleep(0.1)
+   residual=live_group(p.pid)
+   rec["descendants_observed_at_leader_exit"]=residual
+   # Native frontends can finish just before their short-lived helpers.
+   while residual and not timedout and time.monotonic()<deadline:
+    time.sleep(0.1);residual=live_group(p.pid)
+   if residual:timedout=True
+   descendants_after_leader=bool(residual)
+
+  finally:
+   if p is not None:
+    # Leader remains unreaped until all possible process-group signals finish.
+    if live_group(p.pid):
+     os.killpg(p.pid,signal.SIGTERM);end=time.monotonic()+3
+     while live_group(p.pid) and time.monotonic()<end:time.sleep(0.1)
+     if live_group(p.pid):os.killpg(p.pid,signal.SIGKILL)
+    rec["native_rc"]=p.wait();rec["timeout"]=timedout;rec["descendants_after_leader"]=descendants_after_leader
+    rec["ended"]=datetime.now(timezone.utc).isoformat();persist()
+    rec["owned_group_live_after"]=live_group(p.pid)
+    rec["effective_rc"]=124 if timedout else (125 if descendants_after_leader or rec["owned_group_live_after"] else rec["native_rc"])
+    persist()
+ return rec["effective_rc"]
+try:
+ persist()
+ commands=[("version",[str(toolroot/"vsim"),"-version"]),("vlib",[str(toolroot/"vlib"),"work"]),("vlog",[str(toolroot/"vlog"),"-sv","-work","work","unit_platform_pkg.sv","ofs_plat_log_pkg.sv","ofs_plat_axi_mem_pkg.sv","ofs_plat_axi_mem_if.sv","dma_pkg.sv","dma_fifo_if.sv","dma_write_engine.sv","write_address_tb.sv"]),("vsim",[str(toolroot/"vsim"),"-c","-onfinish","exit","work.write_address_tb",*C["vsim_args"],"-do","run -all; quit -f -code 2"])]
+ for label,argv in commands:
+  rc=native(label,argv)
+  if rc!=0:break
+ result["complete"]=True
+except Exception as e:result["error"]=repr(e)
+finally:
+ result["originals_unchanged"]=all(hashlib.sha256(Path(p).read_bytes()).hexdigest()==h for p,h in C["originals"].items())
+ result["inputs_unchanged"]=all(hashlib.sha256((R/n).read_bytes()).hexdigest()==v["sha256"] for n,v in C["sources"].items())
+ result["tools_unchanged"]=all(hashlib.sha256(Path(p).read_bytes()).hexdigest()==v["sha256"] for p,v in result["tools"].items())
+ result["ended"]=datetime.now(timezone.utc).isoformat();persist()
+ result["logs"]={}
+ for p in R.glob("*.log"):
+  b=p.read_bytes();result["logs"][p.name]={"bytes":len(b),"sha256":hashlib.sha256(b).hexdigest(),"text":b.decode(errors="replace") if len(b)<2000000 else None}
+ import re
+ diagnostic_errors=[]
+ for name,entry in result["logs"].items():
+  for line in (entry["text"] or "").splitlines():
+   if re.search(r"\b(?:Error|Fatal)(?:\s+\([^)]*\))?\s*:",line,re.I) or re.search(r"\bErrors:\s*[1-9]\d*",line):diagnostic_errors.append({"log":name,"line":line})
+ matches=re.findall(r"WRITE_ADDRESS_UNIT_PASS cases=(\d+) cycles=(\d+) checks=(\d+) requests=(\d+) beats=(\d+) stalls=(\d+) undrained_done_cases=(\d+)",result["logs"].get("vsim.log",{}).get("text","") or "")
+ result["diagnostic_errors"]=diagnostic_errors
+ result["scoreboards"]=[dict(zip(("cases","cycles","checks","requests","beats","stalls","undrained_done_cases"),map(int,m))) for m in matches]
+ native_ok=len(result["commands"])==4 and all(x.get("effective_rc")==0 for x in result["commands"])
+ score_ok=len(matches)==1 and result["scoreboards"][0]["cases"]==C["expected_cases"] and result["scoreboards"][0]["requests"]==C["expected_requests"] and result["scoreboards"][0]["beats"]==C["expected_beats"] and result["scoreboards"][0]["stalls"]>0
+ result["unit_pass"]=bool(native_ok and score_ok and not diagnostic_errors and result["complete"] and all(result[k] for k in ("originals_unchanged","inputs_unchanged","tools_unchanged")))
+ persist()
+ raw=json.dumps(result,indent=2).encode();subprocess.run(["tmux","load-buffer","-b","ia840f_dmaw_"+C["run"],"-"],input=raw,check=True)
+ print("RESULT_SHA256="+hashlib.sha256(raw).hexdigest(),flush=True)
+ print("COMMAND_STATUS="+json.dumps([(x["label"],x.get("effective_rc")) for x in result["commands"]]),flush=True)
+
+last=result["commands"][-1].get("effective_rc",125) if result["commands"] else 125
+if not result["complete"] or not all(result[k] for k in ("originals_unchanged","inputs_unchanged","tools_unchanged")):last=125
+if last==0 and not result.get("unit_pass",False):last=1
+raise SystemExit(128-last if last<0 else last)
