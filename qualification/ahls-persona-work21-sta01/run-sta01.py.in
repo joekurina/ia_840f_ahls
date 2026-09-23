@@ -1,0 +1,137 @@
+import os,sys,socket,json,hashlib,base64,subprocess,time,signal,resource,shutil,gzip,re
+from pathlib import Path
+from datetime import datetime,timezone
+assert __debug__ and socket.gethostname()=='Agilex7Workstation' and os.getuid()==1000 and os.environ.get('TMUX')
+C=@CONFIG@;R=Path(C['root']);SRC=Path(C['setup_root']);T=Path(C['release']);assert not R.exists()
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def bind(root,inv):
+ for n,e in inv.items():
+  assert not Path(n).is_absolute() and '..' not in Path(n).parts
+  p=root/n;assert p.is_file() and p.stat().st_size==e['bytes'] and sha(p)==e['sha256'],str(p)
+  if 'symlink' in e:assert (os.readlink(p) if p.is_symlink() else None)==e['symlink']
+ return True
+def tools_ok():
+ for n,e in C['tool_bindings'].items():assert Path(n).stat().st_size==e['bytes'] and sha(Path(n))==e['sha256']
+ for e in C['quartus_tools'].values():assert sha(Path(e['path']))==e['sha256']
+ return True
+bind(SRC/'persona',C['persona_inventory']);bind(T,C['release_inventory']);tools_ok()
+bind(Path(C['afu_source_root']),C['source_files']);bind(Path(C['afu_source_root'])/'generated',C['generated_inventory'])
+mem=int(next(l.split()[1] for l in Path('/proc/meminfo').read_text().splitlines() if l.startswith('MemAvailable:')))*1024;disk=shutil.disk_usage(SRC).free
+assert mem>80_000_000_000 and disk>10_000_000_000
+competing=[]
+for p in Path('/proc').iterdir():
+ if not p.name.isdigit():continue
+ try:
+  exe=os.readlink(p/'exe')
+  if Path(exe).name in {'quartus_fit','quartus_syn','quartus_sta','quartus_sh','quartus_ipgenerate','vlog','vsim','aoc'}:competing.append({'pid':int(p.name),'exe':exe})
+ except (FileNotFoundError,ProcessLookupError,PermissionError):pass
+assert not competing,competing
+R.mkdir(parents=True,exist_ok=False);(R/'home').mkdir();(R/'tmp').mkdir()
+shutil.copytree(SRC/'persona',R/'persona',symlinks=True);bind(R/'persona',C['persona_inventory'])
+J=R/'persona'/C['project_rel'];A=Path(C['afu_source_root']);setup=J.parent/'setup'
+# Bind completed fitted physical snapshots and imported static QDB before STA.
+assert (J/'qdb').is_dir() and (J/'ofs_top.qdb').is_file() and C['protected_synthesis_paths']
+assert set(C['runtime_mutable_paths']).isdisjoint(C['protected_synthesis_paths'])
+(setup/'ia840f_persona_sta_gate01.py').write_text(C['guard']);(setup/'build_gate_persona_sta01.tcl').write_text(C['guard_tcl'])
+qsf=J/'ofs_pr_afu.qsf';before=qsf.read_text();old='set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/build_gate_persona_fit01.tcl\nset_global_assignment -name TEXT_FILE ../setup/ia840f_persona_fit_gate01.py'
+old=old.replace('\n','\n')
+assert before.count(old)==1
+new='set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/build_gate_persona_sta01.tcl\nset_global_assignment -name TEXT_FILE ../setup/ia840f_persona_sta_gate01.py'
+new=new.replace('\n','\n')
+qsf.write_text(before.replace(old,new))
+# Normalize only template escaping, not original native evidence.
+qsf.write_text(qsf.read_text().replace('\n','\n'))
+cpus=set(sorted(os.sched_getaffinity(0))[:2]);qroot=Path('/opt/altera/25.1/quartus');lic='/home/uwb_student00/quartus_25/LR-191011_License.dat'
+env={'HOME':str(R/'home'),'USER':'uwb_student00','LOGNAME':'uwb_student00','LANG':'C','PATH':str(qroot/'bin')+':'+str(qroot/'sopc_builder/bin')+':/usr/bin:/bin','TMPDIR':str(R/'tmp'),'QUARTUS_ROOTDIR_OVERRIDE':str(qroot),'LM_LICENSE_FILE':lic,'MGLS_LICENSE_FILE':lic,'SALT_LICENSE_SERVER':lic,'PYTHONDONTWRITEBYTECODE':'1','OPAE_PLATFORM_ROOT':str(T),'BUILD_ROOT_REL':'../../../..','PR_COMPILE':'1'}
+assert 'OPAE_PLATFORM_GEN' not in env
+critical={str(R/'persona'/n):e['sha256'] for n,e in C['persona_inventory'].items() if n not in C['runtime_mutable_paths']}
+critical[str(qsf)]=sha(qsf)
+for n,e in C['source_files'].items():critical[str(A/n)]=e['sha256']
+for n,e in C['generated_inventory'].items():critical[str(A/'generated'/n)]=e['sha256']
+for p in (setup/'ia840f_persona_sta_gate01.py',setup/'build_gate_persona_sta01.tcl',A/'ia840f_ahls_memory.json',A/'sources.txt'):critical[str(p)]=sha(p)
+sp=Path('/proc')/str(os.getpid());parts=(sp/'stat').read_text().rsplit(')',1)[1].split()
+identity={'pid':os.getpid(),'start_ticks':parts[19],'exe':os.readlink(sp/'exe'),'cwd':os.readlink(sp/'cwd'),'argv':(sp/'cmdline').read_bytes().decode().rstrip('\0').split('\0')}
+# Fix literal proc delimiter for the serialized program.
+identity['argv']=(sp/'cmdline').read_bytes().decode().rstrip(chr(0)).split(chr(0))
+auth={'ready_for_build':False,'scope':'persona-sta-only','runner':identity,'contexts':C['contexts'],'runtime_hashes':{e['path']:e['sha256'] for e in C['quartus_tools'].values()},'critical_inputs':critical,'project':str(J)}
+(R/'authority.json').write_text(json.dumps(auth,indent=2)+'\n')
+result={'run':C['run'],'started':datetime.now(timezone.utc).isoformat(),'commands':[],'resource_preflight':{'mem_available':mem,'disk_free':disk,'cpus':sorted(cpus),'competing':competing},'hardware_access':False,'complete':False,'uuid':C['uuid'],'original_setup_inventory':C['persona_inventory'],'input_hashes':critical,'project':str(J),'source_delta':{'qsf_before':before,'qsf_after':qsf.read_text(),'new_gate_files':[str(setup/'ia840f_persona_sta_gate01.py'),str(setup/'build_gate_persona_sta01.tcl')]}}
+def persist():(R/'status.json').write_text(json.dumps(result,indent=2)+'\n')
+def live_group(gid):
+ out=[]
+ for p in Path("/proc").iterdir():
+  if not p.name.isdigit():continue
+  try:
+   parts=(p/"stat").read_text().rsplit(")",1)[1].split()
+   if int(parts[2])==gid and parts[0]!="Z":out.append(int(p.name))
+  except (FileNotFoundError,ProcessLookupError,PermissionError):pass
+ return out
+
+def limit_child():
+ os.sched_setaffinity(0,cpus)
+ resource.setrlimit(resource.RLIMIT_AS,(32*1024**3,32*1024**3))
+ resource.setrlimit(resource.RLIMIT_CORE,(0,0))
+
+def native(label,argv):
+ rec={"label":label,"argv":argv,"started":datetime.now(timezone.utc).isoformat()};result["commands"].append(rec);persist()
+ timedout=False;descendants_after_leader=False;p=None
+ with (R/(label+".log")).open("xb") as log:
+  try:
+   p=subprocess.Popen(argv,cwd=J,env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True,preexec_fn=limit_child)
+   rec["pid"]=p.pid;rec["start_ticks"]=(Path("/proc")/str(p.pid)/"stat").read_text().rsplit(")",1)[1].split()[19];persist()
+   deadline=time.monotonic()+10800
+   while os.waitid(os.P_PID,p.pid,os.WEXITED|os.WNOHANG|os.WNOWAIT) is None:
+    if (R/"gate-rejections.jsonl").exists() or ((R/(label+".log")).exists() and "IA840F_GATE_REJECTED" in (R/(label+".log")).read_text(errors="replace")):raise RuntimeError("owned native callback rejected")
+    if time.monotonic()>deadline:timedout=True;break
+    time.sleep(0.1)
+   residual=live_group(p.pid)
+   rec["descendants_observed_at_leader_exit"]=residual
+   # Native frontends can finish just before their short-lived helpers.
+   while residual and not timedout and time.monotonic()<deadline:
+    time.sleep(0.1);residual=live_group(p.pid)
+   if residual:timedout=True
+   descendants_after_leader=bool(residual)
+
+  finally:
+   if p is not None:
+    # Leader remains unreaped until all possible process-group signals finish.
+    if live_group(p.pid):
+     os.killpg(p.pid,signal.SIGTERM);end=time.monotonic()+3
+     while live_group(p.pid) and time.monotonic()<end:time.sleep(0.1)
+     if live_group(p.pid):os.killpg(p.pid,signal.SIGKILL)
+    rec["native_rc"]=p.wait();rec["timeout"]=timedout;rec["descendants_after_leader"]=descendants_after_leader
+    rec["ended"]=datetime.now(timezone.utc).isoformat();persist()
+    rec["owned_group_live_after"]=live_group(p.pid)
+    rec["effective_rc"]=124 if timedout else (125 if descendants_after_leader or rec["owned_group_live_after"] else rec["native_rc"])
+    persist()
+ return rec["effective_rc"]
+try:
+ rc=native('timing',['/opt/altera/25.1/quartus/bin/quartus_sta','ofs_top','-c','ofs_pr_afu','--snapshot=final','--multicorner=on','--do_report_timing','--do_report_cdc_viewer']);result['complete']=True
+except Exception as e:result['error']=repr(e)
+finally:
+ result['postflight_errors']=[]
+ def preserve(label,f):
+  try:result[label]=bool(f())
+  except Exception as e:result[label]=False;result['postflight_errors'].append({'label':label,'error':repr(e)})
+ preserve('setup_unchanged',lambda:bind(SRC/'persona',C['persona_inventory']))
+ preserve('release_unchanged',lambda:bind(T,C['release_inventory']))
+ preserve('tools_unchanged',tools_ok)
+ preserve('bound_inputs_unchanged',lambda:all(sha(Path(p))==h for p,h in critical.items()))
+ result['files']={};result['output_hashes']={}
+ outputs=[R/'timing.log',R/'gate-events.jsonl',R/'gate-rejections.jsonl',qsf,J/'ofs_top.qpf']
+ outputs.extend(p for p in (J/'output_files').rglob('*') if p.is_file() and ('.sta.' in p.name or p.name in ('ofs_pr_afu.flow.rpt','ofs_pr_afu.sdc_constraints.rpt','user_clock_freq.txt') or 'timing_report' in p.parts))
+ for p in outputs:
+  if not p.is_file():continue
+  n=str(p.relative_to(R));b=p.read_bytes();assert len(b)<120_000_000;e={'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()};result['files'][n]={**e,'base64':base64.b64encode(b).decode()};result['output_hashes'][n]=e
+ result['input_output_role_exclusions']=C['runtime_mutable_paths'];result['protected_physical_paths']=C['protected_synthesis_paths']
+ result['runtime_output_after']={n:({'bytes':(R/'persona'/n).stat().st_size,'sha256':sha(R/'persona'/n)} if (R/'persona'/n).is_file() else None) for n in C['runtime_mutable_paths']}
+ result['qdb_outputs']={str(p.relative_to(J)):{'bytes':p.stat().st_size,'sha256':sha(p)} for p in (J/'qdb').rglob('*') if p.is_file()}
+ log=(R/'timing.log').read_text(errors='replace') if (R/'timing.log').exists() else ''
+ result['diagnostics']=[l for l in log.splitlines() if re.search(r'\b(?:Error|Fatal)(?:\s+\([^)]*\))?\s*:',l,re.I) or 'IA840F_GATE_REJECTED' in l]
+ result['success_marker']='Quartus Prime Timing Analyzer was successful' in log
+ result['success']=result['complete'] and 'error' not in result and len(result['commands'])==1 and result['commands'][0].get('effective_rc')==0 and not result['diagnostics'] and result['success_marker'] and not result['postflight_errors'] and all(result.get(k) is True for k in ('setup_unchanged','release_unchanged','tools_unchanged','bound_inputs_unchanged'))
+ result['timing_accepted']=False;result['ended']=datetime.now(timezone.utc).isoformat();persist();blob=gzip.compress(json.dumps(result,sort_keys=True).encode(),mtime=0);(R/'result.json.gz').write_bytes(blob)
+ subprocess.run(['tmux','load-buffer','-b','ia840f_persona_sta01','-'],input=blob,check=True);subprocess.run(['tmux','set-buffer','-b','ia840f_persona_sta01_sha256',hashlib.sha256(blob).hexdigest()],check=True)
+rc=result['commands'][-1].get('effective_rc',125) if result['commands'] else 125
+if not result['success']:rc=rc or 125
+raise SystemExit(128-rc if rc<0 else rc)

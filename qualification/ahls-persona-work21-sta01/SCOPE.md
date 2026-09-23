@@ -1,0 +1,7 @@
+# Scope — actual Work21 persona final-database STA
+
+Run the installed Quartus25.1 native Timing Analyzer once on an isolated exact copy of the completed actual-persona fit02 final database. Preserve originals, RTL, imported staticQDB, all design constraints, JSONauto-clock requests and tool identities. Native option help and callback sources are captured in this directory. Use the existing supervisor/resource/ancestry/preservation checks, with fresh exclusive context and output-role inventory; do not invoke the whole-flow`afu_synth` wrapper.
+
+This stage collects multicorner standard timing summaries, per-clock critical setup paths, CDCtransfer viewer reports and the existing OFS report hook's selected user-clock frequencies /per-corner setup,hold,recovery,removal,mpw summaries and failed-path detail. Accepting native completion does not imply nonnegative slack or complete constraint/CDC/reset/exception coverage. Independently review actual reports before any timing acceptance. Retain all ignored-constraint, dangling-port, electrical, initial-state and mapped-functional findings from earlier stages.
+
+No synthesis, fitting, assembly, packaging, runtime OPAE/device opens, MMIO, programming, reset, drivers, reboot or vendorDDRsimulation. All live hardware remains behind the goal's no-hang/source-routing/independent-recovery gates. [Current invocation](CURRENT.md), [exact source delta](source-delta01.json).

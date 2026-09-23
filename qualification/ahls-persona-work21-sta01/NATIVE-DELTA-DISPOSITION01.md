@@ -1,0 +1,11 @@
+# STA01 native output-role reconciliation
+
+The original result is retained exactly: native/effective **0/0**, outer **125**, runner success **false**, `bound_inputs_unchanged=false`. No reinterpretation as an all-zero runner result and no unchanged STA rerun.
+
+A finite ordinary-file capture, with no active Quartus process, rehashed all **6,016** bound entries. Exactly one changed: `qdb/_compiler/ofs_pr_afu/_flat/25.1.0/legacy/1/runlog.db`. All **6,015 other entries** and all **344 protected physical/synthesis/partition snapshot paths** retain their bound hashes. Original fit02, release and tools already passed preservation. [Delta receipt](outer-delta01.json), [exact disposition](native-delta-disposition01.json).
+
+The changed file is an 8,192-byte SQLite native status database. Hash-bound before/after files were separately captured and opened locally read-only/immutable. Schema is identical; the original **nine rows** are identical; exactly one row was added, **Timing Analysis (Finalize)**, native PID **125808**, complete/done. This is recorded native run-status bookkeeping, not an RTL, SDC, static-image or physical-snapshot modification. [Capture](outer-runlog02.json), [decoded evidence](runlog-decoded02.json). Before SHA256 `a74cf367239a0c48ecc1b352b06fc9f47e783df456d5d313cf08dcb40bbebcb8`; after `6388e1c05fae09a23a5e203ec3b8332eb62bf6dea6ab28364379d7cf90ddbbc7`.
+
+This supplement is submitted for independent acquisition-evidence review. It does **not** change the numerical result: setup timing FAIL, unconstrained-path FAIL and signoff DRC findings remain. On the next genuinely changed stage, classify this exact native runlog role as mutable and continue to bind source/static/final structure; do not edit the consumed runner or broadly exempt QDB contents.
+
+The original collector selected `.sta.*` and timing-report outputs but omitted the dedicated `.tq.drc.signoff.rpt`. It was retrieved byte-for-byte in a separate ordinary-file capture without rerunning tools. Its 1,242,378 bytes have SHA256 `f16c5f51627e34603c07878a9403e65c3a0403cb73501ccc98606cd58a0e8c3c`. [Receipt](outer-reports03.json). Standard STA contains the corresponding signoff summary too. Future changed collectors must include this dedicated report explicitly.
