@@ -1,0 +1,44 @@
+--- a/ip/lsu_burst_coalesced_pipelined_read.sv
++++ b/ip/lsu_burst_coalesced_pipelined_read.sv
+@@ -328,9 +328,10 @@
+             predicate_cpipe            [i]         <= '0;
+             mword_address_cpipe        [i]         <= '0;
+          end
+-         for (int i=2; i<=COALESCER_PIPE_DEPTH; i++) begin : GEN_RANDOM_BLOCK_NAME_R121
+-            kword_address_cpipe        [i]         <= '0;
+-         end
++         kword_address_cpipe[2] <= '0;
++         kword_address_cpipe[3] <= '0;
++         kword_address_cpipe[4] <= '0;
++         kword_address_cpipe[5] <= '0;
+          for (int i=1; i<=4; i++) begin : GEN_RANDOM_BLOCK_NAME_R122
+             valid_cpipe                [i]         <= '0;
+          end
+--- a/ip/lsu_burst_coalesced_pipelined_write.sv
++++ b/ip/lsu_burst_coalesced_pipelined_write.sv
+@@ -1242,9 +1242,9 @@
+          
+             if (~aclrn) begin
+                
+-               for (int i=1; i<=VALID_GEN_THREAD_COUNT_PIPE_DEPTH-1; i++) begin : GEN_RANDOM_BLOCK_NAME_R155
+-                  thread_count_inc_vpipe     [i]   <= '0;
+-               end
++               thread_count_inc_vpipe[1] <= '0;
++               thread_count_inc_vpipe[2] <= '0;
++               thread_count_inc_vpipe[3] <= '0;
+                thread_count_inc_valid_vpipe[1]  <= '0;
+                thread_count_inc_minus1_vpipe[3] <= '0;
+             
+@@ -1271,9 +1271,9 @@
+          
+             if (~aclrn) begin
+             
+-               for (int i=1; i<=VALID_GEN_THREAD_COUNT_PIPE_DEPTH-1; i++) begin : GEN_RANDOM_BLOCK_NAME_R156
+-                  thread_count_inc_vpipe     [i]      <= '0;
+-               end
++               thread_count_inc_vpipe[1] <= '0;
++               thread_count_inc_vpipe[2] <= '0;
++               thread_count_inc_vpipe[3] <= '0;
+                thread_count_inc_valid_vpipe[1]        <= '0;
+                thread_count_inc_minus1_vpipe[3]       <= '0;
+                valid_gen_stall_out_lookahead          <= '0;

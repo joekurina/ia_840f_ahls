@@ -1,0 +1,5 @@
+# Constant reset-index correction
+
+Questa7061 identified dynamic-index reset loops in generated arrays shared across distinct always_ff blocks. Source establishes **disjoint elements**, not two writes to the same element: read kword_address_cpipe stage1 is in its own generate-selected process, while the coalescer resets2..5; writer branch-specific process resets1..3 and the common process owns4. The relevant localparams are fixed5and4, respectively. Non-reset assignments already use constant indices.
+
+The additive patch expands exactly these three reset loops to literal element assignments. It retains always_ff, all event controls/reset conditions/nonblocking assignments, dataflow, arithmetic and parameters. It changes no initialization value and disables no diagnostic. Both mutually exclusive writer branches are covered. The patch derivation asserts the original fixed localparams and exact source blocks. Originals and all preceding failed runs remain untouched. Candidate simulation and subsequent independent review are required; no functional pass or hardware equivalence claim yet.
