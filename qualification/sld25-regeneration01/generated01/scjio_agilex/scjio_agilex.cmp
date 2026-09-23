@@ -1,0 +1,13 @@
+	component scjio_agilex is
+		generic (
+			CONTROL : string := "host"
+		);
+		port (
+			jtag_clock_clk       : in  std_logic := 'X'; -- clk
+			jtag_signals_tms     : in  std_logic := 'X'; -- tms
+			jtag_signals_tdi     : in  std_logic := 'X'; -- tdi
+			jtag_signals_tdo     : out std_logic;        -- tdo
+			jtag_signals_tck_ena : in  std_logic := 'X'  -- tck_ena
+		);
+	end component scjio_agilex;
+

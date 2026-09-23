@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy
+ date="2026.09.22.22:06:10"
+ outputDirectory="/home/uwb_student00/ahls/new_BSP/work_sld25_regeneration01/scjio_agilex/">
+ <perimeter>
+  <parameter
+     name="AUTO_GENERATION_ID"
+     type="Integer"
+     defaultValue="0"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_UNIQUE_ID"
+     type="String"
+     defaultValue=""
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_FAMILY"
+     type="String"
+     defaultValue="Agilex 7"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE"
+     type="String"
+     defaultValue="AGFB014R24A2E2V"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_SPEEDGRADE"
+     type="String"
+     defaultValue="2"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_BOARD"
+     type="String"
+     defaultValue="default"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_JTAG_CLOCK_CLOCK_RATE"
+     type="Long"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_JTAG_CLOCK_CLOCK_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_JTAG_CLOCK_RESET_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <interface name="jtag_clock" kind="clock" start="0">
+   <property name="clockRate" value="0" />
+   <property name="externallyDriven" value="false" />
+   <property name="ptfSchematicName" value="" />
+   <port name="jtag_clock_clk" direction="input" role="clk" width="1" />
+  </interface>
+  <interface name="jtag_signals" kind="conduit" start="0">
+   <property name="associatedClock" value="jtag_clock" />
+   <property name="associatedReset" value="" />
+   <property name="prSafe" value="false" />
+   <port name="jtag_signals_tms" direction="input" role="tms" width="1" />
+   <port name="jtag_signals_tdi" direction="input" role="tdi" width="1" />
+   <port name="jtag_signals_tdo" direction="output" role="tdo" width="1" />
+   <port
+       name="jtag_signals_tck_ena"
+       direction="input"
+       role="tck_ena"
+       width="1" />
+  </interface>
+ </perimeter>
+ <entity kind="scjio_agilex" version="1.0" name="scjio_agilex">
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_DEVICE" value="AGFB027R25A2E2V" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 7" />
+  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_JTAG_CLOCK_CLOCK_RATE" value="-1" />
+  <parameter name="AUTO_UNIQUE_ID" value="" />
+  <parameter name="AUTO_JTAG_CLOCK_CLOCK_DOMAIN" value="-1" />
+  <parameter name="AUTO_JTAG_CLOCK_RESET_DOMAIN" value="-1" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="2" />
+  <generatedFiles>
+   <file
+       path="/home/uwb_student00/ahls/new_BSP/work_sld25_regeneration01/scjio_agilex/synth/scjio_agilex.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/home/uwb_student00/ahls/new_BSP/work_sld25_regeneration01/scjio_agilex/synth/scjio_agilex.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/home/uwb_student00/ahls/new_BSP/work_sld25_regeneration01/scjio_agilex.ip" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="/opt/altera/25.1/ip/altera/sld/jtag/intel_soft_core_jtag_io/intel_soft_core_jtag_io_hw.tcl" />
+   <file
+       path="/opt/altera/25.1/ip/altera/sld/core/endpoint_wrappers/altera_sld_host_endpoint_hw.tcl" />
+  </childSourceFiles>
+  <messages>
+   <message level="Info" culprit="scjio_agilex">"Generating: scjio_agilex"</message>
+   <message level="Info" culprit="scjio_agilex">"Generating: scjio_agilex_intel_soft_core_jtag_io_10_nlyl3tq"</message>
+   <message level="Info" culprit="scjio_agilex">"Generating: altera_sld_host_endpoint_wrapper"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_soft_core_jtag_io"
+   version="1.0"
+   name="scjio_agilex_intel_soft_core_jtag_io_10_nlyl3tq">
+  <parameter name="USE_TCK_ENA" value="true" />
+  <parameter name="HOST_PRIORITY" value="200" />
+  <parameter name="AUTO_DEVICE" value="AGFB027R25A2E2V" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 7" />
+  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="CLOCK_RATE_CLOCK" value="0" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="2" />
+  <parameter name="NAME" value="soft_jtag" />
+  <generatedFiles>
+   <file
+       path="/home/uwb_student00/ahls/new_BSP/work_sld25_regeneration01/scjio_agilex/intel_soft_core_jtag_io_10/synth/scjio_agilex_intel_soft_core_jtag_io_10_nlyl3tq.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/home/uwb_student00/ahls/new_BSP/work_sld25_regeneration01/scjio_agilex/intel_soft_core_jtag_io_10/synth/scjio_agilex_intel_soft_core_jtag_io_10_nlyl3tq.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/opt/altera/25.1/ip/altera/sld/jtag/intel_soft_core_jtag_io/intel_soft_core_jtag_io_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="/opt/altera/25.1/ip/altera/sld/core/endpoint_wrappers/altera_sld_host_endpoint_hw.tcl" />
+  </childSourceFiles>
+  <instantiator instantiator="scjio_agilex" as="intel_soft_core_jtag_io_0" />
+  <messages>
+   <message level="Info" culprit="scjio_agilex">"Generating: scjio_agilex_intel_soft_core_jtag_io_10_nlyl3tq"</message>
+   <message level="Info" culprit="scjio_agilex">"Generating: altera_sld_host_endpoint_wrapper"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="altera_sld_host_endpoint"
+   version="1.0"
+   name="altera_sld_host_endpoint_wrapper">
+  <generatedFiles>
+   <file
+       path="/home/uwb_student00/ahls/new_BSP/work_sld25_regeneration01/scjio_agilex/altera_sld_host_endpoint_10/synth/altera_sld_host_endpoint_wrapper.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/home/uwb_student00/ahls/new_BSP/work_sld25_regeneration01/scjio_agilex/altera_sld_host_endpoint_10/synth/altera_sld_host_endpoint_wrapper.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/opt/altera/25.1/ip/altera/sld/core/endpoint_wrappers/altera_sld_host_endpoint_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="scjio_agilex_intel_soft_core_jtag_io_10_nlyl3tq"
+     as="ep" />
+  <messages>
+   <message level="Info" culprit="scjio_agilex">"Generating: altera_sld_host_endpoint_wrapper"</message>
+  </messages>
+ </entity>
+</deploy>
