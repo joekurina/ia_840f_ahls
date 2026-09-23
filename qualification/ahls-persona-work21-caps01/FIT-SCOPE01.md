@@ -1,0 +1,7 @@
+# CAPS01 completed fit01 — review scope
+
+Specification first, then evidence/implementation quality. Review the completed Quartus25.1.0 Build129 native fitter on actual matching Work21 PR persona (AGFB027R25A2E2V, ofs_top/top, ofs_pr_afu/PR_IMPL, release03, application UUID673c03a1-cef3-4c82-bf10-b12c247d9718). Check source, static release, exact copy/roles/protected inputs, finite ownership, diagnostics, physical PR context and final database commitment. Only additive raw-capability CSR differs functionally from accepted CSR02; same clock policy and other12AFU/255generated records.
+
+This is not final-STA/timing, mapped equivalence, assembly/GBS, deployment, reset/CDC/quiescence/PR lifecycle, host-buffer lifetime, physical DDR/PCIe/OPAE or hardware acceptance. Vendor DDR simulation remains SKIPPED BY USER. The parent independently runs the eligible successor STA; this review must not inspect/operate/poll/await/gate that job. No hardware actions are authorized.
+
+Local frozen files only. Do not execute/import runners, run vendor/simulator/host tests, use SSH/network/Git, change implementation/evidence or task state. Only write `fit-independent-review01.md`, initially IN_PROGRESS if needed and FINAL when done. Report SHA256 separately in your final reply. Preserve originals and all retained findings. Native0 is not warning clearance; derive counts from the actual reports. Broader all-bit mapping limits are not a newly observed defect or a new generic equivalence prerequisite for bounded fit acceptance.
