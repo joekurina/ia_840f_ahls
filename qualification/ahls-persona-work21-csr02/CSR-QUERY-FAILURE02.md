@@ -1,0 +1,5 @@
+# CSR path query02 — project-loader namespace still wrong
+
+Native/effective/outer3/3/3. Read_sdc failed before path acquisition with missing `get_afu_json_user_clock_freqs`. All four preservation domains true, no postflight errors, timeouts or owned survivors. Query01/02 remain failed; no timing claim follows.
+
+Exact completed-fit sources establish the load chain: ofs_pr_afu_sources.tcl selects ofs_plat_if_addenda.qsf, which registers afu_json.tcl and user_clock_config.tcl with SOURCE_TCL_SCRIPT_FILE. afu_json.tcl defines unqualified procs. Query02 moved only SDC to global scope while project_open still ran inside our namespace, so its PIM helper definitions stayed in that namespace. Query03 moves the entire project_open/create_timing_netlist/read_sdc/update boundary to global scope, checks actual global PIM helpers before netlist acquisition, and leaves all vendor sources/constraints unchanged. Source capture archives result-clock-source01/02/03 and hash-equal local afu_json.tcl bind the correction. An inert hook-scope regression demonstrates the scoping distinction, not vendor execution. Fresh completed-fit copy; no reuse of failed query databases.

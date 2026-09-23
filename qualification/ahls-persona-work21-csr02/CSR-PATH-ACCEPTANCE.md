@@ -1,0 +1,11 @@
+# CSR query03/04 — parent acceptance with mapping findings
+
+The completed independent review is FINAL. Parent rehashed all 241 frozen files (385,094,119 bytes), read the full report, and checked its central interpretation against the native path records. Report SHA256: `be9593dcc2c678fd534db9a356de4b8f46a72a20eb0f7b7f0cb1041dd618582e`; package SHA256: `a04a8dd7034055030f3ead3715b1662dc9a8b4e35bfbce4d83b4b5924c9a7bd1`. [Review](csr-path-independent-review01.md), [parent verification](csr-path-parent-review-verification01.json).
+
+**Accept acquisition and bounded numerical observations only. Do not accept arithmetic/source-equivalent path coverage.** Query03 and query04 each completed native/effective/outer 0/0/0 with preservation and owned termination verified. Their 9,840 and 260 nonnegative record occurrences are not distinct-path counts or full functional/timing signoff. Preliminary loader failures remain failed evidence.
+
+This additively sharpens frozen RESULTS03: all 390 launches in the named source/destination-to-admission and length-feedback families are SCLR representatives. Sampled physical paths traverse bypassed ALM-register clear arcs. Those family names are query labels, not proven endpoint-data or old-feedback classifications. Query04's 260 paths are exclusively reset control. Arithmetic input, endpoint-data-to-admission, and original enable-mediated feedback equivalence all remain open.
+
+The existing csr_full data already includes 52 add_0 and 52 add_2 passthrough-register candidates, each with incoming setup/hold records across all five corners. Their 1,040 records are a subset of the 9,840; names/locations alone do not establish source-bit mapping. Reuse those observations rather than repeating the incoming sweep.
+
+A source-supported fixed-seed cell/pin connectivity discriminator is now the next step. It is not an RTL/SDC modification or a request for another fit. Retain Q1–Q4, original negative-path provenance, all broader Design Closure FAIL, reset/CDC/exception, metadata/drain/fence, physical-DDR and hardware limitations. No missing-name or reset-path result proves data-path closure. [Full STA acceptance](STA-ACCEPTANCE.md) remains narrowly unchanged.

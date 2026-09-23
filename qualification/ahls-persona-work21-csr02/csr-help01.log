@@ -1,0 +1,1616 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 25.1.0 Build 129 03/26/2025 SC Pro Edition
+    Info: Copyright (C) 2025  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Wed Sep 23 12:22:54 2026
+    Info: System process ID: 131890
+Info: Command: quartus_sta -t /home/uwb_student00/ahls/new_BSP/work_ahls_persona_work21_csr02/csr-help01/help.tcl
+BEGIN_HELP project_open
+---------------------------------------------------------------------------
+
+Usage: project_open [-h] [-help] [-long_help] [-current_revision] [-force] [-preserve_revision_order] [-revision <revision_name>] <project_name>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -current_revision: Option to open the current revision automatically
+        -force: Option to open the project and overwrite the compilation database if the database version is incompatible.
+        -preserve_revision_order: Option to not move the revision to top in the qpf file and preserve existing revision ordering
+        -revision <revision_name>: Revision name
+        <project_name>: Project name
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::project 7.0
+
+------------
+Description:
+------------
+
+Opens an existing project. To create a new project, use the
+project_new command.
+
+If the -revision option is not specified, the project name is
+specified as the revision name.
+
+The project_open command gives an error when the compilation database
+version is not compatible with the current version of Quartus Prime
+software.  You may specify the "-force" option to avoid the error and
+overwrite the database.
+
+--------------
+Example Usage:
+--------------
+
+## Open project "chiptrip" and revision "chiptrip"
+project_open chiptrip
+
+## Open project "chiptrip" and revision "auto_max"
+project_open -revision auto_max chiptrip
+
+## Get the current revision before opening
+## the project with the current revision
+set project_name chiptrip
+set current_revision [get_current_revision $project_name]
+project_open -revision $current_revision $project_name
+puts [get_global_assignment -name FAMILY]
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_OK   	0   	WARNING: Project is already open: <string>
+TCL_ERROR	1   	ERROR: Can't open project: <string>. First close the currently open project: <string>.
+TCL_ERROR	1   	ERROR: Can't open project: <string>
+TCL_ERROR	1   	ERROR: Can't set revision: <string>. Make sure there is an open, active revision name.
+TCL_ERROR	1   	ERROR: Can't run Tcl command while a process is in progress: <string>. To run the command, stop the compilation or simulation; or wait for the compilation or simulation to complete.
+TCL_ERROR	1   	ERROR: Cannot open project: <string>. The project is not compatible with the installed version of the Quartus Prime software. Opening the project will overwrite the old project database. If you wish to overwrite the old project database, make sure to specify the -<string> option.
+TCL_ERROR	1   	ERROR: Can't open revision: <string> (project: <string>). The revision is not compatible with the installed version of the Quartus Prime software. Opening the revision will overwrite the old revision database. If you wish to overwrite the old revision database, make sure to specify the -<string> option.
+TCL_ERROR	1   	ERROR: Found two options: -<string> and -<string>. Choose one of the options.
+TCL_ERROR	1   	ERROR: Revision does not exist: <string>. Specify a legal revision name using the "-<string>" option.
+TCL_ERROR	1   	ERROR: Project does not exist or has illegal name characters: <string>. Specify a legal project name.
+
+---------------------------------------------------------------------------
+
+END_HELP project_open
+BEGIN_HELP create_timing_netlist
+---------------------------------------------------------------------------
+
+Usage: create_timing_netlist [-h] [-help] [-long_help] [-force_dat] [-grade <c|i|m|e|a>] [-model <fast|slow>] [-no_latch] [-post_syn] [-snapshot <snapshot>] [-speed <speed>] [-temperature <value_in_C>] [-voltage <value_in_mV>] [-zero_ic_delays] [<operating_conditions>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -force_dat: Option to force delay annotation
+        -grade <c|i|m|e|a>: Option to specify temperature grade
+        -model <fast|slow>: Option to specify timing model
+        -no_latch: Option to disable the analysis of latches as synchronous elements
+        -post_syn: Option to perform timing analysis on the post-synthesis netlist
+        -snapshot <snapshot>: Snapshot of the design to load
+        -speed <speed>: Speed grade
+        -temperature <value_in_C>: Operating temperature
+        -voltage <value_in_mV>: Operating voltage
+        -zero_ic_delays: Option to set all IC delays to zero
+        <operating_conditions>: Operating conditions Tcl object name string
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Creates the timing netlist by annotating the atom
+netlist with delay information using post-fitting
+results.
+
+Use the -post_syn option to obtain post-synthesis
+results.
+
+In Quartus Prime Pro edition, you can use the -snapshot option
+to specify which netlist you want to perform timing analysis on.
+
+The create_timing_netlist command skips delay
+annotation by default.  Use -force_dat to rerun delay
+annotation. This is required if any delay annotation
+setting is changed in the Quartus Prime project revision
+(e.g. OUTPUT_PIN_LOAD).
+
+Use "-model fast" to run the analysis using the fast
+corner delay models first.  The -temperature,
+-voltage, and -speed, options are also available. See
+help for set_operating_conditions for details on these
+options.
+
+You can use model, temperature and voltage options to
+specify operating conditions while creating timing
+netlist (temperature and voltage options are not
+supported by all families). You can also set operating
+conditions by passing an operating conditions object
+name as a positional argument to create_timing_netlist
+command. After the timing netlist has been created,
+you can use set_operating_conditions command to change
+timing models without deleting and re-creating the
+timing netlist.
+
+Use the -grade option to analyze the design at a
+different temperature grade. This option is provided
+to support what-if analysis and is not recommended for
+final sign-off analysis.
+
+Use the -no_latch option to analyze latches as
+combinational loops instead of synchronous elements.
+
+Use the -zero_ic_delays option to set all IC delays in
+the netlist to zero.
+
+--------------
+Example Usage:
+--------------
+
+project_open my_top
+
+# Create timing netlist before calling
+# any report functions
+create_timing_netlist
+
+# Read SDC and update timing
+read_sdc
+update_timing_netlist
+
+# Ready to call report functions
+report_timing -npaths 1 -clock_setup
+
+# The following command is optional
+delete_timing_netlist
+
+project_close
+
+project_open my_top
+
+# Report worst case period for -9 speed grade
+create_timing_netlist -speed 9
+
+# Read SDC and update timing
+read_sdc
+update_timing_netlist
+
+report_timing -clock_setup -clock_filter clk
+delete_timing_netlist
+
+# Report hold violation for fastest corner
+# Use set_operating_conditions instead
+create_timing_netlist -model fast
+
+# Read SDC and update timing
+read_sdc
+update_timing_netlist
+
+report_timing -clock_hold -clock_filter clk
+delete_timing_netlist
+
+# If Delay Annotation has been run for the fast corner
+# Force Delay Annotation
+create_timing_netlist -model fast -force_dat
+
+# Read SDC and update timing
+read_sdc
+update_timing_netlist
+
+report_timing -clock_hold -clock_filter clk
+delete_timing_netlist
+
+# Report worst case period for post-periphery-placement netlist
+create_timing_netlist -post_fpp
+
+# Read SDC and update timing
+read_sdc
+update_timing_netlist
+
+report_timing -clock_setup -clock_filter clk
+delete_timing_netlist
+
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: The TCL command "<string>" is not supported in quartus_fit. It is only supported in quartus_sta. Please use quartus_sta instead of quartus_fit if you want to use this TCL command.
+TCL_ERROR	1   	ERROR: Can't create timing netlist for device family <string>. Run Analysis and Synthesis (quartus_syn) using this device family as a value for the --family option before running the Timing Analyzer (create_timing_netlist).
+TCL_ERROR	1   	ERROR: The Fast Forward snapshot cannot be used for sign-off timing analysis.  Please see the Fast Forward Timing Closure Recommendations report for performance estimates.
+TCL_ERROR	1   	ERROR: Cannot run the Timing Analyzer (quartus_sta). Periphery placement (quartus_fit --plan) failed or Fitter was not run. Run I/O Assignment Analysis (quartus_fit --plan) successfully before running the Timing Analyzer (create_timing_netlist -post_fpp).
+TCL_ERROR	1   	ERROR: Invalid snapshot "<string>". Available snapshot(s): <string>
+TCL_ERROR	1   	ERROR: Both the -temperature and -voltage options and their values are required.
+TCL_ERROR	1   	ERROR: Can't find active revision. Make sure there is an open, active revision name.
+TCL_ERROR	1   	ERROR: Could not find the <string> timing netlist on disk. Please run this fitter stage first, and make sure you have enabled "Optimize Timing" in Advanced Fitter Settings.
+TCL_ERROR	1   	ERROR: Option -no_latch is not supported for the current family.
+TCL_ERROR	1   	ERROR: Values entered did not match any valid operating conditions. Available operating conditions are: <string>
+TCL_ERROR	1   	ERROR: The <string> device family cannot perform automatic multi-corner timing analysis because the family does not support the set_operating_conditions command.
+TCL_ERROR	1   	ERROR: <string> Device family is not supported by the Timing Analyzer.
+TCL_ERROR	1   	ERROR: Illegal value: <string>. Specify an integer ranging from -999999999 to 999999999 for the option -voltage
+TCL_ERROR	1   	ERROR: The design has not been fully routed. If you want to perform Timing Analysis on an earlier netlist please choose which snapshot to load for analysis. Available snapshot(s): <string>
+TCL_ERROR	1   	ERROR: The design has not been fully routed and retimed to optimize timing. If you want to perform Timing Analysis on an earlier netlist please choose which snapshot to load for analysis. Available snapshot(s): <string>
+TCL_ERROR	1   	ERROR: Cannot run the Timing Analyzer (quartus_sta). Fitter (quartus_fit) failed or was not run. Run the Fitter (quartus_fit) successfully before running the Timing Analyzer (create_timing_netlist).
+TCL_ERROR	1   	ERROR: Cannot run the Timing Analyzer (quartus_sta). Analysis and Synthesis (quartus_syn) failed or was not run. Run Analysis and Synthesis (quartus_syn) successfully before running the Timing Analyzer (create_timing_netlist -post_syn).
+TCL_ERROR	1   	ERROR: Delay annotation not run. Run delay annotation before running the Timing Analyzer (quartus_sta).
+TCL_ERROR	1   	ERROR: You can only specify the -snapshot option when Hierarchical Design is enabled.
+TCL_ERROR	1   	ERROR: Pre-fit timing analysis is not supported for the specified operating conditions. Please use the <string>.
+TCL_ERROR	1   	ERROR: The Synthesis snapshot cannot currently be used for timing analysis.
+TCL_ERROR	1   	ERROR: Timing netlist already exists. Delete the timing netlist before running this command.
+TCL_ERROR	1   	ERROR: Unsupported option: "<string>".
+
+---------------------------------------------------------------------------
+
+END_HELP create_timing_netlist
+BEGIN_HELP read_sdc
+---------------------------------------------------------------------------
+
+Usage: read_sdc [-h] [-help] [-long_help] [-hdl] [-instance <instance_name>] [-no_import] [-no_sdc_promotion] [-post_fit] [-post_syn] [-project_relative] [<file_name>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -hdl: Read SDC commands embedded in HDL
+        -instance <instance_name>: Name of the block for which we are reading the SDC file
+        -no_import: Do not automatically import RTL SDCs from the netlist
+        -no_sdc_promotion: Disable instance-bound scoping of constraints
+        -post_fit: For post_syn STA. Load SDCs as if in post_fit (Includes SDC_FILE, HDL Embedded, Entity)
+        -post_syn: For use with STA on fitter snapshots. Load SDCs as if in post_syn mode
+        -project_relative: If passing in a relative path to a file, interpret that path relative to the current project\'s directory instead of STA\'s current directory
+        <file_name>: Name of the SDC file
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Reads an SDC file with all current constraints and exceptions.
+
+If an SDC file is specified, read_sdc only reads that SDC file.  If
+the -hdl option is specified, read_sdc only reads SDC commands that
+were embedded in HDL.
+
+If no arguments are specified, read_sdc reads the default SDC files
+along with any SDC commands that were embedded in HDL.  If one or more
+SDC_FILE assignments exists in the QSF, read_sdc reads all of them in
+order. Otherwise, read_sdc reads the file <revision>.sdc if it exists.
+
+--------------
+Example Usage:
+--------------
+
+project_new test
+create_timing_netlist
+
+# Read SDC commands from test_constraints.sdc
+read_sdc test_constraints.sdc
+
+# Read SDC commands embedded in HDL
+read_sdc -hdl
+
+update_timing_netlist
+
+report_timing
+
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Can't find file "<string>"
+TCL_ERROR	1   	ERROR: The provided instance name does not exist in the current design.
+TCL_ERROR	1   	ERROR: instance_name must be specified when using no_sdc_promotion.
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+
+---------------------------------------------------------------------------
+
+END_HELP read_sdc
+BEGIN_HELP update_timing_netlist
+---------------------------------------------------------------------------
+
+Usage: update_timing_netlist [-h] [-help] [-long_help] [-dynamic_borrow] [-full] [-loop_aware_dynamic_borrow] [-no_borrow] [-recompute_borrow]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -dynamic_borrow: Use time borrowing values that are correct for the current clock constraints
+        -full: Forces creation of an updated timing netlist to ensure correctness
+        -loop_aware_dynamic_borrow: Determine time borrowing values as with the -dynamic_borrow option with an addition loop-detection layer to prevent excessive time borrowing in sequential latch loops
+        -no_borrow: Turn off all time borrowing
+        -recompute_borrow: Recompute optimal time borrowing values
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Updates and applies SDC commands to the timing netlist. The
+update_timing_netlist command expands and validates generated clocks, warns
+about sources in the design that require clock settings, identifies and removes
+combinational loops, and warns about undefined input/output delays.
+
+Most Tcl commands (e.g., report_timing) automatically update the timing netlist
+when necessary. You can use the update_timing_netlist command explicitly to
+control when updating occurs, or to force a full update using the -full option.
+
+The update_timing_netlist command can also be used to control time borrowing
+behavior. Time borrowing is a technique whereby certain flip-flops in certain
+device families are allowed to have signals that arrive late (thus improving
+upstream slack), at the expense of downstream slack. The amount of time
+borrowing allowed at each flip-flop is hardware-dependent.
+
+By default, optimal time borrowing values are computed at the end of the Fitter
+(Finalize) stage (if enabled by your compilation settings), and these are the
+values you will see in the timing reports. To turn off time borrowing support,
+use the -no_borrow option. This is not recommended,	as it may result in
+significantly pessimistic timing results.
+
+If you have changed clock constraints after compiling your design, pre-computed
+optimal time borrowing values may no longer be valid. Time borrowing is turned
+off for the changed clocks, resulting in pessimistic timing. To get optimal
+results once again, run update_timing_netlist with the -recompute_borrow option.
+This may take significant time on large designs, but the results are saved and
+available the next time you run update_timing_netlist without any time borrowing
+options.
+
+The time borrowing optimization algorithm has a few limitation - for example, it
+never borrows any time on sources of cross-clock transfers, sources of paths
+with set_max_delay or set_max_skew constraints, or in any clock domain
+containing at least one level-sensitive latch. If your design is correctly
+constrained, you may overcome these limitations and get better timing results
+with the -dynamic_borrow option, which calculates time borrowing amounts based
+on your actual clock constraints (rather than optimizing for highest FMax within
+each clock domain). Note that -dynamic_borrowing is not recommended for
+overconstrained designs.
+
+Using the -dynamic_borrow option may result in excessive time borrowing in
+sequential loops of level-sensitive latches, potentially leading to worse
+downstream slack. If your design contains such loops and you encounter this
+behavior, use the -loop_aware_dynamic_borrow option to detect sequential latch
+loops when evaluating their borrow amounts. Note that enabling this loop-
+detection feature may result in increased memory consumption and significantly
+increased runtime for large designs.
+
+--------------
+Example Usage:
+--------------
+
+project_open top
+create_timing_netlist
+read_sdc
+update_timing_netlist
+
+report_timing -to_clock clk1
+report_timing -to_clock clk2
+
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+
+---------------------------------------------------------------------------
+
+END_HELP update_timing_netlist
+BEGIN_HELP get_registers
+---------------------------------------------------------------------------
+
+Usage: get_registers [-h] [-help] [-long_help] [-latches] [-no_duplicates] [-nocase] [-nowarn] [<filter>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -latches: Get only latches that match the filter
+        -no_duplicates: Do not match duplicated register names
+        -nocase: Specifies the matching of node names to be case-insensitive
+        -nowarn: Do not issue warning messages about unmatched patterns
+        <filter>: Valid destinations (string patterns are matched using Tcl string matching)
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sdc_ext 2.0
+
+------------
+Description:
+------------
+
+Returns a collection of registers in the design.
+
+The default matching scheme returns not only registers
+whose names match the specified filter, but also
+returns registers duplicated from these registers
+(cells automatically generated from these registers by
+the Quartus Prime software). Use the -no_duplicates
+option to exclude duplicated registers.
+
+The filter for the collection is a Tcl list of
+wildcards, and must follow standard Tcl or
+Timing Analyzer-extension substitution rules. See help for
+the use_timing_analyzer_style_escaping command for details.
+
+
+--------------
+Example Usage:
+--------------
+
+project_open chiptrip
+create_timing_netlist
+
+set regs [get_registers *reg*]
+foreach_in_collection reg $regs {
+    puts [get_object_info -name $reg]
+}
+
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+
+---------------------------------------------------------------------------
+
+END_HELP get_registers
+BEGIN_HELP get_keepers
+---------------------------------------------------------------------------
+
+Usage: get_keepers [-h] [-help] [-long_help] [-no_duplicates] [-nocase] [-nowarn] [<filter>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -no_duplicates: Do not match duplicated keeper names
+        -nocase: Specifies the matching of node names to be case-insensitive
+        -nowarn: Do not issue warning messages about unmatched patterns
+        <filter>: Valid destinations (string patterns are matched using Tcl string matching)
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sdc_ext 2.0
+
+------------
+Description:
+------------
+
+Returns a collection of non-combinational or "keeper"
+nodes in the design.
+
+The default matching scheme returns not only
+non-combinational nodes whose names match the
+specified filter, but also non-combinational nodes
+duplicated from these keepers (refers to cells are
+automatically generated by Quartus from these
+keepers).  Use the -no_duplicates option to exclude
+duplicated keepers.
+
+The filter for the collection is a Tcl list of
+wildcards, and must follow standard Tcl or
+Timing Analyzer-extension substitution rules. See help for
+the use_timing_analyzer_style_escaping command for details.
+
+
+--------------
+Example Usage:
+--------------
+
+project_open chiptrip
+create_timimg_netlist
+
+set kprs [get_keepers *reg*]
+foreach_in_collection kpr $kprs {
+    puts [get_object_info -name $kpr]
+}
+
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+
+---------------------------------------------------------------------------
+
+END_HELP get_keepers
+BEGIN_HELP get_collection_size
+---------------------------------------------------------------------------
+
+Usage: get_collection_size [-h] [-help] [-long_help] [<collection>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        <collection>: Collection
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::misc 1.0
+
+------------
+Description:
+------------
+
+Returns the size of a collection.
+
+Unlike a Tcl list, a collection is a container specific to the
+Quartus Prime software, whose elements can be accessed by using the
+"foreach_in_collection" command.
+
+--------------
+Example Usage:
+--------------
+
+## Displays the number of global assignments
+project_open chiptrip
+set num_global_asgns [get_collection_size [get_all_global_assignments -name {*}]]
+puts $num_global_asgns
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Collection does not exist with name: <string>. Specify the collection name returned by a Tcl command that supports "foreach_in_collection". Note a valid collection name can become invalid if the variable holding the collection goes out of scope, as well as a result of some built-in TCL commands, for example 'string length'.
+TCL_ERROR	1   	ERROR: Nested calls to "foreach_in_collection" with the same collection name "<string>" are not allowed. Specify a different collection name for the other collection.
+
+---------------------------------------------------------------------------
+
+END_HELP get_collection_size
+BEGIN_HELP get_node_info
+---------------------------------------------------------------------------
+
+Usage: get_node_info [-h] [-help] [-long_help] [-asynch_edges] [-cell] [-clock_edges] [-fanout_asynch_edges] [-fanout_clock_edges] [-fanout_edges] [-fanout_synch_edges] [-location] [-name] [-synch_edges] [-type] <node_object>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -asynch_edges: Return a list of asynchronous edge IDs
+        -cell: Return the host cell
+        -clock_edges: Return a list of clock edge IDs
+        -fanout_asynch_edges: Return a list of asynchronous fanout edge IDs
+        -fanout_clock_edges: Return a list of clock fanout edge IDs
+        -fanout_edges: Return a list of fanout edge IDs
+        -fanout_synch_edges: Return a list of synchronous fanout edge IDs
+        -location: Return the atom location in device
+        -name: Return the node name
+        -synch_edges: Return a list of synchronous edge IDs
+        -type: Return the node type
+        <node_object>: Node object
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Gets information about the specified node (referenced by node ID).
+Use Tcl commands such as get_nodes to obtain node IDs. The -type
+option returns "reg", "port", "pin", "net", or "comb". The -name, -type,
+-clock_edges, -synch_edges, -asynch_edges, -fanout_edges, -fanout_clock_edges,
+-fanout_synch_edges, -fanout_asynch_edges, -cell and
+-location options are mutually exclusive.
+
+--------------
+Example Usage:
+--------------
+
+project_open chiptrip
+create_timing_netlist
+set registers [get_registers]
+foreach_in_collection reg $registers {
+    puts "[get_node_info $reg -name]: [get_node_info $reg -type]"
+}
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Object with ID "<string>" is not an object of type <string>. Specify the ID of an object with the correct type.
+TCL_ERROR	1   	ERROR: Cannot find object of ID "<string>". Specify an existing object ID.
+TCL_ERROR	1   	ERROR: Unsupported object type: <string>. Specify a supported object type.
+
+---------------------------------------------------------------------------
+
+END_HELP get_node_info
+BEGIN_HELP get_clocks
+---------------------------------------------------------------------------
+
+Usage: get_clocks [-h] [-help] [-long_help] [-include_generated_clocks] [-nocase] [-nowarn] [-of_objects <object_collection>] [<filter>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -include_generated_clocks: Includes generated clocks derived from the matched clocks
+        -nocase: Specifies the matching of node names to be case-insensitive
+        -nowarn: Do not issue warning messages when querying for clocks
+        -of_objects <object_collection>: Returns all clocks that target (defined on) or drive (determine data frequency of) the nodes in the collection.
+        <filter>: Valid destinations (string patterns are matched using Tcl string matching)
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sdc 1.5
+
+------------
+Description:
+------------
+
+Returns a collection of previously defined clocks in the design. Use a clock
+collection as the -from/to argument of a command (such as set_multicycle_path)
+to refer to all nodes driven by the clocks in the collection.
+
+# The following multicycle constraint applies to all paths ending at registers
+# driven by clk
+set_multicycle_path -to [get_clocks clk] 2
+
+If a filter, which is a Tcl list of wildcards and must follow 
+standard Tcl or Timing Analyzer-extension substitution rules, is specified, then 
+get_clocks returns all previously defined clocks whose names match the filter.
+See the help for use_timing_analyzer_style_escaping for filter rules.
+
+If you use the -of_objects option, you must provide a collection of registers, ports, 
+pins, or cells. The get_clocks command returns a collection of all the previously defined 
+clocks that target these nodes, or if these nodes are not clock targets, all the previously 
+defined clocks that drive these nodes. You cannot use the -of_objects option with the clock 
+name filter. Refer to the long help for examples of using the -of_objects option.
+
+Tip: the get_clocks command can be used as part of SDC commands, as well as for reporting.
+When it is used as part of SDC commands and includes the -include_generated_clocks option,
+the Timing Analyzer needs to analyze the design and may issue warnings about missing clocks.
+The missing clocks might still be created later on in the SDC file and are not
+necessarily indicative of a problem. Use the -nowarn option in this case to suppress
+those warnings. When you use the -nowarn option, pass a node collection generated by another get_*
+ 		collection command as the filter. This way, warnings directly related to the filter resolution are
+ 		still posted.
+
+--------------
+Example Usage:
+--------------
+
+# get clocks that begin with 'c' or 'C', and print out their names and periods: 
+set clocks [get_clocks c* -nocase]
+foreach_in_collection clk $clocks {
+    set name [get_clock_info -name $clk]
+    set period [get_clock_info -period $clk]
+    puts "$name: $period"
+}
+
+# getting the clock that targets a port, and its generated clock: 
+create_clock -name my_clock -period 10.000 [get_ports CLK_100]
+create_generated_clock -name my_gen_clock -divide_by 2 -source [get_ports CLK_100] [get_registers clk_div_reg] 
+get_clocks -nowarn -of_objects [get_ports CLK_100] -include_generated_clocks 
+
+
+# display the name of the clocks that drive registers beginning with 'reg_':
+foreach_in_collection clk_id [get_clocks -nowarn -of_objects [get_registers reg_*]] {
+    puts [get_clock_info -name $clk_id]
+}
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Use the -clock_networks_only option only with the -of_objects option.
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+
+---------------------------------------------------------------------------
+
+END_HELP get_clocks
+BEGIN_HELP get_clock_info
+---------------------------------------------------------------------------
+
+Usage: get_clock_info [-h] [-help] [-long_help] [-child_clocks] [-divide_by] [-duty_cycle] [-edge_shifts] [-edges] [-fall] [-is_inverted] [-latency] [-master_clock] [-master_clock_pin] [-max] [-min] [-multiply_by] [-name] [-nreg_neg] [-nreg_pos] [-offset] [-period] [-phase] [-rise] [-targets] [-type] [-waveform] <clk_object>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -child_clocks: Returns a list of child clock names
+        -divide_by: Return the frequency divider (to the base clock)
+        -duty_cycle: Return the duty cycle
+        -edge_shifts: Return a list of edge shifts that the specified edges are to undergo to yield the final generated clock waveform
+        -edges: Return a list of integer representing edges from the source clock that are to form edges of the generated clock
+        -fall: Return clock fall latency
+        -is_inverted: Return a boolean value to indicate if the generated clock is inverted
+        -latency: Return clock latency
+        -master_clock: Return the master clock name
+        -master_clock_pin: Return the master clock source pin
+        -max: Return max clock latency
+        -min: Return min clock latency
+        -multiply_by: Return the frequency multiplier (to the base clock)
+        -name: Return the clock name
+        -nreg_neg: Return number of registers negatively clocked by clock
+        -nreg_pos: Return number of registers positively clocked by clock
+        -offset: Return the clock offset
+        -period: Return the clock period
+        -phase: Return the clock phase
+        -rise: Return clock rise latency
+        -targets: Return the clock targets collection
+        -type: Return the clock type
+        -waveform: Return the waveform (rise time and fall time)
+        <clk_object>: Clock object
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Returns information about the specified clock (referenced by clock
+ID). Clock IDs can be obtained by Tcl commands such as get_clocks.
+
+The "-type" option returns one of "base", "virtual_base", "generated",
+"virtual_generated".
+
+Options "-name", "-type", "-period", "-duty_cycle", "-waveform",
+"-edges", "-edge_shifts", "-multiply_by", "-divide_by",
+"-is_inverted", "-latency", "-master_clock", and "-targets" are
+mutually exclusive. The "-latency" option requires a specified "-max"
+or "-min" option as well as a "-rise" or "-fall" option.
+
+--------------
+Example Usage:
+--------------
+
+project_open chiptrip
+create_timing_netlist
+set clocks [get_clocks]
+foreach_in_collection clk $clocks {
+    puts "[get_clock_info $clk -name]: [get_clock_info $clk -period]"
+}
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Options are mutually exclusive: <string>. Specify only one of the these options.
+TCL_ERROR	1   	ERROR: Object with ID "<string>" is not an object of type <string>. Specify the ID of an object with the correct type.
+TCL_ERROR	1   	ERROR: Cannot find object of ID "<string>". Specify an existing object ID.
+TCL_ERROR	1   	ERROR: Unsupported object type: <string>. Specify a supported object type.
+
+---------------------------------------------------------------------------
+
+END_HELP get_clock_info
+BEGIN_HELP get_available_operating_conditions
+---------------------------------------------------------------------------
+
+Usage: get_available_operating_conditions [-h] [-help] [-long_help] [-all] [-compile]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -all: Returns all available operating conditions
+        -compile: Returns only the operating conditions that are critical to analyze in the inner loop compilation
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Returns a Tcl collection of available operating conditions for the
+current device. The Tcl collection contains the most extreme operating
+conditions within a user-specified junction temperature range. Use
+the -all option to return all available operating conditions.
+
+--------------
+Example Usage:
+--------------
+
+
+#do report timing for different operating conditions
+foreach_in_collection op [get_available_operating_conditions] {
+    set_operating_conditions $op
+    update_timing_netlist
+    report_timing
+}
+
+#see detailed information about operating conditions
+foreach_in_collection op [get_available_operating_conditions] {
+    puts "Delay Model: [get_operating_conditions_info $op -model]"
+}
+
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+TCL_ERROR	1   	ERROR: VID mode is not supported by part <string>.
+
+---------------------------------------------------------------------------
+
+END_HELP get_available_operating_conditions
+BEGIN_HELP set_operating_conditions
+---------------------------------------------------------------------------
+
+Usage: set_operating_conditions [-h] [-help] [-long_help] [-force_dat] [-grade <c|i|m|e|a>] [-model <fast|slow>] [-speed <speed>] [-temperature <value_in_C>] [-voltage <value_in_mV>] [<list_of_operating_conditions>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -force_dat: Option to force delay annotation (only done when selecting an unanalyzed corner)
+        -grade <c|i|m|e|a>: Option to specify temperature grade
+        -model <fast|slow>: Option to specify timing model
+        -speed <speed>: Speed grade
+        -temperature <value_in_C>: Operating temperature
+        -voltage <value_in_mV>: Operating voltage
+        <list_of_operating_conditions>: list or collection of Operating conditions Tcl objects or names
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Use this command to specify operating conditions different from the
+initial conditions used to create the timing netlist. When a timing
+model is not specified, the slow model is used.
+
+Voltage and temperature options must be used together. These two
+options are not available for all devices. The
+get_available_operating_conditions command returns the list of
+available operating conditions for your device.
+
+Use the -speed option to analyze the design at a different speed grade
+of the selected device.
+
+Use the -grade option to analyze the design at a different temperature
+grade. This option is provided to support what-if analysis and is not
+recommended for final sign-off analysis.
+
+By default, delay annotation is skipped if previously performed.  Use
+-force_dat to rerun delay annotation.
+
+--------------
+Example Usage:
+--------------
+
+#do report timing for different operating conditions one by one
+foreach_in_collection op [get_available_operating_conditions] {
+    set_operating_conditions $op
+    update_timing_netlist
+    report_timing
+}
+
+#set aggregated report timing for all operating conditions when corner aggregation is enabled
+set_operating_conditions [get_available_operating_conditions]
+report_timing
+
+
+#manually set operating conditions
+set_operating_conditions -model fast -temperature 85 -voltage 1200
+update_timing_netlist
+
+#change device speed grade and set operating conditions
+set_operating_conditions -speed 3 -model slow -temperature 0 -voltage 1100
+update_timing_netlist
+
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Cannot set operating conditions for timing netlist created from XML file. Run create_timing_netlist.
+TCL_ERROR	1   	ERROR: Both the -temperature and -voltage options and their values are required.
+TCL_ERROR	1   	ERROR: The ability to select multiple operating conditions at once has been disabled.
+TCL_ERROR	1   	ERROR: Values entered did not match any valid operating conditions. Available operating conditions are: <string>
+TCL_ERROR	1   	ERROR: The <string> device family does not support set_operating_conditions command.
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+TCL_ERROR	1   	ERROR: Illegal value: <string>. Specify an integer ranging from -999999999 to 999999999 for the option -voltage
+TCL_ERROR	1   	ERROR: Unsupported option: "<string>".
+
+---------------------------------------------------------------------------
+
+END_HELP set_operating_conditions
+BEGIN_HELP get_timing_paths
+---------------------------------------------------------------------------
+
+Usage: get_timing_paths [-h] [-help] [-long_help] [-asynch_clock] [-data_delay] [-detail <summary|path_only|path_and_clock|full_path>] [-fall_from <names>] [-fall_from_clock <names>] [-fall_through <names>] [-fall_to <names>] [-fall_to_clock <names>] [-false_path] [-from <names>] [-from_clock <names>] [-hold] [-inter_clock] [-intra_clock] [-less_than_slack <slack limit>] [-npaths <number>] [-nworst <number>] [-pairs_only] [-recovery] [-removal] [-rise_from <names>] [-rise_from_clock <names>] [-rise_through <names>] [-rise_to <names>] [-rise_to_clock <names>] [-setup] [-show_routing] [-through <names>] [-to <names>] [-to_clock <names>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -asynch_clock: Only report paths whose launch and latch clock do not share a common ancestor clock, or were explicitly marked as asynchronous via clock groups
+        -data_delay: Report only paths that are covered by a data delay assignment
+        -detail <summary|path_only|path_and_clock|full_path>: Option to determine how much detail should be shown in the path report
+        -fall_from <names>: Valid sources (string patterns are matched using Tcl string matching)
+        -fall_from_clock <names>: Valid source clocks (string patterns are matched using Tcl string matching)
+        -fall_through <names>: Valid through nodes (string patterns are matched using Tcl string matching)
+        -fall_to <names>: Valid destinations (string patterns are matched using Tcl string matching)
+        -fall_to_clock <names>: Valid destination clocks (string patterns are matched using Tcl string matching)
+        -false_path: Report only paths that are cut by a false path assignment
+        -from <names>: Valid sources (string patterns are matched using Tcl string matching)
+        -from_clock <names>: Valid source clocks (string patterns are matched using Tcl string matching)
+        -hold: Option to report clock hold paths
+        -inter_clock: Only report paths whose launch and latch clock are different
+        -intra_clock: Only report paths whose launch and latch clock are the same
+        -less_than_slack <slack limit>: Limit the paths reported to those with slack values less than the specified limit.
+        -npaths <number>: Specifies the number of paths to report (default=1, or the same value as nworst, if nworst is specified.  Value of 0 causes all paths to be reported but be wary that this may be slow)
+        -nworst <number>: Specifies the maximum number of paths to report for each endpoint.  If unspecified, there is no limit.  If nworst is specified, but npaths is not, npaths defaults to the same value as nworst
+        -pairs_only: When set, paths with the same start and end points are considered equivalent.  Only the worst case path for each unique combination is displayed.
+        -recovery: Option to report recovery paths
+        -removal: Option to report removal paths
+        -rise_from <names>: Valid sources (string patterns are matched using Tcl string matching)
+        -rise_from_clock <names>: Valid source clocks (string patterns are matched using Tcl string matching)
+        -rise_through <names>: Valid through nodes (string patterns are matched using Tcl string matching)
+        -rise_to <names>: Valid destinations (string patterns are matched using Tcl string matching)
+        -rise_to_clock <names>: Valid destination clocks (string patterns are matched using Tcl string matching)
+        -setup: Option to report clock setup paths
+        -show_routing: Option to display detailed routing in the path
+        -through <names>: Valid through nodes (string patterns are matched using Tcl string matching)
+        -to <names>: Valid destinations (string patterns are matched using Tcl string matching)
+        -to_clock <names>: Valid destination clocks (string patterns are matched using Tcl string matching)
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Get a collection of path objects for the worst-case paths.
+
+This command behaves the same as the report_timing command.
+However, instead of reporting the paths, it returns a Tcl
+collection of path objects. You can retrieve path object data
+using the get_path_info and get_point_info commands.
+
+For help on the options shared with report_timing, see the
+report_timing help page.
+
+
+--------------
+Example Usage:
+--------------
+
+# Define a few helper procedures to print out points
+# on a path, and the path itself
+proc get_clock_string { path clk } {
+    set clk_str ""
+    set clk_id [ get_path_info $path -${clk}_clock ]
+
+    if { $clk_id ne "" } {
+        set clk_str [ get_clock_info $clk_id -name ]
+
+        if { [ get_path_info $path -${clk}_clock_is_inverted ] } {
+            append clk_str " (INVERTED)"
+        }
+    }
+
+    return $clk_str
+}
+
+proc print_point { point } {
+    set total     [ get_point_info $point -total    ]
+    set incr      [ get_point_info $point -incr     ]
+    set node_id   [ get_point_info $point -node     ]
+    set type      [ get_point_info $point -type     ]
+    set rf        [ get_point_info $point -rise_fall]
+    set node_name ""
+
+    if { $node_id ne "" } {
+        set node_name [ get_node_info $node_id -name ]
+    }
+
+    puts [format "%10s %8s %2s %-6s %s" $total $incr $rf $type $node_name ]
+}
+
+proc print_path { path } {
+    puts "Slack      : [ get_path_info $path -slack]"
+    puts "To Clock   : [ get_clock_string $path to ]"
+    puts "From Clock : [ get_clock_string $path from]"
+    puts ""
+    puts [format "%10s %8s %-2s %-6s %s" "Total" "Incr" "RF" "Type" "Name"]
+    puts "=================================================================="
+
+    foreach_in_collection pt [ get_path_info $path -arrival_points ] {
+        print_point $pt
+    }
+}
+
+project_open my_project
+
+# Always create the netlist first
+create_timing_netlist
+read_sdc my_project.sdc
+update_timing_netlist
+
+# And now simply iterate over the 10 worst setup paths, printing each path
+foreach_in_collection path [ get_timing_paths -npaths 10 -setup ] {
+    print_path $path
+    puts ""
+}
+
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Option <string> has illegal value: <string>. Specify a legal option value.
+TCL_ERROR	1   	ERROR: Collection type '<string>' is not a valid type for a through collection.  Valid collection types are 'pin' and 'net'
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+TCL_ERROR	1   	ERROR: Report database is not open
+
+---------------------------------------------------------------------------
+
+END_HELP get_timing_paths
+BEGIN_HELP get_path_info
+---------------------------------------------------------------------------
+
+Usage: get_path_info [-h] [-help] [-long_help] [-advanced] [-arrival_points] [-arrival_time] [-borrow_dst] [-borrow_src] [-clock_relationship] [-clock_skew] [-corner] [-data_delay] [-from] [-from_clock] [-from_clock_is_inverted] [-hold_end_multicycle] [-hold_start_multicycle] [-latch_time] [-launch_time] [-num_logic_levels] [-operating_conditions] [-required_points] [-required_time] [-setup_end_multicycle] [-setup_start_multicycle] [-slack] [-to] [-to_clock] [-to_clock_is_inverted] [-type] <path_ref>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -advanced: Return clock pessimism due to advanced effects
+        -arrival_points: Return a collection of point objects for the arrival path
+        -arrival_time: Return the data arrival time for the path
+        -borrow_dst: Return the time borrowed at destination (when the path ends at a level-sensitive latch)
+        -borrow_src: Return the time borrowed at source (when the path starts at a level-sensitive latch)
+        -clock_relationship: Return the clock relationship for the path
+        -clock_skew: Return the clock skew for the path
+        -corner: Returns a string indicating the operating conditions at which the path's delay values are found
+        -data_delay: Return the data delay for the path
+        -from: Return the source node ID
+        -from_clock: Return the source clock ID
+        -from_clock_is_inverted: Return 1 if the source clock is inverted, 0 otherwise
+        -hold_end_multicycle: Return the hold end multicycle for the path
+        -hold_start_multicycle: Return the hold start multicycle for the path
+        -latch_time: Return the latch time for the path
+        -launch_time: Return the launch time for the path
+        -num_logic_levels: Return the number of logic levels on the path between the to node and from node
+        -operating_conditions: Returns a string indicating the operating conditions at which the path's delay values are found
+        -required_points: Return a collection of point objects for the required path
+        -required_time: Return the data required time for the path
+        -setup_end_multicycle: Return the setup end multicycle for the path
+        -setup_start_multicycle: Return the setup start multicycle for the path
+        -slack: Return the slack for the path
+        -to: Return the destination node ID
+        -to_clock: Return the destination clock ID
+        -to_clock_is_inverted: Return 1 if the destination clock is inverted, 0 otherwise
+        -type: Return the type of this path.  Possible return values are: "setup", "hold", "recovery", "removal", "max_path", "min_path"
+        <path_ref>: Path object
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Returns information about the referenced timing path
+object.
+
+You can generate references to path objects with the
+get_timing_paths and get_path functions.
+
+The -type option returns one of the following types:
+"setup", "hold", "recovery", "removal", "max_path", or
+"min_path".
+
+The -from and -to options return the ID of the nodes
+at the start and end, respecitvely, of the arrival
+path. If there is no node, an empty string is
+returned. The -from node remains the same, regardless of
+the level of clock detail provided. It is always the
+first node clocked by the -from clock in the data
+arrival path. You can use the node ID with the
+get_node_info function to obtain additional
+information about the node.
+
+The -from_clock and -to_clock options return the ID of
+the launching and latching clocks, respectively. If
+there is no clock, an empty string is returned. You
+can obtain additional information about the clocks
+using the get_clock_info function.
+
+Path objects generated by get_path do not have clock
+information, required points, or meaningful slack
+values.
+
+The -arrival_points and -required_points options
+return a collection of point objects for the arrival
+and required paths, respectively. By iterating over
+the collection, and using the get_point_info function,
+you can obtain specific details about each portion of
+the path.
+
+If a path was created with additional clock detail,
+the elements of the clock path are included in
+each collection of points.
+
+The values for the -from, -to, and other options are
+either collections or a Tcl list of wildcards used to
+create collections of appropriate types. The values
+used must follow standard Tcl or Timing Analyzer-extension
+substitution rules. See the help for
+use_timing_analyzer_style_escaping for details.
+
+When the path starts at a level-sensitive latch, the
+-borrow_src option may be used to get the time borrowed
+at the source. Similarly, when the path ends at a level-sensitive
+latch, -borrow_dst may be used to get the time borrowed at
+the destination. When these options are used with anything
+other than level-sensitive latches, zero is returned.
+
+For level-sensitive latches, when you use the -launch_time
+or -latch_time options, the times reported do not include time borrowed.
+
+The operating condition corresponding to all of a path's delay and time
+values can be found using the -corner option.
+
+--------------
+Example Usage:
+--------------
+
+# Define a few helper procedures to print out points
+# on a path, and the path itself
+proc get_clock_string { path clk } {
+    set clk_str ""
+    set clk_id [ get_path_info $path -${clk}_clock ]
+
+    if { $clk_id ne "" } {
+        set clk_str [ get_clock_info $clk_id -name ]
+
+        if { [ get_path_info $path -${clk}_clock_is_inverted ] } {
+            append clk_str " (INVERTED)"
+        }
+    }
+
+    return $clk_str
+}
+
+proc print_point { point } {
+    set total     [ get_point_info $point -total    ]
+    set incr      [ get_point_info $point -incr     ]
+    set node_id   [ get_point_info $point -node     ]
+    set type      [ get_point_info $point -type     ]
+    set rf        [ get_point_info $point -rise_fall]
+    set node_name ""
+
+    if { $node_id ne "" } {
+        set node_name [ get_node_info $node_id -name ]
+    }
+
+    puts [format "%10s %8s %2s %-6s %s" $total $incr $rf $type $node_name ]
+}
+
+proc print_path { path } {
+    puts "Slack      : [ get_path_info $path -slack]"
+    puts "To Clock   : [ get_clock_string $path to ]"
+    puts "From Clock : [ get_clock_string $path from]"
+    puts ""
+    puts [format "%10s %8s %-2s %-6s %s" "Total" "Incr" "RF" "Type" "Name"]
+    puts "=================================================================="
+
+    foreach_in_collection pt [ get_path_info $path -arrival_points ] {
+        print_point $pt
+    }
+}
+
+project_open my_project
+
+# Always create the netlist first
+create_timing_netlist
+read_sdc my_project.sdc
+update_timing_netlist
+
+# And now simply iterate over the 10 worst setup paths, printing each path
+foreach_in_collection path [ get_timing_paths -npaths 10 -setup ] {
+    print_path $path
+    puts ""
+}
+
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Object with ID "<string>" is not an object of type <string>. Specify the ID of an object with the correct type.
+
+---------------------------------------------------------------------------
+
+END_HELP get_path_info
+BEGIN_HELP report_timing
+---------------------------------------------------------------------------
+
+Usage: report_timing [-h] [-help] [-long_help] [-append] [-asynch_clock] [-data_delay] [-detail <summary|path_only|path_and_clock|full_path>] [-extra_info <basic|all|none>] [-fall_from <names>] [-fall_from_clock <names>] [-fall_through <names>] [-fall_to <names>] [-fall_to_clock <names>] [-false_path] [-file <name>] [-from <names>] [-from_clock <names>] [-hold] [-inter_clock] [-intra_clock] [-less_than_slack <slack limit>] [-npaths <number>] [-nworst <number>] [-pairs_only] [-panel_name <name>] [-recovery] [-removal] [-rise_from <names>] [-rise_from_clock <names>] [-rise_through <names>] [-rise_to <names>] [-rise_to_clock <names>] [-setup] [-show_routing] [-split_by_corner] [-stdout] [-through <names>] [-to <names>] [-to_clock <names>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -append: If output is sent to a file, this option appends the result to that file.  Otherwise, the file is overwritten. This option is not supported for HTML files.
+        -asynch_clock: Only report paths whose launch and latch clock do not share a common ancestor clock, or were explicitly marked as asynchronous via clock groups
+        -data_delay: Report only paths that are covered by a data delay assignment
+        -detail <summary|path_only|path_and_clock|full_path>: Option to determine how much detail should be shown in the path report
+        -extra_info <basic|all|none>: Option to determine how much detail should be shown in the Extra Info report
+        -fall_from <names>: Valid sources (string patterns are matched using Tcl string matching)
+        -fall_from_clock <names>: Valid source clocks (string patterns are matched using Tcl string matching)
+        -fall_through <names>: Valid through nodes (string patterns are matched using Tcl string matching)
+        -fall_to <names>: Valid destinations (string patterns are matched using Tcl string matching)
+        -fall_to_clock <names>: Valid destination clocks (string patterns are matched using Tcl string matching)
+        -false_path: Report only paths that are cut by a false path assignment
+        -file <name>: Sends the results to an ASCII or HTML file. Depending on the extension
+        -from <names>: Valid sources (string patterns are matched using Tcl string matching)
+        -from_clock <names>: Valid source clocks (string patterns are matched using Tcl string matching)
+        -hold: Option to report clock hold paths
+        -inter_clock: Only report paths whose launch and latch clock are different
+        -intra_clock: Only report paths whose launch and latch clock are the same
+        -less_than_slack <slack limit>: Limit the paths reported to those with slack values less than the specified limit.
+        -npaths <number>: Specifies the number of paths to report (default=1, or the same value as nworst, if nworst is specified.  Value of 0 causes all paths to be reported but be wary that this may be slow)
+        -nworst <number>: Specifies the maximum number of paths to report for each endpoint.  If unspecified, there is no limit.  If nworst is specified, but npaths is not, npaths defaults to the same value as nworst
+        -pairs_only: When set, paths with the same start and end points are considered equivalent.  Only the worst case path for each unique combination is displayed.
+        -panel_name <name>: Sends the results to the panel and specifies the name of the new panel
+        -recovery: Option to report recovery paths
+        -removal: Option to report removal paths
+        -rise_from <names>: Valid sources (string patterns are matched using Tcl string matching)
+        -rise_from_clock <names>: Valid source clocks (string patterns are matched using Tcl string matching)
+        -rise_through <names>: Valid through nodes (string patterns are matched using Tcl string matching)
+        -rise_to <names>: Valid destinations (string patterns are matched using Tcl string matching)
+        -rise_to_clock <names>: Valid destination clocks (string patterns are matched using Tcl string matching)
+        -setup: Option to report clock setup paths
+        -show_routing: Option to display detailed routing in the path
+        -split_by_corner: When set, running this command with the -panel option creates a folder containing versions of this report for selected multiple operating conditions. This option has no effect when used with the -stdout or -file options.
+        -stdout: Send output to stdout, via messages.  You only need to use this option if you have selected another output format, such as a file, and would also like to receive messages.
+        -through <names>: Valid through nodes (string patterns are matched using Tcl string matching)
+        -to <names>: Valid destinations (string patterns are matched using Tcl string matching)
+        -to_clock <names>: Valid destination clocks (string patterns are matched using Tcl string matching)
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Reports the worst-case paths and associated slack.
+
+Use the "-setup", "-hold", "-recovery", or "-removal" options to
+specify which kind of analysis should be performed.
+
+The report can be directed to the Tcl console ("-stdout", default), a
+file ("-file"), the Timing Analyzer graphical user interface
+("-panel_name"), or any combination of the three.
+
+You can limit the analysis performed by this command to specific
+start and end points, using the "-from" and "-to" options. Use the
+"-rise_from" and "-fall_from" options to limit the analysis to
+endpoints with established high or low starting states. Use the
+"-rise_to" and "-fall_to" options to limit the analysis to
+destination points with high or low ending states.
+
+The analysis can be further limited to clocks using the "-from_clock"
+and "-to_clock"	options, or to specific edges of the clock using the
+"-rise_from_clock", "-fall_from_clock", "-rise_to_clock", and
+"-fall_to_clock" options.
+
+Additionally, the "-through" option can be used to restrict analysis
+to paths which go through specified pins or nets. Use the "-rise_through"
+and "-fall_through" options to limit the analysis to intermediate points
+with high or low ending states.
+
+Use "-npaths" to limit the number of paths to report.  If you do not
+specify this option, only the single worst-case path is provided.  Use
+the "-less_than_slack" option to limit output to all paths with slack
+less than the specified value, up to the number specified by
+"-npaths".
+
+Use "-nworst" to limit the number of paths reported for each unique
+endpoint.  If you do not specify this option, the number of paths
+reported for each destination node is bounded only by the "-npaths"
+option.  If this option is used, but "-npaths" is not specified, then
+"-npaths" defaults to the same value specified for "-nworst".
+
+Use the "-pairs_only" option to filter the output further, restricting
+the results to only unique combinations of start and end points.
+
+Use the "-detail" option to specify the desired level of report
+detail.  "-summary" generates a single table listing only the
+highlights of each path (and is the same as "-summary" option, which
+this replaces). "-path_only" reports the path from the source to the
+destination without any detail about the clock path.  Instead, the
+clock network delay is shown as a single number.  This is the default
+behavior. "-path_and_clock" extends the arrival and required paths back
+to the launch and latch clocks.  "-full_path" continues tracing
+back through generated clocks to the underlying base clock.
+
+The "-show_routing" option displays detailed routing information in
+the path.  Lines that were marked as "IC" without the option are still
+shown, but only as a placeholder.  The routing elements for that line
+are broken out individually and listed before the line.
+
+The "-false_path" option reports only those paths that are normally
+hidden by false_path assignments or clock to clock cuts.  Like the
+default report, this option only reports constrained paths.
+
+The "-data_delay" option reports only those paths that are constrained
+by set_data_delay. Without this option, such paths are excluded from
+the report.
+
+The return value of this command is a two-element list.  The first
+number is the number of paths found in the analysis.  The second is
+the worst-case slack, in terms of the current default time unit.
+
+The "RF" column in the report output uses a two-letter symbol to
+indicate the rise/fall transition that occurs at that point in the
+path.
+
+Possible "RF" values are:
+
+	Value     Description
+	-------   -------------------------------
+	(empty)   Unknown transition
+	R         Rising output
+	F         Falling output
+	RR        Rising input, rising output
+	RF        Rising input, falling output
+	FR        Falling input, rising output
+	FF        Falling input, falling output
+
+
+The "Type" column in the report uses a symbol to indicate what type
+of delay occurs at that point in the path.
+
+Possible "Type" values are:
+
+	Value     Description
+	-------   -------------------------------------------------------
+	CELL      Cell delay
+	COMP      PLL clock network compensation delay
+	IC        Interconnect delay
+	iExt      External input delay
+	LOOP      Lumped combinational loop delay
+	oExt      External output delay
+	RE        Routing element (only for paths generated with the
+	          -show_routing option)
+	uTco      Register micro-Tco time
+	uTsu      Register micro-Tsu time
+	uTh       Register micro-Th time
+
+The values of the "-from", "-to", and "-through" options are either
+collections or a Tcl list of wildcards used to create collections
+of appropriate types. The values used must follow standard Tcl or
+Timing Analyzer-extension substitution rules.  See the help for
+use_timing_analyzer_style_escaping for details.
+
+--------------
+Example Usage:
+--------------
+
+project_open my_project
+
+# Always create the netlist first
+create_timing_netlist
+read_sdc my_project.sdc
+update_timing_netlist
+
+# Run a setup analysis between nodes "foo" and "bar",
+# reporting the worst-case slack if a path is found.
+
+set my_list [report_timing -from foo -to bar]
+set num_paths [lindex $my_list 0]
+set wc_slack [lindex $my_list 1]
+if { $num_paths > 0 } {
+    puts "Worst case slack -from foo -to bar is $wc_slack"
+}
+
+# The following command is optional
+delete_timing_netlist
+
+project_close
+
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Option <string> has illegal value: <string>. Specify a legal option value.
+TCL_ERROR	1   	ERROR: Collection type '<string>' is not a valid type for a through collection.  Valid collection types are 'pin' and 'net'
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+TCL_ERROR	1   	ERROR: Report database is not open
+
+---------------------------------------------------------------------------
+
+END_HELP report_timing
+BEGIN_HELP project_close
+---------------------------------------------------------------------------
+
+Usage: project_close [-h] [-help] [-long_help] [-dont_export_assignments]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -dont_export_assignments: Do not export assignments to file
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::project 7.0
+
+------------
+Description:
+------------
+
+Closes an open project.
+
+The assignments created or modified during an open project
+are committed to the Quartus Prime Settings File (.qsf) during a 
+"project_close", unless you use the "-dont_export_assignments"
+option.
+
+--------------
+Example Usage:
+--------------
+
+## Close the project if open
+if [is_project_open] {
+   project_close
+}
+## Close the project if open
+## and do not export the assignments
+if [is_project_open] {
+   project_close -dont_export_assignments
+}
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Can't find active revision name. Make sure there is an open, active revision name.
+TCL_ERROR	1   	ERROR: Entity does not exist or uses illegal name characters: <string>. Specify a legal entity name.
+TCL_ERROR	1   	ERROR: Failed when attempting to write assignments back to QSF.
+TCL_ERROR	1   	ERROR: Can't run Tcl command while a process is in progress: <string>. To run the command, stop the compilation or simulation; or wait for the compilation or simulation to complete.
+TCL_ERROR	1   	ERROR: You must open a project before you can use this command.
+
+---------------------------------------------------------------------------
+
+END_HELP project_close
+Info (23030): Evaluation of Tcl script /home/uwb_student00/ahls/new_BSP/work_ahls_persona_work21_csr02/csr-help01/help.tcl was successful
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 1310 megabytes
+    Info: Processing ended: Wed Sep 23 12:22:54 2026
+    Info: Elapsed time: 00:00:00
+    Info: System process ID: 131890
