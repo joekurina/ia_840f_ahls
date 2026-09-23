@@ -1,0 +1,20 @@
+--- run-fit01.py.in
++++ run-fit02.py.in
+@@ -69,7 +69,7 @@
+ 
+ def limit_child():
+  os.sched_setaffinity(0,cpus)
+- resource.setrlimit(resource.RLIMIT_AS,(16*1024**3,16*1024**3))
++ resource.setrlimit(resource.RLIMIT_AS,(32*1024**3,32*1024**3))
+  resource.setrlimit(resource.RLIMIT_CORE,(0,0))
+ 
+ def native(label,argv):
+@@ -130,7 +130,7 @@
+  result['success_marker']='Quartus Prime Fitter was successful' in log
+  result['success']=result['complete'] and 'error' not in result and len(result['commands'])==1 and result['commands'][0].get('effective_rc')==0 and not result['diagnostics'] and result['success_marker'] and not result['postflight_errors'] and all(result.get(k) is True for k in ('setup_unchanged','release_unchanged','tools_unchanged','bound_inputs_unchanged'))
+  result['ended']=datetime.now(timezone.utc).isoformat();persist();blob=gzip.compress(json.dumps(result,sort_keys=True).encode(),mtime=0);(R/'result.json.gz').write_bytes(blob)
+- subprocess.run(['tmux','load-buffer','-b','ia840f_persona_fit01','-'],input=blob,check=True);subprocess.run(['tmux','set-buffer','-b','ia840f_persona_fit01_sha256',hashlib.sha256(blob).hexdigest()],check=True)
++ subprocess.run(['tmux','load-buffer','-b','ia840f_persona_fit02','-'],input=blob,check=True);subprocess.run(['tmux','set-buffer','-b','ia840f_persona_fit02_sha256',hashlib.sha256(blob).hexdigest()],check=True)
+ rc=result['commands'][-1].get('effective_rc',125) if result['commands'] else 125
+ if not result['success']:rc=rc or 125
+ raise SystemExit(128-rc if rc<0 else rc)

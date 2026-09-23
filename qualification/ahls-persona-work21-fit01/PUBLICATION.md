@@ -1,0 +1,9 @@
+# Publication — accepted actual Work21 AHLS fit02
+
+This milestone closes **bounded fit02 evidence with findings** only. [Acceptance](RESULT-ACCEPTANCE.md) consumes the exact [FINAL review](independent-review01.md), while preserving failed fit01 and all inherited limitations. It does not publish or accept the running STA successor.
+
+Publication uses a size/hash-reviewed explicit file allowlist and a **2,000,000-byte per-file cap**. The selected small native logs/reports, summaries, QSF/QPF, warning/partition ledgers, source-delta/output-role records, runner templates and finite collector scripts are retained byte-for-byte. Native whitespace is evidence; exact staged whitespace exceptions are listed separately, not normalized or globally waived. No license bytes, installed runtime binaries, raw agent transcripts, vendor-source snapshots, encoded full runners, programming images or QDB payloads are included.
+
+Full archives, payload-bearing launchers, vendor-source captures and oversized native reports remain local and are SHA256-referenced in [the local-artifact ledger](publication-local-artifacts01.json), [frozen package](review-package01.json) and result receipts. The directory `.gitignore` preserves those exclusion classes; explicit small report entries are force-added only from the reviewed allowlist. Original generated source and final QDB binaries remain bound evidence, not repository blobs.
+
+Before commit: require empty index, exact expected base HEAD, no active hooks, unchanged unrelated files and explicit staged path/blob equality. After push: compare local HEAD, tracking origin/main and actual remote refs/heads/main, then verify every committed selected blob. Publication verification records live under the runtime scratch publication directory; no second commit is needed merely to record its own commit hash.
