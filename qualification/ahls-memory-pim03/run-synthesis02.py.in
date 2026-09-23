@@ -1,0 +1,140 @@
+import os,socket,json,hashlib,base64,subprocess,time,signal,resource,shutil,gzip,re
+from pathlib import Path
+from datetime import datetime,timezone
+if not __debug__:raise RuntimeError("optimized Python forbidden")
+C=@CONFIG@
+assert socket.gethostname()=="Agilex7Workstation" and os.getuid()==1000 and os.environ.get("TMUX")
+B=Path("/home/uwb_student00/ahls/new_BSP");R=B/"work_ahls_memory_pim25_03"/C["run"];S=Path(C["source"])
+assert not R.exists()
+def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def bound_inventory(root, inventory=None):
+ for n,e in (C["inventory"] if inventory is None else inventory).items():
+  assert not Path(n).is_absolute() and ".." not in Path(n).parts
+  p=root/n;assert p.is_file() and not p.is_symlink() and p.stat().st_size==e["bytes"] and digest(p)==e["sha256"],str(p)
+ return True
+bound_inventory(S)
+assert set(C["generated_overlays"]) <= set(C["inventory"])
+expected=copy_inventory={n:dict(e) for n,e in C["inventory"].items()}
+for n,e in C["generated_overlays"].items():
+ b=base64.b64decode(e["base64"],validate=True)
+ assert len(b)==e["bytes"] and hashlib.sha256(b).hexdigest()==e["sha256"]
+ expected[n]={"bytes":len(b),"sha256":e["sha256"]}
+assert expected==C["candidate_inventory"]
+for t in C["tools"].values():assert digest(Path(t["path"]))==t["sha256"]
+mem=int(next(l.split()[1] for l in Path("/proc/meminfo").read_text().splitlines() if l.startswith("MemAvailable:")))*1024
+disk=shutil.disk_usage(B).free;assert mem>80_000_000_000 and disk>10_000_000_000
+competing=[]
+for p in Path("/proc").iterdir():
+ if not p.name.isdigit():continue
+ try:
+  exe=os.readlink(p/"exe")
+  if Path(exe).name in {"quartus_fit","quartus_syn","quartus_sta","quartus_sh","quartus_ipgenerate","vlog","vsim","vopt","aoc","qsys-script","qsys-generate"}:competing.append({"pid":int(p.name),"exe":exe,"argv":(p/"cmdline").read_bytes().decode().split("\0")})
+ except (FileNotFoundError,ProcessLookupError,PermissionError):pass
+assert not competing,competing
+R.mkdir(parents=True,exist_ok=False);D=R/"generated";D.mkdir();(R/"home").mkdir();(R/"tmp").mkdir()
+for n,e in C["inventory"].items():
+ b=(S/n).read_bytes();assert hashlib.sha256(b).hexdigest()==e["sha256"];p=D/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b)
+bound_inventory(D)
+for n,e in C["generated_overlays"].items():
+ (D/n).write_bytes(base64.b64decode(e["base64"],validate=True))
+bound_inventory(D,C["candidate_inventory"])
+for p,h in C["platform_originals"].items():
+ assert digest(Path(p))==h,(p,"platform source drift")
+for name,e in C["core_inputs"].items():
+ assert not Path(name).is_absolute() and ".." not in Path(name).parts
+ b=base64.b64decode(e["base64"],validate=True);assert len(b)==e["bytes"] and hashlib.sha256(b).hexdigest()==e["sha256"]
+ p=R/"rtl"/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b)
+(R/"ia840f_ahls_memory_pim_elab.qsf").write_text(C["qsf"]);(R/"ia840f_ahls_memory_pim_elab.qpf").write_text(C["qpf"])
+qroot=Path("/opt/altera/25.1/quartus");lic="/home/uwb_student00/quartus_25/LR-191011_License.dat"
+env={"HOME":str(R/"home"),"USER":"uwb_student00","LOGNAME":"uwb_student00","LANG":"C","PATH":str(qroot/"bin")+":"+str(qroot/"sopc_builder/bin")+":/usr/bin:/bin","TMPDIR":str(R/"tmp"),"QUARTUS_ROOTDIR_OVERRIDE":str(qroot),"LM_LICENSE_FILE":lic,"MGLS_LICENSE_FILE":lic,"SALT_LICENSE_SERVER":lic}
+cpus=set(sorted(os.sched_getaffinity(0))[:2]);result={"run":C["run"],"started":datetime.now(timezone.utc).isoformat(),"cwd":str(R),"commands":[],"tools":C["tools"],"source_root":str(S),"source_inventory":C["inventory"],"project_inputs":{"qsf":C["qsf"],"qpf":C["qpf"]},"import_archive_sha256":C["import_archive_sha256"],"import_review_sha256":C["import_review_sha256"],"resource_preflight":{"mem_available":mem,"disk_free":disk,"competing_native":competing,"cpus":sorted(cpus)},"hardware_access":False,"ddr_simulation":"SKIPPED BY USER","complete":False}
+def persist(): (R/"status.json").write_text(json.dumps(result,indent=2)+"\n")
+
+def live_group(gid):
+ out=[]
+ for p in Path("/proc").iterdir():
+  if not p.name.isdigit():continue
+  try:
+   parts=(p/"stat").read_text().rsplit(")",1)[1].split()
+   if int(parts[2])==gid and parts[0]!="Z":out.append(int(p.name))
+  except (FileNotFoundError,ProcessLookupError,PermissionError):pass
+ return out
+
+def limit_child():
+ os.sched_setaffinity(0,cpus)
+ resource.setrlimit(resource.RLIMIT_AS,(16*1024**3,16*1024**3))
+ resource.setrlimit(resource.RLIMIT_CORE,(0,0))
+
+def native(label,argv):
+ rec={"label":label,"argv":argv,"started":datetime.now(timezone.utc).isoformat()};result["commands"].append(rec);persist()
+ timedout=False;descendants_after_leader=False;p=None
+ with (R/(label+".log")).open("xb") as log:
+  try:
+   p=subprocess.Popen(argv,cwd=R,env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True,preexec_fn=limit_child)
+   rec["pid"]=p.pid;rec["start_ticks"]=(Path("/proc")/str(p.pid)/"stat").read_text().rsplit(")",1)[1].split()[19];persist()
+   deadline=time.monotonic()+600
+   while os.waitid(os.P_PID,p.pid,os.WEXITED|os.WNOHANG|os.WNOWAIT) is None:
+    if time.monotonic()>deadline:timedout=True;break
+    time.sleep(0.1)
+   residual=live_group(p.pid)
+   rec["descendants_observed_at_leader_exit"]=residual
+   # Native frontends can finish just before their short-lived helpers.
+   while residual and not timedout and time.monotonic()<deadline:
+    time.sleep(0.1);residual=live_group(p.pid)
+   if residual:timedout=True
+   descendants_after_leader=bool(residual)
+
+  finally:
+   if p is not None:
+    # Leader remains unreaped until all possible process-group signals finish.
+    if live_group(p.pid):
+     os.killpg(p.pid,signal.SIGTERM);end=time.monotonic()+3
+     while live_group(p.pid) and time.monotonic()<end:time.sleep(0.1)
+     if live_group(p.pid):os.killpg(p.pid,signal.SIGKILL)
+    rec["native_rc"]=p.wait();rec["timeout"]=timedout;rec["descendants_after_leader"]=descendants_after_leader
+    rec["ended"]=datetime.now(timezone.utc).isoformat();persist()
+    rec["owned_group_live_after"]=live_group(p.pid)
+    rec["effective_rc"]=124 if timedout else (125 if descendants_after_leader or rec["owned_group_live_after"] else rec["native_rc"])
+    persist()
+ return rec["effective_rc"]
+try:
+ rc=native("synthesis",[C["tools"]["launcher"]["path"],"--read_settings_files=on","--write_settings_files=off","ia840f_ahls_memory_pim_elab","-c","ia840f_ahls_memory_pim_elab"])
+ result["complete"]=True
+except Exception as e:result["error"]=repr(e)
+finally:
+ result["postflight_errors"]=[]
+ def preserve(label,action):
+  try:result[label]=bool(action())
+  except Exception as e:result[label]=False;result["postflight_errors"].append({"label":label,"error":repr(e)})
+ preserve("original_inputs_unchanged",lambda:bound_inventory(S))
+ preserve("copied_inputs_unchanged",lambda:bound_inventory(D,C["candidate_inventory"]))
+ preserve("platform_originals_unchanged",lambda:all(digest(Path(p))==h for p,h in C["platform_originals"].items()))
+ preserve("core_inputs_unchanged",lambda:all((R/"rtl"/n).stat().st_size==e["bytes"] and digest(R/"rtl"/n)==e["sha256"] for n,e in C["core_inputs"].items()))
+ preserve("tools_unchanged",lambda:all(digest(Path(t["path"]))==t["sha256"] for t in C["tools"].values()))
+ preserve("qsf_unchanged",lambda:(R/"ia840f_ahls_memory_pim_elab.qsf").read_text()==C["qsf"])
+ result["core_input_hashes"]={n:{k:v for k,v in e.items() if k!="base64"} for n,e in C["core_inputs"].items()};result["files"]={};result["outputs"]={}
+ result["candidate_generated_inventory"]=C["candidate_inventory"]
+ result["candidate_provenance"]={k:C[k] for k in ("functional_source_binding_sha256","functional_result_sha256","pim_predecessor_review_sha256","guard_review_sha256","guard_result_sha256")}
+ for n in C["capture_generated"]:
+  p=D/n;b=p.read_bytes();e=C["candidate_inventory"][n]
+  assert len(b)==e["bytes"] and hashlib.sha256(b).hexdigest()==e["sha256"]
+  result["files"]["generated/"+n]={**e,"base64":base64.b64encode(b).decode()}
+ for p in sorted(R.rglob("*")):
+  if not p.is_file() or p.is_symlink() or p.is_relative_to(D) or p.is_relative_to(R/"home") or p.is_relative_to(R/"tmp") or p.name=="status.json":continue
+  before=p.stat();b=p.read_bytes();after=p.stat();assert (before.st_size,before.st_mtime_ns)==(after.st_size,after.st_mtime_ns)
+  n=str(p.relative_to(R));e={"bytes":len(b),"sha256":hashlib.sha256(b).hexdigest()};result["outputs"][n]=e
+  if p.suffix in (".rpt",".summary",".log",".qsf",".qpf"):
+   assert len(b)<=120_000_000;result["files"][n]={**e,"base64":base64.b64encode(b).decode()}
+ log=(R/"synthesis.log").read_text(errors="replace") if (R/"synthesis.log").is_file() else ""
+ result["errors"]=[l for l in log.splitlines() if re.search(r"\b(?:Error|Fatal)(?:\s+\([^)]*\))?\s*:",l,re.I)]
+ result["success_marker"]="Quartus Prime Synthesis was successful" in log
+ result["native_stage_pass"]=result["complete"] and "error" not in result and len(result["commands"])==1 and result["commands"][0].get("effective_rc")==0 and not result["errors"] and result["success_marker"]
+ result["accepted_by_runner"]=result["native_stage_pass"] and not result["postflight_errors"] and all(result.get(k) is True for k in ("original_inputs_unchanged","copied_inputs_unchanged","platform_originals_unchanged","tools_unchanged","qsf_unchanged","core_inputs_unchanged"))
+ result["ended"]=datetime.now(timezone.utc).isoformat();persist()
+ blob=gzip.compress(json.dumps(result,sort_keys=True).encode(),compresslevel=6,mtime=0);(R/"result.json.gz").write_bytes(blob)
+ subprocess.run(["tmux","load-buffer","-b","ia840f_mempim03_syn25_"+C["run"],"-"],input=blob,check=True)
+ subprocess.run(["tmux","set-buffer","-b","ia840f_mempim03_syn25_"+C["run"]+"_sha256",hashlib.sha256(blob).hexdigest()],check=True)
+ print("RESULT_SHA256="+hashlib.sha256(blob).hexdigest(),flush=True);print("RUNNER_ACCEPTED="+str(result["accepted_by_runner"]),flush=True)
+rc=result["commands"][-1].get("effective_rc",125) if result["commands"] else 125
+if not result["accepted_by_runner"]:rc=rc or 125
+raise SystemExit(128-rc if rc<0 else rc)

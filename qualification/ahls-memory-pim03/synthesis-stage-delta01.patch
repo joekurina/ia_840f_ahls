@@ -1,0 +1,30 @@
+--- run-elaboration.py.in
++++ run-synthesis.py.in
+@@ -98,7 +98,7 @@
+     persist()
+  return rec["effective_rc"]
+ try:
+- rc=native("elaboration",[C["tools"]["launcher"]["path"],"--analysis_and_elaboration","--read_settings_files=on","--write_settings_files=off","ia840f_ahls_memory_pim_elab","-c","ia840f_ahls_memory_pim_elab"])
++ rc=native("synthesis",[C["tools"]["launcher"]["path"],"--synthesis","--read_settings_files=on","--write_settings_files=off","ia840f_ahls_memory_pim_elab","-c","ia840f_ahls_memory_pim_elab"])
+  result["complete"]=True
+ except Exception as e:result["error"]=repr(e)
+ finally:
+@@ -125,15 +125,15 @@
+   n=str(p.relative_to(R));e={"bytes":len(b),"sha256":hashlib.sha256(b).hexdigest()};result["outputs"][n]=e
+   if p.suffix in (".rpt",".summary",".log",".qsf",".qpf"):
+    assert len(b)<=120_000_000;result["files"][n]={**e,"base64":base64.b64encode(b).decode()}
+- log=(R/"elaboration.log").read_text(errors="replace") if (R/"elaboration.log").is_file() else ""
++ log=(R/"synthesis.log").read_text(errors="replace") if (R/"synthesis.log").is_file() else ""
+  result["errors"]=[l for l in log.splitlines() if re.search(r"\b(?:Error|Fatal)(?:\s+\([^)]*\))?\s*:",l,re.I)]
+  result["success_marker"]="Quartus Prime Synthesis was successful" in log
+  result["native_stage_pass"]=result["complete"] and "error" not in result and len(result["commands"])==1 and result["commands"][0].get("effective_rc")==0 and not result["errors"] and result["success_marker"]
+  result["accepted_by_runner"]=result["native_stage_pass"] and not result["postflight_errors"] and all(result.get(k) is True for k in ("original_inputs_unchanged","copied_inputs_unchanged","platform_originals_unchanged","tools_unchanged","qsf_unchanged","core_inputs_unchanged"))
+  result["ended"]=datetime.now(timezone.utc).isoformat();persist()
+  blob=gzip.compress(json.dumps(result,sort_keys=True).encode(),compresslevel=6,mtime=0);(R/"result.json.gz").write_bytes(blob)
+- subprocess.run(["tmux","load-buffer","-b","ia840f_mempim03_elab25_"+C["run"],"-"],input=blob,check=True)
+- subprocess.run(["tmux","set-buffer","-b","ia840f_mempim03_elab25_"+C["run"]+"_sha256",hashlib.sha256(blob).hexdigest()],check=True)
++ subprocess.run(["tmux","load-buffer","-b","ia840f_mempim03_syn25_"+C["run"],"-"],input=blob,check=True)
++ subprocess.run(["tmux","set-buffer","-b","ia840f_mempim03_syn25_"+C["run"]+"_sha256",hashlib.sha256(blob).hexdigest()],check=True)
+  print("RESULT_SHA256="+hashlib.sha256(blob).hexdigest(),flush=True);print("RUNNER_ACCEPTED="+str(result["accepted_by_runner"]),flush=True)
+ rc=result["commands"][-1].get("effective_rc",125) if result["commands"] else 125
+ if not result["accepted_by_runner"]:rc=rc or 125

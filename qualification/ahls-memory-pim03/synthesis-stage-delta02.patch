@@ -1,0 +1,11 @@
+--- run-synthesis.py.in
++++ run-synthesis02.py.in
+@@ -98,7 +98,7 @@
+     persist()
+  return rec["effective_rc"]
+ try:
+- rc=native("synthesis",[C["tools"]["launcher"]["path"],"--synthesis","--read_settings_files=on","--write_settings_files=off","ia840f_ahls_memory_pim_elab","-c","ia840f_ahls_memory_pim_elab"])
++ rc=native("synthesis",[C["tools"]["launcher"]["path"],"--read_settings_files=on","--write_settings_files=off","ia840f_ahls_memory_pim_elab","-c","ia840f_ahls_memory_pim_elab"])
+  result["complete"]=True
+ except Exception as e:result["error"]=repr(e)
+ finally:

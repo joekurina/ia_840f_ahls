@@ -1,0 +1,5 @@
+# synth01 — stage-only command without prerequisite database
+
+Native/effective/outer3, no timeout or surviving owned group; all six preservation flags true. The installed --help=synthesis recognized the flag but returned no semantics. `quartus_syn --synthesis` performs only the later stage and requires prior Analysis & Elaboration in that exact project database. Fresh synth01 intentionally contained no predecessor QDB, so native output reports that prerequisite absent, plus23035 when the failure handler tries loading nonexistent report.cmp. This is a runner invocation defect, not a tested RTL synthesis failure.
+
+Successor synth02 uses the source-identical fresh project and the normal `quartus_syn --read_settings_files=on --write_settings_files=off <project> -c <revision>` invocation proven by retained Work21 full-synthesis native logs. Only the stage selector is removed. It runs A&E plus synthesis, not an unchanged A&E-only rerun. No predecessor QDB is modified or copied; no tool, source, clock, reset, pin or SDC delta. Failed artifacts remain unchanged.

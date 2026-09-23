@@ -1,0 +1,103 @@
+--- pim02/ofs_plat_afu.sv
++++ pim03/ofs_plat_afu.sv
+@@ -1,4 +1,4 @@
+-// IA840F memory AFU: actual Work21 PIM + connected AHLS/DMA component.
++// IA840F memory AFU: actual PIM + page-safe banks + full-address MMIO guard.
+ // Architecture reference: pinned AI Suite OFS primary-host/per-bank shims.
+ // Separate source list from the existing scalar ofs_plat_afu; never compile both.
+ `include "ofs_plat_if.vh"
+@@ -25,6 +25,17 @@
+         .BUFFER_READ_RESPONSES(1), .ADD_CLOCK_CROSSING(1), .ADD_TIMING_REG_STAGES(3)) primary_axi (
+         .to_fiu(plat_ifc.host_chan.ports[0]), .host_mem_to_afu(host_mem),
+         .mmio_to_afu(mmio), .afu_clk(core_clk), .afu_reset_n(core_reset_n));
++
++    // Keep the full 20-bit MMIO address until admission, before PD decoding.
++    // The guard is not a CDC: both interfaces share the primary PIM domain.
++    ofs_plat_axi_mem_lite_if #(
++        .ADDR_WIDTH(ofs_plat_host_chan_pkg::MMIO_ADDR_WIDTH_BYTES), .DATA_WIDTH(64),
++        .RID_WIDTH(16), .WID_WIDTH(16), .USER_WIDTH(1)) guarded_mmio();
++    assign guarded_mmio.clk = mmio.clk;
++    assign guarded_mmio.reset_n = mmio.reset_n;
++    assign guarded_mmio.instance_number = mmio.instance_number;
++    ia840f_ahls_mmio_guard mmio_guard (
++        .upstream(mmio), .downstream(guarded_mmio));
+ 
+     // Expanded arbitration IDs are retained by the PIM user_ext mapper,
+     // not truncated to the physical memory controller's nine-bit IDs.
+@@ -57,7 +68,7 @@
+     wire kernel_irq_unrouted;
+     wire [63:0] kernel_exception_not_checker;
+     wire mmio_single_rlast;
+-    // Outer address/posted-error guard and functional/reset/PR tests are open.
++    // Full-address admission is present; PCIe ordering/global drain/reset/PR are open.
+     // This structural checkpoint is not a deployable or hardware-qualified AFU.
+     ia840f_ahls_memory_core core (
+         .clock_reset_clk(core_clk),
+@@ -65,39 +76,39 @@
+         .freeze_freeze(core_freeze),
+         .device_exception_bus_data(kernel_exception_not_checker),
+         .kernel_irqs_irq(kernel_irq_unrouted),
+-        .mmio_control_awid(mmio.aw.id),
+-        .mmio_control_awaddr(mmio.aw.addr),
++        .mmio_control_awid(guarded_mmio.aw.id),
++        .mmio_control_awaddr(guarded_mmio.aw.addr),
+         .mmio_control_awlen(8'd0),
+-        .mmio_control_awsize(mmio.aw.size),
++        .mmio_control_awsize(guarded_mmio.aw.size),
+         .mmio_control_awburst(2'b01),
+-        .mmio_control_awuser(mmio.aw.user),
+-        .mmio_control_awvalid(mmio.awvalid),
+-        .mmio_control_awready(mmio.awready),
+-        .mmio_control_wdata(mmio.w.data),
+-        .mmio_control_wstrb(mmio.w.strb),
+-        .mmio_control_wvalid(mmio.wvalid),
+-        .mmio_control_wuser(mmio.w.user),
+-        .mmio_control_wready(mmio.wready),
+-        .mmio_control_bid(mmio.b.id),
+-        .mmio_control_bresp(mmio.b.resp),
+-        .mmio_control_buser(mmio.b.user),
+-        .mmio_control_bvalid(mmio.bvalid),
+-        .mmio_control_bready(mmio.bready),
+-        .mmio_control_arid(mmio.ar.id),
+-        .mmio_control_araddr(mmio.ar.addr),
++        .mmio_control_awuser(guarded_mmio.aw.user),
++        .mmio_control_awvalid(guarded_mmio.awvalid),
++        .mmio_control_awready(guarded_mmio.awready),
++        .mmio_control_wdata(guarded_mmio.w.data),
++        .mmio_control_wstrb(guarded_mmio.w.strb),
++        .mmio_control_wvalid(guarded_mmio.wvalid),
++        .mmio_control_wuser(guarded_mmio.w.user),
++        .mmio_control_wready(guarded_mmio.wready),
++        .mmio_control_bid(guarded_mmio.b.id),
++        .mmio_control_bresp(guarded_mmio.b.resp),
++        .mmio_control_buser(guarded_mmio.b.user),
++        .mmio_control_bvalid(guarded_mmio.bvalid),
++        .mmio_control_bready(guarded_mmio.bready),
++        .mmio_control_arid(guarded_mmio.ar.id),
++        .mmio_control_araddr(guarded_mmio.ar.addr),
+         .mmio_control_arlen(8'd0),
+-        .mmio_control_arsize(mmio.ar.size),
++        .mmio_control_arsize(guarded_mmio.ar.size),
+         .mmio_control_arburst(2'b01),
+-        .mmio_control_aruser(mmio.ar.user),
+-        .mmio_control_arvalid(mmio.arvalid),
+-        .mmio_control_arready(mmio.arready),
+-        .mmio_control_rid(mmio.r.id),
+-        .mmio_control_rdata(mmio.r.data),
+-        .mmio_control_rresp(mmio.r.resp),
++        .mmio_control_aruser(guarded_mmio.ar.user),
++        .mmio_control_arvalid(guarded_mmio.arvalid),
++        .mmio_control_arready(guarded_mmio.arready),
++        .mmio_control_rid(guarded_mmio.r.id),
++        .mmio_control_rdata(guarded_mmio.r.data),
++        .mmio_control_rresp(guarded_mmio.r.resp),
+         .mmio_control_rlast(mmio_single_rlast),
+-        .mmio_control_rvalid(mmio.rvalid),
+-        .mmio_control_rready(mmio.rready),
+-        .mmio_control_ruser(mmio.r.user),
++        .mmio_control_rvalid(guarded_mmio.rvalid),
++        .mmio_control_rready(guarded_mmio.rready),
++        .mmio_control_ruser(guarded_mmio.r.user),
+         .bank_out0_awid(banks[0].aw.id),
+         .bank_out0_awaddr(banks[0].aw.addr),
+         .bank_out0_awlen(banks[0].aw.len),
