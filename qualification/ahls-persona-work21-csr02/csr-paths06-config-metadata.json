@@ -1,0 +1,1948 @@
+{
+  "run": "csr02-csr-paths06",
+  "root": "/home/uwb_student00/ahls/new_BSP/work_ahls_persona_work21_csr02/csr-paths06",
+  "setup_root": "/home/uwb_student00/ahls/new_BSP/work_ahls_persona_work21_csr02/fit01",
+  "source_files": {
+    "afu/dma_pkg.sv": {
+      "bytes": 11214,
+      "sha256": "aa0668a1b3dd0e6553cd0d7673b2b040a615094493e8a0b747f76a0e562dba99"
+    },
+    "afu/dma_fifo_if.sv": {
+      "bytes": 1299,
+      "sha256": "55833768b9e83dd224864facea8b290215df115ee5e948665956a6c5c3897e7c"
+    },
+    "afu/dma_engine.sv": {
+      "bytes": 3424,
+      "sha256": "0270307f6110d268e1e02af7a524183590297d796bf21431e893211e2c2c97e4"
+    },
+    "afu/dma_read_engine.sv": {
+      "bytes": 11780,
+      "sha256": "3fc1937ad8268d0cfaf3453a85f8573a10aa1b98ae695deff62a89d772145a88"
+    },
+    "afu/dma_write_engine.sv": {
+      "bytes": 14574,
+      "sha256": "fb2d589ddd54a26ef9237eb7b38a490d0b5096b7b648b82dcba97462db7fe14b"
+    },
+    "afu/dma_top.sv": {
+      "bytes": 7577,
+      "sha256": "c511c923145adfcac4a7aeaa091ae64e075815f1b4d8990dac46f41df443a058"
+    },
+    "afu/dma_axi_mm_mux.sv": {
+      "bytes": 6760,
+      "sha256": "4dcaedc0f35b2fbee172b971cedf14d434a0d8d95ef4179280a37dde1ac07806"
+    },
+    "afu/dma_ddr_selector.sv": {
+      "bytes": 4575,
+      "sha256": "c9a9ad5394e52d9d75ff46a50a0352da53dc8e5f57ee05a8d7afb92836357812"
+    },
+    "afu/csr_mgr.sv": {
+      "bytes": 20903,
+      "sha256": "42d09ffffb91152b9f688014bcff9ffc13e5382cddd7f478e5f9b992da232a77"
+    },
+    "afu/ia840f_ahls_memory_core.sv": {
+      "bytes": 21082,
+      "sha256": "31976de3c28d2c539a8b08e80468f89108cb90b48ea0c49df4e3d01ffde305fa"
+    },
+    "afu/ofs_plat_afu.sv": {
+      "bytes": 11566,
+      "sha256": "3b5bf9eac55f5117858b8a746308a09ebc3d7c6f8a99c66907777139278785ca"
+    },
+    "afu/ia840f_ahls_memory_bank_shim.sv": {
+      "bytes": 2001,
+      "sha256": "7d6ae5d428a81105d83d09d8d8f15c38be63f5275554371c5f5a344521aafdc6"
+    },
+    "afu/ia840f_ahls_mmio_guard.sv": {
+      "bytes": 8055,
+      "sha256": "25512e0c4a697fa897e1ff472258eab2430dd157efd0bd94462a4a8a0824d627"
+    }
+  },
+  "generated_inventory": {
+    "ahls_memory_dma_fabric.qsys": {
+      "bytes": 194629,
+      "sha256": "e7d8a3b541ad39438e16f63edf87a1643e05ab358f4b868186e7aab46e0a0060"
+    },
+    "ahls_memory_dma_fabric/ahls_memory_dma_fabric.cmp": {
+      "bytes": 23526,
+      "sha256": "d56f695b57f4971325f6c3a3cad5cdd02ce115bf706a3dec7678174afdec2db1"
+    },
+    "ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip": {
+      "bytes": 3522,
+      "sha256": "3f9ddc947b0d6c0aff63d5ab3534d29b1af2444897f2fe8506f98605e602e3a1"
+    },
+    "ahls_memory_dma_fabric/ahls_memory_dma_fabric.sopcinfo": {
+      "bytes": 238380,
+      "sha256": "c4cefb648ec177428794e108394dc9409f506290047516449e5b4ffee745a20c"
+    },
+    "ahls_memory_dma_fabric/synth/ahls_memory_dma_fabric.v": {
+      "bytes": 47056,
+      "sha256": "9ed3e106a3233c53099a19fce494ae118bb0e6abe7732adf1a4bc166439d8072"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric.ip": {
+      "bytes": 468548,
+      "sha256": "f1a5ae144457d08277e17fa28feeae493805ad35ad8f61829af1f4b61f806628"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.cmp": {
+      "bytes": 23540,
+      "sha256": "d04b18474db9c14ef7aab9c5bc5029b28765edac9e6f9441efdff33af8bf1b87"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.qip": {
+      "bytes": 200576,
+      "sha256": "d5580a6e3ec91cde8a4f1f66e4edd46d02db23d9392b753e48819d99ed886935"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.sopcinfo": {
+      "bytes": 91481,
+      "sha256": "3cc6f8a157f81921743bda5d6557406f06096779b40bef2e242547f819a35d54"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_avalon_sc_fifo_1932/synth/ahls_memory_dma_fabric_fabric_altera_avalon_sc_fifo_1932_onpcouq.v": {
+      "bytes": 52426,
+      "sha256": "a71ab5e7b36f80684df1e7f139842af4778cc1e0090ef193a3b18aaec0c5efcb"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_avalon_st_pipeline_stage_1930/synth/ahls_memory_dma_fabric_fabric_altera_avalon_st_pipeline_stage_1930_oiupeiq.sv": {
+      "bytes": 6220,
+      "sha256": "a99cadcbc260ea801d32f29e7ea3ef455eaf244c6dedc9204b4b4b1d4779f220"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_avalon_st_pipeline_stage_1930/synth/altera_avalon_st_pipeline_base.v": {
+      "bytes": 8742,
+      "sha256": "5851274ae04445dcecb55ddcebb83c8e78acb9820fb73a837509867981a54573"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_axi_bridge_1993/synth/ahls_memory_dma_fabric_fabric_altera_axi_bridge_1993_2ykamhy.sv": {
+      "bytes": 52036,
+      "sha256": "20b047dc8b561fc0290c6dc0cc100c3c732adeb9a6d876ce91f12aded2c6196b"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_axi_bridge_1993/synth/ahls_memory_dma_fabric_fabric_altera_axi_bridge_1993_ho77dxi.sv": {
+      "bytes": 52036,
+      "sha256": "52be0882c1d56e39fbc4408e9e1f95796fbe977946b911fb44814414c17abf4f"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_axi_bridge_1993/synth/ahls_memory_dma_fabric_fabric_altera_axi_bridge_1993_kwvtw4a.sv": {
+      "bytes": 52036,
+      "sha256": "5a8f196943875db5502f47a2ea586300b82259cf1c20ca6654ea9134e3b87440"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_axi_bridge_1993/synth/altera_avalon_st_pipeline_base.v": {
+      "bytes": 8742,
+      "sha256": "5851274ae04445dcecb55ddcebb83c8e78acb9820fb73a837509867981a54573"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_master_ni_19100/synth/ahls_memory_dma_fabric_fabric_altera_merlin_axi_master_ni_19100_pogz5yy.sv": {
+      "bytes": 49185,
+      "sha256": "b54346ac0f54000475ed96341e8cd354fedad9f460253c6d7744f0fed6e2b49c"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_master_ni_19100/synth/ahls_memory_dma_fabric_fabric_altera_merlin_axi_master_ni_19100_y3ctica.sv": {
+      "bytes": 49185,
+      "sha256": "7afc620d78bdcd7320f306ac32536104180e73da86e339ae348dd8774f1a2f84"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_master_ni_19100/synth/altera_merlin_address_alignment.sv": {
+      "bytes": 13689,
+      "sha256": "db6feb29424072db7502f258410ec0340f32f43a65fddead9b1d1b3c555f33d7"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/ahls_memory_dma_fabric_fabric_altera_merlin_axi_slave_ni_19112_oazrs3y.sv": {
+      "bytes": 78705,
+      "sha256": "c45dc05b10393b3e2f11266e9c5b87f4ca3e05326c1e0f3a715beab8438465de"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/ahls_memory_dma_fabric_fabric_altera_merlin_axi_slave_ni_19112_wdwws5q.sv": {
+      "bytes": 78705,
+      "sha256": "a52c51732de76c63ac895adff1bf2238a8345575884ec7373957e6a097f5ed5d"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/ahls_memory_dma_fabric_fabric_altera_merlin_axi_slave_ni_altera_avalon_sc_fifo_19112_42kli5i.v": {
+      "bytes": 5972,
+      "sha256": "ef88358bc780e65e75a4b62d482fbb1509d15aecfb26ddd9f04c250073654029"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/ahls_memory_dma_fabric_fabric_altera_merlin_axi_slave_ni_altera_avalon_sc_fifo_19112_jne3kpq.v": {
+      "bytes": 5971,
+      "sha256": "5d6ca5abfe858f59c44ff3e90d5b22a5a7db738bef1ba76562d53a97addb9d80"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/ahls_memory_dma_fabric_fabric_altera_merlin_axi_slave_ni_altera_avalon_st_pipeline_stage_19112_2qk66ia.v": {
+      "bytes": 3386,
+      "sha256": "1b63a96cdb914eae5c4ddb830c9536580a67e19afd9593559359ac5d5e7630f0"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/ahls_memory_dma_fabric_fabric_altera_merlin_axi_slave_ni_altera_avalon_st_pipeline_stage_19112_4nxcxpi.v": {
+      "bytes": 3386,
+      "sha256": "f61ddfe27624ef9e322ad54a0f1547d74fce21a2c71e0b893f66c1303706912e"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/ahls_memory_dma_fabric_fabric_altera_merlin_axi_slave_ni_altera_avalon_st_pipeline_stage_19112_7najzbq.v": {
+      "bytes": 3386,
+      "sha256": "c7e42b3f13f04668bb7384b074a31166840b50f52d380697ce52f9e4dad3268b"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/ahls_memory_dma_fabric_fabric_altera_merlin_axi_slave_ni_altera_avalon_st_pipeline_stage_19112_gaxsrkq.v": {
+      "bytes": 4352,
+      "sha256": "198f25a770f743efa4c927ec195e16d7f949b17105adee25afa80187b91a9567"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/ahls_memory_dma_fabric_fabric_altera_merlin_axi_slave_ni_altera_avalon_st_pipeline_stage_19112_ha2465i.v": {
+      "bytes": 3413,
+      "sha256": "5b7d201d9b0d89c5218dddc54d2c65e6c2170ff07dbd4f2b82ef0ed8e392c332"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/ahls_memory_dma_fabric_fabric_altera_merlin_axi_slave_ni_altera_avalon_st_pipeline_stage_19112_ldqk53q.v": {
+      "bytes": 4352,
+      "sha256": "1658aa60d07a27996b3634e6f828f2accc03dfb656f323a3e371c33d8fccec7a"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/altera_merlin_address_alignment.sv": {
+      "bytes": 13689,
+      "sha256": "db6feb29424072db7502f258410ec0340f32f43a65fddead9b1d1b3c555f33d7"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/altera_merlin_burst_uncompressor.sv": {
+      "bytes": 17907,
+      "sha256": "8ffe38f05c3c088da1855ef2a4dd2469b24dc316cd12444a68a7a691717b06b3"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/compare_eq.sv": {
+      "bytes": 2063,
+      "sha256": "c91433d2deaff5031bd3620cc6ca77a233c4ffd50121fd7544e898705a6f54cc"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/rd_comp_sel_oazrs3y.sv": {
+      "bytes": 2244,
+      "sha256": "61413c3903539aac0eb952315594337975a2b5262aa87880dbfa98749db33cef"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/rd_comp_sel_wdwws5q.sv": {
+      "bytes": 5170,
+      "sha256": "76a0343df9ec23ef7fb12da4dd31f6e0a8dde98b13c04812f3f77f3bffe7633a"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/rd_pri_mux_oazrs3y.sv": {
+      "bytes": 1297,
+      "sha256": "e7077aec1f72543ba7bd8e40369c68d18a2acf4380251c5258d7a284d46c792c"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/rd_pri_mux_wdwws5q.sv": {
+      "bytes": 2962,
+      "sha256": "469f3da93a11eb1a877789998030fb40f540f7095dee8aa65aaa6c383b56191c"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/rd_response_mem_oazrs3y.sv": {
+      "bytes": 4121,
+      "sha256": "bb3d17b2977807eef0f04936754e1d8bddf2cb19c1a6e17a87c6fd5805942c36"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/rd_response_mem_wdwws5q.sv": {
+      "bytes": 7327,
+      "sha256": "9ab053a7ce595c0a59617f672569e85980ea18f404d0e850ed707aaa19edbc44"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/rd_sipo_plus_oazrs3y.sv": {
+      "bytes": 2393,
+      "sha256": "a2cbdeb2ba7587902178a23c567ca7864d7b7be57ba03233d885b255fa7f75ba"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/rd_sipo_plus_wdwws5q.sv": {
+      "bytes": 10603,
+      "sha256": "8aef17b966f1b5a273acbf0d5e2bf47b086a60eb64f2207a08d220c9c1fbb395"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/wr_comp_sel_oazrs3y.sv": {
+      "bytes": 2244,
+      "sha256": "864173d451a140110813e9afa7193a6cbb8cc2a9daa4ca88426921a121f2c12f"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/wr_comp_sel_wdwws5q.sv": {
+      "bytes": 5170,
+      "sha256": "bf415a488ece89ade6f34de88cba3cdc3d8909dc51e2e27d04ac0ae96742aa39"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/wr_pri_mux_oazrs3y.sv": {
+      "bytes": 1297,
+      "sha256": "cec6234b1559bafac567d1d12eddb961f8a2f01cbd91f75203b731f6a3f91c12"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/wr_pri_mux_wdwws5q.sv": {
+      "bytes": 2962,
+      "sha256": "7f47773337de154a661095504806d24846123970bb128985c61b97b08ec2ac24"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/wr_response_mem_oazrs3y.sv": {
+      "bytes": 4121,
+      "sha256": "5c9e050bac4a99f64a57a7ba87955ce634f5f4c20f4b7b69075e95f87259d12c"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/wr_response_mem_wdwws5q.sv": {
+      "bytes": 7327,
+      "sha256": "1b02e00e7065225fa979ad127d1e6854f477aaf07a3559f41af5e6df95aa6b4c"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/wr_sipo_plus_oazrs3y.sv": {
+      "bytes": 2393,
+      "sha256": "1668de52b8ab1c3174eb585fe74564c68535aecbdd7ed6f01defa70a8ed89bb8"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/wr_sipo_plus_wdwws5q.sv": {
+      "bytes": 10603,
+      "sha256": "dc8a482bb5c95aaf685e15450341f2990832a66178e9207c16921d3d4c2ad524"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_translator_1974/synth/ahls_memory_dma_fabric_fabric_altera_merlin_axi_translator_1974_xfkiwxi.sv": {
+      "bytes": 37727,
+      "sha256": "63c258447a1eaffc9b6d969658b6709e6f4006684481dc87f0b0d6aedbf1d24a"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_burst_adapter_1940/synth/ahls_memory_dma_fabric_fabric_altera_merlin_burst_adapter_1940_twtirdy.sv": {
+      "bytes": 16468,
+      "sha256": "7d47e63e08d86674a1c5a206166719e712c74e3b82c3cff6f18969fd463641ec"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_burst_adapter_1940/synth/ahls_memory_dma_fabric_fabric_altera_merlin_burst_adapter_altera_avalon_st_pipeline_stage_1940_hev3h3q.v": {
+      "bytes": 4602,
+      "sha256": "d3ed78655db01a8f0d2339cd6ab5b6f51d1a316464486dc970d0d5bcf67b2249"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_burst_adapter_1940/synth/altera_default_burst_converter.sv": {
+      "bytes": 10915,
+      "sha256": "6971e1e91b1272f4412436b2cad08e692d8dd95cf3a642ab2500b515d11b6143"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_burst_adapter_1940/synth/altera_incr_burst_converter.sv": {
+      "bytes": 18846,
+      "sha256": "a798c2abf7852329474a706a9ca1abf2f65c24085e1c626d0a5b53ce612e66e0"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_burst_adapter_1940/synth/altera_merlin_address_alignment.sv": {
+      "bytes": 13689,
+      "sha256": "db6feb29424072db7502f258410ec0340f32f43a65fddead9b1d1b3c555f33d7"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_burst_adapter_1940/synth/altera_merlin_burst_adapter_13_1.sv": {
+      "bytes": 65661,
+      "sha256": "6601dd9481618a0e50654d9c59cd93140807963d7c7592d99f7d235c947b609c"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_burst_adapter_1940/synth/altera_merlin_burst_adapter_new.sv": {
+      "bytes": 128081,
+      "sha256": "01dad160332277592f52759cc2642d554cb9ffe5f1618c9c65ca343a13ccaee2"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_burst_adapter_1940/synth/altera_merlin_burst_adapter_uncmpr.sv": {
+      "bytes": 4795,
+      "sha256": "feaeb442efe07fffbf12540a15fdb236fed7f93b115f5917951a10ba8ccd289a"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_burst_adapter_1940/synth/altera_wrap_burst_converter.sv": {
+      "bytes": 20087,
+      "sha256": "afc18e435119c1d975e0af8d4648f618a6a695e3bf5111f26c18b1d15f1cfddb"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_demultiplexer_1921/synth/ahls_memory_dma_fabric_fabric_altera_merlin_demultiplexer_1921_2nswdra.sv": {
+      "bytes": 4133,
+      "sha256": "b74b7a50373f99509eeb629d697220c74a7c064d7b4514c01f997481b15ca158"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_demultiplexer_1921/synth/ahls_memory_dma_fabric_fabric_altera_merlin_demultiplexer_1921_4idlbya.sv": {
+      "bytes": 3514,
+      "sha256": "57a0d632da4cdafcee0ee3cc754d3580ae31a3b518f8397a5a6f438860e237a4"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_demultiplexer_1921/synth/ahls_memory_dma_fabric_fabric_altera_merlin_demultiplexer_1921_qaae75a.sv": {
+      "bytes": 3514,
+      "sha256": "76f0e3e2309ec1b69739fe9aa1faea3d169d2a96f49c01756ed838b49ec75d85"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_demultiplexer_1921/synth/ahls_memory_dma_fabric_fabric_altera_merlin_demultiplexer_1921_wfrz5ua.sv": {
+      "bytes": 4133,
+      "sha256": "5995973fa2bb2c4b24ec4a90cb4fb6a802487cacea69830f7e24cb68eeeb12d5"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_master_agent_1931/synth/ahls_memory_dma_fabric_fabric_altera_merlin_master_agent_1931_szfayly.sv": {
+      "bytes": 24652,
+      "sha256": "3dfef9e74e2d46673f013e3c1e7e25ee561e7ec9b140d35c36af3812baac66e1"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_master_translator_193/synth/ahls_memory_dma_fabric_fabric_altera_merlin_master_translator_193_lgcew2q.sv": {
+      "bytes": 31589,
+      "sha256": "d2f64efa68e7ec4b9418cbd8bfd41968e0a997b4e349ae48666de473bcc9a2a3"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_multiplexer_1922/synth/ahls_memory_dma_fabric_fabric_altera_merlin_multiplexer_1922_7lcn5ca.sv": {
+      "bytes": 11366,
+      "sha256": "5aaf07945d29fdb6e8c4429e93318593609ddfadb7dc7a40df0abdf6d1c8d871"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_multiplexer_1922/synth/ahls_memory_dma_fabric_fabric_altera_merlin_multiplexer_1922_cijvlya.sv": {
+      "bytes": 3815,
+      "sha256": "6696181d730114274c55248a61e754e9bcc93e85449c58640232aaf185697b97"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_multiplexer_1922/synth/ahls_memory_dma_fabric_fabric_altera_merlin_multiplexer_1922_g6klifq.sv": {
+      "bytes": 3818,
+      "sha256": "0454744a4708149478f293f3d09646824449ab918a685684fa792195f7530bc1"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_multiplexer_1922/synth/ahls_memory_dma_fabric_fabric_altera_merlin_multiplexer_1922_hmweysy.sv": {
+      "bytes": 12089,
+      "sha256": "321e0be87d1c9ee51e1abe0ffcd6eadafea398922721a7de58f71e4a2020c138"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_multiplexer_1922/synth/ahls_memory_dma_fabric_fabric_altera_merlin_multiplexer_1922_njwpk6q.sv": {
+      "bytes": 11362,
+      "sha256": "ad5ca3ee649f1dd4db63876a41b8317d845e00870e85f94d6a54bb9af398f98a"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_multiplexer_1922/synth/ahls_memory_dma_fabric_fabric_altera_merlin_multiplexer_1922_y3mkexi.sv": {
+      "bytes": 12093,
+      "sha256": "efbd5d37419810b056756a1a7f5c87dc04c2518bd97b40e44ca6370da0fb5510"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_multiplexer_1922/synth/altera_merlin_arbitrator.sv": {
+      "bytes": 11818,
+      "sha256": "25c9345887820bdcd259ce0b2fa8882fe8d7e0ce3e35cf12437d1bdc62131d6f"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_router_1921/synth/ahls_memory_dma_fabric_fabric_altera_merlin_router_1921_2bcilgi.sv": {
+      "bytes": 8321,
+      "sha256": "fa06d60ceb8502e65325c21c5d1b60f16c58e315e185f13060957588d4c7c624"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_router_1921/synth/ahls_memory_dma_fabric_fabric_altera_merlin_router_1921_3uc74ei.sv": {
+      "bytes": 8435,
+      "sha256": "81b461d4d441b09257bb035fd0ec081768762a8d6cea73610a24b70bcb83bea6"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_router_1921/synth/ahls_memory_dma_fabric_fabric_altera_merlin_router_1921_5wd2p4i.sv": {
+      "bytes": 8317,
+      "sha256": "6b5287709edfb54a7e2ff7a9448610f3af786f65fe4a92c05c550acdeba17936"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_router_1921/synth/ahls_memory_dma_fabric_fabric_altera_merlin_router_1921_bknbsua.sv": {
+      "bytes": 8975,
+      "sha256": "48aae72152e179b517cc3cfba0b4ee9d896f6b0ef6c9455b1239f04663eb78c3"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_router_1921/synth/ahls_memory_dma_fabric_fabric_altera_merlin_router_1921_hz233uq.sv": {
+      "bytes": 8511,
+      "sha256": "f301637fd8e9cc45b45a7cb172e9221ca2374e0aaf248e8a78d2fcbed7ba2a75"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_router_1921/synth/ahls_memory_dma_fabric_fabric_altera_merlin_router_1921_ixmw7li.sv": {
+      "bytes": 9112,
+      "sha256": "d932da5b7aa117256cd494e1e7cd55ba6734b3b4e56f28dce790607be6e6f4fa"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_router_1921/synth/ahls_memory_dma_fabric_fabric_altera_merlin_router_1921_ldbgtgq.sv": {
+      "bytes": 8431,
+      "sha256": "f0ccb7833c2246350cb003eb1aab42915e79c27daedfdec1fb342f158be30f40"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_router_1921/synth/ahls_memory_dma_fabric_fabric_altera_merlin_router_1921_pleb25y.sv": {
+      "bytes": 8979,
+      "sha256": "a9c084447266fe7fc7faf565cd73ad29c15de5e463de98defe45e24885a70b40"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_router_1921/synth/ahls_memory_dma_fabric_fabric_altera_merlin_router_1921_t2ginwa.sv": {
+      "bytes": 8507,
+      "sha256": "37f6bbb8b919a880f4f899c2bd531aecf828c3906ef217544bed170be1e920f8"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_router_1921/synth/ahls_memory_dma_fabric_fabric_altera_merlin_router_1921_wfloq4q.sv": {
+      "bytes": 8625,
+      "sha256": "81628bcd288bdc6c4e4f6f314983e344c92cd182ac6dad6cab7448cb014cdf8c"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_slave_agent_1930/synth/ahls_memory_dma_fabric_fabric_altera_merlin_slave_agent_1930_jxauz3i.sv": {
+      "bytes": 36763,
+      "sha256": "d3286cd20f1911ec645bd15f1a02405e101ffa26d3810c8f308e240b0898c01d"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_slave_agent_1930/synth/altera_merlin_burst_uncompressor.sv": {
+      "bytes": 17907,
+      "sha256": "8ffe38f05c3c088da1855ef2a4dd2469b24dc316cd12444a68a7a691717b06b3"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_slave_translator_191/synth/ahls_memory_dma_fabric_fabric_altera_merlin_slave_translator_191_xg7rzxi.sv": {
+      "bytes": 23504,
+      "sha256": "c4eba50c0722613f99b027a0c6f8063c153ebd49cedf4025adb815192f3d2a12"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_traffic_limiter_1921/synth/ahls_memory_dma_fabric_fabric_altera_merlin_traffic_limiter_1921_dbseoby.sv": {
+      "bytes": 55701,
+      "sha256": "359527b7c7b02931476d8d218a31fded49902f01e0f6b0e1ca71fab78976b9b4"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_traffic_limiter_1921/synth/ahls_memory_dma_fabric_fabric_altera_merlin_traffic_limiter_altera_avalon_sc_fifo_1921_fmkphni.v": {
+      "bytes": 5918,
+      "sha256": "8d17a42aaa0f8d8747ebc06b6dbc47541bc07075855f6f6c509c56eb352f93ff"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_traffic_limiter_1921/synth/altera_avalon_st_pipeline_base.v": {
+      "bytes": 8742,
+      "sha256": "5851274ae04445dcecb55ddcebb83c8e78acb9820fb73a837509867981a54573"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_traffic_limiter_1921/synth/altera_merlin_reorder_memory.sv": {
+      "bytes": 13920,
+      "sha256": "ad79764ae99bc3c945137337d8ada2b5c368a01dd58c68be91691568329c5b38"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_width_adapter_1950/synth/ahls_memory_dma_fabric_fabric_altera_merlin_width_adapter_1950_bvtlyty.sv": {
+      "bytes": 80586,
+      "sha256": "3f29eed3efda9d42f69f5b26f881038f41d68911ac21f8d9a64e1cb19c1ea19a"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_width_adapter_1950/synth/ahls_memory_dma_fabric_fabric_altera_merlin_width_adapter_1950_fq674yi.sv": {
+      "bytes": 80586,
+      "sha256": "49c8a5174848393e384da76b6d05049ecbdbbb3334e18fc4fba99e8c983859ff"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_width_adapter_1950/synth/altera_merlin_address_alignment.sv": {
+      "bytes": 13689,
+      "sha256": "db6feb29424072db7502f258410ec0340f32f43a65fddead9b1d1b3c555f33d7"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_width_adapter_1950/synth/altera_merlin_burst_uncompressor.sv": {
+      "bytes": 17907,
+      "sha256": "8ffe38f05c3c088da1855ef2a4dd2469b24dc316cd12444a68a7a691717b06b3"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_mm_interconnect_1920/synth/ahls_memory_dma_fabric_fabric_altera_mm_interconnect_1920_7cfzhiy.v": {
+      "bytes": 176274,
+      "sha256": "8e8fe7de8b2961f2d8d5b3a411c3a2071f34123a5bfbd0985510d6ae361ed3a0"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_mm_interconnect_1920/synth/ahls_memory_dma_fabric_fabric_altera_mm_interconnect_1920_gtz2awi.v": {
+      "bytes": 208459,
+      "sha256": "58083cd65a2e15c155cbd84bd0acb2ccb4c0218fe1e3ef32556539a00b85262e"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_mm_interconnect_1920/synth/ahls_memory_dma_fabric_fabric_altera_mm_interconnect_1920_wgwcdgy.v": {
+      "bytes": 208459,
+      "sha256": "67952df479316ce9ee34f4bd228e6008cb10f8854f461eac3fabec1bdbc4295a"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_reset_controller_1924/synth/altera_reset_controller.sdc": {
+      "bytes": 2507,
+      "sha256": "e125bfda461376db31321949301164b907bb6d2719cd10456b8cd8cd8904282c"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_reset_controller_1924/synth/altera_reset_controller.v": {
+      "bytes": 14677,
+      "sha256": "7d48d2820b239622d730f20c9a60fda1991140132388eabe3eff9889e7dc000a"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_reset_controller_1924/synth/altera_reset_synchronizer.v": {
+      "bytes": 4534,
+      "sha256": "f3014fdf47a5888de4c7053076cb77ca48eec6093d62d6e9b3de4c54912472e7"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ia840f_ahls_memory_fabric_dma_10/synth/ahls_memory_dma_fabric_fabric_ia840f_ahls_memory_fabric_dma_10_bw6p3iy.v": {
+      "bytes": 269435,
+      "sha256": "4e1c86796cb3bd8b5b804df358af541535a50dd703a7c3515d10ca9df7305a62"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B0_branch.sv": {
+      "bytes": 2508,
+      "sha256": "8cef422095b91162346770d3fef646de10a2a83d5027f153ef9da45f9b7df908"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B0_merge.sv": {
+      "bytes": 3692,
+      "sha256": "543dddb6dd317985c1756caf6acc142d3743a95d7aeb061d85713035407e775b"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B0_merge_storage.sv": {
+      "bytes": 5349,
+      "sha256": "9016d55df6d30bafe5c00da90a93113d33372b54de9b521b03627bc27febfd8d"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B1_branch.sv": {
+      "bytes": 2716,
+      "sha256": "4a2827ab87338910117c07847ad5b47d89ec2e7dfc9c14eb42707a0db28decde"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B1_merge.sv": {
+      "bytes": 3692,
+      "sha256": "641b853745f80e9171c30096f8ab9c1087444b0c6b09ebdb7b8d4c1fcb9f9a93"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B1_merge_storage.sv": {
+      "bytes": 5349,
+      "sha256": "dfa678204f136663d0652386b210657a5e5e8c67fdd3be1ae6e833c7a62c86a7"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B2_branch.sv": {
+      "bytes": 3370,
+      "sha256": "d60156613ac08bab747071e01c45378991530d538f853cd0921ab7426c21f9d0"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B2_branch_branch_storage.sv": {
+      "bytes": 5676,
+      "sha256": "ef9d8d901a4fbfaee7993510c781d52004c1b1dfa80cec9d34f253200d689776"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B2_merge.sv": {
+      "bytes": 3698,
+      "sha256": "a820c15ffcb6329c271713fc1b6aeb2021454e7d36ae25e7825051f9ea28a584"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B2_merge_storage.sv": {
+      "bytes": 5349,
+      "sha256": "231477b7744fb5bb744a805ca8a0563b8cae543da4e2142f250b429b5a52acfe"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B0.sv": {
+      "bytes": 5100,
+      "sha256": "9f4ac0162deb45148f05ad8ba788fe80ab426b59e70e1c6b1a870135ce592ec6"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B0_stall_region.sv": {
+      "bytes": 11914,
+      "sha256": "627a851330c45ac0d39fd7d37e28e74d97b6dbdc9ecd188b61284b4977efe837"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B1.sv": {
+      "bytes": 19322,
+      "sha256": "e349e49df70082ac95abeb9fbb4d02811739be7fa94dd70ec5df60774e52a67d"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B1_stall_region.sv": {
+      "bytes": 181510,
+      "sha256": "c5f45de93ad0f7b74996f8bbc40248560770df004285e2dc7d1b668ead806e21"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B2.sv": {
+      "bytes": 4578,
+      "sha256": "6bc5b5045a8a9cb0f77f90a7256d80fe4a6bbd242e65c2282ead2853cbd26350"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B2_stall_region.sv": {
+      "bytes": 4979,
+      "sha256": "aa459737765cc1245f12ee6f195c563e8cd0954a8313fb7d267c19a269d446b8"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_function.sv": {
+      "bytes": 18335,
+      "sha256": "0d7a19223a5146173e761011a9f33deab069b8ac50faba570c12a8a57a68cb67"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_function_cra_agent.sv": {
+      "bytes": 35289,
+      "sha256": "2f011cfb6aacb19cef4dab7e9648b0607def46ddf8d926b7ef11eb8c54d6bdc7"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_function_wrapper.sv": {
+      "bytes": 17277,
+      "sha256": "3d7fa2711e80e2057e9bfa314a9802b0b8659bac5b37967915bca15a0ab115c5"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_dummy_thread_ddrip_b1_dummy_ddrip_98_0gr.sv": {
+      "bytes": 3253,
+      "sha256": "68a1bf462a1e19cdd718fa866c5529c08a5f0792d849c0b69d1e351f2bc17c0c"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_ffwd_dest_i1_cmp_i4158_ddrip_135_0gr.sv": {
+      "bytes": 5377,
+      "sha256": "ffa828a00b172aa54e19645cd7a2e216a1f814e0cb54a22c67f152a80f6c993b"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_ffwd_source_i1_unnamed_ddrip1_ddrip_51_0gr.sv": {
+      "bytes": 6699,
+      "sha256": "b471e0253088f29d628ed8224e6464d8c3a1b8a9438bcf69ca20df032f7e473c"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_forked_ddrip_b1_forked_ddrip_106_0gr.sv": {
+      "bytes": 3234,
+      "sha256": "e00bb56ba6f55ea79fdf3db26c0f51324102fda4ca61e53054a440bf1dd1e76a"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_0_ddrip_329_0gr.sv": {
+      "bytes": 24271,
+      "sha256": "af3132c789a9bd2eeecc34990a45171eacd13c4ba09a39a1b30677c3760c43cd"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_1_ddrip_405_0gr.sv": {
+      "bytes": 24271,
+      "sha256": "3b24fc70b98b53d760dc6437d7d1e97c152d87277ac2d78ef091655e3510e133"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memdep_ddrip_467_0gr.sv": {
+      "bytes": 18036,
+      "sha256": "9699246eeef923fc4fa182ce125e62927ace8cd52118b9a235513b2a1cdfd717"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_pipeline_keep_going_ddrip_119_0gr.sv": {
+      "bytes": 11763,
+      "sha256": "ffeb9e91cdfd5e8e1f646b2ddafaee2d126f4a34221f7cbba53cf4f579e0d2eb"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_push_i1_notexitcond_ddrip_287_0gr.sv": {
+      "bytes": 8476,
+      "sha256": "c0ae8486b68fb56634e779aefd5ea7c8560db6679ea3684c34efafcf5d5924b0"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c0_in_entry000036_1gr_full_detector.sv": {
+      "bytes": 7458,
+      "sha256": "144d78c0ef7ea08b6d7196c7e479e37cec17b98e0cb35684c3da036fe89253be"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c0_in_entry0000c0_exit_ddrip_58_0gr.sv": {
+      "bytes": 6510,
+      "sha256": "50082cb4e41efdce7c13a92109209670e68297d15398b4d2dd15ee9f0fa95d6a"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c0_in_entry0000rip_58_1gr_data_fifo.sv": {
+      "bytes": 7862,
+      "sha256": "7cbb2cc404a148158a76fdfbaeee82982c23bd42a5bcaea78248afd4798ff961"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c0_out_for_000090_1gr_full_detector.sv": {
+      "bytes": 7865,
+      "sha256": "ac93150f52a8b669c9ab0415d41f85873392b54c8b69697fd7f9f3f324a26a2b"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c0_out_for_0000ip_298_1gr_data_fifo.sv": {
+      "bytes": 20186,
+      "sha256": "95705352e0210301516ee7a66659f58fd949af6e11fd96ac4cf1778fe6399aad"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c0_out_for_0000xit160_ddrip_298_0gr.sv": {
+      "bytes": 20800,
+      "sha256": "f00766c37f472824b91568df5e64c282996657c47e4c8a2a37a1fab26ad7aa9e"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c1_out_for_00001_exit_ddrip_397_0gr.sv": {
+      "bytes": 7642,
+      "sha256": "cfea01cbd6137ce675e771861624e0e4227a34185d293d417feb7307f953c194"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c1_out_for_000061_1gr_full_detector.sv": {
+      "bytes": 7773,
+      "sha256": "3e3ace57f3c55b17bd894bdea7612e885498f8ebabeb395a4dced2eb1e2ac264"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c1_out_for_0000ip_397_1gr_data_fifo.sv": {
+      "bytes": 8618,
+      "sha256": "8d6d48dcefe59dccd572047f018122f1ed803c5d5fe68e74dc590cb8822ee96f"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c2_out_for_00002_exit_ddrip_459_0gr.sv": {
+      "bytes": 14383,
+      "sha256": "58284c75ab83454ed49bc857bd60f4c536185263500d6e9cff2f94e48ab3b24b"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c2_out_for_000037_1gr_full_detector.sv": {
+      "bytes": 7773,
+      "sha256": "1adb86ec5ccf7a143cb33dc72905fa886302413fa5b7c46ddd2c643a27729ecc"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c2_out_for_0000ip_459_1gr_data_fifo.sv": {
+      "bytes": 12134,
+      "sha256": "16a46f434f853deedf9caf1911bb86ec4119e71591d8955db1b667ac47a7759d"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sync_buffer_i32_arg_si0000buffer_ddrip_163_0gr.sv": {
+      "bytes": 3023,
+      "sha256": "8c1367d1acf8e93ec3a18295b3b410bf7615cd8480d3ecb14a2b75c1c252486f"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sync_buffer_i32_arg_si0000fer151_ddrip_173_0gr.sv": {
+      "bytes": 3047,
+      "sha256": "80ceaa0849ef5177dfe5e4537ebb29a08757e443846e2cc23d98a66c13cdee60"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sync_buffer_i32_arg_si0000fer152_ddrip_184_0gr.sv": {
+      "bytes": 3047,
+      "sha256": "8af91b093b9d2fff565899fe2967944ad6819b42cd57366056b36506b0a591a7"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sync_buffer_i32_arg_si0000fer153_ddrip_195_0gr.sv": {
+      "bytes": 3047,
+      "sha256": "677dcd1aa1a679795194745c598d4256dc3838dff9a60036464849936aec3b93"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sync_buffer_i32_arg_si0000fer154_ddrip_206_0gr.sv": {
+      "bytes": 3047,
+      "sha256": "73878f75d878812cfb62f234a62abe0d335d757dd3d16b894561a50335150d6b"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sync_buffer_i32_arg_si0000fer155_ddrip_217_0gr.sv": {
+      "bytes": 3047,
+      "sha256": "292066a22c3fc2106c04bf410df44ba960d7a7d067a2d79dbb816faa3c6e93d2"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sync_buffer_i32_arg_si0000fer156_ddrip_228_0gr.sv": {
+      "bytes": 3047,
+      "sha256": "010a777236cbc598961a2420f11951d695813795992f7f0baabacd0f1c15d4c0"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sync_buffer_i32_arg_si0000fer157_ddrip_267_0gr.sv": {
+      "bytes": 3047,
+      "sha256": "8b86dd6bf97b9d08f6263e51b6db71b29950a1f660b03ab6c09e885a563a9d90"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sync_buffer_i32_arg_si0000ffer150_ddrip_43_0gr.sv": {
+      "bytes": 3037,
+      "sha256": "2abbd4aa8f49c2ed3b264c1cc84ffbc20b732cd6d26cc7be032431ebf54f7f63"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sync_buffer_p1024_arg_0000buffer_ddrip_148_0gr.sv": {
+      "bytes": 4080,
+      "sha256": "bfa1eba53b33c086d26b3bf9cfcb66ccfbc204853bfd31336f0622d57b905c4e"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sync_buffer_p1024_arg_0000buffer_ddrip_238_0gr.sv": {
+      "bytes": 4080,
+      "sha256": "27144963b2d41b8cdb0d6abfae13da13de84c4c5dc4fcdb108ef62fd435713f4"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sync_buffer_p1025_arg_0000buffer_ddrip_252_0gr.sv": {
+      "bytes": 4080,
+      "sha256": "df295ab80834d34db8cffa2aa9cf329121bb1db0dc346925fd021aed869eb192"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_logic_s_c0_in_entry_ddrips_c0_enter_ddrip_36_0gr.sv": {
+      "bytes": 6142,
+      "sha256": "2dd60b708e52de7d76cbaa6393a246c71bd248122debc4d05225d1b9bd0e3e14"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_logic_s_c0_in_for_body_i_ddr0000ter1591_ddrip_90_0gr.sv": {
+      "bytes": 68164,
+      "sha256": "72e080ebf6c3d1dca3650098e594cec67840db814c7658a48015aeb9bd6957c3"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_logic_s_c1_in_for_body_i_ddr0000_enter_ddrip_361_0gr.sv": {
+      "bytes": 15662,
+      "sha256": "081697ebef464256a30838a375e4f680afd18b8545da0b73e68c20c6849a212d"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_logic_s_c2_in_for_body_i_ddr0000_enter_ddrip_437_0gr.sv": {
+      "bytes": 10961,
+      "sha256": "d021820aff290a588015de9077777cbd00046b82964a9b893bc73c002c0a9e9a"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_s_c0_in_entry_ddrips_c0_enter_ddrip_31_0gr.sv": {
+      "bytes": 6971,
+      "sha256": "94c6c7b351f1110dcb0000704aed5b6e638c35aba7428eb52e4dd2627d48df7f"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_s_c0_in_for_body_i_ddrips_c0_enter1591_ddrip_83_1gr.sv": {
+      "bytes": 29210,
+      "sha256": "7b09a4acb657ea54e1a6f24b1040eaa87d354783803e09fe415c751ecc3d2ac0"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_s_c1_in_for_body_i_ddrips_c1_enter_ddrip_83_7gr.sv": {
+      "bytes": 9202,
+      "sha256": "c20f521803418bcc0638c838c4cebca7016863251e752d91d3dc8a990972b83c"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_s_c2_in_for_body_i_ddrips_c2_enter_ddrip_83_11.sv": {
+      "bytes": 18052,
+      "sha256": "90b10ca9ec435dfc4017745b41c42b24fc2ad6cf681a80bc562db4af011ff67e"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_aligned_burst_coalesced_lsu.sv": {
+      "bytes": 46419,
+      "sha256": "992a4d638931a40d36f8622770f227c1711cd8feb61efbfd5c9bc3646c56fadd"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_altera_syncram_wrapped.sv": {
+      "bytes": 57588,
+      "sha256": "a1da6b4fae082c5c9c6acd7934fcc715b66c5e30122f6c11a59e75039db3f286"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_clock_enable_gating.sv": {
+      "bytes": 2223,
+      "sha256": "5269f9ee44b12849df92792dc438cbc0affe4a02d32aee6254f2b4f870821546"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_data_fifo.sv": {
+      "bytes": 26558,
+      "sha256": "27c7bd7ade35488015a0a9e85a0f8b9f70a8ed12826631b9d1f38bee497f7553"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_debug_mem.sv": {
+      "bytes": 3567,
+      "sha256": "45d22c55f25471521da7191551d2e196fc58495246d322c57d734765d75ca761"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_dspba_buffer.sv": {
+      "bytes": 1660,
+      "sha256": "68cd93a26a71e4a65b9d4e568a7dab29951b7a7d20fb3f5d8afb4442580b2ae6"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_dspba_valid_fifo_counter.sv": {
+      "bytes": 4246,
+      "sha256": "a23bb426cdd08863d1ec0aea26c0b7d19aa7413c6859df64b4bbac854ba73dab"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_ecc_decoder.sv": {
+      "bytes": 14475,
+      "sha256": "3ccb8465c5de377c8a9c901beb4f81cfd954e5799dd4ec5d7f0615ea024645b6"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_ecc_encoder.sv": {
+      "bytes": 11444,
+      "sha256": "44562cfc5caf30b5116c3fdf5696689416b1e67993e4eee0dc29188ae7a8c421"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_ecc_pkg.sv": {
+      "bytes": 4544,
+      "sha256": "c64cf16b581bda4f2067811d29ee6bf577dd3d52a23ed28a6c9cb09c47caed0a"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_fanout_pipeline.sv": {
+      "bytes": 3123,
+      "sha256": "6b6e36a780cc9ce2d9154d16745c989c838ac8a8ac8296fd67992eff3a06cfa0"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_fast_pipeline.sv": {
+      "bytes": 3014,
+      "sha256": "a3faea30e2249b894e4c7cef9ceaa9bf7b4963c208afd3a924d832033de59af1"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_ffwddst.sv": {
+      "bytes": 11854,
+      "sha256": "d62f0f431840e514b0d0781bfd806dfec555e17e204a27d8cacdc80ce62b4a61"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_ffwdsrc.sv": {
+      "bytes": 4621,
+      "sha256": "23cc15ba7251900d95f62531a97816f13efef7c98c978bd8e6a85c442e6e6f25"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_fifo.sv": {
+      "bytes": 12992,
+      "sha256": "2b54705eb9b06441ebc16bab5815968f057f9308534c4d4a2758207b248d677c"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_fifo_stall_valid_lookahead.sv": {
+      "bytes": 11320,
+      "sha256": "3cec0130f7c4e09f443b870a65735b0f36348a488d5e63bb9de2ae164a238548"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_finish_signal_chain_element.sv": {
+      "bytes": 4000,
+      "sha256": "20d07ddfa21d3ee00c56e078ad1bdb6cae10322bc15574ebb922feae13147335"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_full_detector.sv": {
+      "bytes": 8771,
+      "sha256": "939541fef264c7b101251628b1d42776fa1dfabdbdcd1de7a3e0a39120c846eb"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_has_pending_write.sv": {
+      "bytes": 4332,
+      "sha256": "b15b7d70b00ffa42fcfce0cfbcc45a0d9e5f02d1d3ab36b1f6e1cab31fd96f4d"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_high_speed_fifo.sv": {
+      "bytes": 94328,
+      "sha256": "2995800f1833ddc52ad098111b95269076643d6d3521c0ab85318e7279c786b5"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_latency_one_ram_fifo.sv": {
+      "bytes": 82346,
+      "sha256": "e1c9543a8a50b353fe77693a7b142638f97667b79bafdbc1472e4a966ed2d5ea"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_latency_zero_ram_fifo.sv": {
+      "bytes": 40864,
+      "sha256": "d01cde7114f8ca3a6f563800d8468c03eb4cf6deac72de6c3a662cc01c1a066b"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_lfsr.sv": {
+      "bytes": 121950,
+      "sha256": "108749dd4b97c977aad923419f53ad75f1d33688d024082e24084ab786a210b3"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_ll_fifo.sv": {
+      "bytes": 5236,
+      "sha256": "2ac98f74a8b3b00abcba7748ea4ae5d5bba8ef24440e12460a0a32f1c6ca200d"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_ll_ram_fifo.sv": {
+      "bytes": 6933,
+      "sha256": "f5bbf652861923a0139f679357ec3759202114a280056501918b68df93d2d7b3"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_loop_admit.sv": {
+      "bytes": 66187,
+      "sha256": "e285a204781d07213570081f20574f47dfe33f5f60e9982f17272a4d0b71bbc0"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_low_latency_fifo.sv": {
+      "bytes": 53636,
+      "sha256": "d8ad5c1f17e198a121bcd281f55bf2e6774f2c1ae21e5aac0c3599ef8f4de7b6"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_mid_speed_fifo.sv": {
+      "bytes": 61811,
+      "sha256": "0bfe53d20af17194be813fa63a681fe880a6179aadc2202d8789becabf8f27f4"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_mlab_fifo.sv": {
+      "bytes": 30768,
+      "sha256": "017443672031e489237332d3c869f8861399f80eebc9c00cdff5739565d342e3"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_parameter_assert.svh": {
+      "bytes": 4606,
+      "sha256": "34b039fd2b2bbf5e51500685220bb1b6a2f4070719e0dd56ba4d98ee069a8416"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_push.sv": {
+      "bytes": 12181,
+      "sha256": "b45b346943b1360d43d204b5043ad0b61661b6809ffa43426cb33554639be753"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_reset_handler.sv": {
+      "bytes": 18756,
+      "sha256": "5a9148ae9c49009b41d8dc068da29ab8e1717266dfaf5bf5de952af894c0de42"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_rom_module.sv": {
+      "bytes": 10418,
+      "sha256": "efb5859ec7ad820f673638d6c24a49bbf39e4e7ebeacec80d722c7834d13d7aa"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_scfifo_wrapped.sv": {
+      "bytes": 13195,
+      "sha256": "e7edd5ff7e42b915fa4eefdaf7fbd00924df3c04b276b48fcefe6aa4518aa05d"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_shift_register_no_reset.sv": {
+      "bytes": 2096,
+      "sha256": "69b9b85af86f88f2c0034eae13016e8510a903f9f2b8d189e67c5167b379c767"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_shift_register_no_reset_dont_merge.sv": {
+      "bytes": 2038,
+      "sha256": "2ee4ce3830af53a55251bd0b8f54b4aff34c6561902d958a10a3675b4ac77a31"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_skid_buffer.sv": {
+      "bytes": 4080,
+      "sha256": "dfc57847f0c89e0976e3bc482eb4ab4c3e45292af1c5c6972ad285849faf60c3"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_staging_reg.sv": {
+      "bytes": 3459,
+      "sha256": "662f484e3374135f24f2d2f37af4cd2f80f3d0e6ac22a8bb3789dd66c6be2836"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_start_signal_chain_element.sv": {
+      "bytes": 3631,
+      "sha256": "dcabd7b436a66d2bbb6d43407f55dd610a6b235e208019f74af48f7af7ad8036"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_std_synchronizer_nocut.sv": {
+      "bytes": 7227,
+      "sha256": "e388cf2d0a8bfd582e80a70222beabd846d576c657321c6d9e16a066101c3e84"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_sync.sv": {
+      "bytes": 41193,
+      "sha256": "b24687fd30fe28bde577dac3f0478778c57aaea3db7d9f97ae9fa8ae21e3f379"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_task_copy_finish_detector.sv": {
+      "bytes": 4080,
+      "sha256": "6abb3769a13d0864b87f979e062ec03b60d6768eacb85cf132a3747d18350445"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_tessellated_incr_decr_decr.sv": {
+      "bytes": 31551,
+      "sha256": "133752792d8760034ad3e7356bbea69b96c6414f2b1ee6009ef5af9238cdb13d"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_tessellated_incr_decr_threshold.sv": {
+      "bytes": 27078,
+      "sha256": "4a5ce442fd80166627786bcc9ab8f7e2d954cf153b8b22a1d4f4a58f1250831d"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_tessellated_incr_lookahead.sv": {
+      "bytes": 12075,
+      "sha256": "0c2cd69fe963e1bca5aac94d4efb0858ed0192919b5ffafbd12c373f77518de7"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_toggle_detect.sv": {
+      "bytes": 4535,
+      "sha256": "4d0525386af7c0f814a30732ae7914450a059be8bb0e8002996d39de0c992901"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_token_fifo_counter.sv": {
+      "bytes": 7305,
+      "sha256": "b25e62759a3a7c48b9fea61249d4414260e15c13f1bab9c424aef9ae37bf0594"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_valid_fifo_counter.sv": {
+      "bytes": 14301,
+      "sha256": "5a6da69a6918bbe1f118c97fff496ab7eb674a0e4c72d594fb0175e166d217ba"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/acl_zero_latency_fifo.sv": {
+      "bytes": 35596,
+      "sha256": "0e41f5c11c5a6635b2127c3992bf0de70e2e83056921ac0369394d5010f9eb87"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/cra_ring_node.sv": {
+      "bytes": 6121,
+      "sha256": "bc609f7ce8147521b1b4ecfc7e4dbf2e8f1f054c771441d44567e3ba0abee3f9"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/cra_ring_rom.sv": {
+      "bytes": 5663,
+      "sha256": "5ca2844d9d650706ece57baa252ad99a68d178f3ffd9133512edfe781f6e677c"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/cra_ring_root.sv": {
+      "bytes": 12115,
+      "sha256": "78b273b75112be73964c88f89948e6f546159a59a4455abcb5b5f1a39cae27cf"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/dspba_library_ver.sv": {
+      "bytes": 16891,
+      "sha256": "05a4c9ae718d7a6c5319e4e1ad9382ff84ca532dbf8fc130a8eef3da5e9f1992"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/hld_fifo.sv": {
+      "bytes": 71002,
+      "sha256": "114bf68110e710805b91c46f06f9b0b5413858938209da1f0e27114a1b4acdd4"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/hld_fifo_zero_width.sv": {
+      "bytes": 6109,
+      "sha256": "c39ff4c5f078a1b030c982d073f5a44734f07e9a8f4b6880d7b410ebf668bdb9"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/hld_global_load_store.sv": {
+      "bytes": 55257,
+      "sha256": "89e5c7ca291c0cece6fab5baf1980ca3035e00be10f0fba68a73933184afa423"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/hld_loop_profiler.sv": {
+      "bytes": 5082,
+      "sha256": "f4067b40512c610d23c87805dfc3da05497a7f41705e9b943feae5df4a0abcf3"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/hld_lsu.sv": {
+      "bytes": 53296,
+      "sha256": "3fc6657ab5e4c1ae11859c6fc1acbcaeebc84db2b9d74dc712f48086966c7bf5"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/hld_lsu_burst_coalescer.sv": {
+      "bytes": 36474,
+      "sha256": "8bd9b34840dc5f39934abdfc6de9a1db32632c9198c1e64f52c98e4f0a5abd8b"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/hld_lsu_coalescer_dynamic_timeout.sv": {
+      "bytes": 10789,
+      "sha256": "12bef9c13be583de22616282c58af293070d838d46c7ff48a91371b132c4c6e1"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/hld_lsu_data_aligner.sv": {
+      "bytes": 7954,
+      "sha256": "47c684d4de56ccaa6f51b6976d4cc6df239a065a9cfdaffa8fb1a8a0664272c0"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/hld_lsu_read_cache.sv": {
+      "bytes": 42079,
+      "sha256": "911659483ae8ebcae5560eef0fe2101a27a70dacb02639eb0bb5273df690ed92"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/hld_lsu_read_data_alignment.sv": {
+      "bytes": 36496,
+      "sha256": "4ef0ba6cad500371faaa3caa5c3c69bf207d83f8cae85a38f5b482c78aee84d4"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/hld_lsu_unaligned_controller.sv": {
+      "bytes": 9023,
+      "sha256": "f6e4643e22e8f6eb4de72116f99cd787d2ca6dd5635d59db07ff5f987e561e1b"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/hld_lsu_word_coalescer.sv": {
+      "bytes": 24242,
+      "sha256": "48b4f19004a93aa138b5daea237916f3b7679cdc23060ebcfe8856bf708e1620"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/hld_lsu_write_data_alignment.sv": {
+      "bytes": 32485,
+      "sha256": "01be9c01ac608d5fa787cf0e61999ad2365bba3b4be232b2951ca8f624c77a35"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/hld_lsu_write_kernel_downstream.sv": {
+      "bytes": 20103,
+      "sha256": "f0db738127396e92db52f4571075e4f6660606fb24d909e73e61d2d9eccbb5eb"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/hld_sim_latency_tracker.sv": {
+      "bytes": 6897,
+      "sha256": "8b18f6995a2c5c0f59367ff6d621f3e979b891d710b995f9c38b3b545cbe241a"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_atomic.sv": {
+      "bytes": 18752,
+      "sha256": "629c45b83cec101671160388870f8bb3a46f8d4471b1b0544759f159ca5c4ca5"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_basic_coalescer.sv": {
+      "bytes": 20139,
+      "sha256": "d752135849cb79df4bdce2e052629f40e292929803f5f0f5f36e9f7a82a31434"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_burst_coalesced_pipelined_read.sv": {
+      "bytes": 77072,
+      "sha256": "080ef3e207155f5c65e2aa9b28509b4b1d52455086ef2d43bca7c6571054dd27"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_burst_coalesced_pipelined_write.sv": {
+      "bytes": 101619,
+      "sha256": "3af68a0ed68358861a559887c1856b1db9470ea7c97a631c09c2e088c9f2d7a5"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_burst_host.sv": {
+      "bytes": 11071,
+      "sha256": "4accefb9f3e2bdd4dfd87f6c69f6370428f568d75432e98fdf2a03cb2f6cae81"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_bursting_load_stores.sv": {
+      "bytes": 78176,
+      "sha256": "c5d3348e023438e5de2ce8cca17104a2d9abe4a5e23896ab52705b8a95695469"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_enabled.sv": {
+      "bytes": 12634,
+      "sha256": "864010d7e5276bf9daa85307804eb316d93e2cc687aa7656ba7e211f1fa2c68a"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_ic_hybrid.sv": {
+      "bytes": 8170,
+      "sha256": "03cd6a32132970e6d901b66e3c8e90d9cd0c01e7957f5b6f581518617dfd17a4"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_ic_token.sv": {
+      "bytes": 16875,
+      "sha256": "27968cba36ecd8877dfa2028345231404624dff89e4162f98dfbf9649653915b"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_ic_top.sv": {
+      "bytes": 51316,
+      "sha256": "f9defb182dcca3d3d299eb1e2ee060ce730caa24b2bd613d44f8c05abaccfdcd"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_ic_unbalance.sv": {
+      "bytes": 7903,
+      "sha256": "deeb56d04312d821acf5bb1c60bf812633e9d5f3ed82024e2592326d2a0de228"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_n_fast.sv": {
+      "bytes": 17202,
+      "sha256": "209fabd6eb394cc3e8eb421251c74d81b793667e101043efbec008ec1d4bea76"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_n_token.sv": {
+      "bytes": 16115,
+      "sha256": "493a19dc2dd162cdb4dbf7832499966128945083d31127bd7074f026e33e7cc9"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_non_aligned_write.sv": {
+      "bytes": 17081,
+      "sha256": "a1f199a44ca7e81466a5e707885a21f54f9b69fb73ca2578779a9cbcb059d03e"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_permute_address.sv": {
+      "bytes": 5831,
+      "sha256": "14669c62c40a6c7410edd6214aa9261c3260f636fe98728334e30d71db9a86c2"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_pipelined.sv": {
+      "bytes": 42510,
+      "sha256": "0378bb73a38967b7fc03551985f0c349835302c62ae0f22dea8a1adc5265b50b"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_prefetch_block.sv": {
+      "bytes": 11987,
+      "sha256": "24f0ff5a656179d80eb3ab2e2bdd02838f7c2ab9528453932c996b10a672d3fd"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_rd_back.sv": {
+      "bytes": 92991,
+      "sha256": "d2829cd7b6bf0ffa38820728054f204412053217f91df4529164925eb6522ec6"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_rd_back_n.sv": {
+      "bytes": 27552,
+      "sha256": "b6ef7acd8a601accbf9a1549c17ab884b17fc06fdfb36668ef08900e4c46d150"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_read_cache.sv": {
+      "bytes": 10011,
+      "sha256": "b569a3569486218455aadb4ef67e001b3cd982ea2f524603d0f597074fc7b39a"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_simple.sv": {
+      "bytes": 13292,
+      "sha256": "04f66f714070057c7d5e3df047d90ecab07cb09f9f59ad1f99d89b4f45eb7e10"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_streaming_prefetch.sv": {
+      "bytes": 30131,
+      "sha256": "57a7724153ffcf6b65d4a1c4b2a9898605448aef5faa704816ea96e9b806f2ab"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_swdimm_token_ring.sv": {
+      "bytes": 17174,
+      "sha256": "099dc670b1844728c4bbd7c30dab78368593d05782c644ddd6d809e6de3993f8"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_token_ring.sv": {
+      "bytes": 169510,
+      "sha256": "0ba6bc0d7f5bb8c34282930c227546398d05434a5de035372d029a01401f9719"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_top.sv": {
+      "bytes": 78642,
+      "sha256": "873549f18428fe6ba0797fef228c2028bf1df62076e85f1942c9dca5310cf8a0"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_wide_wrapper.sv": {
+      "bytes": 22850,
+      "sha256": "7a9c2ee4601f5c3a8beb1ceae9295ad734bb0b191a162ceaa262118404194713"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv": {
+      "bytes": 42537,
+      "sha256": "c072b420ca510e98de233184d1fc7664b50a158714f5516b82991452e2540756"
+    },
+    "ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/synth/ahls_memory_dma_fabric_fabric.v": {
+      "bytes": 62013,
+      "sha256": "7b0d4b2e9825286af71ee0ea75cfdd162348f2ba1e6be7294c76383c79b8956e"
+    }
+  },
+  "source_list": "# Actual guarded AHLS memory persona; platform/FIM RTL comes from matching release.\nia840f_ahls_memory.json\n+incdir+afu\nafu/dma_pkg.sv\nafu/dma_fifo_if.sv\nafu/dma_engine.sv\nafu/dma_read_engine.sv\nafu/dma_write_engine.sv\nafu/dma_top.sv\nafu/dma_axi_mm_mux.sv\nafu/dma_ddr_selector.sv\nafu/csr_mgr.sv\nafu/ia840f_ahls_memory_core.sv\nafu/ofs_plat_afu.sv\nafu/ia840f_ahls_memory_bank_shim.sv\nafu/ia840f_ahls_mmio_guard.sv\ngenerated/ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip\ngenerated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.qip\n",
+  "json": {
+    "version": 1,
+    "afu-image": {
+      "power": 0,
+      "clock-frequency-high": "auto-200",
+      "clock-frequency-low": "auto-100",
+      "afu-top-interface": {
+        "class": "ofs_plat_afu"
+      },
+      "accelerator-clusters": [
+        {
+          "name": "ia840f_ahls_memory",
+          "total-contexts": 1,
+          "accelerator-type-uuid": "673c03a1-cef3-4c82-bf10-b12c247d9718"
+        }
+      ]
+    }
+  },
+  "tool_bindings": {
+    "/usr/bin/afu_json_mgr": {
+      "bytes": 228,
+      "sha256": "7e940ade3279ab219230b67237b2d0991d39a0c4224778502aeeec886e9003eb"
+    },
+    "/usr/bin/afu_platform_config": {
+      "bytes": 234,
+      "sha256": "e21440882dfba1b192227695fcd8ba578c422790d476495b948db1df624ab80d"
+    },
+    "/usr/bin/afu_synth_setup": {
+      "bytes": 230,
+      "sha256": "a18cbeaba213020ba34115c389245335c53e5d76d20a46bc13d2f839b771a332"
+    },
+    "/usr/bin/packager": {
+      "bytes": 224,
+      "sha256": "3a3e8a5d1747f8f0c7bc6b7663452032b9b6ceaf1477e247c5e6a1c3a940be00"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/__init__.py": {
+      "bytes": 1630,
+      "sha256": "e8a01a8e8f2ffa45b4b95d4438efb81247788e30a0e3dbf3c64f70d4504b8264"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/info.py": {
+      "bytes": 1725,
+      "sha256": "4e7d02e25542e2bda983bfe3cfd627db9b81bf3c8b473e2df9077af151e7fcbb"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/lib/__init__.py": {
+      "bytes": 1663,
+      "sha256": "ab5c696efbc548079c5b26746f79ca97c971118f80cbfb55b4eb63bfe5c83bef"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/lib/emitcfg.py": {
+      "bytes": 18150,
+      "sha256": "245ad5310e994310e26a9dd473c9c819025e1678d3fbe83deb5ca0ba83e6f686"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/lib/jsondb.py": {
+      "bytes": 16814,
+      "sha256": "6111010b8cd0404baea03dbda83a5db187edf3cd544a6abb1f059aa12c751927"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/tools/__init__.py": {
+      "bytes": 1630,
+      "sha256": "e8a01a8e8f2ffa45b4b95d4438efb81247788e30a0e3dbf3c64f70d4504b8264"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/tools/afu_platform_config.py": {
+      "bytes": 25577,
+      "sha256": "903bc1ada3b46fc26cf1c25d63b93aaed11ce7e2a67213a56be5319793c67829"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/tools/afu_platform_info.py": {
+      "bytes": 6122,
+      "sha256": "c5e06df36470ae48c576fbc4888e156002470cceba243e6797453a9fafb09dd5"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/tools/afu_synth_setup.py": {
+      "bytes": 13163,
+      "sha256": "d2b739250bfc8af28dd9d2fcbfe531757c305655ad02f22f40546855db84251e"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/tools/rtl_src_config.py": {
+      "bytes": 17667,
+      "sha256": "5b7ab8d45bd4124e00a74041ddb0348c5a1b096675577c48c797c47f07f4e8dc"
+    },
+    "/usr/bin/afu_platform_info": {
+      "bytes": 232,
+      "sha256": "b91414ef990396b64001c57d27daf5530f438ab40acdf1bbb665ec3101d78ca0"
+    },
+    "/usr/bin/rtl_src_config": {
+      "bytes": 229,
+      "sha256": "813d7f3cdd84e764ef77612ea49b22777ede201a174a6c32ecd22466ee86dfe2"
+    },
+    "/usr/lib/python3.9/site-packages/packager/__init__.py": {
+      "bytes": 1630,
+      "sha256": "7a3d040c65a5c2f991cf56df3d488e071e67d6ed41c28cf44a8d06a8f0c2e3d8"
+    },
+    "/usr/lib/python3.9/site-packages/packager/metadata/__init__.py": {
+      "bytes": 1628,
+      "sha256": "68f00540818eed63dfecd69b39e96d0c2c906c270d3af89c13e0c571243d1342"
+    },
+    "/usr/lib/python3.9/site-packages/packager/metadata/constants.py": {
+      "bytes": 1880,
+      "sha256": "771c9e49add2b6c6c86939c7b3fe3fc569d0ebbbb2ca998c530d526932309621"
+    },
+    "/usr/lib/python3.9/site-packages/packager/metadata/metadata.py": {
+      "bytes": 2168,
+      "sha256": "ae983d64f25a61fa6e88d4d8e15e9af7e1b72a4efcebe2155115e79304a3b5ac"
+    },
+    "/usr/lib/python3.9/site-packages/packager/schema/__init__.py": {
+      "bytes": 1726,
+      "sha256": "334d3624587f945973f716c6e9d9454cfe3da6f77568a4c3c95db215442c116e"
+    },
+    "/usr/lib/python3.9/site-packages/packager/schema/afu_schema_v01.json": {
+      "bytes": 1683,
+      "sha256": "5db974b9c2ad67ebc308ebeb39ab086adebda31f75721ec55360b96d9d608eb7"
+    },
+    "/usr/lib/python3.9/site-packages/packager/schema/afu_template.json": {
+      "bytes": 378,
+      "sha256": "be50d80f52912f7c52d973577e296fae132db098e832ae6c71c837a74b08af3b"
+    },
+    "/usr/lib/python3.9/site-packages/packager/test/__init__.py": {
+      "bytes": 1630,
+      "sha256": "7a3d040c65a5c2f991cf56df3d488e071e67d6ed41c28cf44a8d06a8f0c2e3d8"
+    },
+    "/usr/lib/python3.9/site-packages/packager/test/test_afu.py": {
+      "bytes": 701,
+      "sha256": "4e5f752f758fb6921b94828cf576cefda278e3653402567044a1b45b6377d4e5"
+    },
+    "/usr/lib/python3.9/site-packages/packager/test/test_data/bad_afu_test.json": {
+      "bytes": 401,
+      "sha256": "027444f562ed1cae87637e4448254e8c0f8f68fb534ade84c5d40e88d80270d7"
+    },
+    "/usr/lib/python3.9/site-packages/packager/test/test_data/good_afu_test.json": {
+      "bytes": 481,
+      "sha256": "96bb9d2ed1b5d778f7d35e33183266a249a52f1bc90e649812780cdbc31a4f6a"
+    },
+    "/usr/lib/python3.9/site-packages/packager/test/test_hello.py": {
+      "bytes": 208,
+      "sha256": "3f9f84f1abc334ef06eeea31e82fcb18630c785fb0986f4a8a5a9648dc5d64d7"
+    },
+    "/usr/lib/python3.9/site-packages/packager/test/test_metadata.py": {
+      "bytes": 1444,
+      "sha256": "fa7b58edbcc48772f4d69e4c86354d470abc9733cdd33949fbee17fbadc97307"
+    },
+    "/usr/lib/python3.9/site-packages/packager/tools/__init__.py": {
+      "bytes": 1630,
+      "sha256": "7a3d040c65a5c2f991cf56df3d488e071e67d6ed41c28cf44a8d06a8f0c2e3d8"
+    },
+    "/usr/lib/python3.9/site-packages/packager/tools/afu_json_mgr.py": {
+      "bytes": 9953,
+      "sha256": "0f70f3aa6c530576e5d5960d544f7bb7e3bee8b1bb93f1433ab175fe4f53d6d1"
+    },
+    "/usr/lib/python3.9/site-packages/packager/tools/packager.py": {
+      "bytes": 8967,
+      "sha256": "f8c1ee77c4bccbca2d9191fc05d39061807435c8fb5c653383d1ad355e564a49"
+    },
+    "/usr/lib/python3.9/site-packages/packager/utils/__init__.py": {
+      "bytes": 1630,
+      "sha256": "7a3d040c65a5c2f991cf56df3d488e071e67d6ed41c28cf44a8d06a8f0c2e3d8"
+    },
+    "/usr/lib/python3.9/site-packages/packager/utils/afu.py": {
+      "bytes": 8940,
+      "sha256": "34451ebfac5892e73798b7005d94ef9de9320971189feccefdfcf697dc97ecc5"
+    },
+    "/usr/lib/python3.9/site-packages/packager/utils/gbs.py": {
+      "bytes": 5367,
+      "sha256": "20621b57f106c40aaea5e5f0c3609c1eb2bf9236769f62f51d2ce34106b362da"
+    },
+    "/usr/lib/python3.9/site-packages/packager/utils/utils.py": {
+      "bytes": 2443,
+      "sha256": "2d4876fea3593ec5eb14a90c9dbc05c72be3955a5ac2cf8f2516b0a258459f31"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/afu_top_ifc_db/README.md": {
+      "bytes": 8288,
+      "sha256": "3d36e7b5c5246ea1258a8e20834613404d6763ee48e02a302e0e4eb4215119fc"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/afu_top_ifc_db/README_AFU.md": {
+      "bytes": 2054,
+      "sha256": "2e9ff7d61749f749e7de79286b11edf2b3144db4476a8dd622494d8fad0cf8ec"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/afu_top_ifc_db/ccip_std_afu.json": {
+      "bytes": 575,
+      "sha256": "74c214ceb3f80b7a2f13194601a23bf7a11f0154997f97be0509c93795ebb00d"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/afu_top_ifc_db/ccip_std_afu.sv.template": {
+      "bytes": 2513,
+      "sha256": "859032e6520a6f22c92eace24149dde6e677c90134469694f49066a86d85fed0"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/afu_top_ifc_db/ccip_std_afu_avalon_mm.json": {
+      "bytes": 400,
+      "sha256": "1dbda08dc274edde637f12266af46f5ddd6789ef57eeb40cd911594bd7348be7"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/afu_top_ifc_db/ccip_std_afu_avalon_mm.sv.template": {
+      "bytes": 2649,
+      "sha256": "b2a35c94a7f7877daa7ca593b75975d9392df812222396fcb9098011ce550274"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/afu_top_ifc_db/ccip_std_afu_avalon_mm_legacy_wires.json": {
+      "bytes": 629,
+      "sha256": "757f6b40cb3cf485c1abd9601bdbb1669ae249f408626508022628b3e608299b"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/afu_top_ifc_db/ccip_std_afu_avalon_mm_legacy_wires.sv.template": {
+      "bytes": 3908,
+      "sha256": "88b2a1653d1b32157b1fa506489b73c3603c799cda65cb929c3e8e620a55b929"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/afu_top_ifc_db/ofs_plat_afu.json": {
+      "bytes": 284,
+      "sha256": "4037e0a3520ad8f8a2967dd5a8360a27f472dae00cef06d9921ea148032c4c15"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_db/README.md": {
+      "bytes": 4511,
+      "sha256": "343668a1db7472c9d027f91c37038d836e170b956c8c1808555f19b0402ae967"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_db/discrete_pcie3.json": {
+      "bytes": 1802,
+      "sha256": "06894613690b96528778a9063e8acc7aec0c6e69be0d23a81c950b1bd8941bfc"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_db/intg_xeon.json": {
+      "bytes": 855,
+      "sha256": "6fffc5d48c8fc6c827a29ab60097aeb6dea3e3a87c73192d776faee7563840b9"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_db/platform_defaults.json": {
+      "bytes": 1187,
+      "sha256": "75c421fa8b95fb6e56f6e7c59332df368a60a8e750323dd59adb6ba234bf81c1"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_db/platform_defaults/defaults_ccip.json": {
+      "bytes": 3179,
+      "sha256": "61c5728bf2c3497345b7ecb430f85d7505179d3c5a5b1518fc83966863832def"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_db/platform_defaults/defaults_clocks.json": {
+      "bytes": 88,
+      "sha256": "156f6c9a80e5225b458e8b0a0c421419cfc158c37e1c52c07c2dc0ba5e3b7ae0"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_db/platform_defaults/defaults_hssi.json": {
+      "bytes": 1010,
+      "sha256": "6deb8ee58f7e04d9caf4999790f763d370225be97aab674d4d0896802fb37ad4"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_db/platform_defaults/defaults_local_memory.json": {
+      "bytes": 2514,
+      "sha256": "3c38ef22d4658c41099fea3b4ed22ad1e0365cb02b1d859089169d1d178d73be"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/README.md": {
+      "bytes": 940,
+      "sha256": "e570e9f0b2ce0bd8b9738abe784569e41999738e1174a6c5adde5034d8c3c6be"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/par/afu_json.tcl": {
+      "bytes": 2468,
+      "sha256": "11907d3cc0d35578c33f7024cd5182e88591be2899e557185f3160a6e1e1c219"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/par/platform_if.sdc": {
+      "bytes": 670,
+      "sha256": "a8cb9985f32005d6c0800c929a9406c654a261a24dd46964d692fa1184d10d13"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/par/platform_if_addenda.qsf": {
+      "bytes": 3619,
+      "sha256": "802b67621479f1b366f7dbc4984fb2bb405c5149dcff0310fb15555c01bac14e"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/par/user_clock_config.tcl": {
+      "bytes": 10589,
+      "sha256": "b7116e74f2c28b4f77859c6ab0e145bbbe45734a3d0b0a1cc0d36f7d59f4ebe8"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/device_cfg/ccip_cfg_pkg.sv": {
+      "bytes": 4925,
+      "sha256": "3604b5024b9a352c1f41779a27206a075f3f2448678082756e333366872ba7aa"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/device_cfg/hssi_cfg_pkg.sv": {
+      "bytes": 2451,
+      "sha256": "725699b40c2427c7ae8a5f5c5d56d35df4423c3f0677eb98982801b98aacd614"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/device_cfg/local_mem_cfg_pkg.sv": {
+      "bytes": 2543,
+      "sha256": "c98e47f8d41e3e656ac1fd5bbe6a732ce1ef5a693673bd34c9bcd1638c4bf7a4"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/device_if/avalon_mem_if.vh": {
+      "bytes": 4529,
+      "sha256": "750aa218c82a0437ed4884fac850def01c17f1ae9e6e144637e4b6e55ddee355"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/device_if/avalon_mem_if_dbg.vh": {
+      "bytes": 1616,
+      "sha256": "824c5db0558be6f4692bec3fd44e754ce9269fd3658fffd7c106c3350c585cd2"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/device_if/ccip_if.vh": {
+      "bytes": 3799,
+      "sha256": "71c8b3663fe1a768ae9cd8562cefa9a1a5dc7aee29f1bb3095bfba58400891d1"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/device_if/ccip_if_clock.sv": {
+      "bytes": 2343,
+      "sha256": "a851b8bae5b0f12a36bb043093b1cba6f9b6f57e7effcc9964909ad27421fede"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/device_if/ccip_if_pkg.sv": {
+      "bytes": 12282,
+      "sha256": "188929a07130fe2e75ef8f050dc5ac6b6866ffee091ba106732c14557ff3ccab"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/device_if/device_if.vh": {
+      "bytes": 1762,
+      "sha256": "016904d98081f7e39d772968f8245eaaba5b60d7f120b450f0a89a4e431f98ce"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_if.vh": {
+      "bytes": 1895,
+      "sha256": "e733d63b0e87a629bdcb546017d599a4821a86826627212982185552bc23b2de"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_if_macros.vh": {
+      "bytes": 2668,
+      "sha256": "4e31f6141e718c7dd4c97b641fc837d9b72447cabdd47ac78bb1baf63fd10cfe"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_shims/README.md": {
+      "bytes": 1092,
+      "sha256": "7ff2c1e85af6f851e1f9bad27ee703f51505f21168a75386fdbcda183db00147"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_shims/platform_shim_avalon_mem_if.sv": {
+      "bytes": 8260,
+      "sha256": "0abbf597b773b47162521f02261d1aac36575b815914d914070e1308143e28aa"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_shims/platform_shim_ccip.sv": {
+      "bytes": 8688,
+      "sha256": "cdc74185760d7cf9f1dd31195164ca99a486e6560177e734de5c5d7a2719c88f"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_shims/platform_shim_ccip_std_afu.sv": {
+      "bytes": 7775,
+      "sha256": "a23106f25a9a165bc9eb955647fc00c85cd8d047c31bf1ca1886393dd1226da4"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_shims/utils/avalon_mem_if_async_shim.sv": {
+      "bytes": 5854,
+      "sha256": "ccc6e99afdf9870e6d1178ab8ab4b49ee277efe2d492bf0552c9254900bfb676"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_shims/utils/avalon_mem_if_connect.sv": {
+      "bytes": 2289,
+      "sha256": "cbbb8b160edf4fd462c26f50dab5f3d43abe947642750f22c660b2e2bd111340"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_shims/utils/avalon_mem_if_reg.sv": {
+      "bytes": 5016,
+      "sha256": "a8a43aa8f2abf4064b87304f89cf1f19781c1677ef39051bb46c615b1016dace"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_shims/utils/avalon_mem_if_reg_simple.sv": {
+      "bytes": 5570,
+      "sha256": "9aa405cc7480e83bb0472343a033ba183bb68f4a761fb28e3537049ee793f95f"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_shims/utils/platform_utils_ccip_activity_cnt.sv": {
+      "bytes": 4479,
+      "sha256": "4e1968706fa70ccc105dc951eff1022429831c114cf2ed4ae34e8de78a57047d"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_shims/utils/platform_utils_ccip_async_shim.sv": {
+      "bytes": 22972,
+      "sha256": "64e018ecc681bace81887df120962c2f70c70050134fb09732204cb1a91d55f4"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_shims/utils/platform_utils_ccip_reg.sv": {
+      "bytes": 6424,
+      "sha256": "45867522c2615352bb05a9be965fa2784482c1b5895081492a453b14c0223986"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_shims/utils/quartus_ip/README": {
+      "bytes": 1084,
+      "sha256": "e004e19a5fa1616ce7043cf36cf6f1cbf3edfda4b202c3d754621bda0af09351"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_shims/utils/quartus_ip/gen_platform_ip.sh": {
+      "bytes": 3164,
+      "sha256": "9670e526344dfb2e1b21d9d3dccdd3ee49b6d5211f4d170961c9fb9a0db9e5a9"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_shims/utils/quartus_ip/platform_utils_avalon_dc_fifo.sdc": {
+      "bytes": 4954,
+      "sha256": "5065b22d4bb371e6e763727004e434c117920077f6d1137544f13ca47474ecc3"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_shims/utils/quartus_ip/platform_utils_avalon_dc_fifo.v": {
+      "bytes": 25418,
+      "sha256": "40f59b3ca06015b405e435e1e30a17a7a09575ebd747dceaad113127a1fab392"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_shims/utils/quartus_ip/platform_utils_avalon_mm_bridge.v": {
+      "bytes": 15915,
+      "sha256": "98ba67c6d16efc2bb271d88df0541fe583333ed7c22723b9f65e6d7a2c8d41e9"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_shims/utils/quartus_ip/platform_utils_avalon_mm_clock_crossing_bridge.v": {
+      "bytes": 15429,
+      "sha256": "893e68c681fe95f090d435df62c924f8b7bc3db238fb6ead7b99da3cc07bd12d"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_shims/utils/quartus_ip/platform_utils_dc_fifo.sdc": {
+      "bytes": 4250,
+      "sha256": "bfd7107ad2a9a559f55a14eb0776f393699f311d37f99db60ffdbda9e042cbd5"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_shims/utils/quartus_ip/platform_utils_dc_fifo.sv": {
+      "bytes": 4721,
+      "sha256": "ae8d203bf771a44bbd80768537e00c4099c45c7390785c323d8c0b78ba3acf84"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_shims/utils/quartus_ip/platform_utils_dcfifo_synchronizer_bundle.v": {
+      "bytes": 1170,
+      "sha256": "0899544158a6ff9622c7b6def03c4402151ebfd3f21af9e86c5add57282d5a6b"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/rtl/platform_shims/utils/quartus_ip/platform_utils_std_synchronizer_nocut.v": {
+      "bytes": 7371,
+      "sha256": "37f0bd0e9a7d70e0b3da8a1baa364462e02dda8c41cf6f4661c1cb7b801d0ab8"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/sim/platform_if_addenda.txt": {
+      "bytes": 1615,
+      "sha256": "79b6147bed87c2ed0bf48490308b691cd9e34ce3d91c062832a61ba1200e71b8"
+    },
+    "/usr/lib/python3.9/site-packages/platmgr/db/platform_if/sim/platform_if_includes.txt": {
+      "bytes": 497,
+      "sha256": "f105b57b632d69f0561e18c3ce1e848e3f687fbd22854eabd93c9c0a0799e9b5"
+    }
+  },
+  "quartus_tools": {
+    "bin/quartus_sh": {
+      "path": "/opt/altera/25.1/quartus/bin/quartus_sh",
+      "sha256": "222fa669a9b10a6d443268fdc506e885597b5867e77bbf13ff656b8a272933dd"
+    },
+    "bin/quartus_syn": {
+      "path": "/opt/altera/25.1/quartus/bin/quartus_syn",
+      "sha256": "222fa669a9b10a6d443268fdc506e885597b5867e77bbf13ff656b8a272933dd"
+    },
+    "linux64/quartus_sh": {
+      "path": "/opt/altera/25.1/quartus/linux64/quartus_sh",
+      "sha256": "bf780907d9ad8eccb81e5a3070084507ca1ab821a8f2ff048006e5658df01f90"
+    },
+    "linux64/quartus_syn": {
+      "path": "/opt/altera/25.1/quartus/linux64/quartus_syn",
+      "sha256": "ce5c750beab921b3262e004eb64f2ed11cd875ae226bc4b92c09b6e9069579f4"
+    },
+    "/opt/altera/25.1/quartus/bin/quartus_fit": {
+      "bytes": 2449,
+      "path": "/opt/altera/25.1/quartus/bin/quartus_fit",
+      "sha256": "222fa669a9b10a6d443268fdc506e885597b5867e77bbf13ff656b8a272933dd"
+    },
+    "/opt/altera/25.1/quartus/linux64/quartus_fit": {
+      "bytes": 167656,
+      "path": "/opt/altera/25.1/quartus/linux64/quartus_fit",
+      "sha256": "c5cef4cc906aaffdfc177728e4ade3de6d40bb844d794dc8d6c59bbb894e91e0"
+    },
+    "/opt/altera/25.1/quartus/bin/quartus_sta": {
+      "bytes": 2449,
+      "path": "/opt/altera/25.1/quartus/bin/quartus_sta",
+      "sha256": "222fa669a9b10a6d443268fdc506e885597b5867e77bbf13ff656b8a272933dd"
+    },
+    "/opt/altera/25.1/quartus/linux64/quartus_sta": {
+      "bytes": 309992,
+      "path": "/opt/altera/25.1/quartus/linux64/quartus_sta",
+      "sha256": "979845fbc25bad3fb1aa72d26fa5a18337834a3a31d7113fef9328d40f21c91b"
+    }
+  },
+  "release": "/home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/release03",
+  "guard": "import os,sys,json,hashlib\nfrom pathlib import Path\nR=Path('/home/uwb_student00/ahls/new_BSP/work_ahls_persona_work21_csr02/csr-paths06')\ndef sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()\ndef proc(pid):\n p=Path('/proc')/str(pid);s=(p/'stat').read_text().rsplit(')',1)[1].split()\n return {'pid':pid,'ppid':int(s[1]),'start_ticks':s[19],'exe':os.readlink(p/'exe'),'cwd':os.readlink(p/'cwd'),'argv':(p/'cmdline').read_bytes().decode().rstrip('\\0').split('\\0')}\ndef check():\n assert __debug__ and sys.argv[1:]==['quartus']\n c=json.loads((R/'authority.json').read_text());assert c['ready_for_build'] is False and c['scope']=='persona-sta-only'\n assert 'OPAE_PLATFORM_GEN' not in os.environ and os.environ.get('QUARTUS_ROOTDIR_OVERRIDE')=='/opt/altera/25.1/quartus'\n p=proc(os.getppid());key={'exe':p['exe'],'cwd':p['cwd'],'argv':p['argv'][1:]}\n assert key in c['contexts'],('unrecorded native context',key)\n assert sha(Path(p['exe']))==c['runtime_hashes'][p['exe']]\n r=c['runner'];found=False;ancestor=p\n for i in range(40):\n  if ancestor['pid']==r['pid']:\n   assert all(ancestor[k]==r[k] for k in ('pid','start_ticks','exe','cwd','argv'));found=True;break\n  if ancestor['ppid']<=1:break\n  ancestor=proc(ancestor['ppid'])\n assert found,'native command not owned by issued runner'\n for path,h in c['critical_inputs'].items():assert sha(Path(path))==h,('critical input changed',path)\n q=Path(c['project'])/'ofs_pr_afu.qsf';s=q.read_text()\n for line in ('set_global_assignment -name FAMILY \"Agilex 7\"','set_global_assignment -name DEVICE AGFB027R25A2E2V','set_global_assignment -name TOP_LEVEL_ENTITY top','set_global_assignment -name REVISION_TYPE PR_IMPL'):\n  assert line in s,('project identity',line)\n out={'accepted':True,'parent':p};fd=os.open(R/'gate-events.jsonl',os.O_CREAT|os.O_APPEND|os.O_WRONLY,0o600);os.write(fd,(json.dumps(out)+'\\n').encode());os.close(fd)\ntry:check()\nexcept Exception as e:\n out={'error':repr(e)}\n try:out['parent']=proc(os.getppid())\n except Exception:pass\n fd=os.open(R/'gate-rejections.jsonl',os.O_CREAT|os.O_APPEND|os.O_WRONLY,0o600);os.write(fd,(json.dumps(out)+'\\n').encode());os.close(fd)\n print('IA840F_GATE_REJECTED: '+repr(out),file=sys.stderr);sys.exit(1)\n",
+  "guard_tcl": "# Persona sta-only copied-project callback; hardware/build readiness remains false.\nset ia840f_ready_for_build false\nset ia840f_release_gate [file join [file dirname [info script]] ia840f_persona_sta_gate01.py]\nif {[catch {exec /usr/bin/env -u LD_LIBRARY_PATH python3 $ia840f_release_gate quartus 2>@1} ia840f_release_result]} {\n    puts stderr \"IA840F_GATE_REJECTED: $ia840f_release_result\"\n    error \"Persona sta-only invocation rejected: $ia840f_release_result\"\n}\nunset ia840f_release_gate ia840f_release_result\n",
+  "contexts": [
+    {
+      "exe": "/opt/altera/25.1/quartus/linux64/quartus_sta",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ahls_persona_work21_csr02/csr-paths06/persona/build/syn/board/ia840f/syn_top",
+      "argv": [
+        "-t",
+        "/home/uwb_student00/ahls/new_BSP/work_ahls_persona_work21_csr02/csr-paths06/csr-paths06.tcl"
+      ]
+    }
+  ],
+  "project_rel": "build/syn/board/ia840f/syn_top",
+  "uuid": "673c03a1-cef3-4c82-bf10-b12c247d9718",
+  "afu_source_root": "/home/uwb_student00/ahls/new_BSP/work_ahls_persona_work21_csr02/setup01/afu_sources",
+  "runtime_mutable_paths": [
+    "build/syn/board/ia840f/syn_top/output_files/ofs_pr_afu.flow.rpt",
+    "build/syn/board/ia840f/syn_top/output_files/ofs_pr_afu.sdc_constraints.rpt",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/_all/1/report.cmp.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/_all/1/report.cmp.rdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/_all/1/report.fit.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/_all/1/report.fit.rdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/_all/1/report.routing.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/_all/1/report.routing.rdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/_all/1/report.rtm.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/_all/1/report.rtm.rdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/_all/1/report.syn.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/_all/1/report.syn.rdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/_all/1/report.taw.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/_all/1/report.taw.rdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/.cache/generic_rtm.rtm",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/.cache/timing_netlist.2_slow_vid2_100c.tdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/.cache/timing_netlist.2_slow_vid2b_100c.tdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/.cache/timing_netlist.MIN_fast_vid2_100c.tdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/.cache/timing_netlist.MIN_fast_vid2a_0c.tdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/.cache/timing_netlist.MIN_fast_vid2a_100c.tdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/.cache/timing_netlist.tdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/legacy/1/runlog.db",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/placed/1/.cache/generic_rtm.rtm",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/planned/1/.cache/generic_rtm.rtm",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/retimed/1/.cache/generic_rtm.rtm",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/routed/1/.cache/generic_rtm.rtm"
+  ],
+  "protected_synthesis_paths": [
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/chip.chip.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/chip.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/config.bcm.ddb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/config.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/constraints.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/constraints.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/generic_rtm.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/idb.idb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/idb.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/names.hdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/names.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/rtm.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/rtm.nvd",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/state.meta",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/timing_netlist.2_slow_vid2_100c.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/timing_netlist.2_slow_vid2b_100c.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/timing_netlist.MIN_fast_vid2_100c.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/timing_netlist.MIN_fast_vid2a_0c.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/timing_netlist.MIN_fast_vid2a_100c.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/final/1/timing_netlist.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/partitioned/1/chip.chip.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/partitioned/1/chip.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/partitioned/1/constraints.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/partitioned/1/constraints.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/partitioned/1/mifs.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/partitioned/1/names.hdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/partitioned/1/names.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/partitioned/1/state.meta",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/synthesized/1/chip.chip.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/synthesized/1/chip.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/synthesized/1/constraints.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/synthesized/1/constraints.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/synthesized/1/names.hdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/synthesized/1/names.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/_flat/25.1.0/synthesized/1/state.meta",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/.properties.folder.kvp",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/.properties.dynrconf",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/.properties.folder.kvp",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/.properties.names",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/.properties.netlist",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/.properties.physmap",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/.properties.routing",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/.properties.sdc",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/.properties.state.meta",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/dynrconf.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/dynrconf.src",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/manifest.txt",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/names.hdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/names.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/netlist.atom.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/netlist.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/physmap.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/physmap.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/routing.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/routing.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/sdc.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/sdc.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/sld_sysconfiles.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/sld_sysconfiles/.properties.alt_sld_fab_0.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/sld_sysconfiles/.properties.folder.kvp",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/sld_sysconfiles/alt_sld_fab_0.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/sld_sysconfiles/manifest.txt",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/1/state.meta",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_0/25.1.0/final/manifest.txt",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/final/1/dynrconf.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/final/1/dynrconf.src",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/final/1/names.hdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/final/1/names.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/final/1/netlist.atom.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/final/1/netlist.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/final/1/physmap.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/final/1/physmap.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/final/1/routing.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/final/1/routing.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/final/1/sdc.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/final/1/sdc.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/final/1/sld_sysconfiles.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/final/1/sld_sysconfiles/.hidden",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/final/1/sld_sysconfiles/alt_sld_fab_1.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/final/1/state.meta",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/partitioned/1/mifs.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/partitioned/1/mifs/.hidden",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/partitioned/1/names.hdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/partitioned/1/names.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/partitioned/1/sdc.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/partitioned/1/sdc.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/partitioned/1/sgate_netlist.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/partitioned/1/sgate_netlist.sgate.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/partitioned/1/sld_sysconfiles.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/partitioned/1/sld_sysconfiles/.hidden",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/partitioned/1/sld_sysconfiles/alt_sld_fab_1.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/partitioned/1/state.meta",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/synthesized/1/dynrconf.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/synthesized/1/dynrconf.src",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/synthesized/1/names.hdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/synthesized/1/names.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/synthesized/1/netlist.atom.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/synthesized/1/netlist.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/synthesized/1/sdc.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/synthesized/1/sdc.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/synthesized/1/sld_sysconfiles.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/synthesized/1/sld_sysconfiles/.hidden",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/synthesized/1/sld_sysconfiles/alt_sld_fab_1.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/auto_fab_1/25.1.0/synthesized/1/state.meta",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/final/1/dynrconf.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/final/1/dynrconf.src",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/final/1/names.hdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/final/1/names.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/final/1/netlist.atom.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/final/1/netlist.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/final/1/physmap.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/final/1/physmap.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/final/1/routing.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/final/1/routing.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/final/1/sdc.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/final/1/sdc.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/final/1/sld_sysconfiles.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/final/1/sld_sysconfiles/.hidden",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/final/1/sld_sysconfiles/ahls_memory_dma_fabric.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/final/1/sld_sysconfiles/ahls_memory_dma_fabric_fabric.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/final/1/sld_sysconfiles/scjio_agilex.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/final/1/state.meta",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/partitioned/1/mifs.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/partitioned/1/mifs/.hidden",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/partitioned/1/names.hdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/partitioned/1/names.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/partitioned/1/sdc.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/partitioned/1/sdc.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/partitioned/1/sgate_netlist.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/partitioned/1/sgate_netlist.sgate.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/partitioned/1/sld_sysconfiles.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/partitioned/1/sld_sysconfiles/.hidden",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/partitioned/1/sld_sysconfiles/ahls_memory_dma_fabric.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/partitioned/1/sld_sysconfiles/ahls_memory_dma_fabric_fabric.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/partitioned/1/sld_sysconfiles/scjio_agilex.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/partitioned/1/state.meta",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/synthesized/1/dynrconf.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/synthesized/1/dynrconf.src",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/synthesized/1/names.hdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/synthesized/1/names.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/synthesized/1/netlist.atom.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/synthesized/1/netlist.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/synthesized/1/sdc.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/synthesized/1/sdc.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/synthesized/1/sld_sysconfiles.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/synthesized/1/sld_sysconfiles/.hidden",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/synthesized/1/sld_sysconfiles/ahls_memory_dma_fabric.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/synthesized/1/sld_sysconfiles/ahls_memory_dma_fabric_fabric.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/synthesized/1/sld_sysconfiles/scjio_agilex.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/green_region/25.1.0/synthesized/1/state.meta",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/.properties.folder.kvp",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/.properties.base_assignments",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/.properties.dynrconf",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/.properties.folder.kvp",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/.properties.names",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/.properties.netlist",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/.properties.physmap",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/.properties.routing",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/.properties.sdc",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/.properties.state.meta",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/base_assignments.hdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/base_assignments.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/dynrconf.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/dynrconf.src",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/manifest.txt",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/mifs/.properties.folder.kvp",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/mifs/manifest.txt",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/names.hdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/names.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/netlist.atom.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/netlist.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/physmap.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/physmap.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/routing.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/routing.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sdc.cdb",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sdc.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles.model",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.PR_IP.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.apf.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.apf_achk_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.apf_bpf_mst.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.apf_bpf_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.apf_clock_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.apf_default_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.apf_mctp_mst.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.apf_pr_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.apf_reset_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.apf_st2mm_mst.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.apf_st2mm_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.apf_uart_mst.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.apf_uart_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bmc_spi_cardtest_pipe.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bmc_spi_pipe0.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bmc_spi_sdm_pipe.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bmc_spi_sub.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bmc_spi_support_pipe.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bmc_spi_to_avmm.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bmc_spi_xcvr_pipe.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bmc_to_pcie_irq_gen.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bpf.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bpf_apf_mst.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bpf_apf_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bpf_clock_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bpf_default_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bpf_emif_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bpf_fme_mst.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bpf_fme_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bpf_hssi_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bpf_pcie_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bpf_pmci_lpbk_mst.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bpf_pmci_lpbk_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bpf_pmci_mst.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bpf_pmci_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bpf_qsfp0_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bpf_qsfp1_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bpf_reset_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bw_840_support.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bw_840_support_axi_bridge_0.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bw_840_support_mm_bridge_0.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.bw_840_support_sysid_qsys_0.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.cfg_mon.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.fme_id_rom.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.folder.kvp",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.host_bmc_support_pipeline.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.host_if.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.host_sdm_pipe.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.host_sdm_pipeline.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.host_support_pipe.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.jop_blaster.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.mem_ss.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.mem_ss_mem_ss_501_qm5zaka.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.mem_ss_mem_ss_501_qm5zaka_emif_0.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.mem_ss_mem_ss_501_qm5zaka_emif_0_clk_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.mem_ss_mem_ss_501_qm5zaka_emif_0_reset_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.mem_ss_mem_ss_501_qm5zaka_emif_1.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.mem_ss_mem_ss_501_qm5zaka_emif_1_clk_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.mem_ss_mem_ss_501_qm5zaka_emif_1_reset_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.mem_ss_mem_ss_501_qm5zaka_emif_cal_bot.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.mem_ss_mem_ss_501_qm5zaka_msa_0.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.mem_ss_mem_ss_501_qm5zaka_msa_1.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.ocmem.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.pci_to_bmc_irq_gen.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.pcie_ss.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.qph_user_clk_iopll_RF100M.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.qph_user_clk_iopll_reconfig.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.remote_debug_jtag_only.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.remote_debug_jtag_only_clock_in.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.remote_debug_jtag_only_reset_in.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.sdm_mailbox.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.sdm_pipeline.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.sdm_reset.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.sys_clk.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.sys_pll.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.sysclk_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.sysrst_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.system_arbiter.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.system_clk_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/.properties.system_rst_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/PR_IP.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/apf.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/apf_achk_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/apf_bpf_mst.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/apf_bpf_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/apf_clock_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/apf_default_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/apf_mctp_mst.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/apf_pr_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/apf_reset_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/apf_st2mm_mst.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/apf_st2mm_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/apf_uart_mst.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/apf_uart_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bmc_spi_cardtest_pipe.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bmc_spi_pipe0.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bmc_spi_sdm_pipe.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bmc_spi_sub.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bmc_spi_support_pipe.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bmc_spi_to_avmm.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bmc_spi_xcvr_pipe.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bmc_to_pcie_irq_gen.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bpf.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bpf_apf_mst.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bpf_apf_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bpf_clock_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bpf_default_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bpf_emif_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bpf_fme_mst.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bpf_fme_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bpf_hssi_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bpf_pcie_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bpf_pmci_lpbk_mst.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bpf_pmci_lpbk_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bpf_pmci_mst.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bpf_pmci_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bpf_qsfp0_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bpf_qsfp1_slv.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bpf_reset_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bw_840_support.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bw_840_support_axi_bridge_0.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bw_840_support_mm_bridge_0.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/bw_840_support_sysid_qsys_0.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/cfg_mon.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/fme_id_rom.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/host_bmc_support_pipeline.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/host_if.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/host_sdm_pipe.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/host_sdm_pipeline.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/host_support_pipe.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/jop_blaster.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/manifest.txt",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/mem_ss.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/mem_ss_mem_ss_501_qm5zaka.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/mem_ss_mem_ss_501_qm5zaka_emif_0.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/mem_ss_mem_ss_501_qm5zaka_emif_0_clk_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/mem_ss_mem_ss_501_qm5zaka_emif_0_reset_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/mem_ss_mem_ss_501_qm5zaka_emif_1.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/mem_ss_mem_ss_501_qm5zaka_emif_1_clk_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/mem_ss_mem_ss_501_qm5zaka_emif_1_reset_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/mem_ss_mem_ss_501_qm5zaka_emif_cal_bot.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/mem_ss_mem_ss_501_qm5zaka_mem_reset_ctrl.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/mem_ss_mem_ss_501_qm5zaka_msa_0.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/mem_ss_mem_ss_501_qm5zaka_msa_1.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/ocmem.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/pci_to_bmc_irq_gen.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/pcie_ss.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/qph_user_clk_iopll_RF100M.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/qph_user_clk_iopll_reconfig.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/remote_debug_jtag_only.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/remote_debug_jtag_only_clock_in.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/remote_debug_jtag_only_reset_in.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/sdm_mailbox.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/sdm_pipeline.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/sdm_reset.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/sys_clk.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/sys_pll.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/sysclk_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/sysrst_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/system_arbiter.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/system_clk_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/sld_sysconfiles/system_rst_bridge.sopcinfo",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/1/state.meta",
+    "build/syn/board/ia840f/syn_top/qdb/_compiler/ofs_pr_afu/root_partition/25.1.0/final/manifest.txt"
+  ],
+  "fit_result_sha256": "f33d14f057fb0b5d9351eb0b5a6d9a375cf003a25e25e8c39d1a4f09e9e6d5ee",
+  "allowed_cpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35
+  ],
+  "query_tcl": "load_package project\nload_package sta\nnamespace eval ::ia840f_csr_paths06 {\n variable out {/home/uwb_student00/ahls/new_BSP/work_ahls_persona_work21_csr02/csr-paths06/csr-path-reports}\n variable prefix {afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|}\n proc emit {args} {\n  variable fd\n  puts $fd [join $args \"\\t\"]\n  flush $fd\n }\n proc counted {label col cap} {\n  set q_size [get_collection_size $col]\n  emit COUNT $label $q_size $cap\n  puts \"CSR_TOPO_COUNT $label $q_size cap=$cap\";flush stdout\n  if {$q_size > $cap} {error \"Topology collection $label count=$q_size cap=$cap\"}\n  return $q_size\n }\n proc node {label id} {\n  emit NODE $label $id [get_node_info -name $id] [get_node_info -type $id] [get_node_info -location $id]\n }\n proc edges {label id} {\n  foreach q_option {synch_edges asynch_edges clock_edges fanout_edges} {\n   set q_edges [get_node_info -$q_option $id]\n   set q_count [llength $q_edges]\n   emit EDGECOUNT $label $id $q_option $q_count 2048\n   if {$q_count > 2048} {error \"Edge count $q_count for $label/$id/$q_option\"}\n   foreach q_edge $q_edges {\n    set q_source [get_edge_info -src $q_edge]\n    set q_dest [get_edge_info -dst $q_edge]\n    emit EDGE $label $id $q_option $q_edge [get_edge_info -type $q_edge] [get_edge_info -delay_type $q_edge] [get_edge_info -is_disabled $q_edge] $q_source [get_node_info -name $q_source] [get_node_info -type $q_source] $q_dest [get_node_info -name $q_dest] [get_node_info -type $q_dest]\n   }\n  }\n }\n proc neighborhood {label col} {\n  # Both arguments below are genuine collections, not individual node handles.\n  foreach q_direction {fanins fanouts} {\n   set q_neighbors [get_$q_direction $col]\n   counted ${label}_${q_direction} $q_neighbors 2048\n   foreach_in_collection q_neighbor $q_neighbors {\n    node ${label}_${q_direction} $q_neighbor\n   }\n  }\n }\n proc cell_slice {label reg} {\n  node ${label}_seed $reg\n  edges ${label}_seed $reg\n  set q_cell [get_node_info -cell $reg]\n  emit CELL $label $q_cell [get_cell_info -name $q_cell] [get_cell_info -type $q_cell] [get_cell_info -wysiwyg_type $q_cell] [get_cell_info -location $q_cell]\n  emit PINNAMES $label IN [get_cell_info -in_pin_names $q_cell]\n  emit PINNAMES $label OUT [get_cell_info -out_pin_names $q_cell]\n  set q_allpins [get_cell_info -pins $q_cell]\n  counted ${label}_pins $q_allpins 64\n  foreach_in_collection q_pin $q_allpins {\n   node ${label}_pin $q_pin\n   edges ${label}_pin $q_pin\n   # Intersect genuine pin collections; no literal bus-name glob lookup.\n   variable prefix;variable rolecols;variable timedpins\n   set q_pin_name [get_node_info -name $q_pin]\n   set q_role [lindex [split $q_pin_name |] end]\n   if {![info exists rolecols($q_role)]} {\n    set rolecols($q_role) [get_pins -compatibility_mode -no_duplicates [list \"${prefix}*|${q_role}\"]]\n    counted csr_role_${q_role} $rolecols($q_role) 10000\n   }\n   set q_other [remove_from_collection $q_allpins $rolecols($q_role)]\n   set q_pin_col [remove_from_collection $q_allpins $q_other]\n   set q_np [counted ${label}_pin_lookup $q_pin_col 32]\n   set q_match 0\n   if {$q_np == 1} {\n    foreach_in_collection q_matched $q_pin_col {\n     set q_match [string equal [get_node_info -name $q_matched] $q_pin_name]\n    }\n   }\n   if {$q_match} {\n    emit PIN_ASSOC $label $q_pin_name EXACT_SINGLETON\n    if {$q_role in {d ena}} {lappend timedpins [list ${label}_${q_role} $q_pin_name $q_pin_col]}\n    # Clock distribution is inventoried as immediate edges, not traversed.\n    if {[lsearch -exact {clk clrn prn aload} [lindex [split $q_pin_name |] end]] < 0} {\n     neighborhood ${label}_pin_${q_pin_name} $q_pin_col\n    } else {emit SKIP $label $q_pin_name CLOCK_OR_ASYNC_CONTROL_NEIGHBORHOOD}\n   } else {emit GAP $label $q_pin_name PIN_LOOKUP_NOT_EXACT_SINGLETON}\n  }\n  set q_buried [get_cell_info -buried_nodes $q_cell]\n  counted ${label}_buried $q_buried 64\n  foreach_in_collection q_bnode $q_buried {\n   node ${label}_buried $q_bnode\n   edges ${label}_buried $q_bnode\n  }\n  set q_regs [get_cell_info -buried_regs $q_cell]\n  counted ${label}_buried_regs $q_regs 64\n  foreach_in_collection q_breg $q_regs {node ${label}_buried_reg $q_breg}\n  # Preserve cell-union neighborhoods separately; never assign every union\n  # neighbor to every individual pin when exact lookup was unavailable.\n  neighborhood ${label}_input_union [get_cell_info -in_pins $q_cell]\n  neighborhood ${label}_output_union [get_cell_info -out_pins $q_cell]\n }\n proc timing_pin {ci label pin_name pc metric} {\n  variable out\n  set q_paths [get_timing_paths -$metric -npaths 128 -nworst 1 -through $pc -detail full_path]\n  set q_count [get_collection_size $q_paths]\n  emit PATHCOUNT $ci $label $metric $q_count 128\n  if {$q_count >= 128} {error \"Representative through-pin path cap reached $label/$metric\"}\n  if {$q_count == 0} {emit GAP $ci $label $metric NO_TIMED_PATH;return}\n  foreach_in_collection q_path $q_paths {\n   set q_fc [get_path_info -from_clock $q_path]\n   set q_tc [get_path_info -to_clock $q_path]\n   emit PATH $ci $label $metric [get_path_info -corner $q_path] [get_path_info -slack $q_path] [get_node_info -name [get_path_info -from $q_path]] [get_node_info -name [get_path_info -to $q_path]] [get_clock_info -name $q_fc] [get_clock_info -name $q_tc] [get_path_info -clock_relationship $q_path] [get_path_info -data_delay $q_path] [get_path_info -setup_end_multicycle $q_path] [get_path_info -setup_start_multicycle $q_path] [get_path_info -hold_end_multicycle $q_path] [get_path_info -hold_start_multicycle $q_path] $pin_name\n  }\n  set q_report [report_timing -$metric -npaths 4 -nworst 1 -through $pc -detail full_path -show_routing -file [file join $out ${ci}_${label}_${metric}.rpt]]\n  emit REPORT $ci $label $metric {*}$q_report\n }\n proc main {} {\n  variable out;variable prefix;variable fd;variable timedpins\n  set timedpins {}\n  if {[file exists $out]} {error \"Query output already exists\"}\n  file mkdir $out\n  set fd [open [file join $out topology.tsv] {WRONLY CREAT EXCL}]\n  fconfigure $fd -translation lf\n  uplevel #0 {\n   project_open -preserve_revision_order -revision ofs_pr_afu ofs_top\n   foreach q_api {get_afu_json_user_clock_freqs get_aligned_user_clock_targets} {\n    if {[llength [info commands ::$q_api]] != 1} {error \"Missing global PIM helper $q_api\"}\n   }\n   create_timing_netlist -snapshot final\n   read_sdc\n   update_timing_netlist\n  }\n  set q_clocks [get_clocks *]\n  if {[counted clocks $q_clocks 150] != 81} {error \"Changed clock inventory\"}\n  foreach_in_collection q_clock $q_clocks {\n   emit CLOCK [get_clock_info -name $q_clock] [get_clock_info -type $q_clock] [get_clock_info -period $q_clock] [get_clock_info -waveform $q_clock]\n  }\n  set q_all [get_registers \"${prefix}*\"]\n  if {[counted all_csr $q_all 2048] != 1139} {error \"Changed CSR inventory\"}\n  set q_seeds [list {src_last_q[38]~.comb} {dst_last_q[37]~.comb} {dma_csr_map.descriptor.length[14]~.comb} {dma_csr_map.descriptor.length[0]~.comb}]\n  set q_locations [list FF_X261_Y68_N46 FF_X255_Y68_N43 FF_X259_Y66_N14 FF_X259_Y69_N25]\n  foreach q_seed $q_seeds q_location $q_locations q_label {source38 destination37 length14 length0} {\n   set q_found 0\n   foreach_in_collection q_reg $q_all {\n    if {[string equal [get_node_info -name $q_reg] \"${prefix}${q_seed}\"]} {\n     incr q_found\n     if {![string equal [get_node_info -location $q_reg] $q_location]} {error \"Seed physical identity mismatch $q_seed\"}\n     cell_slice $q_label $q_reg\n    }\n   }\n   emit SEEDCOUNT $q_label $q_seed $q_found\n   if {$q_found != 1} {error \"Seed count $q_seed: $q_found\"}\n  }\n  emit TIMEDPINCOUNT [llength $timedpins]\n  if {[llength $timedpins] != 6} {error \"Expected six verified representative data/enable pins\"}\n  set q_ops [get_available_operating_conditions]\n  if {[get_collection_size $q_ops] != 5} {error \"Changed corner inventory\"}\n  set q_ci 0\n  foreach_in_collection q_op $q_ops {\n   incr q_ci\n   set_operating_conditions $q_op\n   update_timing_netlist\n   foreach q_item $timedpins {\n    lassign $q_item q_label q_pin_name q_pc\n    foreach q_metric {setup hold} {timing_pin $q_ci $q_label $q_pin_name $q_pc $q_metric}\n   }\n  }\n  emit DONE 4 $q_ci\n  close $fd\n  uplevel #0 {project_close}\n  puts CSR_PATH_QUERY_DONE\n  flush stdout\n }\n}\n::ia840f_csr_paths06::main\n",
+  "persona_inventory_metadata_reference": {
+    "path": "sta01-config-persona_inventory-metadata.json",
+    "bytes": 1329500,
+    "sha256": "bb601704f62e04b75f6427edb30995ead1bff35e80ef60b982f7fc493858ddad"
+  },
+  "release_inventory_metadata_reference": {
+    "path": "sta01-config-release_inventory-metadata.json",
+    "bytes": 1229442,
+    "sha256": "5a425263c15b7b1b0fdebb7e918effacc7601ed3749a37420399e15aafeab46c"
+  }
+}

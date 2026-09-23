@@ -1,0 +1,1042 @@
+{
+  "archive": {
+    "outer_rc": 0,
+    "archive_sha256": "6be3c55b4e7a76c1e2c678c894716cf1ee0e3d0f7a226c06819bcc493aee1275",
+    "bytes": 2754810
+  },
+  "verified_payloads": 66,
+  "critical_bindings": 5750,
+  "protected_paths": 344,
+  "commands": [
+    {
+      "argv": [
+        "/opt/altera/25.1/quartus/bin/quartus_sta",
+        "-t",
+        "/home/uwb_student00/ahls/new_BSP/work_ahls_persona_work21_csr02/csr-paths06/csr-paths06.tcl"
+      ],
+      "descendants_after_leader": false,
+      "descendants_observed_at_leader_exit": [],
+      "effective_rc": 0,
+      "ended": "2026-09-23T20:02:54.186045+00:00",
+      "label": "timing",
+      "native_rc": 0,
+      "owned_group_live_after": [],
+      "pid": 136340,
+      "start_ticks": "15697519",
+      "started": "2026-09-23T20:01:43.397272+00:00",
+      "timeout": false
+    }
+  ],
+  "preservation": {
+    "setup_unchanged": true,
+    "release_unchanged": true,
+    "tools_unchanged": true,
+    "bound_inputs_unchanged": true
+  },
+  "counts": {
+    "COUNT": 81,
+    "CLOCK": 81,
+    "NODE": 1378,
+    "EDGECOUNT": 104,
+    "EDGE": 119,
+    "CELL": 4,
+    "PINNAMES": 8,
+    "PIN_ASSOC": 18,
+    "SKIP": 4,
+    "SEEDCOUNT": 4,
+    "TIMEDPINCOUNT": 1,
+    "PATHCOUNT": 60,
+    "PATH": 3100,
+    "REPORT": 60,
+    "DONE": 1
+  },
+  "negative_path_occurrences": 0,
+  "SCLR_launch_occurrences": 0,
+  "all_pathcounts_reconciled": true,
+  "max_pathcount": 106,
+  "clock_properties_unchanged": true,
+  "corners": [
+    "Fast vid2 100C Model",
+    "Fast vid2a 0C Model",
+    "Fast vid2a 100C Model",
+    "Slow vid2 100C Model",
+    "Slow vid2b 100C Model"
+  ],
+  "summary": {
+    "destination37_d": {
+      "setup": {
+        "records": 45,
+        "worst": {
+          "type": "PATH",
+          "ci": "1",
+          "family": "destination37_d",
+          "metric": "setup",
+          "corner": "Slow vid2 100C Model",
+          "slack": "0.637",
+          "from": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.dest_addr[0]~BLOCK_INPUT_MUX_PASSTHROUGH_X255_Y68_N0_I4_dff",
+          "to": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|Select_0~10xsyn_20_BLOCK_INPUT_MUX_PASSTHROUGH_X260_Y70_N0_I19_dff",
+          "from_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "to_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "relationship": "3.000",
+          "data_delay": "2.411",
+          "setup_end": "1",
+          "setup_start": "1",
+          "hold_end": "0",
+          "hold_start": "0",
+          "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dst_last_q[37]~.comb|d"
+        },
+        "launch_objects": 1,
+        "capture_objects": 9
+      },
+      "hold": {
+        "records": 45,
+        "worst": {
+          "type": "PATH",
+          "ci": "3",
+          "family": "destination37_d",
+          "metric": "hold",
+          "corner": "Fast vid2a 0C Model",
+          "slack": "0.754",
+          "from": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|add_2~76_BLOCK_INPUT_MUX_PASSTHROUGH_X255_Y68_N0_I63_dff",
+          "to": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|i919~42_BLOCK_INPUT_MUX_PASSTHROUGH_X258_Y69_N0_I40_dff",
+          "from_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "to_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "relationship": "0.000",
+          "data_delay": "0.925",
+          "setup_end": "1",
+          "setup_start": "1",
+          "hold_end": "0",
+          "hold_start": "0",
+          "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dst_last_q[37]~.comb|d"
+        },
+        "launch_objects": 1,
+        "capture_objects": 9
+      }
+    },
+    "length0_d": {
+      "setup": {
+        "records": 530,
+        "worst": {
+          "type": "PATH",
+          "ci": "1",
+          "family": "length0_d",
+          "metric": "setup",
+          "corner": "Slow vid2 100C Model",
+          "slack": "1.367",
+          "from": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|mmio64_reg.w.data[0]~DUPLICATE_BLOCK_INPUT_MUX_PASSTHROUGH_X259_Y69_N0_I36_dff",
+          "to": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|add_2~71_BLOCK_INPUT_MUX_PASSTHROUGH_X255_Y67_N0_I40_dff",
+          "from_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "to_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "relationship": "3.000",
+          "data_delay": "1.629",
+          "setup_end": "1",
+          "setup_start": "1",
+          "hold_end": "0",
+          "hold_start": "0",
+          "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|d"
+        },
+        "launch_objects": 1,
+        "capture_objects": 106
+      },
+      "hold": {
+        "records": 530,
+        "worst": {
+          "type": "PATH",
+          "ci": "3",
+          "family": "length0_d",
+          "metric": "hold",
+          "corner": "Fast vid2a 0C Model",
+          "slack": "0.088",
+          "from": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|mmio64_reg.w.data[0]~DUPLICATE_BLOCK_INPUT_MUX_PASSTHROUGH_X259_Y69_N0_I36_dff",
+          "to": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb",
+          "from_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "to_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "relationship": "0.000",
+          "data_delay": "0.142",
+          "setup_end": "1",
+          "setup_start": "1",
+          "hold_end": "0",
+          "hold_start": "0",
+          "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|d"
+        },
+        "launch_objects": 1,
+        "capture_objects": 106
+      }
+    },
+    "length0_ena": {
+      "setup": {
+        "records": 530,
+        "worst": {
+          "type": "PATH",
+          "ci": "1",
+          "family": "length0_ena",
+          "metric": "setup",
+          "corner": "Slow vid2 100C Model",
+          "slack": "0.915",
+          "from": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|i2852~0xsyn_BLOCK_INPUT_MUX_PASSTHROUGH_X260_Y70_N0_I20_dff",
+          "to": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|add_2~71_BLOCK_INPUT_MUX_PASSTHROUGH_X255_Y67_N0_I40_dff",
+          "from_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "to_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "relationship": "3.000",
+          "data_delay": "2.072",
+          "setup_end": "1",
+          "setup_start": "1",
+          "hold_end": "0",
+          "hold_start": "0",
+          "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|ena"
+        },
+        "launch_objects": 1,
+        "capture_objects": 106
+      },
+      "hold": {
+        "records": 530,
+        "worst": {
+          "type": "PATH",
+          "ci": "3",
+          "family": "length0_ena",
+          "metric": "hold",
+          "corner": "Fast vid2a 0C Model",
+          "slack": "0.221",
+          "from": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|Select_0~10xsyn_20_BLOCK_INPUT_MUX_PASSTHROUGH_X260_Y70_N0_I19_dff",
+          "to": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb",
+          "from_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "to_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "relationship": "0.000",
+          "data_delay": "0.287",
+          "setup_end": "1",
+          "setup_start": "1",
+          "hold_end": "0",
+          "hold_start": "0",
+          "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|ena"
+        },
+        "launch_objects": 1,
+        "capture_objects": 106
+      }
+    },
+    "length14_d": {
+      "setup": {
+        "records": 200,
+        "worst": {
+          "type": "PATH",
+          "ci": "1",
+          "family": "length14_d",
+          "metric": "setup",
+          "corner": "Slow vid2 100C Model",
+          "slack": "1.223",
+          "from": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|mmio64_reg.w.data[14]~DUPLICATE_BLOCK_INPUT_MUX_PASSTHROUGH_X259_Y66_N0_I16_dff",
+          "to": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|add_2~71_BLOCK_INPUT_MUX_PASSTHROUGH_X255_Y67_N0_I40_dff",
+          "from_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "to_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "relationship": "3.000",
+          "data_delay": "1.788",
+          "setup_end": "1",
+          "setup_start": "1",
+          "hold_end": "0",
+          "hold_start": "0",
+          "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|d"
+        },
+        "launch_objects": 1,
+        "capture_objects": 40
+      },
+      "hold": {
+        "records": 200,
+        "worst": {
+          "type": "PATH",
+          "ci": "3",
+          "family": "length14_d",
+          "metric": "hold",
+          "corner": "Fast vid2a 0C Model",
+          "slack": "0.093",
+          "from": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|mmio64_reg.w.data[14]~DUPLICATE_BLOCK_INPUT_MUX_PASSTHROUGH_X259_Y66_N0_I16_dff",
+          "to": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb",
+          "from_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "to_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "relationship": "0.000",
+          "data_delay": "0.141",
+          "setup_end": "1",
+          "setup_start": "1",
+          "hold_end": "0",
+          "hold_start": "0",
+          "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|d"
+        },
+        "launch_objects": 1,
+        "capture_objects": 40
+      }
+    },
+    "length14_ena": {
+      "setup": {
+        "records": 200,
+        "worst": {
+          "type": "PATH",
+          "ci": "1",
+          "family": "length14_ena",
+          "metric": "setup",
+          "corner": "Slow vid2 100C Model",
+          "slack": "0.704",
+          "from": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|i2852~0xsyn_BLOCK_INPUT_MUX_PASSTHROUGH_X260_Y70_N0_I20_dff",
+          "to": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|add_2~71_BLOCK_INPUT_MUX_PASSTHROUGH_X255_Y67_N0_I40_dff",
+          "from_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "to_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "relationship": "3.000",
+          "data_delay": "2.283",
+          "setup_end": "1",
+          "setup_start": "1",
+          "hold_end": "0",
+          "hold_start": "0",
+          "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|ena"
+        },
+        "launch_objects": 1,
+        "capture_objects": 40
+      },
+      "hold": {
+        "records": 200,
+        "worst": {
+          "type": "PATH",
+          "ci": "3",
+          "family": "length14_ena",
+          "metric": "hold",
+          "corner": "Fast vid2a 0C Model",
+          "slack": "0.268",
+          "from": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|Select_0~10xsyn_20_BLOCK_INPUT_MUX_PASSTHROUGH_X260_Y70_N0_I19_dff",
+          "to": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb",
+          "from_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "to_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "relationship": "0.000",
+          "data_delay": "0.326",
+          "setup_end": "1",
+          "setup_start": "1",
+          "hold_end": "0",
+          "hold_start": "0",
+          "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|ena"
+        },
+        "launch_objects": 1,
+        "capture_objects": 40
+      }
+    },
+    "source38_d": {
+      "setup": {
+        "records": 45,
+        "worst": {
+          "type": "PATH",
+          "ci": "1",
+          "family": "source38_d",
+          "metric": "setup",
+          "corner": "Slow vid2 100C Model",
+          "slack": "0.766",
+          "from": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.src_addr[0]~BLOCK_INPUT_MUX_PASSTHROUGH_X261_Y68_N0_I4_dff",
+          "to": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|Select_0~10xsyn_20_BLOCK_INPUT_MUX_PASSTHROUGH_X260_Y70_N0_I19_dff",
+          "from_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "to_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "relationship": "3.000",
+          "data_delay": "2.262",
+          "setup_end": "1",
+          "setup_start": "1",
+          "hold_end": "0",
+          "hold_start": "0",
+          "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|src_last_q[38]~.comb|d"
+        },
+        "launch_objects": 1,
+        "capture_objects": 9
+      },
+      "hold": {
+        "records": 45,
+        "worst": {
+          "type": "PATH",
+          "ci": "3",
+          "family": "source38_d",
+          "metric": "hold",
+          "corner": "Fast vid2a 0C Model",
+          "slack": "0.684",
+          "from": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|add_0~66_BLOCK_INPUT_MUX_PASSTHROUGH_X261_Y68_N0_I56_dff",
+          "to": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|i919~42_BLOCK_INPUT_MUX_PASSTHROUGH_X258_Y69_N0_I40_dff",
+          "from_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "to_clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+          "relationship": "0.000",
+          "data_delay": "0.842",
+          "setup_end": "1",
+          "setup_start": "1",
+          "hold_end": "0",
+          "hold_start": "0",
+          "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|src_last_q[38]~.comb|d"
+        },
+        "launch_objects": 2,
+        "capture_objects": 9
+      }
+    }
+  },
+  "detail_report_pin_occurrences": [
+    {
+      "path": "csr-path-reports/1_destination37_d_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dst_last_q[37]~.comb|d",
+      "matching_native_lines": [
+        177,
+        456,
+        743,
+        1030
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/1_destination37_d_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dst_last_q[37]~.comb|d",
+      "matching_native_lines": [
+        183,
+        481,
+        779,
+        1075
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/1_length0_d_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|d",
+      "matching_native_lines": [
+        175,
+        409,
+        664,
+        919
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/1_length0_d_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|d",
+      "matching_native_lines": [
+        175,
+        449,
+        721,
+        994
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/1_length0_ena_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|ena",
+      "matching_native_lines": [
+        186,
+        432,
+        698,
+        964
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/1_length0_ena_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|ena",
+      "matching_native_lines": [
+        186,
+        471,
+        754,
+        1038
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/1_length14_d_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|d",
+      "matching_native_lines": [
+        175,
+        409,
+        657,
+        914
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/1_length14_d_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|d",
+      "matching_native_lines": [
+        175,
+        450,
+        724,
+        992
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/1_length14_ena_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|ena",
+      "matching_native_lines": [
+        185,
+        430,
+        688,
+        955
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/1_length14_ena_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|ena",
+      "matching_native_lines": [
+        185,
+        470,
+        754,
+        1032
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/1_source38_d_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|src_last_q[38]~.comb|d",
+      "matching_native_lines": [
+        177,
+        454,
+        739,
+        1024
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/1_source38_d_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|src_last_q[38]~.comb|d",
+      "matching_native_lines": [
+        183,
+        479,
+        775,
+        1069
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/2_destination37_d_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dst_last_q[37]~.comb|d",
+      "matching_native_lines": [
+        177,
+        456,
+        743,
+        1030
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/2_destination37_d_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dst_last_q[37]~.comb|d",
+      "matching_native_lines": [
+        183,
+        481,
+        779,
+        1075
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/2_length0_d_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|d",
+      "matching_native_lines": [
+        175,
+        409,
+        664,
+        919
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/2_length0_d_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|d",
+      "matching_native_lines": [
+        175,
+        449,
+        721,
+        994
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/2_length0_ena_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|ena",
+      "matching_native_lines": [
+        186,
+        432,
+        698,
+        964
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/2_length0_ena_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|ena",
+      "matching_native_lines": [
+        186,
+        471,
+        754,
+        1038
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/2_length14_d_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|d",
+      "matching_native_lines": [
+        175,
+        409,
+        657,
+        914
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/2_length14_d_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|d",
+      "matching_native_lines": [
+        175,
+        450,
+        724,
+        992
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/2_length14_ena_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|ena",
+      "matching_native_lines": [
+        185,
+        430,
+        688,
+        955
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/2_length14_ena_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|ena",
+      "matching_native_lines": [
+        185,
+        470,
+        754,
+        1032
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/2_source38_d_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|src_last_q[38]~.comb|d",
+      "matching_native_lines": [
+        177,
+        454,
+        739,
+        1024
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/2_source38_d_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|src_last_q[38]~.comb|d",
+      "matching_native_lines": [
+        183,
+        479,
+        775,
+        1069
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/3_destination37_d_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dst_last_q[37]~.comb|d",
+      "matching_native_lines": [
+        177,
+        456,
+        743,
+        1030
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/3_destination37_d_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dst_last_q[37]~.comb|d",
+      "matching_native_lines": [
+        183,
+        481,
+        779,
+        1075
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/3_length0_d_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|d",
+      "matching_native_lines": [
+        175,
+        409,
+        664,
+        919
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/3_length0_d_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|d",
+      "matching_native_lines": [
+        175,
+        449,
+        721,
+        994
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/3_length0_ena_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|ena",
+      "matching_native_lines": [
+        186,
+        432,
+        698,
+        964
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/3_length0_ena_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|ena",
+      "matching_native_lines": [
+        186,
+        471,
+        754,
+        1038
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/3_length14_d_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|d",
+      "matching_native_lines": [
+        175,
+        409,
+        657,
+        914
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/3_length14_d_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|d",
+      "matching_native_lines": [
+        175,
+        450,
+        724,
+        992
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/3_length14_ena_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|ena",
+      "matching_native_lines": [
+        185,
+        430,
+        688,
+        955
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/3_length14_ena_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|ena",
+      "matching_native_lines": [
+        185,
+        470,
+        754,
+        1032
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/3_source38_d_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|src_last_q[38]~.comb|d",
+      "matching_native_lines": [
+        177,
+        454,
+        739,
+        1024
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/3_source38_d_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|src_last_q[38]~.comb|d",
+      "matching_native_lines": [
+        183,
+        479,
+        775,
+        1069
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/4_destination37_d_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dst_last_q[37]~.comb|d",
+      "matching_native_lines": [
+        177,
+        456,
+        743,
+        1030
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/4_destination37_d_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dst_last_q[37]~.comb|d",
+      "matching_native_lines": [
+        183,
+        481,
+        779,
+        1075
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/4_length0_d_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|d",
+      "matching_native_lines": [
+        175,
+        409,
+        664,
+        919
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/4_length0_d_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|d",
+      "matching_native_lines": [
+        175,
+        449,
+        721,
+        987
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/4_length0_ena_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|ena",
+      "matching_native_lines": [
+        186,
+        432,
+        698,
+        964
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/4_length0_ena_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|ena",
+      "matching_native_lines": [
+        186,
+        471,
+        754,
+        1031
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/4_length14_d_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|d",
+      "matching_native_lines": [
+        175,
+        409,
+        657,
+        914
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/4_length14_d_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|d",
+      "matching_native_lines": [
+        175,
+        450,
+        724,
+        992
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/4_length14_ena_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|ena",
+      "matching_native_lines": [
+        185,
+        430,
+        688,
+        955
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/4_length14_ena_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|ena",
+      "matching_native_lines": [
+        185,
+        470,
+        754,
+        1032
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/4_source38_d_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|src_last_q[38]~.comb|d",
+      "matching_native_lines": [
+        177,
+        454,
+        739,
+        1024
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/4_source38_d_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|src_last_q[38]~.comb|d",
+      "matching_native_lines": [
+        183,
+        479,
+        775,
+        1069
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/5_destination37_d_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dst_last_q[37]~.comb|d",
+      "matching_native_lines": [
+        177,
+        456,
+        743,
+        1030
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/5_destination37_d_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dst_last_q[37]~.comb|d",
+      "matching_native_lines": [
+        183,
+        481,
+        779,
+        1075
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/5_length0_d_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|d",
+      "matching_native_lines": [
+        175,
+        409,
+        664,
+        919
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/5_length0_d_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|d",
+      "matching_native_lines": [
+        175,
+        449,
+        721,
+        994
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/5_length0_ena_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|ena",
+      "matching_native_lines": [
+        186,
+        432,
+        698,
+        964
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/5_length0_ena_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[0]~.comb|ena",
+      "matching_native_lines": [
+        186,
+        471,
+        754,
+        1038
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/5_length14_d_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|d",
+      "matching_native_lines": [
+        175,
+        409,
+        657,
+        914
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/5_length14_d_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|d",
+      "matching_native_lines": [
+        175,
+        450,
+        724,
+        992
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/5_length14_ena_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|ena",
+      "matching_native_lines": [
+        185,
+        430,
+        688,
+        955
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/5_length14_ena_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dma_csr_map.descriptor.length[14]~.comb|ena",
+      "matching_native_lines": [
+        185,
+        470,
+        754,
+        1032
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/5_source38_d_hold.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|src_last_q[38]~.comb|d",
+      "matching_native_lines": [
+        177,
+        454,
+        739,
+        1024
+      ],
+      "occurrences": 4
+    },
+    {
+      "path": "csr-path-reports/5_source38_d_setup.rpt",
+      "through_pin": "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|src_last_q[38]~.comb|d",
+      "matching_native_lines": [
+        183,
+        479,
+        775,
+        1069
+      ],
+      "occurrences": 4
+    }
+  ],
+  "warnings": {
+    "20031": 1,
+    "20727": 1,
+    "18502": 17,
+    "332174": 40,
+    "332054": 41,
+    "332049": 58,
+    "332158": 1
+  },
+  "warning_occurrences": 159,
+  "acceptance": "PENDING_INDEPENDENT_REVIEW",
+  "scope": "four fixed fitted seeds/six data-enable pins, representative only",
+  "hardware_access": false
+}

@@ -1,0 +1,9 @@
+# Independent review: completed fixed-seed topology05 and data-pin06
+
+Review specification first, then quality, using only frozen local evidence. Read RESULTS-CSR-PATHS05/06 and csr-path-independent-review01.md. Verify native/tool/source/result identities, all exports and preservation, exact collections/seed locations, count reconciliation, clocks, through-pin routing and control-versus-data interpretation. Accept acquisition separately from numerical/representative mapping claims.
+
+05 preserves valid cell/edge/union observations and18failed escaped-pin lookups;06 uses native-supported collection subtraction to intersect cell-derived pins with role suffix collections, producing18exact singletons. Six proven D/ENA pins have3,100nonnegative overlapping occurrences acrossfivecorners/60groups,cap106/128; no SCLR launches in06. Full path reports preservefourworst/group. No RTL/SDC change, no refit. Determine whether this establishes the stated representative arithmetic/data/admission/descriptor-enable paths, the precise remaining original-feedback/all-bit coverage obligation, and the smallest useful next step. Do not upgrade representative evidence to exhaustive equivalence or repeat completed sweeps without a new discriminator.
+
+Retain 159query06warning occurrences and fullSTA's22/88failed rules,unconstrainedI/O,reset/CDC/exception/metadata/drain/fence/PR/hardwarelimits. VendorDDRsimulation SKIPPED BY USER. No hardware/fullsignoff acceptance. Parent alone runs native tools.
+
+Local static only: no SSH/network/vendor/simulator/device execution, runner imports/execution, Git, source edits, mutableCURRENT or task transitions. Only write csr-data-pin-independent-review01.md (earlyIN_PROGRESS thenFINAL), return full SHA separately. AST/literal/base64/gzip/hash/Tcl-static parsing permitted. Review package excludes this report and remains frozen.

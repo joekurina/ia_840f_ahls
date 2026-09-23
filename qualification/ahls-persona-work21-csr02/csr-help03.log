@@ -1,0 +1,180 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 25.1.0 Build 129 03/26/2025 SC Pro Edition
+    Info: Copyright (C) 2025  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Wed Sep 23 13:00:02 2026
+    Info: System process ID: 136052
+Info: Command: quartus_sta -t /home/uwb_student00/ahls/new_BSP/work_ahls_persona_work21_csr02/csr-help03/help.tcl
+BEGIN_HELP index_collection
+HELP_UNAVAILABLE ERROR: Tcl command does not exist or is not supported by Quartus Prime Tcl help: index_collection. Specify an available Quartus Prime Tcl command. Type "info commands" for a list of available commands.
+
+END_HELP index_collection
+BEGIN_HELP add_to_collection
+---------------------------------------------------------------------------
+
+Usage: add_to_collection [-h] [-help] [-long_help] <collection_obj_1> <collection_obj_2>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        <collection_obj_1>: First object collection
+        <collection_obj_2>: Second object collection
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+This command takes two collections and returns a new
+collection that is a union of the two. The second
+collection is allowed to be a string, whereas the
+first has to be previously-created collection, either
+by passing any of the "get_" functions directly, or by
+passing a variable that contains a collection (see code
+examples for this command). If a collection is used
+for the second argument, the types in the second
+collection must be the same as or a subset of the types
+in the first collection.
+
+If the first collection consists of keepers, the second
+collection can only consist of keepers, registers or ports.
+If the first collection consists of partitions, the second
+collection can only consist of partitions or cells. If
+the first collection consists of nodes, the second collection
+can only consist of nodes, keepers, registers, ports, pins,
+nets or combinational nodes.
+
+--------------
+Example Usage:
+--------------
+
+set kprs1 [get_keepers b*]
+set regs1 [get_registers a*]
+
+set regs_union [add_to_collection $kprs1 $regs1]
+
+#or:
+set regs_union [add_to_collection [get_keepers b*] $regs1]
+
+#or even:
+set regs_union [add_to_collection $kprs1 a*]
+
+# - note that the last statement will actually add all keepers with name a*
+#   not only registers! (will add IOs with name a*, if any)
+
+# Get the first 100 nodes in the collection.
+query_collection $regs_union -limit 100
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Cannot find specified collection. Specify an existing collection.
+
+---------------------------------------------------------------------------
+
+END_HELP add_to_collection
+BEGIN_HELP remove_from_collection
+---------------------------------------------------------------------------
+
+Usage: remove_from_collection [-h] [-help] [-long_help] <base_collection> <items_to_remove>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        <base_collection>: Collection to remove items from
+        <items_to_remove>: Items to be removed from base_collection
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+This command takes two collections and returns a new
+collection that is the difference of the two,
+effectively the second collection subtracted from the
+first collection. The second collection can be a
+string, but the first has to be previously-created
+collection: either by passing any of the "get_"
+functions directly, or by passing a variable that
+contains a collection (see code examples for
+this command). If a collection is used for the
+second argument, the types in the second collection
+must be the same as or a subset of the types in the
+first collection.
+
+If the first collection consists of keepers, the second
+collection can only consist of keepers, registers or ports.
+If the first collection consists of partitions, the second
+collection can only consist of partitions or cells. If
+the first collection consists of nodes, the second collection
+can only consist of nodes, keepers, registers, ports, pins,
+nets or combinational nodes.
+
+--------------
+Example Usage:
+--------------
+
+set a_keeprs [get_keepers a*]
+set a1_regs [get_registers a1*]
+
+set keeprs_without_a1 [remove_from_collection $a_keeprs $a1_regs]
+
+#or:
+set keeprs_without_a1 [remove_from_collection $a_keeprs [get_registers a1*]]
+
+#or even:
+set keeprs_without_a1 [remove_from_collection $a_keeprs a1*]
+
+# - note that the last statement will actually remove all keepers with name a1*
+#   not only registers! (will remove IOs with name a1*, if any)
+
+# Get the first 100 nodes in the collection.
+query_collection $keeprs_without_a1 -limit 100
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Cannot find specified collection. Specify an existing collection.
+
+---------------------------------------------------------------------------
+
+END_HELP remove_from_collection
+Info (23030): Evaluation of Tcl script /home/uwb_student00/ahls/new_BSP/work_ahls_persona_work21_csr02/csr-help03/help.tcl was successful
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 1310 megabytes
+    Info: Processing ended: Wed Sep 23 13:00:03 2026
+    Info: Elapsed time: 00:00:01
+    Info: System process ID: 136052
