@@ -1,0 +1,43 @@
+***************************************************************
+Quartus is a registered trademark of Intel Corporation in the
+US and other countries.  Portions of the Quartus Prime software
+code, and other portions of the code included in this download
+or on this DVD, are licensed to Intel Corporation and are the
+copyrighted property of third parties. For license details,
+refer to the End User License Agreement at
+http://fpgasoftware.intel.com/eula.
+***************************************************************
+
+2026.09.23.04:11:35 Info: Doing: qsys-script --quartus-project=/home/uwb_student00/ahls/new_BSP/work_ahls_memory_dma_core01/fabric01/ahls_memory_dma_fabric.qpf --rev=ahls_memory_dma_fabric --package-version=25.1 --search-path=/home/uwb_student00/ahls/new_BSP/work_ahls_memory_dma_core01/fabric01/mmhost_ia840f.report.prj,/home/uwb_student00/ahls/new_BSP/work_ahls_memory_dma_core01/fabric01,$ --script=/home/uwb_student00/ahls/new_BSP/work_ahls_memory_dma_core01/fabric01/make-system.tcl
+2026.09.23.04:11:40 Info: create_system ahls_memory_dma_fabric
+2026.09.23.04:11:40 Info: add_instance fabric ia840f_ahls_memory_fabric_dma 1.0
+2026.09.23.04:11:42 Info: add_interface clock_reset clock sink
+2026.09.23.04:11:42 Info: set_interface_property clock_reset EXPORT_OF fabric.clock_reset
+2026.09.23.04:11:42 Info: add_interface clock_reset_reset reset sink
+2026.09.23.04:11:42 Info: set_interface_property clock_reset_reset EXPORT_OF fabric.clock_reset_reset
+2026.09.23.04:11:42 Info: add_interface mmio_control axi4 slave
+2026.09.23.04:11:42 Info: set_interface_property mmio_control EXPORT_OF fabric.mmio_control
+2026.09.23.04:11:42 Info: add_interface dma_csr axi4 master
+2026.09.23.04:11:42 Info: set_interface_property dma_csr EXPORT_OF fabric.dma_csr
+2026.09.23.04:11:42 Info: add_interface dma_ddr_in0 axi4 slave
+2026.09.23.04:11:42 Info: set_interface_property dma_ddr_in0 EXPORT_OF fabric.dma_ddr_in0
+2026.09.23.04:11:42 Info: add_interface dma_ddr_in1 axi4 slave
+2026.09.23.04:11:42 Info: set_interface_property dma_ddr_in1 EXPORT_OF fabric.dma_ddr_in1
+2026.09.23.04:11:42 Info: add_interface bank_out0 axi4 master
+2026.09.23.04:11:42 Info: set_interface_property bank_out0 EXPORT_OF fabric.bank_out0
+2026.09.23.04:11:42 Info: add_interface bank_out1 axi4 master
+2026.09.23.04:11:42 Info: set_interface_property bank_out1 EXPORT_OF fabric.bank_out1
+2026.09.23.04:11:42 Info: add_interface kernel_irqs irq sender
+2026.09.23.04:11:42 Info: set_interface_property kernel_irqs EXPORT_OF fabric.kernel_irqs
+2026.09.23.04:11:42 Info: add_interface freeze conduit end
+2026.09.23.04:11:42 Info: set_interface_property freeze EXPORT_OF fabric.freeze
+2026.09.23.04:11:42 Info: add_interface device_exception_bus conduit end
+2026.09.23.04:11:42 Info: set_interface_property device_exception_bus EXPORT_OF fabric.device_exception_bus
+2026.09.23.04:11:42 Info: get_instance_interfaces fabric
+FABRIC_INTERFACES=clock_reset clock_reset_reset freeze device_exception_bus kernel_irqs mmio_control dma_csr dma_ddr_in0 bank_out0 dma_ddr_in1 bank_out1
+2026.09.23.04:11:42 Info: validate_system 
+PD_VALIDATE_OK
+2026.09.23.04:11:42 Info: save_system ahls_memory_dma_fabric.qsys
+2026.09.23.04:11:42 Info: Replacing ahls_memory_dma_fabric.fabric with generic component
+2026.09.23.04:11:43 Info: Info: All modules have been converted to Generic Components.
+PD_IMPORT_COMPLETE

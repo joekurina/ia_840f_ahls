@@ -1,0 +1,982 @@
+{
+  "clock_reset_clk": {
+    "direction": "input",
+    "width": 1
+  },
+  "clock_reset_reset_reset_n": {
+    "direction": "input",
+    "width": 1
+  },
+  "freeze_freeze": {
+    "direction": "input",
+    "width": 1
+  },
+  "device_exception_bus_data": {
+    "direction": "output",
+    "width": 64
+  },
+  "kernel_irqs_irq": {
+    "direction": "output",
+    "width": 1
+  },
+  "mmio_control_awid": {
+    "direction": "input",
+    "width": 16
+  },
+  "mmio_control_awaddr": {
+    "direction": "input",
+    "width": 20
+  },
+  "mmio_control_awlen": {
+    "direction": "input",
+    "width": 8
+  },
+  "mmio_control_awsize": {
+    "direction": "input",
+    "width": 3
+  },
+  "mmio_control_awburst": {
+    "direction": "input",
+    "width": 2
+  },
+  "mmio_control_awuser": {
+    "direction": "input",
+    "width": 1
+  },
+  "mmio_control_awvalid": {
+    "direction": "input",
+    "width": 1
+  },
+  "mmio_control_awready": {
+    "direction": "output",
+    "width": 1
+  },
+  "mmio_control_wdata": {
+    "direction": "input",
+    "width": 64
+  },
+  "mmio_control_wstrb": {
+    "direction": "input",
+    "width": 8
+  },
+  "mmio_control_wvalid": {
+    "direction": "input",
+    "width": 1
+  },
+  "mmio_control_wuser": {
+    "direction": "input",
+    "width": 1
+  },
+  "mmio_control_wready": {
+    "direction": "output",
+    "width": 1
+  },
+  "mmio_control_bid": {
+    "direction": "output",
+    "width": 16
+  },
+  "mmio_control_bresp": {
+    "direction": "output",
+    "width": 2
+  },
+  "mmio_control_buser": {
+    "direction": "output",
+    "width": 1
+  },
+  "mmio_control_bvalid": {
+    "direction": "output",
+    "width": 1
+  },
+  "mmio_control_bready": {
+    "direction": "input",
+    "width": 1
+  },
+  "mmio_control_arid": {
+    "direction": "input",
+    "width": 16
+  },
+  "mmio_control_araddr": {
+    "direction": "input",
+    "width": 20
+  },
+  "mmio_control_arlen": {
+    "direction": "input",
+    "width": 8
+  },
+  "mmio_control_arsize": {
+    "direction": "input",
+    "width": 3
+  },
+  "mmio_control_arburst": {
+    "direction": "input",
+    "width": 2
+  },
+  "mmio_control_aruser": {
+    "direction": "input",
+    "width": 1
+  },
+  "mmio_control_arvalid": {
+    "direction": "input",
+    "width": 1
+  },
+  "mmio_control_arready": {
+    "direction": "output",
+    "width": 1
+  },
+  "mmio_control_rid": {
+    "direction": "output",
+    "width": 16
+  },
+  "mmio_control_rdata": {
+    "direction": "output",
+    "width": 64
+  },
+  "mmio_control_rresp": {
+    "direction": "output",
+    "width": 2
+  },
+  "mmio_control_rlast": {
+    "direction": "output",
+    "width": 1
+  },
+  "mmio_control_rvalid": {
+    "direction": "output",
+    "width": 1
+  },
+  "mmio_control_rready": {
+    "direction": "input",
+    "width": 1
+  },
+  "mmio_control_ruser": {
+    "direction": "output",
+    "width": 1
+  },
+  "dma_csr_awid": {
+    "direction": "output",
+    "width": 18
+  },
+  "dma_csr_awaddr": {
+    "direction": "output",
+    "width": 16
+  },
+  "dma_csr_awsize": {
+    "direction": "output",
+    "width": 3
+  },
+  "dma_csr_awprot": {
+    "direction": "output",
+    "width": 3
+  },
+  "dma_csr_awuser": {
+    "direction": "output",
+    "width": 1
+  },
+  "dma_csr_awvalid": {
+    "direction": "output",
+    "width": 1
+  },
+  "dma_csr_awready": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_csr_wdata": {
+    "direction": "output",
+    "width": 64
+  },
+  "dma_csr_wstrb": {
+    "direction": "output",
+    "width": 8
+  },
+  "dma_csr_wlast": {
+    "direction": "output",
+    "width": 1
+  },
+  "dma_csr_wvalid": {
+    "direction": "output",
+    "width": 1
+  },
+  "dma_csr_wuser": {
+    "direction": "output",
+    "width": 1
+  },
+  "dma_csr_wready": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_csr_bid": {
+    "direction": "input",
+    "width": 18
+  },
+  "dma_csr_bresp": {
+    "direction": "input",
+    "width": 2
+  },
+  "dma_csr_buser": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_csr_bvalid": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_csr_bready": {
+    "direction": "output",
+    "width": 1
+  },
+  "dma_csr_arid": {
+    "direction": "output",
+    "width": 18
+  },
+  "dma_csr_araddr": {
+    "direction": "output",
+    "width": 16
+  },
+  "dma_csr_arsize": {
+    "direction": "output",
+    "width": 3
+  },
+  "dma_csr_arprot": {
+    "direction": "output",
+    "width": 3
+  },
+  "dma_csr_aruser": {
+    "direction": "output",
+    "width": 1
+  },
+  "dma_csr_arvalid": {
+    "direction": "output",
+    "width": 1
+  },
+  "dma_csr_arready": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_csr_rid": {
+    "direction": "input",
+    "width": 18
+  },
+  "dma_csr_rdata": {
+    "direction": "input",
+    "width": 64
+  },
+  "dma_csr_rresp": {
+    "direction": "input",
+    "width": 2
+  },
+  "dma_csr_rvalid": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_csr_rready": {
+    "direction": "output",
+    "width": 1
+  },
+  "dma_csr_ruser": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_ddr_in0_awid": {
+    "direction": "input",
+    "width": 9
+  },
+  "dma_ddr_in0_awaddr": {
+    "direction": "input",
+    "width": 34
+  },
+  "dma_ddr_in0_awlen": {
+    "direction": "input",
+    "width": 8
+  },
+  "dma_ddr_in0_awsize": {
+    "direction": "input",
+    "width": 3
+  },
+  "dma_ddr_in0_awburst": {
+    "direction": "input",
+    "width": 2
+  },
+  "dma_ddr_in0_awlock": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_ddr_in0_awcache": {
+    "direction": "input",
+    "width": 4
+  },
+  "dma_ddr_in0_awprot": {
+    "direction": "input",
+    "width": 3
+  },
+  "dma_ddr_in0_awuser": {
+    "direction": "input",
+    "width": 2
+  },
+  "dma_ddr_in0_awqos": {
+    "direction": "input",
+    "width": 4
+  },
+  "dma_ddr_in0_awregion": {
+    "direction": "input",
+    "width": 4
+  },
+  "dma_ddr_in0_awvalid": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_ddr_in0_awready": {
+    "direction": "output",
+    "width": 1
+  },
+  "dma_ddr_in0_wdata": {
+    "direction": "input",
+    "width": 512
+  },
+  "dma_ddr_in0_wstrb": {
+    "direction": "input",
+    "width": 64
+  },
+  "dma_ddr_in0_wlast": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_ddr_in0_wvalid": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_ddr_in0_wuser": {
+    "direction": "input",
+    "width": 2
+  },
+  "dma_ddr_in0_wready": {
+    "direction": "output",
+    "width": 1
+  },
+  "dma_ddr_in0_bid": {
+    "direction": "output",
+    "width": 9
+  },
+  "dma_ddr_in0_bresp": {
+    "direction": "output",
+    "width": 2
+  },
+  "dma_ddr_in0_buser": {
+    "direction": "output",
+    "width": 2
+  },
+  "dma_ddr_in0_bvalid": {
+    "direction": "output",
+    "width": 1
+  },
+  "dma_ddr_in0_bready": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_ddr_in0_arid": {
+    "direction": "input",
+    "width": 9
+  },
+  "dma_ddr_in0_araddr": {
+    "direction": "input",
+    "width": 34
+  },
+  "dma_ddr_in0_arlen": {
+    "direction": "input",
+    "width": 8
+  },
+  "dma_ddr_in0_arsize": {
+    "direction": "input",
+    "width": 3
+  },
+  "dma_ddr_in0_arburst": {
+    "direction": "input",
+    "width": 2
+  },
+  "dma_ddr_in0_arlock": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_ddr_in0_arcache": {
+    "direction": "input",
+    "width": 4
+  },
+  "dma_ddr_in0_arprot": {
+    "direction": "input",
+    "width": 3
+  },
+  "dma_ddr_in0_aruser": {
+    "direction": "input",
+    "width": 2
+  },
+  "dma_ddr_in0_arqos": {
+    "direction": "input",
+    "width": 4
+  },
+  "dma_ddr_in0_arregion": {
+    "direction": "input",
+    "width": 4
+  },
+  "dma_ddr_in0_arvalid": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_ddr_in0_arready": {
+    "direction": "output",
+    "width": 1
+  },
+  "dma_ddr_in0_rid": {
+    "direction": "output",
+    "width": 9
+  },
+  "dma_ddr_in0_rdata": {
+    "direction": "output",
+    "width": 512
+  },
+  "dma_ddr_in0_rresp": {
+    "direction": "output",
+    "width": 2
+  },
+  "dma_ddr_in0_rlast": {
+    "direction": "output",
+    "width": 1
+  },
+  "dma_ddr_in0_rvalid": {
+    "direction": "output",
+    "width": 1
+  },
+  "dma_ddr_in0_rready": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_ddr_in0_ruser": {
+    "direction": "output",
+    "width": 2
+  },
+  "bank_out0_awid": {
+    "direction": "output",
+    "width": 18
+  },
+  "bank_out0_awaddr": {
+    "direction": "output",
+    "width": 34
+  },
+  "bank_out0_awlen": {
+    "direction": "output",
+    "width": 8
+  },
+  "bank_out0_awsize": {
+    "direction": "output",
+    "width": 3
+  },
+  "bank_out0_awburst": {
+    "direction": "output",
+    "width": 2
+  },
+  "bank_out0_awlock": {
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out0_awcache": {
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out0_awprot": {
+    "direction": "output",
+    "width": 3
+  },
+  "bank_out0_awuser": {
+    "direction": "output",
+    "width": 2
+  },
+  "bank_out0_awqos": {
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out0_awregion": {
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out0_awvalid": {
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out0_awready": {
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out0_wdata": {
+    "direction": "output",
+    "width": 512
+  },
+  "bank_out0_wstrb": {
+    "direction": "output",
+    "width": 64
+  },
+  "bank_out0_wlast": {
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out0_wvalid": {
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out0_wuser": {
+    "direction": "output",
+    "width": 2
+  },
+  "bank_out0_wready": {
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out0_bid": {
+    "direction": "input",
+    "width": 18
+  },
+  "bank_out0_bresp": {
+    "direction": "input",
+    "width": 2
+  },
+  "bank_out0_buser": {
+    "direction": "input",
+    "width": 2
+  },
+  "bank_out0_bvalid": {
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out0_bready": {
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out0_arid": {
+    "direction": "output",
+    "width": 18
+  },
+  "bank_out0_araddr": {
+    "direction": "output",
+    "width": 34
+  },
+  "bank_out0_arlen": {
+    "direction": "output",
+    "width": 8
+  },
+  "bank_out0_arsize": {
+    "direction": "output",
+    "width": 3
+  },
+  "bank_out0_arburst": {
+    "direction": "output",
+    "width": 2
+  },
+  "bank_out0_arlock": {
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out0_arcache": {
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out0_arprot": {
+    "direction": "output",
+    "width": 3
+  },
+  "bank_out0_aruser": {
+    "direction": "output",
+    "width": 2
+  },
+  "bank_out0_arqos": {
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out0_arregion": {
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out0_arvalid": {
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out0_arready": {
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out0_rid": {
+    "direction": "input",
+    "width": 18
+  },
+  "bank_out0_rdata": {
+    "direction": "input",
+    "width": 512
+  },
+  "bank_out0_rresp": {
+    "direction": "input",
+    "width": 2
+  },
+  "bank_out0_rlast": {
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out0_rvalid": {
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out0_rready": {
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out0_ruser": {
+    "direction": "input",
+    "width": 2
+  },
+  "dma_ddr_in1_awid": {
+    "direction": "input",
+    "width": 9
+  },
+  "dma_ddr_in1_awaddr": {
+    "direction": "input",
+    "width": 34
+  },
+  "dma_ddr_in1_awlen": {
+    "direction": "input",
+    "width": 8
+  },
+  "dma_ddr_in1_awsize": {
+    "direction": "input",
+    "width": 3
+  },
+  "dma_ddr_in1_awburst": {
+    "direction": "input",
+    "width": 2
+  },
+  "dma_ddr_in1_awlock": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_ddr_in1_awcache": {
+    "direction": "input",
+    "width": 4
+  },
+  "dma_ddr_in1_awprot": {
+    "direction": "input",
+    "width": 3
+  },
+  "dma_ddr_in1_awuser": {
+    "direction": "input",
+    "width": 2
+  },
+  "dma_ddr_in1_awqos": {
+    "direction": "input",
+    "width": 4
+  },
+  "dma_ddr_in1_awregion": {
+    "direction": "input",
+    "width": 4
+  },
+  "dma_ddr_in1_awvalid": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_ddr_in1_awready": {
+    "direction": "output",
+    "width": 1
+  },
+  "dma_ddr_in1_wdata": {
+    "direction": "input",
+    "width": 512
+  },
+  "dma_ddr_in1_wstrb": {
+    "direction": "input",
+    "width": 64
+  },
+  "dma_ddr_in1_wlast": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_ddr_in1_wvalid": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_ddr_in1_wuser": {
+    "direction": "input",
+    "width": 2
+  },
+  "dma_ddr_in1_wready": {
+    "direction": "output",
+    "width": 1
+  },
+  "dma_ddr_in1_bid": {
+    "direction": "output",
+    "width": 9
+  },
+  "dma_ddr_in1_bresp": {
+    "direction": "output",
+    "width": 2
+  },
+  "dma_ddr_in1_buser": {
+    "direction": "output",
+    "width": 2
+  },
+  "dma_ddr_in1_bvalid": {
+    "direction": "output",
+    "width": 1
+  },
+  "dma_ddr_in1_bready": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_ddr_in1_arid": {
+    "direction": "input",
+    "width": 9
+  },
+  "dma_ddr_in1_araddr": {
+    "direction": "input",
+    "width": 34
+  },
+  "dma_ddr_in1_arlen": {
+    "direction": "input",
+    "width": 8
+  },
+  "dma_ddr_in1_arsize": {
+    "direction": "input",
+    "width": 3
+  },
+  "dma_ddr_in1_arburst": {
+    "direction": "input",
+    "width": 2
+  },
+  "dma_ddr_in1_arlock": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_ddr_in1_arcache": {
+    "direction": "input",
+    "width": 4
+  },
+  "dma_ddr_in1_arprot": {
+    "direction": "input",
+    "width": 3
+  },
+  "dma_ddr_in1_aruser": {
+    "direction": "input",
+    "width": 2
+  },
+  "dma_ddr_in1_arqos": {
+    "direction": "input",
+    "width": 4
+  },
+  "dma_ddr_in1_arregion": {
+    "direction": "input",
+    "width": 4
+  },
+  "dma_ddr_in1_arvalid": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_ddr_in1_arready": {
+    "direction": "output",
+    "width": 1
+  },
+  "dma_ddr_in1_rid": {
+    "direction": "output",
+    "width": 9
+  },
+  "dma_ddr_in1_rdata": {
+    "direction": "output",
+    "width": 512
+  },
+  "dma_ddr_in1_rresp": {
+    "direction": "output",
+    "width": 2
+  },
+  "dma_ddr_in1_rlast": {
+    "direction": "output",
+    "width": 1
+  },
+  "dma_ddr_in1_rvalid": {
+    "direction": "output",
+    "width": 1
+  },
+  "dma_ddr_in1_rready": {
+    "direction": "input",
+    "width": 1
+  },
+  "dma_ddr_in1_ruser": {
+    "direction": "output",
+    "width": 2
+  },
+  "bank_out1_awid": {
+    "direction": "output",
+    "width": 18
+  },
+  "bank_out1_awaddr": {
+    "direction": "output",
+    "width": 34
+  },
+  "bank_out1_awlen": {
+    "direction": "output",
+    "width": 8
+  },
+  "bank_out1_awsize": {
+    "direction": "output",
+    "width": 3
+  },
+  "bank_out1_awburst": {
+    "direction": "output",
+    "width": 2
+  },
+  "bank_out1_awlock": {
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out1_awcache": {
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out1_awprot": {
+    "direction": "output",
+    "width": 3
+  },
+  "bank_out1_awuser": {
+    "direction": "output",
+    "width": 2
+  },
+  "bank_out1_awqos": {
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out1_awregion": {
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out1_awvalid": {
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out1_awready": {
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out1_wdata": {
+    "direction": "output",
+    "width": 512
+  },
+  "bank_out1_wstrb": {
+    "direction": "output",
+    "width": 64
+  },
+  "bank_out1_wlast": {
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out1_wvalid": {
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out1_wuser": {
+    "direction": "output",
+    "width": 2
+  },
+  "bank_out1_wready": {
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out1_bid": {
+    "direction": "input",
+    "width": 18
+  },
+  "bank_out1_bresp": {
+    "direction": "input",
+    "width": 2
+  },
+  "bank_out1_buser": {
+    "direction": "input",
+    "width": 2
+  },
+  "bank_out1_bvalid": {
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out1_bready": {
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out1_arid": {
+    "direction": "output",
+    "width": 18
+  },
+  "bank_out1_araddr": {
+    "direction": "output",
+    "width": 34
+  },
+  "bank_out1_arlen": {
+    "direction": "output",
+    "width": 8
+  },
+  "bank_out1_arsize": {
+    "direction": "output",
+    "width": 3
+  },
+  "bank_out1_arburst": {
+    "direction": "output",
+    "width": 2
+  },
+  "bank_out1_arlock": {
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out1_arcache": {
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out1_arprot": {
+    "direction": "output",
+    "width": 3
+  },
+  "bank_out1_aruser": {
+    "direction": "output",
+    "width": 2
+  },
+  "bank_out1_arqos": {
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out1_arregion": {
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out1_arvalid": {
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out1_arready": {
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out1_rid": {
+    "direction": "input",
+    "width": 18
+  },
+  "bank_out1_rdata": {
+    "direction": "input",
+    "width": 512
+  },
+  "bank_out1_rresp": {
+    "direction": "input",
+    "width": 2
+  },
+  "bank_out1_rlast": {
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out1_rvalid": {
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out1_rready": {
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out1_ruser": {
+    "direction": "input",
+    "width": 2
+  }
+}
