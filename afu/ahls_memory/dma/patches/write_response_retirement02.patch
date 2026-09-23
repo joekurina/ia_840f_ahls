@@ -1,0 +1,106 @@
+--- a/ip/dma/dma_write_engine.sv
++++ b/ip/dma/dma_write_engine.sv
+@@ -85,6 +85,39 @@
+    logic [dma_pkg::LENGTH_W-1:0] wr_dest_clk_cnt;
+    logic [dma_pkg::LENGTH_W-1:0] wr_dest_valid_cnt;
+    logic packet_complete;
++   logic wr_resp, wr_resp_ok;
++   logic [AXI_LEN_W:0] aw_accepted, b_accepted;
++   logic response_credit, response_bad, response_error, responses_drained;
++
++   // One B per accepted AW and completed W burst. ID is always zero here.
++   // Invalid/early/extra IDs cannot discharge an outstanding transaction.
++   assign response_credit = wr_resp && (dest_mem.b.id == '0) &&
++                            (b_accepted < aw_accepted) &&
++                            (b_accepted < (wlast_cnt + wlast_valid));
++   assign response_bad = wr_resp && (!response_credit ||
++                                    (dest_mem.b.resp != dma_pkg::OKAY));
++   assign responses_drained = (aw_accepted == num_wlasts) &&
++                              (b_accepted == aw_accepted) &&
++                              (wlast_cnt == num_wlasts) && !dest_mem.wvalid;
++
++   always_ff @(posedge clk) begin
++      if (!reset_n) begin
++         aw_accepted <= '0;
++         b_accepted <= '0;
++         response_error <= 1'b0;
++      end else begin
++         // Clear per-descriptor credits only when starting a new descriptor.
++         if (state[IDLE_BIT] && next[SEND_WR_REQ_BIT]) begin
++            aw_accepted <= '0;
++            b_accepted <= '0;
++         end else begin
++            if (dest_mem.awvalid && dest_mem.awready) aw_accepted <= aw_accepted + 1'b1;
++            if (response_credit) b_accepted <= b_accepted + 1'b1;
++         end
++         // Record failures in every phase, including before the final wait.
++         if (response_bad) response_error <= 1'b1;
++      end
++   end
+ 
+    assign wr_dest_status.wr_dest_perf_cntr.wr_dest_clk_cnt = {12'b0, wr_dest_clk_cnt};
+    assign wr_dest_status.wr_dest_perf_cntr.wr_dest_valid_cnt = {12'b0, wr_dest_valid_cnt};
+@@ -106,7 +139,8 @@
+       next = XXX;
+       unique case (1'b1)
+          state[IDLE_BIT]: begin 
+-           if (descriptor.descriptor_control.go & descriptor_fifo_not_empty & rd_fifo_if.not_empty)next = SEND_WR_REQ;
++           if (response_error || response_bad) next = ERROR;
++           else if (descriptor.descriptor_control.go & descriptor_fifo_not_empty & rd_fifo_if.not_empty)next = SEND_WR_REQ;
+            else next = IDLE;
+          end 
+ 
+@@ -127,13 +161,13 @@
+             else next = RD_FIFO_WR_DEST;
+ 
+          state[WAIT_FOR_WR_RSP_BIT]:
+-            if (packet_complete) next = IDLE;
+-            else if (dma_pkg::ENABLE_ERROR & wr_resp & ((dest_mem.b.resp==dma_pkg::SLVERR) | ((dest_mem.b.resp==dma_pkg::SLVERR)))) next = ERROR; 
++            if (responses_drained) next = (response_error || response_bad) ? ERROR : IDLE;
+             else next = WAIT_FOR_WR_RSP;
+          
+          state[ERROR_BIT]:
+-            if (csr_control.reset_dispatcher) next = IDLE;
+-            else next = ERROR;
++            // No descriptor replay through the unqualified dispatcher-reset bit.
++            // Recovery requires module reset under an independently drained system.
++            next = ERROR;
+       
+        endcase
+    end
+@@ -150,7 +184,7 @@
+          wlast_cnt         <= wlast_cnt + wlast_valid;
+          unique case (1'b1)
+             next[IDLE_BIT]: begin
+-               num_wlasts       <= state[WAIT_FOR_WR_RSP_BIT] <= '0;
++               num_wlasts       <= '0;
+                wlast_cnt        <= '0;
+                dest_mem.aw.addr <= '0;
+                saved_awaddr     <= '0;
+@@ -216,7 +250,7 @@
+       dest_mem.bready                 = 1'b1;
+       wr_fsm_done                     = 1'b0;
+       wr_dest_status.stopped_on_error = 1'b0;
+-      wr_dest_status.wr_rsp_err       = 1'b0;
++      wr_dest_status.wr_rsp_err       = response_error;
+       dest_mem.arvalid                = 1'b0;
+       dest_mem.awvalid                = 1'b0;
+       packet_complete                 = 1'b0;
+@@ -258,7 +292,7 @@
+          end
+ 
+          state[WAIT_FOR_WR_RSP_BIT]: begin 
+-            wr_fsm_done      = 1'b1;
++            wr_fsm_done      = responses_drained & !response_error & !response_bad;
+             rd_fifo_if.rd_en = 1'b0;
+ 
+          end
+@@ -281,6 +315,8 @@
+          wr_dest_valid_cnt   <= '0;
+ 
+       end else begin
++         // Busy remains set for a descriptor held on error, not only bus traffic.
++         wr_dest_status.busy <= !next[IDLE_BIT];
+          wr_dest_clk_cnt     <= (wr_dest_valid_cnt!=0) ? wr_dest_clk_cnt + 1 : wr_dest_clk_cnt;
+          wr_dest_valid_cnt   <= wr_dest_valid_cnt + (dest_mem.wvalid & dest_mem.wready);
+          
