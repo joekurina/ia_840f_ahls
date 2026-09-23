@@ -1,0 +1,69 @@
+--- a/dma_read_engine.sv
++++ b/dma_read_engine.sv
+@@ -68,6 +68,23 @@
+       end
+     endfunction
+ 
++   // A failed descriptor retains ownership. Continue its bus traffic; the
++   // software must discard the complete destination and keep buffers pinned.
++   logic read_response_error;
++   logic [1:0] first_read_response;
++   logic read_response_bad;
++   assign read_response_bad = src_mem.rvalid && src_mem.rready &&
++                              (src_mem.r.resp != dma_pkg::OKAY);
++   always_ff @(posedge clk) begin
++      if (!reset_n) begin
++         read_response_error <= 1'b0;
++         first_read_response <= dma_pkg::OKAY;
++      end else if (read_response_bad) begin
++         read_response_error <= 1'b1;
++         if (!read_response_error) first_read_response <= src_mem.r.resp;
++      end
++   end
++
+    logic packet_complete;
+    logic rlast_valid;
+    logic [dma_pkg::DEST_ADDR_W-1:0] saved_araddr;
+@@ -96,7 +113,8 @@
+       next = XXX;
+       unique case (1'b1)
+          state[IDLE_BIT]: begin 
+-            if (descriptor.descriptor_control.go & descriptor_fifo_not_empty) next = ADDR_SETUP;
++            if (read_response_error || read_response_bad) next = ERROR;
++            else if (descriptor.descriptor_control.go & descriptor_fifo_not_empty) next = ADDR_SETUP;
+             else next = IDLE;
+          end 
+ 
+@@ -119,8 +137,11 @@
+             else next = CP_RSP_TO_FIFO;
+ 
+          state[WAIT_FOR_WR_RSP_BIT]:
+-            if (wr_fsm_done) next = IDLE;
++            if (wr_fsm_done)
++               next = (read_response_error || read_response_bad) ? ERROR : IDLE;
+             else next = WAIT_FOR_WR_RSP;
++
++         state[ERROR_BIT]: next = ERROR;
+       endcase
+    end
+ 
+@@ -185,7 +206,8 @@
+       descriptor_fifo_rdack          = 1'b0;
+       src_mem.rready = !wr_fifo_if.almost_full;
+       rd_src_status.stopped_on_error = 1'b0;
+-      rd_src_status.rd_rsp_err       = 1'b0;
++      rd_src_status.rd_rsp_err       = read_response_error;
++      rd_src_status.rd_resp_enc      = first_read_response;
+       packet_complete = 0;
+       unique case (1'b1)
+          state[IDLE_BIT]: begin end
+@@ -199,7 +221,8 @@
+          end
+ 
+          state[WAIT_FOR_WR_RSP_BIT]: begin 
+-            descriptor_fifo_rdack = wr_fsm_done;
++            descriptor_fifo_rdack = wr_fsm_done &&
++                                    !read_response_error && !read_response_bad;
+          end
+ 
+          state[ERROR_BIT]: begin
