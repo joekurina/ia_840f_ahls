@@ -11,6 +11,7 @@
 | Reported constrained numerical STA | 778 nonnegative summary records, independently reviewed | Unconstrained Paths FAIL; 23/88 failed signoff rules; complete CDC/reset/exception coverage open |
 | PR region / future memory persona | Final populated region and placement confirmed | 1,076 dangling inputs and explicit initial values remain unwaived; later DDR-persona compatibility not established |
 | BMC electrical assignments | Three affected pins identified in the native fitter panel | Termination/slew adequacy and IRQ timing unresolved; no arbitrary settings or live probing |
+| Separate DDR-capable AHLS component | Corrected AHLS2026.1.0 DDRIP imports/validates/generates under Quartus25.1; two34-bit byte-addressed256-bit logical hosts and5-bit word-addressed64-bit CSR. [Acceptance](../qualification/ahls-memory-pd25-import01/RESULT-ACCEPTANCE.md) | No physical-bank routing, connected DMA/PIM, full HDL elaboration or hardware acceptance from this gate |
 | DDR / transfers / AHLS function / durable boot | No new live result from this build | Hardware gates remain open; DDR simulation SKIPPED BY USER |
 
 Details and immutable evidence bindings: [final review](../qualification/fim-build-21/final-review01.md), [parent verification](../qualification/fim-build-21/parent-final-verification01.json). Older rows below are retained as prior-build evidence, not current Work21 failures.

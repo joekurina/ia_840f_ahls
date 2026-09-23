@@ -1,0 +1,79 @@
+***************************************************************
+Quartus is a registered trademark of Intel Corporation in the
+US and other countries.  Portions of the Quartus Prime software
+code, and other portions of the code included in this download
+or on this DVD, are licensed to Intel Corporation and are the
+copyrighted property of third parties. For license details,
+refer to the End User License Agreement at
+http://fpgasoftware.intel.com/eula.
+***************************************************************
+
+2026.09.22.23:55:47 Info: Doing: qsys-script --quartus-project=/home/uwb_student00/ahls/new_BSP/work_ahls_memory_pd25_import01/import02/ahls_memory_import.qpf --rev=ahls_memory_import --package-version=25.1 --search-path=/home/uwb_student00/ahls/new_BSP/work_ahls_memory_pd25_import01/import02/mmhost_ia840f.report.prj,$ --script=/home/uwb_student00/ahls/new_BSP/work_ahls_memory_pd25_import01/import02/make-system.tcl
+2026.09.22.23:55:52 Info: create_system ahls_memory_import
+2026.09.22.23:55:52 Info: add_instance clk_1x altera_clock_bridge
+2026.09.22.23:55:52 Info: set_instance_parameter_value clk_1x EXPLICIT_CLOCK_RATE 0
+2026.09.22.23:55:52 Info: set_instance_parameter_value clk_1x NUM_CLOCK_OUTPUTS 1
+2026.09.22.23:55:52 Info: add_interface clock_reset clock sink
+2026.09.22.23:55:52 Info: set_interface_property clock_reset EXPORT_OF clk_1x.in_clk
+2026.09.22.23:55:52 Info: add_instance rst altera_reset_bridge
+2026.09.22.23:55:52 Info: set_instance_parameter_value rst ACTIVE_LOW_RESET 1
+2026.09.22.23:55:52 Info: set_instance_parameter_value rst SYNCHRONOUS_EDGES deassert
+2026.09.22.23:55:52 Info: set_instance_parameter_value rst NUM_RESET_OUTPUTS 1
+2026.09.22.23:55:52 Info: add_interface clock_reset_reset reset sink
+2026.09.22.23:55:52 Info: set_interface_property clock_reset_reset EXPORT_OF rst.in_reset
+2026.09.22.23:55:52 Info: add_connection clk_1x.out_clk rst.clk
+2026.09.22.23:55:52 Info: add_instance k0 mmhost_ia840f_report_di
+2026.09.22.23:55:52 Info: add_connection clk_1x.out_clk k0.clock
+2026.09.22.23:55:52 Info: add_connection rst.out_reset k0.resetn
+2026.09.22.23:55:52 Info: add_interface avs_csr avalon end
+2026.09.22.23:55:52 Info: set_interface_property avs_csr EXPORT_OF k0.csr_ring_root_avs
+2026.09.22.23:55:53 Info: add_interface mem0 avalon start
+2026.09.22.23:55:53 Info: set_interface_property mem0 EXPORT_OF k0.avm_mem_gmem0_1_port_0_0_rw
+2026.09.22.23:55:53 Info: add_interface mem1 avalon start
+2026.09.22.23:55:53 Info: set_interface_property mem1 EXPORT_OF k0.avm_mem_gmem1_2_port_0_0_rw
+2026.09.22.23:55:53 Info: add_interface kernel_irqs irq sender
+2026.09.22.23:55:53 Info: set_interface_property kernel_irqs EXPORT_OF k0.kernel_irqs
+2026.09.22.23:55:53 Info: add_interface freeze conduit end
+2026.09.22.23:55:53 Info: set_interface_property freeze EXPORT_OF k0.freeze
+2026.09.22.23:55:53 Info: add_interface device_exception_bus conduit end
+2026.09.22.23:55:53 Info: set_interface_property device_exception_bus EXPORT_OF k0.device_exception_bus
+2026.09.22.23:55:53 Info: get_instance_interfaces k0
+PD_INTERFACES clock resetn freeze device_exception_bus kernel_irqs avm_mem_gmem0_1_port_0_0_rw avm_mem_gmem1_2_port_0_0_rw csr_ring_root_avs
+2026.09.22.23:55:53 Info: get_instance_interface_properties k0 csr_ring_root_avs
+2026.09.22.23:55:53 Info: get_instance_interface_property k0 csr_ring_root_avs addressUnits
+PD_PROPERTY csr_ring_root_avs.addressUnits=WORDS
+2026.09.22.23:55:53 Info: get_instance_interface_property k0 csr_ring_root_avs burstcountUnits
+PD_PROPERTY csr_ring_root_avs.burstcountUnits=WORDS
+2026.09.22.23:55:53 Info: get_instance_interface_property k0 csr_ring_root_avs associatedClock
+PD_PROPERTY csr_ring_root_avs.associatedClock=clock
+2026.09.22.23:55:53 Info: get_instance_interface_property k0 csr_ring_root_avs associatedReset
+PD_PROPERTY csr_ring_root_avs.associatedReset=resetn
+2026.09.22.23:55:53 Info: get_instance_interface_property k0 csr_ring_root_avs addressUnits
+2026.09.22.23:55:53 Info: get_instance_interface_properties k0 avm_mem_gmem0_1_port_0_0_rw
+2026.09.22.23:55:53 Info: get_instance_interface_property k0 avm_mem_gmem0_1_port_0_0_rw addressUnits
+PD_PROPERTY avm_mem_gmem0_1_port_0_0_rw.addressUnits=SYMBOLS
+2026.09.22.23:55:53 Info: get_instance_interface_property k0 avm_mem_gmem0_1_port_0_0_rw burstcountUnits
+PD_PROPERTY avm_mem_gmem0_1_port_0_0_rw.burstcountUnits=WORDS
+2026.09.22.23:55:53 Info: get_instance_interface_property k0 avm_mem_gmem0_1_port_0_0_rw associatedClock
+PD_PROPERTY avm_mem_gmem0_1_port_0_0_rw.associatedClock=clock
+2026.09.22.23:55:53 Info: get_instance_interface_property k0 avm_mem_gmem0_1_port_0_0_rw associatedReset
+PD_PROPERTY avm_mem_gmem0_1_port_0_0_rw.associatedReset=resetn
+2026.09.22.23:55:53 Info: get_instance_interface_property k0 avm_mem_gmem0_1_port_0_0_rw addressUnits
+2026.09.22.23:55:53 Info: get_instance_interface_properties k0 avm_mem_gmem1_2_port_0_0_rw
+2026.09.22.23:55:53 Info: get_instance_interface_property k0 avm_mem_gmem1_2_port_0_0_rw addressUnits
+PD_PROPERTY avm_mem_gmem1_2_port_0_0_rw.addressUnits=SYMBOLS
+2026.09.22.23:55:53 Info: get_instance_interface_property k0 avm_mem_gmem1_2_port_0_0_rw burstcountUnits
+PD_PROPERTY avm_mem_gmem1_2_port_0_0_rw.burstcountUnits=WORDS
+2026.09.22.23:55:53 Info: get_instance_interface_property k0 avm_mem_gmem1_2_port_0_0_rw associatedClock
+PD_PROPERTY avm_mem_gmem1_2_port_0_0_rw.associatedClock=clock
+2026.09.22.23:55:53 Info: get_instance_interface_property k0 avm_mem_gmem1_2_port_0_0_rw associatedReset
+PD_PROPERTY avm_mem_gmem1_2_port_0_0_rw.associatedReset=resetn
+2026.09.22.23:55:53 Info: get_instance_interface_property k0 avm_mem_gmem1_2_port_0_0_rw addressUnits
+2026.09.22.23:55:53 Info: validate_system 
+PD_VALIDATE_OK
+2026.09.22.23:55:53 Info: save_system ahls_memory_import.qsys
+2026.09.22.23:55:53 Info: Replacing ahls_memory_import.clk_1x with generic component
+2026.09.22.23:55:54 Info: Replacing ahls_memory_import.rst with generic component
+2026.09.22.23:55:54 Info: Replacing ahls_memory_import.k0 with generic component
+2026.09.22.23:55:55 Info: Info: All modules have been converted to Generic Components.
+PD_IMPORT_COMPLETE
