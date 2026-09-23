@@ -1,0 +1,7 @@
+# Work21 guarded AHLS persona checkpoint
+
+Goal incomplete. Native setup01 passed. Actual PR-context synth01 completed native/effective0, **outer125 retained**:34copied DNI output entries changed, all4345non-DNI inputs unchanged. Original setup/release/tools preserved. [Results](RESULTS-SYNTH01.md), [delta disposition](NATIVE-DELTA-DISPOSITION01.md). No synthesis job remains; do not rerun unchanged synthesis. The fitter successor is tracked separately below.
+
+Actual native partition table has **green_region Reconfigurable**; guard retained255ALUTs/331registers.443warning occurrences vs230footer;5/13synthesizedDRC failures, no high violation in this snapshot.20580/19854 and R1/R2 remain open. No fit/timing/hardware acceptance. CandidateUUID`673c03a1-cef3-4c82-bf10-b12c247d9718` not deployed.
+
+Fitter advanced to fresh fit02 under ../ahls-persona-work21-fit01/CURRENT.md; native PID122381/start14010045 verified, actual32GiB address-space limit and CPUs0–1. fit01 ended native/effective/outer5 after hitting its16GiB cap; all inputs/originals preserved and no survivors. fit02 reuses completed synthesis, not failed fitter databases. The mapped-result review is deleg_d7e70609, child sa-0-78633b41, report independent-review01.md; frozen238-file package SHA256010ee211c032a017e8b5a9b9aab3e4e75a33ed4a8bea12cc515cab8b87e70866. Do not duplicate either stage. Matching PR release reviewdeleg_9d176f0e and this mapped-result review are evidence handoffs, not additional user-approval barriers. No hardware operations; vendor DDR simulation SKIPPED BY USER.
