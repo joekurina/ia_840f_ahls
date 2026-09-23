@@ -1,0 +1,9 @@
+--- completed-Work17/ofs_top.qsf
++++ Work18/ofs_top.qsf
+@@ -131,3 +131,6 @@
+ 
+ # Work17: retain intermediate snapshots for exact EMIF path-stage diagnosis.
+ set_global_assignment -name ENABLE_INTERMEDIATE_SNAPSHOTS ON
++
++# Work18: exact EMIF1 bit243 retiming restriction; original signoff retained.
++set_instance_assignment -name ALLOW_REGISTER_RETIMING OFF -to {local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|hmc.amm.amm.data_if_inst|amm_writedata_0_r[0][243]}

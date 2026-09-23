@@ -1,0 +1,83 @@
+--- Work17/gate-copy/ia840f_compile_gate.py
++++ Work18/gate-copy/ia840f_compile_gate.py
+@@ -12,9 +12,9 @@
+ 
+ BASE = common.BASE
+ SOURCE = common.SOURCE
+-WORK = BASE / 'work_ia840f_fim_17'
++WORK = BASE / 'work_ia840f_fim_18'
+ PROJECT = WORK / 'syn/board/ia840f/syn_top'
+-EVIDENCE = BASE / 'qualification/fim-build-17'
++EVIDENCE = BASE / 'qualification/fim-build-18'
+ RECORD = EVIDENCE / 'compile-authorization.json'
+ CLAIM = EVIDENCE / 'native-compile.claim.json'
+ TOP = './ofs-common/scripts/common/syn/build_top.sh'
+--- Work17/gate-copy/ia840f_experimental_gate.py
++++ Work18/gate-copy/ia840f_experimental_gate.py
+@@ -288,7 +288,7 @@
+ 
+ def main():
+     try:
+-        if sys.argv[1:] == ['quartus'] and Path.cwd() == BASE / 'work_ia840f_fim_17/syn/board/ia840f/syn_top':
++        if sys.argv[1:] == ['quartus'] and Path.cwd() == BASE / 'work_ia840f_fim_18/syn/board/ia840f/syn_top':
+             import ia840f_compile_gate
+             ia840f_compile_gate.quartus_context()
+         elif sys.argv[1:] == ['run-native-compile']:
+--- Work17/launch_native_compile.py
++++ Work18/launch_native_compile.py
+@@ -3,7 +3,7 @@
+ """
+ import datetime, hashlib, json, os, socket, subprocess, sys
+ from pathlib import Path
+-N=Path('/home/uwb_student00/ahls/new_BSP');C=N/'ofs-agx7-pcie-attach';E=N/'qualification/fim-build-17';W=N/'work_ia840f_fim_17'
++N=Path('/home/uwb_student00/ahls/new_BSP');C=N/'ofs-agx7-pcie-attach';E=N/'qualification/fim-build-18';W=N/'work_ia840f_fim_18'
+ def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
+ def run():
+  assert socket.gethostname()=='Agilex7Workstation' and os.getuid()==1000
+--- Work17/issue_authorization.py
++++ Work18/issue_authorization.py
+@@ -1,11 +1,11 @@
+-"""Work17 intermediate-snapshot diagnostic; direct native-iteration authority.
++"""Work18 exact-register retiming trial; direct native-iteration authority.
+ Legacy issue() is preserved but unused. The additive entry below consumes
+ explicit user policy and parent bindings, not fabricated independent reviews.
+ """
+ from pathlib import Path
+ import hashlib, json, os, socket, subprocess, sys
+-B=Path('/home/uwb_student00/ahls/new_BSP'); E=B/'qualification/fim-build-17'
+-P=E/'compile-candidate-01'; C=B/'ofs-agx7-pcie-attach'; W=B/'work_ia840f_fim_17'
++B=Path('/home/uwb_student00/ahls/new_BSP'); E=B/'qualification/fim-build-18'
++P=E/'compile-candidate-01'; C=B/'ofs-agx7-pcie-attach'; W=B/'work_ia840f_fim_18'
+ sys.dont_write_bytecode=True
+ sys.path.insert(0,str(C/'ofs-common/tools/ofss_config'))
+ import ia840f_compile_gate as gate
+@@ -29,7 +29,7 @@
+     assert not draft.get('fixture_only',False)
+     assert {t:gate.common.inventory(C/t) for t in gate.common.TREES}==draft['source_sha256']
+     assert gate.common.inventory(gate.common.PIM)==draft['pim_sha256']
+-    assert gate.work_inventory()==draft['work_inventory'], 'W17 work inventory drift'
++    assert gate.work_inventory()==draft['work_inventory'], 'W18 work inventory drift'
+     for path,h in draft['dependency_sha256'].items(): assert sha(path)==h,path
+     for group in ('tools','quartus_tools'):
+         assert set(draft[group])==set(gate.common.TOOLS)
+@@ -38,9 +38,9 @@
+             assert sha(item['path'])==item['sha256']
+     contexts=[dict(executable='/opt/altera/26.1.1/quartus/linux64/'+args[0],sha256=sha('/opt/altera/26.1.1/quartus/linux64/'+args[0]),argv=args,cwd=str(gate.PROJECT)) for args in gate.allowed_commands()]
+     assert len(contexts)==135 and draft['contexts']==contexts
+-    # Work17 diagnostic: SOURCE changes only the two retargeted gates.
+-    # The snapshot assignment is confined to the copied WORK QSF.
+-    _r12=json.loads((B/'qualification/fim-build-16/compile-authorization.json').read_text())
++    # Work18 diagnostic: SOURCE changes only the two retargeted gates.
++    # The exact-register retiming assignment is confined to the copied WORK QSF.
++    _r12=json.loads((B/'qualification/fim-build-17/compile-authorization.json').read_text())
+     _dr=json.loads((P/'source-inputs/delta-report.json').read_text())['source_delta']
+     assert set(_dr)=={'ofs-common/tools/ofss_config/ia840f_experimental_gate.py',
+                       'ofs-common/tools/ofss_config/ia840f_compile_gate.py'}, 'delta-report scope unexpected'
+@@ -101,6 +101,6 @@
+         draft['dependency_sha256'][str(path)]=sha(path)
+     with gate.RECORD.open('x') as f: json.dump(draft,f,indent=2)
+     assert json.loads(gate.RECORD.read_text())==draft
+-    print('WORK17_AUTHORIZATION_ISSUED',sha(gate.RECORD),flush=True)
++    print('WORK18_AUTHORIZATION_ISSUED',sha(gate.RECORD),flush=True)
+ 
+ if __name__=='__main__': issue_native_iteration(sys.argv[1])

@@ -1,0 +1,269 @@
+{
+  "utc": "2026-09-23T00:37:52.611722+00:00",
+  "native_status": {
+    "accepted_execution": true,
+    "argv": [
+      "./ofs-common/scripts/common/syn/build_top.sh",
+      "--stage=compile",
+      "-k",
+      "-p",
+      "ia840f",
+      "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_18"
+    ],
+    "authorization_sha256": "b1ebe5096e3462819b9c1b289767c3d4762a1df2647a149ed5741dd653a95f14",
+    "compile_fit_assembly_timing_acceptance": "PENDING REPORT REVIEW",
+    "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach",
+    "ddr_simulation": "SKIPPED BY USER",
+    "ended": "2026-09-23T00:33:11.447650+00:00",
+    "functional_acceptance": false,
+    "gate_rejection": false,
+    "native_exit_accepted": true,
+    "native_pid": 65881,
+    "native_returncode": 0,
+    "ready_for_build": false,
+    "runner_pid": 65841,
+    "started": "2026-09-22T23:40:32.416165+00:00",
+    "state": "finished"
+  },
+  "matching_processes": [],
+  "summary_sha256": "5d155eb3f7873329912e99966380fc3c4841be3a0fc917fa862e148bf3bee869",
+  "summary_byte_identical_work17": true,
+  "minimum_summary_rows": {
+    "Setup": {
+      "Type": "Setup 'sys_pll|iopll_0_clk_sys'",
+      "Slack": "0.151",
+      "TNS": "0.000",
+      "Corner": "Slow vid2b 100C Model"
+    },
+    "Hold": {
+      "Type": "Hold 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0'",
+      "Slack": "-0.004",
+      "TNS": "-0.004",
+      "Corner": "Fast vid2 100C Model"
+    },
+    "Recovery": {
+      "Type": "Recovery 'pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15'",
+      "Slack": "0.274",
+      "TNS": "0.000",
+      "Corner": "Slow vid2b 100C Model"
+    },
+    "Removal": {
+      "Type": "Removal 'altera_int_osc_clk'",
+      "Slack": "0.137",
+      "TNS": "0.000",
+      "Corner": "Fast vid2 100C Model"
+    },
+    "Minimum Pulse Width": {
+      "Type": "Minimum Pulse Width 'altera_int_osc_clk'",
+      "Slack": "0.000",
+      "TNS": "0.000",
+      "Corner": "Slow vid2 100C Model"
+    }
+  },
+  "negative_summary_rows": [
+    {
+      "Type": "Hold 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0'",
+      "Slack": "-0.004",
+      "TNS": "-0.004",
+      "Corner": "Fast vid2 100C Model"
+    }
+  ],
+  "five_corner_path_block_comparisons": [
+    {
+      "lines": [
+        5111,
+        5227
+      ],
+      "equal": true,
+      "sha256_normalized_lf": "8cd8edfcfa7b8d85dd0d61de66de9c691a4b543bb753463b5beb2100de297cf3"
+    },
+    {
+      "lines": [
+        35547,
+        35663
+      ],
+      "equal": true,
+      "sha256_normalized_lf": "2350bd18ca9d9b15e8408c838e25ab053efcc458749d0f2c89fc835ea8fd4335"
+    },
+    {
+      "lines": [
+        65965,
+        66081
+      ],
+      "equal": true,
+      "sha256_normalized_lf": "5dbee0cf6373aabeb173f0318d8c0d614f70d3289d0c81572dc6ef51da2c7646"
+    },
+    {
+      "lines": [
+        96376,
+        96492
+      ],
+      "equal": true,
+      "sha256_normalized_lf": "1866b59ed918c10264e73d5c3456d5339970587907542e79a9100dfb725467ed"
+    },
+    {
+      "lines": [
+        126779,
+        126895
+      ],
+      "equal": true,
+      "sha256_normalized_lf": "aae06a9f9968efbf5a51e290eeb39ebd5bd2607b3dd41d2653024996285fafbe"
+    }
+  ],
+  "sta_report_sha256": "ca2ed19589bc01e6bfac1028bd3a0cbdd50a6f0f801677cdce58ab7d42bc5020",
+  "drc": {
+    "total_rules": 88,
+    "failing_rules": 23,
+    "high_failing_rules": [
+      {
+        "line": 127,
+        "rule": "CDC-50001",
+        "severity": "High",
+        "violations": 13,
+        "waived": 0,
+        "raw": [
+          "CDC-50001 - 1-Bit Asynchronous Transfer Not Synchronized",
+          "High",
+          "13",
+          "0",
+          "synchronizer"
+        ]
+      },
+      {
+        "line": 128,
+        "rule": "CDC-50004",
+        "severity": "High",
+        "violations": 7,
+        "waived": 0,
+        "raw": [
+          "CDC-50004 - MUX-type CDC Transfer with Insufficient Constraints",
+          "High",
+          "7",
+          "0",
+          "cdc-bus"
+        ]
+      },
+      {
+        "line": 129,
+        "rule": "TMC-20027",
+        "severity": "High",
+        "violations": 5,
+        "waived": 0,
+        "raw": [
+          "TMC-20027 - Collection Filter Matching Multiple Types",
+          "High",
+          "5",
+          "0",
+          "sdc"
+        ]
+      },
+      {
+        "line": 130,
+        "rule": "RES-50001",
+        "severity": "High",
+        "violations": 4,
+        "waived": 0,
+        "raw": [
+          "RES-50001 - Asynchronous Reset Is Not Synchronized",
+          "High",
+          "4",
+          "0",
+          "synchronizer"
+        ]
+      },
+      {
+        "line": 131,
+        "rule": "CDC-50007",
+        "severity": "High",
+        "violations": 2,
+        "waived": 0,
+        "raw": [
+          "CDC-50007 - CDC Bus Constructed with Multi-bit Synchronizer Chains with Insufficient Constraints",
+          "High",
+          "2",
+          "0",
+          "synchronizer, cdc-bus"
+        ]
+      },
+      {
+        "line": 132,
+        "rule": "CDC-50012",
+        "severity": "High",
+        "violations": 2,
+        "waived": 0,
+        "raw": [
+          "CDC-50012 - Multiple Clock Domains Driving a Synchronizer Chain",
+          "High",
+          "2",
+          "0",
+          "synchronizer"
+        ]
+      },
+      {
+        "line": 133,
+        "rule": "CDC-50003",
+        "severity": "High",
+        "violations": 1,
+        "waived": 0,
+        "raw": [
+          "CDC-50003 - CE-Type CDC Transfer with Insufficient Constraints",
+          "High",
+          "1",
+          "0",
+          "cdc-bus"
+        ]
+      }
+    ],
+    "high_violations": 34,
+    "waived": 0
+  },
+  "instance_assignment_present_completed_qsf": true,
+  "fitter_effective_instance_assignment_consumption_proven": false,
+  "timing_accepted": false,
+  "hardware_qualified": false,
+  "fme_interface_id": "3bf9c93a-e773-5ec9-b29d-b8472f65fb9a",
+  "preservation": {
+    "utc": "2026-09-23T00:35:54.528943+00:00",
+    "deltas": {
+      "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach": {
+        "build_fim_work_ia840f_fim_18.log": {
+          "actual": {
+            "sha256": "27a51aeb7cef16d444ee46f42ffb7d24f20c16cab8093158fc82f4a858f3d7ff"
+          },
+          "expected": null
+        }
+      },
+      "/home/uwb_student00/ahls/new_BSP/ofs-platform-afu-bbb": {}
+    },
+    "original_work17_binding_deltas": {},
+    "pim_full_unchanged": true,
+    "work_input_deltas": {
+      "syn/board/ia840f/syn_top/build_env_db.txt": {
+        "after": {
+          "sha256": "35364fb60208be2cc6e5ee549701ef9700011109508f83211ab24596c9157690"
+        },
+        "before": {
+          "sha256": "9017e6f68b774f7f5280c1d37e44f176286ae8e63b606087bf2a9ca225011501"
+        }
+      },
+      "syn/board/ia840f/syn_top/fme_id.mif": {
+        "after": {
+          "sha256": "84fa667eb8ee51895e70db7eea7f715ececcab0b8822965b8fbe27da760876dd"
+        },
+        "before": {
+          "sha256": "0ae0981eadd0933b476f061b9938eec735dd251f75aa080fad693ab82aa02c54"
+        }
+      }
+    },
+    "native_tools_active": []
+  },
+  "qdb_inventory_entries": 1540,
+  "native_stage_success_lines": [
+    "Info: Quartus Prime Synthesis was successful. 0 errors, 81 warnings",
+    "Info: Quartus Prime Fitter was successful. 0 errors, 208 warnings",
+    "Info: Quartus Prime Timing Analyzer was successful. 0 errors, 190 warnings",
+    "Info: Quartus Prime Timing Analyzer was successful. 0 errors, 187 warnings",
+    "Info: Quartus Prime Assembler was successful. 0 errors, 1 warning",
+    "Info (21793): Quartus Prime Full Compilation was successful. 0 errors, 894 warnings"
+  ]
+}
