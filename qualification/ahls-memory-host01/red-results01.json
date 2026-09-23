@@ -1,0 +1,62 @@
+{
+  "offline_only": true,
+  "expected_failure": true,
+  "originals": {
+    "src/host/ahls_mmio_test.c": "126d3110a850795ef060c479df4e2b11bb4a4b4efed1b87e9d986369e6bde957",
+    "src/host/ahls_opae_qualification.c": "8d190283dc42de466d2d90797acb8a4d148490a2cc823fa48ba80211fdfdac82",
+    "src/host/ahls_qualification_core.c": "52e7ff9492d0432bfb1e55dceb4368720bbe17c994f6d49a60c67b660454ca74",
+    "src/host/ahls_qualification_core.h": "fbd6e3c8999bfb803419309954c281a92c4326960d81cce8614305ba6195bf6f",
+    "tests/ia840f/offline/CMakeLists.txt": "06797aea516e3008657802846940c0fe4a08a9ed082419591a7d5bf945f72cb3",
+    "tests/ia840f/offline/mock_opae.c": "d2b9b92f62dac24d2fb107cf2534a9cf3bd60cc4c39137aa8bc3341eebf79f65",
+    "tests/ia840f/offline/test_opae_frontend.py": "0f914f517350bb4086c54b3d5781f4297c86d302c2f0879e714766b63c924646"
+  },
+  "commands": [
+    {
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/memory_host",
+        "-B",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/build-red01",
+        "-DMEMORY_FRONTEND_SOURCE=/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/ahls_opae_qualification.c",
+        "-DOPAE_CAPTURED_INCLUDE_DIR=/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/source-resume-01/remote/usr/include"
+      ],
+      "rc": 0,
+      "stdout": "-- The C compiler identification is GNU 14.2.0\n-- Detecting C compiler ABI info\n-- Detecting C compiler ABI info - done\n-- Check for working C compiler: /usr/bin/cc - skipped\n-- Detecting C compile features\n-- Detecting C compile features - done\n-- Found Python3: /home/joe/.hermes/hermes-agent/venv/bin/python3 (found version \"3.11.15\") found components: Interpreter\n-- Configuring done (0.6s)\n-- Generating done (0.0s)\n-- Build files have been written to: /home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/build-red01\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "cmake",
+        "--build",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/build-red01",
+        "--parallel",
+        "2"
+      ],
+      "rc": 0,
+      "stdout": "[ 50%] Building C object CMakeFiles/test_memory_frontend.dir/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/ahls_opae_qualification.c.o\n[ 50%] Building C object CMakeFiles/test_memory_frontend.dir/mock_memory_opae.c.o\n[ 75%] Building C object CMakeFiles/test_memory_frontend.dir/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/ahls_qualification_core.c.o\n[100%] Linking C executable test_memory_frontend\n[100%] Built target test_memory_frontend\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "readelf",
+        "-d",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/build-red01/test_memory_frontend"
+      ],
+      "rc": 0,
+      "stdout": "\nDynamic section at offset 0x7dd0 contains 27 entries:\n  Tag        Type                         Name/Value\n 0x0000000000000001 (NEEDED)             Shared library: [libubsan.so.1]\n 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]\n 0x000000000000000c (INIT)               0x2000\n 0x000000000000000d (FINI)               0x53c0\n 0x0000000000000019 (INIT_ARRAY)         0x8dc0\n 0x000000000000001b (INIT_ARRAYSZ)       8 (bytes)\n 0x000000000000001a (FINI_ARRAY)         0x8dc8\n 0x000000000000001c (FINI_ARRAYSZ)       8 (bytes)\n 0x000000006ffffef5 (GNU_HASH)           0x3b0\n 0x0000000000000005 (STRTAB)             0x6b0\n 0x0000000000000006 (SYMTAB)             0x3e0\n 0x000000000000000a (STRSZ)              614 (bytes)\n 0x000000000000000b (SYMENT)             24 (bytes)\n 0x0000000000000015 (DEBUG)              0x0\n 0x0000000000000003 (PLTGOT)             0x8fe8\n 0x0000000000000002 (PLTRELSZ)           528 (bytes)\n 0x0000000000000014 (PLTREL)             RELA\n 0x0000000000000017 (JMPREL)             0x1a80\n 0x0000000000000007 (RELA)               0x9b8\n 0x0000000000000008 (RELASZ)             4296 (bytes)\n 0x0000000000000009 (RELAENT)            24 (bytes)\n 0x000000006ffffffb (FLAGS_1)            Flags: PIE\n 0x000000006ffffffe (VERNEED)            0x958\n 0x000000006fffffff (VERNEEDNUM)         1\n 0x000000006ffffff0 (VERSYM)             0x916\n 0x000000006ffffff9 (RELACOUNT)          172\n 0x0000000000000000 (NULL)               0x0\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/build-red01",
+        "--output-on-failure"
+      ],
+      "rc": 8,
+      "stdout": "Internal ctest changing into directory: /home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/build-red01\nTest project /home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/build-red01\n    Start 1: FPGA_Test_memory_frontend_inert\n1/1 Test #1: FPGA_Test_memory_frontend_inert ...***Failed    0.06 sec\nTraceback (most recent call last):\n  File \"/home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/memory_host/test_memory_frontend.py\", line 21, in <module>\n    assert p.returncode == 0, ('new memory inspection option must succeed', p.returncode, p.stdout, p.stderr)\n           ^^^^^^^^^^^^^^^^^\nAssertionError: ('new memory inspection option must succeed', 2, '', 'Usage (separately authorized hardware only): /home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/build-red01/test_memory_frontend --run-qualified-csr-test dddd:bb:dd.f\\n')\n\n\n0% tests passed, 1 tests failed out of 1\n\nTotal Test time (real) =   0.06 sec\n\nThe following tests FAILED:\n\t  1 - FPGA_Test_memory_frontend_inert (Failed)\n",
+      "stderr": "Errors while running CTest\n"
+    }
+  ]
+}

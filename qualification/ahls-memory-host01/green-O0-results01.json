@@ -1,0 +1,65 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/memory_host",
+        "-B",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/build-green01-O0",
+        "-DOPAE_CAPTURED_INCLUDE_DIR=/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/source-resume-01/remote/usr/include",
+        "-DTEST_OPTIMIZATION=-O0"
+      ],
+      "rc": 0,
+      "stdout": "-- The C compiler identification is GNU 14.2.0\n-- Detecting C compiler ABI info\n-- Detecting C compiler ABI info - done\n-- Check for working C compiler: /usr/bin/cc - skipped\n-- Detecting C compile features\n-- Detecting C compile features - done\n-- Found Python3: /home/joe/.hermes/hermes-agent/venv/bin/python3 (found version \"3.11.15\") found components: Interpreter\n-- Configuring done (0.7s)\n-- Generating done (0.0s)\n-- Build files have been written to: /home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/build-green01-O0\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "cmake",
+        "--build",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/build-green01-O0",
+        "--parallel",
+        "2"
+      ],
+      "rc": 0,
+      "stdout": "[ 25%] Building C object CMakeFiles/test_memory_frontend.dir/mock_memory_opae.c.o\n[ 50%] Building C object CMakeFiles/test_memory_frontend.dir/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/ahls_memory_inspect.c.o\n[ 75%] Building C object CMakeFiles/test_memory_frontend.dir/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/ahls_qualification_core.c.o\n[100%] Linking C executable test_memory_frontend\n[100%] Built target test_memory_frontend\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "readelf",
+        "-d",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/build-green01-O0/test_memory_frontend"
+      ],
+      "rc": 0,
+      "stdout": "\nDynamic section at offset 0x8dd0 contains 27 entries:\n  Tag        Type                         Name/Value\n 0x0000000000000001 (NEEDED)             Shared library: [libubsan.so.1]\n 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]\n 0x000000000000000c (INIT)               0x3000\n 0x000000000000000d (FINI)               0x6bb0\n 0x0000000000000019 (INIT_ARRAY)         0x9dc0\n 0x000000000000001b (INIT_ARRAYSZ)       8 (bytes)\n 0x000000000000001a (FINI_ARRAY)         0x9dc8\n 0x000000000000001c (FINI_ARRAYSZ)       8 (bytes)\n 0x000000006ffffef5 (GNU_HASH)           0x3b0\n 0x0000000000000005 (STRTAB)             0x6b0\n 0x0000000000000006 (SYMTAB)             0x3e0\n 0x000000000000000a (STRSZ)              591 (bytes)\n 0x000000000000000b (SYMENT)             24 (bytes)\n 0x0000000000000015 (DEBUG)              0x0\n 0x0000000000000003 (PLTGOT)             0x9fe8\n 0x0000000000000002 (PLTRELSZ)           528 (bytes)\n 0x0000000000000014 (PLTREL)             RELA\n 0x0000000000000017 (JMPREL)             0x2160\n 0x0000000000000007 (RELA)               0x990\n 0x0000000000000008 (RELASZ)             6096 (bytes)\n 0x0000000000000009 (RELAENT)            24 (bytes)\n 0x000000006ffffffb (FLAGS_1)            Flags: PIE\n 0x000000006ffffffe (VERNEED)            0x940\n 0x000000006fffffff (VERNEEDNUM)         1\n 0x000000006ffffff0 (VERSYM)             0x900\n 0x000000006ffffff9 (RELACOUNT)          247\n 0x0000000000000000 (NULL)               0x0\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "nm",
+        "-u",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/build-green01-O0/test_memory_frontend"
+      ],
+      "rc": 0,
+      "stdout": "                 U __assert_fail@GLIBC_2.2.5\n                 U atoi@GLIBC_2.2.5\n                 U __ctype_b_loc@GLIBC_2.3\n                 U __cxa_atexit@GLIBC_2.2.5\n                 w __cxa_finalize@GLIBC_2.2.5\n                 U fflush@GLIBC_2.2.5\n                 U fprintf@GLIBC_2.2.5\n                 U fwrite@GLIBC_2.2.5\n                 U getenv@GLIBC_2.2.5\n                 w __gmon_start__\n                 U __isoc99_sscanf@GLIBC_2.7\n                 w _ITM_deregisterTMCloneTable\n                 w _ITM_registerTMCloneTable\n                 U __libc_start_main@GLIBC_2.34\n                 U memcmp@GLIBC_2.2.5\n                 U printf@GLIBC_2.2.5\n                 U puts@GLIBC_2.2.5\n                 U strcmp@GLIBC_2.2.5\n                 U strlen@GLIBC_2.2.5\n                 U __ubsan_handle_add_overflow_abort\n                 U __ubsan_handle_mul_overflow_abort\n                 U __ubsan_handle_negate_overflow_abort\n                 U __ubsan_handle_nonnull_arg_abort\n                 U __ubsan_handle_out_of_bounds_abort\n                 U __ubsan_handle_pointer_overflow_abort\n                 U __ubsan_handle_shift_out_of_bounds_abort\n                 U __ubsan_handle_type_mismatch_v1_abort\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/build-green01-O0",
+        "--output-on-failure",
+        "--verbose"
+      ],
+      "rc": 0,
+      "stdout": "Internal ctest changing into directory: /home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/build-green01-O0\nUpdateCTestConfiguration  from :/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/build-green01-O0/DartConfiguration.tcl\nUpdateCTestConfiguration  from :/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/build-green01-O0/DartConfiguration.tcl\nTest project /home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/build-green01-O0\nConstructing a list of tests\nDone constructing a list of tests\nUpdating test list for fixtures\nAdded 0 tests to meet fixture requirements\nChecking test dependency graph...\nChecking test dependency graph end\ntest 1\n    Start 1: FPGA_Test_memory_frontend_inert\n\n1: Test command: /home/joe/.hermes/hermes-agent/venv/bin/python3 \"-B\" \"/home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/memory_host/test_memory_frontend.py\" \"/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/build-green01-O0/test_memory_frontend\" \"/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/build-green01-O0/test-results.json\"\n1: Working Directory: /home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/build-green01-O0\n1: Test timeout computed to be: 120\n1: MEMORY_FRONTEND_INERT_PASS processes=489 api_faults=25 mutated_words=7 bit_faults=448 invalid_arguments=12\n1/1 Test #1: FPGA_Test_memory_frontend_inert ...   Passed    1.51 sec\n\n100% tests passed, 0 tests failed out of 1\n\nTotal Test time (real) =   1.51 sec\n",
+      "stderr": ""
+    }
+  ],
+  "binary_sha256": "505d7cd854a1d521af7584e6626be2e99e3a5760c5871ef957e0eb2efe53f328",
+  "no_opae_dynamic_dependency": true,
+  "result_file": "qualification/ahls-memory-host01/build-green01-O0/test-results.json"
+}
