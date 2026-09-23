@@ -1,0 +1,7 @@
+# paired DMA engine and descriptor counter — accepted checkpoint
+
+FINAL independent and parent acceptance complete: 10 cases, 6,470 checked transport beats and 5,956 model-memory copyback comparisons; 8 successes, 1 write-error hold, 1 missing-response hold. [Acceptance](RESULT-ACCEPTANCE.md); review SHA256 `fed904d2e1307d64923f85eea7277b555ed1406695bfe5fd9b9f86d4d3bbd342`. Frozen native/pre-review bytes unchanged. No unchanged rerun.
+
+Actual donor wrapper and PIM BRAM FIFO with bound installed scfifo; external linear line-request models, not generic AXI4 WRAP or actual mapper/4KiB qualification. Direct57-bit upper-bit tests do not repair dma_top narrowing. Four-bit counter wrap not tested. Read-response error handling remains missing in this exact source version; the new correction/native result is separate and pending review. Q1: frozen pass criterion only required max_buffered>2, but actual observed34 and near-full traffic support this finite result; strengthen future reuse rather than rerun unchanged. No physical visibility, global drain/reset or hardware acceptance.
+
+Separate read-response stage qualification/dma-read-response01 now has native baseline-fail/candidate-pass evidence and independent review deleg_506d8a07 pending. It is not included in this accepted milestone. DMA-top width/geometry/bank routing, CSR/queue, one-primary PIM binding, global drain/fence/reset/visibility and hardware qualification remain open. DDR simulation SKIPPED BY USER.

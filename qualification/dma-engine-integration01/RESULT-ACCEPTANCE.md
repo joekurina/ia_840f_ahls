@@ -1,0 +1,9 @@
+# Parent acceptance — paired DMA engine and descriptor counter
+
+**ACCEPT_SCOPED_SOURCE_AND_NATIVE_UNIT_WITH_FINDINGS.** 10 cases, 6,470 checked transport beats and 5,956 model-memory copyback comparisons; 8 successes, 1 write-error hold, 1 missing-response hold.
+
+[FINAL independent review](independent-review01.md), SHA256 `fed904d2e1307d64923f85eea7277b555ed1406695bfe5fd9b9f86d4d3bbd342`, consumed. Parent reverified all 20 frozen files, runner/dispatch hashes, every decoded input, embedded native logs and outer bindings, native-zero/fatal distinctions, unchanged tools/originals, exact changed input and no timed-out/surviving owned group. Relevant source control/credit/retirement wiring was inspected. [Native results](RESULTS02.md), [parent verification](parent-review-verification02.json).
+
+Actual donor wrapper and PIM BRAM FIFO with bound installed scfifo; external linear line-request models, not generic AXI4 WRAP or actual mapper/4KiB qualification. Direct57-bit upper-bit tests do not repair dma_top narrowing. Four-bit counter wrap not tested. Read-response error handling remains missing in this exact source version; the new correction/native result is separate and pending review. Q1: frozen pass criterion only required max_buffered>2, but actual observed34 and near-full traffic support this finite result; strengthen future reuse rather than rerun unchanged. No physical visibility, global drain/reset or hardware acceptance.
+
+This acceptance does not promote adjacent gates. No mapped synthesis, full AFU/PIM/host/DDR, numerical AHLS or durable boot acceptance. Native warnings remain visible; no blanket waiver. DDR vendor simulation SKIPPED BY USER. No device/FPGA, driver, programming or reboot operation. Frozen pending-review wording is retained as historical evidence, superseded only here and in CURRENT.md. No unchanged native rerun is required.

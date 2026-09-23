@@ -1,0 +1,19 @@
+--- a/ip/dma/dma_read_engine.sv
++++ b/ip/dma/dma_read_engine.sv
+@@ -220,6 +220,8 @@
+          rd_src_status.descriptor_count <= '0;
+       end else begin
+          rd_src_status.busy <= 1'b1;
++         // Count the actual dequeue edge, including WAIT -> IDLE retirement.
++         rd_src_status.descriptor_count <= rd_src_status.descriptor_count + descriptor_fifo_rdack;
+          rd_src_clk_cnt   <= (rd_src_valid_cnt!=0) ? rd_src_clk_cnt + 1 : rd_src_valid_cnt;
+          rd_src_valid_cnt <= rd_src_valid_cnt + (src_mem.rvalid & src_mem.rready);
+   
+@@ -244,7 +246,6 @@
+                //Stop the counter while we're waiting for the dma_write_engine to complete
+                rd_src_clk_cnt   <= rd_src_clk_cnt;
+                rd_src_valid_cnt <= rd_src_valid_cnt;
+-               rd_src_status.descriptor_count <= rd_src_status.descriptor_count + descriptor_fifo_rdack;
+             end
+  
+             next[ERROR_BIT]: begin end
