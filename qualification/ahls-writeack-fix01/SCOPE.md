@@ -1,0 +1,7 @@
+# Write-acknowledgment correction: bounded RTL unit regression
+
+Workflow: RED on the unchanged captured acknowledgment block, then the smallest source correction in a separate candidate and GREEN on the same test. No active FIM input, original AHLS output or installed vendor library is changed.
+
+The test extracts the complete acknowledgment-producing generate block from the SHA-bound `lsu_ic_top.sv` and uses the unchanged `acl_has_pending_write` module. It drives the source-proven output-write/waitrequest boundary directly. This is an isolated control regression: it does not instantiate the token-ring FIFO, full LSU, complete kernel, PIM or DDR/EMIF; it does not prove full-kernel done or host visibility. The eight-beat pattern tests per-word acknowledgments, not burst address/data conversion. Nonzero allowance and BSP-ack cases only check preservation of the existing expressions.
+
+Use the existing Questa Intel FPGA Edition 2024.3 installation associated with Quartus25.1, in fresh owned workstation scratch through tmux. Bound software-only commands, source hashes, logs, CPU affinity and finite native-child lifetime. Native execution uses standing source/test iteration approval; no new user approval framework is introduced. Independent review precedes functional-result acceptance. DDR simulation remains SKIPPED BY USER. No FPGA device opens, MMIO, PR, flash, reset, driver change or reboot.

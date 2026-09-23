@@ -1,0 +1,17 @@
+--- a/ip/lsu_ic_top.sv
++++ b/ip/lsu_ic_top.sv
+@@ -566,10 +566,12 @@
+     always_comb begin
+       o_avm_ext_writeack_next = '{default: '0};
+       for (int z = 0; z < NUM_DIMM; z++) begin
+-        o_avm_ext_writeack_next[o_wr_id[z]] |= o_avm_write[z];
++        // Zero-allowance writes stay asserted while stalled; count only acceptance.
++        o_avm_ext_writeack_next[o_wr_id[z]] |= o_avm_write[z] &&
++            (ENABLE_BSP_WAITREQUEST_ALLOWANCE || !i_avm_waitrequest[z]);
+       end
+     end
+-    // Implement 1-cycle delay to ensure writeack occurs after external memory write completion
++    // Delay the output-beat acknowledgment, not a physical-memory completion response.
+     always @(posedge clk) begin
+       o_avm_ext_writeack <= o_avm_ext_writeack_next;
+     end

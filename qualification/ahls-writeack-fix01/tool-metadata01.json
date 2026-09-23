@@ -1,0 +1,137 @@
+{
+  "batch": "ia840f_ackfix_meta01",
+  "utc": "2026-09-23T06:11:55.875037+00:00",
+  "tools": {
+    "/opt/altera/25.1/questa_fe/bin/vsim": {
+      "real": "/opt/altera/25.1/questa_fe/vco",
+      "bytes": 4198,
+      "sha256": "d2696ec5e0c178866e3411d30ef01b2bed0a30abeca101f1c04672680b6f5b49"
+    },
+    "/opt/altera/25.1/questa_fe/bin/vlog": {
+      "real": "/opt/altera/25.1/questa_fe/vco",
+      "bytes": 4198,
+      "sha256": "d2696ec5e0c178866e3411d30ef01b2bed0a30abeca101f1c04672680b6f5b49"
+    },
+    "/opt/altera/25.1/questa_fe/bin/vlib": {
+      "real": "/opt/altera/25.1/questa_fe/vco",
+      "bytes": 4198,
+      "sha256": "d2696ec5e0c178866e3411d30ef01b2bed0a30abeca101f1c04672680b6f5b49"
+    },
+    "/opt/altera/25.1/questa_fe/linux_x86_64/vsim": {
+      "real": "/opt/altera/25.1/questa_fe/linux_x86_64/vsim",
+      "bytes": 10537056,
+      "sha256": "b6443abd83b3425edcf627485bb2dd01b2af8a2e21f6f2972dcd55146981eed1"
+    },
+    "/opt/altera/25.1/questa_fe/linux_x86_64/vlog": {
+      "real": "/opt/altera/25.1/questa_fe/linux_x86_64/vlog",
+      "bytes": 29035920,
+      "sha256": "db69446473d2fb7470f819f30c6103f6ae04c87361926a6163dab0a98d68cb70"
+    },
+    "/opt/altera/25.1/questa_fe/linux_x86_64/vlib": {
+      "real": "/opt/altera/25.1/questa_fe/linux_x86_64/vlib",
+      "bytes": 9607144,
+      "sha256": "0a0e93bc79c85ea7f08f873003a24bb4d160b0af5b60af9df0d39db9af11c3fd"
+    },
+    "/opt/altera/25.1/questa_fe/modelsim.ini": {
+      "real": "/opt/altera/25.1/questa_fe/modelsim.ini",
+      "bytes": 106756,
+      "sha256": "17fa715b65c5980355566db472bf92bad020c9579f6c7b464edd1b56fc05ff4d"
+    }
+  },
+  "instructions_selected": [
+    "- Simulator: **Questa Intel FPGA Edition 2024.3** (`questa_fe`, verified via `vsim -version`)",
+    "- Installed device family: **Agilex 7** (components: `quartus,questa_fe,agilex7`; the installer auto-added `agilex_common` and `quartus_part2`)",
+    "export QUARTUS_ROOTDIR_OVERRIDE=/opt/altera/25.1/quartus",
+    "export PATH=\"/opt/altera/25.1/quartus/bin:/opt/altera/25.1/questa_fe/bin:$PATH\"",
+    "export LM_LICENSE_FILE=\"$HOME/quartus_25/LR-191011_License.dat\"",
+    "export MGLS_LICENSE_FILE=\"$LM_LICENSE_FILE\"",
+    "export SALT_LICENSE_SERVER=\"$LM_LICENSE_FILE\"",
+    "As with Questa under 26.1.1, `SALT_LICENSE_SERVER` is required by the Questa FPGA Edition license check.",
+    "command -v vsim && vsim -version                # expect: Questa Intel FPGA Edition-64 2024.3",
+    "A fresh login shell was verified after the switch: `quartus_sh --version` \u2192 25.1.0 Build 129, `vsim -version` \u2192 Questa 2024.3, and `LM_LICENSE_FILE`/`MGLS_LICENSE_FILE`/`SALT_LICENSE_SERVER` all pointing at `~/quartus_25/LR-191011_License.dat`. Workflows expecting the 26.1.1 environment from Part B must now set it explicitly.",
+    "Same flow as Part B section 3 (`vlib work`, `vlog -sv ...`, `vsim -c work.tb -do 'run -all; quit -f'`). Launch from a terminal configured per A.1 so the license variables are inherited.",
+    "| Install via `qinst` (quartus, questa_fe, agilex7) | Completed successfully, 5 mins 2 secs |",
+    "| `vsim -version` | Questa Intel FPGA Edition-64 2024.3 (2024.09, Sep 10 2024) |",
+    "The `QUARTUS_ROOTDIR_OVERRIDE` from `~/.bashrc` is active in your shell. Re-export the full A.1 block \u2014 setting `PATH` alone is not enough \u2014 or bypass the environment for a one-off check:",
+    "Same checks as Part B: `printenv LM_LICENSE_FILE MGLS_LICENSE_FILE SALT_LICENSE_SERVER` \u2014 all three must reference the `~/quartus_25/LR-191011_License.dat` file, not the old `IA-840f` one inherited from `~/.bashrc`.",
+    "- Simulator: **Questa Altera FPGA Edition 2025.3** (`questa_fe`)",
+    "export QUARTUS_ROOTDIR_OVERRIDE=/opt/altera/26.1.1/quartus",
+    "export PATH=\"/opt/altera/26.1.1/quartus/bin:/opt/altera/26.1.1/questa_fe/bin:$PATH\"",
+    "export LM_LICENSE_FILE=\"$HOME/quartus_26/LR-191011_License.dat\"",
+    "export MGLS_LICENSE_FILE=\"$LM_LICENSE_FILE\"",
+    "export SALT_LICENSE_SERVER=\"$LM_LICENSE_FILE\"",
+    "**Important:** This Questa release requires `SALT_LICENSE_SERVER`. During verification, simulation failed with only `LM_LICENSE_FILE` and `MGLS_LICENSE_FILE`, then passed after setting `SALT_LICENSE_SERVER` to the license file.",
+    "- `/opt/intelFPGA_pro/23.1/questa_fe`",
+    "command -v vsim",
+    "vsim -version",
+    "vlib work",
+    "vlog -sv design.sv testbench.sv",
+    "vsim -c work.tb -do 'run -all; quit -f'",
+    "Create `work` only if it does not already exist. For VHDL, compile sources using `vcom` instead of `vlog`.",
+    "vsim work.tb",
+    "printenv LM_LICENSE_FILE MGLS_LICENSE_FILE SALT_LICENSE_SERVER",
+    "test -r \"$SALT_LICENSE_SERVER\" && printf 'License file is readable\\n'"
+  ],
+  "meminfo": "MemTotal:       131049680 kB\nMemFree:         1046080 kB\nMemAvailable:   102872556 kB\nBuffers:            4296 kB\nCached:         101226976 kB\nSwapCached:           12 kB\nActive:         27615664 kB\nInactive:       93783480 kB\nActive(anon):   19954904 kB\nInactive(anon):   215416 kB\nActive(file):    7660760 kB\nInactive(file): 93568064 kB\nUnevictable:           0 kB\nMlocked:               0 kB\nSwapTotal:       4194300 kB\nSwapFree:        4193532 kB\nZswap:                 0 kB\nZswapped:              0 kB\nDirty:               660 kB\nWriteback:             0 kB\nAnonPages:      20032084 kB\nMapped:          1159924 kB\nShmem:              2448 kB\nKReclaimable:    1834712 kB\nSlab:            2649084 kB\nSReclaimable:    1834712 kB\nSUnreclaim:       814372 kB\nKernelStack:       15232 kB\nPageTables:        62948 kB\nSecPageTables:      7148 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:    67621988 kB\nCommitted_AS:   22698432 kB\nVmallocTotal:   34359738367 kB\nVmallocUsed:      106188 kB\nVmallocChunk:          0 kB\nPercpu:            53600 kB\nHardwareCorrupted:     0 kB\nAnonHugePages:  13025280 kB\nShmemHugePages:        0 kB\nShmemPmdMapped:        0 kB\nFileHugePages:         0 kB\nFilePmdMapped:         0 kB\nCmaTotal:              0 kB\nCmaFree:               0 kB\nUnaccepted:            0 kB\nHugePages_Total:    2048\nHugePages_Free:     2048\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:         4194304 kB\nDirectMap4k:      395452 kB\nDirectMap2M:    23396352 kB\nDirectMap1G:    110100480 kB\n",
+  "disk_free": 1299966443520,
+  "cpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35
+  ],
+  "fim_status": {
+    "state": "running",
+    "started": "2026-09-23T05:25:06.335910+00:00",
+    "runner_pid": 84910,
+    "argv": [
+      "./ofs-common/scripts/common/syn/build_top.sh",
+      "--stage=compile",
+      "-k",
+      "-p",
+      "ia840f",
+      "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_21"
+    ],
+    "cwd": "/home/uwb_student00/ahls/new_BSP/ofs-agx7-pcie-attach",
+    "authorization_sha256": "793eece9892980e7c7bb0daa383a47838c21c1fd679768c033eb6db6038060a8",
+    "ready_for_build": false,
+    "accepted_execution": true,
+    "ddr_simulation": "SKIPPED BY USER",
+    "functional_acceptance": false,
+    "native_pid": 84916
+  },
+  "hardware_access": false,
+  "vendor_tools_executed": false
+}

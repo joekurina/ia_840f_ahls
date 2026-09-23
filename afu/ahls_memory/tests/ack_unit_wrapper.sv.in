@@ -1,0 +1,30 @@
+// Isolated acknowledgment slice, extracted verbatim from the bound source.
+// This is not a model of the FIFO, LSU, memory controller or complete AFU.
+module ack_under_test #(
+    parameter bit ENABLE_BSP_WAITREQUEST_ALLOWANCE = 0,
+    parameter bit ENABLE_BSP_AVMM_WRITE_ACK = 0
+)(
+    input wire clk, write_i, wait_i, ring_ack_i,
+    output wire ext_ack_o, write_ack_o
+);
+    localparam HYPER_PIPELINE = 1;
+    localparam ROOT_ARB_BALANCED_RW = 0;
+    localparam NUM_DIMM = 1;
+    localparam P_NUM_WR_PORT = 1;
+    logic o_avm_write [NUM_DIMM];
+    logic i_avm_waitrequest [NUM_DIMM];
+    logic [0:0] o_wr_id [NUM_DIMM];
+    logic ring_avm_writeack [P_NUM_WR_PORT];
+    logic o_avm_writeack [P_NUM_WR_PORT];
+    logic o_avm_ext_writeack [P_NUM_WR_PORT];
+    logic o_avm_ext_writeack_next [P_NUM_WR_PORT];
+    assign o_avm_write[0] = write_i;
+    assign i_avm_waitrequest[0] = wait_i;
+    assign o_wr_id[0] = 1'b0;
+    assign ring_avm_writeack[0] = ring_ack_i;
+    assign ext_ack_o = o_avm_ext_writeack[0];
+    assign write_ack_o = o_avm_writeack[0];
+    generate
+@SOURCE_SLICE@
+    endgenerate
+endmodule

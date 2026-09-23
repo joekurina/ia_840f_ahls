@@ -1,0 +1,169 @@
+{
+  "run": "red03",
+  "started": "2026-09-23T06:23:39.538066+00:00",
+  "cwd": "/home/uwb_student00/ahls/new_BSP/work_ahls_writeack_fix01/red03",
+  "inputs": {
+    "ack_under_test.sv": "cff28cf6f188dd1ff4f880eb2486acd1645ac87de71ffdde11fc02a47db55c7b",
+    "writeack_unit_tb.sv": "4ffc47954ac3040f29a0a461bc43af521040dcbb1955ea2cdc6c28fffcc618d2",
+    "acl_has_pending_write.sv": "b15b7d70b00ffa42fcfce0cfbcc45a0d9e5f02d1d3ab36b1f6e1cab31fd96f4d",
+    "lsu_ic_top.sv": "35ec54a3a59e24a52b317a6cba670499061bba1ff00d5ba5e6bcc6726421ddbe"
+  },
+  "originals": {
+    "/home/uwb_student00/ahls/new_BSP/work_ahls_memory_01/build/mmhost_ia840f.report.prj/ip/lsu_ic_top.sv": "35ec54a3a59e24a52b317a6cba670499061bba1ff00d5ba5e6bcc6726421ddbe",
+    "/home/uwb_student00/ahls/new_BSP/work_ahls_memory_01/build/mmhost_ia840f.report.prj/ip/acl_has_pending_write.sv": "b15b7d70b00ffa42fcfce0cfbcc45a0d9e5f02d1d3ab36b1f6e1cab31fd96f4d"
+  },
+  "tools": {
+    "/opt/altera/25.1/questa_fe/linux_x86_64/vsim": {
+      "real": "/opt/altera/25.1/questa_fe/linux_x86_64/vsim",
+      "bytes": 10537056,
+      "sha256": "b6443abd83b3425edcf627485bb2dd01b2af8a2e21f6f2972dcd55146981eed1"
+    },
+    "/opt/altera/25.1/questa_fe/linux_x86_64/vlog": {
+      "real": "/opt/altera/25.1/questa_fe/linux_x86_64/vlog",
+      "bytes": 29035920,
+      "sha256": "db69446473d2fb7470f819f30c6103f6ae04c87361926a6163dab0a98d68cb70"
+    },
+    "/opt/altera/25.1/questa_fe/linux_x86_64/vlib": {
+      "real": "/opt/altera/25.1/questa_fe/linux_x86_64/vlib",
+      "bytes": 9607144,
+      "sha256": "0a0e93bc79c85ea7f08f873003a24bb4d160b0af5b60af9df0d39db9af11c3fd"
+    },
+    "/opt/altera/25.1/questa_fe/modelsim.ini": {
+      "real": "/opt/altera/25.1/questa_fe/modelsim.ini",
+      "bytes": 106756,
+      "sha256": "17fa715b65c5980355566db472bf92bad020c9579f6c7b464edd1b56fc05ff4d"
+    },
+    "/opt/altera/25.1/questa_fe/linux_x86_64/vopt": {
+      "sha256": "557ff84d05bcdd7650014d475b8d58550b277583794db25d27b0dc50125df9ed",
+      "bytes": 10621416
+    },
+    "/opt/altera/25.1/questa_fe/linux_x86_64/vsimk": {
+      "sha256": "65858d58d7aabe586cecdd2ece1cd6c60817b0572b88f3ab7cdf9f289d0cff8c",
+      "bytes": 96640208
+    }
+  },
+  "cpu_affinity": [
+    0,
+    1
+  ],
+  "address_space_limit": 17179869184,
+  "mem_available_before": 124656898048,
+  "commands": [
+    {
+      "label": "version",
+      "argv": [
+        "/opt/altera/25.1/questa_fe/linux_x86_64/vsim",
+        "-version"
+      ],
+      "started": "2026-09-23T06:23:39.776358+00:00",
+      "pid": 92545,
+      "start_ticks": "10789154",
+      "native_rc": 0,
+      "timeout": false,
+      "descendants_after_leader": false,
+      "ended": "2026-09-23T06:23:39.930260+00:00",
+      "owned_group_live_after": [],
+      "effective_rc": 0
+    },
+    {
+      "label": "vlib",
+      "argv": [
+        "/opt/altera/25.1/questa_fe/linux_x86_64/vlib",
+        "work"
+      ],
+      "started": "2026-09-23T06:23:39.945644+00:00",
+      "pid": 92554,
+      "start_ticks": "10789171",
+      "native_rc": 0,
+      "timeout": false,
+      "descendants_after_leader": false,
+      "ended": "2026-09-23T06:23:40.092282+00:00",
+      "owned_group_live_after": [],
+      "effective_rc": 0
+    },
+    {
+      "label": "vlog",
+      "argv": [
+        "/opt/altera/25.1/questa_fe/linux_x86_64/vlog",
+        "-sv",
+        "-work",
+        "work",
+        "ack_under_test.sv",
+        "acl_has_pending_write.sv",
+        "writeack_unit_tb.sv"
+      ],
+      "started": "2026-09-23T06:23:40.107438+00:00",
+      "pid": 92555,
+      "start_ticks": "10789187",
+      "native_rc": 0,
+      "timeout": false,
+      "descendants_after_leader": false,
+      "ended": "2026-09-23T06:23:40.266027+00:00",
+      "owned_group_live_after": [],
+      "effective_rc": 0
+    },
+    {
+      "label": "vsim",
+      "argv": [
+        "/opt/altera/25.1/questa_fe/linux_x86_64/vsim",
+        "-c",
+        "-onfinish",
+        "exit",
+        "work.writeack_unit_tb",
+        "-do",
+        "run -all; quit -f -code 2"
+      ],
+      "started": "2026-09-23T06:23:40.284775+00:00",
+      "pid": 92560,
+      "start_ticks": "10789204",
+      "native_rc": 0,
+      "timeout": false,
+      "descendants_after_leader": false,
+      "ended": "2026-09-23T06:23:41.334024+00:00",
+      "owned_group_live_after": [],
+      "effective_rc": 0
+    }
+  ],
+  "hardware_access": false,
+  "ddr_simulation": "SKIPPED BY USER",
+  "scope": "extracted acknowledgment block and original pending counter only",
+  "complete": true,
+  "originals_unchanged": true,
+  "inputs_unchanged": true,
+  "tools_unchanged": true,
+  "ended": "2026-09-23T06:23:41.773356+00:00",
+  "logs": {
+    "version.log": {
+      "bytes": 72,
+      "sha256": "eb577d4fe97b337c895954293e276d36e23a9367d53c9fdc5c74a4d3db80edae",
+      "text": "Questa Intel FPGA Edition-64 vsim 2024.3 Simulator 2024.09 Sep 10 2024\n\n"
+    },
+    "vlib.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "text": ""
+    },
+    "vlog.log": {
+      "bytes": 422,
+      "sha256": "9e34d34f654143f85a8377f560476a6dd8696d3b417571fdc8801b404f258f44",
+      "text": "Questa Intel FPGA Edition-64 vlog 2024.3 Compiler 2024.09 Sep 10 2024\nStart time: 23:23:40 on Sep 22,2026\nvlog -sv -work work ack_under_test.sv acl_has_pending_write.sv writeack_unit_tb.sv \n-- Compiling module ack_under_test\n-- Compiling module acl_has_pending_write\n-- Compiling module writeack_unit_tb\n\nTop level modules:\n\twriteack_unit_tb\nEnd time: 23:23:40 on Sep 22,2026, Elapsed time: 0:00:00\nErrors: 0, Warnings: 0\n"
+    },
+    "vsim.log": {
+      "bytes": 1326,
+      "sha256": "e1091acbb1fb72101746b03526dc327405aff1e941ce3d42ea8f8788b6409474",
+      "text": "Reading pref.tcl\n\n# 2024.3\n\n# vsim -c -onfinish exit work.writeack_unit_tb -do \"run -all; quit -f -code 2\" \n# Start time: 23:23:40 on Sep 22,2026\n# ** Note: (vsim-3812) Design is being optimized...\n# //  Questa Intel FPGA Edition-64\n# //  Version 2024.3 linux_x86_64 Sep 10 2024\n# //\n# // Unpublished work. Copyright 2024 Siemens\n# //\n# // This material contains trade secrets or otherwise confidential information\n# // owned by Siemens Industry Software Inc. or its affiliates (collectively,\n# // \"SISW\"), or its licensors. Access to and use of this information is strictly\n# // limited as set forth in the Customer's applicable agreements with SISW.\n# //\n# // This material may not be copied, distributed, or otherwise disclosed outside\n# // of the Customer's facilities without the express written permission of SISW,\n# // and may not be used in any way not expressly authorized by SISW.\n# //\n# Loading sv_std.std\n# Loading work.writeack_unit_tb(fast)\n# run -all\n# ** Fatal: ACK_ACCEPTANCE_MISMATCH cycle=7 write=1 waitrequest=1 ack=1 expected=0\n#    Time: 106 ns  Scope: writeack_unit_tb.cycle File: writeack_unit_tb.sv Line: 51\n# ** Note: $finish    : writeack_unit_tb.sv(51)\n#    Time: 106 ns  Iteration: 0  Instance: /writeack_unit_tb\n# End time: 23:23:41 on Sep 22,2026, Elapsed time: 0:00:01\n# Errors: 1, Warnings: 0\n"
+    }
+  },
+  "diagnostic_errors": [
+    {
+      "log": "vsim.log",
+      "line": "# ** Fatal: ACK_ACCEPTANCE_MISMATCH cycle=7 write=1 waitrequest=1 ack=1 expected=0"
+    },
+    {
+      "log": "vsim.log",
+      "line": "# Errors: 1, Warnings: 0"
+    }
+  ],
+  "scoreboards": [],
+  "unit_pass": false
+}
