@@ -1,0 +1,7 @@
+# CAPS01 final STA01 — publication boundary
+
+Publish only independently/parent accepted completed final-snapshot multicorner acquisition and645nonnegative constrained-domain observations. [Acceptance](STA-ACCEPTANCE.md),[FINALreview](sta-independent-review01.md),[reviewfreeze](sta-review-package01.json). Native/effective/outer0/0/0. Keepseven0.000slackcells,380warnings,DesignClosureFAIL22/88,10disabled/0waived,unconstrainedI/O andQ1–Q4. No fullsignoff/mapped-equivalence/lifecycle/hardware claim. Assembly/GBS are separate completed-but-not-yet-accepted gates,excluded from this milestone.
+
+Perfilecap2,000,000bytes; rawcompressedarchives,payload-bearinggeneratedrunners/installedlicensedpayloads,andoversizedreports remainlocal with exactsizes/SHA256 inSTA-PUBLICATION-INVENTORY01.json. Config/result projectionsremove onlybase64bodies andseparate largeinventoryfields throughhashreferences; reconstruction equality verified. Projectionsaremetadata,notexecutablelaunchers. No rawpayload splittingtoevadethecap. Transcripts/secrets/licenses/runtimebinaries/imagesarenotpublished.
+
+Preserveimmutable nativebytes/lineendings. OnlyspecificSHA-boundrawlogs/settings/reportpaths mayhavewhitespaceexceptionsdocumented inSTA-PUBLICATION-AUDIT01.json. Newauthoredfilesmustbeclean. HistoricalRESULTS-SCOPE/preparationpendingstatementsaresuperseded byFINAL/parentacceptance,notrewritten. MutableCURRENT andin-flightreviewreportsarenotstaged.
