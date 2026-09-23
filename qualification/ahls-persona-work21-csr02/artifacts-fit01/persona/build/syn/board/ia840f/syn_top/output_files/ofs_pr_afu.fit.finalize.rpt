@@ -1,0 +1,115 @@
+Fitter Finalize Stage Report for ofs_pr_afu
+Wed Sep 23 12:07:02 2026
+Quartus Prime Version 25.1.0 Build 129 03/26/2025 SC Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Routing Usage Summary
+  3. Finalize Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++-------------------------------------------------------------+
+; Routing Usage Summary                                       ;
++-----------------------------+-------------------------------+
+; Routing Resource Type       ; Usage                         ;
++-----------------------------+-------------------------------+
+; Block Input Mux Wrapbacks   ; 2,276 / 964,320 ( < 1 % )     ;
+; Block Input Muxes           ; 655,040 / 10,561,600 ( 6 % )  ;
+; Block interconnects         ; 483,864 / 12,385,280 ( 4 % )  ;
+; C1 interconnects            ; 226,756 / 5,173,760 ( 4 % )   ;
+; C4 interconnects            ; 89,342 / 4,933,120 ( 2 % )    ;
+; C8 interconnects            ; 4,544 / 493,312 ( < 1 % )     ;
+; DCM_muxes                   ; 86 / 1,152 ( 7 % )            ;
+; DELAY_CHAINs                ; 56 / 32,048 ( < 1 % )         ;
+; Direct links                ; 78,121 / 12,385,280 ( < 1 % ) ;
+; HIO Buffers                 ; 1,144 / 73,472 ( 2 % )        ;
+; Programmable Invert Buffers ; 56 / 560 ( 10 % )             ;
+; Programmable Invert Inputs  ; 21,945 / 932,160 ( 2 % )      ;
+; Programmable Inverts        ; 21,945 / 932,160 ( 2 % )      ;
+; R0 interconnects            ; 315,846 / 8,632,960 ( 4 % )   ;
+; R1 interconnects            ; 165,046 / 4,933,120 ( 3 % )   ;
+; R12 interconnects           ; 8,174 / 739,968 ( 1 % )       ;
+; R2 interconnects            ; 71,033 / 2,473,120 ( 3 % )    ;
+; R4 interconnects            ; 55,688 / 2,486,240 ( 2 % )    ;
+; R6 interconnects            ; 71,239 / 2,492,800 ( 3 % )    ;
+; Redundancy Muxes            ; 2,408 / 145,648 ( 2 % )       ;
+; Row Clock Tap-Offs          ; 14,774 / 739,968 ( 2 % )      ;
+; Switchbox_clock_muxes       ; 1,077 / 23,040 ( 5 % )        ;
+; VIO Buffers                 ; 1,125 / 22,400 ( 5 % )        ;
+; Vertical_seam_tap_muxes     ; 1,075 / 12,288 ( 9 % )        ;
++-----------------------------+-------------------------------+
+
+
++-------------------+
+; Finalize Messages ;
++-------------------+
+Info: Setting ::env(BITSTREAM_ID)=05010202599ac052
+Info: Setting ::env(BITSTREAM_MD)=0000000002609181
+Info: Setting ::env(BITSTREAM_INFO)=0000000000000001
+Info: Setting ::env(Q_REVISION)=ofs_top
+Info: Setting ::env(Q_PR_REVISION)=ofs_pr_afu
+Info: Setting ::env(Q_PR_PARTITION_NAME)=green_region
+Info: Setting ::env(FME_IFC_ID)=fc4bf1c1-760f-5cd7-8040-b3e86fa0d31e
+Info: BUILD_ROOT_REL is ../../../..
+Info: Loading PIM-based AFU...
+Info (20032): Parallel compilation is enabled and will use up to 2 processors
+Info: *******************************************************************
+Info: Running Quartus Prime Fitter
+    Info: Version 25.1.0 Build 129 03/26/2025 SC Pro Edition
+    Info: Copyright (C) 2025  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Wed Sep 23 10:47:30 2026
+    Info: System process ID: 129114
+Info: Command: quartus_fit --read_settings_files=on --write_settings_files=off ofs_top -c ofs_pr_afu
+Info: Using INI file /home/uwb_student00/ahls/new_BSP/work_ahls_persona_work21_csr02/fit01/persona/build/syn/board/ia840f/syn_top/quartus.ini
+Info: qfit2_default_script.tcl version: #1
+Info: Project  = ofs_top
+Info: Revision = ofs_pr_afu
+Critical Warning (20727): The design contains Partial Reconfiguration or Reserved Core partitions with unused input ports. Intel recommends to assign unused inputs within the partition to registers with the synthesis noprune attribute.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|clk_div2 is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|clk_div4 is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|uclk_usr is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|uclk_usr_div2 is dangling on partition green_region.
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 100 degrees C
+Info (18258): Fitter Physical Synthesis operations beginning
+Info (18259): Fitter Physical Synthesis operations ending: elapsed time is 00:00:55
+Info (16557): Fitter post-fit operations ending: elapsed time is 00:10:43
+
+
