@@ -1,0 +1,134 @@
+--- Work20/prepare-native01.py
++++ Work21/prepare-native01.py
+@@ -1,16 +1,21 @@
+ #!/usr/bin/env python3
+-"""Work18 input-copy recipe reused for unchanged-design Quartus25.1 Work20 trial.
++"""Work18 input-copy recipe plus native25.1 debug-leaf replacement for Work21.
+ Ordinary files only; no vendor invocation or authorization issuance here.
+ """
+ import base64, copy, datetime, gzip, hashlib, importlib.util, json, os, shutil, socket, stat, subprocess, sys, traceback
+ from pathlib import Path
+ sys.dont_write_bytecode=True
+-B=Path('/home/uwb_student00/ahls/new_BSP'); C=B/'ofs-agx7-pcie-attach'; OLD=B/'work_ia840f_fim_18'; W=B/'work_ia840f_fim_20'; E=B/'qualification/fim-build-20'; P=E/'compile-candidate-01'
+-INPUT='ia840f_fim20_prepare01_inputs'; OUTPUT='ia840f_fim20_prepare01_output'; OWNED=False
++B=Path('/home/uwb_student00/ahls/new_BSP'); C=B/'ofs-agx7-pcie-attach'; OLD=B/'work_ia840f_fim_18'; W=B/'work_ia840f_fim_21'; E=B/'qualification/fim-build-21'; P=E/'compile-candidate-01'
++INPUT='ia840f_fim21_prepare01_inputs'; OUTPUT='ia840f_fim21_prepare01_output'; OWNED=False
+ RECORD=B/'qualification/fim-build-18/compile-authorization.json'
+ GATES=('ia840f_compile_gate.py','ia840f_experimental_gate.py')
+ CALLBACKS={'syn/board/ia840f/setup/build_gate.tcl':'callback-copy/build_gate.tcl','ofs-common/scripts/common/syn/ofs_post_module_script_fim.tcl':'callback-copy/ofs_post_module_script_fim.tcl'}
+-SOURCE_RECORD=B/'qualification/fim-build-19/compile-authorization.json'
++SOURCE_RECORD=B/'qualification/fim-build-20/compile-authorization.json'
++PREDECESSOR=B/'work_ia840f_fim_20'
++REGEN=B/'qualification/sld25-regeneration01/generation01.json.gz'
++REGEN_ROOT=B/'work_sld25_regeneration01'
++DEBUG_PARENT='ofs-common/src/fpga_family/agilex/remote_stp/AFU_debug'
++LEAF=DEBUG_PARENT+'/scjio_agilex'
+ def require(ok,msg):
+     if not ok: raise RuntimeError(msg)
+ def sha(p):
+@@ -53,11 +58,11 @@
+     require(sha(RECORD)=='b1ebe5096e3462819b9c1b289767c3d4762a1df2647a149ed5741dd653a95f14','issued Work18 record mismatch')
+     old=json.loads(RECORD.read_text())
+     sys.path.insert(0,str(C/'ofs-common/tools/ofss_config'));import ia840f_experimental_gate as common
+-    source_old=json.loads(SOURCE_RECORD.read_text());require(sha(SOURCE_RECORD)=='2857a86b1afc244af7b7b2d59f0945dfa36dd5a8dd80ba1497e0f3f5fadd1b7e','source baseline record')
++    source_old=json.loads(SOURCE_RECORD.read_text());require(sha(SOURCE_RECORD)=='a590130022a4d4705fa282ae9b6f065f64f7dcc3cf9aa69682b75350cd674471','source baseline record')
+     before={t:common.inventory(C/t) for t in common.TREES};require(before==source_old['source_sha256'],'SOURCE drift');require(common.inventory(common.PIM)==old['pim_sha256'],'PIM drift')
+     for group in ('tools','quartus_tools'):
+         for item in old[group].values():require(sha(item['path'])==item['sha256'],'tool changed '+item['path'])
+-    original_full=full_inventory(OLD)
++    original_full=full_inventory(OLD);predecessor_full=full_inventory(PREDECESSOR)
+     actual={k:({'symlink':original_full[k]['link']} if 'link' in original_full[k] else original_full[k]) for k in old['work_inventory']}
+     require(not any(set(Path(k).parts)&{'db','qdb','output_files','incremental_db'} for k in actual),'recorded outputs/databases')
+     drift={k:{'old':v,'current':actual[k]} for k,v in old['work_inventory'].items() if v!=actual[k]}
+@@ -78,14 +83,12 @@
+                 b.decode('utf-8');changed=b.replace(str(OLD).encode(),str(W).encode());dst.write_bytes(changed);shutil.copystat(src,dst);reloc[rel]={'kind':'text-root-only','before':item['sha256'],'after':sha(dst)}
+     overlays={'ofs-common/tools/ofss_config/'+n:'gate-copy/'+n for n in GATES};overlays.update(CALLBACKS)
+     delta={}
+-    expected_callback_changes={
+-        'syn/board/ia840f/setup/build_gate.tcl':(b'exec python3 $ia840f_gate',b'exec /usr/bin/env -u LD_LIBRARY_PATH python3 $ia840f_gate'),
+-        'ofs-common/scripts/common/syn/ofs_post_module_script_fim.tcl':(b'[list python3 "${THIS_DIR}/update_fme_ifc_id.py"',b'[list /usr/bin/env -u LD_LIBRARY_PATH python3 "${THIS_DIR}/update_fme_ifc_id.py"')}
+-    for rel,(a,b) in expected_callback_changes.items():
+-        original=(C/rel).read_bytes();require(original.count(a)==1 and blobs[CALLBACKS[rel]]==original.replace(a,b),'callback delta not exact')
++    for rel,name in CALLBACKS.items():
++        require((C/rel).read_bytes()==blobs[name] and b'/usr/bin/env -u LD_LIBRARY_PATH python3' in blobs[name],'preserve Work20 callback')
+     for rel,name in overlays.items():
+         require((C/rel).is_file() and not (C/rel).is_symlink() and (W/rel).is_file() and not (W/rel).is_symlink(),'overlay target')
+-        delta[rel]={'old':sha(C/rel),'new':hashlib.sha256(blobs[name]).hexdigest()}
++        old_h=sha(C/rel);new_h=hashlib.sha256(blobs[name]).hexdigest()
++        if old_h!=new_h:delta[rel]={'old':old_h,'new':new_h}
+         save(E/'source-backup'/rel,(C/rel).read_bytes())
+     require(sha(C/'syn/shared_config/top.sdc')==sha(W/'syn/shared_config/top.sdc')==hashlib.sha256(blobs['top.sdc']).hexdigest()=='3114ebbe41a5ebfba0e2c266135fa45ff3825f884512a90cb394327ceb804814','SDC must remain unchanged')
+     qrel='syn/board/ia840f/syn_top/ofs_top.qsf';qb=(W/qrel).read_bytes()
+@@ -93,16 +96,42 @@
+     require(blobs['ofs_top.qsf']==qb,'QSF must remain byte-identical to Work18')
+     sj(E/'work-qsf-delta.json',{'path':qrel,'old':sha(W/qrel),'new':sha(W/qrel),'source_qsf_unchanged':True,'work_qsf_unchanged':True})
+     for rel,name in overlays.items():
+-        require(sha(C/rel)==delta[rel]['old'],'source changed before write')
+-        (W/rel).write_bytes(blobs[name]);(C/rel).write_bytes(blobs[name]);r['source_modified']=True
+-        require(sha(C/rel)==sha(W/rel)==delta[rel]['new'],'overlay readback')
++        (W/rel).write_bytes(blobs[name])
++        if rel in delta:
++            require(sha(C/rel)==delta[rel]['old'],'source changed before write')
++            (C/rel).write_bytes(blobs[name]);r['source_modified']=True
++        require((C/rel).read_bytes()==(W/rel).read_bytes()==blobs[name],'overlay readback')
+     after={t:common.inventory(C/t) for t in common.TREES}
+     measured={t+'/'+k:{'old':before[t].get(k),'new':after[t].get(k)} for t in before for k in set(before[t])|set(after[t]) if before[t].get(k)!=after[t].get(k)}
+     require(measured==delta,'entire SOURCE delta not exact');require(common.inventory(common.PIM)==old['pim_sha256'],'PIM changed');require(full_inventory(OLD)==original_full,'original Work18 changed')
++    require(sha(REGEN)=='c3e4b9ac9dbed00008264bd96077f1a205b6dd197308819905d87093ee0d5ae4','native debug evidence drift')
++    generation=json.loads(gzip.decompress(REGEN.read_bytes()))
++    require(generation['native_rc']==0 and generation['original_ip_unchanged'] and generation['copied_saved_ip_unchanged'],'native debug result')
++    require(generation['argv']==['/opt/altera/25.1/quartus/sopc_builder/bin/qsys-generate',str(REGEN_ROOT/'scjio_agilex.ip'),'--synthesis=VERILOG','--part=AGFB027R25A2E2V','--parallel=off'],'native debug target/invocation')
++    for name,item in generation['files'].items():
++        require(not Path(name).is_absolute() and '..' not in Path(name).parts and (name=='scjio_agilex.ip' or name.startswith('scjio_agilex/')),'debug member scope')
++        require(not (REGEN_ROOT/name).is_symlink() and sha(REGEN_ROOT/name)==item['sha256'],'native debug member drift')
++        bb=base64.b64decode(item['base64'],validate=True);require(len(bb)==item['bytes'] and hashlib.sha256(bb).hexdigest()==item['sha256'],'debug capture binding')
++    require(sha(W/(DEBUG_PARENT+'/scjio_agilex.ip'))==generation['input_sha256'],'saved debug IP must remain unchanged')
++    old_leaf={k:v for k,v in actual.items() if k.startswith(LEAF+'/')}
++    require(old_leaf and (W/LEAF).is_dir() and not (W/LEAF).is_symlink(),'fresh copied debug leaf')
++    shutil.rmtree(W/LEAF) # Only this invocation's fresh copied leaf; originals retained.
++    new_leaf={}
++    for name,item in generation['files'].items():
++        if name=='scjio_agilex.ip':continue
++        rel=DEBUG_PARENT+'/'+name;dst=W/rel;dst.parent.mkdir(parents=True,exist_ok=True)
++        shutil.copy2(REGEN_ROOT/name,dst);require(sha(dst)==item['sha256'],'debug copy readback')
++        new_leaf[rel]={'sha256':item['sha256']}
++    require(full_inventory(PREDECESSOR)==predecessor_full,'original Work20 changed')
++    sj(P/'source-inputs/scjio-replacement.json',{'generation_sha256':sha(REGEN),'saved_ip_sha256':generation['input_sha256'],'before':old_leaf,'after':new_leaf,'original_work20_unchanged':True,'emif_qsf_sdc_unchanged':True})
+     importlib.reload(common)
+     import ia840f_compile_gate as gate
+-    work=gate.work_inventory();require(set(work)==set(actual),'copied input membership changed')
+-    changed={k for k in work if work[k]!=actual[k]};require(changed==set(reloc)|set(overlays),'copied input delta not exact')
++    expected_work=copy.deepcopy(actual)
++    for k,v in reloc.items():expected_work[k]={'symlink':v['after']} if v['kind']=='symlink' else {'sha256':v['after']}
++    for rel,name in overlays.items():expected_work[rel]={'sha256':hashlib.sha256(blobs[name]).hexdigest()}
++    for rel in old_leaf:del expected_work[rel]
++    expected_work.update(new_leaf)
++    work=gate.work_inventory();require(work==expected_work,'copied inputs plus exact debug leaf delta')
+     sj(E/'metadata-delta.json',drift);sj(E/'relocations.json',reloc);sj(P/'source-inputs/delta-report.json',{'source_delta':delta});sj(P/'source-inputs/integration-receipt.json',{'source_delta':measured,'original_work18_unchanged':True,'pim_unchanged':True,'copied_inputs':len(work),'native_tools_executed':False});sj(P/'source-inputs/source-after.json',after)
+     env=dict(os.environ)
+     for k in list(env):
+@@ -112,7 +141,7 @@
+     draft=copy.deepcopy(source_old);draft.update(approved=False,accepted_execution=False,source_review_consumed=False,gate_review_consumed=False,ready_for_build=False,toolchain=common.VERSION,work=str(W),source_sha256=after,work_inventory=work,native_argv=gate.TOP_ARGS)
+     for path in list(draft['dependency_sha256']):
+         if path in {str(C/x) for x in overlays}:draft['dependency_sha256'][path]=sha(path)
+-    for path in (RECORD,SOURCE_RECORD,P/'ITERATION-AUTHORITY.md',P/'iteration-basis.md',P/'source-inputs/integration-receipt.json',P/'source-inputs/delta-report.json',P/'issue_authorization.py',P/'launch_native_compile.py',P/'prepare-native01.py',P/'ofs_top.qsf',P/'top.sdc'):draft['dependency_sha256'][str(path)]=sha(path)
++    for path in (RECORD,SOURCE_RECORD,REGEN,P/'source-inputs/scjio-replacement.json',P/'ITERATION-AUTHORITY.md',P/'iteration-basis.md',P/'source-inputs/integration-receipt.json',P/'source-inputs/delta-report.json',P/'issue_authorization.py',P/'launch_native_compile.py',P/'prepare-native01.py',P/'ofs_top.qsf',P/'top.sdc'):draft['dependency_sha256'][str(path)]=sha(path)
+     tool_evidence=json.loads(gzip.decompress((B/'qualification/fim19-tool-preflight02/result.json.gz').read_bytes()))
+     require(tool_evidence['batch']=='ia840f_fim19_toolpreflight02' and all(x['rc']==0 for x in tool_evidence['commands']),'tool probe failed')
+     draft['tools']=tool_evidence['outer_tools']
+@@ -130,7 +159,7 @@
+     manifest={str(p.relative_to(P)):sha(p) for p in sorted(P.rglob('*')) if p.is_file()};sj(P/'review-package-sha256.json',manifest)
+     spec=importlib.util.spec_from_file_location('issuer16',P/'issue_authorization.py');issuer=importlib.util.module_from_spec(spec);spec.loader.exec_module(issuer)
+     checked,checked_manifest=issuer.preflight();require(checked==draft and checked_manifest==manifest,'issuer preflight')
+-    r.update(complete=True,source_delta=delta,copied_inputs=len(work),original_work18_unchanged=True,pim_unchanged=True,native_contexts=135,package_manifest_sha256=sha(P/'review-package-sha256.json'),issuer_nonconsuming_preflight='PASS')
++    r.update(complete=True,source_delta=delta,copied_inputs=len(work),original_work18_unchanged=True,original_work20_unchanged=True,pim_unchanged=True,debug_leaf_files=len(new_leaf),native_contexts=135,package_manifest_sha256=sha(P/'review-package-sha256.json'),issuer_nonconsuming_preflight='PASS')
+ except BaseException as exc:r.update(error=repr(exc),traceback=traceback.format_exc())
+ finally:
+     r['ended']=datetime.datetime.now(datetime.timezone.utc).isoformat()
+@@ -142,5 +171,5 @@
+                 b=p.read_bytes();require(len(b)<2000000,'export over cap');exports[str(p.relative_to(E))]=dict(bytes=len(b),sha256=hashlib.sha256(b).hexdigest(),base64=base64.b64encode(b).decode())
+     blob=gzip.compress(json.dumps(dict(batch=OUTPUT,result=r,files=exports),sort_keys=True).encode(),mtime=0)
+     subprocess.run(['tmux','load-buffer','-b',OUTPUT,'-'],input=blob,check=True)
+-    print('WORK20_PREPARATION_COMPLETE',r['complete'],hashlib.sha256(blob).hexdigest(),flush=True);print(json.dumps(r,indent=2),flush=True)
++    print('WORK21_PREPARATION_COMPLETE',r['complete'],hashlib.sha256(blob).hexdigest(),flush=True);print(json.dumps(r,indent=2),flush=True)
+ if not r['complete']:sys.exit(1)

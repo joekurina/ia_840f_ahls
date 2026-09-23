@@ -1,6 +1,21 @@
 # General-purpose IA-840F feature matrix
 
-## Current execution checkpoint — source-resume-01
+## Current Work21 FIM milestone — Quartus 25.1
+
+**Not hardware-qualified.** This section supersedes earlier FIM timing checkpoints below, without changing their historical results or reclassifying skipped tests. The active FIM toolchain is Quartus Prime Pro 25.1.0 Build 129 SC Pro, not the historical 26.1.1 target. [Work21 acceptance](../qualification/fim-build-21/RESULT-ACCEPTANCE.md).
+
+| Function | Accepted evidence | Remaining boundary |
+|---|---|---|
+| Work21 fit / assembly | Completed native compile, rc 0; 0 errors / 1,183 warnings | No deployment or hardware-function acceptance |
+| Exact EMIF1 hold transfer | All five corners pass; worst +0.082 ns versus Work18 −0.004 ns; signoff SDC unchanged | No retiming-causation claim; do not repeat the unchanged hold experiment |
+| Reported constrained numerical STA | 778 nonnegative summary records, independently reviewed | Unconstrained Paths FAIL; 23/88 failed signoff rules; complete CDC/reset/exception coverage open |
+| PR region / future memory persona | Final populated region and placement confirmed | 1,076 dangling inputs and explicit initial values remain unwaived; later DDR-persona compatibility not established |
+| BMC electrical assignments | Three affected pins identified in the native fitter panel | Termination/slew adequacy and IRQ timing unresolved; no arbitrary settings or live probing |
+| DDR / transfers / AHLS function / durable boot | No new live result from this build | Hardware gates remain open; DDR simulation SKIPPED BY USER |
+
+Details and immutable evidence bindings: [final review](../qualification/fim-build-21/final-review01.md), [parent verification](../qualification/fim-build-21/parent-final-verification01.json). Older rows below are retained as prior-build evidence, not current Work21 failures.
+
+## Prior execution checkpoint — source-resume-01
 
 **Not hardware-qualified.** W13 FIM and the sanctioned persona have compiled
 artifacts; neither is accepted as timing-clean. This section supersedes the

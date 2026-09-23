@@ -1,0 +1,26 @@
+# Work21 current checkpoint
+
+**NATIVE COMPILE AND BOUNDED FINAL REVIEW COMPLETE.** Fit, assembly and reported constrained numerical STA are accepted with findings; the exact historical EMIF1 hold failure is resolved. [Parent acceptance](RESULT-ACCEPTANCE.md) does not accept complete timing/CDC coverage, electrical signoff, PR-persona readiness or hardware. The runner ended at `2026-09-23T06:24:09.725882+00:00`, native rc0, no gate rejection, **0 errors / 1,183 warnings**. [status06.json](status06.json) captures the finished state at `2026-09-23T06:28:50.269798+00:00`. The consumed run must not be restarted.
+
+[Final capture](final-capture01/manifest.json) contains19 verified members: complete fitter/STA/assembly/flow/signoff-DRC reports, final project metadata and runner status. The retained archive is6,701,978bytes, SHA256 `33a796362be5d2ec098d66993dc3cc519f6bdffe76f844a3329a17cbf74fbb4c`. Programming images were inventoried by hash, not transferred or programmed. SOF SHA256 is `bbede03c8c432e50ae6ae1f30739af3bfd3330781776d2c623269cc131b38ca4`; the base green-region RBF is not a qualified personaGBS.
+
+**Reviewed numerical result:** all 778 native summary records are nonnegative. Worst reported setup is 0.216 ns; hold and minimum pulse width reach 0.000 ns at displayed precision. The exact historical EMIF1 transfer passes all five corners, worst **+0.082 ns versus −0.004 ns**, with byte-identical top-level SDC, native signoff-margin skip and no path exception. The launch remains a Hyper-Register. Unconstrained Paths remains **FAIL**; signoff has **23/88 failed rules**, no waivers. The final PR region is populated, but 1,076 dangling inputs and explicit initial values remain unresolved. Electrical warning 15714 names three BMC pins. See the final review for exact source/native citations and bounded next checks.
+
+Independent final review `deleg_0b82b932` is consumed: [final-review01.md](final-review01.md), SHA256 `ce26e582872bb0e2f0e8701ef3d5ac28749e5a1caf73590dba4841088522f2d4`. [Parent verification](parent-final-verification01.json) rechecks native/source identities and the exact hold comparison. No new launch or hardware authority follows.
+
+The interrupted synthesis review01 remains without a verdict. The successor [synthesis-review02.md](synthesis-review02.md) now has a FINAL **ACCEPT WITH FINDINGS, synthesis evidence only** disposition, SHA256 `d38445bbe58c59d0e49b3f01987c1c81905acecb92271fce4921c615858c389a`. The parent reverified all five report members and the highest-risk width finding; final-result review incorporates the remaining findings. Native synthesis is0errors/376warnings. The review accounts for report representations but leaves430 displayed top-level records versus376 native warnings unresolved; no alternative total or waiver is adopted. The40-bit control-shadow export connected to an implicit1-bit top net is a confirmed source connection mistake with no demonstrated active consumer failure; live inputs were not changed.
+
+[Warning-source capture](warning-source-capture01/manifest.json) contains46files:28match recorded precompile hashes and18have no such prior binding. Previously matched local sources bring the review's available map to77files,59precompile-bound. These provenance limits remain explicit.
+
+Historical [status01](status01.json) and [status02](status02.json) remain startup/synthesis observations. Existing generated synthesis files were intentionally reused except the narrowly replaced debug leaf; IP-generation success does not mean a full regeneration. The native start was `2026-09-23T05:25:06.335910+00:00`. [Debug-review clarification](DEBUG-REVIEW-NOTE01.md) corrects the immutable iteration-basis wording about NEGEDGE_TDO_LATCH without changing any live build input.
+
+- Owned tmux session: `ia840f_mailbox_monitored_01`, native window `@155`, pane `%155`.
+- WORK: `/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_21`.
+- Remote evidence: `/home/uwb_student00/ahls/new_BSP/qualification/fim-build-21`.
+- Native command: `build_top.sh --stage=compile -k -p ia840f /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_21`.
+- Consumed authorization SHA256: `793eece9892980e7c7bb0daa383a47838c21c1fd679768c033eb6db6038060a8`. Do not relaunch.
+- Startup identities: runner84910, native84916, actual25.1 flow84933, synthesis84961. Exact executable/argv/cwd/start-tick evidence is in status01; PIDs alone are not future identity proof.
+
+[Parent preparation checks](native-iteration-check01.json) verified all25 exported preparation members,5415 copied inputs,135 unchanged native command contexts after root retarget, and unchanged original Work18/Work20/PIM. SOURCE delta is two gate retargets; the two Work20 Python child-environment fixes are retained. Fresh WORK replaces22 old scjio files with13 native25.1 output files. QSF, SDC, EMIF, pins, clocks and PR intent are retained. [Iteration basis](iteration-basis.md) records saved donor-device context versus explicit generation target and the non-byte-identical debug implementation.
+
+No hardware access, FPGA programming, reboot or driver operation. DDR simulation remains **SKIPPED BY USER**. Readiness and functional-acceptance flags remain false. Only the bounded numerical timing milestone is accepted; complete timing/CDC coverage remains open. Immutable run receipts are not rewritten.

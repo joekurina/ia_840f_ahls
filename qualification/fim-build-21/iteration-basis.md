@@ -1,0 +1,5 @@
+# Work21 iteration basis
+
+SOURCE baseline is Work20's issued inventory. Copy the recorded Work18 precompile inputs, as Work20 did, retaining the established two Python callback corrections. Preserve original Work18, Work20, PIM and native regeneration outputs. Keep QSF/SDC byte-identical. Replace only the fresh WORK scjio_agilex generated subtree; do not replace the saved .ip or any installed vendor primitive.
+
+Actual native generation evidence: ../sld25-regeneration01/generation01.json.gz SHA256 c3e4b9ac9dbed00008264bd96077f1a205b6dd197308819905d87093ee0d5ae4. qsys-generate25.1 rc0, exact invocation part AGFB027R25A2E2V, one standalone no-project warning; saved donor .ip retains AGFB014R24A2E2V context, so no saved-device rewrite is claimed. New wrapper omits unsupported CLTAP_CONNECTION and NEGEDGE_TDO_LATCH, preserves external JTAG ports and supported settings. This is a narrow generated-debug compatibility change; not an entirely byte-identical RTL comparison. No EMIF RTL or timing waiver. Only a new complete native FIM result can establish whether elaboration/fit/STA pass.
