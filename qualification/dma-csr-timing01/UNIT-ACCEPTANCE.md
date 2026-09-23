@@ -1,0 +1,13 @@
+# Parent acceptance — CSR endpoint pipeline
+
+**ACCEPT the exact candidate and completed native functional regressions, with the independent review's nonblocking limits.** Specification and quality both passed; timing closure is not accepted. [Independent FINAL](unit-independent-review01.md), [parent verification](unit-parent-verification01.json).
+
+The parent rehashed all 16 frozen package members, all six prior source-package members, both template/config runner identities, 52 decoded source payloads, 10 embedded logs and matching result/dispatch receipts. Native/effective/outer statuses are all zero, all preservation flags true, with no timeout or surviving owned group. Exact patch and test-local baseline rename were verified. The candidate SHA256 `42d09ffffb91152b9f688014bcff9ffc13e5382cddd7f478e5f9b992da232a77` is also bound unchanged into the already-started CSR02 synthesis/fitter flow. The FINAL report SHA256 is `a73fd736902cd6c9a9f7e570a5255d195a91cce1fd3bae699c7e1c67c1f3eb98`.
+
+Parent source inspection confirms registered 65-bit endpoint arithmetic; unchanged live FIFO/error/control/freshness predicates; and AW/W/B serialization keeping endpoints current before the next GO service. That serialization is a maintenance invariant, not an excuse to pipeline requests later without renewed validation. Descriptor modes 0/3 remain rejected, while separate legacy control preserves low-32-bit behavior.
+
+Integration exercised eight numerical copies and 3,397 beats each direction through the fixture. Differential testing exercised 311 GO-oriented scenarios. Preserve exact counter meanings: 226 endpoint-check **events** perform 452 equality assertions; `min_gap=665` counts observed three-cycle service gaps, not a latency of 665 cycles. The immutable launch-time results document still says review pending; this later disposition supersedes that status without rewriting frozen evidence.
+
+Retain limits: synthetic public error/full status in the differential fixture; no new unique queued-entry drain or real sticky-error recovery; directed rather than exhaustive coverage; no maximum-length full transfer, physical DDR/PCIe, buffer lifetime, freeze/drain, live-reset/PR or hardware qualification. Native warnings remain disclosed. Changed fitting/final STA must establish the outcome of the original -0.367/-0.356 ns setup failure without waivers or reduced clocks. [Review limits](unit-independent-review01.md#3-nonblocking-limits-and-final-disposition).
+
+The already-running native iteration need not be stopped or repeated. This acceptance closes only the narrow functional-preservation gate.

@@ -1,0 +1,55 @@
+--- baseline/csr_mgr.sv
++++ candidate01/csr_mgr.sv
+@@ -100,15 +100,38 @@
+                a == 8*DMA_LENGTH || a == 8*DMA_DESCRIPTOR_CONTROL ||
+                a == 8*DMA_CONTROL;
+     endfunction
+-    function automatic bit descriptor_ok(input logic [63:0] command);
+-        logic [64:0] src_start, dst_start, src_end, dst_end, nbytes;
++    // Derived endpoints are current before the next serialized AW/W/B write.
++    // Keep live FIFO/error/control checks on the original GO service edge.
++    logic [64:0] src_last_q, dst_last_q;
++    function automatic logic [64:0] descriptor_last_byte(
++        input logic [63:0] start_addr,
++        input logic [LENGTH_W-1:0] beats
++    );
++        logic [64:0] nbytes;
++        nbytes = 65'(beats) * AXI_MM_DATA_W_BYTES;
++        return {1'b0, start_addr} + nbytes - 65'd1;
++    endfunction
++    always_ff @(posedge clk) begin
++        if (!reset_n) begin
++            src_last_q <= '0;
++            dst_last_q <= '0;
++        end else begin
++            src_last_q <= descriptor_last_byte(64'(dma_csr_map.descriptor.src_addr),
++                                              dma_csr_map.descriptor.length);
++            dst_last_q <= descriptor_last_byte(64'(dma_csr_map.descriptor.dest_addr),
++                                              dma_csr_map.descriptor.length);
++        end
++    end
++    function automatic bit descriptor_ok(
++        input logic [63:0] command,
++        input logic [64:0] src_end,
++        input logic [64:0] dst_end
++    );
++        logic [64:0] src_start, dst_start;
+         logic [64:0] host_start, host_end, ddr_start, ddr_end;
+         logic [1:0] mode;
+         src_start = {1'b0, 64'(dma_csr_map.descriptor.src_addr)};
+         dst_start = {1'b0, 64'(dma_csr_map.descriptor.dest_addr)};
+-        nbytes = 65'(dma_csr_map.descriptor.length) * AXI_MM_DATA_W_BYTES;
+-        src_end = src_start + nbytes - 1;
+-        dst_end = dst_start + nbytes - 1;
+         mode = command[27:26];
+         host_start = (mode == HOST_TO_DDR) ? src_start : dst_start;
+         host_end = (mode == HOST_TO_DDR) ? src_end : dst_end;
+@@ -145,7 +168,7 @@
+             write_value_ok = ((mmio64_reg.w.data & ~64'h000000008c000000) == 0) &&
+                 (mmio64_reg.w.data[27:26] == HOST_TO_DDR ||
+                  mmio64_reg.w.data[27:26] == DDR_TO_HOST) &&
+-                (!mmio64_reg.w.data[31] || descriptor_ok(mmio64_reg.w.data));
++                (!mmio64_reg.w.data[31] || descriptor_ok(mmio64_reg.w.data, src_last_q, dst_last_q));
+           // Legacy control behavior is retained; not a qualified drain/reset ABI.
+           8*DMA_CONTROL: write_value_ok = (mmio64_reg.w.data >> 32) == 0;
+           default: write_value_ok = 1'b0;

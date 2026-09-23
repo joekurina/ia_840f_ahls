@@ -1,0 +1,87 @@
+{
+  "verdict": "ACCEPT_BOUNDED_CSR_ENDPOINT_FUNCTIONAL_REGRESSION_WITH_LIMITS",
+  "report_sha256": "a73fd736902cd6c9a9f7e570a5255d195a91cce1fd3bae699c7e1c67c1f3eb98",
+  "package_sha256": "228a1d38dc9e2e600a4fcd7ef9e872f93b2dfd0520b721471cf6ee973c6d0558",
+  "verified_package_members": 16,
+  "verified_source_payloads": 52,
+  "verified_embedded_logs": 10,
+  "source_recommendation_package_members": 6,
+  "candidate_sha256": "42d09ffffb91152b9f688014bcff9ffc13e5382cddd7f478e5f9b992da232a77",
+  "exact_candidate_bound_in_changed_synthesis_and_fitter": true,
+  "runs": {
+    "integration01": {
+      "result_sha256": "d4973aff4b25a59d15b7c0620dd544b0c55d6639eced4c1649a7cdf70c758a7e",
+      "runner_sha256": "f1a88be11d27eeacb75c343ec2f4180f7c2186e1801c4266ee9561f14ca8eacf",
+      "sources": 25,
+      "logs": 5,
+      "native_effective_outer": "all0",
+      "scoreboards": [
+        {
+          "cases": 8,
+          "cycles": 8626,
+          "checks": 110977,
+          "AR": 19,
+          "AW": 19,
+          "R": 3397,
+          "W": 3397,
+          "B": 19,
+          "success": 8,
+          "errors": 0,
+          "held": 0,
+          "r_stalls": 3069,
+          "w_stalls": 4908,
+          "max_buffered": 38,
+          "high_source": 4,
+          "high_dest": 4
+        }
+      ],
+      "guard_scoreboards": [
+        {
+          "checks": 56,
+          "rejected_writes": 32,
+          "rejected_reads": 4,
+          "rejected_go": 20,
+          "queue_accepts": 20
+        }
+      ],
+      "log_markers": [
+        "# DMA_ADMISSION_UNIT_PASS cases=8 cycles=8626 checks=110977 AR=19 AW=19 R=3397 W=3397 B=19 success=8 errors=0 held=0 r_stalls=3069 w_stalls=4908 max_buffered=38 high_source=4 high_dest=4"
+      ]
+    },
+    "differential01": {
+      "result_sha256": "07ddcee4932c1f1485086ce30646ef78b5d98d4754720b04ab541539f7fe97c8",
+      "runner_sha256": "a2e8b9d8f65b4bc22b662c17aa50e6790beeb9c6559cecb816bbad9f7e169c59",
+      "sources": 27,
+      "logs": 5,
+      "native_effective_outer": "all0",
+      "scoreboards": [
+        {
+          "tests": 311,
+          "writes": 1512,
+          "reads": 23,
+          "enqueues": 85,
+          "endpoint_checks": 226,
+          "min_gap": 665,
+          "b_stalls": 106,
+          "r_stalls": 115,
+          "resets": 246,
+          "cycles": 8571,
+          "checks": 54876
+        }
+      ],
+      "guard_scoreboards": null,
+      "log_markers": [
+        "# CSR_ENDPOINT_DIFF_PASS tests=311 writes=1512 reads=23 enqueues=85 endpoint_checks=226 min_gap=665 b_stalls=106 r_stalls=115 resets=246 cycles=8571 checks=54876"
+      ]
+    }
+  },
+  "endpoint_check_events": 226,
+  "endpoint_equality_assertions": 452,
+  "limits": [
+    "No unique queued-entry drain or real sticky-error recovery coverage",
+    "Directed scenarios do not establish exhaustive equivalence",
+    "No physical DDR, global visibility, freeze/drain, PR/reset or hardware acceptance",
+    "Changed fit/final STA must establish numerical timing; old failures remain negative evidence"
+  ],
+  "originals_preserved": true
+}
