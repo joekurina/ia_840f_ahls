@@ -1,0 +1,5 @@
+# Memory AFU with the real generated PIM
+
+`ofs_plat_afu.sv` is an alternate top, not a replacement for the scalar AFU. Compile exactly one top/source list. It uses the captured Work21-generated PIM: one primary host mapper and two local-memory shims, preserving fabric-side18-bit IDs via the PIM metadata queues. Quartus25.1 analysis/elaboration evidence is in qualification/ahls-memory-pim01; no mapped/full-FIM build or functional/hardware acceptance follows.
+
+The core runs on bank0 clock. PIM reset joining carries pClk softReset into that domain; host and bank shims supply their vendor CDC/register pipelines. The wired freeze synchronizer was swept because the generated CRA wrapper does not consume its freeze input; it is not effective quiescence. IRQ is not routed, exception output is not an error checker. Outer MMIO alias rejection, posted-error status, global drain/fences, complete-kernel numerics and actual timing/reset/PR acceptance remain required. The inherited component-only UUID is not a deployed/released application identity.

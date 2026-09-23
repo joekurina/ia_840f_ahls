@@ -1,0 +1,3 @@
+# Actual PIM integration scope
+
+Continue the completed component generation/elaboration without rerunning it. Capture the exact Work21 generated PIM and its finite FIM-package dependencies against the compile inventory; preserve original sources. Add an alternate AHLS memory AFU with one primary host mapper and two real per-bank PIM shims, clocked in the donor-supported bank0 domain and preserving18-bit fabric IDs through the shim. Qualify the resulting real interface hierarchy under Quartus25.1 analysis/elaboration before mapped/full-FIM synthesis. No scalar-AFU replacement, source installation mutation, hardware device operations or deployment. Outer MMIO decode and lifecycle/functional gates remain explicit; no native-stage pass promotes hardware readiness.

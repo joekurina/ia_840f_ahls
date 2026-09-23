@@ -1,0 +1,857 @@
+{
+  "clock_reset_clk": {
+    "expression": "core_clk",
+    "direction": "input",
+    "width": 1
+  },
+  "clock_reset_reset_reset_n": {
+    "expression": "core_reset_n",
+    "direction": "input",
+    "width": 1
+  },
+  "freeze_freeze": {
+    "expression": "core_freeze",
+    "direction": "input",
+    "width": 1
+  },
+  "device_exception_bus_data": {
+    "expression": "kernel_exception_not_checker",
+    "direction": "output",
+    "width": 64
+  },
+  "kernel_irqs_irq": {
+    "expression": "kernel_irq_unrouted",
+    "direction": "output",
+    "width": 1
+  },
+  "mmio_control_awid": {
+    "expression": "mmio.aw.id",
+    "direction": "input",
+    "width": 16
+  },
+  "mmio_control_awaddr": {
+    "expression": "mmio.aw.addr",
+    "direction": "input",
+    "width": 20
+  },
+  "mmio_control_awlen": {
+    "expression": "8'd0",
+    "direction": "input",
+    "width": 8
+  },
+  "mmio_control_awsize": {
+    "expression": "mmio.aw.size",
+    "direction": "input",
+    "width": 3
+  },
+  "mmio_control_awburst": {
+    "expression": "2'b01",
+    "direction": "input",
+    "width": 2
+  },
+  "mmio_control_awuser": {
+    "expression": "mmio.aw.user",
+    "direction": "input",
+    "width": 1
+  },
+  "mmio_control_awvalid": {
+    "expression": "mmio.awvalid",
+    "direction": "input",
+    "width": 1
+  },
+  "mmio_control_awready": {
+    "expression": "mmio.awready",
+    "direction": "output",
+    "width": 1
+  },
+  "mmio_control_wdata": {
+    "expression": "mmio.w.data",
+    "direction": "input",
+    "width": 64
+  },
+  "mmio_control_wstrb": {
+    "expression": "mmio.w.strb",
+    "direction": "input",
+    "width": 8
+  },
+  "mmio_control_wvalid": {
+    "expression": "mmio.wvalid",
+    "direction": "input",
+    "width": 1
+  },
+  "mmio_control_wuser": {
+    "expression": "mmio.w.user",
+    "direction": "input",
+    "width": 1
+  },
+  "mmio_control_wready": {
+    "expression": "mmio.wready",
+    "direction": "output",
+    "width": 1
+  },
+  "mmio_control_bid": {
+    "expression": "mmio.b.id",
+    "direction": "output",
+    "width": 16
+  },
+  "mmio_control_bresp": {
+    "expression": "mmio.b.resp",
+    "direction": "output",
+    "width": 2
+  },
+  "mmio_control_buser": {
+    "expression": "mmio.b.user",
+    "direction": "output",
+    "width": 1
+  },
+  "mmio_control_bvalid": {
+    "expression": "mmio.bvalid",
+    "direction": "output",
+    "width": 1
+  },
+  "mmio_control_bready": {
+    "expression": "mmio.bready",
+    "direction": "input",
+    "width": 1
+  },
+  "mmio_control_arid": {
+    "expression": "mmio.ar.id",
+    "direction": "input",
+    "width": 16
+  },
+  "mmio_control_araddr": {
+    "expression": "mmio.ar.addr",
+    "direction": "input",
+    "width": 20
+  },
+  "mmio_control_arlen": {
+    "expression": "8'd0",
+    "direction": "input",
+    "width": 8
+  },
+  "mmio_control_arsize": {
+    "expression": "mmio.ar.size",
+    "direction": "input",
+    "width": 3
+  },
+  "mmio_control_arburst": {
+    "expression": "2'b01",
+    "direction": "input",
+    "width": 2
+  },
+  "mmio_control_aruser": {
+    "expression": "mmio.ar.user",
+    "direction": "input",
+    "width": 1
+  },
+  "mmio_control_arvalid": {
+    "expression": "mmio.arvalid",
+    "direction": "input",
+    "width": 1
+  },
+  "mmio_control_arready": {
+    "expression": "mmio.arready",
+    "direction": "output",
+    "width": 1
+  },
+  "mmio_control_rid": {
+    "expression": "mmio.r.id",
+    "direction": "output",
+    "width": 16
+  },
+  "mmio_control_rdata": {
+    "expression": "mmio.r.data",
+    "direction": "output",
+    "width": 64
+  },
+  "mmio_control_rresp": {
+    "expression": "mmio.r.resp",
+    "direction": "output",
+    "width": 2
+  },
+  "mmio_control_rlast": {
+    "expression": "mmio_single_rlast",
+    "direction": "output",
+    "width": 1
+  },
+  "mmio_control_rvalid": {
+    "expression": "mmio.rvalid",
+    "direction": "output",
+    "width": 1
+  },
+  "mmio_control_rready": {
+    "expression": "mmio.rready",
+    "direction": "input",
+    "width": 1
+  },
+  "mmio_control_ruser": {
+    "expression": "mmio.r.user",
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out0_awid": {
+    "expression": "banks[0].aw.id",
+    "direction": "output",
+    "width": 18
+  },
+  "bank_out0_awaddr": {
+    "expression": "banks[0].aw.addr",
+    "direction": "output",
+    "width": 34
+  },
+  "bank_out0_awlen": {
+    "expression": "banks[0].aw.len",
+    "direction": "output",
+    "width": 8
+  },
+  "bank_out0_awsize": {
+    "expression": "banks[0].aw.size",
+    "direction": "output",
+    "width": 3
+  },
+  "bank_out0_awburst": {
+    "expression": "banks[0].aw.burst",
+    "direction": "output",
+    "width": 2
+  },
+  "bank_out0_awlock": {
+    "expression": "banks[0].aw.lock",
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out0_awcache": {
+    "expression": "banks[0].aw.cache",
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out0_awprot": {
+    "expression": "banks[0].aw.prot",
+    "direction": "output",
+    "width": 3
+  },
+  "bank_out0_awuser": {
+    "expression": "banks[0].aw.user",
+    "direction": "output",
+    "width": 2
+  },
+  "bank_out0_awqos": {
+    "expression": "banks[0].aw.qos",
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out0_awregion": {
+    "expression": "banks[0].aw.region",
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out0_awvalid": {
+    "expression": "banks[0].awvalid",
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out0_awready": {
+    "expression": "banks[0].awready",
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out0_wdata": {
+    "expression": "banks[0].w.data",
+    "direction": "output",
+    "width": 512
+  },
+  "bank_out0_wstrb": {
+    "expression": "banks[0].w.strb",
+    "direction": "output",
+    "width": 64
+  },
+  "bank_out0_wlast": {
+    "expression": "banks[0].w.last",
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out0_wvalid": {
+    "expression": "banks[0].wvalid",
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out0_wuser": {
+    "expression": "banks[0].w.user",
+    "direction": "output",
+    "width": 2
+  },
+  "bank_out0_wready": {
+    "expression": "banks[0].wready",
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out0_bid": {
+    "expression": "banks[0].b.id",
+    "direction": "input",
+    "width": 18
+  },
+  "bank_out0_bresp": {
+    "expression": "banks[0].b.resp",
+    "direction": "input",
+    "width": 2
+  },
+  "bank_out0_buser": {
+    "expression": "banks[0].b.user",
+    "direction": "input",
+    "width": 2
+  },
+  "bank_out0_bvalid": {
+    "expression": "banks[0].bvalid",
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out0_bready": {
+    "expression": "banks[0].bready",
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out0_arid": {
+    "expression": "banks[0].ar.id",
+    "direction": "output",
+    "width": 18
+  },
+  "bank_out0_araddr": {
+    "expression": "banks[0].ar.addr",
+    "direction": "output",
+    "width": 34
+  },
+  "bank_out0_arlen": {
+    "expression": "banks[0].ar.len",
+    "direction": "output",
+    "width": 8
+  },
+  "bank_out0_arsize": {
+    "expression": "banks[0].ar.size",
+    "direction": "output",
+    "width": 3
+  },
+  "bank_out0_arburst": {
+    "expression": "banks[0].ar.burst",
+    "direction": "output",
+    "width": 2
+  },
+  "bank_out0_arlock": {
+    "expression": "banks[0].ar.lock",
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out0_arcache": {
+    "expression": "banks[0].ar.cache",
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out0_arprot": {
+    "expression": "banks[0].ar.prot",
+    "direction": "output",
+    "width": 3
+  },
+  "bank_out0_aruser": {
+    "expression": "banks[0].ar.user",
+    "direction": "output",
+    "width": 2
+  },
+  "bank_out0_arqos": {
+    "expression": "banks[0].ar.qos",
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out0_arregion": {
+    "expression": "banks[0].ar.region",
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out0_arvalid": {
+    "expression": "banks[0].arvalid",
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out0_arready": {
+    "expression": "banks[0].arready",
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out0_rid": {
+    "expression": "banks[0].r.id",
+    "direction": "input",
+    "width": 18
+  },
+  "bank_out0_rdata": {
+    "expression": "banks[0].r.data",
+    "direction": "input",
+    "width": 512
+  },
+  "bank_out0_rresp": {
+    "expression": "banks[0].r.resp",
+    "direction": "input",
+    "width": 2
+  },
+  "bank_out0_rlast": {
+    "expression": "banks[0].r.last",
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out0_rvalid": {
+    "expression": "banks[0].rvalid",
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out0_rready": {
+    "expression": "banks[0].rready",
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out0_ruser": {
+    "expression": "banks[0].r.user",
+    "direction": "input",
+    "width": 2
+  },
+  "bank_out1_awid": {
+    "expression": "banks[1].aw.id",
+    "direction": "output",
+    "width": 18
+  },
+  "bank_out1_awaddr": {
+    "expression": "banks[1].aw.addr",
+    "direction": "output",
+    "width": 34
+  },
+  "bank_out1_awlen": {
+    "expression": "banks[1].aw.len",
+    "direction": "output",
+    "width": 8
+  },
+  "bank_out1_awsize": {
+    "expression": "banks[1].aw.size",
+    "direction": "output",
+    "width": 3
+  },
+  "bank_out1_awburst": {
+    "expression": "banks[1].aw.burst",
+    "direction": "output",
+    "width": 2
+  },
+  "bank_out1_awlock": {
+    "expression": "banks[1].aw.lock",
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out1_awcache": {
+    "expression": "banks[1].aw.cache",
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out1_awprot": {
+    "expression": "banks[1].aw.prot",
+    "direction": "output",
+    "width": 3
+  },
+  "bank_out1_awuser": {
+    "expression": "banks[1].aw.user",
+    "direction": "output",
+    "width": 2
+  },
+  "bank_out1_awqos": {
+    "expression": "banks[1].aw.qos",
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out1_awregion": {
+    "expression": "banks[1].aw.region",
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out1_awvalid": {
+    "expression": "banks[1].awvalid",
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out1_awready": {
+    "expression": "banks[1].awready",
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out1_wdata": {
+    "expression": "banks[1].w.data",
+    "direction": "output",
+    "width": 512
+  },
+  "bank_out1_wstrb": {
+    "expression": "banks[1].w.strb",
+    "direction": "output",
+    "width": 64
+  },
+  "bank_out1_wlast": {
+    "expression": "banks[1].w.last",
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out1_wvalid": {
+    "expression": "banks[1].wvalid",
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out1_wuser": {
+    "expression": "banks[1].w.user",
+    "direction": "output",
+    "width": 2
+  },
+  "bank_out1_wready": {
+    "expression": "banks[1].wready",
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out1_bid": {
+    "expression": "banks[1].b.id",
+    "direction": "input",
+    "width": 18
+  },
+  "bank_out1_bresp": {
+    "expression": "banks[1].b.resp",
+    "direction": "input",
+    "width": 2
+  },
+  "bank_out1_buser": {
+    "expression": "banks[1].b.user",
+    "direction": "input",
+    "width": 2
+  },
+  "bank_out1_bvalid": {
+    "expression": "banks[1].bvalid",
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out1_bready": {
+    "expression": "banks[1].bready",
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out1_arid": {
+    "expression": "banks[1].ar.id",
+    "direction": "output",
+    "width": 18
+  },
+  "bank_out1_araddr": {
+    "expression": "banks[1].ar.addr",
+    "direction": "output",
+    "width": 34
+  },
+  "bank_out1_arlen": {
+    "expression": "banks[1].ar.len",
+    "direction": "output",
+    "width": 8
+  },
+  "bank_out1_arsize": {
+    "expression": "banks[1].ar.size",
+    "direction": "output",
+    "width": 3
+  },
+  "bank_out1_arburst": {
+    "expression": "banks[1].ar.burst",
+    "direction": "output",
+    "width": 2
+  },
+  "bank_out1_arlock": {
+    "expression": "banks[1].ar.lock",
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out1_arcache": {
+    "expression": "banks[1].ar.cache",
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out1_arprot": {
+    "expression": "banks[1].ar.prot",
+    "direction": "output",
+    "width": 3
+  },
+  "bank_out1_aruser": {
+    "expression": "banks[1].ar.user",
+    "direction": "output",
+    "width": 2
+  },
+  "bank_out1_arqos": {
+    "expression": "banks[1].ar.qos",
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out1_arregion": {
+    "expression": "banks[1].ar.region",
+    "direction": "output",
+    "width": 4
+  },
+  "bank_out1_arvalid": {
+    "expression": "banks[1].arvalid",
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out1_arready": {
+    "expression": "banks[1].arready",
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out1_rid": {
+    "expression": "banks[1].r.id",
+    "direction": "input",
+    "width": 18
+  },
+  "bank_out1_rdata": {
+    "expression": "banks[1].r.data",
+    "direction": "input",
+    "width": 512
+  },
+  "bank_out1_rresp": {
+    "expression": "banks[1].r.resp",
+    "direction": "input",
+    "width": 2
+  },
+  "bank_out1_rlast": {
+    "expression": "banks[1].r.last",
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out1_rvalid": {
+    "expression": "banks[1].rvalid",
+    "direction": "input",
+    "width": 1
+  },
+  "bank_out1_rready": {
+    "expression": "banks[1].rready",
+    "direction": "output",
+    "width": 1
+  },
+  "bank_out1_ruser": {
+    "expression": "banks[1].r.user",
+    "direction": "input",
+    "width": 2
+  },
+  "host_awid": {
+    "expression": "host_mem.aw.id",
+    "direction": "output",
+    "width": 9
+  },
+  "host_awaddr": {
+    "expression": "host_mem.aw.addr",
+    "direction": "output",
+    "width": 57
+  },
+  "host_awlen": {
+    "expression": "host_mem.aw.len",
+    "direction": "output",
+    "width": 8
+  },
+  "host_awsize": {
+    "expression": "host_mem.aw.size",
+    "direction": "output",
+    "width": 3
+  },
+  "host_awburst": {
+    "expression": "host_mem.aw.burst",
+    "direction": "output",
+    "width": 2
+  },
+  "host_awlock": {
+    "expression": "host_mem.aw.lock",
+    "direction": "output",
+    "width": 1
+  },
+  "host_awcache": {
+    "expression": "host_mem.aw.cache",
+    "direction": "output",
+    "width": 4
+  },
+  "host_awprot": {
+    "expression": "host_mem.aw.prot",
+    "direction": "output",
+    "width": 3
+  },
+  "host_awuser": {
+    "expression": "host_mem.aw.user",
+    "direction": "output",
+    "width": 4
+  },
+  "host_awqos": {
+    "expression": "host_mem.aw.qos",
+    "direction": "output",
+    "width": 4
+  },
+  "host_awregion": {
+    "expression": "host_mem.aw.region",
+    "direction": "output",
+    "width": 4
+  },
+  "host_awatop": {
+    "expression": "host_mem.aw.atop",
+    "direction": "output",
+    "width": 6
+  },
+  "host_awvalid": {
+    "expression": "host_mem.awvalid",
+    "direction": "output",
+    "width": 1
+  },
+  "host_awready": {
+    "expression": "host_mem.awready",
+    "direction": "input",
+    "width": 1
+  },
+  "host_arid": {
+    "expression": "host_mem.ar.id",
+    "direction": "output",
+    "width": 9
+  },
+  "host_araddr": {
+    "expression": "host_mem.ar.addr",
+    "direction": "output",
+    "width": 57
+  },
+  "host_arlen": {
+    "expression": "host_mem.ar.len",
+    "direction": "output",
+    "width": 8
+  },
+  "host_arsize": {
+    "expression": "host_mem.ar.size",
+    "direction": "output",
+    "width": 3
+  },
+  "host_arburst": {
+    "expression": "host_mem.ar.burst",
+    "direction": "output",
+    "width": 2
+  },
+  "host_arlock": {
+    "expression": "host_mem.ar.lock",
+    "direction": "output",
+    "width": 1
+  },
+  "host_arcache": {
+    "expression": "host_mem.ar.cache",
+    "direction": "output",
+    "width": 4
+  },
+  "host_arprot": {
+    "expression": "host_mem.ar.prot",
+    "direction": "output",
+    "width": 3
+  },
+  "host_aruser": {
+    "expression": "host_mem.ar.user",
+    "direction": "output",
+    "width": 4
+  },
+  "host_arqos": {
+    "expression": "host_mem.ar.qos",
+    "direction": "output",
+    "width": 4
+  },
+  "host_arregion": {
+    "expression": "host_mem.ar.region",
+    "direction": "output",
+    "width": 4
+  },
+  "host_arvalid": {
+    "expression": "host_mem.arvalid",
+    "direction": "output",
+    "width": 1
+  },
+  "host_arready": {
+    "expression": "host_mem.arready",
+    "direction": "input",
+    "width": 1
+  },
+  "host_wdata": {
+    "expression": "host_mem.w.data",
+    "direction": "output",
+    "width": 512
+  },
+  "host_wstrb": {
+    "expression": "host_mem.w.strb",
+    "direction": "output",
+    "width": 64
+  },
+  "host_wlast": {
+    "expression": "host_mem.w.last",
+    "direction": "output",
+    "width": 1
+  },
+  "host_wuser": {
+    "expression": "host_mem.w.user",
+    "direction": "output",
+    "width": 4
+  },
+  "host_wvalid": {
+    "expression": "host_mem.wvalid",
+    "direction": "output",
+    "width": 1
+  },
+  "host_wready": {
+    "expression": "host_mem.wready",
+    "direction": "input",
+    "width": 1
+  },
+  "host_rid": {
+    "expression": "host_mem.r.id",
+    "direction": "input",
+    "width": 9
+  },
+  "host_rdata": {
+    "expression": "host_mem.r.data",
+    "direction": "input",
+    "width": 512
+  },
+  "host_rresp": {
+    "expression": "host_mem.r.resp",
+    "direction": "input",
+    "width": 2
+  },
+  "host_rlast": {
+    "expression": "host_mem.r.last",
+    "direction": "input",
+    "width": 1
+  },
+  "host_ruser": {
+    "expression": "host_mem.r.user",
+    "direction": "input",
+    "width": 4
+  },
+  "host_rvalid": {
+    "expression": "host_mem.rvalid",
+    "direction": "input",
+    "width": 1
+  },
+  "host_rready": {
+    "expression": "host_mem.rready",
+    "direction": "output",
+    "width": 1
+  },
+  "host_bid": {
+    "expression": "host_mem.b.id",
+    "direction": "input",
+    "width": 9
+  },
+  "host_bresp": {
+    "expression": "host_mem.b.resp",
+    "direction": "input",
+    "width": 2
+  },
+  "host_buser": {
+    "expression": "host_mem.b.user",
+    "direction": "input",
+    "width": 4
+  },
+  "host_bvalid": {
+    "expression": "host_mem.bvalid",
+    "direction": "input",
+    "width": 1
+  },
+  "host_bready": {
+    "expression": "host_mem.bready",
+    "direction": "output",
+    "width": 1
+  }
+}
