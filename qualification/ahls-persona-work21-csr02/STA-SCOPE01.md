@@ -1,0 +1,11 @@
+# CSR02 final multicorner STA01 — bounded review scope
+
+Review completed Quartus25.1 final-snapshot multicorner STA acquisition and reported numerical summaries, specification first then quality. Read RESULTS-STA01.md and sta-parent-verification01.json; verify the exact frozen package and archives. Preserve setup/mapped synthesis and fitting as separate gates.
+
+Acceptance sought is truthful native acquisition and nonnegative reported constrained domain results, NOT full timing/design/hardware signoff. Verify source/tool/copy identity, fit prerequisites,26 exact mutable-output roles (including native runlog),344 protected physical paths,all5749 critical input bindings, original fit/release/tools preservation,0/0/0 native/effective/outer and no owned survivors. No timing changes: only copied callback retarget and NUM_PARALLEL_PROCESSORS2→36; live affinity36CPUs and64GiB address-space cap. Native report maximum allowed24 is separately disclosed; do not claim36 effective tool workers.
+
+Reconcile all645domain records over5corners against the prior exact keyset, previous negative domain rows, unchanged clock properties and requested auto policy200/100. Verify full native closure/unconstrained/signoff panels and all380warnings without concealing missing/disabled checks. A DDR timing summary pass is not vendor-DDR simulation or physical memory qualification.
+
+Explicit remaining discriminator: default report does not include literal src_last_q/dst_last_q path detail; mapped endpoint registers may be merged into different names. Do NOT infer vanished logic or direct original/new path closure. Need bounded native queries of original admission/register-enable endpoints and new arithmetic-to-endpoint/endpoint-to-admission paths under unchanged constraints. Independent review can accept bounded summaries with that limitation; do not demand an unchanged full fit/STA rerun or waive the query.
+
+No SSH/network/vendor/simulator/device execution, runner imports/execution, Git, implementation changes, task transitions or mutable CURRENT.md. Static AST/literal/hash/base64/gzip parsing allowed. Write only sta-independent-review01.md (IN_PROGRESS then FINAL), return report SHA256 separately. Only frozen package members may be read. No hardware, PR/reset, physical DDR/PCIe/OPAE, deployment or assembly acceptance. Parent alone owns remote work.
