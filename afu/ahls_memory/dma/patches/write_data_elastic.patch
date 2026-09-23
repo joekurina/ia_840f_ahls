@@ -1,0 +1,172 @@
+--- a/ip/dma/dma_write_engine.sv
++++ b/ip/dma/dma_write_engine.sv
+@@ -118,33 +118,12 @@
+             if (dest_mem.awvalid & dest_mem.awready) next = FIFO_EMPTY;
+             else next = SEND_WR_REQ;
+  
+-         state[FIFO_EMPTY_NOT_READY_BIT]:
+-            if (packet_complete & (!need_more_wlast)) next = WAIT_FOR_WR_RSP;
+-            else if (!dest_mem.wready & rd_fifo_if.not_empty) next = NOT_READY;
+-            else if (dest_mem.wready & !rd_fifo_if.not_empty) next = FIFO_EMPTY;
+-            else if (!dest_mem.wready & !rd_fifo_if.not_empty) next = FIFO_EMPTY_NOT_READY;
+-            else next = RD_FIFO_WR_DEST;
+-         
+-         state[FIFO_EMPTY_BIT]:
+-            if (packet_complete & (!need_more_wlast)) next = WAIT_FOR_WR_RSP;
+-            else if (!dest_mem.wready & rd_fifo_if.not_empty) next = NOT_READY;
+-            else if (dest_mem.wready & !rd_fifo_if.not_empty) next = FIFO_EMPTY;
+-            else if (!dest_mem.wready & !rd_fifo_if.not_empty) next = FIFO_EMPTY_NOT_READY;
+-            else next = RD_FIFO_WR_DEST;
+-
+-         state[NOT_READY_BIT]:
+-            if (wlast_valid & need_more_wlast) next = ADDR_SETUP;
+-            else if (!dest_mem.wready & rd_fifo_if.not_empty) next = NOT_READY;
+-            else if (dest_mem.wready & !rd_fifo_if.not_empty) next = FIFO_EMPTY;
+-            else if (!dest_mem.wready & !rd_fifo_if.not_empty) next = FIFO_EMPTY_NOT_READY;
+-            else next = RD_FIFO_WR_DEST;
++         // Keep the data phase independent of sink readiness and FIFO bubbles.
++         state[FIFO_EMPTY_BIT], state[NOT_READY_BIT], state[FIFO_EMPTY_NOT_READY_BIT]:
++            next = RD_FIFO_WR_DEST;
+ 
+          state[RD_FIFO_WR_DEST_BIT]:
+-            if (packet_complete & (!need_more_wlast)) next = WAIT_FOR_WR_RSP;
+-            else if (wlast_valid & need_more_wlast) next = ADDR_SETUP;
+-            else if ((!rd_fifo_if.not_empty) & (!dest_mem.wready)) next = FIFO_EMPTY_NOT_READY;
+-            else if ((!rd_fifo_if.not_empty) & (dest_mem.wready)) next = FIFO_EMPTY;
+-            else if ((rd_fifo_if.not_empty) & (!dest_mem.wready)) next = NOT_READY;
++            if (wlast_valid) next = need_more_wlast ? ADDR_SETUP : WAIT_FOR_WR_RSP;
+             else next = RD_FIFO_WR_DEST;
+ 
+          state[WAIT_FOR_WR_RSP_BIT]:
+@@ -215,49 +194,20 @@
+       end
+    end
+ 
+-   logic dest_mem_wvalid;
+-   logic dest_mem_wlast;
+-   logic [DATA_W-3:0] dest_mem_wdata;
++   // Existing output register is a one-entry elastic W buffer.
++   // Pop only into a free/consumed slot. Hold the entire payload while stalled.
+    always_ff @(posedge clk) begin
+       if (!reset_n) begin
+-         dest_mem.wvalid  <= 1'b0;
+-         dest_mem.w.data  <= '0;
+-         dest_mem.w.last  <= 1'b0;
+-         dest_mem.w.strb  <= '0;
+-         dest_mem.w.user  <= '0;
+-      end else begin
+-         dest_mem.wvalid <= dest_mem_wvalid;
+-         dest_mem.w.data <= dest_mem_wdata;
+-         dest_mem.w.last <= dest_mem_wlast;
+-         dest_mem.w.strb <= '1;
+-         dest_mem.w.user <= '0;
+-         unique case (1'b1)
+-            next[IDLE_BIT]: begin end 
+-            
+-            next[ADDR_SETUP_BIT]: begin end
+-            
+-            next[SEND_WR_REQ_BIT]: begin end
+-            
+-            next[FIFO_EMPTY_NOT_READY_BIT]: begin
+-               dest_mem.w.last <= dest_mem.w.last;
+-               dest_mem.wvalid <= dest_mem.wvalid;
+-               dest_mem.w.data <= dest_mem.w.data;
+-            end
+-            
+-            next[FIFO_EMPTY_BIT]: begin end
+-           
+-            next[NOT_READY_BIT]: begin
+-               dest_mem.w.last <= dest_mem.w.last;
+-               dest_mem.wvalid <= dest_mem.wvalid;
+-               dest_mem.w.data <= dest_mem.w.data;
+-            end
+-            
+-            next[RD_FIFO_WR_DEST_BIT]: begin end
+-            
+-            next[WAIT_FOR_WR_RSP_BIT]: begin end
+-            
+-            next[ERROR_BIT]: begin end
+-         endcase
++         dest_mem.wvalid <= 1'b0;
++         dest_mem.w <= '0;
++      end else if (!dest_mem.wvalid || dest_mem.wready) begin
++         dest_mem.wvalid <= rd_fifo_if.rd_en;
++         if (rd_fifo_if.rd_en) begin
++            dest_mem.w.data <= rd_fifo_if.rd_data[DATA_W-3:0];
++            dest_mem.w.last <= rd_fifo_if.rd_data[DATA_W-2];
++            dest_mem.w.strb <= '1;
++            dest_mem.w.user <= '0;
++         end
+       end
+    end
+ 
+@@ -270,54 +220,54 @@
+       dest_mem.arvalid                = 1'b0;
+       dest_mem.awvalid                = 1'b0;
+       packet_complete                 = 1'b0;
+-      dest_mem_wlast                  = 1'b0;
+-      rd_fifo_if.rd_en = dest_mem.wready & rd_fifo_if.not_empty;
+-      dest_mem_wvalid  = dest_mem.wready & rd_fifo_if.not_empty;
+- 
+-      {packet_complete, 
+-         dest_mem_wlast, 
+-         dest_mem_wdata} = rd_fifo_if.rd_data;
++      packet_complete = rd_fifo_if.rd_data[DATA_W-1];
++      rd_fifo_if.rd_en = 1'b0;
+ 
+       unique case (1'b1)
+          state[IDLE_BIT]: begin 
+             rd_fifo_if.rd_en = 1'b0;
+-            dest_mem_wvalid  = 1'b0;
++
+          end
+ 
+          state[ADDR_SETUP_BIT]: begin 
+             rd_fifo_if.rd_en = 1'b0;
+-            dest_mem_wvalid  = 1'b0;
++
+          end
+ 
+          state[SEND_WR_REQ_BIT]:begin
+             // Address-valid must not depend on sink readiness.
+             dest_mem.awvalid = 1'b1;
+             rd_fifo_if.rd_en = 1'b0;
+-            dest_mem_wvalid  = 1'b0;
++
+          end
+ 
+          state[FIFO_EMPTY_NOT_READY_BIT]: begin end
+ 
+-         state[FIFO_EMPTY_BIT]:begin end
++         state[FIFO_EMPTY_BIT]:begin
++            rd_fifo_if.rd_en = rd_fifo_if.not_empty & (!dest_mem.wvalid | dest_mem.wready)
++                              & !(dest_mem.wvalid & dest_mem.w.last);
++         end
+ 
+          state[NOT_READY_BIT]:begin end
+ 
+          state[RD_FIFO_WR_DEST_BIT]: begin 
+-            rd_fifo_if.rd_en = dest_mem.wready & rd_fifo_if.not_empty & (!next[ADDR_SETUP_BIT]);
+-            dest_mem_wvalid  = dest_mem.wready & rd_fifo_if.not_empty & (!next[ADDR_SETUP_BIT]);
++            // Do not prefetch the next burst behind a buffered WLAST.
++            rd_fifo_if.rd_en = rd_fifo_if.not_empty & (!dest_mem.wvalid | dest_mem.wready)
++                              & !(dest_mem.wvalid & dest_mem.w.last);
++
+          end
+ 
+          state[WAIT_FOR_WR_RSP_BIT]: begin 
+             wr_fsm_done      = 1'b1;
+             rd_fifo_if.rd_en = 1'b0;
+-            dest_mem_wvalid  = 1'b0;
++
+          end
+ 
+          state[ERROR_BIT]:begin 
+             wr_dest_status.stopped_on_error = 1'b1;
+             wr_dest_status.wr_rsp_err       = 1'b1;
+             rd_fifo_if.rd_en = 1'b0;
+-            dest_mem_wvalid  = 1'b0;
++
+          end
+       endcase
+    end
