@@ -1,0 +1,103 @@
+{
+  "scope": "release-only",
+  "ready_for_build": false,
+  "project": "/home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base02/syn/board/ia840f/syn_top",
+  "contexts": [
+    {
+      "exe": "/opt/altera/25.1/quartus/linux64/quartus_sh",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base02/syn/board/ia840f/syn_top",
+      "argv": [
+        "--prepare",
+        "-r",
+        "ofs_pr_afu",
+        "ofs_top"
+      ]
+    },
+    {
+      "exe": "/opt/altera/25.1/quartus/linux64/quartus_sh",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base02/syn/board/ia840f/syn_top",
+      "argv": [
+        "--archive",
+        "-revision",
+        "ofs_pr_afu",
+        "ofs_top",
+        "-use_file_set",
+        "custom",
+        "-use_file_subset",
+        "auto",
+        "-use_file_subset",
+        "db",
+        "-use_file_subset",
+        "qsf",
+        "-force",
+        "-output",
+        "/home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/export02/tmp/ofs_pr_afu.qar"
+      ]
+    },
+    {
+      "exe": "/opt/altera/25.1/quartus/linux64/quartus_sh",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/release02/hw/lib/build",
+      "argv": [
+        "--restore",
+        "/home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/export02/tmp/ofs_pr_afu.qar"
+      ]
+    },
+    {
+      "exe": "/opt/altera/25.1/quartus/linux64/quartus_sh",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/release02/hw/lib/build/syn/board/ia840f/syn_top",
+      "argv": [
+        "--restore",
+        "/home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/export02/tmp/ofs_pr_afu.qar"
+      ]
+    },
+    {
+      "exe": "/opt/altera/25.1/quartus/linux64/quartus_sh",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base02/syn/board/ia840f/syn_top",
+      "argv": [
+        "-t",
+        "/home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base02/ofs-common/scripts/common/syn/emit_project_macros.tcl",
+        "--project=ofs_top",
+        "--revision=ofs_pr_afu",
+        "--mode=sim",
+        "--output=/home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/release02/hw/lib/build/platform/sim/fim_project_macros.txt"
+      ]
+    },
+    {
+      "exe": "/opt/altera/25.1/quartus/linux64/quartus_syn",
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base02/syn/board/ia840f/syn_top",
+      "argv": [
+        "--ipc_flow=4",
+        "--ipc_mode",
+        "--read_settings_files=on",
+        "--write_settings_files=off",
+        "ofs_top",
+        "-c",
+        "ofs_pr_afu",
+        "--dni",
+        "--disable_all_banners",
+        "--analysis_and_elaboration",
+        "--dni"
+      ]
+    }
+  ],
+  "runner": {
+    "pid": 115685,
+    "start_ticks": "13624213",
+    "exe": "/usr/bin/python3.9",
+    "cwd": "/home/uwb_student00",
+    "argv": [
+      "python3",
+      "-B"
+    ]
+  },
+  "runtime_hashes": {
+    "/opt/altera/25.1/quartus/linux64/quartus_sh": "bf780907d9ad8eccb81e5a3070084507ca1ab821a8f2ff048006e5658df01f90",
+    "/opt/altera/25.1/quartus/linux64/quartus_syn": "ce5c750beab921b3262e004eb64f2ed11cd875ae226bc4b92c09b6e9069579f4"
+  },
+  "critical_inputs": {
+    "/home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base02/ofs-common/scripts/common/syn/generate_pr_release.sh": "d62dbc44b3b5d7aaae242c9102cc7120877a202437635ad359a013e0a2ae4ed5",
+    "/home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base02/syn/board/ia840f/setup/ia840f_release_gate01.py": "d1a9841bdbab09865a2087907594466a193bdef83bb31e8520a58ea8d0d4874a",
+    "/home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base02/syn/board/ia840f/setup/build_gate_release01.tcl": "d3af89db4577a87de5c0477b2868cf2c2caf9286dc1c545ba6155a4d6cfac450",
+    "/home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base02/syn/board/ia840f/syn_top/ofs_top.qdb": "7f8f25463afe3ae95d9660ddf4c5c6755d6704f828fd400de34ae38fa2aa0fc8"
+  }
+}

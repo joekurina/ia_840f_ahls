@@ -1,0 +1,119 @@
+{
+  "verdict": "ACCEPT_EXPORT03_RELEASE_TEMPLATE_GENERATION_WITH_FINDINGS",
+  "review_sha256": "6e5861cc8bcf138cdb273297cecfa717193620d748412b14f27fed2529bcbf0f",
+  "review_package_sha256": "0b4851ed642595be0bb3db9db3e97cbc615577a11a833f5cc8902c047a287fc0",
+  "frozen_members_verified": 145,
+  "frozen_bytes_verified": 41568179,
+  "archive_payloads_verified": {
+    "export01": 6,
+    "export02": 9,
+    "export03": 9
+  },
+  "boundary_payloads_verified": 15,
+  "result_archives": {
+    "export01": {
+      "outer_rc": 143,
+      "archive_sha256": "8c6fc0923a8f7efdecf8f2605b6db2a9ec9d07b332f6ea2ec06ad3ff6e026542",
+      "bytes": 39607
+    },
+    "export02": {
+      "outer_rc": 125,
+      "archive_sha256": "5b8fc411b8167452c1308f844b4eea9cccd37b0f1e5d8773e19ca50035711894",
+      "bytes": 737029
+    },
+    "export03": {
+      "outer_rc": 0,
+      "archive_sha256": "6ec17215ca58ffd136418de08fb45ba1700a01887f84ea7b2d93afe06ad808b9",
+      "bytes": 734909
+    }
+  },
+  "all_payloads_match_local_copies": true,
+  "preservation_flags": {
+    "original_work21_unchanged": true,
+    "pim_unchanged": true,
+    "tools_unchanged": true,
+    "base_images_unchanged": true
+  },
+  "original_path_set_count": 7598,
+  "original_path_set_equal": true,
+  "selected_input_count": 5727,
+  "excluded_input_count": 1871,
+  "inherited_dni_entries": 277,
+  "stage_config_changed_top_level_keys": [
+    "candidate_inventory",
+    "staged_root"
+  ],
+  "stage_config_relocated_symlinks": [
+    "syn/board/ia840f/setup/config_env.tcl",
+    "syn/board/ia840f/syn_top/mem_ss.ip"
+  ],
+  "embedded_runner_template_and_dispatch_bindings_verified": [
+    "01",
+    "02",
+    "03"
+  ],
+  "dispatch_wrapper_hashes_distinct_from_embedded_runner_hashes": true,
+  "release_file_count": 4936,
+  "release_symlinks": {
+    "bin/run.sh": "afu_synth",
+    "hw/blue_bits/ofs_top.sof": "../lib/build/syn/board/ia840f/syn_top/output_files/ofs_top.sof",
+    "hw/lib/build/quartus_proj_dir": "syn/board/ia840f/syn_top"
+  },
+  "release_symlink_escapes": [],
+  "base_image_bindings": {
+    "hw/lib/build/syn/board/ia840f/syn_top/ofs_top.qdb": {
+      "bytes": 83178648,
+      "mtime_ns": 1790144645798018229,
+      "realpath": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_21/syn/board/ia840f/syn_top/ofs_top.qdb",
+      "sha256": "7f8f25463afe3ae95d9660ddf4c5c6755d6704f828fd400de34ae38fa2aa0fc8"
+    },
+    "hw/lib/build/syn/board/ia840f/syn_top/output_files/ofs_top.green_region.pmsf": {
+      "bytes": 7202780,
+      "mtime_ns": 1790144526202664364,
+      "realpath": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_21/syn/board/ia840f/syn_top/output_files/ofs_top.green_region.pmsf",
+      "sha256": "27b3e78810d54cf452dcc1aa834c62584290c9d3358e84f00a374294426a3663"
+    },
+    "hw/lib/build/syn/board/ia840f/syn_top/output_files/ofs_top.sof": {
+      "bytes": 7901287,
+      "mtime_ns": 1790144535862692947,
+      "realpath": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_21/syn/board/ia840f/syn_top/output_files/ofs_top.sof",
+      "sha256": "bbede03c8c432e50ae6ae1f30739af3bfd3330781776d2c623269cc131b38ca4"
+    },
+    "hw/lib/build/syn/board/ia840f/syn_top/output_files/ofs_top.static.msf": {
+      "bytes": 3309305,
+      "mtime_ns": 1790144520912648712,
+      "realpath": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_21/syn/board/ia840f/syn_top/output_files/ofs_top.static.msf",
+      "sha256": "da2395b08b6713e6e4335b488f5757e052d583b44b908837e8d18747bb151705"
+    }
+  },
+  "large_binary_binding_limit": "Captured remote inventories/preservation receipts, not a fresh local or remote binary rehash in this parent review.",
+  "fme_interface_uuid": "fc4bf1c1-760f-5cd7-8040-b3e86fa0d31e",
+  "warning_occurrences": 73,
+  "warning_ids": {
+    "13461": 1,
+    "24420": 1,
+    "21610": 70,
+    "23762": 1
+  },
+  "drc": {
+    "enabled_rules": 10,
+    "failed_enabled_rules": 0,
+    "disabled_rules": 1,
+    "waived_violations": 0,
+    "scope": "empty OPAE_PLATFORM_GEN release-template A&E"
+  },
+  "native_effective_outer": [
+    0,
+    0,
+    0
+  ],
+  "postflight_errors": [],
+  "owned_groups_empty": true,
+  "hardware_access": false,
+  "review_findings": [
+    "F1 narrow no failed export-attempt database reuse; inherited Work21 DNI remains",
+    "F2 residual inactive XML paths constrain portability/regeneration claims",
+    "F3 template A&E invalid targets do not prove later static QDB/reset-constraint consumption",
+    "F4 entrypoint hashes alone do not establish OPAE package/API compatibility; successor has separate native evidence"
+  ]
+}

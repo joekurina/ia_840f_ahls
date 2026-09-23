@@ -1,0 +1,138 @@
+>>> OFS Board Path = ia840f
+>>> OFS Board Core = ia840f
+
+Setting up build variables
+source /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01/syn/scripts/build_var_setup.sh
+BUILD_ROOT_REL is ../../../..
+
+**********************************
+********* ENV SETUP **************
+
+FIM Project:
+  OFS_PROJECT = ofs-agx7-pcie-attach
+  OFS_FIM     = 
+  OFS_BOARD   = ia840f
+  Q_PROJECT   = ofs_top
+  Q_REVISION  = ofs_top
+  Fitter SEED = 2
+FME id
+  BITSTREAM_ID = 05010202599ac052
+  BITSTREAM_MD = 0000000002609232
+Flow:
+  ENA_CREATE_WORK_DIR        = 1
+  ENA_OPAE_SDK_SETUP_FOR_FIM = 1
+  ENA_PRE_COMPILE_SCRIPT     = 1
+  ENA_SETUP_IP_LIB_SCRIPT    = 1
+  ENA_FIM_COMPILE            = 1
+  ENA_PR_SETUP               = 1
+  ENA_FLASH                  = 1
+  ENA_PR_BUILD_TEMPLATE_GEN  = 1
+PR project:
+  ENA_OPAE_SDK_SETUP_FOR_PR  = 1
+  ENA_PR_COMPILE             = 1
+  ENA_GBS_GENERATION         = 1
+OPAE_SDK:
+  OPAE_SDK_REPO = 
+  OPAE_SDK_REPO_BRANCH = 
+
+File pointers:
+  WORK_SYN_TOP_PATH = /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01/syn/board/ia840f/syn_top
+  CREATE_WORK_DIR_SH_FILE = /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01/ofs-common/scripts/common/syn/create_work_dir.sh
+  FME_ID_MIF_FILE = /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01/ofs-common/src/common/fme_id_rom/fme_id.mif
+  PMCI_NIOS_HEX_FILE = /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01/ipss/pmci/pmci_ss_nios_fw.hex
+  WORK_FME_ID_MIF_FILE = /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01/syn/board/ia840f/syn_top/fme_id.mif
+  WORK_PMCI_NIOS_HEX_FILE = /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01/syn/board/ia840f/syn_top/pmci_ss_nios_fw.hex
+  REPORT_TIMING_TCL_FILE = /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01/ofs-common/scripts/common/syn/report_timing.tcl
+  WORK_BUILD_FLASH_SH_FILE = /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01/syn/board/ia840f/syn_top/build_flash/build_flash.sh
+  WORK_PRE_COMPILE_SCRIPT_SH_FILE = /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01/ofs-common/scripts/common/syn/pre_compile_script.sh
+  SETUP_OPAE_SDK_SH_FILE = /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01/ofs-common/scripts/common/syn/setup_opae_sdk.sh
+  BUILD_ROOT_REL = ../../../..
+realpath: = 
+/home/uwb_student00
+  REPO_PATH = /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01/external
+
+PIM configuration:
+  PIM_PLATFORM_NAME = ofs_agilex
+  PIM_INI_FILE = /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01/src/top/ofs_agilex.ini
+  PIM_ROOT_DIR = /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01/syn/board/ia840f/syn_top/afu_with_pim
+
+Using provided OFS_PLATFORM_AFU_BBB=/home/uwb_student00/ahls/new_BSP/ofs-platform-afu-bbb
++ rm -rf /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/release01
++ mkdir -p /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/release01
+++ cd /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/release01
+++ pwd
++ TGT=/home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/release01
++ mkdir -p /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/release01/bin
++ cp -L /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01/ofs-common/scripts/common/syn/release_bin/README /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01/ofs-common/scripts/common/syn/release_bin/afu_synth /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01/ofs-common/scripts/common/syn/release_bin/qar_gen /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01/ofs-common/scripts/common/syn/release_bin/update_pim /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/release01/bin
++ cd /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/release01/bin
++ ln -s afu_synth run.sh
++ sed '1,/^=========/d' /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/release01/bin/README
++ rm /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/release01/bin/README
++ pushd /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01/syn/board/ia840f/syn_top
+/home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01/syn/board/ia840f/syn_top /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01
++ quartus_sh --prepare -r ofs_pr_afu ofs_top
+Info: *******************************************************************
+Info: Running Quartus Prime Shell
+    Info: Version 25.1.0 Build 129 03/26/2025 SC Pro Edition
+    Info: Copyright (C) 2025  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Wed Sep 23 07:14:03 2026
+    Info: System process ID: 115082
+Info: Command: quartus_sh --prepare -r ofs_pr_afu ofs_top
+Info: Quartus(args): -r ofs_pr_afu ofs_top
+Info: Using INI file /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01/syn/board/ia840f/syn_top/quartus.ini
+Info: /opt/altera/25.1/quartus/common/tcl/internal/qsh_prepare.tcl version #1
+Info: Updating ::env(BITSTREAM_MD) from "0000000002609232" to "0000000002609181"
+Info: Setting ::env(FME_IFC_ID)=fc4bf1c1-760f-5cd7-8040-b3e86fa0d31e
+Info: BUILD_ROOT_REL is ../../../..
+Info (23030): Evaluation of Tcl script /opt/altera/25.1/quartus/common/tcl/internal/qsh_prepare.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 1443 megabytes
+    Info: Processing ended: Wed Sep 23 07:14:04 2026
+    Info: Elapsed time: 00:00:01
+    Info: System process ID: 115082
++ quartus_sh --archive -revision ofs_pr_afu ofs_top -use_file_set custom -use_file_subset auto -use_file_subset db -use_file_subset qsf -force -output /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/export01/tmp/ofs_pr_afu.qar
+Info: *******************************************************************
+Info: Running Quartus Prime Shell
+    Info: Version 25.1.0 Build 129 03/26/2025 SC Pro Edition
+    Info: Copyright (C) 2025  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Wed Sep 23 07:14:05 2026
+    Info: System process ID: 115101
+Info: Command: quartus_sh --archive -revision ofs_pr_afu ofs_top -use_file_set custom -use_file_subset auto -use_file_subset db -use_file_subset qsf -force -output /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/export01/tmp/ofs_pr_afu.qar
+Info: Quartus(args): -qar -revision ofs_pr_afu ofs_top -use_file_set custom -use_file_subset auto -use_file_subset db -use_file_subset qsf -force -output /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/export01/tmp/ofs_pr_afu.qar
+Info: Using INI file /home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/base01/syn/board/ia840f/syn_top/quartus.ini
+Info: qar.tcl version #1
+Info: Updating ::env(BITSTREAM_MD) from "0000000002609232" to "0000000002609181"
+Info: Setting ::env(FME_IFC_ID)=fc4bf1c1-760f-5cd7-8040-b3e86fa0d31e
+Info: BUILD_ROOT_REL is ../../../..
+Info: Including: Automatically detected source files
+Info: Including: Version-incompatible compilation database files
+Info: Including: Project source and settings files
+Info: Running DNI Analysis & Elaboration to discover source files
+Terminating backend processes...
+Exiting (pid==115101)...

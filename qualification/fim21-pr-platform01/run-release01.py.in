@@ -1,0 +1,149 @@
+import os,socket,json,hashlib,base64,subprocess,time,signal,resource,shutil,gzip,re,sys
+from pathlib import Path
+from datetime import datetime,timezone
+assert __debug__ and socket.gethostname()=='Agilex7Workstation' and os.getuid()==1000 and os.environ.get('TMUX')
+C=@CONFIG@
+D=Path(C['D']);R=Path(C['R']);T=Path(C['T']);J=Path(C['project']);W=Path('/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_21');P=Path('/home/uwb_student00/ahls/new_BSP/ofs-platform-afu-bbb/plat_if_develop');B=W.parent
+assert not R.exists() and not T.exists()
+def digest(p):
+ h=hashlib.sha256()
+ with p.open('rb') as f:
+  for b in iter(lambda:f.read(4*1024*1024),b''):h.update(b)
+ return h.hexdigest()
+def bound(root,entries):
+ for n,e in entries.items():
+  p=root/n
+  if e.get('kind')=='symlink':assert p.is_symlink() and os.readlink(p)==e['target'],str(p)
+  else:assert p.is_file() and not p.is_symlink() and p.stat().st_size==e['bytes'] and digest(p)==e['sha256'],str(p)
+ return True
+b=base64.b64decode(C['stage_gzip_b64']);assert hashlib.sha256(b).hexdigest()==C['stage_gzip_sha256'];stage=json.loads(gzip.decompress(b))
+bound(W,stage['original_inventory']);bound(D,stage['candidate_inventory']);bound(P,C['pim_inventory'])
+for t in list(C['tools'].values())+[dict(e,path=p) for p,e in C['installed'].items()]:assert digest(Path(t['path']))==t['sha256'],t['path']
+mem=int(next(l.split()[1] for l in Path('/proc/meminfo').read_text().splitlines() if l.startswith('MemAvailable:')))*1024;disk=shutil.disk_usage(B).free;assert mem>80_000_000_000 and disk>20_000_000_000
+for p in Path('/proc').iterdir():
+ if not p.name.isdigit():continue
+ try:assert Path(os.readlink(p/'exe')).name not in {'quartus_sh','quartus_syn','quartus_fit','quartus_sta','quartus_ipgenerate','quartus_cdb','vlog','vsim'},str(p)
+ except (FileNotFoundError,ProcessLookupError,PermissionError):pass
+R.mkdir();(R/'tmp').mkdir();(R/'home').mkdir();delta={};xml_unmapped={}
+def change(p,b,reason):
+ old=p.read_bytes();assert old!=b;rel=str(p.relative_to(D));delta[rel]={'before':hashlib.sha256(old).hexdigest(),'after':hashlib.sha256(b).hexdigest(),'before_bytes':len(old),'after_bytes':len(b),'reason':reason};p.write_bytes(b);assert digest(p)==delta[rel]['after']
+# Only source-location attributes in copied generated XML; no RTL/parameter edits.
+rx=re.compile(rb'/home/uwb_student00/ahls/new_BSP/work_[^/\s"<>]+(/[^"<>\s]*)')
+for n,e in stage['candidate_inventory'].items():
+ if e.get('kind')!='file' or not n.endswith('.xml') or n.startswith('syn/board/ia840f/syn_top/output_files/'):continue
+ p=D/n;old=p.read_bytes();unmapped=[]
+ def relocate(m):
+  suffix=m.group(1).decode();q=D/suffix.lstrip('/')
+  if q.exists() and q.resolve().is_relative_to(D):return (str(D)+suffix).encode()
+  unmapped.append(m.group().decode());return m.group()
+ new=rx.sub(relocate,old)
+ if new!=old:change(p,new,'exact existing-path relocation in XML metadata only')
+ if unmapped:xml_unmapped[n]=sorted(set(unmapped))
+script=D/'ofs-common/scripts/common/syn/generate_pr_release.sh';old=script.read_bytes();assert old.count(b'/tmp/${Q_PR_REVISION}.$$.qar')==3
+change(script,old.replace(b'/tmp/${Q_PR_REVISION}.$$.qar',b'${TMPDIR}/${Q_PR_REVISION}.qar'),'QAR in exclusive owned TMPDIR; no force-target option added')
+qsf=J/'ofs_pr_afu.qsf';old=qsf.read_bytes();oldline=b'set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/build_gate.tcl';assert old.count(oldline)==1
+change(qsf,old.replace(oldline,b'set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/build_gate_release01.tcl'),'PR-only fresh callback; original build gate preserved')
+for n,b in [('syn/board/ia840f/setup/build_gate_release01.tcl',C['hook'].encode()),('syn/board/ia840f/setup/ia840f_release_gate01.py',C['guard'].encode())]:
+ p=D/n;assert not p.exists();p.write_bytes(b);delta[n]={'before':None,'after':digest(p),'after_bytes':len(b),'reason':'new release-only gate alongside originals'}
+(R/'source-delta.json').write_text(json.dumps({'files':delta,'xml_unmapped':xml_unmapped},indent=2))
+critical={str(script):digest(script),str(D/'syn/board/ia840f/setup/ia840f_release_gate01.py'):digest(D/'syn/board/ia840f/setup/ia840f_release_gate01.py'),str(D/'syn/board/ia840f/setup/build_gate_release01.tcl'):digest(D/'syn/board/ia840f/setup/build_gate_release01.tcl'),str(J/'ofs_top.qdb'):digest(J/'ofs_top.qdb')}
+s=(Path('/proc')/str(os.getpid())/'stat').read_text().rsplit(')',1)[1].split();runner={'pid':os.getpid(),'start_ticks':s[19],'exe':os.readlink('/proc/self/exe'),'cwd':os.getcwd(),'argv':Path('/proc/self/cmdline').read_bytes().decode().rstrip('\0').split('\0')}
+auth={'scope':'release-only','ready_for_build':False,'project':str(J),'contexts':C['contexts'],'runner':runner,'runtime_hashes':{e['path']:e['sha256'] for n,e in C['tools'].items() if n.startswith('linux64/')},'critical_inputs':critical}
+(R/'authority.json').write_text(json.dumps(auth,indent=2))
+qroot=Path('/opt/altera/25.1/quartus');lic='/home/uwb_student00/quartus_25/LR-191011_License.dat'
+env={'HOME':str(R/'home'),'USER':'uwb_student00','LOGNAME':'uwb_student00','LANG':'C','PATH':str(qroot/'bin')+':'+str(qroot/'sopc_builder/bin')+':/usr/bin:/bin','TMPDIR':str(R/'tmp'),'QUARTUS_ROOTDIR_OVERRIDE':str(qroot),'LM_LICENSE_FILE':lic,'MGLS_LICENSE_FILE':lic,'SALT_LICENSE_SERVER':lic,'OFS_ROOTDIR':str(D),'OFS_PLATFORM_AFU_BBB':str(P.parent),'OFS_BUILD_NUMBER':'599ac052','PYTHONDONTWRITEBYTECODE':'1'}
+cpus=set(sorted(os.sched_getaffinity(0))[:2]);RUN_CWD=D
+result={'run':'export01','commands':[],'started':datetime.now(timezone.utc).isoformat(),'hardware_access':False,'ready_for_build':False,'source_delta':delta,'xml_unmapped':xml_unmapped,'resource_preflight':{'mem_available':mem,'disk_free':disk,'cpus':sorted(cpus)},'complete':False}
+def persist(): (R/"status.json").write_text(json.dumps(result,indent=2)+"\n")
+
+def live_group(gid):
+ out=[]
+ for p in Path("/proc").iterdir():
+  if not p.name.isdigit():continue
+  try:
+   parts=(p/"stat").read_text().rsplit(")",1)[1].split()
+   if int(parts[2])==gid and parts[0]!="Z":out.append(int(p.name))
+  except (FileNotFoundError,ProcessLookupError,PermissionError):pass
+ return out
+
+def limit_child():
+ os.sched_setaffinity(0,cpus)
+ resource.setrlimit(resource.RLIMIT_AS,(16*1024**3,16*1024**3))
+ resource.setrlimit(resource.RLIMIT_CORE,(0,0))
+
+def native(label,argv):
+ rec={"label":label,"argv":argv,"started":datetime.now(timezone.utc).isoformat()};result["commands"].append(rec);persist()
+ timedout=False;descendants_after_leader=False;p=None
+ with (R/(label+".log")).open("xb") as log:
+  try:
+   p=subprocess.Popen(argv,cwd=RUN_CWD,env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True,preexec_fn=limit_child)
+   rec["pid"]=p.pid;rec["start_ticks"]=(Path("/proc")/str(p.pid)/"stat").read_text().rsplit(")",1)[1].split()[19];persist()
+   deadline=time.monotonic()+600
+   while os.waitid(os.P_PID,p.pid,os.WEXITED|os.WNOHANG|os.WNOWAIT) is None:
+    if (R/"gate-rejections.jsonl").exists():raise RuntimeError("release callback rejected; terminating owned group")
+    if time.monotonic()>deadline:timedout=True;break
+    time.sleep(0.1)
+   residual=live_group(p.pid)
+   rec["descendants_observed_at_leader_exit"]=residual
+   # Native frontends can finish just before their short-lived helpers.
+   while residual and not timedout and time.monotonic()<deadline:
+    time.sleep(0.1);residual=live_group(p.pid)
+   if residual:timedout=True
+   descendants_after_leader=bool(residual)
+
+  finally:
+   if p is not None:
+    # Leader remains unreaped until all possible process-group signals finish.
+    if live_group(p.pid):
+     os.killpg(p.pid,signal.SIGTERM);end=time.monotonic()+3
+     while live_group(p.pid) and time.monotonic()<end:time.sleep(0.1)
+     if live_group(p.pid):os.killpg(p.pid,signal.SIGKILL)
+    rec["native_rc"]=p.wait();rec["timeout"]=timedout;rec["descendants_after_leader"]=descendants_after_leader
+    rec["ended"]=datetime.now(timezone.utc).isoformat();persist()
+    rec["owned_group_live_after"]=live_group(p.pid)
+    rec["effective_rc"]=124 if timedout else (125 if descendants_after_leader or rec["owned_group_live_after"] else rec["native_rc"])
+    persist()
+ return rec["effective_rc"]
+try:
+ rc=native('version',[C['tools']['bin/quartus_sh']['path'],'--version']);assert rc==0
+ version=(R/'version.log').read_text();assert '25.1.0 Build 129' in version and 'SC Pro Edition' in version
+ rc=native('release',['/bin/bash',str(script),'-t',str(T),'ia840f',str(D)])
+ result['complete']=True
+except Exception as e:result['error']=repr(e)
+finally:
+ result['postflight_errors']=[]
+ def preserve(label,fn):
+  try:result[label]=bool(fn())
+  except Exception as e:result[label]=False;result['postflight_errors'].append({'label':label,'error':repr(e)})
+ preserve('original_work21_unchanged',lambda:bound(W,stage['original_inventory']))
+ preserve('pim_unchanged',lambda:bound(P,C['pim_inventory']))
+ preserve('tools_unchanged',lambda:all(digest(Path(t['path']))==t['sha256'] for t in C['tools'].values()))
+ preserve('base_images_unchanged',lambda:all(digest(D/n)==e['sha256'] for n,e in stage['artifact_bindings'].items()))
+ result['files']={};result['release_inventory']={};result['candidate_delta_after_native']={}
+ for n,e in stage['candidate_inventory'].items():
+  p=D/n
+  if e.get('kind')=='symlink':
+   if not p.is_symlink() or os.readlink(p)!=e['target']:result['candidate_delta_after_native'][n]={'symlink_now':os.readlink(p) if p.is_symlink() else None}
+  elif not p.is_file() or digest(p)!=e['sha256']:result['candidate_delta_after_native'][n]={'before':e['sha256'],'after':digest(p) if p.is_file() else None}
+ for root in (R,T):
+  if not root.exists():continue
+  for d,dirs,files in os.walk(root,followlinks=False):
+   dirs[:]=[n for n in dirs if n not in ('tmp','home','__pycache__')]
+   for name in files:
+    p=Path(d)/name;n=str(p.relative_to(root));e={'bytes':p.stat().st_size,'sha256':digest(p)}
+    if root==T:result['release_inventory'][n]=dict(e,symlink=os.readlink(p) if p.is_symlink() else None)
+    if root==R and p.name not in ('status.json','result.json.gz') and p.stat().st_size<=12_000_000:result['files']['run/'+n]=dict(e,base64=base64.b64encode(p.read_bytes()).decode())
+ # Native source-discovery reports are generated in the copied input project.
+ for p in (J/'output_files').glob('ofs_pr_afu*'):
+  if p.suffix in ('.rpt','.summary') and p.stat().st_size<=25_000_000:
+   b=p.read_bytes();result['files']['reports/'+p.name]={'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest(),'base64':base64.b64encode(b).decode()}
+ text=(R/'release.log').read_text(errors='replace') if (R/'release.log').exists() else ''
+ result['diagnostics']=[l for l in text.splitlines() if re.search(r'(?:Error|Fatal)(?:\s+\([^)]*\))?\s*:|IA840F_GATE_REJECTED',l,re.I)]
+ result['release_paths_present']={n:(T/n).exists() for n in ('bin/afu_synth','bin/update_pim','hw/lib/build/quartus_proj_dir','hw/lib/build/platform/ofs_plat_if','hw/blue_bits/ofs_top.sof','hw/lib/fme-ifc-id.txt')}
+ result['success']=result['complete'] and 'error' not in result and len(result['commands'])==2 and all(e.get('effective_rc')==0 for e in result['commands']) and not result['diagnostics'] and all(result['release_paths_present'].values()) and not result['postflight_errors'] and all(result.get(k) is True for k in ('original_work21_unchanged','pim_unchanged','tools_unchanged','base_images_unchanged'))
+ result['ended']=datetime.now(timezone.utc).isoformat();persist()
+ blob=gzip.compress(json.dumps(result,sort_keys=True).encode(),mtime=0);(R/'result.json.gz').write_bytes(blob)
+ subprocess.run(['tmux','load-buffer','-b','ia840f_pr_export01','-'],input=blob,check=True);subprocess.run(['tmux','set-buffer','-b','ia840f_pr_export01_sha256',hashlib.sha256(blob).hexdigest()],check=True)
+rc=result['commands'][-1].get('effective_rc',125) if result['commands'] else 125
+if not result['success']:rc=rc or 125
+raise SystemExit(128-rc if rc<0 else rc)
