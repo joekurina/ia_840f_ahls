@@ -1,0 +1,7 @@
+# Corrected memory component: native elaboration checkpoint
+
+Native `elab01` completed rc0 at 2026-09-23T07:39:07.251024+00:00; the wrapper returned125 due to two preservation/banner assumptions. See [results](RESULTS01.md). Seven captured native files were rehashed. Sources/tools were preserved; standalone QSF added only two native power-format defaults. Original failed acceptance flags remain immutable. No unchanged rerun is pending.
+
+Independent review `deleg_a8700f4e` is FINAL and consumed: [bounded parent acceptance](RESULT-ACCEPTANCE.md). Full-file review SHA256 `5732305356db51da07f5adda98ebdb3700bbc588b0b80e3335869b5095a5e610`. The parent reverified all 17 frozen entries, 7 native capture members and 14 warning-source mappings. Frozen package SHA256 `3129301f3bf88b73fdf986039c5b46815ce207d8698d45d4899be5a39aef5665`. The 57 diagnostic occurrences reconcile across log/report panels; the final banner's 1-warning count remains an unresolved accounting discrepancy. Width/pruning explanations are configuration-specific, not global waivers. The exported exception bus is constant zero and provides no meaningful exception reporting. No review is pending for this run.
+
+No full mapped synthesis, fit, timing, DMA/PIM integration or numerical/hardware result is established. The standalone project has no device Reset Release IP; its High DRC remains visible. Full-FIM reset-service binding is an integration obligation, not permission to duplicate device-level IP. DDR simulation remains SKIPPED BY USER. No FPGA, driver, flashing or reboot operations occurred.
