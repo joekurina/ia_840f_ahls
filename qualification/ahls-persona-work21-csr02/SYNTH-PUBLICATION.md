@@ -1,0 +1,9 @@
+# CSR02 setup and mapped-synthesis publication
+
+This milestone closes only [SYNTH-ACCEPTANCE.md](SYNTH-ACCEPTANCE.md): completed setup and native mapping with Q1–Q4 retained, not fit, timing, mapped-system function or hardware. Original pending wording in frozen results remains historical; the parent acceptance controls current disposition.
+
+Maximum published file size is **2,000,000 bytes**. Raw compressed archives, oversized reports/logs, source-payload-bearing generated launchers (even below the cap), licensed binaries, bitstreams, build databases and internal transcripts remain local. Full original bytes are bound by the frozen package and publication inventory. No license contents or credentials are published. Root README evidence policy remains applicable; unrelated root edits are excluded.
+
+Published configuration metadata removes only base64 source bodies while retaining their byte lengths and SHA256. Setup metadata is a single projection. Synthesis metadata references its separately stored persona inventory by exact hash; these are structured metadata sections, not split binary payloads. They are not executable replacement launchers or new native authority. The exact candidate source belongs to the previously published CSR unit gate. Native excerpts preserve selected lines with original line numbers/full-report hashes and do not replace the full report or claim full coverage.
+
+`SYNTH-PUBLICATION-INVENTORY01.json` binds the evidence payload set and omitted local files, excluding its own bytes to avoid circular hashing. `SYNTH-PUBLICATION-AUDIT01.json` records the pre-stage scope and exact whitespace exceptions; the parent independently verifies the complete staged and committed set including both metadata files, then reads remote main after pushing. Active fitter/STA preparation and mutable CURRENT.md are deliberately excluded from this milestone. No native execution or hardware access is caused by publication.

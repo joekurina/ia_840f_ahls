@@ -1,0 +1,140 @@
+{
+  "verified_at": "2026-09-23T18:33:04.483375+00:00",
+  "scope": "completed setup01/full native mapped synthesis only",
+  "verdict": "ACCEPT_WITH_FINDINGS",
+  "delegation": "deleg_fba928d1",
+  "report": {
+    "path": "synth-independent-review01.md",
+    "bytes": 25985,
+    "sha256": "c21c75bb47d38d89e7e13c6e72360d630de4e6be0e23b78548a972bb399cdb5b"
+  },
+  "package": {
+    "path": "synth-review-package01.json",
+    "sha256": "8640d4cb3f72ac9d04b575a801c832c8e2da685cf200998808119d72e0a82f38",
+    "members": 39,
+    "bytes": 82058026,
+    "all_members_verified": true
+  },
+  "stages": {
+    "setup01": {
+      "archive_sha256": "40f353c993c53d51235dcac64422b8b85c77652196d01581219a854670cbc997",
+      "members": 7,
+      "outer_rc": 0,
+      "preservation": {
+        "afu_inputs_unchanged": true,
+        "generated_originals_unchanged": true,
+        "release_unchanged": true,
+        "tools_unchanged": true,
+        "uuid_header_correct": true
+      },
+      "commands": [
+        {
+          "argv": [
+            "/opt/altera/25.1/quartus/bin/quartus_sh",
+            "--version"
+          ],
+          "descendants_after_leader": false,
+          "descendants_observed_at_leader_exit": [],
+          "effective_rc": 0,
+          "ended": "2026-09-23T17:38:49.168697+00:00",
+          "label": "version",
+          "native_rc": 0,
+          "owned_group_live_after": [],
+          "pid": 127811,
+          "start_ticks": "14840017",
+          "started": "2026-09-23T17:38:48.413908+00:00",
+          "timeout": false
+        },
+        {
+          "argv": [
+            "/usr/bin/afu_synth_setup",
+            "--lib",
+            "/home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/release03/hw/lib",
+            "--sources",
+            "/home/uwb_student00/ahls/new_BSP/work_ahls_persona_work21_csr02/setup01/afu_sources/sources.txt",
+            "/home/uwb_student00/ahls/new_BSP/work_ahls_persona_work21_csr02/setup01/persona"
+          ],
+          "descendants_after_leader": false,
+          "descendants_observed_at_leader_exit": [],
+          "effective_rc": 0,
+          "ended": "2026-09-23T17:38:50.148081+00:00",
+          "label": "setup",
+          "native_rc": 0,
+          "owned_group_live_after": [],
+          "pid": 127828,
+          "start_ticks": "14840094",
+          "started": "2026-09-23T17:38:49.184039+00:00",
+          "timeout": false
+        }
+      ]
+    },
+    "synth01": {
+      "archive_sha256": "24caf48cc162519ef1a1a0256df76077b2e9f47d22cff15f7937c5e267ba537d",
+      "members": 11,
+      "outer_rc": 0,
+      "preservation": {
+        "bound_inputs_unchanged": true,
+        "release_unchanged": true,
+        "setup_unchanged": true,
+        "tools_unchanged": true
+      },
+      "commands": [
+        {
+          "argv": [
+            "/opt/altera/25.1/quartus/bin/quartus_syn",
+            "--read_settings_files=on",
+            "--write_settings_files=off",
+            "ofs_top",
+            "-c",
+            "ofs_pr_afu"
+          ],
+          "descendants_after_leader": false,
+          "descendants_observed_at_leader_exit": [],
+          "effective_rc": 0,
+          "ended": "2026-09-23T17:44:28.242473+00:00",
+          "label": "synthesis",
+          "native_rc": 0,
+          "owned_group_live_after": [],
+          "pid": 128094,
+          "start_ticks": "14846952",
+          "started": "2026-09-23T17:39:57.727306+00:00",
+          "timeout": false
+        }
+      ]
+    }
+  },
+  "archive_payloads_verified": 18,
+  "source_payloads_verified": 13,
+  "only_changed_afu_source": [
+    "afu/csr_mgr.sv"
+  ],
+  "unchanged_generated_entries": 255,
+  "reconstructed_critical_bindings": 4345,
+  "critical_dictionary_exact": true,
+  "copied_dni_exclusions": 851,
+  "qpf_unchanged": true,
+  "warning_occurrences": 443,
+  "native_footer_warnings": 230,
+  "synthesized_drc": {
+    "failed": 5,
+    "enabled": 13,
+    "disabled": 7
+  },
+  "native_observations_verified": [
+    "Reconfigurable green_region with matching static root QDB",
+    "actual CSR hierarchy 459 combinational ALUTs/454 dedicated registers",
+    "src_last_q and dst_last_q explicit register-merge rows",
+    "green-region estimate 36380 ALMs/85984 registers; not fitted utilization",
+    "retained three CSR truncation warnings and source assignments"
+  ],
+  "findings_retained": [
+    "Q1 warning/disabled/suppressed/capped diagnostic scope",
+    "Q2 actual fit/static/PR preservation and active mapping R1/R2",
+    "Q3 reset/freeze/initial state/drain/fences/buffer lifetime",
+    "Q4 config width/depth truncation,hardcoded clock metadata and status ABI"
+  ],
+  "hardware_access": false,
+  "fit_accepted": false,
+  "timing_accepted": false,
+  "frozen_files_unchanged": true
+}

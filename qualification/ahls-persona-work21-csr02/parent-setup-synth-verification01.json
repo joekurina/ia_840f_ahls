@@ -1,0 +1,120 @@
+{
+  "scope": "completed CSR02 setup and native mapped synthesis only",
+  "stages": {
+    "setup01": {
+      "outer": {
+        "outer_rc": 0,
+        "archive_sha256": "40f353c993c53d51235dcac64422b8b85c77652196d01581219a854670cbc997",
+        "bytes": 211027
+      },
+      "commands": [
+        {
+          "argv": [
+            "/opt/altera/25.1/quartus/bin/quartus_sh",
+            "--version"
+          ],
+          "descendants_after_leader": false,
+          "descendants_observed_at_leader_exit": [],
+          "effective_rc": 0,
+          "ended": "2026-09-23T17:38:49.168697+00:00",
+          "label": "version",
+          "native_rc": 0,
+          "owned_group_live_after": [],
+          "pid": 127811,
+          "start_ticks": "14840017",
+          "started": "2026-09-23T17:38:48.413908+00:00",
+          "timeout": false
+        },
+        {
+          "argv": [
+            "/usr/bin/afu_synth_setup",
+            "--lib",
+            "/home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/release03/hw/lib",
+            "--sources",
+            "/home/uwb_student00/ahls/new_BSP/work_ahls_persona_work21_csr02/setup01/afu_sources/sources.txt",
+            "/home/uwb_student00/ahls/new_BSP/work_ahls_persona_work21_csr02/setup01/persona"
+          ],
+          "descendants_after_leader": false,
+          "descendants_observed_at_leader_exit": [],
+          "effective_rc": 0,
+          "ended": "2026-09-23T17:38:50.148081+00:00",
+          "label": "setup",
+          "native_rc": 0,
+          "owned_group_live_after": [],
+          "pid": 127828,
+          "start_ticks": "14840094",
+          "started": "2026-09-23T17:38:49.184039+00:00",
+          "timeout": false
+        }
+      ],
+      "preservation": {
+        "afu_inputs_unchanged": true,
+        "generated_originals_unchanged": true,
+        "release_unchanged": true,
+        "tools_unchanged": true,
+        "uuid_header_correct": true
+      },
+      "success": true,
+      "diagnostics": [],
+      "postflight_errors": [],
+      "members": 7
+    },
+    "synth01": {
+      "outer": {
+        "outer_rc": 0,
+        "archive_sha256": "24caf48cc162519ef1a1a0256df76077b2e9f47d22cff15f7937c5e267ba537d",
+        "bytes": 2620160
+      },
+      "commands": [
+        {
+          "argv": [
+            "/opt/altera/25.1/quartus/bin/quartus_syn",
+            "--read_settings_files=on",
+            "--write_settings_files=off",
+            "ofs_top",
+            "-c",
+            "ofs_pr_afu"
+          ],
+          "descendants_after_leader": false,
+          "descendants_observed_at_leader_exit": [],
+          "effective_rc": 0,
+          "ended": "2026-09-23T17:44:28.242473+00:00",
+          "label": "synthesis",
+          "native_rc": 0,
+          "owned_group_live_after": [],
+          "pid": 128094,
+          "start_ticks": "14846952",
+          "started": "2026-09-23T17:39:57.727306+00:00",
+          "timeout": false
+        }
+      ],
+      "preservation": {
+        "bound_inputs_unchanged": true,
+        "release_unchanged": true,
+        "setup_unchanged": true,
+        "tools_unchanged": true
+      },
+      "success": true,
+      "diagnostics": [],
+      "postflight_errors": [],
+      "members": 11
+    }
+  },
+  "verified_embedded_source_payloads": 13,
+  "only_changed_afu_source": [
+    "afu/csr_mgr.sv"
+  ],
+  "unchanged_other_afu_sources": 12,
+  "generated_files_unchanged": 255,
+  "setup_inventory_count": 4925,
+  "synthesis_bound_inputs": 4345,
+  "copied_dni_discarded_count": 851,
+  "warnings": {
+    "occurrences": 443,
+    "footer": 230,
+    "critical_occurrences": 2
+  },
+  "mapped_functional_accepted": false,
+  "timing_accepted": false,
+  "hardware_access": false
+}
