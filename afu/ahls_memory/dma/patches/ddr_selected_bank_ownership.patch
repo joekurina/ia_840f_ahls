@@ -1,0 +1,55 @@
+--- a/dma_ddr_selector.sv
++++ b/dma_ddr_selector.sv
+@@ -58,27 +58,27 @@
+    genvar j;
+    generate
+        for (i = 0; i < NUM_LOCAL_MEM_BANKS; i++) begin : gen_ddr_assignment
+-           assign unified_arready[i]  = ddr_mem[i].arready;
+-           assign unified_rvalid[i]   = ddr_mem[i].rvalid;
+-           assign unified_awready[i]  = ddr_mem[i].awready;
+-           assign unified_wready[i]   = ddr_mem[i].wready;
+-           assign unified_bvalid[i]   = ddr_mem[i].bvalid;
++           assign unified_arready[i]  = ddr_mem[i].arready & (channel_select == i);
++           assign unified_rvalid[i]   = ddr_mem[i].rvalid & (channel_select == i);
++           assign unified_awready[i]  = ddr_mem[i].awready & (channel_select == i);
++           assign unified_wready[i]   = ddr_mem[i].wready & (channel_select == i);
++           assign unified_bvalid[i]   = ddr_mem[i].bvalid & (channel_select == i);
+ 
+            for (j = 0; j < $bits(selected_ddr_mem.r); j++) begin
+-              assign unified_r[j][i]  = ddr_mem[i].r[j] & ddr_mem[i].rvalid;
++              assign unified_r[j][i]  = ddr_mem[i].r[j] & unified_rvalid[i];
+            end
+ 
+            for (j = 0; j < $bits(selected_ddr_mem.b); j++) begin
+-              assign unified_b[j][i]  = ddr_mem[i].b[j] & ddr_mem[i].bvalid;
++              assign unified_b[j][i]  = ddr_mem[i].b[j] & unified_bvalid[i];
+            end
+        end
+    endgenerate
+ 
+    always_comb begin
+-     selected_ddr_mem.arready = &unified_arready;
++     selected_ddr_mem.arready = |unified_arready;
+      selected_ddr_mem.rvalid  = |unified_rvalid;
+-     selected_ddr_mem.awready = &unified_awready;
+-     selected_ddr_mem.wready  = &unified_wready;
++     selected_ddr_mem.awready = |unified_awready;
++     selected_ddr_mem.wready  = |unified_wready;
+      selected_ddr_mem.bvalid  = |unified_bvalid;
+    end
+ 
+@@ -99,12 +99,12 @@
+          always_comb begin
+                ddr_mem[i].arvalid = 'b0;
+                ddr_mem[i].ar      = 'b0;
+-               ddr_mem[i].rready  = 'b1;
++               ddr_mem[i].rready  = 'b0;
+                ddr_mem[i].awvalid = 'b0;
+                ddr_mem[i].aw      = 'b0;
+                ddr_mem[i].wvalid  = 'b0;
+                ddr_mem[i].w       = 'b0;
+-               ddr_mem[i].bready  = 'b1;
++               ddr_mem[i].bready  = 'b0;
+             if (channel_select == i) begin
+                ddr_mem[i].arvalid = selected_ddr_mem.arvalid;
+                ddr_mem[i].ar      = selected_ddr_mem.ar;

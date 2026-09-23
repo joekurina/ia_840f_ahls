@@ -1,0 +1,5 @@
+# Parent acceptance — finite full-DMA-top routing
+
+**ACCEPT_SOURCE_AND_NATIVE_ROUTING_WITH_FINDINGS.** FINAL specPASS/qualityPASS_WITH_NONBLOCKING_NOTES [review](independent-review01.md), SHA256 `8e4d8948f0e3b972c583634451b658b70b13659bb8c3e7d3b44f1173cfa63a71`, consumed after parent verification of27frozen members,125payload bindings, native logs and dispatch/outer receipts. [Results](RESULTS01.md): address-only and selector-only repairs pass, with8successful descriptors/3397checked transport and model-copyback beats,32CSRwrites/16reads.
+
+F1staleas-run header retained; future CSR-admission fixture corrects it. F2inactive-ready level assertion is not a logged response-acceptance edge; initial fixture timeout mechanism remains unproven. F3status/error lifecycle/admission/control and F4synthetic platform/PIM/physical/clock/ID/USER limits retained, not waived. F5historical read-review flag superseded by its separately published acceptance. No unchanged rerun required. No fullPIM/AFU/mapped synthesis/timing/hardware acceptance. DDR simulationSKIPPEDBYUSER; no device operations.

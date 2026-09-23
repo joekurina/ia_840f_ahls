@@ -1,0 +1,5 @@
+# Fixture correction and observed baseline
+
+red01 native full-top compiled but vsim timed out during run-all before any CSR/scoreboard activity. Replacing only the fixture's single bidirectional procedural mux (default-zero plus field overrides) with continuous field-wise single-driver wiring and an initial progress marker allowed red02 to advance normally. This supports a fixture/simulator scheduling interaction, not a proven vendor hardware deadlock. Timeout and original driver remain preserved; deadline was not increased, vendor RTL unchanged.
+
+red02 completed all5native steps0 but outer1, first request check failed at cycle7: read address/count mismatch. The bound source has src_mem34-bit address but host57-bit source/CSR. width01 changes ONLY src_mem.ADDR_WIDTH to max(HOST_ADDR_W,DDR_ADDR_W), explicitly retaining all five other local-memory macro properties. The same test/CSR/selector/mux/register slices and corrected engines are retained. Native result, not this note, determines success.

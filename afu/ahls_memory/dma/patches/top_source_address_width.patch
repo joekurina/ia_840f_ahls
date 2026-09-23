@@ -1,0 +1,17 @@
+--- a/dma_top.sv
++++ b/dma_top.sv
+@@ -141,7 +141,13 @@
+     ) dest_mem();
+ 
+     ofs_plat_axi_mem_if #(
+-      `LOCAL_MEM_AXI_MEM_PARAMS_DEFAULT
++      // Preserve both host IOVA and aggregate DDR address before routing.
++      .ADDR_WIDTH((HOST_ADDR_W > DDR_ADDR_W) ? HOST_ADDR_W : DDR_ADDR_W),
++      .DATA_WIDTH(local_mem_cfg_pkg::LOCAL_MEM_DATA_WIDTH),
++      .BURST_CNT_WIDTH(local_mem_cfg_pkg::LOCAL_MEM_BURST_CNT_WIDTH-1),
++      .USER_WIDTH(local_mem_cfg_pkg::LOCAL_MEM_USER_WIDTH),
++      .RID_WIDTH(local_mem_cfg_pkg::LOCAL_MEM_RID_WIDTH),
++      .WID_WIDTH(local_mem_cfg_pkg::LOCAL_MEM_WID_WIDTH)
+      ) src_mem();
+ 
+     ofs_plat_axi_mem_if #(
