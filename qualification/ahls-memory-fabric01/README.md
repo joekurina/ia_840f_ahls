@@ -1,0 +1,3 @@
+# Connected-fabric evidence publication
+
+Publish explicit accepted-gate allowlists only, cap2,000,000bytes/file. Full vendor/generated HDL, compressed transfer archives, oversized reports, installed runtime/library/licensing payloads and payload-bearing runners remain local/hash-referenced. Original captures preserve raw bytes/whitespace. Small native metadata/logs, authored composition/system Tcl, ledgers, reviews and parent acceptance are publication evidence. The original243-port ledger is retained; top-ports04 and PORT-LEDGER-CORRECTION01 supersede its count without changing frozen/native evidence.
