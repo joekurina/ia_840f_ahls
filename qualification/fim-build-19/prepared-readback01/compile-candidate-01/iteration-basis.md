@@ -1,0 +1,5 @@
+# Work19 comparison basis
+
+Predecessor is completed Work18, authorization SHA256 `b1ebe5096e3462819b9c1b289767c3d4762a1df2647a149ed5741dd653a95f14`. Copy only its 5424 recorded precompile inputs, not output databases; reconcile its two postbuild UUID metadata changes. Preserve Work18 QSF (including the exact-register retiming restriction and snapshot setting), all SDC, clocks, RTL, IP parameters and pins. Relocate only work-root references and two execution guards. The changed experimental variable is the toolchain: Quartus Prime Pro 25.1.0 Build129 SC. The generated-IP origin remains 26.1.1 unless the native 25.1 flow regenerates it; record that behavior rather than relabel provenance.
+
+The 25.1 no-project tool probe binds version, outer and inner tool paths. In this release inner qsys-script/ip-deploy resolve to quartus/sopc_builder/bin, unlike 26.1.1. Captured installed flow templates and IPC constructors support the existing finite context grammar; native acceptance is still unproven. All original tool/source records remain provenance dependencies; current 25.1 execution tools and flow files are newly hash-bound.
