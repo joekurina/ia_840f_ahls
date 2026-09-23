@@ -1,0 +1,15 @@
+usage: 
+packager create-gbs --rbf=<RBF_PATH> --afu-json=<AFU_JSON_PATH> --gbs=<NAME_FOR_GBS> --set-value <key>:<value>
+
+packager create-gbs
+
+Options:
+  -h, --help            show this help message and exit
+  --rbf RBF             RBF file (REQUIRED)
+  --afu-json AFU_JSON   AFU JSON file that contains metadata
+  --no-metadata         Empty metadata section will be appended
+  --gbs GBS             Output location for gbs file. Default is
+                        <rbf_name>.gbs
+  --set-value [SET_VALUE ...]
+                        set values for keys in JSON metadata as <key>:<value>.
+                        Can be followed by more than one <key>:<value> pairs.

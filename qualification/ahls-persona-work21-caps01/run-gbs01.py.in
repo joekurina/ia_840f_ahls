@@ -1,0 +1,117 @@
+import os,sys,socket,json,hashlib,base64,gzip,subprocess,time,signal,resource,shutil,struct,re
+from pathlib import Path
+from datetime import datetime,timezone
+assert __debug__ and socket.gethostname()=='Agilex7Workstation' and os.getuid()==1000 and os.environ.get('TMUX')
+C=@CONFIG@;R=Path(C['root']);J=R;assert not R.exists()
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def bindmap(m):
+ for n,e in m.items():
+  p=Path(n);assert p.is_file() and p.stat().st_size==e['bytes'] and sha(p)==e['sha256'],n
+ return True
+def predecessor_ok():
+ assert sha(Path(C['assembly_root'])/'result.json.gz')==C['assembly_sha256']
+ for n,h in C['preserve_assembly_hashes'].items():assert sha(Path(n))==h,n
+ return True
+bindmap(C['inputs']);bindmap(C['tools']);predecessor_ok()
+cpus=set(os.sched_getaffinity(0));assert sorted(cpus)==C['cpus']
+mem=int(next(l.split()[1] for l in Path('/proc/meminfo').read_text().splitlines() if l.startswith('MemAvailable:')))*1024;disk=shutil.disk_usage(Path(C['assembly_root'])).free
+assert mem>80_000_000_000 and disk>10_000_000_000
+competing=[]
+for p in Path('/proc').iterdir():
+ if not p.name.isdigit():continue
+ try:
+  ex=os.readlink(p/'exe')
+  if Path(ex).name in {'quartus_fit','quartus_syn','quartus_sta','quartus_sh','quartus_asm','quartus_cpf','quartus_ipgenerate','aoc','vlog','vsim'}:competing.append({'pid':int(p.name),'exe':ex})
+ except (FileNotFoundError,ProcessLookupError,PermissionError):pass
+assert not competing
+R.mkdir(exist_ok=False);(R/'home').mkdir();(R/'tmp').mkdir()
+source_json=Path(C['json_source']).read_bytes();rbf=Path(C['rbf_source']).read_bytes()
+(R/'afu.json').write_bytes(source_json);(R/'persona.rbf').write_bytes(rbf)
+build_env=dict(l.split('=',1) for l in Path(C['env_source']).read_text().splitlines() if l and not l.startswith('#'))
+assert build_env['FME_IFC_ID']==C['interface_uuid'] and build_env['Q_PR_REVISION']=='ofs_pr_afu' and build_env['Q_PR_PARTITION_NAME']=='green_region'
+clocks=[l for l in Path(C['clock_source']).read_text().splitlines() if l and not l.startswith('#')]
+assert clocks==['afu-image/clock-frequency-low:100','afu-image/clock-frequency-high:200']
+expected=json.loads(source_json);assert expected['afu-image']['accelerator-clusters'][0]['accelerator-type-uuid']==C['afu_uuid']
+expected['afu-image'].update({'interface-uuid':C['interface_uuid'],'clock-frequency-low':100,'clock-frequency-high':200,'magic-no':0x1d1f8680})
+env={'HOME':str(R/'home'),'TMPDIR':str(R/'tmp'),'PATH':'/usr/bin:/bin','LANG':'C','USER':'uwb_student00','LOGNAME':'uwb_student00','PYTHONDONTWRITEBYTECODE':'1','PYTHONNOUSERSITE':'1'}
+result={'run':'caps01-gbs01','started':datetime.now(timezone.utc).isoformat(),'commands':[],'hardware_access':False,'deployment_ready':False,'complete':False,'predecessor_sha256':C['assembly_sha256'],'expected_metadata':expected,'resource_preflight':{'cpus':sorted(cpus),'rlimit_as':64*1024**3,'mem_available':mem,'disk_free':disk,'competing':competing},'preserved_binding_count':len(C['preserve_assembly_hashes']),'files':{}}
+def persist():(R/'status.json').write_text(json.dumps(result,indent=2)+'\n')
+def live_group(gid):
+ out=[]
+ for p in Path("/proc").iterdir():
+  if not p.name.isdigit():continue
+  try:
+   parts=(p/"stat").read_text().rsplit(")",1)[1].split()
+   if int(parts[2])==gid and parts[0]!="Z":out.append(int(p.name))
+  except (FileNotFoundError,ProcessLookupError,PermissionError):pass
+ return out
+
+def limit_child():
+ os.sched_setaffinity(0,cpus)
+ resource.setrlimit(resource.RLIMIT_AS,(64*1024**3,64*1024**3))
+ resource.setrlimit(resource.RLIMIT_CORE,(0,0))
+
+def native(label,argv):
+ rec={"label":label,"argv":argv,"started":datetime.now(timezone.utc).isoformat()};result["commands"].append(rec);persist()
+ timedout=False;descendants_after_leader=False;p=None
+ with (R/(label+".log")).open("xb") as log:
+  try:
+   p=subprocess.Popen(argv,cwd=J,env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True,preexec_fn=limit_child)
+   rec["pid"]=p.pid;rec["start_ticks"]=(Path("/proc")/str(p.pid)/"stat").read_text().rsplit(")",1)[1].split()[19];persist()
+   deadline=time.monotonic()+120
+   while os.waitid(os.P_PID,p.pid,os.WEXITED|os.WNOHANG|os.WNOWAIT) is None:
+    if (R/"gate-rejections.jsonl").exists() or ((R/(label+".log")).exists() and "IA840F_GATE_REJECTED" in (R/(label+".log")).read_text(errors="replace")):raise RuntimeError("owned native callback rejected")
+    if time.monotonic()>deadline:timedout=True;break
+    time.sleep(0.1)
+   residual=live_group(p.pid)
+   rec["descendants_observed_at_leader_exit"]=residual
+   # Native frontends can finish just before their short-lived helpers.
+   while residual and not timedout and time.monotonic()<deadline:
+    time.sleep(0.1);residual=live_group(p.pid)
+   if residual:timedout=True
+   descendants_after_leader=bool(residual)
+
+  finally:
+   if p is not None:
+    # Leader remains unreaped until all possible process-group signals finish.
+    if live_group(p.pid):
+     os.killpg(p.pid,signal.SIGTERM);end=time.monotonic()+3
+     while live_group(p.pid) and time.monotonic()<end:time.sleep(0.1)
+     if live_group(p.pid):os.killpg(p.pid,signal.SIGKILL)
+    rec["native_rc"]=p.wait();rec["timeout"]=timedout;rec["descendants_after_leader"]=descendants_after_leader
+    rec["ended"]=datetime.now(timezone.utc).isoformat();persist()
+    rec["owned_group_live_after"]=live_group(p.pid)
+    rec["effective_rc"]=124 if timedout else (125 if descendants_after_leader or rec["owned_group_live_after"] else rec["native_rc"])
+    persist()
+ return rec["effective_rc"]
+try:
+ assert native('help',['/usr/bin/packager','create-gbs','--help'])==0
+ helptext=(R/'help.log').read_text();assert all(x in helptext for x in ('--rbf','--afu-json','--gbs','--set-value'))
+ output=R/'ofs_pr_afu.green_region.gbs';assert not output.exists()
+ command=['/usr/bin/packager','create-gbs','--gbs='+str(output),'--afu-json='+str(R/'afu.json'),'--rbf='+str(R/'persona.rbf'),'--set-value','interface-uuid:'+C['interface_uuid'],*clocks]
+ assert native('create_gbs',command)==0
+ assert native('gbs_info',['/usr/bin/packager','gbs-info','--gbs='+str(output)])==0
+ assert native('get_rbf',['/usr/bin/packager','get-rbf','--gbs='+str(output),'--rbf='+str(R/'extracted.rbf')])==0
+ b=output.read_bytes();magic=b'XeonFPGA\xb7GBSv001';assert b[:len(magic)]==magic
+ offset=len(magic)+4;length=struct.unpack('<I',b[len(magic):offset])[0];assert 0<length<100000 and offset+length<len(b)
+ metadata=json.loads(b[offset:offset+length]);assert metadata==expected and json.loads((R/'gbs_info.log').read_text())==expected
+ assert b[offset+length:]==rbf and (R/'extracted.rbf').read_bytes()==rbf
+ result['container']={'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest(),'metadata_bytes':length,'metadata':metadata,'rbf_sha256':hashlib.sha256(rbf).hexdigest(),'rbf_bytes':len(rbf),'native_extraction_equal':True,'independent_byte_parse_equal':True}
+ result['complete']=True
+except Exception as e:result['error']=repr(e)
+finally:
+ result['postflight_errors']=[]
+ for name,fn in [('inputs_unchanged',lambda:bindmap(C['inputs'])),('tools_unchanged',lambda:bindmap(C['tools'])),('assembly_unchanged',predecessor_ok),('copies_unchanged',lambda:(R/'afu.json').read_bytes()==source_json and (R/'persona.rbf').read_bytes()==rbf)]:
+  try:result[name]=bool(fn())
+  except Exception as e:result[name]=False;result['postflight_errors'].append({'name':name,'error':repr(e)})
+ for n in ['help.log','create_gbs.log','gbs_info.log','get_rbf.log','ofs_pr_afu.green_region.gbs']:
+  p=R/n
+  if p.is_file():
+   b=p.read_bytes();result['files'][n]={'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest(),'base64':base64.b64encode(b).decode()}
+ result['diagnostics']=[{'file':n,'line':l} for n in ['help.log','create_gbs.log','gbs_info.log','get_rbf.log'] if (R/n).is_file() for l in (R/n).read_text(errors='replace').splitlines() if re.search(r'\b(?:ERROR|FATAL)\s*:',l,re.I)]
+ result['success']=result['complete'] and 'error' not in result and len(result['commands'])==4 and all(x.get('effective_rc')==0 and not x.get('owned_group_live_after') for x in result['commands']) and all(result.get(k) is True for k in ('inputs_unchanged','tools_unchanged','assembly_unchanged','copies_unchanged')) and not result['postflight_errors'] and not result['diagnostics']
+ result['ended']=datetime.now(timezone.utc).isoformat();persist();blob=gzip.compress(json.dumps(result,sort_keys=True).encode(),mtime=0);(R/'result.json.gz').write_bytes(blob)
+ subprocess.run(['tmux','load-buffer','-b',C['buffer'],'-'],input=blob,check=True);subprocess.run(['tmux','set-buffer','-b',C['buffer']+'_sha256',hashlib.sha256(blob).hexdigest()],check=True)
+rc=next((x.get('effective_rc',125) for x in result['commands'] if x.get('effective_rc',125)!=0),0)
+if not result['success']:rc=rc or 125
+raise SystemExit(128-rc if rc<0 else rc)
