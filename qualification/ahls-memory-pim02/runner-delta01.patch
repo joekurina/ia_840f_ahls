@@ -1,0 +1,81 @@
+--- pim01/run-elaboration.py.in
++++ pim02/run-elaboration.py.in
+@@ -4,15 +4,22 @@
+ if not __debug__:raise RuntimeError("optimized Python forbidden")
+ C=@CONFIG@
+ assert socket.gethostname()=="Agilex7Workstation" and os.getuid()==1000 and os.environ.get("TMUX")
+-B=Path("/home/uwb_student00/ahls/new_BSP");R=B/"work_ahls_memory_pim25_01"/C["run"];S=Path(C["source"])
++B=Path("/home/uwb_student00/ahls/new_BSP");R=B/"work_ahls_memory_pim25_02"/C["run"];S=Path(C["source"])
+ assert not R.exists()
+ def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+-def bound_inventory(root):
+- for n,e in C["inventory"].items():
++def bound_inventory(root, inventory=None):
++ for n,e in (C["inventory"] if inventory is None else inventory).items():
+   assert not Path(n).is_absolute() and ".." not in Path(n).parts
+   p=root/n;assert p.is_file() and not p.is_symlink() and p.stat().st_size==e["bytes"] and digest(p)==e["sha256"],str(p)
+  return True
+ bound_inventory(S)
++assert set(C["generated_overlays"]) <= set(C["inventory"])
++expected=copy_inventory={n:dict(e) for n,e in C["inventory"].items()}
++for n,e in C["generated_overlays"].items():
++ b=base64.b64decode(e["base64"],validate=True)
++ assert len(b)==e["bytes"] and hashlib.sha256(b).hexdigest()==e["sha256"]
++ expected[n]={"bytes":len(b),"sha256":e["sha256"]}
++assert expected==C["candidate_inventory"]
+ for t in C["tools"].values():assert digest(Path(t["path"]))==t["sha256"]
+ mem=int(next(l.split()[1] for l in Path("/proc/meminfo").read_text().splitlines() if l.startswith("MemAvailable:")))*1024
+ disk=shutil.disk_usage(B).free;assert mem>80_000_000_000 and disk>10_000_000_000
+@@ -21,13 +28,16 @@
+  if not p.name.isdigit():continue
+  try:
+   exe=os.readlink(p/"exe")
+-  if Path(exe).name in {"quartus_fit","quartus_syn","quartus_sta","quartus_sh","quartus_ipgenerate"}:competing.append({"pid":int(p.name),"exe":exe,"argv":(p/"cmdline").read_bytes().decode().split("\0")})
++  if Path(exe).name in {"quartus_fit","quartus_syn","quartus_sta","quartus_sh","quartus_ipgenerate","vlog","vsim","vopt","aoc","qsys-script","qsys-generate"}:competing.append({"pid":int(p.name),"exe":exe,"argv":(p/"cmdline").read_bytes().decode().split("\0")})
+  except (FileNotFoundError,ProcessLookupError,PermissionError):pass
+ assert not competing,competing
+ R.mkdir(parents=True,exist_ok=False);D=R/"generated";D.mkdir();(R/"home").mkdir();(R/"tmp").mkdir()
+ for n,e in C["inventory"].items():
+  b=(S/n).read_bytes();assert hashlib.sha256(b).hexdigest()==e["sha256"];p=D/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b)
+ bound_inventory(D)
++for n,e in C["generated_overlays"].items():
++ (D/n).write_bytes(base64.b64decode(e["base64"],validate=True))
++bound_inventory(D,C["candidate_inventory"])
+ for p,h in C["platform_originals"].items():
+  assert digest(Path(p))==h,(p,"platform source drift")
+ for name,e in C["core_inputs"].items():
+@@ -97,12 +107,18 @@
+   try:result[label]=bool(action())
+   except Exception as e:result[label]=False;result["postflight_errors"].append({"label":label,"error":repr(e)})
+  preserve("original_inputs_unchanged",lambda:bound_inventory(S))
+- preserve("copied_inputs_unchanged",lambda:bound_inventory(D))
++ preserve("copied_inputs_unchanged",lambda:bound_inventory(D,C["candidate_inventory"]))
+  preserve("platform_originals_unchanged",lambda:all(digest(Path(p))==h for p,h in C["platform_originals"].items()))
+  preserve("core_inputs_unchanged",lambda:all((R/"rtl"/n).stat().st_size==e["bytes"] and digest(R/"rtl"/n)==e["sha256"] for n,e in C["core_inputs"].items()))
+  preserve("tools_unchanged",lambda:all(digest(Path(t["path"]))==t["sha256"] for t in C["tools"].values()))
+  preserve("qsf_unchanged",lambda:(R/"ia840f_ahls_memory_pim_elab.qsf").read_text()==C["qsf"])
+  result["core_input_hashes"]={n:{k:v for k,v in e.items() if k!="base64"} for n,e in C["core_inputs"].items()};result["files"]={};result["outputs"]={}
++ result["candidate_generated_inventory"]=C["candidate_inventory"]
++ result["candidate_provenance"]={k:C[k] for k in ("functional_source_binding_sha256","functional_result_sha256","pim_predecessor_review_sha256")}
++ for n in C["capture_generated"]:
++  p=D/n;b=p.read_bytes();e=C["candidate_inventory"][n]
++  assert len(b)==e["bytes"] and hashlib.sha256(b).hexdigest()==e["sha256"]
++  result["files"]["generated/"+n]={**e,"base64":base64.b64encode(b).decode()}
+  for p in sorted(R.rglob("*")):
+   if not p.is_file() or p.is_symlink() or p.is_relative_to(D) or p.is_relative_to(R/"home") or p.is_relative_to(R/"tmp") or p.name=="status.json":continue
+   before=p.stat();b=p.read_bytes();after=p.stat();assert (before.st_size,before.st_mtime_ns)==(after.st_size,after.st_mtime_ns)
+@@ -113,11 +129,11 @@
+  result["errors"]=[l for l in log.splitlines() if re.search(r"\b(?:Error|Fatal)(?:\s+\([^)]*\))?\s*:",l,re.I)]
+  result["success_marker"]="Quartus Prime Synthesis was successful" in log
+  result["native_stage_pass"]=result["complete"] and "error" not in result and len(result["commands"])==1 and result["commands"][0].get("effective_rc")==0 and not result["errors"] and result["success_marker"]
+- result["accepted_by_runner"]=result["native_stage_pass"] and all(result.get(k) for k in ("original_inputs_unchanged","copied_inputs_unchanged","tools_unchanged","qsf_unchanged","core_inputs_unchanged"))
++ result["accepted_by_runner"]=result["native_stage_pass"] and not result["postflight_errors"] and all(result.get(k) is True for k in ("original_inputs_unchanged","copied_inputs_unchanged","platform_originals_unchanged","tools_unchanged","qsf_unchanged","core_inputs_unchanged"))
+  result["ended"]=datetime.now(timezone.utc).isoformat();persist()
+  blob=gzip.compress(json.dumps(result,sort_keys=True).encode(),compresslevel=6,mtime=0);(R/"result.json.gz").write_bytes(blob)
+- subprocess.run(["tmux","load-buffer","-b","ia840f_mempim_elab25_"+C["run"],"-"],input=blob,check=True)
+- subprocess.run(["tmux","set-buffer","-b","ia840f_mempim_elab25_"+C["run"]+"_sha256",hashlib.sha256(blob).hexdigest()],check=True)
++ subprocess.run(["tmux","load-buffer","-b","ia840f_mempim02_elab25_"+C["run"],"-"],input=blob,check=True)
++ subprocess.run(["tmux","set-buffer","-b","ia840f_mempim02_elab25_"+C["run"]+"_sha256",hashlib.sha256(blob).hexdigest()],check=True)
+  print("RESULT_SHA256="+hashlib.sha256(blob).hexdigest(),flush=True);print("RUNNER_ACCEPTED="+str(result["accepted_by_runner"]),flush=True)
+ rc=result["commands"][-1].get("effective_rc",125) if result["commands"] else 125
+ if not result["accepted_by_runner"]:rc=rc or 125

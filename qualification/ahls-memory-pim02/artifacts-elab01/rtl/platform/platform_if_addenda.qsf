@@ -1,0 +1,22 @@
+##
+## This file has been generated automatically by afu_platform_config.
+## Do not edit it by hand.
+##
+## Platform: ofs_agilex
+## AFU top-level interface: ofs_plat_afu
+##
+
+# Directory of this script for relative paths
+set THIS_DIR [file dirname [info script]]
+
+namespace eval platform_cfg {
+    variable PLATFORM_CLASS_NAME "ofs_agilex"
+
+    # These top-level port classes are provided
+    variable PLATFORM_PROVIDES_OFS_PLAT_IF 1
+
+    # These top-level ports are passed from the platform to the AFU
+    variable AFU_TOP_REQUIRES_OFS_PLAT_IF_AFU 1
+}
+
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE "${THIS_DIR}/ofs_plat_if/par/platform_if_addenda.qsf"

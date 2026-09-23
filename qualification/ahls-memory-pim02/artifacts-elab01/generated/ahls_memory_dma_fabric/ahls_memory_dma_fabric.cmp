@@ -1,0 +1,250 @@
+	component ahls_memory_dma_fabric is
+		port (
+			clock_reset_clk           : in  std_logic                      := 'X';             -- clk
+			clock_reset_reset_reset_n : in  std_logic                      := 'X';             -- reset_n
+			freeze_freeze             : in  std_logic                      := 'X';             -- freeze
+			device_exception_bus_data : out std_logic_vector(63 downto 0);                     -- data
+			kernel_irqs_irq           : out std_logic;                                         -- irq
+			mmio_control_awid         : in  std_logic_vector(15 downto 0)  := (others => 'X'); -- awid
+			mmio_control_awaddr       : in  std_logic_vector(19 downto 0)  := (others => 'X'); -- awaddr
+			mmio_control_awlen        : in  std_logic_vector(7 downto 0)   := (others => 'X'); -- awlen
+			mmio_control_awsize       : in  std_logic_vector(2 downto 0)   := (others => 'X'); -- awsize
+			mmio_control_awburst      : in  std_logic_vector(1 downto 0)   := (others => 'X'); -- awburst
+			mmio_control_awuser       : in  std_logic_vector(0 downto 0)   := (others => 'X'); -- awuser
+			mmio_control_awvalid      : in  std_logic                      := 'X';             -- awvalid
+			mmio_control_awready      : out std_logic;                                         -- awready
+			mmio_control_wdata        : in  std_logic_vector(63 downto 0)  := (others => 'X'); -- wdata
+			mmio_control_wstrb        : in  std_logic_vector(7 downto 0)   := (others => 'X'); -- wstrb
+			mmio_control_wvalid       : in  std_logic                      := 'X';             -- wvalid
+			mmio_control_wuser        : in  std_logic_vector(0 downto 0)   := (others => 'X'); -- wuser
+			mmio_control_wready       : out std_logic;                                         -- wready
+			mmio_control_bid          : out std_logic_vector(15 downto 0);                     -- bid
+			mmio_control_bresp        : out std_logic_vector(1 downto 0);                      -- bresp
+			mmio_control_buser        : out std_logic_vector(0 downto 0);                      -- buser
+			mmio_control_bvalid       : out std_logic;                                         -- bvalid
+			mmio_control_bready       : in  std_logic                      := 'X';             -- bready
+			mmio_control_arid         : in  std_logic_vector(15 downto 0)  := (others => 'X'); -- arid
+			mmio_control_araddr       : in  std_logic_vector(19 downto 0)  := (others => 'X'); -- araddr
+			mmio_control_arlen        : in  std_logic_vector(7 downto 0)   := (others => 'X'); -- arlen
+			mmio_control_arsize       : in  std_logic_vector(2 downto 0)   := (others => 'X'); -- arsize
+			mmio_control_arburst      : in  std_logic_vector(1 downto 0)   := (others => 'X'); -- arburst
+			mmio_control_aruser       : in  std_logic_vector(0 downto 0)   := (others => 'X'); -- aruser
+			mmio_control_arvalid      : in  std_logic                      := 'X';             -- arvalid
+			mmio_control_arready      : out std_logic;                                         -- arready
+			mmio_control_rid          : out std_logic_vector(15 downto 0);                     -- rid
+			mmio_control_rdata        : out std_logic_vector(63 downto 0);                     -- rdata
+			mmio_control_rresp        : out std_logic_vector(1 downto 0);                      -- rresp
+			mmio_control_rlast        : out std_logic;                                         -- rlast
+			mmio_control_rvalid       : out std_logic;                                         -- rvalid
+			mmio_control_rready       : in  std_logic                      := 'X';             -- rready
+			mmio_control_ruser        : out std_logic_vector(0 downto 0);                      -- ruser
+			dma_csr_awid              : out std_logic_vector(17 downto 0);                     -- awid
+			dma_csr_awaddr            : out std_logic_vector(15 downto 0);                     -- awaddr
+			dma_csr_awsize            : out std_logic_vector(2 downto 0);                      -- awsize
+			dma_csr_awprot            : out std_logic_vector(2 downto 0);                      -- awprot
+			dma_csr_awuser            : out std_logic_vector(0 downto 0);                      -- awuser
+			dma_csr_awvalid           : out std_logic;                                         -- awvalid
+			dma_csr_awready           : in  std_logic                      := 'X';             -- awready
+			dma_csr_wdata             : out std_logic_vector(63 downto 0);                     -- wdata
+			dma_csr_wstrb             : out std_logic_vector(7 downto 0);                      -- wstrb
+			dma_csr_wlast             : out std_logic;                                         -- wlast
+			dma_csr_wvalid            : out std_logic;                                         -- wvalid
+			dma_csr_wuser             : out std_logic_vector(0 downto 0);                      -- wuser
+			dma_csr_wready            : in  std_logic                      := 'X';             -- wready
+			dma_csr_bid               : in  std_logic_vector(17 downto 0)  := (others => 'X'); -- bid
+			dma_csr_bresp             : in  std_logic_vector(1 downto 0)   := (others => 'X'); -- bresp
+			dma_csr_buser             : in  std_logic_vector(0 downto 0)   := (others => 'X'); -- buser
+			dma_csr_bvalid            : in  std_logic                      := 'X';             -- bvalid
+			dma_csr_bready            : out std_logic;                                         -- bready
+			dma_csr_arid              : out std_logic_vector(17 downto 0);                     -- arid
+			dma_csr_araddr            : out std_logic_vector(15 downto 0);                     -- araddr
+			dma_csr_arsize            : out std_logic_vector(2 downto 0);                      -- arsize
+			dma_csr_arprot            : out std_logic_vector(2 downto 0);                      -- arprot
+			dma_csr_aruser            : out std_logic_vector(0 downto 0);                      -- aruser
+			dma_csr_arvalid           : out std_logic;                                         -- arvalid
+			dma_csr_arready           : in  std_logic                      := 'X';             -- arready
+			dma_csr_rid               : in  std_logic_vector(17 downto 0)  := (others => 'X'); -- rid
+			dma_csr_rdata             : in  std_logic_vector(63 downto 0)  := (others => 'X'); -- rdata
+			dma_csr_rresp             : in  std_logic_vector(1 downto 0)   := (others => 'X'); -- rresp
+			dma_csr_rvalid            : in  std_logic                      := 'X';             -- rvalid
+			dma_csr_rready            : out std_logic;                                         -- rready
+			dma_csr_ruser             : in  std_logic_vector(0 downto 0)   := (others => 'X'); -- ruser
+			dma_ddr_in0_awid          : in  std_logic_vector(8 downto 0)   := (others => 'X'); -- awid
+			dma_ddr_in0_awaddr        : in  std_logic_vector(33 downto 0)  := (others => 'X'); -- awaddr
+			dma_ddr_in0_awlen         : in  std_logic_vector(7 downto 0)   := (others => 'X'); -- awlen
+			dma_ddr_in0_awsize        : in  std_logic_vector(2 downto 0)   := (others => 'X'); -- awsize
+			dma_ddr_in0_awburst       : in  std_logic_vector(1 downto 0)   := (others => 'X'); -- awburst
+			dma_ddr_in0_awlock        : in  std_logic_vector(0 downto 0)   := (others => 'X'); -- awlock
+			dma_ddr_in0_awcache       : in  std_logic_vector(3 downto 0)   := (others => 'X'); -- awcache
+			dma_ddr_in0_awprot        : in  std_logic_vector(2 downto 0)   := (others => 'X'); -- awprot
+			dma_ddr_in0_awuser        : in  std_logic_vector(1 downto 0)   := (others => 'X'); -- awuser
+			dma_ddr_in0_awqos         : in  std_logic_vector(3 downto 0)   := (others => 'X'); -- awqos
+			dma_ddr_in0_awregion      : in  std_logic_vector(3 downto 0)   := (others => 'X'); -- awregion
+			dma_ddr_in0_awvalid       : in  std_logic                      := 'X';             -- awvalid
+			dma_ddr_in0_awready       : out std_logic;                                         -- awready
+			dma_ddr_in0_wdata         : in  std_logic_vector(511 downto 0) := (others => 'X'); -- wdata
+			dma_ddr_in0_wstrb         : in  std_logic_vector(63 downto 0)  := (others => 'X'); -- wstrb
+			dma_ddr_in0_wlast         : in  std_logic                      := 'X';             -- wlast
+			dma_ddr_in0_wvalid        : in  std_logic                      := 'X';             -- wvalid
+			dma_ddr_in0_wuser         : in  std_logic_vector(1 downto 0)   := (others => 'X'); -- wuser
+			dma_ddr_in0_wready        : out std_logic;                                         -- wready
+			dma_ddr_in0_bid           : out std_logic_vector(8 downto 0);                      -- bid
+			dma_ddr_in0_bresp         : out std_logic_vector(1 downto 0);                      -- bresp
+			dma_ddr_in0_buser         : out std_logic_vector(1 downto 0);                      -- buser
+			dma_ddr_in0_bvalid        : out std_logic;                                         -- bvalid
+			dma_ddr_in0_bready        : in  std_logic                      := 'X';             -- bready
+			dma_ddr_in0_arid          : in  std_logic_vector(8 downto 0)   := (others => 'X'); -- arid
+			dma_ddr_in0_araddr        : in  std_logic_vector(33 downto 0)  := (others => 'X'); -- araddr
+			dma_ddr_in0_arlen         : in  std_logic_vector(7 downto 0)   := (others => 'X'); -- arlen
+			dma_ddr_in0_arsize        : in  std_logic_vector(2 downto 0)   := (others => 'X'); -- arsize
+			dma_ddr_in0_arburst       : in  std_logic_vector(1 downto 0)   := (others => 'X'); -- arburst
+			dma_ddr_in0_arlock        : in  std_logic_vector(0 downto 0)   := (others => 'X'); -- arlock
+			dma_ddr_in0_arcache       : in  std_logic_vector(3 downto 0)   := (others => 'X'); -- arcache
+			dma_ddr_in0_arprot        : in  std_logic_vector(2 downto 0)   := (others => 'X'); -- arprot
+			dma_ddr_in0_aruser        : in  std_logic_vector(1 downto 0)   := (others => 'X'); -- aruser
+			dma_ddr_in0_arqos         : in  std_logic_vector(3 downto 0)   := (others => 'X'); -- arqos
+			dma_ddr_in0_arregion      : in  std_logic_vector(3 downto 0)   := (others => 'X'); -- arregion
+			dma_ddr_in0_arvalid       : in  std_logic                      := 'X';             -- arvalid
+			dma_ddr_in0_arready       : out std_logic;                                         -- arready
+			dma_ddr_in0_rid           : out std_logic_vector(8 downto 0);                      -- rid
+			dma_ddr_in0_rdata         : out std_logic_vector(511 downto 0);                    -- rdata
+			dma_ddr_in0_rresp         : out std_logic_vector(1 downto 0);                      -- rresp
+			dma_ddr_in0_rlast         : out std_logic;                                         -- rlast
+			dma_ddr_in0_rvalid        : out std_logic;                                         -- rvalid
+			dma_ddr_in0_rready        : in  std_logic                      := 'X';             -- rready
+			dma_ddr_in0_ruser         : out std_logic_vector(1 downto 0);                      -- ruser
+			bank_out0_awid            : out std_logic_vector(17 downto 0);                     -- awid
+			bank_out0_awaddr          : out std_logic_vector(33 downto 0);                     -- awaddr
+			bank_out0_awlen           : out std_logic_vector(7 downto 0);                      -- awlen
+			bank_out0_awsize          : out std_logic_vector(2 downto 0);                      -- awsize
+			bank_out0_awburst         : out std_logic_vector(1 downto 0);                      -- awburst
+			bank_out0_awlock          : out std_logic_vector(0 downto 0);                      -- awlock
+			bank_out0_awcache         : out std_logic_vector(3 downto 0);                      -- awcache
+			bank_out0_awprot          : out std_logic_vector(2 downto 0);                      -- awprot
+			bank_out0_awuser          : out std_logic_vector(1 downto 0);                      -- awuser
+			bank_out0_awqos           : out std_logic_vector(3 downto 0);                      -- awqos
+			bank_out0_awregion        : out std_logic_vector(3 downto 0);                      -- awregion
+			bank_out0_awvalid         : out std_logic;                                         -- awvalid
+			bank_out0_awready         : in  std_logic                      := 'X';             -- awready
+			bank_out0_wdata           : out std_logic_vector(511 downto 0);                    -- wdata
+			bank_out0_wstrb           : out std_logic_vector(63 downto 0);                     -- wstrb
+			bank_out0_wlast           : out std_logic;                                         -- wlast
+			bank_out0_wvalid          : out std_logic;                                         -- wvalid
+			bank_out0_wuser           : out std_logic_vector(1 downto 0);                      -- wuser
+			bank_out0_wready          : in  std_logic                      := 'X';             -- wready
+			bank_out0_bid             : in  std_logic_vector(17 downto 0)  := (others => 'X'); -- bid
+			bank_out0_bresp           : in  std_logic_vector(1 downto 0)   := (others => 'X'); -- bresp
+			bank_out0_buser           : in  std_logic_vector(1 downto 0)   := (others => 'X'); -- buser
+			bank_out0_bvalid          : in  std_logic                      := 'X';             -- bvalid
+			bank_out0_bready          : out std_logic;                                         -- bready
+			bank_out0_arid            : out std_logic_vector(17 downto 0);                     -- arid
+			bank_out0_araddr          : out std_logic_vector(33 downto 0);                     -- araddr
+			bank_out0_arlen           : out std_logic_vector(7 downto 0);                      -- arlen
+			bank_out0_arsize          : out std_logic_vector(2 downto 0);                      -- arsize
+			bank_out0_arburst         : out std_logic_vector(1 downto 0);                      -- arburst
+			bank_out0_arlock          : out std_logic_vector(0 downto 0);                      -- arlock
+			bank_out0_arcache         : out std_logic_vector(3 downto 0);                      -- arcache
+			bank_out0_arprot          : out std_logic_vector(2 downto 0);                      -- arprot
+			bank_out0_aruser          : out std_logic_vector(1 downto 0);                      -- aruser
+			bank_out0_arqos           : out std_logic_vector(3 downto 0);                      -- arqos
+			bank_out0_arregion        : out std_logic_vector(3 downto 0);                      -- arregion
+			bank_out0_arvalid         : out std_logic;                                         -- arvalid
+			bank_out0_arready         : in  std_logic                      := 'X';             -- arready
+			bank_out0_rid             : in  std_logic_vector(17 downto 0)  := (others => 'X'); -- rid
+			bank_out0_rdata           : in  std_logic_vector(511 downto 0) := (others => 'X'); -- rdata
+			bank_out0_rresp           : in  std_logic_vector(1 downto 0)   := (others => 'X'); -- rresp
+			bank_out0_rlast           : in  std_logic                      := 'X';             -- rlast
+			bank_out0_rvalid          : in  std_logic                      := 'X';             -- rvalid
+			bank_out0_rready          : out std_logic;                                         -- rready
+			bank_out0_ruser           : in  std_logic_vector(1 downto 0)   := (others => 'X'); -- ruser
+			dma_ddr_in1_awid          : in  std_logic_vector(8 downto 0)   := (others => 'X'); -- awid
+			dma_ddr_in1_awaddr        : in  std_logic_vector(33 downto 0)  := (others => 'X'); -- awaddr
+			dma_ddr_in1_awlen         : in  std_logic_vector(7 downto 0)   := (others => 'X'); -- awlen
+			dma_ddr_in1_awsize        : in  std_logic_vector(2 downto 0)   := (others => 'X'); -- awsize
+			dma_ddr_in1_awburst       : in  std_logic_vector(1 downto 0)   := (others => 'X'); -- awburst
+			dma_ddr_in1_awlock        : in  std_logic_vector(0 downto 0)   := (others => 'X'); -- awlock
+			dma_ddr_in1_awcache       : in  std_logic_vector(3 downto 0)   := (others => 'X'); -- awcache
+			dma_ddr_in1_awprot        : in  std_logic_vector(2 downto 0)   := (others => 'X'); -- awprot
+			dma_ddr_in1_awuser        : in  std_logic_vector(1 downto 0)   := (others => 'X'); -- awuser
+			dma_ddr_in1_awqos         : in  std_logic_vector(3 downto 0)   := (others => 'X'); -- awqos
+			dma_ddr_in1_awregion      : in  std_logic_vector(3 downto 0)   := (others => 'X'); -- awregion
+			dma_ddr_in1_awvalid       : in  std_logic                      := 'X';             -- awvalid
+			dma_ddr_in1_awready       : out std_logic;                                         -- awready
+			dma_ddr_in1_wdata         : in  std_logic_vector(511 downto 0) := (others => 'X'); -- wdata
+			dma_ddr_in1_wstrb         : in  std_logic_vector(63 downto 0)  := (others => 'X'); -- wstrb
+			dma_ddr_in1_wlast         : in  std_logic                      := 'X';             -- wlast
+			dma_ddr_in1_wvalid        : in  std_logic                      := 'X';             -- wvalid
+			dma_ddr_in1_wuser         : in  std_logic_vector(1 downto 0)   := (others => 'X'); -- wuser
+			dma_ddr_in1_wready        : out std_logic;                                         -- wready
+			dma_ddr_in1_bid           : out std_logic_vector(8 downto 0);                      -- bid
+			dma_ddr_in1_bresp         : out std_logic_vector(1 downto 0);                      -- bresp
+			dma_ddr_in1_buser         : out std_logic_vector(1 downto 0);                      -- buser
+			dma_ddr_in1_bvalid        : out std_logic;                                         -- bvalid
+			dma_ddr_in1_bready        : in  std_logic                      := 'X';             -- bready
+			dma_ddr_in1_arid          : in  std_logic_vector(8 downto 0)   := (others => 'X'); -- arid
+			dma_ddr_in1_araddr        : in  std_logic_vector(33 downto 0)  := (others => 'X'); -- araddr
+			dma_ddr_in1_arlen         : in  std_logic_vector(7 downto 0)   := (others => 'X'); -- arlen
+			dma_ddr_in1_arsize        : in  std_logic_vector(2 downto 0)   := (others => 'X'); -- arsize
+			dma_ddr_in1_arburst       : in  std_logic_vector(1 downto 0)   := (others => 'X'); -- arburst
+			dma_ddr_in1_arlock        : in  std_logic_vector(0 downto 0)   := (others => 'X'); -- arlock
+			dma_ddr_in1_arcache       : in  std_logic_vector(3 downto 0)   := (others => 'X'); -- arcache
+			dma_ddr_in1_arprot        : in  std_logic_vector(2 downto 0)   := (others => 'X'); -- arprot
+			dma_ddr_in1_aruser        : in  std_logic_vector(1 downto 0)   := (others => 'X'); -- aruser
+			dma_ddr_in1_arqos         : in  std_logic_vector(3 downto 0)   := (others => 'X'); -- arqos
+			dma_ddr_in1_arregion      : in  std_logic_vector(3 downto 0)   := (others => 'X'); -- arregion
+			dma_ddr_in1_arvalid       : in  std_logic                      := 'X';             -- arvalid
+			dma_ddr_in1_arready       : out std_logic;                                         -- arready
+			dma_ddr_in1_rid           : out std_logic_vector(8 downto 0);                      -- rid
+			dma_ddr_in1_rdata         : out std_logic_vector(511 downto 0);                    -- rdata
+			dma_ddr_in1_rresp         : out std_logic_vector(1 downto 0);                      -- rresp
+			dma_ddr_in1_rlast         : out std_logic;                                         -- rlast
+			dma_ddr_in1_rvalid        : out std_logic;                                         -- rvalid
+			dma_ddr_in1_rready        : in  std_logic                      := 'X';             -- rready
+			dma_ddr_in1_ruser         : out std_logic_vector(1 downto 0);                      -- ruser
+			bank_out1_awid            : out std_logic_vector(17 downto 0);                     -- awid
+			bank_out1_awaddr          : out std_logic_vector(33 downto 0);                     -- awaddr
+			bank_out1_awlen           : out std_logic_vector(7 downto 0);                      -- awlen
+			bank_out1_awsize          : out std_logic_vector(2 downto 0);                      -- awsize
+			bank_out1_awburst         : out std_logic_vector(1 downto 0);                      -- awburst
+			bank_out1_awlock          : out std_logic_vector(0 downto 0);                      -- awlock
+			bank_out1_awcache         : out std_logic_vector(3 downto 0);                      -- awcache
+			bank_out1_awprot          : out std_logic_vector(2 downto 0);                      -- awprot
+			bank_out1_awuser          : out std_logic_vector(1 downto 0);                      -- awuser
+			bank_out1_awqos           : out std_logic_vector(3 downto 0);                      -- awqos
+			bank_out1_awregion        : out std_logic_vector(3 downto 0);                      -- awregion
+			bank_out1_awvalid         : out std_logic;                                         -- awvalid
+			bank_out1_awready         : in  std_logic                      := 'X';             -- awready
+			bank_out1_wdata           : out std_logic_vector(511 downto 0);                    -- wdata
+			bank_out1_wstrb           : out std_logic_vector(63 downto 0);                     -- wstrb
+			bank_out1_wlast           : out std_logic;                                         -- wlast
+			bank_out1_wvalid          : out std_logic;                                         -- wvalid
+			bank_out1_wuser           : out std_logic_vector(1 downto 0);                      -- wuser
+			bank_out1_wready          : in  std_logic                      := 'X';             -- wready
+			bank_out1_bid             : in  std_logic_vector(17 downto 0)  := (others => 'X'); -- bid
+			bank_out1_bresp           : in  std_logic_vector(1 downto 0)   := (others => 'X'); -- bresp
+			bank_out1_buser           : in  std_logic_vector(1 downto 0)   := (others => 'X'); -- buser
+			bank_out1_bvalid          : in  std_logic                      := 'X';             -- bvalid
+			bank_out1_bready          : out std_logic;                                         -- bready
+			bank_out1_arid            : out std_logic_vector(17 downto 0);                     -- arid
+			bank_out1_araddr          : out std_logic_vector(33 downto 0);                     -- araddr
+			bank_out1_arlen           : out std_logic_vector(7 downto 0);                      -- arlen
+			bank_out1_arsize          : out std_logic_vector(2 downto 0);                      -- arsize
+			bank_out1_arburst         : out std_logic_vector(1 downto 0);                      -- arburst
+			bank_out1_arlock          : out std_logic_vector(0 downto 0);                      -- arlock
+			bank_out1_arcache         : out std_logic_vector(3 downto 0);                      -- arcache
+			bank_out1_arprot          : out std_logic_vector(2 downto 0);                      -- arprot
+			bank_out1_aruser          : out std_logic_vector(1 downto 0);                      -- aruser
+			bank_out1_arqos           : out std_logic_vector(3 downto 0);                      -- arqos
+			bank_out1_arregion        : out std_logic_vector(3 downto 0);                      -- arregion
+			bank_out1_arvalid         : out std_logic;                                         -- arvalid
+			bank_out1_arready         : in  std_logic                      := 'X';             -- arready
+			bank_out1_rid             : in  std_logic_vector(17 downto 0)  := (others => 'X'); -- rid
+			bank_out1_rdata           : in  std_logic_vector(511 downto 0) := (others => 'X'); -- rdata
+			bank_out1_rresp           : in  std_logic_vector(1 downto 0)   := (others => 'X'); -- rresp
+			bank_out1_rlast           : in  std_logic                      := 'X';             -- rlast
+			bank_out1_rvalid          : in  std_logic                      := 'X';             -- rvalid
+			bank_out1_rready          : out std_logic;                                         -- rready
+			bank_out1_ruser           : in  std_logic_vector(1 downto 0)   := (others => 'X')  -- ruser
+		);
+	end component ahls_memory_dma_fabric;
+
