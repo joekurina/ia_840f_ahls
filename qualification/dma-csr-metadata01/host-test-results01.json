@@ -1,0 +1,62 @@
+{
+  "at": "2026-09-23T20:52:43.855912+00:00",
+  "hardware_access": false,
+  "input_sha256": {
+    "ia840f_dma_capabilities.h": "908907f046da9ed16fe6d10e9433bd84e85807ea80be6882c568de35d34a4c49",
+    "capabilities_test.c": "33ddceb68f09eaf04397eb6d1ed43dd4ab904484bcc5d317b594f761e30d28c5"
+  },
+  "runs": [
+    {
+      "compile_argv": [
+        "cc",
+        "-std=c11",
+        "-O0",
+        "-Wall",
+        "-Wextra",
+        "-Wconversion",
+        "-Werror",
+        "-pedantic",
+        "-UNDEBUG",
+        "-fsanitize=undefined",
+        "-fno-sanitize-recover=all",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/dma-csr-metadata01/capabilities_test.c",
+        "-o",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/dma-csr-metadata01/capabilities-test-O0"
+      ],
+      "compile_rc": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_rc": 0,
+      "stdout": "DMA_CAPABILITY_HOST_PASS valid=1 bit_mutations_rejected=256 null_checks=2\n",
+      "stderr": "",
+      "elf_sha256": "bd0ebbfe8a88a8c9c2743a3fd264e7e25b79d4e3fada6f0f5d960be27c794823",
+      "dynamic_section": "\nDynamic section at offset 0x2dd0 contains 27 entries:\n  Tag        Type                         Name/Value\n 0x0000000000000001 (NEEDED)             Shared library: [libubsan.so.1]\n 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]\n 0x000000000000000c (INIT)               0x1000\n 0x000000000000000d (FINI)               0x1cbc\n 0x0000000000000019 (INIT_ARRAY)         0x3dc0\n 0x000000000000001b (INIT_ARRAYSZ)       8 (bytes)\n 0x000000000000001a (FINI_ARRAY)         0x3dc8\n 0x000000000000001c (FINI_ARRAYSZ)       8 (bytes)\n 0x000000006ffffef5 (GNU_HASH)           0x3b0\n 0x0000000000000005 (STRTAB)             0x528\n 0x0000000000000006 (SYMTAB)             0x3d8\n 0x000000000000000a (STRSZ)              337 (bytes)\n 0x000000000000000b (SYMENT)             24 (bytes)\n 0x0000000000000015 (DEBUG)              0x0\n 0x0000000000000003 (PLTGOT)             0x3fe8\n 0x0000000000000002 (PLTRELSZ)           192 (bytes)\n 0x0000000000000014 (PLTREL)             RELA\n 0x0000000000000017 (JMPREL)             0xcf8\n 0x0000000000000007 (RELA)               0x6c8\n 0x0000000000000008 (RELASZ)             1584 (bytes)\n 0x0000000000000009 (RELAENT)            24 (bytes)\n 0x000000006ffffffb (FLAGS_1)            Flags: PIE\n 0x000000006ffffffe (VERNEED)            0x698\n 0x000000006fffffff (VERNEEDNUM)         1\n 0x000000006ffffff0 (VERSYM)             0x67a\n 0x000000006ffffff9 (RELACOUNT)          61\n 0x0000000000000000 (NULL)               0x0\n"
+    },
+    {
+      "compile_argv": [
+        "cc",
+        "-std=c11",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Wconversion",
+        "-Werror",
+        "-pedantic",
+        "-UNDEBUG",
+        "-fsanitize=undefined",
+        "-fno-sanitize-recover=all",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/dma-csr-metadata01/capabilities_test.c",
+        "-o",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/dma-csr-metadata01/capabilities-test-O2"
+      ],
+      "compile_rc": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_rc": 0,
+      "stdout": "DMA_CAPABILITY_HOST_PASS valid=1 bit_mutations_rejected=256 null_checks=2\n",
+      "stderr": "",
+      "elf_sha256": "21ca5acd06d25e94c51d334683e1d8eb21172e910e913f35f6b7fe863b8db696",
+      "dynamic_section": "\nDynamic section at offset 0x2dd0 contains 27 entries:\n  Tag        Type                         Name/Value\n 0x0000000000000001 (NEEDED)             Shared library: [libubsan.so.1]\n 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]\n 0x000000000000000c (INIT)               0x1000\n 0x000000000000000d (FINI)               0x1768\n 0x0000000000000019 (INIT_ARRAY)         0x3dc0\n 0x000000000000001b (INIT_ARRAYSZ)       8 (bytes)\n 0x000000000000001a (FINI_ARRAY)         0x3dc8\n 0x000000000000001c (FINI_ARRAYSZ)       8 (bytes)\n 0x000000006ffffef5 (GNU_HASH)           0x3b0\n 0x0000000000000005 (STRTAB)             0x4e0\n 0x0000000000000006 (SYMTAB)             0x3d8\n 0x000000000000000a (STRSZ)              282 (bytes)\n 0x000000000000000b (SYMENT)             24 (bytes)\n 0x0000000000000015 (DEBUG)              0x0\n 0x0000000000000003 (PLTGOT)             0x3fe8\n 0x0000000000000002 (PLTRELSZ)           120 (bytes)\n 0x0000000000000014 (PLTREL)             RELA\n 0x0000000000000017 (JMPREL)             0x940\n 0x0000000000000007 (RELA)               0x640\n 0x0000000000000008 (RELASZ)             768 (bytes)\n 0x0000000000000009 (RELAENT)            24 (bytes)\n 0x000000006ffffffb (FLAGS_1)            Flags: PIE\n 0x000000006ffffffe (VERNEED)            0x610\n 0x000000006fffffff (VERNEEDNUM)         1\n 0x000000006ffffff0 (VERSYM)             0x5fa\n 0x000000006ffffff9 (RELACOUNT)          27\n 0x0000000000000000 (NULL)               0x0\n"
+    }
+  ]
+}

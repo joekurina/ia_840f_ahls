@@ -1,0 +1,5 @@
+# Capability ABI unit milestone publication
+
+Publishes the independently and parent-accepted source/interface correction and completed native RED/GREEN plus offline decoder tests only. [Acceptance](UNIT-ACCEPTANCE.md), [FINAL review](independent-review01.md), [inventory](PUBLICATION-INVENTORY01.json), [audit](PUBLICATION-AUDIT01.json).
+
+Predecessor commit `a8324b7485cb998e2a244066c2afea07671543cc`. Frozen package SHA256 `0b72641bb90d51ed3582230ea2d5ab9120aa9f6cf147ada0867ee736b06155fd`; FINAL report SHA256 `eb670aa3ba00b1e2a84fe2a7f0e981c2cbed83673cda94463e5371a78481a1ff`. Raw launchers/transports and test executables remain local; projections and ten extracted logs preserve their evidence chain. Publication neither accepts nor interrupts the active CAPS01 fitter; synthesis and all later stages remain separate gates. Hardware goal and full design closure remain incomplete. Commit/remote-byte readback is recorded separately after publication, avoiding a self-referential commit identity.
