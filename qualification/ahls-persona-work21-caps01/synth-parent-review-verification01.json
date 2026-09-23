@@ -1,0 +1,220 @@
+{
+  "delegation": "deleg_79473cd0",
+  "checked_utc": "2026-09-23T21:25:06.887291+00:00",
+  "report_sha256": "45e4acbdb9184dcc6b6d8e6d175b566d5ee24835d4e8919feacb1866afb8bb18",
+  "package_sha256": "802e96d7a3d0f8c742d8b59b5154aae3cd34e89d0ed0fd914c9ffe0f26443834",
+  "members": 42,
+  "frozen_bytes": 84379291,
+  "native_stages": {
+    "setup01": {
+      "archive_bytes": 211164,
+      "archive_sha256": "b84f7a5286928bf343ae24259d0bd1aa3363abca98b8d5ad2d565c4ca6ccbf52",
+      "exports_verified": 7,
+      "outer_rc": 0,
+      "commands": [
+        {
+          "argv": [
+            "/opt/altera/25.1/quartus/bin/quartus_sh",
+            "--version"
+          ],
+          "descendants_after_leader": false,
+          "descendants_observed_at_leader_exit": [],
+          "effective_rc": 0,
+          "ended": "2026-09-23T20:48:52.278634+00:00",
+          "label": "version",
+          "native_rc": 0,
+          "owned_group_live_after": [],
+          "pid": 138242,
+          "start_ticks": "15980329",
+          "started": "2026-09-23T20:48:51.526306+00:00",
+          "timeout": false
+        },
+        {
+          "argv": [
+            "/usr/bin/afu_synth_setup",
+            "--lib",
+            "/home/uwb_student00/ahls/new_BSP/work_fim21_pr_platform01/release03/hw/lib",
+            "--sources",
+            "/home/uwb_student00/ahls/new_BSP/work_ahls_persona_work21_caps01/setup01/afu_sources/sources.txt",
+            "/home/uwb_student00/ahls/new_BSP/work_ahls_persona_work21_caps01/setup01/persona"
+          ],
+          "descendants_after_leader": false,
+          "descendants_observed_at_leader_exit": [],
+          "effective_rc": 0,
+          "ended": "2026-09-23T20:48:53.358695+00:00",
+          "label": "setup",
+          "native_rc": 0,
+          "owned_group_live_after": [],
+          "pid": 138259,
+          "start_ticks": "15980406",
+          "started": "2026-09-23T20:48:52.294157+00:00",
+          "timeout": false
+        }
+      ],
+      "preservation": {
+        "afu_inputs_unchanged": true,
+        "generated_originals_unchanged": true,
+        "release_unchanged": true,
+        "tools_unchanged": true
+      }
+    },
+    "synth01": {
+      "archive_bytes": 2607955,
+      "archive_sha256": "213bab5472c662ed1da07fda0f66b6931117c18f85471425c9c1e7673f027e9c",
+      "exports_verified": 11,
+      "outer_rc": 0,
+      "commands": [
+        {
+          "argv": [
+            "/opt/altera/25.1/quartus/bin/quartus_syn",
+            "--read_settings_files=on",
+            "--write_settings_files=off",
+            "ofs_top",
+            "-c",
+            "ofs_pr_afu"
+          ],
+          "descendants_after_leader": false,
+          "descendants_observed_at_leader_exit": [],
+          "effective_rc": 0,
+          "ended": "2026-09-23T20:54:45.367517+00:00",
+          "label": "synthesis",
+          "native_rc": 0,
+          "owned_group_live_after": [],
+          "pid": 138522,
+          "start_ticks": "15989318",
+          "started": "2026-09-23T20:50:21.387511+00:00",
+          "timeout": false
+        }
+      ],
+      "preservation": {
+        "bound_inputs_unchanged": true,
+        "release_unchanged": true,
+        "setup_unchanged": true,
+        "tools_unchanged": true
+      }
+    }
+  },
+  "critical_binding_reconstruction_count": 4345,
+  "functional_source_delta": [
+    "afu/csr_mgr.sv"
+  ],
+  "unchanged_other_afu_sources": 12,
+  "unchanged_generated_entries": 255,
+  "warning_occurrences": 443,
+  "native_footer_warnings": 230,
+  "critical_warnings": [
+    {
+      "line": 6099,
+      "id": "20580",
+      "message": "Imported Partition 'green_region' has type 'PARTIAL_RECONFIGURATION_PARTITION' but it is not specified in the current project."
+    },
+    {
+      "line": 6540,
+      "id": "19854",
+      "message": "Discovered explicitly defined initial values in Partition green_region. Please refer to the green_region Partition report folder for more information."
+    }
+  ],
+  "synthesized_drc_rules": [
+    {
+      "rule": "RES-30132",
+      "name": "Registers May Not Be Properly Reset",
+      "severity": "Medium",
+      "violations": 2,
+      "waived": 0
+    },
+    {
+      "rule": "LNT-30023",
+      "name": "Reset Nets with Polarity Conflict",
+      "severity": "Medium",
+      "violations": 1,
+      "waived": 0
+    },
+    {
+      "rule": "LNT-30010",
+      "name": "Nets Driving both Reset and Clock Enable Signals",
+      "severity": "Low",
+      "violations": 6,
+      "waived": 0
+    },
+    {
+      "rule": "TMC-20501",
+      "name": "Hierarchical Tree Duplication was Shallower than Requested",
+      "severity": "Low",
+      "violations": 4,
+      "waived": 0
+    },
+    {
+      "rule": "TMC-20500",
+      "name": "Hierarchical Tree Duplication was Shallower than Possible",
+      "severity": "Low",
+      "violations": 1,
+      "waived": 0
+    },
+    {
+      "rule": "LNT-30011",
+      "name": "Design Contains Combinational Loops",
+      "severity": "High",
+      "violations": 0,
+      "waived": 0
+    },
+    {
+      "rule": "LNT-30017",
+      "name": "Register Output Driving Its Own Asynchronous Control Signal Directly or Through Combinational Logic",
+      "severity": "Medium",
+      "violations": 0,
+      "waived": 0
+    },
+    {
+      "rule": "RES-30133",
+      "name": "Embedded Memory Blocks with Initialized Content That Might be Modified Before the FPGA Enters User Mode",
+      "severity": "Medium",
+      "violations": 0,
+      "waived": 0
+    },
+    {
+      "rule": "RES-30134",
+      "name": "Registers Not Reachable from Reset Release IP",
+      "severity": "Medium",
+      "violations": 0,
+      "waived": 0
+    },
+    {
+      "rule": "TMC-20052",
+      "name": "Paths with Post Synthesis Inferred Latches",
+      "severity": "Medium",
+      "violations": 0,
+      "waived": 0
+    },
+    {
+      "rule": "FLP-10500",
+      "name": "Non Driving Top Level Inputs Found",
+      "severity": "Low",
+      "violations": 0,
+      "waived": 0
+    },
+    {
+      "rule": "LNT-50006",
+      "name": "DSP Control Signal Registers Reset Mode Mismatch",
+      "severity": "Low",
+      "violations": 0,
+      "waived": 0
+    },
+    {
+      "rule": "TMC-20053",
+      "name": "DSP Inputs Driven by High Fan-Out Net",
+      "severity": "Low",
+      "violations": 0,
+      "waived": 0
+    }
+  ],
+  "native_row_checks": {
+    "3578": ";  green_region  ; afu_top|pg_afu.port_gasket|pr_slot|afu_main            ; Reconfigurable ;              ;       ;                         ;",
+    "37699": ";                            |csr_mgr_inst|                                                                                                                                                            ; 487 (487)           ; 455 (455)                 ; 0                 ; 0          ; 0              ; 7.2 (7.2) ; afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ; csr_mgr                                                                                      ; altera_work                          ;",
+    "37646": "; ofs_plat_prim_clock_crossing_reg     ; 1                  ; 4                            ; afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|freeze_cc                                             ;",
+    "39836": "; afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|src_last_q[58..62,64]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ; Merged with afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|src_last_q[63]                                                                                                                                                                                                                                                                                                                                                                                                                   ; Register  ;",
+    "39837": "; afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dst_last_q[58..63]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ; Merged with afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core|dma|csr_mgr_inst|dst_last_q[64]                                                                                                                                                                                                                                                                                                                                                                                                                   ; Register  ;",
+    "47589": "; Boundary Ports                              ; 4960                                                          ;"
+  },
+  "fit_sta_hardware_accepted": false,
+  "hardware_access": false
+}
