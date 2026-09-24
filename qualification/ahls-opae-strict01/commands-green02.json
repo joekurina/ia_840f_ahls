@@ -1,0 +1,147 @@
+[
+  {
+    "label": "configure-red01",
+    "argv": [
+      "/usr/bin/cmake",
+      "-S",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/opae_strict",
+      "-B",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-red01",
+      "-DSDK_CAPTURE=/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/sdk",
+      "-DJSON_PREFIX=/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/json-prefix"
+    ],
+    "rc": 0,
+    "log_sha256": "102ebc669f68c88755bd4f1eb37d38292168285a506af058cadf358066701666"
+  },
+  {
+    "label": "build-red01",
+    "argv": [
+      "/usr/bin/cmake",
+      "--build",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-red01",
+      "--parallel",
+      "2"
+    ],
+    "rc": 0,
+    "log_sha256": "b34b9ff2e747f1c5a7c8fdb8983290795e502a93a10aca23e9638a6c3321e966"
+  },
+  {
+    "label": "elf-red01",
+    "argv": [
+      "/usr/bin/readelf",
+      "-dWs",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-red01/strict_probe"
+    ],
+    "rc": 0,
+    "log_sha256": "842667419da555fc8d8fc27a786e4e4a15f1afe90cb93a53241f1a97f26f1650"
+  },
+  {
+    "label": "symbols-red01",
+    "argv": [
+      "/usr/bin/nm",
+      "-u",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-red01/strict_probe"
+    ],
+    "rc": 0,
+    "log_sha256": "3cfa6b07a44cbeda061763a91c2b8493649f5c4db1d5f79c584b1db2b1fbc86f"
+  },
+  {
+    "label": "read-failure-red01",
+    "argv": [
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-red01/strict_probe",
+      "read-fail",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg"
+    ],
+    "rc": 0,
+    "log_sha256": "f36221ac51a149a3583b7b68411185710b06531030bc6a03cdfb89f4ba76de63"
+  },
+  {
+    "label": "configure-green01",
+    "argv": [
+      "/usr/bin/cmake",
+      "-S",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/opae_strict",
+      "-B",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green01",
+      "-DSDK_CAPTURE=/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/sdk",
+      "-DJSON_PREFIX=/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/json-prefix",
+      "-DSTRICT_ADDITION=/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/opae"
+    ],
+    "rc": 0,
+    "log_sha256": "ded3b982918c9f47f3ae9118b4e061614317e2dea74c645d73741096c9fc3c2f"
+  },
+  {
+    "label": "build-green01",
+    "argv": [
+      "/usr/bin/cmake",
+      "--build",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green01",
+      "--parallel",
+      "2"
+    ],
+    "rc": 2,
+    "log_sha256": "aaa67117baa48c68370f30c71c235de2dab359999ce9f445be8bf892a8c2bc57"
+  },
+  {
+    "label": "configure-green02",
+    "argv": [
+      "/usr/bin/cmake",
+      "-S",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/opae_strict",
+      "-B",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02",
+      "-DSDK_CAPTURE=/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/sdk",
+      "-DJSON_PREFIX=/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/json-prefix",
+      "-DSTRICT_ADDITION=/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/opae"
+    ],
+    "rc": 0,
+    "log_sha256": "47a6e2cc6c96477250edb510bc364b3d5ef06cb0d91c6e4673de1eed45541358"
+  },
+  {
+    "label": "build-green02",
+    "argv": [
+      "/usr/bin/cmake",
+      "--build",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02",
+      "--parallel",
+      "2"
+    ],
+    "rc": 0,
+    "log_sha256": "7ff68df7eb003f12734959c3f915b85745afc218497e71b494d417d7cbf9f61d"
+  },
+  {
+    "label": "elf-green02",
+    "argv": [
+      "/usr/bin/readelf",
+      "-dWs",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe"
+    ],
+    "rc": 0,
+    "log_sha256": "6cb8d8d0720c2ebb710d37027240376913f09e4a9bb46bcb0c15b63fd72812e9"
+  },
+  {
+    "label": "symbols-green02",
+    "argv": [
+      "/usr/bin/nm",
+      "-u",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe"
+    ],
+    "rc": 0,
+    "log_sha256": "3cfa6b07a44cbeda061763a91c2b8493649f5c4db1d5f79c584b1db2b1fbc86f"
+  },
+  {
+    "label": "matrix-green02",
+    "argv": [
+      "/usr/bin/python3",
+      "-I",
+      "-B",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/opae_strict/test_strict.py",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/green-results02.json"
+    ],
+    "rc": 0,
+    "log_sha256": "48f0ded4e5642da2fbb4fab8bfa5f7693841b7ba0068c277b6ea0fef4b25b7ea"
+  }
+]

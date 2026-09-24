@@ -1,0 +1,15 @@
+[ 50%] Building C object CMakeFiles/strict_probe.dir/strict_probe.c.o
+[ 50%] Building C object CMakeFiles/strict_probe.dir/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/sdk/libraries/libopae-c/cfg-file.c.o
+In file included from /home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/opae_strict/strict_probe.c:17:
+/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/opae/ia840f_strict_init.inc: In function 'ia840f_opae_initialize_strict':
+/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/opae/ia840f_strict_init.inc:39:11: error: implicit declaration of function 'opae_read_cfg_file'; did you mean 'inert_read_cfg_file'? [-Wimplicit-function-declaration]
+   39 |     raw = opae_read_cfg_file(cfg_file);
+      |           ^~~~~~~~~~~~~~~~~~
+      |           inert_read_cfg_file
+/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/opae/ia840f_strict_init.inc:39:9: error: assignment to 'char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   39 |     raw = opae_read_cfg_file(cfg_file);
+      |         ^
+gmake[2]: *** [CMakeFiles/strict_probe.dir/build.make:79: CMakeFiles/strict_probe.dir/strict_probe.c.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+gmake[1]: *** [CMakeFiles/Makefile2:87: CMakeFiles/strict_probe.dir/all] Error 2
+gmake: *** [Makefile:91: all] Error 2

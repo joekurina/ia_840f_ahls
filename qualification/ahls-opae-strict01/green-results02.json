@@ -1,0 +1,1528 @@
+{
+  "inert_only": true,
+  "real_backend_loaded": false,
+  "hardware_access": false,
+  "records": [
+    {
+      "name": "valid",
+      "category": "valid",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "valid",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "INERT_LOAD /work/install/lib64/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /work/install/lib/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /usr/lib64/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /usr/lib/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /work/sdk-build/lib/libxfpga.so\nRESULT rc=0 rc2=-1 reads=1 discovers=0 scans=1 file_reads=4 loads=5 configs=1 inits=1 finis=0 unloads=0 initialized=1 calloc=3 strdup=5 first_reads=1 first_scans=1 first_loads=5 first_inits=1\n",
+      "stderr": "",
+      "observed": {
+        "rc": 0,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 1,
+        "file_reads": 4,
+        "loads": 5,
+        "configs": 1,
+        "inits": 1,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 1,
+        "calloc": 3,
+        "strdup": 5,
+        "first_reads": 1,
+        "first_scans": 1,
+        "first_loads": 5,
+        "first_inits": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "read-fail",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "read-fail",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=0 strdup=0 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 0,
+        "strdup": 0,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "calloc-1",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "calloc-1",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=1 strdup=0 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "opae-cfg.c:146:parse_plugin_config() **ERROR** : calloc() failed\n",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 1,
+        "strdup": 0,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "calloc-2",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "calloc-2",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=2 strdup=0 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "opae-cfg.c:55:resize_context() **ERROR** : calloc() failed\n",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 2,
+        "strdup": 0,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "null-path",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "null-path",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=0 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=0 strdup=0 first_reads=0 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 0,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 0,
+        "strdup": 0,
+        "first_reads": 0,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "relative-path",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "relative-path",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=0 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=0 strdup=0 first_reads=0 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 0,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 0,
+        "strdup": 0,
+        "first_reads": 0,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "ase",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "ase",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=0 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=0 strdup=0 first_reads=0 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 0,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 0,
+        "strdup": 0,
+        "first_reads": 0,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "implicit",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "implicit",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=0 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=0 strdup=0 first_reads=0 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 0,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 0,
+        "strdup": 0,
+        "first_reads": 0,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "already-initialized",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "already-initialized",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=0 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=1 calloc=0 strdup=0 first_reads=0 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 0,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 1,
+        "calloc": 0,
+        "strdup": 0,
+        "first_reads": 0,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "no-device",
+      "category": "detected-none",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "no-device",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=1 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=2 strdup=4 first_reads=1 first_scans=1 first_loads=0 first_inits=0\n",
+      "stderr": "",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 1,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 2,
+        "strdup": 4,
+        "first_reads": 1,
+        "first_scans": 1,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "wrong-device",
+      "category": "detected-none",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "wrong-device",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=1 file_reads=4 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=2 strdup=4 first_reads=1 first_scans=1 first_loads=0 first_inits=0\n",
+      "stderr": "",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 1,
+        "file_reads": 4,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 2,
+        "strdup": 4,
+        "first_reads": 1,
+        "first_scans": 1,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "scan-fail",
+      "category": "detected-none",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "scan-fail",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=1 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=2 strdup=4 first_reads=1 first_scans=1 first_loads=0 first_inits=0\n",
+      "stderr": "pluginmgr.c:328:opae_plugin_mgr_detect_platforms() **ERROR** : Failed to open /sys/bus/pci/devices. Aborting platform detection.\n",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 1,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 2,
+        "strdup": 4,
+        "first_reads": 1,
+        "first_scans": 1,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "load-fail",
+      "category": "load-fail",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "load-fail",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "INERT_LOAD /work/install/lib64/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /work/install/lib/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /usr/lib64/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /usr/lib/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /work/sdk-build/lib/libxfpga.so\nRESULT rc=1 rc2=-1 reads=1 discovers=0 scans=1 file_reads=4 loads=5 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=2 strdup=4 first_reads=1 first_scans=1 first_loads=5 first_inits=0\n",
+      "stderr": "pluginmgr.c:91:opae_plugin_mgr_alloc_adapter() **ERROR** : failed to load \"/work/sdk-build/lib/libxfpga.so\" inert loader failure\npluginmgr.c:506:opae_plugin_mgr_load_plugins() **ERROR** : calloc failed\n",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 1,
+        "file_reads": 4,
+        "loads": 5,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 2,
+        "strdup": 4,
+        "first_reads": 1,
+        "first_scans": 1,
+        "first_loads": 5,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "symbol-fail",
+      "category": "load-fail",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "symbol-fail",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "INERT_LOAD /work/install/lib64/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /work/install/lib/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /usr/lib64/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /usr/lib/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /work/sdk-build/lib/libxfpga.so\nRESULT rc=1 rc2=-1 reads=1 discovers=0 scans=1 file_reads=4 loads=5 configs=0 inits=0 finis=0 unloads=1 initialized=0 calloc=3 strdup=5 first_reads=1 first_scans=1 first_loads=5 first_inits=0\n",
+      "stderr": "pluginmgr.c:144:opae_plugin_mgr_configure_plugin() **ERROR** : failed to find opae_plugin_configure in \"/work/sdk-build/lib/libxfpga.so\"\npluginmgr.c:514:opae_plugin_mgr_load_plugins() **ERROR** : failed to configure plugin \"/work/sdk-build/lib/libxfpga.so\"\n",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 1,
+        "file_reads": 4,
+        "loads": 5,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 1,
+        "initialized": 0,
+        "calloc": 3,
+        "strdup": 5,
+        "first_reads": 1,
+        "first_scans": 1,
+        "first_loads": 5,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "configure-fail",
+      "category": "load-fail",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "configure-fail",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "INERT_LOAD /work/install/lib64/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /work/install/lib/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /usr/lib64/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /usr/lib/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /work/sdk-build/lib/libxfpga.so\nRESULT rc=1 rc2=-1 reads=1 discovers=0 scans=1 file_reads=4 loads=5 configs=1 inits=0 finis=0 unloads=1 initialized=0 calloc=3 strdup=5 first_reads=1 first_scans=1 first_loads=5 first_inits=0\n",
+      "stderr": "pluginmgr.c:514:opae_plugin_mgr_load_plugins() **ERROR** : failed to configure plugin \"/work/sdk-build/lib/libxfpga.so\"\n",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 1,
+        "file_reads": 4,
+        "loads": 5,
+        "configs": 1,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 1,
+        "initialized": 0,
+        "calloc": 3,
+        "strdup": 5,
+        "first_reads": 1,
+        "first_scans": 1,
+        "first_loads": 5,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "init-fail",
+      "category": "init-fail",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "init-fail",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "INERT_LOAD /work/install/lib64/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /work/install/lib/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /usr/lib64/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /usr/lib/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /work/sdk-build/lib/libxfpga.so\nRESULT rc=1 rc2=-1 reads=1 discovers=0 scans=1 file_reads=4 loads=5 configs=1 inits=1 finis=0 unloads=0 initialized=0 calloc=3 strdup=5 first_reads=1 first_scans=1 first_loads=5 first_inits=1\n",
+      "stderr": "pluginmgr.c:163:opae_plugin_mgr_initialize_all() : \"/work/sdk-build/lib/libxfpga.so\" initialize() routine failed\n",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 1,
+        "file_reads": 4,
+        "loads": 5,
+        "configs": 1,
+        "inits": 1,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 3,
+        "strdup": 5,
+        "first_reads": 1,
+        "first_scans": 1,
+        "first_loads": 5,
+        "first_inits": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "repeat",
+      "category": "repeat",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "repeat",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "INERT_LOAD /work/install/lib64/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /work/install/lib/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /usr/lib64/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /usr/lib/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /work/sdk-build/lib/libxfpga.so\nRESULT rc=0 rc2=1 reads=1 discovers=0 scans=1 file_reads=4 loads=5 configs=1 inits=1 finis=0 unloads=0 initialized=1 calloc=3 strdup=5 first_reads=1 first_scans=1 first_loads=5 first_inits=1\n",
+      "stderr": "",
+      "observed": {
+        "rc": 0,
+        "rc2": 1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 1,
+        "file_reads": 4,
+        "loads": 5,
+        "configs": 1,
+        "inits": 1,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 1,
+        "calloc": 3,
+        "strdup": 5,
+        "first_reads": 1,
+        "first_scans": 1,
+        "first_loads": 5,
+        "first_inits": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "init-fail-repeat",
+      "category": "init-fail-repeat",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "init-fail-repeat",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "INERT_LOAD /work/install/lib64/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /work/install/lib/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /usr/lib64/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /usr/lib/opae//work/sdk-build/lib/libxfpga.so\nINERT_LOAD /work/sdk-build/lib/libxfpga.so\nRESULT rc=1 rc2=1 reads=1 discovers=0 scans=1 file_reads=4 loads=5 configs=1 inits=1 finis=0 unloads=0 initialized=0 calloc=3 strdup=5 first_reads=1 first_scans=1 first_loads=5 first_inits=1\n",
+      "stderr": "pluginmgr.c:163:opae_plugin_mgr_initialize_all() : \"/work/sdk-build/lib/libxfpga.so\" initialize() routine failed\n",
+      "observed": {
+        "rc": 1,
+        "rc2": 1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 1,
+        "file_reads": 4,
+        "loads": 5,
+        "configs": 1,
+        "inits": 1,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 3,
+        "strdup": 5,
+        "first_reads": 1,
+        "first_scans": 1,
+        "first_loads": 5,
+        "first_inits": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-disabled-config",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "reject-disabled-config",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02/disabled-config.json"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=0 strdup=0 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 0,
+        "strdup": 0,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-disabled-plugin",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "reject-disabled-plugin",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02/disabled-plugin.json"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=2 strdup=0 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 2,
+        "strdup": 0,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-duplicate-plugin",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "reject-duplicate-plugin",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02/duplicate-plugin.json"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=2 strdup=8 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 2,
+        "strdup": 8,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-empty-configs",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "reject-empty-configs",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02/empty-configs.json"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=0 strdup=0 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 0,
+        "strdup": 0,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-empty-plugin-devices",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "reject-empty-plugin-devices",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02/empty-plugin-devices.json"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=2 strdup=0 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 2,
+        "strdup": 0,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-invalid-id-string",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "reject-invalid-id-string",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02/invalid-id-string.json"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=1 strdup=0 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "cfg-file.c:233:opae_parse_device_id() **ERROR** : Device ID not an integer in [ \"0x8086\", \"0xbcZZ\", \"0x8086\", \"0x1771\" ]\n",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 1,
+        "strdup": 0,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-malformed-json",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "reject-malformed-json",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02/malformed-json.json"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=0 strdup=0 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "opae-cfg.c:355:opae_parse_libopae_json() **ERROR** : Config JSON parse failed: unexpected end of data\n",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 0,
+        "strdup": 0,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-missing-absolute-path",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "reject-missing-absolute-path",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02/missing-absolute-path.json"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=2 strdup=4 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 2,
+        "strdup": 4,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-missing-configs",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "reject-missing-configs",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02/missing-configs.json"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=0 strdup=0 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "opae-cfg.c:362:opae_parse_libopae_json() **ERROR** : Failed to find \"configs\" in \"/inert/sealed/config\".\nopae-cfg.c:364:opae_parse_libopae_json() **ERROR** : You may have encountered an old config file.\n",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 0,
+        "strdup": 0,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-missing-devices",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "reject-missing-devices",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02/missing-devices.json"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=0 strdup=0 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "opae-cfg.c:139:parse_plugin_config() **ERROR** : \"devices\" not found or empty\n",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 0,
+        "strdup": 0,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-missing-module",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "reject-missing-module",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02/missing-module.json"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=2 strdup=0 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "opae-cfg.c:266:parse_plugin_config() **ERROR** : plugin[0] \"module\" in ia840f_caps01 missing or empty.\n",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 2,
+        "strdup": 0,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-missing-opae",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "reject-missing-opae",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02/missing-opae.json"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=1 strdup=0 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "opae-cfg.c:186:parse_plugin_config() **ERROR** : Error parsing JSON: missing \"opae\" in config\n",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 1,
+        "strdup": 0,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-missing-plugin-configuration",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "reject-missing-plugin-configuration",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02/missing-plugin-configuration.json"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=2 strdup=0 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "opae-cfg.c:275:parse_plugin_config() **ERROR** : plugin[0] \"configuration\" in ia840f_caps01 missing or invalid.\n",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 2,
+        "strdup": 0,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-missing-plugin",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "reject-missing-plugin",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02/missing-plugin.json"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=1 strdup=0 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 1,
+        "strdup": 0,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-missing-selected-config",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "reject-missing-selected-config",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02/missing-selected-config.json"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=0 strdup=0 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "opae-cfg.c:120:parse_plugin_config() **ERROR** : Error parsing JSON: missing 'not-present' config\n",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 0,
+        "strdup": 0,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-unknown-device-name",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "reject-unknown-device-name",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02/unknown-device-name.json"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=2 strdup=0 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "opae-cfg.c:311:parse_plugin_config() **ERROR** : device absent not found\n\n",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 2,
+        "strdup": 0,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-vfio-substitution",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "reject-vfio-substitution",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02/vfio-substitution.json"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=2 strdup=4 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 2,
+        "strdup": 4,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-wildcard-subsystem",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "reject-wildcard-subsystem",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02/wildcard-subsystem.json"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=2 strdup=4 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 2,
+        "strdup": 4,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-wrong-device-id",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "reject-wrong-device-id",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02/wrong-device-id.json"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=2 strdup=4 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 2,
+        "strdup": 4,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-wrong-id-count",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "reject-wrong-id-count",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02/wrong-id-count.json"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=1 strdup=0 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "opae-cfg.c:172:parse_plugin_config() **ERROR** : devices[0] \"id\" field not present or wrong size\n",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 1,
+        "strdup": 0,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-wrong-subsystem",
+      "category": "pre-detect",
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01/build-green02/strict_probe",
+        "reject-wrong-subsystem",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02/wrong-subsystem.json"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C",
+        "LC_ALL": "C",
+        "HOME": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-strict01"
+      },
+      "rc": 0,
+      "stdout": "RESULT rc=1 rc2=-1 reads=1 discovers=0 scans=0 file_reads=0 loads=0 configs=0 inits=0 finis=0 unloads=0 initialized=0 calloc=2 strdup=4 first_reads=1 first_scans=0 first_loads=0 first_inits=0\n",
+      "stderr": "",
+      "observed": {
+        "rc": 1,
+        "rc2": -1,
+        "reads": 1,
+        "discovers": 0,
+        "scans": 0,
+        "file_reads": 0,
+        "loads": 0,
+        "configs": 0,
+        "inits": 0,
+        "finis": 0,
+        "unloads": 0,
+        "initialized": 0,
+        "calloc": 2,
+        "strdup": 4,
+        "first_reads": 1,
+        "first_scans": 0,
+        "first_loads": 0,
+        "first_inits": 0
+      },
+      "passed": true
+    }
+  ]
+}
