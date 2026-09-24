@@ -1,0 +1,254 @@
+{
+  "commands": [
+    {
+      "label": "compiler_version",
+      "argv": [
+        "/usr/bin/cc",
+        "--version"
+      ],
+      "rc": 0,
+      "sha256": "5fa6bf5b83f57f14020be375ac663df894027e2d672d6b7d82d7e8d8f7b49c8b"
+    },
+    {
+      "label": "cmake_version",
+      "argv": [
+        "/usr/bin/cmake",
+        "--version"
+      ],
+      "rc": 0,
+      "sha256": "6c08f840b67782da73a6fe113b64712615441722b15cd2723062dd4cc00a10d8"
+    },
+    {
+      "label": "configure",
+      "argv": [
+        "/usr/bin/cmake",
+        "-S",
+        "/work/source",
+        "-B",
+        "/work/build",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DFETCHCONTENT_FULLY_DISCONNECTED=ON"
+      ],
+      "rc": 0,
+      "sha256": "9f7d62dfde09801e9719682e6552f845ab1c8e7619d2af77e03cfe4bf1d0ade5"
+    },
+    {
+      "label": "build",
+      "argv": [
+        "/usr/bin/cmake",
+        "--build",
+        "/work/build",
+        "--parallel",
+        "36",
+        "--verbose"
+      ],
+      "rc": 0,
+      "sha256": "abde83af1d075d2a8dac97731b4e06a8f8c72bc258024185d009cad0a721116b"
+    },
+    {
+      "label": "launcher_dynamic",
+      "argv": [
+        "/usr/bin/readelf",
+        "--dynamic",
+        "--wide",
+        "/work/build/ahls_memory_startup"
+      ],
+      "rc": 0,
+      "sha256": "eb9c005473ea6b676b3157be7cb9097de2921b7724fab8cc53bb150d3fa62ff0"
+    },
+    {
+      "label": "launcher_program_headers",
+      "argv": [
+        "/usr/bin/readelf",
+        "--program-headers",
+        "--wide",
+        "/work/build/ahls_memory_startup"
+      ],
+      "rc": 0,
+      "sha256": "663980ea9f18e0b2f978408d28ed2bd22b144fd88ff59377dcb6a0fe459d8b64"
+    },
+    {
+      "label": "launcher_symbols",
+      "argv": [
+        "/usr/bin/readelf",
+        "--dyn-syms",
+        "--wide",
+        "/work/build/ahls_memory_startup"
+      ],
+      "rc": 0,
+      "sha256": "dbb77e58d039c193c380bd54d3a20ee7bd21d98ebd56bca45b6aa1736aa6d75d"
+    },
+    {
+      "label": "launcher_undefined",
+      "argv": [
+        "/usr/bin/nm",
+        "-u",
+        "/work/build/ahls_memory_startup"
+      ],
+      "rc": 0,
+      "sha256": "b6a0bd12a688257966f8335009645f62436d190bdf630e5c898a67ad20e680d1"
+    },
+    {
+      "label": "entry_dynamic",
+      "argv": [
+        "/usr/bin/readelf",
+        "--dynamic",
+        "--wide",
+        "/work/build/libahls_memory_entry.so"
+      ],
+      "rc": 0,
+      "sha256": "c3b1b949e9cf9a18662ef2c7a7459a80ff4b078ac8133f0daaf491ecaa55dc95"
+    },
+    {
+      "label": "entry_program_headers",
+      "argv": [
+        "/usr/bin/readelf",
+        "--program-headers",
+        "--wide",
+        "/work/build/libahls_memory_entry.so"
+      ],
+      "rc": 0,
+      "sha256": "ddf346b8d5715399dfceb8f041c15bf17069c62992adba0a752caf431545501b"
+    },
+    {
+      "label": "entry_symbols",
+      "argv": [
+        "/usr/bin/readelf",
+        "--dyn-syms",
+        "--wide",
+        "/work/build/libahls_memory_entry.so"
+      ],
+      "rc": 0,
+      "sha256": "f04da927d475e804563d063656367c4957acf1fbbd8542d27871bd72657f87f5"
+    },
+    {
+      "label": "entry_undefined",
+      "argv": [
+        "/usr/bin/nm",
+        "-u",
+        "/work/build/libahls_memory_entry.so"
+      ],
+      "rc": 0,
+      "sha256": "0d4c914398e81d93235f0d0e8d0a28b4d89699000b627fc2c989db05a5eda4cb"
+    },
+    {
+      "label": "core_symbols",
+      "argv": [
+        "/usr/bin/readelf",
+        "--dyn-syms",
+        "--wide",
+        "/work/sdk-build/lib/libopae-c.so"
+      ],
+      "rc": 0,
+      "sha256": "5a529d3f577f940c35c940e0b6ea9e55f23e43b78ae05769d950a90992e87dfa"
+    }
+  ],
+  "binary_executed": false,
+  "libraries_loaded": false,
+  "hardware_access": false,
+  "installed": false,
+  "success": true,
+  "dev_entries": [
+    "fd",
+    "mqueue",
+    "null",
+    "ptmx",
+    "pts",
+    "random",
+    "shm",
+    "stderr",
+    "stdin",
+    "stdout",
+    "tty",
+    "urandom",
+    "zero"
+  ],
+  "tool_bindings": {
+    "/usr/bin/python3": {
+      "bytes": 5917224,
+      "sha256": "7d51cd6b48b521277f5caa4610a82126e315fa2be4df069823a8b1eeb5bd4a86",
+      "realpath": "/usr/bin/python3.10"
+    },
+    "/usr/bin/cmake": {
+      "bytes": 6747024,
+      "sha256": "fd22547781b64bb2db04370970b93db1f3fada1e41e60873b015ee0747009fc0",
+      "realpath": "/usr/bin/cmake"
+    },
+    "/usr/bin/cc": {
+      "bytes": 928584,
+      "sha256": "821af3c74506283c179ca413bb33e6b528805a4dd8a5c09df125e5ad560a9e89",
+      "realpath": "/usr/bin/x86_64-linux-gnu-gcc-11"
+    },
+    "/usr/bin/ld": {
+      "bytes": 1736184,
+      "sha256": "58937fc20c21e147883b4fdaa0fc7438a8e8f2bb886cfcaa4896100ca91139e7",
+      "realpath": "/usr/bin/x86_64-linux-gnu-ld.bfd"
+    },
+    "/usr/bin/readelf": {
+      "bytes": 776640,
+      "sha256": "04db0000749aff89e4af21429340b00b536fc6f80e811c872c006507881a5560",
+      "realpath": "/usr/bin/x86_64-linux-gnu-readelf"
+    },
+    "/usr/bin/nm": {
+      "bytes": 44672,
+      "sha256": "ed6565c132d6f20019ff3f050043dc1b2b8bc2e8b3b94c1ffe3f34436431a5a4",
+      "realpath": "/usr/bin/x86_64-linux-gnu-nm"
+    }
+  },
+  "artifacts": {
+    "/work/build/ahls_memory_startup": {
+      "bytes": 36592,
+      "sha256": "14e33130d072b0007874effce3e78133962d48d711e283ef45e9ddce09329ee6",
+      "realpath": "/work/build/ahls_memory_startup"
+    },
+    "/work/build/libahls_memory_entry.so": {
+      "bytes": 26128,
+      "sha256": "ea31d2b187a57263cf6569a81ff23df6777415d31ac191bff066a023b27eb1e5",
+      "realpath": "/work/build/libahls_memory_entry.so"
+    }
+  },
+  "elf": {
+    "launcher": {
+      "needed": [
+        "libjson-c.so.5",
+        "libc.so.6"
+      ],
+      "runtime_paths": [
+        "/work/prefix/usr/lib/x86_64-linux-gnu"
+      ]
+    },
+    "entry": {
+      "needed": [
+        "libopae-c.so.2",
+        "libc.so.6"
+      ],
+      "runtime_paths": [
+        "/work/sdk-build/lib:/work/prefix/usr/lib/x86_64-linux-gnu"
+      ]
+    }
+  },
+  "required_opae_exports": [
+    "fpgaClose",
+    "fpgaDestroyProperties",
+    "fpgaDestroyToken",
+    "fpgaEnumerate",
+    "fpgaErrStr",
+    "fpgaFinalize",
+    "fpgaGetProperties",
+    "fpgaInitialize",
+    "fpgaMapMMIO",
+    "fpgaOpen",
+    "fpgaPropertiesSetBus",
+    "fpgaPropertiesSetDevice",
+    "fpgaPropertiesSetDeviceID",
+    "fpgaPropertiesSetFunction",
+    "fpgaPropertiesSetGUID",
+    "fpgaPropertiesSetObjectType",
+    "fpgaPropertiesSetSegment",
+    "fpgaPropertiesSetSubsystemDeviceID",
+    "fpgaPropertiesSetSubsystemVendorID",
+    "fpgaPropertiesSetVendorID",
+    "fpgaReadMMIO64",
+    "fpgaUnmapMMIO"
+  ]
+}
