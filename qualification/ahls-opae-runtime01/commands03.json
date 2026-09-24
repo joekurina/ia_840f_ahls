@@ -1,0 +1,137 @@
+[
+  {
+    "label": "extract-libjson-c-dev_0.15-3~ubuntu1.22.04.2_amd64.deb",
+    "argv": [
+      "/usr/bin/dpkg-deb",
+      "--extract",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/ubuntu-dependencies08/libjson-c-dev_0.15-3~ubuntu1.22.04.2_amd64.deb",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/json-prefix"
+    ],
+    "rc": 0
+  },
+  {
+    "label": "extract-libjson-c5_0.15-3~ubuntu1.22.04.2_amd64.deb",
+    "argv": [
+      "/usr/bin/dpkg-deb",
+      "--extract",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-host01/ubuntu-dependencies08/libjson-c5_0.15-3~ubuntu1.22.04.2_amd64.deb",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/json-prefix"
+    ],
+    "rc": 0
+  },
+  {
+    "label": "configure-parser01",
+    "argv": [
+      "/usr/bin/cmake",
+      "-S",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/opae_runtime",
+      "-B",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/build-parser01",
+      "-DSDK_CAPTURE=/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/sdk",
+      "-DJSON_PREFIX=/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/json-prefix"
+    ],
+    "rc": 0
+  },
+  {
+    "label": "build-parser01",
+    "argv": [
+      "/usr/bin/cmake",
+      "--build",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/build-parser01",
+      "--parallel",
+      "2"
+    ],
+    "rc": 0
+  },
+  {
+    "label": "parser-elf01",
+    "argv": [
+      "/usr/bin/readelf",
+      "-d",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/build-parser01/opae_config_probe"
+    ],
+    "rc": 0
+  },
+  {
+    "label": "parser-undefined01",
+    "argv": [
+      "/usr/bin/nm",
+      "-u",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/build-parser01/opae_config_probe"
+    ],
+    "rc": 0
+  },
+  {
+    "label": "parser-symbols01",
+    "argv": [
+      "/usr/bin/nm",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/build-parser01/opae_config_probe"
+    ],
+    "rc": 0
+  },
+  {
+    "label": "red01",
+    "argv": [
+      "/usr/bin/python3",
+      "-I",
+      "-B",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/opae_runtime/test_opae_config.py",
+      "--probe",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/build-parser01/opae_config_probe",
+      "--config",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/source-resume-01/remote/home/uwb_student00/opae-sdk/opae.cfg",
+      "--output",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/red-result01.json"
+    ],
+    "rc": 1
+  },
+  {
+    "label": "green01",
+    "argv": [
+      "/usr/bin/python3",
+      "-I",
+      "-B",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/opae_runtime/test_opae_config.py",
+      "--probe",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/build-parser01/opae_config_probe",
+      "--config",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg",
+      "--output",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/green-result01.json"
+    ],
+    "rc": 0
+  },
+  {
+    "label": "matrix01",
+    "argv": [
+      "/usr/bin/python3",
+      "-I",
+      "-B",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/opae_runtime/test_opae_config_matrix.py",
+      "--probe",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/build-parser01/opae_config_probe",
+      "--candidate",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg",
+      "--work",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix01"
+    ],
+    "rc": 0
+  },
+  {
+    "label": "matrix02",
+    "argv": [
+      "/usr/bin/python3",
+      "-I",
+      "-B",
+      "-O",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/opae_runtime/test_opae_config_matrix.py",
+      "--probe",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/build-parser01/opae_config_probe",
+      "--candidate",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/config/ia840f_caps01_dfl.cfg",
+      "--work",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-opae-runtime01/matrix02"
+    ],
+    "rc": 0
+  }
+]
