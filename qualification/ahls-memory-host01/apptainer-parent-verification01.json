@@ -1,0 +1,157 @@
+{
+  "scope": "completed target-image compile/link/backend builds, not acceptance",
+  "runs": {
+    "build10": {
+      "exports": 17,
+      "sdk_entries": 1177,
+      "inner_commands": 10,
+      "artifacts": {
+        "/work/frontend-build/ahls_memory_inspect": {
+          "bytes": 43336,
+          "realpath": "/work/frontend-build/ahls_memory_inspect",
+          "sha256": "2d6d0de6d59fb9681f1fb83aaacb60a06d1d771b761fc579dc7b3e013aed6cc2"
+        },
+        "/work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5.1.0": {
+          "bytes": 72080,
+          "realpath": "/work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5.1.0",
+          "sha256": "deb38a09f3c253c1d4046f53085d0ed3e9b2496a1a91605c065900fde808306f"
+        },
+        "/work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1.3.0": {
+          "bytes": 30936,
+          "realpath": "/work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1.3.0",
+          "sha256": "4472cf91dbc01395761fb45d0f4b25f6241406fe54cbf540c13755a3706a7b17"
+        },
+        "/work/sdk-build/lib/libopae-c.so": {
+          "bytes": 589816,
+          "realpath": "/work/sdk-build/lib/libopae-c.so.2.13.0",
+          "sha256": "1947fa09b223734acbe49f330ea5c75ea0ba0156296978fa4598f30745dda6f4"
+        }
+      },
+      "outer_commands": [
+        {
+          "argv": [
+            "/home/uwb_student00/ahls/apptainer/bin/apptainer",
+            "exec",
+            "--containall",
+            "--cleanenv",
+            "--no-home",
+            "--no-mount",
+            "sys,hostfs,cwd,bind-paths",
+            "--no-eval",
+            "--workdir",
+            "/home/uwb_student00/ahls/new_BSP/work_ahls_memory_host01/apptainer-build10/scratch",
+            "--bind",
+            "/home/uwb_student00/ahls/new_BSP/work_ahls_memory_host01/apptainer-build10:/work:rw",
+            "--bind",
+            "/home/uwb_student00/opae-sdk:/sdk:ro",
+            "--pwd",
+            "/work",
+            "/home/uwb_student00/ahls/ubuntu-ahls.sif",
+            "/usr/bin/python3",
+            "-I",
+            "-S",
+            "/work/inventory.py"
+          ],
+          "descendants_after_leader": false,
+          "descendants_observed_at_leader_exit": [],
+          "effective_rc": 0,
+          "ended": "2026-09-23T23:46:00.819823+00:00",
+          "label": "inventory",
+          "native_rc": 0,
+          "owned_group_live_after": [],
+          "pid": 152524,
+          "start_ticks": "17042640",
+          "started": "2026-09-23T23:45:54.635753+00:00",
+          "timeout": false
+        }
+      ],
+      "preservation": {
+        "image_and_tool_unchanged": true,
+        "sdk_sources_unchanged": true,
+        "original_build_unchanged": null
+      }
+    },
+    "backends11": {
+      "exports": 21,
+      "sdk_entries": 1177,
+      "inner_commands": 8,
+      "artifacts": {
+        "/work/sdk-build/lib/libopae-c.so.2.13.0": {
+          "bytes": 589816,
+          "sha256": "1947fa09b223734acbe49f330ea5c75ea0ba0156296978fa4598f30745dda6f4"
+        },
+        "/work/sdk-build/lib/libopae-v.so": {
+          "bytes": 185968,
+          "sha256": "3249900224c65894bbbabbcb94e41ee31b9f71669b09be92121169bdf47b2380"
+        },
+        "/work/sdk-build/lib/libopaemem.so.2.13.0": {
+          "bytes": 74496,
+          "sha256": "9d3f91a93ac1dc378284a1eb844455c62c5db695de144cf916ea57a8a40e9b99"
+        },
+        "/work/sdk-build/lib/libopaeuio.so.2.13.0": {
+          "bytes": 57560,
+          "sha256": "88cd03e4ab6d0d0addd5ddca76520a87a3b2746904f85f906c534e910863193f"
+        },
+        "/work/sdk-build/lib/libopaevfio.so.2.13.0": {
+          "bytes": 87968,
+          "sha256": "86865bdd293d78fcbaa3af1ccf5d6da93df9b61ac23a7fec8f5e50f1d63ea799"
+        },
+        "/work/sdk-build/lib/libxfpga.so": {
+          "bytes": 942136,
+          "sha256": "ae6b7dd749fcc7c8a324dd82b054e8d18a81c7755629c016812bf06b3647fe79"
+        }
+      },
+      "outer_commands": [
+        {
+          "argv": [
+            "/home/uwb_student00/ahls/apptainer/bin/apptainer",
+            "exec",
+            "--containall",
+            "--cleanenv",
+            "--no-home",
+            "--no-mount",
+            "sys,hostfs,cwd,bind-paths",
+            "--no-eval",
+            "--workdir",
+            "/home/uwb_student00/ahls/new_BSP/work_ahls_memory_host01/apptainer-backends11/scratch",
+            "--bind",
+            "/home/uwb_student00/ahls/new_BSP/work_ahls_memory_host01/apptainer-backends11:/work:rw",
+            "--bind",
+            "/home/uwb_student00/opae-sdk:/sdk:ro",
+            "--pwd",
+            "/work",
+            "/home/uwb_student00/ahls/ubuntu-ahls.sif",
+            "/usr/bin/python3",
+            "-I",
+            "-S",
+            "/work/inventory.py"
+          ],
+          "descendants_after_leader": false,
+          "descendants_observed_at_leader_exit": [],
+          "effective_rc": 0,
+          "ended": "2026-09-23T23:49:41.318877+00:00",
+          "label": "inventory",
+          "native_rc": 0,
+          "owned_group_live_after": [],
+          "pid": 153412,
+          "start_ticks": "17064739",
+          "started": "2026-09-23T23:49:35.625813+00:00",
+          "timeout": false
+        }
+      ],
+      "preservation": {
+        "image_and_tool_unchanged": true,
+        "sdk_sources_unchanged": true,
+        "original_build_unchanged": true
+      }
+    }
+  },
+  "all_export_sizes_hashes_and_local_bytes_verified": true,
+  "frontend_sources_match": true,
+  "sdk_inventories_match": true,
+  "core_elf_unchanged_across_backend_build": true,
+  "frontend_elf_unchanged_across_backend_build": true,
+  "native_rerun": false,
+  "binary_executed": false,
+  "hardware_access": false
+}

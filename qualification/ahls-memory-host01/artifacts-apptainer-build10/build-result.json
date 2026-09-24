@@ -1,0 +1,184 @@
+{
+  "commands": [
+    {
+      "label": "extract_0",
+      "argv": [
+        "/usr/bin/dpkg-deb",
+        "--extract",
+        "/work/packages/libjson-c-dev_0.15-3~ubuntu1.22.04.2_amd64.deb",
+        "/work/prefix"
+      ],
+      "rc": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "extract_1",
+      "argv": [
+        "/usr/bin/dpkg-deb",
+        "--extract",
+        "/work/packages/libjson-c5_0.15-3~ubuntu1.22.04.2_amd64.deb",
+        "/work/prefix"
+      ],
+      "rc": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "extract_2",
+      "argv": [
+        "/usr/bin/dpkg-deb",
+        "--extract",
+        "/work/packages/libuuid1_2.37.2-4ubuntu3.6_amd64.deb",
+        "/work/prefix"
+      ],
+      "rc": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "extract_3",
+      "argv": [
+        "/usr/bin/dpkg-deb",
+        "--extract",
+        "/work/packages/uuid-dev_2.37.2-4ubuntu3.6_amd64.deb",
+        "/work/prefix"
+      ],
+      "rc": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "sdk_configure",
+      "argv": [
+        "/usr/bin/cmake",
+        "-S",
+        "/sdk",
+        "-B",
+        "/work/sdk-build",
+        "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+        "-DCMAKE_INSTALL_PREFIX=/work/install",
+        "-DFETCHCONTENT_FULLY_DISCONNECTED=ON",
+        "-DRUN_LDCONFIG=OFF",
+        "-DOPAE_BUILD_TESTS=OFF",
+        "-DOPAE_BUILD_LEGACY=OFF",
+        "-DOPAE_BUILD_SAMPLES=OFF",
+        "-DOPAE_BUILD_EXTRA_TOOLS=OFF",
+        "-DOPAE_BUILD_LIBOPAE_CXX=OFF",
+        "-DOPAE_BUILD_LIBOPAEUIO=OFF",
+        "-DOPAE_BUILD_LIBOFS=OFF",
+        "-DOPAE_BUILD_PYTHON_DIST=OFF",
+        "-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=ON",
+        "-DCMAKE_DISABLE_FIND_PACKAGE_Sphinx=ON",
+        "-Duuid_ROOT=/work/prefix/usr",
+        "-Duuid_INCLUDE_DIRS=/work/prefix/usr/include",
+        "-Duuid_LIBRARIES=/work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1.3.0",
+        "-Djson-c_ROOT=/work/prefix/usr",
+        "-Djson-c_INCLUDE_DIRS=/work/prefix/usr/include",
+        "-Djson-c_LIBRARIES=/work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5.1.0",
+        "-DOPAE_WITH_CLI11=OFF",
+        "-DOPAE_WITH_SPDLOG=OFF",
+        "-DOPAE_WITH_LIBEDIT=OFF",
+        "-DOPAE_WITH_PYBIND11=OFF",
+        "-DOPAE_WITH_HWLOC=OFF",
+        "-DOPAE_WITH_TBB=OFF",
+        "-DOPAE_WITH_NUMA=OFF"
+      ],
+      "rc": 0,
+      "sha256": "c230b2c8cbfe2870b4733e052f5f5cbc8c335a30289835e1629a255f2538dcce"
+    },
+    {
+      "label": "sdk_core_build",
+      "argv": [
+        "/usr/bin/cmake",
+        "--build",
+        "/work/sdk-build",
+        "--target",
+        "opae-c",
+        "--parallel",
+        "36",
+        "--verbose"
+      ],
+      "rc": 0,
+      "sha256": "5b70255ea7e26fd4457bad5bffc55101c5f98b056f9c33e6f779146e73eaf5e3"
+    },
+    {
+      "label": "frontend_configure",
+      "argv": [
+        "/usr/bin/cmake",
+        "-S",
+        "/work/frontend",
+        "-B",
+        "/work/frontend-build",
+        "-DCMAKE_C_COMPILER=/usr/bin/cc",
+        "-DCMAKE_BUILD_TYPE=Debug",
+        "-DOPAE_LIBRARY=/work/sdk-build/lib/libopae-c.so",
+        "-DOPAE_INCLUDE_DIR=/sdk/include",
+        "-DCMAKE_EXE_LINKER_FLAGS=-Wl,-rpath-link,/work/prefix/usr/lib/x86_64-linux-gnu,-rpath-link,/work/prefix/usr/lib/x86_64-linux-gnu"
+      ],
+      "rc": 0,
+      "sha256": "5c0f905d9efeb710c8d0fc75f96488d62999774f2026e9fe143c4ce635f1cc66"
+    },
+    {
+      "label": "frontend_build",
+      "argv": [
+        "/usr/bin/cmake",
+        "--build",
+        "/work/frontend-build",
+        "--target",
+        "ahls_memory_inspect",
+        "--parallel",
+        "36",
+        "--verbose"
+      ],
+      "rc": 0,
+      "sha256": "c4a9a6e7266bfcea21efcea5e2124990da96c488690c0ecd47d62144f4000827"
+    },
+    {
+      "label": "frontend_elf",
+      "argv": [
+        "/usr/bin/readelf",
+        "--dynamic",
+        "--dyn-syms",
+        "--wide",
+        "/work/frontend-build/ahls_memory_inspect"
+      ],
+      "rc": 0,
+      "sha256": "14f6542ce06eb3d5e28f0fcd13a1bf31ecb354162d3cbf2a9ea1faca9acebe9d"
+    },
+    {
+      "label": "opae_elf",
+      "argv": [
+        "/usr/bin/readelf",
+        "--dynamic",
+        "--dyn-syms",
+        "--wide",
+        "/work/sdk-build/lib/libopae-c.so"
+      ],
+      "rc": 0,
+      "sha256": "df43cfbb96787a8eabfa3d47fd73537b0b975606a02770f5053abf596c31e9cf"
+    }
+  ],
+  "hardware_access": false,
+  "binary_executed": false,
+  "installed": false,
+  "artifacts": {
+    "/work/frontend-build/ahls_memory_inspect": {
+      "bytes": 43336,
+      "sha256": "2d6d0de6d59fb9681f1fb83aaacb60a06d1d771b761fc579dc7b3e013aed6cc2",
+      "realpath": "/work/frontend-build/ahls_memory_inspect"
+    },
+    "/work/sdk-build/lib/libopae-c.so": {
+      "bytes": 589816,
+      "sha256": "1947fa09b223734acbe49f330ea5c75ea0ba0156296978fa4598f30745dda6f4",
+      "realpath": "/work/sdk-build/lib/libopae-c.so.2.13.0"
+    },
+    "/work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1.3.0": {
+      "bytes": 30936,
+      "sha256": "4472cf91dbc01395761fb45d0f4b25f6241406fe54cbf540c13755a3706a7b17",
+      "realpath": "/work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1.3.0"
+    },
+    "/work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5.1.0": {
+      "bytes": 72080,
+      "sha256": "deb38a09f3c253c1d4046f53085d0ed3e9b2496a1a91605c065900fde808306f",
+      "realpath": "/work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5.1.0"
+    }
+  },
+  "success": true
+}

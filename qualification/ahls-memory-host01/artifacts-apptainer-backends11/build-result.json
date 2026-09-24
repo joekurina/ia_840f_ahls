@@ -1,0 +1,163 @@
+{
+  "commands": [
+    {
+      "label": "sdk_reconfigure",
+      "argv": [
+        "/usr/bin/cmake",
+        "-S",
+        "/sdk",
+        "-B",
+        "/work/sdk-build",
+        "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+        "-DCMAKE_INSTALL_PREFIX=/work/install",
+        "-DFETCHCONTENT_FULLY_DISCONNECTED=ON",
+        "-DRUN_LDCONFIG=OFF",
+        "-DOPAE_BUILD_TESTS=OFF",
+        "-DOPAE_BUILD_LEGACY=OFF",
+        "-DOPAE_BUILD_SAMPLES=OFF",
+        "-DOPAE_BUILD_EXTRA_TOOLS=OFF",
+        "-DOPAE_BUILD_LIBOPAE_CXX=OFF",
+        "-DOPAE_BUILD_LIBOPAEUIO=ON",
+        "-DOPAE_BUILD_LIBOFS=OFF",
+        "-DOPAE_BUILD_PYTHON_DIST=OFF",
+        "-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=ON",
+        "-DCMAKE_DISABLE_FIND_PACKAGE_Sphinx=ON",
+        "-Duuid_ROOT=/work/prefix/usr",
+        "-Duuid_INCLUDE_DIRS=/work/prefix/usr/include",
+        "-Duuid_LIBRARIES=/work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1.3.0",
+        "-Djson-c_ROOT=/work/prefix/usr",
+        "-Djson-c_INCLUDE_DIRS=/work/prefix/usr/include",
+        "-Djson-c_LIBRARIES=/work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5.1.0",
+        "-DOPAE_WITH_CLI11=OFF",
+        "-DOPAE_WITH_SPDLOG=OFF",
+        "-DOPAE_WITH_LIBEDIT=OFF",
+        "-DOPAE_WITH_PYBIND11=OFF",
+        "-DOPAE_WITH_HWLOC=OFF",
+        "-DOPAE_WITH_TBB=OFF",
+        "-DOPAE_WITH_NUMA=OFF"
+      ],
+      "rc": 0,
+      "sha256": "b82336da7148cb67e0af171851a0297f499a4bb354b3105a134a38195dc1c1f3"
+    },
+    {
+      "label": "backend_build",
+      "argv": [
+        "/usr/bin/cmake",
+        "--build",
+        "/work/sdk-build",
+        "--target",
+        "opae-v",
+        "xfpga",
+        "--parallel",
+        "36",
+        "--verbose"
+      ],
+      "rc": 0,
+      "sha256": "97584dc33259a04453bc5f553bb03b1aa966e348a7c30774f01d77a42467311b"
+    },
+    {
+      "label": "library_elf_2",
+      "argv": [
+        "/usr/bin/readelf",
+        "--dynamic",
+        "--dyn-syms",
+        "--wide",
+        "/work/sdk-build/lib/libopae-c.so.2.13.0"
+      ],
+      "rc": 0,
+      "sha256": "df43cfbb96787a8eabfa3d47fd73537b0b975606a02770f5053abf596c31e9cf"
+    },
+    {
+      "label": "library_elf_3",
+      "argv": [
+        "/usr/bin/readelf",
+        "--dynamic",
+        "--dyn-syms",
+        "--wide",
+        "/work/sdk-build/lib/libopae-v.so"
+      ],
+      "rc": 0,
+      "sha256": "36345ff6619b96f41924e02a95de3dbd244e65b8361f41d7416edafcc1ddade6"
+    },
+    {
+      "label": "library_elf_6",
+      "argv": [
+        "/usr/bin/readelf",
+        "--dynamic",
+        "--dyn-syms",
+        "--wide",
+        "/work/sdk-build/lib/libopaemem.so.2.13.0"
+      ],
+      "rc": 0,
+      "sha256": "19f71044a19fa6ad501e9c3c56ce06b9664c2cb9f13a9b2d6b7875049d6e7297"
+    },
+    {
+      "label": "library_elf_9",
+      "argv": [
+        "/usr/bin/readelf",
+        "--dynamic",
+        "--dyn-syms",
+        "--wide",
+        "/work/sdk-build/lib/libopaeuio.so.2.13.0"
+      ],
+      "rc": 0,
+      "sha256": "5617cfbcab67c831da19a47d8bdbf8831f21cd0ad5495778283981e2f60c2f15"
+    },
+    {
+      "label": "library_elf_12",
+      "argv": [
+        "/usr/bin/readelf",
+        "--dynamic",
+        "--dyn-syms",
+        "--wide",
+        "/work/sdk-build/lib/libopaevfio.so.2.13.0"
+      ],
+      "rc": 0,
+      "sha256": "59641b77e9ae9cbdafaefefc09bef0f7313a9d193aa3b80b1e1760e786a572d4"
+    },
+    {
+      "label": "library_elf_13",
+      "argv": [
+        "/usr/bin/readelf",
+        "--dynamic",
+        "--dyn-syms",
+        "--wide",
+        "/work/sdk-build/lib/libxfpga.so"
+      ],
+      "rc": 0,
+      "sha256": "6252fe12a1ba7120e291964b2300820ccb3c6364b26b086a19d9aea6cd929714"
+    }
+  ],
+  "hardware_access": false,
+  "binary_executed": false,
+  "libraries_loaded": false,
+  "installed": false,
+  "artifacts": {
+    "/work/sdk-build/lib/libopae-c.so.2.13.0": {
+      "bytes": 589816,
+      "sha256": "1947fa09b223734acbe49f330ea5c75ea0ba0156296978fa4598f30745dda6f4"
+    },
+    "/work/sdk-build/lib/libopae-v.so": {
+      "bytes": 185968,
+      "sha256": "3249900224c65894bbbabbcb94e41ee31b9f71669b09be92121169bdf47b2380"
+    },
+    "/work/sdk-build/lib/libopaemem.so.2.13.0": {
+      "bytes": 74496,
+      "sha256": "9d3f91a93ac1dc378284a1eb844455c62c5db695de144cf916ea57a8a40e9b99"
+    },
+    "/work/sdk-build/lib/libopaeuio.so.2.13.0": {
+      "bytes": 57560,
+      "sha256": "88cd03e4ab6d0d0addd5ddca76520a87a3b2746904f85f906c534e910863193f"
+    },
+    "/work/sdk-build/lib/libopaevfio.so.2.13.0": {
+      "bytes": 87968,
+      "sha256": "86865bdd293d78fcbaa3af1ccf5d6da93df9b61ac23a7fec8f5e50f1d63ea799"
+    },
+    "/work/sdk-build/lib/libxfpga.so": {
+      "bytes": 942136,
+      "sha256": "ae6b7dd749fcc7c8a324dd82b054e8d18a81c7755629c016812bf06b3647fe79"
+    }
+  },
+  "frontend_sha256": "2d6d0de6d59fb9681f1fb83aaacb60a06d1d771b761fc579dc7b3e013aed6cc2",
+  "success": true
+}
