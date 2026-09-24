@@ -1,0 +1,134 @@
+import os,sys,socket,json,hashlib,base64,subprocess,time,signal,resource,shutil,gzip,re
+from pathlib import Path
+from datetime import datetime,timezone
+C=@CONFIG@
+R=Path(C['root']);J=R
+if not __debug__: raise RuntimeError('Python assertions must be enabled')
+assert socket.gethostname()=='Agilex7Workstation' and os.getuid()==1000 and os.environ.get('TMUX') and not R.exists()
+cpus=set(os.sched_getaffinity(0));assert cpus==set(C['cpus'])
+R.mkdir(parents=True,exist_ok=False);(R/'tmp').mkdir();(R/'source').mkdir()
+result={'run':C['run'],'commands':[],'hardware_access':False,'binary_executed':False,'postflight_errors':[],'success':False}
+env={'PATH':'/usr/bin:/bin','HOME':str(R),'TMPDIR':str(R/'tmp'),'LANG':'C','LC_ALL':'C','PYTHONDONTWRITEBYTECODE':'1'}
+def item(p):
+ p=Path(p);b=p.read_bytes();return {'realpath':str(p.resolve()),'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()}
+def original_bindings():
+ return all(item(p)==e for p,e in {**C['tools'],**C['headers']}.items()) and item(C['opae_config']['path'])=={k:v for k,v in C['opae_config'].items() if k!='path'}
+def persist():
+    (R / 'status.json').write_text(json.dumps(result, indent=2) + '\n')
+
+def live_group(gid):
+    out = []
+    for p in Path('/proc').iterdir():
+        if not p.name.isdigit():
+            continue
+        try:
+            parts = (p / 'stat').read_text().rsplit(')', 1)[1].split()
+            if int(parts[2]) == gid and parts[0] != 'Z':
+                out.append(int(p.name))
+        except (FileNotFoundError, ProcessLookupError, PermissionError):
+            pass
+    return out
+
+def limit_child():
+    os.sched_setaffinity(0, cpus)
+    resource.setrlimit(resource.RLIMIT_AS, (64 * 1024 ** 3, 64 * 1024 ** 3))
+    resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
+
+def native(label, argv):
+    rec = {'label': label, 'argv': argv, 'started': datetime.now(timezone.utc).isoformat()}
+    result['commands'].append(rec)
+    persist()
+    timedout = False
+    descendants_after_leader = False
+    p = None
+    with (R / (label + '.log')).open('xb') as log:
+        try:
+            p = subprocess.Popen(argv, cwd=J, env=env, stdout=log, stderr=subprocess.STDOUT, start_new_session=True, preexec_fn=limit_child)
+            rec['pid'] = p.pid
+            rec['start_ticks'] = (Path('/proc') / str(p.pid) / 'stat').read_text().rsplit(')', 1)[1].split()[19]
+            persist()
+            deadline = time.monotonic() + 120
+            while os.waitid(os.P_PID, p.pid, os.WEXITED | os.WNOHANG | os.WNOWAIT) is None:
+                if (R / 'gate-rejections.jsonl').exists() or ((R / (label + '.log')).exists() and 'IA840F_GATE_REJECTED' in (R / (label + '.log')).read_text(errors='replace')):
+                    raise RuntimeError('owned native callback rejected')
+                if time.monotonic() > deadline:
+                    timedout = True
+                    break
+                time.sleep(0.1)
+            residual = live_group(p.pid)
+            rec['descendants_observed_at_leader_exit'] = residual
+            while residual and (not timedout) and (time.monotonic() < deadline):
+                time.sleep(0.1)
+                residual = live_group(p.pid)
+            if residual:
+                timedout = True
+            descendants_after_leader = bool(residual)
+        finally:
+            if p is not None:
+                if live_group(p.pid):
+                    os.killpg(p.pid, signal.SIGTERM)
+                    end = time.monotonic() + 3
+                    while live_group(p.pid) and time.monotonic() < end:
+                        time.sleep(0.1)
+                    if live_group(p.pid):
+                        os.killpg(p.pid, signal.SIGKILL)
+                rec['native_rc'] = p.wait()
+                rec['timeout'] = timedout
+                rec['descendants_after_leader'] = descendants_after_leader
+                rec['ended'] = datetime.now(timezone.utc).isoformat()
+                persist()
+                rec['owned_group_live_after'] = live_group(p.pid)
+                rec['effective_rc'] = 124 if timedout else 125 if descendants_after_leader or rec['owned_group_live_after'] else rec['native_rc']
+                persist()
+    return rec['effective_rc']
+rc=125
+try:
+ assert original_bindings()
+ mem=int(next(l.split()[1] for l in Path('/proc/meminfo').read_text().splitlines() if l.startswith('MemAvailable:')))*1024
+ disk=shutil.disk_usage(R).free;assert mem>80000000000 and disk>10000000000
+ competing=[]
+ for p in Path('/proc').iterdir():
+  if not p.name.isdigit():continue
+  try:
+   name=(p/'comm').read_text().strip()
+   if name in ('quartus_fit','quartus_syn','quartus_sta','quartus_sh','quartus_asm','qsys-generate','aoc','vsim'):competing.append((int(p.name),name))
+  except (FileNotFoundError,ProcessLookupError,PermissionError):pass
+ assert not competing
+ result['preflight']={'mem_available':mem,'disk_free':disk,'cpus':sorted(cpus),'address_space_limit':64*1024**3,'competing':competing,'pane':os.environ['TMUX_PANE']}
+ for name,e in C['inputs'].items():
+  assert Path(name).name==name
+  b=base64.b64decode(e['base64'],validate=True);assert len(b)==e['bytes'] and hashlib.sha256(b).hexdigest()==e['sha256']
+  with (R/'source'/name).open('xb') as f:f.write(b)
+ out=R/'build/ahls_memory_inspect'
+ commands=[('compiler_version',['/usr/bin/cc','--version']),('cmake_version',['/usr/bin/cmake','--version']),('configure',['/usr/bin/cmake','-S',str(R/'source'),'-B',str(R/'build'),'-G','Unix Makefiles','-DCMAKE_C_COMPILER=/usr/bin/cc','-DCMAKE_MAKE_PROGRAM=/usr/bin/make','-DCMAKE_BUILD_TYPE=Debug','-DOPAE_LIBRARY=/usr/lib64/libopae-c.so','-DOPAE_INCLUDE_DIR=/usr/include']),('compile_link',['/usr/bin/cmake','--build',str(R/'build'),'--target','ahls_memory_inspect','--parallel',str(len(cpus)),'--verbose']),('elf_dynamic',['/usr/bin/readelf','--dynamic',str(out)]),('elf_symbols',['/usr/bin/readelf','--dyn-syms','--wide',str(out)]),('elf_notes',['/usr/bin/readelf','--notes',str(out)])]
+ for label,argv in commands:
+  assert argv[0] in C['tools'] and str(out)!=argv[0]
+  rc=native(label,argv)
+  if rc:raise RuntimeError('native command failed: '+label)
+  if label=='compile_link':out.chmod(0o600)
+ dynamic=(R/'elf_dynamic.log').read_text();needed=re.findall(r'\(NEEDED\).*?\[(.*?)\]',dynamic)
+ assert 'libopae-c.so.2' in needed and 'libc.so.6' in needed,needed
+ result['needed']=needed;result['artifact']={'path':str(out),**item(out),'mode':oct(out.stat().st_mode&0o777)}
+ result['inputs_unchanged']=all((R/'source'/n).read_bytes()==base64.b64decode(e['base64']) for n,e in C['inputs'].items())
+ result['original_bindings_unchanged']=original_bindings()
+ assert result['inputs_unchanged'] and result['original_bindings_unchanged']
+ result['success']=True;rc=0
+except BaseException as e:
+ result['error']=repr(e);rc=rc if rc else 125
+finally:
+ try:
+  result['original_bindings_unchanged']=original_bindings()
+  assert result['original_bindings_unchanged']
+ except BaseException as e:result['postflight_errors'].append(repr(e));result['success']=False;rc=125
+ result['files']={}
+ exports=list(R.glob('*.log'))+[R/'build/CMakeCache.txt',R/'build/CMakeFiles/ahls_memory_inspect.dir/link.txt',R/'build/CMakeFiles/ahls_memory_inspect.dir/flags.make',R/'build/ahls_memory_inspect']
+ exports += list((R/'source').glob('*'))
+ for p in exports:
+  if p.is_file():
+   b=p.read_bytes();result['files'][str(p.relative_to(R))]={'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest(),'base64':base64.b64encode(b).decode()}
+ result['ended']=datetime.now(timezone.utc).isoformat();persist()
+ blob=gzip.compress(json.dumps(result,sort_keys=True).encode(),mtime=0);(R/'result.json.gz').write_bytes(blob)
+ name='ia840f_memory_host_native01'
+ subprocess.run(['tmux','load-buffer','-b',name,'-'],input=blob,check=True)
+ subprocess.run(['tmux','set-buffer','-b',name+'_sha256',hashlib.sha256(blob).hexdigest()],check=True)
+raise SystemExit(rc)
