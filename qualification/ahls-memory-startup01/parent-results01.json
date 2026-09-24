@@ -1,0 +1,78 @@
+{
+  "processes": 525,
+  "categories": {
+    "other": 12,
+    "api_fault": 25,
+    "bit_fault": 448,
+    "invalid_args": 12,
+    "config_reject": 28
+  },
+  "fixture_only": true,
+  "unchanged_prior_source": {
+    "src/host/ahls_memory_inspect.c": {
+      "bytes": 5163,
+      "sha256": "eb36fb35fb3e26087ba9d2bb59d02750a14f7c6fa7ad852378fc20dc268ede2b"
+    },
+    "src/host/ahls_qualification_core.c": {
+      "bytes": 4631,
+      "sha256": "52e7ff9492d0432bfb1e55dceb4368720bbe17c994f6d49a60c67b660454ca74"
+    },
+    "src/host/ahls_qualification_core.h": {
+      "bytes": 1190,
+      "sha256": "fbd6e3c8999bfb803419309954c281a92c4326960d81cce8614305ba6195bf6f"
+    },
+    "src/host/ia840f_dma_capabilities.h": {
+      "bytes": 2332,
+      "sha256": "908907f046da9ed16fe6d10e9433bd84e85807ea80be6882c568de35d34a4c49"
+    },
+    "tests/ia840f/memory_host/mock_memory_opae.c": {
+      "bytes": 4743,
+      "sha256": "363499385a09f27e1b3f5bf75170e7a189492d7649666bbe9237485d88399a1e"
+    },
+    "tests/ia840f/memory_host/test_memory_frontend.py": {
+      "bytes": 2611,
+      "sha256": "9a0d312a7f08b835debc489f7f80c29bca3276d9e6a4998e7e14c90f1a8f4d0c"
+    }
+  },
+  "red_constructor_observed": true,
+  "fifo_failure_preserved": "fifo-red01.json",
+  "corrected_fifo_rejected": {
+    "name": "reject-fifo",
+    "argv": [
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-startup01/build-green02/memory_startup",
+      "--config",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-startup01/matrix01/fifo",
+      "--module",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/ahls-memory-startup01/build-green02/libmemory_entry_inert.so",
+      "--inspect-qualified-memory-afu",
+      "0000:ab:1f.7"
+    ],
+    "rc": 2,
+    "stdout": "",
+    "stderr": "FAIL configuration; no default or backend fallback.\n"
+  },
+  "real_opae_loaded": false,
+  "hardware_access": false,
+  "source": {
+    "src/host/ahls_memory_startup.c": {
+      "bytes": 6787,
+      "sha256": "6e3623c9bc0da42d6d978f35f30dc3f9f8be94631f352579a57f957c02b77992"
+    },
+    "src/host/ahls_memory_entry.c": {
+      "bytes": 528,
+      "sha256": "3ef7c000cdeb91d4caadcf40ceb7a659d82ba209f4c5ac8fe8c0dffe8eeb0b92"
+    },
+    "tests/ia840f/memory_startup/CMakeLists.txt": {
+      "bytes": 3169,
+      "sha256": "7d53be254394fa448894a3271d8c6eb230914f0bbf4aa90bae58964c76c1f984"
+    },
+    "tests/ia840f/memory_startup/test_startup.py": {
+      "bytes": 6325,
+      "sha256": "9890ec921ef97ce826f63ee2cd1bf2550a83578e8ce41fdeefdde3c5a28ec2d1"
+    },
+    "tests/ia840f/memory_startup/inert_startup.c": {
+      "bytes": 1734,
+      "sha256": "0b7bde10841afba49673530e2cf9ab31b6d3d77e26a3cfca41973afa709c5403"
+    }
+  }
+}
