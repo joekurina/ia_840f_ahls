@@ -1,0 +1,82 @@
+{
+  "scope": "One read each of existing dfl-emif inf0_init_done and inf1_init_done, no other device-backed attribute",
+  "boot": "598f7b27-1798-4a88-8a79-9e4a2659c64d",
+  "device": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0/fpga_region/region0/dfl-fme.0/dfl_dev.5",
+  "feature_id": "0x9",
+  "access": "Two aligned R64 reads of static EMIF_STATUS at feature+0x8 (source-derived PF0 BAR0 0x15008), via bound kernel accessor, no raw BAR",
+  "clock": "static clk_csr/rst_n_csr[0], not AFU bank0 CSR clock",
+  "decoded_bits": [
+    0,
+    1
+  ],
+  "excluded": [
+    "cal_fail attributes: driver bits8/9 do not match two-channel RTL bits2/3",
+    "bridge state: no enable_show so default enabled is not measured hardware state",
+    "VF device open",
+    "AFU MMIO",
+    "reset",
+    "write",
+    "retry"
+  ],
+  "module": {
+    "path": "/usr/lib/modules/5.14.0-687.15.1.el9_8.x86_64/extra/dfl-emif.ko",
+    "sha256": "a4c380d2ce62d75e198ea9f56eb153cb6140c4ab26d7099af4104fedea065aa9",
+    "loaded_note": "040000001400000003000000474e550061c6d0685e6cd38c270c840f6e31641d5b26f877",
+    "elf_notes": "\nDisplaying notes found in: .note.gnu.build-id\n  Owner                Data size \tDescription\n  GNU                  0x00000014\tNT_GNU_BUILD_ID (unique build ID bitstring)\n    Build ID: 61c6d0685e6cd38c270c840f6e31641d5b26f877\n\nDisplaying notes found in: .note.Linux\n  Owner                Data size \tDescription\n  Linux                0x00000004\tfunc\n   description data: 00 00 00 00 \n  Linux                0x0000001d\tOPEN\n   description data: 35 2e 31 34 2e 30 2d 36 38 37 2e 31 35 2e 31 2e 65 6c 39 5f 38 2e 78 38 36 5f 36 34 00 \n"
+  },
+  "rtl_bindings": {
+    "src/board/ia840f/top.sv": {
+      "bytes": 70433,
+      "kind": "file",
+      "sha256": "6061a38dd44ed4ae935f3b0ee89a664139205446b94a441ea384e921b7be0a9d"
+    },
+    "src/includes/fabric_width_pkg.sv": {
+      "bytes": 3924,
+      "kind": "file",
+      "sha256": "4b98d4dd1d5de1b4aa42f557d3287fd1f2f2148158d357708c849788a6279ba6"
+    },
+    "ofs-common/src/fpga_family/agilex/mem_ss/mem_ss_csr.sv": {
+      "bytes": 7455,
+      "kind": "file",
+      "sha256": "df2a7b23ec4d7e5ca25679025dbc6d8420afdecb289fd9b5ef4eb6bf68bd834e"
+    },
+    "ofs-common/src/fpga_family/agilex/mem_ss/mem_ss_top.sv": {
+      "bytes": 12615,
+      "kind": "file",
+      "sha256": "b9b0deb0582d554cb2178ed4ee090c088d9841951b19d1223cd4ca96bd9498a1"
+    },
+    "ofs-common/src/fpga_family/agilex/mem_ss/includes/ofs_fim_mem_if_pkg.sv": {
+      "bytes": 6026,
+      "kind": "file",
+      "sha256": "f816e463f345769260b476bea663ac63fcbd6f087a191facbd69be6db389fff1"
+    }
+  },
+  "compiled_attrs": {
+    "emif_attr_inf0_init_done": {
+      "symbol_offset": 1888,
+      "size": 40,
+      "shift": 0,
+      "index": 0
+    },
+    "emif_attr_inf0_cal_fail": {
+      "symbol_offset": 1376,
+      "size": 40,
+      "shift": 8,
+      "index": 0
+    },
+    "emif_attr_inf1_init_done": {
+      "symbol_offset": 1824,
+      "size": 40,
+      "shift": 0,
+      "index": 1
+    },
+    "emif_attr_inf1_cal_fail": {
+      "symbol_offset": 1312,
+      "size": 40,
+      "shift": 8,
+      "index": 1
+    }
+  },
+  "no_hang_claim": false,
+  "authority": "User directs next concrete source-bound bring-up step under full continuation approval; no speculative access or recovery."
+}

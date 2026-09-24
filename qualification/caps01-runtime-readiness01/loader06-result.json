@@ -1,0 +1,432 @@
+{
+  "success": true,
+  "commands": [
+    {
+      "label": "loader-files-only",
+      "argv": [
+        "/home/uwb_student00/ahls/apptainer/bin/apptainer",
+        "exec",
+        "--containall",
+        "--cleanenv",
+        "--no-home",
+        "--no-mount",
+        "sys,hostfs,cwd,bind-paths",
+        "--no-eval",
+        "--workdir",
+        "/home/uwb_student00/ahls/new_BSP/work_caps01_runtime_readiness01/loader06/scratch",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_caps01_vfio01/target01:/work:ro",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_caps01_runtime_readiness01/loader06:/diag:rw",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_caps01_runtime_readiness01/loader06/empty:/empty:ro",
+        "--pwd",
+        "/empty",
+        "/home/uwb_student00/ahls/ubuntu-ahls.sif",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "-S",
+        "/diag/inner.py"
+      ],
+      "pid": 5898,
+      "rc": 0,
+      "output": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "started": "2026-09-24T20:04:40.044693+00:00",
+  "boot": "598f7b27-1798-4a88-8a79-9e4a2659c64d",
+  "pane": "%11",
+  "hardware_access": false,
+  "application_executed": false,
+  "opae_loaded": false,
+  "inner": {
+    "success": true,
+    "hardware_access": false,
+    "application_executed": false,
+    "opae_loaded": false,
+    "commands": [
+      {
+        "label": "dynamic-1",
+        "argv": [
+          "/usr/bin/readelf",
+          "-dW",
+          "/work/build/ahls_memory_vfio_startup"
+        ],
+        "rc": 0,
+        "sha256": "33c9b1c86821c5e6ca5fcdd8de1ba715ca0e525594e3abea832f65fea62b117a"
+      },
+      {
+        "label": "dynamic-2",
+        "argv": [
+          "/usr/bin/readelf",
+          "-dW",
+          "/work/build/libahls_memory_entry_vfio_strict.so"
+        ],
+        "rc": 0,
+        "sha256": "76a42779c8090c7d8e63ffb26744cc51cb1f557825108cf2663828909cf1e369"
+      },
+      {
+        "label": "dynamic-3",
+        "argv": [
+          "/usr/bin/readelf",
+          "-dW",
+          "/work/sdk-build/lib/libopae-v.so"
+        ],
+        "rc": 0,
+        "sha256": "789fb6d324eede61453f3275be66aba1d0954ec81b9876d4e92ef5e37e70ef2d"
+      },
+      {
+        "label": "dynamic-4",
+        "argv": [
+          "/usr/bin/readelf",
+          "-dW",
+          "/work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5.1.0"
+        ],
+        "rc": 0,
+        "sha256": "0312ce38eef2324a02852f8f89c19948c9e9991ec24f9f451e3571e1aebbe83f"
+      },
+      {
+        "label": "dynamic-5",
+        "argv": [
+          "/usr/bin/readelf",
+          "-dW",
+          "/usr/lib/x86_64-linux-gnu/libc.so.6"
+        ],
+        "rc": 0,
+        "sha256": "8fc44e6003c566f74a61fb979514d8abeb1a0d3c62e53a6dbc792158eb86cbd6"
+      },
+      {
+        "label": "dynamic-6",
+        "argv": [
+          "/usr/bin/readelf",
+          "-dW",
+          "/work/sdk-build/lib/libopae-c.so.2.13.0"
+        ],
+        "rc": 0,
+        "sha256": "491c878aad04806f0d595ab39046a9ec48e6b2e40c4dcbd16625ec666375d285"
+      },
+      {
+        "label": "dynamic-7",
+        "argv": [
+          "/usr/bin/readelf",
+          "-dW",
+          "/work/sdk-build/lib/libopaevfio.so.2.13.0"
+        ],
+        "rc": 0,
+        "sha256": "410ae85ddc1c1c3262b56488ef9c958f11a90d52514136788a7b36d9b94f9b45"
+      },
+      {
+        "label": "dynamic-8",
+        "argv": [
+          "/usr/bin/readelf",
+          "-dW",
+          "/work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1.3.0"
+        ],
+        "rc": 0,
+        "sha256": "65f429926481cd0bf58345ea57155ac10641c4ad903082ef33319762089c2375"
+      },
+      {
+        "label": "dynamic-9",
+        "argv": [
+          "/usr/bin/readelf",
+          "-dW",
+          "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2"
+        ],
+        "rc": 0,
+        "sha256": "e708c3a35b3f0962b2caa446758714b9cfc945ec7c4bfbaf141054c6c73d02ab"
+      },
+      {
+        "label": "dynamic-10",
+        "argv": [
+          "/usr/bin/readelf",
+          "-dW",
+          "/work/sdk-build/lib/libopaemem.so.2.13.0"
+        ],
+        "rc": 0,
+        "sha256": "de3bf18766598eb9d6ab303d0cef99daa7e3a2fe00242e409626cce5cff7f2ff"
+      }
+    ],
+    "objects": {
+      "/work/build/ahls_memory_vfio_startup": {
+        "path": "/work/build/ahls_memory_vfio_startup",
+        "realpath": "/work/build/ahls_memory_vfio_startup",
+        "sha256": "0362da0909b8b32efbaa882141af5623272b7b0874a5dcf0045f5cd713f03033",
+        "bytes": 36592,
+        "mode": "0o600",
+        "needed": [
+          "libjson-c.so.5",
+          "libc.so.6"
+        ],
+        "runpaths_raw": [
+          "/work/prefix/usr/lib/x86_64-linux-gnu"
+        ],
+        "runpaths_effective": [
+          "/work/prefix/usr/lib/x86_64-linux-gnu"
+        ],
+        "resolved": {
+          "libjson-c.so.5": "/work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5.1.0",
+          "libc.so.6": "/usr/lib/x86_64-linux-gnu/libc.so.6"
+        }
+      },
+      "/work/build/libahls_memory_entry_vfio_strict.so": {
+        "path": "/work/build/libahls_memory_entry_vfio_strict.so",
+        "realpath": "/work/build/libahls_memory_entry_vfio_strict.so",
+        "sha256": "18c85ca19434c91bc9b90fff74279c5bba904134f77d8d22851aecbcd19bebf8",
+        "bytes": 26160,
+        "mode": "0o600",
+        "needed": [
+          "libopae-c.so.2",
+          "libc.so.6"
+        ],
+        "runpaths_raw": [
+          "/work/sdk-build/lib",
+          "/work/prefix/usr/lib/x86_64-linux-gnu"
+        ],
+        "runpaths_effective": [
+          "/work/sdk-build/lib",
+          "/work/prefix/usr/lib/x86_64-linux-gnu"
+        ],
+        "resolved": {
+          "libopae-c.so.2": "/work/sdk-build/lib/libopae-c.so.2.13.0",
+          "libc.so.6": "/usr/lib/x86_64-linux-gnu/libc.so.6"
+        }
+      },
+      "/work/sdk-build/lib/libopae-v.so": {
+        "path": "/work/sdk-build/lib/libopae-v.so",
+        "realpath": "/work/sdk-build/lib/libopae-v.so",
+        "sha256": "20dfe1d7a5c1089a89e6c429742542888f490593b49ed2f4424d29d4121adfa5",
+        "bytes": 192032,
+        "mode": "0o755",
+        "needed": [
+          "libopae-c.so.2",
+          "libopaevfio.so.2",
+          "libuuid.so.1",
+          "libc.so.6"
+        ],
+        "runpaths_raw": [
+          "/work/sdk-build/lib",
+          "/work/prefix/usr/lib/x86_64-linux-gnu",
+          ""
+        ],
+        "runpaths_effective": [
+          "/work/sdk-build/lib",
+          "/work/prefix/usr/lib/x86_64-linux-gnu",
+          "/empty"
+        ],
+        "resolved": {
+          "libopae-c.so.2": "/work/sdk-build/lib/libopae-c.so.2.13.0",
+          "libopaevfio.so.2": "/work/sdk-build/lib/libopaevfio.so.2.13.0",
+          "libuuid.so.1": "/work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1.3.0",
+          "libc.so.6": "/usr/lib/x86_64-linux-gnu/libc.so.6"
+        }
+      },
+      "/work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5.1.0": {
+        "path": "/work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5",
+        "realpath": "/work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5.1.0",
+        "sha256": "deb38a09f3c253c1d4046f53085d0ed3e9b2496a1a91605c065900fde808306f",
+        "bytes": 72080,
+        "mode": "0o644",
+        "needed": [
+          "libc.so.6",
+          "ld-linux-x86-64.so.2"
+        ],
+        "runpaths_raw": [],
+        "runpaths_effective": [],
+        "resolved": {
+          "libc.so.6": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+          "ld-linux-x86-64.so.2": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2"
+        }
+      },
+      "/usr/lib/x86_64-linux-gnu/libc.so.6": {
+        "path": "/lib/x86_64-linux-gnu/libc.so.6",
+        "realpath": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+        "sha256": "e01b1ce7be2987f3b8560e26d0df2623f9dd5cec17be923ae28a785bc0d32d50",
+        "bytes": 2220400,
+        "mode": "0o755",
+        "needed": [
+          "ld-linux-x86-64.so.2"
+        ],
+        "runpaths_raw": [],
+        "runpaths_effective": [],
+        "resolved": {
+          "ld-linux-x86-64.so.2": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2"
+        }
+      },
+      "/work/sdk-build/lib/libopae-c.so.2.13.0": {
+        "path": "/work/sdk-build/lib/libopae-c.so.2",
+        "realpath": "/work/sdk-build/lib/libopae-c.so.2.13.0",
+        "sha256": "1c488ac484737058a38078838634a4d35a27b743f62f7812f61971f7ccbc779e",
+        "bytes": 595008,
+        "mode": "0o755",
+        "needed": [
+          "libjson-c.so.5",
+          "libuuid.so.1",
+          "libc.so.6"
+        ],
+        "runpaths_raw": [
+          "/work/prefix/usr/lib/x86_64-linux-gnu",
+          ""
+        ],
+        "runpaths_effective": [
+          "/work/prefix/usr/lib/x86_64-linux-gnu",
+          "/empty"
+        ],
+        "resolved": {
+          "libjson-c.so.5": "/work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5.1.0",
+          "libuuid.so.1": "/work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1.3.0",
+          "libc.so.6": "/usr/lib/x86_64-linux-gnu/libc.so.6"
+        }
+      },
+      "/work/sdk-build/lib/libopaevfio.so.2.13.0": {
+        "path": "/work/sdk-build/lib/libopaevfio.so.2",
+        "realpath": "/work/sdk-build/lib/libopaevfio.so.2.13.0",
+        "sha256": "86865bdd293d78fcbaa3af1ccf5d6da93df9b61ac23a7fec8f5e50f1d63ea799",
+        "bytes": 87968,
+        "mode": "0o755",
+        "needed": [
+          "libopaemem.so.2",
+          "libc.so.6"
+        ],
+        "runpaths_raw": [
+          "/work/sdk-build/lib",
+          ""
+        ],
+        "runpaths_effective": [
+          "/work/sdk-build/lib",
+          "/empty"
+        ],
+        "resolved": {
+          "libopaemem.so.2": "/work/sdk-build/lib/libopaemem.so.2.13.0",
+          "libc.so.6": "/usr/lib/x86_64-linux-gnu/libc.so.6"
+        }
+      },
+      "/work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1.3.0": {
+        "path": "/work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1",
+        "realpath": "/work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1.3.0",
+        "sha256": "4472cf91dbc01395761fb45d0f4b25f6241406fe54cbf540c13755a3706a7b17",
+        "bytes": 30936,
+        "mode": "0o644",
+        "needed": [
+          "libc.so.6",
+          "ld-linux-x86-64.so.2"
+        ],
+        "runpaths_raw": [],
+        "runpaths_effective": [],
+        "resolved": {
+          "libc.so.6": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+          "ld-linux-x86-64.so.2": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2"
+        }
+      },
+      "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2": {
+        "path": "/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+        "realpath": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+        "sha256": "8d06f393f4a93bcf9b81145a259524d66a95522a646bf8d7e05b6ffdf2e63dcc",
+        "bytes": 240936,
+        "mode": "0o755",
+        "needed": [],
+        "runpaths_raw": [],
+        "runpaths_effective": [],
+        "resolved": {}
+      },
+      "/work/sdk-build/lib/libopaemem.so.2.13.0": {
+        "path": "/work/sdk-build/lib/libopaemem.so.2",
+        "realpath": "/work/sdk-build/lib/libopaemem.so.2.13.0",
+        "sha256": "9d3f91a93ac1dc378284a1eb844455c62c5db695de144cf916ea57a8a40e9b99",
+        "bytes": 74496,
+        "mode": "0o755",
+        "needed": [
+          "libc.so.6"
+        ],
+        "runpaths_raw": [],
+        "runpaths_effective": [],
+        "resolved": {
+          "libc.so.6": "/usr/lib/x86_64-linux-gnu/libc.so.6"
+        }
+      }
+    },
+    "dev_entries": [
+      "fd",
+      "mqueue",
+      "null",
+      "ptmx",
+      "pts",
+      "random",
+      "shm",
+      "stderr",
+      "stdin",
+      "stdout",
+      "tty",
+      "urandom",
+      "zero"
+    ],
+    "empty_runpath_resolution": "/empty (verified empty and read-only)",
+    "mounts_sha256": "e49a7a981b43e94756b9390f29497acb8309d2f534eaaa1d9072b129b0de33d3",
+    "root_bindings": {
+      "build/ahls_memory_vfio_startup": "0362da0909b8b32efbaa882141af5623272b7b0874a5dcf0045f5cd713f03033",
+      "build/libahls_memory_entry_vfio_strict.so": "18c85ca19434c91bc9b90fff74279c5bba904134f77d8d22851aecbcd19bebf8",
+      "sdk-build/lib/libopae-c.so.2.13.0": "1c488ac484737058a38078838634a4d35a27b743f62f7812f61971f7ccbc779e",
+      "sdk-build/lib/libopae-v.so": "20dfe1d7a5c1089a89e6c429742542888f490593b49ed2f4424d29d4121adfa5",
+      "source/config/ia840f_caps01_vfio.cfg": "f947ee14eabace1d1ea0a7d5af5d11bc74ee7a5f17ec6de4fa317c25ac82b397"
+    },
+    "proposed_LD_LIBRARY_PATH": "/work/sdk-build/lib:/work/prefix/usr/lib/x86_64-linux-gnu",
+    "plugin_prefixes": {
+      "/work/install/lib64/opae/libopae-v.so": {
+        "exists": false,
+        "is_symlink": false
+      },
+      "/work/install/lib/opae/libopae-v.so": {
+        "exists": false,
+        "is_symlink": false
+      },
+      "/usr/lib64/opae/libopae-v.so": {
+        "exists": false,
+        "is_symlink": false
+      },
+      "/usr/lib/opae/libopae-v.so": {
+        "exists": false,
+        "is_symlink": false
+      }
+    },
+    "launcher_mode": "0o600",
+    "launcher_executable": false,
+    "config_sha256": "f947ee14eabace1d1ea0a7d5af5d11bc74ee7a5f17ec6de4fa317c25ac82b397",
+    "config": {
+      "configurations": {
+        "ia840f_caps01_vfio": {
+          "enabled": true,
+          "platform": "IA-840F CAPS01 VFIO-only candidate; not installed",
+          "devices": [
+            {
+              "name": "ia840f_pf0_vf0",
+              "id": [
+                "0x8086",
+                "0xbccf",
+                "0x8086",
+                "0x1771"
+              ]
+            }
+          ],
+          "opae": {
+            "plugin": [
+              {
+                "enabled": true,
+                "module": "libopae-v.so",
+                "devices": [
+                  "ia840f_pf0_vf0"
+                ],
+                "configuration": {}
+              }
+            ]
+          }
+        }
+      },
+      "configs": [
+        "ia840f_caps01_vfio"
+      ]
+    }
+  },
+  "inputs_unchanged": true,
+  "ended": "2026-09-24T20:04:41.645353+00:00"
+}
