@@ -1,0 +1,38 @@
+{
+  "hardware_access": false,
+  "compile_argv": [
+    "cc",
+    "-std=c11",
+    "-O2",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-I/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/dma_host/test_lifetime_hold.c",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/ia840f_dma_lifetime.c",
+    "-o",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps01-dma-host01/test-lifetime-hold"
+  ],
+  "compile_rc": 0,
+  "first": {
+    "pid": 3720683,
+    "signal": 19,
+    "state": "T (stopped)",
+    "held_files": [
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps01-dma-host01/hold-dummy03"
+    ]
+  },
+  "after_term_cont": {
+    "pid": 3720683,
+    "signal": 19,
+    "state": "T (stopped)",
+    "held_files": [
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps01-dma-host01/hold-dummy03"
+    ]
+  },
+  "success": true,
+  "fixture_cleanup_signal": "SIGKILL of exact local inert child only",
+  "final_rc": -9,
+  "stdout": "INERT owner fd=3 memory=0x7f61653cb000 sentinel=93\n",
+  "stderr": "HOLD_UNKNOWN_DMA pid=3720683 reason=inert regular-file/RAM owner; no accelerator phase=4 go_possible=1 local_quiescent=0 status_before=0x0000000000000000 status_last=0x0000000000000000 polls=0; buffers/FDs retained; no further device access or cleanup.\n"
+}

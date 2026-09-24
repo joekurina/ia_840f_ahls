@@ -1,0 +1,172 @@
+{
+  "success": true,
+  "commands": [
+    {
+      "label": "ownership-before",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_caps01_jtag_w13_01/quiesce07/scan.py"
+      ],
+      "pid": 8128,
+      "rc": 0,
+      "output": "{\"d_state\": [], \"relevant\": [], \"holders\": []}\n",
+      "sha256": "61d6558fca4397cc52db1faaa08568f2ad7aae7d65a4e92a9253b3f8dce071a3"
+    },
+    {
+      "label": "one-bank0-dma-roundtrip",
+      "argv": [
+        "/home/uwb_student00/ahls/apptainer/bin/apptainer",
+        "exec",
+        "--containall",
+        "--cleanenv",
+        "--no-home",
+        "--no-mount",
+        "sys,hostfs,cwd,bind-paths",
+        "--no-eval",
+        "--workdir",
+        "/home/uwb_student00/ahls/new_BSP/work_caps01_dma_host01/bank0-07/scratch",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_caps01_vfio01/target01:/work:ro",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_caps01_dma_host01/build03:/dma:ro",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_caps01_dma_host01/bank0-07:/diag:rw",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_caps01_dma_host01/bank0-07/empty:/empty:ro",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_caps01_dma_host01/bank0-07/exec:/exec:ro",
+        "--bind",
+        "/sys:/sys:ro",
+        "--bind",
+        "/dev/vfio/vfio:/dev/vfio/vfio:rw",
+        "--bind",
+        "/dev/vfio/76:/dev/vfio/76:rw",
+        "--pwd",
+        "/empty",
+        "/home/uwb_student00/ahls/ubuntu-ahls.sif",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "-S",
+        "/diag/inner.py"
+      ],
+      "pid": 8132,
+      "started": "2026-09-24T21:45:11.303062+00:00",
+      "start_ticks": "775116",
+      "rc": 0,
+      "output": "FPGA Test: one bank0 64-byte H2D/D2H; standard VFIO lifecycle included.\n",
+      "sha256": "131b39f1ad46f28a194e0003ec27b7f66b21a7540e21e44b3052d71a63ef849b"
+    },
+    {
+      "label": "ownership-after",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_caps01_jtag_w13_01/quiesce07/scan.py"
+      ],
+      "pid": 8189,
+      "rc": 0,
+      "output": "{\"d_state\": [], \"relevant\": [], \"holders\": []}\n",
+      "sha256": "61d6558fca4397cc52db1faaa08568f2ad7aae7d65a4e92a9253b3f8dce071a3"
+    }
+  ],
+  "started": "2026-09-24T21:45:10.109540+00:00",
+  "boot": "598f7b27-1798-4a88-8a79-9e4a2659c64d",
+  "pane": "%18",
+  "application_started": true,
+  "manual_reset": false,
+  "retry": false,
+  "preflight06_sha256": "f707c78aff97e29eea1a42dca301532af3fc312b89c9f36b7e2746d7244fbc20",
+  "new_artifacts": {
+    "/home/uwb_student00/ahls/new_BSP/work_caps01_dma_host01/build03/build/ahls_memory_dma_vfio_startup": "b34b3d9026e87a248ef24fdfbf2cd5c7e2add9cca0ecbe956966746d9334fb1f",
+    "/home/uwb_student00/ahls/new_BSP/work_caps01_dma_host01/build03/build/libahls_memory_dma_entry_vfio_strict.so": "507ad139e3f3c24a48e34f1b8ff72c2e32a345f7f9b10529e6e6f2ad906dd829"
+  },
+  "ownership_before": {
+    "d_state": [],
+    "relevant": [],
+    "holders": []
+  },
+  "inner": {
+    "success": true,
+    "application_started": true,
+    "started": "2026-09-24T21:45:11.729756+00:00",
+    "runtime_preflight_passed": true,
+    "nodes": [
+      "76",
+      "vfio"
+    ],
+    "mountinfo_sha256": "b75023a7b13ea9ea70eb760f095e6665c02e8530a76c5ca439b7ff52881069be",
+    "argv": [
+      "/exec/ahls_memory_dma_vfio_startup",
+      "--config",
+      "/work/source/config/ia840f_caps01_vfio.cfg",
+      "--module",
+      "/dma/build/libahls_memory_dma_entry_vfio_strict.so",
+      "--roundtrip-qualified-memory-afu",
+      "0000:4f:00.2",
+      "0"
+    ],
+    "environment": {
+      "PATH": "/usr/bin:/bin",
+      "HOME": "/diag",
+      "TMPDIR": "/diag/tmp",
+      "LANG": "C",
+      "LC_ALL": "C",
+      "LD_LIBRARY_PATH": "/work/sdk-build/lib:/work/prefix/usr/lib/x86_64-linux-gnu",
+      "LD_DEBUG": "libs",
+      "LD_DEBUG_OUTPUT": "/diag/loader"
+    },
+    "process": {
+      "application_started": true,
+      "success": true,
+      "retained_owner": false,
+      "argv": [
+        "/exec/ahls_memory_dma_vfio_startup",
+        "--config",
+        "/work/source/config/ia840f_caps01_vfio.cfg",
+        "--module",
+        "/dma/build/libahls_memory_dma_entry_vfio_strict.so",
+        "--roundtrip-qualified-memory-afu",
+        "0000:4f:00.2",
+        "0"
+      ],
+      "pid": 16,
+      "start_ticks": "775162",
+      "native_rc": 0,
+      "execution_state": "EXITED"
+    },
+    "retained_owner": false,
+    "native_rc": 0,
+    "native_log": "FPGA Test identity read 0x0\nFPGA Test identity read 0x8\nFPGA Test identity read 0x10\nFPGA Test capability read 0x98\nFPGA Test capability read 0xa0\nFPGA Test capability read 0xa8\nFPGA Test capability read 0xb0\nFPGA Test DMA submit bank=0 mode=1 bytes=64 ddr_offset=0x10000 iova=0x0000000000000040\nFPGA Test DMA locally retired mode=1 status=0x000000011041000a polls=2\nFPGA Test DMA submit bank=0 mode=2 bytes=64 ddr_offset=0x10000 iova=0x0000000000001040\nFPGA Test DMA locally retired mode=2 status=0x000000022041000a polls=2\nFPGA Test data verified bank=0 bytes=64 source_page=4096 destination_page=4096\nFPGA Test DMA roundtrip PASSED: bank=0 bytes=64 transfers=2 verified_payload_and_guards=1\nNo kernel launch, simultaneous-bank, sustained or full-DDR qualification. Implicit VFIO resets apply.\n",
+    "native_log_sha256": "a5aa74f69723eaa0d0f41db1d85f74487a0ce681af79a4921ae8aab80bf46fbe",
+    "loader_logs": {
+      "loader.16": {
+        "sha256": "79d7edcd06ef103e7d2d2193fa674bca514547d0902a0b4e588b462b8f64c6e1",
+        "bytes": 8747,
+        "text": "        16:\tfind library=libjson-c.so.5 [0]; searching\n        16:\t search path=/work/sdk-build/lib/glibc-hwcaps/x86-64-v4:/work/sdk-build/lib/glibc-hwcaps/x86-64-v3:/work/sdk-build/lib/glibc-hwcaps/x86-64-v2:/work/sdk-build/lib/tls/haswell/avx512_1/x86_64:/work/sdk-build/lib/tls/haswell/avx512_1:/work/sdk-build/lib/tls/haswell/x86_64:/work/sdk-build/lib/tls/haswell:/work/sdk-build/lib/tls/avx512_1/x86_64:/work/sdk-build/lib/tls/avx512_1:/work/sdk-build/lib/tls/x86_64:/work/sdk-build/lib/tls:/work/sdk-build/lib/haswell/avx512_1/x86_64:/work/sdk-build/lib/haswell/avx512_1:/work/sdk-build/lib/haswell/x86_64:/work/sdk-build/lib/haswell:/work/sdk-build/lib/avx512_1/x86_64:/work/sdk-build/lib/avx512_1:/work/sdk-build/lib/x86_64:/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/glibc-hwcaps/x86-64-v4/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/glibc-hwcaps/x86-64-v3/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/glibc-hwcaps/x86-64-v2/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/haswell/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/haswell/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/haswell/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/haswell/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/haswell/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/haswell/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/haswell/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/haswell/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/libjson-c.so.5\n        16:\t search path=/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v4:/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v3:/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v2:/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/avx512_1/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/avx512_1:/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell:/work/prefix/usr/lib/x86_64-linux-gnu/tls/avx512_1/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/tls/avx512_1:/work/prefix/usr/lib/x86_64-linux-gnu/tls/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/tls:/work/prefix/usr/lib/x86_64-linux-gnu/haswell/avx512_1/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/haswell/avx512_1:/work/prefix/usr/lib/x86_64-linux-gnu/haswell/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/haswell:/work/prefix/usr/lib/x86_64-linux-gnu/avx512_1/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/avx512_1:/work/prefix/usr/lib/x86_64-linux-gnu/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu\t\t(RUNPATH from file /exec/ahls_memory_dma_vfio_startup)\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v4/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v3/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v2/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/haswell/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/haswell/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/haswell/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/haswell/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5\n        16:\t\n        16:\tfind library=libc.so.6 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libc.so.6\n        16:\t search path=/work/prefix/usr/lib/x86_64-linux-gnu\t\t(RUNPATH from file /exec/ahls_memory_dma_vfio_startup)\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/libc.so.6\n        16:\t search path=/work/prefix/usr/lib/x86_64-linux-gnu\t\t(RUNPATH from file /exec/ahls_memory_dma_vfio_startup)\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/libc.so.6\n        16:\t search cache=/etc/ld.so.cache\n        16:\t  trying file=/lib/x86_64-linux-gnu/libc.so.6\n        16:\t\n        16:\t\n        16:\tcalling init: /lib64/ld-linux-x86-64.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /lib/x86_64-linux-gnu/libc.so.6\n        16:\t\n        16:\t\n        16:\tcalling init: /work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5\n        16:\t\n        16:\t\n        16:\tinitialize program: /exec/ahls_memory_dma_vfio_startup\n        16:\t\n        16:\t\n        16:\ttransferring control: /exec/ahls_memory_dma_vfio_startup\n        16:\t\n        16:\tfind library=libopae-c.so.2 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libopae-c.so.2\n        16:\t\n        16:\tfind library=libuuid.so.1 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libuuid.so.1\n        16:\t search path=/work/prefix/usr/lib/x86_64-linux-gnu\t\t(RUNPATH from file /exec/ahls_memory_dma_vfio_startup)\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1\n        16:\t\n        16:\t\n        16:\tcalling init: /work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1\n        16:\t\n        16:\t\n        16:\tcalling init: /work/sdk-build/lib/libopae-c.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /dma/build/libahls_memory_dma_entry_vfio_strict.so\n        16:\t\n        16:\tfind library=libopae-v.so [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libopae-v.so\n        16:\t\n        16:\tfind library=libopaevfio.so.2 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libopaevfio.so.2\n        16:\t\n        16:\tfind library=libopaemem.so.2 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libopaemem.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /work/sdk-build/lib/libopaemem.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /work/sdk-build/lib/libopaevfio.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /work/sdk-build/lib/libopae-v.so\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/sdk-build/lib/libopae-v.so [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/sdk-build/lib/libopaevfio.so.2 [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/sdk-build/lib/libopaemem.so.2 [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /exec/ahls_memory_dma_vfio_startup [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /dma/build/libahls_memory_dma_entry_vfio_strict.so [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/sdk-build/lib/libopae-c.so.2 [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5 [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1 [0]\n        16:\t\n"
+      }
+    },
+    "ended": "2026-09-24T21:45:12.942933+00:00"
+  },
+  "native_rc": 0,
+  "ownership_after": {
+    "d_state": [],
+    "relevant": [],
+    "holders": []
+  },
+  "drivers_after": {
+    "0000:4f:00.0": "dfl-pci",
+    "0000:4f:00.1": "vfio-pci",
+    "0000:4f:00.2": "vfio-pci"
+  },
+  "original_files_unchanged": true,
+  "boot_after": "598f7b27-1798-4a88-8a79-9e4a2659c64d",
+  "ended": "2026-09-24T21:45:13.139586+00:00"
+}

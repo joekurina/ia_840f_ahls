@@ -1,0 +1,369 @@
+{
+  "metadata_only": true,
+  "source_file": "dma-build03-result.json",
+  "source_bytes": 154597,
+  "source_sha256": "483dea60dd7f386dd67b391779730b6033f30d18d4ac4a2233acebb16779bbea",
+  "transformation": "Remove only dictionary keys named base64 recursively; retain all other fields. Not an executable build receipt replacement.",
+  "result": {
+    "success": true,
+    "commands": [
+      {
+        "label": "dma-frontend-compile-only",
+        "argv": [
+          "/home/uwb_student00/ahls/apptainer/bin/apptainer",
+          "exec",
+          "--containall",
+          "--cleanenv",
+          "--no-home",
+          "--no-mount",
+          "sys,hostfs,cwd,bind-paths",
+          "--no-eval",
+          "--workdir",
+          "/home/uwb_student00/ahls/new_BSP/work_caps01_dma_host01/build03/scratch",
+          "--bind",
+          "/home/uwb_student00/ahls/new_BSP/work_caps01_vfio01/target01:/work:ro",
+          "--bind",
+          "/home/uwb_student00/opae-sdk:/sdk:ro",
+          "--bind",
+          "/home/uwb_student00/ahls/new_BSP/work_caps01_dma_host01/build03:/diag:rw",
+          "--bind",
+          "/home/uwb_student00/ahls/new_BSP/work_caps01_dma_host01/build03/empty:/empty:ro",
+          "--pwd",
+          "/empty",
+          "/home/uwb_student00/ahls/ubuntu-ahls.sif",
+          "/usr/bin/python3",
+          "-I",
+          "-B",
+          "-S",
+          "/diag/inner.py"
+        ],
+        "pid": 7026,
+        "rc": 0,
+        "output": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "started": "2026-09-24T21:25:02.239667+00:00",
+    "boot": "598f7b27-1798-4a88-8a79-9e4a2659c64d",
+    "pane": "%15",
+    "hardware_access": false,
+    "application_executed": false,
+    "opae_loaded": false,
+    "source_bindings": {
+      "ahls_memory_dma_roundtrip.c": {
+        "sha256": "cdfaed0583b4e521ff492993eacab067b6f27f6f8e503382b3e5c487883d25c9",
+        "bytes": 9592
+      },
+      "ahls_memory_dma_vfio_startup.c": {
+        "sha256": "ed21d8a205bd8c1a0803f766a027fa11069379b6cb12b58ddbd36c6da25342c2",
+        "bytes": 6554
+      },
+      "ia840f_dma_transfer_core.c": {
+        "sha256": "4b039f9e6649aed655b7f7625ee869e3610073429c8289a3df38a56f38ead58b",
+        "bytes": 4096
+      },
+      "ia840f_dma_transfer_core.h": {
+        "sha256": "baeaab8d6a226ffb26bd76a8a50342d863013bfbed09a16c34dab2a22f7ef567",
+        "bytes": 1516
+      },
+      "ia840f_dma_lifetime.c": {
+        "sha256": "3d34125b24e7d24c7399c930281526a069c65ffe6cfd61c2751760a0dcaaf2ae",
+        "bytes": 1222
+      },
+      "ia840f_dma_lifetime.h": {
+        "sha256": "0f96cbe4589c000307c110bee8e6c69bf2df75f200e1b56c961a696689c3df5c",
+        "bytes": 273
+      },
+      "ahls_qualification_core.c": {
+        "sha256": "52e7ff9492d0432bfb1e55dceb4368720bbe17c994f6d49a60c67b660454ca74",
+        "bytes": 4631
+      },
+      "ahls_qualification_core.h": {
+        "sha256": "fbd6e3c8999bfb803419309954c281a92c4326960d81cce8614305ba6195bf6f",
+        "bytes": 1190
+      },
+      "ia840f_dma_capabilities.h": {
+        "sha256": "908907f046da9ed16fe6d10e9433bd84e85807ea80be6882c568de35d34a4c49",
+        "bytes": 2332
+      },
+      "ahls_memory_entry_vfio_strict.c": {
+        "sha256": "ca1ca46f034753378a36a7481bfe68f5f28a0e923c3b14d5548240e9cdd53caa",
+        "bytes": 584
+      },
+      "opae/ia840f_vfio_strict_init.h": {
+        "sha256": "5eb37c588d1ec93b6a7aeb61dd9fcad5f4f7b2d9ff186b8ce9a2298530e3a83b",
+        "bytes": 212
+      },
+      "opae/ia840f_vfio_config.h": {
+        "sha256": "fb63fcf296e010ff4725d1f0816349d08e3fa2ace5629e765d43fa4bd96b6cfa",
+        "bytes": 742
+      },
+      "CMakeLists.txt": {
+        "sha256": "70f13597cc1b441063c7690d7a328e85ba66de442eb5038929c77ba582f60218",
+        "bytes": 2753
+      }
+    },
+    "sdk_inputs": 64,
+    "inner": {
+      "success": true,
+      "hardware_access": false,
+      "application_executed": false,
+      "opae_loaded": false,
+      "installed": false,
+      "commands": [
+        {
+          "label": "compiler_version",
+          "argv": [
+            "/usr/bin/cc",
+            "--version"
+          ],
+          "rc": 0,
+          "sha256": "5fa6bf5b83f57f14020be375ac663df894027e2d672d6b7d82d7e8d8f7b49c8b"
+        },
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/diag/source",
+            "-B",
+            "/diag/build",
+            "-DCMAKE_BUILD_TYPE=Release",
+            "-DFETCHCONTENT_FULLY_DISCONNECTED=ON"
+          ],
+          "rc": 0,
+          "sha256": "90d42ddd590f8eed5ac2691744b4488f81851338b434ffdce6cc4eaf3c908aca"
+        },
+        {
+          "label": "build",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/diag/build",
+            "--parallel",
+            "36",
+            "--verbose"
+          ],
+          "rc": 0,
+          "sha256": "9d1cddf0cc836648579f315314982b6df25a2e4490d073c69872b758163a2589"
+        },
+        {
+          "label": "ahls_memory_dma_vfio_startup_dynamic",
+          "argv": [
+            "/usr/bin/readelf",
+            "-dW",
+            "/diag/build/ahls_memory_dma_vfio_startup"
+          ],
+          "rc": 0,
+          "sha256": "ffae601e2094065d56fb72595c72b9fa631d644bbdc3e00efa945d3b67ccee2e"
+        },
+        {
+          "label": "ahls_memory_dma_vfio_startup_symbols",
+          "argv": [
+            "/usr/bin/readelf",
+            "--dyn-syms",
+            "--wide",
+            "/diag/build/ahls_memory_dma_vfio_startup"
+          ],
+          "rc": 0,
+          "sha256": "7704842a14cadd27d09bfe33909bcf15ed560a0e0cc6929eb3204cd598255c01"
+        },
+        {
+          "label": "ahls_memory_dma_vfio_startup_headers",
+          "argv": [
+            "/usr/bin/readelf",
+            "-lW",
+            "/diag/build/ahls_memory_dma_vfio_startup"
+          ],
+          "rc": 0,
+          "sha256": "958a26d263172a04a3d5f9750ee7e5efe8fecf467189b360b999e82460806adb"
+        },
+        {
+          "label": "libahls_memory_dma_entry_vfio_strict.so_dynamic",
+          "argv": [
+            "/usr/bin/readelf",
+            "-dW",
+            "/diag/build/libahls_memory_dma_entry_vfio_strict.so"
+          ],
+          "rc": 0,
+          "sha256": "b8c151f329b3493a5169183d02b95f081af3fdc78e246b492899cddce80e3642"
+        },
+        {
+          "label": "libahls_memory_dma_entry_vfio_strict.so_symbols",
+          "argv": [
+            "/usr/bin/readelf",
+            "--dyn-syms",
+            "--wide",
+            "/diag/build/libahls_memory_dma_entry_vfio_strict.so"
+          ],
+          "rc": 0,
+          "sha256": "ccce29bca24dac6f382722a8625a6bf3f38473415c944393685c2c589c3ffa52"
+        },
+        {
+          "label": "libahls_memory_dma_entry_vfio_strict.so_headers",
+          "argv": [
+            "/usr/bin/readelf",
+            "-lW",
+            "/diag/build/libahls_memory_dma_entry_vfio_strict.so"
+          ],
+          "rc": 0,
+          "sha256": "afeacb4b193faca3121f2f203ae04c31d912fe1f4bd91700cdaff2952c3f75f9"
+        }
+      ],
+      "cpus": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "page_size": 4096,
+      "dev_entries": [
+        "fd",
+        "mqueue",
+        "null",
+        "ptmx",
+        "pts",
+        "random",
+        "shm",
+        "stderr",
+        "stdin",
+        "stdout",
+        "tty",
+        "urandom",
+        "zero"
+      ],
+      "tools": {
+        "/usr/bin/cc": "821af3c74506283c179ca413bb33e6b528805a4dd8a5c09df125e5ad560a9e89",
+        "/usr/bin/cmake": "fd22547781b64bb2db04370970b93db1f3fada1e41e60873b015ee0747009fc0",
+        "/usr/bin/ld": "58937fc20c21e147883b4fdaa0fc7438a8e8f2bb886cfcaa4896100ca91139e7",
+        "/usr/bin/readelf": "04db0000749aff89e4af21429340b00b536fc6f80e811c872c006507881a5560",
+        "/usr/bin/nm": "ed6565c132d6f20019ff3f050043dc1b2b8bc2e8b3b94c1ffe3f34436431a5a4",
+        "/usr/bin/python3": "7d51cd6b48b521277f5caa4610a82126e315fa2be4df069823a8b1eeb5bd4a86"
+      },
+      "artifacts": {
+        "ahls_memory_dma_vfio_startup": {
+          "bytes": 36792,
+          "sha256": "b34b3d9026e87a248ef24fdfbf2cd5c7e2add9cca0ecbe956966746d9334fb1f",
+          "mode": "0o600"
+        },
+        "libahls_memory_dma_entry_vfio_strict.so": {
+          "bytes": 35352,
+          "sha256": "507ad139e3f3c24a48e34f1b8ff72c2e32a345f7f9b10529e6e6f2ad906dd829",
+          "mode": "0o600"
+        }
+      },
+      "elf": {
+        "ahls_memory_dma_vfio_startup": {
+          "needed": [
+            "libjson-c.so.5",
+            "libc.so.6"
+          ],
+          "paths": [
+            "/work/prefix/usr/lib/x86_64-linux-gnu"
+          ]
+        },
+        "libahls_memory_dma_entry_vfio_strict.so": {
+          "needed": [
+            "libopae-c.so.2",
+            "libc.so.6"
+          ],
+          "paths": [
+            "/work/sdk-build/lib:/work/prefix/usr/lib/x86_64-linux-gnu"
+          ]
+        }
+      }
+    },
+    "captured": {
+      "dma-frontend-compile-only.log": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "mounts.log": {
+        "bytes": 2856,
+        "sha256": "af52a1869dee8efe9249393d45ce276c57821badfbdf7cab8e0ae8e4cd0465e8"
+      },
+      "compiler_version.log": {
+        "bytes": 245,
+        "sha256": "5fa6bf5b83f57f14020be375ac663df894027e2d672d6b7d82d7e8d8f7b49c8b"
+      },
+      "configure.log": {
+        "bytes": 449,
+        "sha256": "90d42ddd590f8eed5ac2691744b4488f81851338b434ffdce6cc4eaf3c908aca"
+      },
+      "build.log": {
+        "bytes": 10459,
+        "sha256": "9d1cddf0cc836648579f315314982b6df25a2e4490d073c69872b758163a2589"
+      },
+      "ahls_memory_dma_vfio_startup_dynamic.log": {
+        "bytes": 1616,
+        "sha256": "ffae601e2094065d56fb72595c72b9fa631d644bbdc3e00efa945d3b67ccee2e"
+      },
+      "ahls_memory_dma_vfio_startup_symbols.log": {
+        "bytes": 4503,
+        "sha256": "7704842a14cadd27d09bfe33909bcf15ed560a0e0cc6929eb3204cd598255c01"
+      },
+      "ahls_memory_dma_vfio_startup_headers.log": {
+        "bytes": 2084,
+        "sha256": "958a26d263172a04a3d5f9750ee7e5efe8fecf467189b360b999e82460806adb"
+      },
+      "libahls_memory_dma_entry_vfio_strict.so_dynamic.log": {
+        "bytes": 1582,
+        "sha256": "b8c151f329b3493a5169183d02b95f081af3fdc78e246b492899cddce80e3642"
+      },
+      "libahls_memory_dma_entry_vfio_strict.so_symbols.log": {
+        "bytes": 5424,
+        "sha256": "ccce29bca24dac6f382722a8625a6bf3f38473415c944393685c2c589c3ffa52"
+      },
+      "libahls_memory_dma_entry_vfio_strict.so_headers.log": {
+        "bytes": 1758,
+        "sha256": "afeacb4b193faca3121f2f203ae04c31d912fe1f4bd91700cdaff2952c3f75f9"
+      },
+      "build/compile_commands.json": {
+        "bytes": 4636,
+        "sha256": "c473e76bc1546d15f05160a9b4c2b1856e9b6d2f122a8560045c35e639d7e51b"
+      },
+      "build/ahls_memory_dma_vfio_startup": {
+        "bytes": 36792,
+        "sha256": "b34b3d9026e87a248ef24fdfbf2cd5c7e2add9cca0ecbe956966746d9334fb1f"
+      },
+      "build/libahls_memory_dma_entry_vfio_strict.so": {
+        "bytes": 35352,
+        "sha256": "507ad139e3f3c24a48e34f1b8ff72c2e32a345f7f9b10529e6e6f2ad906dd829"
+      }
+    },
+    "inputs_unchanged": true,
+    "ended": "2026-09-24T21:25:05.302116+00:00"
+  }
+}

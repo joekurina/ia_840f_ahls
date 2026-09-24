@@ -1,0 +1,486 @@
+{
+  "success": true,
+  "hardware_access": false,
+  "fixture_only": true,
+  "cases": [
+    {
+      "case": "clean",
+      "observer": {
+        "rc": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "container_owner": {
+        "pid": 7512,
+        "start_ticks": "733481"
+      },
+      "namespace": {
+        "pid_namespace": "pid:[4026533091]",
+        "supervisor_pid": 14,
+        "namespace_init_comm": "appinit",
+        "devices": [
+          "fd",
+          "mqueue",
+          "null",
+          "ptmx",
+          "pts",
+          "random",
+          "shm",
+          "stderr",
+          "stdin",
+          "stdout",
+          "tty",
+          "urandom",
+          "zero"
+        ]
+      },
+      "state": {
+        "application_started": true,
+        "success": true,
+        "retained_owner": false,
+        "argv": [
+          "/usr/bin/python3",
+          "-I",
+          "-S",
+          "-c",
+          "import os,time; f=open('/diag/clean/owner.file','xb');f.write(b'inert-owner');f.flush();print('INERT_ORDINARY_OWNER',os.getpid(),flush=True);time.sleep(.05)"
+        ],
+        "pid": 16,
+        "start_ticks": "733522",
+        "native_rc": 0,
+        "execution_state": "EXITED"
+      },
+      "container_log": "",
+      "native_log": "INERT_ORDINARY_OWNER 16\n",
+      "success": true,
+      "fixture_cleanup": [],
+      "remaining_members": []
+    },
+    {
+      "case": "hold",
+      "observer": {
+        "rc": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "container_owner": {
+        "pid": 7568,
+        "start_ticks": "733546"
+      },
+      "namespace": {
+        "pid_namespace": "pid:[4026533092]",
+        "supervisor_pid": 15,
+        "namespace_init_comm": "appinit",
+        "devices": [
+          "fd",
+          "mqueue",
+          "null",
+          "ptmx",
+          "pts",
+          "random",
+          "shm",
+          "stderr",
+          "stdin",
+          "stdout",
+          "tty",
+          "urandom",
+          "zero"
+        ]
+      },
+      "state": {
+        "application_started": true,
+        "success": false,
+        "retained_owner": true,
+        "argv": [
+          "/diag/hold-probe",
+          "/diag/hold/owner.file"
+        ],
+        "pid": 16,
+        "start_ticks": "733589",
+        "execution_state": "UNKNOWN",
+        "reason": "application ownership hold"
+      },
+      "container_log": "SUPERVISOR_RETAINED application ownership hold\n",
+      "native_log": "INERT owner fd=3 memory=0x7ff647f7e000 sentinel=93\nHOLD_UNKNOWN_DMA pid=16 reason=inert regular-file/RAM owner; no accelerator phase=4 go_possible=1 local_quiescent=0 status_before=0x0000000000000000 status_last=0x0000000000000000 polls=0; buffers/FDs retained; no further device access or cleanup.\n",
+      "members_after_observer_exit": [
+        {
+          "pid": 7591,
+          "state": "S",
+          "start_ticks": "733553",
+          "argv": "appinit                                                                     ",
+          "namespace": "pid:[4026533092]",
+          "held_files": []
+        },
+        {
+          "pid": 7618,
+          "state": "S",
+          "start_ticks": "733561",
+          "argv": "/usr/bin/python3 -I -B -S /diag/fixture-inner.py hold ",
+          "namespace": "pid:[4026533092]",
+          "held_files": []
+        },
+        {
+          "pid": 7622,
+          "state": "T",
+          "start_ticks": "733589",
+          "argv": "/diag/hold-probe /diag/hold/owner.file ",
+          "namespace": "pid:[4026533092]",
+          "held_files": [
+            "/diag/hold/owner.file"
+          ]
+        }
+      ],
+      "members_second": [
+        {
+          "pid": 7591,
+          "state": "S",
+          "start_ticks": "733553",
+          "argv": "appinit                                                                     ",
+          "namespace": "pid:[4026533092]",
+          "held_files": []
+        },
+        {
+          "pid": 7618,
+          "state": "S",
+          "start_ticks": "733561",
+          "argv": "/usr/bin/python3 -I -B -S /diag/fixture-inner.py hold ",
+          "namespace": "pid:[4026533092]",
+          "held_files": []
+        },
+        {
+          "pid": 7622,
+          "state": "T",
+          "start_ticks": "733589",
+          "argv": "/diag/hold-probe /diag/hold/owner.file ",
+          "namespace": "pid:[4026533092]",
+          "held_files": [
+            "/diag/hold/owner.file"
+          ]
+        }
+      ],
+      "success": true,
+      "fixture_cleanup": [
+        {
+          "pid": 7591,
+          "state": "S",
+          "start_ticks": "733553",
+          "argv": "appinit                                                                     ",
+          "namespace": "pid:[4026533092]",
+          "held_files": []
+        },
+        {
+          "pid": 7618,
+          "state": "S",
+          "start_ticks": "733561",
+          "argv": "/usr/bin/python3 -I -B -S /diag/fixture-inner.py hold ",
+          "namespace": "pid:[4026533092]",
+          "held_files": []
+        },
+        {
+          "pid": 7622,
+          "state": "T",
+          "start_ticks": "733589",
+          "argv": "/diag/hold-probe /diag/hold/owner.file ",
+          "namespace": "pid:[4026533092]",
+          "held_files": [
+            "/diag/hold/owner.file"
+          ]
+        }
+      ],
+      "remaining_members": []
+    },
+    {
+      "case": "deadline",
+      "observer": {
+        "rc": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "container_owner": {
+        "pid": 7624,
+        "start_ticks": "733622"
+      },
+      "namespace": {
+        "pid_namespace": "pid:[4026533095]",
+        "supervisor_pid": 14,
+        "namespace_init_comm": "appinit",
+        "devices": [
+          "fd",
+          "mqueue",
+          "null",
+          "ptmx",
+          "pts",
+          "random",
+          "shm",
+          "stderr",
+          "stdin",
+          "stdout",
+          "tty",
+          "urandom",
+          "zero"
+        ]
+      },
+      "state": {
+        "application_started": true,
+        "success": false,
+        "retained_owner": true,
+        "argv": [
+          "/usr/bin/python3",
+          "-I",
+          "-S",
+          "-c",
+          "import os,time; f=open('/diag/deadline/owner.file','xb');f.write(b'inert-owner');f.flush();print('INERT_ORDINARY_OWNER',os.getpid(),flush=True);time.sleep(3600)"
+        ],
+        "pid": 16,
+        "start_ticks": "733662",
+        "execution_state": "UNKNOWN",
+        "reason": "observation deadline; child not terminated"
+      },
+      "container_log": "SUPERVISOR_RETAINED observation deadline; child not terminated\n",
+      "native_log": "INERT_ORDINARY_OWNER 16\n",
+      "members_after_observer_exit": [
+        {
+          "pid": 7646,
+          "state": "S",
+          "start_ticks": "733628",
+          "argv": "appinit                                                                     ",
+          "namespace": "pid:[4026533095]",
+          "held_files": []
+        },
+        {
+          "pid": 7672,
+          "state": "S",
+          "start_ticks": "733636",
+          "argv": "/usr/bin/python3 -I -B -S /diag/fixture-inner.py deadline ",
+          "namespace": "pid:[4026533095]",
+          "held_files": []
+        },
+        {
+          "pid": 7677,
+          "state": "S",
+          "start_ticks": "733662",
+          "argv": "/usr/bin/python3 -I -S -c import os,time; f=open('/diag/deadline/owner.file','xb');f.write(b'inert-owner');f.flush();print('INERT_ORDINARY_OWNER',os.getpid(),flush=True);time.sleep(3600) ",
+          "namespace": "pid:[4026533095]",
+          "held_files": [
+            "/diag/deadline/owner.file"
+          ]
+        }
+      ],
+      "members_second": [
+        {
+          "pid": 7646,
+          "state": "S",
+          "start_ticks": "733628",
+          "argv": "appinit                                                                     ",
+          "namespace": "pid:[4026533095]",
+          "held_files": []
+        },
+        {
+          "pid": 7672,
+          "state": "S",
+          "start_ticks": "733636",
+          "argv": "/usr/bin/python3 -I -B -S /diag/fixture-inner.py deadline ",
+          "namespace": "pid:[4026533095]",
+          "held_files": []
+        },
+        {
+          "pid": 7677,
+          "state": "S",
+          "start_ticks": "733662",
+          "argv": "/usr/bin/python3 -I -S -c import os,time; f=open('/diag/deadline/owner.file','xb');f.write(b'inert-owner');f.flush();print('INERT_ORDINARY_OWNER',os.getpid(),flush=True);time.sleep(3600) ",
+          "namespace": "pid:[4026533095]",
+          "held_files": [
+            "/diag/deadline/owner.file"
+          ]
+        }
+      ],
+      "success": true,
+      "fixture_cleanup": [
+        {
+          "pid": 7646,
+          "state": "S",
+          "start_ticks": "733628",
+          "argv": "appinit                                                                     ",
+          "namespace": "pid:[4026533095]",
+          "held_files": []
+        },
+        {
+          "pid": 7672,
+          "state": "S",
+          "start_ticks": "733636",
+          "argv": "/usr/bin/python3 -I -B -S /diag/fixture-inner.py deadline ",
+          "namespace": "pid:[4026533095]",
+          "held_files": []
+        },
+        {
+          "pid": 7677,
+          "state": "S",
+          "start_ticks": "733662",
+          "argv": "/usr/bin/python3 -I -S -c import os,time; f=open('/diag/deadline/owner.file','xb');f.write(b'inert-owner');f.flush();print('INERT_ORDINARY_OWNER',os.getpid(),flush=True);time.sleep(3600) ",
+          "namespace": "pid:[4026533095]",
+          "held_files": [
+            "/diag/deadline/owner.file"
+          ]
+        }
+      ],
+      "remaining_members": []
+    },
+    {
+      "case": "save-error",
+      "observer": {
+        "rc": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "container_owner": {
+        "pid": 7681,
+        "start_ticks": "733715"
+      },
+      "namespace": {
+        "pid_namespace": "pid:[4026533098]",
+        "supervisor_pid": 14,
+        "namespace_init_comm": "appinit",
+        "devices": [
+          "fd",
+          "mqueue",
+          "null",
+          "ptmx",
+          "pts",
+          "random",
+          "shm",
+          "stderr",
+          "stdin",
+          "stdout",
+          "tty",
+          "urandom",
+          "zero"
+        ]
+      },
+      "state": {},
+      "container_log": "SUPERVISOR_SAVE_FAILED OSError('inert injected post-spawn receipt error')\nSUPERVISOR_RETAINED post-spawn supervisor error: OSError('inert injected post-spawn receipt error')\n",
+      "native_log": "",
+      "members_after_observer_exit": [
+        {
+          "pid": 7704,
+          "state": "S",
+          "start_ticks": "733723",
+          "argv": "appinit                                                                     ",
+          "namespace": "pid:[4026533098]",
+          "held_files": []
+        },
+        {
+          "pid": 7730,
+          "state": "S",
+          "start_ticks": "733731",
+          "argv": "/usr/bin/python3 -I -B -S /diag/fixture-inner.py save-error ",
+          "namespace": "pid:[4026533098]",
+          "held_files": []
+        },
+        {
+          "pid": 7735,
+          "state": "S",
+          "start_ticks": "733758",
+          "argv": "/usr/bin/python3 -I -S -c import os,time; f=open('/diag/save-error/owner.file','xb');f.write(b'inert-owner');f.flush();print('INERT_ORDINARY_OWNER',os.getpid(),flush=True);time.sleep(3600) ",
+          "namespace": "pid:[4026533098]",
+          "held_files": [
+            "/diag/save-error/owner.file"
+          ]
+        }
+      ],
+      "members_second": [
+        {
+          "pid": 7704,
+          "state": "S",
+          "start_ticks": "733723",
+          "argv": "appinit                                                                     ",
+          "namespace": "pid:[4026533098]",
+          "held_files": []
+        },
+        {
+          "pid": 7730,
+          "state": "S",
+          "start_ticks": "733731",
+          "argv": "/usr/bin/python3 -I -B -S /diag/fixture-inner.py save-error ",
+          "namespace": "pid:[4026533098]",
+          "held_files": []
+        },
+        {
+          "pid": 7735,
+          "state": "S",
+          "start_ticks": "733758",
+          "argv": "/usr/bin/python3 -I -S -c import os,time; f=open('/diag/save-error/owner.file','xb');f.write(b'inert-owner');f.flush();print('INERT_ORDINARY_OWNER',os.getpid(),flush=True);time.sleep(3600) ",
+          "namespace": "pid:[4026533098]",
+          "held_files": [
+            "/diag/save-error/owner.file"
+          ]
+        }
+      ],
+      "success": true,
+      "fixture_cleanup": [
+        {
+          "pid": 7704,
+          "state": "S",
+          "start_ticks": "733723",
+          "argv": "appinit                                                                     ",
+          "namespace": "pid:[4026533098]",
+          "held_files": []
+        },
+        {
+          "pid": 7730,
+          "state": "S",
+          "start_ticks": "733731",
+          "argv": "/usr/bin/python3 -I -B -S /diag/fixture-inner.py save-error ",
+          "namespace": "pid:[4026533098]",
+          "held_files": []
+        },
+        {
+          "pid": 7735,
+          "state": "S",
+          "start_ticks": "733758",
+          "argv": "/usr/bin/python3 -I -S -c import os,time; f=open('/diag/save-error/owner.file','xb');f.write(b'inert-owner');f.flush();print('INERT_ORDINARY_OWNER',os.getpid(),flush=True);time.sleep(3600) ",
+          "namespace": "pid:[4026533098]",
+          "held_files": [
+            "/diag/save-error/owner.file"
+          ]
+        }
+      ],
+      "remaining_members": []
+    }
+  ],
+  "started": "2026-09-24T21:38:12.933028+00:00",
+  "boot": "598f7b27-1798-4a88-8a79-9e4a2659c64d",
+  "inputs": {
+    "runtime-supervisor05.py": "12e0016b32cbf4e9a0a1c084bdb342fe2c668bd1d8053f3e418c9bfc6ceefa33",
+    "fixture-inner.py": "0630f8af3c9d3865179036a3e7e3c9ba074155e57690820da8199ff5c44cc0b1",
+    "fixture-source/ia840f_dma_lifetime.c": "3d34125b24e7d24c7399c930281526a069c65ffe6cfd61c2751760a0dcaaf2ae",
+    "fixture-source/ia840f_dma_lifetime.h": "0f96cbe4589c000307c110bee8e6c69bf2df75f200e1b56c961a696689c3df5c",
+    "fixture-source/ia840f_dma_transfer_core.h": "baeaab8d6a226ffb26bd76a8a50342d863013bfbed09a16c34dab2a22f7ef567",
+    "fixture-source/test_lifetime_hold.c": "7fb2e4caf053c842b497350d54327a05e485122367c2e55d51f5c6fff754e920"
+  },
+  "compile_container": {
+    "rc": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "compile": {
+    "argv": [
+      "/usr/bin/cc",
+      "-std=c11",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I/diag/fixture-source",
+      "/diag/fixture-source/test_lifetime_hold.c",
+      "/diag/fixture-source/ia840f_dma_lifetime.c",
+      "-o",
+      "/diag/hold-probe"
+    ],
+    "rc": 0,
+    "stdout": "",
+    "stderr": "",
+    "hardware_access": false
+  },
+  "inputs_unchanged": true,
+  "ended": "2026-09-24T21:38:18.003591+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "cc",
+    "-std=c11",
+    "-O2",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-I/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/dma_host/test_lifetime_hold.c",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/ia840f_dma_lifetime.c",
+    "-o",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps01-dma-host01/test-lifetime-hold"
+  ],
+  "rc": 1,
+  "stderr": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/dma_host/test_lifetime_hold.c: In function \u2018main\u2019:\n/home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/dma_host/test_lifetime_hold.c:11:2: error: this \u2018if\u2019 clause does not guard... [-Werror=misleading-indentation]\n   11 |  if(p==MAP_FAILED||ia840f_dma_signals_block())return 2;p[0]=93;\n      |  ^~\n/home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/dma_host/test_lifetime_hold.c:11:56: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the \u2018if\u2019\n   11 |  if(p==MAP_FAILED||ia840f_dma_signals_block())return 2;p[0]=93;\n      |                                                        ^\ncc1: all warnings being treated as errors\n",
+  "source": "#define _GNU_SOURCE\n#include \"ia840f_dma_lifetime.h\"\n#include <fcntl.h>\n#include <stdio.h>\n#include <sys/mman.h>\n#include <unistd.h>\nint main(int argc,char **argv){\n if(argc!=2)return 2;\n int fd=open(argv[1],O_CREAT|O_EXCL|O_RDWR,0600);if(fd<0)return 2;\n volatile unsigned char *p=mmap(NULL,4096,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0);\n if(p==MAP_FAILED||ia840f_dma_signals_block())return 2;p[0]=93;\n struct ia840f_dma_report r={.phase=IA840F_DMA_POLL,.go_may_have_been_issued=1};\n printf(\"INERT owner fd=%d memory=%p sentinel=%u\\n\",fd,(const void*)p,p[0]);fflush(stdout);\n ia840f_dma_hold(\"inert regular-file/RAM owner; no accelerator\",&r);\n}\n",
+  "hardware_access": false
+}

@@ -1,0 +1,7 @@
+# FPGA Test: bank1 successor, 64-byte roundtrip
+
+Execute the same reviewed native frontend and runtime-supervisor05 contract as BANK0-07-PLAN.md, changing only CLI bank0→bank1 and the naturally bank-dependent DDR address/pattern. Fixed bank-local offset0x10000 becomes aggregate DDR address0x400010000. Two4096-byte mappings and serial64-byte H2D/D2H descriptors; no concurrent bank operation, larger transfer, kernel launch, reset, rebind or recovery.
+
+Predecessor bank0-07 completed native/container/outer0, active data/full-page checks and empty postflight holder/D-state scan on unchanged boot/bindings. Result SHA2561d87c64a465f6f54b09d156aabca9efdd1edcefbac6895e0735641ebac8d6839; the successor verifies that exact completed receipt before launch and repeats only the necessary ordinary ownership/runtime guards. All source, binary, FIFO/completion, buffer-lifetime and container-retention limits remain identical. Static channel1 init_done was previously observed1; no memory reset, clock change or reconfiguration has occurred. This is its first tiny data test, not established full DDR integrity.
+
+Any anomaly stops progression without retry, extra hardware diagnostic, reset or resource reclamation. A successful result qualifies only a tiny serial bank1 roundtrip and sampled guards. Both tiny per-bank passes still do not establish simultaneous-bank, GB-scale, sustained or numerical AHLS qualification.
