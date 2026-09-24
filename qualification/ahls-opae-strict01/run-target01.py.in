@@ -1,0 +1,165 @@
+import os,sys,socket,json,hashlib,base64,subprocess,time,signal,resource,shutil,gzip,re
+from pathlib import Path
+from datetime import datetime,timezone
+C=@CONFIG@
+INNER=@INNER@
+if not __debug__:raise RuntimeError('assertions required')
+assert socket.gethostname()=='Agilex7Workstation' and os.getuid()==1000 and os.environ.get('TMUX')
+R=Path(C['root']);J=R;ORIG=Path(C['original'])
+assert not R.exists()
+R.mkdir(parents=True,exist_ok=False)
+for name in ['tmp','cache','scratch','source']:(R/name).mkdir()
+cpus=set(os.sched_getaffinity(0))
+env={'PATH':'/usr/bin:/usr/local/bin:/bin','HOME':str(R),'TMPDIR':str(R/'tmp'),'LANG':'C','LC_ALL':'C','APPTAINER_TMPDIR':str(R/'tmp'),'APPTAINER_CACHEDIR':str(R/'cache')}
+result={'run':C['run'],'commands':[],'hardware_access':False,'binary_executed':False,'libraries_loaded':False,'success':False,'cpus':sorted(cpus),'rlimit_as_bytes':64*1024**3}
+def item(p):
+ p=Path(p);h=hashlib.sha256()
+ with p.open('rb') as f:
+  for b in iter(lambda:f.read(1024*1024),b''):h.update(b)
+ return {'path':str(p),'realpath':str(p.resolve()),'bytes':p.stat().st_size,'sha256':h.hexdigest()}
+
+def persist():
+    (R / 'status.json').write_text(json.dumps(result, indent=2) + '\n')
+
+def live_group(gid):
+    out = []
+    for p in Path('/proc').iterdir():
+        if not p.name.isdigit():
+            continue
+        try:
+            parts = (p / 'stat').read_text().rsplit(')', 1)[1].split()
+            if int(parts[2]) == gid and parts[0] != 'Z':
+                out.append(int(p.name))
+        except (FileNotFoundError, ProcessLookupError, PermissionError):
+            pass
+    return out
+
+def limit_child():
+    os.sched_setaffinity(0, cpus)
+    resource.setrlimit(resource.RLIMIT_AS, (64 * 1024 ** 3, 64 * 1024 ** 3))
+    resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
+
+def native(label, argv):
+    rec = {'label': label, 'argv': argv, 'started': datetime.now(timezone.utc).isoformat()}
+    result['commands'].append(rec)
+    persist()
+    timedout = False
+    descendants_after_leader = False
+    p = None
+    with (R / (label + '.log')).open('xb') as log:
+        try:
+            p = subprocess.Popen(argv, cwd=J, env=env, stdout=log, stderr=subprocess.STDOUT, start_new_session=True, preexec_fn=limit_child)
+            rec['pid'] = p.pid
+            rec['start_ticks'] = (Path('/proc') / str(p.pid) / 'stat').read_text().rsplit(')', 1)[1].split()[19]
+            persist()
+            deadline = time.monotonic() + 600
+            while os.waitid(os.P_PID, p.pid, os.WEXITED | os.WNOHANG | os.WNOWAIT) is None:
+                if (R / 'gate-rejections.jsonl').exists() or ((R / (label + '.log')).exists() and 'IA840F_GATE_REJECTED' in (R / (label + '.log')).read_text(errors='replace')):
+                    raise RuntimeError('owned native callback rejected')
+                if time.monotonic() > deadline:
+                    timedout = True
+                    break
+                time.sleep(0.1)
+            residual = live_group(p.pid)
+            rec['descendants_observed_at_leader_exit'] = residual
+            while residual and (not timedout) and (time.monotonic() < deadline):
+                time.sleep(0.1)
+                residual = live_group(p.pid)
+            if residual:
+                timedout = True
+            descendants_after_leader = bool(residual)
+        finally:
+            if p is not None:
+                if live_group(p.pid):
+                    os.killpg(p.pid, signal.SIGTERM)
+                    end = time.monotonic() + 3
+                    while live_group(p.pid) and time.monotonic() < end:
+                        time.sleep(0.1)
+                    if live_group(p.pid):
+                        os.killpg(p.pid, signal.SIGKILL)
+                rec['native_rc'] = p.wait()
+                rec['timeout'] = timedout
+                rec['descendants_after_leader'] = descendants_after_leader
+                rec['ended'] = datetime.now(timezone.utc).isoformat()
+                persist()
+                rec['owned_group_live_after'] = live_group(p.pid)
+                rec['effective_rc'] = 124 if timedout else 125 if descendants_after_leader or rec['owned_group_live_after'] else rec['native_rc']
+                persist()
+    return rec['effective_rc']
+def snapshot(root,folders):
+ out={}
+ for folder in folders:
+  for p in sorted((root/folder).rglob('*')):
+   n=str(p.relative_to(root))
+   if p.is_symlink():out[n]={'link':os.readlink(p)}
+   elif p.is_file():out[n]={'bytes':p.stat().st_size,'sha256':item(p)['sha256']}
+ return out
+def bind_sdk():
+ for n,e in C['sdk_inventory'].items():
+  p=Path(C['sdk'])/n
+  got={'link':os.readlink(p)} if p.is_symlink() else {'bytes':p.stat().st_size,'sha256':item(p)['sha256']}
+  assert got==e,n
+rc=125
+try:
+ result['preflight']={'mem_available':int(next(l.split()[1] for l in Path('/proc/meminfo').read_text().splitlines() if l.startswith('MemAvailable:')))*1024,'disk_free':shutil.disk_usage(R).free}
+ assert result['preflight']['mem_available']>80000000000 and result['preflight']['disk_free']>10000000000
+ for p in Path('/proc').iterdir():
+  if not p.name.isdigit():continue
+  try:
+   exe=Path(os.readlink(p/'exe')).name
+   assert exe not in ['quartus_fit','quartus_syn','quartus_sta','quartus_sh','quartus_asm','quartus_ipgenerate','cc1','cc1plus','cmake','make'],(p.name,exe)
+  except (FileNotFoundError,PermissionError,ProcessLookupError):pass
+ result['tools']={k:item(C[k]) for k in ['image','wrapper','runtime']}
+ for k,e in result['tools'].items():assert e['sha256']==C[k+'_sha256'],k
+ ORIG=Path(C['original']);assert item(ORIG/'result.json.gz')['sha256']==C['original_result_sha256']
+ bind_sdk();result['sdk_source_count']=len(C['sdk_inventory'])
+ before=snapshot(ORIG,['prefix','sdk-build','frontend','frontend-build']);result['original_inventory']=before
+ assert {k:v for k,v in before.items() if k.startswith('prefix/')}==C['prefix_inventory']
+ for path,e in C['libraries'].items():
+  p=ORIG/Path(path).relative_to('/work');assert {'bytes':p.stat().st_size,'sha256':item(p)['sha256']}==e,path
+ for folder in ['prefix','sdk-build/lib','sdk-build/include']:
+  destination=R/folder;destination.parent.mkdir(parents=True,exist_ok=True)
+  shutil.copytree(ORIG/folder,destination,symlinks=True)
+  for p in destination.rglob('*'):
+   if p.is_symlink():assert p.resolve().is_relative_to(R),str(p)
+ result['copied_inventory']=snapshot(R,['prefix','sdk-build'])
+ assert all(before[k]==v for k,v in result['copied_inventory'].items())
+ for n,e in C['sources'].items():
+  assert not Path(n).is_absolute() and '..' not in Path(n).parts
+  (R/'source'/n).parent.mkdir(parents=True,exist_ok=True)
+  b=base64.b64decode(e['base64'],validate=True);assert len(b)==e['bytes'] and hashlib.sha256(b).hexdigest()==e['sha256']
+  (R/'source'/n).write_bytes(b)
+ (R/'inventory.py').write_text(INNER)
+ argv=[C['wrapper'],'exec','--containall','--cleanenv','--no-home','--no-mount','sys,hostfs,cwd,bind-paths','--no-eval','--workdir',str(R/'scratch'),'--bind',str(R)+':/work:rw','--bind',C['sdk']+':/sdk:ro','--bind',str(R/'source/pluginmgr-strict.c')+':/sdk/libraries/libopae-c/pluginmgr.c:ro','--pwd','/work',C['image'],'/usr/bin/python3','-I','-S','/work/inventory.py']
+ rc=native('target_compile',argv)
+ if rc:raise RuntimeError('target compile/link rejected')
+ result['build_result']=json.loads((R/'build-result.json').read_text())
+ assert result['build_result']['success']
+ result['success']=True
+except BaseException as e:
+ result['error']=repr(e);rc=rc if rc else 125
+finally:
+ result['postflight_errors']=[]
+ try:
+  if 'original_inventory' in result:
+   result['original_unchanged']=snapshot(ORIG,['prefix','sdk-build','frontend','frontend-build'])==result['original_inventory']
+   assert result['original_unchanged']
+  if 'copied_inventory' in result:
+   after=snapshot(R,['prefix','sdk-build'])
+   result['copied_native_output_deltas']={n:{'before':e,'after':after.get(n)} for n,e in result['copied_inventory'].items() if after.get(n)!=e}
+   assert set(result['copied_native_output_deltas'])<=set(C['copy_output_roles'])
+   result['copied_immutable_inputs_unchanged']=all(after.get(n)==e for n,e in result['copied_inventory'].items() if n not in C['copy_output_roles'])
+   assert result['copied_immutable_inputs_unchanged']
+  bind_sdk();result['sdk_unchanged']=True
+  result['inputs_unchanged']=all(item(R/'source'/n)['sha256']==e['sha256'] for n,e in C['sources'].items());assert result['inputs_unchanged']
+  result['tools_unchanged']=all(item(C[k])['sha256']==C[k+'_sha256'] for k in ['image','wrapper','runtime']);assert result['tools_unchanged']
+ except BaseException as e:result['postflight_errors'].append(repr(e));result['success']=False;rc=125
+ result['files']={}
+ if (R/'build-result.json').exists():result['build_result']=json.loads((R/'build-result.json').read_text())
+ for p in [*R.glob('*.log'),R/'build-result.json',R/'build/CMakeCache.txt',R/'build/compile_commands.json',R/'build/startup.map',R/'build/entry.map',R/'build/ahls_memory_startup',R/'build/libahls_memory_entry_strict.so',R/'sdk-build/lib/libopae-c.so.2.13.0',R/'sdk-build/CMakeCache.txt',R/'sdk-build/include/config.h',*list((R/'build/CMakeFiles').glob('*.dir/link.txt')),*list((R/'build/CMakeFiles').glob('*.dir/flags.make'))]:
+  if not p.is_file():continue
+  b=p.read_bytes();result['files'][str(p.relative_to(R))]={'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest(),'base64':base64.b64encode(b).decode()}
+ persist();blob=gzip.compress(json.dumps(result,sort_keys=True).encode(),mtime=0);(R/'result.json.gz').write_bytes(blob)
+ subprocess.run(['tmux','load-buffer','-b',C['buffer'],'-'],input=blob,check=True)
+ subprocess.run(['tmux','set-buffer','-b',C['buffer']+'_sha256',hashlib.sha256(blob).hexdigest()],check=True)
+raise SystemExit(rc)
