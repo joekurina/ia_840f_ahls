@@ -1,0 +1,94 @@
+{
+  "capture_success": true,
+  "hardware_mmio": false,
+  "pci": {
+    "0000:4f:00.0": {
+      "exists": true,
+      "path": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0",
+      "vendor": "0x8086",
+      "device": "0xbcce",
+      "subsystem_vendor": "0x8086",
+      "subsystem_device": "0x1771",
+      "resource": "0x0000380110000000 0x00003801100fffff 0x000000000014220c\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000380110200000 0x0000380110203fff 0x000000000014220c\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000380110100000 0x00003801101fffff 0x000000000014220c\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000380110204000 0x0000380110207fff 0x000000000014220c\n0x0000000000000000 0x0000000000000000 0x0000000000000000",
+      "sriov_numvfs": "0",
+      "sriov_totalvfs": "1",
+      "driver": "/sys/bus/pci/drivers/dfl-pci",
+      "iommu_group": "/sys/kernel/iommu_groups/4"
+    },
+    "0000:4f:00.1": {
+      "exists": true,
+      "path": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.1",
+      "vendor": "0x12ba",
+      "device": "0x0070",
+      "subsystem_vendor": "0x12ba",
+      "subsystem_device": "0xb5d4",
+      "resource": "0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000380100000000 0x000038010fffffff 0x000000000014220c\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000380110208000 0x000038011020bfff 0x000000000014220c\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000",
+      "driver": "/sys/bus/pci/drivers/vfio-pci",
+      "iommu_group": "/sys/kernel/iommu_groups/5"
+    },
+    "0000:4f:00.2": {
+      "exists": false
+    }
+  },
+  "receipts": {
+    "requested.json": {
+      "sha256": "edfd031cfe6cdaebd66f4ddef18575e67cf9fb6d09087a794997f36ca761693c",
+      "data": {
+        "boot_before": "37eff52f-67ad-4c3e-8de3-edee7b19bb80",
+        "requested": "2026-09-24T19:34:42.699663+00:00",
+        "argv": [
+          "sudo",
+          "-n",
+          "/usr/bin/systemctl",
+          "reboot"
+        ],
+        "authorization": "Explicit instruction: flash already programmed; just BMC power cycle and reboot workstation. activate10 succeeded. One normal OS reboot; no repeat programming.",
+        "retry": false,
+        "card_reset": false
+      }
+    },
+    "command-result.json": {
+      "sha256": "596a9ec988b5697ac405eec077a0326459107eef83f694a81b0b1ee5baf06447",
+      "data": {
+        "boot_before": "37eff52f-67ad-4c3e-8de3-edee7b19bb80",
+        "requested": "2026-09-24T19:34:42.699663+00:00",
+        "argv": [
+          "sudo",
+          "-n",
+          "/usr/bin/systemctl",
+          "reboot"
+        ],
+        "authorization": "Explicit instruction: flash already programmed; just BMC power cycle and reboot workstation. activate10 succeeded. One normal OS reboot; no repeat programming.",
+        "retry": false,
+        "card_reset": false,
+        "rc": 0,
+        "output": "",
+        "command_returned_at": "2026-09-24T19:34:42.748152+00:00"
+      }
+    }
+  },
+  "started": "2026-09-24T19:37:53.867209+00:00",
+  "boot": "598f7b27-1798-4a88-8a79-9e4a2659c64d",
+  "kernel": "5.14.0-687.48.1.el9_8.x86_64",
+  "reboot_verified": true,
+  "cached_accessor_modules_unchanged": true,
+  "cached_uuid_path": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0/fpga_region/region0/dfl-fme.0/dfl-fme-region.1/fpga_region/region1/compat_id",
+  "cached_uuid": "fc4bf1c1-760f-5cd7-8040-b3e86fa0d31e",
+  "matches_work21": true,
+  "aer_read": {
+    "argv": [
+      "sudo",
+      "-n",
+      "/usr/sbin/setpci",
+      "-s",
+      "0000:4e:00.0",
+      "ECAP_AER+0x04.L",
+      "ECAP_AER+0x08.L",
+      "ECAP_AER+0x14.L"
+    ],
+    "rc": 0,
+    "output": "00000000\n00100000\n00002000\n"
+  },
+  "aer_masks_restored": true,
+  "ended": "2026-09-24T19:37:53.955318+00:00"
+}

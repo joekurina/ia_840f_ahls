@@ -1,0 +1,118 @@
+{
+  "success": true,
+  "commands": [
+    {
+      "label": "restore-clock",
+      "argv": [
+        "/opt/altera/25.1/quartus/bin/jtagconfig",
+        "--setparam",
+        "1",
+        "JtagClock",
+        "24M"
+      ],
+      "pid": 7102,
+      "rc": 0,
+      "output": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "restore-auto",
+      "argv": [
+        "/opt/altera/25.1/quartus/bin/jtagconfig",
+        "--setparam",
+        "1",
+        "JtagClockAutoAdjust",
+        "1"
+      ],
+      "pid": 7121,
+      "rc": 0,
+      "output": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "clock-read",
+      "argv": [
+        "/opt/altera/25.1/quartus/bin/jtagconfig",
+        "--getparam",
+        "1",
+        "JtagClock"
+      ],
+      "pid": 7149,
+      "rc": 0,
+      "output": "24M\n",
+      "sha256": "c5a875e040354c651d9e5b734474118810d43a25528c111060385c01c3ee7e7b"
+    },
+    {
+      "label": "auto-read",
+      "argv": [
+        "/opt/altera/25.1/quartus/bin/jtagconfig",
+        "--getparam",
+        "1",
+        "JtagClockAutoAdjust"
+      ],
+      "pid": 7185,
+      "rc": 0,
+      "output": "1\n",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "label": "power-off",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/env",
+        "PYTHONPATH=/home/uwb_student00/.local/lib/python3.9/site-packages",
+        "PATH=/home/uwb_student00/.local/bin:/usr/bin:/bin",
+        "/home/uwb_student00/.local/bin/bw_bmc_configure",
+        "-i",
+        "USB",
+        "-d",
+        "USB:0",
+        "power",
+        "-p",
+        "Off"
+      ],
+      "pid": 7202,
+      "rc": 0,
+      "output": "Power:   OFF\n",
+      "sha256": "92d776c8d093b970e18fbceab0ae06aef1616e34d379641837869d984f21c3b2"
+    },
+    {
+      "label": "power-on",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/env",
+        "PYTHONPATH=/home/uwb_student00/.local/lib/python3.9/site-packages",
+        "PATH=/home/uwb_student00/.local/bin:/usr/bin:/bin",
+        "/home/uwb_student00/.local/bin/bw_bmc_configure",
+        "-i",
+        "USB",
+        "-d",
+        "USB:0",
+        "power",
+        "-p",
+        "On"
+      ],
+      "pid": 7211,
+      "rc": 0,
+      "output": "WARNING:root:Card is not powered on\nPower:   ON\n",
+      "sha256": "e97dedf394ec7bdf049a3f2efcdd00f08138f386b2c68cde2c9a8008b3986a65"
+    }
+  ],
+  "started": "2026-09-24T19:33:04.307246+00:00",
+  "boot": "37eff52f-67ad-4c3e-8de3-edee7b19bb80",
+  "pane": "%14",
+  "hardware_access": true,
+  "programming": false,
+  "card_power_cycle": true,
+  "reboot": false,
+  "retry": false,
+  "restored_clock": "24M",
+  "restored_auto": "1",
+  "off_output": "Power:   OFF\n",
+  "on_output": "WARNING:root:Card is not powered on\nPower:   ON\n",
+  "boot_after": "37eff52f-67ad-4c3e-8de3-edee7b19bb80",
+  "card_cycle_verified": true,
+  "ended": "2026-09-24T19:33:53.132300+00:00"
+}
