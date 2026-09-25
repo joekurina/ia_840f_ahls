@@ -1,0 +1,69 @@
+--- afu/ahls_memory/control/ia840f_ahls_observer_mailbox_csr.sv
++++ afu/ahls_memory/control/ia840f_ahls_observer_mailbox_timing126.sv
+@@ -2,7 +2,7 @@
+ // New observer-only CDC. Does not drive/reset the memory controller or FIM.
+ // Bundled payloads stay fixed across the synchronized request/ack handshake.
+ // Physical use additionally requires reviewed CDC max-delay constraints.
+-module ia840f_ahls_observer_mailbox #(
++module ia840f_ahls_observer_mailbox_timing126 #(
+     parameter integer SNAP_BITS=768,
+     parameter integer SEQ_BITS=64
+ )(
+@@ -40,6 +40,8 @@
+     assign bank_link_reset_n=bank_reset_pipe[1];
+ 
+     reg request_toggle,ack_toggle;
++    // Install a held payload first; publish its notification on the next local edge.
++    reg request_pending,response_pending;
+     reg [129:0] request_hold;
+     reg [129:0] bank_request;
+     reg [SNAP_BITS-1:0] response_hold;
+@@ -52,7 +54,7 @@
+     localparam [SEQ_BITS-1:0] SEQ_MAX={SEQ_BITS{1'b1}};
+     wire sequence_full=(sequence_counter==SEQ_MAX);
+     wire source_accept=core_cmd_valid && core_ready;
+-    wire source_complete=core_busy && core_link_reset_n && bank_up_sync[1] &&
++    wire source_complete=core_busy && !request_pending && core_link_reset_n && bank_up_sync[1] &&
+                          (ack_sync[1]==request_toggle);
+     wire dma_now=dma_write_attempt &&
+                  (epoch_window || (source_accept && core_cmd==2'd1));
+@@ -110,13 +112,16 @@
+     // Request enqueue and result install never wait combinationally for bank_clk.
+     always @(posedge core_clk or negedge core_link_reset_n) begin
+         if(!core_link_reset_n) begin
+-            request_toggle<=0;request_hold<=0;core_busy<=0;core_valid<=0;core_done<=0;
++            request_toggle<=0;request_pending<=0;request_hold<=0;core_busy<=0;core_valid<=0;core_done<=0;
+             core_snapshot<=0;response_armed<=0;response_error<=0;
+         end else begin
+             core_done<=0;
+             if(source_accept) begin
+                 request_hold<={core_cmd,core_expected,core_token};
+-                request_toggle<=~request_toggle;core_busy<=1;core_valid<=0;
++                request_pending<=1;core_busy<=1;core_valid<=0;
++            end
++            if(request_pending) begin
++                request_toggle<=~request_toggle;request_pending<=0;
+             end
+             if(source_complete) begin
+                 core_snapshot<=response_hold;
+@@ -134,15 +139,17 @@
+     // registered acknowledgement, so command effects are included coherently.
+     always @(posedge bank_clk or negedge bank_link_reset_n) begin
+         if(!bank_link_reset_n) begin
+-            ack_toggle<=0;bank_request<=0;bank_cmd_valid<=0;waiting_bank_ack<=0;
++            ack_toggle<=0;response_pending<=0;bank_request<=0;bank_cmd_valid<=0;waiting_bank_ack<=0;
+             response_hold<=0;return_armed<=0;return_error<=0;
+         end else begin
+             bank_cmd_valid<=0;
+-            if(!waiting_bank_ack && request_sync[1]!=ack_toggle) begin
++            if(response_pending) begin
++                ack_toggle<=request_sync[1];response_pending<=0;waiting_bank_ack<=0;
++            end else if(!waiting_bank_ack && request_sync[1]!=ack_toggle) begin
+                 bank_request<=request_hold;bank_cmd_valid<=1;waiting_bank_ack<=1;
+             end else if(waiting_bank_ack && bank_cmd_ack) begin
+                 response_hold<=bank_snapshot;return_armed<=bank_armed;return_error<=bank_error;
+-                ack_toggle<=request_sync[1];waiting_bank_ack<=0;
++                response_pending<=1;
+             end
+         end
+     end

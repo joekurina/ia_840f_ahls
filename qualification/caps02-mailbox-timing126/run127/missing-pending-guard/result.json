@@ -1,0 +1,41 @@
+{
+  "label": "missing-pending-guard",
+  "kind": "synthetic_broken_RTL_mutant",
+  "dut_sha256": "eed9c7b54a6372d6906889ea237aa1f73e7faea0f625ad675a1b9e241e715f8d",
+  "fixture_sha256": "9682e6a60e393a3aea2cfd7871c4017e73bc3b644c6a24e9eabff14e62d7ee61",
+  "compile": {
+    "argv": [
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-afu-publication09/simulator-tools50/root/usr/bin/iverilog",
+      "-B",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-afu-publication09/simulator-tools50/root/usr/lib/x86_64-linux-gnu/ivl",
+      "-g2012",
+      "-Wall",
+      "-s",
+      "tb_staging127",
+      "-o",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-mailbox-timing126/run127/missing-pending-guard/test.vvp",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/afu/ahls_memory/control/ia840f_ahls_write_observer_timing46.sv",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-mailbox-timing126/run127/missing-pending-guard.sv",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-mailbox-timing126/tb_staging127.sv"
+    ],
+    "returncode": 0,
+    "timeout": false,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "simulation": {
+    "argv": [
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-afu-publication09/simulator-tools50/root/usr/bin/vvp",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-mailbox-timing126/run127/missing-pending-guard/test.vvp"
+    ],
+    "returncode": 1,
+    "timeout": false,
+    "log_sha256": "7370a6fee0660352838b80b243585c5f82721015c8d72d9e60a4d40b32960b5c"
+  },
+  "expected_failure": "F_PENDING_GUARD",
+  "accepted": true,
+  "artifact_hashes": {
+    "compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "simulation.log": "7370a6fee0660352838b80b243585c5f82721015c8d72d9e60a4d40b32960b5c",
+    "test.vvp": "b43acdbdba9387b044ec6725100c47cf4e819a940b8ae2588f3b411c5c2e6b8b"
+  }
+}

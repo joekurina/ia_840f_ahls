@@ -1,0 +1,55 @@
+{
+  "label": "8-5-7",
+  "kind": "real_candidate_functional_simulation",
+  "dut_sha256": "d521d67614ab2d405ac9fd39852ee0f1d968adb3dadba87d816057b8c562b627",
+  "fixture_sha256": "0a63274c9dc71febf74db82344287bc6a6fd9d7d081f04cc6da7b239b871206d",
+  "compile": {
+    "argv": [
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-afu-publication09/simulator-tools50/root/usr/bin/iverilog",
+      "-B",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-afu-publication09/simulator-tools50/root/usr/lib/x86_64-linux-gnu/ivl",
+      "-g2012",
+      "-Wall",
+      "-s",
+      "tb_mailbox_timing127",
+      "-Ptb_mailbox_timing127.SEQ_BITS=8",
+      "-Ptb_mailbox_timing127.CORE_HALF=5",
+      "-Ptb_mailbox_timing127.BANK_HALF=7",
+      "-o",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-mailbox-timing126/run127/8-5-7/test.vvp",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/afu/ahls_memory/control/ia840f_ahls_write_observer_timing46.sv",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/afu/ahls_memory/control/ia840f_ahls_observer_mailbox_timing126.sv",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-mailbox-timing126/tb_mailbox_timing127.sv"
+    ],
+    "returncode": 0,
+    "timeout": false,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "simulation": {
+    "argv": [
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-afu-publication09/simulator-tools50/root/usr/bin/vvp",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-mailbox-timing126/run127/8-5-7/test.vvp"
+    ],
+    "returncode": 0,
+    "timeout": false,
+    "log_sha256": "63df61f0f0e6523b5005e99eb9cba5aa73c9c9ee154184e44e7a9ed6dd1e960a"
+  },
+  "metrics": [
+    8,
+    11,
+    847,
+    271
+  ],
+  "accepted": true,
+  "reference_metrics": [
+    8,
+    11,
+    847,
+    271
+  ],
+  "artifact_hashes": {
+    "compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "simulation.log": "63df61f0f0e6523b5005e99eb9cba5aa73c9c9ee154184e44e7a9ed6dd1e960a",
+    "test.vvp": "b63e0dbc180c7c428d38b8922360d109350a4062a911a767d408c1aa501a0902"
+  }
+}

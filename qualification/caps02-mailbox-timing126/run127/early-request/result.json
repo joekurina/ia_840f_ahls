@@ -1,0 +1,41 @@
+{
+  "label": "early-request",
+  "kind": "synthetic_broken_RTL_mutant",
+  "dut_sha256": "7cea3604033bbd995211b6a5472ed621bc89770adc5a07f96ebc8ac97a7cff6b",
+  "fixture_sha256": "9682e6a60e393a3aea2cfd7871c4017e73bc3b644c6a24e9eabff14e62d7ee61",
+  "compile": {
+    "argv": [
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-afu-publication09/simulator-tools50/root/usr/bin/iverilog",
+      "-B",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-afu-publication09/simulator-tools50/root/usr/lib/x86_64-linux-gnu/ivl",
+      "-g2012",
+      "-Wall",
+      "-s",
+      "tb_staging127",
+      "-o",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-mailbox-timing126/run127/early-request/test.vvp",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/afu/ahls_memory/control/ia840f_ahls_write_observer_timing46.sv",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-mailbox-timing126/run127/early-request.sv",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-mailbox-timing126/tb_staging127.sv"
+    ],
+    "returncode": 0,
+    "timeout": false,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "simulation": {
+    "argv": [
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-afu-publication09/simulator-tools50/root/usr/bin/vvp",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-mailbox-timing126/run127/early-request/test.vvp"
+    ],
+    "returncode": 1,
+    "timeout": false,
+    "log_sha256": "3c08ffdea16f86fcfd2b52fb9b01fd74d294a5dea47690e204f316673247e5f3"
+  },
+  "expected_failure": "F_REQUEST_EARLY",
+  "accepted": true,
+  "artifact_hashes": {
+    "compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "simulation.log": "3c08ffdea16f86fcfd2b52fb9b01fd74d294a5dea47690e204f316673247e5f3",
+    "test.vvp": "c1f2b1d800ccb4ee84d64e7dafc9f6084b2268e9fcc029924aa1e8073e2832e5"
+  }
+}

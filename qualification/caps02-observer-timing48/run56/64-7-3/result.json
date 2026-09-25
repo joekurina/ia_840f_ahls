@@ -1,0 +1,50 @@
+{
+  "seq_bits": 64,
+  "core_half": 7,
+  "bank_half": 3,
+  "compile_argv": [
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-afu-publication09/simulator-tools50/root/usr/bin/iverilog",
+    "-B",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-afu-publication09/simulator-tools50/root/usr/lib/x86_64-linux-gnu/ivl",
+    "-g2012",
+    "-Wall",
+    "-s",
+    "tb_mailbox_timing56",
+    "-Ptb_mailbox_timing56.SEQ_BITS=64",
+    "-Ptb_mailbox_timing56.CORE_HALF=7",
+    "-Ptb_mailbox_timing56.BANK_HALF=3",
+    "-o",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-observer-timing48/run56/64-7-3/test.vvp",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/afu/ahls_memory/control/ia840f_ahls_write_observer_timing46.sv",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/afu/ahls_memory/control/ia840f_ahls_observer_mailbox_csr.sv",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-observer-timing48/tb_mailbox_timing56.sv"
+  ],
+  "compile": {
+    "output": "",
+    "exit_code": 0,
+    "error": null
+  },
+  "simulation": {
+    "output": "MAILBOX TEST PASSED seq_bits=64 cases=10 checks=76 native_commands=15\n/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-observer-timing48/tb_mailbox_timing56.sv:158: $finish called at 5076000 (1ps)",
+    "exit_code": 0,
+    "error": null
+  },
+  "metrics": [
+    64,
+    10,
+    76,
+    15
+  ],
+  "inputs": {
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/afu/ahls_memory/control/ia840f_ahls_observer_mailbox_csr.sv": "0b43f0028c99afa6d13cdd39a632be16fb49fb86efe686eb2e270cbddd2698ff",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/afu/ahls_memory/control/ia840f_ahls_write_observer_timing46.sv": "20cfd22f082a0924b7130d3721b2483a1308aa1e619bd1a3c2a548393a8e515b",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-observer-timing48/tb_mailbox_timing56.sv": "0570777e38dcd10797ae7da1b84930a36ca4788755ee1ab9b28070be96cd6f2e",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-publication01/mailbox04/tb_observer_mailbox.sv": "1973821ef7a048c029740d67a77eaa7160c16a33b560dbb152f4929a5e12ecf2"
+  },
+  "accepted": true,
+  "artifact_hashes": {
+    "compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "simulation.log": "c57223e140fee04ac78e6f4a1a5b4eac55076bdeaca34e43b77ab43b6ad37042",
+    "test.vvp": "bd4168d377c0226865b4573ff8ce00b552a8620bbacd247f3bb212c967b745eb"
+  }
+}

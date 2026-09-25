@@ -1,0 +1,41 @@
+{
+  "label": "early-response",
+  "kind": "synthetic_broken_RTL_mutant",
+  "dut_sha256": "dc5709da9f1c933e1f52539f341223d473d1e3ac3793a263f7618e2bdc1fad99",
+  "fixture_sha256": "9682e6a60e393a3aea2cfd7871c4017e73bc3b644c6a24e9eabff14e62d7ee61",
+  "compile": {
+    "argv": [
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-afu-publication09/simulator-tools50/root/usr/bin/iverilog",
+      "-B",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-afu-publication09/simulator-tools50/root/usr/lib/x86_64-linux-gnu/ivl",
+      "-g2012",
+      "-Wall",
+      "-s",
+      "tb_staging127",
+      "-o",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-mailbox-timing126/run127/early-response/test.vvp",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/afu/ahls_memory/control/ia840f_ahls_write_observer_timing46.sv",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-mailbox-timing126/run127/early-response.sv",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-mailbox-timing126/tb_staging127.sv"
+    ],
+    "returncode": 0,
+    "timeout": false,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "simulation": {
+    "argv": [
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-afu-publication09/simulator-tools50/root/usr/bin/vvp",
+      "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-mailbox-timing126/run127/early-response/test.vvp"
+    ],
+    "returncode": 1,
+    "timeout": false,
+    "log_sha256": "edf96ba45aa66f7eac3dbb24514ceca7f9a65664c810395fb80c0526a3f6711b"
+  },
+  "expected_failure": "F_RESPONSE_EARLY",
+  "accepted": true,
+  "artifact_hashes": {
+    "compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "simulation.log": "edf96ba45aa66f7eac3dbb24514ceca7f9a65664c810395fb80c0526a3f6711b",
+    "test.vvp": "3c89ed665bf645a9754c62da63b84c90ccf67408d16f76794707a6a293df52bd"
+  }
+}
