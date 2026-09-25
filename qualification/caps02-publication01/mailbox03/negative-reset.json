@@ -1,0 +1,28 @@
+{
+  "mutation": "intentional native-reset omission in new mailbox, not historical RTL",
+  "mutant_sha256": "e13bc08ab4cfcd34938cd82dccc6db04cec8c169ba9bdc76e4a91f78d3bf50dd",
+  "argv": [
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-publication01/candidate02/tools/root/usr/bin/iverilog",
+    "-B",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-publication01/candidate02/tools/root/usr/lib/x86_64-linux-gnu/ivl",
+    "-g2012",
+    "-Wall",
+    "-s",
+    "tb_observer_mailbox",
+    "-o",
+    "mutant-reset.vvp",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-publication01/candidate02/ia840f_ahls_write_observer.sv",
+    "mutant-ignore-bank-reset.sv",
+    "tb_observer_mailbox.sv"
+  ],
+  "compile": {
+    "output": "",
+    "exit_code": 0,
+    "error": null
+  },
+  "simulation": {
+    "output": "FATAL: tb_observer_mailbox.sv:56: CHECK brief native reset poisons active lineage core_errors=00 bank_errors=00 busy=0 valid=1 seq=1\n       Time: 2016000  Scope: tb_observer_mailbox.check",
+    "exit_code": 1,
+    "error": null
+  }
+}

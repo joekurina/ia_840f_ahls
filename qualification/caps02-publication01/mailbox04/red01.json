@@ -1,0 +1,33 @@
+{
+  "source_sha256": "25ed4e4c7c02cc9a74d57f6e8a4dec932392a17735e76862853b08b21fd8710e",
+  "test_sha256": "1973821ef7a048c029740d67a77eaa7160c16a33b560dbb152f4929a5e12ecf2",
+  "compile_argv": [
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-publication01/candidate02/tools/root/usr/bin/iverilog",
+    "-B",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-publication01/candidate02/tools/root/usr/lib/x86_64-linux-gnu/ivl",
+    "-g2012",
+    "-Wall",
+    "-s",
+    "tb_observer_mailbox",
+    "-o",
+    "old-red.vvp",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-publication01/candidate02/ia840f_ahls_write_observer.sv",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-publication01/mailbox03/ia840f_ahls_observer_mailbox.sv",
+    "tb_observer_mailbox.sv"
+  ],
+  "simulation_argv": [
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-publication01/candidate02/tools/root/usr/bin/vvp",
+    "old-red.vvp"
+  ],
+  "compile": {
+    "output": "",
+    "exit_code": 0,
+    "error": null
+  },
+  "simulation": {
+    "output": "FATAL: tb_observer_mailbox.sv:56: CHECK rejected RELEASE completion retains epoch window core_errors=01 bank_errors=00 busy=0 valid=0 seq=2\n       Time: 3926000  Scope: tb_observer_mailbox.check",
+    "exit_code": 1,
+    "error": null
+  },
+  "scope": "actual mailbox03 defect reproduced with unchanged observer; no hardware"
+}
