@@ -1,0 +1,28 @@
+{
+  "scope": "intentional mutant of new observer, not historical RTL baseline",
+  "mutation": "drop exact expected enabled-byte predicate; declare native empty sufficient",
+  "compile_argv": [
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-publication01/candidate02/tools/root/usr/bin/iverilog",
+    "-B",
+    "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-publication01/candidate02/tools/root/usr/lib/x86_64-linux-gnu/ivl",
+    "-g2012",
+    "-Wall",
+    "-s",
+    "tb_write_observer",
+    "-o",
+    "mutant.vvp",
+    "mutant-empty-only.sv",
+    "tb_write_observer.sv"
+  ],
+  "compile": {
+    "output": "",
+    "exit_code": 0,
+    "error": null
+  },
+  "simulation": {
+    "output": "FATAL: tb_write_observer.sv:26: CHECK empty upstream pipeline is not retirement errors=00 A=0 B=0 Q=0 W=0 L=0 T=0 C=0\n       Time: 46000  Scope: tb_write_observer.check",
+    "exit_code": 1,
+    "error": null
+  },
+  "mutant_sha256": "156edbe7043aebb94c66923715dd5f351b4df129374960d810e8a0faf16e4119"
+}

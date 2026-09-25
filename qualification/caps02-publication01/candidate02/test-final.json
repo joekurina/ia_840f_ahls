@@ -1,0 +1,63 @@
+{
+  "sources": {
+    "ia840f_ahls_write_observer.sv": "a903505e0fd7f0c64815ab1541cbeff4a0aa2feced83be434db0e99d80a516f3",
+    "tb_write_observer.sv": "8b3053ddf3717507f17372996b2dfa8c05ea593960f1bae57591c7ffbbcb9632"
+  },
+  "tests": [
+    {
+      "width": 8,
+      "compile_argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-publication01/candidate02/tools/root/usr/bin/iverilog",
+        "-B",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-publication01/candidate02/tools/root/usr/lib/x86_64-linux-gnu/ivl",
+        "-g2012",
+        "-Wall",
+        "-s",
+        "tb_write_observer",
+        "-Ptb_write_observer.TEST_BITS=8",
+        "-o",
+        "observer-final8.vvp",
+        "ia840f_ahls_write_observer.sv",
+        "tb_write_observer.sv"
+      ],
+      "compile": {
+        "output": "",
+        "exit_code": 0,
+        "error": null
+      },
+      "simulation": {
+        "output": "OBSERVER TEST PASSED width=8 cases=26 checks=115\ntb_write_observer.sv:126: $finish called at 17690000 (1ps)",
+        "exit_code": 0,
+        "error": null
+      }
+    },
+    {
+      "width": 64,
+      "compile_argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-publication01/candidate02/tools/root/usr/bin/iverilog",
+        "-B",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps02-publication01/candidate02/tools/root/usr/lib/x86_64-linux-gnu/ivl",
+        "-g2012",
+        "-Wall",
+        "-s",
+        "tb_write_observer",
+        "-Ptb_write_observer.TEST_BITS=64",
+        "-o",
+        "observer-final64.vvp",
+        "ia840f_ahls_write_observer.sv",
+        "tb_write_observer.sv"
+      ],
+      "compile": {
+        "output": "",
+        "exit_code": 0,
+        "error": null
+      },
+      "simulation": {
+        "output": "OBSERVER TEST PASSED width=64 cases=23 checks=109\ntb_write_observer.sv:126: $finish called at 2010000 (1ps)",
+        "exit_code": 0,
+        "error": null
+      }
+    }
+  ],
+  "scope": "new native-counter RTL only; no device or vendor logic simulation; no CDC/CSR/integration or publication acceptance"
+}
