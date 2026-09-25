@@ -1,0 +1,1283 @@
+Reading pref.tcl
+
+# 2024.3
+
+# vsim -c -onfinish exit -L altera_mf_ver -L altera_lnsim_ver work.ahls_memory_path_tb -do "run -all; quit -f -code 2" 
+# Start time: 14:24:38 on Sep 25,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: rtl/afu/csr_mgr.sv(36): (vopt-13314) Defaulting port 'dma_csr_status' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: rtl/afu/dma_write_engine.sv(24): (vopt-13314) Defaulting port 'descriptor' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: rtl/afu/dma_write_engine.sv(26): (vopt-13314) Defaulting port 'csr_control' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: rtl/afu/dma_read_engine.sv(23): (vopt-13314) Defaulting port 'descriptor' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: rtl/afu/dma_engine.sv(33): (vopt-13314) Defaulting port 'descriptor' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: rtl/afu/dma_engine.sv(37): (vopt-13314) Defaulting port 'csr_control' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: rtl/afu/dma_ddr_selector.sv(21): (vopt-13314) Defaulting port 'descriptor' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B0_branch.sv(50): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B0_branch.sv(50): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B0_branch.sv(50): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B0_merge_storage.sv(76): (vopt-2685) [TFMPC] - Too few port connections for 'theDDRIP_B0_merge_storage'.  Expected 12, found 10.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B0_merge_storage.sv(76): (vopt-2718) [TFMPC] - Missing connection for port 'ecc_err_status'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B0_merge_storage.sv(76): (vopt-2718) [TFMPC] - Missing connection for port 'o_almost_full'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B0_merge_storage.sv(111): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B0_merge_storage.sv(111): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B0_merge_storage.sv(111): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B0_merge.sv(80): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B0_merge.sv(80): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B0_merge.sv(80): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c0_in_entry0000rip_58_1gr_data_fifo.sv(91): (vopt-2685) [TFMPC] - Too few port connections for 'thei_llvm_fpga_sfc_exit_s_c0_in_entry_ddrips_c0_exit_ddrip_681_0gr'.  Expected 12, found 10.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c0_in_entry0000rip_58_1gr_data_fifo.sv(91): (vopt-2718) [TFMPC] - Missing connection for port 'ecc_err_status'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c0_in_entry0000rip_58_1gr_data_fifo.sv(91): (vopt-2718) [TFMPC] - Missing connection for port 'o_almost_full'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_s_c0_in_entry_ddrips_c0_enter_ddrip_31_0gr.sv(120): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_s_c0_in_entry_ddrips_c0_enter_ddrip_31_0gr.sv(120): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_s_c0_in_entry_ddrips_c0_enter_ddrip_31_0gr.sv(120): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B0_stall_region.sv(211): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B0_stall_region.sv(211): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B0_stall_region.sv(211): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B0.sv(107): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B0.sv(107): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B0.sv(107): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B1_branch.sv(55): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B1_branch.sv(55): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B1_branch.sv(55): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B1_merge_storage.sv(76): (vopt-2685) [TFMPC] - Too few port connections for 'theDDRIP_B1_merge_storage'.  Expected 12, found 10.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B1_merge_storage.sv(76): (vopt-2718) [TFMPC] - Missing connection for port 'ecc_err_status'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B1_merge_storage.sv(76): (vopt-2718) [TFMPC] - Missing connection for port 'o_almost_full'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B1_merge_storage.sv(111): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B1_merge_storage.sv(111): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B1_merge_storage.sv(111): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B1_merge.sv(80): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B1_merge.sv(80): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B1_merge.sv(80): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_1_ddrip_405_0gr.sv(223): (vopt-2685) [TFMPC] - Too few port connections for 'thei_llvm_fpga_mem_memcoalesce_load_ddrip_fpgaunique_1_ddrip_405_1gr'.  Expected 52, found 36.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_1_ddrip_405_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'ecc_err_status'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_1_ddrip_405_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_idle'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_1_ddrip_405_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_avm_stall'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_1_ddrip_405_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_extra_unaligned_reqs'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_1_ddrip_405_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_req_cache_hit_count'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_1_ddrip_405_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_avm_burstcount_total'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_1_ddrip_405_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_avm_readwrite_count'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_1_ddrip_405_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_o_stall_count'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_1_ddrip_405_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_i_stall_count'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_1_ddrip_405_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_total_req'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_1_ddrip_405_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_total_ivalid'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_1_ddrip_405_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_bw'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_1_ddrip_405_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_shared'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_1_ddrip_405_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_shared_control'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_1_ddrip_405_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'o_active'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_1_ddrip_405_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'clock2x'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_1_ddrip_405_0gr.sv(330): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_1_ddrip_405_0gr.sv(330): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_1_ddrip_405_0gr.sv(330): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c1_out_for_0000ip_397_1gr_data_fifo.sv(94): (vopt-2685) [TFMPC] - Too few port connections for 'thei_llvm_fpga_sfc_exit_s_c1_out_for_body_i_ddrips_c1_exit_ddrip_793_0gr'.  Expected 12, found 10.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c1_out_for_0000ip_397_1gr_data_fifo.sv(94): (vopt-2718) [TFMPC] - Missing connection for port 'ecc_err_status'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c1_out_for_0000ip_397_1gr_data_fifo.sv(94): (vopt-2718) [TFMPC] - Missing connection for port 'o_almost_full'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_s_c1_in_for_body_i_ddrips_c1_enter_ddrip_83_7gr.sv(134): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_s_c1_in_for_body_i_ddrips_c1_enter_ddrip_83_7gr.sv(134): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_s_c1_in_for_body_i_ddrips_c1_enter_ddrip_83_7gr.sv(134): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memdep_ddrip_467_0gr.sv(225): (vopt-2685) [TFMPC] - Too few port connections for 'thei_llvm_fpga_mem_memdep_ddrip_467_1gr'.  Expected 52, found 37.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memdep_ddrip_467_0gr.sv(225): (vopt-2718) [TFMPC] - Missing connection for port 'ecc_err_status'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memdep_ddrip_467_0gr.sv(225): (vopt-2718) [TFMPC] - Missing connection for port 'profile_idle'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memdep_ddrip_467_0gr.sv(225): (vopt-2718) [TFMPC] - Missing connection for port 'profile_avm_stall'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memdep_ddrip_467_0gr.sv(225): (vopt-2718) [TFMPC] - Missing connection for port 'profile_extra_unaligned_reqs'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memdep_ddrip_467_0gr.sv(225): (vopt-2718) [TFMPC] - Missing connection for port 'profile_req_cache_hit_count'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memdep_ddrip_467_0gr.sv(225): (vopt-2718) [TFMPC] - Missing connection for port 'profile_avm_burstcount_total'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memdep_ddrip_467_0gr.sv(225): (vopt-2718) [TFMPC] - Missing connection for port 'profile_avm_readwrite_count'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memdep_ddrip_467_0gr.sv(225): (vopt-2718) [TFMPC] - Missing connection for port 'profile_o_stall_count'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memdep_ddrip_467_0gr.sv(225): (vopt-2718) [TFMPC] - Missing connection for port 'profile_i_stall_count'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memdep_ddrip_467_0gr.sv(225): (vopt-2718) [TFMPC] - Missing connection for port 'profile_total_req'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memdep_ddrip_467_0gr.sv(225): (vopt-2718) [TFMPC] - Missing connection for port 'profile_total_ivalid'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memdep_ddrip_467_0gr.sv(225): (vopt-2718) [TFMPC] - Missing connection for port 'profile_bw'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memdep_ddrip_467_0gr.sv(225): (vopt-2718) [TFMPC] - Missing connection for port 'profile_shared'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memdep_ddrip_467_0gr.sv(225): (vopt-2718) [TFMPC] - Missing connection for port 'profile_shared_control'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memdep_ddrip_467_0gr.sv(225): (vopt-2718) [TFMPC] - Missing connection for port 'clock2x'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memdep_ddrip_467_0gr.sv(305): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memdep_ddrip_467_0gr.sv(305): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memdep_ddrip_467_0gr.sv(305): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c2_out_for_0000ip_459_1gr_data_fifo.sv(120): (vopt-2685) [TFMPC] - Too few port connections for 'thei_llvm_fpga_sfc_exit_s_c2_out_for_body_i_ddrips_c2_exit_ddrip_820_0gr'.  Expected 12, found 10.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c2_out_for_0000ip_459_1gr_data_fifo.sv(120): (vopt-2718) [TFMPC] - Missing connection for port 'ecc_err_status'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c2_out_for_0000ip_459_1gr_data_fifo.sv(120): (vopt-2718) [TFMPC] - Missing connection for port 'o_almost_full'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_s_c2_in_for_body_i_ddrips_c2_enter_ddrip_83_11.sv(206): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_s_c2_in_for_body_i_ddrips_c2_enter_ddrip_83_11.sv(206): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_s_c2_in_for_body_i_ddrips_c2_enter_ddrip_83_11.sv(206): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c0_out_for_0000ip_298_1gr_data_fifo.sv(199): (vopt-2685) [TFMPC] - Too few port connections for 'thei_llvm_fpga_sfc_exit_s_c0_out_for_body_i_ddrips_c0_exit160_ddrip_715_0gr'.  Expected 12, found 10.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c0_out_for_0000ip_298_1gr_data_fifo.sv(199): (vopt-2718) [TFMPC] - Missing connection for port 'ecc_err_status'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_sfc_exit_s_c0_out_for_0000ip_298_1gr_data_fifo.sv(199): (vopt-2718) [TFMPC] - Missing connection for port 'o_almost_full'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_push_i1_notexitcond_ddrip_287_0gr.sv(107): (vopt-2685) [TFMPC] - Too few port connections for 'thei_llvm_fpga_push_i1_notexitcond_ddrip_287_1gr'.  Expected 14, found 13.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_push_i1_notexitcond_ddrip_287_0gr.sv(107): (vopt-2718) [TFMPC] - Missing connection for port 'ecc_err_status'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_logic_s_c0_in_for_body_i_ddr0000ter1591_ddrip_90_0gr.sv(323): (vopt-2685) [TFMPC] - Too few port connections for 'thei_llvm_fpga_push_i32_i_0_i5_push2_ddrip_280_0gr_i_llvm_fpga_push_i32_i_0_i5_push2_ddrip_280_1gr_x'.  Expected 12, found 6.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_logic_s_c0_in_for_body_i_ddr0000ter1591_ddrip_90_0gr.sv(323): (vopt-2718) [TFMPC] - Missing connection for port 'ecc_err_status'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_logic_s_c0_in_for_body_i_ddr0000ter1591_ddrip_90_0gr.sv(323): (vopt-2718) [TFMPC] - Missing connection for port 'o_empty'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_logic_s_c0_in_for_body_i_ddr0000ter1591_ddrip_90_0gr.sv(323): (vopt-2718) [TFMPC] - Missing connection for port 'o_almost_empty'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_logic_s_c0_in_for_body_i_ddr0000ter1591_ddrip_90_0gr.sv(323): (vopt-2718) [TFMPC] - Missing connection for port 'o_valid'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_logic_s_c0_in_for_body_i_ddr0000ter1591_ddrip_90_0gr.sv(323): (vopt-2718) [TFMPC] - Missing connection for port 'o_almost_full'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_logic_s_c0_in_for_body_i_ddr0000ter1591_ddrip_90_0gr.sv(323): (vopt-2718) [TFMPC] - Missing connection for port 'o_stall'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_logic_s_c0_in_for_body_i_ddr0000ter1591_ddrip_90_0gr.sv(1084): (vopt-2685) [TFMPC] - Too few port connections for 'thei_llvm_fpga_push_i1_ddrip_b1_next_iter_isreal_push_ddrip_127_0gr_i_llvm_fpga_push_i1_ddrip_b1_next_iter_isreal_push_ddrip_127_1gr_x'.  Expected 12, found 6.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_logic_s_c0_in_for_body_i_ddr0000ter1591_ddrip_90_0gr.sv(1084): (vopt-2718) [TFMPC] - Missing connection for port 'ecc_err_status'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_logic_s_c0_in_for_body_i_ddr0000ter1591_ddrip_90_0gr.sv(1084): (vopt-2718) [TFMPC] - Missing connection for port 'o_empty'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_logic_s_c0_in_for_body_i_ddr0000ter1591_ddrip_90_0gr.sv(1084): (vopt-2718) [TFMPC] - Missing connection for port 'o_almost_empty'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_logic_s_c0_in_for_body_i_ddr0000ter1591_ddrip_90_0gr.sv(1084): (vopt-2718) [TFMPC] - Missing connection for port 'o_valid'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_logic_s_c0_in_for_body_i_ddr0000ter1591_ddrip_90_0gr.sv(1084): (vopt-2718) [TFMPC] - Missing connection for port 'o_almost_full'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_logic_s_c0_in_for_body_i_ddr0000ter1591_ddrip_90_0gr.sv(1084): (vopt-2718) [TFMPC] - Missing connection for port 'o_stall'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_s_c0_in_for_body_i_ddrips_c0_enter1591_ddrip_83_1gr.sv(293): (vopt-2685) [TFMPC] - Too few port connections for 'theloop_admit'.  Expected 14, found 13.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_s_c0_in_for_body_i_ddrips_c0_enter1591_ddrip_83_1gr.sv(293): (vopt-2718) [TFMPC] - Missing connection for port 'i_exit_stall'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_s_c0_in_for_body_i_ddrips_c0_enter1591_ddrip_83_1gr.sv(340): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_s_c0_in_for_body_i_ddrips_c0_enter1591_ddrip_83_1gr.sv(340): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_sfc_s_c0_in_for_body_i_ddrips_c0_enter1591_ddrip_83_1gr.sv(340): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_0_ddrip_329_0gr.sv(223): (vopt-2685) [TFMPC] - Too few port connections for 'thei_llvm_fpga_mem_memcoalesce_load_ddrip_fpgaunique_0_ddrip_329_1gr'.  Expected 52, found 36.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_0_ddrip_329_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'ecc_err_status'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_0_ddrip_329_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_idle'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_0_ddrip_329_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_avm_stall'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_0_ddrip_329_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_extra_unaligned_reqs'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_0_ddrip_329_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_req_cache_hit_count'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_0_ddrip_329_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_avm_burstcount_total'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_0_ddrip_329_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_avm_readwrite_count'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_0_ddrip_329_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_o_stall_count'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_0_ddrip_329_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_i_stall_count'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_0_ddrip_329_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_total_req'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_0_ddrip_329_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_total_ivalid'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_0_ddrip_329_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_bw'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_0_ddrip_329_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_shared'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_0_ddrip_329_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'profile_shared_control'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_0_ddrip_329_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'o_active'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_0_ddrip_329_0gr.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'clock2x'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_0_ddrip_329_0gr.sv(330): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_0_ddrip_329_0gr.sv(330): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_i_llvm_fpga_mem_memcoalesce_load_d0000ique_0_ddrip_329_0gr.sv(330): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B1_stall_region.sv(910): (vopt-2685) [TFMPC] - Too few port connections for 'thecoalesced_delay_1_fifo'.  Expected 12, found 10.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B1_stall_region.sv(910): (vopt-2718) [TFMPC] - Missing connection for port 'ecc_err_status'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B1_stall_region.sv(910): (vopt-2718) [TFMPC] - Missing connection for port 'o_almost_full'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B1_stall_region.sv(972): (vopt-2685) [TFMPC] - Too few port connections for 'thecoalesced_delay_0_fifo'.  Expected 12, found 10.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B1_stall_region.sv(972): (vopt-2718) [TFMPC] - Missing connection for port 'ecc_err_status'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B1_stall_region.sv(972): (vopt-2718) [TFMPC] - Missing connection for port 'o_almost_full'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B1_stall_region.sv(1306): (vopt-2685) [TFMPC] - Too few port connections for 'thecoalesced_delay_2_fifo'.  Expected 12, found 10.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B1_stall_region.sv(1306): (vopt-2718) [TFMPC] - Missing connection for port 'ecc_err_status'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B1_stall_region.sv(1306): (vopt-2718) [TFMPC] - Missing connection for port 'o_almost_full'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B1_stall_region.sv(2169): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B1_stall_region.sv(2169): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B1_stall_region.sv(2169): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B1.sv(287): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B1.sv(287): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B1.sv(287): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B2_branch_branch_storage.sv(75): (vopt-2685) [TFMPC] - Too few port connections for 'theDDRIP_B2_branch_branch_storage'.  Expected 12, found 10.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B2_branch_branch_storage.sv(75): (vopt-2718) [TFMPC] - Missing connection for port 'ecc_err_status'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B2_branch_branch_storage.sv(75): (vopt-2718) [TFMPC] - Missing connection for port 'o_almost_full'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B2_branch_branch_storage.sv(110): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B2_branch_branch_storage.sv(110): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B2_branch_branch_storage.sv(110): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B2_branch.sv(72): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B2_branch.sv(72): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B2_branch.sv(72): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B2_stall_region.sv(113): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B2_stall_region.sv(113): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B2_stall_region.sv(113): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B2_merge_storage.sv(76): (vopt-2685) [TFMPC] - Too few port connections for 'theDDRIP_B2_merge_storage'.  Expected 12, found 10.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B2_merge_storage.sv(76): (vopt-2718) [TFMPC] - Missing connection for port 'ecc_err_status'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B2_merge_storage.sv(76): (vopt-2718) [TFMPC] - Missing connection for port 'o_almost_full'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B2_merge_storage.sv(111): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B2_merge_storage.sv(111): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B2_merge_storage.sv(111): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B2_merge.sv(80): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B2_merge.sv(80): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_B2_merge.sv(80): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B2.sv(96): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B2.sv(96): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_bb_B2.sv(96): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_function.sv(296): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_function.sv(296): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_function.sv(296): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_function_wrapper.sv(279): (vopt-2685) [TFMPC] - Too few port connections for 'therst_sync'.  Expected 5, found 3.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_function_wrapper.sv(279): (vopt-2718) [TFMPC] - Missing connection for port 'o_resetn_synchronized'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/DDRIP_function_wrapper.sv(279): (vopt-2718) [TFMPC] - Missing connection for port 'o_aclrn'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(657): (vopt-2685) [TFMPC] - Too few port connections for 'kernel'.  Expected 47, found 45.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(657): (vopt-2718) [TFMPC] - Missing connection for port 'valid_in'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(657): (vopt-2718) [TFMPC] - Missing connection for port 'stall_in'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(457): (vopt-2685) [TFMPC] - Too few port connections for 'DDRIP_csr_agent_inst'.  Expected 21, found 17.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(457): (vopt-2718) [TFMPC] - Missing connection for port 'status'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(457): (vopt-2718) [TFMPC] - Missing connection for port 'acl_counter_reset'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(457): (vopt-2718) [TFMPC] - Missing connection for port 'acl_counter_size'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(457): (vopt-2718) [TFMPC] - Missing connection for port 'acl_counter_full'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_n_token.sv(205): (vopt-2685) [TFMPC] - Too few port connections for 'lsu_n_fast'.  Expected 25, found 15.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_n_token.sv(205): (vopt-2718) [TFMPC] - Missing connection for port 'o_avm_writedata'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_n_token.sv(205): (vopt-2718) [TFMPC] - Missing connection for port 'i_avm_writedata'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_n_token.sv(205): (vopt-2718) [TFMPC] - Missing connection for port 'o_avm_request'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_n_token.sv(205): (vopt-2718) [TFMPC] - Missing connection for port 'o_avm_write'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_n_token.sv(205): (vopt-2718) [TFMPC] - Missing connection for port 'o_avm_byteenable'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_n_token.sv(205): (vopt-2718) [TFMPC] - Missing connection for port 'i_avm_byteenable'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_n_token.sv(205): (vopt-2718) [TFMPC] - Missing connection for port 'o_ext_waitrequest'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_n_token.sv(205): (vopt-2718) [TFMPC] - Missing connection for port 'i_ext_burstcount'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_n_token.sv(205): (vopt-2718) [TFMPC] - Missing connection for port 'i_ext_address'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_n_token.sv(205): (vopt-2718) [TFMPC] - Missing connection for port 'i_ext_id'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_token_ring.sv(1755): (vopt-2685) [TFMPC] - Too few port connections for 'rd_ring'.  Expected 25, found 15.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_token_ring.sv(1755): (vopt-2718) [TFMPC] - Missing connection for port 'o_avm_writedata'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_token_ring.sv(1755): (vopt-2718) [TFMPC] - Missing connection for port 'i_avm_writedata'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_token_ring.sv(1755): (vopt-2718) [TFMPC] - Missing connection for port 'o_active'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_token_ring.sv(1755): (vopt-2718) [TFMPC] - Missing connection for port 'o_avm_write'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_token_ring.sv(1755): (vopt-2718) [TFMPC] - Missing connection for port 'o_avm_byteenable'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_token_ring.sv(1755): (vopt-2718) [TFMPC] - Missing connection for port 'i_avm_byteenable'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_token_ring.sv(1755): (vopt-2718) [TFMPC] - Missing connection for port 'o_ext_waitrequest'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_token_ring.sv(1755): (vopt-2718) [TFMPC] - Missing connection for port 'i_ext_burstcount'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_token_ring.sv(1755): (vopt-2718) [TFMPC] - Missing connection for port 'i_ext_address'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_token_ring.sv(1755): (vopt-2718) [TFMPC] - Missing connection for port 'i_id'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_token_ring.sv(2889): (vopt-2685) [TFMPC] - Too few port connections for 'lsu_rd_back'.  Expected 13, found 12.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/lsu_token_ring.sv(2889): (vopt-2718) [TFMPC] - Missing connection for port 'o_rd_bank'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(821): (vopt-2685) [TFMPC] - Too few port connections for 'csr_ring_node_avm_wire_0_cra_ring_inst_0'.  Expected 26, found 25.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(821): (vopt-2718) [TFMPC] - Missing connection for port 'avm_waitrequest'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(223): (vopt-2685) [TFMPC] - Too few port connections for 'lsu_ic_top_gmem'.  Expected 28, found 18.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'ecc_err_status'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'o_avm_ext_writeack'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'o_avm_writeack'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'o_wr_waitrequest'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'i_wr_writedata'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'i_wr_burstcount'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'i_wr_request'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'i_wr_address'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'i_wr_byteenable'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(223): (vopt-2718) [TFMPC] - Missing connection for port 'i_rd_byteenable'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(294): (vopt-2685) [TFMPC] - Too few port connections for 'lsu_ic_top_gmem1_2_'.  Expected 28, found 20.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(294): (vopt-2718) [TFMPC] - Missing connection for port 'ecc_err_status'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(294): (vopt-2718) [TFMPC] - Missing connection for port 'o_avm_readdatavalid'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(294): (vopt-2718) [TFMPC] - Missing connection for port 'o_avm_readdata'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(294): (vopt-2718) [TFMPC] - Missing connection for port 'o_rd_waitrequest'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(294): (vopt-2718) [TFMPC] - Missing connection for port 'i_rd_burstcount'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(294): (vopt-2718) [TFMPC] - Missing connection for port 'i_rd_request'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(294): (vopt-2718) [TFMPC] - Missing connection for port 'i_rd_address'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/mmhost_ia840f_report_di.sv(294): (vopt-2718) [TFMPC] - Missing connection for port 'i_rd_byteenable'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_burst_adapter_1940/synth/ahls_memory_dma_fabric_fabric_altera_merlin_burst_adapter_1940_twtirdy.sv(343): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_burst_adapter_1940/synth/ahls_memory_dma_fabric_fabric_altera_merlin_burst_adapter_1940_twtirdy.sv(354): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_master_translator_193/synth/ahls_memory_dma_fabric_fabric_altera_merlin_master_translator_193_lgcew2q.sv(695): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_master_translator_193/synth/ahls_memory_dma_fabric_fabric_altera_merlin_master_translator_193_lgcew2q.sv(751): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_traffic_limiter_1921/synth/ahls_memory_dma_fabric_fabric_altera_merlin_traffic_limiter_1921_dbseoby.sv(414): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_traffic_limiter_1921/synth/ahls_memory_dma_fabric_fabric_altera_merlin_traffic_limiter_1921_dbseoby.sv(436): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_master_translator_193/synth/ahls_memory_dma_fabric_fabric_altera_merlin_master_translator_193_lgcew2q.sv(695): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_master_translator_193/synth/ahls_memory_dma_fabric_fabric_altera_merlin_master_translator_193_lgcew2q.sv(751): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ia840f_ahls_memory_fabric_dma_fullwidth_10/synth/ahls_memory_dma_fabric_fabric_ia840f_ahls_memory_fabric_dma_fullwidth_10_emygvzi.v(573): (vopt-2685) [TFMPC] - Too few port connections for 'k0'.  Expected 36, found 31.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ia840f_ahls_memory_fabric_dma_fullwidth_10/synth/ahls_memory_dma_fabric_fabric_ia840f_ahls_memory_fabric_dma_fullwidth_10_emygvzi.v(573): (vopt-2718) [TFMPC] - Missing connection for port 'csr_ring_root_avs_enable'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ia840f_ahls_memory_fabric_dma_fullwidth_10/synth/ahls_memory_dma_fabric_fabric_ia840f_ahls_memory_fabric_dma_fullwidth_10_emygvzi.v(573): (vopt-2718) [TFMPC] - Missing connection for port 'avm_mem_gmem1_2_port_0_0_rw_writeack'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ia840f_ahls_memory_fabric_dma_fullwidth_10/synth/ahls_memory_dma_fabric_fabric_ia840f_ahls_memory_fabric_dma_fullwidth_10_emygvzi.v(573): (vopt-2718) [TFMPC] - Missing connection for port 'avm_mem_gmem1_2_port_0_0_rw_enable'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ia840f_ahls_memory_fabric_dma_fullwidth_10/synth/ahls_memory_dma_fabric_fabric_ia840f_ahls_memory_fabric_dma_fullwidth_10_emygvzi.v(573): (vopt-2718) [TFMPC] - Missing connection for port 'avm_mem_gmem0_1_port_0_0_rw_writeack'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ia840f_ahls_memory_fabric_dma_fullwidth_10/synth/ahls_memory_dma_fabric_fabric_ia840f_ahls_memory_fabric_dma_fullwidth_10_emygvzi.v(573): (vopt-2718) [TFMPC] - Missing connection for port 'avm_mem_gmem0_1_port_0_0_rw_enable'.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/ahls_memory_dma_fabric_fabric_altera_merlin_axi_slave_ni_19112_oazrs3y.sv(1089): (vopt-2697) MSB 19 of part-select into 'read_cmd_addr_aligned' is out of bounds.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_axi_slave_ni_19112/synth/ahls_memory_dma_fabric_fabric_altera_merlin_axi_slave_ni_19112_oazrs3y.sv(1136): (vopt-2697) MSB 19 of part-select into 'uncompressor_addr' is out of bounds.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_slave_translator_191/synth/ahls_memory_dma_fabric_fabric_altera_merlin_slave_translator_191_xg7rzxi.sv(315): (vopt-2697) LSB -1 of part-select into 'real_uav_address' is out of bounds.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_slave_translator_191/synth/ahls_memory_dma_fabric_fabric_altera_merlin_slave_translator_191_xg7rzxi.sv(275): (vopt-2697) LSB -1 of part-select into 'real_uav_address' is out of bounds.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_slave_translator_191/synth/ahls_memory_dma_fabric_fabric_altera_merlin_slave_translator_191_xg7rzxi.sv(315): (vopt-2697) LSB -1 of part-select into 'real_uav_address' is out of bounds.
+# ** Warning: generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/altera_merlin_slave_translator_191/synth/ahls_memory_dma_fabric_fabric_altera_merlin_slave_translator_191_xg7rzxi.sv(275): (vopt-2697) LSB -1 of part-select into 'real_uav_address' is out of bounds.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=257.
+# //  Questa Intel FPGA Edition-64
+# //  Version 2024.3 linux_x86_64 Sep 10 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.sys_pll_pkg(fast)
+# Loading work.ofs_fim_cfg_pkg(fast)
+# Loading work.ofs_pcie_ss_plat_cfg_pkg(fast)
+# Loading work.ofs_pcie_ss_cfg_pkg(fast)
+# Loading work.pf_vf_mux_pkg(fast)
+# Loading work.top_cfg_pkg(fast)
+# Loading work.ccip_if_pkg(fast)
+# Loading work.ofs_plat_axi_mem_if_sv_unit(fast)
+# Loading work.ia840f_ahls_mmio_completion_guard_sv_unit(fast)
+# Loading work.ofs_plat_axi_mem_pkg(fast)
+# Loading work.ofs_plat_log_pkg(fast)
+# Loading work.ofs_plat_axi_mem_lite_if_sv_unit(fast)
+# Loading work.ofs_plat_local_mem_axi_mem_pkg(fast)
+# Loading work.ahls_memory_path_tb_sv_unit(fast)
+# Loading work.ahls_memory_path_tb(fast)
+# Loading work.ofs_plat_axi_mem_if_reg_sv_unit(fast)
+# Loading work.ofs_plat_axi_mem_if_connect_sv_unit(fast)
+# Loading work.mem_ss_param_pkg(fast)
+# Loading work.ofs_fim_mem_if_pkg(fast)
+# Loading work.ofs_plat_local_mem_as_axi_mem_sv_unit(fast)
+# Loading work.ia840f_ahls_memory_bank_shim_sv_unit(fast)
+# Loading work.ia840f_ahls_memory_bank_shim(fast)
+# Loading work.ofs_plat_axi_mem_if_map_bursts_sv_unit(fast)
+# Loading work.ofs_plat_axi_mem_if_map_bursts(fast)
+# Loading work.ofs_plat_prim_fifo_bram_sv_unit(fast)
+# Loading work.ofs_plat_axi_mem_if_user_ext_sv_unit(fast)
+# Loading work.ofs_plat_axi_mem_if_user_ext(fast)
+# Loading altera_lnsim_ver.ace5_lite_bfm_types_pkg(fast)
+# Loading altera_lnsim_ver.ace5_lite_operations_class_pkg(fast)
+# Loading altera_lnsim_ver.altera_lnsim_sv_unit(fast)
+# Loading work.ofs_plat_prim_fifo_dc_sv_unit(fast)
+# Loading work.ofs_plat_axi_mem_if_async_shim_sv_unit(fast)
+# Loading work.ofs_plat_axi_mem_if_async_shim(fast)
+# Loading work.ofs_plat_axi_mem_if_connect_sink_clk(fast__1)
+# Loading work.ofs_plat_axi_mem_if_connect(fast)
+# Loading work.ofs_plat_axi_mem_if_fixup_wlast_sv_unit(fast)
+# Loading work.ofs_plat_axi_mem_if_map_bursts(fast__1)
+# Loading work.ofs_plat_axi_mem_if_map_bursts_impl(fast)
+# Loading work.ia840f_ahls_memory_bank_completion_shim_sv_unit(fast)
+# Loading work.ia840f_ahls_memory_bank_completion_shim(fast)
+# Loading work.ofs_plat_axi_mem_if_map_bursts(fast__2)
+# Loading work.ahls_axi_memory_model(fast__1)
+# Loading work.ahls_axi_memory_model(fast__2)
+# Loading work.local_mem_cfg_pkg(fast)
+# Loading work.ia840f_ahls_memory_core_sv_unit(fast)
+# Loading work.ia840f_ahls_memory_core_publication(fast)
+# Loading work.lsu_top(fast)
+# Loading work.dma_read_engine_sv_unit(fast)
+# Loading work.dma_write_engine_sv_unit(fast)
+# Loading work.dma_engine_sv_unit(fast)
+# Loading work.dma_axi_mm_mux_sv_unit(fast)
+# Loading work.ofs_plat_host_chan_pkg(fast)
+# Loading work.dma_pkg(fast)
+# Loading work.csr_mgr_sv_unit(fast)
+# Loading work.dma_top_sv_unit(fast)
+# Loading work.dma_top(fast)
+# Loading work.dma_ddr_selector(fast)
+# Loading work.ofs_plat_axi_mem_if_connect_sink_clk(fast__5)
+# Loading work.ofs_plat_axi_mem_if_connect(fast__3)
+# Loading work.ofs_plat_axi_mem_if_connect_sink_clk(fast__6)
+# Loading work.ofs_plat_axi_mem_if_connect(fast__4)
+# run -all
+# ** Warning: (vsim-8315) No condition is true in the unique/priority if/case statement.
+#    Time: 0 ps  Iteration: 18  Process: /ahls_memory_path_tb/dut/dma/dma_engine_inst/dma_read_engine_inst/#implicit#unique__212 File: rtl/afu/dma_read_engine.sv Line: 212
+# ** Warning: (vsim-8315) No condition is true in the unique/priority if/case statement.
+#    Time: 0 ps  Iteration: 18  Process: /ahls_memory_path_tb/dut/dma/dma_engine_inst/dma_read_engine_inst/#implicit#unique__114 File: rtl/afu/dma_read_engine.sv Line: 114
+# ** Warning: (vsim-8315) No condition is true in the unique/priority if/case statement.
+#    Time: 0 ps  Iteration: 18  Process: /ahls_memory_path_tb/dut/dma/dma_engine_inst/dma_write_engine_inst/#implicit#unique__260 File: rtl/afu/dma_write_engine.sv Line: 260
+# ** Warning: (vsim-8315) No condition is true in the unique/priority if/case statement.
+#    Time: 0 ps  Iteration: 18  Process: /ahls_memory_path_tb/dut/dma/dma_engine_inst/dma_write_engine_inst/#implicit#unique__140 File: rtl/afu/dma_write_engine.sv Line: 140
+# FPGA Test integrated case=0 n=1 shift=0 x=0000000200001000 y=0000000200002000 z=0000000100004000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x41000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300001000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x200001000
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x1
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x102010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x11041000a
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x11041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300002000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x200002000
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x1
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x12041000a
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x12041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300003000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x500003fc0
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x3
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x122010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x13041000a
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x13041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x500003fc0
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x12300004000
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x3
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x88000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x232010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x232010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x232010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x232010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x232080001
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x234000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x234000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x24041000a
+# FPGA Test integrated case PASS id=0 n=1
+# FPGA Test integrated case=1 n=8 shift=32 x=0000000200001020 y=0000000200002020 z=0000000100004020
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x24041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300001000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x200001000
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x1
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x144010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x144000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x144000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x144000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x144000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x144000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x15041000a
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x15041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300002000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x200002000
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x1
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x152010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x154000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x154000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x154000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x154000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x154000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x16041000a
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x16041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300003000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x500003fc0
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x3
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x162010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x17041000a
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x17041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x500003fc0
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x12300004000
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x3
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x88000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x272010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x272010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x272010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x272010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x272010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x274000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x274000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x28041000a
+# FPGA Test integrated case PASS id=1 n=8
+# FPGA Test integrated case=2 n=17 shift=0 x=0000000200001000 y=0000000200002000 z=0000000100004000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x28041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300001000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x200001000
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x2
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x182010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x184000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x184000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x184000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x184000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x184000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x19041000a
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x19041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300002000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x200002000
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x2
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x192010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x194000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x194000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x194000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x194000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x194000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x194000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1a041000a
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1a041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300003000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x500003fc0
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x4
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1a2010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1a4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1a4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1a4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1a4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1a4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1a4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1a4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1a4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1a4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1a4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1a4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1a4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1b041000a
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1b041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x500003fc0
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x12300004000
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x4
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x88000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x2b2010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x2b2010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x2b2010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x2b2010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x2b2040001
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x2b4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x2b4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x2c041000a
+# FPGA Test integrated case PASS id=2 n=17
+# FPGA Test integrated case=3 n=65 shift=32 x=0000000200001fe0 y=0000000200002fe0 z=0000000100004fe0
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x2c041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300001000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x200001fc0
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x5
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1c2010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1c4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1c4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1c4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1c4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1c4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1c4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1c4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1c4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1d041000a
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1d041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300002000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x200002fc0
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x5
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1d2010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1d4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1d4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1d4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1d4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1d4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1d4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1d4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1d4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1e041000a
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1e041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300003000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x500004f80
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x7
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1e2010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1e4000001
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1e4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1e4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1e4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1e4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1e4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1e4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1e4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1e4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1e4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1e4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1e4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1e4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1e4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1f041000a
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x1f041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x500004f80
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x12300004000
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x7
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x88000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x2f2010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x2f2010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x2f2010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x2f2010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x2f2080001
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x2f2000001
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x2f4000001
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x2f4000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x20041000a
+# FPGA Test integrated case PASS id=3 n=65
+# FPGA Test integrated case=4 n=9 shift=0 x=0000000200001fc0 y=0000000200002fc0 z=0000000100004fc0
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x20041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300001000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x200001fc0
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x1
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x102010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x11041000a
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x11041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300002000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x200002fc0
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x1
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x12041000a
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x12041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300003000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x500004f80
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x3
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x122010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x13041000a
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x13041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x500004f80
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x12300004000
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x3
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x88000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x232010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x232010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x232010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x232010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x232040001
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x234000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x234000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x24041000a
+# FPGA Test integrated case PASS id=4 n=9
+# FPGA Test integrated case=5 n=33 shift=32 x=0000000200001fe0 y=0000000200002fe0 z=0000000100004fe0
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x24041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300001000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x200001fc0
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x3
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x142010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x144000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x144000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x144000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x144000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x144000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x144000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x144000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x144000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x15041000a
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x15041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300002000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x200002fc0
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x3
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x152010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x154000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x154000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x154000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x154000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x154000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x154000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x154000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x154000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x16041000a
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x16041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300003000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x500004f80
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x5
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x162010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x164000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x17041000a
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x17041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x500004f80
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x12300004000
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x5
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x88000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x272010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x272010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x272010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x272010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x272010001
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x272000001
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x274000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x274000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x28041000a
+# FPGA Test integrated case PASS id=5 n=33
+# BANK1_RESET_INVALIDATION_PASS checks=1
+# FPGA Test integrated case=6 n=65 shift=0 x=0000000200001fc0 y=0000000200002fc0 z=0000000100004fc0
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x20041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300001000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x200001fc0
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x5
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x102010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x11041000a
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x11041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300002000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x200002fc0
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x5
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x112010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x12041000a
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x12041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300003000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x500004f80
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x7
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x122010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000001
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x13041000a
+# COMPLETION_FAULT_PASS mode=1 split_errors=0
+# FPGA Test integrated case=7 n=9 shift=32 x=0000000200001fe0 y=0000000200002fe0 z=0000000100004fe0
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x10041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300001000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x200001fc0
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x2
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x102010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x104000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x11041000a
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x11041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300002000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x200002fc0
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x2
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x112010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x114000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x12041000a
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x12041000a
+# CSR_MGR: Write addr 0x28, without req comletion
+# 	CSR_MGR: Write Data: 0x12300003000
+# CSR_MGR: Write addr 0x30, without req comletion
+# 	CSR_MGR: Write Data: 0x500004f80
+# CSR_MGR: Write addr 0x38, without req comletion
+# 	CSR_MGR: Write Data: 0x4
+# CSR_MGR: Write addr 0x40, without req comletion
+# 	CSR_MGR: Write Data: 0x84000000
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x122010009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x124000009
+# CSR_MGR: Read addr 0x48
+# 	CSR_MGR: Read Data: 0x13041000a
+# COMPLETION_FAULT_PASS mode=2 split_errors=0
+# PAGE_CROSSING_INPUTS AW0=8 AW1=8 AR0=0 AR1=6
+# RETIREMENT_CERTIFICATE_CHECKS count=6
+# INTEGRATED_COVERAGE hls_reads=24 hls_writes=32 early_finish=8 snapshots=413 bank0_lastW=144 bank1_lastW=387 bank0_ARstall=53 bank1_ARstall=22 bank0_Bhold=0 bank1_Bhold=0
+# AHLS_PATH_UNIT_PASS cases=6 elements=133 copied_bytes=1600 dma=30 checks=402470 mmio_reads=1012 mmio_writes=161 bank0_W=40 bank1_W=56
+# ** Note: $finish    : tests/ahls_memory_path_tb.sv(536)
+#    Time: 151480 ns  Iteration: 1  Instance: /ahls_memory_path_tb
+# End time: 14:24:45 on Sep 25,2026, Elapsed time: 0:00:07
+# Errors: 0, Warnings: 261

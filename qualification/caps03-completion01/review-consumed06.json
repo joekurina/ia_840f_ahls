@@ -1,0 +1,49 @@
+{
+  "review": "deleg_62722d13",
+  "verdict": "bounded-accepted; no blocker",
+  "parent_verification": {
+    "payloads": 16,
+    "sim_input_matches": 15,
+    "generated_matches": 269,
+    "qsf_selection_order_exact": true,
+    "unit_pass": true,
+    "outer_rc": 0
+  },
+  "bindings": {
+    "qualification/caps03-completion01/sim05-result.json": {
+      "bytes": 596850,
+      "sha256": "770da514d96661f86f2a0a586dcbffcf10c891955cf404ab28f63907c0a92fd5"
+    },
+    "qualification/caps03-completion01/sim05-outer.json": {
+      "bytes": 731,
+      "sha256": "6918610f46a811abf3c3b6e52bc3dfac02cd6acab6dbac718de454894a1a1a4f"
+    },
+    "qualification/caps03-completion01/sim05-configuration-metadata.json": {
+      "bytes": 383293,
+      "sha256": "a330a7f43e95c948ad47a9a9cde1c90d6b4b07e0d6da11a3e815fcb2b9785fbb"
+    },
+    "qualification/caps03-persona01/source-selection01.json": {
+      "bytes": 3958,
+      "sha256": "208c966d8fb42376e95e97088bd67f77311ecb2ea6cb16c1b1b89edeed0bd201"
+    },
+    "qualification/caps03-persona01/setup01-result.json": {
+      "bytes": 1272968,
+      "sha256": "c035001d8bfca5c4def29d8598c7e4a25ada54dd84467cb3913008d6616e1de6"
+    },
+    "afu/ahls_memory/pim/ia840f_ahls_memory_reset.sv": {
+      "bytes": 866,
+      "sha256": "a1593e6a642bd4d6595859ced76749658589b2154a5fcd835826e59b5ef9b8e6"
+    },
+    "afu/ahls_memory/pim/ofs_plat_afu_completion.sv": {
+      "bytes": 13078,
+      "sha256": "20b34e61d4bd6d88e75085203e700492a502801f27a53687028927df8a054134"
+    }
+  },
+  "limits": [
+    "no physical timing/reset/CDC acceptance",
+    "no hardware acceptance",
+    "no stopped-clock or active-transaction bank-reset recovery",
+    "bank0 RRESP not covered by completion errors",
+    "single owner, ordered programming, no outstanding DMA at launch"
+  ]
+}
