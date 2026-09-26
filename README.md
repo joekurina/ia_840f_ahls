@@ -1,8 +1,14 @@
 # IA-840F OFS / Altera AHLS source project
 
-**Active target: Altera AHLS-generated RTL integrated into an OFS AFU through PIM, with OPAE/DFL host access. Not an Intel oneAPI compiler/runtime BSP. W13 FIM and sanctioned persona artifacts exist; timing and hardware acceptance remain incomplete.**
+**Active target: Altera AHLS-generated RTL integrated into an OFS AFU through PIM, with OPAE/DFL host access. Not an Intel oneAPI compiler/runtime BSP. The Work21-based CAPS03 image has accepted native assembly and bounded physical timing; hardware gates have their own scoped acceptance records.**
 
-## Current qualification checkpoint
+The selected build uses Quartus25.1 and the unchanged3.000ns target. See
+[bounded physical acceptance](qualification/caps03-persona01/PHYSICAL-ACCEPTANCE01.md)
+and [assembly acceptance](qualification/caps03-persona01/ASSEMBLY-ACCEPTANCE01.md).
+Native Design Closure remains FAIL for the disclosed DRC/unconstrained-port scope;
+assembly success is not a blanket timing, hardware or lifecycle qualification.
+
+## Historical source-side checkpoint
 
 [GOAL-PROMPT.md](GOAL-PROMPT.md) governs execution and safety. The
 [source-side continuation report](qualification/source-resume-01/REPORT.md)
@@ -39,9 +45,10 @@ retain their earlier pending-review wording as immutable history.
 
 Project-requested qualification reports, finite test sources, commands,
 results and SHA256 inventories are retained under `qualification/<run-id>/`.
-Files **over 2 MB stay local-only**, excluded by the applicable `.gitignore`
-and SHA256-referenced by reports; compact lossless evidence archives may be
-tracked when under the cap. Bitstreams, licensed binaries/installers, license
+Files **over2,000,000 bytes stay local-only**, excluded by the applicable `.gitignore`
+and SHA256-referenced by reports. Generated launchers with embedded source/binary
+payloads and raw transport archives remain local-only at any size; payload-free
+metadata retains their exact sizes and hashes. Bitstreams, licensed binaries/installers, license
 files, secrets, compiler build directories and internal agent transcripts are
 not repository deliverables. Preserve failed attempts and accepted provenance;
 commit only independently reviewed milestones. This project-local evidence
@@ -82,7 +89,7 @@ Vendor evidence identifies **AGFB027R25A2E2V**, one discrete DDR4 channel plus o
 
 Unresolved contracts include modern mixed-memory presets/ports, PF1 PCIe apertures and identity, BMC IP migration/reset/CDC, clocks and PR floorplan, and the actual AHLS component-to-PIM boundary. A fresh matching PR template is required later; the vendor fitted QDB is not the new platform.
 
-## Toolchain
+## Historical toolchain planning
 
 AHLS documentation requires **Quartus Pro 26.1 for Agilex 7**. This supports the selected toolchain family, but does not by itself qualify patch 26.1.1 with the pinned OFS FIM (documented for 25.1) or old BittWare IP. The workstation installation has not been inspected in this task. No downgrade to an older oneAPI-compatible stack is requested or applied.
 
