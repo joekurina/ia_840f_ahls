@@ -1,0 +1,21 @@
+{
+  "review": "deleg_7f0585bb",
+  "consumed": true,
+  "recovered_completed_final": {
+    "session_id": "20260926_142217_0107c5",
+    "message_id": 262447,
+    "sha256": "3717788206839b04b2541bc13b3e22880db442269302df172e5aa2000a788c62"
+  },
+  "verdict": "ACCEPT one N65536 bulk hardware invocation; ACCEPT completed walking-bit result",
+  "source_sha256": "9d564d77755e787553c90ef41cc1838ef68dd631594e9556cb651e11ff71deeb",
+  "module": {
+    "bytes": 43856,
+    "sha256": "1c79f4378e947edb8c43d045597b1a767a38b6b73f580396fdaf8411139bddcd",
+    "mode": "0o600"
+  },
+  "descriptors": 8324,
+  "tiles": 268,
+  "no_blocking_defect": true,
+  "scope": "Source/inert host-delta acceptance, no bulk hardware pass yet; source-supported concurrent workload, not measured wire overlap. Walking-bit120descriptors accepted with exact erratum; no physical-row claim.",
+  "full_review": "**ACCEPT the bulk delta for one N=65536 live invocation under the agreed gate. No blocking defect found.**\n\n- **Extents/reference:** bank0 X `[0x10000,0x50000)`, Y `[0x60000,0xa0000)`; bank1 Z `[0x10000,0x50000)`, with guards `[0xffc0,0x50040)`. Little-endian `X=i`, `Y=2i+1`, `Z=3i+1` is correct and overflow-safe. DDR Z and receiving payload bytes are complemented before use; all 262,144 result bytes and 128 DDR guard bytes are compared.\n- **Descriptors/helper:** read-only reconciliation confirms **8,324 descriptors / 268 tiles**, exact contiguous coverage, and 64/128-byte descriptors contained within both DDR and host pages. The actual helper diff exactly matches `dma-helper-delta01.patch`: rename and logging throttling only; transfer, fences, visibility, whole-page checks, and hold behavior remain intact.\n- **Freshness/retention:** `ahls_memory_caps03_bulk.c:113\u2013133,257` requires quiescent status/zero ticket before start, producer completion, fresh ticket `1`, exact retirement `0x10002`, then copyback and final guard/completion/quiescence checks. Uncertainty is set **before** the start write and cleared only after complete verification; post-start failures retain ownership.\n- Existing **4/4 inert results** and logs agree, including late-payload corruption, host-guard corruption, and start-error retention. This is source/inert acceptance\u2014not a claimed bulk hardware pass. Source-supported concurrency suffices; no instrumentation addition is needed.\n\n**ACCEPT the completed walking-bit result.** The log independently reconciles to 120 serial descriptors, 30 addresses/channel, and 1,920 returned bytes/channel, with all writes preceding reads. Address/bank-specific patterns separately exercise `(0x80,0x400)`, `(0x100,0x800)`, and `(0x200,0x1000)`, closing those logical-pair gaps. Receipt/log hashes match; native/outer exits are zero and ownership-after is empty. Lifecycle is **accepted with the exact pending-before-FLR warning, not clean**. No physical-row or wire-simultaneity claim follows.\n\nRead-only review only; no files changed, builds/tests run, or remote/hardware operations performed."
+}

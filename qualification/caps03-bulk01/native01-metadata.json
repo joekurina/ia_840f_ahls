@@ -1,0 +1,339 @@
+{
+  "success": true,
+  "commands": [
+    {
+      "label": "caps03-bulk-module-compile-only",
+      "argv": [
+        "/home/uwb_student00/ahls/apptainer/bin/apptainer",
+        "exec",
+        "--containall",
+        "--cleanenv",
+        "--no-home",
+        "--no-mount",
+        "sys,hostfs,cwd,bind-paths",
+        "--no-eval",
+        "--workdir",
+        "/home/uwb_student00/ahls/new_BSP/work_caps03_bulk01/native01/scratch",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_caps01_vfio01/target01:/work:ro",
+        "--bind",
+        "/home/uwb_student00/opae-sdk:/sdk:ro",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_caps03_bulk01/native01:/diag:rw",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_caps03_bulk01/native01/empty:/empty:ro",
+        "--pwd",
+        "/empty",
+        "/home/uwb_student00/ahls/ubuntu-ahls.sif",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "-S",
+        "/diag/inner.py"
+      ],
+      "pid": 7625,
+      "rc": 0,
+      "output": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "started": "2026-09-26T21:22:21.343069+00:00",
+  "boot": "8121620d-a638-42f8-abab-a547aae32076",
+  "pane": "%15",
+  "hardware_access": false,
+  "application_executed": false,
+  "opae_loaded": false,
+  "source_bindings": {
+    "ia840f_dma_transfer_core.c": {
+      "sha256": "4b039f9e6649aed655b7f7625ee869e3610073429c8289a3df38a56f38ead58b",
+      "bytes": 4096
+    },
+    "ia840f_dma_transfer_core.h": {
+      "sha256": "baeaab8d6a226ffb26bd76a8a50342d863013bfbed09a16c34dab2a22f7ef567",
+      "bytes": 1516
+    },
+    "ia840f_dma_lifetime.c": {
+      "sha256": "3d34125b24e7d24c7399c930281526a069c65ffe6cfd61c2751760a0dcaaf2ae",
+      "bytes": 1222
+    },
+    "ia840f_dma_lifetime.h": {
+      "sha256": "0f96cbe4589c000307c110bee8e6c69bf2df75f200e1b56c961a696689c3df5c",
+      "bytes": 273
+    },
+    "ahls_qualification_core.c": {
+      "sha256": "52e7ff9492d0432bfb1e55dceb4368720bbe17c994f6d49a60c67b660454ca74",
+      "bytes": 4631
+    },
+    "ahls_qualification_core.h": {
+      "sha256": "fbd6e3c8999bfb803419309954c281a92c4326960d81cce8614305ba6195bf6f",
+      "bytes": 1190
+    },
+    "ia840f_dma_capabilities.h": {
+      "sha256": "908907f046da9ed16fe6d10e9433bd84e85807ea80be6882c568de35d34a4c49",
+      "bytes": 2332
+    },
+    "ahls_memory_entry_vfio_strict.c": {
+      "sha256": "ca1ca46f034753378a36a7481bfe68f5f28a0e923c3b14d5548240e9cdd53caa",
+      "bytes": 584
+    },
+    "opae/ia840f_vfio_strict_init.h": {
+      "sha256": "5eb37c588d1ec93b6a7aeb61dd9fcad5f4f7b2d9ff186b8ce9a2298530e3a83b",
+      "bytes": 212
+    },
+    "opae/ia840f_vfio_config.h": {
+      "sha256": "fb63fcf296e010ff4725d1f0816349d08e3fa2ace5629e765d43fa4bd96b6cfa",
+      "bytes": 742
+    },
+    "ahls_memory_caps03.c": {
+      "bytes": 14440,
+      "sha256": "54049f8b4a20cd4e0a5fd64651be0bc0737a3fc43c71a7fdcc278f76e31cf522"
+    },
+    "ahls_memory_caps03_startup.c": {
+      "bytes": 6493,
+      "sha256": "7519c2bed12aa002aaa1a642a6be82a2ec121fba72770df40c588197fe7f4e4f"
+    },
+    "ia840f_dma_segments.h": {
+      "bytes": 700,
+      "sha256": "b24196a9ea04973653e571056e0d3318c282d46f9cd91e1d7c18d8b99ca4bc50"
+    },
+    "CMakeLists.txt": {
+      "bytes": 2784,
+      "sha256": "ea6b96932d961553fef6d4ea282b5d3317d8e64149e0c1d359146ce2ae2b2d14"
+    },
+    "ahls_memory_caps03_coverage.c": {
+      "sha256": "1395f980d5a5ba7a903d236348c905d312e2488486ad8e0cf99088872a9546e6",
+      "bytes": 11254
+    },
+    "ahls_memory_caps03_bulk.c": {
+      "bytes": 13790,
+      "sha256": "9d564d77755e787553c90ef41cc1838ef68dd631594e9556cb651e11ff71deeb"
+    }
+  },
+  "sdk_inputs": 64,
+  "inner": {
+    "success": true,
+    "hardware_access": false,
+    "application_executed": false,
+    "opae_loaded": false,
+    "installed": false,
+    "commands": [
+      {
+        "label": "compiler_version",
+        "argv": [
+          "/usr/bin/cc",
+          "--version"
+        ],
+        "rc": 0,
+        "sha256": "5fa6bf5b83f57f14020be375ac663df894027e2d672d6b7d82d7e8d8f7b49c8b"
+      },
+      {
+        "label": "configure",
+        "argv": [
+          "/usr/bin/cmake",
+          "-S",
+          "/diag/source",
+          "-B",
+          "/diag/build",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DFETCHCONTENT_FULLY_DISCONNECTED=ON"
+        ],
+        "rc": 0,
+        "sha256": "90d42ddd590f8eed5ac2691744b4488f81851338b434ffdce6cc4eaf3c908aca"
+      },
+      {
+        "label": "build",
+        "argv": [
+          "/usr/bin/cmake",
+          "--build",
+          "/diag/build",
+          "--parallel",
+          "36",
+          "--verbose",
+          "--target",
+          "ahls_memory_caps03_bulk_entry_vfio_strict"
+        ],
+        "rc": 0,
+        "sha256": "a78e5a6e7847f1def4a1acf0329a4d3f0ea2dfdc8c8b7394a83919f2a59d034f"
+      },
+      {
+        "label": "libahls_memory_caps03_bulk_entry_vfio_strict.so_dynamic",
+        "argv": [
+          "/usr/bin/readelf",
+          "-dW",
+          "/diag/build/libahls_memory_caps03_bulk_entry_vfio_strict.so"
+        ],
+        "rc": 0,
+        "sha256": "075ffe629eab7ea04228c64bc61db52a986f521bb6f6c6834a5e9aa8fde1d94a"
+      },
+      {
+        "label": "libahls_memory_caps03_bulk_entry_vfio_strict.so_symbols",
+        "argv": [
+          "/usr/bin/readelf",
+          "--dyn-syms",
+          "--wide",
+          "/diag/build/libahls_memory_caps03_bulk_entry_vfio_strict.so"
+        ],
+        "rc": 0,
+        "sha256": "6e8b45b33cd98ba55dddc748c57d4a9344e412ba745700c9efe6f4a9277accf9"
+      },
+      {
+        "label": "libahls_memory_caps03_bulk_entry_vfio_strict.so_headers",
+        "argv": [
+          "/usr/bin/readelf",
+          "-lW",
+          "/diag/build/libahls_memory_caps03_bulk_entry_vfio_strict.so"
+        ],
+        "rc": 0,
+        "sha256": "97383b095f5c4693025f2de9dfd39acafdf0f4a176c25bb30d71f65d88af4c9a"
+      }
+    ],
+    "cpus": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35
+    ],
+    "page_size": 4096,
+    "dev_entries": [
+      "console",
+      "fd",
+      "mqueue",
+      "null",
+      "ptmx",
+      "pts",
+      "random",
+      "shm",
+      "stderr",
+      "stdin",
+      "stdout",
+      "tty",
+      "urandom",
+      "zero"
+    ],
+    "tools": {
+      "/usr/bin/cc": "821af3c74506283c179ca413bb33e6b528805a4dd8a5c09df125e5ad560a9e89",
+      "/usr/bin/cmake": "fd22547781b64bb2db04370970b93db1f3fada1e41e60873b015ee0747009fc0",
+      "/usr/bin/ld": "58937fc20c21e147883b4fdaa0fc7438a8e8f2bb886cfcaa4896100ca91139e7",
+      "/usr/bin/readelf": "04db0000749aff89e4af21429340b00b536fc6f80e811c872c006507881a5560",
+      "/usr/bin/nm": "ed6565c132d6f20019ff3f050043dc1b2b8bc2e8b3b94c1ffe3f34436431a5a4",
+      "/usr/bin/python3": "7d51cd6b48b521277f5caa4610a82126e315fa2be4df069823a8b1eeb5bd4a86"
+    },
+    "artifacts": {
+      "libahls_memory_caps03_bulk_entry_vfio_strict.so": {
+        "bytes": 43856,
+        "sha256": "1c79f4378e947edb8c43d045597b1a767a38b6b73f580396fdaf8411139bddcd",
+        "mode": "0o600"
+      }
+    },
+    "elf": {
+      "libahls_memory_caps03_bulk_entry_vfio_strict.so": {
+        "needed": [
+          "libopae-c.so.2",
+          "libc.so.6"
+        ],
+        "paths": [
+          "/work/sdk-build/lib:/work/prefix/usr/lib/x86_64-linux-gnu"
+        ]
+      }
+    }
+  },
+  "captured": {
+    "caps03-bulk-module-compile-only.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "payload_omitted": true
+    },
+    "mounts.log": {
+      "bytes": 2966,
+      "sha256": "6beecc0e403c429977c47968e0694e02faba6b8daba3a8d22e6aa1f8d2b30f72",
+      "payload_omitted": true
+    },
+    "compiler_version.log": {
+      "bytes": 245,
+      "sha256": "5fa6bf5b83f57f14020be375ac663df894027e2d672d6b7d82d7e8d8f7b49c8b",
+      "payload_omitted": true
+    },
+    "configure.log": {
+      "bytes": 449,
+      "sha256": "90d42ddd590f8eed5ac2691744b4488f81851338b434ffdce6cc4eaf3c908aca",
+      "payload_omitted": true
+    },
+    "build.log": {
+      "bytes": 5711,
+      "sha256": "a78e5a6e7847f1def4a1acf0329a4d3f0ea2dfdc8c8b7394a83919f2a59d034f",
+      "payload_omitted": true
+    },
+    "libahls_memory_caps03_bulk_entry_vfio_strict.so_dynamic.log": {
+      "bytes": 1591,
+      "sha256": "075ffe629eab7ea04228c64bc61db52a986f521bb6f6c6834a5e9aa8fde1d94a",
+      "payload_omitted": true
+    },
+    "libahls_memory_caps03_bulk_entry_vfio_strict.so_symbols.log": {
+      "bytes": 5585,
+      "sha256": "6e8b45b33cd98ba55dddc748c57d4a9344e412ba745700c9efe6f4a9277accf9",
+      "payload_omitted": true
+    },
+    "libahls_memory_caps03_bulk_entry_vfio_strict.so_headers.log": {
+      "bytes": 1758,
+      "sha256": "97383b095f5c4693025f2de9dfd39acafdf0f4a176c25bb30d71f65d88af4c9a",
+      "payload_omitted": true
+    },
+    "build/compile_commands.json": {
+      "bytes": 4676,
+      "sha256": "07b32563850c6233013eca4f429a2c6270e5dee63e18813add042761603c3b6a",
+      "payload_omitted": true
+    },
+    "build/libahls_memory_caps03_bulk_entry_vfio_strict.so": {
+      "bytes": 43856,
+      "sha256": "1c79f4378e947edb8c43d045597b1a767a38b6b73f580396fdaf8411139bddcd",
+      "payload_omitted": true
+    }
+  },
+  "inputs_unchanged": true,
+  "ended": "2026-09-26T21:22:24.662781+00:00",
+  "publication_metadata": {
+    "raw_result_path": "qualification/caps03-bulk01/native01-result.json",
+    "raw_result_bytes": 98607,
+    "raw_result_sha256": "cfa86fbec928c899baec2439a2fd096c23118a1ffdd1af16b0e1297eaa56db96",
+    "removed_only": "captured member base64 bodies; original metadata retained",
+    "text_exports": [
+      "qualification/caps03-bulk01/native01-publication/compiler_version.log",
+      "qualification/caps03-bulk01/native01-publication/configure.log",
+      "qualification/caps03-bulk01/native01-publication/build.log",
+      "qualification/caps03-bulk01/native01-publication/build/compile_commands.json"
+    ],
+    "not_an_executable_launcher": true
+  }
+}

@@ -1,0 +1,31 @@
+--- caps03_dma
++++ caps03_bulk_dma
+@@ -1,4 +1,4 @@
+-static int caps03_dma(const struct ia840f_dma_io *io,unsigned mode,unsigned bank,
++static int caps03_bulk_dma(const struct ia840f_dma_io *io,unsigned mode,unsigned bank,
+     uint64_t ddr,uint64_t iova,unsigned host,unsigned bytes,
+     void **buffers,unsigned char *expected_tx,unsigned char *expected_rx,
+     const unsigned char *incoming,struct ia840f_dma_report *report,unsigned sequence)
+@@ -6,8 +6,10 @@
+     if(ia840f_dma_segment_bytes(ddr,host,bytes)!=bytes)return 0;
+     struct ia840f_dma_request request={.mode=mode,.bank=bank,.ddr_offset=ddr,
+         .iova_base=iova,.mapped_bytes=4096,.host_offset=host,.bytes=bytes,.max_polls=1000};
+-    printf("FPGA Test DMA submit sequence=%u mode=%u bank=%u bytes=%u ddr=0x%" PRIx64 "\n",
+-           sequence,mode,bank,bytes,ddr);fflush(stdout);
++    if(sequence%128==0){
++        printf("FPGA Test DMA submit sequence=%u mode=%u bank=%u bytes=%u ddr=0x%" PRIx64 "\n",
++               sequence,mode,bank,bytes,ddr);fflush(stdout);
++    }
+     atomic_thread_fence(memory_order_seq_cst);
+     enum ia840f_dma_result rc=ia840f_dma_transfer(io,&request,report);
+     if(rc!=IA840F_DMA_OK){
+@@ -28,6 +30,8 @@
+     }
+     if(!bytes_match(buffers[0],expected_tx,4096) || !bytes_match(buffers[1],expected_rx,4096))
+         ia840f_dma_hold("source or host-page guard corruption",report);
+-    printf("FPGA Test DMA retired and host pages verified sequence=%u\n",sequence);fflush(stdout);
++    if(sequence%128==0){
++        printf("FPGA Test DMA retired and host pages verified sequence=%u\n",sequence);fflush(stdout);
++    }
+     return 1;
+ }
