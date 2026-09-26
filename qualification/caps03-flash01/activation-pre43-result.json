@@ -1,0 +1,227 @@
+{
+  "success": true,
+  "commands": [
+    {
+      "label": "ownership-before",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_caps03_flash01/preflight01/ownership.py"
+      ],
+      "pid": 13409,
+      "started": "2026-09-26T09:46:54.890257+00:00",
+      "rc": 0,
+      "ended": "2026-09-26T09:46:55.054260+00:00",
+      "output": "{\"d_state\": [], \"holders\": [{\"pid\": \"7189\", \"state\": \"S\", \"start_ticks\": \"938956\", \"cmd\": \"/usr/bin/bwvfiod_server -d \", \"fd\": \"10\", \"target\": \"/dev/vfio/vfio\"}, {\"pid\": \"7189\", \"state\": \"S\", \"start_ticks\": \"938956\", \"cmd\": \"/usr/bin/bwvfiod_server -d \", \"fd\": \"11\", \"target\": \"/dev/vfio/5\"}], \"relevant\": [], \"maps\": [], \"errors\": []}\n",
+      "sha256": "dc47048c03e246504265fa688c25d253591b7434819435f34792da9bb337c1f0"
+    },
+    {
+      "label": "usb-target",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/env",
+        "PYTHONPATH=/home/uwb_student00/.local/lib/python3.9/site-packages",
+        "PATH=/home/uwb_student00/.local/bin:/usr/bin:/bin",
+        "/home/uwb_student00/.local/bin/bw_card_list",
+        "-i",
+        "USB",
+        "-j"
+      ],
+      "pid": 13417,
+      "started": "2026-09-26T09:46:55.057693+00:00",
+      "rc": 0,
+      "ended": "2026-09-26T09:46:55.622577+00:00",
+      "output": "[\n    {\n        \"name\": \"IA-840F 8110055\",\n        \"product\": \"IA-840F\",\n        \"serial_number\": \"8110055\",\n        \"entries\": [\n            {\n                \"interface\": \"USB\",\n                \"index\": 0,\n                \"vendor_id\": 9512,\n                \"device_id\": 5,\n                \"location\": \"1-3.4\"\n            }\n        ]\n    }\n]\n",
+      "sha256": "458218e81c88137b258d73c8b9b14c55092de2ac496422ca2b510c36ad3cd7c8"
+    },
+    {
+      "label": "power-before",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/env",
+        "PYTHONPATH=/home/uwb_student00/.local/lib/python3.9/site-packages",
+        "PATH=/home/uwb_student00/.local/bin:/usr/bin:/bin",
+        "/home/uwb_student00/.local/bin/bw_bmc_configure",
+        "-i",
+        "USB",
+        "-d",
+        "USB:0",
+        "power"
+      ],
+      "pid": 13451,
+      "started": "2026-09-26T09:46:55.626171+00:00",
+      "rc": 0,
+      "ended": "2026-09-26T09:46:56.441295+00:00",
+      "output": "Power:   ON\n",
+      "sha256": "b963b6b423c75bc96e3c00d7b86dba34af6c8e2b67711471bd341a87e1cd42e9"
+    },
+    {
+      "label": "service-before",
+      "argv": [
+        "/usr/bin/systemctl",
+        "show",
+        "bittware-vfiod",
+        "--property=ActiveState,SubState,MainPID,ExecMainStatus,ControlGroup"
+      ],
+      "pid": 13459,
+      "started": "2026-09-26T09:46:56.444340+00:00",
+      "rc": 0,
+      "ended": "2026-09-26T09:46:56.460329+00:00",
+      "output": "MainPID=7189\nExecMainStatus=0\nControlGroup=/system.slice/bittware-vfiod.service\nActiveState=active\nSubState=running\n",
+      "sha256": "2cada860a0b957c27b1e330ade1eea9a78b6684dd18c6a546af06ae5aa81255b"
+    },
+    {
+      "label": "stop-service",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/systemctl",
+        "stop",
+        "bittware-vfiod"
+      ],
+      "pid": 13460,
+      "started": "2026-09-26T09:46:56.463397+00:00",
+      "rc": 0,
+      "ended": "2026-09-26T09:46:56.727755+00:00",
+      "output": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "service-after",
+      "argv": [
+        "/usr/bin/systemctl",
+        "show",
+        "bittware-vfiod",
+        "--property=ActiveState,SubState,MainPID,ExecMainStatus,ControlGroup"
+      ],
+      "pid": 13466,
+      "started": "2026-09-26T09:46:56.730361+00:00",
+      "rc": 0,
+      "ended": "2026-09-26T09:46:56.746341+00:00",
+      "output": "MainPID=0\nExecMainStatus=1\nControlGroup=\nActiveState=failed\nSubState=failed\n",
+      "sha256": "e75c8ebef552e8183ea2de42aee8720e347af8d226542b6a26b43228c6b3bc97"
+    },
+    {
+      "label": "ownership-after",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_caps03_flash01/preflight01/ownership.py"
+      ],
+      "pid": 13467,
+      "started": "2026-09-26T09:46:56.749837+00:00",
+      "rc": 0,
+      "ended": "2026-09-26T09:46:56.914165+00:00",
+      "output": "{\"d_state\": [], \"holders\": [], \"relevant\": [], \"maps\": [], \"errors\": []}\n",
+      "sha256": "5c9d77c7f3d97479e8350dc5bd09bd9c1c1ffba33758bc1349b0089cf0cca305"
+    },
+    {
+      "label": "aer-before",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/sbin/setpci",
+        "-s",
+        "0000:4e:00.0",
+        "ECAP_AER+0x04.L",
+        "ECAP_AER+0x08.L",
+        "ECAP_AER+0x14.L"
+      ],
+      "pid": 13471,
+      "started": "2026-09-26T09:46:56.917109+00:00",
+      "rc": 0,
+      "ended": "2026-09-26T09:46:56.981638+00:00",
+      "output": "00000000\n00100000\n00002000\n",
+      "sha256": "fdc22d6c37383aaf3a5916c3182b0987c7a39d55b61310137f79044b793c3a42"
+    }
+  ],
+  "started": "2026-09-26T09:46:54.873064+00:00",
+  "boot": "4945ac3f-5bfd-43d3-a4bf-748af43e70b6",
+  "hardware_access": true,
+  "power_change": false,
+  "flash_writes": false,
+  "source_bindings": {
+    "/usr/bin/pci_device": "502c80133f66e7d9326660cc7c358b81b6bd0ef9525463b0df710eeae0815a10",
+    "/usr/lib/python3.9/site-packages/opae/admin/tools/pci_device.py": "8ab8230856e51b76c733d309d11d2cbec9fe9fac78e8e86b1ed7f90cc38975df",
+    "/usr/lib/python3.9/site-packages/opae/admin/sysfs.py": "d70da0e869d7ce45ac13a15916d345841a131c0572cf1af247c2fcae32ba1151",
+    "/home/uwb_student00/IA-840f/IOFS_BUILD_ROOT/oneapi-asp/ia840f/scripts/control_aer.sh": "466ea4b03a17bc94fe4cc91020ebce7eaf224497ecbd7112b36d7650b0f91b54",
+    "/home/uwb_student00/.local/bin/bw_bmc_configure": "7e6b5444405a3fb980d15ff24f897a22e44bf4ba66e9ea5eed23f3e5415e15ad",
+    "/home/uwb_student00/.local/lib/python3.9/site-packages/bw_bmc_utils/bmc_configuration.py": "15b9d1cdf3334f4f99fae720ce7fedf44d7018796118029fba83a51c1f5ce994",
+    "/home/uwb_student00/.local/lib/python3.9/site-packages/bw_bmc/card.py": "c7dfe75d578a9dc2bd150617a03ee6ec6d0fc8dda0217b640ad8f80e7b5f2599",
+    "/home/uwb_student00/.local/bin/bw_card_list": "5b10b16a53af8de3504cbd35a4b0aa20d856cce19edac80a025fc68e4bff26d0"
+  },
+  "pci_children": {
+    "0000:4f:00.1": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.1",
+    "0000:4f:00.0": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0"
+  },
+  "usb": {
+    "idVendor": "2528",
+    "idProduct": "0005",
+    "serial": "8110055",
+    "product": "IA-840F"
+  },
+  "ownership_before": {
+    "d_state": [],
+    "holders": [
+      {
+        "pid": "7189",
+        "state": "S",
+        "start_ticks": "938956",
+        "cmd": "/usr/bin/bwvfiod_server -d ",
+        "fd": "10",
+        "target": "/dev/vfio/vfio"
+      },
+      {
+        "pid": "7189",
+        "state": "S",
+        "start_ticks": "938956",
+        "cmd": "/usr/bin/bwvfiod_server -d ",
+        "fd": "11",
+        "target": "/dev/vfio/5"
+      }
+    ],
+    "relevant": [],
+    "maps": [],
+    "errors": []
+  },
+  "usb_cards": [
+    {
+      "name": "IA-840F 8110055",
+      "product": "IA-840F",
+      "serial_number": "8110055",
+      "entries": [
+        {
+          "interface": "USB",
+          "index": 0,
+          "vendor_id": 9512,
+          "device_id": 5,
+          "location": "1-3.4"
+        }
+      ]
+    }
+  ],
+  "power_before": "Power:   ON\n",
+  "service_before": "MainPID=7189\nExecMainStatus=0\nControlGroup=/system.slice/bittware-vfiod.service\nActiveState=active\nSubState=running\n",
+  "service_after": "MainPID=0\nExecMainStatus=1\nControlGroup=\nActiveState=failed\nSubState=failed\n",
+  "ownership_after": {
+    "d_state": [],
+    "holders": [],
+    "relevant": [],
+    "maps": [],
+    "errors": []
+  },
+  "aer_before": [
+    "00000000",
+    "00100000",
+    "00002000"
+  ],
+  "ended": "2026-09-26T09:46:56.982185+00:00"
+}

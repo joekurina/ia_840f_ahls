@@ -1,0 +1,134 @@
+{
+  "success": true,
+  "card_cycle_verified": true,
+  "commands": [
+    {
+      "label": "ownership",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_caps03_flash01/preflight01/ownership.py"
+      ],
+      "pid": 13931,
+      "started": "2026-09-26T09:48:35.713023+00:00",
+      "rc": 0,
+      "ended": "2026-09-26T09:48:35.877334+00:00",
+      "output": "{\"d_state\": [], \"holders\": [], \"relevant\": [], \"maps\": [], \"errors\": []}\n",
+      "sha256": "5c9d77c7f3d97479e8350dc5bd09bd9c1c1ffba33758bc1349b0089cf0cca305"
+    },
+    {
+      "label": "power-off",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/env",
+        "PYTHONPATH=/home/uwb_student00/.local/lib/python3.9/site-packages",
+        "PATH=/home/uwb_student00/.local/bin:/usr/bin:/bin",
+        "/home/uwb_student00/.local/bin/bw_bmc_configure",
+        "-i",
+        "USB",
+        "-d",
+        "USB:0",
+        "power",
+        "-p",
+        "Off"
+      ],
+      "pid": 13937,
+      "started": "2026-09-26T09:48:35.880487+00:00",
+      "rc": 0,
+      "ended": "2026-09-26T09:48:36.996023+00:00",
+      "output": "Power:   OFF\n",
+      "sha256": "92d776c8d093b970e18fbceab0ae06aef1616e34d379641837869d984f21c3b2"
+    },
+    {
+      "label": "off-readback",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/env",
+        "PYTHONPATH=/home/uwb_student00/.local/lib/python3.9/site-packages",
+        "PATH=/home/uwb_student00/.local/bin:/usr/bin:/bin",
+        "/home/uwb_student00/.local/bin/bw_bmc_configure",
+        "-i",
+        "USB",
+        "-d",
+        "USB:0",
+        "power"
+      ],
+      "pid": 13973,
+      "started": "2026-09-26T09:48:37.000168+00:00",
+      "rc": 0,
+      "ended": "2026-09-26T09:48:37.865385+00:00",
+      "output": "WARNING:root:Card is not powered on\nPower:   OFF\n",
+      "sha256": "6f900d036a0d8cd8a1cf37e3faf8d87507f38853b55e5d41d3ef68e0213c7fc8"
+    },
+    {
+      "label": "power-on",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/env",
+        "PYTHONPATH=/home/uwb_student00/.local/lib/python3.9/site-packages",
+        "PATH=/home/uwb_student00/.local/bin:/usr/bin:/bin",
+        "/home/uwb_student00/.local/bin/bw_bmc_configure",
+        "-i",
+        "USB",
+        "-d",
+        "USB:0",
+        "power",
+        "-p",
+        "On"
+      ],
+      "pid": 13981,
+      "started": "2026-09-26T09:48:49.883958+00:00",
+      "rc": 0,
+      "ended": "2026-09-26T09:48:54.904836+00:00",
+      "output": "WARNING:root:Card is not powered on\nPower:   ON\n",
+      "sha256": "e97dedf394ec7bdf049a3f2efcdd00f08138f386b2c68cde2c9a8008b3986a65"
+    },
+    {
+      "label": "on-readback",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/env",
+        "PYTHONPATH=/home/uwb_student00/.local/lib/python3.9/site-packages",
+        "PATH=/home/uwb_student00/.local/bin:/usr/bin:/bin",
+        "/home/uwb_student00/.local/bin/bw_bmc_configure",
+        "-i",
+        "USB",
+        "-d",
+        "USB:0",
+        "power"
+      ],
+      "pid": 13994,
+      "started": "2026-09-26T09:48:54.908624+00:00",
+      "rc": 0,
+      "ended": "2026-09-26T09:48:55.773986+00:00",
+      "output": "Power:   ON\n",
+      "sha256": "b963b6b423c75bc96e3c00d7b86dba34af6c8e2b67711471bd341a87e1cd42e9"
+    }
+  ],
+  "started": "2026-09-26T09:48:35.708850+00:00",
+  "boot": "4945ac3f-5bfd-43d3-a4bf-748af43e70b6",
+  "hardware_access": true,
+  "power_change": true,
+  "flash_writes": false,
+  "reboot": false,
+  "ownership": {
+    "d_state": [],
+    "holders": [],
+    "relevant": [],
+    "maps": [],
+    "errors": []
+  },
+  "off_output": "Power:   OFF\n",
+  "off_readback": "WARNING:root:Card is not powered on\nPower:   OFF\n",
+  "on_output": "WARNING:root:Card is not powered on\nPower:   ON\n",
+  "on_readback": "Power:   ON\n",
+  "boot_after": "4945ac3f-5bfd-43d3-a4bf-748af43e70b6",
+  "ended": "2026-09-26T09:49:25.808746+00:00"
+}

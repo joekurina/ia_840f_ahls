@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.20)
+project(caps03_flash_image NONE)
+add_custom_target(flash_image
+ COMMAND "/opt/altera/25.1/quartus/bin/quartus_pfg" -c "/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/asm01/persona/build/syn/board/ia840f/syn_top/output_files/ofs_pr_afu.sof" "/home/uwb_student00/ahls/new_BSP/work_caps03_flash01/convert03/caps03.jic" "/home/uwb_student00/ahls/new_BSP/work_caps03_flash01/convert03/caps03.map" -o device=MT25QU02G -o mode=ASX4 -o flash_loader=AGFB027R25A
+ VERBATIM)

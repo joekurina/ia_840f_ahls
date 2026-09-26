@@ -1,0 +1,136 @@
+{
+  "success": true,
+  "hardware_access": false,
+  "commands": [
+    {
+      "label": "ownership",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_caps03_flash01/preflight01/ownership.py"
+      ],
+      "pid": 4428,
+      "started": "2026-09-26T06:43:27.316589+00:00",
+      "rc": 0,
+      "ended": "2026-09-26T06:43:27.480523+00:00",
+      "output": "{\"d_state\": [], \"holders\": [], \"relevant\": [], \"maps\": [], \"errors\": []}\n",
+      "sha256": "5c9d77c7f3d97479e8350dc5bd09bd9c1c1ffba33758bc1349b0089cf0cca305"
+    },
+    {
+      "label": "ownership-second",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_caps03_flash01/preflight01/ownership.py"
+      ],
+      "pid": 4439,
+      "started": "2026-09-26T06:43:27.483416+00:00",
+      "rc": 0,
+      "ended": "2026-09-26T06:43:27.647649+00:00",
+      "output": "{\"d_state\": [], \"holders\": [], \"relevant\": [], \"maps\": [], \"errors\": []}\n",
+      "sha256": "5c9d77c7f3d97479e8350dc5bd09bd9c1c1ffba33758bc1349b0089cf0cca305"
+    },
+    {
+      "label": "service",
+      "argv": [
+        "/usr/bin/systemctl",
+        "show",
+        "bittware-vfiod",
+        "--property=ActiveState,SubState,MainPID,ExecMainStatus,ControlGroup"
+      ],
+      "pid": 4466,
+      "started": "2026-09-26T06:43:28.279091+00:00",
+      "rc": 0,
+      "ended": "2026-09-26T06:43:28.310705+00:00",
+      "output": "MainPID=0\nExecMainStatus=0\nControlGroup=\nActiveState=inactive\nSubState=dead\n",
+      "sha256": "b77bf2ef6ce42ee13d9d573e9ec5f57f59df07965930d627a7a994b898b97203"
+    },
+    {
+      "label": "service-unit",
+      "argv": [
+        "/usr/bin/systemctl",
+        "cat",
+        "bittware-vfiod"
+      ],
+      "pid": 4467,
+      "started": "2026-09-26T06:43:28.312635+00:00",
+      "rc": 0,
+      "ended": "2026-09-26T06:43:28.328481+00:00",
+      "output": "# /usr/lib/systemd/system/bittware-vfiod.service\n[Unit]\nDescription=BittWare VFIO Daemon\nAfter=dbus.service\n\n[Service]\nExecStart=/usr/bin/bwvfiod_server -d\nExecStartPost=/bin/bash -c 'sleep 0.5 && chown root:bittware /etc/bittware-sdk/bwvfiod.sock && chmod 770 /etc/bittware-sdk/bwvfiod.sock'\nExecReload=/bin/kill -HUP $MAINPID\n# supress to log debug and error output also to /var/log/messages\nStandardOutput=null\nStandardError=null\nKillMode=mixed\nType=forking\n\n[Install]\nWantedBy=multi-user.target\n",
+      "sha256": "e6d03aae60a8d7dd8f6d40e2992b8593ed80ef7c1831592e828ef31d4617f687"
+    }
+  ],
+  "started": "2026-09-26T06:43:27.314346+00:00",
+  "boot": "4945ac3f-5bfd-43d3-a4bf-748af43e70b6",
+  "ownership": {
+    "d_state": [],
+    "holders": [],
+    "relevant": [],
+    "maps": [],
+    "errors": []
+  },
+  "dstate_recheck": {
+    "d_state": [],
+    "holders": [],
+    "relevant": [],
+    "maps": [],
+    "errors": []
+  },
+  "bindings": {
+    "/home/uwb_student00/.local/bin/bw_agilex_flash_programmer": {
+      "sha256": "d07c0450ce5a4b6a30bcd8b5ecad8112071ea604b2b762b920e310d89f1b92ac",
+      "bytes": 189
+    },
+    "/home/uwb_student00/.local/lib/python3.9/site-packages/bw_agilex/tools/bw_agilex_flash_programmer.py": {
+      "sha256": "d114deddc47bd4daf7d0dfa4ca012f5b6e24adb27535a39f3b1c2a86a4351c63",
+      "bytes": 21355
+    },
+    "/home/uwb_student00/.local/lib/python3.9/site-packages/bw_agilex/components/sdm_mailbox.py": {
+      "sha256": "f51ccfe1804709042dc8c221fbf8c7eca685355d7ff23e09a1a7dc3ab7c31084",
+      "bytes": 30704
+    },
+    "/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/asm01/persona/build/syn/board/ia840f/syn_top/output_files/ofs_pr_afu.sof": {
+      "sha256": "8f778fca292cc77f87c196deb198d4798a1bd111999d69b0245d570fa2bfe276",
+      "bytes": 10065141
+    },
+    "/home/uwb_student00/ahls/new_BSP/work_caps03_flash01/convert03/caps03.jic": {
+      "sha256": "af1a2e0e54a49b9ea7881be353caf525eb65afb812f6fd2912e39224b6bc70ad",
+      "bytes": 268435686
+    },
+    "/opt/altera/25.1/quartus/linux64/quartus_pfg": {
+      "sha256": "21116f0082b3077ee9284e55b3216f9d75a5f2450a6eb6da5f1793886910dfa3",
+      "bytes": 705552
+    }
+  },
+  "pci": {
+    "0000:4f:00.0": {
+      "vendor": "0x8086",
+      "device": "0xbcce",
+      "sriov_numvfs": "0",
+      "path": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0",
+      "driver": "/sys/bus/pci/drivers/dfl-pci",
+      "iommu_group": "/sys/kernel/iommu_groups/4"
+    },
+    "0000:4f:00.1": {
+      "vendor": "0x12ba",
+      "device": "0x0070",
+      "path": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.1",
+      "driver": "/sys/bus/pci/drivers/vfio-pci",
+      "iommu_group": "/sys/kernel/iommu_groups/5"
+    }
+  },
+  "service": "MainPID=0\nExecMainStatus=0\nControlGroup=\nActiveState=inactive\nSubState=dead\n",
+  "service_unit": "# /usr/lib/systemd/system/bittware-vfiod.service\n[Unit]\nDescription=BittWare VFIO Daemon\nAfter=dbus.service\n\n[Service]\nExecStart=/usr/bin/bwvfiod_server -d\nExecStartPost=/bin/bash -c 'sleep 0.5 && chown root:bittware /etc/bittware-sdk/bwvfiod.sock && chmod 770 /etc/bittware-sdk/bwvfiod.sock'\nExecReload=/bin/kill -HUP $MAINPID\n# supress to log debug and error output also to /var/log/messages\nStandardOutput=null\nStandardError=null\nKillMode=mixed\nType=forking\n\n[Install]\nWantedBy=multi-user.target\n",
+  "card_list_wrapper": {
+    "path": "/home/uwb_student00/.local/bin/bw_card_list",
+    "sha256": "5b10b16a53af8de3504cbd35a4b0aa20d856cce19edac80a025fc68e4bff26d0",
+    "text": "#!/usr/bin/python3\nimport sys\nfrom bw_core_utils.bw_card_list import main\nif __name__ == '__main__':\n    sys.argv[0] = sys.argv[0].removesuffix('.exe')\n    sys.exit(main())\n"
+  },
+  "ended": "2026-09-26T06:43:28.329470+00:00"
+}

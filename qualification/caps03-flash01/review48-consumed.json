@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "review": "deleg_a72d3baf",
+  "consumed": true,
+  "verdict": "ACCEPT completed SDK deployment scope only; no concrete deployment defect found",
+  "consumed_at": "2026-09-26T22:26:28.322880+00:00",
+  "scope": [
+    "SDK full non-RSU input erase/program/readback comparison",
+    "independent BMC Off/On readbacks",
+    "normal deployment reboot",
+    "cached Work21 static FME identity"
+  ],
+  "evidence": {
+    "sdk-program23-result.json": {
+      "bytes": 462256,
+      "sha256": "c1c325773aba79acc758d25e537f003156a47e5d4451c53f5ff4e2202ec3deea",
+      "git_blob": "bfa04f75fa6e72f81901c632edcc413b6023d0de",
+      "kind": "raw_native_capture"
+    },
+    "activation-pre43-result.json": {
+      "bytes": 8094,
+      "sha256": "73542bb70a5602baec1b0b492f8dd59a8ae01887aac5fb39b1760c58af408de7",
+      "git_blob": "749f6172aef3c2016da5fdf443b7bafc2a2a6ffb",
+      "kind": "raw_native_capture"
+    },
+    "quiesce44-result.json": {
+      "bytes": 9760,
+      "sha256": "b0e67fa472ac5a2687cc810e72d81bf0fbde18deaa56e38f21e3ac7bfe73c97c",
+      "git_blob": "820f5910043ab1fefca9693dedc0dea92c2769f3",
+      "kind": "raw_native_capture"
+    },
+    "bmc-cycle45-result.json": {
+      "bytes": 3987,
+      "sha256": "a92136e40e349d5ac50f966b730dc5cb05288094ac6a9a45691b77a0ffe6aa10",
+      "git_blob": "89406e52cd11d9c71bfab1c665b75764b6ab74df",
+      "kind": "raw_native_capture"
+    },
+    "postboot47-result.json": {
+      "bytes": 7945,
+      "sha256": "336a62e9e5849941f7657cf29ded2ba3f595a19b2f55f003dc103e47c0765e20",
+      "git_blob": "e4ed1f726126ca75c41e209d66642eb1cfae6f7b",
+      "kind": "raw_native_capture"
+    }
+  },
+  "raw_log": {
+    "bytes": 448177,
+    "sha256": "22a4221729a311f8328b8a69823e540c7f9db9f845186a688cc29d4243f2ab1d",
+    "git_blob": "293f6b3a4dffb56ccd5a87e0aca7c8e514669092",
+    "kind": "raw_native_capture"
+  },
+  "images": {
+    "/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/asm01/persona/build/syn/board/ia840f/syn_top/output_files/ofs_pr_afu.sof": {
+      "bytes": 10065141,
+      "sha256": "8f778fca292cc77f87c196deb198d4798a1bd111999d69b0245d570fa2bfe276"
+    },
+    "/home/uwb_student00/ahls/new_BSP/work_caps03_flash01/sdk-convert21/caps03-sdk.rpd": {
+      "bytes": 10653696,
+      "sha256": "0319b7fd35d968d73f02f9a6f49706cb249c3559dec1759a3f2d3a37122e4bcf"
+    }
+  },
+  "parent_checks": {
+    "all_selected_receipt_hashes_match": true,
+    "native_program_rc": 0,
+    "raw_log_equals_receipt_log": true,
+    "erase_program_readback_each_reach_100_percent": true,
+    "success_marker_present": true,
+    "all_recorded_command_output_hashes_match": true,
+    "embedded_reboot_receipt_hashes_match": true,
+    "exact_removed_PFs": [
+      "0000:4f:00.0",
+      "0000:4f:00.1"
+    ],
+    "BMC_setters_and_readbacks_rc": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "off_readback": "WARNING:root:Card is not powered on\nPower:   OFF\n",
+    "on_readback": "Power:   ON\n",
+    "off_dwell_seconds": 12.018573,
+    "on_settle_seconds": 30.03476,
+    "reboot_rc": 0,
+    "deployment_boot_before": "4945ac3f-5bfd-43d3-a4bf-748af43e70b6",
+    "deployment_boot_after": "fb857f04-2297-4a93-9b32-26636641713b",
+    "cached_FME_UUID": "fc4bf1c1-760f-5cd7-8040-b3e86fa0d31e",
+    "original_AER_masks_restored": true,
+    "postboot_ownership_empty": true
+  },
+  "erase_footprint": {
+    "start": 0,
+    "bytes": 10682368,
+    "sectors": 163,
+    "sector_size": 65536,
+    "input_bytes": 10653696,
+    "padding_bytes": 28672
+  },
+  "preserved_caveats": {
+    "daemon_service_after": "MainPID=0\nExecMainStatus=1\nControlGroup=\nActiveState=failed\nSubState=failed\n",
+    "fresh_prewrite_device_backup": false,
+    "reboot_requested_receipt_success": false,
+    "power_waveforms_measured": false,
+    "AFU_identity_established_by_cached_FME_UUID": false,
+    "original_effective_outer_status_basis": "SDK23.md records original native/effective/outer0 separately from the observer; native rc and raw log independently checked here",
+    "historical_next_work_not_current_authority": true
+  },
+  "excluded_acceptance": [
+    "numerical HLS",
+    "DDR capacity",
+    "reset entry",
+    "sustained operation",
+    "application lifecycle"
+  ],
+  "this_consumption_hardware_access": false,
+  "this_consumption_builds_or_tests": false,
+  "raw_transcript_publication": false
+}

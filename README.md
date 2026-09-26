@@ -8,6 +8,11 @@ and [assembly acceptance](qualification/caps03-persona01/ASSEMBLY-ACCEPTANCE01.m
 Native Design Closure remains FAIL for the disclosed DRC/unconstrained-port scope;
 assembly success is not a blanket timing, hardware or lifecycle qualification.
 
+The [SDK deployment milestone](qualification/caps03-flash01/ACCEPTANCE48.md)
+separately accepts full-input flash readback/comparison, observed BMC Off/On,
+and the deployment reboot with cached static-FME identity. It does not infer
+numerical or application-lifecycle acceptance from programming success.
+
 ## Historical source-side checkpoint
 
 [GOAL-PROMPT.md](GOAL-PROMPT.md) governs execution and safety. The
