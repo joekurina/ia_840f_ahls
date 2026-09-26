@@ -1,0 +1,14 @@
+# Native replay capsules, embedded payload receipts and oversized reports stay local.
+# Bind omitted bytes by SHA256 metadata; do not split payloads to evade the 2 MB cap.
+/setup[0-9][0-9].py
+/synth[0-9][0-9].py
+/fit[0-9][0-9].py
+/sta[0-9][0-9].py
+/*-result.json
+/*-result.json.gz
+/*-result-metadata.json
+/synth*-configuration-metadata.json
+/*-capture/synthesis.log
+/*-capture/persona/build/syn/board/ia840f/syn_top/output_files/*.syn.rpt
+/*-capture/persona/build/syn/board/ia840f/syn_top/output_files/*.syn.ae.rpt
+/__pycache__/

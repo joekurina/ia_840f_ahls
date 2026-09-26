@@ -1,0 +1,217 @@
+{
+  "run": "caps03-synth01",
+  "uuid": "d48dde9f-f551-578d-8bb0-69483ac95ec6",
+  "started": "2026-09-25T21:34:11.557921+00:00",
+  "ended": "2026-09-25T21:38:52.220923+00:00",
+  "complete": true,
+  "success": true,
+  "success_marker": true,
+  "hardware_access": false,
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/cmake",
+        "-S",
+        "/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/synth01/cmake-source",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/synth01/cmake-build",
+        "-G",
+        "Unix Makefiles",
+        "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+        "-DPERSONA_PROJECT=/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/synth01/persona/build/syn/board/ia840f/syn_top",
+        "-DQUARTUS_ROOT=/opt/altera/25.1/quartus"
+      ],
+      "descendants_after_leader": false,
+      "descendants_observed_at_leader_exit": [],
+      "effective_rc": 0,
+      "ended": "2026-09-25T21:34:11.654863+00:00",
+      "label": "configure",
+      "native_rc": 0,
+      "owned_group_live_after": [],
+      "pid": 53495,
+      "start_ticks": "7459544",
+      "started": "2026-09-25T21:34:11.558005+00:00",
+      "timeout": false
+    },
+    {
+      "argv": [
+        "/usr/bin/cmake",
+        "--build",
+        "/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/synth01/cmake-build",
+        "--target",
+        "synthesis",
+        "--parallel",
+        "1"
+      ],
+      "cmake_rc": 0,
+      "descendants_after_leader": false,
+      "descendants_observed_at_leader_exit": [],
+      "effective_rc": 0,
+      "ended": "2026-09-25T21:38:47.351541+00:00",
+      "label": "synthesis",
+      "native_rc": 0,
+      "native_status_basis": "Direct Quartus custom target: successful CMake return proves child zero; nonzero does not disclose the child exit.",
+      "owned_group_live_after": [],
+      "pid": 53498,
+      "start_ticks": "7459561",
+      "started": "2026-09-25T21:34:11.730915+00:00",
+      "timeout": false
+    }
+  ],
+  "diagnostics": [],
+  "postflight_errors": [],
+  "bound_inputs_unchanged": true,
+  "release_unchanged": true,
+  "setup_unchanged": true,
+  "tools_unchanged": true,
+  "project": "/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/synth01/persona/build/syn/board/ia840f/syn_top",
+  "source_delta": {
+    "afu_qsf_after": "set_global_assignment -name SEARCH_PATH \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu\"\nset_global_assignment -name MISC_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/ia840f_ahls_memory.json\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/dma_pkg.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/dma_fifo_if.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/dma_engine.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/dma_read_engine.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/dma_write_engine.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/dma_top.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/dma_axi_mm_mux.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/dma_ddr_selector.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/csr_mgr.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/ia840f_ahls_memory_core.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/ia840f_ahls_memory_bank_shim.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/ia840f_ahls_completion.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/ia840f_ahls_mmio_completion_guard.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/ia840f_ahls_memory_bank_completion_shim.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/ia840f_ahls_memory_reset.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/ofs_plat_afu.sv\"\nset_global_assignment -name QIP_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/generated/ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip\"\nset_global_assignment -name QIP_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.qip\"\n",
+    "afu_qsf_before": "set_global_assignment -name SEARCH_PATH \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu\"\nset_global_assignment -name MISC_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/ia840f_ahls_memory.json\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/dma_pkg.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/dma_fifo_if.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/dma_engine.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/dma_read_engine.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/dma_write_engine.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/dma_top.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/dma_axi_mm_mux.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/dma_ddr_selector.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/csr_mgr.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/ia840f_ahls_memory_core.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/ia840f_ahls_memory_bank_shim.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/ia840f_ahls_completion.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/ia840f_ahls_mmio_completion_guard.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/ia840f_ahls_memory_bank_completion_shim.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/ia840f_ahls_memory_reset.sv\"\nset_global_assignment -name SYSTEMVERILOG_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/afu/ofs_plat_afu.sv\"\nset_global_assignment -name QIP_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/generated/ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip\"\nset_global_assignment -name QIP_FILE \"/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/setup01/afu_sources/generated/ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.qip\"\n",
+    "new_gate_files": [
+      "/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/synth01/persona/build/syn/board/ia840f/setup/ia840f_persona_gate01.py",
+      "/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/synth01/persona/build/syn/board/ia840f/setup/build_gate_persona01.tcl"
+    ],
+    "overlay_sources": {},
+    "qsf_after": "# Source-only board candidate; legacy LAST_QUARTUS_VERSION is provenance, not qualification.\nset_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/build_gate_persona01.tcl\nset_global_assignment -name TEXT_FILE ../setup/ia840f_persona_gate01.py\n# Copyright (C) 2021-2023 Intel Corporation\n# SPDX-License-Identifier: MIT\n\n############################################################################################\n# FPGA Device\n############################################################################################\n\nset_global_assignment -name FAMILY \"Agilex 7\"\nset_global_assignment -name DEVICE AGFB027R25A2E2V\n\nset_global_assignment -name MIN_CORE_JUNCTION_TEMP 0\nset_global_assignment -name MAX_CORE_JUNCTION_TEMP 100\nset_global_assignment -name STRATIX_DEVICE_IO_STANDARD \"1.2 V\"\n\nset_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256\n#set_global_assignment -name RESERVE_DATA0_AFTER_CONFIGURATION \"USE AS REGULAR IO\" #Commented out as not in 840f\n#todo:\nset_global_assignment -name PRESERVE_UNUSED_XCVR_CHANNEL ON\n\n############################################################################################\n# Synthesis Options\n############################################################################################\nset_global_assignment -name TOP_LEVEL_ENTITY top\nset_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files\nset_global_assignment -name OPTIMIZATION_TECHNIQUE SPEED\nset_global_assignment -name OPTIMIZE_POWER_DURING_SYNTHESIS OFF\nset_global_assignment -name OPTIMIZE_POWER_DURING_FITTING OFF\nset_global_assignment -name ALLOW_REGISTER_RETIMING ON\nset_global_assignment -name ROUTER_TIMING_OPTIMIZATION_LEVEL MAXIMUM\nset_global_assignment -name SYNTH_TIMING_DRIVEN_SYNTHESIS ON\nset_global_assignment -name MUX_RESTRUCTURE ON\n\nset_global_assignment -name REMOVE_DUPLICATE_REGISTERS OFF -to rst_n_sys_afu\nset_global_assignment -name REMOVE_DUPLICATE_REGISTERS OFF -to rst_n_sys_mem\nset_global_assignment -name REMOVE_DUPLICATE_REGISTERS OFF -to rst_n_sys_pcie\n\nset_global_assignment -name LAST_QUARTUS_VERSION \"25.1.0 Pro Edition\"\n\nset_global_assignment -name FLOW_DISABLE_ASSEMBLER OFF\nset_global_assignment -name FLOW_ENABLE_INTERACTIVE_TIMING_ANALYZER OFF\nset_global_assignment -name SEED 1\n\n############################################################################################\n# PWR MGMT\n############################################################################################\n# todo\nset_global_assignment -name PWRMGT_DEVICE_ADDRESS_IN_PMBUS_SLAVE_MODE 01\nset_global_assignment -name VID_OPERATION_MODE \"PMBUS SLAVE\"\n#set_global_assignment -name PWRMGT_BUS_SPEED_MODE \"100 KHZ\" #Commented out as not in 840f\nset_global_assignment -name PWRMGT_VOLTAGE_OUTPUT_FORMAT \"LINEAR FORMAT\"\nset_global_assignment -name PWRMGT_LINEAR_FORMAT_N \"-12\"\n\n############################################################################################\n# Configuration Interface\n############################################################################################\n# todo\n#set_global_assignment -name AUTO_RESTART_CONFIGURATION OFF\n#set_global_assignment -name ENABLE_CONFIGURATION_PINS OFF\n#set_global_assignment -name ENABLE_BOOT_SEL_PIN OFF\nset_global_assignment -name STRATIXV_CONFIGURATION_SCHEME \"ACTIVE SERIAL X4\"\n#set_global_assignment -name USE_CONFIGURATION_DEVICE OFF\n#set_global_assignment -name STRATIXII_CONFIGURATION_DEVICE AUTO\n#set_global_assignment -name GENERATE_PR_RBF_FILE ON\nset_global_assignment -name ENABLE_ED_CRC_CHECK ON\nset_global_assignment -name MINIMUM_SEU_INTERVAL 0\n#set_global_assignment -name MINIMUM_SEU_INTERVAL 479\n#set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_100MHZ # Setting for Agilex DevKit\n#set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_115MHZ_IOSC\nset_global_assignment -name DEVICE_INITIALIZATION_CLOCK OSC_CLK_1_125MHZ\n#set_global_assignment -name DEVICE_INITIALIZATION_CLOCK OSC_CLK_1_25MHZ\n#set_global_assignment -name DEVICE_INITIALIZATION_CLOCK INIT_INTOSC\nset_global_assignment -name USE_PWRMGT_SCL SDM_IO14\nset_global_assignment -name USE_PWRMGT_SDA SDM_IO11\nset_global_assignment -name USE_CONF_DONE SDM_IO16\nset_global_assignment -name USE_PWRMGT_ALERT SDM_IO12\nset_global_assignment -name USE_INIT_DONE SDM_IO0\n#set_global_assignment -name USE_NCATTRIP SDM_IO9\n#set_global_assignment -name USE_HPS_COLD_RESET SDM_IO7\n#set_global_assignment -name HPS_INITIALIZATION \"AFTER INIT_DONE\"\n#set_global_assignment -name HPS_DAP_SPLIT_MODE \"HPS PINS\"\n#set_global_assignment -name HPS_DAP_SPLIT_MODE \"SDM PINS\"\n#set_global_assignment -name HPS_DAP_NO_CERTIFICATE on\nset_global_assignment -name GENERATE_RBF_FILE ON\n\nset_global_assignment -name GENERATE_COMPRESSED_SOF ON\n\n#840F section\nset_global_assignment -name SDM_DIRECT_TO_FACTORY_IMAGE SDM_IO13\n\n\n# PR imports from a future qualified IA840F base build.\nset_global_assignment -name SDC_FILE ofs_top.out.sdc\n\n# Compute user clock frequency and generate timing reports during quartus_sta\nset_global_assignment -name TIMING_ANALYZER_REPORT_SCRIPT ofs_partial_reconfig/ofs_sta_report_script_pr.tcl\n\n\n############################################################################################\n# Assignments to suppress Quartus warnings that can be ignored\n############################################################################################\n\nset_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../../../shared_config/suppress_warning.tcl\n\n\n############################################################################################\n# PR assignments\n############################################################################################\nset_instance_assignment -name PARTITION green_region -to afu_top|pg_afu.port_gasket|pr_slot|afu_main\nset_instance_assignment -name QDB_FILE_PARTITION ofs_top.qdb -to | -entity top\nset_instance_assignment -name ENTITY_REBINDING afu_main -to afu_top|pg_afu.port_gasket|pr_slot|afu_main\nset_global_assignment -name REVISION_TYPE PR_IMPL\n\n# Load macros defined in the Quartus project during the FIM build.\nset_global_assignment -name SOURCE_TCL_SCRIPT_FILE fim_project_macros.tcl\n\n# IP required in a PR build from the base build (created by the OFS\n# emit_project_ip.tcl script at the end of the FIM build)\nset_global_assignment -name SOURCE_TCL_SCRIPT_FILE fim_base_ip.tcl\n\n# Generate a GBS file at the end of the build\nset_global_assignment -name POST_FLOW_SCRIPT_FILE quartus_sh:ofs_partial_reconfig/gen_gbs.tcl\n\n############################################################################################\n#                          AFU design files                                                #\n############################################################################################\n\n# Ensure that variables such as BUILD_ROOT_REL are set (must be relative)\nset_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/config_env.tcl\n\n##\n## *** Sources are specified in ofs_pr_afu_sources.tcl, not in this .qsf file, so     ***\n## *** that scripting can be used. In addition, the PR out-of-tree build construction ***\n## *** script depends on being able to replace the sources only in the .tcl file.     ***\n##\nset_global_assignment -name SOURCE_TCL_SCRIPT_FILE ofs_pr_afu_sources.tcl\n\n############################################################################################\n# VAB Assignments \n############################################################################################\nset_global_assignment -name ENABLE_MULTI_AUTHORITY ON\nset_global_assignment -name OPTIMIZATION_MODE \"HIGH PERFORMANCE EFFORT\" -comment \"Use High Performance Effort optimization mode when optimizing for performance. Superior Performance optimization mode has been deprecated and will be removed in 27.1.1.\"\n\nset_global_assignment -name NUM_PARALLEL_PROCESSORS 36\n",
+    "qsf_before": "# Source-only board candidate; legacy LAST_QUARTUS_VERSION is provenance, not qualification.\nset_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/build_gate_release01.tcl\nset_global_assignment -name TEXT_FILE ../setup/ia840f_release_gate01.py\n# Copyright (C) 2021-2023 Intel Corporation\n# SPDX-License-Identifier: MIT\n\n############################################################################################\n# FPGA Device\n############################################################################################\n\nset_global_assignment -name FAMILY \"Agilex 7\"\nset_global_assignment -name DEVICE AGFB027R25A2E2V\n\nset_global_assignment -name MIN_CORE_JUNCTION_TEMP 0\nset_global_assignment -name MAX_CORE_JUNCTION_TEMP 100\nset_global_assignment -name STRATIX_DEVICE_IO_STANDARD \"1.2 V\"\n\nset_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256\n#set_global_assignment -name RESERVE_DATA0_AFTER_CONFIGURATION \"USE AS REGULAR IO\" #Commented out as not in 840f\n#todo:\nset_global_assignment -name PRESERVE_UNUSED_XCVR_CHANNEL ON\n\n############################################################################################\n# Synthesis Options\n############################################################################################\nset_global_assignment -name TOP_LEVEL_ENTITY top\nset_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files\nset_global_assignment -name OPTIMIZATION_TECHNIQUE SPEED\nset_global_assignment -name OPTIMIZE_POWER_DURING_SYNTHESIS OFF\nset_global_assignment -name OPTIMIZE_POWER_DURING_FITTING OFF\nset_global_assignment -name ALLOW_REGISTER_RETIMING ON\nset_global_assignment -name ROUTER_TIMING_OPTIMIZATION_LEVEL MAXIMUM\nset_global_assignment -name SYNTH_TIMING_DRIVEN_SYNTHESIS ON\nset_global_assignment -name MUX_RESTRUCTURE ON\n\nset_global_assignment -name REMOVE_DUPLICATE_REGISTERS OFF -to rst_n_sys_afu\nset_global_assignment -name REMOVE_DUPLICATE_REGISTERS OFF -to rst_n_sys_mem\nset_global_assignment -name REMOVE_DUPLICATE_REGISTERS OFF -to rst_n_sys_pcie\n\nset_global_assignment -name LAST_QUARTUS_VERSION \"25.1.0 Pro Edition\"\n\nset_global_assignment -name FLOW_DISABLE_ASSEMBLER OFF\nset_global_assignment -name FLOW_ENABLE_INTERACTIVE_TIMING_ANALYZER OFF\nset_global_assignment -name SEED 1\n\n############################################################################################\n# PWR MGMT\n############################################################################################\n# todo\nset_global_assignment -name PWRMGT_DEVICE_ADDRESS_IN_PMBUS_SLAVE_MODE 01\nset_global_assignment -name VID_OPERATION_MODE \"PMBUS SLAVE\"\n#set_global_assignment -name PWRMGT_BUS_SPEED_MODE \"100 KHZ\" #Commented out as not in 840f\nset_global_assignment -name PWRMGT_VOLTAGE_OUTPUT_FORMAT \"LINEAR FORMAT\"\nset_global_assignment -name PWRMGT_LINEAR_FORMAT_N \"-12\"\n\n############################################################################################\n# Configuration Interface\n############################################################################################\n# todo\n#set_global_assignment -name AUTO_RESTART_CONFIGURATION OFF\n#set_global_assignment -name ENABLE_CONFIGURATION_PINS OFF\n#set_global_assignment -name ENABLE_BOOT_SEL_PIN OFF\nset_global_assignment -name STRATIXV_CONFIGURATION_SCHEME \"ACTIVE SERIAL X4\"\n#set_global_assignment -name USE_CONFIGURATION_DEVICE OFF\n#set_global_assignment -name STRATIXII_CONFIGURATION_DEVICE AUTO\n#set_global_assignment -name GENERATE_PR_RBF_FILE ON\nset_global_assignment -name ENABLE_ED_CRC_CHECK ON\nset_global_assignment -name MINIMUM_SEU_INTERVAL 0\n#set_global_assignment -name MINIMUM_SEU_INTERVAL 479\n#set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_100MHZ # Setting for Agilex DevKit\n#set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_115MHZ_IOSC\nset_global_assignment -name DEVICE_INITIALIZATION_CLOCK OSC_CLK_1_125MHZ\n#set_global_assignment -name DEVICE_INITIALIZATION_CLOCK OSC_CLK_1_25MHZ\n#set_global_assignment -name DEVICE_INITIALIZATION_CLOCK INIT_INTOSC\nset_global_assignment -name USE_PWRMGT_SCL SDM_IO14\nset_global_assignment -name USE_PWRMGT_SDA SDM_IO11\nset_global_assignment -name USE_CONF_DONE SDM_IO16\nset_global_assignment -name USE_PWRMGT_ALERT SDM_IO12\nset_global_assignment -name USE_INIT_DONE SDM_IO0\n#set_global_assignment -name USE_NCATTRIP SDM_IO9\n#set_global_assignment -name USE_HPS_COLD_RESET SDM_IO7\n#set_global_assignment -name HPS_INITIALIZATION \"AFTER INIT_DONE\"\n#set_global_assignment -name HPS_DAP_SPLIT_MODE \"HPS PINS\"\n#set_global_assignment -name HPS_DAP_SPLIT_MODE \"SDM PINS\"\n#set_global_assignment -name HPS_DAP_NO_CERTIFICATE on\nset_global_assignment -name GENERATE_RBF_FILE ON\n\nset_global_assignment -name GENERATE_COMPRESSED_SOF ON\n\n#840F section\nset_global_assignment -name SDM_DIRECT_TO_FACTORY_IMAGE SDM_IO13\n\n\n# PR imports from a future qualified IA840F base build.\nset_global_assignment -name SDC_FILE ofs_top.out.sdc\n\n# Compute user clock frequency and generate timing reports during quartus_sta\nset_global_assignment -name TIMING_ANALYZER_REPORT_SCRIPT ofs_partial_reconfig/ofs_sta_report_script_pr.tcl\n\n\n############################################################################################\n# Assignments to suppress Quartus warnings that can be ignored\n############################################################################################\n\nset_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../../../shared_config/suppress_warning.tcl\n\n\n############################################################################################\n# PR assignments\n############################################################################################\nset_instance_assignment -name PARTITION green_region -to afu_top|pg_afu.port_gasket|pr_slot|afu_main\nset_instance_assignment -name QDB_FILE_PARTITION ofs_top.qdb -to | -entity top\nset_instance_assignment -name ENTITY_REBINDING afu_main -to afu_top|pg_afu.port_gasket|pr_slot|afu_main\nset_global_assignment -name REVISION_TYPE PR_IMPL\n\n# Load macros defined in the Quartus project during the FIM build.\nset_global_assignment -name SOURCE_TCL_SCRIPT_FILE fim_project_macros.tcl\n\n# IP required in a PR build from the base build (created by the OFS\n# emit_project_ip.tcl script at the end of the FIM build)\nset_global_assignment -name SOURCE_TCL_SCRIPT_FILE fim_base_ip.tcl\n\n# Generate a GBS file at the end of the build\nset_global_assignment -name POST_FLOW_SCRIPT_FILE quartus_sh:ofs_partial_reconfig/gen_gbs.tcl\n\n############################################################################################\n#                          AFU design files                                                #\n############################################################################################\n\n# Ensure that variables such as BUILD_ROOT_REL are set (must be relative)\nset_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../setup/config_env.tcl\n\n##\n## *** Sources are specified in ofs_pr_afu_sources.tcl, not in this .qsf file, so     ***\n## *** that scripting can be used. In addition, the PR out-of-tree build construction ***\n## *** script depends on being able to replace the sources only in the .tcl file.     ***\n##\nset_global_assignment -name SOURCE_TCL_SCRIPT_FILE ofs_pr_afu_sources.tcl\n\n############################################################################################\n# VAB Assignments \n############################################################################################\nset_global_assignment -name ENABLE_MULTI_AUTHORITY ON\nset_global_assignment -name OPTIMIZATION_MODE \"HIGH PERFORMANCE EFFORT\" -comment \"Use High Performance Effort optimization mode when optimizing for performance. Superior Performance optimization mode has been deprecated and will be removed in 27.1.1.\"\n"
+  },
+  "resource_preflight": {
+    "competing": [],
+    "cpus": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35
+    ],
+    "disk_free": 1237245849600,
+    "mem_available": 124200812544,
+    "quartus_parallel_processors": 36,
+    "rlimit_as_bytes": 68719476736
+  },
+  "scope": "Compact observed synthesis receipt, not an executable replay or full input inventory",
+  "outer_rc": 0,
+  "captured_files": {
+    "cmake-source/CMakeLists.txt": {
+      "bytes": 1189,
+      "sha256": "87c5c8a1da9d9c2d246d3c213ba4c667908b37c815f2f15d291587d168142b98",
+      "publication": "included verbatim"
+    },
+    "configure.log": {
+      "bytes": 168,
+      "sha256": "c24e37f1930591b861daa661b6542207b9d770fc92b3602d5cef284a4fb20f05",
+      "publication": "included verbatim"
+    },
+    "gate-events.jsonl": {
+      "bytes": 370,
+      "sha256": "2893a765e0b90393c7a3c6648d71153f4fc2937c3c61268cb09b9effc5530435",
+      "publication": "included verbatim"
+    },
+    "persona/build/syn/board/ia840f/syn_top/ofs_pr_afu.qsf": {
+      "bytes": 7779,
+      "sha256": "e5f31052c45d48728a0029a08ae2ffbf8169c775ae6d368f8c802ff804e4a9f1",
+      "publication": "included verbatim"
+    },
+    "persona/build/syn/board/ia840f/syn_top/ofs_top.qpf": {
+      "bytes": 1345,
+      "sha256": "722db807ae6fdd05fa999d773bf7b86817da9cafedb396e197c9d8f7d4cc0108",
+      "publication": "included verbatim"
+    },
+    "persona/build/syn/board/ia840f/syn_top/output_files/ofs_pr_afu.drc.partitioned.rpt": {
+      "bytes": 7552,
+      "sha256": "b34198038c1188024522c58383f89075dcc4b64610aa20f94726b4dd4645ea36",
+      "publication": "included verbatim"
+    },
+    "persona/build/syn/board/ia840f/syn_top/output_files/ofs_pr_afu.drc.synthesized.rpt": {
+      "bytes": 24677,
+      "sha256": "f3bcd93ca68a923046a80702635bb1be1b3871079b1b00616bc8cebb964e93c8",
+      "publication": "included verbatim"
+    },
+    "persona/build/syn/board/ia840f/syn_top/output_files/ofs_pr_afu.flow.rpt": {
+      "bytes": 131910,
+      "sha256": "215a7d3aca0bd2efa54fd779c80121a776e2b8de8e98c2060fe3d1a3a037ff6d",
+      "publication": "included verbatim"
+    },
+    "persona/build/syn/board/ia840f/syn_top/output_files/ofs_pr_afu.sdc_constraints.rpt": {
+      "bytes": 2425,
+      "sha256": "85edaeead2f3dbda36bd30760920104ca4c74e42af9e9b800f392b9348505cc6",
+      "publication": "included verbatim"
+    },
+    "persona/build/syn/board/ia840f/syn_top/output_files/ofs_pr_afu.syn.ae.rpt": {
+      "bytes": 16744003,
+      "sha256": "7b0c6b27b62b17d20cb47e78d51d160ad7972f6e23266d22ae1e8cea755cf9eb",
+      "publication": "omitted: exceeds 2,000,000-byte cap"
+    },
+    "persona/build/syn/board/ia840f/syn_top/output_files/ofs_pr_afu.syn.rpt": {
+      "bytes": 55852682,
+      "sha256": "85277d3df84f215d3d66c0104dbf1688af009ff705f9876dbc422393917b3149",
+      "publication": "omitted: exceeds 2,000,000-byte cap"
+    },
+    "persona/build/syn/board/ia840f/syn_top/output_files/ofs_pr_afu.syn.summary": {
+      "bytes": 366,
+      "sha256": "b0d4b02b714298d86cb80e05f45b70f6309a22a6d14fba17a25177b4c7a254ed",
+      "publication": "included verbatim"
+    },
+    "persona/hw/afu.qsf": {
+      "bytes": 3104,
+      "sha256": "c54774f1560badfc3f5eedbedac4914dd3a8277b46365c8a670dee410186c3e5",
+      "publication": "included verbatim"
+    },
+    "synthesis.log": {
+      "bytes": 2143734,
+      "sha256": "465fd9092c429a4b74577483ad74ed4b41dbf617fb4e8443a730060a47605d5f",
+      "publication": "omitted: exceeds 2,000,000-byte cap"
+    }
+  },
+  "local_only_full_evidence": {
+    "synth01-result.json": {
+      "bytes": 102643844,
+      "sha256": "30b52733147e9ca4338769805ee3455b2e1836be267a7c6c27e8e06944c04135",
+      "reason": "full result/payload replay capsule or over-cap full metadata; not split for publication"
+    },
+    "synth01-configuration-metadata.json": {
+      "bytes": 2622311,
+      "sha256": "f5f776ddffbcd4276fa8493fb51d6adfc1ffd19ecfeca625a8747aba501bb6cb",
+      "reason": "full result/payload replay capsule or over-cap full metadata; not split for publication"
+    },
+    "synth01.py": {
+      "bytes": 2535030,
+      "sha256": "0434bbb9527265be9f52009cf6cfa2c04e176e67c04de6409002964112a87c18",
+      "reason": "full result/payload replay capsule or over-cap full metadata; not split for publication"
+    }
+  },
+  "remote_result_sha256": "d9d3b6b7bf52b518b4a2f26a114e557022865309a8e180db253beac760ccf017",
+  "serialization_note": "Local full receipt was pretty-printed; canonical json.dumps(sort_keys=True) reproduces the remotely recorded result SHA256 exactly."
+}
