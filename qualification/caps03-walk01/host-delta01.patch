@@ -1,0 +1,47 @@
+--- ahls_memory_dma_address_walk.c
++++ ahls_memory_caps03_walk.c
+@@ -1,5 +1,5 @@
+-/* CAPS01 sparse address-bit and bank-isolation walk, 64 bytes per location.
+- * Preserve the successful single-bank frontend. Twelve logical transfers, one session; finite serial descriptors.
++/* CAPS03 sparse address-bit and bank-isolation walk, 64 bytes per location.
++ * Preserve the successful single-bank frontend. Thirty locations per bank, one session; finite serial descriptors.
+  * Source/ownership contract: qualification/caps01-dma-burst01/; reuse caps01-dma-host01 contracts.
+  * Separate strict startup protects signals before OPAE library initialization.
+  * This is not authorization, a cancellation API, or full DDR qualification. */
+@@ -41,7 +41,7 @@
+ }
+ static uint64_t address_pattern(unsigned bank,uint64_t offset,unsigned word)
+ {
+-    uint64_t x=(((uint64_t)bank<<34)+offset+8*word)^UINT64_C(0xd1b54a32d192ed03);
++    uint64_t x=(((uint64_t)bank<<34)+offset+8*word)^UINT64_C(0x3c6ef372fe94f82b);
+     x^=x>>30;x*=UINT64_C(0xbf58476d1ce4e5b9);
+     x^=x>>27;x*=UINT64_C(0x94d049bb133111eb);
+     return x^(x>>31);
+@@ -57,11 +57,11 @@
+     fpga_properties props = NULL;
+     fpga_token token = NULL;
+     fpga_handle handle = NULL;
+-    fpga_guid guid = {0x67,0x3c,0x03,0xa1,0xce,0xf3,0x4c,0x82,
+-                      0xbf,0x10,0xb1,0x2c,0x24,0x7d,0x97,0x18};
++    fpga_guid guid = {0xd4,0x8d,0xde,0x9f,0xf5,0x51,0x57,0x8d,
++                      0x8b,0xb0,0x69,0x48,0x3a,0xc9,0x5e,0xc6};
+     const uint64_t identity_offsets[] = {0,8,16};
+     const uint64_t identity_words[] = {UINT64_C(0x1000010000000000),
+-        UINT64_C(0xbf10b12c247d9718), UINT64_C(0x673c03a1cef34c82)};
++        UINT64_C(0x8bb069483ac95ec6), UINT64_C(0xd48dde9ff551578d)};
+     const uint64_t capability_offsets[] = {IA840F_DMA_CAP_ID_OFFSET,
+         IA840F_DMA_CAP_GEOMETRY_OFFSET, IA840F_DMA_CAP_ADDRESS_OFFSET,
+         IA840F_DMA_CAP_LIMITS_OFFSET};
+@@ -76,10 +76,10 @@
+     unsigned prepared=0;
+     unsigned char expected_tx[4096],expected_rx[4096];
+     struct ia840f_dma_report report={0};
+-    if (argc != 3 || strcmp(argv[1], "--isolate-qualified-memory-banks") ||
++    if (argc != 3 || strcmp(argv[1], "--run-qualified-caps03-hls") ||
+         ahls_parse_bdf(argv[2], &segment, &bus, &device, &function)) {
+         fprintf(stderr, "Usage (separately authorized hardware only): %s "
+-                "--isolate-qualified-memory-banks dddd:bb:dd.f\n", argv[0]);
++                "--run-qualified-caps03-hls dddd:bb:dd.f\n", argv[0]);
+         return 2;
+     }
+     if(sysconf(_SC_PAGESIZE)!=4096 || ia840f_dma_signals_block()) {
