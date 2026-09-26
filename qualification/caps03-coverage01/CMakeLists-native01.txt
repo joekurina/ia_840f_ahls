@@ -1,0 +1,43 @@
+cmake_minimum_required(VERSION 3.20)
+project(ia840f_memory_caps03_target C)
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(SDK /sdk)
+set(PREFIX /work/prefix/usr)
+set(OPAE /work/sdk-build/lib/libopae-c.so)
+foreach(path ${SDK}/include/opae/init.h ${OPAE} ${PREFIX}/lib/x86_64-linux-gnu/libjson-c.so)
+  if(NOT EXISTS "${path}")
+    message(FATAL_ERROR "Bound prerequisite absent: ${path}")
+  endif()
+endforeach()
+add_library(frontend_object OBJECT ahls_memory_caps03_coverage.c)
+set_target_properties(frontend_object PROPERTIES POSITION_INDEPENDENT_CODE ON)
+target_compile_definitions(frontend_object PRIVATE main=ahls_memory_frontend_main)
+target_include_directories(frontend_object PRIVATE . ${SDK}/include)
+add_library(ahls_memory_caps03_coverage_entry_vfio_strict SHARED $<TARGET_OBJECTS:frontend_object>
+  ahls_memory_entry_vfio_strict.c ahls_qualification_core.c ia840f_dma_transfer_core.c ia840f_dma_lifetime.c)
+target_include_directories(ahls_memory_caps03_coverage_entry_vfio_strict PRIVATE . ${SDK}/include)
+target_link_libraries(ahls_memory_caps03_coverage_entry_vfio_strict PRIVATE ${OPAE})
+target_link_options(ahls_memory_caps03_coverage_entry_vfio_strict PRIVATE -Wl,-z,defs -Wl,-Map=${CMAKE_BINARY_DIR}/entry.map)
+set_target_properties(ahls_memory_caps03_coverage_entry_vfio_strict PROPERTIES BUILD_WITH_INSTALL_RPATH TRUE
+  INSTALL_RPATH "/work/sdk-build/lib;/work/prefix/usr/lib/x86_64-linux-gnu")
+add_executable(ahls_memory_caps03_startup ahls_memory_caps03_startup.c ahls_qualification_core.c ia840f_dma_lifetime.c
+  ${SDK}/libraries/libopae-c/cfg-file.c ${SDK}/libraries/libopae-c/opae-cfg.c
+  ${SDK}/tests/framework/mock/opae_std.c)
+target_include_directories(ahls_memory_caps03_startup PRIVATE . ${SDK}/include
+  ${SDK}/libraries/libopae-c ${SDK}/tests/framework ${PREFIX}/include)
+target_compile_definitions(ahls_memory_caps03_startup PRIVATE STATIC=static)
+set_source_files_properties(${SDK}/libraries/libopae-c/cfg-file.c
+  ${SDK}/libraries/libopae-c/opae-cfg.c ${SDK}/tests/framework/mock/opae_std.c
+  PROPERTIES COMPILE_DEFINITIONS _GNU_SOURCE)
+target_compile_options(ahls_memory_caps03_startup PRIVATE -ffunction-sections -fdata-sections)
+target_link_options(ahls_memory_caps03_startup PRIVATE -Wl,--gc-sections -Wl,-z,defs
+  -Wl,-Map=${CMAKE_BINARY_DIR}/startup.map)
+target_link_libraries(ahls_memory_caps03_startup PRIVATE
+  ${PREFIX}/lib/x86_64-linux-gnu/libjson-c.so ${CMAKE_DL_LIBS})
+set_target_properties(ahls_memory_caps03_startup PROPERTIES BUILD_WITH_INSTALL_RPATH TRUE
+  INSTALL_RPATH "/work/prefix/usr/lib/x86_64-linux-gnu")
+foreach(target frontend_object ahls_memory_caps03_coverage_entry_vfio_strict ahls_memory_caps03_startup)
+  target_compile_options(${target} PRIVATE -O2 -Wall -Wextra -Werror -UNDEBUG)
+endforeach()

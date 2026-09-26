@@ -1,0 +1,9 @@
+# CAPS03 repeated/boundary hardware acceptance
+
+Independent actual-result review `deleg_103db8bc` accepts the completed live02 hardware result with no blocking defect. It is distinct from source-admission review `deleg_a09ed8e0` ([actual review](review04-consumed.json), [source admission](review02-consumed.json)).
+
+All 34 ordered cases cover 17 lengths from 1 through 257 in both aligned and page-crossing layouts: 2,982 integers, 11,928 result bytes, 5,224 guard/padding bytes and 536 DMA descriptors. Expected numerical words are `a+b`; every case compares the complete copied-back output/guard span, and each descriptor verifies the complete host pages. Submission/retirement rows, individual cases, final summary and parent totals agree ([native log](live02-native.log), [source](../../src/host/ahls_memory_caps03_coverage.c), [parent verification](live02-parent-verification.json)).
+
+Native exit is 0, execution is EXITED, retained_owner is false, and both ownership snapshots are empty. Outer transport exit remains unknown/null because no durable outer capture exists; it is not inferred as zero. The sole kernel concern is the exact user-accepted pending-before-FLR warning. Preserve lifecycle_clean false and lifecycle_accepted true, without claiming warning-free teardown or measured global PCIe drain ([raw result](live02-result.json), [kernel log](live02-kernel.log), [policy](../caps03-runtime01/ERRATUM-ACCEPTED25.md)).
+
+The unchanged hardware frontend/module retained its native source binding. The later inert fixture correction targets a result byte separately from the guard-corruption case; its five cases passed without another hardware run ([native receipt](native01-result.json), [corrected tests](tests03/result.json)). This gate does not establish sustained, simultaneous or full-capacity DDR acceptance; those are separate completed milestones. Live02 is spent and must not be replayed.
