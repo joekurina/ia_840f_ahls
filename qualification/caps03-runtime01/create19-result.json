@@ -1,0 +1,131 @@
+{
+  "success": true,
+  "native_started": true,
+  "hardware_operation": "create one PF0 VF",
+  "authority": "Current user explicitly directs continuing the working-card goal with full in-scope iteration approval. Create only PF0 VF0 with driver autoprobe disabled; no AFU reads or recovery actions.",
+  "commands": [
+    {
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/pci_device",
+        "0000:4f:00.0",
+        "vf",
+        "1"
+      ],
+      "started": "2026-09-26T19:30:19.080337+00:00",
+      "pid": 4028,
+      "rc": 0,
+      "ended": "2026-09-26T19:30:19.397716+00:00",
+      "output": "",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "processes_of_interest": [],
+  "tool_hashes": {
+    "/usr/bin/pci_device": "502c80133f66e7d9326660cc7c358b81b6bd0ef9525463b0df710eeae0815a10",
+    "/usr/lib/python3.9/site-packages/opae/admin/tools/pci_device.py": "8ab8230856e51b76c733d309d11d2cbec9fe9fac78e8e86b1ed7f90cc38975df",
+    "/usr/lib/python3.9/site-packages/opae/admin/sysfs.py": "d70da0e869d7ce45ac13a15916d345841a131c0572cf1af247c2fcae32ba1151"
+  },
+  "started": "2026-09-26T19:30:18.775366+00:00",
+  "host": "Agilex7Workstation",
+  "uid": 1000,
+  "pane": "%3",
+  "boot_before": "8121620d-a638-42f8-abab-a547aae32076",
+  "pf_before": {
+    "path": "/sys/bus/pci/devices/0000:4f:00.0",
+    "exists": true,
+    "vendor": "0x8086",
+    "device": "0xbcce",
+    "subsystem_vendor": "0x8086",
+    "subsystem_device": "0x1771",
+    "sriov_numvfs": "0",
+    "sriov_totalvfs": "1",
+    "sriov_drivers_autoprobe": "1",
+    "driver": "/sys/bus/pci/drivers/dfl-pci",
+    "physfn": null,
+    "iommu_group": "/sys/kernel/iommu_groups/4",
+    "virtfn_links": {}
+  },
+  "management_before": {
+    "path": "/sys/bus/pci/devices/0000:4f:00.1",
+    "exists": true,
+    "vendor": "0x12ba",
+    "device": "0x0070",
+    "subsystem_vendor": "0x12ba",
+    "subsystem_device": "0xb5d4",
+    "driver": "/sys/bus/pci/drivers/vfio-pci",
+    "physfn": null,
+    "iommu_group": "/sys/kernel/iommu_groups/5",
+    "virtfn_links": {}
+  },
+  "sudo_check": {
+    "rc": 0,
+    "output": ""
+  },
+  "ownership": {
+    "d_state": [],
+    "holders": [],
+    "relevant": [],
+    "maps": [],
+    "errors": []
+  },
+  "autoprobe_command": {
+    "argv": [
+      "sudo",
+      "-n",
+      "/usr/bin/python3",
+      "-I",
+      "-B",
+      "-c",
+      "from pathlib import Path; Path('/sys/bus/pci/devices/0000:4f:00.0/sriov_drivers_autoprobe').write_text('0')"
+    ],
+    "rc": 0,
+    "output": ""
+  },
+  "autoprobe_disabled": true,
+  "pf_after": {
+    "path": "/sys/bus/pci/devices/0000:4f:00.0",
+    "exists": true,
+    "vendor": "0x8086",
+    "device": "0xbcce",
+    "subsystem_vendor": "0x8086",
+    "subsystem_device": "0x1771",
+    "sriov_numvfs": "1",
+    "sriov_totalvfs": "1",
+    "sriov_drivers_autoprobe": "0",
+    "driver": "/sys/bus/pci/drivers/dfl-pci",
+    "physfn": null,
+    "iommu_group": "/sys/kernel/iommu_groups/4",
+    "virtfn_links": {
+      "virtfn0": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2"
+    }
+  },
+  "management_after": {
+    "path": "/sys/bus/pci/devices/0000:4f:00.1",
+    "exists": true,
+    "vendor": "0x12ba",
+    "device": "0x0070",
+    "subsystem_vendor": "0x12ba",
+    "subsystem_device": "0xb5d4",
+    "driver": "/sys/bus/pci/drivers/vfio-pci",
+    "physfn": null,
+    "iommu_group": "/sys/kernel/iommu_groups/5",
+    "virtfn_links": {}
+  },
+  "vf_after": {
+    "path": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2",
+    "exists": true,
+    "vendor": "0x8086",
+    "device": "0xbccf",
+    "subsystem_vendor": "0x8086",
+    "subsystem_device": "0x1771",
+    "driver": null,
+    "physfn": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0",
+    "iommu_group": "/sys/kernel/iommu_groups/76",
+    "virtfn_links": {}
+  },
+  "vf_unbound_verified": true,
+  "boot_after": "8121620d-a638-42f8-abab-a547aae32076",
+  "ended": "2026-09-26T19:30:19.402963+00:00"
+}

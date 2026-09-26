@@ -1,0 +1,47 @@
+{
+  "normal_idle_first_use_admitted": true,
+  "scope": "One CAPS03 normal-idle VFIO/OPAE entry and one retained-owner numerical case; implicit idle acquisition/enumeration FLRs included. No post-allocation cleanup, retries, PR, manual reset or active-transaction teardown.",
+  "parent_decision_utc": "2026-09-26T19:09:53.745167+00:00",
+  "review_id": "deleg_62c01146",
+  "review_final_message_id": 260701,
+  "review_final_sha256": "277fba0cb96caf6f629869aad6e2bfaa0c0ff106d6db674778d2955127365128",
+  "full_review_consumed": true,
+  "boot": "fb857f04-2297-4a93-9b32-26636641713b",
+  "vf": "0000:4f:00.2",
+  "iommu_group": 76,
+  "expected_afu_uuid": "d48dde9f-f551-578d-8bb0-69483ac95ec6",
+  "review_correction": {
+    "omitted_projected_stage": "pr_slot.sv port_rst_n_t1 register before afu_main",
+    "pr_slot_sha256": "e6f69b311e7d592778f1e75a303c7517ef294dc47e28362a7ac3e87b96b861b1",
+    "reset08_cycle_exact_full_chain": false,
+    "nominal_clk_csr_ns": "9.929",
+    "nominal_clk_sys_ns": "2.127",
+    "bank0_ns": "3.000",
+    "sys_stages": 19,
+    "bank0_stages": 12,
+    "nominal_recovery_margin_ns": "241.315",
+    "margin_after_four_additional_cycles_ns": "229.315",
+    "basis": "Source-derived nominal accounting, not a corrected simulation or measured physical waveform."
+  },
+  "operating_assumptions": [
+    "Vendor clocks running after successful initialization; selected VF FLR does not gate/reset memory clocks.",
+    "No concurrent PR or device owner; freeze remains in reset/idle default.",
+    "Exact unchanged deployed image, same boot, bound modules/runtime and VF route."
+  ],
+  "required_live_preflight": [
+    "Recheck selected module/artifact hashes and boot.",
+    "Recheck singleton VF ownership, binding and current initialized flags through the previously admitted static EMIF accessors.",
+    "Retain application and namespace on any post-spawn uncertainty; no automatic recovery."
+  ],
+  "evidence": {
+    "reset08-result.json": "b8b75eed075a49e670166125291ed08f9e3b578fa67b1995379230d7b6ab2ff3",
+    "reset08-inputs.json": "e51bd039b4fe881a758fc3a5ba05fcc1e6c6bc7af057227a240b8101404731b0",
+    "reset_entry08_tb.sv": "079a379b19f5ae20775df3932c260d7e9d15e0a7a93807f3b3a5e42eaa68d5ba",
+    "retained10-result.json": "82626314fa8129ece58d5e52794834736e57e6e246c928312c2ca63dafd42562",
+    "preflight11-result.json": "cbeac719a5fa78f18e7ae2a2f54102fccc94f5ba25ae40972eb5f83d25040c9d",
+    "retained12-resume/result.json": "886815b319c88ebb893451ee4ebf50c9a69e8b17d9cc2353fa9e77af2c69a89d",
+    "live13-parser-check.json": "46bbe478e0797272eb869bbdaf986b668a23a95add15be08216c476aa243e005"
+  },
+  "lifecycle_qualified": false,
+  "hardware_test_result": null
+}

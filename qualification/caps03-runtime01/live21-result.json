@@ -1,0 +1,208 @@
+{
+  "success": false,
+  "commands": [
+    {
+      "label": "ownership-before",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_caps03_flash01/preflight01/ownership.py"
+      ],
+      "pid": 4489,
+      "rc": 0,
+      "output": "{\"d_state\": [], \"holders\": [], \"relevant\": [], \"maps\": [], \"errors\": []}\n",
+      "sha256": "5c9d77c7f3d97479e8350dc5bd09bd9c1c1ffba33758bc1349b0089cf0cca305"
+    },
+    {
+      "label": "caps03-one-normal-cleanup-case",
+      "argv": [
+        "/home/uwb_student00/ahls/apptainer/bin/apptainer",
+        "exec",
+        "--containall",
+        "--cleanenv",
+        "--no-home",
+        "--no-mount",
+        "sys,hostfs,cwd,bind-paths",
+        "--no-eval",
+        "--workdir",
+        "/home/uwb_student00/ahls/new_BSP/work_caps03_runtime01/live21/scratch",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_caps01_vfio01/target01:/work:ro",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_caps03_host01/build01:/caps03:ro",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_caps03_runtime01/live21:/diag:rw",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_caps03_runtime01/live21/empty:/empty:ro",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_caps03_runtime01/live21/exec:/exec:ro",
+        "--bind",
+        "/sys:/sys:ro",
+        "--bind",
+        "/dev/vfio/vfio:/dev/vfio/vfio:rw",
+        "--bind",
+        "/dev/vfio/76:/dev/vfio/76:rw",
+        "--pwd",
+        "/empty",
+        "/home/uwb_student00/ahls/ubuntu-ahls.sif",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "-S",
+        "/diag/inner.py"
+      ],
+      "pid": 4493,
+      "started": "2026-09-26T19:33:15.642955+00:00",
+      "start_ticks": "30349",
+      "rc": 0,
+      "output": "FPGA Test: CAPS03 one HLS invocation, exact data/guards, then normal cleanup only after successful finite completion; uncertain outcomes still retain ownership.\n",
+      "sha256": "66c4a83bc67671cb23fe2c455c153d8d91166db7cc50d9c9e5e73f4999bb73da"
+    },
+    {
+      "label": "ownership-after",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_caps03_flash01/preflight01/ownership.py"
+      ],
+      "pid": 4550,
+      "rc": 0,
+      "output": "{\"d_state\": [], \"holders\": [], \"relevant\": [], \"maps\": [], \"errors\": []}\n",
+      "sha256": "5c9d77c7f3d97479e8350dc5bd09bd9c1c1ffba33758bc1349b0089cf0cca305"
+    },
+    {
+      "label": "kernel-journal",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/journalctl",
+        "-k",
+        "-b",
+        "0",
+        "--since",
+        "2026-09-26 19:33:13 UTC",
+        "--no-pager",
+        "-o",
+        "short-iso"
+      ],
+      "pid": 4555,
+      "rc": 0,
+      "output": "2026-09-26T12:33:16-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: enabling device (0000 -> 0002)\n2026-09-26T12:33:16-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: enabling device (0000 -> 0002)\n2026-09-26T12:33:17-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: timed out waiting for pending transaction; performing function level reset anyway\n",
+      "sha256": "1ab50b3e22f0289310dbd19269c9cabfb2be96192f7e6dc61ffd5a6d8863f391"
+    }
+  ],
+  "started": "2026-09-26T19:33:13.012272+00:00",
+  "boot": "8121620d-a638-42f8-abab-a547aae32076",
+  "pane": "%5",
+  "application_started": true,
+  "manual_reset": false,
+  "retry": false,
+  "preflight18_sha256": "bb2dd267ee4ab800eed59b8ff8fb07da6e97f748cdd7b1a764ed74f02cdf7cde",
+  "new_artifacts": {
+    "/home/uwb_student00/ahls/new_BSP/work_caps03_host01/build01/build/ahls_memory_caps03_startup": "8f363546faff826dd63c0e1da166d34db63ea5eb36fd9bb13ec4f54e7de955f7",
+    "/home/uwb_student00/ahls/new_BSP/work_caps03_host01/build01/build/libahls_memory_caps03_entry_vfio_strict.so": "6c8427d7379e811122cd549dec40181044c2dd90b961e56b163b6c1a69daecf0"
+  },
+  "ownership_before": {
+    "d_state": [],
+    "holders": [],
+    "relevant": [],
+    "maps": [],
+    "errors": []
+  },
+  "emif_readings": {
+    "inf0_init_done": 1,
+    "inf1_init_done": 1
+  },
+  "static_emif_read": true,
+  "inner": {
+    "success": true,
+    "application_started": true,
+    "started": "2026-09-26T19:33:16.220036+00:00",
+    "runtime_preflight_passed": true,
+    "nodes": [
+      "76",
+      "vfio"
+    ],
+    "mountinfo_sha256": "47dd2d403a5e9a68b27d2b4d7707fbdc56d83a628afcc71ffb7424d223492a55",
+    "argv": [
+      "/exec/ahls_memory_caps03_startup",
+      "--config",
+      "/work/source/config/ia840f_caps01_vfio.cfg",
+      "--module",
+      "/caps03/build/libahls_memory_caps03_entry_vfio_strict.so",
+      "--run-qualified-caps03-hls",
+      "0000:4f:00.2"
+    ],
+    "environment": {
+      "PATH": "/usr/bin:/bin",
+      "HOME": "/diag",
+      "TMPDIR": "/diag/tmp",
+      "LANG": "C",
+      "LC_ALL": "C",
+      "LD_LIBRARY_PATH": "/work/sdk-build/lib:/work/prefix/usr/lib/x86_64-linux-gnu",
+      "LD_DEBUG": "libs",
+      "LD_DEBUG_OUTPUT": "/diag/loader"
+    },
+    "process": {
+      "application_started": true,
+      "success": true,
+      "retained_owner": false,
+      "argv": [
+        "/exec/ahls_memory_caps03_startup",
+        "--config",
+        "/work/source/config/ia840f_caps01_vfio.cfg",
+        "--module",
+        "/caps03/build/libahls_memory_caps03_entry_vfio_strict.so",
+        "--run-qualified-caps03-hls",
+        "0000:4f:00.2"
+      ],
+      "pid": 16,
+      "start_ticks": "30410",
+      "native_rc": 0,
+      "execution_state": "EXITED"
+    },
+    "retained_owner": false,
+    "native_rc": 0,
+    "native_log": "FPGA Test identity read 0x0\nFPGA Test identity read 0x8\nFPGA Test identity read 0x10\nFPGA Test capability read 0x98\nFPGA Test capability read 0xa0\nFPGA Test capability read 0xa8\nFPGA Test capability read 0xb0\nFPGA Test discarded quiescent finish history=0\nFPGA Test DMA submit sequence=0 mode=1 bank=0 bytes=64 ddr=0x10000\nFPGA Test DMA retired and host pages verified sequence=0\nFPGA Test DMA submit sequence=1 mode=1 bank=0 bytes=64 ddr=0x10040\nFPGA Test DMA retired and host pages verified sequence=1\nFPGA Test DMA submit sequence=2 mode=1 bank=1 bytes=64 ddr=0xffc0\nFPGA Test DMA retired and host pages verified sequence=2\nFPGA Test DMA submit sequence=3 mode=1 bank=1 bytes=128 ddr=0x10000\nFPGA Test DMA retired and host pages verified sequence=3\nFPGA Test HLS ticket=1 completion=0x10002\nFPGA Test DMA submit sequence=4 mode=2 bank=1 bytes=64 ddr=0xffc0\nFPGA Test DMA retired and host pages verified sequence=4\nFPGA Test DMA submit sequence=5 mode=2 bank=1 bytes=128 ddr=0x10000\nFPGA Test DMA retired and host pages verified sequence=5\nFPGA Test HLS DATA PASS: integers=9 result_bytes=36 guard_bytes=156 descriptors=6\nFPGA Test CAPS03 frontend PASSED: integers=9 copied_span_bytes=192 descriptors=6 verified_payload_and_guards=1\nNo simultaneous-bank, sustained or full-DDR qualification. Live VFIO lifecycle acceptance is separate.\n",
+    "native_log_sha256": "7f579f000f810be17a78886d9aafe899746b0503e9eaa1822b53c27a08ff1299",
+    "loader_logs": {
+      "loader.16": {
+        "sha256": "6f4b541e4d4a0831d6d3efbe285d902baedece8e2935a43495909c78fed50f81",
+        "bytes": 8745,
+        "text": "        16:\tfind library=libjson-c.so.5 [0]; searching\n        16:\t search path=/work/sdk-build/lib/glibc-hwcaps/x86-64-v4:/work/sdk-build/lib/glibc-hwcaps/x86-64-v3:/work/sdk-build/lib/glibc-hwcaps/x86-64-v2:/work/sdk-build/lib/tls/haswell/avx512_1/x86_64:/work/sdk-build/lib/tls/haswell/avx512_1:/work/sdk-build/lib/tls/haswell/x86_64:/work/sdk-build/lib/tls/haswell:/work/sdk-build/lib/tls/avx512_1/x86_64:/work/sdk-build/lib/tls/avx512_1:/work/sdk-build/lib/tls/x86_64:/work/sdk-build/lib/tls:/work/sdk-build/lib/haswell/avx512_1/x86_64:/work/sdk-build/lib/haswell/avx512_1:/work/sdk-build/lib/haswell/x86_64:/work/sdk-build/lib/haswell:/work/sdk-build/lib/avx512_1/x86_64:/work/sdk-build/lib/avx512_1:/work/sdk-build/lib/x86_64:/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/glibc-hwcaps/x86-64-v4/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/glibc-hwcaps/x86-64-v3/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/glibc-hwcaps/x86-64-v2/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/haswell/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/haswell/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/haswell/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/haswell/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/haswell/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/haswell/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/haswell/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/haswell/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/libjson-c.so.5\n        16:\t search path=/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v4:/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v3:/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v2:/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/avx512_1/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/avx512_1:/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell:/work/prefix/usr/lib/x86_64-linux-gnu/tls/avx512_1/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/tls/avx512_1:/work/prefix/usr/lib/x86_64-linux-gnu/tls/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/tls:/work/prefix/usr/lib/x86_64-linux-gnu/haswell/avx512_1/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/haswell/avx512_1:/work/prefix/usr/lib/x86_64-linux-gnu/haswell/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/haswell:/work/prefix/usr/lib/x86_64-linux-gnu/avx512_1/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/avx512_1:/work/prefix/usr/lib/x86_64-linux-gnu/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu\t\t(RUNPATH from file /exec/ahls_memory_caps03_startup)\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v4/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v3/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v2/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/haswell/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/haswell/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/haswell/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/haswell/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5\n        16:\t\n        16:\tfind library=libc.so.6 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libc.so.6\n        16:\t search path=/work/prefix/usr/lib/x86_64-linux-gnu\t\t(RUNPATH from file /exec/ahls_memory_caps03_startup)\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/libc.so.6\n        16:\t search path=/work/prefix/usr/lib/x86_64-linux-gnu\t\t(RUNPATH from file /exec/ahls_memory_caps03_startup)\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/libc.so.6\n        16:\t search cache=/etc/ld.so.cache\n        16:\t  trying file=/lib/x86_64-linux-gnu/libc.so.6\n        16:\t\n        16:\t\n        16:\tcalling init: /lib64/ld-linux-x86-64.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /lib/x86_64-linux-gnu/libc.so.6\n        16:\t\n        16:\t\n        16:\tcalling init: /work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5\n        16:\t\n        16:\t\n        16:\tinitialize program: /exec/ahls_memory_caps03_startup\n        16:\t\n        16:\t\n        16:\ttransferring control: /exec/ahls_memory_caps03_startup\n        16:\t\n        16:\tfind library=libopae-c.so.2 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libopae-c.so.2\n        16:\t\n        16:\tfind library=libuuid.so.1 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libuuid.so.1\n        16:\t search path=/work/prefix/usr/lib/x86_64-linux-gnu\t\t(RUNPATH from file /exec/ahls_memory_caps03_startup)\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1\n        16:\t\n        16:\t\n        16:\tcalling init: /work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1\n        16:\t\n        16:\t\n        16:\tcalling init: /work/sdk-build/lib/libopae-c.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /caps03/build/libahls_memory_caps03_entry_vfio_strict.so\n        16:\t\n        16:\tfind library=libopae-v.so [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libopae-v.so\n        16:\t\n        16:\tfind library=libopaevfio.so.2 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libopaevfio.so.2\n        16:\t\n        16:\tfind library=libopaemem.so.2 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libopaemem.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /work/sdk-build/lib/libopaemem.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /work/sdk-build/lib/libopaevfio.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /work/sdk-build/lib/libopae-v.so\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/sdk-build/lib/libopae-v.so [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/sdk-build/lib/libopaevfio.so.2 [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/sdk-build/lib/libopaemem.so.2 [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /exec/ahls_memory_caps03_startup [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /caps03/build/libahls_memory_caps03_entry_vfio_strict.so [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/sdk-build/lib/libopae-c.so.2 [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5 [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1 [0]\n        16:\t\n"
+      }
+    },
+    "numerical_data_pass": true,
+    "native_exit_passed": true,
+    "ended": "2026-09-26T19:33:17.431261+00:00"
+  },
+  "native_rc": 0,
+  "ownership_after": {
+    "d_state": [],
+    "holders": [],
+    "relevant": [],
+    "maps": [],
+    "errors": []
+  },
+  "drivers_after": {
+    "0000:4f:00.0": "dfl-pci",
+    "0000:4f:00.1": "vfio-pci",
+    "0000:4f:00.2": "vfio-pci"
+  },
+  "original_files_unchanged": true,
+  "boot_after": "8121620d-a638-42f8-abab-a547aae32076",
+  "numerical_data_pass": true,
+  "application_exit_passed": true,
+  "kernel_journal": "2026-09-26T12:33:16-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: enabling device (0000 -> 0002)\n2026-09-26T12:33:16-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: enabling device (0000 -> 0002)\n2026-09-26T12:33:17-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: timed out waiting for pending transaction; performing function level reset anyway\n",
+  "kernel_concern_lines": [
+    "2026-09-26T12:33:17-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: timed out waiting for pending transaction; performing function level reset anyway"
+  ],
+  "lifecycle_clean": false,
+  "ended": "2026-09-26T19:33:17.745846+00:00"
+}

@@ -1,0 +1,42 @@
+{
+  "scope": "Inert frontend RED: old CLI rejects CAPS03 before any API; not an RTL/hardware failure",
+  "no_hardware_library_dependency": true,
+  "commands": [
+    {
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/tests/ia840f/caps03_host",
+        "-B",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps03-host01/red02",
+        "-DFRONTEND_SOURCE=/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/ahls_memory_dma_isolation.c"
+      ],
+      "rc": 0,
+      "stdout": "-- The C compiler identification is GNU 14.2.0\n-- Detecting C compiler ABI info\n-- Detecting C compiler ABI info - done\n-- Check for working C compiler: /usr/bin/cc - skipped\n-- Detecting C compile features\n-- Detecting C compile features - done\n-- Configuring done (0.5s)\n-- Generating done (0.0s)\n-- Build files have been written to: /home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps03-host01/red02\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "cmake",
+        "--build",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps03-host01/red02",
+        "--parallel",
+        "2"
+      ],
+      "rc": 0,
+      "stdout": "[ 20%] Building C object CMakeFiles/caps03_frontend.dir/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/ahls_memory_dma_isolation.c.o\n[ 40%] Building C object CMakeFiles/caps03_frontend.dir/mock_caps03_opae.c.o\n[ 60%] Building C object CMakeFiles/caps03_frontend.dir/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/ahls_qualification_core.c.o\n[ 80%] Building C object CMakeFiles/caps03_frontend.dir/home/joe/Projects/Thesis/AHLS/new_bsp/new/src/host/ia840f_dma_transfer_core.c.o\n[100%] Linking C executable caps03_frontend\n[100%] Built target caps03_frontend\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps03-host01/red02/caps03_frontend",
+        "--run-qualified-caps03-hls",
+        "0000:4f:00.2"
+      ],
+      "rc": 2,
+      "stdout": "",
+      "stderr": "Usage (separately authorized hardware only): /home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/caps03-host01/red02/caps03_frontend --isolate-qualified-memory-banks dddd:bb:dd.f\n"
+    }
+  ],
+  "elf_dynamic": "\nDynamic section at offset 0xcdd0 contains 27 entries:\n  Tag        Type                         Name/Value\n 0x0000000000000001 (NEEDED)             Shared library: [libubsan.so.1]\n 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]\n 0x000000000000000c (INIT)               0x4000\n 0x000000000000000d (FINI)               0x9600\n 0x0000000000000019 (INIT_ARRAY)         0xddb8\n 0x000000000000001b (INIT_ARRAYSZ)       8 (bytes)\n 0x000000000000001a (FINI_ARRAY)         0xddc0\n 0x000000000000001c (FINI_ARRAYSZ)       8 (bytes)\n 0x000000006ffffef5 (GNU_HASH)           0x3b0\n 0x0000000000000005 (STRTAB)             0x6c8\n 0x0000000000000006 (SYMTAB)             0x3e0\n 0x000000000000000a (STRSZ)              548 (bytes)\n 0x000000000000000b (SYMENT)             24 (bytes)\n 0x0000000000000015 (DEBUG)              0x0\n 0x0000000000000003 (PLTGOT)             0xdfe8\n 0x0000000000000002 (PLTRELSZ)           552 (bytes)\n 0x0000000000000014 (PLTREL)             RELA\n 0x0000000000000017 (JMPREL)             0x2f10\n 0x0000000000000007 (RELA)               0x990\n 0x0000000000000008 (RELASZ)             9600 (bytes)\n 0x0000000000000009 (RELAENT)            24 (bytes)\n 0x000000006ffffffb (FLAGS_1)            Flags: PIE\n 0x000000006ffffffe (VERNEED)            0x930\n 0x000000006fffffff (VERNEEDNUM)         1\n 0x000000006ffffff0 (VERSYM)             0x8ec\n 0x000000006ffffff9 (RELACOUNT)          393\n 0x0000000000000000 (NULL)               0x0\n"
+}
