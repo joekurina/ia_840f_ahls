@@ -1,0 +1,84 @@
+{
+  "verification_passed": true,
+  "verified_at": "2026-09-26T23:23:09.916639+00:00",
+  "result": {
+    "path": "qualification/caps03-full-ddr01/live02-result.json",
+    "bytes": 102851,
+    "sha256": "6d4735d336bde45962808dd2721e84952af2b0af92b5c26f0033e8f5acba29b1"
+  },
+  "outer": {
+    "path": "qualification/caps03-full-ddr01/live02-outer.json",
+    "bytes": 125,
+    "sha256": "51beee2bb953e2dfa10b8162b52c652926ec555c9b78dfddb070b87e8cd6210d"
+  },
+  "native_log": {
+    "path": "qualification/caps03-full-ddr01/live02-native.log",
+    "bytes": 42223,
+    "sha256": "34a3aec1950d6f0f61d4fd34a3a8f5df0e184f37cc5181ea7ec93f9684b22642"
+  },
+  "kernel_log": {
+    "path": "qualification/caps03-full-ddr01/live02-kernel.log",
+    "bytes": 369,
+    "sha256": "b40d8c4720f547921f4e0431fd851962bdfe2c99cf4d95a531e367364b797fac"
+  },
+  "source": {
+    "path": "src/host/ahls_memory_caps03_full_ddr.c",
+    "bytes": 13253,
+    "sha256": "2303947774f6ef4815b4202ae297ad85d6924731a67f769caf4948efacdf0283"
+  },
+  "native_module": {
+    "bytes": 35496,
+    "sha256": "4d1d27d0c39f9a6d0070b2b522964973642a7ebe327846e477e35562ff0d9f6d",
+    "mode": "0o600"
+  },
+  "native_rc": 0,
+  "outer_rc": 0,
+  "execution_state": "EXITED",
+  "retained_owner": false,
+  "ownership_after_empty": true,
+  "boot_unchanged": "8121620d-a638-42f8-abab-a547aae32076",
+  "locations_per_bank": 134217728,
+  "bytes_written_per_bank": 17179869184,
+  "bytes_read_and_verified_per_bank": 17179869184,
+  "total_descriptors": 536870912,
+  "aggregate_transfer_bytes": 68719476736,
+  "progress_rows": 512,
+  "phases": [
+    {
+      "mode": 1,
+      "bank": 0,
+      "bytes": 17179869184,
+      "cumulative_descriptors": 134217728
+    },
+    {
+      "mode": 1,
+      "bank": 1,
+      "bytes": 17179869184,
+      "cumulative_descriptors": 268435456
+    },
+    {
+      "mode": 2,
+      "bank": 0,
+      "bytes": 17179869184,
+      "cumulative_descriptors": 402653184
+    },
+    {
+      "mode": 2,
+      "bank": 1,
+      "bytes": 17179869184,
+      "cumulative_descriptors": 536870912
+    }
+  ],
+  "elapsed_seconds": 4702.62979269,
+  "elapsed_minutes": 78.37716321149999,
+  "host_transfer_check_loop_MiB_per_second": 13.936032154151789,
+  "host_page_comparison_bytes": 4398046511104,
+  "source_and_full_host_page_guards_checked": true,
+  "full_aperture_per_bank": "[0,0x400000000)",
+  "lifecycle_clean": false,
+  "lifecycle_accepted": true,
+  "accepted_warning": "vfio-pci 0000:4f:00.2: timed out waiting for pending transaction; performing function level reset anyway",
+  "unaccepted_kernel_concerns": [],
+  "independent_actual_result_review": "deleg_25953609 pending",
+  "scope": "Full configured/exposed logical-aperture data and serial isolation; sustained transfer/check loop. Not physical wire-address mapping, simultaneous wire traffic, DDR bandwidth, or warning-free teardown. Concurrent functional gate is separate accepted bulk evidence."
+}

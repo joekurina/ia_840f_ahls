@@ -1,0 +1,81 @@
+--- ahls_memory_caps03_ddr.c
++++ ahls_memory_caps03_full_ddr.c
+@@ -1,5 +1,5 @@
+-/* CAPS03 sparse full-address-range DDR sweep, 128-byte page-contained descriptors.
+- * Preserve the successful single-bank frontend. Two GiB sampled per logical bank across16GiB; all writes before reads in one session.
++/* CAPS03 contiguous full-capacity DDR sweep, 128-byte page-contained descriptors.
++ * Preserve the successful single-bank frontend. Sixteen GiB contiguous per logical bank; all writes before reads in one session.
+  * Source/ownership contract: qualification/caps01-dma-burst01/; reuse caps01-dma-host01 contracts.
+  * Separate strict startup protects signals before OPAE library initialization.
+  * This is not authorization, a cancellation API, or full DDR qualification. */
+@@ -24,14 +24,15 @@
+ /* The unchanged strict launcher's flag selects its module ABI. This module
+  * performs only serial DDR DMA; it never writes an HLS start/reset register.
+  * The native build uses the default corpus. Only inert tests reduce it. */
+-#ifndef CAPS03_DDR_LOCATIONS
+-#define CAPS03_DDR_LOCATIONS 16777216U
++#ifndef CAPS03_FULL_LOCATIONS
++#define CAPS03_FULL_LOCATIONS 134217728U
+ #endif
+-_Static_assert(CAPS03_DDR_LOCATIONS > 0 && CAPS03_DDR_LOCATIONS <= 16777216U,
+-               "bounded CAPS03 DDR corpus");
++_Static_assert(CAPS03_FULL_LOCATIONS > 0 && CAPS03_FULL_LOCATIONS <= 134217728U,
++               "bounded CAPS03 full-capacity corpus");
++_Static_assert(sizeof(unsigned)>=4, "full sweep requires at least32-bit counters");
+ static uint64_t sweep_offset(unsigned index)
+ {
+-    return ((uint64_t)index<<10) + ((uint64_t)(index&7U)<<7);
++    return (uint64_t)index<<7;
+ }
+ 
+ static int memory_api_ok(fpga_result rc, const char *operation)
+@@ -63,7 +64,7 @@
+ }
+ static uint64_t address_pattern(unsigned bank,uint64_t offset,unsigned word)
+ {
+-    uint64_t x=(((uint64_t)bank<<34)+offset+8*word)^UINT64_C(0xbb67ae8584caa73b);
++    uint64_t x=(((uint64_t)bank<<34)+offset+8*word)^UINT64_C(0xa54ff53a5f1d36f1);
+     x^=x>>30;x*=UINT64_C(0xbf58476d1ce4e5b9);
+     x^=x>>27;x*=UINT64_C(0x94d049bb133111eb);
+     return x^(x>>31);
+@@ -76,7 +77,7 @@
+ 
+ int main(int argc, char **argv)
+ {
+-    const unsigned locations=CAPS03_DDR_LOCATIONS;
++    const unsigned locations=CAPS03_FULL_LOCATIONS;
+     unsigned descriptors=0;
+     fpga_properties props = NULL;
+     fpga_token token = NULL;
+@@ -175,9 +176,8 @@
+     memcpy(buffers[0],expected_tx,4096);
+     memcpy(buffers[1],expected_rx,4096);
+     struct ia840f_dma_io io={handle,dma_read64,dma_write64,dma_quick_wait};
+-    /* W0 then W1 then R0 then R1. One128-byte sample per1KiB block.
+-     * Across each8KiB, samples vary all three intervening column bits.
+-     * Logical address coverage is not by itself physical bank/row proof. */
++    /* W0 then W1 then R0 then R1. Every128-byte line in each full
++     * bank-local16GiB aperture. No sparse physical-row mapping assumption. */
+     struct timespec began,finished;
+     if(clock_gettime(CLOCK_MONOTONIC,&began))goto cleanup;
+     for(unsigned sequence=0;sequence<4*locations;++sequence){
+@@ -246,8 +246,8 @@
+             ++descriptors;done+=chunk;
+         }
+         if((sequence+1)%locations==0){
+-            printf("FPGA Test DDR phase verified mode=%u bank=%u bytes=%u descriptors=%u source_page=4096 destination_page=4096\n",
+-                   direction+1,bank,locations*128U,descriptors);fflush(stdout);
++            printf("FPGA Test DDR phase verified mode=%u bank=%u bytes=%" PRIu64 " descriptors=%u source_page=4096 destination_page=4096\n",
++                   direction+1,bank,(uint64_t)locations*128U,descriptors);fflush(stdout);
+         }
+     }
+     if(descriptors!=4*locations)ia840f_dma_hold("dense descriptor count mismatch",&report);
+@@ -266,7 +266,7 @@
+     if (token && !memory_api_ok(fpgaDestroyToken(&token), "fpgaDestroyToken")) exit_code = 1;
+     if (props && !memory_api_ok(fpgaDestroyProperties(&props), "fpgaDestroyProperties")) exit_code = 1;
+     if(exit_code==0){
+-        printf("FPGA Test CAPS03 DDR PASSED: banks=2 locations_per_bank=%u bytes_per_bank=%u descriptors=%u verified_payload_and_guards=1\n",locations,locations*128U,descriptors);
++        printf("FPGA Test CAPS03 FULL DDR PASSED: banks=2 locations_per_bank=%u bytes_per_bank=%" PRIu64 " descriptors=%u verified_payload_and_guards=1\n",locations,(uint64_t)locations*128U,descriptors);
+         printf("No kernel launch or simultaneous-bank qualification; full DDR gate still requires concurrent channels. Implicit VFIO resets apply.\n");
+     }else fprintf(stderr,"FPGA Test DMA bursts FAILED. No retry/reset/fallback.\n");
+     return exit_code;
