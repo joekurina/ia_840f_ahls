@@ -1,0 +1,355 @@
+Fitter Retime Stage Report for ofs_pr_afu
+Fri Sep 25 15:23:45 2026
+Quartus Prime Version 25.1.0 Build 129 03/26/2025 SC Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Hyper-Retimer Settings
+  3. Reset Sequence Requirement
+  4. Retiming Limit Summary
+  5. Clock Domain local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk (Meets timing requirements: No further analysis performed.)
+  6. Clock Domain sys_pll|iopll_0_clk_sys (Meets timing requirements: No further analysis performed.)
+  7. Clock Domain pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15 (Meets timing requirements: No further analysis performed.)
+  8. Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0 (Meets timing requirements: No further analysis performed.)
+  9. Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_0 (Meets timing requirements: No further analysis performed.)
+ 10. Clock Domain local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk (Meets timing requirements: No further analysis performed.)
+ 11. Clock Domain sys_pll|iopll_0_clk_100m (Meets timing requirements: No further analysis performed.)
+ 12. Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0 to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk (Meets timing requirements: No further analysis performed.)
+ 13. Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_0 to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk (Meets timing requirements: No further analysis performed.)
+ 14. Clock Domain altera_int_osc_clk (Meets timing requirements: No further analysis performed.)
+ 15. Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_0 (Meets timing requirements: No further analysis performed.)
+ 16. Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_0 (Meets timing requirements: No further analysis performed.)
+ 17. Clock Domain sys_pll|iopll_0_clk_sys_div2 (Meets timing requirements: No further analysis performed.)
+ 18. Clock Domain afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_outclk0 (Meets timing requirements: No further analysis performed.)
+ 19. Clock Domain afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_outclk1 (Meets timing requirements: No further analysis performed.)
+ 20. Clock Domain pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|avmm_clock0 (Meets timing requirements: No further analysis performed.)
+ 21. Clock Domain local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock (Meets timing requirements: No further analysis performed.)
+ 22. Clock Domain altera_reserved_tck (Meets timing requirements: No further analysis performed.)
+ 23. Transfer from sys_pll|iopll_0_clk_100m to altera_int_osc_clk (Meets timing requirements: No further analysis performed.)
+ 24. Transfer from altera_int_osc_clk to sys_pll|iopll_0_clk_100m (Meets timing requirements: No further analysis performed.)
+ 25. Clock Domain bwbmc_fpga_max_sclk (Meets timing requirements: No further analysis performed.)
+ 26. Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock (Meets timing requirements: No further analysis performed.)
+ 27. Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock (Meets timing requirements: No further analysis performed.)
+ 28. Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk (Meets timing requirements: No further analysis performed.)
+ 29. Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk (Meets timing requirements: No further analysis performed.)
+ 30. Hyper-Retimer INI Usage
+ 31. Retime Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++--------------------------------------------------+
+; Hyper-Retimer Settings                           ;
++------------------------+---------+---------------+
+; Option                 ; Setting ; Default Value ;
++------------------------+---------+---------------+
+; Enable Auto-Pipelining ; On      ; On            ;
++------------------------+---------+---------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Reset Sequence Requirement                                                                                                                                                    ;
++-------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------+
+; Clock Name                                                                                                                                      ; Number of additional cycles ;
++-------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------+
+; sys_pll|iopll_0_refclk                                                                                                                          ; 0                           ;
+; pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|rx_pma_parallel_clk|ch15 ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_ref_clock                                                                    ; 0                           ;
+; ddr4_mem[1].dqs[0]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[1].dqs[1]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[1].dqs[2]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[1].dqs[3]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[1].dqs[4]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[1].dqs[5]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[1].dqs[6]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[1].dqs[7]_IN                                                                                                                           ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock                                                                    ; 0                           ;
+; ddr4_mem[0].dqs[0]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[0].dqs[1]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[0].dqs[2]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[0].dqs[3]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[0].dqs[4]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[0].dqs[5]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[0].dqs[6]_IN                                                                                                                           ; 0                           ;
+; ddr4_mem[0].dqs[7]_IN                                                                                                                           ; 0                           ;
+; PCIE_REFCLK0                                                                                                                                    ; 0                           ;
+; PCIE_REFCLK1                                                                                                                                    ; 0                           ;
+; altera_reserved_tck                                                                                                                             ; 0                           ;
+; qsfp_ref_clk                                                                                                                                    ; 0                           ;
+; bwbmc_fpga_max_sclk                                                                                                                             ; 0                           ;
+; altera_int_osc_clk                                                                                                                              ; 0                           ;
+; sys_pll|iopll_0_n_cnt_clk                                                                                                                       ; 0                           ;
+; sys_pll|iopll_0_m_cnt_clk                                                                                                                       ; 0                           ;
+; sys_pll|iopll_0_clk_sys                                                                                                                         ; 2                           ;
+; sys_pll|iopll_0_clk_100m                                                                                                                        ; 0                           ;
+; sys_pll|iopll_0_clk_sys_div2                                                                                                                    ; 0                           ;
+; sys_pll|iopll_0_clk_sys_div4                                                                                                                    ; 0                           ;
+; afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_n_cnt_clk                                                     ; 0                           ;
+; afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_m_cnt_clk                                                     ; 0                           ;
+; afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_outclk0                                                       ; 0                           ;
+; afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_outclk1                                                       ; 0                           ;
+; pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|rx_pcs_x2_clk|ch15       ; 0                           ;
+; pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15  ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_vco_clk                                                                      ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_vco_clk_1                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_vco_clk_2                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk                                                                 ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_0                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_1                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_2                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0                                                                  ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_1                                                                  ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_2                                                                  ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_0                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_1                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_2                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_3                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_4                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_5                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_6                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_7                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_8                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_9                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_wf_clk_10                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_vco_clk                                                                      ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_vco_clk_1                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_vco_clk_2                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk                                                                 ; 4                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_0                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_1                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_2                                                                    ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_0                                                                  ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_1                                                                  ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_2                                                                  ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_0                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_1                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_2                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_3                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_4                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_5                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_6                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_7                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_8                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_9                                                                     ; 0                           ;
+; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_wf_clk_10                                                                    ; 0                           ;
+; pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|avmm_clock0                                                                                  ; 0                           ;
++-------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------+
+Note: Due to retiming optimizations, a clock domain may require a longer reset sequence to ensure correct functionality.  The table above indicates the minimum number of additional reset sequence cycles needed for each clock domain.
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Retiming Limit Summary                                                                                                                                                                                                                                        ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------+----------------+
+; Clock Transfer                                                                                                                                                                   ; Limiting Reason                                           ; Recommendation ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------+----------------+
+; Clock Domain local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk                                                                                     ; Meets timing requirements: No further analysis performed. ; None           ;
+; Clock Domain sys_pll|iopll_0_clk_sys                                                                                                                                             ; Meets timing requirements: No further analysis performed. ; None           ;
+; Clock Domain pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15                      ; Meets timing requirements: No further analysis performed. ; None           ;
+; Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0  ; Meets timing requirements: No further analysis performed. ; None           ;
+; Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_0  ; Meets timing requirements: No further analysis performed. ; None           ;
+; Clock Domain local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk                                                                                     ; Meets timing requirements: No further analysis performed. ; None           ;
+; Clock Domain sys_pll|iopll_0_clk_100m                                                                                                                                            ; Meets timing requirements: No further analysis performed. ; None           ;
+; Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0 to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk  ; Meets timing requirements: No further analysis performed. ; None           ;
+; Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_0 to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk  ; Meets timing requirements: No further analysis performed. ; None           ;
+; Clock Domain altera_int_osc_clk                                                                                                                                                  ; Meets timing requirements: No further analysis performed. ; None           ;
+; Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_0    ; Meets timing requirements: No further analysis performed. ; None           ;
+; Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_0    ; Meets timing requirements: No further analysis performed. ; None           ;
+; Clock Domain sys_pll|iopll_0_clk_sys_div2                                                                                                                                        ; Meets timing requirements: No further analysis performed. ; None           ;
+; Clock Domain afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_outclk0                                                                           ; Meets timing requirements: No further analysis performed. ; None           ;
+; Clock Domain afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_outclk1                                                                           ; Meets timing requirements: No further analysis performed. ; None           ;
+; Clock Domain pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|avmm_clock0                                                                                                      ; Meets timing requirements: No further analysis performed. ; None           ;
+; Clock Domain local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock                                                                                        ; Meets timing requirements: No further analysis performed. ; None           ;
+; Clock Domain altera_reserved_tck                                                                                                                                                 ; Meets timing requirements: No further analysis performed. ; None           ;
+; Transfer from sys_pll|iopll_0_clk_100m to altera_int_osc_clk                                                                                                                     ; Meets timing requirements: No further analysis performed. ; None           ;
+; Transfer from altera_int_osc_clk to sys_pll|iopll_0_clk_100m                                                                                                                     ; Meets timing requirements: No further analysis performed. ; None           ;
+; Clock Domain bwbmc_fpga_max_sclk                                                                                                                                                 ; Meets timing requirements: No further analysis performed. ; None           ;
+; Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock    ; Meets timing requirements: No further analysis performed. ; None           ;
+; Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock    ; Meets timing requirements: No further analysis performed. ; None           ;
+; Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk ; Meets timing requirements: No further analysis performed. ; None           ;
+; Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk ; Meets timing requirements: No further analysis performed. ; None           ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------+----------------+
+
+
+Clock Domain local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Clock Domain sys_pll|iopll_0_clk_sys (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Clock Domain pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15 (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0 (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_0 (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Clock Domain local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Clock Domain sys_pll|iopll_0_clk_100m (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_l_0 to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_l_0 to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Clock Domain altera_int_osc_clk (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_phy_clk_0 (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_phy_clk_0 (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Clock Domain sys_pll|iopll_0_clk_sys_div2 (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Clock Domain afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_outclk0 (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Clock Domain afu_top|pg_afu.port_gasket|user_clock|qph_user_clk|pll.qph_user_clk_iopll|iopll_0_outclk1 (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Clock Domain pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|avmm_clock0 (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Clock Domain local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Clock Domain altera_reserved_tck (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from sys_pll|iopll_0_clk_100m to altera_int_osc_clk (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from altera_int_osc_clk to sys_pll|iopll_0_clk_100m (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Clock Domain bwbmc_fpga_max_sclk (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_ref_clock (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
+Transfer from local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1_core_usr_clk to local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk (Meets timing requirements: No further analysis performed.)
+===============================================================================
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Hyper-Retimer INI Usage                                                                                                                   ;
++----------------------+--------------------------------------------------------------------------------------------------------------------+
+; Option               ; Usage                                                                                                              ;
++----------------------+--------------------------------------------------------------------------------------------------------------------+
+; Initialization file: ; /home/uwb_student00/ahls/new_BSP/work_caps03_completion01/fit02/persona/build/syn/board/ia840f/syn_top/quartus.ini ;
++----------------------+--------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------+
+; Retime Messages ;
++-----------------+
+Info: Setting ::env(BITSTREAM_ID)=05010202599ac052
+Info: Setting ::env(BITSTREAM_MD)=0000000002609181
+Info: Setting ::env(BITSTREAM_INFO)=0000000000000001
+Info: Setting ::env(Q_REVISION)=ofs_top
+Info: Setting ::env(Q_PR_REVISION)=ofs_pr_afu
+Info: Setting ::env(Q_PR_PARTITION_NAME)=green_region
+Info: Setting ::env(FME_IFC_ID)=fc4bf1c1-760f-5cd7-8040-b3e86fa0d31e
+Info: BUILD_ROOT_REL is ../../../..
+Info: Loading PIM-based AFU...
+Info (20032): Parallel compilation is enabled and will use up to 24 processors
+Warning (20031): Parallel compilation is enabled for 24 processors, but there are only 18 processors in the system. Runtime may increase due to over usage of the processor space.
+Info: *******************************************************************
+Info: Running Quartus Prime Fitter
+    Info: Version 25.1.0 Build 129 03/26/2025 SC Pro Edition
+    Info: Copyright (C) 2025  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Fri Sep 25 14:47:36 2026
+    Info: System process ID: 55363
+Info: Command: quartus_fit --read_settings_files=on --write_settings_files=off ofs_top -c ofs_pr_afu
+Info: Using INI file /home/uwb_student00/ahls/new_BSP/work_caps03_completion01/fit02/persona/build/syn/board/ia840f/syn_top/quartus.ini
+Info: qfit2_default_script.tcl version: #1
+Info: Project  = ofs_top
+Info: Revision = ofs_pr_afu
+Critical Warning (20727): The design contains Partial Reconfiguration or Reserved Core partitions with unused input ports. Intel recommends to assign unused inputs within the partition to registers with the synthesis noprune attribute.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|clk_div2 is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|clk_div4 is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|uclk_usr is dangling on partition green_region.
+    Info (20728): The input port afu_top|pg_afu.port_gasket|pr_slot|afu_main|uclk_usr_div2 is dangling on partition green_region.
+Info: Target user clock high: auto (200)
+Info: Target user clock low: auto (100)
+Info (17966): Starting Hyper-Retimer operations.
+Info (17968): Completed Hyper-Retimer operations.
+Info (18821): Fitter Hyper-Retimer operations ending: elapsed time is 00:01:30
+Info: Target user clock high: auto (200)
+Info: Target user clock low: auto (100)
+
+

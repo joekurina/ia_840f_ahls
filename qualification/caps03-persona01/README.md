@@ -1,11 +1,13 @@
 # CAPS03 persona evidence
 
-The accepted milestone here is **bounded mapped synthesis**, documented in
-[SYNTHESIS-ACCEPTANCE02.md](SYNTHESIS-ACCEPTANCE02.md) and the
-[compact synthesis receipt](SYNTHESIS-RECEIPT02.json). It does not grant fitted
-timing/reset/CDC, image deployment, hardware numerical or lifecycle acceptance.
-The current work state belongs in the repository's `GOAL-PROMPT.md`, not this
-frozen milestone report.
+Accepted milestones here are **bounded mapped synthesis** and **steady-state
+physical timing/CDC at the unchanged 3.000 ns target**. See
+[SYNTHESIS-ACCEPTANCE02.md](SYNTHESIS-ACCEPTANCE02.md), the
+[compact synthesis receipt](SYNTHESIS-RECEIPT02.json), and
+[PHYSICAL-ACCEPTANCE01.md](PHYSICAL-ACCEPTANCE01.md). Reset-entry sequencing,
+image deployment, hardware numerical and lifecycle acceptance remain separate.
+The current work state belongs in the repository's `GOAL-PROMPT.md`; these
+acceptances do not turn an active successor into a completed result.
 
 Publication follows the repository's **2,000,000-byte per-file cap**. Full replay
 capsules containing embedded payloads, full over-cap metadata, oversized native

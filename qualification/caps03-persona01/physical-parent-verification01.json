@@ -1,0 +1,187 @@
+{
+  "fit02": {
+    "members_verified": 20,
+    "outer_rc": 0,
+    "ended": "2026-09-25T22:30:38.534087+00:00",
+    "commands": [
+      {
+        "argv": [
+          "/usr/bin/cmake",
+          "-S",
+          "/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/fit02/cmake-source",
+          "-B",
+          "/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/fit02/cmake-build",
+          "-G",
+          "Unix Makefiles",
+          "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+          "-DPERSONA_PROJECT=/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/fit02/persona/build/syn/board/ia840f/syn_top",
+          "-DQUARTUS_ROOT=/opt/altera/25.1/quartus"
+        ],
+        "descendants_after_leader": false,
+        "descendants_observed_at_leader_exit": [],
+        "effective_rc": 0,
+        "ended": "2026-09-25T21:47:36.161466+00:00",
+        "label": "configure",
+        "native_rc": 0,
+        "owned_group_live_after": [],
+        "pid": 55350,
+        "start_ticks": "7539984",
+        "started": "2026-09-25T21:47:35.962888+00:00",
+        "timeout": false
+      },
+      {
+        "argv": [
+          "/usr/bin/cmake",
+          "--build",
+          "/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/fit02/cmake-build",
+          "--target",
+          "fit",
+          "--parallel",
+          "1"
+        ],
+        "cmake_rc": 0,
+        "descendants_after_leader": false,
+        "descendants_observed_at_leader_exit": [],
+        "effective_rc": 0,
+        "ended": "2026-09-25T22:30:32.701552+00:00",
+        "label": "fitting",
+        "native_rc": 0,
+        "native_status_basis": "Direct Quartus custom target: successful CMake return proves child zero; nonzero does not disclose the child exit.",
+        "owned_group_live_after": [],
+        "pid": 55353,
+        "start_ticks": "7540012",
+        "started": "2026-09-25T21:47:36.227932+00:00",
+        "timeout": false
+      }
+    ],
+    "preservation": {
+      "setup_unchanged": true,
+      "release_unchanged": true,
+      "tools_unchanged": true,
+      "bound_inputs_unchanged": true
+    },
+    "postflight_errors": [],
+    "diagnostics": []
+  },
+  "sta01": {
+    "members_verified": 15,
+    "outer_rc": 0,
+    "ended": "2026-09-26T00:56:20.295806+00:00",
+    "commands": [
+      {
+        "argv": [
+          "/usr/bin/cmake",
+          "-S",
+          "/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/sta01/cmake-source",
+          "-B",
+          "/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/sta01/cmake-build",
+          "-G",
+          "Unix Makefiles",
+          "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+          "-DPERSONA_PROJECT=/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/sta01/persona/build/syn/board/ia840f/syn_top",
+          "-DQUARTUS_ROOT=/opt/altera/25.1/quartus"
+        ],
+        "descendants_after_leader": false,
+        "descendants_observed_at_leader_exit": [],
+        "effective_rc": 0,
+        "ended": "2026-09-26T00:54:42.770641+00:00",
+        "label": "configure",
+        "native_rc": 0,
+        "owned_group_live_after": [],
+        "pid": 58979,
+        "start_ticks": "8662654",
+        "started": "2026-09-26T00:54:42.658822+00:00",
+        "timeout": false
+      },
+      {
+        "argv": [
+          "/usr/bin/cmake",
+          "--build",
+          "/home/uwb_student00/ahls/new_BSP/work_caps03_completion01/sta01/cmake-build",
+          "--target",
+          "timing",
+          "--parallel",
+          "1"
+        ],
+        "cmake_rc": 0,
+        "descendants_after_leader": false,
+        "descendants_observed_at_leader_exit": [],
+        "effective_rc": 0,
+        "ended": "2026-09-26T00:56:12.604049+00:00",
+        "label": "timing",
+        "native_rc": 0,
+        "native_status_basis": "Direct Quartus custom target: successful CMake return proves child zero; nonzero does not disclose the child exit.",
+        "owned_group_live_after": [],
+        "pid": 58982,
+        "start_ticks": "8662674",
+        "started": "2026-09-26T00:54:42.842092+00:00",
+        "timeout": false
+      }
+    ],
+    "preservation": {
+      "setup_unchanged": true,
+      "release_unchanged": true,
+      "tools_unchanged": true,
+      "bound_inputs_unchanged": true
+    },
+    "postflight_errors": [],
+    "diagnostics": []
+  },
+  "numerical": {
+    "summary_sha256": "4e3e6717c04aaf9b87d55a53d21aecee1571940fb66abd53d6e95a1237265fce",
+    "all_type_blocks": 913,
+    "all_slacks_numeric_nonnegative": true,
+    "all_reported_tns_zero": true,
+    "bank0": [
+      {
+        "Type": "Setup 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+        "Slack": "0.213",
+        "TNS": "0.000",
+        "Corner": "Slow vid2 100C Model"
+      },
+      {
+        "Type": "Hold 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+        "Slack": "0.000",
+        "TNS": "0.000",
+        "Corner": "Fast vid2 100C Model"
+      },
+      {
+        "Type": "Recovery 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+        "Slack": "0.592",
+        "TNS": "0.000",
+        "Corner": "Slow vid2 100C Model"
+      },
+      {
+        "Type": "Removal 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+        "Slack": "0.155",
+        "TNS": "0.000",
+        "Corner": "Fast vid2 100C Model"
+      },
+      {
+        "Type": "Minimum Pulse Width 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+        "Slack": "0.709",
+        "TNS": "0.000",
+        "Corner": "Slow vid2 100C Model"
+      }
+    ],
+    "current_fifo_skew_results": 200,
+    "current_fifo_pointer_direction_bundles": 40,
+    "current_fifos": 20,
+    "corners": {
+      "Slow vid2 100C Model": 40,
+      "Slow vid2b 100C Model": 40,
+      "Fast vid2a 0C Model": 40,
+      "Fast vid2a 100C Model": 40,
+      "Fast vid2 100C Model": 40
+    },
+    "current_fifo_worst_skew_slack_ns": "1.363",
+    "local_parser_correction": "Initial exact Type-space-colon pattern matched zero; actual native Type has two spaces. Corrected colon-key parser reconciles all913 records. No native run repeated."
+  },
+  "review": {
+    "id": "deleg_cf5dcc3a",
+    "consumed": true,
+    "bounded_steady_state_accepted": true,
+    "reset_entry_obligation_open": true,
+    "hardware_accepted": false
+  }
+}
