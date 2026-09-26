@@ -1,0 +1,36 @@
+{
+  "review": "deleg_79ea1085",
+  "consumed": true,
+  "verdict": "ACCEPT three scoped gates; no blocking defect",
+  "accepted_gates": [
+    "independent logical banks at sampled addresses",
+    "W0 W1 R0 R1 bank isolation at sampled addresses",
+    "serial sustained transfer/check operation"
+  ],
+  "result_sha256": "6aafc5af44873e5cba369d1c6e248752637d728170377f67cf8087bccfd50f76",
+  "native_rc": 0,
+  "outer_rc": 0,
+  "traffic_bytes": 8589934592,
+  "descriptors": 67108864,
+  "elapsed_seconds": 590.09350623,
+  "lifecycle_clean": false,
+  "lifecycle_accepted": true,
+  "accepted_erratum_lines": [
+    "2026-09-26T13:56:08-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: timed out waiting for pending transaction; performing function level reset anyway"
+  ],
+  "ownership_after": {
+    "d_state": [],
+    "holders": [],
+    "relevant": [],
+    "maps": [],
+    "errors": []
+  },
+  "qualification_limits": [
+    "2GiB sampled per16GiB aperture, not every DDR byte",
+    "Physical all-bank/all-row derivation conditional on protected MSA byte ordering",
+    "Full4096-byte host-page guards checked after every descriptor; untouched DDR was not checked",
+    "Serial transfer/check-loop duration, not saturated bandwidth or simultaneous channels"
+  ],
+  "raw_label_discrepancy": "caps03-34-repeat-boundary-cases retained in immutable result; actual module/source/argv/log identify DDR run",
+  "review_scope_reconciliation": "Review described walking-bit coverage open at its snapshot. Parent has since verified caps03-walk01/live02; independent walk acceptance is in deleg_7f0585bb, not credited to this review."
+}
