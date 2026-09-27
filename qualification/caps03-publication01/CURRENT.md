@@ -1,5 +1,10 @@
 # Final publication checkpoint
 
+> Scope correction: the overall hls-samples2026.1.0 goal is incomplete and reopened.
+> This acceptance covers only the DDRIP sample integration and supporting hardware.
+> The claim that it completed the release-wide goal was incorrect.
+> See [active correction](../hls-samples-2026.1.0-01/CORRECTION.md).
+
 The scoped CAPS03 memory-HLS qualification is complete. All actual-result reviews
 are consumed, the [six normal lifecycles](../caps03-lifecycle01/reconciliation04.json)
 are reconciled, and the [final acceptance](../caps03-final01/ACCEPTANCE.md) closes

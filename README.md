@@ -1,5 +1,10 @@
 # IA-840F OFS / Altera AHLS source project
 
+> Scope correction: the overall hls-samples2026.1.0 goal is incomplete and reopened.
+> This acceptance covers only the DDRIP sample integration and supporting hardware.
+> The claim that it completed the release-wide goal was incorrect.
+> See [active correction](qualification/hls-samples-2026.1.0-01/CORRECTION.md).
+
 **Active target: Altera AHLS-generated RTL integrated into an OFS AFU through PIM, with OPAE/DFL host access. Not an Intel oneAPI compiler/runtime BSP. The Work21-based CAPS03 memory-HLS integration and scoped hardware qualification are complete, with the exact user-accepted lifecycle erratum exception.**
 
 The selected build uses Quartus 25.1 and the unchanged 3.000 ns target. See

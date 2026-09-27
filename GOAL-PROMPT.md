@@ -17,9 +17,11 @@ DFL/OPAE discovery and MMIO, both DDR channels passing the
 [hardware validation gate](docs/ddr-hardware-validation-gate.md), verified transfers
 in both directions, numerical comparisons after copyback, and sustained
 operation with normal teardown under the exact user-accepted erratum exception. Reuse existing evidence where it applies to the exact image;
-do not repeat completed bring-up as a default sequence. **The recorded CAPS03 memory-HLS qualification goal is complete.**
-This closes the selected vector-add integration, not every upstream HLS example.
-See [final acceptance](qualification/caps03-final01/ACCEPTANCE.md).
+do not repeat completed bring-up as a default sequence. **The overall goal is INCOMPLETE.**
+Joe explicitly reaffirmed the entire HLS samples release2026.1.0. The earlier
+CAPS03 completion covered only the adapted DDR-host vector-add kernel and its
+supporting hardware qualification, not the requested sample collection.
+[Correction and active sample work](qualification/hls-samples-2026.1.0-01/CORRECTION.md).
 
 **DO NOT DO ANYTHING THAT COULD CAUSE THE WORKSTATION TO HANG.** Protecting the
 workstation, its data, and remote access takes precedence over progress.
@@ -42,8 +44,9 @@ workstation, its data, and remote access takes precedence over progress.
   vendor-validated or change the chosen toolchain/runtime because of that caveat.
 - A request to edit, review, or display this prompt is documentation-only. It does
   not launch implementation, builds, tests, remote operations, commits, or deployment.
-- When explicitly invoked to continue execution, first read the completion state
-  below. This completed qualification has no automatic successor. Joe has approved in-scope work and iteration, including flashing and
+- When explicitly invoked to continue execution, work through the release-wide
+  sample inventory below; one completed kernel is not the overall goal. Joe has
+  explicitly renewed this work and approved in-scope iteration, including flashing and
   rebooting when justified; the hard safety boundary still applies. Do not ask again
   for blanket permission for safe ordinary source work.
 - This is the **authoritative handoff**, replacing all earlier handoff/next-action
@@ -71,14 +74,23 @@ workstation, its data, and remote access takes precedence over progress.
   [SDK lineage and writer contract](qualification/caps01-bwflash01/PROGRAM02-RESULT.md),
   [preserved pre-correction state](qualification/caps03-flash01/RECOVERY18.md).
 
-## Current handoff — complete, stop
+## Current handoff — release-wide HLS samples in progress
 
-All scoped build, deployment, numerical, DDR, sustained and normal-lifecycle gates
-are accepted on the Work21-based CAPS03 image. There is no remaining blocker or
-next hardware action. The final acceptance is
-[qualification/caps03-final01/ACCEPTANCE.md](qualification/caps03-final01/ACCEPTANCE.md);
-the earlier lengthy handoff is retained as [historical evidence](qualification/caps03-final01/goal-before-final01.md),
-not instructions to restart work.
+The whole `hls-samples`2026.1.0 release is the active worklist, not only DDRIP.
+Exact tag/HEAD is `0abae6d78af5daca3fe5d67e617ab037e58aff89`; donor checkout is clean.
+[Active scope and correction](qualification/hls-samples-2026.1.0-01/CORRECTION.md).
+
+Continue through the exact-release per-sample and per-variant inventory,
+checking the latest local execution records before choosing the next stage.
+Keep CPU execution, FPGA emulation, RTL generation, RTL simulation and real-card
+execution separate. Reuse completed mode artifacts; do not count custom
+qualification frontends or repeated runs as additional upstream samples.
+CPU/emulator/report batches do not authorize incidental live hardware discovery.
+
+Previously accepted CAPS03/DDR results remain valid only for that exact image and
+sample; reuse them rather than resynthesizing or rerunning them. The earlier
+[CAPS03 acceptance](qualification/caps03-final01/ACCEPTANCE.md) is a completed
+submilestone, not authority to close this release-wide goal.
 
 ### Selected implementation
 
@@ -148,13 +160,14 @@ not DDR bandwidth, and no efficient replacement was implemented
 
 The last terminal ownership snapshot is empty at 2026-09-26T23:12:36.315634+00:00.
 The full-DDR collector and all native runs completed; delayed heartbeats/reviews
-cannot reopen them. No active owned job or pending review remains for this goal.
+cannot reopen them. No active owned job or pending review remains for that
+completed CAPS03 hardware submilestone; the release-wide work is separate.
 This recorded snapshot is not fresh launch authorization.
 
-**Next concrete action: stop and report completion.** Do not rebuild, reflash,
-power-cycle, reboot, rerun a spent test, revive CAPS02 or open vendor-internal
-requalification. Another kernel, benchmark optimization or expanded reset/recovery
-scope requires a new task rather than automatic continuation.
+**Continue the actual release-wide samples.** Joe has explicitly instructed this
+work. Preserve the completed DDRIP image/tests; do not rerun spent operations or
+revive CAPS02/vendor-internal investigations. The overall goal stays open until
+the named samples and variants have real results and any limitations are explicit.
 
 ### Preserved deployment authority — only when a new operation is justified Joe has specifically directed:
 “You have full permission to proceed. Flash the card, power cycle with the BMC,

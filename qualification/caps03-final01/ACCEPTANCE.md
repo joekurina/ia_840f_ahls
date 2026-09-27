@@ -1,5 +1,10 @@
 # CAPS03 final qualification acceptance
 
+> Scope correction: the overall hls-samples2026.1.0 goal is incomplete and reopened.
+> This acceptance covers only the DDRIP sample integration and supporting hardware.
+> The claim that it completed the release-wide goal was incorrect.
+> See [active correction](../hls-samples-2026.1.0-01/CORRECTION.md).
+
 ## Verdict and scope
 
 The recorded IA-840F OPAE/DFL memory-HLS integration goal is complete for the accepted Work21-based CAPS03 image: Quartus Prime Pro 25.1, HLS IP Gen 2026.1.0 memory vector-add, unchanged generated HLS and unchanged 3.000 ns target. All scoped hardware results and their independent actual-result reviews are accepted. This is not a claim that every kernel in upstream `hls-samples` was built or tested ([maintained goal](../../GOAL-PROMPT.md), [final verification](verification01.json)).
