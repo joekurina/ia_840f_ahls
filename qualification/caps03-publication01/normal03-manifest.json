@@ -1,0 +1,924 @@
+{
+  "milestone": "Accepted CAPS03 bounded normal-return HLS numerical gate under exact erratum exception",
+  "review": "deleg_474adbdd",
+  "policy": "qualification/caps03-runtime01/ERRATUM-ACCEPTED25.md",
+  "max_file_bytes": 2000000,
+  "entries": [
+    {
+      "path": "qualification/caps03-host01/.gitignore",
+      "bytes": 185,
+      "sha256": "ded609b0285fc76b2862c5c3e257c5612b4965dd9a2eb2c04341ebee56553657",
+      "git_blob": "edb8784fc50da4a389e732111accf0afef8df625"
+    },
+    {
+      "path": "qualification/caps03-host01/CMakeLists-native01.txt",
+      "bytes": 2749,
+      "sha256": "7506553f0ceeb8c5522217051f800c398ac223f6860834232ca2de76cc535b5c",
+      "git_blob": "d3cc0d64b4991d89090976727a8ecec8c2134908"
+    },
+    {
+      "path": "qualification/caps03-host01/NATIVE-BUILD01.md",
+      "bytes": 2982,
+      "sha256": "a2168e44bf56d860a93fdab71d01ed8c4a0d61ab258407adf8b30c5bcbe7bfe5",
+      "git_blob": "2fc65f3b2c12b6a74b07e7580c6eb268681b9b42"
+    },
+    {
+      "path": "qualification/caps03-host01/RESULT01.md",
+      "bytes": 4479,
+      "sha256": "239f1036d68033adbeb777891f70fec0c9d68ab147f7ac4be7f6f852a214f0e1",
+      "git_blob": "f176e5d81d7c6ca4151e70ab8ff2c452f1757e85"
+    },
+    {
+      "path": "qualification/caps03-host01/build-green01.json",
+      "bytes": 1500,
+      "sha256": "3b694366703e2c4a29856ee12a11c7addda70e30539b55d971240cafeaaffe1b",
+      "git_blob": "a5a2bc3fc90415f4ca7289be7ec1c972de018ca8"
+    },
+    {
+      "path": "qualification/caps03-host01/dispatch-native-build01.json",
+      "bytes": 606,
+      "sha256": "6449af92f7d0cea4642f0c698a2bfc9a1c3729f8bd6aa4cffc8024cdbb781d2d",
+      "git_blob": "2186fc90369c7c380639da9ecd1469cea3f992e9"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/bad-bdf.log",
+      "bytes": 180,
+      "sha256": "8cd8d8e85543839d27c14b7367bfc9892a8acbdd9c1050581b3f2e8c1e6b050a",
+      "git_blob": "ecdc0dd12c3740b669e037389c23bf131909c843"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/bad_ticket.log",
+      "bytes": 3177,
+      "sha256": "69f2c0b74bd81dd5c1e5b7d7949050956bd97daedb3048b2b1268249520fb922",
+      "git_blob": "c3ca96861a33bba41db7aceb69f6df03e7de8b68"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/completion_error.log",
+      "bytes": 3199,
+      "sha256": "f7366974a93f898c6040a4e9a670bc1ee3496b4bcdb06999f46f63c71b48e2a3",
+      "git_blob": "ac2391b17ba5df06b043c2dd8efb5cc1dfdf7626"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/completion_reset.log",
+      "bytes": 3199,
+      "sha256": "f7366974a93f898c6040a4e9a670bc1ee3496b4bcdb06999f46f63c71b48e2a3",
+      "git_blob": "ac2391b17ba5df06b043c2dd8efb5cc1dfdf7626"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/completion_timeout.log",
+      "bytes": 26249,
+      "sha256": "aa5fa84aad480c7d64c4131a49ecf101f5ba29e3ff15427311f9961ed6d96cbc",
+      "git_blob": "526ee32acd7fe7c38c022c6f9386a50f27eeec45"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/completion_unsupported.log",
+      "bytes": 3199,
+      "sha256": "f7366974a93f898c6040a4e9a670bc1ee3496b4bcdb06999f46f63c71b48e2a3",
+      "git_blob": "ac2391b17ba5df06b043c2dd8efb5cc1dfdf7626"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/guard_corrupt.log",
+      "bytes": 3996,
+      "sha256": "18977dfd87f75b75172cdc4552e52c20a0f42741e8db9a11439870250f9fb5e2",
+      "git_blob": "88e24b87bcc32c4118a786496f3bce9f0c1fa6b7"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/missing-option.log",
+      "bytes": 180,
+      "sha256": "8cd8d8e85543839d27c14b7367bfc9892a8acbdd9c1050581b3f2e8c1e6b050a",
+      "git_blob": "ecdc0dd12c3740b669e037389c23bf131909c843"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/missing_visibility.log",
+      "bytes": 3602,
+      "sha256": "8d6f4b2e4c1dcd1c19bb4f398690eb226e24a95ab72737ef435a639fb618a8bf",
+      "git_blob": "467b276c8c9583f173349060c8e5c7a6f9ed2aa4"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/old-option.log",
+      "bytes": 180,
+      "sha256": "8cd8d8e85543839d27c14b7367bfc9892a8acbdd9c1050581b3f2e8c1e6b050a",
+      "git_blob": "ecdc0dd12c3740b669e037389c23bf131909c843"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/pass.log",
+      "bytes": 4451,
+      "sha256": "0fd43d61f353e6f5e85a3bd34aeb3ada66327f7c83b4911df845351e55d3cdf7",
+      "git_blob": "2b3329db74f34504daf1bf9c6c6841bb11aebc6c"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/payload_corrupt.log",
+      "bytes": 3996,
+      "sha256": "18977dfd87f75b75172cdc4552e52c20a0f42741e8db9a11439870250f9fb5e2",
+      "git_blob": "88e24b87bcc32c4118a786496f3bce9f0c1fa6b7"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-100.log",
+      "bytes": 3857,
+      "sha256": "557a1c8a4eb6b38b6027c4ff0b04d448ee10ef0a21195fd8cf6f20d401cda879",
+      "git_blob": "f61cd8f580eae4cf71b9c3610852886c8991b4ea"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-101.log",
+      "bytes": 3881,
+      "sha256": "f66cad5e49016ce24900e6c6704bba6be35a9ccb784ba5016ecc09403176a00a",
+      "git_blob": "b0d0c692b6f42128ee507e8580be6a0def125d88"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-102.log",
+      "bytes": 3904,
+      "sha256": "dadea67b94dbdc25830d17c65d87d225104fcf9e1e034fa624d3578791733605",
+      "git_blob": "3327c32534ab015ce68a9808ba6bea7c1cfa9618"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-103.log",
+      "bytes": 3928,
+      "sha256": "5cfcabe538a3c10209cfae9facbff91f2cfa34e5e8c01d4520add26f92e60716",
+      "git_blob": "f85566525ff8dc9c50220e2cd644a86273f44888"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-104.log",
+      "bytes": 3951,
+      "sha256": "b442c1e9c94a008c6b5974dc36ccef6155a71a2e75a74cc89f3d9a4185806442",
+      "git_blob": "751b9290f0fde771b6e4740d4f4879eef9c54fa6"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-105.log",
+      "bytes": 3982,
+      "sha256": "fd503dbf81a9a19d0be6ef4525341ae86bfdf0cd5a95504112c0f29179f82141",
+      "git_blob": "8405b6245243319ad8f5f8363b0da16ec260a66a"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-106.log",
+      "bytes": 4005,
+      "sha256": "3257ba9e3772bd4ef2f60c7ec537b3729902cd5659df7ea76daef4b7a04c0f19",
+      "git_blob": "77712c1c002ceabaafadde2183656ec2ea72e99f"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-107.log",
+      "bytes": 4178,
+      "sha256": "797ab058bb39a319695b5149455288fd92e8b6f2ed8335a0bcebfecb97b15b34",
+      "git_blob": "7871740962ee00a2194f682b620e389b958a6cc7"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-108.log",
+      "bytes": 4205,
+      "sha256": "7c56010a062ff238bfe882e91eae3e8d419017403d8b063b1fefee36e7fa1830",
+      "git_blob": "9194240ed540e48055e0bf832888975c0f07200f"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-80.log",
+      "bytes": 3199,
+      "sha256": "b6a6eab8c277ffd888f3e66bb689e4c408082b4965c4989d3df7e6cf9e63def4",
+      "git_blob": "626fa9417db50c937f633296d17ab403f6d974a0"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-81.log",
+      "bytes": 3196,
+      "sha256": "d06a2dd4ba65b9a362764b3962ebf8aeab70d59759869de30930306e8eed5b23",
+      "git_blob": "530da61f1755aa9e008c036e48b02ec2372c2948"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-82.log",
+      "bytes": 3218,
+      "sha256": "03ca18f50a52e5434f3270b95fa56919f4d11f230e0c99cf9105700ce32f7fc8",
+      "git_blob": "96ae6a61d293303bca9b82c6e5b3fbf0b48392dd"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-83.log",
+      "bytes": 3270,
+      "sha256": "9c6f0cace5cae3d2aeb69126ae308d1c4aebc8740f8a7b90f09864a15251fee8",
+      "git_blob": "f7e55d228375021af847d8ce233bef3fe540ef9b"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-84.log",
+      "bytes": 3266,
+      "sha256": "6343210a6853e1df94681d35c74e7e450bb7ad0c76f17a05c05135404af9e0af",
+      "git_blob": "de9beddb45adae8256e356b7cac207b04c387e8f"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-85.log",
+      "bytes": 3288,
+      "sha256": "dd4888ed30766592ffeb3c6f06fc3affa42ff5170608ce4f6de8feeefd0fe85c",
+      "git_blob": "e6201d2a88635286b98a521c8926afb9eee3caee"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-86.log",
+      "bytes": 3310,
+      "sha256": "e2e81b45965229be65aa8bd53616e888ea8f5688c1a900b35bbbf6fffcb0c5aa",
+      "git_blob": "b9335cef1b7e1595f8d42a24807dacbe86dffd2c"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-87.log",
+      "bytes": 3403,
+      "sha256": "d46baf6ac482f1aa6d5716078ae62545b7c50b675417e825670206df895f8aa6",
+      "git_blob": "d41ef742354b45d08101dbadca6e50ccdf76cc6a"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-88.log",
+      "bytes": 3425,
+      "sha256": "d593474a75c62c50ec8063119a1c638700a8eab95ddce47664831730272db8d1",
+      "git_blob": "b1469780f2b26afe96e96a68eb33bc4d6367cff9"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-89.log",
+      "bytes": 3448,
+      "sha256": "1d6d06e7f5ce57b5204994d80b6b27f2b51eb5c05c643748047ade9f797ba5a1",
+      "git_blob": "2829237c16edab548f50bd713413694ad3cc98a9"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-90.log",
+      "bytes": 3470,
+      "sha256": "f0d4ca7aff3fe0e8fe58067b3566ab752217aabb3587ca66983bfc2693069e40",
+      "git_blob": "d5d0d91f989aae512556612fd6bb8b9d8e43e17c"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-91.log",
+      "bytes": 3493,
+      "sha256": "676b591ff2da14631203dbff063ee4aac2c1ff8e425187374ae12b73e51dbd08",
+      "git_blob": "9c1c629c77b20a429a2ecf0889ff0ec212c9b1e3"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-92.log",
+      "bytes": 3515,
+      "sha256": "4cd1f941cf6defb8253e7f66e2d2fe2acc273c419ff169cfd4eb34b22fa91fc0",
+      "git_blob": "e3cc9acc8e6eae488a93bb1eca4564850a4f22b9"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-93.log",
+      "bytes": 3538,
+      "sha256": "cce51ffae5e0af73daf2c91dadae766599c2ff7a3c0a3b0f1c169eed8b548d97",
+      "git_blob": "689702fec92691298d42405b4143b77ab91508fa"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-94.log",
+      "bytes": 3560,
+      "sha256": "9a65b78a7e45254310ba628906bdaec90a9c8d05c98b8fc021620629ec08b232",
+      "git_blob": "f83a2e5423c0fc6cef54b90a9e550d54a6dba7ff"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-95.log",
+      "bytes": 3589,
+      "sha256": "7a80ebc8b6f1b70f73441b799f1ab786db1e164134210dcc65289b02833a94da",
+      "git_blob": "c89d3d3e669dcd14f428b6704bb45a80d86058a1"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-96.log",
+      "bytes": 3611,
+      "sha256": "6f636840379b5a257e3d286803fd0be60d7f538c87cce6d5c9d08cad5115a993",
+      "git_blob": "db5db0f1755983c55c926c11fe243bb36d44f22e"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-97.log",
+      "bytes": 3788,
+      "sha256": "6bb70d9f6cc8a86d35ee524492db066d67bb2d6dd8f5a98a4081040f15d6d8e8",
+      "git_blob": "602aaaf227e0f6302ffbb2d19a6fbd651f8306c5"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-98.log",
+      "bytes": 3810,
+      "sha256": "e56e4ae4eee505e810f3e24147edf1e71992676697ff5b715142f945ca086acb",
+      "git_blob": "53471457f3d4a9ea70b8f218dd6871b7cfa1fd4f"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/post-start-api-error-99.log",
+      "bytes": 3833,
+      "sha256": "0cf8c5ab69fef7f665147af918b6e018e3c5402d6b921270c66c7b8c17052279",
+      "git_blob": "fa705d7bcd5e6c8fad2fc39bb333f5a93965c41d"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/result.json",
+      "bytes": 24859,
+      "sha256": "160490aaf8de565b659eb2e1abe14d76d034b890125a77e13e896b205d1a81bc",
+      "git_blob": "af7361c837f69b40fb6cafc037d31bc89429b4e2"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/source_corrupt.log",
+      "bytes": 3983,
+      "sha256": "7914b022d4f5a80cbfeb03180f63b8a5e485045ba47fe6c1bfff90c2e3a546d7",
+      "git_blob": "8f9f461f93489a06e7a94ced02a45d2618adbd4b"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/start_error.log",
+      "bytes": 3199,
+      "sha256": "b6a6eab8c277ffd888f3e66bb689e4c408082b4965c4989d3df7e6cf9e63def4",
+      "git_blob": "626fa9417db50c937f633296d17ab403f6d974a0"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/status_error.log",
+      "bytes": 3196,
+      "sha256": "40e55f4f3bf497c569e3946baf7636b87a5349dcb46e9b56812ada2b6ec9d00f",
+      "git_blob": "c6f9d44f24c53c2a4ae65588c9fa380dcd82be33"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/status_timeout.log",
+      "bytes": 26177,
+      "sha256": "f638a677b803fb4f1e5be534466f501c984ec243c3dfe10512502f363cace9d4",
+      "git_blob": "57c632b8113e8d383c75c2e27a7941554d1017d0"
+    },
+    {
+      "path": "qualification/caps03-host01/green-cases01/tail_corrupt.log",
+      "bytes": 3996,
+      "sha256": "18977dfd87f75b75172cdc4552e52c20a0f42741e8db9a11439870250f9fb5e2",
+      "git_blob": "88e24b87bcc32c4118a786496f3bce9f0c1fa6b7"
+    },
+    {
+      "path": "qualification/caps03-host01/header-binding02.json",
+      "bytes": 5260,
+      "sha256": "c68d8f26d0ff598119ab9b2719d64dbd6102e7569991ceab5e625cc6ef56fc86",
+      "git_blob": "901be52e70e3226226c5c1e9ceb31ff993ebf896"
+    },
+    {
+      "path": "qualification/caps03-host01/native-build01-inputs.json",
+      "bytes": 17923,
+      "sha256": "b5d15e16690e09f66c3c133ef0ce22a744d1e5f47c3f4e812a25d5046ce176b8",
+      "git_blob": "60525b16017f1bda7466dc8f465395add1d85829"
+    },
+    {
+      "path": "qualification/caps03-host01/native-build01-result.json",
+      "bytes": 10882,
+      "sha256": "341e0b5fa364aa3d75e981089e6fbf4c9f1cb8ef02aaff0765d2e7b5dc44e37a",
+      "git_blob": "7c65df0126968c6547abaae254ffd97b40ee1f7d"
+    },
+    {
+      "path": "qualification/caps03-host01/red02-result.json",
+      "bytes": 3776,
+      "sha256": "7afde5fa7a9a82cadb984df8d9ece220b7a32799b5dc9d395bfdae1cbb3bef33",
+      "git_blob": "25dd24d1f0769afc9a73019b295b62bcdcd06cf0"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/access.h",
+      "bytes": 6944,
+      "sha256": "71d62f5713b5bf203b30be06ccef286cc5b78ce7cca02d8c61f830fffe5ed838",
+      "git_blob": "dd96a7ada4c2ccdb05d7d1eaf5be625fbf4006cd"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/buffer.h",
+      "bytes": 7564,
+      "sha256": "94b41fc4537ee733324da5600adf25d482db3f0a22f020986981d72328c6eb35",
+      "git_blob": "c3174bb6d967ecdd4daf86a960beb2661e526749"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/cxx/core.h",
+      "bytes": 1957,
+      "sha256": "a7f766bc044f3d0f61a633e1ab250e61c0a951582478f97f7e8aa8e9ef4ec7d1",
+      "git_blob": "8ae4a34f982f0a382ecbdfde087a4278b10f37ba"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/cxx/core/errors.h",
+      "bytes": 3430,
+      "sha256": "82eceb2035a28b296be48bb7af9d70a9a643a0fa39d0a88295f44435f8d4d09d",
+      "git_blob": "814b8d35b7ef9b8893fa5f78c452e2d9e7e13d42"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/cxx/core/events.h",
+      "bytes": 3810,
+      "sha256": "b3cef3fd2fc6c4817b01b66cf25db39889ae108a7c350b0c463bdc9e50d82872",
+      "git_blob": "481e31ca22d8bbeaf49d57f4f9fe9411e4c8c656"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/cxx/core/except.h",
+      "bytes": 10614,
+      "sha256": "46a723006fe991cac213a615a90d2d5c0e85b533107ef069cfb25209afc43f37",
+      "git_blob": "36e185a29461735c9532db1353d0f9927ca951f6"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/cxx/core/handle.h",
+      "bytes": 6969,
+      "sha256": "a6d3875375f6f0c3845e01348a04754c2a5d267c090c879cee01b6d5d974d5c8",
+      "git_blob": "e4979257c88fb5e47229b7fa7927a17fd223c1d3"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/cxx/core/properties.h",
+      "bytes": 4999,
+      "sha256": "8d7917845b8f200731663296ff0b5ef17802f47c6e267540d5417c948c2eeff8",
+      "git_blob": "17d045098c1c7f32b87d40e251b0ae3fc8f84f61"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/cxx/core/pvalue.h",
+      "bytes": 8322,
+      "sha256": "2a6523b240ef008ffd1fd647975f2e704fd114f642db8aa1a4d3a16b134af7e0",
+      "git_blob": "b8fa2f5118638509a5247cbc291f371ae0e2294f"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/cxx/core/shared_buffer.h",
+      "bytes": 6742,
+      "sha256": "3a6dd6a71236249a67982899938856f07cbfa569a806c6351939a37de235e2e1",
+      "git_blob": "21337051c25c492c1a409cbf78cf89dd9f10f419"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/cxx/core/sysobject.h",
+      "bytes": 7799,
+      "sha256": "378719cef85fd9779730bf7a4fde2118639ffb3f9bc0140df25a59c18db5b1a3",
+      "git_blob": "83316947f7965364e3949ea84f06ef636feb2bd1"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/cxx/core/token.h",
+      "bytes": 2845,
+      "sha256": "79d427a5d55d5977d8f3d3549a27cb18d8e916afae226a71752239e6f26a9520",
+      "git_blob": "a456e5f4f8d517eb11da7b49c0ce5eac1ed7d54b"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/cxx/core/version.h",
+      "bytes": 2296,
+      "sha256": "7397e9ed0cdc422110930c798f4ba8edc3a22f3c28a8fe1cacee9e4347e7f7a8",
+      "git_blob": "4c938e151649d51c7adb4d980c183e044733736d"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/enum.h",
+      "bytes": 6705,
+      "sha256": "9bfa5c228c13dc57ec758b8922091dccc1af303a528c77d46c543f9fbdccde20",
+      "git_blob": "fd3426f844aecbcbfed12cee48173d7a4a284a7a"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/error.h",
+      "bytes": 4571,
+      "sha256": "2e0c055eb0c551d762687afb84e71816bee16ac0d502c03336f05a83a3e0f767",
+      "git_blob": "7802a576f0d0e2676272e0cec792d6f2c7b7595f"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/event.h",
+      "bytes": 6812,
+      "sha256": "01e1acdad46f29421d5ea64c463fd913990480f3f6697718aac9755318c6e458",
+      "git_blob": "f755c61dfebda6b460584ba87b9c71321d871b63"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/fpga.h",
+      "bytes": 2232,
+      "sha256": "b01a87c675410835114f6a4da5179d746b197a7c24cd66ef64859050d482c9e4",
+      "git_blob": "2b020325a650de4c78bba2be172c2e6caeaa84a8"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/hash_map.h",
+      "bytes": 9889,
+      "sha256": "4351e78bd97f5c4729b9479a41bdd3a226abe40e4bd83aa766422f2b2742c1af",
+      "git_blob": "414e98eacaf7dee64ef3a73e3157b1f185c2fdf8"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/init.h",
+      "bytes": 2318,
+      "sha256": "9add7bd03e717bc6bf9cdc80570bb8ae13c100584f617bcc19037d0a90b27761",
+      "git_blob": "9f45d05ac56d07992bd1f67dcf3dfec617ad3344"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/log.h",
+      "bytes": 3911,
+      "sha256": "f6411e6cb4abbfcd0d70d4c70d8d95a0daba8abca887c50bca438d91d24700db",
+      "git_blob": "1b4ab51998c6ddd9933919a73991f7467589a1a6"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/manage.h",
+      "bytes": 6498,
+      "sha256": "26eab649b72e90aa5330fa0facc1afd8c413a15397d3e1e194912019b40af672",
+      "git_blob": "12ae211ec81b2b21a41ba2e2b2bc9557d2f223d2"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/mem_alloc.h",
+      "bytes": 5710,
+      "sha256": "34a441011862455be8f3671f27f6f41ff7987425f60e6272ecd4dec18eb6096a",
+      "git_blob": "10939895ba6dc3c0aab7bb6b8e1fdcd3d3f9f970"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/metrics.h",
+      "bytes": 4672,
+      "sha256": "d5f3660e3f02dd3cd7958330a2d5e7d9e2107e597f165aace80d09164e9afc76",
+      "git_blob": "33da8d267f4167d3b86b79d57fac712956f56f04"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/mmio.h",
+      "bytes": 8673,
+      "sha256": "af9b9341f34ae16c2e931fd3d47c676b402d842cdf44c1e020ecde61844f1c36",
+      "git_blob": "fc45da9e736c96afa46cdd68e9b3df1e7fe3fc74"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/properties.h",
+      "bytes": 31969,
+      "sha256": "86f68fcb0d2e5ff095c881b0cfe02c76463e5f9ac8f53af8103284ff1bd70f9c",
+      "git_blob": "41d2eb05a95ceba33b3c1e32f06ab1986d934d41"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/sysobject.h",
+      "bytes": 10811,
+      "sha256": "8867c627659e42c0bf033dd894509da425acc436111d048f32a0b6b7aeff8459",
+      "git_blob": "b0872180d82d4c2ae98e90587cbe62747ba8e0cb"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/types.h",
+      "bytes": 11895,
+      "sha256": "9b073394cfd6ea8d644a324c0b857de67f489dbad12a6e4f4853d982c042399a",
+      "git_blob": "f947d244cb4b9fa9409dcd545fac124f57b4435f"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/types_enum.h",
+      "bytes": 8304,
+      "sha256": "a79f681c99c8152154848f1d2334d341d418e32b09d21462a5c0f91446e9bb28",
+      "git_blob": "e067cbcd379d453a0ee502c71f0b18d05f87e60d"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/uio.h",
+      "bytes": 5175,
+      "sha256": "eb4eee217aeab6018caee7a0f52aea7c20ab11b628d8b1af0e6a2e4302d12050",
+      "git_blob": "8e3be20f20971c36311a424d31db32826873b37a"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/umsg.h",
+      "bytes": 4380,
+      "sha256": "98345536c8c87511147bf99ff3bd75b05bdaefd4772f5b9e3badc9825b2de3f6",
+      "git_blob": "043d8f5ee246825a6c272fd0c4841e0b4c8e633f"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/userclk.h",
+      "bytes": 3159,
+      "sha256": "617729cbe6f702862c9202c72624d72a44100fa285e715264107c030a76d78c8",
+      "git_blob": "3a187973193ef205aa999a7c135f8e2ab56f31c6"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/utils.h",
+      "bytes": 2235,
+      "sha256": "dda76c0796bcc697d4fe60f1f66b3939b37b88b5130183ef4033ae57d078f748",
+      "git_blob": "2675233ab82067b17233cd3d23c5ff2b257c2a14"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/version.h",
+      "bytes": 3232,
+      "sha256": "23b06def24b60117f5522ef46ecc5da5a0cbcf75bb304a8f04fcaa6531158c05",
+      "git_blob": "5f96ecc13219b3f4e522e13444e83a3fc193da4e"
+    },
+    {
+      "path": "qualification/caps03-host01/sdk-headers/include/opae/vfio.h",
+      "bytes": 20182,
+      "sha256": "98e3f0f56fd762fc8848b52cbcd548e75114d969abd9db550b8279deef444d86",
+      "git_blob": "6860a270af5f52a6b53b374d3ebd78634f98e1fb"
+    },
+    {
+      "path": "qualification/caps03-host01/setup-failure01.json",
+      "bytes": 2415,
+      "sha256": "acfd3e326324c06a5ac952afcd8f095762b0294bb2f5132d761b94d03c1c8d22",
+      "git_blob": "8d67d9b168fa99232438b370debee45c35102fde"
+    },
+    {
+      "path": "qualification/caps03-runtime01/.gitignore",
+      "bytes": 95,
+      "sha256": "751b7e7104c52b8c8d17a0918dd7901297fbfac4a16c46eae098e76f71b06817",
+      "git_blob": "68dccfa4c962ffc30d2d36924c7d76a9b664c673"
+    },
+    {
+      "path": "qualification/caps03-runtime01/ACCEPTANCE26.md",
+      "bytes": 2428,
+      "sha256": "0f6e5e7b97e720118eba7ff012a4b917b312fb99f971c7e8c6c3f2a7e5238489",
+      "git_blob": "8229c8e9d0837025e8de9938f1a9c163486a0adb"
+    },
+    {
+      "path": "qualification/caps03-runtime01/ENTRY07.md",
+      "bytes": 5748,
+      "sha256": "438760be3f4434880f5c57a8eec1ec55455bbf1e35c2d1becd35a6a7e4fb09af",
+      "git_blob": "32f1ecb03f571bc3ccac3a1cce2c35be442be041"
+    },
+    {
+      "path": "qualification/caps03-runtime01/ERRATUM-ACCEPTED25.md",
+      "bytes": 1656,
+      "sha256": "13dacab771d08a7d974032269db6436bf3f048612b0793f6f075fbea5e5db36d",
+      "git_blob": "addff8872a7ba82cac315cba9135d61c41c5b480"
+    },
+    {
+      "path": "qualification/caps03-runtime01/NUMERICAL13.md",
+      "bytes": 5628,
+      "sha256": "66a4f152ab491615a9351b1d31e15fdadfb81080db02095c0c23a1f9d77e9d0a",
+      "git_blob": "264f1b3c0f2823c90dfa14ba01115b47f2820c20"
+    },
+    {
+      "path": "qualification/caps03-runtime01/NUMERICAL21.md",
+      "bytes": 5545,
+      "sha256": "39186d873bf48c07e38a9aacc7b908d10cdd19779fead577e588cf32e992ed8d",
+      "git_blob": "d798a9001b36e7009b255ad22a54825b89318157"
+    },
+    {
+      "path": "qualification/caps03-runtime01/RESULT.md",
+      "bytes": 4704,
+      "sha256": "6a6defbbf5f95831b1e8d825c5f6688bbd0a9142f6ba049402e9a3264ef47c65",
+      "git_blob": "b7c7d5426ce773bf007b006cf4e67d6fb5aa7732"
+    },
+    {
+      "path": "qualification/caps03-runtime01/bind20-result.json",
+      "bytes": 7231,
+      "sha256": "f4881ea512921d1085221cbba2a788def145284d902476bd5f2736f781c7a108",
+      "git_blob": "abe146b2656ad77f018cd9a2b83fba921ba66886"
+    },
+    {
+      "path": "qualification/caps03-runtime01/create19-result.json",
+      "bytes": 3942,
+      "sha256": "e1556ed81d700cb3716ebffdd520fc9056181ab118804df2ea22750393abb390",
+      "git_blob": "f7df7cf70c8ec8e89e5a9fd97101005721102342"
+    },
+    {
+      "path": "qualification/caps03-runtime01/entry-admission.json",
+      "bytes": 2690,
+      "sha256": "78bd61a70c930ca662059a0505a848229527335cc14760c1f7e9c3aef4047f43",
+      "git_blob": "adb3c5ded819435ce37b661c77e8006591b367c0"
+    },
+    {
+      "path": "qualification/caps03-runtime01/lifecycle-review15.json",
+      "bytes": 764,
+      "sha256": "e3c8318f538c2f4238e493e1e312c2b1406117e5eb1f09a156dd2d4954fe639a",
+      "git_blob": "8ab434e2ef47290d8256b2aa0f2c08803de06963"
+    },
+    {
+      "path": "qualification/caps03-runtime01/live13-outer.json",
+      "bytes": 584,
+      "sha256": "fb1f3e60411242941c29513515b9e41c289dd77c15c5c2b4dbc8a0461794e8dc",
+      "git_blob": "4eff8c4c2bceb2cac598bbbf4476271941a264fe"
+    },
+    {
+      "path": "qualification/caps03-runtime01/live13-result.json",
+      "bytes": 6024,
+      "sha256": "6b5e47a542ca43ebcd83921c616368acca4626bcfe862e35a5e3eb31d1a06f29",
+      "git_blob": "b8a5c097854d0fba4ba2a4a40c0fa6cd386a9c27"
+    },
+    {
+      "path": "qualification/caps03-runtime01/live21-kernel.log",
+      "bytes": 369,
+      "sha256": "1ab50b3e22f0289310dbd19269c9cabfb2be96192f7e6dc61ffd5a6d8863f391",
+      "git_blob": "b3288be67cfb59032cc42526d892346b93dcf68d"
+    },
+    {
+      "path": "qualification/caps03-runtime01/live21-native.log",
+      "bytes": 1338,
+      "sha256": "7f579f000f810be17a78886d9aafe899746b0503e9eaa1822b53c27a08ff1299",
+      "git_blob": "e86a4a4378070488526dd8f50a797badf5673abe"
+    },
+    {
+      "path": "qualification/caps03-runtime01/live21-outer.json",
+      "bytes": 560,
+      "sha256": "4dcb8b99d544e1947873ef706115c08ffde670a903a2ee1c6e70bb8396a06b59",
+      "git_blob": "8eae151af51e8c3f627e7ea81ab8e9111372f0c8"
+    },
+    {
+      "path": "qualification/caps03-runtime01/live21-parent-verification.json",
+      "bytes": 3539,
+      "sha256": "d8b88c59540257aafd01012de52fbec1b35cdc7abdb7d0fab21482f946349b3c",
+      "git_blob": "7d54d473f6ee1965e2d952e134a700fd20eff8f1"
+    },
+    {
+      "path": "qualification/caps03-runtime01/live21-result.json",
+      "bytes": 17619,
+      "sha256": "94d5fb2c6ae854d7c81d725c3a4287393fb2d10c9b546a20640c9c0dea1accd8",
+      "git_blob": "0e3bfe9861fe5e5eadc9d2e6e1d2843853c44cc7"
+    },
+    {
+      "path": "qualification/caps03-runtime01/live21-runtime-binding.json",
+      "bytes": 7352,
+      "sha256": "96b95030b3f185de97378fa7597841c4a067d6930e76e6094f8cf6d0fbc8f6ea",
+      "git_blob": "1b2ccb8a58d78ae509e3815c47dbb332059c8e09"
+    },
+    {
+      "path": "qualification/caps03-runtime01/normal-review23.json",
+      "bytes": 3192,
+      "sha256": "52d98944123e4f6bfb111a3b3d79af3d62001f67f16e00e649c698ca0937a27c",
+      "git_blob": "ca4177667a6d45473e075fb47b2a03833ffb994f"
+    },
+    {
+      "path": "qualification/caps03-runtime01/numerical13-verification.json",
+      "bytes": 1795,
+      "sha256": "70e977ccdf7e064d41898b1381389a1ea4da51ba43bcb64382e2764065c7f43a",
+      "git_blob": "cc809d04ae94944c0c981e06b8d73a0008367b98"
+    },
+    {
+      "path": "qualification/caps03-runtime01/postboot17-result.json",
+      "bytes": 20946,
+      "sha256": "2050301cfe7e7d740935250d0e6ca71c4acc6566d7e40813e662c7053e839840",
+      "git_blob": "db675cfb66a28e1f56fd6f99d8ff6a0b6d2ca47c"
+    },
+    {
+      "path": "qualification/caps03-runtime01/preflight18-result.json",
+      "bytes": 6636,
+      "sha256": "bb2dd267ee4ab800eed59b8ff8fb07da6e97f748cdd7b1a764ed74f02cdf7cde",
+      "git_blob": "e99b054158ad0e3f60eb3f2b248ce6358cd4d146"
+    },
+    {
+      "path": "qualification/caps03-runtime01/reboot16-dispatch.json",
+      "bytes": 490,
+      "sha256": "3f0adbe048e80056fbecf68224ed749fff9024e623be883733dc5023c4f3231a",
+      "git_blob": "0612d06fa90adbcfb4ed9d95e46425a4e731ff06"
+    },
+    {
+      "path": "qualification/caps03-runtime01/recovery-pre15-result.json",
+      "bytes": 2153,
+      "sha256": "0a0992536c41bd8a5703b469e5dea7779709855032ea9b12795a7263ba4678c0",
+      "git_blob": "0004a372a9e5c24ae41bc128864367b2fdd4469d"
+    },
+    {
+      "path": "qualification/caps03-runtime01/reset08-inputs.json",
+      "bytes": 8700,
+      "sha256": "e51bd039b4fe881a758fc3a5ba05fcc1e6c6bc7af057227a240b8101404731b0",
+      "git_blob": "ee27129413ab4c81161c1123066012052cac0264"
+    },
+    {
+      "path": "src/host/ahls_memory_caps03.c",
+      "bytes": 14440,
+      "sha256": "54049f8b4a20cd4e0a5fd64651be0bc0737a3fc43c71a7fdcc278f76e31cf522",
+      "git_blob": "90ada667e4218feaf73ce88d6ceef40019829af4"
+    },
+    {
+      "path": "src/host/ahls_memory_caps03_startup.c",
+      "bytes": 6493,
+      "sha256": "7519c2bed12aa002aaa1a642a6be82a2ec121fba72770df40c588197fe7f4e4f",
+      "git_blob": "1d4c861f53f531af10e0fda9110ab4e55aad25f7"
+    },
+    {
+      "path": "src/host/ahls_memory_entry_vfio_strict.c",
+      "bytes": 584,
+      "sha256": "ca1ca46f034753378a36a7481bfe68f5f28a0e923c3b14d5548240e9cdd53caa",
+      "git_blob": "9920d4c00a205f740712d6dcf5c56cda973a283c"
+    },
+    {
+      "path": "src/host/config/ia840f_caps01_vfio.cfg",
+      "bytes": 652,
+      "sha256": "f947ee14eabace1d1ea0a7d5af5d11bc74ee7a5f17ec6de4fa317c25ac82b397",
+      "git_blob": "41a17cfaecd7c65d8ee2e9b9689a2a3732299c49"
+    },
+    {
+      "path": "src/host/ia840f_dma_segments.h",
+      "bytes": 700,
+      "sha256": "b24196a9ea04973653e571056e0d3318c282d46f9cd91e1d7c18d8b99ca4bc50",
+      "git_blob": "e3ea85d5cdd896268c2efb092a3c563374c800df"
+    },
+    {
+      "path": "src/host/opae/ia840f_vfio_config.h",
+      "bytes": 742,
+      "sha256": "fb63fcf296e010ff4725d1f0816349d08e3fa2ace5629e765d43fa4bd96b6cfa",
+      "git_blob": "008459003c0f99ad617f16d00a5b018c5ef847b3"
+    },
+    {
+      "path": "src/host/opae/ia840f_vfio_plugin.inc",
+      "bytes": 1780,
+      "sha256": "064fb603f2bda41c595f70002fc4f882b3ff4bfe09a63b36e1b690c73ab7c786",
+      "git_blob": "a4e5582c48632b3102b77648c5087732dff5af74"
+    },
+    {
+      "path": "src/host/opae/ia840f_vfio_strict_init.h",
+      "bytes": 212,
+      "sha256": "5eb37c588d1ec93b6a7aeb61dd9fcad5f4f7b2d9ff186b8ce9a2298530e3a83b",
+      "git_blob": "1c26749c6ae428aa4a290fd28d39d7059dec7568"
+    },
+    {
+      "path": "src/host/opae/ia840f_vfio_strict_init.inc",
+      "bytes": 2237,
+      "sha256": "e8f874799a31f51f61ec1f666226a5d55d10399e29e47fb4c3d6c549579b0fac",
+      "git_blob": "5ff7e5236c5e99e727097876221546eeb1fa6ed3"
+    },
+    {
+      "path": "tests/ia840f/caps03_host/CMakeLists.txt",
+      "bytes": 1135,
+      "sha256": "07aea348d4d11341738b0c1446261c4f6a0c49394dcfd404d846cc4c472c4089",
+      "git_blob": "1e91d7a04ca97a2d3d4a405c9654e2c2482c18ba"
+    },
+    {
+      "path": "tests/ia840f/caps03_host/mock_caps03_opae.c",
+      "bytes": 11737,
+      "sha256": "9c97ddfc658da475d6fb28b18354244f587605dc9eff6cbae84fa2720a3717fa",
+      "git_blob": "d1380112bada6fdca6457fa6e8cbf4e28d895c2d"
+    },
+    {
+      "path": "tests/ia840f/caps03_host/test_frontend.py",
+      "bytes": 3636,
+      "sha256": "8389fe990580722f5be3df18a7f683ac4e02b6c5a866647aec34b58c52d47d82",
+      "git_blob": "dc2e3984947fbc2361f2a6f1cdd7c03088be5b89"
+    }
+  ],
+  "exclusions": [
+    {
+      "path": "qualification/caps03-host01/native-build01.py",
+      "bytes": 74196,
+      "sha256": "4a6d6571a6e5714709b6825e2d446e9de20913babfbbc34d77a4e5359b35516e",
+      "reason": "local-only launcher, native payload/binary or raw capture; not published"
+    },
+    {
+      "path": "qualification/caps03-host01/native-build01-inner.py",
+      "bytes": 3140,
+      "sha256": "9a24287351dae5baa2c193b1d7d9cb72578d8772c148c0cee44b6b44a3737567",
+      "reason": "local-only launcher, native payload/binary or raw capture; not published"
+    },
+    {
+      "path": "qualification/caps03-host01/native-build01-result.json.gz",
+      "bytes": 42872,
+      "sha256": "b28426f21c0a2040da7a4c1d75bf83abd3f5d7eef1ff14d62755381878f8d331",
+      "reason": "local-only launcher, native payload/binary or raw capture; not published"
+    },
+    {
+      "path": "qualification/caps03-host01/green01/caps03_frontend",
+      "bytes": 79456,
+      "sha256": "5da4fc5240909a7241983b9d8c3f4e288175390270f4b7a334eb2186e2e5b7ef",
+      "reason": "local-only launcher, native payload/binary or raw capture; not published"
+    },
+    {
+      "path": "qualification/caps03-runtime01/live13.py",
+      "bytes": 27084,
+      "sha256": "46eef734a46361c710cddf485af1e428226499fa6c4cb48313440ab788da23fb",
+      "reason": "local-only launcher, native payload/binary or raw capture; not published"
+    },
+    {
+      "path": "qualification/caps03-runtime01/live21.py",
+      "bytes": 27190,
+      "sha256": "5f74ca35d1ddfe94fa4832ecbbecb7268befb53855b1bc7890b3575284efa45d",
+      "reason": "local-only launcher, native payload/binary or raw capture; not published"
+    },
+    {
+      "path": "qualification/caps03-runtime01/reset08-result.json",
+      "bytes": 251551,
+      "sha256": "b8b75eed075a49e670166125291ed08f9e3b578fa67b1995379230d7b6ab2ff3",
+      "reason": "local-only launcher, native payload/binary or raw capture; not published"
+    }
+  ],
+  "raw_capture_whitespace_allowlist": [
+    "qualification/caps03-host01/green-cases01/bad-bdf.log",
+    "qualification/caps03-host01/green-cases01/bad_ticket.log",
+    "qualification/caps03-host01/green-cases01/completion_error.log",
+    "qualification/caps03-host01/green-cases01/completion_reset.log",
+    "qualification/caps03-host01/green-cases01/completion_timeout.log",
+    "qualification/caps03-host01/green-cases01/completion_unsupported.log",
+    "qualification/caps03-host01/green-cases01/guard_corrupt.log",
+    "qualification/caps03-host01/green-cases01/missing-option.log",
+    "qualification/caps03-host01/green-cases01/missing_visibility.log",
+    "qualification/caps03-host01/green-cases01/old-option.log",
+    "qualification/caps03-host01/green-cases01/pass.log",
+    "qualification/caps03-host01/green-cases01/payload_corrupt.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-100.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-101.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-102.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-103.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-104.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-105.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-106.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-107.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-108.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-80.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-81.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-82.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-83.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-84.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-85.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-86.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-87.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-88.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-89.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-90.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-91.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-92.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-93.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-94.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-95.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-96.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-97.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-98.log",
+    "qualification/caps03-host01/green-cases01/post-start-api-error-99.log",
+    "qualification/caps03-host01/green-cases01/result.json",
+    "qualification/caps03-host01/green-cases01/source_corrupt.log",
+    "qualification/caps03-host01/green-cases01/start_error.log",
+    "qualification/caps03-host01/green-cases01/status_error.log",
+    "qualification/caps03-host01/green-cases01/status_timeout.log",
+    "qualification/caps03-host01/green-cases01/tail_corrupt.log",
+    "qualification/caps03-host01/sdk-headers/include/opae/access.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/buffer.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/cxx/core.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/cxx/core/errors.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/cxx/core/events.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/cxx/core/except.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/cxx/core/handle.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/cxx/core/properties.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/cxx/core/pvalue.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/cxx/core/shared_buffer.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/cxx/core/sysobject.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/cxx/core/token.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/cxx/core/version.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/enum.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/error.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/event.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/fpga.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/hash_map.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/init.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/log.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/manage.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/mem_alloc.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/metrics.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/mmio.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/properties.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/sysobject.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/types.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/types_enum.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/uio.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/umsg.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/userclk.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/utils.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/version.h",
+    "qualification/caps03-host01/sdk-headers/include/opae/vfio.h",
+    "qualification/caps03-runtime01/live21-kernel.log",
+    "qualification/caps03-runtime01/live21-native.log"
+  ],
+  "scope_exclusions": [
+    "full-capacity DDR result",
+    "mutable GOAL-PROMPT.md",
+    "unrelated root .gitignore changes",
+    "docs/hw-programming-recovery.md",
+    "all non-allowlisted working-tree files"
+  ]
+}

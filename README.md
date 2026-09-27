@@ -1,8 +1,8 @@
 # IA-840F OFS / Altera AHLS source project
 
-**Active target: Altera AHLS-generated RTL integrated into an OFS AFU through PIM, with OPAE/DFL host access. Not an Intel oneAPI compiler/runtime BSP. The Work21-based CAPS03 image has accepted native assembly and bounded physical timing; hardware gates have their own scoped acceptance records.**
+**Active target: Altera AHLS-generated RTL integrated into an OFS AFU through PIM, with OPAE/DFL host access. Not an Intel oneAPI compiler/runtime BSP. The Work21-based CAPS03 memory-HLS integration and scoped hardware qualification are complete, with the exact user-accepted lifecycle erratum exception.**
 
-The selected build uses Quartus25.1 and the unchanged3.000ns target. See
+The selected build uses Quartus 25.1 and the unchanged 3.000 ns target. See
 [bounded physical acceptance](qualification/caps03-persona01/PHYSICAL-ACCEPTANCE01.md)
 and [assembly acceptance](qualification/caps03-persona01/ASSEMBLY-ACCEPTANCE01.md).
 Native Design Closure remains FAIL for the disclosed DRC/unconstrained-port scope;
@@ -12,6 +12,27 @@ The [SDK deployment milestone](qualification/caps03-flash01/ACCEPTANCE48.md)
 separately accepts full-input flash readback/comparison, observed BMC Off/On,
 and the deployment reboot with cached static-FME identity. It does not infer
 numerical or application-lifecycle acceptance from programming success.
+
+## Completed memory-HLS qualification
+
+The [final acceptance](qualification/caps03-final01/ACCEPTANCE.md) records the
+working image and exact scope: SDK flash/readback and BMC/reboot activation,
+OPAE numerical copyback,34 repeated/boundary cases,65,536-integer bulk HLS,
+independent/isolation/sustained DDR, walking-bit follow-up and both complete 16 GiB
+DDR apertures. All actual-result reviews are consumed; six normal application
+lifecycles ended with native 0 and empty postflight ownership.
+
+Only the exact pending-before-FLR warning is accepted: teardown is not warning-free,
+original live21 raw false/outer 1 remain, and the 34-case run's outer status is unknown.
+Full-capacity runtime was 78.38 minutes—an inefficient harness result, not DDR bandwidth.
+General cold/PR/stopped-clock/active-failure recovery and every other upstream HLS
+kernel are not claimed qualified. See [limits](qualification/caps03-final01/ACCEPTANCE.md#exact-exception-and-retained-limits).
+
+The [maintained goal](GOAL-PROMPT.md) is complete and says to stop; no new FPGA
+operation is pending. [Publication evidence](qualification/caps03-publication01/CURRENT.md)
+identifies the separately accepted commits. The local accepted SOF path and SHA256
+are in [the final artifact record](qualification/caps03-final01/ACCEPTANCE.md#retained-working-artifact).
+Everything labeled historical below describes predecessor scope, not open tasks.
 
 ## Historical source-side checkpoint
 
@@ -88,11 +109,11 @@ The AHLS AFU interface contract is recorded in [afu/ahls/integration-contract.js
 
 The prior `docs/source-preparation-report.md`, `docs/feature-matrix.md`, `docs/asp-port.md` and `docs/upstream-baseline-review.md` record the earlier oneAPI evaluation. Their compiler compatibility warnings do **not** block the selected AHLS route. See `docs/ahls-scope.md` for current acceptance criteria.
 
-## Board facts and remaining integration
+## Board facts and historical integration gaps
 
 Vendor evidence identifies **AGFB027R25A2E2V**, one discrete DDR4 channel plus one RDIMM channel, each 16 GiB, and Gen4 x16 PCIe with PF0/VF0 AFU and PF1 BMC. Preserve the actual selected IP/routing evidence rather than stale PF3 comments. See [board evidence](docs/fim-port.md) and [modernization source review](docs/fim-modernization-review.md).
 
-Unresolved contracts include modern mixed-memory presets/ports, PF1 PCIe apertures and identity, BMC IP migration/reset/CDC, clocks and PR floorplan, and the actual AHLS component-to-PIM boundary. A fresh matching PR template is required later; the vendor fitted QDB is not the new platform.
+At the earlier source-preparation checkpoint, unresolved contracts included modern mixed-memory presets/ports, PF1 PCIe apertures and identity, BMC IP migration/reset/CDC, clocks and PR floorplan, and the actual AHLS component-to-PIM boundary. A fresh matching PR template is required later; the vendor fitted QDB is not the new platform.
 
 ## Historical toolchain planning
 
@@ -107,4 +128,4 @@ device access, system-rule activation, programming and disruptive recovery
 remain separately gated. Never rebuild unchanged artifacts, bypass a native
 source-bound guard, or treat successful compilation as live authorization.
 
-Original vendor and sibling donor repositories remain read-only. Existing static inventory utilities inspect source/XML/hash consistency; their prior ASP results are historical evidence, not AHLS integration qualification. No compiler-generated or hardware-validated support is claimed.
+Original vendor and sibling donor repositories remain read-only. Existing static inventory utilities inspect source/XML/hash consistency; their prior ASP results are historical evidence, not AHLS integration qualification. That historical source-only checkpoint did not claim compiler-generated or hardware-validated support; current scoped acceptance is recorded above.

@@ -1,246 +1,242 @@
-# Hermes Goal Prompt — IA-840F AHLS BSP: From Qualified Images to a Working, Hardware-Verified Card
+# IA-840F goal and current handoff
 
-## Mission
+## Goal
 
-Drive the BittWare IA-840F stack (Work21 FIM static shell + CAPS01 persona, Quartus 25.1)
-from "images qualified offline" to **working on hardware**: DFL/OPAE discovery, MMIO
-against the documented register map, both DDR channels through
-`docs/ddr-hardware-validation-gate.md`, verified host↔FPGA transfers, and AHLS results
-**numerically correct through the real OPAE host path** — all from an image that
-**boots from QSPI flash after a power cycle**. That is "success."
+Deliver a functional **OPAE + DFL FIM and AFU for the BittWare IA-840F**, using the
+validated **Quartus Prime Pro 25.1** toolchain. The primary implementation references
+are **[OFS Agilex 7 PCIe Attach, tag `ofs-2025.1-1`](https://github.com/OFS/ofs-agx7-pcie-attach/releases/tag/ofs-2025.1-1)**
+and the **BittWare-supplied IA-840F oneAPI BSP**. The
+[FPGA AI Suite OFS example](https://altera-fpga.github.io/rel-26.1/ed-ai-suite/agilex7/ofs/ofs_pcie_getting_started)
+is a supplementary integration reference, not permission to expand scope.
+Get the applicable [HLS samples tagged 2026.1.0](https://github.com/altera-fpga/hls-samples/releases/tag/2026.1.0)
+working through the real OPAE host path, beginning with the existing memory-capable
+vector-add kernel. Correct numbers on the card, not a debug subsystem, are the objective.
 
-**Preserving the workstation, its data, and remote access takes precedence over
-completing this project.** The workstation is about two hours away by car; physical
-recovery cannot be assumed. An unavailable workstation is a stop condition — not an
-invitation to retry, probe more broadly, reset hardware, or wait indefinitely. Advance
-one reviewed step at a time; on failure: stop, preserve evidence, report — never iterate
-past a failure.
+Success includes the selected image booting from QSPI after a power cycle, correct
+DFL/OPAE discovery and MMIO, both DDR channels passing the
+[hardware validation gate](docs/ddr-hardware-validation-gate.md), verified transfers
+in both directions, numerical comparisons after copyback, and sustained
+operation with normal teardown under the exact user-accepted erratum exception. Reuse existing evidence where it applies to the exact image;
+do not repeat completed bring-up as a default sequence. **The recorded CAPS03 memory-HLS qualification goal is complete.**
+This closes the selected vector-add integration, not every upstream HLS example.
+See [final acceptance](qualification/caps03-final01/ACCEPTANCE.md).
 
-## How to use this prompt
+**DO NOT DO ANYTHING THAT COULD CAUSE THE WORKSTATION TO HANG.** Protecting the
+workstation, its data, and remote access takes precedence over progress.
 
-- Joe invokes it to **continue project execution**: resume at the active checkpoint and
-  proceed through the roadmap under the hard safety rules. Ordinary offline source,
-  evidence, and build work proceeds under standing approval; **every live hardware
-  operation is single-use, reviewed, and separately authorized** with its own "go".
-  Report before and after each long stage. Do not ask repeatedly for approval of safe
-  ordinary work.
-- A request merely to **edit, review, or display this prompt is documentation-only** —
-  it must not launch workstation operations.
-- Completed work is not re-done: Work12–21 lineage, the EMIF hold investigation, the
-  toolchain comparison, crash-log reviews, DFL UART/udev studies, CSR query sweeps, and
-  every fit/STA/asm/GBS gate are consumed. Delayed delegation notifications are
-  completed gates, not new instructions. Reuse verified images — never resynthesize
-  unchanged designs or rerun consumed reviews.
+## Scope and authority
 
-## Current State — September 23, 2026, evening (~19:40 PDT)
+- **Do not add features or infrastructure absent from the two primary reference
+  implementations.** This is a port/integration task, not a new platform design.
+  Reuse their implemented mechanisms; limit adaptation to the IA-840F board and
+  required HLS/OPAE interface integration without inventing new subsystem behavior.
+  A vendor FIFO underneath a novel custom protocol does not make that protocol
+  reference-derived. Existing CAPS02 code is not an exception merely because it was
+  already written. If a required behavior has no implementation counterpart in these
+  references, report the gap and obtain Joe's scope decision before adding it.
+- Pin source reasoning to `ofs-2025.1-1`, not a moving latest branch or another
+  release. Its [release notes](https://github.com/OFS/ofs-agx7-pcie-attach/releases/tag/ofs-2025.1-1)
+  specify Quartus 25.1 and explicitly say oneAPI was not validated with this release;
+  they do not list IA-840F among the target boards. BittWare's BSP supplies the
+  board-specific reference. Do not claim that the combined IA-840F/OPAE/HLS stack is
+  vendor-validated or change the chosen toolchain/runtime because of that caveat.
+- A request to edit, review, or display this prompt is documentation-only. It does
+  not launch implementation, builds, tests, remote operations, commits, or deployment.
+- When explicitly invoked to continue execution, first read the completion state
+  below. This completed qualification has no automatic successor. Joe has approved in-scope work and iteration, including flashing and
+  rebooting when justified; the hard safety boundary still applies. Do not ask again
+  for blanket permission for safe ordinary source work.
+- This is the **authoritative handoff**, replacing all earlier handoff/next-action
+  instructions in the parent prompt, saved task lists, and qualification reports.
+  Old reports remain evidence, not executable runbooks. In particular,
+  `qualification/caps01-resume02/CURRENT.md` records the previous diagnostic route;
+  its pending-review and next-query instructions are superseded by this prompt.
+- Preserve original sources, accepted artifacts, failed results, and unrelated edits.
+  Selecting a simpler additive candidate does not authorize deleting prior code.
+- **Standing IA-840F flash rule (Joe's explicit correction): ALWAYS use the
+  BittWare SDK flash writer `bw_agilex_flash_programmer`. It is the only flash
+  route.** Do not repair, retry, or continue diagnosing JTAG. A JTAG target
+  failure such as `Hardware not attached` triggers the SDK route, not JTAG
+  recovery or another route-selection question. The prepared `caps03.jic` is
+  file-only conversion evidence and is **not SDK-writer input**. Generate the
+  SDK RPD from the exact accepted full-device SOF with Quartus25.1 and the
+  recorded `MT25QU02G`/`ASX4`/`AGFB027R25A`/`bitswap=OFF` contract; the installed
+  SDK reader reverses every input byte. Bind current management access and
+  complete non-RSU layout/erase footprint before writing, preserving the current
+  flash scheme rather than substituting an RSU user-slot update. Require the
+  original native exit plus completed erase, program, readback and successful
+  comparison by named phase. Then execute the already-approved BMC Off/On with
+  separate readbacks and one normal workstation reboot. Conversion, programming,
+  activation and numerical qualification remain distinct outcomes.
+  [SDK lineage and writer contract](qualification/caps01-bwflash01/PROGRAM02-RESULT.md),
+  [preserved pre-correction state](qualification/caps03-flash01/RECOVERY18.md).
 
-**Offline qualification: complete, reviewed, published. Hardware: tests have begun tonight.**
+## Current handoff — complete, stop
 
-- **Work21 FIM** accepted (fit/STA/asm). FIM SOF `ofs_top.sof`, 7,901,287 B, SHA256
-  `bbede03c8c432e50ae6ae1f30739af3bfd3330781776d2c623269cc131b38ca4`; evidence
-  `qualification/fim-build-21/final-capture01`.
-- **CAPS01 persona** — active candidate. Delta vs accepted CSR02: only `afu/csr_mgr.sv`,
-  appending four read-only versioned raw-capability words at CSR `0x98/0xa0/0xa8/0xb0`
-  (new CSR SHA256 `053b9855aa860c410337f5cae7e6160c6086726903cf988a1d35f032cb7a0b93`);
-  legacy registers, write predicates, endpoint logic, transaction schedule preserved.
-  Published lineage: unit/ABI `5c20cfb8` → synth `aa6a86a` → fit `061fc57` → STA
-  `e8ab9ff` (645/645 constrained-domain records nonnegative; Timing Closure PASS) → asm
-  `b5f52d8` → GBS `9b9477e`. Artifacts: SOF `d64f296cec0e8dbcc55292c2e566c09bef48e52fcce3a8d20287dc86b9a68f3a`
-  (9,923,144 B), PR RBF `25feda96e98155e39edc4e9188f70a1eb17dc1470f8b1525793bbb4d5d36b7e1`
-  (9,527,296 B), GBS `d3cd6dc5ee21dc921fe121eee726b07fd5196570ec96d6308a0df2eba9d92dbc`
-  (9,527,687 B); AFU UUID `673c03a1-cef3-4c82-bf10-b12c247d9718`; FME interface UUID
-  `fc4bf1c1-760f-5cd7-8040-b3e86fa0d31e`. Evidence: `qualification/ahls-persona-work21-caps01/`.
-- **Host-side tooling** (inert, independently reviewed, published): read-only
-  memory-inspect frontend (identity `0/8/16` + capability reads only), workstation-native
-  OPAE 2.13 link, AHLS-image OPAE frontend/backends, DFL-only config, explicit startup
-  entry (`842a52d` → `dae3512`). Checkpoints under `qualification/ahls-memory-host01/`,
-  `ahls-memory-startup01/`, `ahls-memory-startup-integration01/`, `ahls-opae-runtime01/`,
-  `ahls-opae-strict01/`.
-- **Hardware session active** — `qualification/caps01-hardware01/`. Preflight and
-  source-identity captures done (rc 0). **FPGA Test 01 = single static FME identity
-  read** (`dfl-fme.0/bitstream_id` + `bitstream_metadata` via the existing DFL driver,
-  source-bound accessors, reject zero/all-ones, no retries, 15-s software deadline is
-  NOT MMIO cancellation). It does not assume CAPS01 is deployed. Read `HARDWARE-TEST01.md`
-  + `AUTHORITY.md` + the latest results before taking any action.
-- Observed card: PF0 `[8086:bcce]` at `0000:4f:00.0` bound `dfl-pci`; `dfl-fme.0`
-  beneath that exact BDF; PF1/BMC `[12ba:0070]` excluded; no VF; no FPGA tool process
-  observed. Current flash holds the W13-era image; nothing has been flashed tonight.
-- In-flight (host-side, not blocking; consume, do not duplicate): startup-integration
-  review `deleg_4289d50d` — consume its FINAL when it lands; HOST-ACCESS-DELTA01
-  publication.
-- Carried findings (unchanged; do not "fix" unprompted): DesignClosure FAIL 22/88
-  (7 High / 7 Medium / 8 Low, 0 waived, 10 disabled) despite the STA pass; unconstrained
-  I/O; reset/CDC/exception gaps; PR initial values; 46 dangling inputs; three BMC
-  electrical findings; 1,098 ignored assignments; freeze/drain/fence/buffer-lifetime.
-  New capability words do not repair legacy metadata or authorize MMIO.
-  **Vendor DDR simulation: SKIPPED BY USER.**
-- Staged, live-unvalidated: DFL UART ID-zero fix and udev successor policy (see
-  `docs/feature-matrix.md`).
+All scoped build, deployment, numerical, DDR, sustained and normal-lifecycle gates
+are accepted on the Work21-based CAPS03 image. There is no remaining blocker or
+next hardware action. The final acceptance is
+[qualification/caps03-final01/ACCEPTANCE.md](qualification/caps03-final01/ACCEPTANCE.md);
+the earlier lengthy handoff is retained as [historical evidence](qualification/caps03-final01/goal-before-final01.md),
+not instructions to restart work.
 
-## Continuation Roadmap — one reviewed step at a time
+### Selected implementation
 
-Each live step needs its own reviewed finite plan and Joe's single-use "go". On any
-anomaly: STOP, preserve, report.
+Use the existing application clock and accepted PIM crossings, finite expected
+enabled-byte accounting and AW/W/B retirement at the additive bank shim. Read-only
+completion CSRs replace the abandoned CAPS02 snapshot mailbox. Producer completion
+and balanced responses establish the finite copyback rule; a common clock alone
+is not a fence. The unchanged generated HLS and Work21 static shell were reused
+([functional acceptance](qualification/caps03-completion01/ACCEPTANCE06.md)).
 
-1. **FPGA Test 01** — static FME identity read (current step). No flash, JTAG, OPAE, or
-   further reads before it is recorded and reviewed.
-2. **Flash bring-up — two artifacts; Work21 FIM first, then the persona:**
-   - **G2 — JIC**: `quartus_pfg -c <sof> <jic> -o device=MT25QL02G -o mode=ASX4
-     -o flash_loader=AGFB027R25A` from the accepted Work21 FIM SOF; record the
-     generated `.map` and checksums. SOF-derived JIC only — the bare-RPD procedure is
-     withdrawn (`docs/hw-programming-recovery.md` is DO-NOT-EXECUTE history).
-   - **G4 — Flash**: volatile JTAG SOF first → verify enumeration (`8086:bcce` /
-     `12ba:0070`, x16) → `quartus_pgm -c "IA-840F [1-3.2]" -m JTAG -o "PV;<jic>@1"`
-     (~9 min) → BMC card cycle → host reboot (the card must configure during host POST;
-     expect 2–3 warm reboots, ~5.5 s enumeration delay) → verify FIM ID and PR
-     interface against the Work21 record.
-   - **G5 — Persona**: `fpgaconf` the CAPS01 GBS → verify AFU UUID → read-only identity
-     `0/8/16` + capability words `0x98/0xa0/0xa8/0xb0` (no writes before these read
-     clean) → MMIO smoke → DMA → DDR patterns → numerical suite (stock-SEAL-class checks
-     with active numerical verification after copyback; exit 0 + verified numbers
-     required — banners alone are not proof).
-3. **Then**: both DDR channels through the gate suite (individually and simultaneously,
-   address-dependent patterns); verified transfers both directions; sustained run;
-   release checklist.
-- Recovery: validated vendor-JIC sequence at
-  `qualification/fim-build-13/flash-recovery-vendor-jic/RECOVERY-REPORT.md` — execute
-  only after reporting state. An on-site person was confirmed for the current window
-  (`AUTHORITY.md`); that is reported availability, not a guarantee.
+Actual changes are the additive completion monitor/MMIO guard, bank shim/reset
+integration/AFU top under `afu/ahls_memory/`, CMake-native persona targets, and
+additive host frontends plus finite tests under `src/host/` and
+`tests/ia840f/caps03_host/`. The maintained top remains default-disabled;
+`COMPLETION_SUPPORTED=1` belongs to the exact qualified build copy, not blanket
+readiness for an arbitrary rebuild. CAPS02 `PUBLISH_SUPPORTED=0` stays unchanged.
 
-## Hard Safety Boundary — Never Repeat the MMIO Incident
+### Completed results — reuse, never replay
 
-- **Never discover hardware registers by probing live address space.** Full-BAR scans,
-  UUID sweeps, candidate AFU-base searches, arbitrary register writes, start pulses, and
-  probing mirrored/undecoded windows are forbidden. This includes supposedly
-  "read-only" MMIO: reads can have side effects, stall a transaction, or hang the host.
-  A read-only scan is NOT a safe fallback.
-- Before any targeted hardware access, establish the exact running image and card
-  identity, PCI domain/BDF, PF/VF, BAR, decoded range, register offset, access
-  width/alignment, side effects, clock/reset requirements, and supported operation
-  sequence from matching RTL/generated artifacts and vendor evidence. A generated CSR
-  offset is not proof of its host PF/VF/BAR mapping. Zero data at a guessed address is
-  not permission to try another address. If any binding is unresolved, stop hardware
-  access and resolve it offline.
-- Use the supported driver/OPAE path; do not replace failed enumeration with raw BAR
-  probing. Ordinary files/logs are distinct from hardware-backed sysfs/resource
-  mappings. Even a documented register is not automatically safe under an unverified
-  clock, reset, or device state.
-- **A local timeout or SSH disconnect does not prove remote termination.** Never launch
-  a second hardware probe after a timeout. Establish the original process identity/state
-  from ordinary OS evidence first, when expressly authorized. Do not accumulate stuck
-  tasks. MMIO can be uninterruptible; `timeout`, signals, tmux, and SSH watchers are NOT
-  recovery paths.
-- Before any operation that could strand the host, require a currently verified
-  independent recovery path AND explicit permission for that operation. A JTAG cable or
-  BMC reachable only through the same workstation is NOT independent host recovery.
-  Do not assume remote power control, console, watchdog, or a person in the building is
-  available. When no recovery exists, stop that operation and continue only safe
-  authorized offline work.
-- No automatic PR retries, reset/unwedge writes, FPGA/BMC power cycles, PCI
-  remove/rescan, driver unload/rebind, AER changes, flashing, or host reboot as a
-  response to failure. Each requires its own supported, reviewed sequence, applicable
-  authorization, and recovery prerequisites. Do not change clocks, reset topology, or
-  remove PR support merely to evade a failed test.
-- On an incident: stop adding hardware operations, preserve existing logs and scripts
-  as evidence, and state what ran and what is unknown. Never replay incident scripts
-  (`locator.py`, `pristine_probe.sh`, `unwedge.py`, `persona_test.sh`, or equivalents),
-  promise the host will return, or claim which script phase ran without logs.
+- Quartus 25.1 synthesis, fit, final STA and assembly completed; bounded physical
+  acceptance at the unchanged 3.000 ns target. Native Design Closure FAIL remains
+  disclosed ([physical](qualification/caps03-persona01/PHYSICAL-ACCEPTANCE01.md),
+  [assembly](qualification/caps03-persona01/ASSEMBLY-ACCEPTANCE01.md)).
+- BittWare SDK full-input flash readback/comparison, independent BMC Off/On and
+  workstation reboot accepted. This observed durable deployment is separate from
+  the later AFU numerical proof ([deployment](qualification/caps03-flash01/ACCEPTANCE48.md)).
+- Original OPAE/HLS case: nine signed results, 156 guard/padding bytes, six DMA
+  descriptors, native 0 and empty postflight ownership
+  ([numerical evidence](qualification/caps03-runtime01/NUMERICAL21.md)).
+- Repeated/boundary:34 cases, 2,982 integers, 536 descriptors; actual-result review
+  `deleg_103db8bc` accepted, consumed and published at
+  `08a849bf09f4e44b625d2073367630a5af7576e7`
+  ([acceptance](qualification/caps03-coverage01/ACCEPTANCE04.md)).
+- Sampled DDR isolation/sustained: 2 GiB written/read per bank, 67,108,864 descriptors,
+  590.093506230 s; walking follow-up 30 addresses/bank and120 descriptors accepted
+  ([DDR](qualification/caps03-ddr01/ACCEPTANCE07.md),
+  [walking](qualification/caps03-walk01/review04-consumed.json)).
+- Bulk HLS: 65,536 integers, 262,144 result bytes + 128 DDR guard bytes, 8,324 descriptors,
+  source-supported concurrent bank0-read/bank1-write functionality accepted;
+  not a measured wire-overlap or bandwidth claim
+  ([review](qualification/caps03-bulk01/review04-consumed.json)).
+- Full capacity:both complete 16 GiB logical apertures written/read/compared,
+  536,870,912 descriptors / 64 GiB traffic / 512 progress rows, native 0 / outer 0 and empty
+  ownership. Actual-result review `deleg_25953609` accepted the remaining full
+  aperture and combined [agreed DDR gate](docs/ddr-hardware-validation-gate.md)
+  ([acceptance](qualification/caps03-full-ddr01/ACCEPTANCE16.md)).
+- Six finite normal application lifecycles are reconciled with native 0 and empty
+  postflight ownership ([final lifecycle](qualification/caps03-lifecycle01/reconciliation04.json)).
+  Individual milestones are published with exact path/blob verification
+  ([publication checkpoint](qualification/caps03-publication01/CURRENT.md)).
 
-### Mandatory pre-operation checklist and failure response
+### Warning exception, limits and current ownership
 
-1. **Classify every action, including subprocesses and hooks.** Distinguish ordinary
-   files/logs and offline builds from hardware-backed sysfs, device opens/ioctls, PCI
-   configuration, BAR mappings, and programming. Inspect unfamiliar scripts before
-   running them; a command named `info`, `status`, `test`, or `read` is not
-   automatically safe — FPGA utilities may access registers internally. Build hooks must
-   not silently deploy an image, reprobe devices, or restart services.
-2. **Keep discovery offline.** No `/dev/mem`, sysfs `resource*` mapping, raw BAR access,
-   PCI configuration sweep, or trial register access to discover a missing address or
-   bypass failed enumeration. Produce a written source-to-host access map first: exact
-   artifact identity, PF/VF, BAR, aperture, offsets, access sizes/alignment, and
-   clock/reset/side-effect semantics. Missing or conflicting evidence means no device
-   access.
-3. **Before any live FPGA operation, stop at a reviewed finite test plan.** Name the
-   device and supported API, minimum operations, expected responses, stop conditions,
-   and authorization. **One hardware operation at a time** — record command, log, owned
-   tmux pane, process identity, result; no overlapping probes or monitoring reads. If
-   safety or recovery cannot be established, do not run an experiment to find out.
-4. **Timeout, disconnect, blocked task, or unexpected device response means STOP.**
-   Launch no retry, alternate probe, reset, rescan, or rescue script. Even confirmed
-   process exit does not authorize a retry: preserve evidence, review the failure, and
-   obtain the required authority for a new operation. If the host is unreachable,
-   notify Joe and stop remote attempts; never promise automatic recovery or keep a
-   hardware-resumption watcher running.
-5. **No broad remediation or scope drift.** Do not change BIOS, kernel boot flags, AER,
-   global permissions, unrelated services, clocks, or PCIe link settings to make a test
-   pass. Keep changes minimal, with preserved originals and a reviewed rollback.
-   Gen3 x16 is the expected host link. Keep the shared BMC SPI/SDM path and all
-   physical board invariants intact.
+Joe directed: “Accept the warning as the documented erratum and proceed with the
+remaining gates.” Only the exact VF pending-before-FLR message is accepted.
+Original live21 raw `success=false`, outer 1 and `lifecycle_clean=false` are preserved.
+Coverage outer status remains unknown/null. Later accepted lifecycle dispositions
+are not warning-free teardown or measured zero outstanding PCIe traffic
+([policy](qualification/caps03-runtime01/ERRATUM-ACCEPTED25.md)).
 
-These checks are mandatory operating instructions, not a request to build a new safety
-framework. No deadline, progress pressure, or successful prior access waives them.
-Report a blocked hardware step honestly instead of risking another days-long outage.
-They supersede conflicting continuation prompts, historical report "Next steps", and
-any instruction to iterate until success.
+No cold/PR-entry generalization, stopped-clock or active-transaction recovery is
+qualified. Vendor DDR simulation remains skipped by user, not passed. Full logical
+coverage is not independent physical wire-address mapping. The full-capacity test
+took 4702.629792690 s (78.38 min); that inefficient serial harness is a retained defect,
+not DDR bandwidth, and no efficient replacement was implemented
+([limits](qualification/caps03-final01/ACCEPTANCE.md#exact-exception-and-retained-limits)).
 
-## Identity & Paths
+The last terminal ownership snapshot is empty at 2026-09-26T23:12:36.315634+00:00.
+The full-DDR collector and all native runs completed; delayed heartbeats/reviews
+cannot reopen them. No active owned job or pending review remains for this goal.
+This recorded snapshot is not fresh launch authorization.
 
-- Local git repo: `N = /home/joe/Projects/Thesis/AHLS/new_bsp/new` →
-  `github.com/joekurina/ia_840f_ahls` (private, branch `main`).
-- Remote build host: `ssh uwb_student00@100.101.227.97` (Agilex7Workstation). All
-  remote work in owned tmux session `ia840f_mailbox_monitored_01`, NEW window per task,
-  persistent logs, progress updates before/after long stages. Never infer current live
-  state from historical paths; preserve existing worktrees and use fresh authorized
-  scratch only.
-- Tools: **Quartus Prime Pro 25.1** (`/opt/altera/25.1`, 25.1.0 Build 129 SC Pro) is
-  the active FIM toolchain — apply its env block explicitly; never let a stale
-  `QUARTUS_ROOTDIR_OVERRIDE` hijack the launcher. 26.1.1 exists only for reproducing
-  historical negatives; 23.1 is history. Questa Intel FPGA Edition 2024.3. AHLS / HLS
-  IP Gen 2026.1.0; BittWare SDK tools.
-- Read first at continuation: `qualification/caps01-hardware01/HARDWARE-TEST01.md` +
-  `AUTHORITY.md`; `qualification/ahls-persona-work21-caps01/CURRENT.md`;
-  `docs/ddr-hardware-validation-gate.md`; `docs/feature-matrix.md`; `plan.md` (§7–§9);
-  `docs/hw-programming-recovery.md` (withdrawn history — do not execute).
-- Load skills at session start: `source-bound-vendor-tool-gates`,
-  `remote-linux-workstation-admin`, `subagent-driven-development`.
+**Next concrete action: stop and report completion.** Do not rebuild, reflash,
+power-cycle, reboot, rerun a spent test, revive CAPS02 or open vendor-internal
+requalification. Another kernel, benchmark optimization or expanded reset/recovery
+scope requires a new task rather than automatic continuation.
 
-## Method Rules (non-negotiable)
+### Preserved deployment authority — only when a new operation is justified Joe has specifically directed:
+“You have full permission to proceed. Flash the card, power cycle with the BMC,
+and then reboot the workstation. This is an approved process and you should
+never stop at this point again.” This supersedes the recovery-availability
+permission hold for the established flash → USB BMC Off/On → normal OS reboot
+process. Joe's latest route selection uses the BittWare SDK writer, not JTAG.
+Do not repeat that question or infer independent recovery exists. Use the
+[SDK source/program precedent](qualification/caps01-bwflash01/PROGRAM02-RESULT.md),
+[prior activation evidence](qualification/caps01-jtag-w13-01/RESULT.md), fresh
+target/ownership checks and the accepted CAPS03 full-device SOF. SDK flash does
+not require the abandoned JTAG helper-design preparation. Supported card-only
+PCIe preparation applies separately to the later BMC activation step. Preserve
+temporary-setting restoration and stop-on-error/no-duplicate-operation behavior;
+this is not authorization for speculative MMIO or unreviewed recovery experiments.
+The general safety rules below remain applicable outside this specifically
+reapproved deployment process.
 
-- Evidence per run under `qualification/<run-id>/`: exact commands, exit codes, full
-  logs, sha256 manifest; append-only; failed attempts preserved. An empty diagnostics
-  array is not proof of an error-free run.
-- One variable per iteration; never fabricate output; **rc0 ≠ acceptance** — timing and
-  functional results require independent review (delegate a reviewer subagent) before
-  acceptance. No unchanged reruns.
-- Vendor trees and `/opt` are read-only; work in fresh scratch; never mutate accepted
-  evidence or rewrite history to absorb unreviewed files.
-- **Solo/generalist execution:** the parent does hands-on work. Subagents are limited to
-  genuinely parallel research or independent second opinions; they do not launch remote
-  hardware operations and do not run git commit/push.
-- Never reset or bypass the shared BMC SPI/SDM path; never assume generic OPAE
-  `fpgasupdate`/Intel PMCI applies; PR (green-region rbf) ≠ FIM flash. No dummy CSRs,
-  no invented transport.
-- Do not improvise power sequencing. A BMC cycle can disrupt the host PCIe path; it is
-  not an automatic safe shutdown or host-recovery action.
-- Keep `ready_for_build`-style readiness claims separate from permissions; qualification
-  flags flip only on reviewed evidence.
+## Workstation safety — operating rules, not new infrastructure
 
-## Git (standing direction — supersedes any older no-commit rule)
+- No speculative MMIO/BAR reads or writes, UUID/base scans, `/dev/mem`, raw resource
+  mapping, or alternative probing when OPAE enumeration fails. Establish the exact
+  image, PCI function/BAR, decoded offset, width/alignment, side effects and clock/reset
+  requirements from matching sources before targeted access. Historical BDFs are not
+  current device identity. Never access CAPS02-only CSRs on the CAPS01 image.
+- Before live work, use a reviewed finite operation with applicable authorization,
+  expected responses and stop conditions. Inspect device opens, ioctls and hidden
+  reset/cleanup effects. One card owner and one operation at a time; no overlapping
+  tests, device-monitor reads or subagent accesses.
+- A timeout, disconnect, blocked task or unexpected device response means stop live
+  work, preserve evidence and report. Timeout/signals/tmux do not cancel an MMIO
+  transaction. Resolve uncertain ownership from safe OS evidence; never launch a
+  duplicate or automatically reset, rescan, rebind, reflash or reboot after failure.
+  Do not free/reuse DMA buffers or close/reset an uncertain active owner as cleanup.
+- Any operation that could strand the host requires verified independent recovery
+  and specific authorization; neither is permission for a known hang-risk experiment.
+  Host-local JTAG/BMC is not independent host recovery. Physical access is about two
+  hours away and unavailable on Sundays; do not assume someone or remote power is
+  available. If the host becomes unreachable, notify Joe and stop remote attempts.
+- Preserve board clocks, PR/static boundaries and the shared BMC SPI/SDM path. No BIOS,
+  AER, permission, link or unrelated service changes to force a pass. Gen3 x16 is the
+  expected host link, not a fault to fix. PR and FIM flash are different operations.
+  Never improvise power sequencing or replay an incident probe as a recovery shortcut.
 
-- **Commit + push to `origin main` at every milestone as it lands.** Small focused
-  commits; message states what changed + evidence path; provenance SHAs (donor pins) go
-  in messages written via a message FILE (hand-typed SHAs get typo'd).
-- Repo policies: files **>2 MB stay local-only**, sha256-referenced in reports
-  (`.gitignore` enforces); nested donor `.git` dirs stay in-tree as plain files; no
-  secrets, license binaries, or raw multi-GB payloads.
-- After every push, verify: `git ls-remote origin main` and
-  `git log origin/main --oneline | head -1` match local HEAD.
+## Paths, tools and working method
 
-## Done Means
+- Repository: `/home/joe/Projects/Thesis/AHLS/new_bsp/new`, branch `main`,
+  `github.com/joekurina/ia_840f_ahls`. All relative links here refer to this repository.
+- Agilex workstation account: `uwb_student00@100.101.227.97`; build root
+  `/home/uwb_student00/ahls/new_BSP`. Remote work uses the established owned tmux
+  workflow (`ia840f_mailbox_monitored_01`), not ad hoc direct SSH commands. No remote
+  contact is needed merely to edit this document.
+- Quartus Prime Pro **25.1.0 Build 129**, `/opt/altera/25.1`; environment instructions
+  `/home/uwb_student00/quartus_25/instructions.md`. Apply the validated environment
+  rather than trusting a possibly stale `QUARTUS_ROOTDIR_OVERRIDE`. Questa 2024.3;
+  AHLS/HLS IP Gen 2026.1.0. Do not switch toolchains or reinstall them as a fresh task.
+- Parent performs implementation and execution. Use independent review for actual
+  design/result acceptance, not recursive review of collectors and review receipts.
+  Subagents do not author executable project changes or access hardware.
+- Keep concise evidence with exact commands, logs, return codes, source/artifact
+  identities and functional/timing outcomes. Reuse existing tooling; do not build a
+  new generic collector or safety framework. Native exit 0 is not functional or
+  timing acceptance. Preserve failures and fix a demonstrated cause before retrying
+  safe offline work; never rerun unchanged builds or spent hardware operations.
+- Vendor/tool trees and accepted evidence stay unchanged. Keep new artifacts together
+  under the project, not scattered in the home directory. Report before and after
+  long steps, and distinguish simulation, physical implementation and real hardware.
+- During authorized execution, keep the existing focused milestone commit/push policy;
+  verify remote state after publishing. Do not auto-commit a documentation-only edit.
+  No secrets/tool binaries or files over 2 MB in Git; preserve unrelated working edits.
 
-The image boots from flash after a power cycle; OPAE discovers the AHLS AFU by its UUID;
-MMIO matches the documented register map; both DDR channels pass the gate (individually
-and simultaneously, address-dependent patterns); the AHLS vector-op returns correct
-results for repeated and boundary inputs through the real host path; a sustained run is
-clean; the final report, feature matrix, and release checklist are committed and pushed
-— with every unperformed check explicitly listed.
+## End-of-session handoff format
+
+Replace the current handoff state rather than appending another legacy chronology.
+Record only: selected architecture and reason; files actually changed; tests/builds
+actually run and their outcomes; exact active job/ownership if any; remaining blocker;
+and one next concrete action. Link existing evidence instead of repeating it.
+Never mark an old job active from a delayed notification or turn historical "next"
+paragraphs into current instructions. Report completion only when the goal's real-card
+acceptance criteria are met; explicitly identify unperformed or blocked checks.
+
+[pim-clock]: qualification/caps01-dma-burst01/diagnosis09/platform/ofs_plat_if/rtl/ifc_classes/local_mem/ofs_plat_local_mem_as_axi_mem.sv
+[pim-shim]: qualification/caps01-dma-burst01/diagnosis09/platform/ofs_plat_if/rtl/base_ifcs/avalon/prims/ofs_plat_avalon_mem_if_async_shim.sv
+[pim-sync]: qualification/caps01-dma-burst01/diagnosis09/platform/ofs_plat_if/rtl/utils/quartus_ip/ofs_plat_utils_dcfifo_synchronizer_bundle.v
+[pim-sdc]: qualification/caps01-dma-burst01/diagnosis09/platform/ofs_plat_if/rtl/utils/quartus_ip/ofs_plat_utils_avalon_dc_fifo.sdc
