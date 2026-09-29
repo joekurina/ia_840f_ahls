@@ -1,5 +1,15 @@
 # IA-840F OFS / Altera AHLS source project
 
+## IA-840F CAPS03 release instructions
+
+Release `ia840f-caps03-v1.0.0` provides the [build guide](docs/ia840f-build.md)
+and [BittWare SDK flashing/activation guide](docs/ia840f-sdk-flashing.md).
+Use `bw_agilex_flash_programmer` with the accepted SDK-compatible RPD; JIC is
+not writer input and JTAG is not this project's flash route. The tag retains
+the accepted CAPS03 source/evidence baseline and its disclosed limitations;
+it does not certify the unfinished release-wide HLS samples or include licensed
+tools, generated build databases, or programming images.
+
 > Scope correction: the overall hls-samples2026.1.0 goal is incomplete and reopened.
 > This acceptance covers only the DDRIP sample integration and supporting hardware.
 > The claim that it completed the release-wide goal was incorrect.
@@ -33,8 +43,10 @@ Full-capacity runtime was 78.38 minutes—an inefficient harness result, not DDR
 General cold/PR/stopped-clock/active-failure recovery and every other upstream HLS
 kernel are not claimed qualified. See [limits](qualification/caps03-final01/ACCEPTANCE.md#exact-exception-and-retained-limits).
 
-The [maintained goal](GOAL-PROMPT.md) is complete and says to stop; no new FPGA
-operation is pending. [Publication evidence](qualification/caps03-publication01/CURRENT.md)
+The [maintained goal](GOAL-PROMPT.md) separates this accepted CAPS03 integration
+from the incomplete release-wide HLS sample work. That sample work is stopped;
+publishing this documentation release does not resume it or authorize a new FPGA
+operation. [Publication evidence](qualification/caps03-publication01/CURRENT.md)
 identifies the separately accepted commits. The local accepted SOF path and SHA256
 are in [the final artifact record](qualification/caps03-final01/ACCEPTANCE.md#retained-working-artifact).
 Everything labeled historical below describes predecessor scope, not open tasks.
