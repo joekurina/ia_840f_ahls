@@ -1,0 +1,43 @@
+{
+  "review": "deleg_657b51c8",
+  "parent_checked": true,
+  "sources": {
+    "vendor_readme": {
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/old_bsp/ia-840/IOFS_BUILD_ROOT/oneapi-asp/ia840f/README.md",
+      "sha256": "4f9a2d97518f8a1838dc656cefca7dfe1c559a7db6d28fe6067f5a1a959be6d1"
+    },
+    "build_run": {
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/old_bsp/ia-840/IOFS_BUILD_ROOT/oneapi-asp/ia840f/hardware/ofs_ia840f/build/scripts/run.sh",
+      "sha256": "3754ee2670db3dc53b9ff56b8456a55568222fd0af3c06e32e73c27ab00180c5"
+    },
+    "clock_constraints": {
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/old_bsp/ia-840/IOFS_BUILD_ROOT/oneapi-asp/ia840f/hardware/ofs_ia840f/build/user_clock.sdc",
+      "sha256": "30478ef80cde835df6cd92e78d5d0364b196b289be8965dd2aa00ae2fd5a1eee"
+    },
+    "clock_adjustment": {
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/old_bsp/ia-840/IOFS_BUILD_ROOT/oneapi-asp/ia840f/hardware/ofs_ia840f/build/scripts/adjust_plls.tcl",
+      "sha256": "4018a02de9da2c0e0469aa98d121cb60e0a3e288f3e3578a00eed861f1e5b7ad"
+    },
+    "clock_request": {
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/old_bsp/ia-840/IOFS_BUILD_ROOT/oneapi-asp/ia840f/hardware/ofs_ia840f/build/opencl_afu.json",
+      "sha256": "31a24020c788ac4c8ee7911ba0c353ed455b83734c80577a5286bcf494b27f98"
+    },
+    "board_spec_standard": {
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/old_bsp/ia-840/IOFS_BUILD_ROOT/oneapi-asp/ia840f/hardware/ofs_ia840f/board_spec.xml",
+      "sha256": "c9e9d871e9e4701c036716a90e64ce55ff034f047985bf7facdf07f2fc10e6e5"
+    },
+    "board_spec_usm": {
+      "path": "/home/joe/Projects/Thesis/AHLS/new_bsp/old_bsp/ia-840/IOFS_BUILD_ROOT/oneapi-asp/ia840f/hardware/ofs_ia840f_usm/board_spec.xml",
+      "sha256": "980e480b4fbba6a57fc28974ee4f6bc7d243c4ba51fa2fa12c1b3a59b83b0634"
+    }
+  },
+  "findings": [
+    "Vendor flow compiles a board-targeted executable with MMD/OPAE transport and PR packaging.",
+    "Initial vendor user-clock constraints are1.25ns; enabled post-fit adjust_plls.tcl selects valid frequencies and packages them in GBS metadata.",
+    "Initial800MHz constraint/caps are not the observed operating frequency of the reported successful vector-add run.",
+    "Stock AHLS standalone1000MHz characterization warnings are documented/expected; evaluate actual Optimization Report Fmax instead."
+  ],
+  "exact_user_vector_add_frequency": "not recovered; user-reported successful operation accepted, no unrelated board_test number substituted",
+  "actual_hardware_operation_performed": false,
+  "scope": "Read-only comparison; not a return to the oneAPI BSP runtime or a claim of new card execution."
+}

@@ -1,5 +1,7 @@
 # GettingStarted import and verification results
 
+> Historical baseline. The later [corrected flow](../ahls-getting-started-fix01/RESULT.md) removes the four simulator family-error cases and corrects the timing interpretation: the HLS handbook explicitly expects timing warnings from its deliberate 1000 MHz standalone characterization target. Use reported component Fmax, not closure of that artificial target as an application gate. The raw observations and initial assessment below are preserved; see [current setup instructions](../../examples/ahls/README.md).
+
 ## Outcome
 
 The requested three tutorial roots and six program variants are imported and their named standalone build/run modes have recorded results. **Verification work is complete, but the result is not diagnostic-clean or timing-closed in every mode.** No real-card execution, flash, BMC action, reboot, toolchain switch or vendor-model edit occurred. The broader release-wide sample work remains stopped and the existing CAPS03 release tag is unchanged.

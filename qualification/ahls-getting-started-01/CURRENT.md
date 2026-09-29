@@ -1,5 +1,7 @@
 # GettingStarted import/build checkpoint
 
+> Historical baseline checkpoint. Use the [completed correction](../ahls-getting-started-fix01/CURRENT.md) and [current setup guide](../../examples/ahls/README.md): all four affected simulator runs are now error-clean with the Agilex 7 family binding, and the expected 1000 MHz characterization warnings are no longer treated as failed application timing. Original observations below remain preserved.
+
 ## Completed scoped work
 
 The requested GettingStarted source import and build/run verification are complete **with recorded simulator-diagnostic and timing limitations**. The result is not an all-green FPGA qualification. See [RESULT.md](RESULT.md), [verification23.json](verification23.json) and the [build/run README](../../examples/ahls/README.md).

@@ -79,7 +79,13 @@ workstation, its data, and remote access takes precedence over progress.
 Joe's latest request resumes only the three upstream `Tutorials/GettingStarted`
 roots: `fast_recompile`, `fpga_compile` PART1–4, and `fpga_template`. Import,
 build/verification and setup instructions belong in [examples/ahls](examples/ahls/README.md)
-and the [current scoped checkpoint](qualification/ahls-getting-started-01/CURRENT.md).
+and the [completed correction checkpoint](qualification/ahls-getting-started-fix01/CURRENT.md).
+The later vendor-baseline comparison corrected a mistaken timing criterion:
+1000MHz is the documented standalone characterization target, not required
+application closure. The actual component Fmax is reported. The four affected
+simulations now pass with explicit Agilex7 family parameters and no Error/Fatal;
+no clock relaxation or card operation was used ([correction results](qualification/ahls-getting-started-fix01/RESULT.md)).
+All correction jobs and observers are finished; do not replay them.
 Upstream main and tag2026.1.0 both resolve to
 `0abae6d78af5daca3fe5d67e617ab037e58aff89`.
 

@@ -1,0 +1,85 @@
+{
+  "recorded_at": "2026-09-29T20:44:35.355914+00:00",
+  "success": true,
+  "scope": "Fix explicit Agilex7 family propagation in compiler-input support RTL and correct the erroneous1GHz application-failure interpretation. Original C++/SDK preserved; no card operation.",
+  "source_delta": "Exactly two .DEVICE(\"Agilex 7\") instantiation arguments; no simulator primitive-model, algorithm, interface or SDC changes.",
+  "original_lsu_sha256": "873549f18428fe6ba0797fef228c2028bf1df62076e85f1942c9dca5310cf8a0",
+  "overlay_lsu_sha256": "cfee3826587686ddc36919ac18db973c620f72bfd8f555ab2f3622b19b21d333",
+  "corrected_simulations": [
+    {
+      "id": "template-sim",
+      "native_build_rc": 0,
+      "native_run_rc": 0,
+      "original_numerical_elements": 256,
+      "transcript_error_count": 0,
+      "baseline_family_errors": 6,
+      "generated_overlay_sha256": "cfee3826587686ddc36919ac18db973c620f72bfd8f555ab2f3622b19b21d333",
+      "native_result_sha256": "08ce411af13450ea220280b41ce7b7971ee83ea949b18e5cf00adebc09a62db3",
+      "transcript_sha256": "ac5b78cca0a5812216bcda9e9d8ad562a4ac3689b7d70683aa0cf57509a60f23"
+    },
+    {
+      "id": "part2-sim",
+      "native_build_rc": 0,
+      "native_run_rc": 0,
+      "original_numerical_elements": 256,
+      "transcript_error_count": 0,
+      "baseline_family_errors": 6,
+      "generated_overlay_sha256": "cfee3826587686ddc36919ac18db973c620f72bfd8f555ab2f3622b19b21d333",
+      "native_result_sha256": "4c3f2b2ba48a648b09656692d1fd392af402735a1b26b1bdf5490127701ff73f",
+      "transcript_sha256": "5d1c56da616e3564973d794c602323c2de4c6991971c40d23f1dbffcc8ac37dd"
+    },
+    {
+      "id": "part3-sim",
+      "native_build_rc": 0,
+      "native_run_rc": 0,
+      "original_numerical_elements": 256,
+      "transcript_error_count": 0,
+      "baseline_family_errors": 6,
+      "generated_overlay_sha256": "cfee3826587686ddc36919ac18db973c620f72bfd8f555ab2f3622b19b21d333",
+      "native_result_sha256": "48ca0a9c379735bb152ca75fd2f480310ea0bf680125ec35a73c12a1502935a6",
+      "transcript_sha256": "aac2fd01730a8f0f9bbfafcdc9aca791461b3ce0a3d9dc277b42f3892160c3dd"
+    },
+    {
+      "id": "part4-sim",
+      "native_build_rc": 0,
+      "native_run_rc": 0,
+      "original_numerical_elements": 256,
+      "transcript_error_count": 0,
+      "baseline_family_errors": 6,
+      "generated_overlay_sha256": "cfee3826587686ddc36919ac18db973c620f72bfd8f555ab2f3622b19b21d333",
+      "native_result_sha256": "7c5bd97fdbbe928bdb335e9272b8984b76570be9f94b72a04e36e9129b751062",
+      "transcript_sha256": "1242627601ab8a945886da11fd674859d4a2a2f20ef01f81f43f33e97eb08df7"
+    }
+  ],
+  "corrected_ip_characterization": {
+    "sample": "fpga_template",
+    "native_cmake_rc": 0,
+    "quartus_full_compilation_success": true,
+    "reported_fmax_mhz": "667.11",
+    "qor_file_identical_to_original_characterization": true,
+    "qor_sha256": "0b267442295df79ed7d323f01d55517ab70b2fe70c1f95be99ad62d0d2d1c26f",
+    "characterization_constraint_bytes_unchanged": true,
+    "characterization_constraint_text": "create_clock -period 1 clock\n",
+    "negative_raw_slacks_preserved_and_expected": true,
+    "measured_card_frequency": false
+  },
+  "timing_interpretation_correction": "HLS Handbook9.1.1 documents1000MHz placement optimization and expected timing warnings; evaluate reported component Fmax, not1ns closure as an application gate.",
+  "physical_card_execution": false,
+  "installed_sdk_unchanged": true,
+  "imported_sources_unchanged": true,
+  "owned_live_processes": [],
+  "compatibility_warning_retained": true,
+  "local_verifier_correction": "First local SDC check incorrectly expected an extra newline; corrected by comparing exact captured baseline bytes, with no native rerun or SDC modification.",
+  "receipts": {
+    "prepare-validation05.json": "cbd6556de8588099d1f438351c717d714ca38500fc9c5b20450a4eb6f60994ad",
+    "prepared06.json": "826c136b6c0451685dac375437b12cf384cf7ec4c4ce7635e5549182446c414f",
+    "dispatch06.json": "78c7f6b32df21013380057d66e74c875fbe3bea5373caf2aa4115ae35c2372a6",
+    "finished06.json": "f6e75345d6479c7be094ffb4d9fe848c6692e89fc05fcc3231c303597c52e05a",
+    "timing-interpretation07.json": "135f39afd3470a0485ecd2ef8c7393fefcfe8cdca2a9843aa05f8a3d98cd97f0",
+    "vendor-baseline11.json": "ecd145bdc75d0c11413abf8813221adc7b789fd247f436bfc7c34e2b4b633d58",
+    "collection13.json": "cf39f1ecf8ca95e155f740309cd0b9e722c439a1fdb4c64ec2b4822881a87b87",
+    "simulator-verification14.json": "6112b8059ac9ac7b0b89db4aedd48d01edbdd7bc29b931e52e06ecb08a6d0240",
+    "collection16.json": "4a0b1894a9a7b5c37d1f6eee98731b28ab7366c9295f16c29f7492ae20d9fdd2",
+    "postflight17.json": "6a813abeb5d16031ecdc38b8eba857c4ca4e503fb51737e0208ac10d42f39f18"
+  }
+}

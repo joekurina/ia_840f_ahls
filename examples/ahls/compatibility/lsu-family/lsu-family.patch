@@ -1,0 +1,18 @@
+--- original/ip/lsu_top.sv
++++ overlay/ip/lsu_top.sv
+@@ -1120,6 +1120,7 @@
+       if((USECACHING == 1) || (HYPER_PIPELINE == 0))     // hyper-optimized LSU does not currently support caching
+       begin
+         lsu_bursting_read #(
++            .DEVICE("Agilex 7"),
+             .KERNEL_SIDE_MEM_LATENCY(KERNEL_SIDE_MEM_LATENCY),
+             .MEMORY_SIDE_MEM_LATENCY(MEMORY_SIDE_MEM_LATENCY),
+             .AWIDTH(AWIDTH),
+@@ -1366,6 +1367,7 @@
+         //cache hit latency can be reduced in hld_global_load_store by moving the bump-in-the-wire cache to the kernel interface rather than the memory interface, but then unaligned access gets complicated
+         if (USECACHING && !USE_STALL_LATENCY) begin
+             lsu_bursting_read #(
++                .DEVICE("Agilex 7"),
+                 .KERNEL_SIDE_MEM_LATENCY(KERNEL_SIDE_MEM_LATENCY),
+                 .MEMORY_SIDE_MEM_LATENCY(MEMORY_SIDE_MEM_LATENCY),
+                 .AWIDTH(AWIDTH),

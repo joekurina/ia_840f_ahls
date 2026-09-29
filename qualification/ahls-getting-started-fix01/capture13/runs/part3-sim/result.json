@@ -1,0 +1,291 @@
+{
+  "job": {
+    "sample": "fpga_compile",
+    "stem": "vector_add",
+    "target": "fpga_sim",
+    "selectors": {
+      "PART": "3"
+    },
+    "build_timeout_seconds": 2400,
+    "required_patterns": [
+      "add two vectors of size 256",
+      "^PASSED$"
+    ],
+    "minimum_pass_markers": 1,
+    "verification_scope": "Original 256-integer oracle with board-correct LSU family parameter; simulator transcript must have no Error/Fatal."
+  },
+  "success": true,
+  "hardware_access": false,
+  "commands": [
+    {
+      "label": "versions",
+      "argv": [
+        "/bin/bash",
+        "-c",
+        "ahls --version && cmake --version"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_fix01/runs/part3-sim",
+      "started": "2026-09-29T20:25:04.932208+00:00",
+      "rc": 0,
+      "namespace_pid": 20,
+      "helpers_drained": true,
+      "ended": "2026-09-29T20:25:04.998266+00:00",
+      "log": "versions.log",
+      "log_sha256": "9458afb273663baba5e39104b3def15382c12f665e6b6ae3f6b154a527c260fd",
+      "log_bytes": 507,
+      "log_complete": true
+    },
+    {
+      "label": "simulator-license",
+      "argv": [
+        "/opt/altera/25.1/questa_fe/bin/vsim",
+        "-c",
+        "-do",
+        "quit -f"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_fix01/runs/part3-sim",
+      "started": "2026-09-29T20:25:04.999351+00:00",
+      "rc": 0,
+      "namespace_pid": 22,
+      "helpers_drained": true,
+      "ended": "2026-09-29T20:25:05.818241+00:00",
+      "log": "simulator-license.log",
+      "log_sha256": "8b654c23e783fd109d10c072fb0290524e7b66daa63c39f0f47f426a54a7a664",
+      "log_bytes": 38,
+      "log_complete": true
+    },
+    {
+      "label": "configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_fix01/source/Tutorials/GettingStarted/fpga_compile",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_fix01/runs/part3-sim/build",
+        "-DFPGA_DEVICE=AGFB027R25A2E2V",
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+        "-DUSER_INCLUDE_PATHS=/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_fix01/source/include",
+        "-DPART=3"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_fix01/runs/part3-sim",
+      "started": "2026-09-29T20:25:05.819873+00:00",
+      "rc": 0,
+      "namespace_pid": 48,
+      "helpers_drained": true,
+      "ended": "2026-09-29T20:25:09.796869+00:00",
+      "log": "configure.log",
+      "log_sha256": "bfff513714518e6cbae4d20d7c671524bebb0aae83e86e9ea3b6caf7869c0b81",
+      "log_bytes": 1150,
+      "log_complete": true
+    },
+    {
+      "label": "build",
+      "argv": [
+        "cmake",
+        "--build",
+        "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_fix01/runs/part3-sim/build",
+        "--parallel",
+        "36",
+        "--verbose",
+        "--target",
+        "fpga_sim"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_fix01/runs/part3-sim",
+      "started": "2026-09-29T20:25:09.798216+00:00",
+      "rc": 0,
+      "namespace_pid": 221,
+      "helpers_drained": true,
+      "ended": "2026-09-29T20:26:43.475243+00:00",
+      "log": "build.log",
+      "log_sha256": "f2e13253b4ef4fab70d3c8431963228547fd629d01c8ad1a5f715804fc6dc709",
+      "log_bytes": 6960,
+      "log_complete": true
+    },
+    {
+      "label": "run",
+      "argv": [
+        "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_fix01/runs/part3-sim/build/vector_add.fpga_sim"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_fix01/runs/part3-sim/build",
+      "started": "2026-09-29T20:26:43.500156+00:00",
+      "rc": 0,
+      "namespace_pid": 3712,
+      "helpers_drained": true,
+      "ended": "2026-09-29T20:27:00.089203+00:00",
+      "log": "run.log",
+      "log_sha256": "dc842f8bd2f251baa778ca56ff62b34c8ae108082182a09aa94a5ab77a3590c4",
+      "log_bytes": 107,
+      "log_complete": true
+    }
+  ],
+  "started": "2026-09-29T20:25:04.854762+00:00",
+  "cpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35
+  ],
+  "address_space_limit_bytes": 68719476736,
+  "pid_namespace": "pid:[4026533093]",
+  "outer_pid_namespace": "pid:[4026531836]",
+  "device_entries": [
+    "core",
+    "fd",
+    "full",
+    "null",
+    "ptmx",
+    "pts",
+    "random",
+    "shm",
+    "stderr",
+    "stdin",
+    "stdout",
+    "tty",
+    "urandom",
+    "zero"
+  ],
+  "overlay_sha256": "cfee3826587686ddc36919ac18db973c620f72bfd8f555ab2f3622b19b21d333",
+  "versions": "HLS IP Gen, Version 2026.1.0 Build 461da9be608f74678d9c52a2dc1cbb67c58d57fa, Copyright (c) 2026 Altera Corporation\nclang version 21.0.0git (https://github.com/altera-innersource/applications.fpga.oneapi.products.acl-source 73bd39ae996000c9a135392139de0cfbd166341e)\nTarget: x86_64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /home/uwb_student00/ahls/altera_hls/aclsycl/llvm/bin-llvm\nBuild config: +assertions\ncmake version 3.31.8\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n",
+  "cmake_target_completed": true,
+  "compile_commands": [
+    {
+      "directory": "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_fix01/runs/part3-sim/build",
+      "command": "/home/uwb_student00/ahls/altera_hls/aclsycl/bin/ahls  -I/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_fix01/source/Tutorials/GettingStarted/fpga_compile/../../../../include -I/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_fix01/source/include -Wall -Xssimulation -DFPGA_SIMULATOR -o CMakeFiles/fpga_sim.dir/part3_dpcpp_lambda_usm/src/vector_add.cpp.o -c /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_fix01/source/Tutorials/GettingStarted/fpga_compile/part3_dpcpp_lambda_usm/src/vector_add.cpp",
+      "file": "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_fix01/source/Tutorials/GettingStarted/fpga_compile/part3_dpcpp_lambda_usm/src/vector_add.cpp",
+      "output": "CMakeFiles/fpga_sim.dir/part3_dpcpp_lambda_usm/src/vector_add.cpp.o"
+    }
+  ],
+  "backend_target_logs": [
+    "build/vector_add.fpga_sim.prj/logs/vector_add_fpga_sim.log"
+  ],
+  "generated_lsu_sha256": "cfee3826587686ddc36919ac18db973c620f72bfd8f555ab2f3622b19b21d333",
+  "executable_before": "58f45b04cf0565b09d00cd5b96b9819a37aaeeed516afdee28bbd94819555a02",
+  "numerical_verification": {
+    "required_patterns_found": [
+      "add two vectors of size 256",
+      "^PASSED$"
+    ],
+    "native_pass_markers": 1,
+    "retained_expected_hwloc_warning_count": 0,
+    "verification_scope": "Original 256-integer oracle with board-correct LSU family parameter; simulator transcript must have no Error/Fatal."
+  },
+  "waveforms": {
+    "build/vector_add.fpga_sim.prj/vsim.wlf": {
+      "bytes": 65536,
+      "sha256": "0dfa4b331176dbf308255ff73eebe1d7d214692e99b74061de11e3dd35521339"
+    }
+  },
+  "simulator_error_lines": [],
+  "transcript_sha256": "aac2fd01730a8f0f9bbfafcdc9aca791461b3ce0a3d9dc277b42f3892160c3dd",
+  "rtl_simulation_passed": true,
+  "diagnostic_clean_of_errors": true,
+  "report_files": {
+    "build/vector_add.fpga_sim.prj/ip/kernel_system/kernel_system_clk_1x/kernel_system_clk_1x_generation.rpt": {
+      "bytes": 4991,
+      "sha256": "5d5d8a6fd6a65d6a14f109db485835acc4ecdf3a1a30629c78b162e10557c21b"
+    },
+    "build/vector_add.fpga_sim.prj/ip/kernel_system/kernel_system_kernel_cra/kernel_system_kernel_cra_generation.rpt": {
+      "bytes": 5199,
+      "sha256": "764156d206d18730e680a5eada65eafdf805c1742c2b44d176529a130e7d323e"
+    },
+    "build/vector_add.fpga_sim.prj/ip/kernel_system/kernel_system_kernel_irq/kernel_system_kernel_irq_generation.rpt": {
+      "bytes": 5241,
+      "sha256": "3ee30ee9bdf3cce2f375934845c8e71a081e4f9302571e7afee7df2877d25965"
+    },
+    "build/vector_add.fpga_sim.prj/ip/kernel_system/kernel_system_reset/kernel_system_reset_generation.rpt": {
+      "bytes": 4966,
+      "sha256": "b5d27e3f8a8f8970be4ab0707c230669626ac800f27db9243239871ab64b2cc6"
+    },
+    "build/vector_add.fpga_sim.prj/ip/kernel_system/kernel_system_vector_add_fpga_sim_sys/kernel_system_vector_add_fpga_sim_sys_generation.rpt": {
+      "bytes": 5501,
+      "sha256": "69b7c417de806ebbef048f75445fc5b7084164813e677d3f85a0f2a0031803d1"
+    },
+    "build/vector_add.fpga_sim.prj/ip/mpsim/VectorAddID_en_cfan/VectorAddID_en_cfan_generation.rpt": {
+      "bytes": 4932,
+      "sha256": "60af9b1a14b120408483abce9b0c29b876b9fa69aae36091ecabe590a6eb108f"
+    },
+    "build/vector_add.fpga_sim.prj/ip/mpsim/cct_comp_stall/cct_comp_stall_generation.rpt": {
+      "bytes": 4813,
+      "sha256": "cd35b806d7d06c03563b08eec315fba2ad40bad3a622522396c91a70c2350c32"
+    },
+    "build/vector_add.fpga_sim.prj/ip/mpsim/done_cfan/done_cfan_generation.rpt": {
+      "bytes": 4662,
+      "sha256": "038a030f2b0163316afb89879aa4b41aa1c597695fb2e16d28381390dedeb060"
+    },
+    "build/vector_add.fpga_sim.prj/ip/mpsim/dpic_VectorAddID/dpic_VectorAddID_generation.rpt": {
+      "bytes": 4936,
+      "sha256": "da35d2a6e69a80a4d7f5d9ac5bd8bfc95e3971718c3b1e43fab00aeb212b6604"
+    },
+    "build/vector_add.fpga_sim.prj/ip/mpsim/mm_agent_ks_mem0_rw/mm_agent_ks_mem0_rw_generation.rpt": {
+      "bytes": 4904,
+      "sha256": "5ee63c8332717423935a5dea67e578a9529b785a1e9fe615f5d574a8faf774d3"
+    },
+    "build/vector_add.fpga_sim.prj/ip/mpsim/mpsim_avmm_agent_cra_inst/mpsim_avmm_agent_cra_inst_generation.rpt": {
+      "bytes": 5061,
+      "sha256": "ee77b457640c58b457511da1ce6a5e551fac1a9eb7cb8689bf3d8bc7202181f7"
+    },
+    "build/vector_add.fpga_sim.prj/ip/mpsim/mpsim_clk_rst/mpsim_clk_rst_generation.rpt": {
+      "bytes": 4743,
+      "sha256": "72d3c6290af2d9828ceeeb5f8e1fe712adfe53c784716d5f2b189ad5d20f43d1"
+    },
+    "build/vector_add.fpga_sim.prj/ip/mpsim/mpsim_ki/mpsim_ki_generation.rpt": {
+      "bytes": 9521,
+      "sha256": "e5bcec4ec74f0d05518bf6e2433fc5b82b4291672a75da804871b813c5d8135c"
+    },
+    "build/vector_add.fpga_sim.prj/ip/mpsim/mpsim_oirq/mpsim_oirq_generation.rpt": {
+      "bytes": 4673,
+      "sha256": "8639df3f7553f89eb8817e86560076919276d5c2a33841d31e75f72eb46be245"
+    },
+    "build/vector_add.fpga_sim.prj/ip/mpsim/sp_csr_ready/sp_csr_ready_generation.rpt": {
+      "bytes": 4751,
+      "sha256": "5b437374145437ee07e082284c6b9135e545882462410ac59b1f3c3205c9e121"
+    },
+    "build/vector_add.fpga_sim.prj/logs/vector_add_fpga_sim.log": {
+      "bytes": 312842,
+      "sha256": "c94470693ada8ee01e353051aa478b3c3a287d99cb954292b0050359ef5f9544"
+    },
+    "build/vector_add.fpga_sim.prj/quartus_sh_compile.log": {
+      "bytes": 631,
+      "sha256": "8402ef5f55f7ed475a935009549eb3fec887c3aad8aa3156e4fb9a1fd45769ad"
+    },
+    "build/vector_add.fpga_sim.prj/transcript.log": {
+      "bytes": 46723,
+      "sha256": "aac2fd01730a8f0f9bbfafcdc9aca791461b3ce0a3d9dc277b42f3892160c3dd"
+    }
+  },
+  "source_unchanged": true,
+  "effective_rc": 0,
+  "ended": "2026-09-29T20:27:00.141094+00:00"
+}

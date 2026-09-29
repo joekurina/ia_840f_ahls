@@ -30,28 +30,28 @@ PART1 supplies only `fpga_emu`. The remaining five variants supply all four targ
 
 ## Current verification
 
-The requested import and build/run verification are complete, **with the diagnostic and timing limitations below**. This is not an all-green qualification or a real-card test. The imported bytes match the retained prior results; completed unchanged modes were revalidated rather than rerun.
+The original tutorial sources are preserved. The four affected integer RTL simulations now pass with an explicit Agilex 7 family configuration; the earlier six family errors per run are gone. This is a real compiler-input correction, not a diagnostic filter ([correction results](../../qualification/ahls-getting-started-fix01/RESULT.md), [native verification](../../qualification/ahls-getting-started-fix01/verification18.json)).
 
-| Variant | CPU / emulator | Report / RTL | RTL-simulator numerical check | Simulator diagnostics | Full isolated-IP build |
-|---|---|---|---|---|---|
-| `fpga_compile` PART1 | CPU PASS (reused) | N/A | N/A | Historical link diagnostics retained | N/A |
-| `fpga_compile` PART2 | PASS (reused) | PASS (reused) | PASS (reused) | Six family errors | Completed, exit0; timing not met |
-| `fpga_compile` PART3 | PASS (reused) | PASS (reused) | PASS (reused) | Six family errors | Completed, exit0; timing not met |
-| `fpga_compile` PART4 | PASS (reused) | PASS (reused) | PASS (same-binary recovery reused) | Six family errors | Completed, exit0; timing not met |
-| `fast_recompile` | PASS (reused) | PASS (reused) | PASS (new), including host-only recompile/run | No Error/Fatal in captured transcript; warnings retained | Completed, exit0; timing not met |
-| `fpga_template` | PASS (reused) | PASS (reused) | PASS (new) | Six family errors | Completed, exit0; timing not met |
+| Variant | CPU / emulator | Report / RTL | RTL simulation | Reported component Fmax (MHz) |
+|---|---|---|---|---:|
+| `fpga_compile` PART1 | CPU PASS, retained baseline | N/A | N/A | N/A |
+| `fpga_compile` PART2 | PASS, retained baseline | PASS, retained baseline | Corrected build/run PASS; no Error/Fatal | 667.11 |
+| `fpga_compile` PART3 | PASS, retained baseline | PASS, retained baseline | Corrected build/run PASS; no Error/Fatal | 781.86 |
+| `fpga_compile` PART4 | PASS, retained baseline | PASS, retained baseline | Corrected build/run PASS; no Error/Fatal | 772.20 |
+| `fast_recompile` | PASS, retained baseline | PASS, retained baseline | Baseline PASS, including host-only reuse demonstration | 711.24 |
+| `fpga_template` | PASS, retained baseline | PASS, retained baseline | Corrected build/run PASS; no Error/Fatal | 667.11 |
 
-The final verification covers 1 CPU run, 5 emulator numerical passes, 5 report builds, 5 RTL-simulation numerical passes, the host-only recompile demonstration and 5 new full isolated-IP compilations. Four simulator flows are not diagnostic-clean, and none of the five standalone builds meets its generated 1.000 ns timing target. No FPGA card program was executed.
+Fmax values are the actual entries in the original FPGA Optimization Reports, **not values guessed from slack and not measured/programmed card clock rates**. The corrected template full-IP build was repeated; its entire clock/resource QoR data remains identical at 667.11 MHz. The other original characterization runs were retained rather than repeated unnecessarily ([original report data](../../qualification/ahls-getting-started-fix01/timing-interpretation07.json), [corrected template verification](../../qualification/ahls-getting-started-fix01/verification18.json)).
 
-See the [result report](../../qualification/ahls-getting-started-01/RESULT.md), [machine-readable final verification](../../qualification/ahls-getting-started-01/verification23.json), [reused evidence](../../qualification/ahls-getting-started-01/prior-verification03.json), and [simulator diagnostic correction](../../qualification/ahls-getting-started-01/diagnostic-disposition13.json). All native jobs and the completion observer have ended; no other sample batch was resumed.
+**Timing-assessment correction:** the HLS handbook explicitly says the standalone flow targets 1000 MHz for placement optimization and is not expected to close that constraint. The previous description of these expected warnings as unresolved application timing failures used the wrong acceptance criterion. Use the reported component Fmax, then verify the actual integrated operating-clock constraints separately. No SDC was relaxed to make the reports green.
 
-## Known simulator diagnostics
+## Corrected simulator family configuration
 
-Numerical success and diagnostic-clean simulation are separate. The retained transcripts for `fpga_compile` PART2, PART3, PART4 and `fpga_template` each contain six `Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V.` messages, despite native exit0 and successful original numerical checks. `fast_recompile` has no occurrences of this diagnostic. The transcript audit and exact lines are in [diagnostic-disposition13.json](../../qualification/ahls-getting-started-01/diagnostic-disposition13.json).
+The inspected HLS support RTL leaves `DEVICE` unset at two `lsu_bursting_read` call sites. The child defaults to `Stratix V`, which reaches its SCFIFO model even though our compile targets Agilex 7. The compatibility recipe supplies `.DEVICE("Agilex 7")` at those two instantiations. It does not change algorithms, interfaces, resets, timing constraints, primitive models or the installed SDK ([exact two-line patch and guarded preparation](compatibility/lsu-family/README.md)).
 
-The messages come from generated FIFO instances passing a legacy family parameter to the installed `altera_mf_ver.scfifo` model. Its source emits this check with `$display` rather than stopping; the Pro model's family-validity list does not accept `Stratix V`. This explains why an error message and a numerical pass can coexist; it does **not** make the four simulations diagnostic-clean or justify suppressing the text. Do not change the requested FPGA part to Stratix V, modify the vendor model, or claim that a toolchain change has fixed it without an actual changed result. No such correction is included here.
+The setup below prepares the correction with CMake and read-only-binds it only inside the private compiler namespace. Use a fresh build directory: the upstream `-reuse-exe` mechanism may retain an older uncorrected device image. The four fresh corrected runs each returned exit 0, passed all 256 original integer checks, and produced no Error/Fatal in the complete transcript ([corrected simulator evidence](../../qualification/ahls-getting-started-fix01/simulator-verification14.json)).
 
-The original PART1 build also retains OPAE `**ERROR**` messages from linking with private-sysfs discovery disabled. Its later CPU numerical pass is valid, but the historical compilation is not described as diagnostic-free. Original logs and superseded parser verdicts are preserved. Acceptance checks must inspect the simulator transcript as well as host stdout and recognize `Error!` and decorated `**ERROR**`, not only `Error:`.
+Warnings are retained, including the mixed-version compatibility warning below. The original failures and earlier parser mistakes are preserved as historical evidence, not rewritten ([baseline diagnostic record](../../qualification/ahls-getting-started-01/diagnostic-disposition13.json)). PART1's historical OPAE link diagnostics also remain recorded; its CPU numerical pass is not represented as a diagnostic-free original compilation.
 
 ## Installed setup
 
@@ -76,17 +76,26 @@ From the repository root:
 ```bash
 export REPO="$(git rev-parse --show-toplevel)"
 export SAMPLES="$REPO/examples/ahls/hls-samples"
-export WORK="$REPO/examples/ahls/work/getting-started"
+export WORK="$REPO/examples/ahls/work/getting-started-fixed"
 test ! -e "$WORK" || { printf 'Choose a fresh WORK directory.\n' >&2; exit 1; }
 mkdir -p "$WORK"/{home,tmp,runtime,icd,build,logs}
 ln -s /opt/altera/25.1/quartus/linux64/libstdc++.so.6 \
     "$WORK/runtime/libstdc++.so.6"
 printf 'libintelocl_emu.so\n' > "$WORK/icd/Intel_FPGA_SSG_Emulator.icd"
 
+# File-only preparation outside the compiler namespace; SDK input stays unchanged.
+export SDK_LSU=/home/uwb_student00/ahls/altera_hls/aclsycl/ip/lsu_top.sv
+cmake -S "$REPO/examples/ahls/compatibility/lsu-family" \
+    -B "$WORK/lsu-overlay" \
+    -DFPGA_DEVICE=AGFB027R25A2E2V \
+    -DAHLS_LSU_TOP="$SDK_LSU"
+
 /usr/bin/bwrap --die-with-parent --unshare-pid \
     --ro-bind / / --bind "$WORK" "$WORK" \
     --ro-bind "$SAMPLES" "$SAMPLES" \
     --ro-bind "$WORK/icd" /etc/OpenCL/vendors \
+    --ro-bind "$WORK/lsu-overlay" "$WORK/lsu-overlay" \
+    --ro-bind "$WORK/lsu-overlay/lsu_top.sv" "$SDK_LSU" \
     --dev /dev --proc /proc --tmpfs /sys --tmpfs /tmp \
     --chdir "$WORK" --setenv HOME "$WORK/home" \
     --setenv TMPDIR "$WORK/tmp" \
@@ -228,7 +237,7 @@ for SAMPLE in fast_recompile fpga_template; do
 done
 ```
 
-This runs the HLS/Quartus isolated-IP implementation flow. Keep complete native compiler/Quartus reports, actual part binding, result status and timing findings. It can take substantially longer than emulation or simulation. **Do not execute the `.fpga` output, pass it to the flash writer, or interpret it as an OFS/OPAE card test.** No application VF, FPGA flash, BMC cycle or workstation reboot is required for these standalone builds.
+This runs the HLS/Quartus isolated-IP characterization flow. Keep complete native compiler/Quartus reports, actual part binding, result status and reported Fmax. Read the **Quartus Fitter: Clock Frequency (MHz)** section of the FPGA Optimization Report; its captured data is `reports/resources/quartus_data.js` under the `.fpga.prj` directory. The generated 1000 MHz placement constraint and associated timing warnings are documented behavior, not a requirement for these components to operate at 1 GHz. `-Xsclock` affects HLS scheduling effort; it is not a blanket replacement for integrated timing signoff ([handbook quotation and interpretation](../../qualification/ahls-getting-started-fix01/timing-interpretation07.json)). It can take substantially longer than emulation or simulation. **Do not execute the `.fpga` output, pass it to the flash writer, or interpret it as an OFS/OPAE card test.** No application VF, FPGA flash, BMC cycle or workstation reboot is required for these standalone builds.
 
 ## Evidence and repeatability
 

@@ -1,0 +1,811 @@
+{
+  "scope": "Verified Agilex7 LSU instantiation-family correction and documented timing-characterization assessment correction; no board-runtime restoration or real-card execution",
+  "base_commit": "b66cf12b7d466981927f1b886c871e721409786c",
+  "included": {
+    "GOAL-PROMPT.md": {
+      "bytes": 18950,
+      "sha256": "4fcb878c57a7aec3ece7967c2ad8b823d5af09044c7312eff435c0fd8b2c1d0d"
+    },
+    "README.md": {
+      "bytes": 12102,
+      "sha256": "608db36d1a709ba5ad8e7e2e664b3d2afbd4c8769936a6d2e35375c8c425f52a"
+    },
+    "examples/ahls/README.md": {
+      "bytes": 17969,
+      "sha256": "fa43bfdee8bbe6659acd9fb554303ff035b98d32c14020b9e6b2cda5cb4bdecc"
+    },
+    "examples/ahls/compatibility/lsu-family/CMakeLists.txt": {
+      "bytes": 1659,
+      "sha256": "1b8efedaeb4b6ffb7a4f247f557c36fe200080279335449a1401e2313b2bc39d"
+    },
+    "examples/ahls/compatibility/lsu-family/README.md": {
+      "bytes": 5483,
+      "sha256": "2a0db6db7509e6cbe4c49144446ec9b0abdddb2885e0c5a211e14b761f9601e8"
+    },
+    "examples/ahls/compatibility/lsu-family/lsu-family.patch": {
+      "bytes": 950,
+      "sha256": "d355bfd4ee6cace0d97c1d6e1ea79aa712fa3820e5429fe2b6dfb7eb31815f56"
+    },
+    "qualification/ahls-getting-started-01/CURRENT.md": {
+      "bytes": 4898,
+      "sha256": "c05c721c90c73c4bba62fa319d947284043794ef26ba8bb861ee7ad4c2bb5d7c"
+    },
+    "qualification/ahls-getting-started-01/RESULT.md": {
+      "bytes": 8793,
+      "sha256": "fbc1ed78af19057d1630a93331da4e9aba536c3f1bd16001b8d1e077ba5bc3da"
+    },
+    "qualification/ahls-getting-started-fix01/.gitignore": {
+      "bytes": 102,
+      "sha256": "a5bb933f6bbfc5e7420dcf1169ae3e80a9f9f5f7f37ec3cccf7944bc4b475e28"
+    },
+    "qualification/ahls-getting-started-fix01/CURRENT.md": {
+      "bytes": 4055,
+      "sha256": "ffe7df10b8de23e4a4b4f02232c020bea6bcab25c4397e90729645d3743ac883"
+    },
+    "qualification/ahls-getting-started-fix01/RESULT.md": {
+      "bytes": 7477,
+      "sha256": "098639cfb6673333b400b0607cef8a46da1d70493b632d91f9b95c03bdd01bf2"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build.log": {
+      "bytes": 6969,
+      "sha256": "90e18f85dad33ee4f87366f42b1879437dff36e098985849877bc8edbbbd7906"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/CMakeCache.txt": {
+      "bytes": 13129,
+      "sha256": "e9fcc22355de8375a66dba6fb2b210326d8023d20c681ea17112ceb33ad46751"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/CMakeFiles/fpga.dir/link.txt": {
+      "bytes": 289,
+      "sha256": "16a5983bbf697d8afadfdc824488dde5a1f63aa4fd84d516f2862a0796e80b11"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/CMakeFiles/fpga_emu.dir/link.txt": {
+      "bytes": 145,
+      "sha256": "0ac1c8e7795c601e0eea280ea26e95265924469134860672768acf4a757af760"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/CMakeFiles/fpga_sim.dir/link.txt": {
+      "bytes": 311,
+      "sha256": "173faa917dcaf1a6fe19b7ca2885af17558563f25b607eb348de0176fd1abfde"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/CMakeFiles/report.dir/link.txt": {
+      "bytes": 198,
+      "sha256": "a7ec277e0a0bc4bf8c9a5a76ed29343933b89c85aa790171c9e19dfe1f328227"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/compile_commands.json": {
+      "bytes": 3573,
+      "sha256": "650cc984a9cd9ff9ec47f0dda6472447af44fbc64d7e5b20e76ad4386e4a20c7"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/vector_add.fpga_sim.prj/ip/kernel_system/kernel_system_clk_1x/kernel_system_clk_1x_generation.rpt": {
+      "bytes": 4991,
+      "sha256": "3af58773dfb3d3dc00bfb95ce8496a5ca2c391a50f48a4ff991dd7b7f514accd"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/vector_add.fpga_sim.prj/ip/kernel_system/kernel_system_kernel_cra/kernel_system_kernel_cra_generation.rpt": {
+      "bytes": 5199,
+      "sha256": "416e76753634bba1889d3f1c65a1a74ed97f76eb8e6db3d7301cabc7ef156a6d"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/vector_add.fpga_sim.prj/ip/kernel_system/kernel_system_kernel_irq/kernel_system_kernel_irq_generation.rpt": {
+      "bytes": 5241,
+      "sha256": "38376e1e75f15360fabe881d510efd347443d7405cf6f025cd56787e9bbba624"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/vector_add.fpga_sim.prj/ip/kernel_system/kernel_system_reset/kernel_system_reset_generation.rpt": {
+      "bytes": 4966,
+      "sha256": "fcbdecac51059c461fdd4d0b1648b9702fef862211ef0a6ab977bcd93d8fd4be"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/vector_add.fpga_sim.prj/ip/kernel_system/kernel_system_vector_add_fpga_sim_sys/kernel_system_vector_add_fpga_sim_sys_generation.rpt": {
+      "bytes": 5501,
+      "sha256": "a360044bb88b9779a196f31c6e24294edb80a44d7e6cebc5e666e034850b2c03"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/vector_add.fpga_sim.prj/ip/mpsim/VectorAddID_en_cfan/VectorAddID_en_cfan_generation.rpt": {
+      "bytes": 4932,
+      "sha256": "4126d7daa9afec20ba2030acc7c9fd08bb6acad2816c5d42bd10d7f336ba1b1e"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/vector_add.fpga_sim.prj/ip/mpsim/cct_comp_stall/cct_comp_stall_generation.rpt": {
+      "bytes": 4813,
+      "sha256": "08cb6323ab589b83a6c2cddf1085e8df61f11d019ef7d430eb210791d702f49c"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/vector_add.fpga_sim.prj/ip/mpsim/done_cfan/done_cfan_generation.rpt": {
+      "bytes": 4662,
+      "sha256": "2c276da09bb5c59fca2f523b84ca83e181e71594b5fa75d3462ce1cd5fbbe47d"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/vector_add.fpga_sim.prj/ip/mpsim/dpic_VectorAddID/dpic_VectorAddID_generation.rpt": {
+      "bytes": 4936,
+      "sha256": "f1af007ff21d9af500dd9f5fc2b78368730d5c79033c12aa283fc0417eecb6f5"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/vector_add.fpga_sim.prj/ip/mpsim/mm_agent_ks_mem0_rw/mm_agent_ks_mem0_rw_generation.rpt": {
+      "bytes": 4904,
+      "sha256": "5d688d9419a0c875e36701c78d3e012b2c42cef2d505120d4295aa76d1c695bb"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/vector_add.fpga_sim.prj/ip/mpsim/mpsim_avmm_agent_cra_inst/mpsim_avmm_agent_cra_inst_generation.rpt": {
+      "bytes": 5061,
+      "sha256": "004d0c04c214696d7982e26a365052e29a404f3f12d1793970fcd1725f379176"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/vector_add.fpga_sim.prj/ip/mpsim/mpsim_clk_rst/mpsim_clk_rst_generation.rpt": {
+      "bytes": 4743,
+      "sha256": "17701b11b784275b95926e4ff7d3d53bccc36070f4e033d50ea00395cbb40268"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/vector_add.fpga_sim.prj/ip/mpsim/mpsim_ki/mpsim_ki_generation.rpt": {
+      "bytes": 9521,
+      "sha256": "e7d46d020668a724db9576e235b7756e0db2c316c1004b782e88b4a48aca8c58"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/vector_add.fpga_sim.prj/ip/mpsim/mpsim_oirq/mpsim_oirq_generation.rpt": {
+      "bytes": 4673,
+      "sha256": "2dfe5fb61dadf702ead613362fb83f4f91e0145123f0832c3af0382c3da262b5"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/vector_add.fpga_sim.prj/ip/mpsim/sp_csr_ready/sp_csr_ready_generation.rpt": {
+      "bytes": 4751,
+      "sha256": "0a5940b2835551f8fb933b4b1e1004472bcefcf67c94735b8c403f44e47e4547"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/vector_add.fpga_sim.prj/logs/vector_add_fpga_sim.log": {
+      "bytes": 322677,
+      "sha256": "309ad7c915ca231915290e935b96e6c7c393b01aa6e62a1493129dc96c012872"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/vector_add.fpga_sim.prj/quartus_sh_compile.log": {
+      "bytes": 631,
+      "sha256": "c479aaa16a9901d4ab27a8c001ed66e2a7dc04e035786ec4520da0f681d009f3"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/vector_add.fpga_sim.prj/transcript.log": {
+      "bytes": 48969,
+      "sha256": "5d1c56da616e3564973d794c602323c2de4c6991971c40d23f1dbffcc8ac37dd"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/build/vector_add.fpga_sim.prj/vector_add_fpga_sim_di.sv": {
+      "bytes": 36656,
+      "sha256": "97decc5acd8a80989049f77ae823f1b8a3a8854dea202d7a3828547838e97c53"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/configure.log": {
+      "bytes": 1151,
+      "sha256": "b127bbf1f786af859deff82cbc2ca5c1964aef1887de616da8d335af688117cd"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/mountinfo.log": {
+      "bytes": 5963,
+      "sha256": "cc2768209d6ede58da7421a4a042c567e49e237a5570fdf6cf822556af34f5e6"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/outer.log": {
+      "bytes": 574,
+      "sha256": "a31b4d99bee1db6aa80bad8e1ae6dc1276719403c77695c544ee2d19e6ca14f8"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/result.json": {
+      "bytes": 11202,
+      "sha256": "4c3f2b2ba48a648b09656692d1fd392af402735a1b26b1bdf5490127701ff73f"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/run.log": {
+      "bytes": 107,
+      "sha256": "dc842f8bd2f251baa778ca56ff62b34c8ae108082182a09aa94a5ab77a3590c4"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/simulator-license.log": {
+      "bytes": 38,
+      "sha256": "8b654c23e783fd109d10c072fb0290524e7b66daa63c39f0f47f426a54a7a664"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part2-sim/versions.log": {
+      "bytes": 507,
+      "sha256": "9458afb273663baba5e39104b3def15382c12f665e6b6ae3f6b154a527c260fd"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build.log": {
+      "bytes": 6960,
+      "sha256": "f2e13253b4ef4fab70d3c8431963228547fd629d01c8ad1a5f715804fc6dc709"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/CMakeCache.txt": {
+      "bytes": 13129,
+      "sha256": "ff9c1ba8b17cbf8424258063cbdefde83a4d99115bee6492bd171054d0c5506e"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/CMakeFiles/fpga.dir/link.txt": {
+      "bytes": 288,
+      "sha256": "628052a4e38c093d2dfb9ce1878085b0323fd74234e9ca07eb4c5c79d4b46fa3"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/CMakeFiles/fpga_emu.dir/link.txt": {
+      "bytes": 144,
+      "sha256": "c54980e6bda96f997abe2693e7a34c9157a08d2733133d99f489229ee286bc7f"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/CMakeFiles/fpga_sim.dir/link.txt": {
+      "bytes": 310,
+      "sha256": "5dd17e55942bfdf27c0093a78ccb464dfe7e3ff80593e4d1a2784a7a612f0260"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/CMakeFiles/report.dir/link.txt": {
+      "bytes": 197,
+      "sha256": "bb8107c913a302375bb14d88dc491776c6c4bdb7100bb0c0b91827bc26b0bd2d"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/compile_commands.json": {
+      "bytes": 3557,
+      "sha256": "fe11da51536ec2d32bba5e21c39b0ec787ecf08bca6b43f12b1db10af45371af"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/vector_add.fpga_sim.prj/ip/kernel_system/kernel_system_clk_1x/kernel_system_clk_1x_generation.rpt": {
+      "bytes": 4991,
+      "sha256": "5d5d8a6fd6a65d6a14f109db485835acc4ecdf3a1a30629c78b162e10557c21b"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/vector_add.fpga_sim.prj/ip/kernel_system/kernel_system_kernel_cra/kernel_system_kernel_cra_generation.rpt": {
+      "bytes": 5199,
+      "sha256": "764156d206d18730e680a5eada65eafdf805c1742c2b44d176529a130e7d323e"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/vector_add.fpga_sim.prj/ip/kernel_system/kernel_system_kernel_irq/kernel_system_kernel_irq_generation.rpt": {
+      "bytes": 5241,
+      "sha256": "3ee30ee9bdf3cce2f375934845c8e71a081e4f9302571e7afee7df2877d25965"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/vector_add.fpga_sim.prj/ip/kernel_system/kernel_system_reset/kernel_system_reset_generation.rpt": {
+      "bytes": 4966,
+      "sha256": "b5d27e3f8a8f8970be4ab0707c230669626ac800f27db9243239871ab64b2cc6"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/vector_add.fpga_sim.prj/ip/kernel_system/kernel_system_vector_add_fpga_sim_sys/kernel_system_vector_add_fpga_sim_sys_generation.rpt": {
+      "bytes": 5501,
+      "sha256": "69b7c417de806ebbef048f75445fc5b7084164813e677d3f85a0f2a0031803d1"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/vector_add.fpga_sim.prj/ip/mpsim/VectorAddID_en_cfan/VectorAddID_en_cfan_generation.rpt": {
+      "bytes": 4932,
+      "sha256": "60af9b1a14b120408483abce9b0c29b876b9fa69aae36091ecabe590a6eb108f"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/vector_add.fpga_sim.prj/ip/mpsim/cct_comp_stall/cct_comp_stall_generation.rpt": {
+      "bytes": 4813,
+      "sha256": "cd35b806d7d06c03563b08eec315fba2ad40bad3a622522396c91a70c2350c32"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/vector_add.fpga_sim.prj/ip/mpsim/done_cfan/done_cfan_generation.rpt": {
+      "bytes": 4662,
+      "sha256": "038a030f2b0163316afb89879aa4b41aa1c597695fb2e16d28381390dedeb060"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/vector_add.fpga_sim.prj/ip/mpsim/dpic_VectorAddID/dpic_VectorAddID_generation.rpt": {
+      "bytes": 4936,
+      "sha256": "da35d2a6e69a80a4d7f5d9ac5bd8bfc95e3971718c3b1e43fab00aeb212b6604"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/vector_add.fpga_sim.prj/ip/mpsim/mm_agent_ks_mem0_rw/mm_agent_ks_mem0_rw_generation.rpt": {
+      "bytes": 4904,
+      "sha256": "5ee63c8332717423935a5dea67e578a9529b785a1e9fe615f5d574a8faf774d3"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/vector_add.fpga_sim.prj/ip/mpsim/mpsim_avmm_agent_cra_inst/mpsim_avmm_agent_cra_inst_generation.rpt": {
+      "bytes": 5061,
+      "sha256": "ee77b457640c58b457511da1ce6a5e551fac1a9eb7cb8689bf3d8bc7202181f7"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/vector_add.fpga_sim.prj/ip/mpsim/mpsim_clk_rst/mpsim_clk_rst_generation.rpt": {
+      "bytes": 4743,
+      "sha256": "72d3c6290af2d9828ceeeb5f8e1fe712adfe53c784716d5f2b189ad5d20f43d1"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/vector_add.fpga_sim.prj/ip/mpsim/mpsim_ki/mpsim_ki_generation.rpt": {
+      "bytes": 9521,
+      "sha256": "e5bcec4ec74f0d05518bf6e2433fc5b82b4291672a75da804871b813c5d8135c"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/vector_add.fpga_sim.prj/ip/mpsim/mpsim_oirq/mpsim_oirq_generation.rpt": {
+      "bytes": 4673,
+      "sha256": "8639df3f7553f89eb8817e86560076919276d5c2a33841d31e75f72eb46be245"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/vector_add.fpga_sim.prj/ip/mpsim/sp_csr_ready/sp_csr_ready_generation.rpt": {
+      "bytes": 4751,
+      "sha256": "5b437374145437ee07e082284c6b9135e545882462410ac59b1f3c3205c9e121"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/vector_add.fpga_sim.prj/logs/vector_add_fpga_sim.log": {
+      "bytes": 312842,
+      "sha256": "c94470693ada8ee01e353051aa478b3c3a287d99cb954292b0050359ef5f9544"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/vector_add.fpga_sim.prj/quartus_sh_compile.log": {
+      "bytes": 631,
+      "sha256": "8402ef5f55f7ed475a935009549eb3fec887c3aad8aa3156e4fb9a1fd45769ad"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/vector_add.fpga_sim.prj/transcript.log": {
+      "bytes": 46723,
+      "sha256": "aac2fd01730a8f0f9bbfafcdc9aca791461b3ce0a3d9dc277b42f3892160c3dd"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/build/vector_add.fpga_sim.prj/vector_add_fpga_sim_di.sv": {
+      "bytes": 36122,
+      "sha256": "4a9a439341d7a5ead9360a1ed817d807c83472cc5498d1ca1a95b297e45c10b5"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/configure.log": {
+      "bytes": 1150,
+      "sha256": "bfff513714518e6cbae4d20d7c671524bebb0aae83e86e9ea3b6caf7869c0b81"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/mountinfo.log": {
+      "bytes": 5963,
+      "sha256": "75efc0e04f14a21fb11b7defca23005b57b4aff6f47167093c8c50a3ce621f3c"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/outer.log": {
+      "bytes": 574,
+      "sha256": "6fc56ac8eafa4b03e2fc844f63a28adced34899e33318ebba0494d38226729fc"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/result.json": {
+      "bytes": 11198,
+      "sha256": "48ca0a9c379735bb152ca75fd2f480310ea0bf680125ec35a73c12a1502935a6"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/run.log": {
+      "bytes": 107,
+      "sha256": "dc842f8bd2f251baa778ca56ff62b34c8ae108082182a09aa94a5ab77a3590c4"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/simulator-license.log": {
+      "bytes": 38,
+      "sha256": "8b654c23e783fd109d10c072fb0290524e7b66daa63c39f0f47f426a54a7a664"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part3-sim/versions.log": {
+      "bytes": 507,
+      "sha256": "9458afb273663baba5e39104b3def15382c12f665e6b6ae3f6b154a527c260fd"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build.log": {
+      "bytes": 6996,
+      "sha256": "cf7c0c0fa5d9329d1347811685c09eb5fdd69ae4efe3b2b1628a696a1cd11332"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/CMakeCache.txt": {
+      "bytes": 13129,
+      "sha256": "db247b2d36c5dcaf9b0419c3898d66d5486ae8623c6f60fd4d8102dfd56810bf"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/CMakeFiles/fpga.dir/link.txt": {
+      "bytes": 292,
+      "sha256": "63ac65e1958377bc3e18dedef3e7a70412272402c2ad23a1338d50ae9df406c5"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/CMakeFiles/fpga_emu.dir/link.txt": {
+      "bytes": 148,
+      "sha256": "3265cc7687dd5c8794f77cda439d11ad53a3ce820dd528feadaec2a5aafcb732"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/CMakeFiles/fpga_sim.dir/link.txt": {
+      "bytes": 314,
+      "sha256": "bdcd4033e056d471fd4f377002ecd84d9f11c4b4977eb6f18fe173e103a82f67"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/CMakeFiles/report.dir/link.txt": {
+      "bytes": 201,
+      "sha256": "a331fef3a9d3ec928fb0085a036413361e2dfcc8dac7f8209d7c72487b697847"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/compile_commands.json": {
+      "bytes": 3621,
+      "sha256": "1d5c84ad5e415171d8d1f61b0a7147056cca21b8a5c882b904f98b7d9649c1bb"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/vector_add.fpga_sim.prj/ip/kernel_system/kernel_system_clk_1x/kernel_system_clk_1x_generation.rpt": {
+      "bytes": 4991,
+      "sha256": "d504f5274d9e50c9aa6394fd8e4dd06adb760b88d291111b43f618f1464a28b3"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/vector_add.fpga_sim.prj/ip/kernel_system/kernel_system_kernel_cra/kernel_system_kernel_cra_generation.rpt": {
+      "bytes": 5199,
+      "sha256": "3068e9e062a93f650af1cdcc3a5928b764d2df340265042e50d24467a80b2516"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/vector_add.fpga_sim.prj/ip/kernel_system/kernel_system_kernel_irq/kernel_system_kernel_irq_generation.rpt": {
+      "bytes": 5241,
+      "sha256": "15771215e09ab8e6d754cf2b527d1e3708bdc7feeea8bca946dd0495123f03a4"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/vector_add.fpga_sim.prj/ip/kernel_system/kernel_system_reset/kernel_system_reset_generation.rpt": {
+      "bytes": 4966,
+      "sha256": "f3c62ea604a2b6436edac5308910a57b8214b058a3197f8f7120fa004bbcd2b2"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/vector_add.fpga_sim.prj/ip/kernel_system/kernel_system_vector_add_fpga_sim_sys/kernel_system_vector_add_fpga_sim_sys_generation.rpt": {
+      "bytes": 5501,
+      "sha256": "d58b9d0ba0a4a647eb9bc917923daca8e3e5858957ef0fc94beb4101f30ceaf6"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/vector_add.fpga_sim.prj/ip/mpsim/VectorAddID_en_cfan/VectorAddID_en_cfan_generation.rpt": {
+      "bytes": 4932,
+      "sha256": "73f40a02457e096bf0503a1e6e2b7919b5f3b782fd462758a6a146b9439f62c4"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/vector_add.fpga_sim.prj/ip/mpsim/cct_comp_stall/cct_comp_stall_generation.rpt": {
+      "bytes": 4813,
+      "sha256": "ff197bd2b90c27e1b3c80dd6794a5e7642dfa561e389c7af93b0b6d281556459"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/vector_add.fpga_sim.prj/ip/mpsim/done_cfan/done_cfan_generation.rpt": {
+      "bytes": 4662,
+      "sha256": "46337d778114b2510dc8978189593f592b9555db280bb0d835c994ca8a87fd2d"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/vector_add.fpga_sim.prj/ip/mpsim/dpic_VectorAddID/dpic_VectorAddID_generation.rpt": {
+      "bytes": 4936,
+      "sha256": "f53509384c52a22e9d743105d73dd45eb9bc2bf21c43d5d324df18ce5fddca1b"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/vector_add.fpga_sim.prj/ip/mpsim/mm_agent_ks_mem0_rw/mm_agent_ks_mem0_rw_generation.rpt": {
+      "bytes": 4904,
+      "sha256": "cb7675d8fe996397230321334f782bb4e25ad1921fdce0bfd2e54c95ecd51f12"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/vector_add.fpga_sim.prj/ip/mpsim/mpsim_avmm_agent_cra_inst/mpsim_avmm_agent_cra_inst_generation.rpt": {
+      "bytes": 5061,
+      "sha256": "4b3046246758605bfff0f007e3fc311043329922b9c7b784405fdb2720e2e4eb"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/vector_add.fpga_sim.prj/ip/mpsim/mpsim_clk_rst/mpsim_clk_rst_generation.rpt": {
+      "bytes": 4743,
+      "sha256": "c14206b211645c974fc982d11e0c2fa885acbca2c6c3c905c504f92f84f9c12e"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/vector_add.fpga_sim.prj/ip/mpsim/mpsim_ki/mpsim_ki_generation.rpt": {
+      "bytes": 9521,
+      "sha256": "fad0b0ce8fbf89f70cf498151f27356d5f447b1ebc58a367bda16f83e84c04d7"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/vector_add.fpga_sim.prj/ip/mpsim/mpsim_oirq/mpsim_oirq_generation.rpt": {
+      "bytes": 4673,
+      "sha256": "774ae69bbcbe17694c69559e5bc1d8bcbe0604ddf16ba57a4622932b9dc308ce"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/vector_add.fpga_sim.prj/ip/mpsim/sp_csr_ready/sp_csr_ready_generation.rpt": {
+      "bytes": 4751,
+      "sha256": "e489ee8322f2acc6656f5623f6ad27a09a3a61d879e81d4deb303315f4a9edff"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/vector_add.fpga_sim.prj/logs/vector_add_fpga_sim.log": {
+      "bytes": 315339,
+      "sha256": "cb2bebff457298de042ca396b369c3e1038c7ef57acad1aecad95491da408690"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/vector_add.fpga_sim.prj/quartus_sh_compile.log": {
+      "bytes": 631,
+      "sha256": "2f3a81e62117b1cea6b67c725b5cac8677e58931df8115dbae6fff0b8706388c"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/vector_add.fpga_sim.prj/transcript.log": {
+      "bytes": 47226,
+      "sha256": "1242627601ab8a945886da11fd674859d4a2a2f20ef01f81f43f33e97eb08df7"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/build/vector_add.fpga_sim.prj/vector_add_fpga_sim_di.sv": {
+      "bytes": 38881,
+      "sha256": "c4ae1b131dc4a95b7689d2e3bc11cea20dc6e4a298aece0f0d9a58ed999cb4bf"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/configure.log": {
+      "bytes": 1154,
+      "sha256": "810ea9fa1656689b3c3cd32136d644261e7bb1d3afb8535cdec6f8bbf3ec5eeb"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/mountinfo.log": {
+      "bytes": 5963,
+      "sha256": "362f9c3de83d776d2491460f88b324517620603ef2707858b81c5dffa60356ae"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/outer.log": {
+      "bytes": 574,
+      "sha256": "151f64e077e05b83dd24037c93212d9defb3530ba653cc95f4b916473c99f684"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/result.json": {
+      "bytes": 11214,
+      "sha256": "7c5bd97fdbbe928bdb335e9272b8984b76570be9f94b72a04e36e9129b751062"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/run.log": {
+      "bytes": 107,
+      "sha256": "dc842f8bd2f251baa778ca56ff62b34c8ae108082182a09aa94a5ab77a3590c4"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/simulator-license.log": {
+      "bytes": 38,
+      "sha256": "8b654c23e783fd109d10c072fb0290524e7b66daa63c39f0f47f426a54a7a664"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/part4-sim/versions.log": {
+      "bytes": 507,
+      "sha256": "9458afb273663baba5e39104b3def15382c12f665e6b6ae3f6b154a527c260fd"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build.log": {
+      "bytes": 6895,
+      "sha256": "ed94354d23743f1a7cf60678dd17032fd23a0de37e763b7d35c53a3af33b7167"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/CMakeCache.txt": {
+      "bytes": 13078,
+      "sha256": "2811769e710ed5852bbbe53837b519cba486e5479561039f37e09c5a6c0993be"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/CMakeFiles/fpga.dir/link.txt": {
+      "bytes": 277,
+      "sha256": "1defe627d651b278530402ae60aaa7075edf2825bf1fd30e670b9bfd472ce875"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/CMakeFiles/fpga_emu.dir/link.txt": {
+      "bytes": 127,
+      "sha256": "25280eff30fcc3831c59d3e64b26d511b3a37808f8af2e00f1fc9fbf9ec4cd16"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/CMakeFiles/fpga_sim.dir/link.txt": {
+      "bytes": 299,
+      "sha256": "c98d4feb6011b6fb992022820f528793eace999c6b0b876498fd6016cff71b6e"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/CMakeFiles/report.dir/link.txt": {
+      "bytes": 180,
+      "sha256": "9d7e5f8c71be1b9d01fbbcfc187c2ac00e887338bb389d5b8a74210b0252068a"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/compile_commands.json": {
+      "bytes": 3249,
+      "sha256": "fdba7f88cdff329ac347a3fc6af07eee5c7d76b845e9847b81a2926ca308b99a"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/fpga_template.fpga_sim.prj/fpga_template_fpga_sim_di.sv": {
+      "bytes": 36662,
+      "sha256": "2f3c715b557233746b98ec92bd8f91f72467158e0f98e265da59a2413e0aeb20"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/fpga_template.fpga_sim.prj/ip/kernel_system/kernel_system_clk_1x/kernel_system_clk_1x_generation.rpt": {
+      "bytes": 5087,
+      "sha256": "3f141ec686b6f4f62c16138661e347bdd676859b6f3e8134d2299495db427bfa"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/fpga_template.fpga_sim.prj/ip/kernel_system/kernel_system_fpga_template_fpga_sim_sys/kernel_system_fpga_template_fpga_sim_sys_generation.rpt": {
+      "bytes": 5678,
+      "sha256": "4136ef32eb90ec539faf7a020ae36b1cadf7ba1b70083963067097e47f90e46b"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/fpga_template.fpga_sim.prj/ip/kernel_system/kernel_system_kernel_cra/kernel_system_kernel_cra_generation.rpt": {
+      "bytes": 5295,
+      "sha256": "477919e2b657c4216af3aa3a9fe87171f986114a97f7c9432027a810b39b7e3e"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/fpga_template.fpga_sim.prj/ip/kernel_system/kernel_system_kernel_irq/kernel_system_kernel_irq_generation.rpt": {
+      "bytes": 5337,
+      "sha256": "e70d09f595c0546556c1cefce92045659bbef804b660cc2b92cd352b001b1b2b"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/fpga_template.fpga_sim.prj/ip/kernel_system/kernel_system_reset/kernel_system_reset_generation.rpt": {
+      "bytes": 5062,
+      "sha256": "e01087de23a1356de3d525565a26228856d4669d2c7827563e59f221781614c7"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/fpga_template.fpga_sim.prj/ip/mpsim/VectorAddID_en_cfan/VectorAddID_en_cfan_generation.rpt": {
+      "bytes": 5028,
+      "sha256": "7a72f5e0a7a5f79b376ef6402826b02618073bcce5b49cfe4c61305ec4ca796f"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/fpga_template.fpga_sim.prj/ip/mpsim/cct_comp_stall/cct_comp_stall_generation.rpt": {
+      "bytes": 4909,
+      "sha256": "9a7564b17d7b9b040d1589ec0cf5445279654149ec75466a7ec10ec7a7c3d96d"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/fpga_template.fpga_sim.prj/ip/mpsim/done_cfan/done_cfan_generation.rpt": {
+      "bytes": 4758,
+      "sha256": "8663dcf7a4e705d21b342e2e545b60cce57b233f0fd4de94515e1ffb86996043"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/fpga_template.fpga_sim.prj/ip/mpsim/dpic_VectorAddID/dpic_VectorAddID_generation.rpt": {
+      "bytes": 5032,
+      "sha256": "e025ea8ac0256c5e9df16b1992b3200db5da99772978f52fa44b0e0e7e60c5b3"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/fpga_template.fpga_sim.prj/ip/mpsim/mm_agent_ks_mem0_rw/mm_agent_ks_mem0_rw_generation.rpt": {
+      "bytes": 5000,
+      "sha256": "bafd7e22c0d9437d35e0e4d91d33132f6cb8dab9466253f0f05b7ed49107daa3"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/fpga_template.fpga_sim.prj/ip/mpsim/mpsim_avmm_agent_cra_inst/mpsim_avmm_agent_cra_inst_generation.rpt": {
+      "bytes": 5157,
+      "sha256": "a8c073932ce6b32956bb03de76af2d2a02e771ba20c892db3a4e32d8584a0b61"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/fpga_template.fpga_sim.prj/ip/mpsim/mpsim_clk_rst/mpsim_clk_rst_generation.rpt": {
+      "bytes": 4839,
+      "sha256": "da54469f672ed97d8dd467b8346e28c1a5a6312f5ba5c6ec47cff40997646f07"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/fpga_template.fpga_sim.prj/ip/mpsim/mpsim_ki/mpsim_ki_generation.rpt": {
+      "bytes": 9617,
+      "sha256": "668d2b1551f96af77b39b17b8b2770b89d550baee3c704eaf61d5b99282bb893"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/fpga_template.fpga_sim.prj/ip/mpsim/mpsim_oirq/mpsim_oirq_generation.rpt": {
+      "bytes": 4769,
+      "sha256": "75c2940a32308cc56c882ac49fa9805e9a01729dad34c613ecd35c3b4809090c"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/fpga_template.fpga_sim.prj/ip/mpsim/sp_csr_ready/sp_csr_ready_generation.rpt": {
+      "bytes": 4847,
+      "sha256": "2fa2b8b5b9eefeb96f3a5d02d1561eb7625576c3ed5d30df6d3ae45a714d35c9"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/fpga_template.fpga_sim.prj/logs/fpga_template_fpga_sim.log": {
+      "bytes": 326178,
+      "sha256": "c301ad26f19f8596451488a8a2564eacedb5f01d6e54f4533fbaaff226c65558"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/fpga_template.fpga_sim.prj/quartus_sh_compile.log": {
+      "bytes": 649,
+      "sha256": "1ee01aa62e1c1c1930155663efdfa6dce3dc8373c34d11a8776e9be015268a97"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/build/fpga_template.fpga_sim.prj/transcript.log": {
+      "bytes": 49746,
+      "sha256": "ac5b78cca0a5812216bcda9e9d8ad562a4ac3689b7d70683aa0cf57509a60f23"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/configure.log": {
+      "bytes": 1092,
+      "sha256": "ee69c47e04dd84391db133ad0f6f342e91029a66e3465c2f0bc3e8ab0528c5ee"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/mountinfo.log": {
+      "bytes": 5969,
+      "sha256": "53455b34e1121d8ded3ced61421e8a1de0e0f396321bafee9d8b7adaa7cea73a"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/outer.log": {
+      "bytes": 567,
+      "sha256": "046598c0b48823a23813893a7801551ac044923d79bacbed5eb0129c01953b70"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/result.json": {
+      "bytes": 11182,
+      "sha256": "08ce411af13450ea220280b41ce7b7971ee83ea949b18e5cf00adebc09a62db3"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/run.log": {
+      "bytes": 107,
+      "sha256": "dc842f8bd2f251baa778ca56ff62b34c8ae108082182a09aa94a5ab77a3590c4"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/simulator-license.log": {
+      "bytes": 38,
+      "sha256": "8b654c23e783fd109d10c072fb0290524e7b66daa63c39f0f47f426a54a7a664"
+    },
+    "qualification/ahls-getting-started-fix01/capture13/runs/template-sim/versions.log": {
+      "bytes": 507,
+      "sha256": "9458afb273663baba5e39104b3def15382c12f665e6b6ae3f6b154a527c260fd"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build.log": {
+      "bytes": 7023,
+      "sha256": "a44bcf16a41eff3ce42759dfdf1a2e5e61f18645e54cc021c71203c0ad69d25d"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/CMakeCache.txt": {
+      "bytes": 13074,
+      "sha256": "1018cc25f24dca3343b7ccfc76226a201734afe71c76ee4baa883d0c43ad219c"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/CMakeFiles/fpga.dir/link.txt": {
+      "bytes": 276,
+      "sha256": "99fc3ac514640c3610f58d8773585efd0f04a154c5bde80aceca5d0c95b12751"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/CMakeFiles/fpga_emu.dir/link.txt": {
+      "bytes": 127,
+      "sha256": "25280eff30fcc3831c59d3e64b26d511b3a37808f8af2e00f1fc9fbf9ec4cd16"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/CMakeFiles/fpga_sim.dir/link.txt": {
+      "bytes": 298,
+      "sha256": "6e07a54a8fa00486a132c946950bb35570ae3b751d4d3a8c0a8e4ca11a748e11"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/CMakeFiles/report.dir/link.txt": {
+      "bytes": 180,
+      "sha256": "9d7e5f8c71be1b9d01fbbcfc187c2ac00e887338bb389d5b8a74210b0252068a"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/compile_commands.json": {
+      "bytes": 3245,
+      "sha256": "436c332b46e961133d6dad2272289d2c956971a89bb365c186b7ef1f08185134"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/fpga_template.fpga.prj/fpga_template_fpga_di.sv": {
+      "bytes": 36654,
+      "sha256": "94d5ab604c9bfeb86b25231fe124deb9f09763fa06292911e41cff4476b7bbae"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/fpga_template.fpga.prj/logs/fpga_template_fpga.log": {
+      "bytes": 828,
+      "sha256": "5cadbec8e0b9ec928aafa46e2fd5fd86d80e91dffc80828feb25fb149e6c6d17"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/fpga_template.fpga.prj/quartus_compile.drc.partitioned.rpt": {
+      "bytes": 7978,
+      "sha256": "31cf8a39f52c9b65f17f9e98b31f8287262e1a391b3326ed4cd24e0a28d4375d"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/fpga_template.fpga.prj/quartus_compile.drc.synthesized.rpt": {
+      "bytes": 1288987,
+      "sha256": "52993545bb4a4703dbf0f102f62069b0c9f427f9fcea44c556cc975f024c714c"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/fpga_template.fpga.prj/quartus_compile.fit.finalize.rpt": {
+      "bytes": 4340,
+      "sha256": "0e45aa96408dbd10057449e982eeb07797eb7ff71c94ffa105722139502e12e9"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/fpga_template.fpga.prj/quartus_compile.fit.place.rpt": {
+      "bytes": 536324,
+      "sha256": "68b4d3d89d2deac516af51fbb9a3aed8280a03cbb3aa6f577ac2e91f39793df9"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/fpga_template.fpga.prj/quartus_compile.fit.plan.rpt": {
+      "bytes": 933031,
+      "sha256": "1f934014b3887dee29a5391d9c59cf33b447b9cb141158a222e1304936cf87f1"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/fpga_template.fpga.prj/quartus_compile.fit.retime.rpt": {
+      "bytes": 106054,
+      "sha256": "c12706593a843c21c20383f0376959a02e5ac177e1f3408252c61fe19f67379d"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/fpga_template.fpga.prj/quartus_compile.fit.route.rpt": {
+      "bytes": 118437,
+      "sha256": "950dbad42304f0cd6356b13d29feaae75cc464f29a3b095a629aa213082cf854"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/fpga_template.fpga.prj/quartus_compile.fit.summary": {
+      "bytes": 732,
+      "sha256": "01ac96f212c63091fd9a922c064e39259f33406fa05daac7b02b1f1ebe12f1f7"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/fpga_template.fpga.prj/quartus_compile.flow.rpt": {
+      "bytes": 8197,
+      "sha256": "d731b2ca6854120409ab7d7a7f6e95cf863a4d844034b856f4245bafdd7e7f65"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/fpga_template.fpga.prj/quartus_compile.sdc": {
+      "bytes": 29,
+      "sha256": "628884529a8d73c63f40c8f480d1417d1ffb946077ad4e3413a6dfaa6985a3e8"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/fpga_template.fpga.prj/quartus_compile.sta.summary": {
+      "bytes": 633,
+      "sha256": "8bcb602ffcc4517769a1c37e0e18f7caa626aa7de2ba712fe4a455d0044aee64"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/fpga_template.fpga.prj/quartus_compile.syn.summary": {
+      "bytes": 381,
+      "sha256": "c0abc31b3d909854caf9a76c3e0422d779e428ebe48b91ba76b52146f61088d4"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/fpga_template.fpga.prj/quartus_compile.tq.drc.signoff.rpt": {
+      "bytes": 1547289,
+      "sha256": "8221e4ca6f8fa781f5e251167356b700bf5425f025d3df8bb33aa84d8e5aa9a6"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/fpga_template.fpga.prj/quartus_sh_compile.log": {
+      "bytes": 49896,
+      "sha256": "f1257657fbb3a53e77526d46db8eae047ca7f65d7d71a676ee5687738a26d9bc"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/fpga_template.fpga.prj/reports/resources/quartus_data.js": {
+      "bytes": 656,
+      "sha256": "0b267442295df79ed7d323f01d55517ab70b2fe70c1f95be99ad62d0d2d1c26f"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/fpga_template.fpga.prj/top_fpga_template_fpga_di/fpga_template_fpga_di_10/synth/fpga_template_fpga_di.sv": {
+      "bytes": 36654,
+      "sha256": "94d5ab604c9bfeb86b25231fe124deb9f09763fa06292911e41cff4476b7bbae"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/build/fpga_template.fpga.prj/top_fpga_template_fpga_di/top_fpga_template_fpga_di_generation.rpt": {
+      "bytes": 1454,
+      "sha256": "736e7c84cc246de4d803edcca72bfe32e634ec060ce396bd83c8fbd5d25b29f4"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/configure.log": {
+      "bytes": 1091,
+      "sha256": "983504c79b53cce1fa427bf3c9a74bd94c5dd96a007a7e78cc323fa41c96d0c4"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/mountinfo.log": {
+      "bytes": 5967,
+      "sha256": "cd29479c51a34c6463a1f818da59de7c06b69a054764a2dc4ed53c5f1f387748"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/outer.log": {
+      "bytes": 255,
+      "sha256": "287c22c348ffa61b90a0036e429a70f325e5ffd1ef832dab2b295e6853439eea"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/result.json": {
+      "bytes": 8586,
+      "sha256": "615c0ae086757c729c13b5ac83f64f9dabf8175ceadd0fa87489b1013fe7ce68"
+    },
+    "qualification/ahls-getting-started-fix01/capture16/runs/template-ip/versions.log": {
+      "bytes": 507,
+      "sha256": "9458afb273663baba5e39104b3def15382c12f665e6b6ae3f6b154a527c260fd"
+    },
+    "qualification/ahls-getting-started-fix01/collection13.json": {
+      "bytes": 27287,
+      "sha256": "cf39f1ecf8ca95e155f740309cd0b9e722c439a1fdb4c64ec2b4822881a87b87"
+    },
+    "qualification/ahls-getting-started-fix01/collection16.json": {
+      "bytes": 8101,
+      "sha256": "4a0b1894a9a7b5c37d1f6eee98731b28ab7366c9295f16c29f7492ae20d9fdd2"
+    },
+    "qualification/ahls-getting-started-fix01/dispatch06.json": {
+      "bytes": 419,
+      "sha256": "78c7f6b32df21013380057d66e74c875fbe3bea5373caf2aa4115ae35c2372a6"
+    },
+    "qualification/ahls-getting-started-fix01/finished06.json": {
+      "bytes": 643,
+      "sha256": "f6e75345d6479c7be094ffb4d9fe848c6692e89fc05fcc3231c303597c52e05a"
+    },
+    "qualification/ahls-getting-started-fix01/jobs06.json": {
+      "bytes": 1932,
+      "sha256": "27034b950606ce05aba0df265fbd8f76d48efb87b3b3d464fb92deb9460f587e"
+    },
+    "qualification/ahls-getting-started-fix01/postflight17.json": {
+      "bytes": 1897,
+      "sha256": "6a813abeb5d16031ecdc38b8eba857c4ca4e503fb51737e0208ac10d42f39f18"
+    },
+    "qualification/ahls-getting-started-fix01/prepare-validation05.json": {
+      "bytes": 1639,
+      "sha256": "cbd6556de8588099d1f438351c717d714ca38500fc9c5b20450a4eb6f60994ad"
+    },
+    "qualification/ahls-getting-started-fix01/prepared06.json": {
+      "bytes": 4294,
+      "sha256": "826c136b6c0451685dac375437b12cf384cf7ec4c4ce7635e5549182446c414f"
+    },
+    "qualification/ahls-getting-started-fix01/qor-baseline/compile2-ip/quartus_data.js": {
+      "bytes": 656,
+      "sha256": "0b267442295df79ed7d323f01d55517ab70b2fe70c1f95be99ad62d0d2d1c26f"
+    },
+    "qualification/ahls-getting-started-fix01/qor-baseline/compile3-ip/quartus_data.js": {
+      "bytes": 656,
+      "sha256": "ae56a3f67347c64742df84412f41d6c6925c783933f326f1054a65ef69bd817f"
+    },
+    "qualification/ahls-getting-started-fix01/qor-baseline/compile4-ip/quartus_data.js": {
+      "bytes": 656,
+      "sha256": "2cb34c66df70c25b5b108fb2a647bb9b6749dd02d15ac723421f66b9261c38bb"
+    },
+    "qualification/ahls-getting-started-fix01/qor-baseline/fast-ip/quartus_data.js": {
+      "bytes": 654,
+      "sha256": "e50f45806e9a340d8d94124ecd3b809ba6122974b273ec3554f6d5b8af92f9a5"
+    },
+    "qualification/ahls-getting-started-fix01/qor-baseline/template-ip/quartus_data.js": {
+      "bytes": 656,
+      "sha256": "0b267442295df79ed7d323f01d55517ab70b2fe70c1f95be99ad62d0d2d1c26f"
+    },
+    "qualification/ahls-getting-started-fix01/run-case06.py": {
+      "bytes": 9460,
+      "sha256": "b18546f1ed6e472052561209dd0ccded3c64b6cb2b0ddcf58098caa3ee1a204b"
+    },
+    "qualification/ahls-getting-started-fix01/simulator-verification14.json": {
+      "bytes": 2376,
+      "sha256": "6112b8059ac9ac7b0b89db4aedd48d01edbdd7bc29b931e52e06ecb08a6d0240"
+    },
+    "qualification/ahls-getting-started-fix01/timing-interpretation07.json": {
+      "bytes": 4893,
+      "sha256": "135f39afd3470a0485ecd2ef8c7393fefcfe8cdca2a9843aa05f8a3d98cd97f0"
+    },
+    "qualification/ahls-getting-started-fix01/vendor-baseline11.json": {
+      "bytes": 2698,
+      "sha256": "ecd145bdc75d0c11413abf8813221adc7b789fd247f436bfc7c34e2b4b633d58"
+    },
+    "qualification/ahls-getting-started-fix01/verification18.json": {
+      "bytes": 4737,
+      "sha256": "a2bdb50d50835b63945d0aed91b2bec69f9e8f828cf35102bd1be0c66acdbbaf"
+    },
+    "qualification/ahls-getting-started-fix01/worker06.py": {
+      "bytes": 3611,
+      "sha256": "8a4937d5b88015fb9c08a9e70306cc7719b68d8db075e0467873544834ca080c"
+    }
+  },
+  "local_only_oversized_reports": {
+    "runs/template-ip/build/fpga_template.fpga.prj/quartus_compile.fit.rpt": {
+      "bytes": 2858431,
+      "sha256": "81231ff636276d668241b60af9dba6264cba739515b86082bfd73e6dddd4d1bc"
+    },
+    "runs/template-ip/build/fpga_template.fpga.prj/quartus_compile.sta.rpt": {
+      "bytes": 2890634,
+      "sha256": "6f761bce97b4b362bee5a11e249775365f8c4e2aeb9c22fc19bc12b673679899"
+    },
+    "runs/template-ip/build/fpga_template.fpga.prj/quartus_compile.syn.ae.rpt": {
+      "bytes": 2163807,
+      "sha256": "31cf13a13dc47547c4eaeca7cb5f4457e572f9f256ceaee2fa6d4cbb4b8d8b7b"
+    },
+    "runs/template-ip/build/fpga_template.fpga.prj/quartus_compile.syn.rpt": {
+      "bytes": 3293198,
+      "sha256": "0c145b90d41d744568555c35295df9174afa979c7629f907650a434b23da2aa9"
+    }
+  },
+  "excluded_source_probe_payloads": {
+    "sim-recipe-source-capture.json": {
+      "bytes": 303237,
+      "sha256": "6ac95490add7f41b87ffa6cc0d4bb445f935f11429e011251161ae45c85434fa"
+    },
+    "sim-layout-source-capture.json": {
+      "bytes": 342155,
+      "sha256": "9666609ac485e052cdba0528e93832a45b7341fef69917fe1fe3e479d398a606"
+    },
+    "initial-source-capture.json": {
+      "bytes": 226070,
+      "sha256": "6d6bbd360ec988f3bbd40350ce999f32347979d945a43191eccba99b58760878"
+    }
+  },
+  "policy": "Preserve original inputs and raw evidence; no file over2,000,000 bytes, binaries, licensed models, whole SDK sources or embedded transport payloads. This manifest is the sole additional committed file beyond included."
+}

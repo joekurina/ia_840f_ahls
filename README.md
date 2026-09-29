@@ -33,9 +33,11 @@ numerical or application-lifecycle acceptance from programming success.
 The original `fpga_compile` PART1–4, `fast_recompile`, and `fpga_template`
 samples are imported under [examples/ahls](examples/ahls/README.md), pinned to
 HLS IP Gen sample release2026.1.0. The setup guide documents native CMake build/run
-commands, CPU/emulator checks, RTL simulation, full isolated-IP compilation and
-the observed diagnostic/timing limitations. These standalone programs are not
-IA-840F card executables; they do not replace the accepted CAPS03 deployment.
+commands, the verified Agilex 7 LSU family correction, and reported component Fmax.
+The standalone flow deliberately optimizes at1000MHz; its expected timing warnings
+are not an application timing-failure gate. See the [corrected results](qualification/ahls-getting-started-fix01/RESULT.md).
+These standalone programs are not IA-840F card executables; they do not replace
+the accepted CAPS03 deployment.
 
 ## Completed memory-HLS qualification
 

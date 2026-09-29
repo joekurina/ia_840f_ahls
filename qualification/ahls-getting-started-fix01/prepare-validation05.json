@@ -1,0 +1,39 @@
+{
+  "success": true,
+  "positive_cmake_configure_rc": 0,
+  "original_sha256": "873549f18428fe6ba0797fef228c2028bf1df62076e85f1942c9dca5310cf8a0",
+  "patched_sha256": "cfee3826587686ddc36919ac18db973c620f72bfd8f555ab2f3622b19b21d333",
+  "exact_two_parameter_additions": true,
+  "negative_checks": [
+    {
+      "case": "wrong-part",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/examples/ahls/compatibility/lsu-family",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/ahls-getting-started-fix/wrong-part",
+        "-DAHLS_LSU_TOP=/home/joe/.hermes/cache/scratch/ahls-getting-started-fix/original-lsu_top.sv",
+        "-DFPGA_DEVICE=Stratix10"
+      ],
+      "rc": 1,
+      "output": "CMake Error at CMakeLists.txt:7 (message):\n  This overlay is bound to the IA-840F Agilex 7 part\n\n\n-- Configuring incomplete, errors occurred!",
+      "overlay_absent": true
+    },
+    {
+      "case": "wrong-source",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/examples/ahls/compatibility/lsu-family",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/ahls-getting-started-fix/wrong-source-build",
+        "-DAHLS_LSU_TOP=/home/joe/.hermes/cache/scratch/ahls-getting-started-fix/wrong-source.sv"
+      ],
+      "rc": 1,
+      "output": "CMake Error at CMakeLists.txt:14 (message):\n  Unreviewed HLS support source: do not apply this release-specific overlay\n\n\n-- Configuring incomplete, errors occurred!",
+      "overlay_absent": true
+    }
+  ],
+  "scope": "File-only CMake preparation; no native FPGA/simulator result claimed"
+}

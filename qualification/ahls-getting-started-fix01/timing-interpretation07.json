@@ -1,0 +1,114 @@
+{
+  "correction": "A stock 1000MHz characterization constraint is not an application timing-closure gate. Previous reporting treated the expected warnings too strongly as unresolved timing failures. Original native reports remain unchanged.",
+  "handbook": {
+    "source_document": "Altera HLS IP Gen Handbook",
+    "section": "9.1.1 Synthesize Your RTL IP Core with Quartus Prime Software",
+    "source_url": "https://docs.altera.com/r/docs/m615048/current/hls-ip-gen-handbook/1-altera-hls-ip-gen-handbook",
+    "local_archive": "/home/joe/Documents/Obsidian/School/Thesis/AHLS/Handbook/09 - Integrate Your Design.md",
+    "archive_sha256": "557fe0d7c33c4e38dc3322c925880d58abce0abd7ee14683d4379ac384c76b59",
+    "quote": "You can expect to see timing closure warnings in the Quartus\u00ae Prime logs because the generated project targets a clock speed of 1000 MHz to achieve the best possible placement for your design. The fMAX value presented in the FPGA Optimization Report estimates the maximum clock rate your component can cleanly close timing for."
+  },
+  "results": [
+    {
+      "case": "compile2-ip",
+      "reported_fmax_mhz": "667.11",
+      "raw_clock_record": {
+        "name": "Quartus Fitter: Clock Frequency (MHz)",
+        "type": "system",
+        "id": 1000,
+        "clock1x": "667.11",
+        "clock fmax": "667.11",
+        "clock": "667.11",
+        "details": [
+          {
+            "text": "The actual frequency of the clock is 667.11 MHz after platform PLL adjustment. The maximum frequency for the clock is 667.11 MHz. "
+          }
+        ]
+      },
+      "source_sha256": "0b267442295df79ed7d323f01d55517ab70b2fe70c1f95be99ad62d0d2d1c26f",
+      "captured_file": "qor-baseline/compile2-ip/quartus_data.js",
+      "physical_card_clock_programmed": false
+    },
+    {
+      "case": "compile3-ip",
+      "reported_fmax_mhz": "781.86",
+      "raw_clock_record": {
+        "name": "Quartus Fitter: Clock Frequency (MHz)",
+        "type": "system",
+        "id": 1000,
+        "clock1x": "781.86",
+        "clock fmax": "781.86",
+        "clock": "781.86",
+        "details": [
+          {
+            "text": "The actual frequency of the clock is 781.86 MHz after platform PLL adjustment. The maximum frequency for the clock is 781.86 MHz. "
+          }
+        ]
+      },
+      "source_sha256": "ae56a3f67347c64742df84412f41d6c6925c783933f326f1054a65ef69bd817f",
+      "captured_file": "qor-baseline/compile3-ip/quartus_data.js",
+      "physical_card_clock_programmed": false
+    },
+    {
+      "case": "compile4-ip",
+      "reported_fmax_mhz": "772.20",
+      "raw_clock_record": {
+        "name": "Quartus Fitter: Clock Frequency (MHz)",
+        "type": "system",
+        "id": 1000,
+        "clock1x": "772.20",
+        "clock fmax": "772.20",
+        "clock": "772.20",
+        "details": [
+          {
+            "text": "The actual frequency of the clock is 772.20 MHz after platform PLL adjustment. The maximum frequency for the clock is 772.20 MHz. "
+          }
+        ]
+      },
+      "source_sha256": "2cb34c66df70c25b5b108fb2a647bb9b6749dd02d15ac723421f66b9261c38bb",
+      "captured_file": "qor-baseline/compile4-ip/quartus_data.js",
+      "physical_card_clock_programmed": false
+    },
+    {
+      "case": "fast-ip",
+      "reported_fmax_mhz": "711.24",
+      "raw_clock_record": {
+        "name": "Quartus Fitter: Clock Frequency (MHz)",
+        "type": "system",
+        "id": 1000,
+        "clock1x": "711.24",
+        "clock fmax": "711.24",
+        "clock": "711.24",
+        "details": [
+          {
+            "text": "The actual frequency of the clock is 711.24 MHz after platform PLL adjustment. The maximum frequency for the clock is 711.24 MHz. "
+          }
+        ]
+      },
+      "source_sha256": "e50f45806e9a340d8d94124ecd3b809ba6122974b273ec3554f6d5b8af92f9a5",
+      "captured_file": "qor-baseline/fast-ip/quartus_data.js",
+      "physical_card_clock_programmed": false
+    },
+    {
+      "case": "template-ip",
+      "reported_fmax_mhz": "667.11",
+      "raw_clock_record": {
+        "name": "Quartus Fitter: Clock Frequency (MHz)",
+        "type": "system",
+        "id": 1000,
+        "clock1x": "667.11",
+        "clock fmax": "667.11",
+        "clock": "667.11",
+        "details": [
+          {
+            "text": "The actual frequency of the clock is 667.11 MHz after platform PLL adjustment. The maximum frequency for the clock is 667.11 MHz. "
+          }
+        ]
+      },
+      "source_sha256": "0b267442295df79ed7d323f01d55517ab70b2fe70c1f95be99ad62d0d2d1c26f",
+      "captured_file": "qor-baseline/template-ip/quartus_data.js",
+      "physical_card_clock_programmed": false
+    }
+  ],
+  "scope": "Actual reported standalone component estimates, not operating frequencies measured/programmed on a card and not final integrated timing closure. No compiler or clock rerun was needed to recover these results."
+}

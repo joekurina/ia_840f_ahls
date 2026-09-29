@@ -1,0 +1,67 @@
+{
+  "template-sim": {
+    "sample": "fpga_template",
+    "stem": "fpga_template",
+    "target": "fpga_sim",
+    "selectors": {},
+    "build_timeout_seconds": 2400,
+    "required_patterns": [
+      "add two vectors of size 256",
+      "^PASSED$"
+    ],
+    "minimum_pass_markers": 1,
+    "verification_scope": "Original 256-integer oracle with board-correct LSU family parameter; simulator transcript must have no Error/Fatal."
+  },
+  "part2-sim": {
+    "sample": "fpga_compile",
+    "stem": "vector_add",
+    "target": "fpga_sim",
+    "selectors": {
+      "PART": "2"
+    },
+    "build_timeout_seconds": 2400,
+    "required_patterns": [
+      "add two vectors of size 256",
+      "^PASSED$"
+    ],
+    "minimum_pass_markers": 1,
+    "verification_scope": "Original 256-integer oracle with board-correct LSU family parameter; simulator transcript must have no Error/Fatal."
+  },
+  "part3-sim": {
+    "sample": "fpga_compile",
+    "stem": "vector_add",
+    "target": "fpga_sim",
+    "selectors": {
+      "PART": "3"
+    },
+    "build_timeout_seconds": 2400,
+    "required_patterns": [
+      "add two vectors of size 256",
+      "^PASSED$"
+    ],
+    "minimum_pass_markers": 1,
+    "verification_scope": "Original 256-integer oracle with board-correct LSU family parameter; simulator transcript must have no Error/Fatal."
+  },
+  "part4-sim": {
+    "sample": "fpga_compile",
+    "stem": "vector_add",
+    "target": "fpga_sim",
+    "selectors": {
+      "PART": "4"
+    },
+    "build_timeout_seconds": 2400,
+    "required_patterns": [
+      "add two vectors of size 256",
+      "^PASSED$"
+    ],
+    "minimum_pass_markers": 1,
+    "verification_scope": "Original 256-integer oracle with board-correct LSU family parameter; simulator transcript must have no Error/Fatal."
+  },
+  "template-ip": {
+    "sample": "fpga_template",
+    "stem": "fpga_template",
+    "target": "fpga",
+    "selectors": {},
+    "build_timeout_seconds": 7200
+  }
+}
