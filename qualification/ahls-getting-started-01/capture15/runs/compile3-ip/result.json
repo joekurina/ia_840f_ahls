@@ -1,0 +1,234 @@
+{
+  "job": {
+    "sample": "fpga_compile",
+    "stem": "vector_add",
+    "target": "fpga",
+    "selectors": {
+      "PART": "3"
+    },
+    "build_timeout_seconds": 7200
+  },
+  "success": true,
+  "hardware_access": false,
+  "commands": [
+    {
+      "label": "versions",
+      "argv": [
+        "/bin/bash",
+        "-c",
+        "ahls --version && cmake --version"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/compile3-ip",
+      "started": "2026-09-29T18:22:03.710860+00:00",
+      "rc": 0,
+      "namespace_pid": 20,
+      "helpers_drained": true,
+      "ended": "2026-09-29T18:22:03.776811+00:00",
+      "log": "versions.log",
+      "log_sha256": "9458afb273663baba5e39104b3def15382c12f665e6b6ae3f6b154a527c260fd",
+      "log_bytes": 507,
+      "log_complete": true
+    },
+    {
+      "label": "configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/source/Tutorials/GettingStarted/fpga_compile",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/compile3-ip/build",
+        "-DFPGA_DEVICE=AGFB027R25A2E2V",
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+        "-DUSER_INCLUDE_PATHS=/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/source/include",
+        "-DPART=3"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/compile3-ip",
+      "started": "2026-09-29T18:22:03.777950+00:00",
+      "rc": 0,
+      "namespace_pid": 22,
+      "helpers_drained": true,
+      "ended": "2026-09-29T18:22:07.651986+00:00",
+      "log": "configure.log",
+      "log_sha256": "c027cfa0c03f26c52c3b5381f143a73311335941c0014f4102d3de3c31a61d32",
+      "log_bytes": 1146,
+      "log_complete": true
+    },
+    {
+      "label": "build",
+      "argv": [
+        "cmake",
+        "--build",
+        "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/compile3-ip/build",
+        "--parallel",
+        "36",
+        "--verbose",
+        "--target",
+        "fpga"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/compile3-ip",
+      "started": "2026-09-29T18:22:07.653261+00:00",
+      "rc": 0,
+      "namespace_pid": 195,
+      "helpers_drained": true,
+      "ended": "2026-09-29T18:31:18.292148+00:00",
+      "log": "build.log",
+      "log_sha256": "92ee1303cadbd4a58cd950874a4042848fd8fbc3f243f7cdd69ba6a9d605e469",
+      "log_bytes": 7058,
+      "log_complete": true
+    }
+  ],
+  "started": "2026-09-29T18:22:03.633491+00:00",
+  "cpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35
+  ],
+  "address_space_limit_bytes": 68719476736,
+  "pid_namespace": "pid:[4026533095]",
+  "outer_pid_namespace": "pid:[4026531836]",
+  "device_entries": [
+    "core",
+    "fd",
+    "full",
+    "null",
+    "ptmx",
+    "pts",
+    "random",
+    "shm",
+    "stderr",
+    "stdin",
+    "stdout",
+    "tty",
+    "urandom",
+    "zero"
+  ],
+  "versions": "HLS IP Gen, Version 2026.1.0 Build 461da9be608f74678d9c52a2dc1cbb67c58d57fa, Copyright (c) 2026 Altera Corporation\nclang version 21.0.0git (https://github.com/altera-innersource/applications.fpga.oneapi.products.acl-source 73bd39ae996000c9a135392139de0cfbd166341e)\nTarget: x86_64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /home/uwb_student00/ahls/altera_hls/aclsycl/llvm/bin-llvm\nBuild config: +assertions\ncmake version 3.31.8\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n",
+  "cmake_target_completed": true,
+  "compile_commands": [
+    {
+      "directory": "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/compile3-ip/build",
+      "command": "/home/uwb_student00/ahls/altera_hls/aclsycl/bin/ahls  -I/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/source/Tutorials/GettingStarted/fpga_compile/../../../../include -I/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/source/include -Wall -DFPGA_HARDWARE -o CMakeFiles/fpga.dir/part3_dpcpp_lambda_usm/src/vector_add.cpp.o -c /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/source/Tutorials/GettingStarted/fpga_compile/part3_dpcpp_lambda_usm/src/vector_add.cpp",
+      "file": "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/source/Tutorials/GettingStarted/fpga_compile/part3_dpcpp_lambda_usm/src/vector_add.cpp",
+      "output": "CMakeFiles/fpga.dir/part3_dpcpp_lambda_usm/src/vector_add.cpp.o"
+    }
+  ],
+  "backend_target_logs": [
+    "build/vector_add.fpga.prj/logs/vector_add_fpga.log"
+  ],
+  "full_ip_acceptance": "native CMake target completed; inspect retained Quartus reports before acceptance",
+  "real_card_execution": false,
+  "report_files": {
+    "build/vector_add.fpga.prj/logs/vector_add_fpga.log": {
+      "bytes": 789,
+      "sha256": "b3e1167e54d8c244c7b762000f860820480977bb47ca6c3c384b3c511cf9cc75"
+    },
+    "build/vector_add.fpga.prj/quartus_compile.drc.partitioned.rpt": {
+      "bytes": 7978,
+      "sha256": "341fa8586490fa131006288de52a1138237e666d3181a485e658ce96cf7fba59"
+    },
+    "build/vector_add.fpga.prj/quartus_compile.drc.synthesized.rpt": {
+      "bytes": 1063639,
+      "sha256": "2cfef00675747c6ab5940680692ee6d829372995b639b776191bb208d12c8e32"
+    },
+    "build/vector_add.fpga.prj/quartus_compile.fit.finalize.rpt": {
+      "bytes": 4340,
+      "sha256": "81ac5dcfdeff4d179f4bd996b6a62fdcd0fd41f4ba58b00d74faab49333d07fb"
+    },
+    "build/vector_add.fpga.prj/quartus_compile.fit.place.rpt": {
+      "bytes": 552754,
+      "sha256": "b4709feae1a3e4a47f4849de02262a48d7bac19e29cc5b38ffd240cd2724484a"
+    },
+    "build/vector_add.fpga.prj/quartus_compile.fit.plan.rpt": {
+      "bytes": 929887,
+      "sha256": "adf037a5b9198ac1901b68f6c274aaf4927a4be81ae29b20c4280d3b2cdd233c"
+    },
+    "build/vector_add.fpga.prj/quartus_compile.fit.retime.rpt": {
+      "bytes": 59615,
+      "sha256": "ecf67c2e62d5bfd8eecc3af20a45e1647025fb0295ad2bcf0fe728bcb5538ac0"
+    },
+    "build/vector_add.fpga.prj/quartus_compile.fit.route.rpt": {
+      "bytes": 104217,
+      "sha256": "e52b4c8431c3f8e5fcbcb2bfe1893139fe9ac9a4a172031fcc16e89c6903be30"
+    },
+    "build/vector_add.fpga.prj/quartus_compile.fit.rpt": {
+      "bytes": 2780196,
+      "sha256": "e346da18b202a6b4bfeb3d053bd3209233db2e04acd96b17d73c8bfb955371d6"
+    },
+    "build/vector_add.fpga.prj/quartus_compile.fit.summary": {
+      "bytes": 732,
+      "sha256": "46bdd4570305283cbdca01b5e3adce4173ca5cd0f15c2ea92617a82be9d8dee0"
+    },
+    "build/vector_add.fpga.prj/quartus_compile.flow.rpt": {
+      "bytes": 8053,
+      "sha256": "b3a0c9bc79347f329292903557ac64ff6124aa183ff6e63c33b4a962dae87a2f"
+    },
+    "build/vector_add.fpga.prj/quartus_compile.sta.rpt": {
+      "bytes": 2879835,
+      "sha256": "98777bbc2acccadb5ea0b8b88adb945990c5106be029360cddc347fa69d2d3a5"
+    },
+    "build/vector_add.fpga.prj/quartus_compile.sta.summary": {
+      "bytes": 633,
+      "sha256": "d761397ac5840c856780a92f184ecacaf04b2947721c1d443af0828a389e2079"
+    },
+    "build/vector_add.fpga.prj/quartus_compile.syn.ae.rpt": {
+      "bytes": 1983644,
+      "sha256": "53e79414428447471b9fad72a94111fa86504867156f3d48a9b28643f5bfc7bd"
+    },
+    "build/vector_add.fpga.prj/quartus_compile.syn.rpt": {
+      "bytes": 3085977,
+      "sha256": "61700d9204bdb4aa777889187b167a8292e3e31e17853876f0c4df232cad97e1"
+    },
+    "build/vector_add.fpga.prj/quartus_compile.syn.summary": {
+      "bytes": 381,
+      "sha256": "47c0eae634851378c0f844b22d717188b0ca5b6a5ae288a7c8d9d68f2585bc47"
+    },
+    "build/vector_add.fpga.prj/quartus_compile.tq.drc.signoff.rpt": {
+      "bytes": 1671650,
+      "sha256": "b7888c0a05b285121fd39eb44e4f8dfcf53facd1ab193cc5aeaddc9927934c7e"
+    },
+    "build/vector_add.fpga.prj/quartus_sh_compile.log": {
+      "bytes": 49628,
+      "sha256": "9c4675a33ab679aa76e4aa4cb02dfa9dec751e24f378208b5d7a6d8be4c573e3"
+    },
+    "build/vector_add.fpga.prj/top_vector_add_fpga_di/top_vector_add_fpga_di_generation.rpt": {
+      "bytes": 1385,
+      "sha256": "1ebc73a89beaafe874008fe5ecf431465887b0cc15cc369628c268bd9e4792c5"
+    }
+  },
+  "source_unchanged": true,
+  "effective_rc": 0,
+  "ended": "2026-09-29T18:31:18.356961+00:00"
+}

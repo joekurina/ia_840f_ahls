@@ -1,0 +1,228 @@
+{
+  "recorded_at": "2026-09-29T18:40:17.828159+00:00",
+  "review": "deleg_71fb0d01",
+  "parent_confirmed": true,
+  "numerical_outcomes_preserved": true,
+  "supersedes": [
+    "simulator-verification07.json:template-sim simulator_transcript_error_free=true",
+    "Any interpretation of prior-verification03.json as diagnostic-clean PART2-4 simulation"
+  ],
+  "frozen_receipts_modified": false,
+  "transcripts": [
+    {
+      "sample": "part2",
+      "transcript": "diagnostics13/part2-transcript.log",
+      "diagnostics": [
+        {
+          "line": 543,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        },
+        {
+          "line": 545,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        },
+        {
+          "line": 547,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        },
+        {
+          "line": 549,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        },
+        {
+          "line": 551,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        },
+        {
+          "line": 553,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        }
+      ],
+      "numerical_pass_recorded_separately": true,
+      "diagnostic_clean": false
+    },
+    {
+      "sample": "part3",
+      "transcript": "diagnostics13/part3-transcript.log",
+      "diagnostics": [
+        {
+          "line": 526,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        },
+        {
+          "line": 528,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        },
+        {
+          "line": 530,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        },
+        {
+          "line": 532,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        },
+        {
+          "line": 534,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        },
+        {
+          "line": 536,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        }
+      ],
+      "numerical_pass_recorded_separately": true,
+      "diagnostic_clean": false
+    },
+    {
+      "sample": "part4",
+      "transcript": "diagnostics13/part4-transcript.log",
+      "diagnostics": [
+        {
+          "line": 529,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        },
+        {
+          "line": 531,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        },
+        {
+          "line": 533,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        },
+        {
+          "line": 535,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        },
+        {
+          "line": 537,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        },
+        {
+          "line": 539,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        }
+      ],
+      "numerical_pass_recorded_separately": true,
+      "diagnostic_clean": false
+    },
+    {
+      "sample": "template",
+      "transcript": "diagnostics13/template-transcript.log",
+      "diagnostics": [
+        {
+          "line": 543,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        },
+        {
+          "line": 545,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        },
+        {
+          "line": 547,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        },
+        {
+          "line": 549,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        },
+        {
+          "line": 551,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        },
+        {
+          "line": 553,
+          "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+        }
+      ],
+      "numerical_pass_recorded_separately": true,
+      "diagnostic_clean": false
+    },
+    {
+      "sample": "fast",
+      "transcript": "diagnostics13/fast-transcript.log",
+      "diagnostics": [],
+      "numerical_pass_recorded_separately": true,
+      "diagnostic_clean": true
+    }
+  ],
+  "original_part4_recovery_diagnostics": [
+    {
+      "line": 529,
+      "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+    },
+    {
+      "line": 531,
+      "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+    },
+    {
+      "line": 533,
+      "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+    },
+    {
+      "line": 535,
+      "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+    },
+    {
+      "line": 537,
+      "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+    },
+    {
+      "line": 539,
+      "text": "# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V."
+    }
+  ],
+  "source_findings": {
+    "diagnostic_model": "/opt/altera/25.1/questa_fe/intel/verilog/src/altera_mf.v",
+    "model_sha256": "8d9805c56d83f3db88a51c8859ba7ed4747e9f715a4142eccc4297d4d32aefe2",
+    "scfifo_lines": "52788-53050; diagnostic at52901 with instance at52902, no stop in this check",
+    "family_validity_function_lines": "2462-2482; this Pro library validity list omits Stratix V despite separate legacy-family feature functions",
+    "generated_chain": "lsu_bursting_load_stores.sv DEVICE defaults to Stratix V; passed via acl_scfifo_wrapped to scfifo intended_device_family",
+    "not_proven": "A new toolchain, family substitution or suppressed diagnostic is not a verified correction; exact precompiled-library/source equivalence is not independently rebuilt here"
+  },
+  "source_capture_hashes": {
+    "simulator-source10.json": "78527fd5b541b08c69a691db2cfe00171f4701e860bd4ce9938d675796926c48",
+    "simulator-model11.json": "5b65b57077cc48438a47e8972925f07d5a2c6a54d716319293543936c14b8960",
+    "model-function12.json": "840bf45af1eb69e2a6c865ce24c1e178f7d82c5da337b1041777e957098c2bc5"
+  },
+  "files": {
+    "diagnostics13/part2-transcript.log": {
+      "bytes": 51725,
+      "sha256": "55b9f2fea48c5ef7cab3af57c8667839ce59f118ce407213f9c8549bd69f6fda",
+      "original_path": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim27/w0/s093/build/vector_add.fpga_sim.prj/transcript.log"
+    },
+    "diagnostics13/part3-transcript.log": {
+      "bytes": 49437,
+      "sha256": "e88f6a2f88c4c354f6e1735940b0402c835add0953f1146267a286ad905c9630",
+      "original_path": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim32/w0/s094/build/vector_add.fpga_sim.prj/transcript.log"
+    },
+    "diagnostics13/part4-transcript.log": {
+      "bytes": 49763,
+      "sha256": "a9e4e1ad5d0725f7a4ff283d1ac89e494feb61afe6abbce7337e0801137d990c",
+      "original_path": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim32/w1/s095/build/vector_add.fpga_sim.prj/transcript.log"
+    },
+    "diagnostics13/template-transcript.log": {
+      "bytes": 52542,
+      "sha256": "3a218dd4ab854fabfeffd6050b3b0ead77ea0a41c155277991f9c9ae42f1391d",
+      "original_path": "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/template-sim/build/fpga_template.fpga_sim.prj/transcript.log"
+    },
+    "diagnostics13/fast-transcript.log": {
+      "bytes": 48404,
+      "sha256": "a77735d16c1ccbd674bbc8b51fe90ad28372c8f1ab0511a685518b3fab7f86e1",
+      "original_path": "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-sim/build/fast_recompile.fpga_sim.prj/transcript.log"
+    },
+    "diagnostics13/part4-original-recovery-transcript.log": {
+      "bytes": 50240,
+      "sha256": "737db25668e2138359ce7dc1a70f6447632dd30e8cd9d3f77f8232d125a494d9",
+      "original_path": "qualification/hls-samples-2026.1.0-01/capture47/sim-map46/clone/build/vector_add.fpga_sim.prj/transcript.log"
+    }
+  },
+  "detector_regression": {
+    "pattern": "(?:\\b(?:error|fatal)(?:\\s+\\([^)]*\\))?\\s*[:!]|\\*\\*ERROR\\*\\*)",
+    "real_Error_bang_detected": true,
+    "decorated_ERROR_detected": true,
+    "zero_error_summaries_not_rejected": true
+  },
+  "disposition": "Keep native0 and original numerical passes, but PART2/PART3/PART4/fpga_template RTL simulations are NOT diagnostic-clean. No retry or vendor-model edits performed.",
+  "historical_cpu_build_caveat": "PART1 original link emitted retained OPAE **ERROR** messages in private-sysfs discovery; later CPU numerical pass is valid, not diagnostic-free compilation.",
+  "hardware_access": false
+}

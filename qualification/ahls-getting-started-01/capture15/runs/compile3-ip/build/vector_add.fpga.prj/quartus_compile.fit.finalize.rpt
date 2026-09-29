@@ -1,0 +1,87 @@
+Fitter Finalize Stage Report for quartus_compile
+Tue Sep 29 11:30:48 2026
+Quartus Prime Version 25.1.0 Build 129 03/26/2025 SC Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Routing Usage Summary
+  3. Finalize Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++-------------------------------------------------------------+
+; Routing Usage Summary                                       ;
++-----------------------------+-------------------------------+
+; Routing Resource Type       ; Usage                         ;
++-----------------------------+-------------------------------+
+; Block Input Mux Wrapbacks   ; 175 / 964,320 ( < 1 % )       ;
+; Block Input Muxes           ; 12,997 / 10,561,600 ( < 1 % ) ;
+; Block interconnects         ; 9,944 / 12,385,280 ( < 1 % )  ;
+; C1 interconnects            ; 3,881 / 5,173,760 ( < 1 % )   ;
+; C4 interconnects            ; 517 / 4,933,120 ( < 1 % )     ;
+; C8 interconnects            ; 2 / 493,312 ( < 1 % )         ;
+; DCM_muxes                   ; 0 / 1,152 ( 0 % )             ;
+; DELAY_CHAINs                ; 0 / 32,048 ( 0 % )            ;
+; Direct links                ; 2,520 / 12,385,280 ( < 1 % )  ;
+; HIO Buffers                 ; 0 / 73,472 ( 0 % )            ;
+; Programmable Invert Buffers ; 0 / 560 ( 0 % )               ;
+; Programmable Invert Inputs  ; 421 / 932,160 ( < 1 % )       ;
+; Programmable Inverts        ; 421 / 932,160 ( < 1 % )       ;
+; R0 interconnects            ; 5,640 / 8,632,960 ( < 1 % )   ;
+; R1 interconnects            ; 3,302 / 4,933,120 ( < 1 % )   ;
+; R12 interconnects           ; 5 / 739,968 ( < 1 % )         ;
+; R2 interconnects            ; 1,275 / 2,473,120 ( < 1 % )   ;
+; R4 interconnects            ; 495 / 2,486,240 ( < 1 % )     ;
+; R6 interconnects            ; 197 / 2,492,800 ( < 1 % )     ;
+; Redundancy Muxes            ; 1 / 145,648 ( < 1 % )         ;
+; Row Clock Tap-Offs          ; 321 / 739,968 ( < 1 % )       ;
+; Switchbox_clock_muxes       ; 4 / 23,040 ( < 1 % )          ;
+; VIO Buffers                 ; 0 / 22,400 ( 0 % )            ;
+; Vertical_seam_tap_muxes     ; 6 / 12,288 ( < 1 % )          ;
++-----------------------------+-------------------------------+
+
+
++-------------------+
+; Finalize Messages ;
++-------------------+
+Info (20030): Parallel compilation is enabled and will use 18 of the 18 processors detected
+Info: *******************************************************************
+Info: Running Quartus Prime Fitter
+    Info: Version 25.1.0 Build 129 03/26/2025 SC Pro Edition
+    Info: Processing started: Tue Sep 29 11:23:06 2026
+    Info: System process ID: 1397
+Info: Command: quartus_fit --read_settings_files=on --write_settings_files=off quartus_compile -c quartus_compile
+Info: qfit2_default_script.tcl version: #1
+Info: Project  = quartus_compile
+Info: Revision = quartus_compile
+Info (18258): Fitter Physical Synthesis operations beginning
+Info (18259): Fitter Physical Synthesis operations ending: elapsed time is 00:00:02
+Critical Warning (24605): There are 64 unused RX channels and 64 unused TX channels in the design.
+    Info (24606): Add the QSF assignment 'set_instance_assignment -name PRESERVE_UNUSED_XCVR_CHANNEL ON -to <pin_name>' for each unused channel that will be used in future.
+    Info (24607): The above QSF assignment will preserve the performance of specified channels over time.
+Info (16557): Fitter post-fit operations ending: elapsed time is 00:01:03
+
+

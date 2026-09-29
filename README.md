@@ -28,6 +28,15 @@ separately accepts full-input flash readback/comparison, observed BMC Off/On,
 and the deployment reboot with cached static-FME identity. It does not infer
 numerical or application-lifecycle acceptance from programming success.
 
+## AHLS GettingStarted tutorials
+
+The original `fpga_compile` PART1–4, `fast_recompile`, and `fpga_template`
+samples are imported under [examples/ahls](examples/ahls/README.md), pinned to
+HLS IP Gen sample release2026.1.0. The setup guide documents native CMake build/run
+commands, CPU/emulator checks, RTL simulation, full isolated-IP compilation and
+the observed diagnostic/timing limitations. These standalone programs are not
+IA-840F card executables; they do not replace the accepted CAPS03 deployment.
+
 ## Completed memory-HLS qualification
 
 The [final acceptance](qualification/caps03-final01/ACCEPTANCE.md) records the
@@ -44,9 +53,11 @@ General cold/PR/stopped-clock/active-failure recovery and every other upstream H
 kernel are not claimed qualified. See [limits](qualification/caps03-final01/ACCEPTANCE.md#exact-exception-and-retained-limits).
 
 The [maintained goal](GOAL-PROMPT.md) separates this accepted CAPS03 integration
-from the incomplete release-wide HLS sample work. That sample work is stopped;
-publishing this documentation release does not resume it or authorize a new FPGA
-operation. [Publication evidence](qualification/caps03-publication01/CURRENT.md)
+from the incomplete release-wide HLS sample work. That broader work remains
+stopped except for the explicitly requested [GettingStarted subset](examples/ahls/README.md).
+Neither documentation publication nor these standalone compiler/simulator checks
+authorize another CAPS03 FPGA operation.
+[Publication evidence](qualification/caps03-publication01/CURRENT.md)
 identifies the separately accepted commits. The local accepted SOF path and SHA256
 are in [the final artifact record](qualification/caps03-final01/ACCEPTANCE.md#retained-working-artifact).
 Everything labeled historical below describes predecessor scope, not open tasks.

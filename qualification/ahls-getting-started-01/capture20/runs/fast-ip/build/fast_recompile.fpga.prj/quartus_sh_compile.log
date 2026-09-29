@@ -1,0 +1,431 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Shell
+    Info: Version 25.1.0 Build 129 03/26/2025 SC Pro Edition
+    Info: Copyright (C) 2025  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Tue Sep 29 11:41:09 2026
+    Info: System process ID: 1177
+Info: Command: quartus_sh --flow compile quartus_compile
+Info: Quartus(args): compile quartus_compile
+Info: Project Name = /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/quartus_compile
+Info: Revision Name = quartus_compile
+Info (24087): The active revision settings file will be modified to remove errors. A backup is written to: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/quartus_compile.qsf.backup.
+Info (22747): Value AUTO_DISCOVERY for QSF Assignment PWRMGT_VOLTAGE_OUTPUT_FORMAT is not supported. Hence changing the value to LINEAR_FORMAT
+Warning (125060): Assignment "PARTITION_NETLIST_TYPE" is no longer supported. The assignment in the Intel Quartus Prime Settings file (.qsf) will be ignored
+Warning (125060): Assignment "PARTITION_FITTER_PRESERVATION_LEVEL" is no longer supported. The assignment in the Intel Quartus Prime Settings file (.qsf) will be ignored
+Info: 2026-09-29 11:41:10 worker[0] started.
+Info: Run task: IP Generation
+Info: *******************************************************************
+Info: Running Quartus Prime IP Generation Tool
+    Info: Version 25.1.0 Build 129 03/26/2025 SC Pro Edition
+    Info: Processing started: Tue Sep 29 11:41:11 2026
+    Info: System process ID: 1196
+Info: Command: quartus_ipgenerate quartus_compile -c quartus_compile --run_default_mode_op
+Info: Found 1 IP file(s) in the project.
+    Info: IP file /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/top_fast_recompile_fpga_di.ip was found in the project.
+Info: Finished generating IP file(s) in the project.
+    Info: Previously generated synthesis files were detected in the Platform Designer IP file generation directory (/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/top_fast_recompile_fpga_di).
+    Info: Skipped generation of synthesis files for the Platform Designer IP file /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/top_fast_recompile_fpga_di.ip based on the current regeneration policy setting (Tools/Options/IP Settings).
+Info: Quartus Prime IP Generation Tool was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 1250 megabytes
+    Info: Processing ended: Tue Sep 29 11:41:11 2026
+    Info: Elapsed time: 00:00:00
+    Info: System process ID: 1196
+Info: Run task: Analysis & Synthesis
+Info: *******************************************************************
+Info: Running Quartus Prime Synthesis
+    Info: Version 25.1.0 Build 129 03/26/2025 SC Pro Edition
+    Info: Processing started: Tue Sep 29 11:41:13 2026
+    Info: System process ID: 1199
+Info: Command: quartus_syn --read_settings_files=on --write_settings_files=off quartus_compile -c quartus_compile
+Info: qis_default_flow_script.tcl version: #1
+Info: Initializing Synthesis...
+Info: Project = "quartus_compile"
+Info: Revision = "quartus_compile"
+Info (21958): Initialized Quartus Message Database
+Warning (22779): The instance assignment "target fast_recompile_fpga_di:fast_recompile_fpga_di_inst" uses deprecated "entity:inst" style and has been changed into "fast_recompile_fpga_di_inst".
+Info: Analyzing source files
+Info (16884): Verilog HDL info at hld_fifo.sv(146): analyzing included file ip/acl_parameter_assert.svh File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/hld_fifo.sv Line: 146
+Info (19624): Verilog HDL info at hld_fifo.sv(146): back to file 'ip/hld_fifo.sv' File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/hld_fifo.sv Line: 146
+Info (16884): Verilog HDL info at acl_mid_speed_fifo.sv(85): analyzing included file ip/acl_parameter_assert.svh File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_mid_speed_fifo.sv Line: 85
+Info (19624): Verilog HDL info at acl_mid_speed_fifo.sv(85): back to file 'ip/acl_mid_speed_fifo.sv' File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_mid_speed_fifo.sv Line: 85
+Info (16884): Verilog HDL info at acl_mlab_fifo.sv(32): analyzing included file ip/acl_parameter_assert.svh File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_mlab_fifo.sv Line: 32
+Info (19624): Verilog HDL info at acl_mlab_fifo.sv(32): back to file 'ip/acl_mlab_fifo.sv' File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_mlab_fifo.sv Line: 32
+Info (16884): Verilog HDL info at acl_loop_admit.sv(171): analyzing included file ip/acl_parameter_assert.svh File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_loop_admit.sv Line: 171
+Info (19624): Verilog HDL info at acl_loop_admit.sv(171): back to file 'ip/acl_loop_admit.sv' File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_loop_admit.sv Line: 171
+Info (16884): Verilog HDL info at hld_global_load_store.sv(66): analyzing included file ip/acl_parameter_assert.svh File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/hld_global_load_store.sv Line: 66
+Info (19624): Verilog HDL info at hld_global_load_store.sv(66): back to file 'ip/hld_global_load_store.sv' File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/hld_global_load_store.sv Line: 66
+Warning (17498): Verilog HDL warning at lsu_rd_back.sv(416): parameter 'AVM_READ_REQ_FIFO_AF_THRESHOLD' declared inside generate block shall be treated as localparam File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/lsu_rd_back.sv Line: 416
+Info (16884): Verilog HDL info at hld_fifo.sv(146): analyzing included file top_fast_recompile_fpga_di/fast_recompile_fpga_di_10/synth/acl_parameter_assert.svh File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/top_fast_recompile_fpga_di/fast_recompile_fpga_di_10/synth/hld_fifo.sv Line: 146
+Info (19624): Verilog HDL info at hld_fifo.sv(146): back to file 'top_fast_recompile_fpga_di/fast_recompile_fpga_di_10/synth/hld_fifo.sv' File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/top_fast_recompile_fpga_di/fast_recompile_fpga_di_10/synth/hld_fifo.sv Line: 146
+Info (16884): Verilog HDL info at acl_mid_speed_fifo.sv(85): analyzing included file top_fast_recompile_fpga_di/fast_recompile_fpga_di_10/synth/acl_parameter_assert.svh File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/top_fast_recompile_fpga_di/fast_recompile_fpga_di_10/synth/acl_mid_speed_fifo.sv Line: 85
+Info (19624): Verilog HDL info at acl_mid_speed_fifo.sv(85): back to file 'top_fast_recompile_fpga_di/fast_recompile_fpga_di_10/synth/acl_mid_speed_fifo.sv' File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/top_fast_recompile_fpga_di/fast_recompile_fpga_di_10/synth/acl_mid_speed_fifo.sv Line: 85
+Info (16884): Verilog HDL info at acl_mlab_fifo.sv(32): analyzing included file top_fast_recompile_fpga_di/fast_recompile_fpga_di_10/synth/acl_parameter_assert.svh File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/top_fast_recompile_fpga_di/fast_recompile_fpga_di_10/synth/acl_mlab_fifo.sv Line: 32
+Info (19624): Verilog HDL info at acl_mlab_fifo.sv(32): back to file 'top_fast_recompile_fpga_di/fast_recompile_fpga_di_10/synth/acl_mlab_fifo.sv' File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/top_fast_recompile_fpga_di/fast_recompile_fpga_di_10/synth/acl_mlab_fifo.sv Line: 32
+Info (16884): Verilog HDL info at acl_loop_admit.sv(171): analyzing included file top_fast_recompile_fpga_di/fast_recompile_fpga_di_10/synth/acl_parameter_assert.svh File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/top_fast_recompile_fpga_di/fast_recompile_fpga_di_10/synth/acl_loop_admit.sv Line: 171
+Info (19624): Verilog HDL info at acl_loop_admit.sv(171): back to file 'top_fast_recompile_fpga_di/fast_recompile_fpga_di_10/synth/acl_loop_admit.sv' File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/top_fast_recompile_fpga_di/fast_recompile_fpga_di_10/synth/acl_loop_admit.sv Line: 171
+Info (16884): Verilog HDL info at hld_global_load_store.sv(66): analyzing included file top_fast_recompile_fpga_di/fast_recompile_fpga_di_10/synth/acl_parameter_assert.svh File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/top_fast_recompile_fpga_di/fast_recompile_fpga_di_10/synth/hld_global_load_store.sv Line: 66
+Info (19624): Verilog HDL info at hld_global_load_store.sv(66): back to file 'top_fast_recompile_fpga_di/fast_recompile_fpga_di_10/synth/hld_global_load_store.sv' File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/top_fast_recompile_fpga_di/fast_recompile_fpga_di_10/synth/hld_global_load_store.sv Line: 66
+Warning (17498): Verilog HDL warning at lsu_rd_back.sv(416): parameter 'AVM_READ_REQ_FIFO_AF_THRESHOLD' declared inside generate block shall be treated as localparam File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/top_fast_recompile_fpga_di/fast_recompile_fpga_di_10/synth/lsu_rd_back.sv Line: 416
+Critical Warning (20759): Use the Reset Release IP in Intel Agilex 7 FPGA designs to ensure a successful configuration. For more information about the Reset Release IP, refer to the Configuration User Guide.
+Info: Elaborating from top-level entity "quartus_compile"
+Info (18235): Library search order is as follows: "fast_recompile_fpga_di_10; top_fast_recompile_fpga_di". Quartus will look for undefined design units in your libraries in that order. To modify the ordering, please specify a semi-colon separated library list using the assignment LIBRARY_SEARCH_ORDER.
+Info (22567): Verilog HDL info at fast_recompile_fpga_di.sv(332): extracting RAM for identifier 'VectorAdd_global_size' File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/fast_recompile_fpga_di.sv Line: 332
+Info (22567): Verilog HDL info at fast_recompile_fpga_di.sv(333): extracting RAM for identifier 'VectorAdd_num_groups' File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/fast_recompile_fpga_di.sv Line: 333
+Info (22567): Verilog HDL info at fast_recompile_fpga_di.sv(334): extracting RAM for identifier 'VectorAdd_local_size' File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/fast_recompile_fpga_di.sv Line: 334
+Info (22567): Verilog HDL info at fast_recompile_fpga_di.sv(335): extracting RAM for identifier 'VectorAdd_global_offset' File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/fast_recompile_fpga_di.sv Line: 335
+Info (22567): Verilog HDL info at fast_recompile_fpga_di.sv(342): extracting RAM for identifier 'VectorAdd_wg_disp_group_id_out' File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/fast_recompile_fpga_di.sv Line: 342
+Info (22567): Verilog HDL info at fast_recompile_fpga_di.sv(343): extracting RAM for identifier 'VectorAdd_wg_disp_global_id_base_out' File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/fast_recompile_fpga_di.sv Line: 343
+Warning (13469): Verilog HDL assignment warning at acl_full_detector.sv(186): truncated value with size 2 to match size of target (1) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_full_detector.sv Line: 186
+Warning (13469): Verilog HDL assignment warning at acl_full_detector.sv(199): truncated value with size 2 to match size of target (1) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_full_detector.sv Line: 199
+Warning (13469): Verilog HDL assignment warning at acl_full_detector.sv(201): truncated value with size 2 to match size of target (1) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_full_detector.sv Line: 201
+Warning (13469): Verilog HDL assignment warning at lsu_burst_coalesced_pipelined_read.sv(405): truncated value with size 32 to match size of target (4) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/lsu_burst_coalesced_pipelined_read.sv Line: 405
+Warning (13469): Verilog HDL assignment warning at lsu_burst_coalesced_pipelined_read.sv(503): truncated value with size 2 to match size of target (1) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/lsu_burst_coalesced_pipelined_read.sv Line: 503
+Warning (13469): Verilog HDL assignment warning at lsu_burst_coalesced_pipelined_read.sv(887): truncated value with size 32 to match size of target (3) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/lsu_burst_coalesced_pipelined_read.sv Line: 887
+Warning (13469): Verilog HDL assignment warning at lsu_burst_coalesced_pipelined_read.sv(1130): truncated value with size 32 to match size of target (3) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/lsu_burst_coalesced_pipelined_read.sv Line: 1130
+Warning (13469): Verilog HDL assignment warning at acl_full_detector.sv(186): truncated value with size 2 to match size of target (1) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_full_detector.sv Line: 186
+Warning (13469): Verilog HDL assignment warning at acl_full_detector.sv(199): truncated value with size 2 to match size of target (1) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_full_detector.sv Line: 199
+Warning (13469): Verilog HDL assignment warning at acl_full_detector.sv(201): truncated value with size 2 to match size of target (1) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_full_detector.sv Line: 201
+Warning (13469): Verilog HDL assignment warning at acl_sync.sv(682): truncated value with size 5 to match size of target (4) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_sync.sv Line: 682
+Warning (13469): Verilog HDL assignment warning at lsu_burst_coalesced_pipelined_write.sv(466): truncated value with size 32 to match size of target (4) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/lsu_burst_coalesced_pipelined_write.sv Line: 466
+Warning (13469): Verilog HDL assignment warning at lsu_burst_coalesced_pipelined_write.sv(575): truncated value with size 2 to match size of target (1) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/lsu_burst_coalesced_pipelined_write.sv Line: 575
+Warning (13469): Verilog HDL assignment warning at lsu_burst_coalesced_pipelined_write.sv(951): truncated value with size 32 to match size of target (3) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/lsu_burst_coalesced_pipelined_write.sv Line: 951
+Warning (13469): Verilog HDL assignment warning at acl_has_pending_write.sv(87): truncated value with size 15 to match size of target (14) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_has_pending_write.sv Line: 87
+Warning (13469): Verilog HDL assignment warning at acl_has_pending_write.sv(89): truncated value with size 32 to match size of target (14) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_has_pending_write.sv Line: 89
+Warning (13469): Verilog HDL assignment warning at acl_full_detector.sv(186): truncated value with size 2 to match size of target (1) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_full_detector.sv Line: 186
+Warning (13469): Verilog HDL assignment warning at acl_full_detector.sv(199): truncated value with size 2 to match size of target (1) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_full_detector.sv Line: 199
+Warning (13469): Verilog HDL assignment warning at acl_full_detector.sv(201): truncated value with size 2 to match size of target (1) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_full_detector.sv Line: 201
+Warning (13469): Verilog HDL assignment warning at acl_full_detector.sv(186): truncated value with size 2 to match size of target (1) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_full_detector.sv Line: 186
+Warning (13469): Verilog HDL assignment warning at acl_full_detector.sv(199): truncated value with size 2 to match size of target (1) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_full_detector.sv Line: 199
+Warning (13469): Verilog HDL assignment warning at acl_full_detector.sv(201): truncated value with size 2 to match size of target (1) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_full_detector.sv Line: 201
+Warning (13469): Verilog HDL assignment warning at acl_loop_admit.sv(403): truncated value with size 2 to match size of target (1) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_loop_admit.sv Line: 403
+Warning (13469): Verilog HDL assignment warning at acl_loop_admit.sv(408): truncated value with size 2 to match size of target (1) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_loop_admit.sv Line: 408
+Warning (13469): Verilog HDL assignment warning at acl_loop_admit.sv(675): truncated value with size 2 to match size of target (1) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_loop_admit.sv Line: 675
+Warning (13469): Verilog HDL assignment warning at lsu_token_ring.sv(1635): truncated value with size 3 to match size of target (2) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/lsu_token_ring.sv Line: 1635
+Warning (13469): Verilog HDL assignment warning at lsu_token_ring.sv(1658): truncated value with size 3 to match size of target (2) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/lsu_token_ring.sv Line: 1658
+Warning (13469): Verilog HDL assignment warning at lsu_n_fast.sv(177): truncated value with size 106 to match size of target (34) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/lsu_n_fast.sv Line: 177
+Warning (13469): Verilog HDL assignment warning at lsu_n_fast.sv(242): truncated value with size 32 to match size of target (3) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/lsu_n_fast.sv Line: 242
+Warning (16788): Net "early_avm_write" does not have a driver at lsu_n_token.sv(165) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/lsu_n_token.sv Line: 165
+Warning (13469): Verilog HDL assignment warning at lsu_ic_token.sv(229): truncated value with size 32 to match size of target (3) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/lsu_ic_token.sv Line: 229
+Warning (16788): Net "ci_writedata[0][0][63]" does not have a driver at lsu_n_token.sv(136) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/lsu_n_token.sv Line: 136
+Info (22567): Verilog HDL info at lsu_rd_back.sv(423): extracting RAM for identifier 'returnDataFIFO_rdreq_pipe' File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/lsu_rd_back.sv Line: 423
+Info (22567): Verilog HDL info at lsu_rd_back.sv(537): extracting RAM for identifier 'data_valid_vine_output_pipeline' File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/lsu_rd_back.sv Line: 537
+Warning (16788): Net "returnDataFIFO_rdreq[1][0]" does not have a driver at lsu_rd_back.sv(513) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/lsu_rd_back.sv Line: 513
+Warning (16788): Net "returnDataFIFO_empty[0]" does not have a driver at lsu_rd_back.sv(514) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/lsu_rd_back.sv Line: 514
+Warning (16788): Net "GEN_HYPER_PIPELINE_1.ecc_err_status_write_ack_router[1]" does not have a driver at lsu_token_ring.sv(1217) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/lsu_token_ring.sv Line: 1217
+Warning (16788): Net "gmem_avm_kernel_rd_writeack[0]" does not have a driver at fast_recompile_fpga_di.sv(75) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/fast_recompile_fpga_di.sv Line: 75
+Warning (16788): Net "gmem_avm_kernel_rd_ext_writeack[0]" does not have a driver at fast_recompile_fpga_di.sv(76) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/fast_recompile_fpga_di.sv Line: 76
+Warning (16788): Net "gmem_avm_kernel_wr_readdata[0][63]" does not have a driver at fast_recompile_fpga_di.sv(84) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/fast_recompile_fpga_di.sv Line: 84
+Warning (16788): Net "gmem_avm_kernel_wr_readdatavalid[0]" does not have a driver at fast_recompile_fpga_di.sv(85) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/fast_recompile_fpga_di.sv Line: 85
+Warning (16788): Net "gmem_ic_avm_writeack[0]" does not have a driver at fast_recompile_fpga_di.sv(99) File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/fast_recompile_fpga_di.sv Line: 99
+Info: Found 419 design entities
+Warning (21610): Output port "device_exception_bus[0..63]" in instance "fast_recompile_fpga_di_inst" of entity "fast_recompile_fpga_di" does not have a driver. Connecting to the default value "gnd". File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/fast_recompile_fpga_di.sv Line: 30
+Warning (21610): Output port "data_out[-1..0]" in instance "fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_inst_0|kernel|theVectorAdd_function_aunroll_x|thebb_VectorAdd_B0_aunroll_x|theVectorAdd_B0_merge|theVectorAdd_B0_merge_storage|theVectorAdd_B0_merge_storage|ms.acl_mid_speed_fifo_inst" of entity "acl_mid_speed_fifo" does not have a driver. Connecting to the default value "gnd". File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_mid_speed_fifo.sv Line: 133
+Warning (21610): Output port "data_out[-1..0]" in instance "fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_inst_0|kernel|theVectorAdd_function_aunroll_x|thebb_VectorAdd_B2|theVectorAdd_B2_merge|theVectorAdd_B2_merge_storage|theVectorAdd_B2_merge_storage|ms.acl_mid_speed_fifo_inst" of entity "acl_mid_speed_fifo" does not have a driver. Connecting to the default value "gnd". File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_mid_speed_fifo.sv Line: 133
+Warning (21610): Output port "data_out[-1..0]" in instance "fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_inst_0|kernel|theVectorAdd_function_aunroll_x|thebb_VectorAdd_B1_aunroll_x|theVectorAdd_B1_merge|theVectorAdd_B1_merge_storage|theVectorAdd_B1_merge_storage|ms.acl_mid_speed_fifo_inst" of entity "acl_mid_speed_fifo" does not have a driver. Connecting to the default value "gnd". File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_mid_speed_fifo.sv Line: 133
+Warning (21610): Output port "data_out[-1..0]" in instance "fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_inst_0|kernel|theVectorAdd_function_aunroll_x|thebb_VectorAdd_B1_aunroll_x|thebb_VectorAdd_B1_stall_region|thebubble_out_i_sfc_s_c0_in_for_body_i_vectoradds_c0_enter111_vectoradd_113_1gr_aunroll_x_1_reg|hld_fifo_inst|ms.acl_mid_speed_fifo_inst" of entity "acl_mid_speed_fifo" does not have a driver. Connecting to the default value "gnd". File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_mid_speed_fifo.sv Line: 133
+Warning (21610): Output port "valid_out" in instance "fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_inst_0|kernel|theVectorAdd_function_aunroll_x|thebb_VectorAdd_B1_aunroll_x|thebb_VectorAdd_B1_stall_region|thei_sfc_s_c0_in_for_body_i_vectoradds_c0_enter111_vectoradd_113_1gr_aunroll_x|thei_sfc_logic_s_c0_in_for_body_i_vectoradds_c0_enter111_vectoradd_120_0gr_aunroll_x|thei_llvm_fpga_pipeline_keep_going_vectoradd_123_6gr|thei_llvm_fpga_pipeline_keep_going_vectoradd_149_1gr" of entity "acl_fast_pipeline" does not have a driver. Connecting to the default value "gnd". File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_fast_pipeline.sv Line: 53
+Warning (21610): Output port "stall_out" in instance "fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_inst_0|kernel|theVectorAdd_function_aunroll_x|thebb_VectorAdd_B1_aunroll_x|thebb_VectorAdd_B1_stall_region|thei_sfc_s_c0_in_for_body_i_vectoradds_c0_enter111_vectoradd_113_1gr_aunroll_x|thei_sfc_logic_s_c0_in_for_body_i_vectoradds_c0_enter111_vectoradd_120_0gr_aunroll_x|thei_llvm_fpga_pipeline_keep_going_vectoradd_123_6gr|thei_llvm_fpga_pipeline_keep_going_vectoradd_149_1gr" of entity "acl_fast_pipeline" does not have a driver. Connecting to the default value "gnd". File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_fast_pipeline.sv Line: 53
+Warning (21610): Output port "data_out[-1..0]" in instance "fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_inst_0|kernel|theVectorAdd_function_aunroll_x|thebb_VectorAdd_B2|theVectorAdd_B2_branch|theVectorAdd_B2_branch_branch_storage|theVectorAdd_B2_branch_branch_storage|ms.acl_mid_speed_fifo_inst" of entity "acl_mid_speed_fifo" does not have a driver. Connecting to the default value "gnd". File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/acl_mid_speed_fifo.sv Line: 133
+Warning (21610): Output port "avm_enable" in instance "fast_recompile_fpga_di_inst|cra_ring_wrapper_inst|csr_ring_node_avm_wire_0_cra_ring_inst_0" of entity "cra_ring_node" does not have a driver. Connecting to the default value "gnd". File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/cra_ring_node.sv Line: 46
+Warning (21610): Output port "avm_burstcount" in instance "fast_recompile_fpga_di_inst|cra_ring_wrapper_inst|csr_ring_node_avm_wire_0_cra_ring_inst_0" of entity "cra_ring_node" does not have a driver. Connecting to the default value "gnd". File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/cra_ring_node.sv Line: 48
+Info: There are 657 partitions after elaboration.
+Info: DA report generation in native DNI mode
+Info (21615): Running Design Assistant Rules for snapshot 'partitioned'
+Info: No waiver waived any violations
+Info (22360): Design Assistant Results: 9 of 10 enabled rules passed, and 1 rules was disabled, in snapshot 'partitioned'
+Warning (21620): Design Assistant Results: 1 of 1 High severity rules issued violations in snapshot 'partitioned'. Please refer to DRC report '/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/quartus_compile.drc.partitioned.rpt' for more information
+Info (21621): Design Assistant Results: 0 of 1 Medium severity rules issued violations in snapshot 'partitioned'
+Info (21622): Design Assistant Results: 0 of 8 Low severity rules issued violations in snapshot 'partitioned'
+Warning (23762): Hierarchies were optimized away during sweep. For details, refer to " Hierarchies Optimized Away During Sweep " report.
+Info: Synthesizing partition "root_partition"
+Info (21057): Implemented 781 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 148 input pins
+    Info (21059): Implemented 241 output pins
+    Info (21061): Implemented 391 logic cells
+    Info (21071): Implemented 1 partitions
+Info: Successfully synthesized partition
+Info: Synthesizing partition "component_fast_recompile_fpga_di"
+Info (13014): Ignored 69 buffer(s)
+    Info (13019): Ignored 69 SOFT buffer(s)
+Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
+    Warning (13047): Converted the fan-out from the tri-state buffer "fast_recompile_fpga_di_inst|lsu_ic_top_gmem|GEN_SIMPLE.lsu_ic|GEN_HYPER_PIPELINE_1.GEN_MULTIPLE_PORT.GEN_ENABLE_RD.rd_ring|GEN_ENABLE_FAST.lsu_n_fast|i391" to the node "fast_recompile_fpga_di_inst|lsu_ic_top_gmem|GEN_SIMPLE.lsu_ic|read_ring_output_pipe_rd_burstcount[1][0]" into an OR gate File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/ip/lsu_n_fast.sv Line: 352
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "fast_recompile_fpga_di_inst|avm_mem_gmem0_0_port_0_0_rw_address[0..2]" is stuck at GND File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/fast_recompile_fpga_di.sv Line: 36
+    Warning (13410): Pin "fast_recompile_fpga_di_inst|avm_mem_gmem0_0_port_0_0_rw_enable" is stuck at GND File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/fast_recompile_fpga_di.sv Line: 33
+    Warning (13410): Pin "fast_recompile_fpga_di_inst|csr_ring_root_avs_readdata[17,19..63]" is stuck at GND File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/fast_recompile_fpga_di.sv Line: 52
+    Warning (13410): Pin "fast_recompile_fpga_di_inst|device_exception_bus[0..63]" is stuck at GND File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/fast_recompile_fpga_di.sv Line: 30
+Info (17049): 1136 registers lost all their fanouts during netlist optimizations.
+Info (21057): Implemented 8461 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 150 input pins
+    Info (21059): Implemented 242 output pins
+    Info (21061): Implemented 7282 logic cells
+    Info (21064): Implemented 786 RAM segments
+Warning (15357): WYSIWYG primitive "fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_inst_0|kernel|theVectorAdd_function_aunroll_x|thebb_VectorAdd_B1_aunroll_x|thebb_VectorAdd_B1_stall_region|thei_sfc_s_c2_in_for_body_i_vectoradds_c2_enter_vectoradd_113_8gr_aunroll_x|thei_sfc_logic_s_c2_in_for_body_i_vectoradds_c2_enter_vectoradd_453_0gr_aunroll_x|i_add_i_vectoradd_456_2gr_impl_DSP0" has clock enable port ENA[1] that is driven by GND File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/kernel_hdl/VectorAdd/VectorAdd_i_sfc_s_c2_in_for_body_i_vecto0000er_vectoradd_113_8gr.sv Line: 52
+Warning (15357): WYSIWYG primitive "fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_inst_0|kernel|theVectorAdd_function_aunroll_x|thebb_VectorAdd_B1_aunroll_x|thebb_VectorAdd_B1_stall_region|thei_sfc_s_c2_in_for_body_i_vectoradds_c2_enter_vectoradd_113_8gr_aunroll_x|thei_sfc_logic_s_c2_in_for_body_i_vectoradds_c2_enter_vectoradd_453_0gr_aunroll_x|i_add_i_vectoradd_456_2gr_impl_DSP0" has clock enable port ENA[2] that is driven by GND File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/kernel_hdl/VectorAdd/VectorAdd_i_sfc_s_c2_in_for_body_i_vecto0000er_vectoradd_113_8gr.sv Line: 52
+Info: Successfully synthesized partition
+Info: Saving post-synthesis snapshots for 2 partition(s)
+Info (21615): Running Design Assistant Rules for snapshot 'synthesized'
+Info: No waiver waived any violations
+Info (22360): Design Assistant Results: 12 of 13 enabled rules passed, and 7 rules was disabled, in snapshot 'synthesized'
+Info (21661): Design Assistant Results: 0 of 1 High severity rules issued violations in snapshot 'synthesized'
+Info (21621): Design Assistant Results: 1 of 6 Medium severity rules issued violations in snapshot 'synthesized'. Please refer to DRC report '/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/quartus_compile.drc.synthesized.rpt' for more information
+Info (21622): Design Assistant Results: 0 of 6 Low severity rules issued violations in snapshot 'synthesized'
+Info: Quartus Prime Synthesis was successful. 0 errors, 10 warnings
+    Info: Peak virtual memory: 2677 megabytes
+    Info: Processing ended: Tue Sep 29 11:41:42 2026
+    Info: Elapsed time: 00:00:29
+    Info: System process ID: 1199
+Info: Run task: Fitter
+Info (20030): Parallel compilation is enabled and will use 18 of the 18 processors detected
+Info: *******************************************************************
+Info: Running Quartus Prime Fitter
+    Info: Version 25.1.0 Build 129 03/26/2025 SC Pro Edition
+    Info: Processing started: Tue Sep 29 11:41:43 2026
+    Info: System process ID: 1399
+Info: Command: quartus_fit --read_settings_files=on --write_settings_files=off quartus_compile -c quartus_compile
+Info: qfit2_default_script.tcl version: #1
+Info: Project  = quartus_compile
+Info: Revision = quartus_compile
+Info (16677): Loading synthesized database.
+Info (16734): Loading "synthesized" snapshot for partition "root_partition".
+Info (16734): Loading "synthesized" snapshot for partition "component_fast_recompile_fpga_di".
+Info (16678): Successfully loaded synthesized database: elapsed time is 00:00:09.
+Info (119006): Selected device AGFB027R25A2E2V for design "quartus_compile"
+Info (21076): High junction temperature operating condition is not set. Assuming a default value of '100'.
+Info (21076): Low junction temperature operating condition is not set. Assuming a default value of '0'.
+Warning (15357): WYSIWYG primitive "fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_inst_0|kernel|theVectorAdd_function_aunroll_x|thebb_VectorAdd_B1_aunroll_x|thebb_VectorAdd_B1_stall_region|thei_sfc_s_c2_in_for_body_i_vectoradds_c2_enter_vectoradd_113_8gr_aunroll_x|thei_sfc_logic_s_c2_in_for_body_i_vectoradds_c2_enter_vectoradd_453_0gr_aunroll_x|i_add_i_vectoradd_456_2gr_impl_DSP0" has clock enable port ENA[1] that is driven by GND File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/kernel_hdl/VectorAdd/VectorAdd_i_sfc_s_c2_in_for_body_i_vecto0000er_vectoradd_113_8gr.sv Line: 52
+Warning (15357): WYSIWYG primitive "fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_inst_0|kernel|theVectorAdd_function_aunroll_x|thebb_VectorAdd_B1_aunroll_x|thebb_VectorAdd_B1_stall_region|thei_sfc_s_c2_in_for_body_i_vectoradds_c2_enter_vectoradd_113_8gr_aunroll_x|thei_sfc_logic_s_c2_in_for_body_i_vectoradds_c2_enter_vectoradd_453_0gr_aunroll_x|i_add_i_vectoradd_456_2gr_impl_DSP0" has clock enable port ENA[2] that is driven by GND File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/kernel_hdl/VectorAdd/VectorAdd_i_sfc_s_c2_in_for_body_i_vecto0000er_vectoradd_113_8gr.sv Line: 52
+Info (171004): Fitter is performing a Standard Fit compilation using maximum Fitter effort to optimize design performance
+Info (21076): High junction temperature operating condition is not set. Assuming a default value of '100'.
+Info (21076): Low junction temperature operating condition is not set. Assuming a default value of '0'.
+Info (12262): Starting Fitter periphery placement operations
+Info (12290): Loading the periphery placement data.
+Info (12291): Periphery placement data loaded: elapsed time is 00:00:24
+Info (12627): Pin ~ALTERA_AS_DATA1~ is reserved at location HA62
+Info (12627): Pin ~ALTERA_AS_nCSO0,ALTERA_MSEL0~ is reserved at location GN59
+Info (12627): Pin ~ALTERA_AS_DATA2~ is reserved at location GV59
+Info (12627): Pin ~ALTERA_AS_DATA0~ is reserved at location GN61
+Info (12627): Pin ~ALTERA_AS_CLK~ is reserved at location HG61
+Info (12627): Pin ~ALTERA_AS_nCSO2,ALTERA_MSEL1~ is reserved at location HF57
+Info (12627): Pin ~ALTERA_AS_nCSO1,ALTERA_MSEL2~ is reserved at location HG59
+Info (12627): Pin ~ALTERA_AS_DATA3~ is reserved at location GV61
+Info (12627): Pin ~ALTERA_AS_nCSO3~ is reserved at location HH54
+Info (12627): Pin ~ALTERA_AS_nRST~ is reserved at location HH56
+Info (16210): Plan updated with currently enabled project assignments.
+Info (12295): Periphery placement of all unplaced cells complete: elapsed time is 00:00:00
+Info (20360): 1 wire LUT(s) were inserted to tie-off unconnected output partition boundary ports in the design.
+Info (20360): 3 wire LUT(s) were inserted to tie-off unconnected input partition boundary ports in the design.
+Info (19539): Reading the HDL-embedded SDC files elapsed 00:00:00.
+Info (332104): Reading SDC File: 'quartus_compile.sdc'
+Info (19449): Reading SDC files elapsed 00:00:00.
+Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
+Warning (332158): Clock uncertainty characteristics of the Agilex 7 device family are preliminary
+Info (332154): The derive_clock_uncertainty command did not apply clock uncertainty to any clock-to-clock transfers.
+Info (332129): Detected timing requirements -- optimizing circuit to achieve only the specified requirements
+Info (332111): Found 1 clocks
+    Info (332111):   Period   Clock Name
+    Info (332111): ======== ============
+    Info (332111):    1.000        clock
+Info (176233): Starting register packing
+Warning (15357): WYSIWYG primitive "fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_inst_0|kernel|theVectorAdd_function_aunroll_x|thebb_VectorAdd_B1_aunroll_x|thebb_VectorAdd_B1_stall_region|thei_sfc_s_c2_in_for_body_i_vectoradds_c2_enter_vectoradd_113_8gr_aunroll_x|thei_sfc_logic_s_c2_in_for_body_i_vectoradds_c2_enter_vectoradd_453_0gr_aunroll_x|i_add_i_vectoradd_456_2gr_impl_DSP0" has clock enable port ENA[1] that is driven by GND File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/kernel_hdl/VectorAdd/VectorAdd_i_sfc_s_c2_in_for_body_i_vecto0000er_vectoradd_113_8gr.sv Line: 52
+Warning (15357): WYSIWYG primitive "fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_inst_0|kernel|theVectorAdd_function_aunroll_x|thebb_VectorAdd_B1_aunroll_x|thebb_VectorAdd_B1_stall_region|thei_sfc_s_c2_in_for_body_i_vectoradds_c2_enter_vectoradd_113_8gr_aunroll_x|thei_sfc_logic_s_c2_in_for_body_i_vectoradds_c2_enter_vectoradd_453_0gr_aunroll_x|i_add_i_vectoradd_456_2gr_impl_DSP0" has clock enable port ENA[2] that is driven by GND File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/kernel_hdl/VectorAdd/VectorAdd_i_sfc_s_c2_in_for_body_i_vecto0000er_vectoradd_113_8gr.sv Line: 52
+Info (176235): Finished register packing
+    Extra Info (176218): Packed 172 registers into blocks of type MLAB cell
+Info (20273): Intermediate fitter snapshots will not be committed because ENABLE_INTERMEDIATE_SNAPSHOTS QSF assignment is disabled during compilation.
+Info (21624): Not running Design Assistant in plan stage because there is no enabled rule to check
+Info (12517): Periphery placement operations ending: elapsed time is 00:01:19
+Info (11165): Fitter preparation operations ending: elapsed time is 00:01:29
+Info (18252): The Fitter is using Physical Synthesis.
+Info (22300): Design uses Placement Effort Multiplier = 1.0.
+Info (18258): Fitter Physical Synthesis operations beginning
+Info (18259): Fitter Physical Synthesis operations ending: elapsed time is 00:00:00
+Info (11888): Total time spent on timing analysis during Physical Synthesis is 0.00 seconds.
+Info (11178): Promoted 1 clock 
+    Info (18386): clock (8506 fanout) drives clock sectors (2, 3) to (3, 4)
+Info (22300): Design uses Placement Effort Multiplier = 1.0.
+Info (170189): Fitter placement preparation operations beginning
+Info (11888): Total time spent on timing analysis during Physical Synthesis is 0.00 seconds.
+Info (22300): Design uses Placement Effort Multiplier = 1.0.
+Info (170191): Fitter placement operations beginning
+Info (170137): Fitter placement was successful
+Info (170192): Fitter placement operations ending: elapsed time is 00:00:37
+Info (11888): Total time spent on timing analysis during Placement is 0.00 seconds.
+Info (21624): Not running Design Assistant in place stage because there is no enabled rule to check
+Info (22300): Design uses Placement Effort Multiplier = 1.0.
+Info (170193): Fitter routing operations beginning
+Info (20215): Router estimated peak short interconnect demand : 0% of right directional wire in region X0_Y0 to X11_Y7
+    Info (20265): Estimated peak short right directional wire demand : 0% in region X0_Y0 to X11_Y7
+    Info (20265): Estimated peak short left directional wire demand : 0% in region X0_Y0 to X11_Y7
+    Info (20265): Estimated peak short up directional wire demand : 0% in region X0_Y0 to X11_Y7
+    Info (20265): Estimated peak short down directional wire demand : 0% in region X0_Y0 to X11_Y7
+Info (20215): Router estimated peak long high speed interconnect demand : 86% of down directional wire in region X192_Y168 to X203_Y175
+    Info (20265): Estimated peak long high speed right directional wire demand : 37% in region X168_Y168 to X179_Y175
+    Info (20265): Estimated peak long high speed left directional wire demand : 34% in region X204_Y160 to X215_Y167
+    Info (20265): Estimated peak long high speed up directional wire demand : 57% in region X168_Y152 to X179_Y159
+    Info (20265): Estimated peak long high speed down directional wire demand : 86% in region X192_Y168 to X203_Y175
+    Info (20315): Note that the router may use short wires to implement long connections at higher delay
+Info (170239): Router is attempting to preserve 0.01 percent of routes from an earlier compilation, a user specified Routing Constraints File, or internal routing requirements.
+Info (21076): High junction temperature operating condition is not set. Assuming a default value of '100'.
+Info (21076): Low junction temperature operating condition is not set. Assuming a default value of '0'.
+Info (11888): Total time spent on timing analysis during Routing is 0.82 seconds.
+Info (16607): Fitter routing operations ending: elapsed time is 00:01:55
+Info (17966): Starting Hyper-Retimer operations.
+Info (17968): Completed Hyper-Retimer operations.
+Info (18821): Fitter Hyper-Retimer operations ending: elapsed time is 00:00:03
+Info (21076): High junction temperature operating condition is not set. Assuming a default value of '100'.
+Info (21076): Low junction temperature operating condition is not set. Assuming a default value of '0'.
+Info (18258): Fitter Physical Synthesis operations beginning
+Info (18259): Fitter Physical Synthesis operations ending: elapsed time is 00:00:02
+Critical Warning (24605): There are 64 unused RX channels and 64 unused TX channels in the design.
+    Info (24606): Add the QSF assignment 'set_instance_assignment -name PRESERVE_UNUSED_XCVR_CHANNEL ON -to <pin_name>' for each unused channel that will be used in future.
+    Info (24607): The above QSF assignment will preserve the performance of specified channels over time.
+Info (16557): Fitter post-fit operations ending: elapsed time is 00:01:08
+Info (20274): Successfully committed final database.
+Info (21624): Not running Design Assistant in finalize stage because there is no enabled rule to check
+Warning (15357): WYSIWYG primitive "fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_inst_0|kernel|theVectorAdd_function_aunroll_x|thebb_VectorAdd_B1_aunroll_x|thebb_VectorAdd_B1_stall_region|thei_sfc_s_c2_in_for_body_i_vectoradds_c2_enter_vectoradd_113_8gr_aunroll_x|thei_sfc_logic_s_c2_in_for_body_i_vectoradds_c2_enter_vectoradd_453_0gr_aunroll_x|i_add_i_vectoradd_456_2gr_impl_DSP0" has clock enable port ENA[1] that is driven by GND File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/kernel_hdl/VectorAdd/VectorAdd_i_sfc_s_c2_in_for_body_i_vecto0000er_vectoradd_113_8gr.sv Line: 52
+Warning (15357): WYSIWYG primitive "fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_inst_0|kernel|theVectorAdd_function_aunroll_x|thebb_VectorAdd_B1_aunroll_x|thebb_VectorAdd_B1_stall_region|thei_sfc_s_c2_in_for_body_i_vectoradds_c2_enter_vectoradd_113_8gr_aunroll_x|thei_sfc_logic_s_c2_in_for_body_i_vectoradds_c2_enter_vectoradd_453_0gr_aunroll_x|i_add_i_vectoradd_456_2gr_impl_DSP0" has clock enable port ENA[2] that is driven by GND File: /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/kernel_hdl/VectorAdd/VectorAdd_i_sfc_s_c2_in_for_body_i_vecto0000er_vectoradd_113_8gr.sv Line: 52
+Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
+Info: Quartus Prime Fitter was successful. 0 errors, 9 warnings
+    Info: Peak virtual memory: 16753 megabytes
+    Info: Processing ended: Tue Sep 29 11:49:50 2026
+    Info: Elapsed time: 00:08:07
+    Info: System process ID: 1399
+Info: Run task: Timing Analysis (Signoff)
+Info (20030): Parallel compilation is enabled and will use 18 of the 18 processors detected
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 25.1.0 Build 129 03/26/2025 SC Pro Edition
+    Info: Processing started: Tue Sep 29 11:49:52 2026
+    Info: System process ID: 2393
+Info: Command: quartus_sta quartus_compile -c quartus_compile --mode=finalize
+Info: qsta_default_script.tcl version: #1
+Info (16677): Loading final database.
+Info (16734): Loading "final" snapshot for partition "root_partition".
+Info (16734): Loading "final" snapshot for partition "component_fast_recompile_fpga_di".
+Info (16678): Successfully loaded final database: elapsed time is 00:00:10.
+Info (21076): High junction temperature operating condition is not set. Assuming a default value of '100'.
+Info (21076): Low junction temperature operating condition is not set. Assuming a default value of '0'.
+Info (19539): Reading the HDL-embedded SDC files elapsed 00:00:00.
+Info (332104): Reading SDC File: 'quartus_compile.sdc'
+Info (19449): Reading SDC files elapsed 00:00:00.
+Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
+Warning (332158): Clock uncertainty characteristics of the Agilex 7 device family are preliminary
+Info (332154): The derive_clock_uncertainty command did not apply clock uncertainty to any clock-to-clock transfers.
+Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Critical Warning (332148): Timing requirements not met
+    Info (19062): For recommendations on closing timing for HyperFlex architectures, run Fast Forward Timing Closure Recommendations in the Compilation Dashboard.
+Info (332146): Worst-case setup slack is -0.184
+    Info (332119):     Slack       End Point TNS Failing End Points      Clock Worst-Case Operating Conditions 
+    Info (332119): ========= =================== ========= ========== ===================== 
+    Info (332119):    -0.184             -18.400       326      clock Slow vid2b 100C Model 
+Info (332146): Worst-case hold slack is 0.018
+    Info (332119):     Slack       End Point TNS Failing End Points      Clock Worst-Case Operating Conditions 
+    Info (332119): ========= =================== ========= ========== ===================== 
+    Info (332119):     0.018               0.000         0      clock  Fast vid2 100C Model 
+Info (332146): Worst-case recovery slack is 0.108
+    Info (332119):     Slack       End Point TNS Failing End Points      Clock Worst-Case Operating Conditions 
+    Info (332119): ========= =================== ========= ========== ===================== 
+    Info (332119):     0.108               0.000         0      clock  Slow vid2 100C Model 
+Info (332146): Worst-case removal slack is 0.159
+    Info (332119):     Slack       End Point TNS Failing End Points      Clock Worst-Case Operating Conditions 
+    Info (332119): ========= =================== ========= ========== ===================== 
+    Info (332119):     0.159               0.000         0      clock   Fast vid2a 0C Model 
+Info (332140): No Setup paths to report
+Info (332140): No Recovery paths to report
+Info (332146): Worst-case minimum pulse width slack is -0.406
+    Info (332119):     Slack       End Point TNS Failing End Points      Clock Worst-Case Operating Conditions 
+    Info (332119): ========= =================== ========= ========== ===================== 
+    Info (332119):    -0.406            -391.006      1401      clock  Slow vid2 100C Model 
+Info (332114): Report Metastability (Slow vid2 100C Model): Found 91 synchronizer chains.
+    Info (332114): Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
+    Info (332114): MTBF(design) = 1 / SUM(1 / MTBF(synchronizer chain))
+
+    Info (332114): Number of Synchronizer Chains Found: 91
+    Info (332114): Shortest Synchronizer Chain: 3 Registers
+    Info (332114): Number of Chains For Which MTBFs Could Not be Calculated Due to Timing Violations: 0, or 0.0%.
+    Info (332114): Number of Chains Excluded from MTBF Analysis: 0, or 0.0%
+    Info (332114): Worst Case Available Settling Time: 1.520 ns
+
+    Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
+    Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 1037.4
+Info (332114): Report Metastability (Slow vid2b 100C Model): Found 91 synchronizer chains.
+    Info (332114): Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
+    Info (332114): MTBF(design) = 1 / SUM(1 / MTBF(synchronizer chain))
+
+    Info (332114): Number of Synchronizer Chains Found: 91
+    Info (332114): Shortest Synchronizer Chain: 3 Registers
+    Info (332114): Number of Chains For Which MTBFs Could Not be Calculated Due to Timing Violations: 0, or 0.0%.
+    Info (332114): Number of Chains Excluded from MTBF Analysis: 0, or 0.0%
+    Info (332114): Worst Case Available Settling Time: 1.518 ns
+
+    Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
+    Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 1037.4
+Info (332114): Report Metastability (Fast vid2a 0C Model): Found 91 synchronizer chains.
+    Info (332114): Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
+    Info (332114): MTBF(design) = 1 / SUM(1 / MTBF(synchronizer chain))
+
+    Info (332114): Number of Synchronizer Chains Found: 91
+    Info (332114): Shortest Synchronizer Chain: 3 Registers
+    Info (332114): Number of Chains For Which MTBFs Could Not be Calculated Due to Timing Violations: 0, or 0.0%.
+    Info (332114): Number of Chains Excluded from MTBF Analysis: 0, or 0.0%
+    Info (332114): Worst Case Available Settling Time: 1.932 ns
+
+    Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
+    Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 413.3
+Info (332114): Report Metastability (Fast vid2a 100C Model): Found 91 synchronizer chains.
+    Info (332114): Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
+    Info (332114): MTBF(design) = 1 / SUM(1 / MTBF(synchronizer chain))
+
+    Info (332114): Number of Synchronizer Chains Found: 91
+    Info (332114): Shortest Synchronizer Chain: 3 Registers
+    Info (332114): Number of Chains For Which MTBFs Could Not be Calculated Due to Timing Violations: 0, or 0.0%.
+    Info (332114): Number of Chains Excluded from MTBF Analysis: 0, or 0.0%
+    Info (332114): Worst Case Available Settling Time: 1.857 ns
+
+    Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
+    Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 3629.0
+Info (332114): Report Metastability (Fast vid2 100C Model): Found 91 synchronizer chains.
+    Info (332114): Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
+    Info (332114): MTBF(design) = 1 / SUM(1 / MTBF(synchronizer chain))
+
+    Info (332114): Number of Synchronizer Chains Found: 91
+    Info (332114): Shortest Synchronizer Chain: 3 Registers
+    Info (332114): Number of Chains For Which MTBFs Could Not be Calculated Due to Timing Violations: 0, or 0.0%.
+    Info (332114): Number of Chains Excluded from MTBF Analysis: 0, or 0.0%
+    Info (332114): Worst Case Available Settling Time: 1.852 ns
+
+    Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
+    Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 3629.0
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info (21615): Running Design Assistant Rules for snapshot 'final'
+Info: No waiver waived any violations
+Info (22360): Design Assistant Results: 80 of 85 enabled rules passed, and 10 rules was disabled, in snapshot 'final'
+Info (21661): Design Assistant Results: 0 of 34 High severity rules issued violations in snapshot 'final'
+Info (21621): Design Assistant Results: 4 of 36 Medium severity rules issued violations in snapshot 'final'. Please refer to DRC report '/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/quartus_compile.tq.drc.signoff.rpt' for more information
+Info (21622): Design Assistant Results: 1 of 15 Low severity rules issued violations in snapshot 'final'. Please refer to DRC report '/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/fast-ip/tmp/host-549288-033e71/quartus_compile.tq.drc.signoff.rpt' for more information
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 2 warnings
+    Info: Peak virtual memory: 3764 megabytes
+    Info: Processing ended: Tue Sep 29 11:50:12 2026
+    Info: Elapsed time: 00:00:20
+    Info: System process ID: 2393
+Info (21793): Quartus Prime Full Compilation was successful. 0 errors, 76 warnings
+Info (23030): Evaluation of Tcl script /opt/altera/25.1/quartus/common/tcl/internal/qsh_flowengine.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 78 warnings
+    Info: Peak virtual memory: 1440 megabytes
+    Info: Processing ended: Tue Sep 29 11:50:13 2026
+    Info: Elapsed time: 00:09:04
+    Info: System process ID: 1177

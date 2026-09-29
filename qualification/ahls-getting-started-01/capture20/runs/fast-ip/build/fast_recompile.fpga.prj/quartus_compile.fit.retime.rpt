@@ -1,0 +1,183 @@
+Fitter Retime Stage Report for quartus_compile
+Tue Sep 29 11:48:38 2026
+Quartus Prime Version 25.1.0 Build 129 03/26/2025 SC Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Hyper-Retimer Settings
+  3. Reset Sequence Requirement
+  4. Retiming Limit Summary
+  5. Critical Chain Summary for Clock Domain clock
+  6. Retime Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++--------------------------------------------------+
+; Hyper-Retimer Settings                           ;
++------------------------+---------+---------------+
+; Option                 ; Setting ; Default Value ;
++------------------------+---------+---------------+
+; Enable Auto-Pipelining ; On      ; On            ;
++------------------------+---------+---------------+
+
+
++------------------------------------------+
+; Reset Sequence Requirement               ;
++------------+-----------------------------+
+; Clock Name ; Number of additional cycles ;
++------------+-----------------------------+
+; clock      ; 6                           ;
++------------+-----------------------------+
+Note: Due to retiming optimizations, a clock domain may require a longer reset sequence to ensure correct functionality.  The table above indicates the minimum number of additional reset sequence cycles needed for each clock domain.
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Retiming Limit Summary                                                                                                                                                            ;
++--------------------+--------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+; Clock Transfer     ; Limiting Reason          ; Recommendation                                                                                                                    ;
++--------------------+--------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+; Clock Domain clock ; Retiming Dependency Loop ; See the Fast Forward Timing Closure Recommendations report for step-by-step suggestions for RTL changes and estimated performance ;
++--------------------+--------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+
+
+Critical Chain Summary for Clock Domain clock
+===============================================================================
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Recommendations for Critical Chain                                                                                                                                                                                    ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Recommendation                                                                                                                                                                                                        ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; The critical chain is limited by: Retiming Dependency Loop                                                                                                                                                            ;
+;                                                                                                                                                                                                                       ;
+; The critical chain has some retiming dependencies that restrict retiming.                                                                                                                                             ;
+;    Reduce the delay of 'Long Paths' in the chain                                                                                                                                                                      ;
+;   or insert more pipeline stages for 'Long Paths' in the chain.                                                                                                                                                       ;
+;   See the 'Critical Chain Details' table for more information                                                                                                                                                         ;
+;    Refer to <a href='https://www.intel.com/content/www/us/en/docs/programmable/683353/current/loops.html'>Loops</a> in the <i>Intel Hyperflex Architecture High-Performance Design Handbook</i> for more information. ;
+;                                                                                                                                                                                                                       ;
+; Retiming Restriction: Boundary Port Restriction                                                                                                                                                                       ;
+;  Unable to retime across boundary ports:                                                                                                                                                                              ;
+;    fast_recompile_fpga_di_inst|csr_ring_root_avs_address[4]                                                                                                                                                           ;
+;    fast_recompile_fpga_di_inst|csr_ring_root_avs_byteenable[1]                                                                                                                                                        ;
+;                                                                                                                                                                                                                       ;
+; Retiming Restriction: Cross Partition Transfer Restriction                                                                                                                                                            ;
+;  Unable to retime across nodes involved in cross-partition transfers:                                                                                                                                                 ;
+;    fast_recompile_fpga_di_csr_ring_root_avs_address_reg[4]                                                                                                                                                            ;
+;    fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|dupName_3_can_write_x_q[0]~1                                                                                                            ;
+;    fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|i4234~2                                                                                                                                 ;
+;    fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|arguments_16_buffered_q[9]                                                                                                              ;
+;    fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|arguments_16_buffered_q[11]                                                                                                             ;
+;    fast_recompile_fpga_di_csr_ring_root_avs_byteenable_reg[1]                                                                                                                                                         ;
+;    fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|status_select_q[14]~0                                                                                                                   ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Critical Chain Details                                                                                                                                                                                                              ;
++----------------------+-------------------------+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Path Info            ; Register                ; Register ID ; Element                                                                                                                                                              ;
++----------------------+-------------------------+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Long Path (Critical) ; REG (required)          ; #1          ; fast_recompile_fpga_di_csr_ring_root_avs_address_reg[4]                                                                                                              ;
+; Long Path (Critical) ;                         ;             ; fast_recompile_fpga_di_csr_ring_root_avs_address_reg[4]|q                                                                                                            ;
+; Long Path (Critical) ;                         ;             ; fast_recompile_fpga_di_inst|csr_ring_root_avs_address[4]|input                                                                                                       ;
+; Long Path (Critical) ;                         ;             ; fast_recompile_fpga_di_inst|csr_ring_root_avs_address[4]                                                                                                             ;
+; Long Path (Critical) ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|dupName_3_can_write_x_q[0]~1|datab                                                        ;
+; Long Path (Critical) ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|dupName_3_can_write_x_q[0]~1|combout                                                      ;
+; Long Path (Critical) ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|dupName_3_can_write_x_q[0]~1~cw_la_lab/laboutb[2]                                         ;
+; Long Path (Critical) ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|dupName_3_can_write_x_q[0]~1~_LAB_RE_X208_Y168_N0_I111                                    ;
+; Long Path (Critical) ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|dupName_3_can_write_x_q[0]~1~_R1_X208_Y168_N0_I22                                         ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|dupName_3_can_write_x_q[0]~1~_R6_X202_Y168_N0_I13                                         ;
+; Long Path (Critical) ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|dupName_3_can_write_x_q[0]~1~_LOCAL_INTERCONNECT_X201_Y168_N0_I56                         ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|dupName_3_can_write_x_q[0]~1~_BLOCK_INPUT_MUX_PASSTHROUGH_X201_Y168_N0_I58                ;
+; Long Path (Critical) ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|dupName_3_can_write_x_q[0]~1~_LAB_RE_X201_Y168_N0_I56                                     ;
+; Long Path (Critical) ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|i4234~2|datae                                                                             ;
+; Long Path (Critical) ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|i4234~2|combout                                                                           ;
+; Long Path (Critical) ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|i4234~2~_LAB_RE_X201_Y168_N0_I120                                                         ;
+; Long Path (Critical) ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|i4234~2~_R0_X201_Y168_N0_I52                                                              ;
+; Long Path (Critical) ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|i4234~2~_R0_X201_Y168_N0_I47                                                              ;
+; Long Path (Critical) ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|i4234~2~_R0_X201_Y168_N0_I13                                                              ;
+; Long Path (Critical) ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|i4234~2~_LOCAL_INTERCONNECT_X201_Y168_N0_I77                                              ;
+; Long Path (Critical) ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|i4234~2~_BLOCK_INPUT_MUX_PASSTHROUGH_X201_Y168_N0_I81                                     ;
+; Long Path (Critical) ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|i4234~2~_LAB_RE_X201_Y168_N0_I81                                                          ;
+; Long Path (Critical) ; Bypassed Hyper-Register ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|arguments_16_buffered_q[9]~xtophalf/xale3/xcw_ml_le_regctrl/xcw_la_le_regctrl_reg/nce_out ;
+; Long Path (Critical) ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|arguments_16_buffered_q[11]|ena                                                           ;
+; Long Path (Critical) ; ALM Register            ; #2          ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|arguments_16_buffered_q[11]                                                               ;
+; -------------------- ; ----------------------- ; ----------- ; -------------------------------------------------------------------------------------------------------------------------------------------------------------------- ;
+; Retiming Dependency  ; REG (required)          ; #3          ; fast_recompile_fpga_di_csr_ring_root_avs_byteenable_reg[1]                                                                                                           ;
+; Retiming Dependency  ;                         ;             ; fast_recompile_fpga_di_csr_ring_root_avs_byteenable_reg[1]|q                                                                                                         ;
+; Retiming Dependency  ;                         ;             ; fast_recompile_fpga_di_inst|csr_ring_root_avs_byteenable[1]|input                                                                                                    ;
+; Retiming Dependency  ;                         ;             ; fast_recompile_fpga_di_inst|csr_ring_root_avs_byteenable[1]                                                                                                          ;
+; Retiming Dependency  ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|i4234~2|dataa                                                                             ;
+; Retiming Dependency  ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|i4234~2|combout                                                                           ;
+; Retiming Dependency  ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|i4234~2~_LAB_RE_X201_Y168_N0_I120                                                         ;
+; Retiming Dependency  ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|i4234~2~_R0_X201_Y168_N0_I52                                                              ;
+; Retiming Dependency  ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|i4234~2~_R0_X201_Y168_N0_I47                                                              ;
+; Retiming Dependency  ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|i4234~2~_R0_X201_Y168_N0_I13                                                              ;
+; Retiming Dependency  ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|i4234~2~_LOCAL_INTERCONNECT_X201_Y168_N0_I77                                              ;
+; Retiming Dependency  ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|i4234~2~_BLOCK_INPUT_MUX_PASSTHROUGH_X201_Y168_N0_I81                                     ;
+; Retiming Dependency  ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|i4234~2~_LAB_RE_X201_Y168_N0_I81                                                          ;
+; Retiming Dependency  ; Bypassed Hyper-Register ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|arguments_16_buffered_q[9]~xtophalf/xale3/xcw_ml_le_regctrl/xcw_la_le_regctrl_reg/nce_out ;
+; Retiming Dependency  ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|arguments_16_buffered_q[11]|ena                                                           ;
+; Retiming Dependency  ; ALM Register            ; #2          ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|arguments_16_buffered_q[11]                                                               ;
+; -------------------- ; ----------------------- ; ----------- ; -------------------------------------------------------------------------------------------------------------------------------------------------------------------- ;
+; Long Path            ; REG (required)          ; #3          ; fast_recompile_fpga_di_csr_ring_root_avs_byteenable_reg[1]                                                                                                           ;
+; Long Path            ;                         ;             ; fast_recompile_fpga_di_csr_ring_root_avs_byteenable_reg[1]|q                                                                                                         ;
+; Long Path            ;                         ;             ; fast_recompile_fpga_di_inst|csr_ring_root_avs_byteenable[1]|input                                                                                                    ;
+; Long Path            ;                         ;             ; fast_recompile_fpga_di_inst|csr_ring_root_avs_byteenable[1]                                                                                                          ;
+; Long Path            ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|status_select_q[14]~0|dataf                                                               ;
+; Long Path            ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|status_select_q[14]~0|combout                                                             ;
+; Long Path            ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|status_NO_SHIFT_REG_q[14]|d                                                               ;
+; Long Path            ; ALM Register            ; #4          ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|status_NO_SHIFT_REG_q[14]                                                                 ;
+; -------------------- ; ----------------------- ; ----------- ; -------------------------------------------------------------------------------------------------------------------------------------------------------------------- ;
+; Retiming Dependency  ; REG (required)          ; #1          ; fast_recompile_fpga_di_csr_ring_root_avs_address_reg[4]                                                                                                              ;
+; Retiming Dependency  ;                         ;             ; fast_recompile_fpga_di_csr_ring_root_avs_address_reg[4]|q                                                                                                            ;
+; Retiming Dependency  ;                         ;             ; fast_recompile_fpga_di_inst|csr_ring_root_avs_address[4]|input                                                                                                       ;
+; Retiming Dependency  ;                         ;             ; fast_recompile_fpga_di_inst|csr_ring_root_avs_address[4]                                                                                                             ;
+; Retiming Dependency  ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|status_select_q[14]~0|dataa                                                               ;
+; Retiming Dependency  ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|status_select_q[14]~0|combout                                                             ;
+; Retiming Dependency  ;                         ;             ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|status_NO_SHIFT_REG_q[14]|d                                                               ;
+; Retiming Dependency  ; ALM Register            ; #4          ; fast_recompile_fpga_di_inst|VectorAdd_std_ic_inst|VectorAdd_csr_agent_inst|status_NO_SHIFT_REG_q[14]                                                                 ;
++----------------------+-------------------------+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
+
++-----------------+
+; Retime Messages ;
++-----------------+
+Info (20030): Parallel compilation is enabled and will use 18 of the 18 processors detected
+Info: *******************************************************************
+Info: Running Quartus Prime Fitter
+    Info: Version 25.1.0 Build 129 03/26/2025 SC Pro Edition
+    Info: Processing started: Tue Sep 29 11:41:43 2026
+    Info: System process ID: 1399
+Info: Command: quartus_fit --read_settings_files=on --write_settings_files=off quartus_compile -c quartus_compile
+Info: qfit2_default_script.tcl version: #1
+Info: Project  = quartus_compile
+Info: Revision = quartus_compile
+Info (17966): Starting Hyper-Retimer operations.
+Info (17968): Completed Hyper-Retimer operations.
+Info (18821): Fitter Hyper-Retimer operations ending: elapsed time is 00:00:03
+
+

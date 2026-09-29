@@ -1,0 +1,121 @@
+Flow report for quartus_compile
+Tue Sep 29 11:21:57 2026
+Quartus Prime Version 25.1.0 Build 129 03/26/2025 SC Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Flow Summary
+  2. Flow Settings
+  3. Flow Non-Default Global Settings
+  4. Flow Elapsed Time
+  5. Flow OS Summary
+  6. Flow Log
+  7. Legal Notice
+
+
+
++------------------------------------------------------------------------------+
+; Flow Summary                                                                 ;
++---------------------------------+--------------------------------------------+
+; Flow Status                     ; Successful - Tue Sep 29 11:21:35 2026      ;
+; Quartus Prime Version           ; 25.1.0 Build 129 03/26/2025 SC Pro Edition ;
+; Revision Name                   ; quartus_compile                            ;
+; Top-level Entity Name           ; quartus_compile                            ;
+; Family                          ; Agilex 7                                   ;
+; Device                          ; AGFB027R25A2E2V                            ;
+; Timing Models                   ; Final                                      ;
+; Power Models                    ; Final                                      ;
+; Device Status                   ; Final                                      ;
+; Logic utilization (in ALMs)     ; 2,396 / 912,800 ( < 1 % )                  ;
+; Total dedicated logic registers ; 5107                                       ;
+; Total pins                      ; 0 / 886 ( 0 % )                            ;
+; Total block memory bits         ; 136,320 / 271,810,560 ( < 1 % )            ;
+; Total RAM Blocks                ; 13 / 13,272 ( < 1 % )                      ;
+; Total DSP Blocks                ; 0 / 8,528 ( 0 % )                          ;
+; Total HSSI P-Tiles              ; 0 / 2 ( 0 % )                              ;
+; Total HSSI E-Tile Channels      ; 0 / 24 ( 0 % )                             ;
+; Total HSSI HPS                  ; 0 / 1 ( 0 % )                              ;
+; Total HSSI EHIPs                ; 0 / 4 ( 0 % )                              ;
+; Total PLLs                      ; 0 / 36 ( 0 % )                             ;
++---------------------------------+--------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 09/29/2026 11:13:19 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; quartus_compile     ;
++-------------------+---------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                                                                                                       ;
++------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------+------------+
+; Assignment Name        ; Value                                                                                                                                                              ; Default Value ; Entity Name ; Section Id ;
++------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------+------------+
+; COMPILER_SIGNATURE_ID  ; 817179867827.179070560001189                                                                                                                                       ; --            ; --          ; --         ;
+; FLOW_DISABLE_ASSEMBLER ; On                                                                                                                                                                 ; Off           ; --          ; --         ;
+; MISC_FILE              ; /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/compile2-ip/tmp/vector_add-b6fe9c-04beb8/ip/acl_parameter_assert.svh                            ; --            ; --          ; --         ;
+; MISC_FILE              ; /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/compile2-ip/tmp/vector_add-b6fe9c-04beb8/top_vector_add_fpga_di/top_vector_add_fpga_di.cmp      ; --            ; --          ; --         ;
+; MISC_FILE              ; /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/compile2-ip/tmp/vector_add-b6fe9c-04beb8/top_vector_add_fpga_di.ip                              ; --            ; --          ; --         ;
+; SOPCINFO_FILE          ; /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/compile2-ip/tmp/vector_add-b6fe9c-04beb8/top_vector_add_fpga_di/top_vector_add_fpga_di.sopcinfo ; --            ; --          ; --         ;
++------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------+------------+
+
+
++------------------------------------------------------+
+; Flow Elapsed Time                                    ;
++-----------------+--------------+---------------------+
+; Module Name     ; Elapsed Time ; Peak Virtual Memory ;
++-----------------+--------------+---------------------+
+; Synthesis       ; 00:00:28     ; 2699 MB             ;
+; Fitter          ; 00:07:47     ; 16412 MB            ;
+; Timing Analyzer ; 00:00:19     ; 3727 MB             ;
+; Total           ; 00:08:34     ; --                  ;
++-----------------+--------------+---------------------+
+
+
++----------------------------------------------------------------------------------+
+; Flow OS Summary                                                                  ;
++-----------------+--------------------+-------------+------------+----------------+
+; Module Name     ; Machine Hostname   ; OS Name     ; OS Version ; Processor type ;
++-----------------+--------------------+-------------+------------+----------------+
+; Synthesis       ; Agilex7Workstation ; Rocky Linux ; 9          ; x86_64         ;
+; Fitter          ; Agilex7Workstation ; Rocky Linux ; 9          ; x86_64         ;
+; Timing Analyzer ; Agilex7Workstation ; Rocky Linux ; 9          ; x86_64         ;
++-----------------+--------------------+-------------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_syn --read_settings_files=on --write_settings_files=off quartus_compile -c quartus_compile
+quartus_fit --read_settings_files=on --write_settings_files=off quartus_compile -c quartus_compile
+quartus_sta quartus_compile -c quartus_compile --mode=finalize
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+

@@ -1,0 +1,561 @@
+# 
+# do mpsim/sim/msim_run.tcl
+# Questa Intel FPGA Edition-64 vsim 2024.3 Simulator 2024.09 Sep 10 2024
+# mpsim/sim
+# /home/uwb_student00/ahls/altera_hls/aclsycl/host/linux64/lib/libaoc_cosim_msim
+# [exec] file_copy
+# List Of Command Line Aliases
+# 
+# file_copy                                         -- Copy ROM/RAM files to simulation directory
+# 
+# dev_com                                           -- Compile device library files
+# 
+# com                                               -- Compile the design files in correct order
+# 
+# elab                                              -- Elaborate top level design
+# 
+# elab_debug                                        -- Elaborate the top level design with -voptargs=+acc option
+# 
+# ld                                                -- Compile all the design files and elaborate the top level design
+# 
+# ld_debug                                          -- Compile all the design files and elaborate the top level design with  -voptargs=+acc
+# 
+# 
+# 
+# List Of Variables
+# 
+# TOP_LEVEL_NAME                                    -- Top level module name.
+#                                                      For most designs, this should be overridden
+#                                                      to enable the elab/elab_debug aliases.
+# 
+# SYSTEM_INSTANCE_NAME                              -- Instantiated system module name inside top level module.
+# 
+# QSYS_SIMDIR                                       -- Qsys base simulation directory.
+# 
+# QUARTUS_INSTALL_DIR                               -- Quartus installation directory.
+# 
+# USER_DEFINED_COMPILE_OPTIONS                      -- User-defined compile options, added to com/dev_com aliases.
+# 
+# USER_DEFINED_VHDL_COMPILE_OPTIONS                 -- User-defined vhdl compile options, added to com/dev_com aliases.
+# 
+# USER_DEFINED_VERILOG_COMPILE_OPTIONS              -- User-defined verilog compile options, added to com/dev_com aliases.
+# 
+# USER_DEFINED_ELAB_OPTIONS                         -- User-defined elaboration options, added to elab/elab_debug aliases.
+# 
+# SILENCE                                           -- Set to true to suppress all informational and/or warning messages in the generated simulation script. 
+# 
+# PRECOMP_DEVICE_LIB_FILE                           -- Precompiled device library file.
+#                                                     Use this variable to provide modelsim.ini or tcl containing device library mapping and dev_com will be skipped
+#                                                     If value is empty, device libraries will be compiled local
+# 
+# FORCE_MODELSIM_AE_SELECTION                       -- Set to true to force to select Modelsim AE always.
+# 1
+# +nowarnTFMPC +nowarnBSOB -suppress 1130 -suppress 2732 -suppress 3584 -suppress 3839 -suppress 12027 -suppress 14408 -dpioutoftheblue 1 -sv_lib /home/uwb_student00/ahls/altera_hls/aclsycl/host/linux64/lib/libaoc_cosim_msim -voptargs=+acc
+# [exec] elab
+# Loading /home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim27/w0/s093/tmp/uwb_student00@Agilex7Workstation_dpi_3269/linux_x86_64_gcc-10.3.0/export_tramp.so
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
+# ** Warning: ../vector_add-cef404-d3c484/mpsim/altera_merlin_slave_translator_191/sim/mpsim_altera_merlin_slave_translator_191_xg7rzxi.sv(315): (vopt-2697) LSB -1 of part-select into 'real_uav_address' is out of bounds.
+# ** Warning: ../vector_add-cef404-d3c484/mpsim/altera_merlin_slave_translator_191/sim/mpsim_altera_merlin_slave_translator_191_xg7rzxi.sv(275): (vopt-2697) LSB -1 of part-select into 'real_uav_address' is out of bounds.
+# ** Warning: ../vector_add-cef404-d3c484/ip/mpsim/mpsim_ki/altera_merlin_traffic_limiter_1921/sim/mpsim_ki_altera_merlin_traffic_limiter_1921_3mmasty.sv(414): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: ../vector_add-cef404-d3c484/ip/mpsim/mpsim_ki/altera_merlin_traffic_limiter_1921/sim/mpsim_ki_altera_merlin_traffic_limiter_1921_3mmasty.sv(436): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: ../vector_add-cef404-d3c484/ip/mpsim/mpsim_ki/altera_merlin_master_translator_193/sim/mpsim_ki_altera_merlin_master_translator_193_lgcew2q.sv(695): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: ../vector_add-cef404-d3c484/ip/mpsim/mpsim_ki/altera_merlin_master_translator_193/sim/mpsim_ki_altera_merlin_master_translator_193_lgcew2q.sv(751): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: ../vector_add-cef404-d3c484/ip/mpsim/mpsim_ki/altera_merlin_master_translator_193/sim/mpsim_ki_altera_merlin_master_translator_193_lgcew2q.sv(695): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: ../vector_add-cef404-d3c484/ip/mpsim/mpsim_ki/altera_merlin_master_translator_193/sim/mpsim_ki_altera_merlin_master_translator_193_lgcew2q.sv(751): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: ../vector_add-cef404-d3c484/kernel_system/altera_merlin_master_translator_193/sim/kernel_system_altera_merlin_master_translator_193_lgcew2q.sv(695): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: ../vector_add-cef404-d3c484/kernel_system/altera_merlin_master_translator_193/sim/kernel_system_altera_merlin_master_translator_193_lgcew2q.sv(751): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: ../vector_add-cef404-d3c484/mpsim/altera_merlin_master_translator_193/sim/mpsim_altera_merlin_master_translator_193_lgcew2q.sv(695): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: ../vector_add-cef404-d3c484/mpsim/altera_merlin_master_translator_193/sim/mpsim_altera_merlin_master_translator_193_lgcew2q.sv(751): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: ../vector_add-cef404-d3c484/ip/mpsim/mpsim_ki/altera_merlin_slave_translator_191/sim/mpsim_ki_altera_merlin_slave_translator_191_xg7rzxi.sv(315): (vopt-2697) LSB -1 of part-select into 'real_uav_address' is out of bounds.
+# ** Warning: ../vector_add-cef404-d3c484/ip/mpsim/mpsim_ki/altera_merlin_slave_translator_191/sim/mpsim_ki_altera_merlin_slave_translator_191_xg7rzxi.sv(275): (vopt-2697) LSB -1 of part-select into 'real_uav_address' is out of bounds.
+# ** Note: (vopt-143) Recognized 1 FSM in module "lsu_token_ring(fast)".
+# ** Warning: ../vector_add-cef404-d3c484/ip/mpsim/mpsim_avmm_agent_cra_inst/aoc_sim_mm_master_dpi_bfm_10/sim/aoc_sim_mm_master_dpi_bfm.sv(493): (vopt-2240) Treating stand-alone use of function '__ihc_aoc_mm_agent_read' as an implicit VOID cast.
+# ** Warning: ../vector_add-cef404-d3c484/ip/mpsim/mpsim_avmm_agent_cra_inst/aoc_sim_mm_master_dpi_bfm_10/sim/aoc_sim_mm_master_dpi_bfm.sv(534): (vopt-2240) Treating stand-alone use of function '__ihc_aoc_mm_agent_read' as an implicit VOID cast.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=17.
+# //  Questa Intel FPGA Edition-64
+# //  Version 2024.3 linux_x86_64 Sep 10 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.mpsim(fast)
+# Loading VectorAddID_en_cfan.VectorAddID_en_cfan(fast)
+# Loading avalon_conduit_fanout_10.VectorAddID_en_cfan_avalon_conduit_fanout_10_xkdeykq(fast)
+# Loading mpsim_avmm_agent_cra_inst.mpsim_avmm_agent_cra_inst(fast)
+# Loading altera_common_sv_packages.verbosity_pkg(fast)
+# Loading altera_common_sv_packages.avalon_mm_pkg(fast)
+# Loading aoc_sim_mm_master_dpi_bfm_10.aoc_sim_mm_master_dpi_bfm(fast)
+# Loading altera_common_sv_packages.avalon_utilities_pkg(fast)
+# Loading aoc_sim_mm_master_dpi_bfm_10.altera_avalon_mm_master_bfm(fast)
+# Loading aoc_sim_mm_master_dpi_bfm_10.altera_avalon_mm_master_bfm(fast__1)
+# Loading mpsim_clk_rst.mpsim_clk_rst(fast)
+# Loading hls_sim_clock_reset_10.hls_sim_clock_reset(fast)
+# Loading dpic_VectorAddID.dpic_VectorAddID(fast)
+# Loading aoc_sim_component_dpi_controller_10.aoc_sim_component_dpi_controller(fast)
+# Loading aoc_sim_component_dpi_controller_10.aoc_sim_stream_sink_dpi_bfm(fast)
+# Loading aoc_sim_component_dpi_controller_10.aoc_sim_stream_source_dpi_bfm(fast)
+# Loading vector_add_fpga_sim_sys_140.hld_sim_latency_tracker(fast)
+# Loading cct_comp_stall.cct_comp_stall(fast)
+# Loading avalon_concatenate_singlebit_conduits_10.cct_comp_stall_avalon_concatenate_singlebit_conduits_10_lrbideq(fast)
+# Loading mpsim_ki.mpsim_ki(fast)
+# Loading kernel_interface_151.mpsim_ki_kernel_interface_151_yqsw7ei(fast)
+# Loading altera_avalon_mm_bridge_2010.mpsim_ki_altera_avalon_mm_bridge_2010_tex5a4i(fast)
+# Loading altera_avalon_mm_bridge_2010.altera_merlin_waitrequest_adapter(fast)
+# Loading altera_address_span_extender_1920.mpsim_ki_altera_address_span_extender_1920_vz4724i(fast)
+# Loading sw_reset_100.sw_reset(fast)
+# Loading global_routing_reset_100.global_routing(fast)
+# Loading altera_avalon_mm_bridge_2010.mpsim_ki_altera_avalon_mm_bridge_2010_tex5a4i(fast__1)
+# Loading altera_avalon_mm_bridge_2010.altera_merlin_waitrequest_adapter(fast__1)
+# Loading mem_org_mode_100.mem_org_mode(fast)
+# Loading altera_irq_bridge_2000.mpsim_ki_altera_irq_bridge_2000_mzhkeuq(fast)
+# Loading version_id_100.version_id(fast)
+# Loading altera_reset_controller_1924.altera_reset_controller(fast)
+# Loading altera_reset_controller_1924.altera_reset_synchronizer(fast)
+# Loading altera_reset_controller_1924.altera_reset_synchronizer(fast__1)
+# Loading altera_mm_interconnect_1920.mpsim_ki_altera_mm_interconnect_1920_jcc3hxy(fast)
+# Loading altera_merlin_master_translator_193.mpsim_ki_altera_merlin_master_translator_193_lgcew2q(fast)
+# Loading altera_merlin_slave_translator_191.mpsim_ki_altera_merlin_slave_translator_191_xg7rzxi(fast)
+# Loading altera_merlin_master_agent_1931.mpsim_ki_altera_merlin_master_agent_1931_g4xxafa(fast)
+# Loading altera_merlin_slave_agent_1930.mpsim_ki_altera_merlin_slave_agent_1930_jxauz3i(fast)
+# Loading altera_merlin_slave_agent_1930.altera_merlin_burst_uncompressor(fast)
+# Loading altera_avalon_sc_fifo_1932.mpsim_ki_altera_avalon_sc_fifo_1932_onpcouq(fast)
+# Loading altera_avalon_sc_fifo_1932.mpsim_ki_altera_avalon_sc_fifo_1932_onpcouq(fast__1)
+# Loading altera_merlin_router_1921.mpsim_ki_altera_merlin_router_1921_462bhxq(fast)
+# Loading altera_merlin_router_1921.mpsim_ki_altera_merlin_router_1921_462bhxq_default_decode(fast)
+# Loading altera_merlin_router_1921.mpsim_ki_altera_merlin_router_1921_qo376wy(fast)
+# Loading altera_merlin_router_1921.mpsim_ki_altera_merlin_router_1921_qo376wy_default_decode(fast)
+# Loading altera_merlin_demultiplexer_1921.mpsim_ki_altera_merlin_demultiplexer_1921_p6jr2wa(fast)
+# Loading altera_merlin_multiplexer_1922.mpsim_ki_altera_merlin_multiplexer_1922_kqpdb4a(fast)
+# Loading altera_merlin_multiplexer_1922.mpsim_ki_altera_merlin_multiplexer_1922_zl6mqja(fast)
+# Loading hs_clk_xer_1941.mpsim_ki_hs_clk_xer_1941_ufej3ri(fast)
+# Loading hs_clk_xer_1941.altera_avalon_st_clock_crosser(fast)
+# Loading hs_clk_xer_1941.altera_reset_synchronizer(fast)
+# Loading hs_clk_xer_1941.altera_std_synchronizer_nocut(fast)
+# Loading altera_mm_interconnect_1920.mpsim_ki_altera_mm_interconnect_1920_darfi3q(fast)
+# Loading altera_merlin_master_translator_193.mpsim_ki_altera_merlin_master_translator_193_lgcew2q(fast__1)
+# Loading altera_merlin_slave_translator_191.mpsim_ki_altera_merlin_slave_translator_191_xg7rzxi(fast__1)
+# Loading altera_merlin_slave_translator_191.mpsim_ki_altera_merlin_slave_translator_191_xg7rzxi(fast__2)
+# Loading altera_merlin_slave_translator_191.mpsim_ki_altera_merlin_slave_translator_191_xg7rzxi(fast__3)
+# Loading altera_merlin_slave_translator_191.mpsim_ki_altera_merlin_slave_translator_191_xg7rzxi(fast__4)
+# Loading altera_merlin_slave_translator_191.mpsim_ki_altera_merlin_slave_translator_191_xg7rzxi(fast__5)
+# Loading altera_merlin_master_agent_1931.mpsim_ki_altera_merlin_master_agent_1931_jtx3eyy(fast)
+# Loading altera_merlin_slave_agent_1930.mpsim_ki_altera_merlin_slave_agent_1930_jxauz3i(fast__1)
+# Loading altera_merlin_slave_agent_1930.altera_merlin_burst_uncompressor(fast__1)
+# Loading altera_avalon_sc_fifo_1932.mpsim_ki_altera_avalon_sc_fifo_1932_onpcouq(fast__2)
+# Loading altera_merlin_slave_agent_1930.mpsim_ki_altera_merlin_slave_agent_1930_jxauz3i(fast__2)
+# Loading altera_merlin_slave_agent_1930.altera_merlin_burst_uncompressor(fast__2)
+# Loading altera_avalon_sc_fifo_1932.mpsim_ki_altera_avalon_sc_fifo_1932_onpcouq(fast__3)
+# Loading altera_merlin_router_1921.mpsim_ki_altera_merlin_router_1921_h3b4hlq(fast)
+# Loading altera_merlin_router_1921.mpsim_ki_altera_merlin_router_1921_h3b4hlq_default_decode(fast)
+# Loading altera_merlin_router_1921.mpsim_ki_altera_merlin_router_1921_mndf7xa(fast)
+# Loading altera_merlin_router_1921.mpsim_ki_altera_merlin_router_1921_mndf7xa_default_decode(fast)
+# Loading altera_merlin_router_1921.mpsim_ki_altera_merlin_router_1921_7r3h3sq(fast)
+# Loading altera_merlin_router_1921.mpsim_ki_altera_merlin_router_1921_7r3h3sq_default_decode(fast)
+# Loading altera_merlin_traffic_limiter_1921.mpsim_ki_altera_merlin_traffic_limiter_1921_3mmasty(fast)
+# Loading altera_merlin_demultiplexer_1921.mpsim_ki_altera_merlin_demultiplexer_1921_vnl2yiy(fast)
+# Loading altera_merlin_multiplexer_1922.mpsim_ki_altera_merlin_multiplexer_1922_ia6emmq(fast)
+# Loading altera_merlin_demultiplexer_1921.mpsim_ki_altera_merlin_demultiplexer_1921_pgmvl6a(fast)
+# Loading altera_merlin_multiplexer_1922.mpsim_ki_altera_merlin_multiplexer_1922_76stkzq(fast)
+# Loading altera_merlin_multiplexer_1922.altera_merlin_arbitrator(fast)
+# Loading altera_merlin_multiplexer_1922.altera_merlin_arb_adder(fast)
+# Loading altera_merlin_width_adapter_1950.mpsim_ki_altera_merlin_width_adapter_1950_45pnevq(fast)
+# Loading altera_merlin_width_adapter_1950.altera_merlin_burst_uncompressor(fast)
+# Loading altera_merlin_width_adapter_1950.mpsim_ki_altera_merlin_width_adapter_1950_hbzf6ha(fast)
+# Loading done_cfan.done_cfan(fast)
+# Loading avalon_conduit_fanout_10.done_cfan_avalon_conduit_fanout_10_d5krbyi(fast)
+# Loading mpsim_oirq.mpsim_oirq(fast)
+# Loading aoc_sim_main_dpi_controller_10.aoc_sim_main_dpi_controller(fast)
+# Loading mm_agent_ks_mem0_rw.mm_agent_ks_mem0_rw(fast)
+# Loading aoc_sim_mm_slave_dpi_bfm_10.aoc_sim_mm_slave_dpi_bfm(fast)
+# Loading aoc_sim_mm_slave_dpi_bfm_10.altera_avalon_mm_slave_bfm(fast)
+# Loading sp_csr_ready.sp_csr_ready(fast)
+# Loading avalon_split_multibit_conduit_10.sp_csr_ready_avalon_split_multibit_conduit_10_6ihlvbi(fast)
+# Loading kernel_system.kernel_system(fast)
+# Loading kernel_system_clk_1x.kernel_system_clk_1x(fast)
+# Loading kernel_system_kernel_cra.kernel_system_kernel_cra(fast)
+# Loading altera_avalon_mm_bridge_2010.kernel_system_kernel_cra_altera_avalon_mm_bridge_2010_tex5a4i(fast)
+# Loading kernel_system_kernel_irq.kernel_system_kernel_irq(fast)
+# Loading altera_irq_bridge_2000.kernel_system_kernel_irq_altera_irq_bridge_2000_mzhkeuq(fast)
+# Loading kernel_system_reset.kernel_system_reset(fast)
+# Loading kernel_system_vector_add_fpga_sim_sys.kernel_system_vector_add_fpga_sim_sys(fast)
+# Loading vector_add_fpga_sim_sys_140.vector_add_fpga_sim_sys(fast)
+# Loading vector_add_fpga_sim_sys_140.vector_add_fpga_sim_di(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_std_ic_partition_wrapper(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_function_cra_agent(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_reset_handler(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_top_wrapper_0(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_function_wrapper(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_function(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_pipeline_keep_go0000ctoraddid_128_0gr_sr(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_bb_B0(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_B0_merge(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_reset_handler(fast__1)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_B0_branch(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_bb_B0_stall_region(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_B0_merge_reg(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_sfc_s_c0_in_entry_vectorad0000r_vectoraddid_28_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_sfc_exit_s_c0_in0000t_vectoraddid_87_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_sfc_exit_s_c0_in0000did_87_1gr_data_fifo(fast)
+# Loading vector_add_fpga_sim_sys_140.hld_fifo(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_mid_speed_fifo(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_reset_handler(fast__2)
+# Loading altera_mf_ver.altdpram(fast)
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES(fast)
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_lfsr(fast)
+# Loading vector_add_fpga_sim_sys_140.fibonacci_lfsr(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_tessellated_incr_decr_threshold(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_reset_handler(fast__3)
+# Loading vector_add_fpga_sim_sys_140.acl_tessellated_incr_decr_threshold(fast__1)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_sfc_exit_s_c0_in000043_1gr_full_detector(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_full_detector(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_reset_handler(fast__4)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_sfc_logic_s_c0_in_entry_ve0000r_vectoraddid_43_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_sync_buffer_i32_00006_vectoraddid_50_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_dspba_buffer(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_ffwd_source_i1_u00001_vectoraddid_73_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_ffwdsrc(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_reset_handler(fast__5)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_sync_buffer_i32_0000r_vectoraddid_58_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_ffwd_source_i33_00002_vectoraddid_80_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_ffwdsrc(fast__1)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_bb_B1_sr_1(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_bb_B1(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_B1_branch(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_B1_merge(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_bb_B1_stall_region(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_ffwd_dest_i1_cmp_i27_vectoraddid_160_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_ffwddst(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_reset_handler(fast__6)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_mem_load1_lm_vectoraddid_369_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_readdata_reg_load1_lm_1(fast)
+# Loading vector_add_fpga_sim_sys_140.lsu_top(fast)
+# Loading vector_add_fpga_sim_sys_140.lsu_bursting_read(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_reset_handler(fast__7)
+# Loading vector_add_fpga_sim_sys_140.acl_io_pipeline(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_stall_free_coalescer(fast)
+# Loading vector_add_fpga_sim_sys_140.lsu_bursting_pipelined_read(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_ecc_pkg(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_scfifo_wrapped(fast)
+# Loading altera_mf_ver.scfifo(fast)
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES(fast__1)
+# Loading vector_add_fpga_sim_sys_140.acl_scfifo_wrapped(fast__1)
+# Loading altera_mf_ver.scfifo(fast__1)
+# Loading vector_add_fpga_sim_sys_140.acl_scfifo_wrapped(fast__2)
+# Loading altera_mf_ver.scfifo(fast__2)
+# Loading vector_add_fpga_sim_sys_140.lsu_permute_address(fast)
+# Loading vector_add_fpga_sim_sys_140.hld_fifo(fast__1)
+# Loading vector_add_fpga_sim_sys_140.acl_mid_speed_fifo(fast__1)
+# Loading vector_add_fpga_sim_sys_140.acl_reset_handler(fast__8)
+# Loading altera_lnsim_ver.ace5_lite_bfm_types_pkg(fast)
+# Loading altera_lnsim_ver.ace5_lite_operations_class_pkg(fast)
+# Loading altera_lnsim_ver.altera_lnsim_sv_unit(fast)
+# Loading altera_lnsim_ver.altera_syncram(fast)
+# Loading altera_lnsim_ver.ALTERA_LNSIM_MEMORY_INITIALIZATION(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_lfsr(fast__1)
+# Loading vector_add_fpga_sim_sys_140.fibonacci_lfsr(fast__1)
+# Loading vector_add_fpga_sim_sys_140.acl_tessellated_incr_decr_threshold(fast__2)
+# Loading vector_add_fpga_sim_sys_140.acl_tessellated_incr_decr_threshold(fast__3)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_sfc_s_c0_in_for_body_i_vec00001_vectoraddid_128_15(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_sfc_logic_s_c0_in_for_body0000_vectoraddid_264_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_push_i32_idx_0_i0000_vectoraddid_324_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_push(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_data_fifo(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_pop_i32_idx_0_i30000_vectoraddid_273_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_pop(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_sync_buffer_p1020000_vectoraddid_309_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_dspba_buffer(fast__1)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_sync_buffer_p1020000_vectoraddid_295_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_sync_buffer_p1020000_vectoraddid_281_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_sfc_exit_s_c0_ou0000_vectoraddid_333_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_sfc_exit_s_c0_ou0000id_333_1gr_data_fifo(fast)
+# Loading vector_add_fpga_sim_sys_140.hld_fifo(fast__2)
+# Loading vector_add_fpga_sim_sys_140.acl_mid_speed_fifo(fast__2)
+# Loading altera_mf_ver.altdpram(fast__1)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_sfc_exit_s_c0_ou000064_1gr_full_detector(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_push_i1_memdep_p0000_vectoraddid_425_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_push_i1_memdep_p0000ctoraddid_128_23_reg(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_push(fast__1)
+# Loading vector_add_fpga_sim_sys_140.acl_data_fifo(fast__2)
+# Loading vector_add_fpga_sim_sys_140.acl_data_fifo(fast__1)
+# Loading vector_add_fpga_sim_sys_140.acl_ll_fifo(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_staging_reg(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_pop_i1_memdep_ph0000_vectoraddid_192_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_pop_i1_memdep_ph0000toraddid_128_4gr_reg(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_pop(fast__1)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_mem_load_lm_vectoraddid_346_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_readdata_reg_load_lm_0(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_sfc_s_c1_in_for_body_i_vec0000r_vectoraddid_128_20(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_sfc_logic_s_c1_in_for_body0000_vectoraddid_394_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_sfc_exit_s_c1_ou0000_vectoraddid_405_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_sfc_exit_s_c1_ou0000id_405_1gr_data_fifo(fast)
+# Loading vector_add_fpga_sim_sys_140.hld_fifo(fast__3)
+# Loading vector_add_fpga_sim_sys_140.acl_mid_speed_fifo(fast__3)
+# Loading altera_mf_ver.altdpram(fast__2)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_sfc_exit_s_c1_ou000094_1gr_full_detector(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_mem_memdep_vectoraddid_413_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.lsu_top(fast__1)
+# Loading vector_add_fpga_sim_sys_140.lsu_bursting_write(fast)
+# Loading vector_add_fpga_sim_sys_140.lsu_bursting_write_internal(fast)
+# Loading vector_add_fpga_sim_sys_140.bursting_coalescer(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_has_pending_write(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_data_fifo(fast__5)
+# Loading vector_add_fpga_sim_sys_140.acl_fifo(fast)
+# Loading vector_add_fpga_sim_sys_140.hld_fifo(fast__4)
+# Loading vector_add_fpga_sim_sys_140.acl_mid_speed_fifo(fast__4)
+# Loading altera_mf_ver.altdpram(fast__3)
+# Loading vector_add_fpga_sim_sys_140.acl_lfsr(fast__2)
+# Loading vector_add_fpga_sim_sys_140.fibonacci_lfsr(fast__2)
+# Loading vector_add_fpga_sim_sys_140.acl_tessellated_incr_decr_threshold(fast__4)
+# Loading vector_add_fpga_sim_sys_140.acl_tessellated_incr_decr_threshold(fast__5)
+# Loading vector_add_fpga_sim_sys_140.acl_tessellated_incr_decr_threshold(fast__6)
+# Loading vector_add_fpga_sim_sys_140.acl_data_fifo(fast__4)
+# Loading vector_add_fpga_sim_sys_140.acl_data_fifo(fast__3)
+# Loading vector_add_fpga_sim_sys_140.acl_staging_reg(fast__1)
+# Loading vector_add_fpga_sim_sys_140.acl_data_fifo(fast__8)
+# Loading vector_add_fpga_sim_sys_140.acl_fifo(fast__1)
+# Loading vector_add_fpga_sim_sys_140.hld_fifo(fast__5)
+# Loading vector_add_fpga_sim_sys_140.acl_mid_speed_fifo(fast__5)
+# Loading altera_mf_ver.altdpram(fast__4)
+# Loading vector_add_fpga_sim_sys_140.acl_lfsr(fast__3)
+# Loading vector_add_fpga_sim_sys_140.fibonacci_lfsr(fast__3)
+# Loading vector_add_fpga_sim_sys_140.acl_tessellated_incr_decr_threshold(fast__7)
+# Loading vector_add_fpga_sim_sys_140.acl_tessellated_incr_decr_threshold(fast__8)
+# Loading vector_add_fpga_sim_sys_140.acl_tessellated_incr_decr_threshold(fast__9)
+# Loading vector_add_fpga_sim_sys_140.acl_data_fifo(fast__7)
+# Loading vector_add_fpga_sim_sys_140.acl_data_fifo(fast__6)
+# Loading vector_add_fpga_sim_sys_140.acl_staging_reg(fast__2)
+# Loading vector_add_fpga_sim_sys_140.acl_data_fifo(fast__11)
+# Loading vector_add_fpga_sim_sys_140.acl_fifo(fast__2)
+# Loading vector_add_fpga_sim_sys_140.hld_fifo(fast__6)
+# Loading vector_add_fpga_sim_sys_140.acl_mid_speed_fifo(fast__6)
+# Loading altera_mf_ver.altdpram(fast__5)
+# Loading vector_add_fpga_sim_sys_140.acl_data_fifo(fast__10)
+# Loading vector_add_fpga_sim_sys_140.acl_data_fifo(fast__9)
+# Loading vector_add_fpga_sim_sys_140.acl_staging_reg(fast__3)
+# Loading vector_add_fpga_sim_sys_140.hld_fifo_zero_width(fast)
+# Loading vector_add_fpga_sim_sys_140.hld_fifo(fast__7)
+# Loading vector_add_fpga_sim_sys_140.acl_low_latency_fifo(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_reset_handler(fast__9)
+# Loading vector_add_fpga_sim_sys_140.hld_fifo(fast__8)
+# Loading vector_add_fpga_sim_sys_140.acl_mid_speed_fifo(fast__7)
+# Loading altera_lnsim_ver.altera_syncram(fast__1)
+# Loading vector_add_fpga_sim_sys_140.acl_tessellated_incr_decr_threshold(fast__10)
+# Loading vector_add_fpga_sim_sys_140.acl_tessellated_incr_decr_threshold(fast__11)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_ffwd_dest_i33_un0000_vectoraddid_167_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_ffwddst(fast__1)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_push_i33_fpga_in0000_vectoraddid_225_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_push_i33_fpga_in0000ctoraddid_128_11_reg(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_push(fast__2)
+# Loading vector_add_fpga_sim_sys_140.acl_data_fifo(fast__13)
+# Loading vector_add_fpga_sim_sys_140.acl_data_fifo(fast__12)
+# Loading vector_add_fpga_sim_sys_140.acl_ll_fifo(fast__1)
+# Loading vector_add_fpga_sim_sys_140.acl_staging_reg(fast__4)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_pop_i33_fpga_ind0000_vectoraddid_174_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_pop_i33_fpga_ind0000toraddid_128_3gr_reg(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_pop(fast__2)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_B1_merge_reg(fast)
+# Loading vector_add_fpga_sim_sys_140.hld_fifo_zero_width(fast__1)
+# Loading vector_add_fpga_sim_sys_140.hld_fifo(fast__9)
+# Loading vector_add_fpga_sim_sys_140.acl_mid_speed_fifo(fast__8)
+# Loading vector_add_fpga_sim_sys_140.acl_tessellated_incr_decr_threshold(fast__12)
+# Loading vector_add_fpga_sim_sys_140.acl_tessellated_incr_decr_threshold(fast__13)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_push_i1_notexitcond_vectoraddid_244_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_push_i1_notexitc0000ctoraddid_128_13_reg(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_push(fast__3)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_pipeline_keep_going_vectoraddid_144_0gr(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_dspba_buffer(fast__2)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_i_llvm_fpga_pipeline_keep_go0000toraddid_128_0gr_reg(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_pipeline(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_staging_reg(fast__5)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_bb_B2_sr_0(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_bb_B2(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_B2_branch(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_bb_B2_stall_region(fast)
+# Loading vector_add_fpga_sim_sys_140.VectorAddID_B2_merge(fast)
+# Loading vector_add_fpga_sim_sys_140.hld_sim_latency_tracker(fast__1)
+# Loading vector_add_fpga_sim_sys_140.acl_start_signal_chain_element(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_reset_handler(fast__10)
+# Loading vector_add_fpga_sim_sys_140.acl_task_copy_finish_detector(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_finish_signal_chain_element(fast)
+# Loading vector_add_fpga_sim_sys_140.lsu_ic_top(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_reset_handler(fast__11)
+# Loading vector_add_fpga_sim_sys_140.address_permuter(fast)
+# Loading vector_add_fpga_sim_sys_140.lsu_token_ring(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_reset_handler(fast__12)
+# Loading vector_add_fpga_sim_sys_140.hld_fifo(fast__10)
+# Loading vector_add_fpga_sim_sys_140.acl_mid_speed_fifo(fast__9)
+# Loading altera_mf_ver.altdpram(fast__6)
+# Loading vector_add_fpga_sim_sys_140.acl_tessellated_incr_decr_threshold(fast__14)
+# Loading vector_add_fpga_sim_sys_140.lsu_n_token(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_reset_handler(fast__13)
+# Loading vector_add_fpga_sim_sys_140.lsu_n_fast(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_reset_handler(fast__14)
+# Loading vector_add_fpga_sim_sys_140.hld_fifo(fast__11)
+# Loading vector_add_fpga_sim_sys_140.acl_mid_speed_fifo(fast__10)
+# Loading altera_lnsim_ver.altera_syncram(fast__2)
+# Loading vector_add_fpga_sim_sys_140.acl_lfsr(fast__4)
+# Loading vector_add_fpga_sim_sys_140.fibonacci_lfsr(fast__4)
+# Loading vector_add_fpga_sim_sys_140.acl_tessellated_incr_decr_threshold(fast__15)
+# Loading vector_add_fpga_sim_sys_140.acl_tessellated_incr_decr_threshold(fast__16)
+# Loading vector_add_fpga_sim_sys_140.lsu_n_token(fast__1)
+# Loading vector_add_fpga_sim_sys_140.lsu_ic_token(fast)
+# Loading vector_add_fpga_sim_sys_140.hld_fifo(fast__12)
+# Loading vector_add_fpga_sim_sys_140.acl_mid_speed_fifo(fast__11)
+# Loading altera_lnsim_ver.altera_syncram(fast__3)
+# Loading vector_add_fpga_sim_sys_140.acl_tessellated_incr_decr_threshold(fast__17)
+# Loading vector_add_fpga_sim_sys_140.lsu_rd_back(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_reset_handler(fast__15)
+# Loading vector_add_fpga_sim_sys_140.hld_fifo(fast__13)
+# Loading vector_add_fpga_sim_sys_140.acl_mid_speed_fifo(fast__12)
+# Loading altera_lnsim_ver.altera_syncram(fast__4)
+# Loading vector_add_fpga_sim_sys_140.acl_tessellated_incr_decr_threshold(fast__18)
+# Loading vector_add_fpga_sim_sys_140.acl_tessellated_incr_decr_threshold(fast__19)
+# Loading vector_add_fpga_sim_sys_140.acl_skid_buffer(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_reset_handler(fast__16)
+# Loading vector_add_fpga_sim_sys_140.cra_ring_wrapper(fast)
+# Loading vector_add_fpga_sim_sys_140.cra_ring_root(fast)
+# Loading vector_add_fpga_sim_sys_140.acl_reset_handler(fast__17)
+# Loading vector_add_fpga_sim_sys_140.cra_ring_node(fast)
+# Loading altera_mm_interconnect_1920.kernel_system_altera_mm_interconnect_1920_qtqin4y(fast)
+# Loading altera_merlin_master_translator_193.kernel_system_altera_merlin_master_translator_193_lgcew2q(fast)
+# Loading altera_merlin_slave_translator_191.kernel_system_altera_merlin_slave_translator_191_xg7rzxi(fast)
+# Loading altera_irq_mapper_2001.kernel_system_altera_irq_mapper_2001_wgtbcyy(fast)
+# Loading altera_mm_interconnect_1920.mpsim_altera_mm_interconnect_1920_f2fjppy(fast)
+# Loading altera_merlin_master_translator_193.mpsim_altera_merlin_master_translator_193_lgcew2q(fast)
+# Loading altera_merlin_slave_translator_191.mpsim_altera_merlin_slave_translator_191_xg7rzxi(fast)
+# Loading altera_irq_mapper_2001.mpsim_altera_irq_mapper_2001_rctq6fa(fast)
+# Loading altera_irq_mapper_2001.mpsim_altera_irq_mapper_2001_wgtbcyy(fast)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (64) for port 'slave_readdata'. The port definition is at: ip/mpsim/mpsim_ki/sw_reset_100/sim/sw_reset.v(16).
+#    Time: 0 ps  Iteration: 0  Instance: /mpsim/ki/ki/sw_reset File: ip/mpsim/mpsim_ki/kernel_interface_151/sim/mpsim_ki_kernel_interface_151_yqsw7ei.v Line: 183
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'slave_readdata'. The port definition is at: ip/mpsim/mpsim_ki/mem_org_mode_100/sim/mem_org_mode.v(14).
+#    Time: 0 ps  Iteration: 0  Instance: /mpsim/ki/ki/mem_org_mode0 File: ip/mpsim/mpsim_ki/kernel_interface_151/sim/mpsim_ki_kernel_interface_151_yqsw7ei.v Line: 243
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (2) for port 'i_in_cache'. The port definition is at: ip/kernel_system/kernel_system_vector_add_fpga_sim_sys/vector_add_fpga_sim_sys_140/sim/lsu_bursting_load_stores.sv(520).
+#    Time: 0 ps  Iteration: 0  Instance: /mpsim/ks/vector_add_fpga_sim_sys/vector_add_fpga_sim_sys/device_image_ip/VectorAddID_std_ic_inst/VectorAddID_inst_0/kernel/theVectorAddID_function/thebb_VectorAddID_B1/thebb_VectorAddID_B1_stall_region/thei_llvm_fpga_mem_load1_lm_vectoraddid_128_18/thei_llvm_fpga_mem_load1_lm_vectoraddid_369_1gr/genblk1/genblk8/genblk1/genblk1/bursting_read/pipelined_read File: ip/kernel_system/kernel_system_vector_add_fpga_sim_sys/vector_add_fpga_sim_sys_140/sim/lsu_bursting_load_stores.sv Line: 434
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (2) for port 'i_in_cache'. The port definition is at: ip/kernel_system/kernel_system_vector_add_fpga_sim_sys/vector_add_fpga_sim_sys_140/sim/lsu_bursting_load_stores.sv(520).
+#    Time: 0 ps  Iteration: 0  Instance: /mpsim/ks/vector_add_fpga_sim_sys/vector_add_fpga_sim_sys/device_image_ip/VectorAddID_std_ic_inst/VectorAddID_inst_0/kernel/theVectorAddID_function/thebb_VectorAddID_B1/thebb_VectorAddID_B1_stall_region/thei_llvm_fpga_mem_load_lm_vectoraddid_128_17/thei_llvm_fpga_mem_load_lm_vectoraddid_346_1gr/genblk1/genblk8/genblk1/genblk1/bursting_read/pipelined_read File: ip/kernel_system/kernel_system_vector_add_fpga_sim_sys/vector_add_fpga_sim_sys_140/sim/lsu_bursting_load_stores.sv Line: 434
+# Compiling /home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim27/w0/s093/tmp/uwb_student00@Agilex7Workstation_dpi_3269/linux_x86_64_gcc-10.3.0/exportwrapper.c
+# Loading /home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim27/w0/s093/tmp/uwb_student00@Agilex7Workstation_dpi_3269/linux_x86_64_gcc-10.3.0/vsim_auto_compile.so
+# Loading /opt/altera/25.1/quartus//eda/sim_lib/libdb_gdr_fec.so
+# Loading /home/uwb_student00/ahls/altera_hls/aclsycl/host/linux64/lib/libaoc_cosim_msim.so
+# /home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim27/w0/s093/build/vector_add.fpga_sim.prj/vsim.wlf
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: - Hello from altera_avalon_mm_master_bfm
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   $Revision: #1 $
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   $Date: 2025/02/06 $
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   AV_ADDRESS_W             = 14
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   AV_SYMBOL_W              = 8
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   AV_NUMSYMBOLS            = 4
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   AV_BURSTCOUNT_W          = 1
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   REGISTER_WAITREQUEST     = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   AV_FIX_READ_LATENCY      = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   AV_MAX_PENDING_READS     = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   AV_MAX_PENDING_WRITES    = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   USE_READ                 = 1
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   USE_WRITE                = 1
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   USE_ADDRESS              = 1
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   USE_BYTE_ENABLE          = 1
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   USE_BURSTCOUNT           = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   USE_READ_DATA            = 1
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   USE_READ_DATA_VALID      = 1
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   USE_WRITE_DATA           = 1
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   USE_BEGIN_TRANSFER       = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   USE_BEGIN_BURST_TRANSFER = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   USE_WAIT_REQUEST         = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   USE_LOCK                 = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   USE_DEBUGACCESS          = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   USE_TRANSACTIONID        = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   USE_WRITERESPONSE        = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   USE_READRESPONSE         = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.ki_bfm.__hello: -   USE_CLKEN                = 0
+#                    0: INFO: ------------------------------------------------------------
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: - Hello from altera_avalon_mm_master_bfm
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   $Revision: #1 $
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   $Date: 2025/02/06 $
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   AV_ADDRESS_W             = 31
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   AV_SYMBOL_W              = 8
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   AV_NUMSYMBOLS            = 4
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   AV_BURSTCOUNT_W          = 5
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   REGISTER_WAITREQUEST     = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   AV_FIX_READ_LATENCY      = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   AV_MAX_PENDING_READS     = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   AV_MAX_PENDING_WRITES    = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   USE_READ                 = 1
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   USE_WRITE                = 1
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   USE_ADDRESS              = 1
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   USE_BYTE_ENABLE          = 1
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   USE_BURSTCOUNT           = 1
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   USE_READ_DATA            = 1
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   USE_READ_DATA_VALID      = 1
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   USE_WRITE_DATA           = 1
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   USE_BEGIN_TRANSFER       = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   USE_BEGIN_BURST_TRANSFER = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   USE_WAIT_REQUEST         = 1
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   USE_LOCK                 = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   USE_DEBUGACCESS          = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   USE_TRANSACTIONID        = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   USE_WRITERESPONSE        = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   USE_READRESPONSE         = 0
+#                    0: INFO: mpsim.avmm_agent_cra_inst.avmm_agent_cra_inst.mbd_bfm.__hello: -   USE_CLKEN                = 0
+#                    0: INFO: ------------------------------------------------------------
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: - Hello from altera_avalon_mm_slave_bfm
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   $Revision: #1 $
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   $Date: 2025/02/06 $
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   AV_ADDRESS_W             = 41
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   AV_SYMBOL_W              = 8
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   AV_NUMSYMBOLS            = 8
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   AV_BURSTCOUNT_W          = 1
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   REGISTER_WAITREQUEST     = 0
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   AV_FIX_READ_LATENCY      = 0
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   AV_MAX_PENDING_READS     = 256
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   AV_MAX_PENDING_WRITES    = 0
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   AV_READ_WAIT_TIME        = 0
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   AV_WRITE_WAIT_TIME       = 0
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   USE_READ                 = 1
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   USE_WRITE                = 1
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   USE_ADDRESS              = 1
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   USE_BYTE_ENABLE          = 1
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   USE_BURSTCOUNT           = 1
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   USE_READ_DATA            = 1
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   USE_READ_DATA_VALID      = 1
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   USE_WRITE_DATA           = 1
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   USE_BEGIN_TRANSFER       = 0
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   USE_BEGIN_BURST_TRANSFER = 0
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   USE_WAIT_REQUEST         = 1
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   USE_LOCK                 = 0
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   USE_DEBUGACCESS          = 0
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   USE_TRANSACTIONID        = 0
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   USE_WRITERESPONSE        = 0
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   USE_READRESPONSE         = 0
+#                    0: INFO: mpsim.osm_0_inst.mm_agent_ks_mem0_rw.bfm.__hello: -   USE_CLKEN                = 0
+#                    0: INFO: ------------------------------------------------------------
+# Warning : byte_size (width / width_byteena) should be in 5,8,9 or 10. It will be default to 5.
+# Time: 0  Instance: mpsim.ks.vector_add_fpga_sim_sys.vector_add_fpga_sim_sys.device_image_ip.VectorAddID_std_ic_inst.VectorAddID_inst_0.kernel.theVectorAddID_function.thebb_VectorAddID_B0.thebb_VectorAddID_B0_stall_region.thei_sfc_s_c0_in_entry_vectoraddids_c0_enter_vectoraddid_28_0gr_aunroll_x.thei_llvm_fpga_sfc_exit_s_c0_in_entry_vectoraddids_c0_exit_vectoraddid_43_1gr_aunroll_x.thei_llvm_fpga_sfc_exit_s_c0_in_entry_vectoraddids_c0_exit_vectoraddid_87_1gr_data_fifo_aunroll_x.thei_llvm_fpga_sfc_exit_s_c0_in_entry_vectoraddids_c0_exit_vectoraddid_634_0gr.genblk3.ms.acl_mid_speed_fifo_inst.gen_ram.gen_mlab.altdpram_component
+# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V.
+# Time: 0  Instance: mpsim.ks.vector_add_fpga_sim_sys.vector_add_fpga_sim_sys.device_image_ip.VectorAddID_std_ic_inst.VectorAddID_inst_0.kernel.theVectorAddID_function.thebb_VectorAddID_B1.thebb_VectorAddID_B1_stall_region.thei_llvm_fpga_mem_load1_lm_vectoraddid_128_18.thei_llvm_fpga_mem_load1_lm_vectoraddid_369_1gr.genblk1.genblk8.genblk1.genblk1.bursting_read.pipelined_read.GEN_WORD_OFFSET_FIFO.offset_fifo.scfifo_inst
+# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V.
+# Time: 0  Instance: mpsim.ks.vector_add_fpga_sim_sys.vector_add_fpga_sim_sys.device_image_ip.VectorAddID_std_ic_inst.VectorAddID_inst_0.kernel.theVectorAddID_function.thebb_VectorAddID_B1.thebb_VectorAddID_B1_stall_region.thei_llvm_fpga_mem_load1_lm_vectoraddid_128_18.thei_llvm_fpga_mem_load1_lm_vectoraddid_369_1gr.genblk1.genblk8.genblk1.genblk1.bursting_read.pipelined_read.rd_request_fifo.scfifo_inst
+# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V.
+# Time: 0  Instance: mpsim.ks.vector_add_fpga_sim_sys.vector_add_fpga_sim_sys.device_image_ip.VectorAddID_std_ic_inst.VectorAddID_inst_0.kernel.theVectorAddID_function.thebb_VectorAddID_B1.thebb_VectorAddID_B1_stall_region.thei_llvm_fpga_mem_load1_lm_vectoraddid_128_18.thei_llvm_fpga_mem_load1_lm_vectoraddid_369_1gr.genblk1.genblk8.genblk1.genblk1.bursting_read.pipelined_read.rd_back_wfifo.scfifo_inst
+# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V.
+# Time: 0  Instance: mpsim.ks.vector_add_fpga_sim_sys.vector_add_fpga_sim_sys.device_image_ip.VectorAddID_std_ic_inst.VectorAddID_inst_0.kernel.theVectorAddID_function.thebb_VectorAddID_B1.thebb_VectorAddID_B1_stall_region.thei_llvm_fpga_mem_load_lm_vectoraddid_128_17.thei_llvm_fpga_mem_load_lm_vectoraddid_346_1gr.genblk1.genblk8.genblk1.genblk1.bursting_read.pipelined_read.GEN_WORD_OFFSET_FIFO.offset_fifo.scfifo_inst
+# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V.
+# Time: 0  Instance: mpsim.ks.vector_add_fpga_sim_sys.vector_add_fpga_sim_sys.device_image_ip.VectorAddID_std_ic_inst.VectorAddID_inst_0.kernel.theVectorAddID_function.thebb_VectorAddID_B1.thebb_VectorAddID_B1_stall_region.thei_llvm_fpga_mem_load_lm_vectoraddid_128_17.thei_llvm_fpga_mem_load_lm_vectoraddid_346_1gr.genblk1.genblk8.genblk1.genblk1.bursting_read.pipelined_read.rd_request_fifo.scfifo_inst
+# Error! Unknown INTENDED_DEVICE_FAMILY=Stratix V.
+# Time: 0  Instance: mpsim.ks.vector_add_fpga_sim_sys.vector_add_fpga_sim_sys.device_image_ip.VectorAddID_std_ic_inst.VectorAddID_inst_0.kernel.theVectorAddID_function.thebb_VectorAddID_B1.thebb_VectorAddID_B1_stall_region.thei_llvm_fpga_mem_load_lm_vectoraddid_128_17.thei_llvm_fpga_mem_load_lm_vectoraddid_346_1gr.genblk1.genblk8.genblk1.genblk1.bursting_read.pipelined_read.rd_back_wfifo.scfifo_inst
+# Warning : byte_size (width / width_byteena) should be in 5,8,9 or 10. It will be default to 5.
+# Time: 0  Instance: mpsim.ks.vector_add_fpga_sim_sys.vector_add_fpga_sim_sys.device_image_ip.VectorAddID_std_ic_inst.VectorAddID_inst_0.kernel.theVectorAddID_function.thebb_VectorAddID_B1.thebb_VectorAddID_B1_stall_region.thei_llvm_fpga_mem_memdep_vectoraddid_128_22.thei_llvm_fpga_mem_memdep_vectoraddid_413_1gr.genblk1.genblk8.genblk1.genblk1.bursting_write.bursting_write.ack_fifo.genblk1.genblk1.fifo_inner.genblk1.hld_fifo_inst.genblk3.ms.acl_mid_speed_fifo_inst.gen_ram.gen_mlab.altdpram_component
+# ** Note: $finish    : ip/mpsim/mpsim_avmm_agent_cra_inst/aoc_sim_mm_master_dpi_bfm_10/sim/aoc_sim_mm_master_dpi_bfm.sv(704)
+#    Time: 41022250 ps  Iteration: 2  Instance: /mpsim/avmm_agent_cra_inst/avmm_agent_cra_inst
+# Break in Task read_commands at ip/mpsim/mpsim_avmm_agent_cra_inst/aoc_sim_mm_master_dpi_bfm_10/sim/aoc_sim_mm_master_dpi_bfm.sv line 704
+# Stopped at ip/mpsim/mpsim_avmm_agent_cra_inst/aoc_sim_mm_master_dpi_bfm_10/sim/aoc_sim_mm_master_dpi_bfm.sv line 704
+# 0

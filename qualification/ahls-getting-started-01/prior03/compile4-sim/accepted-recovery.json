@@ -1,0 +1,69 @@
+{
+  "scope": "Original fpga_compile PART=4 RTL simulation; no full-IP compile or card execution",
+  "observed_at": "2026-09-27T02:40:11.062002+00:00",
+  "case_id": "s095",
+  "pass": true,
+  "numerical_elements": 256,
+  "device": "SimulatorDevice : Multi-process Simulator (aclmsim0)",
+  "runtime_rc": 0,
+  "outer_rc": 0,
+  "original_failure": "sim32/w1/s095: SIGABRT during IPC shared-memory mapping; original receipt preserved",
+  "root_cause_evidence": {
+    "original_virtual_address_limit_bytes": 25769803776,
+    "requested_shared_mapping_bytes": 34359738368,
+    "before": {
+      "line": 5661,
+      "context": [
+        "openat(AT_FDCWD, \"/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim32/w1/s095/tmp/msim_vo2vk8/shm_1_0\", O_RDWR|O_CREAT|O_TRUNC, 0666) = 5",
+        "ftruncate(5, 34359738368)               = 0",
+        "mmap(NULL, 34359738368, PROT_READ|PROT_WRITE, MAP_SHARED, 5, 0) = -1 ENOMEM (Cannot allocate memory)",
+        "mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f2d1f644000"
+      ]
+    },
+    "corrected_virtual_address_limit_bytes": 51539607552,
+    "after": [
+      "mmap(NULL, 34359738368, PROT_READ|PROT_WRITE, MAP_SHARED, 5, 0) = 0x7fd774000000"
+    ],
+    "unchanged_binary_sha256": "d9bffc452d29c27ee5beb7819a56a5a8a9887d8d2c49adcf97a7812e147a9c58",
+    "recompiled": false
+  },
+  "instrumentation_failures_retained": "strace -f attempts 39/41/43 failed with a different Questa mpsim design-unit/IPC-connect error; application-only tracing reproduced the original mapping failure",
+  "receipt_checks": {
+    "strict_json_and_native_status": true,
+    "producer_error_pattern_matches_independent_fixture_checked_pattern": true,
+    "local_verifier_correction": "First local verifier wrongly assumed escaped JSON/regex content. Captured bytes disproved that assumption; failure retained in local-verifier47-rejection.json. No native rerun."
+  },
+  "artifacts": {
+    "program.log": {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim-map46/program.log",
+      "bytes": 107,
+      "sha256": "dc842f8bd2f251baa778ca56ff62b34c8ae108082182a09aa94a5ab77a3590c4"
+    },
+    "syscalls.log": {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim-map46/syscalls.log",
+      "bytes": 716640,
+      "sha256": "e2ce96846550d6d5745e1451fd5457ab78665fd041ff4b56916097dbba16aaf9"
+    },
+    "transcript.log": {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim32/w1/s095/build/vector_add.fpga_sim.prj/transcript.log",
+      "bytes": 50240,
+      "sha256": "737db25668e2138359ce7dc1a70f6447632dd30e8cd9d3f77f8232d125a494d9"
+    },
+    "vsim.wlf": {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim32/w1/s095/build/vector_add.fpga_sim.prj/vsim.wlf",
+      "bytes": 65536,
+      "sha256": "a5062cabcbd93075caf69114de1110b8eb23b7240356bb4475e1fbc36d707ba4"
+    },
+    "executable": {
+      "path": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim32/w1/s095/build/vector_add.fpga_sim",
+      "bytes": 4820024,
+      "sha256": "d9bffc452d29c27ee5beb7819a56a5a8a9887d8d2c49adcf97a7812e147a9c58"
+    }
+  },
+  "capture_manifest": "collection47.json",
+  "captured_files_verified": 49,
+  "source_files_unchanged": 641,
+  "original_binary_and_failure_receipts_preserved": true,
+  "hardware_access": false,
+  "overall_goal_complete": false
+}

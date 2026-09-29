@@ -1,0 +1,40 @@
+{
+  "scope": "Original fpga_compile PART=3/4 RTL simulation results",
+  "results": [
+    {
+      "id": "s094",
+      "PART": "3",
+      "simulator_build_rc": 0,
+      "simulator_run_rc": 0,
+      "outer_rc": 0,
+      "output": "Running on device: SimulatorDevice : Multi-process Simulator (aclmsim0)\nadd two vectors of size 256\nPASSED\n",
+      "native_result_sha256": "bc07926385ce1c65cd0f94371eb3ba8d5d3e108e6827be5bfe7db919387d1d25",
+      "hardware_execution": false,
+      "accepted": true,
+      "waveform_files": [
+        {
+          "path": "build/vector_add.fpga_sim.prj/vsim.wlf",
+          "bytes": 65536,
+          "sha256": "4e43e3990e63018f5aa08ee66b544b0ef2703a6fe704af4789b37fa3f473fee5"
+        }
+      ]
+    },
+    {
+      "id": "s095",
+      "PART": "4",
+      "simulator_build_rc": 0,
+      "simulator_run_rc": -6,
+      "outer_rc": 1,
+      "output": "Running on device: SimulatorDevice : Multi-process Simulator (aclmsim0)\nadd two vectors of size 256\nvector_add.fpga_sim: REDACTED_FILENAME:151: IPCSharedMemoryMaster::IPCSharedMemoryMaster(const char*, void*, size_t, std::set<int>, std::map<void*, HostMemInfo>): Assertion `mm != MAP_FAILED && \"IPCSharedMemoryMaster() failed to map shared memory\"' failed.\n",
+      "native_result_sha256": "5388767e6209900b83d0be44cab252eb34e87a0eaa6023690c52ab23388064ce",
+      "hardware_execution": false,
+      "accepted": false,
+      "signal": "SIGABRT",
+      "failure_stage": "simulator IPC shared-memory mapping before numerical acceptance",
+      "cause": "not yet established; retain 24GiB address-space limit and environment as diagnostic context"
+    }
+  ],
+  "captured_files": 56,
+  "source_preserved": true,
+  "overall_goal_complete": false
+}

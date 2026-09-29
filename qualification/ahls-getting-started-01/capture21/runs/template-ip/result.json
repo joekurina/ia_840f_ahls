@@ -1,0 +1,231 @@
+{
+  "job": {
+    "sample": "fpga_template",
+    "stem": "fpga_template",
+    "target": "fpga",
+    "selectors": {},
+    "build_timeout_seconds": 7200
+  },
+  "success": true,
+  "hardware_access": false,
+  "commands": [
+    {
+      "label": "versions",
+      "argv": [
+        "/bin/bash",
+        "-c",
+        "ahls --version && cmake --version"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/template-ip",
+      "started": "2026-09-29T18:50:16.079489+00:00",
+      "rc": 0,
+      "namespace_pid": 20,
+      "helpers_drained": true,
+      "ended": "2026-09-29T18:50:16.145834+00:00",
+      "log": "versions.log",
+      "log_sha256": "9458afb273663baba5e39104b3def15382c12f665e6b6ae3f6b154a527c260fd",
+      "log_bytes": 507,
+      "log_complete": true
+    },
+    {
+      "label": "configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/source/Tutorials/GettingStarted/fpga_template",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/template-ip/build",
+        "-DFPGA_DEVICE=AGFB027R25A2E2V",
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+        "-DUSER_INCLUDE_PATHS=/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/source/include"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/template-ip",
+      "started": "2026-09-29T18:50:16.146975+00:00",
+      "rc": 0,
+      "namespace_pid": 22,
+      "helpers_drained": true,
+      "ended": "2026-09-29T18:50:20.121621+00:00",
+      "log": "configure.log",
+      "log_sha256": "f7f6de5f1fd75f66f2f9fbdf2da77b3f9059bde38440e9746271d0c70aad3180",
+      "log_bytes": 1085,
+      "log_complete": true
+    },
+    {
+      "label": "build",
+      "argv": [
+        "cmake",
+        "--build",
+        "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/template-ip/build",
+        "--parallel",
+        "36",
+        "--verbose",
+        "--target",
+        "fpga"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/template-ip",
+      "started": "2026-09-29T18:50:20.122930+00:00",
+      "rc": 0,
+      "namespace_pid": 195,
+      "helpers_drained": true,
+      "ended": "2026-09-29T18:59:30.864671+00:00",
+      "log": "build.log",
+      "log_sha256": "237dc27ee1aa9d41f5316d68e25a1d7513607d6639a9e6926faaa01be8a8009d",
+      "log_bytes": 6909,
+      "log_complete": true
+    }
+  ],
+  "started": "2026-09-29T18:50:16.001956+00:00",
+  "cpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35
+  ],
+  "address_space_limit_bytes": 68719476736,
+  "pid_namespace": "pid:[4026533093]",
+  "outer_pid_namespace": "pid:[4026531836]",
+  "device_entries": [
+    "core",
+    "fd",
+    "full",
+    "null",
+    "ptmx",
+    "pts",
+    "random",
+    "shm",
+    "stderr",
+    "stdin",
+    "stdout",
+    "tty",
+    "urandom",
+    "zero"
+  ],
+  "versions": "HLS IP Gen, Version 2026.1.0 Build 461da9be608f74678d9c52a2dc1cbb67c58d57fa, Copyright (c) 2026 Altera Corporation\nclang version 21.0.0git (https://github.com/altera-innersource/applications.fpga.oneapi.products.acl-source 73bd39ae996000c9a135392139de0cfbd166341e)\nTarget: x86_64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /home/uwb_student00/ahls/altera_hls/aclsycl/llvm/bin-llvm\nBuild config: +assertions\ncmake version 3.31.8\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n",
+  "cmake_target_completed": true,
+  "compile_commands": [
+    {
+      "directory": "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/runs/template-ip/build",
+      "command": "/home/uwb_student00/ahls/altera_hls/aclsycl/bin/ahls  -I/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/source/Tutorials/GettingStarted/fpga_template/../../../include -I/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/source/include -Wall -DFPGA_HARDWARE -o CMakeFiles/fpga.dir/src/fpga_template.cpp.o -c /home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/source/Tutorials/GettingStarted/fpga_template/src/fpga_template.cpp",
+      "file": "/home/uwb_student00/ahls/new_BSP/work_ahls_getting_started_01/source/Tutorials/GettingStarted/fpga_template/src/fpga_template.cpp",
+      "output": "CMakeFiles/fpga.dir/src/fpga_template.cpp.o"
+    }
+  ],
+  "backend_target_logs": [
+    "build/fpga_template.fpga.prj/logs/fpga_template_fpga.log"
+  ],
+  "full_ip_acceptance": "native CMake target completed; inspect retained Quartus reports before acceptance",
+  "real_card_execution": false,
+  "report_files": {
+    "build/fpga_template.fpga.prj/logs/fpga_template_fpga.log": {
+      "bytes": 810,
+      "sha256": "56f047b7d8f386b6bc8813b69a9a7470a831de305da8d4b3dc4b6109603baa91"
+    },
+    "build/fpga_template.fpga.prj/quartus_compile.drc.partitioned.rpt": {
+      "bytes": 7978,
+      "sha256": "8d79747f52aa6abc79f765d26c4bdd04550bf40e2f664855c2e6daf1f097c5cb"
+    },
+    "build/fpga_template.fpga.prj/quartus_compile.drc.synthesized.rpt": {
+      "bytes": 1288987,
+      "sha256": "c949ae34155e83a980e5044822e45659d83435306fb51f9d151aa35bf3cde5a7"
+    },
+    "build/fpga_template.fpga.prj/quartus_compile.fit.finalize.rpt": {
+      "bytes": 4340,
+      "sha256": "16ffd97ba2d6816918d48e3d9a4bae1178ca3eff00e4c7d8052d0e1e76373e05"
+    },
+    "build/fpga_template.fpga.prj/quartus_compile.fit.place.rpt": {
+      "bytes": 536324,
+      "sha256": "9e527223700e90b5b9e9d3bb7eab87b82bc9fcbea225358f2d8f91be2ec4b1e2"
+    },
+    "build/fpga_template.fpga.prj/quartus_compile.fit.plan.rpt": {
+      "bytes": 933028,
+      "sha256": "97cef4b290e356c1925e342b67f1c9e43b9424f46ef4e41d99fd4b90e4c0110f"
+    },
+    "build/fpga_template.fpga.prj/quartus_compile.fit.retime.rpt": {
+      "bytes": 106054,
+      "sha256": "01dddbd355a18e13fea0a4f11dc794d331f75256d4b3aac839afd6c384dd0947"
+    },
+    "build/fpga_template.fpga.prj/quartus_compile.fit.route.rpt": {
+      "bytes": 118437,
+      "sha256": "b0e3bbc480c40a152ee0d69abe8499800aaf3389ce01f8c5383bd3fe773f4ef1"
+    },
+    "build/fpga_template.fpga.prj/quartus_compile.fit.rpt": {
+      "bytes": 2858428,
+      "sha256": "82d225d36fccc5b7c512eb8265ff4852649884a59c7b88b1696d4b170bbef7e1"
+    },
+    "build/fpga_template.fpga.prj/quartus_compile.fit.summary": {
+      "bytes": 732,
+      "sha256": "31077ab4c94209ab31731906d78fe8d5426f8667d51c6013e4f62b1ee08deda7"
+    },
+    "build/fpga_template.fpga.prj/quartus_compile.flow.rpt": {
+      "bytes": 8161,
+      "sha256": "0503c150669dd333411a4d154c99cc1110b8b8b682fd6d6ca27cb0b6eeeb8e9e"
+    },
+    "build/fpga_template.fpga.prj/quartus_compile.sta.rpt": {
+      "bytes": 2890552,
+      "sha256": "4fbc6f6d4def88a37f84594e3f0a9c372aaf425bbe68fa6e1ee5165be1bc7f25"
+    },
+    "build/fpga_template.fpga.prj/quartus_compile.sta.summary": {
+      "bytes": 633,
+      "sha256": "8bcb602ffcc4517769a1c37e0e18f7caa626aa7de2ba712fe4a455d0044aee64"
+    },
+    "build/fpga_template.fpga.prj/quartus_compile.syn.ae.rpt": {
+      "bytes": 2163585,
+      "sha256": "d7a15cabc54149438ee324633841fb05b7cce86aaeccc46cb532814cb8929244"
+    },
+    "build/fpga_template.fpga.prj/quartus_compile.syn.rpt": {
+      "bytes": 3290690,
+      "sha256": "0b500ad7b101a2540d46f7c47edd49d77216ad8852e1b9a11560ad0ede3bfe3a"
+    },
+    "build/fpga_template.fpga.prj/quartus_compile.syn.summary": {
+      "bytes": 381,
+      "sha256": "92e5e1a1c18be6292a8083e657a419384285688d84df4d78cda9d867931708b0"
+    },
+    "build/fpga_template.fpga.prj/quartus_compile.tq.drc.signoff.rpt": {
+      "bytes": 1547289,
+      "sha256": "6723d11c78bcc604c6d6994d19c1f695191fd5a68e62ff2b10f7d6d29fdf752c"
+    },
+    "build/fpga_template.fpga.prj/quartus_sh_compile.log": {
+      "bytes": 49562,
+      "sha256": "cdaed6b139f70cbc351699dfe46f9e4bc9c6ceafc8c39cee6a30e7b8ac7a7486"
+    },
+    "build/fpga_template.fpga.prj/top_fpga_template_fpga_di/top_fpga_template_fpga_di_generation.rpt": {
+      "bytes": 1442,
+      "sha256": "23ed215b05669461748dcffaad4e0422597dc8911c60c6f29da82e447484d7de"
+    }
+  },
+  "source_unchanged": true,
+  "effective_rc": 0,
+  "ended": "2026-09-29T18:59:30.950238+00:00"
+}

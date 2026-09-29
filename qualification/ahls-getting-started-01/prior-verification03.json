@@ -1,0 +1,977 @@
+{
+  "verified_at": "2026-09-29T18:20:09.306541+00:00",
+  "success": true,
+  "scope": "Offline revalidation of prior CPU/emulator/report and PART2-4 simulation evidence against the imported original source bytes; no new native execution",
+  "commit": "0abae6d78af5daca3fe5d67e617ab037e58aff89",
+  "source_files_verified": 16,
+  "cases": [
+    {
+      "id": "compile1",
+      "sample": "fpga_compile",
+      "PART": 1,
+      "prior_receipt_sha256": "2d3c2ebf1f0cb7e5dbb5808dbf2e3cb3aee5dfd1eb05a2d2e25b923261dd79b8",
+      "commands": [
+        {
+          "label": "part1-configure",
+          "argv": [
+            "cmake",
+            "-S",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/source/Tutorials/GettingStarted/fpga_compile",
+            "-B",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch01/part1",
+            "-DPART=1",
+            "-DFPGA_DEVICE=AGFB027R25A2E2V",
+            "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch01",
+          "started": "2026-09-27T01:00:44.007154+00:00",
+          "rc": 0,
+          "namespace_pid": 22,
+          "ended": "2026-09-27T01:00:50.033046+00:00",
+          "log": "part1-configure.log",
+          "log_sha256": "a33f56e82f621c9cc213065acbe1c7e735c9c7bf9d6ce190973e92700d78f9d3",
+          "log_bytes": 1104,
+          "published_log": "prior03/compile1-original-build/part1-configure.log"
+        },
+        {
+          "label": "part1-emulator-build",
+          "argv": [
+            "cmake",
+            "--build",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch01/part1",
+            "--parallel",
+            "36",
+            "--verbose",
+            "--target",
+            "fpga_emu"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch01",
+          "started": "2026-09-27T01:00:50.034263+00:00",
+          "rc": 0,
+          "namespace_pid": 195,
+          "ended": "2026-09-27T01:00:53.206833+00:00",
+          "log": "part1-emulator-build.log",
+          "log_sha256": "a6e9c20520327f61daf8afa55d3ea826e93b993fdad47a81459bfb5662b754ea",
+          "log_bytes": 5847,
+          "published_log": "prior03/compile1-original-build/part1-emulator-build.log"
+        },
+        {
+          "label": "part1-emulator-run",
+          "argv": [
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch01/part1/vector_add.fpga_emu"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch01/part1",
+          "started": "2026-09-27T01:09:44.677922+00:00",
+          "rc": 0,
+          "namespace_pid": 22,
+          "ended": "2026-09-27T01:09:44.746324+00:00",
+          "log": "part1-emulator-run.log",
+          "log_sha256": "173d6e606f03824b040e298d52cb5b5d8071e42e5165a2e7ed456be33ee000ad",
+          "log_bytes": 35,
+          "published_log": "prior03/compile1/part1-emulator-run.log"
+        }
+      ],
+      "cpu_emulator": {
+        "numerical_elements": 256,
+        "scope": "original host numerical checks after completion/copyback",
+        "mode": "CPU",
+        "native_output": "add two vectors of size 256\nPASSED\n"
+      },
+      "report_pass": false,
+      "backend_logs": [],
+      "executable_sha256": "3643962b33d4521c19577a3f10fce6371521f1b12280ab620595809d3ce19525",
+      "verification_reused": true,
+      "new_execution": false
+    },
+    {
+      "id": "compile2",
+      "sample": "fpga_compile",
+      "PART": 2,
+      "prior_receipt_sha256": "2d3c2ebf1f0cb7e5dbb5808dbf2e3cb3aee5dfd1eb05a2d2e25b923261dd79b8",
+      "commands": [
+        {
+          "label": "part2-configure",
+          "argv": [
+            "cmake",
+            "-S",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/source/Tutorials/GettingStarted/fpga_compile",
+            "-B",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02/part2",
+            "-DPART=2",
+            "-DFPGA_DEVICE=AGFB027R25A2E2V",
+            "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02",
+          "started": "2026-09-27T01:09:44.748136+00:00",
+          "rc": 0,
+          "namespace_pid": 23,
+          "ended": "2026-09-27T01:09:48.523491+00:00",
+          "log": "part2-configure.log",
+          "log_sha256": "7009bc479ae0f71bffc28883cbfe990379a638b908701be56cac007769829f32",
+          "log_bytes": 1061,
+          "published_log": "prior03/compile2/part2-configure.log"
+        },
+        {
+          "label": "part2-emulator-build",
+          "argv": [
+            "cmake",
+            "--build",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02/part2",
+            "--parallel",
+            "36",
+            "--verbose",
+            "--target",
+            "fpga_emu"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02",
+          "started": "2026-09-27T01:09:48.524646+00:00",
+          "rc": 0,
+          "namespace_pid": 196,
+          "ended": "2026-09-27T01:09:57.204258+00:00",
+          "log": "part2-emulator-build.log",
+          "log_sha256": "2563758b25c4e323943ce6aaaa38c263916080a9f6e9ae551adec37684cc78c5",
+          "log_bytes": 5658,
+          "published_log": "prior03/compile2/part2-emulator-build.log"
+        },
+        {
+          "label": "part2-emulator-run",
+          "argv": [
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02/part2/vector_add.fpga_emu"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02/part2",
+          "started": "2026-09-27T01:09:57.205771+00:00",
+          "rc": 0,
+          "namespace_pid": 306,
+          "ended": "2026-09-27T01:09:57.823492+00:00",
+          "log": "part2-emulator-run.log",
+          "log_sha256": "cbb111f0da57a60f3757008bc4b86652551c1fa083d1d2a225eda129716e1d29",
+          "log_bytes": 170,
+          "published_log": "prior03/compile2/part2-emulator-run.log"
+        },
+        {
+          "label": "part2-report-build",
+          "argv": [
+            "cmake",
+            "--build",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02/part2",
+            "--parallel",
+            "36",
+            "--verbose",
+            "--target",
+            "report"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02",
+          "started": "2026-09-27T01:09:57.828327+00:00",
+          "rc": 0,
+          "namespace_pid": 342,
+          "ended": "2026-09-27T01:10:16.125542+00:00",
+          "log": "part2-report-build.log",
+          "log_sha256": "e7b732c76ae602cfe8f3a17b562dd05acfd9b3f0cd3089b84eccd344489301b0",
+          "log_bytes": 5629,
+          "published_log": "prior03/compile2/part2-report-build.log"
+        }
+      ],
+      "cpu_emulator": {
+        "numerical_elements": 256,
+        "scope": "original host numerical checks after completion/copyback",
+        "mode": "FPGA emulation",
+        "native_output": "hwloc/linux: failed to find sysfs cpu topology directory, aborting linux discovery.\nRunning on device: Altera(R) FPGA Emulation Device\nadd two vectors of size 256\nPASSED\n"
+      },
+      "report_pass": true,
+      "backend_logs": [
+        "prior03/compile2/part2/vector_add.report.prj/logs/vector_add_report.log"
+      ],
+      "executable_sha256": "d63559e784a5fb034d6fb28e8d5c6952b0a76a5990d01ef1b471c4b6a9f73152",
+      "verification_reused": true,
+      "new_execution": false
+    },
+    {
+      "id": "compile3",
+      "sample": "fpga_compile",
+      "PART": 3,
+      "prior_receipt_sha256": "2d3c2ebf1f0cb7e5dbb5808dbf2e3cb3aee5dfd1eb05a2d2e25b923261dd79b8",
+      "commands": [
+        {
+          "label": "part3-configure",
+          "argv": [
+            "cmake",
+            "-S",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/source/Tutorials/GettingStarted/fpga_compile",
+            "-B",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02/part3",
+            "-DPART=3",
+            "-DFPGA_DEVICE=AGFB027R25A2E2V",
+            "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02",
+          "started": "2026-09-27T01:10:16.130900+00:00",
+          "rc": 0,
+          "namespace_pid": 1099,
+          "ended": "2026-09-27T01:10:20.105622+00:00",
+          "log": "part3-configure.log",
+          "log_sha256": "309adcea390547d888fe2ca4095dc350d2f1821556f8becd714047f1a1a3ffc2",
+          "log_bytes": 1060,
+          "published_log": "prior03/compile3/part3-configure.log"
+        },
+        {
+          "label": "part3-emulator-build",
+          "argv": [
+            "cmake",
+            "--build",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02/part3",
+            "--parallel",
+            "36",
+            "--verbose",
+            "--target",
+            "fpga_emu"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02",
+          "started": "2026-09-27T01:10:20.107079+00:00",
+          "rc": 0,
+          "namespace_pid": 1272,
+          "ended": "2026-09-27T01:10:28.487185+00:00",
+          "log": "part3-emulator-build.log",
+          "log_sha256": "f5848ef705c65ab5ca7b88ecf4c4989c392704d360aa8402601855d09d6d2b22",
+          "log_bytes": 5649,
+          "published_log": "prior03/compile3/part3-emulator-build.log"
+        },
+        {
+          "label": "part3-emulator-run",
+          "argv": [
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02/part3/vector_add.fpga_emu"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02/part3",
+          "started": "2026-09-27T01:10:28.488775+00:00",
+          "rc": 0,
+          "namespace_pid": 1382,
+          "ended": "2026-09-27T01:10:28.605894+00:00",
+          "log": "part3-emulator-run.log",
+          "log_sha256": "cbb111f0da57a60f3757008bc4b86652551c1fa083d1d2a225eda129716e1d29",
+          "log_bytes": 170,
+          "published_log": "prior03/compile3/part3-emulator-run.log"
+        },
+        {
+          "label": "part3-report-build",
+          "argv": [
+            "cmake",
+            "--build",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02/part3",
+            "--parallel",
+            "36",
+            "--verbose",
+            "--target",
+            "report"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02",
+          "started": "2026-09-27T01:10:28.611184+00:00",
+          "rc": 0,
+          "namespace_pid": 1418,
+          "ended": "2026-09-27T01:10:45.264576+00:00",
+          "log": "part3-report-build.log",
+          "log_sha256": "3c12f35cfff0779c48ad95bddd9a93e2a0c7a34b6f389ea4e182ec53bace0076",
+          "log_bytes": 5620,
+          "published_log": "prior03/compile3/part3-report-build.log"
+        }
+      ],
+      "cpu_emulator": {
+        "numerical_elements": 256,
+        "scope": "original host numerical checks after completion/copyback",
+        "mode": "FPGA emulation",
+        "native_output": "hwloc/linux: failed to find sysfs cpu topology directory, aborting linux discovery.\nRunning on device: Altera(R) FPGA Emulation Device\nadd two vectors of size 256\nPASSED\n"
+      },
+      "report_pass": true,
+      "backend_logs": [
+        "prior03/compile3/part3/vector_add.report.prj/logs/vector_add_report.log"
+      ],
+      "executable_sha256": "2fb9e8f898c8e96860c49bb52ed41afc96f195e5e41ad6afe59186b6ee969aac",
+      "verification_reused": true,
+      "new_execution": false
+    },
+    {
+      "id": "compile4",
+      "sample": "fpga_compile",
+      "PART": 4,
+      "prior_receipt_sha256": "2d3c2ebf1f0cb7e5dbb5808dbf2e3cb3aee5dfd1eb05a2d2e25b923261dd79b8",
+      "commands": [
+        {
+          "label": "part4-configure",
+          "argv": [
+            "cmake",
+            "-S",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/source/Tutorials/GettingStarted/fpga_compile",
+            "-B",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02/part4",
+            "-DPART=4",
+            "-DFPGA_DEVICE=AGFB027R25A2E2V",
+            "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02",
+          "started": "2026-09-27T01:10:45.269459+00:00",
+          "rc": 0,
+          "namespace_pid": 2175,
+          "ended": "2026-09-27T01:10:49.198255+00:00",
+          "log": "part4-configure.log",
+          "log_sha256": "f682514f9928b66769743f94f13145bbfe7415aa9fd3a8b92af9bc746ec5ab1f",
+          "log_bytes": 1064,
+          "published_log": "prior03/compile4/part4-configure.log"
+        },
+        {
+          "label": "part4-emulator-build",
+          "argv": [
+            "cmake",
+            "--build",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02/part4",
+            "--parallel",
+            "36",
+            "--verbose",
+            "--target",
+            "fpga_emu"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02",
+          "started": "2026-09-27T01:10:49.199872+00:00",
+          "rc": 0,
+          "namespace_pid": 2348,
+          "ended": "2026-09-27T01:10:57.930257+00:00",
+          "log": "part4-emulator-build.log",
+          "log_sha256": "226a8fc1769854fe1af6da3e0df8ab4835e43b4f3dcdc0dba96958d67dcef306",
+          "log_bytes": 5685,
+          "published_log": "prior03/compile4/part4-emulator-build.log"
+        },
+        {
+          "label": "part4-emulator-run",
+          "argv": [
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02/part4/vector_add.fpga_emu"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02/part4",
+          "started": "2026-09-27T01:10:57.931964+00:00",
+          "rc": 0,
+          "namespace_pid": 2458,
+          "ended": "2026-09-27T01:10:58.049452+00:00",
+          "log": "part4-emulator-run.log",
+          "log_sha256": "cbb111f0da57a60f3757008bc4b86652551c1fa083d1d2a225eda129716e1d29",
+          "log_bytes": 170,
+          "published_log": "prior03/compile4/part4-emulator-run.log"
+        },
+        {
+          "label": "part4-report-build",
+          "argv": [
+            "cmake",
+            "--build",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02/part4",
+            "--parallel",
+            "36",
+            "--verbose",
+            "--target",
+            "report"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch02",
+          "started": "2026-09-27T01:10:58.066721+00:00",
+          "rc": 0,
+          "namespace_pid": 2494,
+          "ended": "2026-09-27T01:11:14.960495+00:00",
+          "log": "part4-report-build.log",
+          "log_sha256": "fb4016544371f12b76097995195831e0cf3ff198edced037888deddb7ec8a22b",
+          "log_bytes": 5656,
+          "published_log": "prior03/compile4/part4-report-build.log"
+        }
+      ],
+      "cpu_emulator": {
+        "numerical_elements": 256,
+        "scope": "original host numerical checks after completion/copyback",
+        "mode": "FPGA emulation",
+        "native_output": "hwloc/linux: failed to find sysfs cpu topology directory, aborting linux discovery.\nRunning on device: Altera(R) FPGA Emulation Device\nadd two vectors of size 256\nPASSED\n"
+      },
+      "report_pass": true,
+      "backend_logs": [
+        "prior03/compile4/part4/vector_add.report.prj/logs/vector_add_report.log"
+      ],
+      "executable_sha256": "fdb59155599ec47f908986e39f4f617b7b6168e4eee04ef1ad0ec66b5a57539b",
+      "verification_reused": true,
+      "new_execution": false
+    },
+    {
+      "id": "fast_recompile",
+      "sample": "fast_recompile",
+      "prior_receipt_sha256": "0941ab0660cd5000c766b71409537b6c5a99aa57bf173fb9f5289b138edf015f",
+      "commands": [
+        {
+          "label": "s091-configure",
+          "argv": [
+            "cmake",
+            "-S",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/source-release11/Tutorials/GettingStarted/fast_recompile",
+            "-B",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch19/w1/s091/build",
+            "-DFPGA_DEVICE=AGFB027R25A2E2V",
+            "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch19/w1/s091",
+          "started": "2026-09-27T01:43:55.708117+00:00",
+          "rc": 0,
+          "namespace_pid": 22,
+          "ended": "2026-09-27T01:43:59.631735+00:00",
+          "log": "s091-configure.log",
+          "log_sha256": "2e56e451446412e7bcdb88b90bdec6e950afd9e9f37e849a411f251c980099a8",
+          "log_bytes": 1007,
+          "published_log": "prior03/fast_recompile/s091-configure.log"
+        },
+        {
+          "label": "s091-emulator-build",
+          "argv": [
+            "cmake",
+            "--build",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch19/w1/s091/build",
+            "--parallel",
+            "12",
+            "--verbose",
+            "--target",
+            "fpga_emu"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch19/w1/s091",
+          "started": "2026-09-27T01:43:59.633279+00:00",
+          "rc": 0,
+          "namespace_pid": 187,
+          "ended": "2026-09-27T01:44:08.515634+00:00",
+          "log": "s091-emulator-build.log",
+          "log_sha256": "d3c6d97209ffb2fbf84596750a45e3c86b09425ff1f8d09e9f3841990ac6e01e",
+          "log_bytes": 5650,
+          "published_log": "prior03/fast_recompile/s091-emulator-build.log"
+        },
+        {
+          "label": "s091-emulator-run",
+          "argv": [
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch19/w1/s091/build/fast_recompile.fpga_emu"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch19/w1/s091/build",
+          "started": "2026-09-27T01:44:08.516586+00:00",
+          "rc": 0,
+          "namespace_pid": 293,
+          "ended": "2026-09-27T01:44:08.632492+00:00",
+          "log": "s091-emulator-run.log",
+          "log_sha256": "a15defa5bf9248bd4bf7d8a57b64b386bb0fc5ac2a7935d9c764441b22b043d6",
+          "log_bytes": 79,
+          "published_log": "prior03/fast_recompile/s091-emulator-run.log"
+        },
+        {
+          "label": "s091-report-build",
+          "argv": [
+            "cmake",
+            "--build",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch19/w1/s091/build",
+            "--parallel",
+            "12",
+            "--verbose",
+            "--target",
+            "report"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch19/w1/s091",
+          "started": "2026-09-27T01:44:08.639840+00:00",
+          "rc": 0,
+          "namespace_pid": 325,
+          "ended": "2026-09-27T01:44:25.632902+00:00",
+          "log": "s091-report-build.log",
+          "log_sha256": "7b1005c58b31d67e31b95fc70deeadf0ad4bb5cc8a9062672074d826e74ab23b",
+          "log_bytes": 5705,
+          "published_log": "prior03/fast_recompile/s091-report-build.log"
+        }
+      ],
+      "cpu_emulator": {
+        "numerical_elements": 32,
+        "scope": "original host numerical checks after completion/copyback",
+        "mode": "FPGA emulation",
+        "native_output": "Running on device: Altera(R) FPGA Emulation Device\nPASSED: results are correct\n"
+      },
+      "report_pass": true,
+      "backend_logs": [
+        "prior03/fast_recompile/build/fast_recompile.report.prj/logs/fast_recompile_report.log"
+      ],
+      "executable_sha256": "14b2b90320e7b72ef9d0c00b9c9fe0825cdf92db0a01e1eb74bccda4ac8ac828",
+      "verification_reused": true,
+      "new_execution": false
+    },
+    {
+      "id": "fpga_template",
+      "sample": "fpga_template",
+      "prior_receipt_sha256": "3c7d0f1abdc229b1cb68c2e57aa1fec7ff9d85a3c35dc374000eae792d277406",
+      "commands": [
+        {
+          "label": "s096-configure",
+          "argv": [
+            "cmake",
+            "-S",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/source-release11/Tutorials/GettingStarted/fpga_template",
+            "-B",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch12/w1/s096",
+            "-DFPGA_DEVICE=AGFB027R25A2E2V",
+            "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch12/w1",
+          "started": "2026-09-27T01:24:31.858175+00:00",
+          "rc": 0,
+          "namespace_pid": 1083,
+          "ended": "2026-09-27T01:24:35.782138+00:00",
+          "log": "s096-configure.log",
+          "log_sha256": "2a51ea9651d078010fcb5820b3a1acc06f4330def80e65625b4b33eb2723eacc",
+          "log_bytes": 1001,
+          "published_log": "prior03/fpga_template/s096-configure.log"
+        },
+        {
+          "label": "s096-emulator-build",
+          "argv": [
+            "cmake",
+            "--build",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch12/w1/s096",
+            "--parallel",
+            "12",
+            "--verbose",
+            "--target",
+            "fpga_emu"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch12/w1",
+          "started": "2026-09-27T01:24:35.783444+00:00",
+          "rc": 0,
+          "namespace_pid": 1248,
+          "ended": "2026-09-27T01:24:44.063510+00:00",
+          "log": "s096-emulator-build.log",
+          "log_sha256": "e278473ade0a0126328cfa285e19eab99ee0d99e4a9eabdfb8d615cb513ee869",
+          "log_bytes": 5563,
+          "published_log": "prior03/fpga_template/s096-emulator-build.log"
+        },
+        {
+          "label": "s096-emulator-run",
+          "argv": [
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch12/w1/s096/fpga_template.fpga_emu"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch12/w1/s096",
+          "started": "2026-09-27T01:24:44.064967+00:00",
+          "rc": 0,
+          "namespace_pid": 1354,
+          "ended": "2026-09-27T01:24:44.182180+00:00",
+          "log": "s096-emulator-run.log",
+          "log_sha256": "73b75ee62a52f4ef26664af7764d18b7647c2b49a3683c9e38eb26836679eaf9",
+          "log_bytes": 86,
+          "published_log": "prior03/fpga_template/s096-emulator-run.log"
+        },
+        {
+          "label": "s096-report-build",
+          "argv": [
+            "cmake",
+            "--build",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch12/w1/s096",
+            "--parallel",
+            "12",
+            "--verbose",
+            "--target",
+            "report"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/batch12/w1",
+          "started": "2026-09-27T01:24:44.186951+00:00",
+          "rc": 0,
+          "namespace_pid": 1386,
+          "ended": "2026-09-27T01:25:00.530458+00:00",
+          "log": "s096-report-build.log",
+          "log_sha256": "342fd39bc54b4150c9ceb71367217ca289f21c53561c52af9c93f7be70b026e5",
+          "log_bytes": 5618,
+          "published_log": "prior03/fpga_template/s096-report-build.log"
+        }
+      ],
+      "cpu_emulator": {
+        "numerical_elements": 256,
+        "scope": "original host numerical checks after completion/copyback",
+        "mode": "FPGA emulation",
+        "native_output": "Running on device: Altera(R) FPGA Emulation Device\nadd two vectors of size 256\nPASSED\n"
+      },
+      "report_pass": true,
+      "backend_logs": [
+        "prior03/fpga_template/s096/fpga_template.report.prj/logs/fpga_template_report.log"
+      ],
+      "executable_sha256": "771861c89e92537340df13e47e0ab1a732211beab67931ab64f9a039a3b47d61",
+      "verification_reused": true,
+      "new_execution": false
+    }
+  ],
+  "rtl_simulations": [
+    {
+      "PART": 2,
+      "commands": [
+        {
+          "label": "s093-configure",
+          "argv": [
+            "cmake",
+            "-S",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/source-release11/Tutorials/GettingStarted/fpga_compile",
+            "-B",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim27/w0/s093/build",
+            "-DFPGA_DEVICE=AGFB027R25A2E2V",
+            "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+            "-DPART=2"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim27/w0/s093",
+          "started": "2026-09-27T01:58:36.364105+00:00",
+          "rc": 0,
+          "namespace_pid": 22,
+          "ended": "2026-09-27T01:58:40.239968+00:00",
+          "log": "s093-configure.log",
+          "log_sha256": "8952956224a736e991e0af1f31f3e7f12b06f3283cbcd6e4e9dbd988f40ea7c3",
+          "log_bytes": 1067,
+          "published_log": "prior03/compile2-sim/s093-configure.log"
+        },
+        {
+          "label": "s093-simulator-build",
+          "argv": [
+            "cmake",
+            "--build",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim27/w0/s093/build",
+            "--parallel",
+            "12",
+            "--verbose",
+            "--target",
+            "fpga_sim"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim27/w0/s093",
+          "started": "2026-09-27T01:58:40.241201+00:00",
+          "rc": 0,
+          "namespace_pid": 187,
+          "ended": "2026-09-27T02:00:20.927524+00:00",
+          "log": "s093-simulator-build.log",
+          "log_sha256": "d764aef587fba3e88671fc97258cfe0cb6cac8b9623fd5b0db3e23d2d22d92c2",
+          "log_bytes": 6765,
+          "published_log": "prior03/compile2-sim/s093-simulator-build.log"
+        },
+        {
+          "label": "s093-simulator-run",
+          "argv": [
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim27/w0/s093/build/vector_add.fpga_sim"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim27/w0/s093/build",
+          "started": "2026-09-27T02:00:20.954725+00:00",
+          "rc": 0,
+          "namespace_pid": 3267,
+          "ended": "2026-09-27T02:00:38.094420+00:00",
+          "log": "s093-simulator-run.log",
+          "log_sha256": "dc842f8bd2f251baa778ca56ff62b34c8ae108082182a09aa94a5ab77a3590c4",
+          "log_bytes": 107,
+          "published_log": "prior03/compile2-sim/s093-simulator-run.log"
+        }
+      ],
+      "numerical": {
+        "numerical_elements": 256,
+        "scope": "original host numerical checks after completion/copyback",
+        "mode": "RTL simulation",
+        "native_output": "Running on device: SimulatorDevice : Multi-process Simulator (aclmsim0)\nadd two vectors of size 256\nPASSED\n"
+      },
+      "prior_receipt_sha256": "6243339c4f7554c13df0155d8d9d272e661bd98d97b03eb15462e55b31653da1",
+      "waveforms": [
+        {
+          "path": "build/vector_add.fpga_sim.prj/vsim.wlf",
+          "bytes": 65536,
+          "sha256": "74876d7118e3c07778dc52c84827cdd777d8e9db5faa66000cb5c40e2c56c321"
+        }
+      ],
+      "waveform_verification": "Recorded original collector size/hash reconciled; waveform binary not locally retained or freshly rehashed"
+    },
+    {
+      "PART": 3,
+      "commands": [
+        {
+          "label": "s094-configure",
+          "argv": [
+            "cmake",
+            "-S",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/source-release11/Tutorials/GettingStarted/fpga_compile",
+            "-B",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim32/w0/s094/build",
+            "-DFPGA_DEVICE=AGFB027R25A2E2V",
+            "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+            "-DPART=3"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim32/w0/s094",
+          "started": "2026-09-27T02:05:13.250170+00:00",
+          "rc": 0,
+          "namespace_pid": 22,
+          "ended": "2026-09-27T02:05:17.123094+00:00",
+          "log": "s094-configure.log",
+          "log_sha256": "e4efe655aa8d7052848ddc55e7cb349f383d167a23151ccca9d3326d2849aa5a",
+          "log_bytes": 1066,
+          "published_log": "prior03/compile3-sim/s094-configure.log"
+        },
+        {
+          "label": "s094-simulator-build",
+          "argv": [
+            "cmake",
+            "--build",
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim32/w0/s094/build",
+            "--parallel",
+            "12",
+            "--verbose",
+            "--target",
+            "fpga_sim"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim32/w0/s094",
+          "started": "2026-09-27T02:05:17.124128+00:00",
+          "rc": 0,
+          "namespace_pid": 187,
+          "ended": "2026-09-27T02:06:55.205744+00:00",
+          "log": "s094-simulator-build.log",
+          "log_sha256": "c44a49d4e422699171ca2ac9858d80993d6feb9f4046ca32e209dbc8078d700c",
+          "log_bytes": 6756,
+          "published_log": "prior03/compile3-sim/s094-simulator-build.log"
+        },
+        {
+          "label": "s094-simulator-run",
+          "argv": [
+            "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim32/w0/s094/build/vector_add.fpga_sim"
+          ],
+          "cwd": "/home/uwb_student00/ahls/new_BSP/work_hls_samples_2026_1_0_01/sim32/w0/s094/build",
+          "started": "2026-09-27T02:06:55.228952+00:00",
+          "rc": 0,
+          "namespace_pid": 3212,
+          "ended": "2026-09-27T02:07:11.968232+00:00",
+          "log": "s094-simulator-run.log",
+          "log_sha256": "dc842f8bd2f251baa778ca56ff62b34c8ae108082182a09aa94a5ab77a3590c4",
+          "log_bytes": 107,
+          "published_log": "prior03/compile3-sim/s094-simulator-run.log"
+        }
+      ],
+      "numerical": {
+        "numerical_elements": 256,
+        "scope": "original host numerical checks after completion/copyback",
+        "mode": "RTL simulation",
+        "native_output": "Running on device: SimulatorDevice : Multi-process Simulator (aclmsim0)\nadd two vectors of size 256\nPASSED\n"
+      },
+      "prior_receipt_sha256": "bc07926385ce1c65cd0f94371eb3ba8d5d3e108e6827be5bfe7db919387d1d25",
+      "waveforms": [
+        {
+          "path": "build/vector_add.fpga_sim.prj/vsim.wlf",
+          "bytes": 65536,
+          "sha256": "4e43e3990e63018f5aa08ee66b544b0ef2703a6fe704af4789b37fa3f473fee5"
+        }
+      ],
+      "waveform_verification": "Recorded original collector size/hash reconciled; waveform binary not locally retained or freshly rehashed"
+    },
+    {
+      "PART": 4,
+      "numerical": {
+        "numerical_elements": 256,
+        "scope": "original host numerical checks after completion/copyback",
+        "mode": "RTL simulation",
+        "native_output": "Running on device: SimulatorDevice : Multi-process Simulator (aclmsim0)\nadd two vectors of size 256\nPASSED\n"
+      },
+      "native_status": {
+        "strace_launcher_rc": 0,
+        "started_utc": "2026-09-27T02:33:11.725357+00:00",
+        "elapsed_s": 16.83839235800042
+      },
+      "executable_sha256": "d9bffc452d29c27ee5beb7819a56a5a8a9887d8d2c49adcf97a7812e147a9c58",
+      "original_SIGABRT_preserved": true,
+      "recompiled": false,
+      "recovery_receipt_sha256": "e4728ca2fbd3becef60c0b8b5380365dfce025e5aefca54897a7ddac2380b4ea",
+      "corrected_virtual_address_limit_bytes": 51539607552
+    }
+  ],
+  "files": {
+    "prior03/compile1/part1-emulator-run.log": {
+      "bytes": 35,
+      "sha256": "173d6e606f03824b040e298d52cb5b5d8071e42e5165a2e7ed456be33ee000ad",
+      "original_path": "qualification/hls-samples-2026.1.0-01/remote-capture/batch02/part1-emulator-run.log"
+    },
+    "prior03/compile1-original-build/part1-configure.log": {
+      "bytes": 1104,
+      "sha256": "a33f56e82f621c9cc213065acbe1c7e735c9c7bf9d6ce190973e92700d78f9d3",
+      "original_path": "qualification/hls-samples-2026.1.0-01/remote-capture/batch01/part1-configure.log"
+    },
+    "prior03/compile1-original-build/part1-emulator-build.log": {
+      "bytes": 5847,
+      "sha256": "a6e9c20520327f61daf8afa55d3ea826e93b993fdad47a81459bfb5662b754ea",
+      "original_path": "qualification/hls-samples-2026.1.0-01/remote-capture/batch01/part1-emulator-build.log"
+    },
+    "prior03/compile2/part2-configure.log": {
+      "bytes": 1061,
+      "sha256": "7009bc479ae0f71bffc28883cbfe990379a638b908701be56cac007769829f32",
+      "original_path": "qualification/hls-samples-2026.1.0-01/remote-capture/batch02/part2-configure.log"
+    },
+    "prior03/compile2/part2-emulator-build.log": {
+      "bytes": 5658,
+      "sha256": "2563758b25c4e323943ce6aaaa38c263916080a9f6e9ae551adec37684cc78c5",
+      "original_path": "qualification/hls-samples-2026.1.0-01/remote-capture/batch02/part2-emulator-build.log"
+    },
+    "prior03/compile2/part2-emulator-run.log": {
+      "bytes": 170,
+      "sha256": "cbb111f0da57a60f3757008bc4b86652551c1fa083d1d2a225eda129716e1d29",
+      "original_path": "qualification/hls-samples-2026.1.0-01/remote-capture/batch02/part2-emulator-run.log"
+    },
+    "prior03/compile2/part2-report-build.log": {
+      "bytes": 5629,
+      "sha256": "e7b732c76ae602cfe8f3a17b562dd05acfd9b3f0cd3089b84eccd344489301b0",
+      "original_path": "qualification/hls-samples-2026.1.0-01/remote-capture/batch02/part2-report-build.log"
+    },
+    "prior03/compile2/part2/vector_add.report.prj/logs/vector_add_report.log": {
+      "bytes": 599,
+      "sha256": "a8191c038a0d34bd019fd8a1c2b3dabace7507045786fd8de9505efe3ca39f3b",
+      "original_path": "qualification/hls-samples-2026.1.0-01/remote-capture/batch02/part2/vector_add.report.prj/logs/vector_add_report.log"
+    },
+    "prior03/compile3/part3-configure.log": {
+      "bytes": 1060,
+      "sha256": "309adcea390547d888fe2ca4095dc350d2f1821556f8becd714047f1a1a3ffc2",
+      "original_path": "qualification/hls-samples-2026.1.0-01/remote-capture/batch02/part3-configure.log"
+    },
+    "prior03/compile3/part3-emulator-build.log": {
+      "bytes": 5649,
+      "sha256": "f5848ef705c65ab5ca7b88ecf4c4989c392704d360aa8402601855d09d6d2b22",
+      "original_path": "qualification/hls-samples-2026.1.0-01/remote-capture/batch02/part3-emulator-build.log"
+    },
+    "prior03/compile3/part3-emulator-run.log": {
+      "bytes": 170,
+      "sha256": "cbb111f0da57a60f3757008bc4b86652551c1fa083d1d2a225eda129716e1d29",
+      "original_path": "qualification/hls-samples-2026.1.0-01/remote-capture/batch02/part3-emulator-run.log"
+    },
+    "prior03/compile3/part3-report-build.log": {
+      "bytes": 5620,
+      "sha256": "3c12f35cfff0779c48ad95bddd9a93e2a0c7a34b6f389ea4e182ec53bace0076",
+      "original_path": "qualification/hls-samples-2026.1.0-01/remote-capture/batch02/part3-report-build.log"
+    },
+    "prior03/compile3/part3/vector_add.report.prj/logs/vector_add_report.log": {
+      "bytes": 599,
+      "sha256": "96d29eb94d24a45c8f16ea2877f8d21cdf6f84bf39c563f7982a1ad14551a7e2",
+      "original_path": "qualification/hls-samples-2026.1.0-01/remote-capture/batch02/part3/vector_add.report.prj/logs/vector_add_report.log"
+    },
+    "prior03/compile4/part4-configure.log": {
+      "bytes": 1064,
+      "sha256": "f682514f9928b66769743f94f13145bbfe7415aa9fd3a8b92af9bc746ec5ab1f",
+      "original_path": "qualification/hls-samples-2026.1.0-01/remote-capture/batch02/part4-configure.log"
+    },
+    "prior03/compile4/part4-emulator-build.log": {
+      "bytes": 5685,
+      "sha256": "226a8fc1769854fe1af6da3e0df8ab4835e43b4f3dcdc0dba96958d67dcef306",
+      "original_path": "qualification/hls-samples-2026.1.0-01/remote-capture/batch02/part4-emulator-build.log"
+    },
+    "prior03/compile4/part4-emulator-run.log": {
+      "bytes": 170,
+      "sha256": "cbb111f0da57a60f3757008bc4b86652551c1fa083d1d2a225eda129716e1d29",
+      "original_path": "qualification/hls-samples-2026.1.0-01/remote-capture/batch02/part4-emulator-run.log"
+    },
+    "prior03/compile4/part4-report-build.log": {
+      "bytes": 5656,
+      "sha256": "fb4016544371f12b76097995195831e0cf3ff198edced037888deddb7ec8a22b",
+      "original_path": "qualification/hls-samples-2026.1.0-01/remote-capture/batch02/part4-report-build.log"
+    },
+    "prior03/compile4/part4/vector_add.report.prj/logs/vector_add_report.log": {
+      "bytes": 599,
+      "sha256": "51f25718f283d172e42c75e72a58dab70c4b770aa50e70aa62bc69feda8bb081",
+      "original_path": "qualification/hls-samples-2026.1.0-01/remote-capture/batch02/part4/vector_add.report.prj/logs/vector_add_report.log"
+    },
+    "prior03/fast_recompile/s091-configure.log": {
+      "bytes": 1007,
+      "sha256": "2e56e451446412e7bcdb88b90bdec6e950afd9e9f37e849a411f251c980099a8",
+      "original_path": "qualification/hls-samples-2026.1.0-01/capture25/w1/s091/s091-configure.log"
+    },
+    "prior03/fast_recompile/s091-emulator-build.log": {
+      "bytes": 5650,
+      "sha256": "d3c6d97209ffb2fbf84596750a45e3c86b09425ff1f8d09e9f3841990ac6e01e",
+      "original_path": "qualification/hls-samples-2026.1.0-01/capture25/w1/s091/s091-emulator-build.log"
+    },
+    "prior03/fast_recompile/s091-emulator-run.log": {
+      "bytes": 79,
+      "sha256": "a15defa5bf9248bd4bf7d8a57b64b386bb0fc5ac2a7935d9c764441b22b043d6",
+      "original_path": "qualification/hls-samples-2026.1.0-01/capture25/w1/s091/s091-emulator-run.log"
+    },
+    "prior03/fast_recompile/s091-report-build.log": {
+      "bytes": 5705,
+      "sha256": "7b1005c58b31d67e31b95fc70deeadf0ad4bb5cc8a9062672074d826e74ab23b",
+      "original_path": "qualification/hls-samples-2026.1.0-01/capture25/w1/s091/s091-report-build.log"
+    },
+    "prior03/fast_recompile/build/fast_recompile.report.prj/logs/fast_recompile_report.log": {
+      "bytes": 653,
+      "sha256": "d8545e3dc3b061dec103eb7330fd9a5d0565203f212a90eea794d47dae6de1fd",
+      "original_path": "qualification/hls-samples-2026.1.0-01/capture25/w1/s091/build/fast_recompile.report.prj/logs/fast_recompile_report.log"
+    },
+    "prior03/fpga_template/s096-configure.log": {
+      "bytes": 1001,
+      "sha256": "2a51ea9651d078010fcb5820b3a1acc06f4330def80e65625b4b33eb2723eacc",
+      "original_path": "qualification/hls-samples-2026.1.0-01/capture16/w1/s096-configure.log"
+    },
+    "prior03/fpga_template/s096-emulator-build.log": {
+      "bytes": 5563,
+      "sha256": "e278473ade0a0126328cfa285e19eab99ee0d99e4a9eabdfb8d615cb513ee869",
+      "original_path": "qualification/hls-samples-2026.1.0-01/capture16/w1/s096-emulator-build.log"
+    },
+    "prior03/fpga_template/s096-emulator-run.log": {
+      "bytes": 86,
+      "sha256": "73b75ee62a52f4ef26664af7764d18b7647c2b49a3683c9e38eb26836679eaf9",
+      "original_path": "qualification/hls-samples-2026.1.0-01/capture16/w1/s096-emulator-run.log"
+    },
+    "prior03/fpga_template/s096-report-build.log": {
+      "bytes": 5618,
+      "sha256": "342fd39bc54b4150c9ceb71367217ca289f21c53561c52af9c93f7be70b026e5",
+      "original_path": "qualification/hls-samples-2026.1.0-01/capture16/w1/s096-report-build.log"
+    },
+    "prior03/fpga_template/s096/fpga_template.report.prj/logs/fpga_template_report.log": {
+      "bytes": 672,
+      "sha256": "2de7408c546f53db19244ef682be3287780042dc62933d6d003226a723cd0235",
+      "original_path": "qualification/hls-samples-2026.1.0-01/capture16/w1/s096/fpga_template.report.prj/logs/fpga_template_report.log"
+    },
+    "prior03/compile2-sim/s093-configure.log": {
+      "bytes": 1067,
+      "sha256": "8952956224a736e991e0af1f31f3e7f12b06f3283cbcd6e4e9dbd988f40ea7c3",
+      "original_path": "qualification/hls-samples-2026.1.0-01/capture31/w0/s093/s093-configure.log"
+    },
+    "prior03/compile2-sim/s093-simulator-build.log": {
+      "bytes": 6765,
+      "sha256": "d764aef587fba3e88671fc97258cfe0cb6cac8b9623fd5b0db3e23d2d22d92c2",
+      "original_path": "qualification/hls-samples-2026.1.0-01/capture31/w0/s093/s093-simulator-build.log"
+    },
+    "prior03/compile2-sim/s093-simulator-run.log": {
+      "bytes": 107,
+      "sha256": "dc842f8bd2f251baa778ca56ff62b34c8ae108082182a09aa94a5ab77a3590c4",
+      "original_path": "qualification/hls-samples-2026.1.0-01/capture31/w0/s093/s093-simulator-run.log"
+    },
+    "prior03/compile2-sim/build/vector_add.fpga_sim.prj/logs/vector_add_fpga_sim.log": {
+      "bytes": 321408,
+      "sha256": "20bcf631d33e13b6b7a49807790cc1ff77be4bc2548a764abaafc79e578e6d0b",
+      "original_path": "qualification/hls-samples-2026.1.0-01/capture31/w0/s093/build/vector_add.fpga_sim.prj/logs/vector_add_fpga_sim.log"
+    },
+    "prior03/compile3-sim/s094-configure.log": {
+      "bytes": 1066,
+      "sha256": "e4efe655aa8d7052848ddc55e7cb349f383d167a23151ccca9d3326d2849aa5a",
+      "original_path": "qualification/hls-samples-2026.1.0-01/capture36/w0/s094/s094-configure.log"
+    },
+    "prior03/compile3-sim/s094-simulator-build.log": {
+      "bytes": 6756,
+      "sha256": "c44a49d4e422699171ca2ac9858d80993d6feb9f4046ca32e209dbc8078d700c",
+      "original_path": "qualification/hls-samples-2026.1.0-01/capture36/w0/s094/s094-simulator-build.log"
+    },
+    "prior03/compile3-sim/s094-simulator-run.log": {
+      "bytes": 107,
+      "sha256": "dc842f8bd2f251baa778ca56ff62b34c8ae108082182a09aa94a5ab77a3590c4",
+      "original_path": "qualification/hls-samples-2026.1.0-01/capture36/w0/s094/s094-simulator-run.log"
+    },
+    "prior03/compile3-sim/build/vector_add.fpga_sim.prj/logs/vector_add_fpga_sim.log": {
+      "bytes": 311594,
+      "sha256": "6396ef5df446d2ca72d22dffa46fb09d298f69f9415cdae9658162944257770f",
+      "original_path": "qualification/hls-samples-2026.1.0-01/capture36/w0/s094/build/vector_add.fpga_sim.prj/logs/vector_add_fpga_sim.log"
+    },
+    "prior03/compile4-sim/program.log": {
+      "bytes": 107,
+      "sha256": "dc842f8bd2f251baa778ca56ff62b34c8ae108082182a09aa94a5ab77a3590c4",
+      "original_path": "qualification/hls-samples-2026.1.0-01/capture47/sim-map46/program.log"
+    },
+    "prior03/compile4-sim/accepted-recovery.json": {
+      "bytes": 3440,
+      "sha256": "b4fc2b91e709f05e8f14fa1281e5d82326757032687281328b3d51e1abfa0e55",
+      "original_path": "qualification/hls-samples-2026.1.0-01/simulator-verification47.json"
+    },
+    "prior03/compile4-sim/original-part3-part4-results.json": {
+      "bytes": 1723,
+      "sha256": "7530e000dd45d2e172e2432ace95daa7c8b076ed000a0d1f2a749cd3c4533acc",
+      "original_path": "qualification/hls-samples-2026.1.0-01/simulator-verification36.json"
+    }
+  },
+  "counts": {
+    "CPU_runs": 1,
+    "emulator_runs": 5,
+    "report_builds": 5,
+    "RTL_simulations": 3
+  },
+  "hardware_access": false,
+  "local_verifier_correction": "verify-prior02 incorrectly assumed hash-inventoried simulator waveform binaries were locally captured; partial prior02 exports and failed verifier retained. No native rerun."
+}

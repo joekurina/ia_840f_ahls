@@ -74,25 +74,30 @@ workstation, its data, and remote access takes precedence over progress.
   [SDK lineage and writer contract](qualification/caps01-bwflash01/PROGRAM02-RESULT.md),
   [preserved pre-correction state](qualification/caps03-flash01/RECOVERY18.md).
 
-## Current handoff — release-wide HLS samples in progress
+## Current handoff — scoped GettingStarted import and verification
 
-The whole `hls-samples`2026.1.0 release is the active worklist, not only DDRIP.
-Exact tag/HEAD is `0abae6d78af5daca3fe5d67e617ab037e58aff89`; donor checkout is clean.
-[Active scope and correction](qualification/hls-samples-2026.1.0-01/CORRECTION.md).
+Joe's latest request resumes only the three upstream `Tutorials/GettingStarted`
+roots: `fast_recompile`, `fpga_compile` PART1–4, and `fpga_template`. Import,
+build/verification and setup instructions belong in [examples/ahls](examples/ahls/README.md)
+and the [current scoped checkpoint](qualification/ahls-getting-started-01/CURRENT.md).
+Upstream main and tag2026.1.0 both resolve to
+`0abae6d78af5daca3fe5d67e617ab037e58aff89`.
 
-Continue through the exact-release per-sample and per-variant inventory,
-checking the latest local execution records before choosing the next stage.
-Keep CPU execution, FPGA emulation, RTL generation, RTL simulation and real-card
-execution separate. Reuse completed mode artifacts; do not count custom
-qualification frontends or repeated runs as additional upstream samples.
-CPU/emulator/report batches do not authorize incidental live hardware discovery.
+The broader release-wide sample work remains stopped and incomplete. Do not
+restart its cancelled worker or infer resumption from delayed notifications.
+Keep CPU execution, FPGA emulation, RTL generation, RTL-simulator numerical
+checks, simulator diagnostics, full isolated-IP compilation/timing and actual
+card execution separate. The original `fpga` target is not a runnable IA-840F
+image. This scoped task does not require or authorize a new card operation.
+Reuse verified unchanged completed modes and preserve failures. The original
+release scope/correction remains [historical context](qualification/hls-samples-2026.1.0-01/CORRECTION.md).
 
 Previously accepted CAPS03/DDR results remain valid only for that exact image and
 sample; reuse them rather than resynthesizing or rerunning them. The earlier
 [CAPS03 acceptance](qualification/caps03-final01/ACCEPTANCE.md) is a completed
-submilestone, not authority to close this release-wide goal.
+submilestone, not authority to close the release-wide goal.
 
-### Selected implementation
+### Previously accepted CAPS03 implementation — reference only
 
 Use the existing application clock and accepted PIM crossings, finite expected
 enabled-byte accounting and AW/W/B retirement at the additive bank shim. Read-only
@@ -164,10 +169,10 @@ cannot reopen them. No active owned job or pending review remains for that
 completed CAPS03 hardware submilestone; the release-wide work is separate.
 This recorded snapshot is not fresh launch authorization.
 
-**Continue the actual release-wide samples.** Joe has explicitly instructed this
-work. Preserve the completed DDRIP image/tests; do not rerun spent operations or
-revive CAPS02/vendor-internal investigations. The overall goal stays open until
-the named samples and variants have real results and any limitations are explicit.
+**The earlier release-wide continuation remains paused.** Complete only the
+currently requested GettingStarted import/build/verification scope, with all
+observed limitations explicit. Preserve the completed DDRIP image/tests and
+published release tag; do not revive CAPS02 or launch other sample roots.
 
 ### Preserved deployment authority — only when a new operation is justified Joe has specifically directed:
 “You have full permission to proceed. Flash the card, power cycle with the BMC,

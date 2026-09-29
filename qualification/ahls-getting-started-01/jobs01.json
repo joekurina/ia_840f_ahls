@@ -1,0 +1,69 @@
+{
+  "fast-sim": {
+    "sample": "fast_recompile",
+    "stem": "fast_recompile",
+    "target": "fpga_sim",
+    "selectors": {},
+    "host_only_recompile": true,
+    "build_timeout_seconds": 2400,
+    "required_patterns": [
+      "^PASSED: results are correct(?: \\(host-only recompile\\))?$"
+    ],
+    "minimum_pass_markers": 1,
+    "verification_scope": "Original 32-float host oracle: squared absolute error < 0.001 squared for every element"
+  },
+  "template-sim": {
+    "sample": "fpga_template",
+    "stem": "fpga_template",
+    "target": "fpga_sim",
+    "selectors": {},
+    "build_timeout_seconds": 2400,
+    "required_patterns": [
+      "add two vectors of size 256",
+      "^PASSED$"
+    ],
+    "minimum_pass_markers": 1,
+    "verification_scope": "Original 256-integer elementwise copyback comparison"
+  },
+  "compile2-ip": {
+    "sample": "fpga_compile",
+    "stem": "vector_add",
+    "target": "fpga",
+    "selectors": {
+      "PART": "2"
+    },
+    "build_timeout_seconds": 7200
+  },
+  "compile3-ip": {
+    "sample": "fpga_compile",
+    "stem": "vector_add",
+    "target": "fpga",
+    "selectors": {
+      "PART": "3"
+    },
+    "build_timeout_seconds": 7200
+  },
+  "compile4-ip": {
+    "sample": "fpga_compile",
+    "stem": "vector_add",
+    "target": "fpga",
+    "selectors": {
+      "PART": "4"
+    },
+    "build_timeout_seconds": 7200
+  },
+  "fast-ip": {
+    "sample": "fast_recompile",
+    "stem": "fast_recompile",
+    "target": "fpga",
+    "selectors": {},
+    "build_timeout_seconds": 7200
+  },
+  "template-ip": {
+    "sample": "fpga_template",
+    "stem": "fpga_template",
+    "target": "fpga",
+    "selectors": {},
+    "build_timeout_seconds": 7200
+  }
+}
