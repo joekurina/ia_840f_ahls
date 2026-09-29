@@ -1,6 +1,8 @@
-# IA-840F CAPS03 build guide
+# IA-840F CAPS03 AFU build guide
 
-This guide accompanies release `ia840f-caps03-v1.0.0`. It describes the accepted **Work21 static FIM + CAPS03 AHLS memory persona** and the native CMake entrypoints retained in this repository. Deployment is a separate step: use the [BittWare SDK flashing and activation guide](ia840f-sdk-flashing.md).
+This guide accompanies release `ia840f-caps03-v1.1.0`. It describes the accepted **Work21 static FIM + CAPS03 AHLS memory persona** and the native CMake entrypoints retained in this repository. Begin with the [FIM/PIM platform workflow](ia840f-fim-pim.md) for the static shell and matching interface package. After building or selecting the AFU image, use the [BittWare SDK flashing and activation guide](ia840f-sdk-flashing.md) and the [OPAE host build/run guide](ia840f-run.md).
+
+The original AHLS GettingStarted designs have a separate [complete build/run guide](../examples/ahls/README.md). They use CPU/emulation and RTL simulation; their standalone `fpga` target characterizes IP rather than building this complete FIM/PIM/AFU system. The verified tutorial LSU overlay is not retroactively applied to the accepted CAPS03 image or its source-bound generated-IP inputs.
 
 > **A clean clone is not a self-contained full-image build package.** The tag contains source, manifests, accepted evidence and native-stage CMake snapshots. It does not contain the matching generated HLS/fabric bundle, Work21 QDB/image collateral, all stage-preparation payloads, licensed tools or bitstreams. With only the checkout and compiler installation, the AHLS report target below is available; full-persona synthesis onward requires the separately retained, correctly prepared native workspace. Do not bypass missing prerequisites or claim a new build is already qualified.
 

@@ -207,6 +207,6 @@ The accepted deployment recorded these checks in [postboot47-result.json](../qua
 
 ## 7. What successful flashing does—and does not—prove
 
-Flash acceptance is complete-input readback/comparison. Deployment acceptance adds observed BMC Off/On, a new host boot and the scoped static identity check. Functional acceptance requires the independent OPAE/DFL, HLS copyback, guard, DDR and lifecycle evidence linked from [CAPS03 final acceptance](../qualification/caps03-final01/ACCEPTANCE.md).
+Flash acceptance is complete-input readback/comparison. Deployment acceptance adds observed BMC Off/On, a new host boot and the scoped static identity check. Functional acceptance requires the independent OPAE/DFL, HLS copyback, guard, DDR and lifecycle evidence linked from [CAPS03 final acceptance](../qualification/caps03-final01/ACCEPTANCE.md). For host compilation, current application-VF preparation, the exact numerical invocation and its failure/cleanup behavior, continue with the [OPAE host build/run guide](ia840f-run.md). Do not launch a standalone AHLS tutorial `.fpga` output as the board application.
 
 The release retains native **Design Closure FAIL** for the disclosed physical scope and only the exact accepted VF pending-before-FLR warning. It does not qualify every upstream HLS sample, general PR/cold/stopped-clock recovery, or warning-free teardown. Publishing these instructions does not extend those claims or resume the stopped sample qualification.

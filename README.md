@@ -2,13 +2,28 @@
 
 ## IA-840F CAPS03 release instructions
 
-Release `ia840f-caps03-v1.0.0` provides the [build guide](docs/ia840f-build.md)
-and [BittWare SDK flashing/activation guide](docs/ia840f-sdk-flashing.md).
+Release **`ia840f-caps03-v1.1.0`** includes the corrected AHLS GettingStarted
+flow and detailed instructions for the FIM/PIM/AFU hardware path. Start with the
+[release notes and checkout command](docs/releases/ia840f-caps03-v1.1.0.md), then
+choose the appropriate workflow:
+
+1. [Static FIM and PIM platform: architecture, source pins, preparation and export](docs/ia840f-fim-pim.md).
+2. [CAPS03 AFU: AHLS generation and native CMake synthesis, fit, timing and assembly](docs/ia840f-build.md).
+3. [Deploy the FPGA image: BittWare SDK flashing and activation](docs/ia840f-sdk-flashing.md).
+4. [Run the AFU: OPAE host build, DFL/VFIO setup, numerical checks and lifecycle](docs/ia840f-run.md).
+5. [Run the standalone AHLS tutorials: CPU/emulation, RTL simulation, reports and characterization](examples/ahls/README.md).
+
+The FIM and AFU run as configured FPGA logic; PIM is their interface/build
+infrastructure, not a separate executable. The actual card test uses the OPAE
+host. Tutorial `.fpga_sim` programs use a simulator, while their `.fpga` outputs
+are isolated-IP characterization products—not card executables or flash images.
+
 Use `bw_agilex_flash_programmer` with the accepted SDK-compatible RPD; JIC is
-not writer input and JTAG is not this project's flash route. The tag retains
-the accepted CAPS03 source/evidence baseline and its disclosed limitations;
-it does not certify the unfinished release-wide HLS samples or include licensed
-tools, generated build databases, or programming images.
+not writer input and JTAG is not this project's flash route. The release retains
+the accepted CAPS03 source/evidence baseline and its disclosed limitations.
+A clean clone does not include the prepared full-image workspaces, generated
+build databases, licensed tools or programming images; each guide identifies
+its external prerequisites. The existing `ia840f-caps03-v1.0.0` tag is unchanged.
 
 > Scope correction: the overall hls-samples2026.1.0 goal is incomplete and reopened.
 > This acceptance covers only the DDRIP sample integration and supporting hardware.
