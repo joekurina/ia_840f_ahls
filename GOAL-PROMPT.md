@@ -17,9 +17,10 @@ DFL/OPAE discovery and MMIO, both DDR channels passing the
 [hardware validation gate](docs/ddr-hardware-validation-gate.md), verified transfers
 in both directions, numerical comparisons after copyback, and sustained
 operation with normal teardown under the exact user-accepted erratum exception. Reuse existing evidence where it applies to the exact image;
-do not repeat completed bring-up as a default sequence. **The overall goal is INCOMPLETE.**
-Joe explicitly reaffirmed the entire HLS samples release2026.1.0. The earlier
-CAPS03 completion covered only the adapted DDR-host vector-add kernel and its
+do not repeat completed bring-up as a default sequence. **The release-wide sample goal is INCOMPLETE**;
+the CAPS03 platform/DDRIP submilestone is closed ([final acceptance](qualification/caps03-final01/ACCEPTANCE.md)).
+Joe explicitly reaffirmed the entire HLS samples release 2026.1.0. The CAPS03
+completion covered only the adapted DDR-host vector-add kernel and its
 supporting hardware qualification, not the requested sample collection.
 [Correction and active sample work](qualification/hls-samples-2026.1.0-01/CORRECTION.md).
 
@@ -74,29 +75,33 @@ workstation, its data, and remote access takes precedence over progress.
   [SDK lineage and writer contract](qualification/caps01-bwflash01/PROGRAM02-RESULT.md),
   [preserved pre-correction state](qualification/caps03-flash01/RECOVERY18.md).
 
-## Current handoff — scoped GettingStarted import and verification
+## Current handoff — GettingStarted import/verification COMPLETE; next scope undecided
 
-Joe's latest request resumes only the three upstream `Tutorials/GettingStarted`
-roots: `fast_recompile`, `fpga_compile` PART1–4, and `fpga_template`. Import,
-build/verification and setup instructions belong in [examples/ahls](examples/ahls/README.md)
-and the [completed correction checkpoint](qualification/ahls-getting-started-fix01/CURRENT.md).
-The later vendor-baseline comparison corrected a mistaken timing criterion:
-1000MHz is the documented standalone characterization target, not required
-application closure. The actual component Fmax is reported. The four affected
-simulations now pass with explicit Agilex7 family parameters and no Error/Fatal;
-no clock relaxation or card operation was used ([correction results](qualification/ahls-getting-started-fix01/RESULT.md)).
+The scoped GettingStarted task Joe requested is **complete and published**: the three
+upstream `Tutorials/GettingStarted` roots (`fast_recompile`, `fpga_compile` PART1–4,
+`fpga_template`) are imported byte-identical to `0abae6d78af5daca3fe5d67e617ab037e58aff89`,
+built/run through every documented mode, and documented in [examples/ahls](examples/ahls/README.md).
+The HLS support-RTL `DEVICE("Agilex 7")` defect is fixed via a hash-checked
+compatibility overlay; the four affected simulator runs are error-clean with all 256
+original integer checks passing, and the earlier "timing failure" assessment was
+corrected — 1000 MHz is the documented standalone characterization target, and the
+actual component Fmax values (PART2 667.11, PART3 781.86, PART4 772.20,
+fast_recompile 711.24, template 667.11 MHz) are the correct results
+([correction checkpoint](qualification/ahls-getting-started-fix01/CURRENT.md),
+[import checkpoint](qualification/ahls-getting-started-01/CURRENT.md)).
 All correction jobs and observers are finished; do not replay them.
-Upstream main and tag2026.1.0 both resolve to
-`0abae6d78af5daca3fe5d67e617ab037e58aff89`.
 
-The broader release-wide sample work remains stopped and incomplete. Do not
-restart its cancelled worker or infer resumption from delayed notifications.
+Release 2026.1.0 maps to tag `ia840f-caps03-v1.1.0` (commit `c3ddf9f`);
+[release notes](docs/releases/ia840f-caps03-v1.1.0.md).
+
+**The broader release-wide sample work remains stopped and incomplete** (99 primary
+selections; the accepted hardware result is still only the adapted DDRIP kernel).
+Do not restart its cancelled worker or infer resumption from delayed notifications.
 Keep CPU execution, FPGA emulation, RTL generation, RTL-simulator numerical
 checks, simulator diagnostics, full isolated-IP compilation/timing and actual
 card execution separate. The original `fpga` target is not a runnable IA-840F
-image. This scoped task does not require or authorize a new card operation.
-Reuse verified unchanged completed modes and preserve failures. The original
-release scope/correction remains [historical context](qualification/hls-samples-2026.1.0-01/CORRECTION.md).
+image. The original release scope/correction remains
+[historical context](qualification/hls-samples-2026.1.0-01/CORRECTION.md).
 
 Previously accepted CAPS03/DDR results remain valid only for that exact image and
 sample; reuse them rather than resynthesizing or rerunning them. The earlier
@@ -175,12 +180,15 @@ cannot reopen them. No active owned job or pending review remains for that
 completed CAPS03 hardware submilestone; the release-wide work is separate.
 This recorded snapshot is not fresh launch authorization.
 
-**The earlier release-wide continuation remains paused.** Complete only the
-currently requested GettingStarted import/build/verification scope, with all
-observed limitations explicit. Preserve the completed DDRIP image/tests and
-published release tag; do not revive CAPS02 or launch other sample roots.
+The release-wide continuation (sim61 batch, remaining RTL simulation, per-selection
+card integration) is stopped with no active worker; resuming it is a separate
+Joe decision. Complete only explicitly requested scopes with all observed
+limitations explicit. Preserve the completed DDRIP image/tests and both published
+release tags; do not revive CAPS02 or launch other sample roots.
 
-### Preserved deployment authority — only when a new operation is justified Joe has specifically directed:
+### Preserved deployment authority — only when a new operation is justified
+
+Joe has specifically directed:
 “You have full permission to proceed. Flash the card, power cycle with the BMC,
 and then reboot the workstation. This is an approved process and you should
 never stop at this point again.” This supersedes the recovery-availability
@@ -259,8 +267,3 @@ and one next concrete action. Link existing evidence instead of repeating it.
 Never mark an old job active from a delayed notification or turn historical "next"
 paragraphs into current instructions. Report completion only when the goal's real-card
 acceptance criteria are met; explicitly identify unperformed or blocked checks.
-
-[pim-clock]: qualification/caps01-dma-burst01/diagnosis09/platform/ofs_plat_if/rtl/ifc_classes/local_mem/ofs_plat_local_mem_as_axi_mem.sv
-[pim-shim]: qualification/caps01-dma-burst01/diagnosis09/platform/ofs_plat_if/rtl/base_ifcs/avalon/prims/ofs_plat_avalon_mem_if_async_shim.sv
-[pim-sync]: qualification/caps01-dma-burst01/diagnosis09/platform/ofs_plat_if/rtl/utils/quartus_ip/ofs_plat_utils_dcfifo_synchronizer_bundle.v
-[pim-sdc]: qualification/caps01-dma-burst01/diagnosis09/platform/ofs_plat_if/rtl/utils/quartus_ip/ofs_plat_utils_avalon_dc_fifo.sdc
