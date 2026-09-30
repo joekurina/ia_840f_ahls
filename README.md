@@ -42,9 +42,11 @@ and [assembly acceptance](qualification/caps03-persona01/ASSEMBLY-ACCEPTANCE01.m
 **"Design Closure: FAIL" is a Quartus Design-Assistant panel, not a timing
 failure.** It retains the disclosed LNT-30010 reset-fanout finding (1735 CLRN /
 981 SCLR / 513 ENA loads on the joined reset), reserved JTAG/BMC unconstrained
-ports, and the earlier DRC items; none produced a failing timing path, and reset
-recovery/removal timing is genuinely met (+0.592 / +0.155 ns). Numerical hardware
-results were accepted with these findings disclosed, not waived.
+ports, and the earlier DRC items; none produced a failing timing path. Reset
+recovery/removal is genuinely met — the bank0 reset margins are +0.592 / +0.155 ns
+(the global all-clock minima are +0.242 / +0.140 ns; do not substitute one for
+the other). Numerical hardware results were accepted with these findings
+disclosed, not waived.
 
 The [SDK deployment milestone](qualification/caps03-flash01/ACCEPTANCE48.md)
 separately accepts full-input flash readback/comparison, observed BMC Off/On,
@@ -145,9 +147,10 @@ The source-only status claims in this section describe the earlier preparation
 stage; the vendor-tool and board layout items below are superseded by the
 delivered CAPS03 integration above.
 
-- `sources.lock.json`: exact donor pins and source-only policy. **Stale:
-  Quartus Pro 26.1.1 is no longer the intended toolchain — the delivered
-  platform uses Quartus Prime Pro 25.1.0 Build 129.**
+- `sources.lock.json`: exact donor pins and source-only policy. Its
+  `requested_quartus_pro: 26.1.1` planning value is **superseded** — the
+  delivered platform uses Quartus Prime Pro 25.1.0 Build 129 (the version the
+  pinned OFS `ofs-2025.1-1` documents).
 - `ofs-agx7-pcie-attach/`: pinned `ofs-2025.1-1` FIM and its FIM-common dependency.
   - `syn/board/ia840f/`: board configuration, source manifest and closed gates.
   - `src/board/ia840f/`: vendor-derived board RTL and modern OFS adaptations.
