@@ -1,0 +1,406 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 25.1.0 Build 129 03/26/2025 SC Pro Edition
+    Info: Copyright (C) 2025  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Thu Oct  1 14:38:02 2026
+    Info: System process ID: 315858
+Info: Command: quartus_sta -t /home/uwb_student00/ahls/new_BSP/qualification/fim-build-23/cpa-help45/query.tcl
+EXECUTABLE /opt/altera/25.1/quartus/linux64/quartus_sta
+COMMAND_PRESENT report_path 1
+COMMAND_HELP report_path RETURN 0 VALUE {---------------------------------------------------------------------------
+
+Usage: report_path [-h] [-help] [-long_help] [-append] [-fall_from <names>] [-fall_through <names>] [-fall_to <names>] [-file <name>] [-from <names>] [-list_clocks] [-logic_depth] [-min_path] [-npaths <number>] [-nworst <number>] [-pairs_only] [-panel_name <name>] [-rise_from <names>] [-rise_through <names>] [-rise_to <names>] [-show_routing] [-split_by_corner] [-stdout] [-summary] [-through <names>] [-to <names>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -append: If output is sent to a file, this option appends the result to that file.  Otherwise, the file is overwritten. This option is not supported for HTML files.
+        -fall_from <names>: Valid sources (string patterns are matched using Tcl string matching)
+        -fall_through <names>: Valid through nodes (string patterns are matched using Tcl string matching)
+        -fall_to <names>: Valid destinations (string patterns are matched using Tcl string matching)
+        -file <name>: Sends the results to an ASCII or HTML file. Depending on the extension
+        -from <names>: Valid sources (string patterns are matched using Tcl string matching)
+        -list_clocks: Includes the driving clocks associated with the from and to nodes of each path in the Path Summary table
+        -logic_depth: Option to display the logic depth instead of path delay
+        -min_path: Find the minimum delay path(s)
+        -npaths <number>: Specifies the number of paths to report (default=1, or the same value as nworst, if nworst is specified.  Value of 0 causes all paths to be reported but be wary that this may be slow)
+        -nworst <number>: Specifies the maximum number of paths to report for each endpoint.  If unspecified, there is no limit.  If nworst is specified, but npaths is not, npaths defaults to the same as nworst
+        -pairs_only: When set, paths with the same start and end points are considered to be equivalent.  Only the longest delay path for each unique combination is displayed.
+        -panel_name <name>: Sends the results to the panel and specifies the name of the new panel
+        -rise_from <names>: Valid sources (string patterns are matched using Tcl string matching)
+        -rise_through <names>: Valid through nodes (string patterns are matched using Tcl string matching)
+        -rise_to <names>: Valid destinations (string patterns are matched using Tcl string matching)
+        -show_routing: Option to display detailed routing in the path
+        -split_by_corner: When set, running this command with the -panel option creates a folder containing versions of this report for selected multiple operating conditions. This option has no effect when used with the -stdout or -file options.
+        -stdout: Send output to stdout, via messages.  You only need to use this option if you have selected another output format, such as a file, and would also like to receive messages.
+        -summary: Create a single table with a summary of each path found
+        -through <names>: Valid through nodes (string patterns are matched using Tcl string matching)
+        -to <names>: Valid destinations (string patterns are matched using Tcl string matching)
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Reports the longest delay paths and the corresponding delay value.
+
+The report can be directed to the Tcl console ("-stdout", default),
+a file ("-file"), the Timing Analyzer graphical user interface
+("-panel_name"), or any combination of the three.
+
+You can limit the analysis performed by this command to specific
+start and end points, using the "-from" and "-to" options.  Any
+node or cell in the design is considered a valid endpoint.
+Additionally, the "-through" option can be used to restrict analysis
+to paths which go through specified pins or nets.  Paths that are
+reported can not start before or go beyond a keeper node (register
+or port); this restriction considers register pins as combinational
+nodes in the design.
+
+Use "-npaths" to limit the number of paths to report.  If this
+option is not specified, only the single longest delay path is
+provided.
+
+Use "-nworst" to limit the number of paths reported for each
+unique endpoint.  If you do not specify this option, the number
+of paths reported for each destination node is bounded only by the
+"-npaths" option.  If this option is used, but "-npaths" is not
+specified, then "-npaths" defaults to the same value specified
+for  "-nworst".
+
+Use the "-pairs_only" option to filter the output further, restricting
+the results to only unique combinations of start and end points.
+
+Use the "-summary" option to generate a single table listing only
+the highlights of each path.
+
+The "-min_path" option finds the minimum delay path(s) rather
+than the maximum delay paths which is the default behavior.
+
+The "-show_routing" option displays detailed routing information
+in the path.  Lines that were marked as "IC" without the option
+are still shown, but only as a placeholder.  The routing elements
+for that line are broken out individually and listed before
+the line.
+
+The return value of this command is a two-element list.  The
+first number is the number of paths found in the analysis.  The
+second is the longest delay, in terms of the current default
+time unit.
+
+The values of the "-from", "-to", "-through" options are either collections
+or a Tcl list of wildcards used to create collections of appropriate types.
+The values used must follow standard Tcl or Timing Analyzer-extension
+substitution rules.  See the help for use_timing_analyzer_style_escaping for
+details.
+
+--------------
+Example Usage:
+--------------
+
+project_open my_project
+
+# Always create the netlist first
+create_timing_netlist
+read_sdc my_project.sdc
+update_timing_netlist
+
+# Report path delay between nodes "foo" and "bar",
+# reporting the longest delay if a path is found.
+
+set my_list [report_path -from foo -to bar]
+set num_paths [lindex $my_list 0]
+set longest_delay [lindex $my_list 1]
+if { $num_paths > 0 } {
+    puts "Longest delay -from foo -to bar is $longest_delay"
+}
+
+# The following command is optional
+delete_timing_netlist
+
+project_close
+
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Option <string> has illegal value: <string>. Specify a legal option value.
+TCL_ERROR	1   	ERROR: Collection type '<string>' is not a valid type for a through collection.  Valid collection types are 'pin' and 'net'
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+TCL_ERROR	1   	ERROR: Report database is not open
+
+---------------------------------------------------------------------------
+}
+COMMAND_PRESENT get_pins 1
+COMMAND_HELP get_pins RETURN 0 VALUE {---------------------------------------------------------------------------
+
+Usage: get_pins [-h] [-help] [-long_help] [-compatibility_mode] [-hierarchical] [-no_duplicates] [-nocase] [-nowarn] [<filter>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -compatibility_mode: Use simple Tcl matching
+        -hierarchical: Specifies use of a hierarchical searching method
+        -no_duplicates: Do not match duplicated pin names
+        -nocase: Specifies case-insensitive node name matching
+        -nowarn: Do not issue warning messages about unmatched patterns
+        <filter>: Valid destinations (string patterns are matched using Tcl string matching)
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sdc 1.5
+
+------------
+Description:
+------------
+
+Returns a collection of pins in the design. All pin names in the
+collection match the specified pattern. Wildcards can be used to
+select multiple pins at once.
+
+There are three Tcl string matching schemes available with this
+command: the default method, the -hierarchical option, and the
+-compatibility_mode option.
+
+By default, pipe characters are used to separate one hierarchy level
+from the next. They are treated as special characters and are taken
+into account when string matching with wildcards is performed. When
+the default matching scheme is enabled, the specified pattern is
+matched against absolute pin names: the names that include the entire
+hierarchical path. All hierarchy levels in the pattern are matched
+level by level. Pin names of the form <absolute full cell name>|<pin
+suffix> are used for matching. Note that a full cell name can contain
+multiple pipe characters in it to reflect the hierarchy. Any included
+wildcards refer to only one hierarchical level. For example, "*|*" and
+"*|*|*" produce different collections since they refer to the highest
+hierarchical level and second highest hierarchical level respectively.
+
+When using the -hierarchical matching scheme, pipe characters are
+treated as special characters and are taken into account when string
+matching with wildcards is performed. This matching scheme forces the
+search to proceed recursively through the hierarchy. The specified
+pattern is matched against the relative pin names: the immediate names
+that do not include any of the hierarchy information.  Pin names of
+the form <relative short cell name>|<pin suffix> are used for
+matching. Note that a short cell name cannot contain pipe
+characters. Any included wildcards are expanded to match the relative
+pin names.  For example, "*" and "*|*" match exactly the same pins
+since the former is expanded into the latter.
+
+The -compatibility_mode matching scheme uses simple Tcl string matching
+on full, absolute cell names. Pipe characters are not treated as special
+characters when used with wildcards.
+
+The default matching scheme returns not only pins whose names match
+the specified filter, but also pins duplicated from these pins (refers
+to pins are automatically generated by Quartus from the pins).  Use
+-no_duplicates option to not include duplicated pins.
+
+The filter for the collection is a Tcl list of wildcards, and must
+follow standard Tcl or Timing Analyzer-extension substitution rules. See 
+help for the use_timing_analyzer_style_escaping command for details.
+
+--------------
+Example Usage:
+--------------
+
+# Get regout pin of "reg" cell
+get_pins -nocase reg|regout
+# Create a collection of all pins of "reg" cell
+get_pins reg|*
+# Create a collection of all pins on the highest hierarachical level
+set mycollection [get_pins *]
+# Output pin names.
+foreach_in_collection pin $mycollection {
+    puts [get_pin_info -name $pin]
+}
+# Create a collection of all pins in the design
+set fullcollection [get_pins -hierarchical *]
+# Output pin IDs and names.
+foreach_in_collection pin $fullcollection {
+    puts -nonewline $pin
+    puts -nonewline ": "
+    puts [get_pin_info -name $pin]
+}
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+
+---------------------------------------------------------------------------
+}
+COMMAND_PRESENT get_nodes 1
+COMMAND_HELP get_nodes RETURN 0 VALUE {---------------------------------------------------------------------------
+
+Usage: get_nodes [-h] [-help] [-long_help] [-include_generated_clocks] [-no_duplicates] [-nocase] [-nowarn] [-of_clocks] [<filter>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -include_generated_clocks: Includes generated clocks derived from the matched clocks. This option can only be used in conjunction with the -of_clocks option.
+        -no_duplicates: Do not match duplicated node names
+        -nocase: Specifies the matching of node names (or clock names if the -of_clocks option is used) to be case-insensitive
+        -nowarn: Do not issue warning messages about unmatched patterns
+        -of_clocks: Returns nodes that are on the clock domains of the specified clock names
+        <filter>: Valid destinations (string patterns are matched using Tcl string matching)
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sdc_ext 2.0
+
+------------
+Description:
+------------
+
+Returns a collection of nodes in the design.
+
+The default matching scheme returns not only nodes
+whose names match the specified filter, but also nodes
+duplicated from these nodes (refers to cells are
+automatically generated by Quartus from these
+nodes). Use the -no_duplicates option to not include
+duplicated nodes. If the -of_clocks option is used, the
+nodes returned are limited to those on the clock domains
+of clocks whose names match the specified filter.
+
+The filter for the collection is a Tcl list of
+wildcards, and must follow standard Tcl or
+Timing Analyzer-extension substitution rules. See help for
+the use_timing_analyzer_style_escaping command for details.
+
+
+--------------
+Example Usage:
+--------------
+
+project_open chiptrip
+create_timimg_netlist
+
+set nodes [get_nodes *name*]
+foreach_in_collection node $nodes {
+    puts [get_object_info -name $node]
+}
+
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: The -include_generated_clocks option can only be used when the -of_clocks option is used as well
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+
+---------------------------------------------------------------------------
+}
+COMMAND_PRESENT get_node_info 1
+COMMAND_HELP get_node_info RETURN 0 VALUE {---------------------------------------------------------------------------
+
+Usage: get_node_info [-h] [-help] [-long_help] [-asynch_edges] [-cell] [-clock_edges] [-fanout_asynch_edges] [-fanout_clock_edges] [-fanout_edges] [-fanout_synch_edges] [-location] [-name] [-synch_edges] [-type] <node_object>
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -asynch_edges: Return a list of asynchronous edge IDs
+        -cell: Return the host cell
+        -clock_edges: Return a list of clock edge IDs
+        -fanout_asynch_edges: Return a list of asynchronous fanout edge IDs
+        -fanout_clock_edges: Return a list of clock fanout edge IDs
+        -fanout_edges: Return a list of fanout edge IDs
+        -fanout_synch_edges: Return a list of synchronous fanout edge IDs
+        -location: Return the atom location in device
+        -name: Return the node name
+        -synch_edges: Return a list of synchronous edge IDs
+        -type: Return the node type
+        <node_object>: Node object
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Gets information about the specified node (referenced by node ID).
+Use Tcl commands such as get_nodes to obtain node IDs. The -type
+option returns "reg", "port", "pin", "net", or "comb". The -name, -type,
+-clock_edges, -synch_edges, -asynch_edges, -fanout_edges, -fanout_clock_edges,
+-fanout_synch_edges, -fanout_asynch_edges, -cell and
+-location options are mutually exclusive.
+
+--------------
+Example Usage:
+--------------
+
+project_open chiptrip
+create_timing_netlist
+set registers [get_registers]
+foreach_in_collection reg $registers {
+    puts "[get_node_info $reg -name]: [get_node_info $reg -type]"
+}
+delete_timing_netlist
+project_close
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Object with ID "<string>" is not an object of type <string>. Specify the ID of an object with the correct type.
+TCL_ERROR	1   	ERROR: Cannot find object of ID "<string>". Specify an existing object ID.
+TCL_ERROR	1   	ERROR: Unsupported object type: <string>. Specify a supported object type.
+
+---------------------------------------------------------------------------
+}
+IA840F_CPA_HELP45_COMPLETE
+Info (23030): Evaluation of Tcl script /home/uwb_student00/ahls/new_BSP/qualification/fim-build-23/cpa-help45/query.tcl was successful
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 1310 megabytes
+    Info: Processing ended: Thu Oct  1 14:38:02 2026
+    Info: Elapsed time: 00:00:00
+    Info: System process ID: 315858
+Built target cpa_command_help
+CONSTRAINT_SUPERVISION {"abort_reason": null, "final_live_pids": [], "native_rc": 0, "native_started": true, "supervision_errors": [], "termination_confirmed": true}

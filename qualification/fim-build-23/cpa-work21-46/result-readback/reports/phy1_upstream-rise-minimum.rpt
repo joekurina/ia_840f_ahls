@@ -1,0 +1,71 @@
+----------------
+; Command Info ;
+----------------
+Report Path: Found 1 paths. Shortest delay is 1.166 
+
+Tcl Command:
+    report_path -show_routing -min_path -file /home/uwb_student00/ahls/new_BSP/qualification/fim-build-23/cpa-work21-46/reports/phy1_upstream-rise-minimum.rpt -rise_to [get_pins {{local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|tile_gen[1].tile_ctrl_inst|pa_fbclk_in[1]}}] -npaths 1 -nworst 1
+
+Options:
+    -rise_to [get_pins {{local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|tile_gen[1].tile_ctrl_inst|pa_fbclk_in[1]}}] 
+    -npaths 1 
+    -nworst 1 
+    -show_routing 
+    -min_path 
+    -file_name "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-23/cpa-work21-46/reports/phy1_upstream-rise-minimum.rpt" 
+
+Snapshot:
+    final
+
+Delay Model:
+    Fast vid2 100C Model
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Summary of Paths                                                                                                                                                                                                                                                                       ;
++-------+-----------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Delay ; From Node                                                                                                       ; To Node                                                                                                                                                      ;
++-------+-----------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; 1.166 ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|pll_inst|pll_inst|lvds_clk[0] ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|tile_gen[1].tile_ctrl_inst|pa_fbclk_in[1] ;
++-------+-----------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Path #1: Delay is 1.166
+===============================================================================
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Path Summary                                                                                                                                                                                   ;
++---------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Property                        ; Value                                                                                                                                                        ;
++---------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; From Node                       ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|pll_inst|pll_inst|lvds_clk[0]                                              ;
+; To Node                         ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|tile_gen[1].tile_ctrl_inst|pa_fbclk_in[1] ;
+; Delay                           ; 1.166                                                                                                                                                        ;
+; Worst-Case Operating Conditions ; Fast vid2 100C Model                                                                                                                                         ;
++---------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
++-----------------------------------------------------------------------------------+
+; Statistics                                                                        ;
++------------------------+-------+-------+-------------+------------+-------+-------+
+; Property               ; Value ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+-------+-------+-------------+------------+-------+-------+
+; Data Delay             ; 1.166 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;       ; 2     ;             ;            ;       ;       ;
+; Physical Delays        ;       ;       ;             ;            ;       ;       ;
+;  Cell                  ;       ; 6     ; 1.166       ; 100        ; 0.000 ; 0.593 ;
++------------------------+-------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                                                                                                                               ;
++---------+---------+----+------+--------+-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Total   ; Incr    ; RF ; Type ; Fanout ; Location                ; Element                                                                                                                                                      ;
++---------+---------+----+------+--------+-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; 1.166   ; 1.166   ;    ;      ;        ;                         ; data path                                                                                                                                                    ;
+;   0.000 ;   0.000 ;    ;      ; 1      ; IOPLL_X172_Y0_N303      ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|pll_inst|pll_inst|lvds_clk[0]                                              ;
+;   0.000 ;   0.000 ; RR ; CELL ; 4      ; IO48PHYCLK_X172_Y0_N302 ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|phyclk_inst|lvds_clk_0                    ;
+;   0.097 ;   0.097 ; RR ; CELL ; 2      ; IO48PHYCLK_X172_Y0_N302 ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|phyclk_inst|phy_rxclk_to_btm              ;
+;   0.141 ;   0.044 ; RR ; CELL ; 7      ; IO48PHYCLK_X172_Y0_N302 ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|phyclk_inst|phy_rxclk_match_btm           ;
+;   0.734 ;   0.593 ; RR ; CELL ; 2      ; IO48PHYCLK_X172_Y0_N302 ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|phyclk_inst|phy_clk_out_2[1]              ;
+;   0.840 ;   0.106 ; RR ; CELL ; 1      ; IO48PHYCLK_X172_Y0_N302 ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|phyclk_inst|fbclk_pa[1]                   ;
+;   1.166 ;   0.326 ; RR ; CELL ; 1      ; TILECTRL_X172_Y0_N298   ; local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|tile_gen[1].tile_ctrl_inst|pa_fbclk_in[1] ;
++---------+---------+----+------+--------+-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+

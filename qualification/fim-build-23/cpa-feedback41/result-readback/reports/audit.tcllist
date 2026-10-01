@@ -1,0 +1,34 @@
+BEGIN final_snapshot original_signoff no_fit no_hardware no_CPA_equation_claim
+CORNER_COUNT 5 cap 16
+CORNER 2_slow_vid2_100c
+CORNER 2_slow_vid2b_100c
+CORNER MIN_fast_vid2a_0c
+CORNER MIN_fast_vid2a_100c
+CORNER MIN_fast_vid2_100c
+ANCHOR_COUNTS through 1 endpoint 1
+ANCHOR_PATH_COUNT 1
+ANCHOR_SLACK raw -0.004 printed_ns -0.004
+LOOKUP core_out kind pin expected {local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|tile_gen[1].tile_ctrl_inst|pa_core_clk_out[0]} count 1 cap 8
+OBJECT_NAME core_out {local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|tile_gen[1].tile_ctrl_inst|pa_core_clk_out[0]}
+LOOKUP core_return kind pin expected {local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|tile_gen[1].tile_ctrl_inst|pa_core_clk_in[0]} count 1 cap 8
+OBJECT_NAME core_return {local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|tile_gen[1].tile_ctrl_inst|pa_core_clk_in[0]}
+LOOKUP phy0 kind pin expected {local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|tile_gen[1].tile_ctrl_inst|pa_fbclk_in[0]} count 0 cap 8
+LOOKUP phy0 kind node expected {local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|tile_gen[1].tile_ctrl_inst|pa_fbclk_in[0]} count 0 cap 8
+UNAVAILABLE phy0 count 0
+LOOKUP phy1 kind pin expected {local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|tile_gen[1].tile_ctrl_inst|pa_fbclk_in[1]} count 1 cap 8
+OBJECT_NAME phy1 {local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|tile_gen[1].tile_ctrl_inst|pa_fbclk_in[1]}
+LOOKUP phy2 kind pin expected {local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|tile_gen[1].tile_ctrl_inst|pa_fbclk_in[2]} count 0 cap 8
+LOOKUP phy2 kind node expected {local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|tile_gen[1].tile_ctrl_inst|pa_fbclk_in[2]} count 0 cap 8
+UNAVAILABLE phy2 count 0
+LOOKUP refclk kind port expected {ddr4_mem_ref_clk[1].clk} count 1 cap 8
+OBJECT_NAME refclk {ddr4_mem_ref_clk[1].clk}
+PATH_RESULT core_feedback rise maximum {1 3.853}
+PATH_RESULT core_feedback rise minimum {1 3.478}
+PATH_RESULT core_feedback fall maximum {1 3.829}
+PATH_RESULT core_feedback fall minimum {1 3.455}
+PATH_RESULT phy1_upstream rise maximum {1 1.356}
+PATH_RESULT phy1_upstream rise minimum {1 1.166}
+PATH_RESULT phy1_upstream fall maximum {1 1.355}
+PATH_RESULT phy1_upstream fall minimum {1 1.166}
+FEEDBACK_REPORT_COUNT 8 expected_at_most 8 zero_is_unavailable_not_zero_delay
+COMPLETE observations_only no_CPA_equation no_timing_acceptance no_hardware

@@ -1,0 +1,168 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+    Info: Copyright (C) 2026  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Thu Oct  1 13:48:12 2026
+    Info: System process ID: 312768
+Info: Command: quartus_sta -t /home/uwb_student00/ahls/new_BSP/qualification/fim-build-23/cpa-help35/query.tcl
+EXECUTABLE /opt/altera/26.1.1/quartus/linux64/quartus_sta
+COMMAND_PRESENT report_delay_calculation 0
+COMMAND_HELP report_delay_calculation RETURN 1 VALUE {ERROR: Tcl command does not exist or is not supported by Quartus Prime Tcl help: report_delay_calculation. Specify an available Quartus Prime Tcl command. Type "info commands" for a list of available commands.
+}
+COMMAND_PRESENT report_path 1
+COMMAND_HELP report_path RETURN 0 VALUE {---------------------------------------------------------------------------
+
+Usage: report_path [-h] [-help] [-long_help] [-append] [-fall_from <names>] [-fall_through <names>] [-fall_to <names>] [-file <name>] [-from <names>] [-list_clocks] [-logic_depth] [-min_path] [-npaths <number>] [-nworst <number>] [-pairs_only] [-panel_name <name>] [-rise_from <names>] [-rise_through <names>] [-rise_to <names>] [-show_routing] [-split_by_corner] [-stdout] [-summary] [-through <names>] [-to <names>]
+
+        -h: Quick usage
+        -help: Short help
+        -long_help: Long help with examples and possible return values
+
+        -append: If output is sent to a file, this option appends the result to that file.  Otherwise, the file is overwritten. This option is not supported for HTML files.
+        -fall_from <names>: Valid sources (string patterns are matched using Tcl string matching)
+        -fall_through <names>: Valid through nodes (string patterns are matched using Tcl string matching)
+        -fall_to <names>: Valid destinations (string patterns are matched using Tcl string matching)
+        -file <name>: Sends the results to an ASCII or HTML file. Depending on the extension
+        -from <names>: Valid sources (string patterns are matched using Tcl string matching)
+        -list_clocks: Includes the driving clocks associated with the from and to nodes of each path in the Path Summary table
+        -logic_depth: Option to display the logic depth instead of path delay
+        -min_path: Find the minimum delay path(s)
+        -npaths <number>: Specifies the number of paths to report (default=1, or the same value as nworst, if nworst is specified.  Value of 0 causes all paths to be reported but be wary that this may be slow)
+        -nworst <number>: Specifies the maximum number of paths to report for each endpoint.  If unspecified, there is no limit.  If nworst is specified, but npaths is not, npaths defaults to the same as nworst
+        -pairs_only: When set, paths with the same start and end points are considered to be equivalent.  Only the longest delay path for each unique combination is displayed.
+        -panel_name <name>: Sends the results to the panel and specifies the name of the new panel
+        -rise_from <names>: Valid sources (string patterns are matched using Tcl string matching)
+        -rise_through <names>: Valid through nodes (string patterns are matched using Tcl string matching)
+        -rise_to <names>: Valid destinations (string patterns are matched using Tcl string matching)
+        -show_routing: Option to display detailed routing in the path
+        -split_by_corner: When set, running this command with the -panel option creates a folder containing versions of this report for selected multiple operating conditions. This option has no effect when used with the -stdout or -file options.
+        -stdout: Send output to stdout, via messages.  You only need to use this option if you have selected another output format, such as a file, and would also like to receive messages.
+        -summary: Create a single table with a summary of each path found
+        -through <names>: Valid through nodes (string patterns are matched using Tcl string matching)
+        -to <names>: Valid destinations (string patterns are matched using Tcl string matching)
+
+------------------------
+Tcl Package and Version:
+------------------------
+
+Belongs to ::quartus::sta 1.0
+
+------------
+Description:
+------------
+
+Reports the longest delay paths and the corresponding delay value.
+
+The report can be directed to the Tcl console ("-stdout", default),
+a file ("-file"), the Timing Analyzer graphical user interface
+("-panel_name"), or any combination of the three.
+
+You can limit the analysis performed by this command to specific
+start and end points, using the "-from" and "-to" options.  Any
+node or cell in the design is considered a valid endpoint.
+Additionally, the "-through" option can be used to restrict analysis
+to paths which go through specified pins or nets.  Paths that are
+reported can not start before or go beyond a keeper node (register
+or port); this restriction considers register pins as combinational
+nodes in the design.
+
+Use "-npaths" to limit the number of paths to report.  If this
+option is not specified, only the single longest delay path is
+provided.
+
+Use "-nworst" to limit the number of paths reported for each
+unique endpoint.  If you do not specify this option, the number
+of paths reported for each destination node is bounded only by the
+"-npaths" option.  If this option is used, but "-npaths" is not
+specified, then "-npaths" defaults to the same value specified
+for  "-nworst".
+
+Use the "-pairs_only" option to filter the output further, restricting
+the results to only unique combinations of start and end points.
+
+Use the "-summary" option to generate a single table listing only
+the highlights of each path.
+
+The "-min_path" option finds the minimum delay path(s) rather
+than the maximum delay paths which is the default behavior.
+
+The "-show_routing" option displays detailed routing information
+in the path.  Lines that were marked as "IC" without the option
+are still shown, but only as a placeholder.  The routing elements
+for that line are broken out individually and listed before
+the line.
+
+The return value of this command is a two-element list.  The
+first number is the number of paths found in the analysis.  The
+second is the longest delay, in terms of the current default
+time unit.
+
+The values of the "-from", "-to", "-through" options are either collections
+or a Tcl list of wildcards used to create collections of appropriate types.
+The values used must follow standard Tcl or Timing Analyzer-extension
+substitution rules.  See the help for use_timing_analyzer_style_escaping for
+details.
+
+--------------
+Example Usage:
+--------------
+
+project_open my_project
+
+# Always create the netlist first
+create_timing_netlist
+read_sdc my_project.sdc
+update_timing_netlist
+
+# Report path delay between nodes "foo" and "bar",
+# reporting the longest delay if a path is found.
+
+set my_list [report_path -from foo -to bar]
+set num_paths [lindex $my_list 0]
+set longest_delay [lindex $my_list 1]
+if { $num_paths > 0 } {
+    puts "Longest delay -from foo -to bar is $longest_delay"
+}
+
+# The following command is optional
+delete_timing_netlist
+
+project_close
+
+
+-------------
+Return Value:
+-------------
+
+Code Name	Code	String Return
+---------	----	-------------
+TCL_OK   	0   	INFO: Operation successful
+TCL_ERROR	1   	ERROR: Option <string> has illegal value: <string>. Specify a legal option value.
+TCL_ERROR	1   	ERROR: Collection type '<string>' is not a valid type for a through collection.  Valid collection types are 'pin' and 'net'
+TCL_ERROR	1   	ERROR: Timing netlist does not exist. Use "create_timing_netlist" to create a timing netlist.
+TCL_ERROR	1   	ERROR: Report database is not open
+
+---------------------------------------------------------------------------
+}
+IA840F_CPA_HELP35_COMPLETE
+Info (23030): Evaluation of Tcl script /home/uwb_student00/ahls/new_BSP/qualification/fim-build-23/cpa-help35/query.tcl was successful
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 1395 megabytes
+    Info: Processing ended: Thu Oct  1 13:48:13 2026
+    Info: Elapsed time: 00:00:01
+    Info: System process ID: 312768
+Built target cpa_command_help
+CONSTRAINT_SUPERVISION {"abort_reason": null, "final_live_pids": [], "native_rc": 0, "native_started": true, "supervision_errors": [], "termination_confirmed": true}

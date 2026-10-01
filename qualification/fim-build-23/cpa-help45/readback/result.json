@@ -1,0 +1,74 @@
+{
+  "batch": "ia840f_migration23_cpahelp45_result",
+  "started": "2026-10-01T21:38:01.547862+00:00",
+  "success": true,
+  "hardware_access": false,
+  "project_open_requested": false,
+  "netlist_load_requested": false,
+  "commands": [
+    {
+      "label": "configure",
+      "argv": [
+        "/usr/bin/cmake",
+        "-S",
+        "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-23/cpa-help45",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-23/cpa-help45/cmake-build",
+        "-G",
+        "Unix Makefiles",
+        "-DCMAKE_MAKE_PROGRAM=/usr/bin/make"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-23/cpa-help45",
+      "wall_seconds": 30,
+      "result": {
+        "native_rc": 0,
+        "abort_reason": null,
+        "termination_confirmed": true,
+        "supervision_errors": [],
+        "final_live_pids": [],
+        "native_started": true
+      }
+    },
+    {
+      "label": "help",
+      "argv": [
+        "/usr/bin/cmake",
+        "--build",
+        "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-23/cpa-help45/cmake-build",
+        "--target",
+        "cpa_command_help",
+        "--parallel",
+        "1"
+      ],
+      "cwd": "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-23/cpa-help45",
+      "wall_seconds": 120,
+      "result": {
+        "native_rc": 0,
+        "abort_reason": null,
+        "termination_confirmed": true,
+        "supervision_errors": [],
+        "final_live_pids": [],
+        "native_started": true
+      }
+    }
+  ],
+  "supervised_cmake_rc": 0,
+  "vendor_exit_basis": "Direct CMake target zero propagates native zero; individual help availability remains separately reported",
+  "tool_bindings": {
+    "quartus_launcher": {
+      "path": "/opt/altera/25.1/quartus/bin/quartus_sta",
+      "sha256": "222fa669a9b10a6d443268fdc506e885597b5867e77bbf13ff656b8a272933dd"
+    },
+    "quartus_native": {
+      "path": "/opt/altera/25.1/quartus/linux64/quartus_sta",
+      "sha256": "979845fbc25bad3fb1aa72d26fa5a18337834a3a31d7113fef9328d40f21c91b"
+    },
+    "cmake": {
+      "path": "/usr/bin/cmake",
+      "sha256": "1595178000979d0b735d82d993ff8411835fba8f8fbe7e340bdfaf7ae6ab700d"
+    }
+  },
+  "query_and_tool_bytes_preserved": true,
+  "production_source_inventory_file_preserved": true,
+  "ended": "2026-10-01T21:38:03.184147+00:00"
+}
