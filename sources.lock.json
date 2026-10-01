@@ -3,22 +3,24 @@
   "selection_policy": "Pinned OFS FIM/PIM sources for AHLS RTL integration, vendor IA840F board authority; oneAPI ASP retained as reference only. Independent donor pins are not a qualified combined release.",
   "active_target": "altera-ahls-ofs-opae",
   "reference_only_repositories": ["oneapi-asp"],
-  "fim_release": "ofs-2025.1-1",
+  "fim_release": "ofs-2026.1-1",
   "repositories": {
     "ofs-agx7-pcie-attach": {
       "url": "https://github.com/OFS/ofs-agx7-pcie-attach",
-      "commit": "599ac052eafbc9cede22561c099233ae4a54cb7d",
-      "release_url": "https://github.com/OFS/ofs-agx7-pcie-attach/releases/tag/ofs-2025.1-1",
+      "commit": "866c25bb166810f65aae4f6b15374d0a89810e69",
+      "release_url": "https://github.com/OFS/ofs-agx7-pcie-attach/releases/tag/ofs-2026.1-1",
       "submodules": {
         "ofs-common": {
           "url": "https://github.com/OFS/ofs-fim-common.git",
-          "commit": "34a8540697fdf3d66fbcaa263fa037bae17cc32f"
+          "commit": "147cae890b7d1245301cf5cde229f761b287b70d"
         }
       }
     },
     "ofs-platform-afu-bbb": {
       "url": "https://github.com/OFS/ofs-platform-afu-bbb.git",
-      "commit": "3c21189e728009d4c492fa2be54c0ab1008b06dc"
+      "commit": "3c21189e728009d4c492fa2be54c0ab1008b06dc",
+      "migration_pin_decision": "Retained after source-interface review against common 147cae890b7d1245301cf5cde229f761b287b70d; this PIM commit already adds pr_freeze_to_afu_in. Generated/elaborated/runtime qualification is separate.",
+      "migration_pin_evidence": "qualification/migration-source-01/pr-freeze-review01.md"
     },
     "examples-afu": {
       "url": "https://github.com/OFS/examples-afu.git",
@@ -44,13 +46,14 @@
     "installation_status": "User reports installed on workstation; no workstation access performed",
     "ofs_2025_1_documented_quartus_pro": "25.1",
     "old_pr_template_quartus_pro": "23.1",
-    "compatibility_status": "AHLS is the selected compiler. Its handbook requires Quartus Pro 26.1 for Agilex 7; exact 26.1.1 integration with pinned OFS and vendor IP remains unqualified. OFS documents 25.1. oneAPI compiler compatibility is not an acceptance criterion.",
-    "evidence": "docs/ahls-scope.md",
+    "compatibility_status": "New OFS ofs-2026.1-1 / Quartus Pro 26.1.1 migration campaign, not a qualified combined release. AHLS requires the 26.1 family for Agilex 7. The delivered ofs-2025.1-1 / Quartus 25.1 CAPS03 baseline remains separately qualified and untouched on main. oneAPI compiler compatibility is not an acceptance criterion.",
+    "evidence": "GOAL-PROMPT-MIGRATION.md",
     "oneapi_fpga_compiler": "Not used; retained ASP tree is reference only",
     "ahls_role": "Primary compiler: generated RTL/IP integrated into OFS AFU through PIM; OPAE/DFL host access",
     "ahls_version": "2026.1 documentation baseline; installed version not re-inspected",
     "oneapi_runtime_required": false
   },
+  "execution_policy_scope": "Fail-closed defaults; these flags are not live job authority. Campaign scope is GOAL-PROMPT-MIGRATION.md plus exact fresh per-run authorization. Source migration alone permits no native compile or hardware operation.",
   "execution_policy": {
     "build_authorized": false,
     "configure_authorized": false,

@@ -24,8 +24,8 @@ are not allowed at any time.
 | Item | Target |
 |---|---|
 | FIM donor | `ofs-agx7-pcie-attach` tag `ofs-2026.1-1`, commit `866c25bb166810f65aae4f6b15374d0a89810e69` |
-| ofs-fim-common submodule | `147cae890b7d1245301cf5cde229f761b287b70d` (16 commits ahead of current `34a8540…`) |
-| PIM donor | re-derive against the new fim-common; current pin `3c21189e…` predates upstream pr_freeze propagation and must not be silently reused |
+| ofs-fim-common submodule | `147cae890b7d1245301cf5cde229f761b287b70d` (16 new-side commits versus `34a8540…`; the old pin is not an ancestor) |
+| PIM donor | `3c21189e728009d4c492fa2be54c0ab1008b06dc`, explicitly retained after [source-interface re-derivation](qualification/migration-source-01/pr-freeze-review01.md); this commit already adds the PR-freeze field, and the new common supplies its producer connection |
 | HLS samples | unchanged: `altera-fpga/hls-samples` tag `2026.1.0`, commit `0abae6d78af5daca3fe5d67e617ab037e58aff89` |
 | Quartus | Prime Pro **26.1.1 Build 130**, installed at `/opt/altera/26.1.1` on the workstation |
 | AHLS / HLS IP Gen | 2026.1.0 (unchanged; handbook-compatible) |
@@ -100,14 +100,18 @@ does not change our architecture, pins, or flash rule.
 ## Phase 1 — Source basis update (offline, no tools)
 
 1. Re-pin `sources.lock.json`: `fim_release=ofs-2026.1-1`, FIM `866c25bb…`,
-   fim-common `147cae89…`; re-derive the PIM pin from the new fim-common state
-   (verify whether `3c21189e…` is an ancestor or must move). Record the delta
-   decision with evidence.
-2. Re-vendor the FIM tree at the new tag. Carry over the four maintained
-   IA-840F vendor-tree files (verified zero overlap with upstream's 100 changed
-   files): `ofs-common/tools/ofss_config/ia840f_compile_gate.py`,
+   fim-common `147cae89…`; re-derive the PIM pin against the actual new
+   producer/consumer interface, not cross-repository ancestry. Record the delta
+   decision with evidence. Source review retained `3c21189e…`; generated and
+   real-card qualification remain open.
+2. Re-vendor the FIM tree at the new tag. Preserve **all** maintained
+   IA-840F additions and overlays, including these four vendor-tree files:
+   `ofs-common/tools/ofss_config/ia840f_compile_gate.py`,
    `ia840f_experimental_gate.py`, `src/board/ia840f/afu_top.sv`,
-   `syn/shared_config/top.sdc`.
+   `syn/shared_config/top.sdc`. The complete [migration inventory](qualification/migration-source-01/vendor01/manifest.json)
+   also identifies ten modified common-donor files. Two (`build_fim_setup.sh`
+   and `setup_opae_sdk.sh`) overlap upstream at file level and require retaining
+   both non-conflicting change sets; a FIM-only diff does not cover its submodule.
 3. **PIM seam inspection**: the new fim-common adds the optional
    `pr_freeze_to_afu` port through `pr_slot.sv` → `afu_main_pim`. Inspect the
    actual `afu/ahls` wrapper against it. Do not tie it inactive to conceal an

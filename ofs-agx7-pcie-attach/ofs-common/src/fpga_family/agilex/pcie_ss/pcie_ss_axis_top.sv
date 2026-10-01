@@ -182,8 +182,12 @@ initial begin
     if (CFG_NUM_SEG == 0)
         $fatal(1, " ** ERROR ** %m: CFG_NUM_SEG undefined!");
 
-    // If the number of segments is > 1 then expect tuser_hvalid
-    if ((CFG_NUM_SEG > 1) && !CFG_HAS_RX_TUSER_HVALID)
+    // If the number of segments is > 1 then expect tuser_hvalid.
+    // Exception: Agilex 5 GTS ("SM") tile in-band-header streams legitimately
+    // run with NUM_OF_SEG=2 but do not expose tuser_hvalid through the IP
+    // config DB. Tile-gating this check keeps elaboration honest for every
+    // other tile while letting the SM tile build cleanly.
+    if ((CFG_NUM_SEG > 1) && !CFG_HAS_RX_TUSER_HVALID && (CFG_TILE_NAME != "SM"))
         $fatal(1, " ** ERROR ** %m: CFG_NUM_SEG (%0d) > 1 but no tuser_hvalid", CFG_NUM_SEG);
 
     // RX/TX tuser_hvalid and tuser_last_segment should match. The two fields should
@@ -293,11 +297,15 @@ logic [PCIE_NUM_LINKS-1:0]               ss_app_serr;
 // The table implementation requires that all functions with MSI-X
 // enabled must have identical configurations.
 function automatic int find_msix_enabled_pf();
+`ifdef MINIMAL_BUILD
+  return -1;
+`else
     for (int f = 0; f < 8; f += 1) begin
         if (CFG_MSIX_PF_TABLE_SIZE_VEC[f] != 0) return f;
     end
 
     return -1;
+`endif
 endfunction // find_msix_enabled_pf
 
 for (genvar j=0; j<PCIE_NUM_LINKS; j++) begin : PCIE_LINK_CONN
@@ -358,7 +366,6 @@ for (genvar j=0; j<PCIE_NUM_LINKS; j++) begin : PCIE_LINK_CONN
 
         assign msix_flr_rsp_if = flr_rsp_if[j];
     end
-
 
     // Connecting the RX ST Interface
     if (CFG_HDR_SCHEME_IS_SIDE_BAND) begin : rx_sb
@@ -426,9 +433,9 @@ for (genvar j=0; j<PCIE_NUM_LINKS; j++) begin : PCIE_LINK_CONN
         // use consistent signals.
         assign ss_app_st_rx_tuser_last_segment[j] = ss_app_st_rx_tlast[j];
         always_ff @(posedge coreclkout_hip) begin
-            if (ss_app_st_rx_tvalid[j] && app_ss_st_rx_tready[j])
+        if (ss_app_st_rx_tvalid[j] && app_ss_st_rx_tready[j])
                 ss_app_st_rx_tuser_hvalid[j] <= ss_app_st_rx_tlast[j];
-            if (!reset_status_n)
+        if (!reset_status_n[j])
                 ss_app_st_rx_tuser_hvalid[j] <= 1'b1;
         end
     end
@@ -698,7 +705,9 @@ end
    `endif                                                              \
     .p0_pin_perst_n                 (                               ), \
    `ifdef OFS_FIM_IP_CFG_``SS_NAME``_HAS_P0_PIN_PERST_N_I              \
-    .p0_pin_perst_n_i               (1'b0                           ), \
+    .p0_pin_perst_n_i               (pin_pcie.in_perst_n            ), \
+   `endif                                                              \
+   `ifdef OFS_FIM_IP_CFG_``SS_NAME``_HAS_P0_PIN_PERST_N_1_I            \
     .p0_pin_perst_n_1_i             (pin_pcie.in_perst_n            ), \
    `endif                                                              \
    `ifdef OFS_FIM_IP_CFG_``SS_NAME``_HAS_I_GPIO_PERST0_N               \
