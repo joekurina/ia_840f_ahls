@@ -107,22 +107,44 @@ source-selection research — no jointly qualified 2026 tuple exists upstream),
    source comment was never a fitted reality. Never read frequencies from
    comments — read them from fit reports.
 
-## Phase 2 — PCIe divider constraint first (source-only, already validated)
+## Phase 2 — PCIe divider constraint (state: fixed in baseline; candidate optional)
 
-Finish the parked sequence for the validated top.sdc divider replacement
-before the first migration compile, so the new baseline starts with correct
-divider coverage instead of inheriting the 8-invalid-clock-row gap:
+Correct state of the three `top.sdc` variants — do not confuse them:
 
-1. `qualification/pcie-clock-repair-01/production-clock01/` holds the exact
-   candidate: replace only obsolete `top.sdc:35–37` with the
-   clock-trial02-validated relationship; all other bytes identical;
-   `clock-block.tcl` is inspection-only, not a separate dependency.
-2. Complete its pending review chain: independent source SPEC → parent
-   consumption → QUALITY → exact source acceptance, then integrate into the
-   maintained `top.sdc` on this branch.
-3. Post-compile empirical gates: changed-transfer/exception coverage and
-   net-delay rows in the new STA (clean shape reference: Work21's 144
-   net-delay records, worst slack 1.024 ns).
+- `qualification/pcie-clock-repair-01/production-clock01/original-top.sdc`
+  (`8255b34c…`) preserves the **donor** bytes: the obsolete 3-line wildcard
+  divider declaration. Lineage copy only; never rebuilt from.
+- The **maintained**
+  `ofs-agx7-pcie-attach/syn/shared_config/top.sdc` (`b706fc11…`, commit
+  `69952f8`) already carries the **Work15 four-line fix**: full modern
+  `EP_PFTILE_WRAPPER.gen_pciess` hierarchy, explicit
+  `-master_clock {sys_pll|iopll_0_clk_100m}`, no `-add`. Its fresh-fit evidence
+  is accepted: divider constrained (intra-clock setup/hold 17.489/0.056 ns),
+  all eight formerly invalid-clock FIFO net-delay assignments positive
+  (minimum 15.369 ns), zero invalid-clock rows remaining. Work15–Work21 all
+  built with this file; W21's accepted "byte-identical top-level SDC" is it.
+  **The migration baseline is this 4-line form.** There is no obsolete block
+  left to replace and no coverage gap being inherited.
+- `production-clock01/top.sdc` (`8021e795…`) is the **parked expanded
+  candidate**: a 43-line guarded Tcl namespace (pin identity/direction checks,
+  master-clock association, pre-existing-definition rejection,
+  `IA840F_PCIE_CLOCK_DECLARED`/`REJECT` markers; `delta.json`:
+  `native_run=false`, `ready_for_build=false`). Not in the baseline; its
+  pending review chain (independent source SPEC → parent consumption →
+  QUALITY → exact source acceptance) is incomplete by deliberate pause, not
+  by rejection.
+
+Decision required before the first migration compile — Joe's call, not
+default: proceed on the proven 4-line form (conservative, matches every
+accepted build), or integrate the guarded candidate first because its
+reject-on-drift guards are genuinely useful when 26.1.1 IP regeneration may
+rename hierarchy paths. If the candidate is selected, complete its pending
+review chain first; do not skip straight to integration.
+
+Post-compile empirical gates either way: divider clock present in the fit
+clock table (`original 80 + avmm_clock0`), no invalid-clock net-delay rows,
+changed-transfer/exception coverage, net-delay shape comparable to Work21
+(144 records, worst slack 1.024 ns).
 
 ## Phase 3 — Native 26.1.1 compile
 
@@ -218,6 +240,12 @@ never substitute one for the other.
 - Parent performs implementation and execution; independent review accepts
   actual design/results; subagents never author executable changes or touch
   hardware.
+- **Subagent model preference (Hermes)**: prefer **GLM-5.3 (provider `zai`)**
+  for subagents; prefer **GLM-5.3-Flash** for watcher-class tasks — those that
+  set off builds and poll logs/tmux output/status files (long-step monitors,
+  capture/status scripts). If a preferred model is unavailable in the runtime,
+  disclose the substitution in the run report rather than silently falling
+  back. Model choice does not change the authority boundaries above.
 - Keep artifacts under the campaign's run-IDs; do not scatter files in the home
   directory; distinguish simulation, physical implementation and real hardware
   in every report.
