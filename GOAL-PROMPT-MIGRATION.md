@@ -149,12 +149,12 @@ Correct state of the three `top.sdc` variants — do not confuse them:
   QUALITY → exact source acceptance) is incomplete by deliberate pause, not
   by rejection.
 
-Decision required before the first migration compile — Joe's call, not
-default: proceed on the proven 4-line form (conservative, matches every
-accepted build), or integrate the guarded candidate first because its
-reject-on-drift guards are genuinely useful when 26.1.1 IP regeneration may
-rename hierarchy paths. If the candidate is selected, complete its pending
-review chain first; do not skip straight to integration.
+**Decision fulfilled: Joe selected the proven four-line form.**
+[Decision record](qualification/migration-source-01/CONSTRAINT-DECISION01.md).
+The guarded candidate remains parked; its review chain is not a prerequisite
+for this selected route. Preserve the four-line declaration and carry the
+separate Work21 fit-only margin overlay as required below. Fresh native
+authorization and all empirical clock/exception gates remain mandatory.
 
 Post-compile empirical gates either way: divider clock present in the fit
 clock table (`original 80 + avmm_clock0`), no invalid-clock net-delay rows,

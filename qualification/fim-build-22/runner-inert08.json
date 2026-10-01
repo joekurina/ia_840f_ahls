@@ -1,0 +1,695 @@
+{
+  "success": true,
+  "native_tool_execution": false,
+  "fixture_only": true,
+  "runner_sha256": "d64c5ee5bc4b72c382e210bb591a37044b8ef48b1841ad3506e6383d9cc86e09",
+  "scratch": "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p",
+  "cases": [
+    {
+      "case": "zero",
+      "fixture_only": true,
+      "actual_inert_children": [
+        {
+          "requested_cmake_argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/zero/evidence/candidate01",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/zero/evidence/operations/ip_inventory/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_PROJECT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/zero/work/syn/board/ia840f/syn_top",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/zero/inert-quartus",
+            "-DIP_INVENTORY_OUTPUT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/zero/evidence/project-ip-inventory.tcl"
+          ],
+          "actual_inert_argv": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/zero"
+          ]
+        },
+        {
+          "requested_cmake_argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/zero/evidence/operations/ip_inventory/cmake-build",
+            "--target",
+            "ip_inventory",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_argv": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"inert child complete\")",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/zero"
+          ]
+        }
+      ],
+      "runner_rc": 0,
+      "observed_clean": true,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/zero/evidence/candidate01",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/zero/evidence/operations/ip_inventory/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_PROJECT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/zero/work/syn/board/ia840f/syn_top",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/zero/inert-quartus",
+            "-DIP_INVENTORY_OUTPUT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/zero/evidence/project-ip-inventory.tcl"
+          ],
+          "started": "2026-10-01T15:50:37.370231+00:00",
+          "process": {
+            "pid": 629143,
+            "start_ticks": "4211455",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/zero/work/syn/board/ia840f/syn_top",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)",
+              "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/zero"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-01T15:50:37.646697+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "native",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/zero/evidence/operations/ip_inventory/cmake-build",
+            "--target",
+            "ip_inventory",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-01T15:50:37.682661+00:00",
+          "process": {
+            "pid": 629144,
+            "start_ticks": "4211487",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/zero/work/syn/board/ia840f/syn_top",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"inert child complete\")",
+              "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/zero"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-01T15:50:37.963986+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct native CMake target: zero propagates child zero; nonzero does not disclose child exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [],
+      "error": null,
+      "rejected_rerun_preserved_all_bytes": true
+    },
+    {
+      "case": "nonzero",
+      "fixture_only": true,
+      "actual_inert_children": [
+        {
+          "requested_cmake_argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/nonzero/evidence/candidate01",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/nonzero/evidence/operations/ip_inventory/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_PROJECT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/nonzero/work/syn/board/ia840f/syn_top",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/nonzero/inert-quartus",
+            "-DIP_INVENTORY_OUTPUT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/nonzero/evidence/project-ip-inventory.tcl"
+          ],
+          "actual_inert_argv": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/nonzero"
+          ]
+        },
+        {
+          "requested_cmake_argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/nonzero/evidence/operations/ip_inventory/cmake-build",
+            "--target",
+            "ip_inventory",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_argv": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(7)",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/nonzero"
+          ]
+        }
+      ],
+      "runner_rc": 1,
+      "observed_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/nonzero/evidence/candidate01",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/nonzero/evidence/operations/ip_inventory/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_PROJECT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/nonzero/work/syn/board/ia840f/syn_top",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/nonzero/inert-quartus",
+            "-DIP_INVENTORY_OUTPUT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/nonzero/evidence/project-ip-inventory.tcl"
+          ],
+          "started": "2026-10-01T15:50:38.044883+00:00",
+          "process": {
+            "pid": 629145,
+            "start_ticks": "4211523",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/nonzero/work/syn/board/ia840f/syn_top",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)",
+              "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/nonzero"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-01T15:50:38.319017+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "native",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/nonzero/evidence/operations/ip_inventory/cmake-build",
+            "--target",
+            "ip_inventory",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-01T15:50:38.353106+00:00",
+          "process": {
+            "pid": 629146,
+            "start_ticks": "4211554",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/nonzero/work/syn/board/ia840f/syn_top",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(7)",
+              "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/nonzero"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 7,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-01T15:50:38.628241+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "Direct native CMake target: zero propagates child zero; nonzero does not disclose child exit.",
+          "effective_rc": 7
+        }
+      ],
+      "diagnostics": [],
+      "error": null,
+      "rejected_rerun_preserved_all_bytes": true
+    },
+    {
+      "case": "late_gate_marker",
+      "fixture_only": true,
+      "actual_inert_children": [
+        {
+          "requested_cmake_argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/late_gate_marker/evidence/candidate01",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/late_gate_marker/evidence/operations/ip_inventory/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_PROJECT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/late_gate_marker/work/syn/board/ia840f/syn_top",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/late_gate_marker/inert-quartus",
+            "-DIP_INVENTORY_OUTPUT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/late_gate_marker/evidence/project-ip-inventory.tcl"
+          ],
+          "actual_inert_argv": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/late_gate_marker"
+          ]
+        },
+        {
+          "requested_cmake_argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/late_gate_marker/evidence/operations/ip_inventory/cmake-build",
+            "--target",
+            "ip_inventory",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_argv": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"IA840F_GATE_REJECTED: inert late diagnostic\")",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/late_gate_marker"
+          ]
+        }
+      ],
+      "runner_rc": 1,
+      "observed_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/late_gate_marker/evidence/candidate01",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/late_gate_marker/evidence/operations/ip_inventory/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_PROJECT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/late_gate_marker/work/syn/board/ia840f/syn_top",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/late_gate_marker/inert-quartus",
+            "-DIP_INVENTORY_OUTPUT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/late_gate_marker/evidence/project-ip-inventory.tcl"
+          ],
+          "started": "2026-10-01T15:50:38.704201+00:00",
+          "process": {
+            "pid": 629149,
+            "start_ticks": "4211589",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/late_gate_marker/work/syn/board/ia840f/syn_top",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)",
+              "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/late_gate_marker"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-01T15:50:38.975991+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "native",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/late_gate_marker/evidence/operations/ip_inventory/cmake-build",
+            "--target",
+            "ip_inventory",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-01T15:50:39.007882+00:00",
+          "process": {
+            "pid": 629150,
+            "start_ticks": "4211619",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/late_gate_marker/work/syn/board/ia840f/syn_top",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"IA840F_GATE_REJECTED: inert late diagnostic\")",
+              "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/late_gate_marker"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-01T15:50:39.283622+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct native CMake target: zero propagates child zero; nonzero does not disclose child exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [
+        {
+          "log": "native.log",
+          "line": 1,
+          "text": "IA840F_GATE_REJECTED: inert late diagnostic"
+        }
+      ],
+      "error": null,
+      "rejected_rerun_preserved_all_bytes": true
+    },
+    {
+      "case": "postspawn_exception",
+      "fixture_only": true,
+      "actual_inert_children": [
+        {
+          "requested_cmake_argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/postspawn_exception/evidence/candidate01",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/postspawn_exception/evidence/operations/ip_inventory/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_PROJECT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/postspawn_exception/work/syn/board/ia840f/syn_top",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/postspawn_exception/inert-quartus",
+            "-DIP_INVENTORY_OUTPUT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/postspawn_exception/evidence/project-ip-inventory.tcl"
+          ],
+          "actual_inert_argv": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/postspawn_exception"
+          ]
+        }
+      ],
+      "runner_rc": 1,
+      "observed_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/postspawn_exception/evidence/candidate01",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/postspawn_exception/evidence/operations/ip_inventory/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_PROJECT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/postspawn_exception/work/syn/board/ia840f/syn_top",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/postspawn_exception/inert-quartus",
+            "-DIP_INVENTORY_OUTPUT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/postspawn_exception/evidence/project-ip-inventory.tcl"
+          ],
+          "started": "2026-10-01T15:50:39.357435+00:00",
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-01T15:50:39.395279+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [],
+      "error": "RuntimeError('inert injected post-spawn bookkeeping failure')",
+      "rejected_rerun_preserved_all_bytes": true
+    },
+    {
+      "case": "finite_descendant",
+      "fixture_only": true,
+      "actual_inert_children": [
+        {
+          "requested_cmake_argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/finite_descendant/evidence/candidate01",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/finite_descendant/evidence/operations/ip_inventory/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_PROJECT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/finite_descendant/work/syn/board/ia840f/syn_top",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/finite_descendant/inert-quartus",
+            "-DIP_INVENTORY_OUTPUT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/finite_descendant/evidence/project-ip-inventory.tcl"
+          ],
+          "actual_inert_argv": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/finite_descendant"
+          ]
+        },
+        {
+          "requested_cmake_argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/finite_descendant/evidence/operations/ip_inventory/cmake-build",
+            "--target",
+            "ip_inventory",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_argv": [
+            "/usr/bin/python3",
+            "-c",
+            "import os,time; p=os.fork(); time.sleep(0.5) if p==0 else None; os._exit(0)",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/finite_descendant"
+          ]
+        }
+      ],
+      "runner_rc": 0,
+      "observed_clean": true,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/finite_descendant/evidence/candidate01",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/finite_descendant/evidence/operations/ip_inventory/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_PROJECT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/finite_descendant/work/syn/board/ia840f/syn_top",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/finite_descendant/inert-quartus",
+            "-DIP_INVENTORY_OUTPUT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/finite_descendant/evidence/project-ip-inventory.tcl"
+          ],
+          "started": "2026-10-01T15:50:39.468068+00:00",
+          "process": {
+            "pid": 629157,
+            "start_ticks": "4211665",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/finite_descendant/work/syn/board/ia840f/syn_top",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)",
+              "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/finite_descendant"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-01T15:50:39.745429+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "native",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/finite_descendant/evidence/operations/ip_inventory/cmake-build",
+            "--target",
+            "ip_inventory",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-01T15:50:39.780816+00:00",
+          "process": {
+            "pid": 629158,
+            "start_ticks": "4211696",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/finite_descendant/work/syn/board/ia840f/syn_top",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "import os,time; p=os.fork(); time.sleep(0.5) if p==0 else None; os._exit(0)",
+              "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/finite_descendant"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [
+            629159
+          ],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-01T15:50:40.554588+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct native CMake target: zero propagates child zero; nonzero does not disclose child exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [],
+      "error": null,
+      "rejected_rerun_preserved_all_bytes": true
+    },
+    {
+      "case": "timeout_descendant",
+      "fixture_only": true,
+      "actual_inert_children": [
+        {
+          "requested_cmake_argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/timeout_descendant/evidence/candidate01",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/timeout_descendant/evidence/operations/ip_inventory/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_PROJECT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/timeout_descendant/work/syn/board/ia840f/syn_top",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/timeout_descendant/inert-quartus",
+            "-DIP_INVENTORY_OUTPUT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/timeout_descendant/evidence/project-ip-inventory.tcl"
+          ],
+          "actual_inert_argv": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/timeout_descendant"
+          ]
+        },
+        {
+          "requested_cmake_argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/timeout_descendant/evidence/operations/ip_inventory/cmake-build",
+            "--target",
+            "ip_inventory",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_argv": [
+            "/usr/bin/python3",
+            "-c",
+            "import os,time,signal; p=os.fork(); signal.signal(signal.SIGTERM,signal.SIG_IGN) if p==0 else None; time.sleep(8); os._exit(0)",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/timeout_descendant"
+          ]
+        }
+      ],
+      "runner_rc": 1,
+      "observed_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/timeout_descendant/evidence/candidate01",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/timeout_descendant/evidence/operations/ip_inventory/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_PROJECT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/timeout_descendant/work/syn/board/ia840f/syn_top",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/timeout_descendant/inert-quartus",
+            "-DIP_INVENTORY_OUTPUT=/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/timeout_descendant/evidence/project-ip-inventory.tcl"
+          ],
+          "started": "2026-10-01T15:50:40.634734+00:00",
+          "process": {
+            "pid": 629218,
+            "start_ticks": "4211782",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/timeout_descendant/work/syn/board/ia840f/syn_top",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)",
+              "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/timeout_descendant"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-01T15:50:40.923391+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "native",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/timeout_descendant/evidence/operations/ip_inventory/cmake-build",
+            "--target",
+            "ip_inventory",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-01T15:50:40.965753+00:00",
+          "process": {
+            "pid": 629219,
+            "start_ticks": "4211815",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/timeout_descendant/work/syn/board/ia840f/syn_top",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "import os,time,signal; p=os.fork(); signal.signal(signal.SIGTERM,signal.SIG_IGN) if p==0 else None; time.sleep(8); os._exit(0)",
+              "/home/joe/.hermes/cache/scratch/ia840f-runner06-0whagw7p/timeout_descendant"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [
+            629219,
+            629220
+          ],
+          "cmake_rc": -15,
+          "timeout": true,
+          "gate_rejected": false,
+          "ended": "2026-10-01T15:50:44.480759+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "Direct native CMake target: zero propagates child zero; nonzero does not disclose child exit.",
+          "effective_rc": 124
+        }
+      ],
+      "diagnostics": [],
+      "error": null,
+      "rejected_rerun_preserved_all_bytes": true
+    }
+  ],
+  "scope": "actual runner entry/supervisor with mocked admission and CMake substitution; not native integration"
+}
