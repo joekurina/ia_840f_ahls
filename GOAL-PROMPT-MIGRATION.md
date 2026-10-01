@@ -49,6 +49,17 @@ source-selection research — no jointly qualified 2026 tuple exists upstream),
 [FIM build history](qualification/fim-build-21/CURRENT.md) (W13–W21),
 [PCIe clock-repair candidate](qualification/pcie-clock-repair-01/production-clock01/CURRENT.md).
 
+Vendor reference (context, not a pin or requirement): BittWare's own
+minimized IA-840F OFS port is summarized in
+[vendor FIM notes](docs/vendor-fim-notes.md) (source
+`IA-840F FIM Notes.docx`, local-only, SHA256-hashed there). Key contrasts
+with our platform: BittWare places BMC on **PF3** with their SDK driver —
+our delivered platform uses **PF1 BMC** with OPAE/DFL and qualified that
+way; their PMCI-removed/macro-tailoring approach documents the same
+unsupported-subsystem seam the 2026.1-1 PMCI IP regeneration touches; their
+~14% AGF027 utilization corroborates our 13.96% ALMs fit. Their document
+does not change our architecture, pins, or flash rule.
+
 ## Standing rules carried forward unchanged
 
 - **Flash rule (Joe's explicit correction): ALWAYS use the BittWare SDK flash
