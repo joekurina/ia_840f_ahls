@@ -1,0 +1,174 @@
+{
+  "success": true,
+  "fixture_scope": "synthetic process/tool identities; hash-only fake tool never executed",
+  "native_tool_execution": false,
+  "scratch_root": "/home/joe/.hermes/cache/scratch/ia840f-migration22-inert-un5qw5h3",
+  "gate_cases": [
+    {
+      "case": "valid synthetic identity",
+      "expected_accept": true,
+      "observed_accept": true,
+      "error_type": null,
+      "fixture_files_unchanged": true
+    },
+    {
+      "case": "changed link target",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error_type": "AssertionError",
+      "fixture_files_unchanged": true
+    },
+    {
+      "case": "link escapes WORK",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error_type": "AssertionError",
+      "fixture_files_unchanged": true
+    },
+    {
+      "case": "unapproved",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error_type": "AssertionError",
+      "fixture_files_unchanged": true
+    },
+    {
+      "case": "wrong scope",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error_type": "AssertionError",
+      "fixture_files_unchanged": true
+    },
+    {
+      "case": "wrong part",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error_type": "AssertionError",
+      "fixture_files_unchanged": true
+    },
+    {
+      "case": "wrong version",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error_type": "AssertionError",
+      "fixture_files_unchanged": true
+    },
+    {
+      "case": "extra argv",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error_type": "AssertionError",
+      "fixture_files_unchanged": true
+    },
+    {
+      "case": "wrong cwd",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error_type": "AssertionError",
+      "fixture_files_unchanged": true
+    },
+    {
+      "case": "bad tool hash",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error_type": "AssertionError",
+      "fixture_files_unchanged": true
+    },
+    {
+      "case": "bad input hash",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error_type": "AssertionError",
+      "fixture_files_unchanged": true
+    },
+    {
+      "case": "reused runner identity",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error_type": "AssertionError",
+      "fixture_files_unchanged": true
+    },
+    {
+      "case": "no live ancestry",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error_type": "AssertionError",
+      "fixture_files_unchanged": true
+    },
+    {
+      "case": "wrong authority path",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error_type": "AssertionError",
+      "fixture_files_unchanged": true
+    },
+    {
+      "case": "stale override",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error_type": "AssertionError",
+      "fixture_files_unchanged": true
+    },
+    {
+      "case": "OPAE template mode",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error_type": "AssertionError",
+      "fixture_files_unchanged": true
+    }
+  ],
+  "real_missing_authority_rejection": true,
+  "cmake_commands": [
+    {
+      "label": "configure",
+      "argv": [
+        "/usr/bin/cmake",
+        "-S",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim-build-23/candidate01",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/ia840f-migration22-inert-un5qw5h3/cmake-build",
+        "-DFIM_PROJECT=/home/joe/.hermes/cache/scratch/ia840f-migration22-inert-un5qw5h3/work/syn/board/ia840f/syn_top",
+        "-DIP_INVENTORY_OUTPUT=/home/joe/.hermes/cache/scratch/ia840f-migration22-inert-un5qw5h3/ip-inventory.tcl"
+      ],
+      "rc": 0,
+      "stdout": "-- Configuring done (0.0s)\n-- Generating done (0.0s)\n-- Build files have been written to: /home/joe/.hermes/cache/scratch/ia840f-migration22-inert-un5qw5h3/cmake-build\n",
+      "stderr": ""
+    },
+    {
+      "label": "list-targets",
+      "argv": [
+        "/usr/bin/cmake",
+        "--build",
+        "/home/joe/.hermes/cache/scratch/ia840f-migration22-inert-un5qw5h3/cmake-build",
+        "--target",
+        "help"
+      ],
+      "rc": 0,
+      "stdout": "The following are some of the valid targets for this Makefile:\n... all (the default if no target is provided)\n... clean\n... depend\n... edit_cache\n... rebuild_cache\n... compile\n... headers\n... ip_inventory\n... ip_regeneration\n",
+      "stderr": ""
+    },
+    {
+      "label": "reject-old-toolchain",
+      "argv": [
+        "/usr/bin/cmake",
+        "-S",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim-build-23/candidate01",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/ia840f-migration22-inert-un5qw5h3/cmake-reject",
+        "-DFIM_PROJECT=/home/joe/.hermes/cache/scratch/ia840f-migration22-inert-un5qw5h3/work/syn/board/ia840f/syn_top",
+        "-DIP_INVENTORY_OUTPUT=/home/joe/.hermes/cache/scratch/ia840f-migration22-inert-un5qw5h3/ip-inventory.tcl",
+        "-DQUARTUS_ROOT=/opt/altera/25.1/quartus"
+      ],
+      "rc": 1,
+      "stdout": "-- Configuring incomplete, errors occurred!\n",
+      "stderr": "CMake Error at CMakeLists.txt:8 (message):\n  This migration requires Quartus Prime Pro 26.1.1 Build 130\n\n\n"
+    }
+  ],
+  "candidate_sha256": {
+    "CMakeLists.txt": "9aebf021b3cfd84a96da8accf7361213604097a0750a11ce4d3a9d73df2d749e",
+    "build_gate.tcl": "9f6917e603e47e5024eb3390a2656466e932a3ebf02a460ba5e2e1623e1685b9",
+    "ofs_top.qsf": "30ba038b78bbe049aff37ed932f75e90bc90b32bce116f3b62da290933887131",
+    "ia840f_migration_gate.py": "d137d10d910158a9bc48ebb72e84af36298cdc1e22b32919d01995996697c1b3",
+    "top.sdc": "3114ebbe41a5ebfba0e2c266135fa45ff3825f884512a90cb394327ceb804814"
+  }
+}

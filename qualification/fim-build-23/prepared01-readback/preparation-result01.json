@@ -1,0 +1,88 @@
+{
+  "authority_issued": false,
+  "batch": "ia840f_migration23_prepare01_result",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/tclsh",
+        "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_23/syn/board/ia840f/setup/build_gate.tcl"
+      ],
+      "label": "copied_tcl_missing_authority",
+      "native_tool_execution": false,
+      "rc": 1,
+      "stderr": "IA840F_GATE_REJECTED: IA840F_GATE_REJECTED: {'error': \"KeyError('IA840F_MIGRATION_AUTHORITY')\", 'parent': {'pid': 302214, 'ppid': 302180, 'start_ticks': '43012931', 'exe': '/usr/bin/tclsh8.6', 'cwd': '/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_23/syn/board/ia840f/syn_top', 'argv': ['/usr/bin/tclsh', '/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_23/syn/board/ia840f/setup/build_gate.tcl']}}\nchild process exited abnormally\nMigration native invocation rejected: IA840F_GATE_REJECTED: {'error': \"KeyError('IA840F_MIGRATION_AUTHORITY')\", 'parent': {'pid': 302214, 'ppid': 302180, 'start_ticks': '43012931', 'exe': '/usr/bin/tclsh8.6', 'cwd': '/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_23/syn/board/ia840f/syn_top', 'argv': ['/usr/bin/tclsh', '/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_23/syn/board/ia840f/setup/build_gate.tcl']}}\nchild process exited abnormally\n    while executing\n\"error \"Migration native invocation rejected: $ia840f_migration_result\"\"\n    invoked from within\n\"if {[catch {exec /usr/bin/env -u LD_LIBRARY_PATH python3 $ia840f_migration_gate quartus 2>@1} ia840f_migration_result]} {\n    puts stderr \"IA840F_GATE...\"\n    (file \"/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_23/syn/board/ia840f/setup/build_gate.tcl\" line 4)\n",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/qualification/fim-build-23/candidate02/run-compile30.py",
+        "compile",
+        "0000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "label": "runner_missing_manifest",
+      "native_tool_execution": false,
+      "rc": 1,
+      "stderr": "Traceback (most recent call last):\n  File \"/home/uwb_student00/ahls/new_BSP/qualification/fim-build-23/candidate02/run-compile30.py\", line 272, in <module>\n    sys.exit(run())\n  File \"/home/uwb_student00/ahls/new_BSP/qualification/fim-build-23/candidate02/run-compile30.py\", line 72, in run\n    assert sha(manifest_path) == expected_manifest, 'parent manifest binding'\n  File \"/home/uwb_student00/ahls/new_BSP/qualification/fim-build-23/candidate02/run-compile30.py\", line 36, in sha\n    with Path(path).open('rb') as stream:\n  File \"/usr/lib64/python3.9/pathlib.py\", line 1180, in open\n    return io.open(self, mode, buffering, encoding, errors, newline,\n  File \"/usr/lib64/python3.9/pathlib.py\", line 1038, in _opener\n    return self._accessor.open(self, flags, mode)\nFileNotFoundError: [Errno 2] No such file or directory: '/home/uwb_student00/ahls/new_BSP/qualification/fim-build-23/stage-inputs/compile.json'\n",
+      "stdout": ""
+    }
+  ],
+  "contexts": 135,
+  "draft_sha256": "51aa191991f930eb9b245c205bef1a4dc867bd7d6045c08a26f6f6016b187165",
+  "ended": "2026-10-01T18:57:03.342215+00:00",
+  "hardware_access": false,
+  "input_entries": 3963,
+  "native_tools_executed": false,
+  "original_images_static_qdb_preserved": true,
+  "original_input_bindings_preserved": true,
+  "overlay_files": 2,
+  "relocation_count": 169,
+  "resource_preflight": {
+    "cpus": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35
+    ],
+    "disk_free_bytes": 1217630564352,
+    "mem_available_bytes": 125561393152
+  },
+  "source_pim_entries": 1891,
+  "source_pim_preserved": true,
+  "started": "2026-10-01T18:56:56.432606+00:00",
+  "success": true,
+  "work_inventory_sha256": "09ce64a5bf21f50bd57790cdbb7e4f4fb7ccda77201de9c6bab0aff82b1722e5"
+}

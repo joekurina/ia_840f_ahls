@@ -1,0 +1,28 @@
+{
+  "draft_sha256": "51aa191991f930eb9b245c205bef1a4dc867bd7d6045c08a26f6f6016b187165",
+  "permitted_top_level_changes": [
+    "parent_execution_accepted",
+    "prerequisites",
+    "authority_basis",
+    "validation_scope"
+  ],
+  "parent_execution_accepted_after_review": true,
+  "new_validation_scope": "Second full native Quartus26.1.1 compile in the bounded migration campaign: seed3 only; all result/timing/hardware acceptance separate.",
+  "new_authority_basis": "Work23 seed3 bounded Phase4 successor: independent SPEC and execution QUALITY consumed by parent; source-bound one-time compile only, no timing or hardware acceptance.",
+  "review_files": [
+    "review-spec02.md",
+    "spec-consumed03.json",
+    "review-quality04.md",
+    "quality-consumed05.json"
+  ],
+  "prohibited": [
+    "source or settings changes",
+    "new execution contexts",
+    "tool/hash/CPU/timeout/cleanup weakening",
+    "prior-operation replay",
+    "native execution in admission step",
+    "hardware operations"
+  ],
+  "native_launch": "Separate owned tmux invocation of existing candidate02/run-compile30.py compile <exact admitted manifest sha>; native-CMake target compile.",
+  "postlaunch": "Observe exact native exe/hash/argv/cwd/ancestry and register one completion waiter; preserve all failed states."
+}

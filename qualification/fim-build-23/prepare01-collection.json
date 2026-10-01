@@ -1,0 +1,14 @@
+{
+  "script_sha256": "4bd5a565a5a7e6b5a508c6ea42e04ecf5dbc81aca776f584e729ff0b11a1913a",
+  "owned_session": "ia840f_mailbox_monitored_01",
+  "window_pane": "@170 %170",
+  "script_buffer": "ia840f_migration23_prepare01_result_script",
+  "result_buffer": "ia840f_migration23_prepare01_result",
+  "done_channel": "ia840f_migration23_prepare01_result_done",
+  "outer_rc_buffer": "ia840f_migration23_prepare01_result_rc",
+  "remote_shell": "set -o pipefail; tmux save-buffer -b ia840f_migration23_prepare01_result_script - | /usr/bin/python3 -B; rc=$?; printf \"%s\" \"$rc\" | tmux load-buffer -b ia840f_migration23_prepare01_result_rc -; tmux wait-for -S ia840f_migration23_prepare01_result_done; exit \"$rc\"",
+  "outer_rc": 0,
+  "result_sha256": "b8c58b93089bda15732a6fa5cb11ad6338215eb38db7cb9052972911e2774701",
+  "result_bytes": 713386,
+  "success": true
+}
