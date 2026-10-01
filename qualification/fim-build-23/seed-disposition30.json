@@ -1,0 +1,51 @@
+{
+  "native_seed_work22": 2,
+  "native_seed_work23": 3,
+  "all_five_hold_slacks_unchanged": true,
+  "alias_pairing": {
+    "work23": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|pll_inst|pll_inst~refclk_Duplicate_3|",
+    "work22": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|pll_inst|pll_inst~refclk_Duplicate|",
+    "same_reported_site": "REFCLKINPUT_X172_Y0_N301"
+  },
+  "corner_checks": [
+    {
+      "corner": "Slow vid2 100C Model",
+      "reference_clock_alias_rows": 6,
+      "reported_rows": 49,
+      "all_ordered_rows_equal_after_only_that_alias_pairing": true,
+      "hold_slack": "0.132"
+    },
+    {
+      "corner": "Slow vid2b 100C Model",
+      "reference_clock_alias_rows": 6,
+      "reported_rows": 49,
+      "all_ordered_rows_equal_after_only_that_alias_pairing": true,
+      "hold_slack": "0.167"
+    },
+    {
+      "corner": "Fast vid2a 0C Model",
+      "reference_clock_alias_rows": 6,
+      "reported_rows": 49,
+      "all_ordered_rows_equal_after_only_that_alias_pairing": true,
+      "hold_slack": "0.047"
+    },
+    {
+      "corner": "Fast vid2a 100C Model",
+      "reference_clock_alias_rows": 6,
+      "reported_rows": 49,
+      "all_ordered_rows_equal_after_only_that_alias_pairing": true,
+      "hold_slack": "0.006"
+    },
+    {
+      "corner": "Fast vid2 100C Model",
+      "reference_clock_alias_rows": 6,
+      "reported_rows": 49,
+      "all_ordered_rows_equal_after_only_that_alias_pairing": true,
+      "hold_slack": "-0.004 (VIOLATED)"
+    }
+  ],
+  "scope": "reported locations, arc types, increments and totals; not unreported physical routing identity or Boolean equivalence",
+  "reports_modified": false,
+  "timing_accepted": false,
+  "decision": "Seed3 did not fix the exact EMIF1 hold failure. Stop blind seed iteration; no programming."
+}
