@@ -1,0 +1,90 @@
+38663|+------------------------------------------------------------------------------------------------------------------------------------------------+
+38664|; Logic Lock Region Constraints                                                                                                                  ;
+38665|+---------------------------------------------+------------------------------------------------------------------------+-------------------------+
+38666|; Name                                        ; Place Region Constraint                                                ; Route Region Constraint ;
+38667|+---------------------------------------------+------------------------------------------------------------------------+-------------------------+
+38668|; afu_top|pg_afu.port_gasket|pr_slot|afu_main ; (301, 0) to (390, 20); (101, 21) to (390, 100); (0, 101) to (390, 333) ; (0, 0) to (390, 333)    ;
+38669|+---------------------------------------------+------------------------------------------------------------------------+-------------------------+
+38670|
+38671|
+38672|+--------------------------------------------------------------------------------------------------------------------------------+
+38673|; Logic Lock Region Usage Summary                                                                                                ;
+38674|+-------------------------------------------------------+------------------------------------------------------------------------+
+38675|; Statistic                                             ; afu_top|pg_afu.port_gasket|pr_slot|afu_main                            ;
+38676|+-------------------------------------------------------+------------------------------------------------------------------------+
+38677|; ALMs needed [=A-B+C]                                  ; 6585.9 / 822480 ( < 1 % )                                              ;
+38678|;     [A] ALMs used in final placement                  ; 7162.0 / 822480 ( < 1 % )                                              ;
+38679|;     [B] Estimate of ALMs recoverable by dense packing ; 587.5 / 822480 ( < 1 % )                                               ;
+38680|;     [C] Estimate of ALMs unavailable                  ; 11.3 / 822480 ( < 1 % )                                                ;
+38681|; ALMs used for memory                                  ; 410.0                                                                  ;
+38682|; Combinational ALUTs                                   ; 9870                                                                   ;
+38683|; Dedicated Logic Registers                             ; 12596 / 3289920 ( < 1 % )                                              ;
+38684|; I/O Registers                                         ; 0                                                                      ;
+38685|; Block Memory Bits                                     ; 160112                                                                 ;
+38686|; M20Ks                                                 ; 11 / 11932 ( < 1 % )                                                   ;
+38687|; DSP Blocks needed [=A-B]                              ; 12 / 7670 ( < 1 % )                                                    ;
+38688|;     [A] DSP Blocks used in final placement            ; 16 / 7670 ( < 1 % )                                                    ;
+38689|;     [B] Estimate of DSPs recoverable by dense merging ; 4 / 7670 ( < 1 % )                                                     ;
+38690|; Pins                                                  ; 0                                                                      ;
+38691|; IOPLLs                                                ; 0                                                                      ;
+38692|;                                                       ;                                                                        ;
+38693|; Region Placement                                      ; (301, 0) to (390, 20); (101, 21) to (390, 100); (0, 101) to (390, 333) ;
+38694|+-------------------------------------------------------+------------------------------------------------------------------------+
+
+38697|+---------------------------------------------------------------------------------------------------------------------------------+
+38698|; Partial Reconfiguration and Periphery Reuse Statistics                                                                          ;
+38699|+-------------------------------------------------------+---------------------------+---------------------------------------------+
+38700|; Statistic                                             ; root_partition            ; green_region                                ;
+38701|+-------------------------------------------------------+---------------------------+---------------------------------------------+
+38702|; Hierarchical Path                                     ; |                         ; afu_top|pg_afu.port_gasket|pr_slot|afu_main ;
+38703|;                                                       ;                           ;                                             ;
+38704|; Boundary Ports                                        ; 319                       ; 4961                                        ;
+38705|;     Input Ports                                       ; 226                       ; 2288                                        ;
+38706|;     Output Ports                                      ; 270                       ; 2673                                        ;
+38707|;                                                       ;                           ;                                             ;
+38708|; Include Partial Reconfigurable Sub-blocks             ;                           ;                                             ;
+38709|; ALMs needed [=A-B+C]                                  ; 66394.7 / 912800 ( 7 % )  ; 6585.9 / 822480 ( < 1 % )                   ;
+38710|;     [A] ALMs used in final placement                  ; 75150.1 / 912800 ( 8 % )  ; 7162.0 / 822480 ( < 1 % )                   ;
+38711|;     [B] Estimate of ALMs recoverable by dense packing ; 8965.6 / 912800 ( < 1 % ) ; 587.5 / 822480 ( < 1 % )                    ;
+38712|;     [C] Estimate of ALMs unavailable                  ; 210.2 / 912800 ( < 1 % )  ; 11.3 / 822480 ( < 1 % )                     ;
+38713|; ALMs used for memory                                  ; 3170.0                    ; 410.0                                       ;
+38714|; Combinational ALUTs                                   ; 79414                     ; 9870                                        ;
+38715|; Dedicated Logic Registers                             ; 177887 / 3651200 ( 4 % )  ; 12596 / 3289920 ( < 1 % )                   ;
+38716|; I/O Registers                                         ; 0                         ; 0                                           ;
+38717|; Block Memory Bits                                     ; 1553884                   ; 160112                                      ;
+38718|; M20Ks                                                 ; 302 / 13272 ( 2 % )       ; 11 / 11932 ( < 1 % )                        ;
+38719|; DSP Blocks needed [=A-B]                              ; 12 / 8528 ( < 1 % )       ; 12 / 7670 ( < 1 % )                         ;
+38720|;     [A] DSP Blocks used in final placement            ; 16 / 8528 ( < 1 % )       ; 16 / 7670 ( < 1 % )                         ;
+38721|;     [B] Estimate of DSPs recoverable by dense merging ; 4 / 8528 ( < 1 % )        ; 4 / 7670 ( < 1 % )                          ;
+38722|; Pins                                                  ; 640                       ; 0                                           ;
+38723|; IOPLLs                                                ; 8                         ; 0                                           ;
+38724|; Total Preserved Core Logic                            ; 0.00%                     ; 0.00%                                       ;
+38725|;     Preserved Dedicated Logic Registers               ; 0.00%                     ; 0.00%                                       ;
+38726|;     Preserved Combinational ALUTs                     ; 0.00%                     ; 0.00%                                       ;
+38727|;     Preserved M20Ks                                   ; -                         ; -                                           ;
+38728|;     Preserved ALMs used for memory                    ; 0.00%                     ; 0.00%                                       ;
+38729|;     Preserved DSP Blocks                              ; 0.00%                     ; 0.00%                                       ;
+38730|;                                                       ;                           ;                                             ;
+38731|; Exclude Partial Reconfigurable Sub-blocks             ;                           ;                                             ;
+38732|; ALMs needed [=A-B+C]                                  ; 59808.8 / 90320 ( 66 % )  ; 6585.9 / 822480 ( < 1 % )                   ;
+38733|;     [A] ALMs used in final placement                  ; 67988.1 / 90320 ( 75 % )  ; 7162.0 / 822480 ( < 1 % )                   ;
+38734|;     [B] Estimate of ALMs recoverable by dense packing ; 8378.1 / 90320 ( 9 % )    ; 587.5 / 822480 ( < 1 % )                    ;
+38735|;     [C] Estimate of ALMs unavailable                  ; 198.9 / 90320 ( < 1 % )   ; 11.3 / 822480 ( < 1 % )                     ;
+38736|; ALMs used for memory                                  ; 2760.0                    ; 410.0                                       ;
+38737|; Combinational ALUTs                                   ; 69544                     ; 9870                                        ;
+38738|; Dedicated Logic Registers                             ; 165291 / 361280 ( 45 % )  ; 12596 / 3289920 ( < 1 % )                   ;
+38739|; I/O Registers                                         ; 0                         ; 0                                           ;
+38740|; Block Memory Bits                                     ; 1393772                   ; 160112                                      ;
+38741|; M20Ks                                                 ; 291 / 1340 ( 21 % )       ; 11 / 11932 ( < 1 % )                        ;
+38742|; DSP Blocks needed [=A-B]                              ; 0 / 858 ( 0 % )           ; 12 / 7670 ( < 1 % )                         ;
+38743|;     [A] DSP Blocks used in final placement            ; 0 / 858 ( 0 % )           ; 16 / 7670 ( < 1 % )                         ;
+38744|;     [B] Estimate of DSPs recoverable by dense merging ; 0 / 858 ( 0 % )           ; 4 / 7670 ( < 1 % )                          ;
+38745|; Pins                                                  ; 640                       ; 0                                           ;
+38746|; IOPLLs                                                ; 8                         ; 0                                           ;
+38747|;     Total Preserved Core Logic                        ; 0.00%                     ; 0.00%                                       ;
+38748|;     Preserved Dedicated Logic Registers               ; 0.00%                     ; 0.00%                                       ;
+38749|;     Preserved Combinational ALUTs                     ; 0.00%                     ; 0.00%                                       ;
+38750|;     Preserved M20Ks                                   ; -                         ; -                                           ;
+38751|;     Preserved ALMs used for memory                    ; 0.00%                     ; 0.00%                                       ;
+38752|;     Preserved DSP Blocks                              ; -                         ; 0.00%                                       ;
+38753|+-------------------------------------------------------+---------------------------+---------------------------------------------+
