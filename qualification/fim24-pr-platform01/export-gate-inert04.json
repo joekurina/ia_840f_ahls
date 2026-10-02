@@ -1,0 +1,234 @@
+{
+  "success": true,
+  "native_tool_execution": false,
+  "scope": "synthetic identities, hash-only fake tools, actual gate entry rejection and CMake configure/help only; not native integration",
+  "gate_cases": [
+    {
+      "case": "valid synthetic prepare",
+      "expected_accept": true,
+      "observed_accept": true,
+      "error": null,
+      "fixture_bytes_unchanged": true
+    },
+    {
+      "case": "valid synthetic restored callback",
+      "expected_accept": true,
+      "observed_accept": true,
+      "error": null,
+      "fixture_bytes_unchanged": true
+    },
+    {
+      "case": "approval false",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error": "AssertionError",
+      "fixture_bytes_unchanged": true
+    },
+    {
+      "case": "readiness true",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error": "AssertionError",
+      "fixture_bytes_unchanged": true
+    },
+    {
+      "case": "wrong scope",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error": "AssertionError",
+      "fixture_bytes_unchanged": true
+    },
+    {
+      "case": "wrong part",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error": "AssertionError",
+      "fixture_bytes_unchanged": true
+    },
+    {
+      "case": "wrong version",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error": "AssertionError",
+      "fixture_bytes_unchanged": true
+    },
+    {
+      "case": "missing OPAE mode",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error": "AssertionError",
+      "fixture_bytes_unchanged": true
+    },
+    {
+      "case": "OPAE zero is not release mode",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error": "AssertionError",
+      "fixture_bytes_unchanged": true
+    },
+    {
+      "case": "old tool override",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error": "AssertionError",
+      "fixture_bytes_unchanged": true
+    },
+    {
+      "case": "wrong source root",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error": "AssertionError",
+      "fixture_bytes_unchanged": true
+    },
+    {
+      "case": "wrong self location",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error": "AssertionError",
+      "fixture_bytes_unchanged": true
+    },
+    {
+      "case": "bad guard bytes",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error": "AssertionError",
+      "fixture_bytes_unchanged": true
+    },
+    {
+      "case": "extra native argument",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error": "AssertionError",
+      "fixture_bytes_unchanged": true
+    },
+    {
+      "case": "wrong native cwd",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error": "AssertionError",
+      "fixture_bytes_unchanged": true
+    },
+    {
+      "case": "bad tool hash",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error": "AssertionError",
+      "fixture_bytes_unchanged": true
+    },
+    {
+      "case": "bad input hash",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error": "AssertionError",
+      "fixture_bytes_unchanged": true
+    },
+    {
+      "case": "empty inputs",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error": "AssertionError",
+      "fixture_bytes_unchanged": true
+    },
+    {
+      "case": "no live ancestry",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error": "AssertionError",
+      "fixture_bytes_unchanged": true
+    },
+    {
+      "case": "stale supervisor start",
+      "expected_accept": false,
+      "observed_accept": false,
+      "error": "AssertionError",
+      "fixture_bytes_unchanged": true
+    }
+  ],
+  "gate_case_count": 20,
+  "rejected_main_preserved_all_bytes": true,
+  "cmake_checks": [
+    {
+      "case": "configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim24-pr-platform01/candidate03",
+        "-DFIM_BASE=/home/joe/.hermes/cache/scratch/ia840f-pr24-inert-x6cm2fh5/cmake-base",
+        "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/ia840f-pr24-inert-x6cm2fh5/absent-release",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/ia840f-pr24-inert-x6cm2fh5/cmake-build"
+      ],
+      "rc": 0,
+      "stdout": "-- Configuring done (0.0s)\n-- Generating done (0.0s)\n-- Build files have been written to: /home/joe/.hermes/cache/scratch/ia840f-pr24-inert-x6cm2fh5/cmake-build\n",
+      "stderr": ""
+    },
+    {
+      "case": "target-list",
+      "argv": [
+        "cmake",
+        "--build",
+        "/home/joe/.hermes/cache/scratch/ia840f-pr24-inert-x6cm2fh5/cmake-build",
+        "--target",
+        "help"
+      ],
+      "rc": 0,
+      "stdout": "The following are some of the valid targets for this Makefile:\n... all (the default if no target is provided)\n... clean\n... depend\n... edit_cache\n... rebuild_cache\n... export\n... version\n",
+      "stderr": ""
+    },
+    {
+      "case": "reject-old-tool",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim24-pr-platform01/candidate03",
+        "-DFIM_BASE=/home/joe/.hermes/cache/scratch/ia840f-pr24-inert-x6cm2fh5/cmake-base",
+        "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/ia840f-pr24-inert-x6cm2fh5/absent-release",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/ia840f-pr24-inert-x6cm2fh5/cmake-old",
+        "-DQUARTUS_ROOT=/opt/altera/25.1/quartus"
+      ],
+      "rc": 1,
+      "stdout": "-- Configuring incomplete, errors occurred!\n",
+      "stderr": "CMake Error at CMakeLists.txt:5 (message):\n  This export requires the bound Quartus26.1.1 installation\n\n\n"
+    },
+    {
+      "case": "reject-existing-release",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim24-pr-platform01/candidate03",
+        "-DFIM_BASE=/home/joe/.hermes/cache/scratch/ia840f-pr24-inert-x6cm2fh5/cmake-base",
+        "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/ia840f-pr24-inert-x6cm2fh5/absent-release",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/ia840f-pr24-inert-x6cm2fh5/cmake-existing",
+        "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/ia840f-pr24-inert-x6cm2fh5"
+      ],
+      "rc": 1,
+      "stdout": "-- Configuring incomplete, errors occurred!\n",
+      "stderr": "CMake Error at CMakeLists.txt:16 (message):\n  Release target must be absent; no force/replay\n\n\n"
+    },
+    {
+      "case": "reject-relative-base",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim24-pr-platform01/candidate03",
+        "-DFIM_BASE=/home/joe/.hermes/cache/scratch/ia840f-pr24-inert-x6cm2fh5/cmake-base",
+        "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/ia840f-pr24-inert-x6cm2fh5/absent-release",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/ia840f-pr24-inert-x6cm2fh5/cmake-relative",
+        "-DFIM_BASE=relative"
+      ],
+      "rc": 1,
+      "stdout": "-- Configuring incomplete, errors occurred!\n",
+      "stderr": "CMake Error at CMakeLists.txt:9 (message):\n  FIM_BASE must be an explicit absolute path\n\n\n"
+    }
+  ],
+  "cmake_check_count": 5,
+  "scratch": "/home/joe/.hermes/cache/scratch/ia840f-pr24-inert-x6cm2fh5",
+  "candidate_hashes": {
+    "CMakeLists.txt": "5f455595ef035d1b005fb83b81b12cfa81ef6eeacc657866333c07862aba5315",
+    "ia840f_release_gate01.py": "c78bed190811627e61447c85f5d37c55e4ad17b6312f88f091193cb80198b69e",
+    "build_gate_release01.tcl": "4857250ec5bd57803eca10526ba50a4d1ea255188823fa116e66d80cbbbee925"
+  }
+}

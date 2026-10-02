@@ -1,0 +1,2064 @@
+{
+  "success": false,
+  "failures": [
+    {
+      "case": "drain_gate_writer",
+      "gap": "descendant signal not promptly enforced",
+      "observed": {
+        "signal": "gate",
+        "detected_during_supervision": false,
+        "not_deadline_only": false,
+        "elapsed_seconds": 2.570663,
+        "prompt_bound_seconds": 1.8,
+        "effective_rc": 124
+      }
+    },
+    {
+      "case": "drain_log_writer",
+      "gap": "descendant signal not promptly enforced",
+      "observed": {
+        "signal": "log",
+        "detected_during_supervision": false,
+        "not_deadline_only": false,
+        "elapsed_seconds": 2.584436,
+        "prompt_bound_seconds": 1.8,
+        "effective_rc": 124
+      }
+    },
+    {
+      "case": "drain_short_lived_gate",
+      "gap": "descendant signal not promptly enforced",
+      "observed": {
+        "signal": "gate",
+        "detected_during_supervision": false,
+        "not_deadline_only": true,
+        "elapsed_seconds": 0.762665,
+        "prompt_bound_seconds": 1.8,
+        "effective_rc": 0
+      }
+    }
+  ],
+  "fixture_only": true,
+  "native_tools_executed": false,
+  "scope": "actual runner entry/supervisor/postflight with synthetic artifact/admission data, CMake substituted by real inert Python children, tmux export mocked; not native integration",
+  "runner_sha256": "a459526f387618395ba479f0333e837cb11b1a7e60fabd41599aa22f093e9bf6",
+  "count": 13,
+  "cases": [
+    {
+      "case": "preflight_rejection",
+      "preflight_rejected_before_writes_or_children": true
+    },
+    {
+      "case": "zero",
+      "expected_clean": true,
+      "actual_runner_rc": 0,
+      "execution_clean": true,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero/inert-tool"
+          ],
+          "started": "2026-10-02T03:35:50.163428+00:00",
+          "process": {
+            "pid": 1304946,
+            "start_ticks": "8442735",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:35:50.451338+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T03:35:50.491237+00:00",
+          "process": {
+            "pid": 1304947,
+            "start_ticks": "8442767",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT fixture: 26.1.1 Build 130 SC Pro Edition\")",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:35:50.775187+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "export",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero/operation/cmake-build",
+            "--target",
+            "export",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T03:35:50.813826+00:00",
+          "process": {
+            "pid": 1304948,
+            "start_ticks": "8442800",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT export complete\")",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:35:51.105281+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [],
+      "postflight_exception": null,
+      "actual_inert_children": [
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero/inert-tool"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero"
+          ]
+        },
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT fixture: 26.1.1 Build 130 SC Pro Edition\")",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero"
+          ]
+        },
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero/operation/cmake-build",
+            "--target",
+            "export",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT export complete\")",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/zero"
+          ]
+        }
+      ],
+      "spent_replay_preserved_bytes": true,
+      "live_fault_proof": {},
+      "drain_check": null
+    },
+    {
+      "case": "nonzero",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero/inert-tool"
+          ],
+          "started": "2026-10-02T03:35:51.176054+00:00",
+          "process": {
+            "pid": 1304949,
+            "start_ticks": "8442836",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:35:51.463394+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T03:35:51.501635+00:00",
+          "process": {
+            "pid": 1304952,
+            "start_ticks": "8442868",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT fixture: 26.1.1 Build 130 SC Pro Edition\")",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:35:51.781300+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "export",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero/operation/cmake-build",
+            "--target",
+            "export",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T03:35:51.823036+00:00",
+          "process": {
+            "pid": 1304953,
+            "start_ticks": "8442901",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(7)",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 7,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:35:52.108668+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 7
+        }
+      ],
+      "diagnostics": [],
+      "postflight_exception": null,
+      "actual_inert_children": [
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero/inert-tool"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero"
+          ]
+        },
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT fixture: 26.1.1 Build 130 SC Pro Edition\")",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero"
+          ]
+        },
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero/operation/cmake-build",
+            "--target",
+            "export",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(7)",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/nonzero"
+          ]
+        }
+      ],
+      "spent_replay_preserved_bytes": true,
+      "live_fault_proof": {},
+      "drain_check": null
+    },
+    {
+      "case": "late_gate_marker",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker/inert-tool"
+          ],
+          "started": "2026-10-02T03:35:52.176011+00:00",
+          "process": {
+            "pid": 1304955,
+            "start_ticks": "8442936",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:35:52.458814+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T03:35:52.496888+00:00",
+          "process": {
+            "pid": 1304956,
+            "start_ticks": "8442968",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT fixture: 26.1.1 Build 130 SC Pro Edition\")",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:35:52.782887+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "export",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker/operation/cmake-build",
+            "--target",
+            "export",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T03:35:52.825955+00:00",
+          "process": {
+            "pid": 1304957,
+            "start_ticks": "8443001",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"Critical Warning (125091): INERT callback rejection\")",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:35:53.108715+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [
+        {
+          "log": "export.log",
+          "line": 1,
+          "text": "Critical Warning (125091): INERT callback rejection"
+        }
+      ],
+      "postflight_exception": null,
+      "actual_inert_children": [
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker/inert-tool"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker"
+          ]
+        },
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT fixture: 26.1.1 Build 130 SC Pro Edition\")",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker"
+          ]
+        },
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker/operation/cmake-build",
+            "--target",
+            "export",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"Critical Warning (125091): INERT callback rejection\")",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/late_gate_marker"
+          ]
+        }
+      ],
+      "spent_replay_preserved_bytes": true,
+      "live_fault_proof": {},
+      "drain_check": null
+    },
+    {
+      "case": "postspawn_exception",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postspawn_exception/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postspawn_exception/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postspawn_exception/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postspawn_exception/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postspawn_exception/inert-tool"
+          ],
+          "started": "2026-10-02T03:35:53.176674+00:00",
+          "cmake_rc": -15,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:35:53.336818+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": -15
+        }
+      ],
+      "diagnostics": [],
+      "postflight_exception": null,
+      "actual_inert_children": [
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postspawn_exception/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postspawn_exception/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postspawn_exception/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postspawn_exception/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postspawn_exception/inert-tool"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "import os,sys,time;from pathlib import Path;Path(sys.argv[1],\"live-configure.started\").write_text(str(os.getpid()));time.sleep(8)",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postspawn_exception"
+          ]
+        }
+      ],
+      "spent_replay_preserved_bytes": true,
+      "live_fault_proof": {
+        "pid": 1304958,
+        "started_marker": true,
+        "alive_before_identity_fault": true,
+        "no_live_group_on_return": true
+      },
+      "drain_check": null
+    },
+    {
+      "case": "finite_descendant",
+      "expected_clean": true,
+      "actual_runner_rc": 0,
+      "execution_clean": true,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant/inert-tool"
+          ],
+          "started": "2026-10-02T03:35:53.441772+00:00",
+          "process": {
+            "pid": 1304962,
+            "start_ticks": "8443063",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:35:53.726552+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T03:35:53.766243+00:00",
+          "process": {
+            "pid": 1304975,
+            "start_ticks": "8443095",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT fixture: 26.1.1 Build 130 SC Pro Edition\")",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:35:54.056858+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "export",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant/operation/cmake-build",
+            "--target",
+            "export",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T03:35:54.098749+00:00",
+          "process": {
+            "pid": 1305021,
+            "start_ticks": "8443128",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "import os,time;p=os.fork();time.sleep(0.5) if p==0 else None;os._exit(0)",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [
+            1305023
+          ],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:35:54.670977+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [],
+      "postflight_exception": null,
+      "actual_inert_children": [
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant/inert-tool"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant"
+          ]
+        },
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT fixture: 26.1.1 Build 130 SC Pro Edition\")",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant"
+          ]
+        },
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant/operation/cmake-build",
+            "--target",
+            "export",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "import os,time;p=os.fork();time.sleep(0.5) if p==0 else None;os._exit(0)",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/finite_descendant"
+          ]
+        }
+      ],
+      "spent_replay_preserved_bytes": true,
+      "live_fault_proof": {},
+      "drain_check": null
+    },
+    {
+      "case": "timeout_descendant",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant/inert-tool"
+          ],
+          "started": "2026-10-02T03:35:54.736900+00:00",
+          "process": {
+            "pid": 1305026,
+            "start_ticks": "8443192",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:35:55.013995+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T03:35:55.049574+00:00",
+          "process": {
+            "pid": 1305036,
+            "start_ticks": "8443223",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT fixture: 26.1.1 Build 130 SC Pro Edition\")",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:35:55.328151+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "export",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant/operation/cmake-build",
+            "--target",
+            "export",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T03:35:55.363370+00:00",
+          "process": {
+            "pid": 1305037,
+            "start_ticks": "8443255",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "import os,time,signal;p=os.fork();signal.signal(signal.SIGTERM,signal.SIG_IGN) if p==0 else None;time.sleep(8);os._exit(0)",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [
+            1305037,
+            1305040
+          ],
+          "cmake_rc": -15,
+          "timeout": true,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:35:58.922807+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 124
+        }
+      ],
+      "diagnostics": [],
+      "postflight_exception": null,
+      "actual_inert_children": [
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant/inert-tool"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant"
+          ]
+        },
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT fixture: 26.1.1 Build 130 SC Pro Edition\")",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant"
+          ]
+        },
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant/operation/cmake-build",
+            "--target",
+            "export",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "import os,time,signal;p=os.fork();signal.signal(signal.SIGTERM,signal.SIG_IGN) if p==0 else None;time.sleep(8);os._exit(0)",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/timeout_descendant"
+          ]
+        }
+      ],
+      "spent_replay_preserved_bytes": true,
+      "live_fault_proof": {},
+      "drain_check": null
+    },
+    {
+      "case": "postflight_exception",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception/inert-tool"
+          ],
+          "started": "2026-10-02T03:35:58.996157+00:00",
+          "process": {
+            "pid": 1305051,
+            "start_ticks": "8443618",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:35:59.287168+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T03:35:59.328035+00:00",
+          "process": {
+            "pid": 1305052,
+            "start_ticks": "8443651",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT fixture: 26.1.1 Build 130 SC Pro Edition\")",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:35:59.612983+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "export",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception/operation/cmake-build",
+            "--target",
+            "export",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T03:35:59.650948+00:00",
+          "process": {
+            "pid": 1305076,
+            "start_ticks": "8443683",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT export complete\")",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:35:59.938126+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": null,
+      "postflight_exception": "RuntimeError('inert postflight failure')",
+      "actual_inert_children": [
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception/inert-tool"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception"
+          ]
+        },
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT fixture: 26.1.1 Build 130 SC Pro Edition\")",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception"
+          ]
+        },
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception/operation/cmake-build",
+            "--target",
+            "export",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT export complete\")",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/postflight_exception"
+          ]
+        }
+      ],
+      "spent_replay_preserved_bytes": true,
+      "live_fault_proof": {},
+      "drain_check": null
+    },
+    {
+      "case": "short_lived_log_overflow",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow/inert-tool"
+          ],
+          "started": "2026-10-02T03:36:00.008342+00:00",
+          "process": {
+            "pid": 1305138,
+            "start_ticks": "8443719",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:36:00.303487+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T03:36:00.344083+00:00",
+          "process": {
+            "pid": 1305141,
+            "start_ticks": "8443753",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT fixture: 26.1.1 Build 130 SC Pro Edition\")",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:36:00.628550+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "export",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow/operation/cmake-build",
+            "--target",
+            "export",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T03:36:00.669225+00:00",
+          "process": {
+            "pid": 1305145,
+            "start_ticks": "8443785",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"x\"*2048)",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:36:00.950389+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [
+        {
+          "log": "export.log",
+          "error": "finite log-size bound exceeded; full text not read"
+        }
+      ],
+      "postflight_exception": null,
+      "actual_inert_children": [
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow/inert-tool"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow"
+          ]
+        },
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT fixture: 26.1.1 Build 130 SC Pro Edition\")",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow"
+          ]
+        },
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow/operation/cmake-build",
+            "--target",
+            "export",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"x\"*2048)",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/short_lived_log_overflow"
+          ]
+        }
+      ],
+      "spent_replay_preserved_bytes": true,
+      "live_fault_proof": {},
+      "drain_check": null
+    },
+    {
+      "case": "wrong_version",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/wrong_version/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/wrong_version/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/wrong_version/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/wrong_version/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/wrong_version/inert-tool"
+          ],
+          "started": "2026-10-02T03:36:01.018544+00:00",
+          "process": {
+            "pid": 1305146,
+            "start_ticks": "8443820",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/wrong_version/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/wrong_version"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:36:01.301219+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/wrong_version/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T03:36:01.340861+00:00",
+          "process": {
+            "pid": 1305147,
+            "start_ticks": "8443852",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/wrong_version/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT version fixture\")",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/wrong_version"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:36:01.624129+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [],
+      "postflight_exception": null,
+      "actual_inert_children": [
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/wrong_version/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/wrong_version/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/wrong_version/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/wrong_version/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/wrong_version/inert-tool"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/wrong_version"
+          ]
+        },
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/wrong_version/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT version fixture\")",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/wrong_version"
+          ]
+        }
+      ],
+      "spent_replay_preserved_bytes": true,
+      "live_fault_proof": {},
+      "drain_check": null
+    },
+    {
+      "case": "drain_gate_writer",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer/inert-tool"
+          ],
+          "started": "2026-10-02T03:36:01.689705+00:00",
+          "process": {
+            "pid": 1305150,
+            "start_ticks": "8443887",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:36:01.974795+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T03:36:02.014073+00:00",
+          "process": {
+            "pid": 1305151,
+            "start_ticks": "8443920",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT fixture: 26.1.1 Build 130 SC Pro Edition\")",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:36:02.299269+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "export",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer/operation/cmake-build",
+            "--target",
+            "export",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T03:36:02.337894+00:00",
+          "process": {
+            "pid": 1305153,
+            "start_ticks": "8443952",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "import os,sys,time;from pathlib import Path\nroot=Path(sys.argv[1]);pid=os.fork()\nif pid: os._exit(0)\ntime.sleep(0.45)\n(root/\"descendant-emitted\").write_text(str(os.getpid()))\nprint('IA840F_GATE_REJECTED: INERT descendant',flush=True)\ntime.sleep(8)\nos._exit(0)\n",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [
+            1305154
+          ],
+          "cmake_rc": 0,
+          "timeout": true,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:36:04.908557+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 124
+        }
+      ],
+      "diagnostics": [
+        {
+          "log": "export.log",
+          "line": 1,
+          "text": "IA840F_GATE_REJECTED: INERT descendant"
+        }
+      ],
+      "postflight_exception": null,
+      "actual_inert_children": [
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer/inert-tool"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer"
+          ]
+        },
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT fixture: 26.1.1 Build 130 SC Pro Edition\")",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer"
+          ]
+        },
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer/operation/cmake-build",
+            "--target",
+            "export",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "import os,sys,time;from pathlib import Path\nroot=Path(sys.argv[1]);pid=os.fork()\nif pid: os._exit(0)\ntime.sleep(0.45)\n(root/\"descendant-emitted\").write_text(str(os.getpid()))\nprint('IA840F_GATE_REJECTED: INERT descendant',flush=True)\ntime.sleep(8)\nos._exit(0)\n",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_gate_writer"
+          ]
+        }
+      ],
+      "spent_replay_preserved_bytes": true,
+      "live_fault_proof": {},
+      "drain_check": {
+        "signal": "gate",
+        "detected_during_supervision": false,
+        "not_deadline_only": false,
+        "elapsed_seconds": 2.570663,
+        "prompt_bound_seconds": 1.8,
+        "effective_rc": 124
+      }
+    },
+    {
+      "case": "drain_log_writer",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer/inert-tool"
+          ],
+          "started": "2026-10-02T03:36:04.981813+00:00",
+          "process": {
+            "pid": 1305160,
+            "start_ticks": "8444217",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:36:05.266567+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T03:36:05.305527+00:00",
+          "process": {
+            "pid": 1305164,
+            "start_ticks": "8444249",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT fixture: 26.1.1 Build 130 SC Pro Edition\")",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:36:05.594000+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "export",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer/operation/cmake-build",
+            "--target",
+            "export",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T03:36:05.634691+00:00",
+          "process": {
+            "pid": 1305185,
+            "start_ticks": "8444282",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "import os,sys,time;from pathlib import Path\nroot=Path(sys.argv[1]);pid=os.fork()\nif pid: os._exit(0)\ntime.sleep(0.45)\n(root/\"descendant-emitted\").write_text(str(os.getpid()))\nprint('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',flush=True)\ntime.sleep(8)\nos._exit(0)\n",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [
+            1305192
+          ],
+          "cmake_rc": 0,
+          "timeout": true,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:36:08.219127+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 124
+        }
+      ],
+      "diagnostics": [
+        {
+          "log": "export.log",
+          "error": "finite log-size bound exceeded; full text not read"
+        }
+      ],
+      "postflight_exception": null,
+      "actual_inert_children": [
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer/inert-tool"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer"
+          ]
+        },
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT fixture: 26.1.1 Build 130 SC Pro Edition\")",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer"
+          ]
+        },
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer/operation/cmake-build",
+            "--target",
+            "export",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "import os,sys,time;from pathlib import Path\nroot=Path(sys.argv[1]);pid=os.fork()\nif pid: os._exit(0)\ntime.sleep(0.45)\n(root/\"descendant-emitted\").write_text(str(os.getpid()))\nprint('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',flush=True)\ntime.sleep(8)\nos._exit(0)\n",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_log_writer"
+          ]
+        }
+      ],
+      "spent_replay_preserved_bytes": true,
+      "live_fault_proof": {},
+      "drain_check": {
+        "signal": "log",
+        "detected_during_supervision": false,
+        "not_deadline_only": false,
+        "elapsed_seconds": 2.584436,
+        "prompt_bound_seconds": 1.8,
+        "effective_rc": 124
+      }
+    },
+    {
+      "case": "drain_short_lived_gate",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate/inert-tool"
+          ],
+          "started": "2026-10-02T03:36:08.280476+00:00",
+          "process": {
+            "pid": 1305232,
+            "start_ticks": "8444546",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:36:08.563737+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T03:36:08.602223+00:00",
+          "process": {
+            "pid": 1305234,
+            "start_ticks": "8444579",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT fixture: 26.1.1 Build 130 SC Pro Edition\")",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:36:08.892140+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "export",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate/operation/cmake-build",
+            "--target",
+            "export",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T03:36:08.928303+00:00",
+          "process": {
+            "pid": 1305235,
+            "start_ticks": "8444611",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate/base",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "import os,sys,time;from pathlib import Path\nroot=Path(sys.argv[1]);pid=os.fork()\nif pid: os._exit(0)\ntime.sleep(0.45)\n(root/\"descendant-emitted\").write_text(str(os.getpid()))\nprint('Critical Warning (125091): INERT descendant',flush=True)\ntime.sleep(0.02)\nos._exit(0)\n",
+              "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [
+            1305236
+          ],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "ended": "2026-10-02T03:36:09.690968+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [
+        {
+          "log": "export.log",
+          "line": 1,
+          "text": "Critical Warning (125091): INERT descendant"
+        }
+      ],
+      "postflight_exception": null,
+      "actual_inert_children": [
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate/prepared/candidate03",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DFIM_BASE=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate/base",
+            "-DRELEASE_TARGET=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate/release",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate/inert-tool"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate"
+          ]
+        },
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT fixture: 26.1.1 Build 130 SC Pro Edition\")",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate"
+          ]
+        },
+        {
+          "requested_cmake": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate/operation/cmake-build",
+            "--target",
+            "export",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert": [
+            "/usr/bin/python3",
+            "-c",
+            "import os,sys,time;from pathlib import Path\nroot=Path(sys.argv[1]);pid=os.fork()\nif pid: os._exit(0)\ntime.sleep(0.45)\n(root/\"descendant-emitted\").write_text(str(os.getpid()))\nprint('Critical Warning (125091): INERT descendant',flush=True)\ntime.sleep(0.02)\nos._exit(0)\n",
+            "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7/drain_short_lived_gate"
+          ]
+        }
+      ],
+      "spent_replay_preserved_bytes": true,
+      "live_fault_proof": {},
+      "drain_check": {
+        "signal": "gate",
+        "detected_during_supervision": false,
+        "not_deadline_only": true,
+        "elapsed_seconds": 0.762665,
+        "prompt_bound_seconds": 1.8,
+        "effective_rc": 0
+      }
+    }
+  ],
+  "scratch": "/home/joe/.hermes/cache/scratch/pr24-runner-inert-8tb537n7"
+}

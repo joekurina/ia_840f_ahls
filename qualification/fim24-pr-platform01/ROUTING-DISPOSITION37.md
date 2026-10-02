@@ -1,0 +1,12 @@
+# PF/VF role disposition — no routing change required
+
+The routing observation in [PIM closure review36](pim-closure-review36.md) is correct: the generated AFU port is **PF0/VF0**. Its characterization as a discrepancy with an intended PF1 AFU architecture is not supported by the campaign contract. PF1 names the **static BMC, non-VF** function. Preserve both roles; do not move the AFU to PF1 or alter VF counts.
+
+## Exact evidence
+
+1. [Migration goal](../../GOAL-PROMPT-MIGRATION.md), vendor-reference paragraph, explicitly says the delivered platform uses **PF1 BMC**, contrasting BittWare's PF3 management placement. It does not require a PF1 AFU.
+2. Actual exported [PCIe configuration](config33-readback/hw/lib/build/syn/board/ia840f/syn_top/ofs_ip_cfg_db/ofs_ip_cfg_pcie_ss.vh), lines131–158, enables PF0 with one VF and PF1 without VFs. Actual [top configuration](config33-readback/hw/lib/build/src/afu_top/mux/top_cfg_pkg.sv), lines50–54,73–88,109–118, selects the PF0 VF branch for the port gasket: PF0, VF0, VF-active. PF1 is the alternative port-gasket route only when PF0 VFs are absent, which is not this configuration.
+3. Maintained [board BMC selection](../../ofs-agx7-pcie-attach/src/board/ia840f/fim_afu_instances.sv), lines217–253, instantiates `bwbmc_st2mm` and `bwbmc_wrapper` precisely for `(pf == 1) && !vf_active`. Those local bytes hash-match the accepted original Work24 inventory: SHA256 `e890723f848a4567a8b9390a2f8e4cc27bbd70c92d248367406585d1e493bc76`. This FIM-only board RTL is not required in the PR source archive because its static implementation is imported through the matching QDB.
+4. The qualified CAPS03 [VF-creation receipt](../caps03-runtime01/create19-result.json), lines3–15,35–60,87–102, explicitly created **one PF0 VF**, with PF0's `virtfn0` mapping to historical `0000:4f:00.2`. The separate management function at historical `0000:4f:00.1` retained BittWare identity `12ba:0070`. This corroborates the qualified baseline role split; it is not permission to reuse historical BDFs or hardware authority.
+
+The original review remains unchanged. This parent disposition resolves only its PF1-versus-PF0/VF0 interpretation. New-image identity, live BDF/driver ownership, PF/VF/BAR routing and finite hardware prerequisites must still be freshly bound at deployment/test time. No hardware access or source edit was performed to resolve this question. [Hash/count verification](routing-closure37.json).
