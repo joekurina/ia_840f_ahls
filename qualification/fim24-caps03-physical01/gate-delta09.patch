@@ -1,0 +1,42 @@
+--- accepted-synthesis/gate18
++++ first-fit/gate08
+@@ -1,11 +1,11 @@
+-"""Copied-project synthesis callback; no deployment or reusable authority."""
++"""Copied-project first-fit callback; no deployment or reusable authority."""
+ import hashlib,json,os,sys
+ from pathlib import Path
+-ROOT=Path('/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_implementation01')
+-D=ROOT/'base01';P=ROOT/'control19';R=ROOT/'synth01';J=D/'build/syn/board/ia840f/syn_top'
+-MANIFEST=P/'synthesis-inputs.admitted.json'
+-GATE=D/'build/syn/board/ia840f/setup/ia840f_persona_gate09.py'
+-CONTEXT={'exe':'/opt/altera/26.1.1/quartus/linux64/quartus_syn','cwd':str(J),'argv':['--read_settings_files=on','--write_settings_files=off','ofs_top','-c','ofs_pr_afu']}
++ROOT=Path('/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_physical01')
++D=ROOT/'base01';P=ROOT/'control08';R=ROOT/'fit01';J=D/'build/syn/board/ia840f/syn_top'
++MANIFEST=P/'fit-inputs.admitted.json'
++GATE=D/'build/syn/board/ia840f/setup/ia840f_physical_gate08.py'
++CONTEXT={'exe':'/opt/altera/26.1.1/quartus/linux64/quartus_fit','cwd':str(J),'argv':['--read_settings_files=on','--write_settings_files=off','ofs_top','-c','ofs_pr_afu']}
+ 
+ def sha(path):
+     h=hashlib.sha256()
+@@ -43,10 +43,10 @@
+     assert Path(__file__).resolve()==GATE
+     assert R.is_dir() and not R.is_symlink()
+     authority=json.loads((R/'authority.json').read_text())
+-    assert authority['scope']=='persona-mapped-synthesis-only' and authority['ready_for_build'] is False and authority['hardware_ready'] is False
++    assert authority['scope']=='persona-fit-only' and authority['ready_for_build'] is False and authority['hardware_ready'] is False
+     assert authority['manifest']==str(MANIFEST) and authority['project']==str(J)
+     assert sha(MANIFEST)==authority['manifest_sha256'];m=json.loads(MANIFEST.read_text())
+-    assert m['scope']=='persona-mapped-synthesis-only' and m['parent_execution_accepted'] is True and m['ready_for_build'] is False and m['hardware_ready'] is False
++    assert m['scope']=='persona-fit-only' and m['parent_execution_accepted'] is True and m['ready_for_build'] is False and m['hardware_ready'] is False
+     assert m['project']==str(J) and m['design_root']==str(D) and m['operation_root']==str(R) and m['control_root']==str(P)
+     assert sha(GATE)==m['gate_sha256'] and sha(m['runner_path'])==m['runner_sha256']
+     assert m['contexts']==[CONTEXT] and authority['contexts']==m['contexts']
+@@ -66,7 +66,7 @@
+     assert found,'native process is not descended from current owned runner'
+     assert sha(m['prepared_metadata_file'])==m['prepared_metadata_sha256'];prepared=json.loads(Path(m['prepared_metadata_file']).read_text())
+     assert m['critical_inputs']==prepared['critical_inputs'] and m['external_inputs']==prepared['external_inputs']
+-    assert len(m['critical_inputs'])==2588 and len(m['external_inputs'])==298
++    assert len(m['critical_inputs'])==3033 and len(m['external_inputs'])==298
+     for path,entry in m['critical_inputs'].items():check_binding(path,entry)
+     for path,entry in m['external_inputs'].items():check_binding(path,entry)
+     assert m['prerequisites'] and all(sha(path)==digest for path,digest in m['prerequisites'].items())

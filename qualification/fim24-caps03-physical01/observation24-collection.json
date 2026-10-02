@@ -1,0 +1,14 @@
+{
+  "script_sha256": "4411d29461d824678d253685b9c35f32e9955f84ed981736f33b187fca45cee0",
+  "owned_session": "ia840f_mailbox_monitored_01",
+  "window_pane": "@293 %293",
+  "script_buffer": "ia840f_fim24_caps03_physical_observation24_result_script",
+  "result_buffer": "ia840f_fim24_caps03_physical_observation24_result",
+  "done_channel": "ia840f_fim24_caps03_physical_observation24_result_done",
+  "outer_rc_buffer": "ia840f_fim24_caps03_physical_observation24_result_rc",
+  "remote_shell": "set -o pipefail; tmux save-buffer -b ia840f_fim24_caps03_physical_observation24_result_script - | /usr/bin/python3 -B; rc=$?; printf \"%s\" \"$rc\" | tmux load-buffer -b ia840f_fim24_caps03_physical_observation24_result_rc -; tmux wait-for -S ia840f_fim24_caps03_physical_observation24_result_done; exit \"$rc\"",
+  "outer_rc": 0,
+  "result_sha256": "7c788f1e7730bc4ef27c92ca8232037f480e962b489978bc46897c892365492e",
+  "result_bytes": 3316,
+  "success": true
+}

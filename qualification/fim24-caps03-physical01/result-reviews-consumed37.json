@@ -1,0 +1,34 @@
+{
+  "accepted": true,
+  "scope": "completed first FIT integrity/static-PR preservation and diagnostic disposition; offline STA preparation only",
+  "utc": "2026-10-02T16:36:38.960152+00:00",
+  "goal_complete": false,
+  "timing_accepted": false,
+  "hardware_ready": false,
+  "new_authority_issued": false,
+  "reviews": {
+    "fit-result-review34.md": {
+      "bytes": 8352,
+      "sha256": "77b27785c6a001511c3d5a0a109f118c8b854b06b775f4ca77a88864c41946be"
+    },
+    "fit-diagnostic-reset-review35.md": {
+      "bytes": 9898,
+      "sha256": "948c659da2609b599f2b2fe577de05a2fe23d89da586b1565104282c943f6d07"
+    }
+  },
+  "freeze_sha256": "dbb581733370d14960039f97e7b2dbf5c987ee91a35d54737d7b62de89fe7d23",
+  "verified_members": 220,
+  "raw_result_sha256": "b83deea9b79d52c99aaa31b4dd9712dd944b9bb9a8faf5a40a754fc23579e0db",
+  "spent_admission_sha256": "08acc24c47633076b5abdd0f53de34355d053d6b5f66d6517f7c7076627fa4af",
+  "disposition": {
+    "root_pr": "native final root from ofs_top.qdb,green Reconfigurable; not functional PR/hardware equivalence",
+    "runtime_changes": "832unchanged/31changed/0removed include imported database re-materialization,not only logs; FIT mutable set must not be copied wholesale to STA",
+    "unused_pr_ports": "47 boundary inputs plus repeated clock warnings retained; no noprune/interface edits",
+    "constraint_coverage": "139diagnostics require actualcurrent genericPIM CDC/skew/net-delay and effective clock/exception coverage; no blanketwaiver",
+    "ignored_assignments": "1098reported,including16current fabric reset synchronizer IDs; requireactualCDC/reset/EMIFdisposition",
+    "electrical": "four named I/O omissions retained beforehardware",
+    "reset": "3additionalclk_sys and7additionalbank0 cycles,notcompletepulsewidths; actualentrysequencelater",
+    "finalize_drc": "not run(noenabledrule),copiedSynDRCnotphysicalpass"
+  },
+  "next": "fresh state-changing multicorner STA, exact source/runtime binding and admission; no refit/resynthesis"
+}
