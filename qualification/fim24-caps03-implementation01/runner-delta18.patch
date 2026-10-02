@@ -1,0 +1,20 @@
+--- candidate09/runner
++++ candidate18/runner
+@@ -1,7 +1,7 @@
+ """One admitted mapped persona synthesis; no fit/STA/programming/hardware."""
+ import datetime,gzip,hashlib,json,os,re,resource,shutil,signal,socket,subprocess,sys,time
+ from pathlib import Path
+-ROOT=Path('/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_implementation01');D=ROOT/'base01';P=ROOT/'control09';R=ROOT/'synth01';J=D/'build/syn/board/ia840f/syn_top';Q=Path('/opt/altera/26.1.1/quartus')
++ROOT=Path('/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_implementation01');D=ROOT/'base01';P=ROOT/'control19';R=ROOT/'synth01';J=D/'build/syn/board/ia840f/syn_top';Q=Path('/opt/altera/26.1.1/quartus')
+ MANIFEST=P/'synthesis-inputs.admitted.json';BUFFER='ia840f_fim24_caps03_implementation_synth01_result'
+ MARKERS=(b'IA840F_GATE_REJECTED',b'Critical Warning (125091)')
+ ERROR=re.compile(r'\b(?:Error|Fatal)(?:\s+\([^)]*\))?\s*:',re.I)
+@@ -64,7 +64,7 @@
+     assert sha(MANIFEST)==expected;m=json.loads(MANIFEST.read_text())
+     assert m['scope']=='persona-mapped-synthesis-only' and m['parent_execution_accepted'] is True and m['ready_for_build'] is False and m['hardware_ready'] is False
+     for key,path in [('design_root',D),('control_root',P),('operation_root',R),('project',J)]:assert m[key]==str(path),key
+-    assert Path(__file__).resolve()==P/'runtime/run-synthesis09.py' and m['runner_path']==str(P/'runtime/run-synthesis09.py') and sha(__file__)==m['runner_sha256']
++    assert Path(__file__).resolve()==P/'runtime/run-synthesis18.py' and m['runner_path']==str(P/'runtime/run-synthesis18.py') and sha(__file__)==m['runner_sha256']
+     assert sha(P/'runtime/CMakeLists.txt')==m['cmake_sha256'] and m['prerequisites'] and all(sha(p)==h for p,h in m['prerequisites'].items())
+     assert sha(m['prepared_metadata_file'])==m['prepared_metadata_sha256'];prepared=json.loads(Path(m['prepared_metadata_file']).read_text())
+     for key in ('design_inventory','critical_inputs','external_inputs','archive_inventory','tools','opae_tools','original_setup_inventory','original_release_inventory'):assert m[key]==prepared[key],key

@@ -1,0 +1,20 @@
+--- candidate09/gate
++++ candidate18/gate
+@@ -2,7 +2,7 @@
+ import hashlib,json,os,sys
+ from pathlib import Path
+ ROOT=Path('/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_implementation01')
+-D=ROOT/'base01';P=ROOT/'control09';R=ROOT/'synth01';J=D/'build/syn/board/ia840f/syn_top'
++D=ROOT/'base01';P=ROOT/'control19';R=ROOT/'synth01';J=D/'build/syn/board/ia840f/syn_top'
+ MANIFEST=P/'synthesis-inputs.admitted.json'
+ GATE=D/'build/syn/board/ia840f/setup/ia840f_persona_gate09.py'
+ CONTEXT={'exe':'/opt/altera/26.1.1/quartus/linux64/quartus_syn','cwd':str(J),'argv':['--read_settings_files=on','--write_settings_files=off','ofs_top','-c','ofs_pr_afu']}
+@@ -15,7 +15,7 @@
+ 
+ def proc(pid):
+     p=Path('/proc')/str(pid);s=(p/'stat').read_text().rsplit(') ',1)[1].split()
+-    return {'pid':int(pid),'ppid':int(s[1]),'start_ticks':int(s[19]),'state':s[0],'exe':os.readlink(p/'exe'),'cwd':os.readlink(p/'cwd'),'argv':(p/'cmdline').read_bytes().decode().rstrip(chr(0)).split(chr(0))}
++    return {'pid':int(pid),'ppid':int(s[1]),'start_ticks':s[19],'state':s[0],'exe':os.readlink(p/'exe'),'cwd':os.readlink(p/'cwd'),'argv':(p/'cmdline').read_bytes().decode().rstrip(chr(0)).split(chr(0))}
+ 
+ def owner_live(authority):
+     expected=authority['runner'];observed=proc(expected['pid'])

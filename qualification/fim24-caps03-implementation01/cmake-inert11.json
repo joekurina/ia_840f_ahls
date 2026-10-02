@@ -1,0 +1,78 @@
+{
+  "success": true,
+  "native_tools_executed": false,
+  "scope": "CMake configure/help and make dry-run, fixedproject path replaced by inert fixture",
+  "count": 5,
+  "cmake_sha256": "5f15c21e06242e3009805acc3a12fcfccdbd7b11ad9e91042da99fd4c308689d",
+  "checks": [
+    {
+      "case": "configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/source",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/build"
+      ],
+      "rc": 0,
+      "stdout": "-- Configuring done (0.0s)\n-- Generating done (0.0s)\n-- Build files have been written to: /home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/build\n",
+      "stderr": ""
+    },
+    {
+      "case": "help",
+      "argv": [
+        "cmake",
+        "--build",
+        "/home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/build",
+        "--target",
+        "help"
+      ],
+      "rc": 0,
+      "stdout": "The following are some of the valid targets for this Makefile:\n... all (the default if no target is provided)\n... clean\n... depend\n... edit_cache\n... rebuild_cache\n... synthesis\n... version\n",
+      "stderr": ""
+    },
+    {
+      "case": "dry_synthesis",
+      "argv": [
+        "cmake",
+        "--build",
+        "/home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/build",
+        "--target",
+        "synthesis",
+        "--",
+        "-n"
+      ],
+      "rc": 0,
+      "stdout": "/usr/bin/cmake -S/home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/source -B/home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/build --check-build-system CMakeFiles/Makefile.cmake 0\n/usr/bin/gmake -s -f CMakeFiles/Makefile2 synthesis\n/usr/bin/cmake -S/home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/source -B/home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/build --check-build-system CMakeFiles/Makefile.cmake 0\n/usr/bin/cmake -E cmake_progress_start /home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/build/CMakeFiles 0\n/usr/bin/gmake -s -f CMakeFiles/Makefile2 CMakeFiles/synthesis.dir/all\n/usr/bin/gmake -s -f CMakeFiles/synthesis.dir/build.make CMakeFiles/synthesis.dir/depend\ncd /home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/build && /usr/bin/cmake -E cmake_depends \"Unix Makefiles\" /home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/source /home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/source /home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/build /home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/build /home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/build/CMakeFiles/synthesis.dir/DependInfo.cmake \"--color=\"\n/usr/bin/gmake -s -f CMakeFiles/synthesis.dir/build.make CMakeFiles/synthesis.dir/build\ncd /home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/project && /opt/altera/26.1.1/quartus/bin/quartus_syn --read_settings_files=on --write_settings_files=off ofs_top -c ofs_pr_afu\n/usr/bin/cmake -E cmake_echo_color \"--switch=\" --progress-dir=/home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/build/CMakeFiles --progress-num= \"Built target synthesis\"\n/usr/bin/cmake -E cmake_progress_start /home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/build/CMakeFiles 0\n",
+      "stderr": ""
+    },
+    {
+      "case": "wrong_tool",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/source",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/wrong",
+        "-DQUARTUS_ROOT=/wrong"
+      ],
+      "rc": 1,
+      "stdout": "-- Configuring incomplete, errors occurred!\n",
+      "stderr": "CMake Error at CMakeLists.txt:6 (message):\n  Unexpected persona/tool root\n\n\n"
+    },
+    {
+      "case": "missing_static_qdb",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/source",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o/missing"
+      ],
+      "rc": 1,
+      "stdout": "-- Configuring incomplete, errors occurred!\n",
+      "stderr": "CMake Error at CMakeLists.txt:9 (message):\n  Prepared PR project and matching static QDB required\n\n\n"
+    }
+  ],
+  "scratch": "/home/joe/.hermes/cache/scratch/persona-synthesis-cmake-1qcgl09o"
+}

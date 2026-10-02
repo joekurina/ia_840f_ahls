@@ -1,0 +1,436 @@
+{
+  "scope": "parent verification of actual mapped synthesis; independent result/diagnostic acceptance pending",
+  "native_run_count": 1,
+  "native_acceptance": false,
+  "hardware_access": false,
+  "manifest_sha256": "8e761356630fa149879116965c1294712d4e5cc3268a163f3e0748d19641ddf2",
+  "raw_result_sha256": "df7592c31ac966987a349a043dfacbc7bf7825d5520657467d58d0162e17b398",
+  "started": "2026-10-02T13:22:38.351730+00:00",
+  "ended": "2026-10-02T13:28:17.769911+00:00",
+  "elapsed_seconds": 339.418181,
+  "commands": [
+    {
+      "label": "configure",
+      "cmake_rc": 0,
+      "native_rc": null,
+      "effective_rc": 0,
+      "timeout": false,
+      "gate_rejected": false,
+      "owned_group_live_after": []
+    },
+    {
+      "label": "version",
+      "cmake_rc": 0,
+      "native_rc": 0,
+      "effective_rc": 0,
+      "timeout": false,
+      "gate_rejected": false,
+      "owned_group_live_after": []
+    },
+    {
+      "label": "synthesis",
+      "cmake_rc": 0,
+      "native_rc": 0,
+      "effective_rc": 0,
+      "timeout": false,
+      "gate_rejected": false,
+      "owned_group_live_after": []
+    }
+  ],
+  "outer_rc": 0,
+  "waiter": {
+    "stage": "persona-mapped-synthesis",
+    "done_channel": "ia840f_fim24_caps03_implementation_synth24_done",
+    "rc_buffer": "ia840f_fim24_caps03_implementation_synth24_rc",
+    "started": "2026-10-02T13:22:40.340654+00:00",
+    "native_acceptance": false,
+    "wait_rc": 0,
+    "wait_stderr": "",
+    "readback_rc": 0,
+    "readback_stderr": "",
+    "outer_rc": 0,
+    "ended": "2026-10-02T13:28:18.274699+00:00"
+  },
+  "live_native_witness": {
+    "source": "observation25-result.json.gz",
+    "pid": 347898,
+    "start_ticks": "49646779",
+    "exe": "/opt/altera/26.1.1/quartus/linux64/quartus_syn",
+    "argv": [
+      "--read_settings_files=on",
+      "--write_settings_files=off",
+      "ofs_top",
+      "-c",
+      "ofs_pr_afu"
+    ],
+    "callback_events": 1
+  },
+  "capture_file_count": 51,
+  "capture_bytes": 82995026,
+  "reports": {
+    "ofs_pr_afu.drc.partitioned.rpt": {
+      "bytes": 7552,
+      "sha256": "f9709be1a4709a5ff7ac600f651fdae12abd0f87d90b7449411e462561625d6b"
+    },
+    "ofs_pr_afu.drc.synthesized.rpt": {
+      "bytes": 24677,
+      "sha256": "c46a0f352dc3c6934e9a19899946443e7e10f7c3ba25ec20e8d7c7cfee299fe6"
+    },
+    "ofs_pr_afu.flow.rpt": {
+      "bytes": 131173,
+      "sha256": "be10ac1a3e720142312bc7f6ed43fef98cca36b27014bd47aeac41cf2ac2177c"
+    },
+    "ofs_pr_afu.sdc_constraints.rpt": {
+      "bytes": 2439,
+      "sha256": "81ca79970c9f96c28b4dd2bedca9da2105a33a4b6a7ee6c9aa15bb9617c106a2"
+    },
+    "ofs_pr_afu.syn.ae.rpt": {
+      "bytes": 16858792,
+      "sha256": "bb2264f0d5774e932f1f54737a5d251596d9bd094fba2df5b98df4762960d437"
+    },
+    "ofs_pr_afu.syn.rpt": {
+      "bytes": 55824750,
+      "sha256": "8a8a82b8547f15d73d0fc1023187c8cbce8a210fe91b302fe9f9e3db3cf20536"
+    },
+    "ofs_pr_afu.syn.summary": {
+      "bytes": 366,
+      "sha256": "444f927e80bce6dca3654267b53cfe257d9a253a87dddaa02d688c2aacfa4218"
+    }
+  },
+  "qdb_output_count": 608,
+  "qdb_output_bytes": 145218549,
+  "preservation": {
+    "controls": true,
+    "critical_inputs": true,
+    "dni_archive": true,
+    "external_inputs": true,
+    "original_release": true,
+    "original_setup": true,
+    "predecessor_results": true,
+    "qdb_outputs": true,
+    "static_qdb": true,
+    "tools": true
+  },
+  "active_processes_in_capture_scope": [],
+  "qpf_byte_identical": true,
+  "interface_uuid": "fc603c44-5c8f-5e94-bcbe-a5780030947c",
+  "afu_uuid": "d48dde9f-f551-578d-8bb0-69483ac95ec6",
+  "native_synthesis_summary": {
+    "file": "completion26-readback/reports/ofs_pr_afu.syn.summary",
+    "logic_utilization_estimate_alms": 97020,
+    "dedicated_registers": 255598,
+    "estimated_dsp_blocks_post_merging": 0
+  },
+  "green_region_resources": {
+    "file": "completion26-readback/reports/ofs_pr_afu.syn.rpt",
+    "lines": [
+      49617,
+      49631,
+      49633,
+      49635,
+      49637
+    ],
+    "logic_estimate_alms": 32550,
+    "dedicated_registers": 91053,
+    "boundary_ports": 4961,
+    "block_memory_bits": 1635424,
+    "dsp_blocks": 0
+  },
+  "source_table": {
+    "rows": 1933,
+    "unique_paths": 1930,
+    "roles": {
+      "prepared_design": 1501,
+      "external_afu_or_generated": 276,
+      "native_generated_dni_output": 8,
+      "native_generated_qdb_proxy": 4,
+      "installed_tool_collateral_not_individually_prebound": 45,
+      "native_generated_clearbox_for_observed_pid": 99
+    },
+    "selected_sv_found": 16,
+    "selected_qip_found": 2,
+    "ledger": "native-source-ledger29.json",
+    "core_publication_entity": {
+      "line": 38707,
+      "cells": [
+        "|core|",
+        "29544 (0)",
+        "44875 (0)",
+        "723632",
+        "0",
+        "0",
+        "7.7 (0.0)",
+        "afu_top|pg_afu.port_gasket|pr_slot|afu_main|port_afu_instances|ofs_plat_afu|core",
+        "ia840f_ahls_memory_core_publication",
+        "altera_work"
+      ]
+    }
+  },
+  "source_collateral": {
+    "requested": 156,
+    "available_native_md5_matches": 126,
+    "native_md5_unavailable": 22,
+    "reported_dni_body_unavailable": 8,
+    "nonempty_native_md5_mismatches": [],
+    "interpretation": "metadata29 native_md5_matches=false with an empty native value is unavailable comparison, not observed drift; no pre-run SHA256 binding claimed for this collateral"
+  },
+  "diagnostics": {
+    "native_footer_errors": 0,
+    "native_footer_warnings": 56,
+    "complete_log_occurrences": 275,
+    "by_severity": {
+      "Warning": 273,
+      "Critical Warning": 2
+    },
+    "critical": [
+      {
+        "file": "completion26-readback/operation/synthesis.log",
+        "line": 6017,
+        "severity": "Critical Warning",
+        "id": "20580",
+        "text": "Critical Warning (20580): Imported Partition 'green_region' has type 'PARTIAL_RECONFIGURATION_PARTITION' but it is not specified in the current project."
+      },
+      {
+        "file": "completion26-readback/operation/synthesis.log",
+        "line": 6452,
+        "severity": "Critical Warning",
+        "id": "19854",
+        "text": "Critical Warning (19854): Discovered explicitly defined initial values in Partition green_region. Please refer to the green_region Partition report folder for more information."
+      }
+    ],
+    "waived_by_parent": false
+  },
+  "drc": {
+    "ofs_pr_afu.drc.synthesized.rpt": {
+      "rules": 13,
+      "failed_rules": 5,
+      "violations": 15,
+      "waived": 0,
+      "rows": [
+        {
+          "line": 52,
+          "rule": "RES-30132 - Registers May Not Be Properly Reset",
+          "severity": "Medium",
+          "violations": 2,
+          "waived": 0,
+          "tags": "reset-usage, reset-reachability"
+        },
+        {
+          "line": 53,
+          "rule": "LNT-30023 - Reset Nets with Polarity Conflict",
+          "severity": "Medium",
+          "violations": 1,
+          "waived": 0,
+          "tags": "reset-usage"
+        },
+        {
+          "line": 54,
+          "rule": "LNT-30010 - Nets Driving both Reset and Clock Enable Signals",
+          "severity": "Low",
+          "violations": 6,
+          "waived": 0,
+          "tags": "reset-usage"
+        },
+        {
+          "line": 55,
+          "rule": "TMC-20501 - Hierarchical Tree Duplication was Shallower than Requested",
+          "severity": "Low",
+          "violations": 5,
+          "waived": 0,
+          "tags": "register-duplication, synthesis"
+        },
+        {
+          "line": 56,
+          "rule": "TMC-20500 - Hierarchical Tree Duplication was Shallower than Possible",
+          "severity": "Low",
+          "violations": 1,
+          "waived": 0,
+          "tags": "register-duplication, synthesis"
+        },
+        {
+          "line": 57,
+          "rule": "LNT-30011 - Design Contains Combinational Loops",
+          "severity": "High",
+          "violations": 0,
+          "waived": 0,
+          "tags": "nonstandard-timing"
+        },
+        {
+          "line": 58,
+          "rule": "LNT-30017 - Register Output Driving Its Own Asynchronous Control Signal Directly or Through Combinational Logic",
+          "severity": "Medium",
+          "violations": 0,
+          "waived": 0,
+          "tags": "nonstandard-timing"
+        },
+        {
+          "line": 59,
+          "rule": "RES-30133 - Embedded Memory Blocks with Initialized Content That Might be Modified Before the FPGA Enters User Mode",
+          "severity": "Medium",
+          "violations": 0,
+          "waived": 0,
+          "tags": "ram, reset-usage"
+        },
+        {
+          "line": 60,
+          "rule": "RES-30134 - Registers Not Reachable from Reset Release IP",
+          "severity": "Medium",
+          "violations": 0,
+          "waived": 0,
+          "tags": "reset-usage, reset-reachability"
+        },
+        {
+          "line": 61,
+          "rule": "TMC-20052 - Paths with Post Synthesis Inferred Latches",
+          "severity": "Medium",
+          "violations": 0,
+          "waived": 0,
+          "tags": "nonstandard-timing, latch"
+        },
+        {
+          "line": 62,
+          "rule": "FLP-10500 - Non Driving Top Level Inputs Found",
+          "severity": "Low",
+          "violations": 0,
+          "waived": 0,
+          "tags": "system"
+        },
+        {
+          "line": 63,
+          "rule": "LNT-50006 - DSP Control Signal Registers Reset Mode Mismatch",
+          "severity": "Low",
+          "violations": 0,
+          "waived": 0,
+          "tags": "dsp, reset-usage"
+        },
+        {
+          "line": 64,
+          "rule": "TMC-20053 - DSP Inputs Driven by High Fan-Out Net",
+          "severity": "Low",
+          "violations": 0,
+          "waived": 0,
+          "tags": "dsp"
+        }
+      ]
+    },
+    "ofs_pr_afu.drc.partitioned.rpt": {
+      "rules": 10,
+      "failed_rules": 0,
+      "violations": 0,
+      "waived": 0,
+      "rows": [
+        {
+          "line": 49,
+          "rule": "RES-10204 - Reset Release Instance Count Check",
+          "severity": "High",
+          "violations": 0,
+          "waived": 0,
+          "tags": "system"
+        },
+        {
+          "line": 50,
+          "rule": "RES-50005 - RAM Control Signals Driven by Flip-Flops with Asynchronous Clears",
+          "severity": "Medium",
+          "violations": 0,
+          "waived": 0,
+          "tags": "ram, reset-usage"
+        },
+        {
+          "line": 51,
+          "rule": "FLP-10100 - Large Multipliers are Decomposed",
+          "severity": "Low",
+          "violations": 0,
+          "waived": 0,
+          "tags": "dsp, synthesis"
+        },
+        {
+          "line": 52,
+          "rule": "LNT-30020 - Same Signal Source Drives Synchronous and Asynchronous Ports of the Same Register",
+          "severity": "Low",
+          "violations": 0,
+          "waived": 0,
+          "tags": "nonstandard-timing"
+        },
+        {
+          "line": 53,
+          "rule": "LNT-30021 - Same Signal Source Drives More Than One Asynchronous Port of a Register",
+          "severity": "Low",
+          "violations": 0,
+          "waived": 0,
+          "tags": "nonstandard-timing"
+        },
+        {
+          "line": 54,
+          "rule": "LNT-30022 - Same Signal Source Drives Clock Port and Another Port of a Register",
+          "severity": "Low",
+          "violations": 0,
+          "waived": 0,
+          "tags": "nonstandard-timing"
+        },
+        {
+          "line": 55,
+          "rule": "RES-10201 - Power Up Don't Care Setting May Prevent Retiming",
+          "severity": "Low",
+          "violations": 0,
+          "waived": 0,
+          "tags": "reset-usage, retime"
+        },
+        {
+          "line": 56,
+          "rule": "TMC-10115 - High Fan-out Signal",
+          "severity": "Low",
+          "violations": 0,
+          "waived": 0,
+          "tags": "register-duplication"
+        },
+        {
+          "line": 57,
+          "rule": "TMC-20050 - RAM Control Signals Driven by LUTs or ALMs instead of DFFs",
+          "severity": "Low",
+          "violations": 0,
+          "waived": 0,
+          "tags": "ram"
+        },
+        {
+          "line": 58,
+          "rule": "TMC-20051 - RAM Control Signals Driven by High Fan-Out Net",
+          "severity": "Low",
+          "violations": 0,
+          "waived": 0,
+          "tags": "ram"
+        }
+      ]
+    }
+  },
+  "explicit_pr_powerup_rows": 73,
+  "explicit_pr_powerup_table": {
+    "file": "completion26-readback/reports/ofs_pr_afu.syn.rpt",
+    "start_line": 49488,
+    "end_line": 49565
+  },
+  "report_truncation": [
+    {
+      "file": "completion26-readback/reports/ofs_pr_afu.syn.rpt",
+      "line": 40432,
+      "text": "Table truncated at 100 items. To change the number of protected registers reported, set the \"Number of Protected Registers Reported in Synthesis Report\" option."
+    },
+    {
+      "file": "completion26-readback/reports/ofs_pr_afu.syn.rpt",
+      "line": 47937,
+      "text": "* Table truncated at 5000 items. To change the number of removed registers reported, set the \"Number of Removed Registers Reported\" option under Assignments->Settings->Compiler Settings->Advanced Settings (Synthesis)"
+    },
+    {
+      "file": "completion26-readback/reports/ofs_pr_afu.syn.rpt",
+      "line": 48062,
+      "text": "* Table truncated at 100 items. To change the number of inverted registers reported, set the \"Number of Inverted Registers Reported\" option under Assignments->Settings->Compiler Settings->Advanced Settings (Synthesis)"
+    }
+  ],
+  "source_parser_supersession": "ledger29 uses exact column boundaries and preserves raw relative path cells; ledger28 omitted105rows and is superseded, not native evidence loss",
+  "later_gates": [
+    "partition/physical/static preservation",
+    "clocks/constraints/multicorner timing and reset/CDC disposition",
+    "assembly/matching images",
+    "deployment",
+    "all migrated hardware gates"
+  ]
+}

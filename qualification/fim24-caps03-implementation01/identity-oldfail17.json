@@ -1,0 +1,83 @@
+{
+  "success": false,
+  "scope": "real local identity()/JSON/proc()/owner_live and validate ancestry integration; inert Python child, file/context/environment fixture, no Quartus or remote/hardware",
+  "callback_source": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim24-caps03-implementation01/candidate09/ia840f_persona_gate09.py",
+  "callback_sha256": "642b072e1fa58f1b60367c5e5f4e27fd52d203f211b533e786770a13893c7d3b",
+  "producer_source": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim24-caps03-implementation01/candidate09/run-synthesis09.py",
+  "producer_sha256": "d1d8c927026c7d70717a48b95859255589f8fff0a85960e36e069a3eb5c9bc21",
+  "producer_start_ticks_type": "str",
+  "consumer_start_ticks_type": "int",
+  "count": 9,
+  "cases": [
+    {
+      "case": "real_owner_json_roundtrip",
+      "expected_accept": true,
+      "accepted": false,
+      "correct": false,
+      "error": "AssertionError()"
+    },
+    {
+      "case": "reject_changed_start_ticks",
+      "expected_accept": false,
+      "accepted": false,
+      "correct": true,
+      "error": "AssertionError()"
+    },
+    {
+      "case": "reject_changed_exe",
+      "expected_accept": false,
+      "accepted": false,
+      "correct": true,
+      "error": "AssertionError()"
+    },
+    {
+      "case": "reject_changed_cwd",
+      "expected_accept": false,
+      "accepted": false,
+      "correct": true,
+      "error": "AssertionError()"
+    },
+    {
+      "case": "reject_changed_argv",
+      "expected_accept": false,
+      "accepted": false,
+      "correct": true,
+      "error": "AssertionError()"
+    },
+    {
+      "case": "actual_validate_real_child_to_real_owner",
+      "expected_accept": true,
+      "accepted": false,
+      "correct": false,
+      "error": "AssertionError()"
+    },
+    {
+      "case": "actual_validate_changed_owner_start",
+      "expected_accept": false,
+      "accepted": false,
+      "correct": true,
+      "error": "AssertionError()"
+    },
+    {
+      "case": "real_proc_ancestry_serialized_owner",
+      "expected_accept": true,
+      "accepted": false,
+      "correct": false,
+      "error": "AssertionError()"
+    },
+    {
+      "case": "exited_real_owner_rejected",
+      "expected_accept": false,
+      "accepted": false,
+      "correct": true,
+      "error": "FileNotFoundError(2, 'No such file or directory')"
+    }
+  ],
+  "failures": [
+    "real_owner_json_roundtrip",
+    "actual_validate_real_child_to_real_owner",
+    "real_proc_ancestry_serialized_owner"
+  ],
+  "inert_child_returncode": 0,
+  "scratch": "/home/joe/.hermes/cache/scratch/persona-gate-dzmk515b"
+}

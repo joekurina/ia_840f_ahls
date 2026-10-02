@@ -1,0 +1,3785 @@
+{
+  "success": true,
+  "scope": "actual runner with mocked admission/CMake/tmux, synthetic callback observations, tiny INERT files and literal INERT environment values; real Python children, no vendor execution",
+  "runner_sha256": "1d803796492b6d959025bddc35307c61691b7122d85909db2e323830c8e3dce6",
+  "count": 23,
+  "cases": [
+    {
+      "case": "clean",
+      "expected_clean": true,
+      "actual_rc": 0,
+      "execution_clean": true,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/clean/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/clean/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/clean/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/clean/INERT_QUARTUS"
+          ],
+          "started": "2026-10-02T12:46:58.797759+00:00",
+          "process": {
+            "pid": 1823359,
+            "start_ticks": "11749598",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/clean/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT stage\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:46:59.074630+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/clean/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:46:59.112039+00:00",
+          "process": {
+            "pid": 1823363,
+            "start_ticks": "11749630",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/clean/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:46:59.388254+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "synthesis",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/clean/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:46:59.423427+00:00",
+          "process": {
+            "pid": 1823364,
+            "start_ticks": "11749661",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/clean/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/clean/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/clean/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/clean/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:46:59.703513+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "diagnostics": [],
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/clean/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/clean/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/clean/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/clean/INERT_QUARTUS"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT stage\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/clean/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/clean/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/clean/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/clean/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/clean/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "qpf_date",
+      "expected_clean": true,
+      "actual_rc": 0,
+      "execution_clean": true,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/INERT_QUARTUS"
+          ],
+          "started": "2026-10-02T12:46:59.764526+00:00",
+          "process": {
+            "pid": 1823367,
+            "start_ticks": "11749695",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT stage\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:00.102411+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:00.143381+00:00",
+          "process": {
+            "pid": 1823371,
+            "start_ticks": "11749733",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:00.427486+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "synthesis",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:00.466959+00:00",
+          "process": {
+            "pid": 1823372,
+            "start_ticks": "11749765",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nPath('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/design/project/ofs_top.qpf').write_text('QUARTUS_VERSION = \"26.1\"\\nDATE = \"INERT LATER\"\\nPROJECT_REVISION = \"ofs_pr_afu\"\\n')\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:00.747239+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "diagnostics": [],
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/INERT_QUARTUS"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT stage\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nPath('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_date/design/project/ofs_top.qpf').write_text('QUARTUS_VERSION = \"26.1\"\\nDATE = \"INERT LATER\"\\nPROJECT_REVISION = \"ofs_pr_afu\"\\n')\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "unissued",
+      "rejected_before_write": true
+    },
+    {
+      "case": "nonzero",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/nonzero/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/nonzero/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/nonzero/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/nonzero/INERT_QUARTUS"
+          ],
+          "started": "2026-10-02T12:47:00.817423+00:00",
+          "process": {
+            "pid": 1823378,
+            "start_ticks": "11749800",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/nonzero/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT stage\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:01.103669+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/nonzero/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:01.142502+00:00",
+          "process": {
+            "pid": 1823398,
+            "start_ticks": "11749833",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/nonzero/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:01.431428+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "synthesis",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/nonzero/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:01.468770+00:00",
+          "process": {
+            "pid": 1823441,
+            "start_ticks": "11749865",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/nonzero/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/nonzero/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/nonzero/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/nonzero/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nraise SystemExit(7)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 7,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:01.756374+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 7
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "diagnostics": [],
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/nonzero/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/nonzero/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/nonzero/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/nonzero/INERT_QUARTUS"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT stage\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/nonzero/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/nonzero/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/nonzero/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/nonzero/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/nonzero/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nraise SystemExit(7)\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "error",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/error/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/error/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/error/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/error/INERT_QUARTUS"
+          ],
+          "started": "2026-10-02T12:47:01.836543+00:00",
+          "process": {
+            "pid": 1823442,
+            "start_ticks": "11749902",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/error/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT stage\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:02.125134+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/error/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:02.166947+00:00",
+          "process": {
+            "pid": 1823482,
+            "start_ticks": "11749935",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/error/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:02.454668+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "synthesis",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/error/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:02.493794+00:00",
+          "process": {
+            "pid": 1823483,
+            "start_ticks": "11749968",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/error/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/error/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/error/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/error/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nprint(\"Error (suppressible): INERT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:02.778638+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "diagnostics": [
+        {
+          "file": "synthesis.log",
+          "line": 2,
+          "text": "Error (suppressible): INERT"
+        }
+      ],
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/error/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/error/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/error/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/error/INERT_QUARTUS"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT stage\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/error/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/error/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/error/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/error/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/error/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nprint(\"Error (suppressible): INERT\")\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "gate_marker",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/gate_marker/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/gate_marker/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/gate_marker/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/gate_marker/INERT_QUARTUS"
+          ],
+          "started": "2026-10-02T12:47:02.852157+00:00",
+          "process": {
+            "pid": 1823486,
+            "start_ticks": "11750004",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/gate_marker/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT stage\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:03.141361+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/gate_marker/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:03.181070+00:00",
+          "process": {
+            "pid": 1823488,
+            "start_ticks": "11750036",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/gate_marker/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:03.464112+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "synthesis",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/gate_marker/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:03.497388+00:00",
+          "process": {
+            "pid": 1823490,
+            "start_ticks": "11750068",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/gate_marker/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/gate_marker/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/gate_marker/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/gate_marker/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nprint(\"IA840F_GATE_REJECTED: INERT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": true,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:03.776569+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 125
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "diagnostics": [
+        {
+          "file": "synthesis.log",
+          "line": 2,
+          "text": "IA840F_GATE_REJECTED: INERT"
+        }
+      ],
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/gate_marker/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/gate_marker/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/gate_marker/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/gate_marker/INERT_QUARTUS"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT stage\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/gate_marker/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/gate_marker/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/gate_marker/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/gate_marker/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/gate_marker/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nprint(\"IA840F_GATE_REJECTED: INERT\")\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "missing_callback",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_callback/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_callback/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_callback/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_callback/INERT_QUARTUS"
+          ],
+          "started": "2026-10-02T12:47:03.848827+00:00",
+          "process": {
+            "pid": 1823491,
+            "start_ticks": "11750103",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_callback/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT stage\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:04.127027+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_callback/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:04.164035+00:00",
+          "process": {
+            "pid": 1823492,
+            "start_ticks": "11750135",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_callback/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:04.439716+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "synthesis",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_callback/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:04.472350+00:00",
+          "process": {
+            "pid": 1823493,
+            "start_ticks": "11750166",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_callback/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_callback/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_callback/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\nprint(\"INERT: Quartus Prime Synthesis was successful\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:04.750475+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "diagnostics": [],
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_callback/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_callback/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_callback/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_callback/INERT_QUARTUS"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT stage\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_callback/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_callback/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_callback/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_callback/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\nprint(\"INERT: Quartus Prime Synthesis was successful\")\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "wrong_callback",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/wrong_callback/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/wrong_callback/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/wrong_callback/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/wrong_callback/INERT_QUARTUS"
+          ],
+          "started": "2026-10-02T12:47:04.807184+00:00",
+          "process": {
+            "pid": 1823497,
+            "start_ticks": "11750199",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/wrong_callback/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT stage\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:05.076413+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/wrong_callback/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:05.106682+00:00",
+          "process": {
+            "pid": 1823499,
+            "start_ticks": "11750229",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/wrong_callback/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:05.372564+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "synthesis",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/wrong_callback/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:05.402224+00:00",
+          "process": {
+            "pid": 1823500,
+            "start_ticks": "11750259",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/wrong_callback/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/wrong_callback/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/wrong_callback/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/INERT_WRONG\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:05.668351+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "diagnostics": [],
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/wrong_callback/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/wrong_callback/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/wrong_callback/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/wrong_callback/INERT_QUARTUS"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT stage\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/wrong_callback/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/wrong_callback/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/wrong_callback/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/wrong_callback/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/INERT_WRONG\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "missing_report",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_report/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_report/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_report/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_report/INERT_QUARTUS"
+          ],
+          "started": "2026-10-02T12:47:05.728783+00:00",
+          "process": {
+            "pid": 1823501,
+            "start_ticks": "11750291",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_report/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT stage\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:06.022749+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_report/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:06.059488+00:00",
+          "process": {
+            "pid": 1823522,
+            "start_ticks": "11750324",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_report/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:06.341108+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "synthesis",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_report/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:06.380757+00:00",
+          "process": {
+            "pid": 1823526,
+            "start_ticks": "11750356",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_report/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_report/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_report/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_report/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:06.664997+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [
+        {
+          "report": "output_files/ofs_pr_afu.syn.rpt",
+          "error": "AssertionError()"
+        }
+      ],
+      "postflight_exception": null,
+      "diagnostics": [],
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_report/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_report/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_report/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_report/INERT_QUARTUS"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT stage\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_report/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_report/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_report/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_report/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_report/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "missing_qdb",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_qdb/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_qdb/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_qdb/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_qdb/INERT_QUARTUS"
+          ],
+          "started": "2026-10-02T12:47:06.726253+00:00",
+          "process": {
+            "pid": 1823529,
+            "start_ticks": "11750391",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_qdb/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT stage\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:07.007004+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_qdb/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:07.048131+00:00",
+          "process": {
+            "pid": 1823556,
+            "start_ticks": "11750423",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_qdb/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:07.332024+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "synthesis",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_qdb/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:07.369884+00:00",
+          "process": {
+            "pid": 1823588,
+            "start_ticks": "11750455",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_qdb/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_qdb/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_qdb/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_qdb/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:07.654583+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "diagnostics": [],
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_qdb/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_qdb/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_qdb/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_qdb/INERT_QUARTUS"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT stage\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_qdb/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_qdb/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_qdb/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_qdb/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/missing_qdb/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "critical_drift",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/INERT_QUARTUS"
+          ],
+          "started": "2026-10-02T12:47:07.718481+00:00",
+          "process": {
+            "pid": 1823589,
+            "start_ticks": "11750490",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT stage\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:08.000659+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:08.041647+00:00",
+          "process": {
+            "pid": 1823592,
+            "start_ticks": "11750523",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:08.329635+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "synthesis",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:08.368273+00:00",
+          "process": {
+            "pid": 1823594,
+            "start_ticks": "11750555",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nPath('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/design/selected.sv').write_text(\"DRIFT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:08.649646+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "diagnostics": [],
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/INERT_QUARTUS"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT stage\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nPath('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/critical_drift/design/selected.sv').write_text(\"DRIFT\")\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "external_drift",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/INERT_QUARTUS"
+          ],
+          "started": "2026-10-02T12:47:08.715302+00:00",
+          "process": {
+            "pid": 1823597,
+            "start_ticks": "11750590",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT stage\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:08.996389+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:09.033502+00:00",
+          "process": {
+            "pid": 1823602,
+            "start_ticks": "11750622",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:09.313525+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "synthesis",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:09.350279+00:00",
+          "process": {
+            "pid": 1823604,
+            "start_ticks": "11750653",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nPath('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/external.sv').write_text(\"DRIFT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:09.630527+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "diagnostics": [],
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/INERT_QUARTUS"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT stage\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nPath('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/external_drift/external.sv').write_text(\"DRIFT\")\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "archive_drift",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/INERT_QUARTUS"
+          ],
+          "started": "2026-10-02T12:47:09.691393+00:00",
+          "process": {
+            "pid": 1823606,
+            "start_ticks": "11750687",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT stage\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:09.972002+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:10.010542+00:00",
+          "process": {
+            "pid": 1823607,
+            "start_ticks": "11750719",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:10.288169+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "synthesis",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:10.324624+00:00",
+          "process": {
+            "pid": 1823608,
+            "start_ticks": "11750751",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nPath('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/archive/entry').write_text(\"DRIFT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:10.606641+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "diagnostics": [],
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/INERT_QUARTUS"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT stage\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nPath('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/archive_drift/archive/entry').write_text(\"DRIFT\")\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "setup_drift",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/INERT_QUARTUS"
+          ],
+          "started": "2026-10-02T12:47:10.671069+00:00",
+          "process": {
+            "pid": 1823611,
+            "start_ticks": "11750785",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT stage\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:10.952744+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:10.989682+00:00",
+          "process": {
+            "pid": 1823612,
+            "start_ticks": "11750817",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:11.270912+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "synthesis",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:11.308813+00:00",
+          "process": {
+            "pid": 1823614,
+            "start_ticks": "11750849",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nPath('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/original/entry').write_text(\"DRIFT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:11.593890+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "diagnostics": [],
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/INERT_QUARTUS"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT stage\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nPath('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/setup_drift/original/entry').write_text(\"DRIFT\")\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "release_drift",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/INERT_QUARTUS"
+          ],
+          "started": "2026-10-02T12:47:11.658141+00:00",
+          "process": {
+            "pid": 1823618,
+            "start_ticks": "11750884",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT stage\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:11.943723+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:11.981379+00:00",
+          "process": {
+            "pid": 1823619,
+            "start_ticks": "11750916",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:12.263462+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "synthesis",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:12.300362+00:00",
+          "process": {
+            "pid": 1823620,
+            "start_ticks": "11750948",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nPath('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/release/entry').write_text(\"DRIFT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:12.581688+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "diagnostics": [],
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/INERT_QUARTUS"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT stage\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nPath('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/release_drift/release/entry').write_text(\"DRIFT\")\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "tool_drift",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/INERT_QUARTUS"
+          ],
+          "started": "2026-10-02T12:47:12.639958+00:00",
+          "process": {
+            "pid": 1823621,
+            "start_ticks": "11750982",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT stage\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:12.931649+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:12.970042+00:00",
+          "process": {
+            "pid": 1823678,
+            "start_ticks": "11751015",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:13.258280+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "synthesis",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:13.297288+00:00",
+          "process": {
+            "pid": 1823682,
+            "start_ticks": "11751048",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nPath('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/tool').write_text(\"DRIFT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:13.578017+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "diagnostics": [],
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/INERT_QUARTUS"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT stage\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nPath('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/tool_drift/tool').write_text(\"DRIFT\")\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "control_drift",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/INERT_QUARTUS"
+          ],
+          "started": "2026-10-02T12:47:13.636481+00:00",
+          "process": {
+            "pid": 1823685,
+            "start_ticks": "11751082",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT stage\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:13.913667+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:13.949174+00:00",
+          "process": {
+            "pid": 1823686,
+            "start_ticks": "11751113",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:14.234583+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "synthesis",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:14.273914+00:00",
+          "process": {
+            "pid": 1823687,
+            "start_ticks": "11751146",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nPath('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/control/prepared.json').write_text(\"DRIFT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:14.560429+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "diagnostics": [],
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/INERT_QUARTUS"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT stage\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nPath('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/control_drift/control/prepared.json').write_text(\"DRIFT\")\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "qpf_revision",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/INERT_QUARTUS"
+          ],
+          "started": "2026-10-02T12:47:14.625300+00:00",
+          "process": {
+            "pid": 1823689,
+            "start_ticks": "11751181",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT stage\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:14.910708+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:14.948604+00:00",
+          "process": {
+            "pid": 1823692,
+            "start_ticks": "11751213",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:15.228761+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "synthesis",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:15.266163+00:00",
+          "process": {
+            "pid": 1823694,
+            "start_ticks": "11751245",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nPath('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/design/project/ofs_top.qpf').write_text('QUARTUS_VERSION = \"26.1\"\\nDATE = \"INERT\"\\nPROJECT_REVISION = \"wrong\"\\n')\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:15.550549+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "diagnostics": [],
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/INERT_QUARTUS"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT stage\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nPath('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/qpf_revision/design/project/ofs_top.qpf').write_text('QUARTUS_VERSION = \"26.1\"\\nDATE = \"INERT\"\\nPROJECT_REVISION = \"wrong\"\\n')\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "overflow",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/overflow/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/overflow/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/overflow/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/overflow/INERT_QUARTUS"
+          ],
+          "started": "2026-10-02T12:47:15.617652+00:00",
+          "process": {
+            "pid": 1823696,
+            "start_ticks": "11751280",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/overflow/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT stage\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:15.903479+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/overflow/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:15.940572+00:00",
+          "process": {
+            "pid": 1823701,
+            "start_ticks": "11751312",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/overflow/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:16.219352+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "synthesis",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/overflow/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:16.255722+00:00",
+          "process": {
+            "pid": 1823702,
+            "start_ticks": "11751344",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/overflow/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/overflow/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/overflow/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/overflow/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nprint(\"x\"*8192)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": true,
+          "ended": "2026-10-02T12:47:16.538529+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 125
+        }
+      ],
+      "postflight_errors": [
+        {
+          "file": "synthesis.log",
+          "error": "AssertionError()"
+        }
+      ],
+      "postflight_exception": null,
+      "diagnostics": [],
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/overflow/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/overflow/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/overflow/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/overflow/INERT_QUARTUS"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT stage\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/overflow/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/overflow/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/overflow/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/overflow/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/overflow/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nprint(\"x\"*8192)\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "timeout",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/timeout/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/timeout/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/timeout/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/timeout/INERT_QUARTUS"
+          ],
+          "started": "2026-10-02T12:47:16.600215+00:00",
+          "process": {
+            "pid": 1823706,
+            "start_ticks": "11751378",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/timeout/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT stage\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:16.888100+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/timeout/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:16.926262+00:00",
+          "process": {
+            "pid": 1823709,
+            "start_ticks": "11751411",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/timeout/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:17.210279+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "synthesis",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/timeout/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:17.247013+00:00",
+          "process": {
+            "pid": 1823711,
+            "start_ticks": "11751443",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/timeout/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/timeout/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/timeout/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/timeout/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nimport time;time.sleep(8)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [
+            1823711
+          ],
+          "cmake_rc": -15,
+          "timeout": true,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:18.007033+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 124
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "diagnostics": [],
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/timeout/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/timeout/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/timeout/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/timeout/INERT_QUARTUS"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT stage\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/timeout/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/timeout/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/timeout/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/timeout/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/timeout/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nimport time;time.sleep(8)\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "drain_marker",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/drain_marker/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/drain_marker/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/drain_marker/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/drain_marker/INERT_QUARTUS"
+          ],
+          "started": "2026-10-02T12:47:18.069899+00:00",
+          "process": {
+            "pid": 1823712,
+            "start_ticks": "11751525",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/drain_marker/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT stage\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:18.354270+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/drain_marker/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:18.392416+00:00",
+          "process": {
+            "pid": 1823714,
+            "start_ticks": "11751558",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/drain_marker/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:18.674784+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "synthesis",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/drain_marker/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:18.715422+00:00",
+          "process": {
+            "pid": 1823743,
+            "start_ticks": "11751590",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/drain_marker/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/drain_marker/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/drain_marker/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/drain_marker/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nimport os,time\npid=os.fork()\nif pid:os._exit(0)\ntime.sleep(0.3)\nprint(\"IA840F_GATE_REJECTED: INERT\",flush=True)\ntime.sleep(8)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [
+            1823772
+          ],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": true,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:19.315858+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 125
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "diagnostics": [
+        {
+          "file": "synthesis.log",
+          "line": 2,
+          "text": "IA840F_GATE_REJECTED: INERT"
+        }
+      ],
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/drain_marker/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/drain_marker/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/drain_marker/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/drain_marker/INERT_QUARTUS"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT stage\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/drain_marker/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/drain_marker/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/drain_marker/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/drain_marker/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/drain_marker/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nimport os,time\npid=os.fork()\nif pid:os._exit(0)\ntime.sleep(0.3)\nprint(\"IA840F_GATE_REJECTED: INERT\",flush=True)\ntime.sleep(8)\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "postflight_fault",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/postflight_fault/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/postflight_fault/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/postflight_fault/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/postflight_fault/INERT_QUARTUS"
+          ],
+          "started": "2026-10-02T12:47:19.374888+00:00",
+          "process": {
+            "pid": 1823776,
+            "start_ticks": "11751656",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/postflight_fault/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT stage\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:19.656039+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/postflight_fault/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:19.694357+00:00",
+          "process": {
+            "pid": 1823780,
+            "start_ticks": "11751688",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/postflight_fault/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:19.976914+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "synthesis",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/postflight_fault/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:20.014737+00:00",
+          "process": {
+            "pid": 1823781,
+            "start_ticks": "11751720",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/postflight_fault/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/postflight_fault/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/postflight_fault/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/postflight_fault/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:20.298475+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": null,
+      "postflight_exception": "RuntimeError('INERT postflight exception')",
+      "diagnostics": null,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/postflight_fault/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/postflight_fault/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/postflight_fault/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/postflight_fault/INERT_QUARTUS"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT stage\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/postflight_fault/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/postflight_fault/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/postflight_fault/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/postflight_fault/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/postflight_fault/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "predecessor_drift",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/INERT_QUARTUS"
+          ],
+          "started": "2026-10-02T12:47:20.360928+00:00",
+          "process": {
+            "pid": 1823782,
+            "start_ticks": "11751754",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT stage\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:20.643409+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:20.680735+00:00",
+          "process": {
+            "pid": 1823784,
+            "start_ticks": "11751786",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:20.962500+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "synthesis",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T12:47:20.999913+00:00",
+          "process": {
+            "pid": 1823786,
+            "start_ticks": "11751818",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nPath('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/setup-result.json').write_text(\"DRIFT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T12:47:21.287504+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "diagnostics": [],
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/INERT_QUARTUS"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT stage\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/run/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/run/cmake-build",
+            "--target",
+            "synthesis",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nimport json\nJ=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/design/project')\nR=Path('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/run')\nfor n,b in {'output_files/ofs_pr_afu.syn.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.syn.summary': 'INERT REPORT, NOT QUARTUS\\n', 'output_files/ofs_pr_afu.drc.synthesized.rpt': 'INERT REPORT, NOT QUARTUS\\n', 'qdb/inert.qdb': 'INERT DATABASE, NOT FPGA DATA\\n'}.items():\n p=J/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(b)\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_NATIVE_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/design/project\", \"argv\": [\"/INERT_NATIVE_EXE\", \"--read_settings_files=on\", \"--write_settings_files=off\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT: Quartus Prime Synthesis was successful\")\nPath('/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs/predecessor_drift/setup-result.json').write_text(\"DRIFT\")\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    }
+  ],
+  "scratch": "/home/joe/.hermes/cache/scratch/persona-synth-runner-yzam0lvs"
+}

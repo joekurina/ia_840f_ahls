@@ -1,0 +1,56 @@
+--- issue-admission16.py.in
++++ issue-admission23.py.in
+@@ -1,8 +1,8 @@
+-"""Issue one reviewed simulation-only record; never launch the simulator."""
++"""Issue one reviewed mapped-synthesis record; never launch native synthesis."""
+ import base64,copy,datetime,gzip,hashlib,importlib.util,json,os,re,socket,subprocess,traceback
+ from pathlib import Path
+-ROOT=Path('/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_implementation01');P=ROOT/'control09';A=P/'admission16';M=P/'synthesis-inputs.admitted.json';R=ROOT/'synth01'
+-INPUT='ia840f_fim24_caps03_implementation_admission16_inputs';BUFFER='ia840f_fim24_caps03_implementation_admission16_result';EXPECTED='UNISSUED_PACKET_DIGEST'
++ROOT=Path('/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_implementation01');P=ROOT/'control19';A=P/'admission23';M=P/'synthesis-inputs.admitted.json';R=ROOT/'synth01'
++INPUT='ia840f_fim24_caps03_implementation_admission23_inputs';BUFFER='ia840f_fim24_caps03_implementation_admission23_result';EXPECTED='UNISSUED_PACKET_DIGEST'
+ out={'batch':BUFFER,'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'success':False,'native_tools_executed':False,'hardware_access':False,'operation_created':False,'admission_written':False};owned=False
+ try:
+  assert __debug__ and re.fullmatch(r'[0-9a-f]{64}',EXPECTED)
+@@ -11,24 +11,24 @@
+  assert all(not p.exists() and not p.is_symlink() for p in (A,M,R))
+  raw=subprocess.check_output(['tmux','save-buffer','-b',INPUT,'-']);assert len(raw)<1024**2 and hashlib.sha256(raw).hexdigest()==EXPECTED
+  C=json.loads(gzip.decompress(raw));assert C['batch']==INPUT and C['scope']=='persona-mapped-synthesis-only'
+- draft_raw=(P/'synthesis-inputs.draft13.json').read_bytes();assert hashlib.sha256(draft_raw).hexdigest()==C['draft_sha256']=='036df02ce9e5c3c327b91aa4baf55b2ff7130c251a59ce8c810f5f7d206ca925';draft=json.loads(draft_raw)
++ draft_raw=(P/'synthesis-inputs.draft19.json').read_bytes();assert hashlib.sha256(draft_raw).hexdigest()==C['draft_sha256']=='c17cb56dd678bf288a7472c2e3d1cc9084bd315e28315327b665f925cbb6c29a';draft=json.loads(draft_raw)
+  assert draft['parent_execution_accepted'] is False and draft['hardware_ready'] is False and draft['ready_for_build'] is False
+- names={'synthesis-inputs.admitted.json','source-api-review08.md','prepared-source-proof14.json','review-quality15.md','quality-consumed16.json'}
++ names={'synthesis-inputs.admitted.json','source-api-review08.md','source-continuity20.json','review-quality22.md','quality-consumed23.json'}
+  assert set(C['files'])==names
+  decoded={}
+  for n,item in C['files'].items():
+   assert Path(n).name==n;b=base64.b64decode(item['base64'],validate=True);assert len(b)==item['bytes'] and hashlib.sha256(b).hexdigest()==item['sha256'];decoded[n]=b
+- source=json.loads(decoded['prepared-source-proof14.json']);quality=json.loads(decoded['quality-consumed16.json'])
++ source=json.loads(decoded['source-continuity20.json']);quality=json.loads(decoded['quality-consumed23.json'])
+  assert source['accepted'] is True and source['hardware_ready'] is False and source['authority_issued'] is False
+  assert source['draft_sha256']==C['draft_sha256'] and source['review_sha256']==hashlib.sha256(decoded['source-api-review08.md']).hexdigest()
+  assert quality['accepted'] is True and quality['hardware_ready'] is False and quality['draft_sha256']==C['draft_sha256']
+- assert quality['review_sha256']==hashlib.sha256(decoded['review-quality15.md']).hexdigest() and quality['spec_consumption_sha256']==hashlib.sha256(decoded['prepared-source-proof14.json']).hexdigest()
++ assert quality['review_sha256']==hashlib.sha256(decoded['review-quality22.md']).hexdigest() and quality['spec_consumption_sha256']==hashlib.sha256(decoded['source-continuity20.json']).hexdigest()
+  expected=copy.deepcopy(draft);expected['parent_execution_accepted']=True;expected['hardware_ready']=False
+  for n,b in decoded.items():
+   if n!='synthesis-inputs.admitted.json':expected['prerequisites'][str(A/'receipts'/n)]=hashlib.sha256(b).hexdigest()
+- expected['execution_review']={'sha256':quality['review_sha256'],'parent_consumption_sha256':hashlib.sha256(decoded['quality-consumed16.json']).hexdigest(),'source_spec_review_sha256':source['review_sha256'],'scope':'persona-mapped-synthesis-only'}
++ expected['execution_review']={'sha256':quality['review_sha256'],'parent_consumption_sha256':hashlib.sha256(decoded['quality-consumed23.json']).hexdigest(),'source_spec_review_sha256':source['review_sha256'],'scope':'persona-mapped-synthesis-only'}
+  target=json.loads(decoded['synthesis-inputs.admitted.json']);assert target==expected and hashlib.sha256(decoded['synthesis-inputs.admitted.json']).hexdigest()==C['admitted_sha256']
+- runner=P/'runtime/run-synthesis09.py';assert hashlib.sha256(runner.read_bytes()).hexdigest()==target['runner_sha256']=='d1d8c927026c7d70717a48b95859255589f8fff0a85960e36e069a3eb5c9bc21'
++ runner=P/'runtime/run-synthesis18.py';assert hashlib.sha256(runner.read_bytes()).hexdigest()==target['runner_sha256']=='1d803796492b6d959025bddc35307c61691b7122d85909db2e323830c8e3dce6'
+  A.mkdir();owned=True;(A/'receipts').mkdir()
+  for n in sorted(names-{'synthesis-inputs.admitted.json'}):
+   with (A/'receipts'/n).open('xb') as f:f.write(decoded[n])
+@@ -43,8 +43,8 @@
+ except BaseException as exc:out.update(error=repr(exc),traceback=traceback.format_exc())
+ finally:
+  if owned:
+-  with (A/'result16.json').open('x') as f:json.dump(out,f,indent=2)
++  with (A/'result23.json').open('x') as f:json.dump(out,f,indent=2)
+  b=gzip.compress(json.dumps(out,sort_keys=True).encode(),mtime=0);h=hashlib.sha256(b).hexdigest()
+  subprocess.run(['tmux','load-buffer','-b',BUFFER,'-'],input=b,check=True);subprocess.run(['tmux','set-buffer','-b',BUFFER+'_sha256',h],check=True)
+- print('FIM24_CAPS03_IMPLEMENTATION_ADMISSION16',out['success'],h,flush=True)
++ print('FIM24_CAPS03_IMPLEMENTATION_ADMISSION23',out['success'],h,flush=True)
+ if not out['success']:raise SystemExit(1)
