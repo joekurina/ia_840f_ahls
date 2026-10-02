@@ -1,0 +1,192 @@
+{
+  "scope": "Inspection requests only; not authorization to execute. Parent alone may acquire evidence. Child executed no native tools, SSH, source scripts/tests, or hardware.",
+  "reviewer": "gpt-6-astra-900k / openai-codex substitutes unavailable GLM5.3",
+  "preserve": [
+    "OFS2026.1",
+    "Quartus26.1.1 Build130",
+    "AGFB027R25A2E2V",
+    "3.000 ns EMIF core-user/low-rate PHY operating point",
+    "both DDR banks",
+    "clock/interface contract",
+    "PR/static boundaries"
+  ],
+  "not_a_gate": "Full production CPA equation reconstruction is not required before evaluating a later supported physical experiment.",
+  "ranked_requests": [
+    {
+      "rank": 1,
+      "id": "CPA-POSTFIT-PROPERTIES",
+      "method": "Documented Technology Map Viewer (Post-Fitting), exact primitive Properties: Parameters and Ports; Chip Planner View > Properties for physical identity. Display only, no Assignment/ECO edits or saves.",
+      "contexts": [
+        {
+          "work": "Work23",
+          "tool": "26.1.1 Build130",
+          "original_root": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_23",
+          "provenance": "qualification/fim-build-23/cpa-feedback41/inputs-final.json.gz",
+          "snapshot": "final",
+          "requirement": "new independent completed-netlist copy; do not consume or rerun spent diagnostics"
+        },
+        {
+          "work": "Work21",
+          "tool": "25.1.0 Build129",
+          "original_root": "/home/uwb_student00/ahls/new_BSP/work_ia840f_fim_21",
+          "provenance": "qualification/fim-build-23/cpa-work21-46/inputs-final.json.gz",
+          "snapshot": "final",
+          "requirement": "new independent completed-netlist copy; do not consume or rerun spent diagnostics"
+        }
+      ],
+      "selector": {
+        "cell": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|tile_gen[1].tile_ctrl_inst",
+        "location": "TILECTRL_X172_Y0_N298",
+        "logical_output": "pa_core_clk_out[0]",
+        "core_return": "pa_core_clk_in[0]",
+        "observed_phy_feedback_pin": "pa_fbclk_in[1]",
+        "warning": "Reported downstream physical __core_clk_out[1] is not permission to switch logical output0 to output1."
+      },
+      "parameter_labels": [
+        {
+          "line": 1618,
+          "source_parameter": "u1_0_x0_xio_phase_align_pnr_a_rbpa_phase_offset_0",
+          "source_expression": "12'b0",
+          "generated_value": "0"
+        },
+        {
+          "line": 1620,
+          "source_parameter": "u1_0_x0_xio_phase_align_pnr_a_rbpa_core_control_en_0",
+          "source_expression": "\"core_disable_0\"",
+          "generated_value": "core_disable_0"
+        },
+        {
+          "line": 1622,
+          "source_parameter": "u1_0_x0_xio_phase_align_pnr_a_rbpa_pa_reset_enable",
+          "source_expression": "\"pa_reset_en\"",
+          "generated_value": "pa_reset_en"
+        },
+        {
+          "line": 1623,
+          "source_parameter": "u1_0_x0_xio_phase_align_pnr_a_dprio_base_addr",
+          "source_expression": "9'b000000000",
+          "generated_value": "0"
+        },
+        {
+          "line": 1624,
+          "source_parameter": "u1_0_x0_xio_phase_align_pnr_a_rbpa_filter_code",
+          "source_expression": "`_get_pa_filter_code",
+          "generated_value": "freq_1600"
+        },
+        {
+          "line": 1625,
+          "source_parameter": "u1_0_x0_xio_phase_align_pnr_a_support_dpa",
+          "source_expression": "\"not_support_dpa\"",
+          "generated_value": "not_support_dpa"
+        },
+        {
+          "line": 1627,
+          "source_parameter": "u1_0_x0_xio_phase_align_pnr_a_core_clk0_pll_vco_freq_divide",
+          "source_expression": "`_get_cpa_0_clk_divider",
+          "generated_value": "core_clk0_div4"
+        },
+        {
+          "line": 1628,
+          "source_parameter": "u1_0_x0_xio_phase_adjust_xio_pa_peri_fb_mux_0_a_rbpa_feedback_mux_sel",
+          "source_expression": "(PRI_HMC_CFG_CTRL_ENABLE_RC == \"enable\") ? \"fb1_p_clk\" : \"fb0_p_clk\"",
+          "generated_value": "fb1_p_clk"
+        },
+        {
+          "line": 1632,
+          "source_parameter": "u1_0_x0_xio_phase_align_pnr_a_fb_core_clk0_phy_clk0_freq_divide",
+          "source_expression": "`_get_pa_feedback_divider_p0",
+          "generated_value": "fb_clk0_div1"
+        }
+      ],
+      "label_semantics": "These names come verbatim from generated primitive source and are search/reference labels only, not asserted atom API keys or a claimed UI field schema.",
+      "source_path": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/msa-bank-spreading-integration-01/generation-execution-03/actual-results/work/mem_ss/mem_ss_mem_ss_501_qm5zaka/synth/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_emif_1/altera_emif_arch_fm_191/synth/altera_emif_arch_fm_io_tiles.sv",
+      "ports_to_inspect": [
+        "pa_core_in",
+        "pa_reset_n",
+        "pa_dprio_clk",
+        "pa_dprio_read",
+        "pa_dprio_reg_addr",
+        "pa_dprio_rst_n",
+        "pa_dprio_write",
+        "pa_dprio_writedata"
+      ],
+      "required_record": [
+        "tool/revision/snapshot/device",
+        "selected logical name and physical location",
+        "literal visible parameter name and value",
+        "literal port name/bit and VCC/GND/connected/unconnected status",
+        "per-field status: observed / not_exposed / lookup_unavailable",
+        "any UI-to-source field mapping and why it is justified"
+      ],
+      "decision": "Determine whether CPA output0 programmed divider, feedback selector, offset, filter or control/tie settings differ; distinguish static parameter visibility from dynamic calibration and COMP modeling.",
+      "stop_conditions": [
+        "If UI or exact primitive is unavailable, record that limitation; do not substitute RTL Viewer or post-mapping values.",
+        "If a source-spelled field is not exposed, record not_exposed rather than zero/absent hardware.",
+        "No guessed get_atom_node_info keys, binary configuration decoding, wider fanout sweeps, hardware or refit."
+      ],
+      "documentation": "https://docs.altera.com/r/docs/683641/25.3.1/quartus-prime-pro-edition-user-guide/design-floorplan-analysis-in-chip-planner §§3.4, 3.5.2, 7.2.2; actual 26.1.1 hard-atom exposure unverified"
+    },
+    {
+      "rank": 2,
+      "id": "PLL-UNREPORTED-DETAILS",
+      "conditional": "Only if the remaining detail matters after CPA properties, and the documented viewer exposes these fields; reuse the same paired copied final databases.",
+      "selector": {
+        "cell": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|pll_inst|pll_inst",
+        "location": "IOPLL_X172_Y0_N303"
+      },
+      "source_path": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/msa-bank-spreading-integration-01/generation-execution-03/actual-results/work/mem_ss/mem_ss_mem_ss_501_qm5zaka/synth/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_emif_1/altera_emif_arch_fm_191/synth/altera_emif_arch_fm_pll.sv",
+      "parameter_labels": [
+        "ref_buf_dly",
+        "cmp_buf_dly",
+        "lvdsclk_0_coarse_dly",
+        "lvdsclk_0_fine_dly",
+        "loaden_0_coarse_dly",
+        "loaden_0_fine_dly",
+        "lvdsclk_1_coarse_dly",
+        "lvdsclk_1_fine_dly",
+        "loaden_1_coarse_dly",
+        "loaden_1_fine_dly",
+        "refclk_src_mux",
+        "clkin_0_src",
+        "clkin_1_src",
+        "auto_clk_sw_en",
+        "manu_clk_sw_en",
+        "bw_mode",
+        "lock_mode",
+        "uc_channel_base_addr"
+      ],
+      "additional_semantic_fields": [
+        "Charge-pump/filter attributes only if actually exposed, retaining literal property names. Evaluated PLL_CP_SETTING/PLL_BW_CTRL/PLL_BW_SEL are declared but otherwise unreferenced in generated PLL wrapper: they are not evidence of consumed atom settings or API keys."
+      ],
+      "required_record": [
+        "literal parameter labels/values with exposed/unavailable statuses",
+        "relevant displayed constant-port values without interpreting FITTER_INSERTED names as decoded truth tables",
+        "no repeated extraction of already reported nominal C counters/phases unless needed to confirm identity"
+      ],
+      "decision": "Test whether matching Fitter counter/phase tables hide detailed programmed PLL-delay, mux/switchover or calibration configuration differences.",
+      "limits": [
+        "No runtime calibrated value or hardware state can be inferred.",
+        "No replica expansion unless a specific observed dependency requires it.",
+        "No unsupported configuration-bit decoding or repeated unchanged atom-help probes."
+      ]
+    }
+  ],
+  "closed_repeat_requests": [
+    "report_delay_calculation presence/help",
+    "generic atoms package/get_atom_node_info/get_atom_nodes/read_atom_netlist help already captured under26.1.1",
+    "unchanged core/PHY propagation extrema",
+    "QSF assignment echo presented as fitted configuration"
+  ],
+  "verification": {
+    "evidence_index_entries_verified": 14,
+    "evidence_index_declared_count": 14,
+    "bound_generated_source_hashes_verified": 4,
+    "main_pll_field_rows_compared": 58,
+    "main_pll_field_delta": "only literal PLL_CASCADE_IN alias refclk_Duplicate -> refclk_Duplicate_3",
+    "work23_plan_finalize_main_pll_equal": true,
+    "work21_pll_report_stage": "Plan, not independently enumerated final atom settings",
+    "bank1_delay_chain_rows_per_report": 118,
+    "bank1_delay_chain_rows_equal": true,
+    "official_search_fetch_calls": 4
+  }
+}

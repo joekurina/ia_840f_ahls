@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": 1,
+      "url": "https://docs.altera.com/api/khub/maps/oluEHidW2n2DqYqtrU2xEw/attachments/m_7cMGotKMY2xeQeOTz9Ug-oluEHidW2n2DqYqtrU2xEw/content?download=true&locationValue=reader",
+      "title": "Quartus Prime Pro Edition Settings File Reference Manual 26.1.1 PDF",
+      "accessed": "2026-10-01",
+      "quotes": [
+        {
+          "text": "Specifies the Spine Clock (SCLK) wire index to use for the targeted global signal. Each\nclock sector contains 32 SCLK resources, and an allocated global clock tree will use\nthe same SCLK index in each driven clock sector. This is an advanced assignment that\ncan potentially be useful to control global signal routing decisions in cases of global\nresource congestion. When used, this assignment should typically be paired with a\nClock Region assignment to ensure the driven clock sectors are also constrained.",
+          "added": "2026-10-01"
+        },
+        {
+          "text": "Specifies the placement of the clock region of a global signal for floorplanning reasons.\nFor example, a Clock Region assignment can be used to ensure that a certain area of\nthe device has access to a global signal, throughout all future design iterations. A\nClock Region assignment can also be used in cases of congestion involving global\nsignal resources. By specifying a smaller clock region size, the assignment prevents a\nsignal using spine clock and other clock routing resources in the excluded sectors that\nmay be encountering clock-related congestion.\\n\\nFor devices up to and including\nArria 10, this assignment takes as its value the names of those Global, Regional,\nPeriphery or Spine Clock regions. These region names are visible in Chip Planner by\nenabling the appropriate Clock Region layer in the Layers Settings dialog box.\nExamples of valid values include \\\"Regional Clock Region 1\\\" or \\\"Periphery Clock\nRegion 1\\\". When constraining a global signal to a smaller than normal region, for\nexample, to avoid clock congestion, you may specify a clock region of a different type\nthan the global resources being used. For example, a signal with a Global Signal\nassignment of \\\"Global Clock\\\", but a Clock Region assignment of \\\"Regional Clock\nRegion 0\\\", constrains the clock to use global network routing resources, but only to\nthe region covered by Regional Clock Region 0. To provide a finer level of control, you\ncan also list multiple smaller clock regions, separated by commas. For example:\n\\\"Periphery Clock Region 0, Periphery Clock Region 1\\\" constrains a signal to only the\narea reachable by those two periphery clock networks.\\n\\nFor Stratix 10 devices,\nclock regions can be constrained to a rectangle whose dimensions are defined by the\nsector grid, as seen in the Clock Sector Region layer of the Chip Planner. This\nassignment specifies the bottom left and top right coordinates of the rectangle in the\nformat \\\"SX# SY# SX# SY#\\\". For example, \\\"SX0 SY0 SX1 SY1\\\" constrains the clock\nto a 2x2 region, from the bottom left of sector (0,0) to the top right of sector (1,1).\nFor a constraint spanning only one sector, it is sufficient to specify the location of that\nsector, for example \\\"SX1 SY1\\\". The bounding rectangle can also be specified by the\nbottom left and top right corners in chip coordinates, for example, \\\"X37 Y181 X273\nY324\\\". However, such a constraint should be sector aligned (using sector coordinates\nguarantees this) or the Fitter automatically snaps to the smallest sector aligned\nrectangle that still encompasses the original assignment. The \\\"SX# SY# SX# SY#\\\"|\n\\\"X# Y# X# Y#\\\" strings are case-insensitive.",
+          "added": "2026-10-01"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "url": "https://docs.altera.com/r/docs/683761/current",
+      "title": "1. Agilex® 7 FPGA F-Series and I-Series Clocking and PLL Overview • Agilex® 7 Clocking and PLL User Guide • Altera Documentation and Resources Center",
+      "accessed": "2026-10-01",
+      "quotes": [
+        {
+          "text": "By default, the\nQuartus® Prime software automatically determines the size\nand location of the clock tree. Alternatively, you can directly constrain the clock\ntree size and location by using either a Clock Region Assignment or Logic Lock\nRegions.",
+          "added": "2026-10-01"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "url": "https://www.intel.com/content/www/us/en/docs/programmable/683641/23-3/creating-clock-region-assignments-in.html",
+      "title": "Quartus Prime Pro Edition User Guide: Design Optimization (redirected to 25.3.1)",
+      "accessed": "2026-10-01",
+      "quotes": [
+        {
+          "text": "You can constrain clock regions to a rectangle whose dimensions are defined by\nthe sector grid, as seen in the Clock Sector Region layer of\nthe Chip Planner.",
+          "added": "2026-10-01"
+        }
+      ]
+    }
+  ]
+}

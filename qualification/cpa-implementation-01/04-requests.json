@@ -1,0 +1,108 @@
+{
+  "lane": "04-emif-controls",
+  "model_substitution": "GPT-6 / openai-codex substituted for unavailable GLM5.3",
+  "status": "research complete with bounded schema gap; no implementation authorization",
+  "report": "qualification/cpa-implementation-01/04-emif-controls.md",
+  "requests": [
+    {
+      "id": "R04-1",
+      "priority": "bounded documentation discriminator; not a mandatory gate for other supported physical remedies",
+      "kind": "parent-only ordinary installed-file read",
+      "question": "For the actual altera_emif_fm 2.8.0 Agilex 7 F-Series leaf under Quartus 26.1.1 Build130, which General/Clocks controls are publicly exposed, and what selected-device legal lists/ranges and callback restrictions apply? Confirm hidden HRC/core-clock-sharing fields are not silently being promoted into user controls.",
+      "seed_path": "/opt/altera/26.1.1/ip/altera/emif/hwtcl/altera_emif_fm/altera_emif_fm_hw.tcl",
+      "seed_path_provenance": {
+        "local_file": "qualification/msa-bank-spreading-integration-01/generation-execution-03/actual-results/work/mem_ss/mem_ss_mem_ss_501_qm5zaka/synth/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_emif_1/mem_ss_mem_ss_501_qm5zaka_emif_1.xml",
+        "local_sha256": "13c09eef6ac83ecc469807dd5c6ef3b57cb4a5cac29aab384d9320581c5ca4ca",
+        "xpath": "deploy/entity[@kind='altera_emif_fm']/sourceFiles/file/@path",
+        "caveat": "Retained 26.1.1 deployment XML, not byte-identical Work22 XML. Exact path was observed, not guessed. Actual Work22 SOPCINFO and matching RTL independently establish component identity."
+      },
+      "follow_includes_only_when_named_by_seed": true,
+      "finite_limits": {
+        "maximum_files_including_seed": 6,
+        "maximum_total_bytes": 2097152,
+        "recursive_installation_search": false
+      },
+      "requested_static_content": [
+        "Seed component declaration plus the directly named definition/GUI/callback files that supply the parameter allowlist below; preserve full paths, line numbers, hashes and source edges.",
+        "ALLOWED_RANGES, DERIVED, VISIBLE, ENABLED and family/protocol/part-dependent filtering for memory frequency, user rate, reference frequency and extra outputs. Return unresolved evaluated predicates explicitly rather than executing callbacks.",
+        "Exact provider paths for FEATURE_FMIN_MHZ, FEATURE_FMAX_MHZ, FAMILY_TRAIT_PLL_PFD_FMIN_MHZ, FAMILY_TRAIT_PLL_PFD_FMAX_MHZ and check_device_supports_rc if they cannot be established within the six-file cap.",
+        "Any documented exposed same-contract control that can reach CPA output0, its PHY reference selection, or C2P interface register mode. Hidden diagnostic parsing or successful parameter serialization alone does not qualify."
+      ],
+      "parameter_allowlist": [
+        "PHY_DDR4_MEM_CLK_FREQ_MHZ",
+        "PHY_DDR4_RATE_ENUM",
+        "PHY_DDR4_DEFAULT_REF_CLK_FREQ",
+        "PHY_DDR4_USER_REF_CLK_FREQ_MHZ",
+        "PHY_DDR4_REF_CLK_JITTER_PS",
+        "PLL_ADD_EXTRA_CLKS",
+        "PLL_USER_NUM_OF_EXTRA_CLKS",
+        "PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_5",
+        "PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_5",
+        "PHY_DDR4_CORE_CLKS_SHARING_ENUM",
+        "PHY_DDR4_CORE_CLKS_SHARING_EXPOSE_SLAVE_OUT",
+        "DIAG_HMC_HRC",
+        "DIAG_ADD_READY_PIPELINE",
+        "DIAG_EXTRA_CONFIGS"
+      ],
+      "existing_source_to_reuse": "qualification/emif-hold-objective-01/source03.json.gz already contains ip_arch_fm/{main,pll,ddr4,ddrx,protocol_expert}.tcl and ip_top/diag.tcl; do not recollect these simply to repeat this report.",
+      "not_requested": [
+        "SSH by subagent",
+        "vendor/native commands",
+        "component load/save or validation",
+        "IP regeneration",
+        "refit",
+        "source/script/test execution",
+        "hardware access",
+        "generated RTL or SDC edits"
+      ],
+      "completion_rule": "Stop when schema yields supported legal options or a precise unsupported/unresolved result. This request does not authorize a candidate and does not impose full CPA model reconstruction."
+    }
+  ],
+  "verified_local_evidence": {
+    "saved_mem_ss_ip_sha256": "58b2409deb345a56a34b557d735d532d9b61b93b4a58c9dce2c5ab26f02e45c4",
+    "saved_mem_ss_ip_matches_work22_critical_input": true,
+    "work22_metadata_archive": "qualification/fim-build-22/metadata18-result.json.gz",
+    "work22_metadata_archive_sha256": "c799a1ff562a40a1f85919876c1374ca0e93b7bd3dd5d6704af784f2b0cef7ae",
+    "work22_emif1_sopcinfo_member": "ipss/mem/qip/mem_ss/mem_ss/mem_ss_mem_ss_501_qm5zaka/synth/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_emif_1/mem_ss_mem_ss_501_qm5zaka_emif_1.sopcinfo",
+    "work22_emif1_sopcinfo_sha256": "04e99b9e3904874c584ab5496d3bbe10ca880f124360083587611b927bba63a0",
+    "retained_sopcinfo_difference": "One generation-date XML comment only; complete leaf and architecture parameter element serializations match",
+    "matched_parameter_records": {
+      "emif_1": 2344,
+      "emif_1_arch": 4088
+    },
+    "rtl_inventory_checks": [
+      {
+        "file": "qualification/msa-bank-spreading-integration-01/generation-execution-03/actual-results/work/mem_ss/mem_ss_mem_ss_501_qm5zaka/synth/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_emif_1/altera_emif_arch_fm_191/synth/altera_emif_arch_fm_io_tiles.sv",
+        "sha256": "f642fb874d1a44ba6620e233e4d2800bd0f7148e32fad9be5e63435922ed959c",
+        "work22_sha256": "f642fb874d1a44ba6620e233e4d2800bd0f7148e32fad9be5e63435922ed959c",
+        "matches": true
+      },
+      {
+        "file": "qualification/msa-bank-spreading-integration-01/generation-execution-03/actual-results/work/mem_ss/mem_ss_mem_ss_501_qm5zaka/synth/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_emif_1/altera_emif_arch_fm_191/synth/altera_emif_arch_fm_core_clks_rsts.sv",
+        "sha256": "09ca701cf12fc7b1a0130b986747b9dacf82cfb2b366e883f1ec9563e5a0ab11",
+        "work22_sha256": "09ca701cf12fc7b1a0130b986747b9dacf82cfb2b366e883f1ec9563e5a0ab11",
+        "matches": true
+      },
+      {
+        "file": "qualification/msa-bank-spreading-integration-01/generation-execution-03/actual-results/work/mem_ss/mem_ss_mem_ss_501_qm5zaka/synth/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_emif_1/altera_emif_arch_fm_191/synth/altera_emif_arch_fm_pll.sv",
+        "sha256": "411874e8674ca4f3959259cc0f7ac76a7c3c302b913fb0825e0efc8e40aafeec",
+        "work22_sha256": "411874e8674ca4f3959259cc0f7ac76a7c3c302b913fb0825e0efc8e40aafeec",
+        "matches": true
+      },
+      {
+        "file": "qualification/msa-bank-spreading-integration-01/generation-execution-03/actual-results/work/mem_ss/mem_ss_mem_ss_501_qm5zaka/synth/ip/mem_ss_mem_ss_501_qm5zaka/mem_ss_mem_ss_501_qm5zaka_emif_1/altera_emif_fm_280/synth/mem_ss_mem_ss_501_qm5zaka_emif_1_altera_emif_fm_280_gdk3rhy.v",
+        "sha256": "9a8787b141b8e09af6a24d495a82481314da7f5e0429d7b022bd85dae6598e26",
+        "work22_sha256": "9a8787b141b8e09af6a24d495a82481314da7f5e0429d7b022bd85dae6598e26",
+        "matches": true
+      }
+    ],
+    "installed_source_archive": "qualification/emif-hold-objective-01/source03.json.gz",
+    "installed_source_archive_sha256": "5bf86f3cef9684193883c0766dd3b5011968b91ad554cac0a7a0fb144efaa151",
+    "installed_member_hashes_verified": 42
+  },
+  "official_retrieval_counts": {
+    "targeted_searches": 4,
+    "primary_fetches": 1
+  },
+  "outside_scope_writes_or_execution": false
+}

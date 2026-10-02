@@ -1,0 +1,253 @@
+{
+  "schema": "cpa-clock-controls-requests-01",
+  "lane": "03-clock-controls",
+  "model": "GPT-6 / openai-codex; substitution for unavailable GLM5.3",
+  "scope": "Research requests only. No implementation, refit, native execution, project opening, source mutation, hardware, SSH or vendor contact authorized by this file.",
+  "parent_only_remote": true,
+  "baseline": {
+    "part": "AGFB027R25A2E2V",
+    "tool": "Quartus Pro 26.1.1 Build130",
+    "global_signal_target": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|core_clks_from_cpa_pri_nonabphy[0]",
+    "launch_register": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|hmc.amm.amm.data_if_inst|amm_writedata_0_r[0][243]",
+    "pll_instance": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|pll_inst|pll_inst",
+    "pr_region": "afu_top|pg_afu.port_gasket|pr_slot|afu_main",
+    "work23_clock_region": "SX0 SY0 SX6 SY7",
+    "work23_terminating_spine_index": 1,
+    "work21_clock_region": "SX0 SY0 SX6 SY7",
+    "work21_terminating_spine_index": 2,
+    "source_evidence": "Native Fitter Place-stage Global & Other Fast Signals Details, Work23 lines31195-31211 and Work21 lines31118-31133; generated io_tiles.sv output declaration line879 and assignment line1117.",
+    "limit": "Stage summary, not complete final routing or source-assignment consumption. Current spine2 also appears on PCIe clock nets in sectors(0,1) and(0,3)."
+  },
+  "requests": [
+    {
+      "id": "03-R1",
+      "priority": "high but deduplicate against lane01",
+      "kind": "finite installed metadata/default clarification",
+      "reason": "Resolve exact installed scope/legal values and missing defaults without treating generic metadata or default readback as effective fitted settings.",
+      "names": [
+        "CLOCK_SPINE",
+        "CLOCK_REGION",
+        "GLOBAL_SIGNAL",
+        "GLOBAL_SIGNAL_PROMOTION_FANOUT_THRESHOLD",
+        "AUTO_GLOBAL_CLOCK"
+      ],
+      "metadata_calls": [
+        "puts [get_assignment_name_info CLOCK_SPINE]",
+        "puts [get_assignment_name_info CLOCK_REGION]",
+        "puts [get_assignment_name_info GLOBAL_SIGNAL]",
+        "puts [get_assignment_name_info GLOBAL_SIGNAL_PROMOTION_FANOUT_THRESHOLD]",
+        "puts [get_assignment_name_info AUTO_GLOBAL_CLOCK]"
+      ],
+      "type_membership_calls": [
+        "get_all_assignment_names -family {Agilex 7} -module fit -type instance",
+        "get_all_assignment_names -family {Agilex 7} -module fit -type global"
+      ],
+      "type_membership_output_filter": "Retain only membership for the five exact names; frozen untyped family/fitter membership already exists and need not be rediscovered.",
+      "default_calls": [
+        "get_all_assignments -type default -name CLOCK_SPINE",
+        "get_all_assignments -type default -name CLOCK_REGION",
+        "get_all_assignments -type default -name GLOBAL_SIGNAL",
+        "get_all_assignments -type default -name GLOBAL_SIGNAL_PROMOTION_FANOUT_THRESHOLD",
+        "get_all_assignments -type default -name AUTO_GLOBAL_CLOCK"
+      ],
+      "default_readout": "Use documented foreach_in_collection and get_assignment_info -name/-value/-entity/-section_id/-to/-from as applicable; preserve an empty collection as missing/default-unavailable, not zero or OFF.",
+      "preferred_source": "Existing captured ordinary-file assignment_defaults.qdf/metadata first; otherwise parent chooses a separately reviewed bounded native process. These call fragments do not authorize project_open/project_new or use of live WORK.",
+      "bounds": {
+        "exact_assignment_names": 5,
+        "native_execution_by_child": false,
+        "full_design_fanout": false,
+        "max_requested_output_bytes": 65536
+      },
+      "not_required_for": "Reconstructing the CPA equation, proving timing benefit, or repeating family presence already established. Same-release manual already documents spine0-31 and the proposed value2."
+    },
+    {
+      "id": "03-R2",
+      "priority": "high if evaluating a future spine trial; deduplicate against lanes01/02",
+      "kind": "existing assignment and preservation evidence",
+      "target": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|core_clks_from_cpa_pri_nonabphy[0]",
+      "names": [
+        "CLOCK_SPINE",
+        "CLOCK_REGION",
+        "GLOBAL_SIGNAL"
+      ],
+      "requested_evidence": [
+        "Exact active assignment tuples and source file/entity/section for these three names affecting A, including inherited vendor or preservation entries if available from captured reports/files.",
+        "Relevant ignored/illegal-assignment records, and whether A is constrained by imported/preserved static routing; absence of a QSF line is not an effective OFF/default conclusion.",
+        "Preserve current root ownership and full-device region; reuse existing frozen native rows and current PR boundary panels rather than unbounded netlist fanout."
+      ],
+      "optional_documented_qsf_queries": [
+        "get_all_assignments -type instance -name CLOCK_SPINE -to {local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|core_clks_from_cpa_pri_nonabphy[0]}",
+        "get_all_assignments -type instance -name CLOCK_REGION -to {local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|core_clks_from_cpa_pri_nonabphy[0]}",
+        "get_all_assignments -type instance -name GLOBAL_SIGNAL -to {local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|core_clks_from_cpa_pri_nonabphy[0]}"
+      ],
+      "query_limit": "QSF/QDF APIs read requested assignments, not effective Fitter consumption or complete inherited restrictions. No guessed atom keys or undocumented report options.",
+      "stop_condition": "If no further captured evidence exists, record that precise gap. Do not insist on a complete production CPA equation before considering an independently authorized supported physical trial."
+    }
+  ],
+  "future_experiment_not_authorized": {
+    "id": "03-E1",
+    "meaningful_physical_dimension": "SCLK index selection",
+    "setting": {
+      "name": "CLOCK_SPINE",
+      "assignment_type": "instance",
+      "target": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|core_clks_from_cpa_pri_nonabphy[0]",
+      "value": 2
+    },
+    "region_invariant": {
+      "name": "CLOCK_REGION",
+      "target": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|core_clks_from_cpa_pri_nonabphy[0]",
+      "value": "SX0 SY0 SX6 SY7"
+    },
+    "companion_note": "Manual typically recommends pairing CLOCK_SPINE with CLOCK_REGION. If the exact current rectangle is not explicitly assigned, adding it is a second assignment record and must be disclosed; it is not a region-shrink experiment.",
+    "prerequisites": "Parent scope decision and existing experiment/safety packaging; exact target applicability and source-preservation review. No launch or implementation in this lane.",
+    "retain": [
+      "OFS2026.1",
+      "Quartus26.1.1 Build130",
+      "AGFB027R25A2E2V",
+      "both DDR banks",
+      "EMIF3ns clock/interface relationship",
+      "PR/static boundaries and clock access",
+      "existing effort, retiming and signoff settings"
+    ],
+    "known_collateral_risk": "Spine2 is currently used by PCIe clocks at sectors(0,1) and(0,3); global reallocation may be necessary or fitting may reject. No automatic escalation to another index or geometry change.",
+    "readback_acceptance": [
+      "Completed fit shows A/source at requested spine2 and unchanged region/ownership; no ignored/illegal assignment.",
+      "Exact bit243 full all-corner signoff and complete CPA/launch/data/capture comparison, including the failing Fast vid2 100C path.",
+      "Both DDR banks, collateral clock timing and PR boundaries remain within retained acceptance requirements; successful fit/changed COMP alone is not timing closure."
+    ],
+    "hypothesis_only": "Changes physical routing/feedback distribution without intentionally changing nominal frequency or phase. Direction/magnitude of slack change are unknown; older spine2 pass does not establish causation."
+  },
+  "source_ledger": {
+    "4": {
+      "url": "https://docs.altera.com/r/docs/683761/current",
+      "retrieval": "retrieved",
+      "title": "1. Agilex® 7 FPGA F-Series and I-Series Clocking and PLL Overview • Agilex® 7 Clocking and PLL User Guide • Altera Documentation and Resources Center",
+      "cache_files": [
+        "/home/joe/.hermes/cache/web/docs.altera.com-66f1486970.md"
+      ],
+      "evidence": [
+        {
+          "section": "2.1.1.3 Programmable Clock Routing",
+          "quote": "By default, the\nQuartus® Prime software automatically determines the size\nand location of the clock tree. Alternatively, you can directly constrain the clock\ntree size and location by using either a Clock Region Assignment or Logic Lock\nRegions."
+        }
+      ],
+      "cache_sha256": "7e718bc884a70f4878adb493ea34f3a5cd13b65040ad42f9a092a1ad30302807"
+    },
+    "5": {
+      "url": "https://docs.altera.com/api/khub/maps/oluEHidW2n2DqYqtrU2xEw/attachments/m_7cMGotKMY2xeQeOTz9Ug-oluEHidW2n2DqYqtrU2xEw/content?download=true&locationValue=reader",
+      "title": "Quartus Prime Pro Edition Settings File Reference Manual 26.1.1 PDF",
+      "retrieval": "retrieved",
+      "cache_files": [
+        "/home/joe/.hermes/cache/web/docs.altera.com-1a4887cdd2.md"
+      ],
+      "evidence": [
+        {
+          "section": "CLOCK_REGION",
+          "quote": "Specifies the placement of the clock region of a global signal for floorplanning reasons.\nFor example, a Clock Region assignment can be used to ensure that a certain area of\nthe device has access to a global signal, throughout all future design iterations. A\nClock Region assignment can also be used in cases of congestion involving global\nsignal resources. By specifying a smaller clock region size, the assignment prevents a\nsignal using spine clock and other clock routing resources in the excluded sectors that\nmay be encountering clock-related congestion.\\n\\nFor devices up to and including\nArria 10, this assignment takes as its value the names of those Global, Regional,\nPeriphery or Spine Clock regions. These region names are visible in Chip Planner by\nenabling the appropriate Clock Region layer in the Layers Settings dialog box.\nExamples of valid values include \\\"Regional Clock Region 1\\\" or \\\"Periphery Clock\nRegion 1\\\". When constraining a global signal to a smaller than normal region, for\nexample, to avoid clock congestion, you may specify a clock region of a different type\nthan the global resources being used. For example, a signal with a Global Signal\nassignment of \\\"Global Clock\\\", but a Clock Region assignment of \\\"Regional Clock\nRegion 0\\\", constrains the clock to use global network routing resources, but only to\nthe region covered by Regional Clock Region 0. To provide a finer level of control, you\ncan also list multiple smaller clock regions, separated by commas. For example:\n\\\"Periphery Clock Region 0, Periphery Clock Region 1\\\" constrains a signal to only the\narea reachable by those two periphery clock networks.\\n\\nFor Stratix 10 devices,\nclock regions can be constrained to a rectangle whose dimensions are defined by the\nsector grid, as seen in the Clock Sector Region layer of the Chip Planner. This\nassignment specifies the bottom left and top right coordinates of the rectangle in the\nformat \\\"SX# SY# SX# SY#\\\". For example, \\\"SX0 SY0 SX1 SY1\\\" constrains the clock\nto a 2x2 region, from the bottom left of sector (0,0) to the top right of sector (1,1).\nFor a constraint spanning only one sector, it is sufficient to specify the location of that\nsector, for example \\\"SX1 SY1\\\". The bounding rectangle can also be specified by the\nbottom left and top right corners in chip coordinates, for example, \\\"X37 Y181 X273\nY324\\\". However, such a constraint should be sector aligned (using sector coordinates\nguarantees this) or the Fitter automatically snaps to the smallest sector aligned\nrectangle that still encompasses the original assignment. The \\\"SX# SY# SX# SY#\\\"|\n\\\"X# Y# X# Y#\\\" strings are case-insensitive."
+        },
+        {
+          "section": "CLOCK_SPINE",
+          "quote": "Specifies the Spine Clock (SCLK) wire index to use for the targeted global signal. Each\nclock sector contains 32 SCLK resources, and an allocated global clock tree will use\nthe same SCLK index in each driven clock sector. This is an advanced assignment that\ncan potentially be useful to control global signal routing decisions in cases of global\nresource congestion. When used, this assignment should typically be paired with a\nClock Region assignment to ensure the driven clock sectors are also constrained."
+        },
+        {
+          "section": "GLOBAL_SIGNAL",
+          "quote": "Specifies whether the signal should be routed using global routing paths. Global\nsignals can be both pin- and logic-driven, and can be any signal in the design. In Arria\n10 and Cyclone 10 GX devices, setting this option for a pin or a single-output logic\nfunction signal is equivalent to feeding the signal through a GLOBAL buffer of the\nspecified type. In all other families, the buffer type is not specified. Rather, a setting of\n\\\"On\\\" specifies that the signal must use global routing to route to all destinations (or\nspecified subset). Alternatively, a setting of \\\"On - Auto Promote Fanout\\\" on the\nsource specifies that global routing must be used for all destinations, except those\nthat the fitter would normally not consider automatically. In all families, turning this\noption off for a particular signal will prevent any of the Auto Global options from using\nthe signal as an automatic global signal."
+        },
+        {
+          "section": "GLOBAL_SIGNAL_PROMOTION_FANOUT_THRESHOLD",
+          "quote": "This option specifies the minimum fan-out required for a signal to be considered for\nautomatic global signal promotion. Specifying a higher value may reduce the number\nof signals allocated to the global clock network, reducing congestion. Note that in\nPartial Reconfiguration compilations the Fitter adjusts the default value of this setting\nto 500 fan-out."
+        },
+        {
+          "section": "AUTO_GLOBAL_CLOCK",
+          "quote": "Allows the Compiler to choose the signal that feeds the most clock inputs to flipflops\nas a global clock signal that is made available throughout the device on the global\nrouting paths. If you want to prevent the Compiler from automatically selecting a\nparticular signal as global clock, set the Global Signal option to 'Off' on that signal."
+        },
+        {
+          "section": "ALLOW_ROUTING_TO_PERIPHERY_THROUGH_GLOBAL_NETWORK",
+          "quote": "Specifies that a signal can be routed from an IO pin to periphery destinations using\nglobal routing paths. This allows the router to consider global and non-global routing\npaths and does not guarantee that a signal will be routed using global routing paths.\nAdditionally, this will not route the signal to its destinations in a skew balanced\nmanner."
+        },
+        {
+          "section": "PLL_COMPENSATION_MODE",
+          "quote": "Specifies the routing path of the PLL feedback clock and adjusts the delay chains in\nthe PLL."
+        },
+        {
+          "section": "MATCH_PLL_COMPENSATION_CLOCK",
+          "quote": "Allows you to specify a PLL output clock feeding a clock network as a compensation\ntarget for a PLL in NORMAL or SOURCE_SYNCHRONOUS mode. This configures the PLL\nto match its feedback path to the target's clock network. This option is ignored if it is\napplied to anything other than a PLL output clock."
+        },
+        {
+          "section": "PLL_OPTIMIZE_PHASE_SHIFT_FOR_TIMING",
+          "quote": "Allows the Fitter to set the phase shift of a PLL output counter, and hence the phase\nshift of its generated clock, to improve timing for all edges affected by this clock.\nApply multicycle timing exceptions to paths between the generated clock and other\nclocks in the design to avoid timing violations."
+        },
+        {
+          "section": "PACKAGE_SKEW_COMPENSATION",
+          "quote": "Indicates that that the package skew for the signal has been compensated by the board trace delays. **Type** Boolean **Device Support**"
+        },
+        {
+          "section": "PLL_EXTERNAL_FEEDBACK_BOARD_DELAY",
+          "quote": "Specifies an external board delay between a feedback output pin and a feedback input\npin (fbin) for a PLL in external feedback mode. This option is ignored if it is assigned\nto anything other than the fbin pin of a PLL."
+        },
+        {
+          "section": "CUT_OFF_IO_PIN_FEEDBACK",
+          "quote": "Cuts off feedback from I/O pins during timing analysis. Cutting off I/O pin feedback is\nespecially useful when a bidirectional pin is connected directly or indirectly to both the\ninput and the output of a latch. This type of feedback path is continuous because it is\nnot interrupted by any clocked logic primitives."
+        },
+        {
+          "section": "PLACE_REGION",
+          "quote": "Specifies the target and bounding boxes of a placement region. **Type** String **Device Support**"
+        },
+        {
+          "section": "ROUTE_REGION",
+          "quote": "Specifies the target and bounding boxes of a routing region. **Type** String **Device Support**"
+        },
+        {
+          "section": "LOCATION",
+          "quote": "Assigns a location on the device for the current node(s) and/or pin(s). **Type** Location **Device Support**"
+        }
+      ],
+      "cache_sha256": "e7791a86941122e83762d232fcbe0f0a7d9ea6bc64e07e0b6190c490d011142c"
+    },
+    "6": {
+      "url": "https://www.intel.com/content/www/us/en/docs/programmable/683641/23-3/creating-clock-region-assignments-in.html",
+      "title": "Quartus Prime Pro Edition User Guide: Design Optimization (redirected to 25.3.1)",
+      "retrieval": "retrieved redirected full book",
+      "cache_files": [
+        "/home/joe/.hermes/cache/web/www.intel.com-564e18f5f4.md"
+      ],
+      "evidence": [
+        {
+          "section": "7.6 Creating Clock Region Assignments",
+          "quote": "You can constrain clock regions to a rectangle whose dimensions are defined by\nthe sector grid, as seen in the Clock Sector Region layer of\nthe Chip Planner."
+        },
+        {
+          "section": "7.7.1 Creating Logic Lock Assignments",
+          "quote": "All instances with a routing region assignment must have a respective placement\nregion; the routing region must fully contain the placement region."
+        }
+      ],
+      "cache_sha256": "53932f52b1ee4f08678e40f0928655b891502faeaeb2f6e61bbf3d17764153a8"
+    }
+  },
+  "retrieval_limits": {
+    "official_searches": 4,
+    "primary_fetch_attempts": 6,
+    "budget_per_kind": 8,
+    "issues": [
+      "Intel Global Signal and Clock Spine links redirected to the reference-manual root; recovered official26.1.1 PDF attachment.",
+      "Clock Region individual-page fetch returned504 timeout.",
+      "Clocking guide is24.1 and Design Optimization guide25.3.1, not26.1.1.",
+      "Some PDF default-value text is incomplete; no numeric/Boolean default was guessed."
+    ],
+    "citation_method": "Scoped in-memory ledger with exact-quote verification; no citation helper/source script executed and no additional ledger file written."
+  },
+  "verification": {
+    "pinned_evidence_files_declared": 14,
+    "pinned_evidence_files_verified": 14,
+    "matrix_candidates": 17,
+    "cited_source_ids": [
+      4,
+      5,
+      6
+    ],
+    "exact_external_quotes_verified": 18,
+    "work21_fit_sha256": "e2dc82d95bf5e0fe0ae7b210850a4a5565ba694dff5a1158928b8086cac5aded",
+    "report_sha256": "9e2f8f158cedad9c4e7748fbd11fe75393f65e2a05335c0306321a1f29b3a417",
+    "no_child_native_or_source_execution": true
+  }
+}

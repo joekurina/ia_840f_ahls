@@ -1,0 +1,50 @@
+# Effective fitted CPA/clock settings — EMIF1
+
+**Outcome:** the retained implementation reports already establish more PLL configuration than the generated RTL alone: the main EMIF1 PLL's reported mode, counters, phases and presets agree between Work21 and Work23. **The CPA's own mux/divider/offset/filter/control fields remain unread.** A single post-fitting primitive Properties inspection is the smallest documented next extraction route; another fit, feedback-delay sweep or repeated atom-help probe is not justified.
+
+Reviewer: **gpt-6-astra-900k / openai-codex**, substituting for unavailable GLM5.3. Local inspection only; no native tools, source scripts/tests, SSH, source changes or hardware. Preserve the 3.000 ns EMIF operating point, both DDRs, clocks and PR/static boundaries. This is not the scalar AFU's clock: it uses 156.25 MHz userDiv2. Full CPA-equation reconstruction is **not** imposed as a prerequisite to evaluating a later supported physical experiment.
+
+## Evidence matrix
+
+References below use the file aliases defined at the end. “Observed” means the named native report or fitted-netlist observation, not runtime silicon state.
+
+| Setting | Generated/requested evidence | Actually observed; remaining limit |
+|---|---|---|
+| EMIF1 PLL reference, mode, M/N | Gpll:396–409 requests direct feedback/high bandwidth; Geval:1699–1726 supplies 30000 ps reference, 750 ps VCO, M high/low 20/20, N bypass. | F23:40471–40489 reports **IOPLL_X172_Y0_N303, direct, High, M40/N1, 30000/750 ps**; F21:6742–6760 agrees. Both replicas also report direct/M40/N1/750 ps at X185 and X227 (F23:40631–40669; F21:6902–6940). These are PLL settings, not CPA compensation settings. |
+| Main PLL output counters and phase presets | Geval:1727–1783 supplies C0–C4's counter, period, phase and duty parameters. | F23:40490–40529 and F21:6761–6800 agree: **C=4/2/4/2/4**, periods **3000/1500/3000/1500/3000 ps**, each **phase 0 ps, duty 50, odd-divider-even-duty Off, PH Mux PRST 0, PRST 1**. Replica blocks omit output-counter rows; omission does not prove absent counters. |
+| CPA output0 and feedback dividers | Gtile:183–205,1627–1632 with Geval:83–84,1700 evaluates to **core_clk0_div4 / fb_clk0_div1**. | T23:2730,2734 corroborates generated-clock divide-by-4 and 3.000 ns core-user/low-rate PHY periods. That is the final timing clock definition, **not a readback of the CPA divider properties**. |
+| CPA feedback mux | Gtile:1628 selects **fb1_p_clk** because rate conversion is enabled (Geval:572). `CPA_FB_MUX_1_SEL="local_p_clk"` concerns output1, not output0. | B23:11–22 resolves output0, return0 and **pa_fbclk_in[1]**; paired PHY paths reach that input. This corroborates connectivity, not the internal selector value. Inputs0/2 were unavailable in that queried view, not proved physically absent. |
+| CPA phase, filter and core control | Gtile:1618–1625 requests both offsets zero, core controls disabled, **pa_reset_en**, filter **freq_1600**, **not_support_dpa**; filter macro at354. | No corresponding parameter-value readback in F23/F21 or A23. Final COMP **−2.208→−2.292 ns** is a timing-model result, not a decoded offset setting (feedback-review52:43–49). A zero requested offset does not imply zero loop compensation. |
+| External CPA control/reset and configuration access | Gtile:1716–1723 ties `pa_core_in` to zero and, with abstract PHY disabled, `pa_reset_n` high. Geval:2070–2077 terminates CPA DPRIO clock/read/reset/write/address/data low. | Effective **port constants and configuration enables are unavailable**. A separately fitted **PLL** `dprio_tieoff…FITTER_INSERTED_0` at MLABCELL_X171_Y4_N6 exists in both reports (F23:31893–31907; F21:31699–31713); its name/fanout is neither a decoded truth table nor proof about CPA DPRIO. |
+| Calibration/analog implementation | Gpll:380–391 requests zero buffer/LVDS coarse/fine delays; 408–414 requests high bandwidth/low-lock-time and calibration channel base0. Geval:1724–1726 carries charge-pump/resistor enums, but Gpll only declares those three wrapper parameters (47–49); no further references forward them. | Fitter exposes High bandwidth and its reported range, **not those detailed programmed fields or calibrated runtime values**. Generated sequencer HEX is an input artifact, not post-fit calibration readback. No hardware calibration state was acquired or requested. |
+| Physical clock ownership | Generated core RTL explicitly allows inserted clock buffers (Gcore:422–435). | F23:31195–31207 identifies the CPA source at **TILECTRL_X172_Y0_N298**, mandatory promotion and **root_partition** ownership. F21:31118–31129 agrees on those fields. This is actual implementation metadata; geometry differences belong to lane02, not evidence of a mux/phase setting change. |
+
+**Stage precision:** Work23 has identical 58-field main-PLL blocks in Plan and Finalize. Comparing its Finalize block with Work21's retained **Plan** block changes only the literal cascade-source alias `refclk_Duplicate`→`refclk_Duplicate_3`. Work21's Finalize report has no PLL panel; therefore this is not an independently read Work21 final-atom parameter dump.
+
+## What other retained metadata can—and cannot—settle
+
+F23's contents enumerate PLL, global-clock, delay-chain and ordinary settings panels, but no CPA parameter panel. Literal CPA/internal-field searches did not find such rows; absence from these reports is not absence from the implementation database. A23:155–196 proves final-database loading and successful assembly, then lists programming artifacts. Its settings/device-option tables do not expose per-CPA configuration.
+
+The complete **118 bank1 Delay Chain Summary rows** agree between F21/F23. For example, DQ48–55 report IO_12_LANE **input-data** delay-chain value125 and output/OE0 (F21:38846–38853; F23:38978–38985). These are useful fitted fields, but not a CPA offset or a writable 125 ps remedy. No unsupported configuration-bit decoding was attempted.
+
+Independently checked all **14/14** evidence-index sizes/hashes and the four generated-source hashes in `reviews-consumed36.json`. No broader archive revalidation is claimed.
+
+## Smallest supported extraction and ranked gaps
+
+**1. One CPA primitive, paired final databases.** Public Pro documentation explicitly offers Technology Map Viewer **Post-Fitting**, then node **Properties → Parameters** (names/values), **Ports** (VCC/GND/connected/unconnected), and Fan-in/Fan-out. Chip Planner **View → Properties** provides physical-object identity.[D] Inspect only the exact EMIF1 `tile_gen[1].tile_ctrl_inst` at TILECTRL_X172_Y0_N298 in independent Work23/26.1.1 and Work21/25.1 copies. Capture the source-listed CPA fields and control-port ties, retaining literal displayed names. This can distinguish different programmed mux/divider/offset/filter/control settings from equal visible settings without reconstructing COMP. **Public UI support is established; this hard atom's exact field exposure in 26.1.1 is not.** Mark an unlisted field “not exposed,” never zero. No Assignment/ECO changes or saves.
+
+**2. One associated PLL, only for unreported fields.** Inspect `…|pll_inst|pll_inst` at IOPLL_X172_Y0_N303 for the buffer/LVDS delay, reference-selector/switchover, charge-pump/filter and calibration-enable/address fields absent from the existing PLL report. Record constants separately from parameter values. Do not query replicas or the whole chip by default. This tests whether equal nominal counter/phase tables hide a detailed configuration difference; it cannot recover runtime calibration history.
+
+The exact selectors, source-spelled field labels and decision/stop conditions are in `01-requests.json`. These labels are **not proposed atom API keys**.
+
+No verified scripted CPA-parameter extraction interface emerged. Work18's existing 26.1.1 probe found `get_atom_node_info`, `get_atom_nodes`, `read_atom_netlist` present but their help unavailable; iport/oport commands were absent. Do not repeat that unchanged probe or invent keys. Project assignment APIs read QSF/QDF, not resolved fitted settings. Captured `get_node_info` documents identity/location/edges, not configuration parameters; `report_path` exposes propagation, not selector/filter state. These limitations do not establish that no interface exists.
+
+## References
+
+- **F23/T23:** [`fim-build-23/timing22-readback/output_files/`](../fim-build-23/timing22-readback/output_files/), `ofs_top.fit.rpt` / `ofs_top.sta.rpt`.
+- **F21:** [`fim-build-21/final-capture01/ofs_top.fit.rpt`](../fim-build-21/final-capture01/ofs_top.fit.rpt); stage boundary corroborated by `ofs_top.fit.finalize.rpt:6–11`.
+- **A23:** [`ofs_top.asm.rpt`](../fim-build-23/completion24-readback/work_ia840f_fim_23/syn/board/ia840f/syn_top/output_files/ofs_top.asm.rpt).
+- **Gtile/Gcore/Gpll/Geval:** exact `tiles/core/pll/evaluated` paths and hashes in [`reviews-consumed36.json:17–45`](../fim-build-23/reviews-consumed36.json).
+- **B23:** [`cpa-feedback41/result-readback/reports/audit.tcllist`](../fim-build-23/cpa-feedback41/result-readback/reports/audit.tcllist); paired limits in [`feedback-review52.md`](../fim-build-23/feedback-review52.md).
+- **API evidence:** [`assignment-readback03/readback03/native.log:21–35`](../fim-build-18/assignment-readback03/readback03/native.log), [`assignment-diagnostic-disposition01.md:11–15`](../fim-build-18/assignment-diagnostic-disposition01.md), [`cpa-help45/readback/help.log:333–370`](../fim-build-23/cpa-help45/readback/help.log).
+- **[D]** [Quartus Prime Pro Design Optimization v25.3.1](https://docs.altera.com/r/docs/683641/25.3.1/quartus-prime-pro-edition-user-guide/design-floorplan-analysis-in-chip-planner), §§3.4,3.5.2,7.2.2. Retrieval returned the full manual; Properties explicitly documents Parameters/Ports. Local retrieval text: `/home/joe/.hermes/cache/web/docs.altera.com-5410688b47.md:3392–3394,3729–3756,22874–22879`. Four targeted official-domain searches/fetches total; atom searches yielded no usable public CPA key schema. No online search result is treated as fitted evidence.

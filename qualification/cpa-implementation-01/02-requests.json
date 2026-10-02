@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "lane": "02-physical-topology",
+  "scope": "Parent-only conditional read-only acquisition; no implementation, new route sweep, refit or hardware authorization.",
+  "native_route_reporting_needed_now": false,
+  "requests": [
+    {
+      "id": "02-clock-spine-semantics",
+      "priority": 1,
+      "status": "conditional; deduplicate with lane03",
+      "condition": "Only if lane03 cannot establish exact same-release CLOCK_SPINE/CLOCK_REGION applicability and legal values from its documentation review.",
+      "acquisition": "Read documentation or installed help/metadata for exactly CLOCK_SPINE and CLOCK_REGION under Quartus 26.1.1 Build130 / Agilex 7. Capture description, value syntax, target object class and PR/full-region restrictions; mark unavailable fields rather than guessing. No assignments may be set.",
+      "bounds": {
+        "assignment_names": [
+          "CLOCK_SPINE",
+          "CLOCK_REGION"
+        ],
+        "max_help_bodies": 2,
+        "max_named_clock_sources": 1,
+        "netlist_fanout_traversal": false,
+        "project_write": false,
+        "fit": false
+      },
+      "target_clock_source": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|core_clks_from_cpa_pri_nonabphy[0]",
+      "target_output_pin": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_1|emif_1|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|tile_gen[1].tile_ctrl_inst|pa_core_clk_out[0]",
+      "physical_source": "TILECTRL_X172_Y0_N298",
+      "observations": {
+        "work21_terminating_spine_index": "2",
+        "work23_terminating_spine_index": "1",
+        "unchanged_clock_region": "SX0 SY0 SX6 SY7",
+        "preservation_owner": "root_partition"
+      },
+      "discriminator": "Does a documented control permit reselecting this source clock spine while retaining complete current PR clock coverage? Reported spine index 2 is not assumed to be a valid assignment value.",
+      "evidence": [
+        "qualification/fim-build-21/final-capture01/ofs_top.fit.rpt:31118-31133",
+        "qualification/fim-build-23/timing22-readback/output_files/ofs_top.fit.rpt:31195-31211",
+        "qualification/fim-build-23/timing22-readback/output_files/ofs_top.fit.rpt:42499-42500",
+        "qualification/router-native-capability-01/remote-evidence/agilex7-fit-names.txt:171-172"
+      ],
+      "not_required": "Full CPA equation reconstruction; another unmodified fit; broad report_clock_network; any vendor-only dependency."
+    }
+  ]
+}
