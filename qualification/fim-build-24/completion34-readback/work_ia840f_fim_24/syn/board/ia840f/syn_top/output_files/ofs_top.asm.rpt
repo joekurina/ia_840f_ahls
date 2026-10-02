@@ -1,0 +1,227 @@
+Assembler report for ofs_top
+Thu Oct  1 18:17:02 2026
+Quartus Prime Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Assembler Summary
+  3. Assembler Settings
+  4. Assembler Messages
+  5. Assembler Encrypted IP Cores Summary
+  6. Assembler Generated Files
+  7. Assembler Device Options: ofs_top.sof
+  8. Assembler Device Options: ofs_top.static.msf
+  9. Assembler Device Options: ofs_top.green_region.pmsf
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2026  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++---------------------------------------------------------------+
+; Assembler Summary                                             ;
++-----------------------+---------------------------------------+
+; Assembler Status      ; Successful - Thu Oct  1 18:17:02 2026 ;
+; Revision Name         ; ofs_top                               ;
+; Top-level Entity Name ; top                                   ;
+; Family                ; Agilex 7                              ;
+; Device                ; AGFB027R25A2E2V                       ;
+; Timing Models         ; Final                                 ;
+; Power Models          ; Final                                 ;
+; Device Status         ; Final                                 ;
++-----------------------+---------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Assembler Settings                                                                                         ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Maximum processors allowed for parallel compilation              ; 36                 ;                    ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Enable Design Assistant in the compilation flow                  ; On                 ; On                 ;
+; Design Assistant include IP blocks                               ; Off                ; Off                ;
+; High fanout net threshold for RAM inference                      ; 15                 ; 15                 ;
+; Design Assistant limit on reported violations per rule           ; 5000               ; 5000               ;
+; Device address in PMBus Slave mode                               ; 01                 ; 00                 ;
+; Voltage output format                                            ; Linear format      ; Auto discovery     ;
+; Linear format N                                                  ; -12                ; 0                  ;
+; Enable multi-authority                                           ; On                 ; Off                ;
+; Generate compressed bitstreams                                   ; On                 ; On                 ;
+; Auto user code                                                   ; On                 ; On                 ;
+; Configuration device                                             ; Auto               ; Auto               ;
+; Voltage stable delay                                             ; 10                 ; 10                 ;
+; FPGA release delay                                               ; 10                 ; 10                 ;
+; Initial delay                                                    ; 0                  ; 0                  ;
+; Bus speed mode                                                   ; 100 KHz            ; 100 KHz            ;
+; Slave device type                                                ; LTM4677            ; LTM4677            ;
+; PMBus device 0 slave address                                     ; 00                 ; 00                 ;
+; PMBus device 1 slave address                                     ; 00                 ; 00                 ;
+; PMBus device 2 slave address                                     ; 00                 ; 00                 ;
+; PMBus device 3 slave address                                     ; 00                 ; 00                 ;
+; PMBus device 4 slave address                                     ; 00                 ; 00                 ;
+; PMBus device 5 slave address                                     ; 00                 ; 00                 ;
+; PMBus device 6 slave address                                     ; 00                 ; 00                 ;
+; PMBus device 7 slave address                                     ; 00                 ; 00                 ;
+; Direct format coefficient m                                      ; 0                  ; 0                  ;
+; Direct format coefficient b                                      ; 0                  ; 0                  ;
+; Direct format coefficient R                                      ; 0                  ; 0                  ;
+; Translated voltage value unit                                    ; Volts              ; Volts              ;
+; VID format base voltage in mv                                    ; 0                  ; 0                  ;
+; VID format step size in mv                                       ; 0                  ; 0                  ;
+; obsolete - Data setup time in nanoseconds                        ; 0                  ; 0                  ;
+; obsolete - Data hold time in nanoseconds                         ; 0                  ; 0                  ;
+; obsolete - Clock/data fall time in nanoseconds                   ; 0                  ; 0                  ;
+; obsolete - Clock/data rise time in nanoseconds                   ; 0                  ; 0                  ;
+; Enable PAGE command                                              ; Off                ; Off                ;
+; VOUT reading error margin index                                  ; 8                  ; 8                  ;
+; Configuration device auto user code                              ; Off                ; Off                ;
+; Generate Partial Reconfiguration Raw Binary File (.rbf)          ; On                 ; On                 ;
+; HPS/FPGA configuration order                                     ; After INIT_DONE    ; After INIT_DONE    ;
+; HPS debug access port (DAP)                                      ; Disabled           ; Disabled           ;
+; Enable configuration bitstream encryption                        ; Off                ; Off                ;
+; Encryption key storage location                                  ; Battery Backup RAM ; Battery Backup RAM ;
+; Encryption update ratio                                          ; 0                  ; 0                  ;
+; Enable scrambling                                                ; Off                ; Off                ;
+; Allow HPS debug without certificate                              ; Off                ; Off                ;
+; Remote system update max retry count                             ; 1                  ; 1                  ;
+; Disable JTAG                                                     ; Off                ; Off                ;
+; Force SDM clock to internal oscillator                           ; Off                ; Off                ;
+; Force encryption key update                                      ; Off                ; Off                ;
+; Disable virtual eFuses                                           ; Off                ; Off                ;
+; Lock security eFuses                                             ; Off                ; Off                ;
+; Disable HPS debug                                                ; Off                ; Off                ;
+; Disable encryption key in eFuses                                 ; Off                ; Off                ;
+; Disable encryption key in BBRAM                                  ; Off                ; Off                ;
+; Disable Intrinsic ID PUF-wrapped encryption key in Quad SPI      ; Off                ; Off                ;
+; Enable frequency tamper detection                                ; Off                ; Off                ;
+; Enable temperature tamper detection                              ; Off                ; Off                ;
+; Enable voltage tamper detection                                  ; Off                ; Off                ;
+; Anti-tamper response                                             ; Disabled           ; Disabled           ;
+; Frequency tamper detection range                                 ; 35                 ; 35                 ;
+; Temperature tamper upper bound                                   ; 110                ; 110                ;
+; Temperature tamper lower bound                                   ; -40                ; -40                ;
+; Enable VCCL voltage tamper detection                             ; Off                ; Off                ;
+; Enable VCCL SDM voltage tamper detection                         ; Off                ; Off                ;
+; Voltage tamper detection trigger                                 ; 15                 ; 15                 ;
+; VCCL voltage difference in percentage                            ; 0                  ; 0                  ;
+; VCCL_SDM voltage difference in percentage                        ; 0                  ; 0                  ;
+; Run configuration CPU from internal oscillator                   ; Off                ; Off                ;
+; Generate compressed sof                                          ; On                 ; On                 ;
+; PAGE command payload                                             ; 255                ; 255                ;
+; Enable partial reconfiguration bitstream encryption              ; Off                ; Off                ;
+; Enable AliasL1 certificate                                       ; Off                ; Off                ;
+; Enable device self-kill                                          ; Off                ; Off                ;
+; Enable device self-kill                                          ; Off                ; Off                ;
+; Enable device self-kill                                          ; Off                ; Off                ;
+; Enable device self-kill                                          ; Off                ; Off                ;
+; Generate programming files                                       ; Off                ; Off                ;
+; Enable status_byte for polling                                   ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++--------------------+
+; Assembler Messages ;
++--------------------+
+Info: Updating ::env(FME_IFC_ID) from "c39acdc5-cde0-5256-ae78-1ae9a71266e6" to "fc603c44-5c8f-5e94-bcbe-a5780030947c"
+Info: Loading PIM-based AFU...
+Info: Compiling PR Base revision...
+Info: *******************************************************************
+Info: Running Quartus Prime Assembler
+    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+    Info: Processing started: Thu Oct  1 18:11:22 2026
+    Info: System process ID: 325371
+Info: Command: quartus_asm --read_settings_files=on --write_settings_files=off ofs_top -c ofs_top
+Info: Using INI file /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_24/syn/board/ia840f/syn_top/quartus.ini
+Info (16677): Loading final database.
+Info (16734): Loading "final" snapshot for partition "root_partition".
+Info (16734): Loading "final" snapshot for partition "green_region".
+Info (16734): Loading "final" snapshot for partition "auto_fab_1".
+Info (16734): Loading "final" snapshot for partition "auto_fab_0".
+Info (16678): Successfully loaded final database: elapsed time is 00:00:17.
+Info (20553): Using Static Region Mask Hash FD1898885CCBE6FE3CD49AC4FF45EB821129F165230F5AEA4C295A1D725563CB73C9E32F125DE4DAC656831AE7B4BAD2
+Info (20553): Using PR Region: ofs_top.green_region Hash 3959732962766D5C8DD4E3C4E51B1B5EDF9B842DEB9E942BA296B66A03B1EA384943896669F1FF524EB7B1D4672DC0F9
+Info (20553): Using CVP Hash 0123456789ABCDEF001122334455667788889999AAAABBBBCCCCDDDDEEEEFFFF
+Info (20553): Using HPS IO Hash 0000111122223333444455556666777788889999AAAABBBBCCCCDDDDEEEEFFFF
+Warning (20536): Programming file generation feature has been removed from the compilation flow and the corresponding legacy settings in the Quartus Prime Setting File (.qsf) have been ignored: GENERATE_RBF_FILE. Use Programmer File Generator or Convert Programming File tool to generate a programming file.
+Info (19848): Design hash is 5E6A4E5DBF04D6FA1B237380DF74B1A7DD1AFD9C29603E19A3C704DF629BC016
+Info (19848): Keyed hash is 92EE40888885BB9BFD6A335EA20A4A19267C6E16FB81BA5D63926823C8057559
+Info: Quartus Prime Assembler was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 18982 megabytes
+    Info: Processing ended: Thu Oct  1 18:17:03 2026
+    Info: Elapsed time: 00:05:41
+    Info: System process ID: 325371
+
+
++------------------------------------------------+
+; Assembler Encrypted IP Cores Summary           ;
++--------+------------------------+--------------+
+; Vendor ; IP Core Name           ; License Type ;
++--------+------------------------+--------------+
+; Altera ; Signal Tap (6AF7 BCE1) ; Licensed     ;
+; Altera ; Signal Tap (6AF7 BCEC) ; Licensed     ;
+; Altera ; Unknown (6AF7 FFFF)    ; Licensed     ;
++--------+------------------------+--------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Assembler Generated Files                                                                                           ;
++---------------------------------------------------------------------------------------------------------------------+
+; File Name                                                                                                           ;
++---------------------------------------------------------------------------------------------------------------------+
+; /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_24/syn/board/ia840f/syn_top/output_files/ofs_top.sof               ;
+; /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_24/syn/board/ia840f/syn_top/output_files/ofs_top.static.msf        ;
+; /home/uwb_student00/ahls/new_BSP/work_ia840f_fim_24/syn/board/ia840f/syn_top/output_files/ofs_top.green_region.pmsf ;
++---------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Assembler Device Options: ofs_top.sof                                              ;
++----------------+-------------------------------------------------------------------+
+; Option         ; Setting                                                           ;
++----------------+-------------------------------------------------------------------+
+; JTAG usercode  ; 0xFFFFFFFF                                                        ;
+; Checksum       ; 0x767354F3                                                        ;
+; Design hash    ; B611E5A786D088C7AB31FA545A6606B42F286F002309C1A8584F306589B996CC  ;
+; HPS IO hash    ; 0000111122223333444455556666777788889999AAAABBBBCCCCDDDDEEEEFFFF  ;
++----------------+-------------------------------------------------------------------+
+
+
++----------------------------------------------+
+; Assembler Device Options: ofs_top.static.msf ;
++--------+-------------------------------------+
+; Option ; Setting                             ;
++--------+-------------------------------------+
+
+
++------------------------------------------------------------------------------------------------+
+; Assembler Device Options: ofs_top.green_region.pmsf                                            ;
++------------------+-----------------------------------------------------------------------------+
+; Option           ; Setting                                                                     ;
++------------------+-----------------------------------------------------------------------------+
+; PR bitstream ID  ; 0x01000000:B24A6B3B6824920CB469394D52A9A1EF81B3ED57F4AA57A3BAA942DD425F91FD ;
+; Design hash      ; 5E6A4E5DBF04D6FA1B237380DF74B1A7DD1AFD9C29603E19A3C704DF629BC016            ;
++------------------+-----------------------------------------------------------------------------+
+
+

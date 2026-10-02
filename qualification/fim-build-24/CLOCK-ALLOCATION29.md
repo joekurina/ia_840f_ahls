@@ -1,0 +1,11 @@
+# Work24 Place-stage clock-allocation observation
+
+The completed Place-stage report contains exactly one matching EMIF1 global-source block. It reports **CLOCK_SPINE2**, the same `TILECTRL_X172_Y0_N298` source, `root_partition` ownership and full `SX0 SY0 SX6 SY7` region (56sectors). This is actual Place-stage allocation evidence, not merely QSF persistence and not final routing/timing acceptance. [Native extraction](clock-allocation26.json), lines6162–6179, complete-source SHA256`e184a993a0b5cbdd613871faa10a582c766bce4346d7e080ddf087542b261614`.
+
+The current report and Work23's Place-stage section contain **44 exact common clock names**, with no unmatched names. **32 spine indices change**, including EMIF1. Clock source names/types and partition ownership remain unchanged. Two reset-anchor source registers move within their existing local areas: EMIF0 `FF_X280_Y4_N46`→`FF_X280_Y4_N16`, EMIF1 `FF_X171_Y4_N34`→`FF_X171_Y4_N46`.
+
+A collateral automatic region change occurs on **DDR0's reference clock**, not the constrained EMIF1 core clock: `SX3 SY0 SX4 SY0` becomes `SX4 SY0 SX4 SY0` (two sectors→one). Its reported source-to-tree path falls1.5→0.5sector wires. This is a recorded implementation change, not a source-level clock/frequency/pin retuning, and requires the retained collateral clock/DDR checks. All other matched Clock Region fields are unchanged. Do not equate unchanged coverage with unchanged routes or timing. [Complete comparison](clock-allocation-comparison27.json).
+
+The two PCIe clocks previously sharing index2 move to17 (`m3_130_1__hssi_dcm__pld_pcs_tx_clk_out2_dcm`) and12 (`m3_63_1__hssi_dcm__pld_pcs_tx_clk_out2_dcm`). Other allocations, including EMIF0 and system-clock outputs, also change. This confirms the predicted collateral allocation effect and strengthens the need for full signoff rather than only bit243 inspection.
+
+EMIF1 source-to-tree length retains4.0sector wires but changes1→2layer jumps; tree length stays6.5sector wires. Reported fanout changes16045→15962. These are Place-stage properties; they neither reconstruct the earlier route nor explain CPA COMP. Preserve all final-route, both-COMP-role, exact-transfer/all-corner and collateral qualification requirements. The same owned fitter continues; no second compile or hardware operation was launched.
