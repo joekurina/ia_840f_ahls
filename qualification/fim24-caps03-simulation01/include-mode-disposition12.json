@@ -1,0 +1,69 @@
+{
+  "only_unresolved_literal": {
+    "source": "rtl/platform/ofs_plat_if/rtl/ofs_plat_if.vh",
+    "line": 39,
+    "literal": "ofs_plat_hssi_wrapper.vh",
+    "present_candidates": []
+  },
+  "guard_macro": "OFS_PLAT_PARAM_HSSI_NATIVE_CLASS",
+  "guard_definition_in_all_staged_hdl_headers": [],
+  "guard_in_command_defines": false,
+  "different_body_include_ambiguities": [],
+  "computed_include_expressions": [],
+  "source_scan_only_not_full_preprocessor": true,
+  "retained_unit_mode_defines": [
+    "+define+PLATFORM_IF_AVAIL=1",
+    "+define+INCLUDE_USER_CLK",
+    "+define+DDR4_NUM_MEM_GROUPS=2",
+    "+define+INCLUDE_IA840F",
+    "+define+INCLUDE_DDR4",
+    "+define+INCLUDE_PR",
+    "+define+DISABLE_HE_HSSI_CRC",
+    "+define+INCLUDE_PCIE_SS",
+    "+define+INCLUDE_REMOTE_STP",
+    "+define+INCLUDE_LOCAL_MEM",
+    "+define+PR_COMPILE",
+    "+define+SHARED_AFU_MAIN_TO_PORT_AFU_INSTANCES",
+    "+define+AFU_MAIN_HAS_PF_VF_MUX"
+  ],
+  "full_ASE_list_defines_not_added": [
+    "RTL_SIMULATION",
+    "SIM_MODE"
+  ],
+  "reason": "preserve proven explicit unit-test mode and exclusion of full AFU mapper/ASE shell; direct-source scan finds SIM_MODE only in remote-STP declaration header, RTL_SIMULATION absent",
+  "mode_source_references": [
+    {
+      "path": "rtl/fim/ofs-common/src/common/includes/ofs_fim_remote_stp_node.vh",
+      "line": 26,
+      "text": "      `ifdef SIM_MODE",
+      "context": [
+        "   `ifdef INCLUDE_REMOTE_STP",
+        "      `ifdef SIM_MODE",
+        "         assign pr2sr_tdo = 0;",
+        "      `else"
+      ]
+    },
+    {
+      "path": "rtl/fim/ofs-common/src/common/includes/ofs_fim_remote_stp_node.vh",
+      "line": 53,
+      "text": "      `endif // SIM_MODE",
+      "context": [
+        "         );",
+        "      `endif // SIM_MODE",
+        "   `else",
+        "      always_ff@(posedge sr2pr_tck) begin"
+      ]
+    },
+    {
+      "path": "rtl/fim/ofs-common/src/common/includes/ofs_fim_remote_stp_node.vh",
+      "line": 62,
+      "text": "   `ifdef SIM_MODE",
+      "context": [
+        "",
+        "   `ifdef SIM_MODE",
+        "      assign remote_stp_jtag_if.tdo = 0;",
+        "   `elsif INCLUDE_JTAG_PR_STP"
+      ]
+    }
+  ]
+}

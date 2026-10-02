@@ -1,0 +1,165 @@
+{
+  "scope": "actual migrated explicit-list unit simulation; independent result/warning reviews pending",
+  "admitted_sha256": "c68c0b4df38710e8c323dbc6cb46abad0c012ff3b1fa704f556c9c9ef1c4b765",
+  "native_result_sha256": "bc40d5d35e87b25ab56c589ba4b87632f75cc9ac0a7fdc8e62e87e00ea8edbe3",
+  "start": "2026-10-02T09:54:45.239760+00:00",
+  "end": "2026-10-02T09:54:59.420814+00:00",
+  "elapsed_seconds": 14.181054,
+  "complete": true,
+  "execution_clean": true,
+  "unit_pass": true,
+  "command_count": 7,
+  "all_cmake_effective_zero": true,
+  "native_version_and_five_other_targets_zero_propagated": true,
+  "configure_native_not_applicable": true,
+  "outer_rc": 0,
+  "scoreboard": {
+    "cases": 6,
+    "elements": 133,
+    "copied_bytes": 1600,
+    "dma": 30,
+    "checks": 402461,
+    "mmio_reads": 1010,
+    "mmio_writes": 161,
+    "bank0_W": 40,
+    "bank1_W": 56
+  },
+  "exact_marker_counts": {
+    "AHLS_PATH_UNIT_PASS": 1,
+    "BANK1_RESET_INVALIDATION_PASS": 1,
+    "PAGE_SPLIT_ERROR_PASS": 1
+  },
+  "reset": [
+    {
+      "checks": 1
+    }
+  ],
+  "split": [
+    {
+      "native_AW": 2,
+      "native_W": 4,
+      "native_B": 2,
+      "upstream_B": 1,
+      "observed_split_errors": 1
+    }
+  ],
+  "diagnostic_errors": [],
+  "postflight_errors": [],
+  "all_preservation_flags": true,
+  "fresh_capture_counts": {
+    "inputs": 560,
+    "originals": 542,
+    "simulator_bindings": 19,
+    "runtime_tools": 3,
+    "native_files": 11,
+    "work_library_files": 52
+  },
+  "warning_counts": {
+    "vlog.log": 38,
+    "vsim.log": 269
+  },
+  "new_warning_findings": [
+    {
+      "id": "vlog-2275",
+      "occurrences": 2,
+      "scope": "duplicate burst_split_4k and wr_burst_split_4k definitions in two generated slave NI files",
+      "parent_check": "each duplicate module raw body is byte-identical; native warning retained, no editing or rerun"
+    },
+    {
+      "id": "vopt-2241",
+      "occurrences": 8,
+      "scope": "four scalar inputs on two altera_merlin_address_alignment instances",
+      "source_connections": "in_valid/in_sop/in_eop/out_ready all 'h0 atgeneratedline1286-1289; INCREMENT_ADDRESS=0",
+      "declaration_evidence": "altera-lnsim-region31.sv / library-source31.json; referenced scalar ports at58339/58341/58342/58345",
+      "disposition": "pending independent warning review; no blanket warning waiver"
+    }
+  ],
+  "claim_limits": [
+    "not full PCIe mapper/AFUtop/pr_slot",
+    "not physical DDR, timing, hardware or stopped-clock/active-reset recovery",
+    "bank0 read-error telemetry remains excluded",
+    "no live short-helper PID/executable witness claimed after completion"
+  ],
+  "native_claim_spent": true,
+  "hardware_access": false,
+  "acquisition_note": "library31 producer completed its read-only capture; wrapper KeyError success-key assumption recovered from exact unique buffer, not rerun",
+  "files": {
+    "configuration/modelsim.ini": {
+      "bytes": 106756,
+      "mtime_ns_after": 1790934885262836666,
+      "mtime_ns_before": 1790934885262836666,
+      "sha256": "17fa715b65c5980355566db472bf92bad020c9579f6c7b464edd1b56fc05ff4d",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_simulation01/native01/modelsim.ini"
+    },
+    "operation/configure.log": {
+      "bytes": 175,
+      "mtime_ns_after": 1790934885359836990,
+      "mtime_ns_before": 1790934885359836990,
+      "sha256": "80b75bac92e38d9b60680475deb01fc5dccc84ed463f19dbe04bba8e7ebe410f",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_simulation01/native01/configure.log"
+    },
+    "operation/native22-outer.log": {
+      "bytes": 481,
+      "mtime_ns_after": 1790934899437884003,
+      "mtime_ns_before": 1790934899437884003,
+      "sha256": "f5348377bc93d57861644a3dfe449991084ef651f00e47fe3cf09c1fed84ddd2",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_simulation01/control23/native22-outer.log"
+    },
+    "operation/result.json": {
+      "bytes": 237600,
+      "mtime_ns_after": 1790934899421883950,
+      "mtime_ns_before": 1790934899421883950,
+      "sha256": "bc40d5d35e87b25ab56c589ba4b87632f75cc9ac0a7fdc8e62e87e00ea8edbe3",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_simulation01/native01/result.json"
+    },
+    "operation/split_fault.log": {
+      "bytes": 2981,
+      "mtime_ns_after": 1790934898593881185,
+      "mtime_ns_before": 1790934898593881185,
+      "sha256": "74b6094cf40f979ba60e3124ce72c426dd9a6b1ee9bf90c2264d3538ef9d8a55",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_simulation01/native01/split_fault.log"
+    },
+    "operation/status.json": {
+      "bytes": 237601,
+      "mtime_ns_after": 1790934899420883947,
+      "mtime_ns_before": 1790934899420883947,
+      "sha256": "f5a9f7fd874cbfec35a5a2b3e9b12791a162354684d58bed2142181c2b0fcd4e",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_simulation01/native01/status.json"
+    },
+    "operation/vdir.log": {
+      "bytes": 10425,
+      "mtime_ns_after": 1790934886467840690,
+      "mtime_ns_before": 1790934886467840690,
+      "sha256": "1ef3ff1d6cc1a3015beb96fc07bced44d60ddaa7d4991ffe7899b9e534832eed",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_simulation01/native01/vdir.log"
+    },
+    "operation/version.log": {
+      "bytes": 93,
+      "mtime_ns_after": 1790934885805838479,
+      "mtime_ns_before": 1790934885805838479,
+      "sha256": "4769cce2b4292654ccb6913938bc404a501319c84acff345ad7a4ddb5de6918d",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_simulation01/native01/version.log"
+    },
+    "operation/vlib.log": {
+      "bytes": 18,
+      "mtime_ns_after": 1790934886172839705,
+      "mtime_ns_before": 1790934886172839705,
+      "sha256": "336dd22d17108f8ea15766ae008bea77e2f65e62594ef468b06da7d8af9f4956",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_simulation01/native01/vlib.log"
+    },
+    "operation/vlog.log": {
+      "bytes": 105982,
+      "mtime_ns_after": 1790934888260846678,
+      "mtime_ns_before": 1790934888260846678,
+      "sha256": "76ae03e5156bae0f7593e0f521154468b3db551aa1ed896112c656406d151e64",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_simulation01/native01/vlog.log"
+    },
+    "operation/vsim.log": {
+      "bytes": 101340,
+      "mtime_ns_after": 1790934896487874152,
+      "mtime_ns_before": 1790934896487874152,
+      "sha256": "7a95b546154ec73a3e8a67440186ea55505172dfc95597ef92cba370b9266964",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_simulation01/native01/vsim.log"
+    }
+  }
+}

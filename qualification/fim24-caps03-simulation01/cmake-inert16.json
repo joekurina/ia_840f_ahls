@@ -1,0 +1,79 @@
+{
+  "success": true,
+  "native_simulator_executed": false,
+  "scope": "CMake configure/help and make dry-run only; fixed run root replaced by owned fixture; original simulator paths never executed",
+  "cmake_sha256": "ab48c447de4f10c13510721a2f3d7eaafdab19c69c7e3a6eff27dea6031d2414",
+  "count": 5,
+  "checks": [
+    {
+      "case": "configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/src",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/build"
+      ],
+      "rc": 0,
+      "stdout": "-- Configuring done (0.0s)\n-- Generating done (0.0s)\n-- Build files have been written to: /home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/build\n",
+      "stderr": ""
+    },
+    {
+      "case": "help",
+      "argv": [
+        "cmake",
+        "--build",
+        "/home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/build",
+        "--target",
+        "help"
+      ],
+      "rc": 0,
+      "stdout": "The following are some of the valid targets for this Makefile:\n... all (the default if no target is provided)\n... clean\n... depend\n... edit_cache\n... rebuild_cache\n... split_fault\n... vdir\n... version\n... vlib\n... vlog\n... vsim\n",
+      "stderr": ""
+    },
+    {
+      "case": "vsim_dry_run",
+      "argv": [
+        "cmake",
+        "--build",
+        "/home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/build",
+        "--target",
+        "vsim",
+        "--",
+        "-n"
+      ],
+      "rc": 0,
+      "stdout": "/usr/bin/cmake -S/home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/src -B/home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/build --check-build-system CMakeFiles/Makefile.cmake 0\n/usr/bin/gmake -s -f CMakeFiles/Makefile2 vsim\n/usr/bin/cmake -S/home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/src -B/home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/build --check-build-system CMakeFiles/Makefile.cmake 0\n/usr/bin/cmake -E cmake_progress_start /home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/build/CMakeFiles 0\n/usr/bin/gmake -s -f CMakeFiles/Makefile2 CMakeFiles/vsim.dir/all\n/usr/bin/gmake -s -f CMakeFiles/vsim.dir/build.make CMakeFiles/vsim.dir/depend\ncd /home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/build && /usr/bin/cmake -E cmake_depends \"Unix Makefiles\" /home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/src /home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/src /home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/build /home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/build /home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/build/CMakeFiles/vsim.dir/DependInfo.cmake \"--color=\"\n/usr/bin/gmake -s -f CMakeFiles/vsim.dir/build.make CMakeFiles/vsim.dir/build\ncd /home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/run && /opt/altera/25.1/questa_fe/linux_x86_64/vsim -c -onfinish exit -L altera_mf_ver -L altera_lnsim_ver work.ahls_memory_path_tb -do \"run -all; quit -f -code 2\"\n/usr/bin/cmake -E cmake_echo_color \"--switch=\" --progress-dir=/home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/build/CMakeFiles --progress-num= \"Built target vsim\"\n/usr/bin/cmake -E cmake_progress_start /home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/build/CMakeFiles 0\n",
+      "stderr": ""
+    },
+    {
+      "case": "wrong_root",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/src",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/wrong",
+        "-DSIM_RUN_ROOT=/wrong"
+      ],
+      "rc": 1,
+      "stdout": "-- Configuring incomplete, errors occurred!\n",
+      "stderr": "CMake Error at CMakeLists.txt:5 (message):\n  Unexpected simulation root or missing bound INI\n\n\n"
+    },
+    {
+      "case": "missing_ini",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/src",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx/missing"
+      ],
+      "rc": 1,
+      "stdout": "-- Configuring incomplete, errors occurred!\n",
+      "stderr": "CMake Error at CMakeLists.txt:5 (message):\n  Unexpected simulation root or missing bound INI\n\n\n"
+    }
+  ],
+  "vsim_quoted_argv_matches": true,
+  "scratch": "/home/joe/.hermes/cache/scratch/simulation-cmake-uk_ynuwx"
+}

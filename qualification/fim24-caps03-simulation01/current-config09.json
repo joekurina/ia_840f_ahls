@@ -1,0 +1,116 @@
+{
+  "scope": "actual configuration acquisition for simulation preparation, not functional acceptance",
+  "native_setup_result_sha256": "7b1c4c9397ab51bdd09ee369630392a5aab2b76edf91ac0efea108aacaf74e67",
+  "native_setup_admission_sha256": "3e1923e703bbc4925c7162a4718a00469dcfa7faf930e426b302035a3b84e094",
+  "count": 12,
+  "files": {
+    "rtl/afu/afu_json_info.vh": {
+      "source_capture": "persona/hw/afu_json_info.vh",
+      "bytes": 511,
+      "sha256": "990339245d1421245be37af2447fd64c9c59f9f87bf34201a96841afdbb513d2",
+      "role": "fresh active include"
+    },
+    "rtl/platform/platform_afu_top_config.vh": {
+      "source_capture": "persona/build/platform/platform_afu_top_config.vh",
+      "bytes": 985,
+      "sha256": "abe5da1132568f464bc72e5991f76ac6668c9761562cda4b822f47e0938dae97",
+      "role": "fresh active include"
+    },
+    "metadata/platform_if_addenda.qsf": {
+      "source_capture": "persona/build/platform/platform_if_addenda.qsf",
+      "bytes": 656,
+      "sha256": "ff281dd5e4ef9a5bc09f9b066b1c7e7b75136af513456aefba15cc1d71d583ec",
+      "role": "reference metadata, not active -F input in relocated simulation layout"
+    },
+    "metadata/ofs_plat_if_addenda.qsf": {
+      "source_capture": "persona/build/platform/ofs_plat_if/par/ofs_plat_if_addenda.qsf",
+      "bytes": 21503,
+      "sha256": "5bfcfac51eee587bdb3b240031cc489e7066507d31d8b8e328114cd18e835fbd",
+      "role": "reference metadata, not active -F input in relocated simulation layout"
+    },
+    "metadata/fim_project_macros.txt": {
+      "source_capture": "persona/build/platform/sim/fim_project_macros.txt",
+      "bytes": 416,
+      "sha256": "24399306d8010a0311b2645e23028fb863faef88c099aa7af445e02ae45cb5ef",
+      "role": "reference metadata, not active -F input in relocated simulation layout"
+    },
+    "metadata/fim_afu_if_addenda.txt": {
+      "source_capture": "persona/build/platform/sim/fim_afu_if_addenda.txt",
+      "bytes": 4521,
+      "sha256": "8c5330027f803e2e87e13eca50adadef770745e3949042f4d50e3257d8cdf52c",
+      "role": "reference metadata, not active -F input in relocated simulation layout"
+    },
+    "metadata/fim_afu_if_includes.txt": {
+      "source_capture": "persona/build/platform/sim/fim_afu_if_includes.txt",
+      "bytes": 957,
+      "sha256": "089372e5a0ce65dabe8123c01995e03f4fc2705b2aaf8ba96f425cf55700f9b9",
+      "role": "reference metadata, not active -F input in relocated simulation layout"
+    },
+    "metadata/fim_afu_if_modules.txt": {
+      "source_capture": "persona/build/platform/sim/fim_afu_if_modules.txt",
+      "bytes": 344,
+      "sha256": "1dd06eee308729a389f0be0e0dff703b9592767b8cce00eddbc6231b2efe13bf",
+      "role": "reference metadata, not active -F input in relocated simulation layout"
+    },
+    "metadata/pim_platform_if_addenda.txt": {
+      "source_capture": "persona/build/platform/ofs_plat_if/sim/platform_if_addenda.txt",
+      "bytes": 135,
+      "sha256": "143e4bbb5dda698182b38c6fba559a88c8e2f0f0efe097a9dcc48c0edad3f14a",
+      "role": "reference metadata, not active -F input in relocated simulation layout"
+    },
+    "metadata/pim_platform_if_includes.txt": {
+      "source_capture": "persona/build/platform/ofs_plat_if/sim/platform_if_includes.txt",
+      "bytes": 101,
+      "sha256": "71e7febed03f4258bd4f5061eb49622a2e561b0443da9bb6a2b2002d6604d5d4",
+      "role": "reference metadata, not active -F input in relocated simulation layout"
+    },
+    "metadata/pim_ofs_plat_if_addenda.txt": {
+      "source_capture": "persona/build/platform/ofs_plat_if/sim/ofs_plat_if_addenda.txt",
+      "bytes": 11689,
+      "sha256": "97302c98f3cccbec7a34b47f7cdf55474e2f96435d5529403fff1e8b99d28e13",
+      "role": "reference metadata, not active -F input in relocated simulation layout"
+    },
+    "metadata/pim_ofs_plat_if_includes.txt": {
+      "source_capture": "persona/build/platform/ofs_plat_if/sim/ofs_plat_if_includes.txt",
+      "bytes": 1090,
+      "sha256": "edfc487d8c98b95cef612b80077d9cf2aefc1cb4bd94eaf9235d7b2fc18fd8c5",
+      "role": "reference metadata, not active -F input in relocated simulation layout"
+    }
+  },
+  "uuid_header_replaces_diagnostic_placeholder": true,
+  "source_uuid_references": [
+    {
+      "path": "rtl/afu/csr_mgr.sv",
+      "line": 15,
+      "text": "`include \"afu_json_info.vh\""
+    },
+    {
+      "path": "rtl/afu/csr_mgr.sv",
+      "line": 67,
+      "text": "    // words: a device feature header, two AFU UUID words and two reserved"
+    },
+    {
+      "path": "rtl/afu/csr_mgr.sv",
+      "line": 75,
+      "text": "    // one with the \"uuidgen\" program and stored it in the AFU's JSON file."
+    },
+    {
+      "path": "rtl/afu/csr_mgr.sv",
+      "line": 77,
+      "text": "    // to extract the UUID into afu_json_info.vh."
+    },
+    {
+      "path": "rtl/afu/csr_mgr.sv",
+      "line": 78,
+      "text": "    logic [127:0] afu_id = `AFU_ACCEL_UUID;"
+    },
+    {
+      "path": "rtl/afu/afu_json_info.vh",
+      "line": 2,
+      "text": "`define AFU_ACCEL_UUID 128'h00112233445566778899aabbccddeeff"
+    }
+  ],
+  "legacy_quartus_delegation_gap_retained": true,
+  "native_compilation_executed": false,
+  "remaining": "reconcile complete current include/library/source closure, stage finite CMake-native simulator operation and run both behavioral tests"
+}
