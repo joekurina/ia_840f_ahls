@@ -1,0 +1,9 @@
+# Matching persona file setup — accepted with a dependency finding
+
+Accept the single completed file/configuration-generation operation for current-header acquisition and fresh simulation preparation. Both independent [result16](setup-result-review16.md) and [compatibility17](addenda-compatibility-review17.md) reviews are consumed;100 frozen members and the actual result digest were reverified. [Parent consumption18](result-reviews-consumed18.json), [actual result14](RESULT14.md).
+
+Configure/version/setup CMake/effective and outer codes are zero, required identities/outputs and all preservation checks pass. All3438 copied build entries are unchanged, with five additional native setup outputs. This does **not** accept Quartus dependency closure, RTL behavior, persona implementation/timing, programming or hardware.
+
+Retain F1: the generated root addenda names absent `ofs_plat_if/par/platform_if_addenda.qsf`. Current canonical `ofs_plat_if_addenda.qsf` equals the qualified legacy body byte-for-byte. The selected source-supported correction is one same-directory relative symlink under that legacy name in a **future fresh compile copy**, with target text `ofs_plat_if_addenda.qsf`. It is not implemented, native-tool-emitted collateral or launch authority. Preserve the completed setup, emitted root, canonical body, UUID/clock policy and spent gates. Bind/verify the metadata delta and later native consumption separately. [Review17](addenda-compatibility-review17.md).
+
+The retained explicit-list Questa path does not execute this QSF. Proceed with real matching platform/AFU headers, current macros/source/include/library closure and unchanged active scoreboards. Do not reuse the old diagnostic UUID header or old generated fabric, suppress errors, rerun setup, or infer full PCIe mapper/AFUtop/pr_slot coverage.

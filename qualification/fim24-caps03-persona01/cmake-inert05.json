@@ -1,0 +1,90 @@
+{
+  "success": true,
+  "scope": "CMake configure/help only; remote fixed roots replaced with owned inert fixture",
+  "native_tools_executed": false,
+  "count": 6,
+  "cmake_sha256": "07b690afaedc8f58c0d4cf4b955e857fecd07c9114fa5d264931f1c0ab666ebf",
+  "checks": [
+    {
+      "case": "configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/.hermes/cache/scratch/persona-cmake05-eigbkgmb/cmake",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/persona-cmake05-eigbkgmb/build"
+      ],
+      "rc": 0,
+      "stdout": "-- Configuring done (0.0s)\n-- Generating done (0.0s)\n-- Build files have been written to: /home/joe/.hermes/cache/scratch/persona-cmake05-eigbkgmb/build\n",
+      "stderr": ""
+    },
+    {
+      "case": "target_help",
+      "argv": [
+        "cmake",
+        "--build",
+        "/home/joe/.hermes/cache/scratch/persona-cmake05-eigbkgmb/build",
+        "--target",
+        "help"
+      ],
+      "rc": 0,
+      "stdout": "The following are some of the valid targets for this Makefile:\n... all (the default if no target is provided)\n... clean\n... depend\n... edit_cache\n... rebuild_cache\n... persona_setup\n... version\n",
+      "stderr": ""
+    },
+    {
+      "case": "reject_wrong_tool",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/.hermes/cache/scratch/persona-cmake05-eigbkgmb/cmake",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/persona-cmake05-eigbkgmb/tool",
+        "-DQUARTUS_ROOT=/wrong"
+      ],
+      "rc": 1,
+      "stdout": "-- Configuring incomplete, errors occurred!\n",
+      "stderr": "CMake Error at CMakeLists.txt:5 (message):\n  This setup requires bound Quartus26.1.1\n\n\n"
+    },
+    {
+      "case": "reject_wrong_release",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/.hermes/cache/scratch/persona-cmake05-eigbkgmb/cmake",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/persona-cmake05-eigbkgmb/release-wrong",
+        "-DRELEASE_ROOT=/wrong"
+      ],
+      "rc": 1,
+      "stdout": "-- Configuring incomplete, errors occurred!\n",
+      "stderr": "CMake Error at CMakeLists.txt:11 (message):\n  Unexpected setup source/release/target root\n\n\n"
+    },
+    {
+      "case": "reject_existing_target",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/.hermes/cache/scratch/persona-cmake05-eigbkgmb/cmake",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/persona-cmake05-eigbkgmb/existing"
+      ],
+      "rc": 1,
+      "stdout": "-- Configuring incomplete, errors occurred!\n",
+      "stderr": "CMake Error at CMakeLists.txt:14 (message):\n  Persona target must be absent; no force/replay\n\n\n"
+    },
+    {
+      "case": "reject_missing_sources",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/.hermes/cache/scratch/persona-cmake05-eigbkgmb/cmake",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/persona-cmake05-eigbkgmb/missing"
+      ],
+      "rc": 1,
+      "stdout": "-- Configuring incomplete, errors occurred!\n",
+      "stderr": "CMake Error at CMakeLists.txt:17 (message):\n  Missing bound inputs\n\n\n"
+    }
+  ],
+  "scratch": "/home/joe/.hermes/cache/scratch/persona-cmake05-eigbkgmb"
+}

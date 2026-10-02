@@ -1,0 +1,2122 @@
+{
+  "success": true,
+  "fixture_only": true,
+  "native_tools_executed": false,
+  "scope": "actual setup runner; mocked admission/CMake/tmux/tinyartifactmaps and literal INERT environment values; real inert Python children\u2014not real license settings or vendor results",
+  "runner_sha256": "a0457610b1f37b63b2241c539ff993bc87b3eb70869ca65e49268ae9353fb74c",
+  "count": 13,
+  "cases": [
+    {
+      "case": "clean",
+      "expected_clean": true,
+      "actual_rc": 0,
+      "execution_clean": true,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/setup/persona"
+          ],
+          "started": "2026-10-02T06:55:39.673225+00:00",
+          "process": {
+            "pid": 1492294,
+            "start_ticks": "9641686",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:39.980144+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:40.021475+00:00",
+          "process": {
+            "pid": 1492319,
+            "start_ticks": "9641720",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:40.300539+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "setup",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:40.337305+00:00",
+          "process": {
+            "pid": 1492333,
+            "start_ticks": "9641752",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/inputs/afu/a.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': \"`define AFU_ACCEL_UUID 128'h00000000_0000_0000_0000_000000000000\\n\", 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_afu_top_config.vh': 'INERT PLATFORM\\n', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT STATIC, NOT FPGA DATA\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:40.620368+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/setup/persona"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/inputs/afu/a.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/clean/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': \"`define AFU_ACCEL_UUID 128'h00000000_0000_0000_0000_000000000000\\n\", 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_afu_top_config.vh': 'INERT PLATFORM\\n', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT STATIC, NOT FPGA DATA\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "unissued",
+      "rejected_before_writes": true
+    },
+    {
+      "case": "nonzero",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/setup/persona"
+          ],
+          "started": "2026-10-02T06:55:40.698930+00:00",
+          "process": {
+            "pid": 1492334,
+            "start_ticks": "9641788",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:40.984539+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:41.022975+00:00",
+          "process": {
+            "pid": 1492335,
+            "start_ticks": "9641821",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:41.304684+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "setup",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:41.343382+00:00",
+          "process": {
+            "pid": 1492337,
+            "start_ticks": "9641853",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/inputs/afu/a.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': \"`define AFU_ACCEL_UUID 128'h00000000_0000_0000_0000_000000000000\\n\", 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_afu_top_config.vh': 'INERT PLATFORM\\n', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT STATIC, NOT FPGA DATA\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\nraise SystemExit(7)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 7,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:41.627982+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 7
+        }
+      ],
+      "diagnostics": [],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/setup/persona"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/inputs/afu/a.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/nonzero/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': \"`define AFU_ACCEL_UUID 128'h00000000_0000_0000_0000_000000000000\\n\", 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_afu_top_config.vh': 'INERT PLATFORM\\n', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT STATIC, NOT FPGA DATA\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\nraise SystemExit(7)\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "wrong_uuid",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/setup/persona"
+          ],
+          "started": "2026-10-02T06:55:41.689653+00:00",
+          "process": {
+            "pid": 1492357,
+            "start_ticks": "9641887",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:41.971148+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:42.008017+00:00",
+          "process": {
+            "pid": 1492397,
+            "start_ticks": "9641919",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:42.293738+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "setup",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:42.335150+00:00",
+          "process": {
+            "pid": 1492398,
+            "start_ticks": "9641952",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/inputs/afu/a.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': 'INERT WRONG UUID\\n', 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_afu_top_config.vh': 'INERT PLATFORM\\n', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT STATIC, NOT FPGA DATA\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:42.614863+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/setup/persona"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/inputs/afu/a.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_uuid/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': 'INERT WRONG UUID\\n', 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_afu_top_config.vh': 'INERT PLATFORM\\n', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT STATIC, NOT FPGA DATA\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "wrong_selection",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/setup/persona"
+          ],
+          "started": "2026-10-02T06:55:42.678048+00:00",
+          "process": {
+            "pid": 1492401,
+            "start_ticks": "9641986",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:42.950688+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:42.984121+00:00",
+          "process": {
+            "pid": 1492402,
+            "start_ticks": "9642017",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:43.264688+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "setup",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:43.305575+00:00",
+          "process": {
+            "pid": 1492404,
+            "start_ticks": "9642049",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/inputs/afu/wrong.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': \"`define AFU_ACCEL_UUID 128'h00000000_0000_0000_0000_000000000000\\n\", 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_afu_top_config.vh': 'INERT PLATFORM\\n', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT STATIC, NOT FPGA DATA\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:43.582829+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/setup/persona"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/inputs/afu/wrong.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/wrong_selection/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': \"`define AFU_ACCEL_UUID 128'h00000000_0000_0000_0000_000000000000\\n\", 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_afu_top_config.vh': 'INERT PLATFORM\\n', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT STATIC, NOT FPGA DATA\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "missing_header",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/setup/persona"
+          ],
+          "started": "2026-10-02T06:55:43.641756+00:00",
+          "process": {
+            "pid": 1492407,
+            "start_ticks": "9642083",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:43.917940+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:43.952730+00:00",
+          "process": {
+            "pid": 1492408,
+            "start_ticks": "9642114",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:44.230384+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "setup",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:44.265855+00:00",
+          "process": {
+            "pid": 1492410,
+            "start_ticks": "9642145",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/inputs/afu/a.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': \"`define AFU_ACCEL_UUID 128'h00000000_0000_0000_0000_000000000000\\n\", 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT STATIC, NOT FPGA DATA\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:44.545427+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/setup/persona"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/inputs/afu/a.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/missing_header/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': \"`define AFU_ACCEL_UUID 128'h00000000_0000_0000_0000_000000000000\\n\", 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT STATIC, NOT FPGA DATA\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "bad_qdb",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/setup/persona"
+          ],
+          "started": "2026-10-02T06:55:44.604370+00:00",
+          "process": {
+            "pid": 1492411,
+            "start_ticks": "9642179",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:44.899534+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:44.937961+00:00",
+          "process": {
+            "pid": 1492416,
+            "start_ticks": "9642212",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:45.220004+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "setup",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:45.258387+00:00",
+          "process": {
+            "pid": 1492420,
+            "start_ticks": "9642244",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/inputs/afu/a.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': \"`define AFU_ACCEL_UUID 128'h00000000_0000_0000_0000_000000000000\\n\", 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_afu_top_config.vh': 'INERT PLATFORM\\n', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT DRIFT\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:45.537045+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/setup/persona"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/inputs/afu/a.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/bad_qdb/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': \"`define AFU_ACCEL_UUID 128'h00000000_0000_0000_0000_000000000000\\n\", 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_afu_top_config.vh': 'INERT PLATFORM\\n', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT DRIFT\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "diagnostic",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/setup/persona"
+          ],
+          "started": "2026-10-02T06:55:45.594249+00:00",
+          "process": {
+            "pid": 1492426,
+            "start_ticks": "9642278",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:45.885523+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:45.927157+00:00",
+          "process": {
+            "pid": 1492431,
+            "start_ticks": "9642311",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:46.213424+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "setup",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:46.252432+00:00",
+          "process": {
+            "pid": 1492433,
+            "start_ticks": "9642344",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/inputs/afu/a.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': \"`define AFU_ACCEL_UUID 128'h00000000_0000_0000_0000_000000000000\\n\", 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_afu_top_config.vh': 'INERT PLATFORM\\n', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT STATIC, NOT FPGA DATA\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\nprint(\"Error: INERT setup failure\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:46.533347+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [
+        {
+          "file": "setup.log",
+          "line": 1,
+          "text": "Error: INERT setup failure"
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/setup/persona"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/inputs/afu/a.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/diagnostic/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': \"`define AFU_ACCEL_UUID 128'h00000000_0000_0000_0000_000000000000\\n\", 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_afu_top_config.vh': 'INERT PLATFORM\\n', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT STATIC, NOT FPGA DATA\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\nprint(\"Error: INERT setup failure\")\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "input_drift",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/setup/persona"
+          ],
+          "started": "2026-10-02T06:55:46.593653+00:00",
+          "process": {
+            "pid": 1492435,
+            "start_ticks": "9642378",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:46.879775+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:46.917101+00:00",
+          "process": {
+            "pid": 1492436,
+            "start_ticks": "9642410",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:47.200961+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "setup",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:47.239638+00:00",
+          "process": {
+            "pid": 1492438,
+            "start_ticks": "9642442",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/inputs/afu/a.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': \"`define AFU_ACCEL_UUID 128'h00000000_0000_0000_0000_000000000000\\n\", 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_afu_top_config.vh': 'INERT PLATFORM\\n', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT STATIC, NOT FPGA DATA\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\nPath('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/inputs/afu/a.sv').write_text(\"DRIFT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:47.526868+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/setup/persona"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/inputs/afu/a.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': \"`define AFU_ACCEL_UUID 128'h00000000_0000_0000_0000_000000000000\\n\", 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_afu_top_config.vh': 'INERT PLATFORM\\n', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT STATIC, NOT FPGA DATA\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\nPath('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/input_drift/inputs/afu/a.sv').write_text(\"DRIFT\")\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "release_drift",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/setup/persona"
+          ],
+          "started": "2026-10-02T06:55:47.592624+00:00",
+          "process": {
+            "pid": 1492495,
+            "start_ticks": "9642478",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:47.888214+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:47.927406+00:00",
+          "process": {
+            "pid": 1492498,
+            "start_ticks": "9642511",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:48.218612+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "setup",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:48.259166+00:00",
+          "process": {
+            "pid": 1492501,
+            "start_ticks": "9642544",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/inputs/afu/a.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': \"`define AFU_ACCEL_UUID 128'h00000000_0000_0000_0000_000000000000\\n\", 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_afu_top_config.vh': 'INERT PLATFORM\\n', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT STATIC, NOT FPGA DATA\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\nPath('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/release/hw/lib/build/syn/board/ia840f/syn_top/ofs_top.qdb').write_text(\"DRIFT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:48.542067+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/setup/persona"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/inputs/afu/a.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': \"`define AFU_ACCEL_UUID 128'h00000000_0000_0000_0000_000000000000\\n\", 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_afu_top_config.vh': 'INERT PLATFORM\\n', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT STATIC, NOT FPGA DATA\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\nPath('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/release_drift/release/hw/lib/build/syn/board/ia840f/syn_top/ofs_top.qdb').write_text(\"DRIFT\")\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "overflow",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/setup/persona"
+          ],
+          "started": "2026-10-02T06:55:48.606039+00:00",
+          "process": {
+            "pid": 1492503,
+            "start_ticks": "9642579",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:48.897401+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:48.933517+00:00",
+          "process": {
+            "pid": 1492504,
+            "start_ticks": "9642612",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:49.225880+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "setup",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:49.264181+00:00",
+          "process": {
+            "pid": 1492507,
+            "start_ticks": "9642645",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/inputs/afu/a.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': \"`define AFU_ACCEL_UUID 128'h00000000_0000_0000_0000_000000000000\\n\", 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_afu_top_config.vh': 'INERT PLATFORM\\n', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT STATIC, NOT FPGA DATA\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\nprint(\"x\"*2048)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": true,
+          "ended": "2026-10-02T06:55:49.548108+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 125
+        }
+      ],
+      "diagnostics": [
+        {
+          "file": "setup.log",
+          "error": "log threshold exceeded"
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/setup/persona"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/inputs/afu/a.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/overflow/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': \"`define AFU_ACCEL_UUID 128'h00000000_0000_0000_0000_000000000000\\n\", 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_afu_top_config.vh': 'INERT PLATFORM\\n', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT STATIC, NOT FPGA DATA\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\nprint(\"x\"*2048)\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "drain_gate",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/setup/persona"
+          ],
+          "started": "2026-10-02T06:55:49.608161+00:00",
+          "process": {
+            "pid": 1492510,
+            "start_ticks": "9642679",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:49.898999+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:49.935732+00:00",
+          "process": {
+            "pid": 1492512,
+            "start_ticks": "9642712",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:50.213799+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "setup",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:50.249793+00:00",
+          "process": {
+            "pid": 1492513,
+            "start_ticks": "9642743",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/inputs/afu/a.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': \"`define AFU_ACCEL_UUID 128'h00000000_0000_0000_0000_000000000000\\n\", 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_afu_top_config.vh': 'INERT PLATFORM\\n', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT STATIC, NOT FPGA DATA\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\nimport os,time\npid=os.fork()\nif pid:os._exit(0)\ntime.sleep(0.4)\nprint(\"IA840F_GATE_REJECTED: INERT setup helper\",flush=True)\ntime.sleep(8)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [
+            1492514
+          ],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": true,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:50.853442+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 125
+        }
+      ],
+      "diagnostics": [
+        {
+          "file": "setup.log",
+          "line": 1,
+          "text": "IA840F_GATE_REJECTED: INERT setup helper"
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/setup/persona"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/inputs/afu/a.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/drain_gate/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': \"`define AFU_ACCEL_UUID 128'h00000000_0000_0000_0000_000000000000\\n\", 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_afu_top_config.vh': 'INERT PLATFORM\\n', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT STATIC, NOT FPGA DATA\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\nimport os,time\npid=os.fork()\nif pid:os._exit(0)\ntime.sleep(0.4)\nprint(\"IA840F_GATE_REJECTED: INERT setup helper\",flush=True)\ntime.sleep(8)\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    },
+    {
+      "case": "postflight_exception",
+      "expected_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/setup/persona"
+          ],
+          "started": "2026-10-02T06:55:50.914850+00:00",
+          "process": {
+            "pid": 1492518,
+            "start_ticks": "9642810",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:51.196511+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:51.234376+00:00",
+          "process": {
+            "pid": 1492520,
+            "start_ticks": "9642842",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:51.515038+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "setup",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T06:55:51.552410+00:00",
+          "process": {
+            "pid": 1492523,
+            "start_ticks": "9642874",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/setup",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/inputs/afu/a.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': \"`define AFU_ACCEL_UUID 128'h00000000_0000_0000_0000_000000000000\\n\", 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_afu_top_config.vh': 'INERT PLATFORM\\n', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT STATIC, NOT FPGA DATA\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T06:55:51.844069+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": null,
+      "postflight_errors": null,
+      "postflight_exception": "RuntimeError('INERT postflight fault')",
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/setup/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/fake-quartus",
+            "-DRELEASE_ROOT=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/release",
+            "-DAFU_SOURCES=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/inputs",
+            "-DPERSONA_TARGET=/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/setup/persona"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/setup/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/setup/cmake-build",
+            "--target",
+            "persona_setup",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/setup/persona')\nfor name,text in {'hw/afu.qsf': 'set_global_assignment -name SYSTEMVERILOG_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/inputs/afu/a.sv\"\\nset_global_assignment -name QIP_FILE \"/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva/postflight_exception/inputs/generated/top.qip\"\\n', 'hw/afu_json_info.vh': \"`define AFU_ACCEL_UUID 128'h00000000_0000_0000_0000_000000000000\\n\", 'hw/ia840f_ahls_memory.json': '{\"version\": 1, \"afu-image\": {\"accelerator-clusters\": [{\"accelerator-type-uuid\": \"00000000-0000-0000-0000-000000000000\"}]}}', 'build/platform/platform_afu_top_config.vh': 'INERT PLATFORM\\n', 'build/platform/platform_if_addenda.qsf': 'INERT ADDENDA\\n', 'build/syn/board/ia840f/syn_top/ofs_top.qdb': 'INERT STATIC, NOT FPGA DATA\\n'}.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)\n"
+          ]
+        }
+      ],
+      "replay_preserved": true
+    }
+  ],
+  "scratch": "/home/joe/.hermes/cache/scratch/matching-setup-inert-fspercva"
+}
