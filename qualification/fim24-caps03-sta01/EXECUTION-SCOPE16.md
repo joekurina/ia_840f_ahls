@@ -1,0 +1,29 @@
+# Final-snapshot STA execution package — staged and unissued
+
+SOURCE/API07 and numerical/coverage contract07 are consumed09 after69-member verification. Stage15 changes exactly two QSF gate references and adds two gate files; original fit/mapped/setup/release/external/archive/static inputs and all other copied bytes are preserved. No native STA or admission exists. [Proof16](prepared-source-proof16.json), [readback15](stage15-readback/stage15.json).
+
+## Source-bound operation
+
+`control06/runtime/run-sta06.py` performs early exact-manifest/code/metadata/role/resource/context validation before exclusively creating `sta01`. All4027 entries are bound at launch;4001 critical entries and280 physical/static snapshot members remain immutable, including QPF and all source/SDC/settings/prior fitter reports. Only26 named existing report/cache/runlog files may change. Original fitted4025 and mapped3894 trees are independently checked by complete entry-set and byte binding; setup/release/archive/external/tool/five predecessor-result preservation remains.
+
+The callback retains the proven raw-string start-tick producer/JSON/process-reader boundary and strict PID/start/exe/cwd/argv/live-owner ancestry. It accepts only direct `quartus_sta ofs_top -c ofs_pr_afu --snapshot=final --multicorner=on --do_report_timing --do_report_cdc_viewer` in this copied project. New gate/runner/numeric-module/CMake hashes and all prerequisites are pinned. Missing admission rejects before creating sta01; both actual staged rejection paths were exercised.
+
+CMake offers only version/timing. All36 logical CPUs allowed,64GiB per-process;60/60/1800-second stages and32MiB polled log threshold. Fresh HOME/TMPDIR and explicit26.1.1/release paths, absent OPAE_PLATFORM_GEN and current unrecorded license values. No fit/synthesis/assembly/GBS/hardware, aggregate sandbox or promised internal worker count. The tested supervisor remains byte-identical after inverse stage-label substitution and retains ownership/watchdogs through descendant drain/final bytes.
+
+## Three distinct outcomes
+
+1. **Execution-clean:** successful native/CMake/effective stages, complete required output acquisition, exact code/input/original preservation, accepted owned callbacks, no execution/analysis Error/Fatal/gate rejection, and syntactically valid required summary/frequency records. Malformed records or numeric acquisition failure reject this wrapper. Seven primary outputs are required; only clocks.sta.fail.summary may be empty. Existing physical databases must remain present/protected, not be newly generated.
+2. **Initial numerical screen:** exact Decimal Slack>=0 and required/present TNS=0; no rounding/underflow tolerance. Every record/line is accounted for with source/ordinal/line. Native clock records, native two-field anonymous constraints and hook records have distinct grammars; legitimate repeated constraint labels are retained, duplicate domain keys unresolved. Hook pass/fail placement, required families/application-domain records, actual per-model panel corner observations, frequency fields and population deltas are evaluated separately. Noncritical per-corner population differences require applicability disposition, not an invented Cartesian path requirement. Valid negative timing can be execution-clean while numeric/screen results fail.
+3. **Full timing/coverage acceptance:** always false in this runner. Later independent review must establish actual3.000ns propagation, all-corner applicability, current CDC/synchronizers/pointer skew/net-delay, exceptions/unconstrained/signoffDRC and reset/electrical/entry obligations. A screen pass, computed user frequency or empty failure summary never grants this acceptance.
+
+The parser uses actual per-model Max Skew and Metastability panel names to observe corners, not only worst-corner aggregate fields. Its explicit current-device label/token correspondence rejects unknown observed labels as unresolved; it does not assume historical record totals. Numeric summaries/frequency input reads are bounded at8MiB each and main-report corner scanning at512MiB; no truncation is silently accepted. Native report hashes are retained independently. [Module06](candidate06/sta_numeric06.py), [contract07](timing-coverage-review07.md).
+
+## Exercised evidence
+
+70 numerical/schema cases include retained25.1/26.1.1 formats, valid anonymous duplicates, malformed/orphan/duplicate fields, invalid and nonfinite tokens, tiny negative/nonzero values, contradictory hook placement, domain/corner gaps and frequency metadata.21 callback cases;9 actual producer→JSON→/proc/ancestor cases with disclosed inert-child/parent-context substitutions;42 actual-runner/real-inert-child cases use the real parser while mocking admission/CMake/vendor report generation;two actual-Tcl/mock-exec cases; six exact CMake checks;seven issuer protocol fixtures. Full-entry original-tree extra-file drift, immutable QPF date drift, malformed screening and execution-clean negative timing are explicitly covered. No fixture is a native result.
+
+## Issuance boundary
+
+Issuer19 is a mechanical retarget of the accepted first-fit issuer. It binds exact draft15/runner06, five payload members, source proof, QUALITY18 and parent consumption; reconstructs only the permitted admission delta; writes exclusively; reads back; imports only bound non-consuming preflight, never run(). The only rendering slot is the packet digest. The2MiB compressed bound accommodates the measured1,643,269-byte draft encoding; check the complete packet again after review. Source/coverage reports and parser are already hash-pinned draft prerequisites.
+
+**Next:** independent execution QUALITY18, exact parent issuance/readback/live preflight, then one owned STA. Do not re-run fit/synthesis or treat timing failure as permission to change constraints. All hardware boundaries remain.

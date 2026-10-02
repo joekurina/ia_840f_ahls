@@ -1,0 +1,79 @@
+{
+  "success": true,
+  "scope": "real local identity()/JSON/proc()/owner_live and validate ancestry integration; inert Python child, file/context/environment fixture, no Quartus or remote/hardware",
+  "callback_source": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim24-caps03-sta01/candidate06/ia840f_sta_gate06.py",
+  "callback_sha256": "faeeb1a3abb92731b93dffda2cc7b71e70c35b934720708c472c17fc43308afe",
+  "producer_source": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim24-caps03-sta01/candidate06/run-sta06.py",
+  "producer_sha256": "b756eb19768e6848804327b9db907c70755f0566c9b968d496e625d276330ebc",
+  "producer_start_ticks_type": "str",
+  "consumer_start_ticks_type": "str",
+  "count": 9,
+  "cases": [
+    {
+      "case": "real_owner_json_roundtrip",
+      "expected_accept": true,
+      "accepted": true,
+      "correct": true,
+      "error": null
+    },
+    {
+      "case": "reject_changed_start_ticks",
+      "expected_accept": false,
+      "accepted": false,
+      "correct": true,
+      "error": "AssertionError()"
+    },
+    {
+      "case": "reject_changed_exe",
+      "expected_accept": false,
+      "accepted": false,
+      "correct": true,
+      "error": "AssertionError()"
+    },
+    {
+      "case": "reject_changed_cwd",
+      "expected_accept": false,
+      "accepted": false,
+      "correct": true,
+      "error": "AssertionError()"
+    },
+    {
+      "case": "reject_changed_argv",
+      "expected_accept": false,
+      "accepted": false,
+      "correct": true,
+      "error": "AssertionError()"
+    },
+    {
+      "case": "actual_validate_real_child_to_real_owner",
+      "expected_accept": true,
+      "accepted": true,
+      "correct": true,
+      "error": null
+    },
+    {
+      "case": "actual_validate_changed_owner_start",
+      "expected_accept": false,
+      "accepted": false,
+      "correct": true,
+      "error": "AssertionError()"
+    },
+    {
+      "case": "real_proc_ancestry_serialized_owner",
+      "expected_accept": true,
+      "accepted": true,
+      "correct": true,
+      "error": null
+    },
+    {
+      "case": "exited_real_owner_rejected",
+      "expected_accept": false,
+      "accepted": false,
+      "correct": true,
+      "error": "FileNotFoundError(2, 'No such file or directory')"
+    }
+  ],
+  "failures": [],
+  "inert_child_returncode": 0,
+  "scratch": "/home/joe/.hermes/cache/scratch/persona-gate-0noqjr3p"
+}

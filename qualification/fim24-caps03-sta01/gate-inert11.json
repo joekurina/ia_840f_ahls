@@ -1,0 +1,156 @@
+{
+  "success": true,
+  "scope": "actual callback with synthetic identity/ancestry and inert files; no Quartus/project/native execution",
+  "source_sha256": "faeeb1a3abb92731b93dffda2cc7b71e70c35b934720708c472c17fc43308afe",
+  "count": 21,
+  "critical_fixture_files": 4001,
+  "external_fixture_files": 298,
+  "cases": [
+    {
+      "case": "positive_exact_context",
+      "expected_accept": true,
+      "accepted": true,
+      "error": null,
+      "no_accept_event_on_reject": true
+    },
+    {
+      "case": "bad_scope",
+      "expected_accept": false,
+      "accepted": false,
+      "error": "AssertionError()",
+      "no_accept_event_on_reject": true
+    },
+    {
+      "case": "ready",
+      "expected_accept": false,
+      "accepted": false,
+      "error": "AssertionError()",
+      "no_accept_event_on_reject": true
+    },
+    {
+      "case": "hardware_ready",
+      "expected_accept": false,
+      "accepted": false,
+      "error": "AssertionError()",
+      "no_accept_event_on_reject": true
+    },
+    {
+      "case": "empty_critical",
+      "expected_accept": false,
+      "accepted": false,
+      "error": "AssertionError()",
+      "no_accept_event_on_reject": true
+    },
+    {
+      "case": "empty_external",
+      "expected_accept": false,
+      "accepted": false,
+      "error": "AssertionError()",
+      "no_accept_event_on_reject": true
+    },
+    {
+      "case": "unissued_parent",
+      "expected_accept": false,
+      "accepted": false,
+      "error": "AssertionError()",
+      "no_accept_event_on_reject": true
+    },
+    {
+      "case": "wrong_argv",
+      "expected_accept": false,
+      "accepted": false,
+      "error": "AssertionError(('unrecorded native context', {'exe': '/home/joe/.hermes/cache/scratch/persona-gate-dhlmn06i/native-tool', 'cwd': '/home/joe/.hermes/cache/scratch/persona-gate-dhlmn06i/design/project', 'argv': ['ofs_top', '-c', 'ofs_pr_afu', '--snapshot=final', '--multicorner=on', '--do_report_timing', '--do_report_cdc_viewer', '--unreviewed']}))",
+      "no_accept_event_on_reject": true
+    },
+    {
+      "case": "wrong_cwd",
+      "expected_accept": false,
+      "accepted": false,
+      "error": "AssertionError(('unrecorded native context', {'exe': '/home/joe/.hermes/cache/scratch/persona-gate-dhlmn06i/native-tool', 'cwd': '/INERT_WRONG', 'argv': ['ofs_top', '-c', 'ofs_pr_afu', '--snapshot=final', '--multicorner=on', '--do_report_timing', '--do_report_cdc_viewer']}))",
+      "no_accept_event_on_reject": true
+    },
+    {
+      "case": "wrong_exe",
+      "expected_accept": false,
+      "accepted": false,
+      "error": "AssertionError(('unrecorded native context', {'exe': '/INERT_WRONG', 'cwd': '/home/joe/.hermes/cache/scratch/persona-gate-dhlmn06i/design/project', 'argv': ['ofs_top', '-c', 'ofs_pr_afu', '--snapshot=final', '--multicorner=on', '--do_report_timing', '--do_report_cdc_viewer']}))",
+      "no_accept_event_on_reject": true
+    },
+    {
+      "case": "unowned_ancestry",
+      "expected_accept": false,
+      "accepted": false,
+      "error": "AssertionError('native process is not descended from current owned runner')",
+      "no_accept_event_on_reject": true
+    },
+    {
+      "case": "stale_owner",
+      "expected_accept": false,
+      "accepted": false,
+      "error": "AssertionError()",
+      "no_accept_event_on_reject": true
+    },
+    {
+      "case": "export_mode_zero",
+      "expected_accept": false,
+      "accepted": false,
+      "error": "AssertionError()",
+      "no_accept_event_on_reject": true
+    },
+    {
+      "case": "wrong_version",
+      "expected_accept": false,
+      "accepted": false,
+      "error": "AssertionError()",
+      "no_accept_event_on_reject": true
+    },
+    {
+      "case": "source_drift",
+      "expected_accept": false,
+      "accepted": false,
+      "error": "AssertionError('/home/joe/.hermes/cache/scratch/persona-gate-dhlmn06i/design/data/0000')",
+      "no_accept_event_on_reject": true
+    },
+    {
+      "case": "external_drift",
+      "expected_accept": false,
+      "accepted": false,
+      "error": "AssertionError('/home/joe/.hermes/cache/scratch/persona-gate-dhlmn06i/external/0000')",
+      "no_accept_event_on_reject": true
+    },
+    {
+      "case": "tool_drift",
+      "expected_accept": false,
+      "accepted": false,
+      "error": "AssertionError()",
+      "no_accept_event_on_reject": true
+    },
+    {
+      "case": "runner_drift",
+      "expected_accept": false,
+      "accepted": false,
+      "error": "AssertionError()",
+      "no_accept_event_on_reject": true
+    },
+    {
+      "case": "metadata_drift",
+      "expected_accept": false,
+      "accepted": false,
+      "error": "AssertionError()",
+      "no_accept_event_on_reject": true
+    },
+    {
+      "case": "prerequisite_drift",
+      "expected_accept": false,
+      "accepted": false,
+      "error": "AssertionError()",
+      "no_accept_event_on_reject": true
+    },
+    {
+      "case": "missing_authority_no_write",
+      "rc": 1,
+      "root_absent": true
+    }
+  ],
+  "scratch": "/home/joe/.hermes/cache/scratch/persona-gate-dhlmn06i"
+}

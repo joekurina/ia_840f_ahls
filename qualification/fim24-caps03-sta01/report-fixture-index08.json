@@ -1,0 +1,114 @@
+{
+  "scope": "exact retained report-format fixtures; no timing parser acceptance or native execution",
+  "count": 4,
+  "fixtures": {
+    "current26-static-main": {
+      "file": "fixtures08/current26-static-main.summary",
+      "bytes": 61011,
+      "sha256": "abceaab671e31a846f7dee517553eefee7f34577405ed090b2c3bd1e0151bed6",
+      "original_file": "qualification/fim-build-24/timing32-readback/output_files/ofs_top.sta.summary",
+      "source_record": "qualification/fim-build-24/timing32-result.json.gz",
+      "source_record_sha256": "2d90398a231d54af305235ddceddf9cef895bdff1b44a32da74b3c1070738f9a",
+      "type_prefix_occurrences": 788,
+      "record_blocks_observed": 788,
+      "key_patterns": [
+        {
+          "keys": [
+            "Type",
+            "Slack",
+            "TNS",
+            "Corner"
+          ],
+          "count": 132
+        },
+        {
+          "keys": [
+            "Type",
+            "Slack"
+          ],
+          "count": 656
+        }
+      ],
+      "example_per_pattern": {
+        "Type,Slack,TNS,Corner": "Type  : Setup 'pcie_wrapper|pcie_ss.top|host_pcie.pcie_ss|pcie_ss|gen_ptile.u_ptile|intel_pcie_ptile_ast_qhip|inst|inst|maib_and_tile|xcvr_hip_native|rx_ch15'\nSlack : 0.166\nTNS   : 0.000\nCorner: Slow vid2 100C Model",
+        "Type,Slack": "Type  : Slow vid2 100C Model Max Skew 'set_max_skew'\nSlack : 1.178"
+      },
+      "role": "parser-format test data only; historical/static timing values are not current persona acceptance"
+    },
+    "prior25-persona-main": {
+      "file": "fixtures08/prior25-persona-main.summary",
+      "bytes": 69407,
+      "sha256": "4e3e6717c04aaf9b87d55a53d21aecee1571940fb66abd53d6e95a1237265fce",
+      "original_file": "qualification/caps03-persona01/sta01-capture/persona/build/syn/board/ia840f/syn_top/output_files/ofs_pr_afu.sta.summary",
+      "source_record": "qualification/caps03-persona01/sta01-result-metadata.json",
+      "source_record_sha256": "294580cc3efd8201c593563350d873bc11c97f558049dfaa1632ac03094486e7",
+      "type_prefix_occurrences": 913,
+      "record_blocks_observed": 913,
+      "key_patterns": [
+        {
+          "keys": [
+            "Type",
+            "Slack",
+            "TNS",
+            "Corner"
+          ],
+          "count": 129
+        },
+        {
+          "keys": [
+            "Type",
+            "Slack"
+          ],
+          "count": 784
+        }
+      ],
+      "example_per_pattern": {
+        "Type,Slack,TNS,Corner": "Type  : Setup 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'\nSlack : 0.213\nTNS   : 0.000\nCorner: Slow vid2 100C Model",
+        "Type,Slack": "Type  : Slow vid2 100C Model Max Skew 'set_max_skew'\nSlack : 1.137"
+      },
+      "role": "parser-format test data only; historical/static timing values are not current persona acceptance"
+    },
+    "prior25-hook-pass": {
+      "file": "fixtures08/prior25-hook-pass.summary",
+      "bytes": 78513,
+      "sha256": "5d7916c645c7c3aef7f57bf4cc2fac3bb228a94e3ca8aa02e13dcf39da90f4e4",
+      "original_file": "qualification/caps03-persona01/sta01-capture/persona/build/syn/board/ia840f/syn_top/output_files/timing_report/clocks.sta.pass.summary",
+      "source_record": "qualification/caps03-persona01/sta01-result-metadata.json",
+      "source_record_sha256": "294580cc3efd8201c593563350d873bc11c97f558049dfaa1632ac03094486e7",
+      "type_prefix_occurrences": 645,
+      "record_blocks_observed": 645,
+      "key_patterns": [
+        {
+          "keys": [
+            "Type",
+            "Slack",
+            "TNS"
+          ],
+          "count": 645
+        }
+      ],
+      "example_per_pattern": {
+        "Type,Slack,TNS": "Type  : 2_slow_vid2_100c setup 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'\nSlack : 0.213\nTNS   : 0.000"
+      },
+      "role": "parser-format test data only; historical/static timing values are not current persona acceptance"
+    },
+    "prior25-hook-fail": {
+      "file": "fixtures08/prior25-hook-fail.summary",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_file": "qualification/caps03-persona01/sta01-capture/persona/build/syn/board/ia840f/syn_top/output_files/timing_report/clocks.sta.fail.summary",
+      "source_record": "qualification/caps03-persona01/sta01-result-metadata.json",
+      "source_record_sha256": "294580cc3efd8201c593563350d873bc11c97f558049dfaa1632ac03094486e7",
+      "type_prefix_occurrences": 0,
+      "record_blocks_observed": 0,
+      "key_patterns": [],
+      "example_per_pattern": {},
+      "role": "parser-format test data only; historical/static timing values are not current persona acceptance"
+    }
+  },
+  "do_not_transfer": [
+    "historical/static numerical values",
+    "old total counts as expected new persona counts",
+    "worst-corner summary fields as full per-corner coverage"
+  ]
+}

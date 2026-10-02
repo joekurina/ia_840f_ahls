@@ -1,0 +1,20 @@
+# Completed STA numerical acceptance32
+
+**ACCEPT WITH FINDINGS — execution, acquisition and numerical 3.000ns analysis. Full endpoint-level timing/CDC acceptance remains pending.** Parent consumed all three independent reviews after204-member reverification and targeted high-risk checks. [Consumption31](result-reviews-consumed31.json), [integrity28](native-result-review28.md), [coverage29](timing-coverage-review29.md), [diagnostics30](diagnostic-reset-review30.md).
+
+## Accepted facts and limits
+
+- One completed final-snapshot multicorner STA; CMake/effective/outer0, with native0 propagated through direct CMake targets.99.430144s includes configure/version/postflight. Actual live identity and accepted callback were recorded. Admission is spent; no unchanged rerun is needed. [Result26](RESULT26.md), [raw result](completion24-readback/operation/result.json).
+- All54 captures/70,744,266bytes,15 preservation checks,923 native records and635 overlapping hook records reconcile. Every reported slack is finite/nonnegative and applicable TNS zero. Actual3.000ns endpoint propagation is corroborated, including0.002ns setup paths; printed zero hold/MPW is not positive margin. This is not every-path or hardware acceptance. [Verification25](native-result-verification25.json), [review28](native-result-review28.md#L25-L47).
+- All seven failing High signoff detail tables match accepted static reported cells. Preserve their disclosed static findings rather than claiming a clean DRC pass. The16 ignored current reset-identification targets match exact synthesis removals marked Lost fanout; no sixteen-head unsynchronized-fitted conclusion or noprune repair follows. Parent verified both claims directly. [Parent checks31](parent-review-checks31.json), [review30](diagnostic-reset-review30.md#L23-L37).
+- Current PR/reset exposure is recorded explicitly:517 added bank1 boundary findings and joined-reset1771CLRN/1081SCLR/513ENA, not historical counts. Application recovery/removal numbers do not prove arbitrary entry sequencing. [Review30](diagnostic-reset-review30.md#L29-L41).
+- Accepted unchanged-static EMIF1 carry-forward does not reopen CPA reconstruction or fitting merely because ordinary current report detail omits bit243. No clock, SDC, RTL or numerical requirement was relaxed. [Review29](timing-coverage-review29.md#L55-L57).
+
+## Remaining, concrete gates
+
+1. **Current PIM endpoint coverage:** resolve the exact two generic net-delay selectors against the40 current pointer bundles/20 FIFOs, their actual first-stage endpoints, destination-clock-derived limits and effective timed/cut precedence at all five corners. Forty current skew bundles are present in each corner, but aggregate net-delay labels do not enumerate endpoint membership. A fresh bounded reporting copy is prepared at [CDC01](../fim24-caps03-cdc01/CURRENT.md); its API review/implementation/QUALITY/admission remain separate. No new constraint or refit is selected. [Coverage29](timing-coverage-review29.md#L39-L55).
+2. **Operation-bound reset entry:** clocks running, both banks initialized, no active work, and supported sequencing extended by **three additional sys/seven additional bank0 cycles**. These are not total pulse widths or arbitrary sleeps. Full-device activation and dynamic PR/VF-FLR must not be conflated. [Review30](diagnostic-reset-review30.md#L39-L41).
+3. **Four named electrical dispositions:** `bwbmc_bmc_irq`, `bwbmc_bmc_mst_en_n`, `bwbmc_fpga_max_miso`, `SYS_REFCLK`; board-supported termination/default-slew evidence before deployment. [Review30](diagnostic-reset-review30.md#L43).
+4. **Separate assembly/packaging and hardware gates:** offline assembly-package preparation is allowed, not native assembly execution or hardware authority. No assembly, conversion, programming, BMC cycle, reboot, FLR or data test has occurred in this stage.
+
+The original native result retains `timing_accepted=false`; this bounded acceptance does not rewrite it or claim migration completion. Three focused read-only lanes—CDC API, reset-entry basis and electrical basis—are active under `deleg_9a37b5d2`.

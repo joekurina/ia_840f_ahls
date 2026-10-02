@@ -1,0 +1,44 @@
+# STA numerical-screen and coverage contract07
+
+**SOURCE-only contract; no timing acceptance or execution authority.** Reviewer: GPT-6 (`gpt-6-astra-900k`, `openai-codex`), substituting for unavailable GLM5.3. Local reads, hashes and text/JSON reductions only; no project imports, tests, Tcl, native/remote/Git/hardware operations. No runtime parser authored.
+
+Verified [freeze06](source-api-freeze06.json) SHA256 `301fe613ea9009bdebd49bd057f694c0061d2d39d715137a97902053b7d6c766`: **69/69 members**, byte counts and hashes, zero mismatches. The fresh 4025-entry copy is preparation, not an STA result. FIT acceptance establishes root final preservation, green Reconfigurable and 13 preservation passes—not timing. [Scope](SOURCE-SCOPE05.md#L3-L15); [FIT acceptance](../fim24-caps03-physical01/FIT-ACCEPTANCE38.md#L3-L11).
+
+## Ordinary operation and minimum evidence
+
+One planned native command, unchanged:
+
+`quartus_sta ofs_top -c ofs_pr_afu --snapshot=final --multicorner=on --do_report_timing --do_report_cdc_viewer`
+
+[CMake](candidate03/CMakeLists.txt#L18-L23), [26.1.1 help](../fim24-caps03-physical01/help01-readback/sta_help.log), [snapshot](../fim24-caps03-physical01/help02-readback/sta_snapshot.log) and [multicorner](../fim24-caps03-physical01/help02-readback/sta_multicorner.log) support this bounded selection, not observed execution.
+
+Parent must retain exact executable/version/hash, argv/cwd, native/CMake/effective/outer status, complete log/diagnostics, preservation receipts and fresh-output inventory with sizes/SHA256. Capture complete `ofs_pr_afu.sta.rpt`, `ofs_pr_afu.sta.summary`, `ofs_pr_afu.tq.drc.signoff.rpt`, `timing_report/clocks.rpt`, `timing_report/clocks.sta.pass.summary`, `timing_report/clocks.sta.fail.summary`, and `user_clock_freq.txt` (all beneath `output_files`). Only the failure summary may be empty; retain generated failing-path reports too. Missing/truncated/stale output is not a numerical pass. [Output contract](source-plan05.json#L93-L103); [report producer](copy01-readback/project/ofs_partial_reconfig/report_timing.tcl#L47-L88).
+
+Keep `execution_clean` (correct completed analysis, acquisition/preservation, no execution/analysis errors) separate from numerical outcome and full acceptance. A valid completed negative-slack analysis can be execution-clean; it can never be accepted timing. Completion banners, exit zero and empty failure files cannot replace numerical inspection.
+
+## Whole-record initial screen
+
+Two supplemental examples are **format data only**, outside freeze06: [25.1 persona](../caps03-persona01/sta01-capture/persona/build/syn/board/ia840f/syn_top/output_files/ofs_pr_afu.sta.summary) (SHA256 `4e3e6717c04aaf9b87d55a53d21aecee1571940fb66abd53d6e95a1237265fce`) and [26.1.1 Work24 static](../fim-build-24/timing32-readback/output_files/ofs_top.sta.summary) (`abceaab671e31a846f7dee517553eefee7f34577405ed090b2c3bd1e0151bed6`). Neither their timing values nor their record counts establish future expectations.
+
+- **Native grammar:** setup/hold/recovery/removal/Minimum Pulse Width records contain `Type: family 'clock'`, `Slack`, `TNS`, `Corner`. They aggregate worst corners by domain; do not require every corner or every family for every domain. Max Skew records embed the corner in Type; Net Delay records need not. Both constraint shapes contain only Type/Slack: absent TNS/Corner is structurally non-applicable, not zero. [Persona examples](../caps03-persona01/sta01-capture/persona/build/syn/board/ia840f/syn_top/output_files/ofs_pr_afu.sta.summary#L650-L658); [Work24 constraints](../fim-build-24/timing32-readback/output_files/ofs_top.sta.summary#L2195-L2203).
+- **Hook grammar differs:** `Type: corner type 'clock'`, Slack, TNS; types are `setup hold recovery removal mpw`. It enumerates available corners and each returned domain. Treat pass/fail files jointly; require sign-consistent placement and account for every occurrence, not independent nonempty-file tests. [Emitter/loop](copy01-readback/project/ofs_partial_reconfig/report_timing.tcl#L35-L85).
+- Inventory every Type/family/field occurrence with source line and record ordinal, including malformed starts. Reconcile parsed records plus explicit rejected records to the entire file; permit only observed header/separator/DDR-footer text in its expected positions. Reject missing/repeated fields, unknown shapes/families, trailing junk and orphan lines. Never count only successful regex matches.
+- Preserve all duplicates. Repeated constraint labels, even identical values, are legitimate occurrences—not unique assignment identities. Never collapse them into a dictionary. Duplicate domain keys (native family/clock; hook corner/type/clock, including across pass/fail) require resolution, not last-wins acceptance.
+- Consume complete numeric tokens, preserving decimal sign/magnitude; require finite **Slack ≥ 0**, and every required/present **TNS = 0**, without rounding tolerance or underflow-to-zero. Blank, N/A, `--`, NaN/Inf, unknown text and numeric suffixes cannot become zero or disappear. Report violations separately from invalid/unresolved data; either prevents screen-pass. Constraint-only records still require finite nonnegative Slack.
+- Account for all five timing families in native and combined hook summaries. Missing families or expected domains require explicit applicability/completeness disposition, never vacuous success. Derive available corners from actual native output, not only aggregate Corner cells. Reconcile hook corner/type/domain occurrences against applicable native populations; unexplained omissions remain unresolved. No historical totals or Cartesian domain×corner requirement applies to worst-corner aggregates. Return per-family counts/minima and every offending location; this remains screening, not coverage proof.
+
+## Helper limits and independent result review
+
+The [QSF hook](candidate03/ofs_pr_afu.qsf#L96-L99) runs [frequency computation before reporting](copy01-readback/project/ofs_partial_reconfig/ofs_sta_report_script_pr.tcl#L11-L14). It deletes/recreates frequency metadata and rereads SDC/updates timing. Its implementation uses setup/recovery/MPW, excludes hold/removal, and supplies 10000MHz missing-clock/slack fallbacks—neither achieved rates nor passes. Reconcile actual selected frequencies, analysis state and clocks; preserve immutable JSON auto-200/auto-100 separately from bank0. [Computation](copy01-readback/project/ofs_partial_reconfig/user_clock_freqs_compute.tcl#L170-L284); [reload](copy01-readback/project/ofs_partial_reconfig/user_clock_freqs_compute.tcl#L351-L362); [user SDC](copy01-readback/project/ofs_partial_reconfig/user_clocks.sdc#L10-L20); [PLL definitions](copy01-readback/project/ofs_partial_reconfig/user_clock_defs.tcl#L7-L35).
+
+Retain exactly one complete `afu-image/clock-frequency-low` and `afu-image/clock-frequency-high` metadata value, check finiteness and reconcile both with helper messages and realized clocks; do not assume native-summary and post-update hook populations/slacks are identical. [Metadata writer/reader](../fim24-caps03-physical01/helpers04-readback/build/platform/ofs_plat_if/par/user_clock_config.tcl#L138-L203).
+
+`--do_report_timing` supplies one critical setup path per destination clock; the hook requests detailed failing paths only (`-npaths 20`, MPW `-nworst 20` per request). Neither proves exhaustive passing-path coverage. [Help](../fim24-caps03-physical01/help02-readback/sta_do_report_timing.log#L4-L9); [hook](copy01-readback/project/ofs_partial_reconfig/report_timing.tcl#L64-L81).
+
+After actual output, independently establish:
+
+1. Bank0 application **3.000ns**, real endpoint propagation, and applicable setup/hold/recovery/removal/MPW at all available corners—not reduced user-clock metadata. [Clock review](../fim24-caps03-physical01/clock-stage-review07.md#L15-L19).
+2. Current `primary_axi`/`map_banks` bidirectional PIM CDC, synchronizers, pointer skew/net-delay and reset-release coverage, effective exception precedence, empty collections/overwrites, and unconstrained clocks/paths/I/O; summary labels cannot identify covered endpoints. [Diagnostic review](../fim24-caps03-physical01/fit-diagnostic-reset-review35.md#L22-L28).
+3. Signoff DRC and dispositions for 139 constraint records, 1098 ignored assignments including 16 current reset-synchronizer rows, 47 unused PR ports, and Finalize DA not run. Preserve four electrical omissions before hardware and **additional** reset cycles: three sys/seven bank0, not total pulse widths. [Findings](../fim24-caps03-physical01/FIT-ACCEPTANCE38.md#L15-L24).
+
+Use ordinary outputs first; unresolved coverage stays open for result-grounded targeted review. No speculative extra Tcl/reporting framework, source exceptions/relaxation, vendor-internals campaign or hardware-proof prerequisite to STA. Parent implements the bounded parser only after SOURCE acceptance; implementation/QUALITY/admission remain separate.

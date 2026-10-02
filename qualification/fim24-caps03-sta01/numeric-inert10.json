@@ -1,0 +1,3976 @@
+{
+  "success": true,
+  "scope": "native retained-format fixtures and synthetic adversarial records; no native STA or current timing acceptance",
+  "module_sha256": "2a7808a4777be76e42b0553bfe84e2b76c73882f18f8c7449515907658907361",
+  "fixture_index_sha256": "0adfb957f56b7bdc3f028a215d4e09f0c5f340e03167dc34ee92d274a3fa43cf",
+  "count": 70,
+  "cases": [
+    {
+      "case": "synthetic_complete_positive",
+      "expected_screen_pass": true,
+      "screen_pass": true,
+      "parse_valid": true,
+      "numeric_pass": true,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": []
+    },
+    {
+      "case": "legitimate_identical_constraint_duplicates",
+      "expected_screen_pass": true,
+      "screen_pass": true,
+      "parse_valid": true,
+      "numeric_pass": true,
+      "records": {
+        "main": 13,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": []
+    },
+    {
+      "case": "frequency_zero_for_unused_user_clocks",
+      "expected_screen_pass": true,
+      "screen_pass": true,
+      "parse_valid": true,
+      "numeric_pass": true,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": []
+    },
+    {
+      "case": "negative_zero_is_exact_zero",
+      "expected_screen_pass": true,
+      "screen_pass": true,
+      "parse_valid": true,
+      "numeric_pass": true,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": []
+    },
+    {
+      "case": "retained_current26-static-main",
+      "parse_valid": true,
+      "record_count": 788,
+      "fixture_sha256": "abceaab671e31a846f7dee517553eefee7f34577405ed090b2c3bd1e0151bed6",
+      "scope": "format regression only, no new persona outcome"
+    },
+    {
+      "case": "retained_prior25-persona-main",
+      "parse_valid": true,
+      "record_count": 913,
+      "fixture_sha256": "4e3e6717c04aaf9b87d55a53d21aecee1571940fb66abd53d6e95a1237265fce",
+      "scope": "format regression only, no new persona outcome"
+    },
+    {
+      "case": "retained_prior_persona_joined_formats",
+      "expected_screen_pass": true,
+      "screen_pass": true,
+      "parse_valid": true,
+      "numeric_pass": true,
+      "records": {
+        "main": 913,
+        "hook_pass": 645,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": []
+    },
+    {
+      "case": "reject_slack_token_'NaN'",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Setup"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "reject_slack_token_'Inf'",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Setup"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "reject_slack_token_'-Infinity'",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Setup"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "reject_slack_token_'N/A'",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Setup"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "reject_slack_token_'--'",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Setup"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "reject_slack_token_''",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Setup"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "reject_slack_token_'0.000garbage'",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Setup"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "reject_slack_token_'0.000 1'",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Setup"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "reject_slack_token_'1e'",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Setup"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "reject_slack_token_'+'",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Setup"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "reject_tns_token_'NaN'",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Setup"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "reject_tns_token_'Inf'",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Setup"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "reject_tns_token_'N/A'",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Setup"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "reject_tns_token_'--'",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Setup"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "reject_tns_token_''",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Setup"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "reject_tns_token_'0.000x'",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Setup"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "negative_slack_not_rounded_-0.001",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": true,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [
+        {
+          "source": "ofs_pr_afu.sta.summary",
+          "line": 5,
+          "ordinal": 1,
+          "family": "Setup",
+          "field": "Slack",
+          "value": "-0.001"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "case": "negative_slack_not_rounded_-1e-9999",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": true,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [
+        {
+          "source": "ofs_pr_afu.sta.summary",
+          "line": 5,
+          "ordinal": 1,
+          "family": "Setup",
+          "field": "Slack",
+          "value": "-1e-9999"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "case": "negative_slack_not_rounded_-0.00000000000000000000000000000000000000000001",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": true,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [
+        {
+          "source": "ofs_pr_afu.sta.summary",
+          "line": 5,
+          "ordinal": 1,
+          "family": "Setup",
+          "field": "Slack",
+          "value": "-0.00000000000000000000000000000000000000000001"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "case": "nonzero_tns_not_rounded_0.001",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": true,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [
+        {
+          "source": "ofs_pr_afu.sta.summary",
+          "line": 5,
+          "ordinal": 1,
+          "family": "Setup",
+          "field": "TNS",
+          "value": "0.001"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "case": "nonzero_tns_not_rounded_-0.001",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": true,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [
+        {
+          "source": "ofs_pr_afu.sta.summary",
+          "line": 5,
+          "ordinal": 1,
+          "family": "Setup",
+          "field": "TNS",
+          "value": "-0.001"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "case": "nonzero_tns_not_rounded_1e-9999",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": true,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [
+        {
+          "source": "ofs_pr_afu.sta.summary",
+          "line": 5,
+          "ordinal": 1,
+          "family": "Setup",
+          "field": "TNS",
+          "value": "1e-9999"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "case": "nonzero_tns_not_rounded_-1e-9999",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": true,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [
+        {
+          "source": "ofs_pr_afu.sta.summary",
+          "line": 5,
+          "ordinal": 1,
+          "family": "Setup",
+          "field": "TNS",
+          "value": "-1e-9999"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "case": "missing_main_header",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": []
+    },
+    {
+      "case": "empty_main",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 0,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Hold",
+            "Minimum Pulse Width",
+            "Recovery",
+            "Removal",
+            "Setup"
+          ]
+        },
+        {
+          "source": "native",
+          "missing_constraint_family": "Max Skew"
+        },
+        {
+          "source": "native",
+          "missing_constraint_family": "Net Delay"
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Hold",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "Minimum Pulse Width",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "Recovery",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "Removal",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "native",
+              "Hold",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "native",
+              "Recovery",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "native",
+              "Removal",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "native",
+              "Minimum Pulse Width",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Hold",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Minimum Pulse Width",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Recovery",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Removal",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Hold",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Minimum Pulse Width",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Recovery",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Removal",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Hold",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Minimum Pulse Width",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Recovery",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Removal",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Hold",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Minimum Pulse Width",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Recovery",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Removal",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Hold",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Minimum Pulse Width",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Recovery",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Removal",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "empty_hook_pass",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 0,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "hook",
+          "missing_timing_families": [
+            "Hold",
+            "Minimum Pulse Width",
+            "Recovery",
+            "Removal",
+            "Setup"
+          ]
+        },
+        {
+          "native_corner_not_in_panels": [],
+          "hook_unknown_corners": [],
+          "hook_missing_corners": [
+            "2_slow_vid2_100c",
+            "2_slow_vid2b_100c",
+            "MIN_fast_vid2_100c",
+            "MIN_fast_vid2a_0c",
+            "MIN_fast_vid2a_100c"
+          ]
+        },
+        {
+          "native_only_domains": [
+            [
+              "Hold",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "Minimum Pulse Width",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "Recovery",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "Removal",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "hook_only_domains": [],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "2_slow_vid2_100c",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "2_slow_vid2b_100c",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "MIN_fast_vid2_100c",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "MIN_fast_vid2a_0c",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "MIN_fast_vid2a_100c",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "2_slow_vid2_100c",
+              "Hold",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "2_slow_vid2b_100c",
+              "Hold",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "MIN_fast_vid2_100c",
+              "Hold",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "MIN_fast_vid2a_0c",
+              "Hold",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "MIN_fast_vid2a_100c",
+              "Hold",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "2_slow_vid2_100c",
+              "Recovery",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "2_slow_vid2b_100c",
+              "Recovery",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "MIN_fast_vid2_100c",
+              "Recovery",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "MIN_fast_vid2a_0c",
+              "Recovery",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "MIN_fast_vid2a_100c",
+              "Recovery",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "2_slow_vid2_100c",
+              "Removal",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "2_slow_vid2b_100c",
+              "Removal",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "MIN_fast_vid2_100c",
+              "Removal",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "MIN_fast_vid2a_0c",
+              "Removal",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "MIN_fast_vid2a_100c",
+              "Removal",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "2_slow_vid2_100c",
+              "Minimum Pulse Width",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "2_slow_vid2b_100c",
+              "Minimum Pulse Width",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "MIN_fast_vid2_100c",
+              "Minimum Pulse Width",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "MIN_fast_vid2a_0c",
+              "Minimum Pulse Width",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ],
+            [
+              "MIN_fast_vid2a_100c",
+              "Minimum Pulse Width",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [
+              [
+                "Hold",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Minimum Pulse Width",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Recovery",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Removal",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "hook_only": [],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [
+              [
+                "Hold",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Minimum Pulse Width",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Recovery",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Removal",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "hook_only": [],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [
+              [
+                "Hold",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Minimum Pulse Width",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Recovery",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Removal",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "hook_only": [],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [
+              [
+                "Hold",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Minimum Pulse Width",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Recovery",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Removal",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "hook_only": [],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [
+              [
+                "Hold",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Minimum Pulse Width",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Recovery",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Removal",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ],
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "hook_only": [],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "trailing_junk_after_footer",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": []
+    },
+    {
+      "case": "orphan_between_records",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": []
+    },
+    {
+      "case": "missing_clock_tns",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Setup"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "missing_clock_corner",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Setup"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "duplicate_slack_field",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Setup"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "unknown_record_field",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Setup"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "unknown_native_family",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Setup"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "type_numeric_extension",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Setup"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "malformed_type_plus_valid_record",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 13,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": []
+    },
+    {
+      "case": "constraint_extra_tns",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": []
+    },
+    {
+      "case": "constraint_missing_slack",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": []
+    },
+    {
+      "case": "constraint_nan",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": []
+    },
+    {
+      "case": "constraint_negative_underflow",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": true,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [
+        {
+          "source": "ofs_pr_afu.sta.summary",
+          "line": 30,
+          "ordinal": 6,
+          "family": "Max Skew",
+          "field": "Slack",
+          "value": "-1e-9999"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "case": "repeated_domain_not_last_wins",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": true,
+      "numeric_pass": true,
+      "records": {
+        "main": 13,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": [
+        "duplicate timing-domain identities require disposition"
+      ]
+    },
+    {
+      "case": "duplicate_hook_key",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": true,
+      "numeric_pass": true,
+      "records": {
+        "main": 12,
+        "hook_pass": 26,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": [
+        "duplicate timing-domain identities require disposition"
+      ]
+    },
+    {
+      "case": "same_hook_key_across_pass_fail",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": true,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 1
+      },
+      "invalid_record_count": 0,
+      "violations": [
+        {
+          "source": "clocks.sta.fail.summary",
+          "line": 1,
+          "ordinal": 1,
+          "family": "Setup",
+          "field": "Slack",
+          "value": "-0.001"
+        }
+      ],
+      "unresolved": [
+        "duplicate timing-domain identities require disposition"
+      ]
+    },
+    {
+      "case": "nonnegative_hook_fail",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": true,
+      "numeric_pass": true,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 1
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "clocks.sta.fail.summary",
+          "line": 1,
+          "ordinal": 1,
+          "family": "Setup",
+          "error": "nonnegative slack in fail summary"
+        },
+        "duplicate timing-domain identities require disposition"
+      ]
+    },
+    {
+      "case": "negative_hook_pass",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": true,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [
+        {
+          "source": "clocks.sta.pass.summary",
+          "line": 1,
+          "ordinal": 1,
+          "family": "Setup",
+          "field": "Slack",
+          "value": "-0.001"
+        }
+      ],
+      "unresolved": [
+        {
+          "source": "clocks.sta.pass.summary",
+          "line": 1,
+          "ordinal": 1,
+          "family": "Setup",
+          "error": "negative slack in pass summary"
+        }
+      ]
+    },
+    {
+      "case": "malformed_hook_extra_field",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "missing_expected_application_domain": [
+            [
+              "2_slow_vid2_100c",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "hook_only": [],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "unknown_hook_family",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 1,
+      "violations": [],
+      "unresolved": [
+        {
+          "missing_expected_application_domain": [
+            [
+              "2_slow_vid2_100c",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "hook_only": [],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "missing_hook_application_corner_family",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": true,
+      "numeric_pass": true,
+      "records": {
+        "main": 12,
+        "hook_pass": 24,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": [
+        {
+          "missing_expected_application_domain": [
+            [
+              "2_slow_vid2_100c",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "hook_only": [],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "all_hold_family_omitted",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": true,
+      "numeric_pass": true,
+      "records": {
+        "main": 11,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": [
+        {
+          "source": "native",
+          "missing_timing_families": [
+            "Hold"
+          ]
+        },
+        {
+          "native_only_domains": [],
+          "hook_only_domains": [
+            [
+              "Hold",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ],
+          "note": "analysis-state/applicability review required; no assumed identical slack values"
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "native",
+              "Hold",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Hold",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2b_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Hold",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Hold",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_0c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Hold",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "MIN_fast_vid2a_100c",
+            "native_aggregate_only": [],
+            "hook_only": [
+              [
+                "Hold",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "missing_per_model_panels",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": true,
+      "numeric_pass": true,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": [
+        "missing per-model corner panel family",
+        {
+          "native_corner_not_in_panels": [
+            "Fast vid2 100C Model",
+            "Fast vid2a 0C Model",
+            "Fast vid2a 100C Model",
+            "Slow vid2 100C Model",
+            "Slow vid2b 100C Model"
+          ],
+          "hook_unknown_corners": [
+            "2_slow_vid2_100c",
+            "2_slow_vid2b_100c",
+            "MIN_fast_vid2_100c",
+            "MIN_fast_vid2a_0c",
+            "MIN_fast_vid2a_100c"
+          ],
+          "hook_missing_corners": []
+        }
+      ]
+    },
+    {
+      "case": "unknown_actual_corner_label",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": true,
+      "numeric_pass": true,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": [
+        "unrecognized observed corner labels: ['Slow UNKNOWN 100C Model']",
+        {
+          "native_corner_not_in_panels": [
+            "Slow vid2 100C Model"
+          ],
+          "hook_unknown_corners": [
+            "2_slow_vid2_100c"
+          ],
+          "hook_missing_corners": []
+        }
+      ]
+    },
+    {
+      "case": "corner_panel_sets_disagree",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": true,
+      "numeric_pass": true,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": [
+        "per-model panel corner sets disagree"
+      ]
+    },
+    {
+      "case": "hook_unknown_corner",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": true,
+      "numeric_pass": true,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": [
+        {
+          "native_corner_not_in_panels": [],
+          "hook_unknown_corners": [
+            "UNOBSERVED_CORNER"
+          ],
+          "hook_missing_corners": []
+        },
+        {
+          "missing_expected_application_domain": [
+            [
+              "2_slow_vid2_100c",
+              "Setup",
+              "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+            ]
+          ]
+        },
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [
+              [
+                "Setup",
+                "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk"
+              ]
+            ],
+            "hook_only": [],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    },
+    {
+      "case": "main_corner_not_in_panels",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": true,
+      "numeric_pass": true,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": [
+        {
+          "native_corner_not_in_panels": [
+            "Slow OTHER 100C Model"
+          ],
+          "hook_unknown_corners": [],
+          "hook_missing_corners": []
+        }
+      ]
+    },
+    {
+      "case": "frequency_bad_'NaN'",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": []
+    },
+    {
+      "case": "frequency_bad_'Inf'",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": []
+    },
+    {
+      "case": "frequency_bad_'-1'",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": []
+    },
+    {
+      "case": "frequency_bad_'100junk'",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": []
+    },
+    {
+      "case": "frequency_bad_''",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": []
+    },
+    {
+      "case": "frequency_missing_high",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": []
+    },
+    {
+      "case": "frequency_duplicate_low",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": []
+    },
+    {
+      "case": "frequency_extra_record",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": false,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 25,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": []
+    },
+    {
+      "case": "valid_completed_negative_analysis",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": true,
+      "numeric_pass": false,
+      "records": {
+        "main": 12,
+        "hook_pass": 24,
+        "hook_fail": 1
+      },
+      "invalid_record_count": 0,
+      "violations": [
+        {
+          "source": "ofs_pr_afu.sta.summary",
+          "line": 5,
+          "ordinal": 1,
+          "family": "Setup",
+          "field": "Slack",
+          "value": "-0.001"
+        },
+        {
+          "source": "ofs_pr_afu.sta.summary",
+          "line": 5,
+          "ordinal": 1,
+          "family": "Setup",
+          "field": "TNS",
+          "value": "-0.001"
+        },
+        {
+          "source": "clocks.sta.fail.summary",
+          "line": 1,
+          "ordinal": 1,
+          "family": "Setup",
+          "field": "Slack",
+          "value": "-0.001"
+        },
+        {
+          "source": "clocks.sta.fail.summary",
+          "line": 1,
+          "ordinal": 1,
+          "family": "Setup",
+          "field": "TNS",
+          "value": "-0.001"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "case": "noncritical_corner_gap_requires_disposition",
+      "expected_screen_pass": false,
+      "screen_pass": false,
+      "parse_valid": true,
+      "numeric_pass": true,
+      "records": {
+        "main": 13,
+        "hook_pass": 29,
+        "hook_fail": 0
+      },
+      "invalid_record_count": 0,
+      "violations": [],
+      "unresolved": [
+        {
+          "corner_population_requires_disposition": {
+            "corner": "2_slow_vid2_100c",
+            "native_aggregate_only": [
+              [
+                "Setup",
+                "INERT_OTHER_CLOCK"
+              ]
+            ],
+            "hook_only": [],
+            "interpretation": "applicability/analysis-state evidence required; not an automatic Cartesian requirement on worst-corner aggregates"
+          }
+        }
+      ]
+    }
+  ]
+}

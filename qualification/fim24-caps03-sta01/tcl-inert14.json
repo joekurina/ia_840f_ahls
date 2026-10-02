@@ -1,0 +1,55 @@
+{
+  "success": true,
+  "scope": "actual Tcl with mocked exec/puts; no native STA",
+  "tcl_sha256": "f536dbb56fcc8832339f42e66879e55c229c06f5ca4ed4940ee013902d19074e",
+  "count": 2,
+  "cases": [
+    {
+      "case": "accepted",
+      "callback_failed": false,
+      "exec_argv": [
+        [
+          "/usr/bin/env",
+          "-u",
+          "LD_LIBRARY_PATH",
+          "-u",
+          "PYTHONOPTIMIZE",
+          "/usr/bin/python3",
+          "-I",
+          "-B",
+          "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim24-caps03-sta01/candidate06/ia840f_sta_gate06.py",
+          "quartus",
+          "2>@1"
+        ]
+      ],
+      "messages": [],
+      "ready_for_build": false
+    },
+    {
+      "case": "python_rejected",
+      "callback_failed": true,
+      "exec_argv": [
+        [
+          "/usr/bin/env",
+          "-u",
+          "LD_LIBRARY_PATH",
+          "-u",
+          "PYTHONOPTIMIZE",
+          "/usr/bin/python3",
+          "-I",
+          "-B",
+          "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/fim24-caps03-sta01/candidate06/ia840f_sta_gate06.py",
+          "quartus",
+          "2>@1"
+        ]
+      ],
+      "messages": [
+        [
+          "stderr",
+          "IA840F_GATE_REJECTED: "
+        ]
+      ],
+      "ready_for_build": false
+    }
+  ]
+}

@@ -1,0 +1,1404 @@
+{
+  "scope": "completed STA acquisition and initial numerical verification; independent coverage review pending",
+  "execution_clean": true,
+  "screen_recomputed_equal": true,
+  "screen_pass": true,
+  "timing_accepted": false,
+  "hardware_access": false,
+  "result_sha256": "45f6185771f6538548faaa2916c597cde5bb529c0ddd06ff5446e2dd1512a07d",
+  "manifest_sha256": "df665c0f2656fa6343d78c79637c04ee6b53c8b5155b417a983e37292eeaf9d1",
+  "report_sha256": "3c6ca09ebcdda327ba995ae5ded38d9a7b972361677760a161ffd0c519e4bf4f",
+  "drc_report_sha256": "854532c0f7a3fa1c6ab6f525098dbecf6509492d0a1ba70da850e4fa9e8448e2",
+  "started": "2026-10-02T18:45:18.119732+00:00",
+  "ended": "2026-10-02T18:46:57.549876+00:00",
+  "elapsed_seconds": 99.430144,
+  "counts": {
+    "main": {
+      "records": 923,
+      "families": {
+        "Setup": 17,
+        "Hold": 17,
+        "Recovery": 10,
+        "Removal": 10,
+        "Minimum Pulse Width": 73,
+        "Max Skew": 650,
+        "Net Delay": 146
+      }
+    },
+    "hook_pass": {
+      "records": 635,
+      "families": {
+        "Setup": 85,
+        "Hold": 85,
+        "Recovery": 50,
+        "Removal": 50,
+        "Minimum Pulse Width": 365
+      }
+    },
+    "hook_fail": {
+      "records": 0,
+      "families": {}
+    }
+  },
+  "family_summaries": {
+    "native": {
+      "Hold": {
+        "count": 17,
+        "minimum_slack": "0.000",
+        "minimum_location": {
+          "source": "ofs_pr_afu.sta.summary",
+          "line": 90,
+          "ordinal": 18
+        }
+      },
+      "Max Skew": {
+        "count": 650,
+        "minimum_slack": "1.178",
+        "minimum_location": {
+          "source": "ofs_pr_afu.sta.summary",
+          "line": 640,
+          "ordinal": 128
+        }
+      },
+      "Minimum Pulse Width": {
+        "count": 73,
+        "minimum_slack": "0.000",
+        "minimum_location": {
+          "source": "ofs_pr_afu.sta.summary",
+          "line": 275,
+          "ordinal": 55
+        }
+      },
+      "Net Delay": {
+        "count": 146,
+        "minimum_slack": "1.012",
+        "minimum_location": {
+          "source": "ofs_pr_afu.sta.summary",
+          "line": 2590,
+          "ordinal": 778
+        }
+      },
+      "Recovery": {
+        "count": 10,
+        "minimum_slack": "0.232",
+        "minimum_location": {
+          "source": "ofs_pr_afu.sta.summary",
+          "line": 175,
+          "ordinal": 35
+        }
+      },
+      "Removal": {
+        "count": 10,
+        "minimum_slack": "0.109",
+        "minimum_location": {
+          "source": "ofs_pr_afu.sta.summary",
+          "line": 225,
+          "ordinal": 45
+        }
+      },
+      "Setup": {
+        "count": 17,
+        "minimum_slack": "0.002",
+        "minimum_location": {
+          "source": "ofs_pr_afu.sta.summary",
+          "line": 5,
+          "ordinal": 1
+        }
+      }
+    },
+    "hook": {
+      "Hold": {
+        "count": 85,
+        "minimum_slack": "0.000",
+        "minimum_location": {
+          "source": "clocks.sta.pass.summary",
+          "line": 69,
+          "ordinal": 18
+        }
+      },
+      "Minimum Pulse Width": {
+        "count": 365,
+        "minimum_slack": "0.000",
+        "minimum_location": {
+          "source": "clocks.sta.pass.summary",
+          "line": 217,
+          "ordinal": 55
+        }
+      },
+      "Recovery": {
+        "count": 50,
+        "minimum_slack": "0.232",
+        "minimum_location": {
+          "source": "clocks.sta.pass.summary",
+          "line": 645,
+          "ordinal": 162
+        }
+      },
+      "Removal": {
+        "count": 50,
+        "minimum_slack": "0.109",
+        "minimum_location": {
+          "source": "clocks.sta.pass.summary",
+          "line": 2209,
+          "ordinal": 553
+        }
+      },
+      "Setup": {
+        "count": 85,
+        "minimum_slack": "0.002",
+        "minimum_location": {
+          "source": "clocks.sta.pass.summary",
+          "line": 509,
+          "ordinal": 128
+        }
+      }
+    }
+  },
+  "corner_evidence": {
+    "corners": [
+      "Fast vid2 100C Model",
+      "Fast vid2a 0C Model",
+      "Fast vid2a 100C Model",
+      "Slow vid2 100C Model",
+      "Slow vid2b 100C Model"
+    ],
+    "panels": {
+      "Max Skew Summary": [
+        {
+          "line": 3097,
+          "corner": "Slow vid2 100C Model"
+        },
+        {
+          "line": 3235,
+          "corner": "Slow vid2b 100C Model"
+        },
+        {
+          "line": 3373,
+          "corner": "Fast vid2a 0C Model"
+        },
+        {
+          "line": 3511,
+          "corner": "Fast vid2a 100C Model"
+        },
+        {
+          "line": 3649,
+          "corner": "Fast vid2 100C Model"
+        }
+      ],
+      "Metastability Summary": [
+        {
+          "line": 3941,
+          "corner": "Slow vid2 100C Model"
+        },
+        {
+          "line": 3958,
+          "corner": "Slow vid2b 100C Model"
+        },
+        {
+          "line": 3975,
+          "corner": "Fast vid2a 0C Model"
+        },
+        {
+          "line": 3992,
+          "corner": "Fast vid2a 100C Model"
+        },
+        {
+          "line": 4009,
+          "corner": "Fast vid2 100C Model"
+        }
+      ]
+    },
+    "unresolved": [],
+    "hook_tokens": {
+      "Fast vid2 100C Model": "MIN_fast_vid2_100c",
+      "Fast vid2a 0C Model": "MIN_fast_vid2a_0c",
+      "Fast vid2a 100C Model": "MIN_fast_vid2a_100c",
+      "Slow vid2 100C Model": "2_slow_vid2_100c",
+      "Slow vid2b 100C Model": "2_slow_vid2b_100c"
+    }
+  },
+  "unresolved": [],
+  "frequencies": {
+    "source": "user_clock_freq.txt",
+    "values": {
+      "low": "100",
+      "high": "200"
+    },
+    "locations": {
+      "header": 1,
+      "low": 2,
+      "high": 3
+    },
+    "errors": [],
+    "parse_valid": true
+  },
+  "clock_count": 81,
+  "application_clock": {
+    "Clock Name": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+    "Type": "Generated",
+    "Period": "3.000",
+    "Frequency": "333.33 MHz",
+    "Rise": "0.000",
+    "Fall": "1.500",
+    "Duty Cycle": "",
+    "Divide by": "4",
+    "Multiply by": "1",
+    "Phase": "",
+    "Offset": "",
+    "Edge List": "",
+    "Edge Shift": "",
+    "Inverted": "false",
+    "Master": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_vco_clk",
+    "Source": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0|arch|arch_inst|pll_inst|pll_inst|vcoph[0]",
+    "Targets": "{ local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|tile_gen[1].tile_ctrl_inst|pa_core_clk_out[0] }",
+    "line": 2784
+  },
+  "application_records": {
+    "main": [
+      {
+        "source": "ofs_pr_afu.sta.summary",
+        "ordinal": 1,
+        "line": 5,
+        "raw_lines": [
+          {
+            "line": 5,
+            "text": "Type  : Setup 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 6,
+            "text": "Slack : 0.002"
+          },
+          {
+            "line": 7,
+            "text": "TNS   : 0.000"
+          },
+          {
+            "line": 8,
+            "text": "Corner: Slow vid2b 100C Model"
+          }
+        ],
+        "kind": "main",
+        "fields": {
+          "Type": "Setup 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.002",
+          "TNS": "0.000",
+          "Corner": "Slow vid2b 100C Model"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS",
+          "Corner"
+        ],
+        "family": "Setup",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "Slow vid2b 100C Model",
+        "constraint": false,
+        "slack": "0.002",
+        "tns": "0.000"
+      },
+      {
+        "source": "ofs_pr_afu.sta.summary",
+        "ordinal": 18,
+        "line": 90,
+        "raw_lines": [
+          {
+            "line": 90,
+            "text": "Type  : Hold 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 91,
+            "text": "Slack : 0.000"
+          },
+          {
+            "line": 92,
+            "text": "TNS   : 0.000"
+          },
+          {
+            "line": 93,
+            "text": "Corner: Slow vid2 100C Model"
+          }
+        ],
+        "kind": "main",
+        "fields": {
+          "Type": "Hold 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.000",
+          "TNS": "0.000",
+          "Corner": "Slow vid2 100C Model"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS",
+          "Corner"
+        ],
+        "family": "Hold",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "Slow vid2 100C Model",
+        "constraint": false,
+        "slack": "0.000",
+        "tns": "0.000"
+      },
+      {
+        "source": "ofs_pr_afu.sta.summary",
+        "ordinal": 37,
+        "line": 185,
+        "raw_lines": [
+          {
+            "line": 185,
+            "text": "Type  : Recovery 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 186,
+            "text": "Slack : 0.667"
+          },
+          {
+            "line": 187,
+            "text": "TNS   : 0.000"
+          },
+          {
+            "line": 188,
+            "text": "Corner: Slow vid2 100C Model"
+          }
+        ],
+        "kind": "main",
+        "fields": {
+          "Type": "Recovery 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.667",
+          "TNS": "0.000",
+          "Corner": "Slow vid2 100C Model"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS",
+          "Corner"
+        ],
+        "family": "Recovery",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "Slow vid2 100C Model",
+        "constraint": false,
+        "slack": "0.667",
+        "tns": "0.000"
+      },
+      {
+        "source": "ofs_pr_afu.sta.summary",
+        "ordinal": 50,
+        "line": 250,
+        "raw_lines": [
+          {
+            "line": 250,
+            "text": "Type  : Removal 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 251,
+            "text": "Slack : 0.161"
+          },
+          {
+            "line": 252,
+            "text": "TNS   : 0.000"
+          },
+          {
+            "line": 253,
+            "text": "Corner: Fast vid2a 0C Model"
+          }
+        ],
+        "kind": "main",
+        "fields": {
+          "Type": "Removal 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.161",
+          "TNS": "0.000",
+          "Corner": "Fast vid2a 0C Model"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS",
+          "Corner"
+        ],
+        "family": "Removal",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "Fast vid2a 0C Model",
+        "constraint": false,
+        "slack": "0.161",
+        "tns": "0.000"
+      },
+      {
+        "source": "ofs_pr_afu.sta.summary",
+        "ordinal": 109,
+        "line": 545,
+        "raw_lines": [
+          {
+            "line": 545,
+            "text": "Type  : Minimum Pulse Width 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 546,
+            "text": "Slack : 0.715"
+          },
+          {
+            "line": 547,
+            "text": "TNS   : 0.000"
+          },
+          {
+            "line": 548,
+            "text": "Corner: Slow vid2 100C Model"
+          }
+        ],
+        "kind": "main",
+        "fields": {
+          "Type": "Minimum Pulse Width 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.715",
+          "TNS": "0.000",
+          "Corner": "Slow vid2 100C Model"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS",
+          "Corner"
+        ],
+        "family": "Minimum Pulse Width",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "Slow vid2 100C Model",
+        "constraint": false,
+        "slack": "0.715",
+        "tns": "0.000"
+      }
+    ],
+    "hook_pass": [
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 1,
+        "line": 1,
+        "raw_lines": [
+          {
+            "line": 1,
+            "text": "Type  : 2_slow_vid2_100c setup 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 2,
+            "text": "Slack : 0.005"
+          },
+          {
+            "line": 3,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "2_slow_vid2_100c setup 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.005",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Setup",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "2_slow_vid2_100c",
+        "constraint": false,
+        "slack": "0.005",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 18,
+        "line": 69,
+        "raw_lines": [
+          {
+            "line": 69,
+            "text": "Type  : 2_slow_vid2_100c hold 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 70,
+            "text": "Slack : 0.000"
+          },
+          {
+            "line": 71,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "2_slow_vid2_100c hold 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.000",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Hold",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "2_slow_vid2_100c",
+        "constraint": false,
+        "slack": "0.000",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 37,
+        "line": 145,
+        "raw_lines": [
+          {
+            "line": 145,
+            "text": "Type  : 2_slow_vid2_100c recovery 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 146,
+            "text": "Slack : 0.667"
+          },
+          {
+            "line": 147,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "2_slow_vid2_100c recovery 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.667",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Recovery",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "2_slow_vid2_100c",
+        "constraint": false,
+        "slack": "0.667",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 50,
+        "line": 197,
+        "raw_lines": [
+          {
+            "line": 197,
+            "text": "Type  : 2_slow_vid2_100c removal 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 198,
+            "text": "Slack : 0.242"
+          },
+          {
+            "line": 199,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "2_slow_vid2_100c removal 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.242",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Removal",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "2_slow_vid2_100c",
+        "constraint": false,
+        "slack": "0.242",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 109,
+        "line": 433,
+        "raw_lines": [
+          {
+            "line": 433,
+            "text": "Type  : 2_slow_vid2_100c mpw 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 434,
+            "text": "Slack : 0.715"
+          },
+          {
+            "line": 435,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "2_slow_vid2_100c mpw 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.715",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Minimum Pulse Width",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "2_slow_vid2_100c",
+        "constraint": false,
+        "slack": "0.715",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 128,
+        "line": 509,
+        "raw_lines": [
+          {
+            "line": 509,
+            "text": "Type  : 2_slow_vid2b_100c setup 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 510,
+            "text": "Slack : 0.002"
+          },
+          {
+            "line": 511,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "2_slow_vid2b_100c setup 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.002",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Setup",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "2_slow_vid2b_100c",
+        "constraint": false,
+        "slack": "0.002",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 145,
+        "line": 577,
+        "raw_lines": [
+          {
+            "line": 577,
+            "text": "Type  : 2_slow_vid2b_100c hold 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 578,
+            "text": "Slack : 0.002"
+          },
+          {
+            "line": 579,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "2_slow_vid2b_100c hold 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.002",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Hold",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "2_slow_vid2b_100c",
+        "constraint": false,
+        "slack": "0.002",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 164,
+        "line": 653,
+        "raw_lines": [
+          {
+            "line": 653,
+            "text": "Type  : 2_slow_vid2b_100c recovery 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 654,
+            "text": "Slack : 0.670"
+          },
+          {
+            "line": 655,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "2_slow_vid2b_100c recovery 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.670",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Recovery",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "2_slow_vid2b_100c",
+        "constraint": false,
+        "slack": "0.670",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 177,
+        "line": 705,
+        "raw_lines": [
+          {
+            "line": 705,
+            "text": "Type  : 2_slow_vid2b_100c removal 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 706,
+            "text": "Slack : 0.245"
+          },
+          {
+            "line": 707,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "2_slow_vid2b_100c removal 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.245",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Removal",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "2_slow_vid2b_100c",
+        "constraint": false,
+        "slack": "0.245",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 236,
+        "line": 941,
+        "raw_lines": [
+          {
+            "line": 941,
+            "text": "Type  : 2_slow_vid2b_100c mpw 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 942,
+            "text": "Slack : 0.745"
+          },
+          {
+            "line": 943,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "2_slow_vid2b_100c mpw 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.745",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Minimum Pulse Width",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "2_slow_vid2b_100c",
+        "constraint": false,
+        "slack": "0.745",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 257,
+        "line": 1025,
+        "raw_lines": [
+          {
+            "line": 1025,
+            "text": "Type  : MIN_fast_vid2a_0c setup 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 1026,
+            "text": "Slack : 0.852"
+          },
+          {
+            "line": 1027,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "MIN_fast_vid2a_0c setup 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.852",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Setup",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "MIN_fast_vid2a_0c",
+        "constraint": false,
+        "slack": "0.852",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 274,
+        "line": 1093,
+        "raw_lines": [
+          {
+            "line": 1093,
+            "text": "Type  : MIN_fast_vid2a_0c hold 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 1094,
+            "text": "Slack : 0.007"
+          },
+          {
+            "line": 1095,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "MIN_fast_vid2a_0c hold 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.007",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Hold",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "MIN_fast_vid2a_0c",
+        "constraint": false,
+        "slack": "0.007",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 291,
+        "line": 1161,
+        "raw_lines": [
+          {
+            "line": 1161,
+            "text": "Type  : MIN_fast_vid2a_0c recovery 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 1162,
+            "text": "Slack : 1.239"
+          },
+          {
+            "line": 1163,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "MIN_fast_vid2a_0c recovery 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "1.239",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Recovery",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "MIN_fast_vid2a_0c",
+        "constraint": false,
+        "slack": "1.239",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 304,
+        "line": 1213,
+        "raw_lines": [
+          {
+            "line": 1213,
+            "text": "Type  : MIN_fast_vid2a_0c removal 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 1214,
+            "text": "Slack : 0.161"
+          },
+          {
+            "line": 1215,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "MIN_fast_vid2a_0c removal 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.161",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Removal",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "MIN_fast_vid2a_0c",
+        "constraint": false,
+        "slack": "0.161",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 364,
+        "line": 1453,
+        "raw_lines": [
+          {
+            "line": 1453,
+            "text": "Type  : MIN_fast_vid2a_0c mpw 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 1454,
+            "text": "Slack : 0.943"
+          },
+          {
+            "line": 1455,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "MIN_fast_vid2a_0c mpw 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.943",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Minimum Pulse Width",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "MIN_fast_vid2a_0c",
+        "constraint": false,
+        "slack": "0.943",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 384,
+        "line": 1533,
+        "raw_lines": [
+          {
+            "line": 1533,
+            "text": "Type  : MIN_fast_vid2a_100c setup 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 1534,
+            "text": "Slack : 0.678"
+          },
+          {
+            "line": 1535,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "MIN_fast_vid2a_100c setup 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.678",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Setup",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "MIN_fast_vid2a_100c",
+        "constraint": false,
+        "slack": "0.678",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 400,
+        "line": 1597,
+        "raw_lines": [
+          {
+            "line": 1597,
+            "text": "Type  : MIN_fast_vid2a_100c hold 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 1598,
+            "text": "Slack : 0.004"
+          },
+          {
+            "line": 1599,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "MIN_fast_vid2a_100c hold 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.004",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Hold",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "MIN_fast_vid2a_100c",
+        "constraint": false,
+        "slack": "0.004",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 418,
+        "line": 1669,
+        "raw_lines": [
+          {
+            "line": 1669,
+            "text": "Type  : MIN_fast_vid2a_100c recovery 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 1670,
+            "text": "Slack : 1.066"
+          },
+          {
+            "line": 1671,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "MIN_fast_vid2a_100c recovery 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "1.066",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Recovery",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "MIN_fast_vid2a_100c",
+        "constraint": false,
+        "slack": "1.066",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 431,
+        "line": 1721,
+        "raw_lines": [
+          {
+            "line": 1721,
+            "text": "Type  : MIN_fast_vid2a_100c removal 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 1722,
+            "text": "Slack : 0.169"
+          },
+          {
+            "line": 1723,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "MIN_fast_vid2a_100c removal 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.169",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Removal",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "MIN_fast_vid2a_100c",
+        "constraint": false,
+        "slack": "0.169",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 491,
+        "line": 1961,
+        "raw_lines": [
+          {
+            "line": 1961,
+            "text": "Type  : MIN_fast_vid2a_100c mpw 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 1962,
+            "text": "Slack : 0.905"
+          },
+          {
+            "line": 1963,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "MIN_fast_vid2a_100c mpw 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.905",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Minimum Pulse Width",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "MIN_fast_vid2a_100c",
+        "constraint": false,
+        "slack": "0.905",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 511,
+        "line": 2041,
+        "raw_lines": [
+          {
+            "line": 2041,
+            "text": "Type  : MIN_fast_vid2_100c setup 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 2042,
+            "text": "Slack : 0.667"
+          },
+          {
+            "line": 2043,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "MIN_fast_vid2_100c setup 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.667",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Setup",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "MIN_fast_vid2_100c",
+        "constraint": false,
+        "slack": "0.667",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 527,
+        "line": 2105,
+        "raw_lines": [
+          {
+            "line": 2105,
+            "text": "Type  : MIN_fast_vid2_100c hold 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 2106,
+            "text": "Slack : 0.001"
+          },
+          {
+            "line": 2107,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "MIN_fast_vid2_100c hold 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.001",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Hold",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "MIN_fast_vid2_100c",
+        "constraint": false,
+        "slack": "0.001",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 545,
+        "line": 2177,
+        "raw_lines": [
+          {
+            "line": 2177,
+            "text": "Type  : MIN_fast_vid2_100c recovery 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 2178,
+            "text": "Slack : 1.058"
+          },
+          {
+            "line": 2179,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "MIN_fast_vid2_100c recovery 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "1.058",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Recovery",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "MIN_fast_vid2_100c",
+        "constraint": false,
+        "slack": "1.058",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 558,
+        "line": 2229,
+        "raw_lines": [
+          {
+            "line": 2229,
+            "text": "Type  : MIN_fast_vid2_100c removal 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 2230,
+            "text": "Slack : 0.168"
+          },
+          {
+            "line": 2231,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "MIN_fast_vid2_100c removal 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.168",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Removal",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "MIN_fast_vid2_100c",
+        "constraint": false,
+        "slack": "0.168",
+        "tns": "0.000"
+      },
+      {
+        "source": "clocks.sta.pass.summary",
+        "ordinal": 618,
+        "line": 2469,
+        "raw_lines": [
+          {
+            "line": 2469,
+            "text": "Type  : MIN_fast_vid2_100c mpw 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'"
+          },
+          {
+            "line": 2470,
+            "text": "Slack : 0.881"
+          },
+          {
+            "line": 2471,
+            "text": "TNS   : 0.000"
+          }
+        ],
+        "kind": "hook_pass",
+        "fields": {
+          "Type": "MIN_fast_vid2_100c mpw 'local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk'",
+          "Slack": "0.881",
+          "TNS": "0.000"
+        },
+        "field_order": [
+          "Type",
+          "Slack",
+          "TNS"
+        ],
+        "family": "Minimum Pulse Width",
+        "clock": "local_mem_wrapper|mem_ss_top|mem_ss_sv|mem_ss|mem_ss|emif_0|emif_0_core_usr_clk",
+        "corner": "MIN_fast_vid2_100c",
+        "constraint": false,
+        "slack": "0.881",
+        "tns": "0.000"
+      }
+    ],
+    "hook_fail": []
+  },
+  "diagnostic_counts": {
+    "Warning": 378,
+    "Critical Warning": 1
+  },
+  "diagnostic_codes": {
+    "20031": 1,
+    "20727": 1,
+    "18502": 17,
+    "332174": 80,
+    "332054": 163,
+    "332049": 116,
+    "21620": 1
+  },
+  "footer": {
+    "line": 3675,
+    "text": "Info: Quartus Prime Timing Analyzer was successful. 0 errors, 379 warnings"
+  },
+  "qdb_files": 733,
+  "qdb_bytes": 394551887,
+  "runtime_counts": {
+    "unchanged": 17,
+    "changed": 9,
+    "removed": 0
+  },
+  "qpf_byte_identical": true,
+  "limits": [
+    "zero hold/MPW is nonnegative, not positive margin",
+    "whole-record screen is not complete endpoint/exception/CDC/reset/electrical acceptance",
+    "one setup path per clock and summary populations do not prove every passing path",
+    "user-clock metadata100/200 is distinct from bank0 application3.000ns"
+  ]
+}

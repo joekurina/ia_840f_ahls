@@ -1,0 +1,184 @@
+--- accepted-fit/runner08
++++ STA/runner06
+@@ -1,13 +1,14 @@
+-"""One admitted first persona fit; no synthesis/STA/assembly/hardware."""
+-import datetime,gzip,hashlib,json,os,re,resource,shutil,signal,socket,subprocess,sys,time
++"""One admitted final multicorner STA; no synthesis/fit/assembly/hardware."""
++import datetime,importlib.util,gzip,hashlib,json,os,re,resource,shutil,signal,socket,subprocess,sys,time
+ from pathlib import Path
+-ROOT=Path('/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_physical01');D=ROOT/'base01';P=ROOT/'control08';R=ROOT/'fit01';J=D/'build/syn/board/ia840f/syn_top';Q=Path('/opt/altera/26.1.1/quartus')
+-MANIFEST=P/'fit-inputs.admitted.json';BUFFER='ia840f_fim24_caps03_physical_fit01_result'
++ROOT=Path('/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_sta01');D=ROOT/'base01';P=ROOT/'control06';R=ROOT/'sta01';J=D/'build/syn/board/ia840f/syn_top';Q=Path('/opt/altera/26.1.1/quartus')
++MANIFEST=P/'sta-inputs.admitted.json';BUFFER='ia840f_fim24_caps03_sta_native01_result'
+ MARKERS=(b'IA840F_GATE_REJECTED',b'Critical Warning (125091)')
+ ERROR=re.compile(r'\b(?:Error|Fatal)(?:\s+\([^)]*\))?\s*:',re.I)
+ 
+ REQUIRED_PHYSICAL_QDB=['qdb/_compiler/ofs_pr_afu/_flat/26.1.1/final/1/chip.chip.cdb', 'qdb/_compiler/ofs_pr_afu/_flat/26.1.1/final/1/idb.idb', 'qdb/_compiler/ofs_pr_afu/green_region/26.1.1/final/1/netlist.atom.cdb', 'qdb/_compiler/ofs_pr_afu/green_region/26.1.1/final/1/physmap.cdb', 'qdb/_compiler/ofs_pr_afu/green_region/26.1.1/final/1/routing.cdb']
+-REQUIRED_REPORTS=['output_files/ofs_pr_afu.fit.rpt', 'output_files/ofs_pr_afu.fit.summary', 'output_files/ofs_pr_afu.fit.plan.rpt', 'output_files/ofs_pr_afu.fit.place.rpt', 'output_files/ofs_pr_afu.fit.route.rpt', 'output_files/ofs_pr_afu.fit.retime.rpt', 'output_files/ofs_pr_afu.fit.finalize.rpt']
++REQUIRED_REPORTS=['output_files/ofs_pr_afu.sta.rpt', 'output_files/ofs_pr_afu.sta.summary', 'output_files/ofs_pr_afu.tq.drc.signoff.rpt', 'output_files/timing_report/clocks.rpt', 'output_files/timing_report/clocks.sta.pass.summary', 'output_files/timing_report/clocks.sta.fail.summary', 'output_files/user_clock_freq.txt']
++ALLOWED_EMPTY_REPORTS=['output_files/timing_report/clocks.sta.fail.summary']
+ 
+ def now():
+     return datetime.datetime.now(datetime.timezone.utc).isoformat()
+@@ -49,6 +50,15 @@
+ 
+ 
+ def tree_bound(root,inv):return all(binding(root/n,m) for n,m in inv.items())
++
++
++def tree_bound_full(root,inv):
++    observed=set()
++    for directory,dirs,files in os.walk(root,followlinks=False):
++        for name in dirs+files:
++            p=Path(directory)/name
++            if p.is_symlink() or p.is_file():observed.add(str(p.relative_to(root)))
++    return observed==set(inv) and tree_bound(root,inv)
+ 
+ 
+ def tools_bound(inv):
+@@ -65,22 +75,24 @@
+     assert socket.gethostname()=='Agilex7Workstation' and os.getuid()==1000 and os.environ.get('TMUX')
+     assert subprocess.check_output(['tmux','display-message','-p','-t',os.environ['TMUX_PANE'],'#S'],text=True).strip()=='ia840f_mailbox_monitored_01'
+     assert sha(MANIFEST)==expected;m=json.loads(MANIFEST.read_text())
+-    assert m['scope']=='persona-fit-only' and m['parent_execution_accepted'] is True and m['ready_for_build'] is False and m['hardware_ready'] is False
++    assert m['scope']=='persona-sta-only' and m['parent_execution_accepted'] is True and m['ready_for_build'] is False and m['hardware_ready'] is False
+     for key,path in [('design_root',D),('control_root',P),('operation_root',R),('project',J)]:assert m[key]==str(path),key
+-    assert Path(__file__).resolve()==P/'runtime/run-fit08.py' and m['runner_path']==str(P/'runtime/run-fit08.py') and sha(__file__)==m['runner_sha256']
++    assert Path(__file__).resolve()==P/'runtime/run-sta06.py' and m['runner_path']==str(P/'runtime/run-sta06.py') and sha(__file__)==m['runner_sha256']
+     assert sha(P/'runtime/CMakeLists.txt')==m['cmake_sha256'] and m['prerequisites'] and all(sha(p)==h for p,h in m['prerequisites'].items())
+     assert sha(m['prepared_metadata_file'])==m['prepared_metadata_sha256'];prepared=json.loads(Path(m['prepared_metadata_file']).read_text())
+-    for key in ('design_inventory','critical_inputs','runtime_outputs','protected_snapshot_inputs','source_inventory','external_inputs','archive_inventory','tools','opae_tools','original_setup_inventory','original_release_inventory'):assert m[key]==prepared[key],key
+-    assert len(m['design_inventory'])==3896 and len(m['critical_inputs'])==3033 and len(m['external_inputs'])==298 and len(m['archive_inventory'])==857
+-    assert len(m['runtime_outputs'])==863 and len(m['protected_snapshot_inputs'])==68 and len(m['source_inventory'])==3894
++    for key in ('design_inventory','critical_inputs','runtime_outputs','protected_snapshot_inputs','source_inventory','original_mapped_inventory','external_inputs','archive_inventory','tools','opae_tools','original_setup_inventory','original_release_inventory'):assert m[key]==prepared[key],key
++    assert len(m['design_inventory'])==4027 and len(m['critical_inputs'])==4001 and len(m['external_inputs'])==298 and len(m['archive_inventory'])==857
++    assert len(m['runtime_outputs'])==26 and len(m['protected_snapshot_inputs'])==280 and len(m['source_inventory'])==4025 and len(m['original_mapped_inventory'])==3894
+     critical_rel={str(Path(n).relative_to(D)):x for n,x in m['critical_inputs'].items()}
+     assert set(critical_rel).isdisjoint(m['runtime_outputs']) and set(critical_rel)|set(m['runtime_outputs'])==set(m['design_inventory'])
+     assert all(m['design_inventory'][n]==x for n,x in critical_rel.items()) and all(m['design_inventory'][n]==x for n,x in m['runtime_outputs'].items())
+     assert set(m['protected_snapshot_inputs']).issubset(m['critical_inputs']) and all(m['critical_inputs'][n]==x for n,x in m['protected_snapshot_inputs'].items())
+     assert str(J/'ofs_top.qdb') in m['protected_snapshot_inputs']
+-    assert m['source_root']==str(Path('/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_implementation01/base01')) and tree_bound(Path(m['source_root']),m['source_inventory'])
+-    assert m['required_reports']==REQUIRED_REPORTS and m['required_physical_qdb']==REQUIRED_PHYSICAL_QDB
+-    assert m['deadlines_seconds']=={'configure':60,'version':60,'fitting':10800} and m['log_limit_bytes']==32*1024**2
++    assert m['source_root']==str(Path('/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_physical01/base01')) and tree_bound_full(Path(m['source_root']),m['source_inventory'])
++    assert m['original_mapped_root']=='/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_implementation01/base01' and tree_bound_full(Path(m['original_mapped_root']),m['original_mapped_inventory'])
++    assert m['required_reports']==REQUIRED_REPORTS and m['required_physical_qdb']==REQUIRED_PHYSICAL_QDB and m['allowed_empty_reports']==ALLOWED_EMPTY_REPORTS
++    assert m['numeric_module_path']==str(P/'runtime/sta_numeric06.py') and sha(m['numeric_module_path'])==m['numeric_module_sha256']
++    assert m['deadlines_seconds']=={'configure':60,'version':60,'timing':1800} and m['log_limit_bytes']==32*1024**2
+     assert tree_bound(D,m['design_inventory']) and all(binding(p,x) for p,x in m['external_inputs'].items()) and tree_bound(Path(m['archive_root']),m['archive_inventory'])
+     observed=set()
+     for directory,dirs,files in os.walk(D,followlinks=False):
+@@ -91,13 +103,13 @@
+     assert len(m['original_setup_inventory'])==3443 and tree_bound(Path(m['original_setup_root']),m['original_setup_inventory'])
+     assert len(m['original_release_inventory'])==3454 and tree_bound(Path(m['release_root']),m['original_release_inventory'])
+     assert len(m['tools'])==14 and tools_bound(m['tools']) and len(m['opae_tools'])==92 and tools_bound(m['opae_tools'])
+-    for prefix in ('setup','release','simulation','synthesis'):assert sha(m[prefix+'_result_file'])==m[prefix+'_result_sha256'],prefix
+-    assert sha(D/'build/syn/board/ia840f/setup/ia840f_physical_gate08.py')==m['gate_sha256']
+-    assert sha(D/'build/syn/board/ia840f/setup/build_gate_physical08.tcl')==m['gate_tcl_sha256']
+-    expected_context={'exe':str(Q/'linux64/quartus_fit'),'cwd':str(J),'argv':['--read_settings_files=on','--write_settings_files=off','ofs_top','-c','ofs_pr_afu']}
++    for prefix in ('setup','release','simulation','synthesis','fit'):assert sha(m[prefix+'_result_file'])==m[prefix+'_result_sha256'],prefix
++    assert sha(D/'build/syn/board/ia840f/setup/ia840f_sta_gate06.py')==m['gate_sha256']
++    assert sha(D/'build/syn/board/ia840f/setup/build_gate_sta06.tcl')==m['gate_tcl_sha256']
++    expected_context={'exe':str(Q/'linux64/quartus_sta'),'cwd':str(J),'argv':['ofs_top','-c','ofs_pr_afu','--snapshot=final','--multicorner=on','--do_report_timing','--do_report_cdc_viewer']}
+     assert m['contexts']==[expected_context]
+     assert (J/'qdb').is_dir() and all(binding(n,x) for n,x in m['protected_snapshot_inputs'].items())
+-    assert all(not (J/n).exists() for n in m['required_physical_qdb'])
++    assert all((J/n).is_file() and str(J/n) in m['protected_snapshot_inputs'] for n in m['required_physical_qdb'])
+     for name in m['required_reports']:assert not (J/name).exists(),name
+     assert sha(J/'ofs_top.qdb')==m['static_qdb_sha256'] and (Path(m['release_root'])/'hw/lib/fme-ifc-id.txt').read_text().strip()==m['interface_uuid']
+     assert sorted(os.sched_getaffinity(0))==m['cpus']==list(range(36)) and m['address_space_limit_bytes']==64*1024**3
+@@ -132,17 +144,18 @@
+         try:result[label]=bool(fn())
+         except Exception as exc:result[label]=False;errors.append({'label':label,'error':repr(exc)})
+     verify('critical_inputs_preserved',lambda:all(binding(p,x) for p,x in m['critical_inputs'].items()))
+-    verify('original_mapped_preserved',lambda:tree_bound(Path(m['source_root']),m['source_inventory']))
++    verify('original_fitted_preserved',lambda:tree_bound_full(Path(m['source_root']),m['source_inventory']))
++    verify('original_mapped_preserved',lambda:tree_bound_full(Path(m['original_mapped_root']),m['original_mapped_inventory']))
+     verify('mapped_snapshots_preserved',lambda:all(binding(p,x) for p,x in m['protected_snapshot_inputs'].items()))
+     verify('external_inputs_preserved',lambda:all(binding(p,x) for p,x in m['external_inputs'].items()))
+     verify('dni_archive_preserved',lambda:tree_bound(Path(m['archive_root']),m['archive_inventory']))
+     verify('original_setup_preserved',lambda:tree_bound(Path(m['original_setup_root']),m['original_setup_inventory']))
+     verify('original_release_preserved',lambda:tree_bound(Path(m['release_root']),m['original_release_inventory']))
+     verify('tools_preserved',lambda:tools_bound(m['tools']) and tools_bound(m['opae_tools']))
+-    verify('controls_preserved',lambda:sha(__file__)==m['runner_sha256'] and sha(P/'runtime/CMakeLists.txt')==m['cmake_sha256'] and sha(m['prepared_metadata_file'])==m['prepared_metadata_sha256'] and all(sha(p)==h for p,h in m['prerequisites'].items()))
+-    verify('predecessor_results_preserved',lambda:all(sha(m[prefix+'_result_file'])==m[prefix+'_result_sha256'] for prefix in ('setup','release','simulation','synthesis')))
++    verify('controls_preserved',lambda:sha(m['numeric_module_path'])==m['numeric_module_sha256'] and sha(__file__)==m['runner_sha256'] and sha(P/'runtime/CMakeLists.txt')==m['cmake_sha256'] and sha(m['prepared_metadata_file'])==m['prepared_metadata_sha256'] and all(sha(p)==h for p,h in m['prerequisites'].items()))
++    verify('predecessor_results_preserved',lambda:all(sha(m[prefix+'_result_file'])==m[prefix+'_result_sha256'] for prefix in ('setup','release','simulation','synthesis','fit')))
+     result['logs']={};diagnostics=[];texts={}
+-    for name in ('configure.log','version.log','fitting.log'):
++    for name in ('configure.log','version.log','timing.log'):
+         p=R/name
+         try:
+             size=p.stat().st_size;assert size<=m['log_limit_bytes'];b=p.read_bytes();assert len(b)==size;text=b.decode(errors='replace');texts[name]=text;result['logs'][name]={'bytes':size,'sha256':hashlib.sha256(b).hexdigest()}
+@@ -150,7 +163,7 @@
+                 if ERROR.search(line) or any(mark.decode() in line for mark in MARKERS):diagnostics.append({'file':name,'line':i,'text':line})
+         except Exception as exc:errors.append({'file':name,'error':repr(exc)})
+     result['diagnostics']=diagnostics
+-    result['fitting_success_marker']='Quartus Prime Fitter was successful' in texts.get('fitting.log','')
++    result['timing_success_marker']='Quartus Prime Timing Analyzer was successful' in texts.get('timing.log','')
+     result['version_matches']='26.1.1 Build 130' in texts.get('version.log','') and 'SC Pro Edition' in texts.get('version.log','')
+     result['gate_events']=[];result['gate_rejections']=[]
+     for filename,key in [('gate-events.jsonl','gate_events'),('gate-rejections.jsonl','gate_rejections')]:
+@@ -164,7 +177,7 @@
+     for name in m['required_reports']:
+         p=J/name
+         try:
+-            assert p.is_file() and p.stat().st_size>0;result['reports'][name]={'bytes':p.stat().st_size,'sha256':sha(p)}
++            assert p.is_file() and (p.stat().st_size>0 or name in m['allowed_empty_reports']);result['reports'][name]={'bytes':p.stat().st_size,'sha256':sha(p)}
+         except Exception as exc:errors.append({'report':name,'error':repr(exc)})
+     result['qdb_outputs']={};total=0
+     try:
+@@ -189,14 +202,29 @@
+         before=qpf_assignments(result['qpf_before']['text']);after=qpf_assignments(result['qpf_after']['text'])
+         return after['PROJECT_REVISION']==before['PROJECT_REVISION']=='ofs_pr_afu' and after['QUARTUS_VERSION']==before['QUARTUS_VERSION']=='26.1'
+     verify('qpf_semantics_preserved',qpf_semantics)
++    result['timing_accepted']=False
++    result['numeric_parse_valid']=False;result['numeric_screen_pass']=False
++    try:
++        assert sha(m['numeric_module_path'])==m['numeric_module_sha256']
++        spec=importlib.util.spec_from_file_location('owned_sta_numeric',m['numeric_module_path']);assert spec is not None and spec.loader is not None
++        numeric=importlib.util.module_from_spec(spec);spec.loader.exec_module(numeric)
++        values=[]
++        for name in ('output_files/ofs_pr_afu.sta.summary','output_files/timing_report/clocks.sta.pass.summary','output_files/timing_report/clocks.sta.fail.summary','output_files/user_clock_freq.txt'):
++            p=J/name;assert p.is_file() and p.stat().st_size<=8*1024**2;values.append(p.read_text())
++        report=J/'output_files/ofs_pr_afu.sta.rpt';assert report.is_file() and report.stat().st_size<=512*1024**2
++        with report.open() as stream:corners=numeric.report_corners(stream)
++        result['numerical_screen']=numeric.screen(*values,corners)
++        result['numeric_parse_valid']=result['numerical_screen']['parse_valid']
++        result['numeric_screen_pass']=result['numerical_screen']['screen_pass']
++    except Exception as exc:errors.append({'numeric_acquisition':repr(exc)})
+     result['postflight_errors']=errors
+-    flags=('original_mapped_preserved','mapped_snapshots_preserved','physical_qdb_present','critical_inputs_preserved','external_inputs_preserved','dni_archive_preserved','original_setup_preserved','original_release_preserved','tools_preserved','controls_preserved','predecessor_results_preserved','version_matches','fitting_success_marker','owned_callbacks_accepted','qpf_semantics_preserved')
++    flags=('numeric_parse_valid','original_fitted_preserved','original_mapped_preserved','mapped_snapshots_preserved','physical_qdb_present','critical_inputs_preserved','external_inputs_preserved','dni_archive_preserved','original_setup_preserved','original_release_preserved','tools_preserved','controls_preserved','predecessor_results_preserved','version_matches','timing_success_marker','owned_callbacks_accepted','qpf_semantics_preserved')
+     return not errors and not diagnostics and all(result.get(k) is True for k in flags) and len(result['reports'])==len(m['required_reports']) and bool(result['qdb_outputs'])
+ 
+ 
+ def run():
+     assert len(sys.argv)==2;m=preflight(sys.argv[1]);R.mkdir(exist_ok=False)
+-    result={'batch':BUFFER,'scope':'persona-fit-only','started':now(),'commands':[],'complete':False,'hardware_access':False,'hardware_ready':False,'manifest_sha256':sys.argv[1],'runner':identity(os.getpid()),'project':str(J),'interface_uuid':m['interface_uuid'],'afu_uuid':m['afu_uuid'],'result_acceptance':'pending independent fit/PR/static preservation/diagnostic review; not timing or hardware acceptance','resources':{'cpus':m['cpus'],'address_space_limit_bytes':m['address_space_limit_bytes'],'deadlines_seconds':m['deadlines_seconds']}}
++    result={'batch':BUFFER,'scope':'persona-sta-only','started':now(),'commands':[],'complete':False,'hardware_access':False,'hardware_ready':False,'manifest_sha256':sys.argv[1],'runner':identity(os.getpid()),'project':str(J),'interface_uuid':m['interface_uuid'],'afu_uuid':m['afu_uuid'],'result_acceptance':'pending independent numerical/coverage/clock/CDC/reset/electrical review; no automatic timing or hardware acceptance','resources':{'cpus':m['cpus'],'address_space_limit_bytes':m['address_space_limit_bytes'],'deadlines_seconds':m['deadlines_seconds']}}
+     env={k:os.environ[k] for k in ('LM_LICENSE_FILE','MGLS_LICENSE_FILE','SALT_LICENSE_SERVER')}
+     env.update(HOME=str(R/'home'),USER='uwb_student00',LOGNAME='uwb_student00',LANG='C',PATH=str(Q/'bin')+':'+str(Q/'sopc_builder/bin')+':/usr/bin:/bin',TMPDIR=str(R/'tmp'),QUARTUS_ROOTDIR_OVERRIDE=str(Q),OPAE_PLATFORM_ROOT=m['release_root'],BUILD_ROOT_REL='../../../..',PR_COMPILE='1',PYTHONDONTWRITEBYTECODE='1')
+     assert 'OPAE_PLATFORM_GEN' not in env
+@@ -275,9 +303,9 @@
+                     persist()
+                     residual_after = live_group(child.pid)
+                     rec['owned_group_live_after'] = residual_after
+-                    rec['native_rc'] = 0 if label in ('version', 'fitting') and cmake_rc == 0 else None
++                    rec['native_rc'] = 0 if label in ('version', 'timing') and cmake_rc == 0 else None
+                     rec['native_status_basis'] = ('Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.'
+-                                                  if label in ('version', 'fitting') else 'CMake configure only; no vendor tool invoked.')
++                                                  if label in ('version', 'timing') else 'CMake configure only; no vendor tool invoked.')
+                     rec['effective_rc'] = 124 if timedout else (125 if rejected or log_bound_exceeded or residual_after else cmake_rc)
+                     persist()
+         return rec['effective_rc']
+@@ -290,7 +318,7 @@
+         assert native('configure',args,m['deadlines_seconds']['configure'])==0
+         assert native('version',['/usr/bin/cmake','--build',str(R/'cmake-build'),'--target','version','--parallel','1'],m['deadlines_seconds']['version'])==0
+         assert '26.1.1 Build 130' in (R/'version.log').read_text() and 'SC Pro Edition' in (R/'version.log').read_text()
+-        assert native('fitting',['/usr/bin/cmake','--build',str(R/'cmake-build'),'--target','fit','--parallel','1'],m['deadlines_seconds']['fitting'])==0
++        assert native('timing',['/usr/bin/cmake','--build',str(R/'cmake-build'),'--target','timing','--parallel','1'],m['deadlines_seconds']['timing'])==0
+         result['complete']=True
+     except BaseException as exc:result['error']=repr(exc)
+     finally:

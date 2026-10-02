@@ -1,0 +1,121 @@
+{
+  "scope": "one final-snapshot multicorner STA preparation; no runtime authority",
+  "ready_for_build": false,
+  "hardware_ready": false,
+  "authority_issued": false,
+  "timing_accepted": false,
+  "fit_acceptance_file": "../fim24-caps03-physical01/FIT-ACCEPTANCE38.md",
+  "fit_acceptance_sha256": "168ba1bfc33df0fc1ddbad6defca8b4e7a6b2422fbdd43eeb205ede868462fff",
+  "copy_metadata_sha256": "4140996eca7899e1d4278e35d6b0b531a1c9e85059cea3b8693d139b84b8b616",
+  "design_root": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_sta01/base01",
+  "project": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_sta01/base01/build/syn/board/ia840f/syn_top",
+  "control_root": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_sta01/control06",
+  "operation_root": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_sta01/sta01",
+  "native_context": {
+    "exe": "/opt/altera/26.1.1/quartus/linux64/quartus_sta",
+    "cwd": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_sta01/base01/build/syn/board/ia840f/syn_top",
+    "argv": [
+      "ofs_top",
+      "-c",
+      "ofs_pr_afu",
+      "--snapshot=final",
+      "--multicorner=on",
+      "--do_report_timing",
+      "--do_report_cdc_viewer"
+    ]
+  },
+  "resources": {
+    "cpus": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35
+    ],
+    "address_space_limit_bytes": 68719476736,
+    "deadlines_seconds": {
+      "configure": 60,
+      "version": 60,
+      "timing": 1800
+    },
+    "log_limit_bytes": 33554432
+  },
+  "proposed_delta": {
+    "existing_files": [
+      "build/syn/board/ia840f/syn_top/ofs_pr_afu.qsf"
+    ],
+    "qsf_scope": "two gate-reference substitutions only; allclock/source/SDC/settings/PR/static/NUM36/seed1bytes unchanged",
+    "new_files": [
+      "build/syn/board/ia840f/setup/build_gate_sta06.tcl",
+      "build/syn/board/ia840f/setup/ia840f_sta_gate06.py"
+    ],
+    "old_gate_files_retained": true
+  },
+  "role_counts": {
+    "before": 4025,
+    "immutable_before_gates": 3999,
+    "runtime_outputs": 26,
+    "physical_snapshot_subset": 280,
+    "active_after_gates": 4027,
+    "critical_after_gates": 4001
+  },
+  "native_outputs_expected": [
+    "output_files/ofs_pr_afu.sta.rpt",
+    "output_files/ofs_pr_afu.sta.summary",
+    "output_files/ofs_pr_afu.tq.drc.signoff.rpt",
+    "output_files/timing_report/clocks.rpt",
+    "output_files/timing_report/clocks.sta.pass.summary",
+    "output_files/timing_report/clocks.sta.fail.summary",
+    "output_files/user_clock_freq.txt"
+  ],
+  "output_note": "failure-summary may legitimately be empty; all other required primary outputs must be present and nonempty. New outputs stay on the STA copy.",
+  "numeric_screen_scope": "parse complete retained native summary records, reject malformed/nonfinite/negative Slack or nonzero TNS, require supported analysis families; an initial numeric screen is not full clock/constraint/CDC/timing acceptance",
+  "full_result_obligations": [
+    "bank0applicationrealizedclock3.000ns andallavailablecorners",
+    "setup/hold/recovery/removal/MPW",
+    "actualcurrentprimary_axi/map_banksCDC/synchronizers/pointermaxskew/netdelay",
+    "effectiveclockandexceptionprecedence/emptycollections/unconstrainedcoverage",
+    "signoffDRC/ignored16currentreset-synchronizerrows",
+    "3additionalclk_sys/7additionalbank0resetcycles,entrysequencelater",
+    "fourretainedI/Oelectricalomissionsbeforehardware"
+  ],
+  "scope_exclusions": [
+    "synthesis",
+    "fit",
+    "assembly",
+    "GBS packaging",
+    "programming/hardware"
+  ],
+  "actual_worker_count_note": "all36logicalCPUs allowed andNUM36requested; nativeFITreportedup-to24versus18physical; recordSTAactualreport,do notclaim36workers"
+}
