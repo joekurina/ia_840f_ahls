@@ -1,0 +1,2971 @@
+{
+  "success": true,
+  "fixture_only": true,
+  "native_tools_executed": false,
+  "scope": "actual fabric runner with mocked admission/CMake/tmux and tiny synthetic artifact maps; real inert Python children, not vendor integration",
+  "runner_sha256": "ac5bcb4ba87b8f3c519967381dea70d6ef8e7c64301779cc5ef5ad37d64ea80a",
+  "count": 16,
+  "cases": [
+    {
+      "case": "clean",
+      "expected_clean": true,
+      "actual_runner_rc": 0,
+      "execution_clean": true,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/clean/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/clean/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/clean/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/clean/generate"
+          ],
+          "started": "2026-10-02T05:09:23.737110+00:00",
+          "process": {
+            "pid": 1392773,
+            "start_ticks": "9004092",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/clean/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:24.060118+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/clean/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:24.115464+00:00",
+          "process": {
+            "pid": 1392775,
+            "start_ticks": "9004130",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/clean/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:24.431947+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "import",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/clean/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:24.492733+00:00",
+          "process": {
+            "pid": 1392780,
+            "start_ticks": "9004168",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/clean/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/clean/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:24.796001+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "generate",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/clean/operation/cmake-build",
+            "--target",
+            "fabric_generate",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:24.849994+00:00",
+          "process": {
+            "pid": 1392785,
+            "start_ticks": "9004203",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/clean/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/clean/generate')\nfor n,t in {'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/core.sv': 'INERT CORRECTED HLS\\n', 'ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip': '# INERT QIP\\n', 'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.qip': '# INERT QIP\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:25.143429+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [],
+      "error": null,
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "live_fault_proof": {},
+      "replay_preserved_bytes": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/clean/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/clean/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/clean/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/clean/generate"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/clean/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/clean/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/clean/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/clean/operation/cmake-build",
+            "--target",
+            "fabric_generate",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/clean/generate')\nfor n,t in {'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/core.sv': 'INERT CORRECTED HLS\\n', 'ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip': '# INERT QIP\\n', 'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.qip': '# INERT QIP\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "preflight_reject",
+      "preflight_rejected_before_writes": true
+    },
+    {
+      "case": "wrong_version",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/wrong_version/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/wrong_version/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/wrong_version/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/wrong_version/generate"
+          ],
+          "started": "2026-10-02T05:09:25.224522+00:00",
+          "process": {
+            "pid": 1392796,
+            "start_ticks": "9004241",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/wrong_version/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:25.514284+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/wrong_version/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:25.565934+00:00",
+          "process": {
+            "pid": 1392798,
+            "start_ticks": "9004275",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/wrong_version/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT wrong version\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:25.849883+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [],
+      "error": "AssertionError()",
+      "postflight_errors": [
+        {
+          "check": "generated_child_metadata",
+          "error": "AssertionError('missing/unbounded child IP metadata')"
+        }
+      ],
+      "postflight_exception": null,
+      "live_fault_proof": {},
+      "replay_preserved_bytes": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/wrong_version/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/wrong_version/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/wrong_version/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/wrong_version/generate"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/wrong_version/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT wrong version\")"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "missing_marker",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_marker/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_marker/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_marker/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_marker/generate"
+          ],
+          "started": "2026-10-02T05:09:25.920659+00:00",
+          "process": {
+            "pid": 1392801,
+            "start_ticks": "9004310",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_marker/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:26.204709+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_marker/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:26.243138+00:00",
+          "process": {
+            "pid": 1392810,
+            "start_ticks": "9004343",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_marker/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:26.568030+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "import",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_marker/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:26.621864+00:00",
+          "process": {
+            "pid": 1392832,
+            "start_ticks": "9004381",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_marker/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_marker/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:27.013511+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [],
+      "error": "AssertionError()",
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "live_fault_proof": {},
+      "replay_preserved_bytes": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_marker/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_marker/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_marker/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_marker/generate"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_marker/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_marker/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_marker/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "missing_interface",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_interface/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_interface/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_interface/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_interface/generate"
+          ],
+          "started": "2026-10-02T05:09:27.115627+00:00",
+          "process": {
+            "pid": 1392873,
+            "start_ticks": "9004430",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_interface/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:27.448082+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_interface/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:27.526491+00:00",
+          "process": {
+            "pid": 1392874,
+            "start_ticks": "9004471",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_interface/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:27.882881+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "import",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_interface/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:27.946818+00:00",
+          "process": {
+            "pid": 1392875,
+            "start_ticks": "9004513",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_interface/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_interface/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:28.287045+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [],
+      "error": "AssertionError()",
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "live_fault_proof": {},
+      "replay_preserved_bytes": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_interface/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_interface/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_interface/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_interface/generate"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_interface/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_interface/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_interface/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "child_error",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/child_error/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/child_error/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/child_error/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/child_error/generate"
+          ],
+          "started": "2026-10-02T05:09:28.363745+00:00",
+          "process": {
+            "pid": 1392883,
+            "start_ticks": "9004555",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/child_error/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:28.674848+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/child_error/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:28.730490+00:00",
+          "process": {
+            "pid": 1392886,
+            "start_ticks": "9004591",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/child_error/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:29.040753+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "import",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/child_error/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:29.099054+00:00",
+          "process": {
+            "pid": 1392888,
+            "start_ticks": "9004628",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/child_error/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/child_error/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>true</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:29.429455+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [],
+      "error": "AssertionError(('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/child_error/generate/ip/ahls_memory_dma_fabric/fabric.ip', ['true']))",
+      "postflight_errors": [
+        {
+          "check": "generated_child_metadata",
+          "error": "AssertionError(('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/child_error/generate/ip/ahls_memory_dma_fabric/fabric.ip', ['true']))"
+        }
+      ],
+      "postflight_exception": null,
+      "live_fault_proof": {},
+      "replay_preserved_bytes": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/child_error/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/child_error/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/child_error/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/child_error/generate"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/child_error/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/child_error/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/child_error/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>true</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "nonzero",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/nonzero/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/nonzero/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/nonzero/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/nonzero/generate"
+          ],
+          "started": "2026-10-02T05:09:29.512065+00:00",
+          "process": {
+            "pid": 1392889,
+            "start_ticks": "9004670",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/nonzero/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:29.850230+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/nonzero/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:29.913669+00:00",
+          "process": {
+            "pid": 1392893,
+            "start_ticks": "9004710",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/nonzero/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:30.212819+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "import",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/nonzero/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:30.259194+00:00",
+          "process": {
+            "pid": 1392895,
+            "start_ticks": "9004744",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/nonzero/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/nonzero/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:30.575152+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "generate",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/nonzero/operation/cmake-build",
+            "--target",
+            "fabric_generate",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:30.626375+00:00",
+          "process": {
+            "pid": 1392899,
+            "start_ticks": "9004781",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/nonzero/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/nonzero/generate')\nfor n,t in {'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/core.sv': 'INERT CORRECTED HLS\\n', 'ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip': '# INERT QIP\\n', 'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.qip': '# INERT QIP\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nraise SystemExit(7)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 7,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:30.935076+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 7
+        }
+      ],
+      "diagnostics": [],
+      "error": "AssertionError('generate failed')",
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "live_fault_proof": {},
+      "replay_preserved_bytes": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/nonzero/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/nonzero/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/nonzero/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/nonzero/generate"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/nonzero/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/nonzero/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/nonzero/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/nonzero/operation/cmake-build",
+            "--target",
+            "fabric_generate",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/nonzero/generate')\nfor n,t in {'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/core.sv': 'INERT CORRECTED HLS\\n', 'ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip': '# INERT QIP\\n', 'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.qip': '# INERT QIP\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nraise SystemExit(7)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "hls_drift",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/hls_drift/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/hls_drift/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/hls_drift/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/hls_drift/generate"
+          ],
+          "started": "2026-10-02T05:09:31.011578+00:00",
+          "process": {
+            "pid": 1392900,
+            "start_ticks": "9004820",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/hls_drift/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:31.316560+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/hls_drift/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:31.369275+00:00",
+          "process": {
+            "pid": 1392901,
+            "start_ticks": "9004855",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/hls_drift/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:31.689078+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "import",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/hls_drift/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:31.740111+00:00",
+          "process": {
+            "pid": 1392902,
+            "start_ticks": "9004893",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/hls_drift/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/hls_drift/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:32.075338+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "generate",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/hls_drift/operation/cmake-build",
+            "--target",
+            "fabric_generate",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:32.132482+00:00",
+          "process": {
+            "pid": 1392903,
+            "start_ticks": "9004932",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/hls_drift/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/hls_drift/generate')\nfor n,t in {'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/core.sv': 'INERT DRIFT\\n', 'ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip': '# INERT QIP\\n', 'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.qip': '# INERT QIP\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:32.468182+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [],
+      "error": null,
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "live_fault_proof": {},
+      "replay_preserved_bytes": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/hls_drift/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/hls_drift/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/hls_drift/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/hls_drift/generate"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/hls_drift/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/hls_drift/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/hls_drift/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/hls_drift/operation/cmake-build",
+            "--target",
+            "fabric_generate",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/hls_drift/generate')\nfor n,t in {'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/core.sv': 'INERT DRIFT\\n', 'ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip': '# INERT QIP\\n', 'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.qip': '# INERT QIP\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "missing_output",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_output/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_output/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_output/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_output/generate"
+          ],
+          "started": "2026-10-02T05:09:32.574497+00:00",
+          "process": {
+            "pid": 1392908,
+            "start_ticks": "9004976",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_output/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:32.900342+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_output/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:32.947194+00:00",
+          "process": {
+            "pid": 1392910,
+            "start_ticks": "9005013",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_output/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:33.260712+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "import",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_output/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:33.321568+00:00",
+          "process": {
+            "pid": 1392917,
+            "start_ticks": "9005051",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_output/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_output/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:33.691976+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "generate",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_output/operation/cmake-build",
+            "--target",
+            "fabric_generate",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:33.763326+00:00",
+          "process": {
+            "pid": 1392967,
+            "start_ticks": "9005095",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_output/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_output/generate')\nfor n,t in {'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/core.sv': 'INERT CORRECTED HLS\\n', 'ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip': '# INERT QIP\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:34.092513+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [],
+      "error": null,
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "live_fault_proof": {},
+      "replay_preserved_bytes": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_output/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_output/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_output/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_output/generate"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_output/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_output/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_output/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_output/operation/cmake-build",
+            "--target",
+            "fabric_generate",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/missing_output/generate')\nfor n,t in {'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/core.sv': 'INERT CORRECTED HLS\\n', 'ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip': '# INERT QIP\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "copy_drift",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/generate"
+          ],
+          "started": "2026-10-02T05:09:34.185652+00:00",
+          "process": {
+            "pid": 1392972,
+            "start_ticks": "9005137",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:34.525163+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:34.580809+00:00",
+          "process": {
+            "pid": 1392976,
+            "start_ticks": "9005177",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:34.928820+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "import",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:35.002388+00:00",
+          "process": {
+            "pid": 1392979,
+            "start_ticks": "9005219",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:35.357840+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "generate",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/operation/cmake-build",
+            "--target",
+            "fabric_generate",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:35.408738+00:00",
+          "process": {
+            "pid": 1393012,
+            "start_ticks": "9005260",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/generate')\nfor n,t in {'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/core.sv': 'INERT CORRECTED HLS\\n', 'ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip': '# INERT QIP\\n', 'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.qip': '# INERT QIP\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nPath('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/generate/mmhost_ia840f.report.prj/core.sv').write_text(\"DRIFT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:35.719813+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [],
+      "error": null,
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "live_fault_proof": {},
+      "replay_preserved_bytes": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/generate"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/operation/cmake-build",
+            "--target",
+            "fabric_generate",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/generate')\nfor n,t in {'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/core.sv': 'INERT CORRECTED HLS\\n', 'ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip': '# INERT QIP\\n', 'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.qip': '# INERT QIP\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nPath('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/copy_drift/generate/mmhost_ia840f.report.prj/core.sv').write_text(\"DRIFT\")\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "release_drift",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/generate"
+          ],
+          "started": "2026-10-02T05:09:35.821497+00:00",
+          "process": {
+            "pid": 1393016,
+            "start_ticks": "9005301",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:36.128599+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:36.175732+00:00",
+          "process": {
+            "pid": 1393020,
+            "start_ticks": "9005336",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:36.486962+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "import",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:36.542914+00:00",
+          "process": {
+            "pid": 1393022,
+            "start_ticks": "9005373",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:36.876559+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "generate",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/operation/cmake-build",
+            "--target",
+            "fabric_generate",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:36.933222+00:00",
+          "process": {
+            "pid": 1393025,
+            "start_ticks": "9005412",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/generate')\nfor n,t in {'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/core.sv': 'INERT CORRECTED HLS\\n', 'ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip': '# INERT QIP\\n', 'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.qip': '# INERT QIP\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nPath('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/release/hw/lib/fme-ifc-id.txt').write_text(\"DRIFT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:37.250601+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [],
+      "error": null,
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "live_fault_proof": {},
+      "replay_preserved_bytes": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/generate"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/operation/cmake-build",
+            "--target",
+            "fabric_generate",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/generate')\nfor n,t in {'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/core.sv': 'INERT CORRECTED HLS\\n', 'ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip': '# INERT QIP\\n', 'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.qip': '# INERT QIP\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nPath('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/release_drift/release/hw/lib/fme-ifc-id.txt').write_text(\"DRIFT\")\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "native_error",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/native_error/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/native_error/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/native_error/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/native_error/generate"
+          ],
+          "started": "2026-10-02T05:09:37.339443+00:00",
+          "process": {
+            "pid": 1393026,
+            "start_ticks": "9005452",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/native_error/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:37.645841+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/native_error/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:37.692403+00:00",
+          "process": {
+            "pid": 1393027,
+            "start_ticks": "9005488",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/native_error/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:37.989864+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "import",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/native_error/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:38.032914+00:00",
+          "process": {
+            "pid": 1393028,
+            "start_ticks": "9005522",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/native_error/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/native_error/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:38.351645+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "generate",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/native_error/operation/cmake-build",
+            "--target",
+            "fabric_generate",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:38.399468+00:00",
+          "process": {
+            "pid": 1393030,
+            "start_ticks": "9005558",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/native_error/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/native_error/generate')\nfor n,t in {'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/core.sv': 'INERT CORRECTED HLS\\n', 'ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip': '# INERT QIP\\n', 'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.qip': '# INERT QIP\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint(\"# 0: ERROR: INERT generated failure\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:38.709261+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": [
+        {
+          "file": "generate.log",
+          "line": 1,
+          "text": "# 0: ERROR: INERT generated failure"
+        }
+      ],
+      "error": null,
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "live_fault_proof": {},
+      "replay_preserved_bytes": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/native_error/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/native_error/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/native_error/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/native_error/generate"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/native_error/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/native_error/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/native_error/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/native_error/operation/cmake-build",
+            "--target",
+            "fabric_generate",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/native_error/generate')\nfor n,t in {'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/core.sv': 'INERT CORRECTED HLS\\n', 'ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip': '# INERT QIP\\n', 'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.qip': '# INERT QIP\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint(\"# 0: ERROR: INERT generated failure\")\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "drain_gate",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/drain_gate/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/drain_gate/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/drain_gate/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/drain_gate/generate"
+          ],
+          "started": "2026-10-02T05:09:38.789335+00:00",
+          "process": {
+            "pid": 1393033,
+            "start_ticks": "9005597",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/drain_gate/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:39.117364+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/drain_gate/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:39.171682+00:00",
+          "process": {
+            "pid": 1393035,
+            "start_ticks": "9005636",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/drain_gate/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:39.486528+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "import",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/drain_gate/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:39.546350+00:00",
+          "process": {
+            "pid": 1393036,
+            "start_ticks": "9005673",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/drain_gate/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/drain_gate/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:39.884452+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "generate",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/drain_gate/operation/cmake-build",
+            "--target",
+            "fabric_generate",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:39.945719+00:00",
+          "process": {
+            "pid": 1393041,
+            "start_ticks": "9005713",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/drain_gate/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/drain_gate/generate')\nfor n,t in {'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/core.sv': 'INERT CORRECTED HLS\\n', 'ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip': '# INERT QIP\\n', 'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.qip': '# INERT QIP\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nimport os,time\npid=os.fork()\nif pid:os._exit(0)\ntime.sleep(0.4)\nprint(\"IA840F_GATE_REJECTED: INERT helper\",flush=True)\ntime.sleep(8)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [
+            1393042
+          ],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": true,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:40.661202+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 125
+        }
+      ],
+      "diagnostics": [
+        {
+          "file": "generate.log",
+          "line": 1,
+          "text": "IA840F_GATE_REJECTED: INERT helper"
+        }
+      ],
+      "error": "RuntimeError('owned native callback rejection')",
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "live_fault_proof": {},
+      "replay_preserved_bytes": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/drain_gate/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/drain_gate/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/drain_gate/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/drain_gate/generate"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/drain_gate/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/drain_gate/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/drain_gate/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/drain_gate/operation/cmake-build",
+            "--target",
+            "fabric_generate",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/drain_gate/generate')\nfor n,t in {'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/core.sv': 'INERT CORRECTED HLS\\n', 'ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip': '# INERT QIP\\n', 'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.qip': '# INERT QIP\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nimport os,time\npid=os.fork()\nif pid:os._exit(0)\ntime.sleep(0.4)\nprint(\"IA840F_GATE_REJECTED: INERT helper\",flush=True)\ntime.sleep(8)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "overflow",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/overflow/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/overflow/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/overflow/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/overflow/generate"
+          ],
+          "started": "2026-10-02T05:09:40.745734+00:00",
+          "process": {
+            "pid": 1393102,
+            "start_ticks": "9005793",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/overflow/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:41.098834+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/overflow/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:41.186680+00:00",
+          "process": {
+            "pid": 1393148,
+            "start_ticks": "9005837",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/overflow/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:41.515074+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "import",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/overflow/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:41.575734+00:00",
+          "process": {
+            "pid": 1393153,
+            "start_ticks": "9005876",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/overflow/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/overflow/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:41.957004+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "generate",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/overflow/operation/cmake-build",
+            "--target",
+            "fabric_generate",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:42.015926+00:00",
+          "process": {
+            "pid": 1393156,
+            "start_ticks": "9005920",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/overflow/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/overflow/generate')\nfor n,t in {'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/core.sv': 'INERT CORRECTED HLS\\n', 'ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip': '# INERT QIP\\n', 'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.qip': '# INERT QIP\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint(\"x\"*2048)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": true,
+          "ended": "2026-10-02T05:09:42.338250+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 125
+        }
+      ],
+      "diagnostics": [
+        {
+          "file": "generate.log",
+          "error": "log threshold exceeded; full text not read"
+        }
+      ],
+      "error": "RuntimeError('owned native log exceeded finite bound')",
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "live_fault_proof": {},
+      "replay_preserved_bytes": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/overflow/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/overflow/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/overflow/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/overflow/generate"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/overflow/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/overflow/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/overflow/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/overflow/operation/cmake-build",
+            "--target",
+            "fabric_generate",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/overflow/generate')\nfor n,t in {'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/core.sv': 'INERT CORRECTED HLS\\n', 'ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip': '# INERT QIP\\n', 'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.qip': '# INERT QIP\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint(\"x\"*2048)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "postspawn_fault",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postspawn_fault/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postspawn_fault/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postspawn_fault/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postspawn_fault/generate"
+          ],
+          "started": "2026-10-02T05:09:42.432755+00:00",
+          "cmake_rc": -15,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:42.638865+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": -15
+        }
+      ],
+      "diagnostics": [],
+      "error": "RuntimeError('INERT post-spawn identity fault')",
+      "postflight_errors": [
+        {
+          "check": "generated_child_metadata",
+          "error": "AssertionError('missing/unbounded child IP metadata')"
+        }
+      ],
+      "postflight_exception": null,
+      "live_fault_proof": {
+        "pid": 1393158,
+        "alive_before_fault": true,
+        "group_empty_on_return": true
+      },
+      "replay_preserved_bytes": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postspawn_fault/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postspawn_fault/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postspawn_fault/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postspawn_fault/generate"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "import os,time;from pathlib import Path;Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postspawn_fault/live.started').write_text(str(os.getpid()));time.sleep(8)"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "postflight_fault",
+      "expected_clean": false,
+      "actual_runner_rc": 1,
+      "execution_clean": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postflight_fault/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postflight_fault/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postflight_fault/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postflight_fault/generate"
+          ],
+          "started": "2026-10-02T05:09:42.758097+00:00",
+          "process": {
+            "pid": 1393161,
+            "start_ticks": "9005994",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postflight_fault/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "raise SystemExit(0)"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:43.069794+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "version",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postflight_fault/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:43.121084+00:00",
+          "process": {
+            "pid": 1393162,
+            "start_ticks": "9006031",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postflight_fault/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:43.427570+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "import",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postflight_fault/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:43.473746+00:00",
+          "process": {
+            "pid": 1393167,
+            "start_ticks": "9006066",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postflight_fault/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postflight_fault/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:43.782190+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        },
+        {
+          "label": "generate",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postflight_fault/operation/cmake-build",
+            "--target",
+            "fabric_generate",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-02T05:09:43.833530+00:00",
+          "process": {
+            "pid": 1393168,
+            "start_ticks": "9006102",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postflight_fault/operation",
+            "argv": [
+              "/usr/bin/python3",
+              "-c",
+              "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postflight_fault/generate')\nfor n,t in {'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/core.sv': 'INERT CORRECTED HLS\\n', 'ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip': '# INERT QIP\\n', 'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.qip': '# INERT QIP\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-02T05:09:44.162749+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "diagnostics": null,
+      "error": null,
+      "postflight_errors": null,
+      "postflight_exception": "RuntimeError('INERT postflight failure')",
+      "live_fault_proof": {},
+      "replay_preserved_bytes": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postflight_fault/prepare/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postflight_fault/operation/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postflight_fault/fake-tool",
+            "-DFABRIC_ROOT=/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postflight_fault/generate"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "raise SystemExit(0)"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postflight_fault/operation/cmake-build",
+            "--target",
+            "version",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "print(\"INERT 26.1.1 Build 130 SC Pro Edition\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postflight_fault/operation/cmake-build",
+            "--target",
+            "fabric_import",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postflight_fault/generate')\nfor n,t in {'ahls_memory_dma_fabric.qsys': '<system/>\\n', 'ip/ahls_memory_dma_fabric/fabric.ip': '<component><altera_has_errors>false</altera_has_errors></component>\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\nprint('FABRIC_INTERFACES=bank_out0 bank_out1 clock_reset clock_reset_reset device_exception_bus dma_csr dma_ddr_in0 dma_ddr_in1 freeze kernel_irqs mmio_control')\nprint(\"PD_VALIDATE_OK\")\nprint(\"PD_IMPORT_COMPLETE\")\n"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postflight_fault/operation/cmake-build",
+            "--target",
+            "fabric_generate",
+            "--parallel",
+            "1"
+          ],
+          "actual": [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path\nroot=Path('/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v/postflight_fault/generate')\nfor n,t in {'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/mmhost_ia840f_report_di_10/synth/core.sv': 'INERT CORRECTED HLS\\n', 'ahls_memory_dma_fabric/ahls_memory_dma_fabric.qip': '# INERT QIP\\n', 'ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric/ahls_memory_dma_fabric_fabric.qip': '# INERT QIP\\n'}.items():\n p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(t)\n"
+          ]
+        }
+      ]
+    }
+  ],
+  "scratch": "/home/joe/.hermes/cache/scratch/fabric-inert09-sbxcfw8v"
+}

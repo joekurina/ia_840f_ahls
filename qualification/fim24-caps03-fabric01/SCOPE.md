@@ -1,0 +1,11 @@
+# Migrated CAPS03 fabric — source/tool preparation
+
+Generate the existing full-width two-bank HLS/DMA fabric under Quartus26.1.1 Build130, bound to the accepted Work24 PR/PIM geometry/UUID. Preserve the224 original AHLS report inputs and reuse the exact three existing corrected LSU overlays and155 expected generated HLS files. Do not recompile unchanged standalone HLS, reuse old25.1-generated fabric, or launch persona/hardware work from this scope.
+
+Prepared generation root: `/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_fabric01/generate01`. It contains228 bound data inputs. No native Qsys import/generation occurred. Prepare02 stopped after the complete source copy because an assumed `quartus/qsys/bin` alias was absent; prepare03 verified that exact partial state and completed metadata acquisition without rewriting it. Actual launcher paths include `quartus/sopc_builder/bin` and sibling `qsys/bin`, not `quartus/qsys/bin`. Preserve all failed/prepared evidence.
+
+The retained composition has two independent512-bit/34-bit-address banks, full-width Avalon stages on HLS paths, unchanged DMA paths and response channels. Its AXI bridge request19.9.3 must be reconciled with installed26.1.1 module19.10.3; the proposed single-line version change leaves parameters and topology unchanged. Avalonbridge20.1.0 remains available. Directly sourced AXI helpers, includingGUI andAXI5 helper declarations, are captured. Do not infer activeAXI5 from a filename: selected AXI_VERSION isAXI4. Do not rewrite component API package versions merely because the toolrelease changes.
+
+Use direct CMake-native import/generate targets and fresh bound entry/supervision/ownership, all36availableCPUs and64GiB perprocess, finite deadlines, diagnostics and source/output checks. Confirm generation parallelism from same-releasehelp beforeissuance; remove inheritedoffcap ratherthan assumeaffinityequalsworkerparallelism. Exact source/API and actualgeneratedinterfaces remain separate gates. Simulation follows with matchingPIM/fabric andQuesta2024.3; no DDRvendor-internal/calibration requalification is added.
+
+Release acceptance: `../fim24-pr-platform01/EXPORT-ACCEPTANCE39.md`. PF1 isBMC/nonVF; PF0/VF0 isAFU. Freshpersona/hardwareidentity andauthorization remain required.

@@ -1,0 +1,12 @@
+# Migrated CAPS03 fabric — completed native result, acceptance pending
+
+One fresh CMake-native import/generation ran under Quartus26.1.1 Build130. Configure/version/import/generate CMake and effective codes are0, the direct vendor targets propagate zero, and the outer supervisor/waiter recorded0. No error/fatal/rejection diagnostics or postflight errors; all ownership ended. First ordinary process snapshot arrived after completion, so no live Java PID/executable/ancestry witness is claimed; actual CMake child identities, fixed commands, logs and generated metadata are retained. [Result](completion17-readback/operation/result.json), [completion](native15-completion-event.json).
+
+-294 generated/input-metadata members are captured and hash-verified;301 captured members include exact logs/result. No HLS resynthesis occurred.
+-All155 generated corrected HLS files hash-match the admitted expectation;224original and copied report inputs, bothTcl scripts, tools/helpers/control files and acceptedWork24release are preserved.
+-One saved childIP has `altera_has_errors=false` before/aftergeneration. All11 named interfaces appear in nativeSOPCINFO and import output. Both wrappers contain245ports, each matching nativeSOPCINFO and the prior qualified wrapper's complete name/direction/width ABI—including final comma-less declarations. This is not proof of internal functional equivalence or timing.
+-Both generatedQIPs contain265file assignments resolving to264distinct captured targets, each body rehashed. HDL/library/ordering and behavioral simulation still need review.
+-QPF is unchanged. QSF retains all four initialfamily/device/top/NUM36lines and appends exactly five native project metadata lines: power-format/linearN, toolversion, childIP andQsys registration. No composition, protocol, clock or HLS change is exempted. [Exact delta](native-project-delta21.json).
+-Availableaffinity remains36,RLIMIT_AS64GiB perprocess. Nativehelp enabled defaultparallelgeneration; the actuallog says it will attempt2processors basedonavailableprocessors andtwoIPs. Do not claim36nativeworkers or retune merely to change that count.
+
+Independent actual-result/closure review precedes generation acceptance. Fresh matching-PIM integrated simulation is next, followed by new compatiblepersona implementation; no FPGA programming, MMIO, BMC or reboot occurred. All native claims are consumed—never rerun this successful stage for an omitted collector or stale notification.

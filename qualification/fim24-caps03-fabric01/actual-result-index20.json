@@ -1,0 +1,130 @@
+{
+  "scope": "native fabric generation completed; independentactualresultacceptancepending",
+  "manifest_sha256": "2b3ab8c0cd50621130cea579b0de551b5e6bd304f23535e5e30b7e3be0698d1c",
+  "complete": true,
+  "execution_clean": true,
+  "outer_rc": 0,
+  "commands": [
+    {
+      "label": "configure",
+      "argv": [
+        "/usr/bin/cmake",
+        "-S",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_fabric01/prepare08/runtime",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_fabric01/native01/cmake-build",
+        "-G",
+        "Unix Makefiles",
+        "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+        "-DQUARTUS_ROOT=/opt/altera/26.1.1/quartus",
+        "-DFABRIC_ROOT=/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_fabric01/generate01"
+      ],
+      "started": "2026-10-02T05:38:10.760115+00:00",
+      "cmake_rc": 0,
+      "timeout": false,
+      "gate_rejected": false,
+      "log_bound_exceeded": false,
+      "ended": "2026-10-02T05:38:11.004359+00:00",
+      "owned_group_live_after": [],
+      "native_rc": null,
+      "effective_rc": 0
+    },
+    {
+      "label": "version",
+      "argv": [
+        "/usr/bin/cmake",
+        "--build",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_fabric01/native01/cmake-build",
+        "--target",
+        "version",
+        "--parallel",
+        "1"
+      ],
+      "started": "2026-10-02T05:38:11.016065+00:00",
+      "cmake_rc": 0,
+      "timeout": false,
+      "gate_rejected": false,
+      "log_bound_exceeded": false,
+      "ended": "2026-10-02T05:38:12.062266+00:00",
+      "owned_group_live_after": [],
+      "native_rc": 0,
+      "effective_rc": 0
+    },
+    {
+      "label": "import",
+      "argv": [
+        "/usr/bin/cmake",
+        "--build",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_fabric01/native01/cmake-build",
+        "--target",
+        "fabric_import",
+        "--parallel",
+        "1"
+      ],
+      "started": "2026-10-02T05:38:12.074149+00:00",
+      "cmake_rc": 0,
+      "timeout": false,
+      "gate_rejected": false,
+      "log_bound_exceeded": false,
+      "ended": "2026-10-02T05:38:22.965131+00:00",
+      "owned_group_live_after": [],
+      "native_rc": 0,
+      "effective_rc": 0
+    },
+    {
+      "label": "generate",
+      "argv": [
+        "/usr/bin/cmake",
+        "--build",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_fabric01/native01/cmake-build",
+        "--target",
+        "fabric_generate",
+        "--parallel",
+        "1"
+      ],
+      "started": "2026-10-02T05:38:22.989114+00:00",
+      "cmake_rc": 0,
+      "timeout": false,
+      "gate_rejected": false,
+      "log_bound_exceeded": false,
+      "ended": "2026-10-02T05:38:46.514031+00:00",
+      "owned_group_live_after": [],
+      "native_rc": 0,
+      "effective_rc": 0
+    }
+  ],
+  "preservation": {
+    "original_report_preserved": true,
+    "copied_corrected_report_preserved": true,
+    "composition_and_system_scripts_preserved": true,
+    "tools_vendor_sources_preserved": true,
+    "accepted_release_preserved": true,
+    "control_files_preserved": true,
+    "project_identity_preserved": true,
+    "corrected_hls_generated_unchanged": true
+  },
+  "generated_members": 294,
+  "collected_members": 301,
+  "expected_hls_verified": 155,
+  "qip_edges": 265,
+  "qip_distinct_targets": 264,
+  "interface_count": 11,
+  "port_counts": {
+    "ahls_memory_dma_fabric": 245,
+    "ahls_memory_dma_fabric_fabric": 245
+  },
+  "port_abi_matches_prior": true,
+  "diagnostics": [],
+  "postflight_errors": [],
+  "native_project_metadata_delta": {
+    "ahls_memory_dma_fabric.qsf": {
+      "before_sha256": "672a12aa4948f481bbcb07ef67a8c87e8abbd37e4997f6db8c73601e8f03c8e1",
+      "after_sha256": "9262d07b12ee3ecde7b1dceac5815826bc3413284c667f2a473a4544723d7acc",
+      "after_text": "set_global_assignment -name FAMILY \"Agilex 7\"\nset_global_assignment -name DEVICE AGFB027R25A2E2V\nset_global_assignment -name TOP_LEVEL_ENTITY ahls_memory_dma_fabric\nset_global_assignment -name NUM_PARALLEL_PROCESSORS 36\nset_global_assignment -name PWRMGT_VOLTAGE_OUTPUT_FORMAT \"LINEAR FORMAT\"\nset_global_assignment -name PWRMGT_LINEAR_FORMAT_N \"-12\"\nset_global_assignment -name LAST_QUARTUS_VERSION \"26.1.1 Pro Edition\"\nset_global_assignment -name IP_FILE ip/ahls_memory_dma_fabric/ahls_memory_dma_fabric_fabric.ip\nset_global_assignment -name QSYS_FILE ahls_memory_dma_fabric.qsys\n"
+    }
+  },
+  "parallel_generation_report": "enabled; native tool will attempt2 processors basedonavailableprocessors and2 IPs, despite36allowedaffinity",
+  "first_process_snapshot": "after completion; no liveJavaPID/executable/ancestrywitness claimed; actualCMakechild identities/commands/logs retained",
+  "remaining_native_processes": [],
+  "hardware_access": false
+}

@@ -1,0 +1,79 @@
+{
+  "scope": "proposed 26.1.1 fabric import/generation, not launchauthority",
+  "commands": {
+    "import": [
+      "/opt/altera/26.1.1/quartus/sopc_builder/bin/qsys-script",
+      "--quartus-project=/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_fabric01/generate01/ahls_memory_dma_fabric.qpf",
+      "--rev=ahls_memory_dma_fabric",
+      "--package-version=26.1",
+      "--search-path=/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_fabric01/generate01/mmhost_ia840f.report.prj,/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_fabric01/generate01,$",
+      "--script=/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_fabric01/generate01/make-system.tcl"
+    ],
+    "generate": [
+      "/opt/altera/26.1.1/quartus/sopc_builder/bin/qsys-generate",
+      "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_fabric01/generate01/ahls_memory_dma_fabric.qsys",
+      "--synthesis=VERILOG",
+      "--quartus-project=/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_fabric01/generate01/ahls_memory_dma_fabric.qpf",
+      "--rev=ahls_memory_dma_fabric",
+      "--part=AGFB027R25A2E2V",
+      "--search-path=/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_fabric01/generate01/mmhost_ia840f.report.prj,/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_fabric01/generate01,$"
+    ]
+  },
+  "component_delta": {
+    "before_sha256": "26e193a04d00748bcb5312bb81f40e9106d85bbb69878df323b510778a2299cb",
+    "after_sha256": "64b742d8715ef3fbeb196aee33e987cdc6e8dbfc56b8824f0621793652326a06",
+    "exact_replacement": [
+      "add_instance $name altera_axi_bridge 19.9.3",
+      "add_instance $name altera_axi_bridge 19.10.3"
+    ]
+  },
+  "resources": {
+    "cpus": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35
+    ],
+    "address_space_limit_bytes": 68719476736,
+    "qsf_num_parallel_processors": 36
+  },
+  "parallel_policy": "Remove historical --parallel=off cap; verify same-release documented default before issuance. Affinity is not a claim of actual workers.",
+  "unchanged_package_requires": [
+    "component API qsys17.0",
+    "HLS descriptors qsys15.0 and14.0",
+    "Avalonbridge20.1.0"
+  ],
+  "authority_issued": false
+}

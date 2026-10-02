@@ -1,0 +1,77 @@
+{
+  "success": true,
+  "native_tools_executed": false,
+  "scope": "CMake configure/help only, fixed remote fabric root substituted with owned inert fixture; no target invoking vendor was built",
+  "cmake_source_sha256": "d0eecee314d0b2f2a745a429c05fc3666d22380fe655162e26dcf5e6e0d71304",
+  "count": 5,
+  "checks": [
+    {
+      "case": "configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/.hermes/cache/scratch/fabric-cmake10-s_3ckl24/cmake",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/fabric-cmake10-s_3ckl24/build"
+      ],
+      "rc": 0,
+      "stdout": "-- Configuring done (0.0s)\n-- Generating done (0.0s)\n-- Build files have been written to: /home/joe/.hermes/cache/scratch/fabric-cmake10-s_3ckl24/build\n",
+      "stderr": ""
+    },
+    {
+      "case": "target_help",
+      "argv": [
+        "cmake",
+        "--build",
+        "/home/joe/.hermes/cache/scratch/fabric-cmake10-s_3ckl24/build",
+        "--target",
+        "help"
+      ],
+      "rc": 0,
+      "stdout": "The following are some of the valid targets for this Makefile:\n... all (the default if no target is provided)\n... clean\n... depend\n... edit_cache\n... rebuild_cache\n... fabric_generate\n... fabric_import\n... version\n",
+      "stderr": ""
+    },
+    {
+      "case": "reject_other_toolchain",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/.hermes/cache/scratch/fabric-cmake10-s_3ckl24/cmake",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/fabric-cmake10-s_3ckl24/bad-tool",
+        "-DQUARTUS_ROOT=/wrong"
+      ],
+      "rc": 1,
+      "stdout": "-- Configuring incomplete, errors occurred!\n",
+      "stderr": "CMake Error at CMakeLists.txt:5 (message):\n  Requires bound Quartus26.1.1\n\n\n"
+    },
+    {
+      "case": "reject_other_fabric",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/.hermes/cache/scratch/fabric-cmake10-s_3ckl24/cmake",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/fabric-cmake10-s_3ckl24/bad-root",
+        "-DFABRIC_ROOT=/wrong"
+      ],
+      "rc": 1,
+      "stdout": "-- Configuring incomplete, errors occurred!\n",
+      "stderr": "CMake Error at CMakeLists.txt:9 (message):\n  Unexpected fabric root\n\n\n"
+    },
+    {
+      "case": "reject_missing_input",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/joe/.hermes/cache/scratch/fabric-cmake10-s_3ckl24/cmake",
+        "-B",
+        "/home/joe/.hermes/cache/scratch/fabric-cmake10-s_3ckl24/missing"
+      ],
+      "rc": 1,
+      "stdout": "-- Configuring incomplete, errors occurred!\n",
+      "stderr": "CMake Error at CMakeLists.txt:13 (message):\n  Missing prepared input make-system.tcl\n\n\n"
+    }
+  ],
+  "scratch": "/home/joe/.hermes/cache/scratch/fabric-cmake10-s_3ckl24"
+}
