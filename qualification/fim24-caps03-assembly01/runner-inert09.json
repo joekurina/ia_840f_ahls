@@ -1,0 +1,3197 @@
+{
+  "success": true,
+  "scope": "actual supervisor/postflight/image checks and real inert children; mocked admission/CMake/tmux/callback, no vendor tool",
+  "count": 26,
+  "runner_sha256": "1e90a0b24b92824edd616f129fc14f34594c23a17525117f21e30f14f225db1d",
+  "cases": [
+    {
+      "case": "clean",
+      "expected_execution_clean": true,
+      "actual_rc": 0,
+      "execution_clean": true,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/clean/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/clean/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/clean/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/clean/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/clean/run"
+          ],
+          "started": "2026-10-03T07:31:23.778543+00:00",
+          "process": {
+            "pid": 624768,
+            "start_ticks": "4007536",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/clean/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:24.127584+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/clean/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:24.199713+00:00",
+          "process": {
+            "pid": 624778,
+            "start_ticks": "4007578",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/clean/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/clean/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/clean/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/clean/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:24.475092+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/clean/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/clean/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/clean/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/clean/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/clean/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/clean/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/clean/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/clean/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/clean/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "runtime_changed",
+      "expected_execution_clean": true,
+      "actual_rc": 0,
+      "execution_clean": true,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/runtime_changed/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/runtime_changed/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/runtime_changed/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/runtime_changed/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/runtime_changed/run"
+          ],
+          "started": "2026-10-03T07:31:24.550688+00:00",
+          "process": {
+            "pid": 624805,
+            "start_ticks": "4007613",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/runtime_changed/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:24.824639+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/runtime_changed/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:24.862141+00:00",
+          "process": {
+            "pid": 624810,
+            "start_ticks": "4007644",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/runtime_changed/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/runtime_changed/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/runtime_changed/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/runtime_changed/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nPath('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/runtime_changed/design/runtime-report').write_text(\"INERT updated runtime\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:25.142393+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/runtime_changed/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/runtime_changed/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/runtime_changed/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/runtime_changed/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/runtime_changed/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/runtime_changed/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/runtime_changed/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/runtime_changed/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/runtime_changed/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nPath('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/runtime_changed/design/runtime-report').write_text(\"INERT updated runtime\")\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "unissued",
+      "rejected_before_write": true
+    },
+    {
+      "case": "nonzero",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/nonzero/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/nonzero/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/nonzero/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/nonzero/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/nonzero/run"
+          ],
+          "started": "2026-10-03T07:31:25.224088+00:00",
+          "process": {
+            "pid": 624822,
+            "start_ticks": "4007681",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/nonzero/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:25.496225+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/nonzero/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:25.529684+00:00",
+          "process": {
+            "pid": 624823,
+            "start_ticks": "4007711",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/nonzero/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/nonzero/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/nonzero/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/nonzero/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nraise SystemExit(7)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 7,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:25.803567+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 7
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/nonzero/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/nonzero/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/nonzero/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/nonzero/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/nonzero/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/nonzero/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/nonzero/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/nonzero/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/nonzero/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nraise SystemExit(7)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "native_error",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/native_error/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/native_error/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/native_error/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/native_error/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/native_error/run"
+          ],
+          "started": "2026-10-03T07:31:25.873205+00:00",
+          "process": {
+            "pid": 624826,
+            "start_ticks": "4007745",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/native_error/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:26.141742+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/native_error/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:26.172568+00:00",
+          "process": {
+            "pid": 624827,
+            "start_ticks": "4007775",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/native_error/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/native_error/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/native_error/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/native_error/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nprint(\"Error (suppressible): INERT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:26.440805+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/native_error/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/native_error/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/native_error/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/native_error/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/native_error/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/native_error/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/native_error/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/native_error/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/native_error/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nprint(\"Error (suppressible): INERT\")\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "marker",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/marker/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/marker/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/marker/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/marker/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/marker/run"
+          ],
+          "started": "2026-10-03T07:31:26.504841+00:00",
+          "process": {
+            "pid": 624829,
+            "start_ticks": "4007809",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/marker/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:26.771623+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/marker/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:26.802838+00:00",
+          "process": {
+            "pid": 624830,
+            "start_ticks": "4007838",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/marker/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/marker/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/marker/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/marker/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nprint(\"IA840F_ASM_GATE_REJECTED INERT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": true,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:27.069806+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 125
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/marker/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/marker/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/marker/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/marker/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/marker/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/marker/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/marker/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/marker/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/marker/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nprint(\"IA840F_ASM_GATE_REJECTED INERT\")\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "missing_callback",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_callback/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_callback/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_callback/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_callback/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_callback/run"
+          ],
+          "started": "2026-10-03T07:31:27.135271+00:00",
+          "process": {
+            "pid": 624831,
+            "start_ticks": "4007872",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_callback/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:27.402309+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_callback/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:27.433982+00:00",
+          "process": {
+            "pid": 624832,
+            "start_ticks": "4007902",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_callback/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_callback/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_callback/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:27.701089+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_callback/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_callback/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_callback/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_callback/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_callback/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_callback/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_callback/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_callback/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "wrong_callback",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/wrong_callback/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/wrong_callback/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/wrong_callback/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/wrong_callback/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/wrong_callback/run"
+          ],
+          "started": "2026-10-03T07:31:27.768436+00:00",
+          "process": {
+            "pid": 624833,
+            "start_ticks": "4007935",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/wrong_callback/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:28.041571+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/wrong_callback/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:28.074778+00:00",
+          "process": {
+            "pid": 624836,
+            "start_ticks": "4007966",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/wrong_callback/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/wrong_callback/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/wrong_callback/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/WRONG_INERT_CWD\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:28.346132+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/wrong_callback/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/wrong_callback/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/wrong_callback/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/wrong_callback/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/wrong_callback/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/wrong_callback/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/wrong_callback/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/wrong_callback/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/WRONG_INERT_CWD\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "missing_report",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_report/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_report/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_report/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_report/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_report/run"
+          ],
+          "started": "2026-10-03T07:31:28.414845+00:00",
+          "process": {
+            "pid": 624838,
+            "start_ticks": "4008000",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_report/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:28.687797+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_report/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:28.720534+00:00",
+          "process": {
+            "pid": 624840,
+            "start_ticks": "4008030",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_report/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_report/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_report/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_report/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\n(J/'output_files/ofs_pr_afu.asm.rpt').unlink()\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:28.993126+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [
+        {
+          "required_output": "output_files/ofs_pr_afu.asm.rpt",
+          "error": "AssertionError()"
+        }
+      ],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_report/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_report/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_report/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_report/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_report/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_report/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_report/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_report/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_report/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\n(J/'output_files/ofs_pr_afu.asm.rpt').unlink()\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "missing_image_0",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_0/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_0/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_0/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_0/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_0/run"
+          ],
+          "started": "2026-10-03T07:31:29.064682+00:00",
+          "process": {
+            "pid": 624867,
+            "start_ticks": "4008065",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_0/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:29.341801+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_0/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:29.374072+00:00",
+          "process": {
+            "pid": 624900,
+            "start_ticks": "4008096",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_0/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_0/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_0/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_0/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\n(J/'output_files/ofs_pr_afu.sof').unlink()\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:29.651136+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [
+        {
+          "required_output": "output_files/ofs_pr_afu.sof",
+          "error": "AssertionError()"
+        }
+      ],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_0/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_0/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_0/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_0/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_0/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_0/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_0/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_0/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_0/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\n(J/'output_files/ofs_pr_afu.sof').unlink()\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "missing_image_1",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_1/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_1/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_1/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_1/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_1/run"
+          ],
+          "started": "2026-10-03T07:31:29.725785+00:00",
+          "process": {
+            "pid": 624921,
+            "start_ticks": "4008131",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_1/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:29.997889+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_1/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:30.035423+00:00",
+          "process": {
+            "pid": 624947,
+            "start_ticks": "4008162",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_1/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_1/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_1/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_1/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\n(J/'output_files/ofs_pr_afu.green_region.pmsf').unlink()\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:30.303541+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [
+        {
+          "required_output": "output_files/ofs_pr_afu.green_region.pmsf",
+          "error": "AssertionError()"
+        }
+      ],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_1/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_1/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_1/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_1/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_1/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_1/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_1/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_1/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_1/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\n(J/'output_files/ofs_pr_afu.green_region.pmsf').unlink()\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "missing_image_2",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_2/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_2/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_2/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_2/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_2/run"
+          ],
+          "started": "2026-10-03T07:31:30.373553+00:00",
+          "process": {
+            "pid": 624949,
+            "start_ticks": "4008195",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_2/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:30.641377+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_2/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:30.673418+00:00",
+          "process": {
+            "pid": 624951,
+            "start_ticks": "4008225",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_2/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_2/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_2/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_2/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\n(J/'output_files/ofs_pr_afu.green_region.rbf').unlink()\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:30.942127+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [
+        {
+          "required_output": "output_files/ofs_pr_afu.green_region.rbf",
+          "error": "AssertionError()"
+        }
+      ],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_2/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_2/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_2/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_2/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_2/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_2/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_2/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_2/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/missing_image_2/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\n(J/'output_files/ofs_pr_afu.green_region.rbf').unlink()\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "empty_pmsf",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/empty_pmsf/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/empty_pmsf/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/empty_pmsf/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/empty_pmsf/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/empty_pmsf/run"
+          ],
+          "started": "2026-10-03T07:31:31.010968+00:00",
+          "process": {
+            "pid": 624952,
+            "start_ticks": "4008259",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/empty_pmsf/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:31.278729+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/empty_pmsf/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:31.309265+00:00",
+          "process": {
+            "pid": 624954,
+            "start_ticks": "4008290",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/empty_pmsf/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/empty_pmsf/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/empty_pmsf/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/empty_pmsf/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\n(J/'output_files/ofs_pr_afu.green_region.pmsf').write_bytes(b\"\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:31.587699+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [
+        {
+          "required_output": "output_files/ofs_pr_afu.green_region.pmsf",
+          "error": "AssertionError()"
+        }
+      ],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/empty_pmsf/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/empty_pmsf/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/empty_pmsf/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/empty_pmsf/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/empty_pmsf/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/empty_pmsf/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/empty_pmsf/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/empty_pmsf/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/empty_pmsf/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\n(J/'output_files/ofs_pr_afu.green_region.pmsf').write_bytes(b\"\")\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "critical_drift",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/critical_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/critical_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/critical_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/critical_drift/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/critical_drift/run"
+          ],
+          "started": "2026-10-03T07:31:31.654745+00:00",
+          "process": {
+            "pid": 624955,
+            "start_ticks": "4008324",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/critical_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:31.922480+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/critical_drift/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:31.952966+00:00",
+          "process": {
+            "pid": 624958,
+            "start_ticks": "4008353",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/critical_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/critical_drift/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/critical_drift/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/critical_drift/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nPath('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/critical_drift/design/selected.sv').write_text(\"INERT DRIFT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:32.221562+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/critical_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/critical_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/critical_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/critical_drift/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/critical_drift/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/critical_drift/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/critical_drift/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/critical_drift/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/critical_drift/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nPath('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/critical_drift/design/selected.sv').write_text(\"INERT DRIFT\")\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "metadata_drift",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/metadata_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/metadata_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/metadata_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/metadata_drift/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/metadata_drift/run"
+          ],
+          "started": "2026-10-03T07:31:32.284476+00:00",
+          "process": {
+            "pid": 624959,
+            "start_ticks": "4008387",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/metadata_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:32.554240+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/metadata_drift/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:32.585604+00:00",
+          "process": {
+            "pid": 624961,
+            "start_ticks": "4008417",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/metadata_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/metadata_drift/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/metadata_drift/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/metadata_drift/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nPath('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/metadata_drift/control/prepared.json').write_text(\"INERT DRIFT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:32.858678+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/metadata_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/metadata_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/metadata_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/metadata_drift/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/metadata_drift/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/metadata_drift/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/metadata_drift/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/metadata_drift/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/metadata_drift/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nPath('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/metadata_drift/control/prepared.json').write_text(\"INERT DRIFT\")\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "sta_drift",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_drift/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_drift/run"
+          ],
+          "started": "2026-10-03T07:31:32.927445+00:00",
+          "process": {
+            "pid": 624962,
+            "start_ticks": "4008451",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:33.198539+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_drift/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:33.231941+00:00",
+          "process": {
+            "pid": 624963,
+            "start_ticks": "4008481",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_drift/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_drift/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_drift/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nPath('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_drift/original_sta/entry').write_text(\"INERT DRIFT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:33.502676+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_drift/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_drift/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_drift/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_drift/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_drift/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_drift/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nPath('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_drift/original_sta/entry').write_text(\"INERT DRIFT\")\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "fitted_drift",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/fitted_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/fitted_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/fitted_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/fitted_drift/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/fitted_drift/run"
+          ],
+          "started": "2026-10-03T07:31:33.569771+00:00",
+          "process": {
+            "pid": 624964,
+            "start_ticks": "4008515",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/fitted_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:33.844177+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/fitted_drift/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:33.877788+00:00",
+          "process": {
+            "pid": 624967,
+            "start_ticks": "4008546",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/fitted_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/fitted_drift/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/fitted_drift/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/fitted_drift/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nPath('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/fitted_drift/original_fitted/entry').write_text(\"INERT DRIFT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:34.146745+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/fitted_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/fitted_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/fitted_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/fitted_drift/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/fitted_drift/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/fitted_drift/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/fitted_drift/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/fitted_drift/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/fitted_drift/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nPath('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/fitted_drift/original_fitted/entry').write_text(\"INERT DRIFT\")\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "mapped_drift",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/mapped_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/mapped_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/mapped_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/mapped_drift/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/mapped_drift/run"
+          ],
+          "started": "2026-10-03T07:31:34.211180+00:00",
+          "process": {
+            "pid": 624968,
+            "start_ticks": "4008579",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/mapped_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:34.478300+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/mapped_drift/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:34.509230+00:00",
+          "process": {
+            "pid": 624971,
+            "start_ticks": "4008609",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/mapped_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/mapped_drift/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/mapped_drift/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/mapped_drift/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nPath('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/mapped_drift/original_mapped/entry').write_text(\"INERT DRIFT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:34.775495+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/mapped_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/mapped_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/mapped_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/mapped_drift/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/mapped_drift/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/mapped_drift/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/mapped_drift/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/mapped_drift/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/mapped_drift/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nPath('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/mapped_drift/original_mapped/entry').write_text(\"INERT DRIFT\")\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "external_drift",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/external_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/external_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/external_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/external_drift/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/external_drift/run"
+          ],
+          "started": "2026-10-03T07:31:34.843979+00:00",
+          "process": {
+            "pid": 624989,
+            "start_ticks": "4008643",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/external_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:35.119044+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/external_drift/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:35.152947+00:00",
+          "process": {
+            "pid": 625029,
+            "start_ticks": "4008673",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/external_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/external_drift/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/external_drift/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/external_drift/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nPath('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/external_drift/external.sv').write_text(\"INERT DRIFT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:35.429468+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/external_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/external_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/external_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/external_drift/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/external_drift/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/external_drift/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/external_drift/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/external_drift/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/external_drift/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nPath('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/external_drift/external.sv').write_text(\"INERT DRIFT\")\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "tool_drift",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/tool_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/tool_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/tool_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/tool_drift/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/tool_drift/run"
+          ],
+          "started": "2026-10-03T07:31:35.507366+00:00",
+          "process": {
+            "pid": 625030,
+            "start_ticks": "4008709",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/tool_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:35.775947+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/tool_drift/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:35.808161+00:00",
+          "process": {
+            "pid": 625033,
+            "start_ticks": "4008739",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/tool_drift/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/tool_drift/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/tool_drift/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/tool_drift/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nPath('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/tool_drift/tool').write_text(\"INERT DRIFT\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:36.078750+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/tool_drift/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/tool_drift/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/tool_drift/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/tool_drift/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/tool_drift/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/tool_drift/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/tool_drift/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/tool_drift/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/tool_drift/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nPath('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/tool_drift/tool').write_text(\"INERT DRIFT\")\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "sta_extra",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_extra/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_extra/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_extra/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_extra/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_extra/run"
+          ],
+          "started": "2026-10-03T07:31:36.145311+00:00",
+          "process": {
+            "pid": 625036,
+            "start_ticks": "4008773",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_extra/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:36.409528+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_extra/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:36.437735+00:00",
+          "process": {
+            "pid": 625038,
+            "start_ticks": "4008802",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_extra/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_extra/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_extra/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_extra/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nPath('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_extra/original_sta/extra').write_text(\"INERT extra\")\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:36.701194+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_extra/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_extra/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_extra/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_extra/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_extra/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_extra/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_extra/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_extra/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_extra/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nPath('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/sta_extra/original_sta/extra').write_text(\"INERT extra\")\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "qpf_date",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/qpf_date/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/qpf_date/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/qpf_date/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/qpf_date/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/qpf_date/run"
+          ],
+          "started": "2026-10-03T07:31:36.765747+00:00",
+          "process": {
+            "pid": 625039,
+            "start_ticks": "4008835",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/qpf_date/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:37.037810+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/qpf_date/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:37.070730+00:00",
+          "process": {
+            "pid": 625040,
+            "start_ticks": "4008865",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/qpf_date/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/qpf_date/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/qpf_date/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/qpf_date/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nPath('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/qpf_date/design/project/ofs_top.qpf').write_text('QUARTUS_VERSION = \"26.1\"\\nDATE = \"INERT LATER\"\\nPROJECT_REVISION = \"ofs_pr_afu\"\\n')\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:37.342116+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/qpf_date/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/qpf_date/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/qpf_date/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/qpf_date/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/qpf_date/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/qpf_date/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/qpf_date/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/qpf_date/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/qpf_date/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nPath('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/qpf_date/design/project/ofs_top.qpf').write_text('QUARTUS_VERSION = \"26.1\"\\nDATE = \"INERT LATER\"\\nPROJECT_REVISION = \"ofs_pr_afu\"\\n')\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "overflow",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/overflow/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/overflow/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/overflow/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/overflow/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/overflow/run"
+          ],
+          "started": "2026-10-03T07:31:37.409591+00:00",
+          "process": {
+            "pid": 625045,
+            "start_ticks": "4008899",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/overflow/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:37.677921+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/overflow/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:37.708657+00:00",
+          "process": {
+            "pid": 625046,
+            "start_ticks": "4008929",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/overflow/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/overflow/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/overflow/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/overflow/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nprint(\"x\"*8192)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": true,
+          "ended": "2026-10-03T07:31:37.981907+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 125
+        }
+      ],
+      "postflight_errors": [
+        {
+          "file": "assembly.log",
+          "error": "AssertionError()"
+        }
+      ],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/overflow/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/overflow/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/overflow/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/overflow/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/overflow/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/overflow/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/overflow/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/overflow/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/overflow/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nprint(\"x\"*8192)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "timeout",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/timeout/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/timeout/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/timeout/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/timeout/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/timeout/run"
+          ],
+          "started": "2026-10-03T07:31:38.049932+00:00",
+          "process": {
+            "pid": 625049,
+            "start_ticks": "4008963",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/timeout/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:38.321703+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/timeout/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:38.354717+00:00",
+          "process": {
+            "pid": 625051,
+            "start_ticks": "4008994",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/timeout/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/timeout/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/timeout/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/timeout/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nimport time;time.sleep(8)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [
+            625051
+          ],
+          "cmake_rc": -15,
+          "timeout": true,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:39.113967+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 124
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/timeout/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/timeout/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/timeout/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/timeout/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/timeout/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/timeout/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/timeout/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/timeout/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/timeout/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nimport time;time.sleep(8)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "drain_marker",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/drain_marker/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/drain_marker/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/drain_marker/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/drain_marker/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/drain_marker/run"
+          ],
+          "started": "2026-10-03T07:31:39.177012+00:00",
+          "process": {
+            "pid": 625055,
+            "start_ticks": "4009076",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/drain_marker/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:39.448494+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/drain_marker/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:39.479157+00:00",
+          "process": {
+            "pid": 625057,
+            "start_ticks": "4009106",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/drain_marker/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/drain_marker/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/drain_marker/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/drain_marker/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nimport os,time\npid=os.fork()\nif pid:os._exit(0)\ntime.sleep(0.3)\nprint(\"IA840F_ASM_GATE_REJECTED INERT\",flush=True)\ntime.sleep(8)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [
+            625058
+          ],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": true,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:40.048204+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 125
+        }
+      ],
+      "postflight_errors": [],
+      "postflight_exception": null,
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/drain_marker/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/drain_marker/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/drain_marker/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/drain_marker/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/drain_marker/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/drain_marker/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/drain_marker/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/drain_marker/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/drain_marker/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\nimport os,time\npid=os.fork()\nif pid:os._exit(0)\ntime.sleep(0.3)\nprint(\"IA840F_ASM_GATE_REJECTED INERT\",flush=True)\ntime.sleep(8)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "postflight_fault",
+      "expected_execution_clean": false,
+      "actual_rc": 1,
+      "execution_clean": false,
+      "coverage_accepted": false,
+      "commands": [
+        {
+          "label": "configure",
+          "argv": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/postflight_fault/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/postflight_fault/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/postflight_fault/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/postflight_fault/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/postflight_fault/run"
+          ],
+          "started": "2026-10-03T07:31:40.111788+00:00",
+          "process": {
+            "pid": 625061,
+            "start_ticks": "4009169",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/postflight_fault/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "print(\"INERT configure, not CMake\")"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:40.379967+00:00",
+          "owned_group_live_after": [],
+          "native_rc": null,
+          "native_status_basis": "CMake configure only; no vendor tool invoked.",
+          "effective_rc": 0
+        },
+        {
+          "label": "assembly",
+          "argv": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/postflight_fault/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "started": "2026-10-03T07:31:40.410691+00:00",
+          "process": {
+            "pid": 625063,
+            "start_ticks": "4009199",
+            "exe": "/usr/bin/python3.13",
+            "cwd": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/postflight_fault/design/project",
+            "argv": [
+              "/usr/bin/python3",
+              "-B",
+              "-c",
+              "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/postflight_fault/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/postflight_fault/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/postflight_fault/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\n"
+            ]
+          },
+          "descendants_observed_at_leader_exit": [],
+          "cmake_rc": 0,
+          "timeout": false,
+          "gate_rejected": false,
+          "log_bound_exceeded": false,
+          "ended": "2026-10-03T07:31:40.684173+00:00",
+          "owned_group_live_after": [],
+          "native_rc": 0,
+          "native_status_basis": "Direct CMake vendor target: zero propagates child zero; nonzero does not disclose individual vendor exit.",
+          "effective_rc": 0
+        }
+      ],
+      "postflight_errors": null,
+      "postflight_exception": "RuntimeError('INERT postflight exception')",
+      "replay_preserved": true,
+      "actual_inert_commands": [
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "-S",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/postflight_fault/control/runtime",
+            "-B",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/postflight_fault/run/cmake-build",
+            "-G",
+            "Unix Makefiles",
+            "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+            "-DPERSONA_PROJECT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/postflight_fault/design/project",
+            "-DQUARTUS_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/postflight_fault/INERT_QUARTUS",
+            "-DASSEMBLY_ROOT=/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/postflight_fault/run"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "print(\"INERT configure, not CMake\")"
+          ]
+        },
+        {
+          "requested": [
+            "/usr/bin/cmake",
+            "--build",
+            "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/postflight_fault/run/cmake-build",
+            "--target",
+            "assembly",
+            "--parallel",
+            "1"
+          ],
+          "actual_inert_child": [
+            "/usr/bin/python3",
+            "-B",
+            "-c",
+            "from pathlib import Path\nimport json\nR=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/postflight_fault/run')\nJ=Path('/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/postflight_fault/design/project')\np=J/'output_files/ofs_pr_afu.sof';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.pmsf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.green_region.rbf';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\np=J/'output_files/ofs_pr_afu.asm.rpt';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b\"INERT newly emitted assembly artifact\\n\")\n(R/\"gate-events.jsonl\").write_text('{\"accepted\": true, \"manifest_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"native\": {\"exe\": \"/INERT_VENDOR_EXE\", \"cwd\": \"/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l/postflight_fault/design/project\", \"argv\": [\"/INERT_VENDOR_EXE\", \"ofs_top\", \"-c\", \"ofs_pr_afu\"]}}\\n')\nprint(\"INERT Version 26.1.1 Build 130 SC Pro Edition\",flush=True)\nprint(\"Quartus Prime Assembler was successful\",flush=True)\n"
+          ]
+        }
+      ]
+    }
+  ],
+  "scratch": "/home/joe/.hermes/cache/scratch/cdc-runner33-oo8xns9l"
+}

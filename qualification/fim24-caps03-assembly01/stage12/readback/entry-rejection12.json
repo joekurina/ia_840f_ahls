@@ -1,0 +1,29 @@
+{
+  "operation_absent": true,
+  "results": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/runtime/run-asm07.py",
+        "0000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "rc": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/runtime/run-asm07.py\", line 334, in <module>\n    if __name__=='__main__':sys.exit(run())\n  File \"/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/runtime/run-asm07.py\", line 224, in run\n    assert len(sys.argv)==2;m=preflight(sys.argv[1]);R.mkdir(exist_ok=False)\n  File \"/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/runtime/run-asm07.py\", line 79, in preflight\n    assert sha(MANIFEST)==expected;m=json.loads(MANIFEST.read_text())\n  File \"/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/runtime/run-asm07.py\", line 20, in sha\n    with Path(path).open('rb') as stream:\n  File \"/usr/lib64/python3.9/pathlib.py\", line 1180, in open\n    return io.open(self, mode, buffering, encoding, errors, newline,\n  File \"/usr/lib64/python3.9/pathlib.py\", line 1038, in _opener\n    return self._accessor.open(self, flags, mode)\nFileNotFoundError: [Errno 2] No such file or directory: '/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/asm-inputs.admitted.json'\n"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/base01/build/syn/board/ia840f/setup/ia840f_asm_gate07.py",
+        "quartus"
+      ],
+      "rc": 1,
+      "stdout": "",
+      "stderr": "IA840F_ASM_GATE_REJECTED: {\"accepted\": false, \"error\": \"AssertionError()\"}\n"
+    }
+  ]
+}

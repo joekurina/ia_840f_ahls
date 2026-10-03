@@ -1,0 +1,32 @@
+{
+  "accepted": true,
+  "scope": "assembly-only runtime implementation/preparation; no execution authority",
+  "authority_issued": false,
+  "hardware_ready": false,
+  "timing_accepted": false,
+  "verified_freeze": {
+    "count": 36,
+    "sha256": "e09ee53ec5c0db3612a8c180dbba5f35fc16eff1936de3a2442d8c2d8da1ffd4"
+  },
+  "review_sha256": "86fb4833277ce0abf9be14fe13cfe9df8612d13d9c7cb4471562ff2d47019fff",
+  "packaging_basis_sha256": "414ab7ce74ebc99001efd45da401fc5eda818d1f535b24aebff324869b93ba3e",
+  "required_immutable_STA": [
+    "qdb/_compiler/ofs_pr_afu/_flat/26.1.1/_all/1/report.sta.model",
+    "qdb/_compiler/ofs_pr_afu/_flat/26.1.1/_all/1/report.sta.rdb",
+    "qdb/_compiler/ofs_pr_afu/_flat/26.1.1/legacy/1/da_report_timing_signoff_final.sqlite3",
+    "qdb/_compiler/ofs_pr_afu/_flat/26.1.1/legacy/1/ofs_pr_afu.sta.qmsgdb"
+  ],
+  "required_new_images": [
+    "output_files/ofs_pr_afu.sof",
+    "output_files/ofs_pr_afu.green_region.pmsf",
+    "output_files/ofs_pr_afu.green_region.rbf"
+  ],
+  "supersession": "region-qualifiedPMSF above supersedes unqualifiedofs_pr_afu.pmsf in SOURCE-SCOPE04 and packaging-basis06; originals frozen and unchanged",
+  "scope_boundaries": [
+    "only2copiedQSFearlygate references+2newasm callbacks",
+    "26exactcurrentmutablepaths,not30/noarbitraryQDBexclusion",
+    "preserve allSTA reports,userclockfile,snapshots/static/source/originals",
+    "bareasmneverGBS;separatequalifiedofflinepackageronlyafteracceptednewPRRBF",
+    "normalvendortrust;noresynthesis/refit orhardwarerequalificationinvented"
+  ]
+}

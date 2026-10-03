@@ -1,0 +1,40 @@
+# SOURCE/API review05 — PASS WITH LIMITS
+
+**Reviewer:** Hermes subagent; actual model `gpt-6.1-sol-900k`, provider `openai-codex`.
+
+**Disposition:** source/API basis supports minimal assembly-runtime implementation/preparation, **not issuance or execution**. Two concrete corrections below are required before QUALITY/admission. This review used local file reads, SHA256, AST/JSON/text inspection only; no repository imports, tests, native/vendor/remote/Git/hardware operations. Captured remote preservation is not a fresh remote check.
+
+## Integrity and accepted basis
+
+Verified freeze SHA256 `e09ee53ec5c0db3612a8c180dbba5f35fc16eff1936de3a2442d8c2d8da1ffd4`: **36 declared, 36 enumerated, 36 size/SHA256 matches, zero mismatches**. Envelope-export bytes also match every retained copy03/help01/help02 readback. Readiness/hardware flags remain false. [Freeze](source-api-freeze04.json), [scope](SOURCE-SCOPE04.md).
+
+Parsed inventories reconcile **4038 entries, 1,011,925,993 ordinary-file bytes, 733 QDB members**. Copy equals accepted-STA source except two internal symlink resolved-root relocations; literal targets/target hashes stay unchanged. All **280 protected physical bindings**, including imported `ofs_top.qdb` and five required final database members, match the copied before-map; none overlaps the 30-entry runtime-role basis. copy03 records original STA/fitted/mapped/setup/release/archive/external/tools and six predecessor results preserved. Failed CDC work databases are not the donor. [Prepared copy](copy03/readback/prepared-copy03.json), [copy receipt](copy03/index.json), [preservation checks](copy03.py#L35-L48).
+
+CDC acceptance73 carries parent-consumed actual-result reviews69–71 and correction72: current 40-bundle/20-FIFO discriminator accepted, not closure waivers. The frozen approval receipt records original 274635/duplicate 276129, `2026-10-02T20:25:12.561322+00:00`: **“OK I approve proceeding now. You can remove the approval requirement going forward.”** It removes the user pause, not technical gates. [Acceptance73](../fim24-caps03-cdc03/CDC-ACCEPTANCE73.md), [consumption72](../fim24-caps03-cdc03/result-reviews-consumed72.json), [verbatim receipt](../fim24-caps03-cdc03/build-approval-recovered73.json).
+
+## Qualified API and exact stage
+
+help01 native 0/outer 1 displayed 25.1.0 Build129 despite the 26 launcher; retain that rejection. help02 explicitly selects 26.1.1 via root override/PATH; both help commands native 0/drained with **26.1.1 Build130 SC Pro Edition**, no project opened. Launcher SHA256 `06c1bd805bc078d9636015c472e09a054160c405f3f06b7c555e7a4b6f7d3f14` and linux64 SHA256 `05804d6ea551490177d86a0ca64e994077b88d8fb129ab8e9706a3faa2a3f463` match inherited current bindings. [help01](help01/index.json), [help02](help02/index.json), [tools](copy03-inputs.json.gz).
+
+The documented project/`-c` grammar supports exactly:
+
+```text
+/opt/altera/26.1.1/quartus/bin/quartus_asm ofs_top -c ofs_pr_afu
+```
+
+cwd is `/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/base01/build/syn/board/ia840f/syn_top`. Future callback identity is the exact bound `linux64/quartus_asm`, argv `[ofs_top,-c,ofs_pr_afu]`, cwd and live exclusive-owner ancestry—not arbitrary inherited labels/IPC contexts. Help lists no `--write_settings_files`; do not invent it. Require native CMake configure plus one explicit custom assembly target, not `afu_synth`, full compile, resynthesis/refit, STA/Fmax, CDB export or programmer. Help qualifies syntax, not successful assembly. [Usage](help02/readback/help.log#L5-L30), [return codes](help02/readback/return-codes.log), [scope](SOURCE-SCOPE04.md#L17-L27).
+
+## Active loader and minimal delta
+
+Actual PR QSF still selects the spent STA06 gate and would reject assembly. Change **only its two early gate references plus two new assembly callback files**; keep QSF 36 CPUs, part/UUID/staticQDB/final snapshots/RTL/SDC/AFU JSON unchanged. Matching local loader texts were hash-joined to the prepared inventory: config_env loads saved relative root/interface metadata; macros/base-IP files assign inputs; selected `afu_main.tcl` reaches `afu_with_pim/afu.tcl`→`hw/afu.qsf`. Do not select `OPAE_PLATFORM_GEN`. [QSF](copy03/readback/project/ofs_pr_afu.qsf), [STA gate](../fim24-caps03-sta01/candidate06/ia840f_sta_gate06.py#L41-L75), [selected loader](../fim24-caps03-sta01/completion24-readback/design/build/ofs-common/src/fpga_family/agilex/afu_main.tcl#L34-L85), [saved environment](copy03/readback/project/build_env_db.txt).
+
+`TIMING_ANALYZER_REPORT_SCRIPT` is explicitly a quartus_sta hook, not authorization to recompute clocks. PIM clock loading deletes completed clock metadata only for `quartus_fit`; preserve actual 100/200MHz bytes. PR `POST_FLOW_SCRIPT_FILE` names gen_gbs, whose explicit route opens the project and calls packager. Bare assembly does not run that post-flow or the full-FIM post-module route. [STA hook](../../ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/ofs_sta_report_script_pr.tcl), [clock loader](../../ofs-platform-afu-bbb/plat_if_develop/ofs_plat_if/src/par/user_clock_config.tcl#L158-L208), [gen_gbs](copy03/readback/project/ofs_partial_reconfig/gen_gbs.tcl#L75-L123).
+
+## Required mechanical corrections and acceptance
+
+1. **Do not mark all 30 current role-basis entries mutable.** Historical assembly's 26 roles exclude four current STA artifacts: `_all/1/report.sta.model`, `report.sta.rdb`, and `legacy/1/da_report_timing_signoff_final.sqlite3`, `ofs_pr_afu.sta.qmsgdb`. Keep these and final STA reports/user clocks immutable. Enumerate the remaining 26 exact current paths; historical25 behavior is role-schema evidence only, not a 26 verdict. Bind all 4038 before-files and 280 protected entries first; never exclude arbitrary QDB trees. [Current role basis](copy03/readback/prepared-copy03.json), [historical exclusions/immutables](../ahls-persona-work21-caps01/asm-input-roles01.json).
+2. **Resolve the proposed PMSF-name discrepancy:** scope line29 says `ofs_pr_afu.pmsf`; retained actual assembly generated **`ofs_pr_afu.green_region.pmsf`**. Use the source-grounded region-qualified expectation, not an unqualified alias/fallback. Require new nonempty size/SHA-bound `ofs_pr_afu.sof`, region PMSF and `ofs_pr_afu.green_region.rbf`; all are absent from current before-map. Preserve inherited `ofs_top.sof`, `ofs_top.static.msf`, `ofs_top.green_region.pmsf`. [Actual historical outputs](../ahls-persona-work21-caps01/RESULTS-ASM01.md#L7-L23), [before-map](copy03/readback/prepared-copy03.json).
+
+Bind fresh `output_files/ofs_pr_afu.asm.rpt`, assembly log/callback receipts; explicitly anticipate `_all/1/report.asm.model`, `_all/1/report.asm.rdb`, `legacy/1/ofs_pr_afu.asm.qmsgdb` under current `_flat/26.1.1/`. Check actual 26 footer/version/final-snapshot/static-preservation messages, zero errors/rejections, propagated native status, callback acceptance, owned drain, every preservation domain and empty postflight errors. Retain/review warnings; do not suppress them. Historical output locations are expectations, not current results. Require unused create-once `asm01`, finite watchdog/log/input limits, CPUs 0–35/per-process 64GiB; not sandbox/aggregate isolation. Exercise complete positive non-consuming preflight before QUALITY/issuance, including Tcl namespace/root/basename routing. [Historical actual report roles](../ahls-persona-work21-caps01/asm01-result-metadata.json), [historical baseline checks](../ahls-persona-work21-caps01/artifacts-asm01/assembly.log#L31-L67).
+
+GBS remains separate: supported packager schema/CLI, current interface/AFU/clock metadata and extracted payload byte-equality must be verified later. Assembly/RBF is not runtime deployment acceptance. Retain setup +.002ns, zero hold/MPW, static DRC, additional 3sys/7bank0 reset-entry cycles/electrical/SDK findings before hardware; no new CPA/Boolean-equivalence/vendor-internal proof or timing relaxation is imposed on offline assembly. Runtime/controller/admission do not yet exist. [Remaining findings](../fim24-caps03-cdc03/CDC-ACCEPTANCE73.md#L18-L24), [packaging boundary](SOURCE-SCOPE04.md#L31-L35).

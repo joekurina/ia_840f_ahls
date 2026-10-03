@@ -1,0 +1,101 @@
+{
+  "batch": "ia840f_capture_96274472ce764f94a13db458687d45cf",
+  "case_count": 4,
+  "cases": [
+    {
+      "argv": [
+        "/usr/bin/cmake",
+        "-S",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/runtime",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/inert-cmake13/build",
+        "-G",
+        "Unix Makefiles",
+        "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+        "-DPERSONA_PROJECT=/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/base01/build/syn/board/ia840f/syn_top",
+        "-DASSEMBLY_ROOT=/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/asm01",
+        "-DQUARTUS_ROOT=/opt/altera/26.1.1/quartus"
+      ],
+      "rc": 0,
+      "stdout": "-- Configuring done (0.0s)\n-- Generating done (0.0s)\n-- Build files have been written to: /home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/inert-cmake13/build\n"
+    },
+    {
+      "argv": [
+        "/usr/bin/cmake",
+        "--build",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/inert-cmake13/build",
+        "--target",
+        "help"
+      ],
+      "rc": 0,
+      "stdout": "The following are some of the valid targets for this Makefile:\n... all (the default if no target is provided)\n... clean\n... depend\n... edit_cache\n... rebuild_cache\n... assembly\n"
+    },
+    {
+      "argv": [
+        "/usr/bin/cmake",
+        "--build",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/inert-cmake13/build",
+        "--target",
+        "assembly",
+        "--",
+        "-n"
+      ],
+      "rc": 0,
+      "stdout": "/usr/bin/cmake -S/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/runtime -B/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/inert-cmake13/build --check-build-system CMakeFiles/Makefile.cmake 0\n/usr/bin/make -s -f CMakeFiles/Makefile2 assembly\n/usr/bin/cmake -S/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/runtime -B/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/inert-cmake13/build --check-build-system CMakeFiles/Makefile.cmake 0\n/usr/bin/cmake -E cmake_progress_start /home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/inert-cmake13/build/CMakeFiles 0\n/usr/bin/make -s -f CMakeFiles/Makefile2 CMakeFiles/assembly.dir/all\n/usr/bin/make -s -f CMakeFiles/assembly.dir/build.make CMakeFiles/assembly.dir/depend\ncd /home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/inert-cmake13/build && /usr/bin/cmake -E cmake_depends \"Unix Makefiles\" /home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/runtime /home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/runtime /home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/inert-cmake13/build /home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/inert-cmake13/build /home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/inert-cmake13/build/CMakeFiles/assembly.dir/DependInfo.cmake \"--color=\"\n/usr/bin/make -s -f CMakeFiles/assembly.dir/build.make CMakeFiles/assembly.dir/build\ncd /home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/base01/build/syn/board/ia840f/syn_top && /opt/altera/26.1.1/quartus/bin/quartus_asm ofs_top -c ofs_pr_afu\n/usr/bin/cmake -E cmake_echo_color \"--switch=\" --progress-dir=/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/inert-cmake13/build/CMakeFiles --progress-num= \"Built target assembly\"\n/usr/bin/cmake -E cmake_progress_start /home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/inert-cmake13/build/CMakeFiles 0\n"
+    },
+    {
+      "argv": [
+        "/usr/bin/cmake",
+        "-S",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/runtime",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/inert-cmake13/bad-build",
+        "-G",
+        "Unix Makefiles",
+        "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+        "-DPERSONA_PROJECT=/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/base01/build/syn/board/ia840f/syn_top",
+        "-DASSEMBLY_ROOT=/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/asm-wrong",
+        "-DQUARTUS_ROOT=/opt/altera/26.1.1/quartus"
+      ],
+      "rc": 1,
+      "stdout": "CMake Error at CMakeLists.txt:13 (message):\n  The exact assembler operation root is required\n\n\n-- Configuring incomplete, errors occurred!\n"
+    }
+  ],
+  "cmake_sha256": "3eba22d917d297b5ec349357adb0be9afd70b9c1e56c8492e2c3f4159bba22be",
+  "expected_native_argv": [
+    "ofs_top",
+    "-c",
+    "ofs_pr_afu"
+  ],
+  "hardware_access": false,
+  "query_operation_absent": true,
+  "scope": "CMake-only configure/help/make dry-run/refusal; no vendor tool",
+  "success": true,
+  "vendor_tool_executed": false,
+  "exports": {
+    "case-0.log": {
+      "bytes": 182,
+      "sha256": "317a24e64ba4ef2b3a5cff9ba380ddef3a2bbed60b4eb853bfa3200aa23fb43d",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/inert-cmake13/case-0.log"
+    },
+    "case-1.log": {
+      "bytes": 177,
+      "sha256": "d5996321e4ce2036c1cd8aea140854cfaa83992bcd18c9d6969268d483b34acd",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/inert-cmake13/case-1.log"
+    },
+    "case-2.log": {
+      "bytes": 2069,
+      "sha256": "001d6afc1add1d0eaa73c6e06b52ab4a0f72a9ee8f9c5547533760bb169e6d10",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/inert-cmake13/case-2.log"
+    },
+    "case-3.log": {
+      "bytes": 139,
+      "sha256": "eec4526358edf7676346942cde0dfbe0c143262fff54a2c06e3da5bd37e6b79e",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_assembly01/control07/inert-cmake13/case-3.log"
+    }
+  },
+  "outer_rc": 0,
+  "window_pane": "@396 %396",
+  "transport_sha256": "43aab73c5a3905c4deb6fafdd1242f9fb93821fd9d5bff389391d52a1b807146",
+  "script_sha256": "10da92589ed25f4a259188d62b8c68646ffa57df256de329e4745a68a290a641"
+}
