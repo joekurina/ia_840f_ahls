@@ -1,0 +1,462 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Programming File Generator
+    Info: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
+    Info: Copyright (C) 2026  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Sat Oct  3 09:44:15 2026
+    Info: System process ID: 390756
+Info: Command: quartus_pfg --list
+------------------------------------------------------------------
+Output file type                    Description
+------------------------------------------------------------------
+.bin                                A binary file containing HPS handoff data. 
+
+.ccert                              A Quartus Compact Certificate File that 
+                                    stores the data for use in device 
+                                    provisioning. 
+
+.corim                              A concise reference manifest file containing 
+                                    the measurements derived from one or more 
+                                    Raw Binary File(s). 
+
+.diag                               A concise reference manifest diagnostic 
+                                    notation file containing parsed information 
+                                    of Concise Reference Integrity Manifest File 
+                                    (.corim) or Concise Reference Integrity 
+                                    Manifest Revocation File(.xcorim) in 
+                                    human-readable format. 
+
+.ekp                                A binary file containing bitstream 
+                                    encryption key. 
+
+.hexout                             An ASCII text file in Intel hexadecimal 
+                                    format containing configuration data for use 
+                                    outside the Quartus Prime software. 
+
+.jam                                An ASCII text file, in the STAPL format, 
+                                    that stores programming data for 
+                                    programming, configuring, verifying, and 
+                                    blank-checking one or more devices in a JTAG 
+                                    chain. 
+
+.jbc                                A binary file, in the STAPL format, that 
+                                    stores programming data for programming, 
+                                    configuring, verifying, and blank-checking 
+                                    one or more devices in a JTAG chain. 
+
+.jic                                A binary file containing serial 
+                                    configuration device data and the serial 
+                                    flash loader device name. 
+
+.pof                                A binary file containing the data for 
+                                    programming a MAX device or a configuration 
+                                    device that can configure other devices. 
+
+.rbf                                A binary file containing configuration data 
+                                    for use outside the Quartus Prime software. 
+
+.rim                                A reference manifest file containing the 
+                                    measurements derived from one or more Raw 
+                                    Binary File(s). 
+
+.rpd                                A binary file containing flash programming 
+                                    data for use outside the Quartus Prime 
+                                    software to program the flash. A Raw 
+                                    Programming Data File is a subset of the 
+                                    Programmer Object File (.pof) or JTAG 
+                                    Indirect Configuration File (.jic) file 
+                                    type, containing only flash binary 
+                                    programming data. 
+
+.sof                                A binary file containing the data for 
+                                    configuring all SRAM-based Altera devices. 
+
+.svf                                An ASCII text file, in the Serial Vector 
+                                    Format, that stores programming data for 
+                                    programming, configuring, verifying, and 
+                                    blank-checking one or more devices in a JTAG 
+                                    chain. 
+
+.ttf                                An ASCII text file in tabular format 
+                                    containing configuration data for use 
+                                    outside the Quartus Prime software. 
+
+.xcorim                             A concise reference manifest revocation file 
+                                    contains list of CoRIM IDs to be revoked. 
+
+------------------------------------------------------------------
+Option                              Description
+------------------------------------------------------------------
+aes_key_info                        Option to specify the .txt file that 
+                                    contains the info of the user AES root key. 
+                                    aes_key_info=aes_key_info.txt 
+
+algo_type                           Specifies the cryptographic algorithm to be 
+                                    disabled. algo_type = ecdsa|lms|mldsa 
+
+alias_key_tweak                     Specifies the value to change the key tweak 
+                                    value. 
+
+app_image                           Specifies the application image (*.sof) to 
+                                    include in RSU upgrade bitstream. 
+
+app_image_hps_path                  Specifies the HPS bootloader file of RSU 
+                                    upgrade application image in Hexadecimal 
+                                    Intel-Format (*.hex). 
+
+app_image_only                      Generates RSU upgrade bitstream containing 
+                                    only DCMF and application image. 
+                                    app_image_only=ON|OFF 
+
+auth_obj                            Specifies the authentication object for 
+                                    external authentication. The value must be 
+                                    either the path to the object file (.bin) or 
+                                    the SHA384 hash value of the object file for 
+                                    authentication. If SHA384 hash value is 
+                                    specified, the value must be in HEX string 
+                                    with 48 bytes length. 
+
+bitswap                             Swap bit order within a byte of Raw 
+                                    Programming Data File (*.rpd). bitswap = 
+                                    ON|OFF(default) 
+
+cancel_all_keys                     Specifies whether to cancel all old AES keys 
+                                    that provisioned in the device. 
+                                    cancel_all_keys=<ON|OFF> 
+
+cancel_id                           Specifies the cancel ID for AES key compact 
+                                    certificate. 
+                                    cancel_id=<hash|pts|svna|svnb|svnc|svnd>:<counter 
+                                    value> 
+
+cancel_key                          Specifies the key cancellation ID in decimal 
+                                    format. 
+
+ccert_device                        Specifies the targeted device for compact 
+                                    certificate provisioning 
+
+ccert_file                          Specifies the signed compact certificate 
+                                    file (.ccert) for device provisioning. Allow 
+                                    input of multiple .ccert files with ; as 
+                                    separator. 
+
+ccert_type                          Specifies the type of Quartus Compact 
+                                    Certificate (*.ccert). ccert_type = 
+                                    IID_PUF_WRAPPED_AES_KEY|UDS_IID_PUF_WRAPPED_AES_KEY 
+                                    |BBRAM_WRAPPED_AES_KEY|BBRAM_IID_PUF_WRAPPED_AES_KEY 
+                                    |BBRAM_UDS_IID_PUF_WRAPPED_AES_KEY|EFUSE_WRAPPED_AES_KEY 
+                                    |CANCEL_KEY_HASH|CANCEL_INTEL_KEY 
+                                    |CANCEL_OWNER_KEY|PTS_COUNTER 
+                                    |SVN_COUNTER_A|SVN_COUNTER_B 
+                                    |SVN_COUNTER_C|SVN_COUNTER_D 
+                                    |PR_PUBKEY_PROG_AUTH|DEVICE_PERMIT_KILL|CANCEL_OLD_SERVICE_ROOT_KEY|PROV_SERVICE_ROOT_KEY|DISABLE_CRYPTO_ALGO 
+
+compression                         Controls whether the configuration data sent 
+                                    to the FPGA device is compressed. 
+                                    compression=ON|OFF(default) 
+
+config_from_cfm0_only               When enabled in MAX 10 dual image designs 
+                                    this will disable the CONFIG_SEL pin, the 
+                                    MAX 10 device will then configure from CFM0 
+                                    only. If configuration fails the device will 
+                                    stop and wait for reconfiguration. It will 
+                                    not fall-back to the CFM1 in this mode. 
+
+corim_options                       Specifies text file (.txt) containing 
+                                    design-specific options to be overwritten in 
+                                    the generated CoRIM file. 
+                                    corim_options=<corim_options.txt> 
+
+count_dir                           Specifies the direction of the file content 
+                                    in Hexadecimal Intel-Format (*.hex). 
+                                    count_dir = UP|DOWN(default) 
+
+counter                             Specifies the counter value in decimal 
+                                    format. 
+
+cram_integrity_check                Specifies the option to enable CRAM 
+                                    integrity check. 
+                                    cram_integrity_check=ON|OFF(default) 
+
+custom_db_dir                       Specifies the custom database directory for 
+                                    flash configuration devices. 
+
+cvp                                 Split programming file into core.rbf and 
+                                    periph file for CVP. cvp=ON|OFF 
+
+device                              Specifies the configuration device. 
+
+disable_transfer                    Specifies the option to disable Ownership 
+                                    Transfer Opportunities. 
+                                    disable_transfer=ON|OFF(default) 
+
+ekp_file                            Specifies the target encrypted key 
+                                    programming file (*.ekp). 
+
+enable_encrypted_pof_only           Accepts encrypted POF only for MAX 10 
+                                    devices. 
+
+enable_user_ios_weak_pullup         Enable user I/Os weak pull up during 
+                                    configuration. 
+
+enable_verify_protect               Enable design security verify protect for 
+                                    MAX 10 devices. 
+
+enhanced_compression                Controls whether the partial reconfiguration 
+                                    data sent to the FPGA device is compressed 
+                                    via enhanced compression algorithm. Turning 
+                                    this on requires you to enable enhanced 
+                                    decompression on the PR IP. 
+                                    enhanced_compression=ON|OFF(default) 
+
+epof_only                           Controls security option: Only allow 
+                                    encrypted, authenticated POFs. 
+                                    epof_only=0(default)|1|2|3 
+
+factory_fallback                    Generates RSU upgrade bitstream that enable 
+                                    direct factory image fallback when it fails 
+                                    to load an application image. 
+                                    factory_fallback=ON|OFF(default) 
+
+finalize_encryption                 Finalize the encryption of the bitstream. 
+                                    finalize_encryption=ON|OFF(default) 
+
+finalize_encryption_later           Do not finalize the encryption of the 
+                                    bitstream. 
+                                    finalize_encryption_later=ON|OFF(default) 
+
+fips_mode                           Specifies the level for Federal Information 
+                                    Processing Standard (FIPS) mode. The value 0 
+                                    is non-FIPS mode. fips_mode=0(default)|1|2 
+
+firmware_only                       Generates RSU upgrade bitstream containing 
+                                    only DCMF. firmware_only=ON|OFF 
+
+flash_loader                        Specifies the helper device of serial flash 
+                                    loader. 
+
+frequency                           Specifies the TCK frequency of Serial Vector 
+                                    Format file (*.svf). 
+                                    frequency=100KHz|6MHz|... 
+
+fuse_file                           Specifies the fuse file (.fuse) for user 
+                                    eFuse programming. 
+
+fw_source                           Specifies the firmware source file (*.zip) 
+                                    to include the signed firmware in bitstream. 
+
+helper_device                       Specifies the helper device of user public 
+                                    key (*.qky), user encryption key (*.qek) and 
+                                    fuse (*.fuse) programming. 
+                                    helper_device=1SG280HN2S2 
+
+hps                                 Split programming file into core.rbf and 
+                                    periph file for HPS. hps=ON|OFF 
+
+hps_core_only                       Generates only the raw binary file 
+                                    (*.core.rbf) for the HPS core configuration. 
+                                    hps_core_only=ON|OFF(default) 
+
+hps_handoff                         Generates binary file containing the HPS 
+                                    handoff data. hps_handoff=ON|OFF(default) 
+
+hps_path                            Specifies the HPS bootloader file in 
+                                    Hexadecimal Intel-Format (*.hex). 
+
+id                                  Specifies the identifier in alphanumeric 
+                                    format. 
+
+isp_source                          Use secondary image ISP data as default 
+                                    setting when available for MAX 10 devices. 
+
+iv                                  Specifies the initialization vector in 
+                                    hexadecimal format for AES key wrapping. 
+
+key                                 Specifies the encryption key id from 
+                                    key_file. 
+
+key_file                            Specifies the key file that contains key. 
+
+lock_battery_key                    Controls security option: Prevent the 
+                                    battery-backed key from being changed. 
+                                    lock_battery_key=0(default)|1|2|3 
+
+measurement_idx                     Specifies the measurement index for 
+                                    attestation measurement. The value must be 
+                                    16 to 31. 
+
+min_erase_size                      Minimum erase size value for generic flash 
+                                    devices. 
+
+mode                                Specifies the configuration mode. 
+
+new_owner_rkh                       Specifies the new owner root key hash for 
+                                    Ownership Transfer feature. 
+
+no_battery_key                      Controls security option: Disable use of the 
+                                    battery-backed key. 
+                                    no_battery_key=0(default)|1|2|3 
+
+no_config                           Controls security option: Disable external 
+                                    full-configuration. 
+                                    no_config=0(default)|1|2|3 
+
+no_hps_jtag                         Controls security option: Force the internal 
+                                    HPS JTAG into BYPASS mode. 
+                                    no_hps_jtag=0(default)|1|2|3 
+
+no_jtag                             Controls security option: Force the external 
+                                    JTAG pins into BYPASS mode. 
+                                    no_jtag=0(default)|1|2|3 
+
+no_jtag_ext                         Controls security option: Disable other 
+                                    extended JTAG instructions. 
+                                    no_jtag_ext=0(default)|1|2|3 
+
+no_jtag_key                         Controls security option: Disables 
+                                    key-related JTAG instructions. 
+                                    no_jtag_key=0(default)|1|2|3 
+
+no_otp_key                          Controls security option: Disable use of the 
+                                    non-volatile OTP fuse key. 
+                                    no_otp_key=0(default)|1|2|3 
+
+no_pr                               Controls security option: Disables external 
+                                    Partial Reconfiguration. 
+                                    no_pr=0(default)|1|2|3 
+
+non_volatile                        Specifies the option to enable physical 
+                                    fusing on eFuse. 
+                                    non_volatile=ON|OFF(default) 
+
+non_volatile_key                    Specifies the option to enable physical 
+                                    fusing on eFuse. 
+                                    non_volatile_key=ON|OFF(default) 
+
+num_slot                            Number of slot for boot info. 
+
+operation                           Specifies the operation of Serial Vector 
+                                    Format file (*.svf). operation = P|V|PV 
+
+owner_qky_file                      Specifies the quartus public root key file 
+                                    (*.qky) that provisioned to the owner root 
+                                    hash. Allow input of multiple .qky files 
+                                    with ; as separator. 
+
+password                            Specifies the password file of encryption 
+                                    key file (*.qek). password=password.txt 
+
+pem_file                            Specifies the private key pem file (*.pem) 
+                                    for PEM signing flow. 
+
+pqc_mode                            Enable Post-Quantum Cryptography mode for 
+                                    helper image file generation. 
+                                    pqc_mode=ON|OFF(default) 
+
+puf_start_address                   Specifies the PUF start address of the file 
+                                    content. 
+
+qek_file                            Specifies the encryption key file (*.qek). 
+
+qky_file                            Specifies the public root key file (.qky) 
+                                    for owner root public key hash programming. 
+                                    Allow input of multiple .qky files with ; as 
+                                    separator. 
+
+qlk_file                            Specifies the target encryption lock file 
+                                    (*.qlk). 
+
+qspi_cs                             Specifies the chip select value. 
+
+rsu_boot                            Generates a binary file containing the 
+                                    decision image bitstream for remote system 
+                                    upgrade. rsu_boot=ON|OFF 
+
+rsu_boot_info                       Specifies the binary file (*.rbf) containing 
+                                    the decision image bitstream for remote 
+                                    system upgrade. 
+
+rsu_upgrade                         Generates raw programming file containing a 
+                                    bitstream to upgrade the rsu firmware. 
+                                    rsu_upgrade=ON|OFF 
+
+rsu_version                         Specifies the RSU version number. 
+
+scrub                               Split programming file into sector-based raw 
+                                    binary files (*.rbf) for external scrubbing 
+
+secure                              Controls security option: Enable other 
+                                    security measures. secure=2(default)|3 
+
+service_root_key                    Specifies service root key provision. 
+                                    service_root_key=ON|OFF(default) 
+
+seu_recovery                        Generates binary file containing a bitstream 
+                                    to restore SEU features in partial 
+                                    reconfiguration (PR) sector. When a PR 
+                                    region is placed in a sector, any SEU 
+                                    features in this sector disable temporarily 
+                                    during the PR operation, and restore at the 
+                                    end of successful PR. If an error occurs 
+                                    during PR, you can manually restore the SEU 
+                                    features of that sector with this bitstream 
+                                    file. seu_recovery=ON|OFF 
+
+seu_upgrade_only                    Specifies the option to enable LSM SEU 
+                                    firmware upgrade. This option is only 
+                                    applicable for LSM SEU patch release 
+
+sign_later                          Do not sign the bitstream. 
+                                    sign_later=ON|OFF(default) 
+
+signing                             Specifies the signing flow. 
+                                    signing=ON|OFF(default) 
+
+smsf_file                           Specifies verification file for pmsf 
+
+spi                                 The type of Serial Peripheral Interface 
+                                    (SPI) for generic flash devices. 
+
+start_address                       Specifies the start address of the file 
+                                    content in Hexadecimal Intel-Format (*.hex). 
+
+subtype                             Specifies the type of Programmer Factory 
+                                    Helper Image (*.rbf). subtype = 
+                                    QSPI|FUSE|PROVISION 
+
+ufm_source                          User Flash Memory source. 
+
+ufm_source_file                     User Flash Memory memory file, accepts 
+                                    either Hexadecimal Intel-Format Files 
+                                    (*.hex) or Memory Initialization Files 
+                                    (*.mif). 
+
+verbose                             Enable the verbose option. 
+                                    verbose=ON|OFF(default) 
+
+voltage                             Specifies the voltage of Serial Vector 
+                                    Format file (*.svf). 
+                                    voltage=1_5V|1_8V|2_5V|3_3V|5_0V 
+
+watchdog_value                      Enable and specifies the watchdog timer 
+                                    value as a hexadecimal number for remote 
+                                    system upgrade. 
+
+
+Info: Quartus Prime Programming File Generator was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 574 megabytes
+    Info: Processing ended: Sat Oct  3 09:44:15 2026
+    Info: Elapsed time: 00:00:00
+    Info: System process ID: 390756

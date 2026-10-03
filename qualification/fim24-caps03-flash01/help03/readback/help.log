@@ -1,0 +1,18 @@
+
+Option: -o <value> | --option=<value>
+
+Option to create the output file using the specified options or input option file. 
+
+quartus_pfg -c -o <parameter=value> --option <parameter=value> <input file> <output file> [secondary output file(s)]
+quartus_pfg -c -o option.txt <input file> <output file> [secondary output file(s)]
+    
+You can create an option file using any text editor. Use the following format to specify parameter values
+in option file:
+
+<parameter>=<value>
+    
+Use "quartus_pfg -l" or "quartus_pfg --list" to list the valid parameters and values for the options.
+    
+Example:
+quartus_pfg -c -o device=EPCQL1024 -o flash_loader=1SX280LU3S1 -o bitswap=ON test.sof test.jic test.map test.rpd        
+
