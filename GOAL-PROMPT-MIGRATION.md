@@ -121,8 +121,6 @@ guarded candidate stays parked.
   `/home/uwb_student00/ahls/new_BSP`, owned tmux only.
 - Parent implements and executes; independent review accepts actual results;
   subagents never author executable changes or touch hardware.
-- Subagent preference: GLM-5.3 (zai); GLM-5.3-Flash for watcher-class tasks.
-  Disclose any substitution (reviewers ran on GPT-6.1 during GLM outages).
 - End-of-session handoff: replace the handoff state, don't append chronology.
   Record only current state, exact active job if any, one next action. Never
   mark an old job active from a delayed notification.
