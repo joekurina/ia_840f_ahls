@@ -1,0 +1,491 @@
+{
+  "accepted_erratum_lines": [
+    "2026-10-03T19:21:36-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: timed out waiting for pending transaction; performing function level reset anyway"
+  ],
+  "admission_sha256": "60ae6c4cbe1f84ecb82c1d28f4be8906156919f9ec0eb782b911edb10215c4c4",
+  "application_exit_passed": true,
+  "application_started": true,
+  "batch": "ia840f_capture_942a5bea6b6d449da149f3233ac9d20f",
+  "boot": "3e2d2060-d6c0-44b5-a269-1adf1e450041",
+  "boot_after": "3e2d2060-d6c0-44b5-a269-1adf1e450041",
+  "commands": [
+    {
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/activation-pre43/runtime/ownership27.py"
+      ],
+      "label": "ownership-before",
+      "output": "{\"boot_id\": \"3e2d2060-d6c0-44b5-a269-1adf1e450041\", \"d_state\": [], \"errors\": [], \"holders\": [], \"kernel\": \"5.14.0-687.48.1.el9_8.x86_64\", \"maps\": [], \"pci\": [{\"bdf\": \"0000:4f:00.1\", \"device\": \"0x0070\", \"driver\": \"/sys/bus/pci/drivers/vfio-pci\", \"group_members\": [\"0000:4f:00.1\"], \"iommu_group\": \"/sys/kernel/iommu_groups/5\", \"parent_path\": \"/sys/devices/pci0000:4e/0000:4e:00.0\", \"vendor\": \"0x12ba\", \"virtfn_links\": {}}, {\"bdf\": \"0000:4f:00.2\", \"device\": \"0xbccf\", \"driver\": \"/sys/bus/pci/drivers/vfio-pci\", \"group_members\": [\"0000:4f:00.2\"], \"iommu_group\": \"/sys/kernel/iommu_groups/76\", \"parent_path\": \"/sys/devices/pci0000:4e/0000:4e:00.0\", \"physfn\": \"/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0\", \"vendor\": \"0x8086\", \"virtfn_links\": {}}, {\"bdf\": \"0000:4f:00.0\", \"device\": \"0xbcce\", \"driver\": \"/sys/bus/pci/drivers/dfl-pci\", \"group_members\": [\"0000:4f:00.0\"], \"iommu_group\": \"/sys/kernel/iommu_groups/4\", \"parent_path\": \"/sys/devices/pci0000:4e/0000:4e:00.0\", \"sriov_numvfs\": \"1\", \"vendor\": \"0x8086\", \"virtfn_links\": {\"virtfn0\": \"/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2\"}}], \"relevant_processes\": [{\"argv\": [\"bash\", \"-c\", \"tmux save-buffer -b ia840f_capture_942a5bea6b6d449da149f3233ac9d20f_source - | /usr/bin/env -u LD_LIBRARY_PATH -u PYTHONOPTIMIZE /usr/bin/python3 -B - ia840f_capture_942a5bea6b6d449da149f3233ac9d20f; rc=$?; tmux set-buffer -b ia840f_capture_942a5bea6b6d449da149f3233ac9d20f_outer \\\"$rc\\\"; tmux wait-for -S ia840f_capture_942a5bea6b6d449da149f3233ac9d20f_done; exit \\\"$rc\\\"\"], \"comm\": \"bash\", \"cwd\": \"/home/uwb_student00\", \"exe\": \"/usr/bin/bash\", \"pid\": 8458, \"start_ticks\": \"709659\", \"state\": \"S\"}, {\"argv\": [\"tmux\", \"wait-for\", \"ia840f_capture_942a5bea6b6d449da149f3233ac9d20f_done\"], \"comm\": \"tmux: client\", \"cwd\": \"/home/uwb_student00\", \"exe\": \"/usr/bin/tmux\", \"pid\": 8490, \"start_ticks\": \"709695\", \"state\": \"S\"}], \"retained_original_owner_scope\": {\"bdfs\": [\"0000:4f:00.0\", \"0000:4f:00.1\", \"0000:4f:00.2\"], \"vfio_nodes\": [\"/dev/vfio/vfio\", \"/dev/vfio/4\", \"/dev/vfio/5\", \"/dev/vfio/76\"]}, \"scope\": \"ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API\", \"sdk_service_readonly\": {\"rc\": 0, \"stderr\": \"\", \"stdout\": \"MainPID=0\\nExecMainStatus=0\\nControlGroup=\\nActiveState=inactive\\nSubState=dead\\n\"}, \"utc\": \"2026-10-04T02:21:25.976481+00:00\"}\n",
+      "pid": 8518,
+      "rc": 0,
+      "sha256": "a8108f5c037db3319fa3c0724cc17c829f28c1f9e929f029f16de148dd20f9c0"
+    },
+    {
+      "argv": [
+        "/home/uwb_student00/ahls/apptainer/bin/apptainer",
+        "exec",
+        "--containall",
+        "--cleanenv",
+        "--no-home",
+        "--no-mount",
+        "sys,hostfs,cwd,bind-paths",
+        "--no-eval",
+        "--workdir",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/bulk92/scratch",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_caps01_vfio01/target01:/work:ro",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_caps03_bulk01/native01:/bulk:ro",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/bulk92:/diag:rw",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/bulk92/empty:/empty:ro",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/bulk92/exec:/exec:ro",
+        "--bind",
+        "/sys:/sys:ro",
+        "--bind",
+        "/dev/vfio/vfio:/dev/vfio/vfio:rw",
+        "--bind",
+        "/dev/vfio/76:/dev/vfio/76:rw",
+        "--pwd",
+        "/empty",
+        "/home/uwb_student00/ahls/ubuntu-ahls.sif",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "-S",
+        "/diag/inner.py"
+      ],
+      "label": "caps03-bulk-65536",
+      "output": "FPGA Test: CAPS03 one65536-element streaming HLS invocation; tiled bank0 inputs and bank1 output; full output/guards and host pages checked; no wire-overlap measurement; uncertain outcomes retain ownership.\n",
+      "pid": 8523,
+      "rc": 0,
+      "sha256": "142791b3bf67940dad344184ce19786a70a9752ecab6409c701a1ed606c05484",
+      "start_ticks": "709809",
+      "started": "2026-10-04T02:21:26.239486+00:00"
+    },
+    {
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/activation-pre43/runtime/ownership27.py"
+      ],
+      "label": "ownership-after",
+      "output": "{\"boot_id\": \"3e2d2060-d6c0-44b5-a269-1adf1e450041\", \"d_state\": [], \"errors\": [], \"holders\": [], \"kernel\": \"5.14.0-687.48.1.el9_8.x86_64\", \"maps\": [], \"pci\": [{\"bdf\": \"0000:4f:00.1\", \"device\": \"0x0070\", \"driver\": \"/sys/bus/pci/drivers/vfio-pci\", \"group_members\": [\"0000:4f:00.1\"], \"iommu_group\": \"/sys/kernel/iommu_groups/5\", \"parent_path\": \"/sys/devices/pci0000:4e/0000:4e:00.0\", \"vendor\": \"0x12ba\", \"virtfn_links\": {}}, {\"bdf\": \"0000:4f:00.2\", \"device\": \"0xbccf\", \"driver\": \"/sys/bus/pci/drivers/vfio-pci\", \"group_members\": [\"0000:4f:00.2\"], \"iommu_group\": \"/sys/kernel/iommu_groups/76\", \"parent_path\": \"/sys/devices/pci0000:4e/0000:4e:00.0\", \"physfn\": \"/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0\", \"vendor\": \"0x8086\", \"virtfn_links\": {}}, {\"bdf\": \"0000:4f:00.0\", \"device\": \"0xbcce\", \"driver\": \"/sys/bus/pci/drivers/dfl-pci\", \"group_members\": [\"0000:4f:00.0\"], \"iommu_group\": \"/sys/kernel/iommu_groups/4\", \"parent_path\": \"/sys/devices/pci0000:4e/0000:4e:00.0\", \"sriov_numvfs\": \"1\", \"vendor\": \"0x8086\", \"virtfn_links\": {\"virtfn0\": \"/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2\"}}], \"relevant_processes\": [{\"argv\": [\"bash\", \"-c\", \"tmux save-buffer -b ia840f_capture_942a5bea6b6d449da149f3233ac9d20f_source - | /usr/bin/env -u LD_LIBRARY_PATH -u PYTHONOPTIMIZE /usr/bin/python3 -B - ia840f_capture_942a5bea6b6d449da149f3233ac9d20f; rc=$?; tmux set-buffer -b ia840f_capture_942a5bea6b6d449da149f3233ac9d20f_outer \\\"$rc\\\"; tmux wait-for -S ia840f_capture_942a5bea6b6d449da149f3233ac9d20f_done; exit \\\"$rc\\\"\"], \"comm\": \"bash\", \"cwd\": \"/home/uwb_student00\", \"exe\": \"/usr/bin/bash\", \"pid\": 8458, \"start_ticks\": \"709659\", \"state\": \"S\"}, {\"argv\": [\"tmux\", \"wait-for\", \"ia840f_capture_942a5bea6b6d449da149f3233ac9d20f_done\"], \"comm\": \"tmux: client\", \"cwd\": \"/home/uwb_student00\", \"exe\": \"/usr/bin/tmux\", \"pid\": 8490, \"start_ticks\": \"709695\", \"state\": \"S\"}], \"retained_original_owner_scope\": {\"bdfs\": [\"0000:4f:00.0\", \"0000:4f:00.1\", \"0000:4f:00.2\"], \"vfio_nodes\": [\"/dev/vfio/vfio\", \"/dev/vfio/4\", \"/dev/vfio/5\", \"/dev/vfio/76\"]}, \"scope\": \"ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API\", \"sdk_service_readonly\": {\"rc\": 0, \"stderr\": \"\", \"stdout\": \"MainPID=0\\nExecMainStatus=0\\nControlGroup=\\nActiveState=inactive\\nSubState=dead\\n\"}, \"utc\": \"2026-10-04T02:21:37.085869+00:00\"}\n",
+      "pid": 8582,
+      "rc": 0,
+      "sha256": "d972e6051396152910470f8d2297cb2d3b0ed49ccb2a78cdec307e4beddcc2ea"
+    },
+    {
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/journalctl",
+        "-k",
+        "-b",
+        "0",
+        "--since",
+        "2026-10-04 02:21:24 UTC",
+        "--no-pager",
+        "-o",
+        "short-iso"
+      ],
+      "label": "kernel-journal",
+      "output": "2026-10-03T19:21:26-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: enabling device (0000 -> 0002)\n2026-10-03T19:21:26-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: enabling device (0000 -> 0002)\n2026-10-03T19:21:36-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: timed out waiting for pending transaction; performing function level reset anyway\n",
+      "pid": 8587,
+      "rc": 0,
+      "sha256": "cd8bd151f59b3c9e99d78b7463378159b4e8eccb8aeb79063c19c2c7705fca10"
+    }
+  ],
+  "drivers_after": {
+    "0000:4f:00.0": "dfl-pci",
+    "0000:4f:00.1": "vfio-pci",
+    "0000:4f:00.2": "vfio-pci"
+  },
+  "emif_readings": {
+    "inf0_init_done": 1,
+    "inf1_init_done": 1
+  },
+  "ended": "2026-10-04T02:21:37.438381+00:00",
+  "erratum_policy": "User explicitly accepted exact P-Tile VF pending-before-FLR warning; ERRATUM-ACCEPTED25.md",
+  "gate": "bulk-concurrent-bank",
+  "inner": {
+    "application_started": true,
+    "argv": [
+      "/exec/ahls_memory_caps03_startup",
+      "--config",
+      "/work/source/config/ia840f_caps01_vfio.cfg",
+      "--module",
+      "/bulk/build/libahls_memory_caps03_bulk_entry_vfio_strict.so",
+      "--run-qualified-caps03-hls",
+      "0000:4f:00.2"
+    ],
+    "ended": "2026-10-04T02:21:36.943272+00:00",
+    "environment": {
+      "HOME": "/diag",
+      "LANG": "C",
+      "LC_ALL": "C",
+      "LD_DEBUG": "libs",
+      "LD_DEBUG_OUTPUT": "/diag/loader",
+      "LD_LIBRARY_PATH": "/work/sdk-build/lib:/work/prefix/usr/lib/x86_64-linux-gnu",
+      "PATH": "/usr/bin:/bin",
+      "TMPDIR": "/diag/tmp"
+    },
+    "expected_descriptors": 8324,
+    "loader_logs": {
+      "loader.16": {
+        "bytes": 8751,
+        "sha256": "eb1540373fa71822ba657ffa3c66f4dcdccfa8e2d9b92b227daafab3edf58d3a",
+        "text": "        16:\tfind library=libjson-c.so.5 [0]; searching\n        16:\t search path=/work/sdk-build/lib/glibc-hwcaps/x86-64-v4:/work/sdk-build/lib/glibc-hwcaps/x86-64-v3:/work/sdk-build/lib/glibc-hwcaps/x86-64-v2:/work/sdk-build/lib/tls/haswell/avx512_1/x86_64:/work/sdk-build/lib/tls/haswell/avx512_1:/work/sdk-build/lib/tls/haswell/x86_64:/work/sdk-build/lib/tls/haswell:/work/sdk-build/lib/tls/avx512_1/x86_64:/work/sdk-build/lib/tls/avx512_1:/work/sdk-build/lib/tls/x86_64:/work/sdk-build/lib/tls:/work/sdk-build/lib/haswell/avx512_1/x86_64:/work/sdk-build/lib/haswell/avx512_1:/work/sdk-build/lib/haswell/x86_64:/work/sdk-build/lib/haswell:/work/sdk-build/lib/avx512_1/x86_64:/work/sdk-build/lib/avx512_1:/work/sdk-build/lib/x86_64:/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/glibc-hwcaps/x86-64-v4/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/glibc-hwcaps/x86-64-v3/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/glibc-hwcaps/x86-64-v2/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/haswell/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/haswell/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/haswell/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/haswell/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/haswell/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/haswell/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/haswell/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/haswell/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/libjson-c.so.5\n        16:\t search path=/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v4:/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v3:/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v2:/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/avx512_1/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/avx512_1:/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell:/work/prefix/usr/lib/x86_64-linux-gnu/tls/avx512_1/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/tls/avx512_1:/work/prefix/usr/lib/x86_64-linux-gnu/tls/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/tls:/work/prefix/usr/lib/x86_64-linux-gnu/haswell/avx512_1/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/haswell/avx512_1:/work/prefix/usr/lib/x86_64-linux-gnu/haswell/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/haswell:/work/prefix/usr/lib/x86_64-linux-gnu/avx512_1/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/avx512_1:/work/prefix/usr/lib/x86_64-linux-gnu/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu\t\t(RUNPATH from file /exec/ahls_memory_caps03_startup)\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v4/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v3/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v2/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/haswell/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/haswell/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/haswell/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/haswell/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5\n        16:\t\n        16:\tfind library=libc.so.6 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libc.so.6\n        16:\t search path=/work/prefix/usr/lib/x86_64-linux-gnu\t\t(RUNPATH from file /exec/ahls_memory_caps03_startup)\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/libc.so.6\n        16:\t search path=/work/prefix/usr/lib/x86_64-linux-gnu\t\t(RUNPATH from file /exec/ahls_memory_caps03_startup)\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/libc.so.6\n        16:\t search cache=/etc/ld.so.cache\n        16:\t  trying file=/lib/x86_64-linux-gnu/libc.so.6\n        16:\t\n        16:\t\n        16:\tcalling init: /lib64/ld-linux-x86-64.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /lib/x86_64-linux-gnu/libc.so.6\n        16:\t\n        16:\t\n        16:\tcalling init: /work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5\n        16:\t\n        16:\t\n        16:\tinitialize program: /exec/ahls_memory_caps03_startup\n        16:\t\n        16:\t\n        16:\ttransferring control: /exec/ahls_memory_caps03_startup\n        16:\t\n        16:\tfind library=libopae-c.so.2 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libopae-c.so.2\n        16:\t\n        16:\tfind library=libuuid.so.1 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libuuid.so.1\n        16:\t search path=/work/prefix/usr/lib/x86_64-linux-gnu\t\t(RUNPATH from file /exec/ahls_memory_caps03_startup)\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1\n        16:\t\n        16:\t\n        16:\tcalling init: /work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1\n        16:\t\n        16:\t\n        16:\tcalling init: /work/sdk-build/lib/libopae-c.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /bulk/build/libahls_memory_caps03_bulk_entry_vfio_strict.so\n        16:\t\n        16:\tfind library=libopae-v.so [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libopae-v.so\n        16:\t\n        16:\tfind library=libopaevfio.so.2 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libopaevfio.so.2\n        16:\t\n        16:\tfind library=libopaemem.so.2 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libopaemem.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /work/sdk-build/lib/libopaemem.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /work/sdk-build/lib/libopaevfio.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /work/sdk-build/lib/libopae-v.so\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/sdk-build/lib/libopae-v.so [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/sdk-build/lib/libopaevfio.so.2 [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/sdk-build/lib/libopaemem.so.2 [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /exec/ahls_memory_caps03_startup [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /bulk/build/libahls_memory_caps03_bulk_entry_vfio_strict.so [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/sdk-build/lib/libopae-c.so.2 [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5 [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1 [0]\n        16:\t\n"
+      }
+    },
+    "mountinfo_sha256": "ce8837b674dc38d203bcf7f4c062d549ac33493b544c017181997b81d86d375a",
+    "native_exit_passed": true,
+    "native_log": "FPGA Test identity read 0x0\nFPGA Test identity read 0x8\nFPGA Test identity read 0x10\nFPGA Test capability read 0x98\nFPGA Test capability read 0xa0\nFPGA Test capability read 0xa8\nFPGA Test capability read 0xb0\nFPGA Test discarded quiescent finish history=0\nFPGA Test DMA submit sequence=0 mode=1 bank=0 bytes=128 ddr=0x10000\nFPGA Test DMA retired and host pages verified sequence=0\nFPGA Test BULK tile verified region=0 bytes=3968 descriptors=31\nFPGA Test BULK tile verified region=0 bytes=7936 descriptors=62\nFPGA Test BULK tile verified region=0 bytes=11904 descriptors=93\nFPGA Test BULK tile verified region=0 bytes=15872 descriptors=124\nFPGA Test DMA submit sequence=128 mode=1 bank=0 bytes=128 ddr=0x14000\nFPGA Test DMA retired and host pages verified sequence=128\nFPGA Test BULK tile verified region=0 bytes=19840 descriptors=155\nFPGA Test BULK tile verified region=0 bytes=23808 descriptors=186\nFPGA Test BULK tile verified region=0 bytes=27776 descriptors=217\nFPGA Test BULK tile verified region=0 bytes=31744 descriptors=248\nFPGA Test DMA submit sequence=256 mode=1 bank=0 bytes=128 ddr=0x18000\nFPGA Test DMA retired and host pages verified sequence=256\nFPGA Test BULK tile verified region=0 bytes=35712 descriptors=279\nFPGA Test BULK tile verified region=0 bytes=39680 descriptors=310\nFPGA Test BULK tile verified region=0 bytes=43648 descriptors=341\nFPGA Test BULK tile verified region=0 bytes=47616 descriptors=372\nFPGA Test DMA submit sequence=384 mode=1 bank=0 bytes=128 ddr=0x1c000\nFPGA Test DMA retired and host pages verified sequence=384\nFPGA Test BULK tile verified region=0 bytes=51584 descriptors=403\nFPGA Test BULK tile verified region=0 bytes=55552 descriptors=434\nFPGA Test BULK tile verified region=0 bytes=59520 descriptors=465\nFPGA Test BULK tile verified region=0 bytes=63488 descriptors=496\nFPGA Test DMA submit sequence=512 mode=1 bank=0 bytes=128 ddr=0x20000\nFPGA Test DMA retired and host pages verified sequence=512\nFPGA Test BULK tile verified region=0 bytes=67456 descriptors=527\nFPGA Test BULK tile verified region=0 bytes=71424 descriptors=558\nFPGA Test BULK tile verified region=0 bytes=75392 descriptors=589\nFPGA Test BULK tile verified region=0 bytes=79360 descriptors=620\nFPGA Test DMA submit sequence=640 mode=1 bank=0 bytes=128 ddr=0x24000\nFPGA Test DMA retired and host pages verified sequence=640\nFPGA Test BULK tile verified region=0 bytes=83328 descriptors=651\nFPGA Test BULK tile verified region=0 bytes=87296 descriptors=682\nFPGA Test BULK tile verified region=0 bytes=91264 descriptors=713\nFPGA Test BULK tile verified region=0 bytes=95232 descriptors=744\nFPGA Test DMA submit sequence=768 mode=1 bank=0 bytes=128 ddr=0x28000\nFPGA Test DMA retired and host pages verified sequence=768\nFPGA Test BULK tile verified region=0 bytes=99200 descriptors=775\nFPGA Test BULK tile verified region=0 bytes=103168 descriptors=806\nFPGA Test BULK tile verified region=0 bytes=107136 descriptors=837\nFPGA Test BULK tile verified region=0 bytes=111104 descriptors=868\nFPGA Test DMA submit sequence=896 mode=1 bank=0 bytes=128 ddr=0x2c000\nFPGA Test DMA retired and host pages verified sequence=896\nFPGA Test BULK tile verified region=0 bytes=115072 descriptors=899\nFPGA Test BULK tile verified region=0 bytes=119040 descriptors=930\nFPGA Test BULK tile verified region=0 bytes=123008 descriptors=961\nFPGA Test BULK tile verified region=0 bytes=126976 descriptors=992\nFPGA Test BULK tile verified region=0 bytes=130944 descriptors=1023\nFPGA Test DMA submit sequence=1024 mode=1 bank=0 bytes=128 ddr=0x30000\nFPGA Test DMA retired and host pages verified sequence=1024\nFPGA Test BULK tile verified region=0 bytes=134912 descriptors=1054\nFPGA Test BULK tile verified region=0 bytes=138880 descriptors=1085\nFPGA Test BULK tile verified region=0 bytes=142848 descriptors=1116\nFPGA Test BULK tile verified region=0 bytes=146816 descriptors=1147\nFPGA Test DMA submit sequence=1152 mode=1 bank=0 bytes=128 ddr=0x34000\nFPGA Test DMA retired and host pages verified sequence=1152\nFPGA Test BULK tile verified region=0 bytes=150784 descriptors=1178\nFPGA Test BULK tile verified region=0 bytes=154752 descriptors=1209\nFPGA Test BULK tile verified region=0 bytes=158720 descriptors=1240\nFPGA Test BULK tile verified region=0 bytes=162688 descriptors=1271\nFPGA Test DMA submit sequence=1280 mode=1 bank=0 bytes=128 ddr=0x38000\nFPGA Test DMA retired and host pages verified sequence=1280\nFPGA Test BULK tile verified region=0 bytes=166656 descriptors=1302\nFPGA Test BULK tile verified region=0 bytes=170624 descriptors=1333\nFPGA Test BULK tile verified region=0 bytes=174592 descriptors=1364\nFPGA Test BULK tile verified region=0 bytes=178560 descriptors=1395\nFPGA Test DMA submit sequence=1408 mode=1 bank=0 bytes=128 ddr=0x3c000\nFPGA Test DMA retired and host pages verified sequence=1408\nFPGA Test BULK tile verified region=0 bytes=182528 descriptors=1426\nFPGA Test BULK tile verified region=0 bytes=186496 descriptors=1457\nFPGA Test BULK tile verified region=0 bytes=190464 descriptors=1488\nFPGA Test BULK tile verified region=0 bytes=194432 descriptors=1519\nFPGA Test DMA submit sequence=1536 mode=1 bank=0 bytes=128 ddr=0x40000\nFPGA Test DMA retired and host pages verified sequence=1536\nFPGA Test BULK tile verified region=0 bytes=198400 descriptors=1550\nFPGA Test BULK tile verified region=0 bytes=202368 descriptors=1581\nFPGA Test BULK tile verified region=0 bytes=206336 descriptors=1612\nFPGA Test BULK tile verified region=0 bytes=210304 descriptors=1643\nFPGA Test DMA submit sequence=1664 mode=1 bank=0 bytes=128 ddr=0x44000\nFPGA Test DMA retired and host pages verified sequence=1664\nFPGA Test BULK tile verified region=0 bytes=214272 descriptors=1674\nFPGA Test BULK tile verified region=0 bytes=218240 descriptors=1705\nFPGA Test BULK tile verified region=0 bytes=222208 descriptors=1736\nFPGA Test BULK tile verified region=0 bytes=226176 descriptors=1767\nFPGA Test DMA submit sequence=1792 mode=1 bank=0 bytes=128 ddr=0x48000\nFPGA Test DMA retired and host pages verified sequence=1792\nFPGA Test BULK tile verified region=0 bytes=230144 descriptors=1798\nFPGA Test BULK tile verified region=0 bytes=234112 descriptors=1829\nFPGA Test BULK tile verified region=0 bytes=238080 descriptors=1860\nFPGA Test BULK tile verified region=0 bytes=242048 descriptors=1891\nFPGA Test DMA submit sequence=1920 mode=1 bank=0 bytes=128 ddr=0x4c000\nFPGA Test DMA retired and host pages verified sequence=1920\nFPGA Test BULK tile verified region=0 bytes=246016 descriptors=1922\nFPGA Test BULK tile verified region=0 bytes=249984 descriptors=1953\nFPGA Test BULK tile verified region=0 bytes=253952 descriptors=1984\nFPGA Test BULK tile verified region=0 bytes=257920 descriptors=2015\nFPGA Test BULK tile verified region=0 bytes=261888 descriptors=2046\nFPGA Test BULK tile verified region=0 bytes=262144 descriptors=2048\nFPGA Test DMA submit sequence=2048 mode=1 bank=0 bytes=128 ddr=0x60000\nFPGA Test DMA retired and host pages verified sequence=2048\nFPGA Test BULK tile verified region=1 bytes=3968 descriptors=2079\nFPGA Test BULK tile verified region=1 bytes=7936 descriptors=2110\nFPGA Test BULK tile verified region=1 bytes=11904 descriptors=2141\nFPGA Test BULK tile verified region=1 bytes=15872 descriptors=2172\nFPGA Test DMA submit sequence=2176 mode=1 bank=0 bytes=128 ddr=0x64000\nFPGA Test DMA retired and host pages verified sequence=2176\nFPGA Test BULK tile verified region=1 bytes=19840 descriptors=2203\nFPGA Test BULK tile verified region=1 bytes=23808 descriptors=2234\nFPGA Test BULK tile verified region=1 bytes=27776 descriptors=2265\nFPGA Test BULK tile verified region=1 bytes=31744 descriptors=2296\nFPGA Test DMA submit sequence=2304 mode=1 bank=0 bytes=128 ddr=0x68000\nFPGA Test DMA retired and host pages verified sequence=2304\nFPGA Test BULK tile verified region=1 bytes=35712 descriptors=2327\nFPGA Test BULK tile verified region=1 bytes=39680 descriptors=2358\nFPGA Test BULK tile verified region=1 bytes=43648 descriptors=2389\nFPGA Test BULK tile verified region=1 bytes=47616 descriptors=2420\nFPGA Test DMA submit sequence=2432 mode=1 bank=0 bytes=128 ddr=0x6c000\nFPGA Test DMA retired and host pages verified sequence=2432\nFPGA Test BULK tile verified region=1 bytes=51584 descriptors=2451\nFPGA Test BULK tile verified region=1 bytes=55552 descriptors=2482\nFPGA Test BULK tile verified region=1 bytes=59520 descriptors=2513\nFPGA Test BULK tile verified region=1 bytes=63488 descriptors=2544\nFPGA Test DMA submit sequence=2560 mode=1 bank=0 bytes=128 ddr=0x70000\nFPGA Test DMA retired and host pages verified sequence=2560\nFPGA Test BULK tile verified region=1 bytes=67456 descriptors=2575\nFPGA Test BULK tile verified region=1 bytes=71424 descriptors=2606\nFPGA Test BULK tile verified region=1 bytes=75392 descriptors=2637\nFPGA Test BULK tile verified region=1 bytes=79360 descriptors=2668\nFPGA Test DMA submit sequence=2688 mode=1 bank=0 bytes=128 ddr=0x74000\nFPGA Test DMA retired and host pages verified sequence=2688\nFPGA Test BULK tile verified region=1 bytes=83328 descriptors=2699\nFPGA Test BULK tile verified region=1 bytes=87296 descriptors=2730\nFPGA Test BULK tile verified region=1 bytes=91264 descriptors=2761\nFPGA Test BULK tile verified region=1 bytes=95232 descriptors=2792\nFPGA Test DMA submit sequence=2816 mode=1 bank=0 bytes=128 ddr=0x78000\nFPGA Test DMA retired and host pages verified sequence=2816\nFPGA Test BULK tile verified region=1 bytes=99200 descriptors=2823\nFPGA Test BULK tile verified region=1 bytes=103168 descriptors=2854\nFPGA Test BULK tile verified region=1 bytes=107136 descriptors=2885\nFPGA Test BULK tile verified region=1 bytes=111104 descriptors=2916\nFPGA Test DMA submit sequence=2944 mode=1 bank=0 bytes=128 ddr=0x7c000\nFPGA Test DMA retired and host pages verified sequence=2944\nFPGA Test BULK tile verified region=1 bytes=115072 descriptors=2947\nFPGA Test BULK tile verified region=1 bytes=119040 descriptors=2978\nFPGA Test BULK tile verified region=1 bytes=123008 descriptors=3009\nFPGA Test BULK tile verified region=1 bytes=126976 descriptors=3040\nFPGA Test BULK tile verified region=1 bytes=130944 descriptors=3071\nFPGA Test DMA submit sequence=3072 mode=1 bank=0 bytes=128 ddr=0x80000\nFPGA Test DMA retired and host pages verified sequence=3072\nFPGA Test BULK tile verified region=1 bytes=134912 descriptors=3102\nFPGA Test BULK tile verified region=1 bytes=138880 descriptors=3133\nFPGA Test BULK tile verified region=1 bytes=142848 descriptors=3164\nFPGA Test BULK tile verified region=1 bytes=146816 descriptors=3195\nFPGA Test DMA submit sequence=3200 mode=1 bank=0 bytes=128 ddr=0x84000\nFPGA Test DMA retired and host pages verified sequence=3200\nFPGA Test BULK tile verified region=1 bytes=150784 descriptors=3226\nFPGA Test BULK tile verified region=1 bytes=154752 descriptors=3257\nFPGA Test BULK tile verified region=1 bytes=158720 descriptors=3288\nFPGA Test BULK tile verified region=1 bytes=162688 descriptors=3319\nFPGA Test DMA submit sequence=3328 mode=1 bank=0 bytes=128 ddr=0x88000\nFPGA Test DMA retired and host pages verified sequence=3328\nFPGA Test BULK tile verified region=1 bytes=166656 descriptors=3350\nFPGA Test BULK tile verified region=1 bytes=170624 descriptors=3381\nFPGA Test BULK tile verified region=1 bytes=174592 descriptors=3412\nFPGA Test BULK tile verified region=1 bytes=178560 descriptors=3443\nFPGA Test DMA submit sequence=3456 mode=1 bank=0 bytes=128 ddr=0x8c000\nFPGA Test DMA retired and host pages verified sequence=3456\nFPGA Test BULK tile verified region=1 bytes=182528 descriptors=3474\nFPGA Test BULK tile verified region=1 bytes=186496 descriptors=3505\nFPGA Test BULK tile verified region=1 bytes=190464 descriptors=3536\nFPGA Test BULK tile verified region=1 bytes=194432 descriptors=3567\nFPGA Test DMA submit sequence=3584 mode=1 bank=0 bytes=128 ddr=0x90000\nFPGA Test DMA retired and host pages verified sequence=3584\nFPGA Test BULK tile verified region=1 bytes=198400 descriptors=3598\nFPGA Test BULK tile verified region=1 bytes=202368 descriptors=3629\nFPGA Test BULK tile verified region=1 bytes=206336 descriptors=3660\nFPGA Test BULK tile verified region=1 bytes=210304 descriptors=3691\nFPGA Test DMA submit sequence=3712 mode=1 bank=0 bytes=128 ddr=0x94000\nFPGA Test DMA retired and host pages verified sequence=3712\nFPGA Test BULK tile verified region=1 bytes=214272 descriptors=3722\nFPGA Test BULK tile verified region=1 bytes=218240 descriptors=3753\nFPGA Test BULK tile verified region=1 bytes=222208 descriptors=3784\nFPGA Test BULK tile verified region=1 bytes=226176 descriptors=3815\nFPGA Test DMA submit sequence=3840 mode=1 bank=0 bytes=128 ddr=0x98000\nFPGA Test DMA retired and host pages verified sequence=3840\nFPGA Test BULK tile verified region=1 bytes=230144 descriptors=3846\nFPGA Test BULK tile verified region=1 bytes=234112 descriptors=3877\nFPGA Test BULK tile verified region=1 bytes=238080 descriptors=3908\nFPGA Test BULK tile verified region=1 bytes=242048 descriptors=3939\nFPGA Test DMA submit sequence=3968 mode=1 bank=0 bytes=128 ddr=0x9c000\nFPGA Test DMA retired and host pages verified sequence=3968\nFPGA Test BULK tile verified region=1 bytes=246016 descriptors=3970\nFPGA Test BULK tile verified region=1 bytes=249984 descriptors=4001\nFPGA Test BULK tile verified region=1 bytes=253952 descriptors=4032\nFPGA Test BULK tile verified region=1 bytes=257920 descriptors=4063\nFPGA Test BULK tile verified region=1 bytes=261888 descriptors=4094\nFPGA Test BULK tile verified region=1 bytes=262144 descriptors=4096\nFPGA Test DMA submit sequence=4096 mode=1 bank=1 bytes=64 ddr=0xffc0\nFPGA Test DMA retired and host pages verified sequence=4096\nFPGA Test BULK tile verified region=2 bytes=3968 descriptors=4128\nFPGA Test BULK tile verified region=2 bytes=7936 descriptors=4160\nFPGA Test BULK tile verified region=2 bytes=11904 descriptors=4192\nFPGA Test BULK tile verified region=2 bytes=15872 descriptors=4224\nFPGA Test DMA submit sequence=4224 mode=1 bank=1 bytes=128 ddr=0x13dc0\nFPGA Test DMA retired and host pages verified sequence=4224\nFPGA Test BULK tile verified region=2 bytes=19840 descriptors=4256\nFPGA Test BULK tile verified region=2 bytes=23808 descriptors=4288\nFPGA Test BULK tile verified region=2 bytes=27776 descriptors=4320\nFPGA Test BULK tile verified region=2 bytes=31744 descriptors=4352\nFPGA Test DMA submit sequence=4352 mode=1 bank=1 bytes=128 ddr=0x17bc0\nFPGA Test DMA retired and host pages verified sequence=4352\nFPGA Test BULK tile verified region=2 bytes=35712 descriptors=4384\nFPGA Test BULK tile verified region=2 bytes=39680 descriptors=4416\nFPGA Test BULK tile verified region=2 bytes=43648 descriptors=4448\nFPGA Test BULK tile verified region=2 bytes=47616 descriptors=4480\nFPGA Test DMA submit sequence=4480 mode=1 bank=1 bytes=128 ddr=0x1b9c0\nFPGA Test DMA retired and host pages verified sequence=4480\nFPGA Test BULK tile verified region=2 bytes=51584 descriptors=4512\nFPGA Test BULK tile verified region=2 bytes=55552 descriptors=4544\nFPGA Test BULK tile verified region=2 bytes=59520 descriptors=4576\nFPGA Test BULK tile verified region=2 bytes=63488 descriptors=4608\nFPGA Test DMA submit sequence=4608 mode=1 bank=1 bytes=128 ddr=0x1f7c0\nFPGA Test DMA retired and host pages verified sequence=4608\nFPGA Test BULK tile verified region=2 bytes=67456 descriptors=4640\nFPGA Test BULK tile verified region=2 bytes=71424 descriptors=4672\nFPGA Test BULK tile verified region=2 bytes=75392 descriptors=4704\nFPGA Test BULK tile verified region=2 bytes=79360 descriptors=4736\nFPGA Test DMA submit sequence=4736 mode=1 bank=1 bytes=128 ddr=0x235c0\nFPGA Test DMA retired and host pages verified sequence=4736\nFPGA Test BULK tile verified region=2 bytes=83328 descriptors=4768\nFPGA Test BULK tile verified region=2 bytes=87296 descriptors=4800\nFPGA Test BULK tile verified region=2 bytes=91264 descriptors=4832\nFPGA Test BULK tile verified region=2 bytes=95232 descriptors=4864\nFPGA Test DMA submit sequence=4864 mode=1 bank=1 bytes=128 ddr=0x273c0\nFPGA Test DMA retired and host pages verified sequence=4864\nFPGA Test BULK tile verified region=2 bytes=99200 descriptors=4896\nFPGA Test BULK tile verified region=2 bytes=103168 descriptors=4928\nFPGA Test BULK tile verified region=2 bytes=107136 descriptors=4960\nFPGA Test BULK tile verified region=2 bytes=111104 descriptors=4992\nFPGA Test DMA submit sequence=4992 mode=1 bank=1 bytes=128 ddr=0x2b1c0\nFPGA Test DMA retired and host pages verified sequence=4992\nFPGA Test BULK tile verified region=2 bytes=115072 descriptors=5024\nFPGA Test BULK tile verified region=2 bytes=119040 descriptors=5056\nFPGA Test BULK tile verified region=2 bytes=123008 descriptors=5088\nFPGA Test BULK tile verified region=2 bytes=126976 descriptors=5119\nFPGA Test DMA submit sequence=5120 mode=1 bank=1 bytes=128 ddr=0x2f000\nFPGA Test DMA retired and host pages verified sequence=5120\nFPGA Test BULK tile verified region=2 bytes=130944 descriptors=5151\nFPGA Test BULK tile verified region=2 bytes=134912 descriptors=5183\nFPGA Test BULK tile verified region=2 bytes=138880 descriptors=5215\nFPGA Test BULK tile verified region=2 bytes=142848 descriptors=5247\nFPGA Test DMA submit sequence=5248 mode=1 bank=1 bytes=128 ddr=0x32e40\nFPGA Test DMA retired and host pages verified sequence=5248\nFPGA Test BULK tile verified region=2 bytes=146816 descriptors=5279\nFPGA Test BULK tile verified region=2 bytes=150784 descriptors=5311\nFPGA Test BULK tile verified region=2 bytes=154752 descriptors=5343\nFPGA Test BULK tile verified region=2 bytes=158720 descriptors=5375\nFPGA Test DMA submit sequence=5376 mode=1 bank=1 bytes=128 ddr=0x36c40\nFPGA Test DMA retired and host pages verified sequence=5376\nFPGA Test BULK tile verified region=2 bytes=162688 descriptors=5407\nFPGA Test BULK tile verified region=2 bytes=166656 descriptors=5439\nFPGA Test BULK tile verified region=2 bytes=170624 descriptors=5471\nFPGA Test BULK tile verified region=2 bytes=174592 descriptors=5503\nFPGA Test DMA submit sequence=5504 mode=1 bank=1 bytes=128 ddr=0x3aa40\nFPGA Test DMA retired and host pages verified sequence=5504\nFPGA Test BULK tile verified region=2 bytes=178560 descriptors=5535\nFPGA Test BULK tile verified region=2 bytes=182528 descriptors=5567\nFPGA Test BULK tile verified region=2 bytes=186496 descriptors=5599\nFPGA Test BULK tile verified region=2 bytes=190464 descriptors=5631\nFPGA Test DMA submit sequence=5632 mode=1 bank=1 bytes=128 ddr=0x3e840\nFPGA Test DMA retired and host pages verified sequence=5632\nFPGA Test BULK tile verified region=2 bytes=194432 descriptors=5663\nFPGA Test BULK tile verified region=2 bytes=198400 descriptors=5695\nFPGA Test BULK tile verified region=2 bytes=202368 descriptors=5727\nFPGA Test BULK tile verified region=2 bytes=206336 descriptors=5759\nFPGA Test DMA submit sequence=5760 mode=1 bank=1 bytes=128 ddr=0x42640\nFPGA Test DMA retired and host pages verified sequence=5760\nFPGA Test BULK tile verified region=2 bytes=210304 descriptors=5791\nFPGA Test BULK tile verified region=2 bytes=214272 descriptors=5823\nFPGA Test BULK tile verified region=2 bytes=218240 descriptors=5855\nFPGA Test BULK tile verified region=2 bytes=222208 descriptors=5887\nFPGA Test DMA submit sequence=5888 mode=1 bank=1 bytes=128 ddr=0x46440\nFPGA Test DMA retired and host pages verified sequence=5888\nFPGA Test BULK tile verified region=2 bytes=226176 descriptors=5919\nFPGA Test BULK tile verified region=2 bytes=230144 descriptors=5951\nFPGA Test BULK tile verified region=2 bytes=234112 descriptors=5983\nFPGA Test BULK tile verified region=2 bytes=238080 descriptors=6015\nFPGA Test DMA submit sequence=6016 mode=1 bank=1 bytes=128 ddr=0x4a240\nFPGA Test DMA retired and host pages verified sequence=6016\nFPGA Test BULK tile verified region=2 bytes=242048 descriptors=6047\nFPGA Test BULK tile verified region=2 bytes=246016 descriptors=6079\nFPGA Test BULK tile verified region=2 bytes=249984 descriptors=6111\nFPGA Test BULK tile verified region=2 bytes=253952 descriptors=6142\nFPGA Test DMA submit sequence=6144 mode=1 bank=1 bytes=128 ddr=0x4e080\nFPGA Test DMA retired and host pages verified sequence=6144\nFPGA Test BULK tile verified region=2 bytes=257920 descriptors=6174\nFPGA Test BULK tile verified region=2 bytes=261888 descriptors=6206\nFPGA Test BULK tile verified region=2 bytes=262272 descriptors=6210\nFPGA Test HLS ticket=1 completion=0x10002\nFPGA Test BULK tile verified region=3 bytes=3968 descriptors=6242\nFPGA Test DMA submit sequence=6272 mode=2 bank=1 bytes=128 ddr=0x11e00\nFPGA Test DMA retired and host pages verified sequence=6272\nFPGA Test BULK tile verified region=3 bytes=7936 descriptors=6274\nFPGA Test BULK tile verified region=3 bytes=11904 descriptors=6306\nFPGA Test BULK tile verified region=3 bytes=15872 descriptors=6338\nFPGA Test BULK tile verified region=3 bytes=19840 descriptors=6370\nFPGA Test DMA submit sequence=6400 mode=2 bank=1 bytes=128 ddr=0x15c00\nFPGA Test DMA retired and host pages verified sequence=6400\nFPGA Test BULK tile verified region=3 bytes=23808 descriptors=6402\nFPGA Test BULK tile verified region=3 bytes=27776 descriptors=6434\nFPGA Test BULK tile verified region=3 bytes=31744 descriptors=6466\nFPGA Test BULK tile verified region=3 bytes=35712 descriptors=6498\nFPGA Test DMA submit sequence=6528 mode=2 bank=1 bytes=128 ddr=0x19a00\nFPGA Test DMA retired and host pages verified sequence=6528\nFPGA Test BULK tile verified region=3 bytes=39680 descriptors=6530\nFPGA Test BULK tile verified region=3 bytes=43648 descriptors=6562\nFPGA Test BULK tile verified region=3 bytes=47616 descriptors=6594\nFPGA Test BULK tile verified region=3 bytes=51584 descriptors=6626\nFPGA Test DMA submit sequence=6656 mode=2 bank=1 bytes=128 ddr=0x1d800\nFPGA Test DMA retired and host pages verified sequence=6656\nFPGA Test BULK tile verified region=3 bytes=55552 descriptors=6658\nFPGA Test BULK tile verified region=3 bytes=59520 descriptors=6690\nFPGA Test BULK tile verified region=3 bytes=63488 descriptors=6722\nFPGA Test BULK tile verified region=3 bytes=67456 descriptors=6754\nFPGA Test DMA submit sequence=6784 mode=2 bank=1 bytes=128 ddr=0x21600\nFPGA Test DMA retired and host pages verified sequence=6784\nFPGA Test BULK tile verified region=3 bytes=71424 descriptors=6786\nFPGA Test BULK tile verified region=3 bytes=75392 descriptors=6818\nFPGA Test BULK tile verified region=3 bytes=79360 descriptors=6850\nFPGA Test BULK tile verified region=3 bytes=83328 descriptors=6882\nFPGA Test DMA submit sequence=6912 mode=2 bank=1 bytes=128 ddr=0x25400\nFPGA Test DMA retired and host pages verified sequence=6912\nFPGA Test BULK tile verified region=3 bytes=87296 descriptors=6914\nFPGA Test BULK tile verified region=3 bytes=91264 descriptors=6946\nFPGA Test BULK tile verified region=3 bytes=95232 descriptors=6978\nFPGA Test BULK tile verified region=3 bytes=99200 descriptors=7010\nFPGA Test DMA submit sequence=7040 mode=2 bank=1 bytes=128 ddr=0x29200\nFPGA Test DMA retired and host pages verified sequence=7040\nFPGA Test BULK tile verified region=3 bytes=103168 descriptors=7042\nFPGA Test BULK tile verified region=3 bytes=107136 descriptors=7074\nFPGA Test BULK tile verified region=3 bytes=111104 descriptors=7106\nFPGA Test BULK tile verified region=3 bytes=115072 descriptors=7138\nFPGA Test DMA submit sequence=7168 mode=2 bank=1 bytes=128 ddr=0x2d000\nFPGA Test DMA retired and host pages verified sequence=7168\nFPGA Test BULK tile verified region=3 bytes=119040 descriptors=7170\nFPGA Test BULK tile verified region=3 bytes=123008 descriptors=7202\nFPGA Test BULK tile verified region=3 bytes=126976 descriptors=7233\nFPGA Test BULK tile verified region=3 bytes=130944 descriptors=7265\nFPGA Test DMA submit sequence=7296 mode=2 bank=1 bytes=64 ddr=0x30e80\nFPGA Test DMA retired and host pages verified sequence=7296\nFPGA Test BULK tile verified region=3 bytes=134912 descriptors=7297\nFPGA Test BULK tile verified region=3 bytes=138880 descriptors=7329\nFPGA Test BULK tile verified region=3 bytes=142848 descriptors=7361\nFPGA Test BULK tile verified region=3 bytes=146816 descriptors=7393\nFPGA Test DMA submit sequence=7424 mode=2 bank=1 bytes=64 ddr=0x34c80\nFPGA Test DMA retired and host pages verified sequence=7424\nFPGA Test BULK tile verified region=3 bytes=150784 descriptors=7425\nFPGA Test BULK tile verified region=3 bytes=154752 descriptors=7457\nFPGA Test BULK tile verified region=3 bytes=158720 descriptors=7489\nFPGA Test BULK tile verified region=3 bytes=162688 descriptors=7521\nFPGA Test DMA submit sequence=7552 mode=2 bank=1 bytes=64 ddr=0x38a80\nFPGA Test DMA retired and host pages verified sequence=7552\nFPGA Test BULK tile verified region=3 bytes=166656 descriptors=7553\nFPGA Test BULK tile verified region=3 bytes=170624 descriptors=7585\nFPGA Test BULK tile verified region=3 bytes=174592 descriptors=7617\nFPGA Test BULK tile verified region=3 bytes=178560 descriptors=7649\nFPGA Test DMA submit sequence=7680 mode=2 bank=1 bytes=64 ddr=0x3c880\nFPGA Test DMA retired and host pages verified sequence=7680\nFPGA Test BULK tile verified region=3 bytes=182528 descriptors=7681\nFPGA Test BULK tile verified region=3 bytes=186496 descriptors=7713\nFPGA Test BULK tile verified region=3 bytes=190464 descriptors=7745\nFPGA Test BULK tile verified region=3 bytes=194432 descriptors=7777\nFPGA Test DMA submit sequence=7808 mode=2 bank=1 bytes=64 ddr=0x40680\nFPGA Test DMA retired and host pages verified sequence=7808\nFPGA Test BULK tile verified region=3 bytes=198400 descriptors=7809\nFPGA Test BULK tile verified region=3 bytes=202368 descriptors=7841\nFPGA Test BULK tile verified region=3 bytes=206336 descriptors=7873\nFPGA Test BULK tile verified region=3 bytes=210304 descriptors=7905\nFPGA Test DMA submit sequence=7936 mode=2 bank=1 bytes=64 ddr=0x44480\nFPGA Test DMA retired and host pages verified sequence=7936\nFPGA Test BULK tile verified region=3 bytes=214272 descriptors=7937\nFPGA Test BULK tile verified region=3 bytes=218240 descriptors=7969\nFPGA Test BULK tile verified region=3 bytes=222208 descriptors=8001\nFPGA Test BULK tile verified region=3 bytes=226176 descriptors=8033\nFPGA Test DMA submit sequence=8064 mode=2 bank=1 bytes=64 ddr=0x48280\nFPGA Test DMA retired and host pages verified sequence=8064\nFPGA Test BULK tile verified region=3 bytes=230144 descriptors=8065\nFPGA Test BULK tile verified region=3 bytes=234112 descriptors=8097\nFPGA Test BULK tile verified region=3 bytes=238080 descriptors=8129\nFPGA Test BULK tile verified region=3 bytes=242048 descriptors=8161\nFPGA Test DMA submit sequence=8192 mode=2 bank=1 bytes=64 ddr=0x4c080\nFPGA Test DMA retired and host pages verified sequence=8192\nFPGA Test BULK tile verified region=3 bytes=246016 descriptors=8193\nFPGA Test BULK tile verified region=3 bytes=249984 descriptors=8225\nFPGA Test BULK tile verified region=3 bytes=253952 descriptors=8256\nFPGA Test BULK tile verified region=3 bytes=257920 descriptors=8288\nFPGA Test BULK tile verified region=3 bytes=261888 descriptors=8320\nFPGA Test DMA submit sequence=8320 mode=2 bank=1 bytes=128 ddr=0x4fec0\nFPGA Test DMA retired and host pages verified sequence=8320\nFPGA Test BULK tile verified region=3 bytes=262272 descriptors=8324\nFPGA Test CAPS03 BULK PASSED: integers=65536 result_bytes=262144 guard_bytes=128 descriptors=8324 verified_payload_and_guards=1\nSource-supported concurrent streaming workload; no measured wire overlap or full-DDR/minutes claim. Lifecycle acceptance is separate.\n",
+    "native_log_sha256": "62dd3208f64fa8acb464ba1ebf31cf43fc2a210c4fab650f8fa9d44c29dcb1e5",
+    "native_rc": 0,
+    "nodes": [
+      "76",
+      "vfio"
+    ],
+    "numerical_data_pass": true,
+    "process": {
+      "application_started": true,
+      "argv": [
+        "/exec/ahls_memory_caps03_startup",
+        "--config",
+        "/work/source/config/ia840f_caps01_vfio.cfg",
+        "--module",
+        "/bulk/build/libahls_memory_caps03_bulk_entry_vfio_strict.so",
+        "--run-qualified-caps03-hls",
+        "0000:4f:00.2"
+      ],
+      "execution_state": "EXITED",
+      "native_rc": 0,
+      "pid": 16,
+      "retained_owner": false,
+      "start_ticks": "709856",
+      "success": true
+    },
+    "retained_owner": false,
+    "runtime_preflight_passed": true,
+    "source_supported_concurrent_workload": true,
+    "started": "2026-10-04T02:21:26.669895+00:00",
+    "success": true,
+    "tile_records": 268,
+    "wire_level_overlap_measured": false
+  },
+  "kernel_concern_lines": [
+    "2026-10-03T19:21:36-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: timed out waiting for pending transaction; performing function level reset anyway"
+  ],
+  "kernel_journal": "2026-10-03T19:21:26-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: enabling device (0000 -> 0002)\n2026-10-03T19:21:26-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: enabling device (0000 -> 0002)\n2026-10-03T19:21:36-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: timed out waiting for pending transaction; performing function level reset anyway\n",
+  "lifecycle_accepted": true,
+  "lifecycle_clean": false,
+  "manual_reset": false,
+  "native_rc": 0,
+  "new_artifacts": {
+    "/home/uwb_student00/ahls/new_BSP/work_caps03_bulk01/native01/build/libahls_memory_caps03_bulk_entry_vfio_strict.so": "1c79f4378e947edb8c43d045597b1a767a38b6b73f580396fdaf8411139bddcd",
+    "/home/uwb_student00/ahls/new_BSP/work_caps03_host01/build01/build/ahls_memory_caps03_startup": "8f363546faff826dd63c0e1da166d34db63ea5eb36fd9bb13ec4f54e7de955f7",
+    "/home/uwb_student00/ahls/new_BSP/work_caps03_host01/build01/build/libahls_memory_caps03_entry_vfio_strict.so": "6c8427d7379e811122cd549dec40181044c2dd90b961e56b163b6c1a69daecf0"
+  },
+  "numerical_data_pass": true,
+  "original_files_unchanged": true,
+  "ownership_after": {
+    "boot_id": "3e2d2060-d6c0-44b5-a269-1adf1e450041",
+    "d_state": [],
+    "errors": [],
+    "holders": [],
+    "kernel": "5.14.0-687.48.1.el9_8.x86_64",
+    "maps": [],
+    "pci": [
+      {
+        "bdf": "0000:4f:00.1",
+        "device": "0x0070",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.1"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/5",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "vendor": "0x12ba",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.2",
+        "device": "0xbccf",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.2"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/76",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "physfn": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0",
+        "vendor": "0x8086",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.0",
+        "device": "0xbcce",
+        "driver": "/sys/bus/pci/drivers/dfl-pci",
+        "group_members": [
+          "0000:4f:00.0"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/4",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "sriov_numvfs": "1",
+        "vendor": "0x8086",
+        "virtfn_links": {
+          "virtfn0": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2"
+        }
+      }
+    ],
+    "relevant_processes": [
+      {
+        "argv": [
+          "bash",
+          "-c",
+          "tmux save-buffer -b ia840f_capture_942a5bea6b6d449da149f3233ac9d20f_source - | /usr/bin/env -u LD_LIBRARY_PATH -u PYTHONOPTIMIZE /usr/bin/python3 -B - ia840f_capture_942a5bea6b6d449da149f3233ac9d20f; rc=$?; tmux set-buffer -b ia840f_capture_942a5bea6b6d449da149f3233ac9d20f_outer \"$rc\"; tmux wait-for -S ia840f_capture_942a5bea6b6d449da149f3233ac9d20f_done; exit \"$rc\""
+        ],
+        "comm": "bash",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/bash",
+        "pid": 8458,
+        "start_ticks": "709659",
+        "state": "S"
+      },
+      {
+        "argv": [
+          "tmux",
+          "wait-for",
+          "ia840f_capture_942a5bea6b6d449da149f3233ac9d20f_done"
+        ],
+        "comm": "tmux: client",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/tmux",
+        "pid": 8490,
+        "start_ticks": "709695",
+        "state": "S"
+      }
+    ],
+    "retained_original_owner_scope": {
+      "bdfs": [
+        "0000:4f:00.0",
+        "0000:4f:00.1",
+        "0000:4f:00.2"
+      ],
+      "vfio_nodes": [
+        "/dev/vfio/vfio",
+        "/dev/vfio/4",
+        "/dev/vfio/5",
+        "/dev/vfio/76"
+      ]
+    },
+    "scope": "ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API",
+    "sdk_service_readonly": {
+      "rc": 0,
+      "stderr": "",
+      "stdout": "MainPID=0\nExecMainStatus=0\nControlGroup=\nActiveState=inactive\nSubState=dead\n"
+    },
+    "utc": "2026-10-04T02:21:37.085869+00:00"
+  },
+  "ownership_before": {
+    "boot_id": "3e2d2060-d6c0-44b5-a269-1adf1e450041",
+    "d_state": [],
+    "errors": [],
+    "holders": [],
+    "kernel": "5.14.0-687.48.1.el9_8.x86_64",
+    "maps": [],
+    "pci": [
+      {
+        "bdf": "0000:4f:00.1",
+        "device": "0x0070",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.1"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/5",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "vendor": "0x12ba",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.2",
+        "device": "0xbccf",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.2"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/76",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "physfn": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0",
+        "vendor": "0x8086",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.0",
+        "device": "0xbcce",
+        "driver": "/sys/bus/pci/drivers/dfl-pci",
+        "group_members": [
+          "0000:4f:00.0"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/4",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "sriov_numvfs": "1",
+        "vendor": "0x8086",
+        "virtfn_links": {
+          "virtfn0": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2"
+        }
+      }
+    ],
+    "relevant_processes": [
+      {
+        "argv": [
+          "bash",
+          "-c",
+          "tmux save-buffer -b ia840f_capture_942a5bea6b6d449da149f3233ac9d20f_source - | /usr/bin/env -u LD_LIBRARY_PATH -u PYTHONOPTIMIZE /usr/bin/python3 -B - ia840f_capture_942a5bea6b6d449da149f3233ac9d20f; rc=$?; tmux set-buffer -b ia840f_capture_942a5bea6b6d449da149f3233ac9d20f_outer \"$rc\"; tmux wait-for -S ia840f_capture_942a5bea6b6d449da149f3233ac9d20f_done; exit \"$rc\""
+        ],
+        "comm": "bash",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/bash",
+        "pid": 8458,
+        "start_ticks": "709659",
+        "state": "S"
+      },
+      {
+        "argv": [
+          "tmux",
+          "wait-for",
+          "ia840f_capture_942a5bea6b6d449da149f3233ac9d20f_done"
+        ],
+        "comm": "tmux: client",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/tmux",
+        "pid": 8490,
+        "start_ticks": "709695",
+        "state": "S"
+      }
+    ],
+    "retained_original_owner_scope": {
+      "bdfs": [
+        "0000:4f:00.0",
+        "0000:4f:00.1",
+        "0000:4f:00.2"
+      ],
+      "vfio_nodes": [
+        "/dev/vfio/vfio",
+        "/dev/vfio/4",
+        "/dev/vfio/5",
+        "/dev/vfio/76"
+      ]
+    },
+    "scope": "ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API",
+    "sdk_service_readonly": {
+      "rc": 0,
+      "stderr": "",
+      "stdout": "MainPID=0\nExecMainStatus=0\nControlGroup=\nActiveState=inactive\nSubState=dead\n"
+    },
+    "utc": "2026-10-04T02:21:25.976481+00:00"
+  },
+  "pane": "%18",
+  "preflight18_sha256": "4513ecd982bd862c3f32af1ddf0f0483a3304ef2495b7d4a042edc2808b9b0b7",
+  "retry": false,
+  "run_id": "bulk92",
+  "started": "2026-10-04T02:21:24.864194+00:00",
+  "static_emif_read": true,
+  "success": true,
+  "unaccepted_kernel_concern_lines": [],
+  "exports": {
+    "admission.json": {
+      "bytes": 720,
+      "sha256": "60ae6c4cbe1f84ecb82c1d28f4be8906156919f9ec0eb782b911edb10215c4c4",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/bulk92/admission.json"
+    },
+    "binding.json": {
+      "bytes": 7360,
+      "sha256": "e87e21d0a8050f9423338f1ad83ea532f06537919fca7b6cd6ec149199dc8423",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/bulk92/binding.json"
+    },
+    "container.log": {
+      "bytes": 207,
+      "sha256": "142791b3bf67940dad344184ce19786a70a9752ecab6409c701a1ed606c05484",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/bulk92/container.log"
+    },
+    "emif-pending.json": {
+      "bytes": 208,
+      "sha256": "0a883d60ba6c5f1905dfe880615e8f5c9cde24490d073abc5548452840a16385",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/bulk92/emif-pending.json"
+    },
+    "emif-readings.json": {
+      "bytes": 42,
+      "sha256": "e0c4f671a1830c9b22280e34fe425f212513f3564b32664a8ed1c413d9ae9a21",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/bulk92/emif-readings.json"
+    },
+    "inner-result.json": {
+      "bytes": 38565,
+      "sha256": "f0317645c762ef5feb17310917758a87b7131cad12c18db818ac3b70a1186753",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/bulk92/inner-result.json"
+    },
+    "inner.py": {
+      "bytes": 5564,
+      "sha256": "58bb4eb4a2c2a51c41796978ac9d47b790df3819bafa030cbf6948fe197a25b5",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/bulk92/inner.py"
+    },
+    "kernel-journal.log": {
+      "bytes": 369,
+      "sha256": "cd8bd151f59b3c9e99d78b7463378159b4e8eccb8aeb79063c19c2c7705fca10",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/bulk92/kernel-journal.log"
+    },
+    "loader.16": {
+      "bytes": 8751,
+      "sha256": "eb1540373fa71822ba657ffa3c66f4dcdccfa8e2d9b92b227daafab3edf58d3a",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/bulk92/loader.16"
+    },
+    "mountinfo.log": {
+      "bytes": 4536,
+      "sha256": "ce8837b674dc38d203bcf7f4c062d549ac33493b544c017181997b81d86d375a",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/bulk92/mountinfo.log"
+    },
+    "native.log": {
+      "bytes": 27257,
+      "sha256": "62dd3208f64fa8acb464ba1ebf31cf43fc2a210c4fab650f8fa9d44c29dcb1e5",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/bulk92/native.log"
+    },
+    "ownership-after.log": {
+      "bytes": 2324,
+      "sha256": "d972e6051396152910470f8d2297cb2d3b0ed49ccb2a78cdec307e4beddcc2ea",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/bulk92/ownership-after.log"
+    },
+    "ownership-before.log": {
+      "bytes": 2324,
+      "sha256": "a8108f5c037db3319fa3c0724cc17c829f28c1f9e929f029f16de148dd20f9c0",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/bulk92/ownership-before.log"
+    },
+    "pending.json": {
+      "bytes": 1209,
+      "sha256": "6f8b323ef64b75344ac489c575d0b4d3df3c23c08012633bd9ae3235cb30fd0c",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/bulk92/pending.json"
+    },
+    "result.json": {
+      "bytes": 55769,
+      "sha256": "160ef6a439d3cb4c9daf33e2ee8b4009cc2b323118db153e7a74090a4b7958fa",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/bulk92/result.json"
+    },
+    "runtime-supervisor05.py": {
+      "bytes": 2637,
+      "sha256": "12e0016b32cbf4e9a0a1c084bdb342fe2c668bd1d8053f3e418c9bfc6ceefa33",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/bulk92/runtime-supervisor05.py"
+    }
+  },
+  "outer_rc": 0,
+  "window_pane": "@18 %18",
+  "transport_sha256": "0b570c6e15f933da75c5098377e7f05b2a38359da5dc7f967e3579b2b8c5a0f4",
+  "script_sha256": "f98dc21e571ce7ccccd80bac6ef187a268f8278a716441c6b5eca3c0679bddb3"
+}
