@@ -1,0 +1,487 @@
+{
+  "accepted_erratum_lines": [
+    "2026-10-03T18:19:11-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: timed out waiting for pending transaction; performing function level reset anyway"
+  ],
+  "admission_sha256": "c35aea19a0145634461fc4b007e2a78442a2670a9ea0f5da5590742bb3376e22",
+  "application_exit_passed": true,
+  "application_started": true,
+  "batch": "ia840f_capture_916facce6c674d0cb9a2aca9c0e54470",
+  "boot": "3e2d2060-d6c0-44b5-a269-1adf1e450041",
+  "boot_after": "3e2d2060-d6c0-44b5-a269-1adf1e450041",
+  "commands": [
+    {
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/activation-pre43/runtime/ownership27.py"
+      ],
+      "label": "ownership-before",
+      "output": "{\"boot_id\": \"3e2d2060-d6c0-44b5-a269-1adf1e450041\", \"d_state\": [], \"errors\": [], \"holders\": [], \"kernel\": \"5.14.0-687.48.1.el9_8.x86_64\", \"maps\": [], \"pci\": [{\"bdf\": \"0000:4f:00.1\", \"device\": \"0x0070\", \"driver\": \"/sys/bus/pci/drivers/vfio-pci\", \"group_members\": [\"0000:4f:00.1\"], \"iommu_group\": \"/sys/kernel/iommu_groups/5\", \"parent_path\": \"/sys/devices/pci0000:4e/0000:4e:00.0\", \"vendor\": \"0x12ba\", \"virtfn_links\": {}}, {\"bdf\": \"0000:4f:00.2\", \"device\": \"0xbccf\", \"driver\": \"/sys/bus/pci/drivers/vfio-pci\", \"group_members\": [\"0000:4f:00.2\"], \"iommu_group\": \"/sys/kernel/iommu_groups/76\", \"parent_path\": \"/sys/devices/pci0000:4e/0000:4e:00.0\", \"physfn\": \"/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0\", \"vendor\": \"0x8086\", \"virtfn_links\": {}}, {\"bdf\": \"0000:4f:00.0\", \"device\": \"0xbcce\", \"driver\": \"/sys/bus/pci/drivers/dfl-pci\", \"group_members\": [\"0000:4f:00.0\"], \"iommu_group\": \"/sys/kernel/iommu_groups/4\", \"parent_path\": \"/sys/devices/pci0000:4e/0000:4e:00.0\", \"sriov_numvfs\": \"1\", \"vendor\": \"0x8086\", \"virtfn_links\": {\"virtfn0\": \"/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2\"}}], \"relevant_processes\": [{\"argv\": [\"bash\", \"-c\", \"tmux save-buffer -b ia840f_capture_916facce6c674d0cb9a2aca9c0e54470_source - | /usr/bin/env -u LD_LIBRARY_PATH -u PYTHONOPTIMIZE /usr/bin/python3 -B - ia840f_capture_916facce6c674d0cb9a2aca9c0e54470; rc=$?; tmux set-buffer -b ia840f_capture_916facce6c674d0cb9a2aca9c0e54470_outer \\\"$rc\\\"; tmux wait-for -S ia840f_capture_916facce6c674d0cb9a2aca9c0e54470_done; exit \\\"$rc\\\"\"], \"comm\": \"bash\", \"cwd\": \"/home/uwb_student00\", \"exe\": \"/usr/bin/bash\", \"pid\": 5295, \"start_ticks\": \"335990\", \"state\": \"S\"}, {\"argv\": [\"tmux\", \"wait-for\", \"ia840f_capture_916facce6c674d0cb9a2aca9c0e54470_done\"], \"comm\": \"tmux: client\", \"cwd\": \"/home/uwb_student00\", \"exe\": \"/usr/bin/tmux\", \"pid\": 5326, \"start_ticks\": \"336023\", \"state\": \"S\"}], \"retained_original_owner_scope\": {\"bdfs\": [\"0000:4f:00.0\", \"0000:4f:00.1\", \"0000:4f:00.2\"], \"vfio_nodes\": [\"/dev/vfio/vfio\", \"/dev/vfio/4\", \"/dev/vfio/5\", \"/dev/vfio/76\"]}, \"scope\": \"ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API\", \"sdk_service_readonly\": {\"rc\": 0, \"stderr\": \"\", \"stdout\": \"MainPID=0\\nExecMainStatus=0\\nControlGroup=\\nActiveState=inactive\\nSubState=dead\\n\"}, \"utc\": \"2026-10-04T01:19:09.310728+00:00\"}\n",
+      "pid": 5354,
+      "rc": 0,
+      "sha256": "555407aa14e419aea57be23bb046667b659dda3aa350cd2688efddd122a58d47"
+    },
+    {
+      "argv": [
+        "/home/uwb_student00/ahls/apptainer/bin/apptainer",
+        "exec",
+        "--containall",
+        "--cleanenv",
+        "--no-home",
+        "--no-mount",
+        "sys,hostfs,cwd,bind-paths",
+        "--no-eval",
+        "--workdir",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/copyback68/scratch",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_caps01_vfio01/target01:/work:ro",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_caps03_host01/build01:/caps03:ro",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/copyback68:/diag:rw",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/copyback68/empty:/empty:ro",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/copyback68/exec:/exec:ro",
+        "--bind",
+        "/sys:/sys:ro",
+        "--bind",
+        "/dev/vfio/vfio:/dev/vfio/vfio:rw",
+        "--bind",
+        "/dev/vfio/76:/dev/vfio/76:rw",
+        "--pwd",
+        "/empty",
+        "/home/uwb_student00/ahls/ubuntu-ahls.sif",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "-S",
+        "/diag/inner.py"
+      ],
+      "label": "caps03-one-normal-cleanup-case",
+      "output": "FPGA Test: CAPS03 one HLS invocation, exact data/guards, then normal cleanup only after successful finite completion; uncertain outcomes still retain ownership.\n",
+      "pid": 5359,
+      "rc": 0,
+      "sha256": "66c4a83bc67671cb23fe2c455c153d8d91166db7cc50d9c9e5e73f4999bb73da",
+      "start_ticks": "336142",
+      "started": "2026-10-04T01:19:09.571437+00:00"
+    },
+    {
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/activation-pre43/runtime/ownership27.py"
+      ],
+      "label": "ownership-after",
+      "output": "{\"boot_id\": \"3e2d2060-d6c0-44b5-a269-1adf1e450041\", \"d_state\": [], \"errors\": [], \"holders\": [], \"kernel\": \"5.14.0-687.48.1.el9_8.x86_64\", \"maps\": [], \"pci\": [{\"bdf\": \"0000:4f:00.1\", \"device\": \"0x0070\", \"driver\": \"/sys/bus/pci/drivers/vfio-pci\", \"group_members\": [\"0000:4f:00.1\"], \"iommu_group\": \"/sys/kernel/iommu_groups/5\", \"parent_path\": \"/sys/devices/pci0000:4e/0000:4e:00.0\", \"vendor\": \"0x12ba\", \"virtfn_links\": {}}, {\"bdf\": \"0000:4f:00.2\", \"device\": \"0xbccf\", \"driver\": \"/sys/bus/pci/drivers/vfio-pci\", \"group_members\": [\"0000:4f:00.2\"], \"iommu_group\": \"/sys/kernel/iommu_groups/76\", \"parent_path\": \"/sys/devices/pci0000:4e/0000:4e:00.0\", \"physfn\": \"/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0\", \"vendor\": \"0x8086\", \"virtfn_links\": {}}, {\"bdf\": \"0000:4f:00.0\", \"device\": \"0xbcce\", \"driver\": \"/sys/bus/pci/drivers/dfl-pci\", \"group_members\": [\"0000:4f:00.0\"], \"iommu_group\": \"/sys/kernel/iommu_groups/4\", \"parent_path\": \"/sys/devices/pci0000:4e/0000:4e:00.0\", \"sriov_numvfs\": \"1\", \"vendor\": \"0x8086\", \"virtfn_links\": {\"virtfn0\": \"/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2\"}}], \"relevant_processes\": [{\"argv\": [\"bash\", \"-c\", \"tmux save-buffer -b ia840f_capture_916facce6c674d0cb9a2aca9c0e54470_source - | /usr/bin/env -u LD_LIBRARY_PATH -u PYTHONOPTIMIZE /usr/bin/python3 -B - ia840f_capture_916facce6c674d0cb9a2aca9c0e54470; rc=$?; tmux set-buffer -b ia840f_capture_916facce6c674d0cb9a2aca9c0e54470_outer \\\"$rc\\\"; tmux wait-for -S ia840f_capture_916facce6c674d0cb9a2aca9c0e54470_done; exit \\\"$rc\\\"\"], \"comm\": \"bash\", \"cwd\": \"/home/uwb_student00\", \"exe\": \"/usr/bin/bash\", \"pid\": 5295, \"start_ticks\": \"335990\", \"state\": \"S\"}, {\"argv\": [\"tmux\", \"wait-for\", \"ia840f_capture_916facce6c674d0cb9a2aca9c0e54470_done\"], \"comm\": \"tmux: client\", \"cwd\": \"/home/uwb_student00\", \"exe\": \"/usr/bin/tmux\", \"pid\": 5326, \"start_ticks\": \"336023\", \"state\": \"S\"}], \"retained_original_owner_scope\": {\"bdfs\": [\"0000:4f:00.0\", \"0000:4f:00.1\", \"0000:4f:00.2\"], \"vfio_nodes\": [\"/dev/vfio/vfio\", \"/dev/vfio/4\", \"/dev/vfio/5\", \"/dev/vfio/76\"]}, \"scope\": \"ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API\", \"sdk_service_readonly\": {\"rc\": 0, \"stderr\": \"\", \"stdout\": \"MainPID=0\\nExecMainStatus=0\\nControlGroup=\\nActiveState=inactive\\nSubState=dead\\n\"}, \"utc\": \"2026-10-04T01:19:11.319962+00:00\"}\n",
+      "pid": 5416,
+      "rc": 0,
+      "sha256": "efd64406dca5b6af1302247d295c75ffedafa5865cc3946c22588be814b63591"
+    },
+    {
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/journalctl",
+        "-k",
+        "-b",
+        "0",
+        "--since",
+        "2026-10-04 01:19:08 UTC",
+        "--no-pager",
+        "-o",
+        "short-iso"
+      ],
+      "label": "kernel-journal",
+      "output": "2026-10-03T18:19:10-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: enabling device (0000 -> 0002)\n2026-10-03T18:19:10-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: enabling device (0000 -> 0002)\n2026-10-03T18:19:11-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: timed out waiting for pending transaction; performing function level reset anyway\n",
+      "pid": 5421,
+      "rc": 0,
+      "sha256": "88d4240f1a7000f0f603126bc8b354aa0019ab501a980915b332abb3b39f8193"
+    }
+  ],
+  "drivers_after": {
+    "0000:4f:00.0": "dfl-pci",
+    "0000:4f:00.1": "vfio-pci",
+    "0000:4f:00.2": "vfio-pci"
+  },
+  "emif_readings": {
+    "inf0_init_done": 1,
+    "inf1_init_done": 1
+  },
+  "ended": "2026-10-04T01:19:11.824200+00:00",
+  "erratum_policy": "User explicitly accepted exact P-Tile VF pending-before-FLR warning; ERRATUM-ACCEPTED25.md",
+  "gate": "copyback",
+  "inner": {
+    "application_started": true,
+    "argv": [
+      "/exec/ahls_memory_caps03_startup",
+      "--config",
+      "/work/source/config/ia840f_caps01_vfio.cfg",
+      "--module",
+      "/caps03/build/libahls_memory_caps03_entry_vfio_strict.so",
+      "--run-qualified-caps03-hls",
+      "0000:4f:00.2"
+    ],
+    "ended": "2026-10-04T01:19:11.194086+00:00",
+    "environment": {
+      "HOME": "/diag",
+      "LANG": "C",
+      "LC_ALL": "C",
+      "LD_DEBUG": "libs",
+      "LD_DEBUG_OUTPUT": "/diag/loader",
+      "LD_LIBRARY_PATH": "/work/sdk-build/lib:/work/prefix/usr/lib/x86_64-linux-gnu",
+      "PATH": "/usr/bin:/bin",
+      "TMPDIR": "/diag/tmp"
+    },
+    "loader_logs": {
+      "loader.16": {
+        "bytes": 8745,
+        "sha256": "6f4b541e4d4a0831d6d3efbe285d902baedece8e2935a43495909c78fed50f81",
+        "text": "        16:\tfind library=libjson-c.so.5 [0]; searching\n        16:\t search path=/work/sdk-build/lib/glibc-hwcaps/x86-64-v4:/work/sdk-build/lib/glibc-hwcaps/x86-64-v3:/work/sdk-build/lib/glibc-hwcaps/x86-64-v2:/work/sdk-build/lib/tls/haswell/avx512_1/x86_64:/work/sdk-build/lib/tls/haswell/avx512_1:/work/sdk-build/lib/tls/haswell/x86_64:/work/sdk-build/lib/tls/haswell:/work/sdk-build/lib/tls/avx512_1/x86_64:/work/sdk-build/lib/tls/avx512_1:/work/sdk-build/lib/tls/x86_64:/work/sdk-build/lib/tls:/work/sdk-build/lib/haswell/avx512_1/x86_64:/work/sdk-build/lib/haswell/avx512_1:/work/sdk-build/lib/haswell/x86_64:/work/sdk-build/lib/haswell:/work/sdk-build/lib/avx512_1/x86_64:/work/sdk-build/lib/avx512_1:/work/sdk-build/lib/x86_64:/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/glibc-hwcaps/x86-64-v4/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/glibc-hwcaps/x86-64-v3/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/glibc-hwcaps/x86-64-v2/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/haswell/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/haswell/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/haswell/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/haswell/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/haswell/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/haswell/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/haswell/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/haswell/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/libjson-c.so.5\n        16:\t search path=/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v4:/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v3:/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v2:/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/avx512_1/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/avx512_1:/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell:/work/prefix/usr/lib/x86_64-linux-gnu/tls/avx512_1/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/tls/avx512_1:/work/prefix/usr/lib/x86_64-linux-gnu/tls/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/tls:/work/prefix/usr/lib/x86_64-linux-gnu/haswell/avx512_1/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/haswell/avx512_1:/work/prefix/usr/lib/x86_64-linux-gnu/haswell/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/haswell:/work/prefix/usr/lib/x86_64-linux-gnu/avx512_1/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/avx512_1:/work/prefix/usr/lib/x86_64-linux-gnu/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu\t\t(RUNPATH from file /exec/ahls_memory_caps03_startup)\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v4/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v3/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v2/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/haswell/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/haswell/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/haswell/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/haswell/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5\n        16:\t\n        16:\tfind library=libc.so.6 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libc.so.6\n        16:\t search path=/work/prefix/usr/lib/x86_64-linux-gnu\t\t(RUNPATH from file /exec/ahls_memory_caps03_startup)\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/libc.so.6\n        16:\t search path=/work/prefix/usr/lib/x86_64-linux-gnu\t\t(RUNPATH from file /exec/ahls_memory_caps03_startup)\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/libc.so.6\n        16:\t search cache=/etc/ld.so.cache\n        16:\t  trying file=/lib/x86_64-linux-gnu/libc.so.6\n        16:\t\n        16:\t\n        16:\tcalling init: /lib64/ld-linux-x86-64.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /lib/x86_64-linux-gnu/libc.so.6\n        16:\t\n        16:\t\n        16:\tcalling init: /work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5\n        16:\t\n        16:\t\n        16:\tinitialize program: /exec/ahls_memory_caps03_startup\n        16:\t\n        16:\t\n        16:\ttransferring control: /exec/ahls_memory_caps03_startup\n        16:\t\n        16:\tfind library=libopae-c.so.2 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libopae-c.so.2\n        16:\t\n        16:\tfind library=libuuid.so.1 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libuuid.so.1\n        16:\t search path=/work/prefix/usr/lib/x86_64-linux-gnu\t\t(RUNPATH from file /exec/ahls_memory_caps03_startup)\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1\n        16:\t\n        16:\t\n        16:\tcalling init: /work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1\n        16:\t\n        16:\t\n        16:\tcalling init: /work/sdk-build/lib/libopae-c.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /caps03/build/libahls_memory_caps03_entry_vfio_strict.so\n        16:\t\n        16:\tfind library=libopae-v.so [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libopae-v.so\n        16:\t\n        16:\tfind library=libopaevfio.so.2 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libopaevfio.so.2\n        16:\t\n        16:\tfind library=libopaemem.so.2 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libopaemem.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /work/sdk-build/lib/libopaemem.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /work/sdk-build/lib/libopaevfio.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /work/sdk-build/lib/libopae-v.so\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/sdk-build/lib/libopae-v.so [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/sdk-build/lib/libopaevfio.so.2 [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/sdk-build/lib/libopaemem.so.2 [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /exec/ahls_memory_caps03_startup [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /caps03/build/libahls_memory_caps03_entry_vfio_strict.so [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/sdk-build/lib/libopae-c.so.2 [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5 [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1 [0]\n        16:\t\n"
+      }
+    },
+    "mountinfo_sha256": "3b6c200e49134111a118298ded598a313cefe1d66f454b0788ba050b918df370",
+    "native_exit_passed": true,
+    "native_log": "FPGA Test identity read 0x0\nFPGA Test identity read 0x8\nFPGA Test identity read 0x10\nFPGA Test capability read 0x98\nFPGA Test capability read 0xa0\nFPGA Test capability read 0xa8\nFPGA Test capability read 0xb0\nFPGA Test discarded quiescent finish history=0\nFPGA Test DMA submit sequence=0 mode=1 bank=0 bytes=64 ddr=0x10000\nFPGA Test DMA retired and host pages verified sequence=0\nFPGA Test DMA submit sequence=1 mode=1 bank=0 bytes=64 ddr=0x10040\nFPGA Test DMA retired and host pages verified sequence=1\nFPGA Test DMA submit sequence=2 mode=1 bank=1 bytes=64 ddr=0xffc0\nFPGA Test DMA retired and host pages verified sequence=2\nFPGA Test DMA submit sequence=3 mode=1 bank=1 bytes=128 ddr=0x10000\nFPGA Test DMA retired and host pages verified sequence=3\nFPGA Test HLS ticket=1 completion=0x10002\nFPGA Test DMA submit sequence=4 mode=2 bank=1 bytes=64 ddr=0xffc0\nFPGA Test DMA retired and host pages verified sequence=4\nFPGA Test DMA submit sequence=5 mode=2 bank=1 bytes=128 ddr=0x10000\nFPGA Test DMA retired and host pages verified sequence=5\nFPGA Test HLS DATA PASS: integers=9 result_bytes=36 guard_bytes=156 descriptors=6\nFPGA Test CAPS03 frontend PASSED: integers=9 copied_span_bytes=192 descriptors=6 verified_payload_and_guards=1\nNo simultaneous-bank, sustained or full-DDR qualification. Live VFIO lifecycle acceptance is separate.\n",
+    "native_log_sha256": "7f579f000f810be17a78886d9aafe899746b0503e9eaa1822b53c27a08ff1299",
+    "native_rc": 0,
+    "nodes": [
+      "76",
+      "vfio"
+    ],
+    "numerical_data_pass": true,
+    "process": {
+      "application_started": true,
+      "argv": [
+        "/exec/ahls_memory_caps03_startup",
+        "--config",
+        "/work/source/config/ia840f_caps01_vfio.cfg",
+        "--module",
+        "/caps03/build/libahls_memory_caps03_entry_vfio_strict.so",
+        "--run-qualified-caps03-hls",
+        "0000:4f:00.2"
+      ],
+      "execution_state": "EXITED",
+      "native_rc": 0,
+      "pid": 16,
+      "retained_owner": false,
+      "start_ticks": "336187",
+      "success": true
+    },
+    "retained_owner": false,
+    "runtime_preflight_passed": true,
+    "started": "2026-10-04T01:19:09.986867+00:00",
+    "success": true
+  },
+  "kernel_concern_lines": [
+    "2026-10-03T18:19:11-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: timed out waiting for pending transaction; performing function level reset anyway"
+  ],
+  "kernel_journal": "2026-10-03T18:19:10-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: enabling device (0000 -> 0002)\n2026-10-03T18:19:10-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: enabling device (0000 -> 0002)\n2026-10-03T18:19:11-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: timed out waiting for pending transaction; performing function level reset anyway\n",
+  "lifecycle_accepted": true,
+  "lifecycle_clean": false,
+  "manual_reset": false,
+  "migrated_interface_uuid": "fc603c44-5c8f-5e94-bcbe-a5780030947c",
+  "native_rc": 0,
+  "new_artifacts": {
+    "/home/uwb_student00/ahls/new_BSP/work_caps03_host01/build01/build/ahls_memory_caps03_startup": "8f363546faff826dd63c0e1da166d34db63ea5eb36fd9bb13ec4f54e7de955f7",
+    "/home/uwb_student00/ahls/new_BSP/work_caps03_host01/build01/build/libahls_memory_caps03_entry_vfio_strict.so": "6c8427d7379e811122cd549dec40181044c2dd90b961e56b163b6c1a69daecf0"
+  },
+  "numerical_data_pass": true,
+  "original_files_unchanged": true,
+  "ownership_after": {
+    "boot_id": "3e2d2060-d6c0-44b5-a269-1adf1e450041",
+    "d_state": [],
+    "errors": [],
+    "holders": [],
+    "kernel": "5.14.0-687.48.1.el9_8.x86_64",
+    "maps": [],
+    "pci": [
+      {
+        "bdf": "0000:4f:00.1",
+        "device": "0x0070",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.1"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/5",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "vendor": "0x12ba",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.2",
+        "device": "0xbccf",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.2"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/76",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "physfn": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0",
+        "vendor": "0x8086",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.0",
+        "device": "0xbcce",
+        "driver": "/sys/bus/pci/drivers/dfl-pci",
+        "group_members": [
+          "0000:4f:00.0"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/4",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "sriov_numvfs": "1",
+        "vendor": "0x8086",
+        "virtfn_links": {
+          "virtfn0": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2"
+        }
+      }
+    ],
+    "relevant_processes": [
+      {
+        "argv": [
+          "bash",
+          "-c",
+          "tmux save-buffer -b ia840f_capture_916facce6c674d0cb9a2aca9c0e54470_source - | /usr/bin/env -u LD_LIBRARY_PATH -u PYTHONOPTIMIZE /usr/bin/python3 -B - ia840f_capture_916facce6c674d0cb9a2aca9c0e54470; rc=$?; tmux set-buffer -b ia840f_capture_916facce6c674d0cb9a2aca9c0e54470_outer \"$rc\"; tmux wait-for -S ia840f_capture_916facce6c674d0cb9a2aca9c0e54470_done; exit \"$rc\""
+        ],
+        "comm": "bash",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/bash",
+        "pid": 5295,
+        "start_ticks": "335990",
+        "state": "S"
+      },
+      {
+        "argv": [
+          "tmux",
+          "wait-for",
+          "ia840f_capture_916facce6c674d0cb9a2aca9c0e54470_done"
+        ],
+        "comm": "tmux: client",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/tmux",
+        "pid": 5326,
+        "start_ticks": "336023",
+        "state": "S"
+      }
+    ],
+    "retained_original_owner_scope": {
+      "bdfs": [
+        "0000:4f:00.0",
+        "0000:4f:00.1",
+        "0000:4f:00.2"
+      ],
+      "vfio_nodes": [
+        "/dev/vfio/vfio",
+        "/dev/vfio/4",
+        "/dev/vfio/5",
+        "/dev/vfio/76"
+      ]
+    },
+    "scope": "ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API",
+    "sdk_service_readonly": {
+      "rc": 0,
+      "stderr": "",
+      "stdout": "MainPID=0\nExecMainStatus=0\nControlGroup=\nActiveState=inactive\nSubState=dead\n"
+    },
+    "utc": "2026-10-04T01:19:11.319962+00:00"
+  },
+  "ownership_before": {
+    "boot_id": "3e2d2060-d6c0-44b5-a269-1adf1e450041",
+    "d_state": [],
+    "errors": [],
+    "holders": [],
+    "kernel": "5.14.0-687.48.1.el9_8.x86_64",
+    "maps": [],
+    "pci": [
+      {
+        "bdf": "0000:4f:00.1",
+        "device": "0x0070",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.1"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/5",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "vendor": "0x12ba",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.2",
+        "device": "0xbccf",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.2"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/76",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "physfn": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0",
+        "vendor": "0x8086",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.0",
+        "device": "0xbcce",
+        "driver": "/sys/bus/pci/drivers/dfl-pci",
+        "group_members": [
+          "0000:4f:00.0"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/4",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "sriov_numvfs": "1",
+        "vendor": "0x8086",
+        "virtfn_links": {
+          "virtfn0": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2"
+        }
+      }
+    ],
+    "relevant_processes": [
+      {
+        "argv": [
+          "bash",
+          "-c",
+          "tmux save-buffer -b ia840f_capture_916facce6c674d0cb9a2aca9c0e54470_source - | /usr/bin/env -u LD_LIBRARY_PATH -u PYTHONOPTIMIZE /usr/bin/python3 -B - ia840f_capture_916facce6c674d0cb9a2aca9c0e54470; rc=$?; tmux set-buffer -b ia840f_capture_916facce6c674d0cb9a2aca9c0e54470_outer \"$rc\"; tmux wait-for -S ia840f_capture_916facce6c674d0cb9a2aca9c0e54470_done; exit \"$rc\""
+        ],
+        "comm": "bash",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/bash",
+        "pid": 5295,
+        "start_ticks": "335990",
+        "state": "S"
+      },
+      {
+        "argv": [
+          "tmux",
+          "wait-for",
+          "ia840f_capture_916facce6c674d0cb9a2aca9c0e54470_done"
+        ],
+        "comm": "tmux: client",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/tmux",
+        "pid": 5326,
+        "start_ticks": "336023",
+        "state": "S"
+      }
+    ],
+    "retained_original_owner_scope": {
+      "bdfs": [
+        "0000:4f:00.0",
+        "0000:4f:00.1",
+        "0000:4f:00.2"
+      ],
+      "vfio_nodes": [
+        "/dev/vfio/vfio",
+        "/dev/vfio/4",
+        "/dev/vfio/5",
+        "/dev/vfio/76"
+      ]
+    },
+    "scope": "ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API",
+    "sdk_service_readonly": {
+      "rc": 0,
+      "stderr": "",
+      "stdout": "MainPID=0\nExecMainStatus=0\nControlGroup=\nActiveState=inactive\nSubState=dead\n"
+    },
+    "utc": "2026-10-04T01:19:09.310728+00:00"
+  },
+  "pane": "%7",
+  "preflight18_sha256": "4513ecd982bd862c3f32af1ddf0f0483a3304ef2495b7d4a042edc2808b9b0b7",
+  "retry": false,
+  "run_id": "copyback68",
+  "started": "2026-10-04T01:19:08.193891+00:00",
+  "static_emif_read": true,
+  "success": true,
+  "unaccepted_kernel_concern_lines": [],
+  "exports": {
+    "admission.json": {
+      "bytes": 1494,
+      "sha256": "c35aea19a0145634461fc4b007e2a78442a2670a9ea0f5da5590742bb3376e22",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/copyback68/admission.json"
+    },
+    "binding.json": {
+      "bytes": 7351,
+      "sha256": "d2597df1d48e91206c2c85466011d211aabe7b5d4a21e2c696274f2ff5e4365f",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/copyback68/binding.json"
+    },
+    "container.log": {
+      "bytes": 161,
+      "sha256": "66c4a83bc67671cb23fe2c455c153d8d91166db7cc50d9c9e5e73f4999bb73da",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/copyback68/container.log"
+    },
+    "emif-pending.json": {
+      "bytes": 208,
+      "sha256": "6dfec6f4254fb9eb4146b668f3e4bdbff17aa2f198f057b29369dbdfb288cd31",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/copyback68/emif-pending.json"
+    },
+    "emif-readings.json": {
+      "bytes": 42,
+      "sha256": "e0c4f671a1830c9b22280e34fe425f212513f3564b32664a8ed1c413d9ae9a21",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/copyback68/emif-readings.json"
+    },
+    "inner-result.json": {
+      "bytes": 12104,
+      "sha256": "028359bbba21184d9695042506c96944d657e5cdbe436e8b1472ad133373d442",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/copyback68/inner-result.json"
+    },
+    "inner.py": {
+      "bytes": 4477,
+      "sha256": "3dd7d657f0ead4ee02a5580a626dcc356c54fbbf75269e46aea1f0837072e106",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/copyback68/inner.py"
+    },
+    "kernel-journal.log": {
+      "bytes": 369,
+      "sha256": "88d4240f1a7000f0f603126bc8b354aa0019ab501a980915b332abb3b39f8193",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/copyback68/kernel-journal.log"
+    },
+    "loader.16": {
+      "bytes": 8745,
+      "sha256": "6f4b541e4d4a0831d6d3efbe285d902baedece8e2935a43495909c78fed50f81",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/copyback68/loader.16"
+    },
+    "mountinfo.log": {
+      "bytes": 4557,
+      "sha256": "3b6c200e49134111a118298ded598a313cefe1d66f454b0788ba050b918df370",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/copyback68/mountinfo.log"
+    },
+    "native.log": {
+      "bytes": 1338,
+      "sha256": "7f579f000f810be17a78886d9aafe899746b0503e9eaa1822b53c27a08ff1299",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/copyback68/native.log"
+    },
+    "ownership-after.log": {
+      "bytes": 2324,
+      "sha256": "efd64406dca5b6af1302247d295c75ffedafa5865cc3946c22588be814b63591",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/copyback68/ownership-after.log"
+    },
+    "ownership-before.log": {
+      "bytes": 2324,
+      "sha256": "555407aa14e419aea57be23bb046667b659dda3aa350cd2688efddd122a58d47",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/copyback68/ownership-before.log"
+    },
+    "pending.json": {
+      "bytes": 1239,
+      "sha256": "83031ba794776279e010e306d83459be95524ce559ce4a2ce9f8881135cb0991",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/copyback68/pending.json"
+    },
+    "result.json": {
+      "bytes": 29154,
+      "sha256": "9989367e94ae0151ae175df353e9a755620122e9f3230cd1f8c9a8d31038ef59",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/copyback68/result.json"
+    },
+    "runtime-supervisor05.py": {
+      "bytes": 2637,
+      "sha256": "12e0016b32cbf4e9a0a1c084bdb342fe2c668bd1d8053f3e418c9bfc6ceefa33",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/copyback68/runtime-supervisor05.py"
+    }
+  },
+  "outer_rc": 0,
+  "window_pane": "@7 %7",
+  "transport_sha256": "ae8ab96f98ed18b723bafb023b34030171a245770e810fd5e960680790a594e0",
+  "script_sha256": "54c8cca0e1490cbf2f46f59b939bcab2f281b64e6e2f703852675c69ca36402c"
+}

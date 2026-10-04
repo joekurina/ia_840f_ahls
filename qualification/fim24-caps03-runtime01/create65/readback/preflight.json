@@ -1,0 +1,133 @@
+{
+  "success": false,
+  "native_started": false,
+  "hardware_operation": "create one PF0 VF",
+  "authority": "Current user explicitly directs continuing the working-card goal with full in-scope iteration approval. Create only PF0 VF0 with driver autoprobe disabled; no AFU reads or recovery actions.",
+  "commands": [],
+  "processes_of_interest": [],
+  "tool_hashes": {
+    "/usr/bin/pci_device": "502c80133f66e7d9326660cc7c358b81b6bd0ef9525463b0df710eeae0815a10",
+    "/usr/lib/python3.9/site-packages/opae/admin/tools/pci_device.py": "8ab8230856e51b76c733d309d11d2cbec9fe9fac78e8e86b1ed7f90cc38975df",
+    "/usr/lib/python3.9/site-packages/opae/admin/sysfs.py": "d70da0e869d7ce45ac13a15916d345841a131c0572cf1af247c2fcae32ba1151"
+  },
+  "runtime_init64_sha256": "d03020c6dcbeb2cba2212bf7820ada4bc9fdac3b41348e19e933ecae231c055b",
+  "started": "2026-10-04T01:15:51.123600+00:00",
+  "host": "Agilex7Workstation",
+  "uid": 1000,
+  "pane": "%5",
+  "boot_before": "3e2d2060-d6c0-44b5-a269-1adf1e450041",
+  "pf_before": {
+    "path": "/sys/bus/pci/devices/0000:4f:00.0",
+    "exists": true,
+    "vendor": "0x8086",
+    "device": "0xbcce",
+    "subsystem_vendor": "0x8086",
+    "subsystem_device": "0x1771",
+    "sriov_numvfs": "0",
+    "sriov_totalvfs": "1",
+    "sriov_drivers_autoprobe": "1",
+    "driver": "/sys/bus/pci/drivers/dfl-pci",
+    "physfn": null,
+    "iommu_group": "/sys/kernel/iommu_groups/4",
+    "virtfn_links": {}
+  },
+  "management_before": {
+    "path": "/sys/bus/pci/devices/0000:4f:00.1",
+    "exists": true,
+    "vendor": "0x12ba",
+    "device": "0x0070",
+    "subsystem_vendor": "0x12ba",
+    "subsystem_device": "0xb5d4",
+    "driver": "/sys/bus/pci/drivers/vfio-pci",
+    "physfn": null,
+    "iommu_group": "/sys/kernel/iommu_groups/5",
+    "virtfn_links": {}
+  },
+  "sudo_check": {
+    "rc": 0,
+    "output": ""
+  },
+  "ownership": {
+    "boot_id": "3e2d2060-d6c0-44b5-a269-1adf1e450041",
+    "d_state": [],
+    "errors": [],
+    "holders": [],
+    "kernel": "5.14.0-687.48.1.el9_8.x86_64",
+    "maps": [],
+    "pci": [
+      {
+        "bdf": "0000:4f:00.1",
+        "device": "0x0070",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.1"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/5",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "vendor": "0x12ba",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.0",
+        "device": "0xbcce",
+        "driver": "/sys/bus/pci/drivers/dfl-pci",
+        "group_members": [
+          "0000:4f:00.0"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/4",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "sriov_numvfs": "0",
+        "vendor": "0x8086",
+        "virtfn_links": {}
+      }
+    ],
+    "relevant_processes": [
+      {
+        "argv": [
+          "bash",
+          "-c",
+          "tmux save-buffer -b ia840f_capture_54fc34e7d7cc4eb4aa72eb3beb36d0f4_source - | /usr/bin/env -u LD_LIBRARY_PATH -u PYTHONOPTIMIZE /usr/bin/python3 -B - ia840f_capture_54fc34e7d7cc4eb4aa72eb3beb36d0f4; rc=$?; tmux set-buffer -b ia840f_capture_54fc34e7d7cc4eb4aa72eb3beb36d0f4_outer \"$rc\"; tmux wait-for -S ia840f_capture_54fc34e7d7cc4eb4aa72eb3beb36d0f4_done; exit \"$rc\""
+        ],
+        "comm": "bash",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/bash",
+        "pid": 4730,
+        "start_ticks": "316284",
+        "state": "S"
+      },
+      {
+        "argv": [
+          "tmux",
+          "wait-for",
+          "ia840f_capture_54fc34e7d7cc4eb4aa72eb3beb36d0f4_done"
+        ],
+        "comm": "tmux: client",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/tmux",
+        "pid": 4769,
+        "start_ticks": "316317",
+        "state": "S"
+      }
+    ],
+    "retained_original_owner_scope": {
+      "bdfs": [
+        "0000:4f:00.0",
+        "0000:4f:00.1",
+        "0000:4f:00.2"
+      ],
+      "vfio_nodes": [
+        "/dev/vfio/vfio",
+        "/dev/vfio/4",
+        "/dev/vfio/5",
+        "/dev/vfio/76"
+      ]
+    },
+    "scope": "ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API",
+    "sdk_service_readonly": {
+      "rc": 0,
+      "stderr": "",
+      "stdout": "MainPID=0\nExecMainStatus=0\nControlGroup=\nActiveState=inactive\nSubState=dead\n"
+    },
+    "utc": "2026-10-04T01:15:51.316493+00:00"
+  }
+}
