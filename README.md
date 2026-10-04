@@ -1,11 +1,24 @@
 # IA-840F OFS / Altera AHLS source project
 
-## IA-840F CAPS03 release instructions
+## Current release: OFS 2026.1 / Quartus 26.1 migration
 
-Release **`ia840f-caps03-v1.1.0`** includes the corrected AHLS GettingStarted
-flow and detailed instructions for the FIM/PIM/AFU hardware path. Start with the
-[release notes and checkout command](docs/releases/ia840f-caps03-v1.1.0.md), then
-choose the appropriate workflow:
+Release **`ia840f-caps03-v2.0.0`** is the migrated platform: the accepted
+CAPS03 static FIM + PIM + memory-HLS AFU moved to **ofs-2026.1-1 /
+Quartus Prime Pro 26.1.1 Build 130**, timing re-closed at the unchanged
+**3.000 ns** application target, and the image SDK-programmed, boot-identified
+(FIM interface UUID `fc603c44-5c8f-5e94-bcbe-a5780030947c`) and re-qualified on
+the card — numerical copyback, 34-case coverage, DDR
+independent/isolation/sustained, walking-bit and bulk concurrent-bank all
+independently accepted (each 0/0/0, FINAL PASS WITH LIMITS). Start with the
+[release notes](docs/releases/ia840f-caps03-v2.0.0.md) and the campaign closure
+[aggregate](qualification/fim24-caps03-runtime01/MIGRATION-COMPLETE98.md).
+The prior Quartus 25.1 baseline remains published and unchanged as
+[`ia840f-caps03-v1.1.0`](docs/releases/ia840f-caps03-v1.1.0.md).
+
+## Workflow guides (operator documentation)
+
+The workflow guides remain authoritative for both toolchain generations;
+version-sensitive facts for the migrated platform are in the v2.0.0 notes:
 
 1. [Static FIM and PIM platform: architecture, source pins, preparation and export](docs/ia840f-fim-pim.md).
 2. [CAPS03 AFU: AHLS generation and native CMake synthesis, fit, timing and assembly](docs/ia840f-build.md).
@@ -32,12 +45,17 @@ its external prerequisites. The existing `ia840f-caps03-v1.0.0` tag is unchanged
 
 **Active target: Altera AHLS-generated RTL integrated into an OFS AFU through PIM, with OPAE/DFL host access. Not an Intel oneAPI compiler/runtime BSP. The Work21-based CAPS03 memory-HLS integration and scoped hardware qualification are complete, with the exact user-accepted lifecycle erratum exception.**
 
-The selected build uses Quartus 25.1 at the unchanged 3.000 ns application-clock
-target, and the final multi-corner STA passes it: all 913 numeric records are
-nonnegative (worst setup slack +0.213 ns, zero negative slacks, TNS 0.000), with
-vendor FIFO pointer-skew constraints verified across all five corners. See
-[bounded physical acceptance](qualification/caps03-persona01/PHYSICAL-ACCEPTANCE01.md)
-and [assembly acceptance](qualification/caps03-persona01/ASSEMBLY-ACCEPTANCE01.md).
+The selected build uses **Quartus Prime Pro 26.1.1 Build 130** on the migrated
+`ofs-2026.1-1` platform at the unchanged 3.000 ns application-clock target; the
+final five-corner numerical STA passes it: all 923 numeric records are
+nonnegative (worst setup +0.002 ns, zero negative slacks), with the EMIF1
+corner closed by two CLOCK_SPINE 2 QSF records (+0.082 ns). See the migration
+[closure aggregate](qualification/fim24-caps03-runtime01/MIGRATION-COMPLETE98.md),
+[STA acceptance](qualification/fim24-caps03-sta01/NUMERICAL-ACCEPTANCE32.md)
+and [fit acceptance](qualification/fim24-caps03-physical01/FIT-ACCEPTANCE38.md).
+The superseded Quartus 25.1 campaign record (913 records, +0.213 ns worst
+setup) is preserved in
+[bounded physical acceptance](qualification/caps03-persona01/PHYSICAL-ACCEPTANCE01.md).
 
 **"Design Closure: FAIL" is a Quartus Design-Assistant panel, not a timing
 failure.** It retains the disclosed LNT-30010 reset-fanout finding (1735 CLRN /
@@ -177,9 +195,11 @@ Vendor evidence identifies **AGFB027R25A2E2V**, one discrete DDR4 channel plus o
 ### Historical toolchain planning
 
 AHLS documentation requires **Quartus Pro 26.1 for Agilex 7** as the documented
-compiler baseline; the delivered platform uses Quartus Prime Pro **25.1.0 Build
-129** with HLS IP Gen 2026.1.0, and the installed compiler emits a retained
-mixed-version warning. Do not silently switch installations to hide it. No
+compiler baseline; the delivered platform historically used Quartus Prime Pro
+**25.1.0 Build 129** with a retained mixed-version warning, and the
+`ia840f-caps03-v2.0.0` migration delivered exactly that baseline —
+**Quartus Prime Pro 26.1.1 Build 130** with OFS `ofs-2026.1-1`, eliminating the
+mixed-version combination. Do not silently switch installations. No
 downgrade to an older oneAPI-compatible stack was requested or applied.
 
 ### Historical execution boundary — superseded by GOAL-PROMPT.md
