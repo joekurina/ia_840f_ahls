@@ -1,0 +1,402 @@
+{
+  "success": true,
+  "commands": [
+    {
+      "label": "ownership-before",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/activation-pre43/runtime/ownership27.py"
+      ],
+      "pid": 7929,
+      "rc": 0,
+      "output": "{\"boot_id\": \"3e2d2060-d6c0-44b5-a269-1adf1e450041\", \"d_state\": [], \"errors\": [], \"holders\": [], \"kernel\": \"5.14.0-687.48.1.el9_8.x86_64\", \"maps\": [], \"pci\": [{\"bdf\": \"0000:4f:00.1\", \"device\": \"0x0070\", \"driver\": \"/sys/bus/pci/drivers/vfio-pci\", \"group_members\": [\"0000:4f:00.1\"], \"iommu_group\": \"/sys/kernel/iommu_groups/5\", \"parent_path\": \"/sys/devices/pci0000:4e/0000:4e:00.0\", \"vendor\": \"0x12ba\", \"virtfn_links\": {}}, {\"bdf\": \"0000:4f:00.2\", \"device\": \"0xbccf\", \"driver\": \"/sys/bus/pci/drivers/vfio-pci\", \"group_members\": [\"0000:4f:00.2\"], \"iommu_group\": \"/sys/kernel/iommu_groups/76\", \"parent_path\": \"/sys/devices/pci0000:4e/0000:4e:00.0\", \"physfn\": \"/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0\", \"vendor\": \"0x8086\", \"virtfn_links\": {}}, {\"bdf\": \"0000:4f:00.0\", \"device\": \"0xbcce\", \"driver\": \"/sys/bus/pci/drivers/dfl-pci\", \"group_members\": [\"0000:4f:00.0\"], \"iommu_group\": \"/sys/kernel/iommu_groups/4\", \"parent_path\": \"/sys/devices/pci0000:4e/0000:4e:00.0\", \"sriov_numvfs\": \"1\", \"vendor\": \"0x8086\", \"virtfn_links\": {\"virtfn0\": \"/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2\"}}], \"relevant_processes\": [{\"argv\": [\"bash\", \"-c\", \"tmux save-buffer -b ia840f_capture_0b11c7a8d8d14867865794b76db42ac9_source - | /usr/bin/env -u LD_LIBRARY_PATH -u PYTHONOPTIMIZE /usr/bin/python3 -B - ia840f_capture_0b11c7a8d8d14867865794b76db42ac9; rc=$?; tmux set-buffer -b ia840f_capture_0b11c7a8d8d14867865794b76db42ac9_outer \\\"$rc\\\"; tmux wait-for -S ia840f_capture_0b11c7a8d8d14867865794b76db42ac9_done; exit \\\"$rc\\\"\"], \"comm\": \"bash\", \"cwd\": \"/home/uwb_student00\", \"exe\": \"/usr/bin/bash\", \"pid\": 7870, \"start_ticks\": \"639001\", \"state\": \"S\"}, {\"argv\": [\"tmux\", \"wait-for\", \"ia840f_capture_0b11c7a8d8d14867865794b76db42ac9_done\"], \"comm\": \"tmux: client\", \"cwd\": \"/home/uwb_student00\", \"exe\": \"/usr/bin/tmux\", \"pid\": 7901, \"start_ticks\": \"639035\", \"state\": \"S\"}], \"retained_original_owner_scope\": {\"bdfs\": [\"0000:4f:00.0\", \"0000:4f:00.1\", \"0000:4f:00.2\"], \"vfio_nodes\": [\"/dev/vfio/vfio\", \"/dev/vfio/4\", \"/dev/vfio/5\", \"/dev/vfio/76\"]}, \"scope\": \"ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API\", \"sdk_service_readonly\": {\"rc\": 0, \"stderr\": \"\", \"stdout\": \"MainPID=0\\nExecMainStatus=0\\nControlGroup=\\nActiveState=inactive\\nSubState=dead\\n\"}, \"utc\": \"2026-10-04T02:09:39.430472+00:00\"}\n",
+      "sha256": "a031981e68366840879cee25cadae9e66cbada5baa705c98b8a32ef8915b751b"
+    },
+    {
+      "label": "caps03-30-address-walk",
+      "argv": [
+        "/home/uwb_student00/ahls/apptainer/bin/apptainer",
+        "exec",
+        "--containall",
+        "--cleanenv",
+        "--no-home",
+        "--no-mount",
+        "sys,hostfs,cwd,bind-paths",
+        "--no-eval",
+        "--workdir",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/walk86/scratch",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_caps01_vfio01/target01:/work:ro",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_caps03_walk01/native01:/walk:ro",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/walk86:/diag:rw",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/walk86/empty:/empty:ro",
+        "--bind",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_runtime01/walk86/exec:/exec:ro",
+        "--bind",
+        "/sys:/sys:ro",
+        "--bind",
+        "/dev/vfio/vfio:/dev/vfio/vfio:rw",
+        "--bind",
+        "/dev/vfio/76:/dev/vfio/76:rw",
+        "--pwd",
+        "/empty",
+        "/home/uwb_student00/ahls/ubuntu-ahls.sif",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "-S",
+        "/diag/inner.py"
+      ],
+      "pid": 7934,
+      "started": "2026-10-04T02:09:39.700521+00:00",
+      "start_ticks": "639155",
+      "rc": 0,
+      "output": "FPGA Test: CAPS03 30 sparse walking-bit locations per bank; all writes before all reads;120 serial64-byte descriptors; normal cleanup only after data and page verification.\n",
+      "sha256": "e8f2b12546839df925f98410c4a053601b1fc67efb476be218c13c0f5202a75d"
+    },
+    {
+      "label": "ownership-after",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/activation-pre43/runtime/ownership27.py"
+      ],
+      "pid": 7990,
+      "rc": 0,
+      "output": "{\"boot_id\": \"3e2d2060-d6c0-44b5-a269-1adf1e450041\", \"d_state\": [], \"errors\": [], \"holders\": [], \"kernel\": \"5.14.0-687.48.1.el9_8.x86_64\", \"maps\": [], \"pci\": [{\"bdf\": \"0000:4f:00.1\", \"device\": \"0x0070\", \"driver\": \"/sys/bus/pci/drivers/vfio-pci\", \"group_members\": [\"0000:4f:00.1\"], \"iommu_group\": \"/sys/kernel/iommu_groups/5\", \"parent_path\": \"/sys/devices/pci0000:4e/0000:4e:00.0\", \"vendor\": \"0x12ba\", \"virtfn_links\": {}}, {\"bdf\": \"0000:4f:00.2\", \"device\": \"0xbccf\", \"driver\": \"/sys/bus/pci/drivers/vfio-pci\", \"group_members\": [\"0000:4f:00.2\"], \"iommu_group\": \"/sys/kernel/iommu_groups/76\", \"parent_path\": \"/sys/devices/pci0000:4e/0000:4e:00.0\", \"physfn\": \"/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0\", \"vendor\": \"0x8086\", \"virtfn_links\": {}}, {\"bdf\": \"0000:4f:00.0\", \"device\": \"0xbcce\", \"driver\": \"/sys/bus/pci/drivers/dfl-pci\", \"group_members\": [\"0000:4f:00.0\"], \"iommu_group\": \"/sys/kernel/iommu_groups/4\", \"parent_path\": \"/sys/devices/pci0000:4e/0000:4e:00.0\", \"sriov_numvfs\": \"1\", \"vendor\": \"0x8086\", \"virtfn_links\": {\"virtfn0\": \"/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2\"}}], \"relevant_processes\": [{\"argv\": [\"bash\", \"-c\", \"tmux save-buffer -b ia840f_capture_0b11c7a8d8d14867865794b76db42ac9_source - | /usr/bin/env -u LD_LIBRARY_PATH -u PYTHONOPTIMIZE /usr/bin/python3 -B - ia840f_capture_0b11c7a8d8d14867865794b76db42ac9; rc=$?; tmux set-buffer -b ia840f_capture_0b11c7a8d8d14867865794b76db42ac9_outer \\\"$rc\\\"; tmux wait-for -S ia840f_capture_0b11c7a8d8d14867865794b76db42ac9_done; exit \\\"$rc\\\"\"], \"comm\": \"bash\", \"cwd\": \"/home/uwb_student00\", \"exe\": \"/usr/bin/bash\", \"pid\": 7870, \"start_ticks\": \"639001\", \"state\": \"S\"}, {\"argv\": [\"tmux\", \"wait-for\", \"ia840f_capture_0b11c7a8d8d14867865794b76db42ac9_done\"], \"comm\": \"tmux: client\", \"cwd\": \"/home/uwb_student00\", \"exe\": \"/usr/bin/tmux\", \"pid\": 7901, \"start_ticks\": \"639035\", \"state\": \"S\"}], \"retained_original_owner_scope\": {\"bdfs\": [\"0000:4f:00.0\", \"0000:4f:00.1\", \"0000:4f:00.2\"], \"vfio_nodes\": [\"/dev/vfio/vfio\", \"/dev/vfio/4\", \"/dev/vfio/5\", \"/dev/vfio/76\"]}, \"scope\": \"ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API\", \"sdk_service_readonly\": {\"rc\": 0, \"stderr\": \"\", \"stdout\": \"MainPID=0\\nExecMainStatus=0\\nControlGroup=\\nActiveState=inactive\\nSubState=dead\\n\"}, \"utc\": \"2026-10-04T02:09:41.598374+00:00\"}\n",
+      "sha256": "22bfdf05c44c11650811d5e5896c9d0c10033799816688652b3b4d1a532aff3b"
+    },
+    {
+      "label": "kernel-journal",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/journalctl",
+        "-k",
+        "-b",
+        "0",
+        "--since",
+        "2026-10-04 02:09:38 UTC",
+        "--no-pager",
+        "-o",
+        "short-iso"
+      ],
+      "pid": 7995,
+      "rc": 0,
+      "output": "2026-10-03T19:09:40-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: enabling device (0000 -> 0002)\n2026-10-03T19:09:40-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: enabling device (0000 -> 0002)\n2026-10-03T19:09:41-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: timed out waiting for pending transaction; performing function level reset anyway\n",
+      "sha256": "f40763b29898bc80bc627c18035db98629a59ab4910db3b4ad547de86d362d76"
+    }
+  ],
+  "started": "2026-10-04T02:09:38.298357+00:00",
+  "boot": "3e2d2060-d6c0-44b5-a269-1adf1e450041",
+  "pane": "%16",
+  "admission_sha256": "e60c30824ea66a0009b630e21ef44ac07e8fe70df80e50cdd437aa4e82fb54e8",
+  "run_id": "walk86",
+  "gate": "walking-bit",
+  "application_started": true,
+  "manual_reset": false,
+  "retry": false,
+  "preflight18_sha256": "4513ecd982bd862c3f32af1ddf0f0483a3304ef2495b7d4a042edc2808b9b0b7",
+  "new_artifacts": {
+    "/home/uwb_student00/ahls/new_BSP/work_caps03_host01/build01/build/ahls_memory_caps03_startup": "8f363546faff826dd63c0e1da166d34db63ea5eb36fd9bb13ec4f54e7de955f7",
+    "/home/uwb_student00/ahls/new_BSP/work_caps03_host01/build01/build/libahls_memory_caps03_entry_vfio_strict.so": "6c8427d7379e811122cd549dec40181044c2dd90b961e56b163b6c1a69daecf0",
+    "/home/uwb_student00/ahls/new_BSP/work_caps03_walk01/native01/build/libahls_memory_caps03_walk_entry_vfio_strict.so": "bdf5a8c78ca7583028769a71a5c12bb2f3ee0ed3f17060d4f8a5255a72e557e0"
+  },
+  "ownership_before": {
+    "boot_id": "3e2d2060-d6c0-44b5-a269-1adf1e450041",
+    "d_state": [],
+    "errors": [],
+    "holders": [],
+    "kernel": "5.14.0-687.48.1.el9_8.x86_64",
+    "maps": [],
+    "pci": [
+      {
+        "bdf": "0000:4f:00.1",
+        "device": "0x0070",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.1"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/5",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "vendor": "0x12ba",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.2",
+        "device": "0xbccf",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.2"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/76",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "physfn": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0",
+        "vendor": "0x8086",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.0",
+        "device": "0xbcce",
+        "driver": "/sys/bus/pci/drivers/dfl-pci",
+        "group_members": [
+          "0000:4f:00.0"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/4",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "sriov_numvfs": "1",
+        "vendor": "0x8086",
+        "virtfn_links": {
+          "virtfn0": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2"
+        }
+      }
+    ],
+    "relevant_processes": [
+      {
+        "argv": [
+          "bash",
+          "-c",
+          "tmux save-buffer -b ia840f_capture_0b11c7a8d8d14867865794b76db42ac9_source - | /usr/bin/env -u LD_LIBRARY_PATH -u PYTHONOPTIMIZE /usr/bin/python3 -B - ia840f_capture_0b11c7a8d8d14867865794b76db42ac9; rc=$?; tmux set-buffer -b ia840f_capture_0b11c7a8d8d14867865794b76db42ac9_outer \"$rc\"; tmux wait-for -S ia840f_capture_0b11c7a8d8d14867865794b76db42ac9_done; exit \"$rc\""
+        ],
+        "comm": "bash",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/bash",
+        "pid": 7870,
+        "start_ticks": "639001",
+        "state": "S"
+      },
+      {
+        "argv": [
+          "tmux",
+          "wait-for",
+          "ia840f_capture_0b11c7a8d8d14867865794b76db42ac9_done"
+        ],
+        "comm": "tmux: client",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/tmux",
+        "pid": 7901,
+        "start_ticks": "639035",
+        "state": "S"
+      }
+    ],
+    "retained_original_owner_scope": {
+      "bdfs": [
+        "0000:4f:00.0",
+        "0000:4f:00.1",
+        "0000:4f:00.2"
+      ],
+      "vfio_nodes": [
+        "/dev/vfio/vfio",
+        "/dev/vfio/4",
+        "/dev/vfio/5",
+        "/dev/vfio/76"
+      ]
+    },
+    "scope": "ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API",
+    "sdk_service_readonly": {
+      "rc": 0,
+      "stderr": "",
+      "stdout": "MainPID=0\nExecMainStatus=0\nControlGroup=\nActiveState=inactive\nSubState=dead\n"
+    },
+    "utc": "2026-10-04T02:09:39.430472+00:00"
+  },
+  "emif_readings": {
+    "inf0_init_done": 1,
+    "inf1_init_done": 1
+  },
+  "static_emif_read": true,
+  "inner": {
+    "success": true,
+    "application_started": true,
+    "started": "2026-10-04T02:09:40.093827+00:00",
+    "runtime_preflight_passed": true,
+    "nodes": [
+      "76",
+      "vfio"
+    ],
+    "mountinfo_sha256": "544984196ff898a6cc961a4402ffa6dc10f7ebb9c3281724b0774fed927b0863",
+    "argv": [
+      "/exec/ahls_memory_caps03_startup",
+      "--config",
+      "/work/source/config/ia840f_caps01_vfio.cfg",
+      "--module",
+      "/walk/build/libahls_memory_caps03_walk_entry_vfio_strict.so",
+      "--run-qualified-caps03-hls",
+      "0000:4f:00.2"
+    ],
+    "environment": {
+      "PATH": "/usr/bin:/bin",
+      "HOME": "/diag",
+      "TMPDIR": "/diag/tmp",
+      "LANG": "C",
+      "LC_ALL": "C",
+      "LD_LIBRARY_PATH": "/work/sdk-build/lib:/work/prefix/usr/lib/x86_64-linux-gnu",
+      "LD_DEBUG": "libs",
+      "LD_DEBUG_OUTPUT": "/diag/loader"
+    },
+    "process": {
+      "application_started": true,
+      "success": true,
+      "retained_owner": false,
+      "argv": [
+        "/exec/ahls_memory_caps03_startup",
+        "--config",
+        "/work/source/config/ia840f_caps01_vfio.cfg",
+        "--module",
+        "/walk/build/libahls_memory_caps03_walk_entry_vfio_strict.so",
+        "--run-qualified-caps03-hls",
+        "0000:4f:00.2"
+      ],
+      "pid": 16,
+      "start_ticks": "639198",
+      "native_rc": 0,
+      "execution_state": "EXITED"
+    },
+    "retained_owner": false,
+    "native_rc": 0,
+    "native_log": "FPGA Test identity read 0x0\nFPGA Test identity read 0x8\nFPGA Test identity read 0x10\nFPGA Test capability read 0x98\nFPGA Test capability read 0xa0\nFPGA Test capability read 0xa8\nFPGA Test capability read 0xb0\nFPGA Test DMA segment submit descriptor=0 sequence=0 bank=0 mode=1 bytes=64 ddr_offset=0x0 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=0 before=0x000000020041000a status=0x000000011041000a polls=2\nFPGA Test segment pages verified descriptor=0\nFPGA Test burst pages verified sequence=0 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=1 sequence=1 bank=0 mode=1 bytes=64 ddr_offset=0x40 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=1 before=0x000000011041000a status=0x000000012041000a polls=2\nFPGA Test segment pages verified descriptor=1\nFPGA Test burst pages verified sequence=1 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=2 sequence=2 bank=0 mode=1 bytes=64 ddr_offset=0x80 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=2 before=0x000000012041000a status=0x000000013041000a polls=2\nFPGA Test segment pages verified descriptor=2\nFPGA Test burst pages verified sequence=2 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=3 sequence=3 bank=0 mode=1 bytes=64 ddr_offset=0x100 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=3 before=0x000000013041000a status=0x000000014041000a polls=2\nFPGA Test segment pages verified descriptor=3\nFPGA Test burst pages verified sequence=3 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=4 sequence=4 bank=0 mode=1 bytes=64 ddr_offset=0x200 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=4 before=0x000000014041000a status=0x000000015041000a polls=2\nFPGA Test segment pages verified descriptor=4\nFPGA Test burst pages verified sequence=4 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=5 sequence=5 bank=0 mode=1 bytes=64 ddr_offset=0x400 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=5 before=0x000000015041000a status=0x000000016041000a polls=2\nFPGA Test segment pages verified descriptor=5\nFPGA Test burst pages verified sequence=5 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=6 sequence=6 bank=0 mode=1 bytes=64 ddr_offset=0x800 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=6 before=0x000000016041000a status=0x000000017041000a polls=2\nFPGA Test segment pages verified descriptor=6\nFPGA Test burst pages verified sequence=6 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=7 sequence=7 bank=0 mode=1 bytes=64 ddr_offset=0x1000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=7 before=0x000000017041000a status=0x000000018041000a polls=2\nFPGA Test segment pages verified descriptor=7\nFPGA Test burst pages verified sequence=7 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=8 sequence=8 bank=0 mode=1 bytes=64 ddr_offset=0x2000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=8 before=0x000000018041000a status=0x000000019041000a polls=2\nFPGA Test segment pages verified descriptor=8\nFPGA Test burst pages verified sequence=8 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=9 sequence=9 bank=0 mode=1 bytes=64 ddr_offset=0x4000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=9 before=0x000000019041000a status=0x00000001a041000a polls=2\nFPGA Test segment pages verified descriptor=9\nFPGA Test burst pages verified sequence=9 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=10 sequence=10 bank=0 mode=1 bytes=64 ddr_offset=0x8000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=10 before=0x00000001a041000a status=0x00000001b041000a polls=2\nFPGA Test segment pages verified descriptor=10\nFPGA Test burst pages verified sequence=10 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=11 sequence=11 bank=0 mode=1 bytes=64 ddr_offset=0x10000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=11 before=0x00000001b041000a status=0x00000001c041000a polls=2\nFPGA Test segment pages verified descriptor=11\nFPGA Test burst pages verified sequence=11 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=12 sequence=12 bank=0 mode=1 bytes=64 ddr_offset=0x20000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=12 before=0x00000001c041000a status=0x00000001d041000a polls=2\nFPGA Test segment pages verified descriptor=12\nFPGA Test burst pages verified sequence=12 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=13 sequence=13 bank=0 mode=1 bytes=64 ddr_offset=0x40000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=13 before=0x00000001d041000a status=0x00000001e041000a polls=2\nFPGA Test segment pages verified descriptor=13\nFPGA Test burst pages verified sequence=13 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=14 sequence=14 bank=0 mode=1 bytes=64 ddr_offset=0x80000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=14 before=0x00000001e041000a status=0x00000001f041000a polls=2\nFPGA Test segment pages verified descriptor=14\nFPGA Test burst pages verified sequence=14 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=15 sequence=15 bank=0 mode=1 bytes=64 ddr_offset=0x100000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=15 before=0x00000001f041000a status=0x000000010041000a polls=2\nFPGA Test segment pages verified descriptor=15\nFPGA Test burst pages verified sequence=15 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=16 sequence=16 bank=0 mode=1 bytes=64 ddr_offset=0x200000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=16 before=0x000000010041000a status=0x000000011041000a polls=2\nFPGA Test segment pages verified descriptor=16\nFPGA Test burst pages verified sequence=16 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=17 sequence=17 bank=0 mode=1 bytes=64 ddr_offset=0x400000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=17 before=0x000000011041000a status=0x000000012041000a polls=2\nFPGA Test segment pages verified descriptor=17\nFPGA Test burst pages verified sequence=17 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=18 sequence=18 bank=0 mode=1 bytes=64 ddr_offset=0x800000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=18 before=0x000000012041000a status=0x000000013041000a polls=2\nFPGA Test segment pages verified descriptor=18\nFPGA Test burst pages verified sequence=18 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=19 sequence=19 bank=0 mode=1 bytes=64 ddr_offset=0x1000000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=19 before=0x000000013041000a status=0x000000014041000a polls=2\nFPGA Test segment pages verified descriptor=19\nFPGA Test burst pages verified sequence=19 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=20 sequence=20 bank=0 mode=1 bytes=64 ddr_offset=0x2000000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=20 before=0x000000014041000a status=0x000000015041000a polls=2\nFPGA Test segment pages verified descriptor=20\nFPGA Test burst pages verified sequence=20 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=21 sequence=21 bank=0 mode=1 bytes=64 ddr_offset=0x4000000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=21 before=0x000000015041000a status=0x000000016041000a polls=2\nFPGA Test segment pages verified descriptor=21\nFPGA Test burst pages verified sequence=21 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=22 sequence=22 bank=0 mode=1 bytes=64 ddr_offset=0x8000000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=22 before=0x000000016041000a status=0x000000017041000a polls=2\nFPGA Test segment pages verified descriptor=22\nFPGA Test burst pages verified sequence=22 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=23 sequence=23 bank=0 mode=1 bytes=64 ddr_offset=0x10000000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=23 before=0x000000017041000a status=0x000000018041000a polls=2\nFPGA Test segment pages verified descriptor=23\nFPGA Test burst pages verified sequence=23 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=24 sequence=24 bank=0 mode=1 bytes=64 ddr_offset=0x20000000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=24 before=0x000000018041000a status=0x000000019041000a polls=2\nFPGA Test segment pages verified descriptor=24\nFPGA Test burst pages verified sequence=24 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=25 sequence=25 bank=0 mode=1 bytes=64 ddr_offset=0x40000000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=25 before=0x000000019041000a status=0x00000001a041000a polls=2\nFPGA Test segment pages verified descriptor=25\nFPGA Test burst pages verified sequence=25 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=26 sequence=26 bank=0 mode=1 bytes=64 ddr_offset=0x80000000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=26 before=0x00000001a041000a status=0x00000001b041000a polls=2\nFPGA Test segment pages verified descriptor=26\nFPGA Test burst pages verified sequence=26 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=27 sequence=27 bank=0 mode=1 bytes=64 ddr_offset=0x100000000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=27 before=0x00000001b041000a status=0x00000001c041000a polls=2\nFPGA Test segment pages verified descriptor=27\nFPGA Test burst pages verified sequence=27 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=28 sequence=28 bank=0 mode=1 bytes=64 ddr_offset=0x200000000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=28 before=0x00000001c041000a status=0x00000001d041000a polls=2\nFPGA Test segment pages verified descriptor=28\nFPGA Test burst pages verified sequence=28 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=29 sequence=29 bank=0 mode=1 bytes=64 ddr_offset=0x3ffffffc0 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=29 before=0x00000001d041000a status=0x00000001e041000a polls=2\nFPGA Test segment pages verified descriptor=29\nFPGA Test burst pages verified sequence=29 bank=0 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=30 sequence=30 bank=1 mode=1 bytes=64 ddr_offset=0x0 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=30 before=0x00000001e041000a status=0x00000001f041000a polls=2\nFPGA Test segment pages verified descriptor=30\nFPGA Test burst pages verified sequence=30 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=31 sequence=31 bank=1 mode=1 bytes=64 ddr_offset=0x40 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=31 before=0x00000001f041000a status=0x000000010041000a polls=2\nFPGA Test segment pages verified descriptor=31\nFPGA Test burst pages verified sequence=31 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=32 sequence=32 bank=1 mode=1 bytes=64 ddr_offset=0x80 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=32 before=0x000000010041000a status=0x000000011041000a polls=2\nFPGA Test segment pages verified descriptor=32\nFPGA Test burst pages verified sequence=32 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=33 sequence=33 bank=1 mode=1 bytes=64 ddr_offset=0x100 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=33 before=0x000000011041000a status=0x000000012041000a polls=2\nFPGA Test segment pages verified descriptor=33\nFPGA Test burst pages verified sequence=33 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=34 sequence=34 bank=1 mode=1 bytes=64 ddr_offset=0x200 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=34 before=0x000000012041000a status=0x000000013041000a polls=2\nFPGA Test segment pages verified descriptor=34\nFPGA Test burst pages verified sequence=34 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=35 sequence=35 bank=1 mode=1 bytes=64 ddr_offset=0x400 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=35 before=0x000000013041000a status=0x000000014041000a polls=2\nFPGA Test segment pages verified descriptor=35\nFPGA Test burst pages verified sequence=35 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=36 sequence=36 bank=1 mode=1 bytes=64 ddr_offset=0x800 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=36 before=0x000000014041000a status=0x000000015041000a polls=2\nFPGA Test segment pages verified descriptor=36\nFPGA Test burst pages verified sequence=36 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=37 sequence=37 bank=1 mode=1 bytes=64 ddr_offset=0x1000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=37 before=0x000000015041000a status=0x000000016041000a polls=2\nFPGA Test segment pages verified descriptor=37\nFPGA Test burst pages verified sequence=37 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=38 sequence=38 bank=1 mode=1 bytes=64 ddr_offset=0x2000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=38 before=0x000000016041000a status=0x000000017041000a polls=2\nFPGA Test segment pages verified descriptor=38\nFPGA Test burst pages verified sequence=38 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=39 sequence=39 bank=1 mode=1 bytes=64 ddr_offset=0x4000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=39 before=0x000000017041000a status=0x000000018041000a polls=2\nFPGA Test segment pages verified descriptor=39\nFPGA Test burst pages verified sequence=39 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=40 sequence=40 bank=1 mode=1 bytes=64 ddr_offset=0x8000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=40 before=0x000000018041000a status=0x000000019041000a polls=2\nFPGA Test segment pages verified descriptor=40\nFPGA Test burst pages verified sequence=40 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=41 sequence=41 bank=1 mode=1 bytes=64 ddr_offset=0x10000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=41 before=0x000000019041000a status=0x00000001a041000a polls=2\nFPGA Test segment pages verified descriptor=41\nFPGA Test burst pages verified sequence=41 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=42 sequence=42 bank=1 mode=1 bytes=64 ddr_offset=0x20000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=42 before=0x00000001a041000a status=0x00000001b041000a polls=2\nFPGA Test segment pages verified descriptor=42\nFPGA Test burst pages verified sequence=42 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=43 sequence=43 bank=1 mode=1 bytes=64 ddr_offset=0x40000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=43 before=0x00000001b041000a status=0x00000001c041000a polls=2\nFPGA Test segment pages verified descriptor=43\nFPGA Test burst pages verified sequence=43 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=44 sequence=44 bank=1 mode=1 bytes=64 ddr_offset=0x80000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=44 before=0x00000001c041000a status=0x00000001d041000a polls=2\nFPGA Test segment pages verified descriptor=44\nFPGA Test burst pages verified sequence=44 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=45 sequence=45 bank=1 mode=1 bytes=64 ddr_offset=0x100000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=45 before=0x00000001d041000a status=0x00000001e041000a polls=2\nFPGA Test segment pages verified descriptor=45\nFPGA Test burst pages verified sequence=45 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=46 sequence=46 bank=1 mode=1 bytes=64 ddr_offset=0x200000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=46 before=0x00000001e041000a status=0x00000001f041000a polls=2\nFPGA Test segment pages verified descriptor=46\nFPGA Test burst pages verified sequence=46 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=47 sequence=47 bank=1 mode=1 bytes=64 ddr_offset=0x400000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=47 before=0x00000001f041000a status=0x000000010041000a polls=2\nFPGA Test segment pages verified descriptor=47\nFPGA Test burst pages verified sequence=47 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=48 sequence=48 bank=1 mode=1 bytes=64 ddr_offset=0x800000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=48 before=0x000000010041000a status=0x000000011041000a polls=2\nFPGA Test segment pages verified descriptor=48\nFPGA Test burst pages verified sequence=48 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=49 sequence=49 bank=1 mode=1 bytes=64 ddr_offset=0x1000000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=49 before=0x000000011041000a status=0x000000012041000a polls=2\nFPGA Test segment pages verified descriptor=49\nFPGA Test burst pages verified sequence=49 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=50 sequence=50 bank=1 mode=1 bytes=64 ddr_offset=0x2000000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=50 before=0x000000012041000a status=0x000000013041000a polls=2\nFPGA Test segment pages verified descriptor=50\nFPGA Test burst pages verified sequence=50 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=51 sequence=51 bank=1 mode=1 bytes=64 ddr_offset=0x4000000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=51 before=0x000000013041000a status=0x000000014041000a polls=2\nFPGA Test segment pages verified descriptor=51\nFPGA Test burst pages verified sequence=51 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=52 sequence=52 bank=1 mode=1 bytes=64 ddr_offset=0x8000000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=52 before=0x000000014041000a status=0x000000015041000a polls=2\nFPGA Test segment pages verified descriptor=52\nFPGA Test burst pages verified sequence=52 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=53 sequence=53 bank=1 mode=1 bytes=64 ddr_offset=0x10000000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=53 before=0x000000015041000a status=0x000000016041000a polls=2\nFPGA Test segment pages verified descriptor=53\nFPGA Test burst pages verified sequence=53 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=54 sequence=54 bank=1 mode=1 bytes=64 ddr_offset=0x20000000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=54 before=0x000000016041000a status=0x000000017041000a polls=2\nFPGA Test segment pages verified descriptor=54\nFPGA Test burst pages verified sequence=54 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=55 sequence=55 bank=1 mode=1 bytes=64 ddr_offset=0x40000000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=55 before=0x000000017041000a status=0x000000018041000a polls=2\nFPGA Test segment pages verified descriptor=55\nFPGA Test burst pages verified sequence=55 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=56 sequence=56 bank=1 mode=1 bytes=64 ddr_offset=0x80000000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=56 before=0x000000018041000a status=0x000000019041000a polls=2\nFPGA Test segment pages verified descriptor=56\nFPGA Test burst pages verified sequence=56 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=57 sequence=57 bank=1 mode=1 bytes=64 ddr_offset=0x100000000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=57 before=0x000000019041000a status=0x00000001a041000a polls=2\nFPGA Test segment pages verified descriptor=57\nFPGA Test burst pages verified sequence=57 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=58 sequence=58 bank=1 mode=1 bytes=64 ddr_offset=0x200000000 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=58 before=0x00000001a041000a status=0x00000001b041000a polls=2\nFPGA Test segment pages verified descriptor=58\nFPGA Test burst pages verified sequence=58 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=59 sequence=59 bank=1 mode=1 bytes=64 ddr_offset=0x3ffffffc0 iova=0x0000000000000040\nFPGA Test DMA segment retired descriptor=59 before=0x00000001b041000a status=0x00000001c041000a polls=2\nFPGA Test segment pages verified descriptor=59\nFPGA Test burst pages verified sequence=59 bank=1 source_page=4096 destination_page=4096\nFPGA Test DMA segment submit descriptor=60 sequence=60 bank=0 mode=2 bytes=64 ddr_offset=0x0 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=60 before=0x00000001c041000a status=0x00000002d041000a polls=2\nFPGA Test segment pages verified descriptor=60\nFPGA Test burst pages verified sequence=60 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=61 sequence=61 bank=0 mode=2 bytes=64 ddr_offset=0x40 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=61 before=0x00000002d041000a status=0x00000002e041000a polls=2\nFPGA Test segment pages verified descriptor=61\nFPGA Test burst pages verified sequence=61 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=62 sequence=62 bank=0 mode=2 bytes=64 ddr_offset=0x80 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=62 before=0x00000002e041000a status=0x00000002f041000a polls=2\nFPGA Test segment pages verified descriptor=62\nFPGA Test burst pages verified sequence=62 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=63 sequence=63 bank=0 mode=2 bytes=64 ddr_offset=0x100 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=63 before=0x00000002f041000a status=0x000000020041000a polls=2\nFPGA Test segment pages verified descriptor=63\nFPGA Test burst pages verified sequence=63 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=64 sequence=64 bank=0 mode=2 bytes=64 ddr_offset=0x200 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=64 before=0x000000020041000a status=0x000000021041000a polls=2\nFPGA Test segment pages verified descriptor=64\nFPGA Test burst pages verified sequence=64 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=65 sequence=65 bank=0 mode=2 bytes=64 ddr_offset=0x400 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=65 before=0x000000021041000a status=0x000000022041000a polls=2\nFPGA Test segment pages verified descriptor=65\nFPGA Test burst pages verified sequence=65 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=66 sequence=66 bank=0 mode=2 bytes=64 ddr_offset=0x800 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=66 before=0x000000022041000a status=0x000000023041000a polls=2\nFPGA Test segment pages verified descriptor=66\nFPGA Test burst pages verified sequence=66 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=67 sequence=67 bank=0 mode=2 bytes=64 ddr_offset=0x1000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=67 before=0x000000023041000a status=0x000000024041000a polls=2\nFPGA Test segment pages verified descriptor=67\nFPGA Test burst pages verified sequence=67 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=68 sequence=68 bank=0 mode=2 bytes=64 ddr_offset=0x2000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=68 before=0x000000024041000a status=0x000000025041000a polls=2\nFPGA Test segment pages verified descriptor=68\nFPGA Test burst pages verified sequence=68 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=69 sequence=69 bank=0 mode=2 bytes=64 ddr_offset=0x4000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=69 before=0x000000025041000a status=0x000000026041000a polls=2\nFPGA Test segment pages verified descriptor=69\nFPGA Test burst pages verified sequence=69 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=70 sequence=70 bank=0 mode=2 bytes=64 ddr_offset=0x8000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=70 before=0x000000026041000a status=0x000000027041000a polls=2\nFPGA Test segment pages verified descriptor=70\nFPGA Test burst pages verified sequence=70 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=71 sequence=71 bank=0 mode=2 bytes=64 ddr_offset=0x10000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=71 before=0x000000027041000a status=0x000000028041000a polls=2\nFPGA Test segment pages verified descriptor=71\nFPGA Test burst pages verified sequence=71 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=72 sequence=72 bank=0 mode=2 bytes=64 ddr_offset=0x20000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=72 before=0x000000028041000a status=0x000000029041000a polls=2\nFPGA Test segment pages verified descriptor=72\nFPGA Test burst pages verified sequence=72 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=73 sequence=73 bank=0 mode=2 bytes=64 ddr_offset=0x40000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=73 before=0x000000029041000a status=0x00000002a041000a polls=2\nFPGA Test segment pages verified descriptor=73\nFPGA Test burst pages verified sequence=73 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=74 sequence=74 bank=0 mode=2 bytes=64 ddr_offset=0x80000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=74 before=0x00000002a041000a status=0x00000002b041000a polls=2\nFPGA Test segment pages verified descriptor=74\nFPGA Test burst pages verified sequence=74 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=75 sequence=75 bank=0 mode=2 bytes=64 ddr_offset=0x100000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=75 before=0x00000002b041000a status=0x00000002c041000a polls=2\nFPGA Test segment pages verified descriptor=75\nFPGA Test burst pages verified sequence=75 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=76 sequence=76 bank=0 mode=2 bytes=64 ddr_offset=0x200000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=76 before=0x00000002c041000a status=0x00000002d041000a polls=2\nFPGA Test segment pages verified descriptor=76\nFPGA Test burst pages verified sequence=76 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=77 sequence=77 bank=0 mode=2 bytes=64 ddr_offset=0x400000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=77 before=0x00000002d041000a status=0x00000002e041000a polls=2\nFPGA Test segment pages verified descriptor=77\nFPGA Test burst pages verified sequence=77 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=78 sequence=78 bank=0 mode=2 bytes=64 ddr_offset=0x800000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=78 before=0x00000002e041000a status=0x00000002f041000a polls=2\nFPGA Test segment pages verified descriptor=78\nFPGA Test burst pages verified sequence=78 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=79 sequence=79 bank=0 mode=2 bytes=64 ddr_offset=0x1000000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=79 before=0x00000002f041000a status=0x000000020041000a polls=2\nFPGA Test segment pages verified descriptor=79\nFPGA Test burst pages verified sequence=79 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=80 sequence=80 bank=0 mode=2 bytes=64 ddr_offset=0x2000000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=80 before=0x000000020041000a status=0x000000021041000a polls=2\nFPGA Test segment pages verified descriptor=80\nFPGA Test burst pages verified sequence=80 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=81 sequence=81 bank=0 mode=2 bytes=64 ddr_offset=0x4000000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=81 before=0x000000021041000a status=0x000000022041000a polls=2\nFPGA Test segment pages verified descriptor=81\nFPGA Test burst pages verified sequence=81 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=82 sequence=82 bank=0 mode=2 bytes=64 ddr_offset=0x8000000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=82 before=0x000000022041000a status=0x000000023041000a polls=2\nFPGA Test segment pages verified descriptor=82\nFPGA Test burst pages verified sequence=82 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=83 sequence=83 bank=0 mode=2 bytes=64 ddr_offset=0x10000000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=83 before=0x000000023041000a status=0x000000024041000a polls=2\nFPGA Test segment pages verified descriptor=83\nFPGA Test burst pages verified sequence=83 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=84 sequence=84 bank=0 mode=2 bytes=64 ddr_offset=0x20000000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=84 before=0x000000024041000a status=0x000000025041000a polls=2\nFPGA Test segment pages verified descriptor=84\nFPGA Test burst pages verified sequence=84 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=85 sequence=85 bank=0 mode=2 bytes=64 ddr_offset=0x40000000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=85 before=0x000000025041000a status=0x000000026041000a polls=2\nFPGA Test segment pages verified descriptor=85\nFPGA Test burst pages verified sequence=85 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=86 sequence=86 bank=0 mode=2 bytes=64 ddr_offset=0x80000000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=86 before=0x000000026041000a status=0x000000027041000a polls=2\nFPGA Test segment pages verified descriptor=86\nFPGA Test burst pages verified sequence=86 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=87 sequence=87 bank=0 mode=2 bytes=64 ddr_offset=0x100000000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=87 before=0x000000027041000a status=0x000000028041000a polls=2\nFPGA Test segment pages verified descriptor=87\nFPGA Test burst pages verified sequence=87 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=88 sequence=88 bank=0 mode=2 bytes=64 ddr_offset=0x200000000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=88 before=0x000000028041000a status=0x000000029041000a polls=2\nFPGA Test segment pages verified descriptor=88\nFPGA Test burst pages verified sequence=88 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=89 sequence=89 bank=0 mode=2 bytes=64 ddr_offset=0x3ffffffc0 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=89 before=0x000000029041000a status=0x00000002a041000a polls=2\nFPGA Test segment pages verified descriptor=89\nFPGA Test burst pages verified sequence=89 bank=0 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=0 bytes=64\nFPGA Test DMA segment submit descriptor=90 sequence=90 bank=1 mode=2 bytes=64 ddr_offset=0x0 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=90 before=0x00000002a041000a status=0x00000002b041000a polls=2\nFPGA Test segment pages verified descriptor=90\nFPGA Test burst pages verified sequence=90 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=91 sequence=91 bank=1 mode=2 bytes=64 ddr_offset=0x40 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=91 before=0x00000002b041000a status=0x00000002c041000a polls=2\nFPGA Test segment pages verified descriptor=91\nFPGA Test burst pages verified sequence=91 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=92 sequence=92 bank=1 mode=2 bytes=64 ddr_offset=0x80 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=92 before=0x00000002c041000a status=0x00000002d041000a polls=2\nFPGA Test segment pages verified descriptor=92\nFPGA Test burst pages verified sequence=92 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=93 sequence=93 bank=1 mode=2 bytes=64 ddr_offset=0x100 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=93 before=0x00000002d041000a status=0x00000002e041000a polls=2\nFPGA Test segment pages verified descriptor=93\nFPGA Test burst pages verified sequence=93 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=94 sequence=94 bank=1 mode=2 bytes=64 ddr_offset=0x200 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=94 before=0x00000002e041000a status=0x00000002f041000a polls=2\nFPGA Test segment pages verified descriptor=94\nFPGA Test burst pages verified sequence=94 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=95 sequence=95 bank=1 mode=2 bytes=64 ddr_offset=0x400 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=95 before=0x00000002f041000a status=0x000000020041000a polls=2\nFPGA Test segment pages verified descriptor=95\nFPGA Test burst pages verified sequence=95 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=96 sequence=96 bank=1 mode=2 bytes=64 ddr_offset=0x800 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=96 before=0x000000020041000a status=0x000000021041000a polls=2\nFPGA Test segment pages verified descriptor=96\nFPGA Test burst pages verified sequence=96 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=97 sequence=97 bank=1 mode=2 bytes=64 ddr_offset=0x1000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=97 before=0x000000021041000a status=0x000000022041000a polls=2\nFPGA Test segment pages verified descriptor=97\nFPGA Test burst pages verified sequence=97 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=98 sequence=98 bank=1 mode=2 bytes=64 ddr_offset=0x2000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=98 before=0x000000022041000a status=0x000000023041000a polls=2\nFPGA Test segment pages verified descriptor=98\nFPGA Test burst pages verified sequence=98 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=99 sequence=99 bank=1 mode=2 bytes=64 ddr_offset=0x4000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=99 before=0x000000023041000a status=0x000000024041000a polls=2\nFPGA Test segment pages verified descriptor=99\nFPGA Test burst pages verified sequence=99 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=100 sequence=100 bank=1 mode=2 bytes=64 ddr_offset=0x8000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=100 before=0x000000024041000a status=0x000000025041000a polls=2\nFPGA Test segment pages verified descriptor=100\nFPGA Test burst pages verified sequence=100 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=101 sequence=101 bank=1 mode=2 bytes=64 ddr_offset=0x10000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=101 before=0x000000025041000a status=0x000000026041000a polls=2\nFPGA Test segment pages verified descriptor=101\nFPGA Test burst pages verified sequence=101 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=102 sequence=102 bank=1 mode=2 bytes=64 ddr_offset=0x20000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=102 before=0x000000026041000a status=0x000000027041000a polls=2\nFPGA Test segment pages verified descriptor=102\nFPGA Test burst pages verified sequence=102 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=103 sequence=103 bank=1 mode=2 bytes=64 ddr_offset=0x40000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=103 before=0x000000027041000a status=0x000000028041000a polls=2\nFPGA Test segment pages verified descriptor=103\nFPGA Test burst pages verified sequence=103 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=104 sequence=104 bank=1 mode=2 bytes=64 ddr_offset=0x80000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=104 before=0x000000028041000a status=0x000000029041000a polls=2\nFPGA Test segment pages verified descriptor=104\nFPGA Test burst pages verified sequence=104 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=105 sequence=105 bank=1 mode=2 bytes=64 ddr_offset=0x100000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=105 before=0x000000029041000a status=0x00000002a041000a polls=2\nFPGA Test segment pages verified descriptor=105\nFPGA Test burst pages verified sequence=105 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=106 sequence=106 bank=1 mode=2 bytes=64 ddr_offset=0x200000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=106 before=0x00000002a041000a status=0x00000002b041000a polls=2\nFPGA Test segment pages verified descriptor=106\nFPGA Test burst pages verified sequence=106 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=107 sequence=107 bank=1 mode=2 bytes=64 ddr_offset=0x400000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=107 before=0x00000002b041000a status=0x00000002c041000a polls=2\nFPGA Test segment pages verified descriptor=107\nFPGA Test burst pages verified sequence=107 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=108 sequence=108 bank=1 mode=2 bytes=64 ddr_offset=0x800000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=108 before=0x00000002c041000a status=0x00000002d041000a polls=2\nFPGA Test segment pages verified descriptor=108\nFPGA Test burst pages verified sequence=108 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=109 sequence=109 bank=1 mode=2 bytes=64 ddr_offset=0x1000000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=109 before=0x00000002d041000a status=0x00000002e041000a polls=2\nFPGA Test segment pages verified descriptor=109\nFPGA Test burst pages verified sequence=109 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=110 sequence=110 bank=1 mode=2 bytes=64 ddr_offset=0x2000000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=110 before=0x00000002e041000a status=0x00000002f041000a polls=2\nFPGA Test segment pages verified descriptor=110\nFPGA Test burst pages verified sequence=110 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=111 sequence=111 bank=1 mode=2 bytes=64 ddr_offset=0x4000000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=111 before=0x00000002f041000a status=0x000000020041000a polls=2\nFPGA Test segment pages verified descriptor=111\nFPGA Test burst pages verified sequence=111 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=112 sequence=112 bank=1 mode=2 bytes=64 ddr_offset=0x8000000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=112 before=0x000000020041000a status=0x000000021041000a polls=2\nFPGA Test segment pages verified descriptor=112\nFPGA Test burst pages verified sequence=112 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=113 sequence=113 bank=1 mode=2 bytes=64 ddr_offset=0x10000000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=113 before=0x000000021041000a status=0x000000022041000a polls=2\nFPGA Test segment pages verified descriptor=113\nFPGA Test burst pages verified sequence=113 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=114 sequence=114 bank=1 mode=2 bytes=64 ddr_offset=0x20000000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=114 before=0x000000022041000a status=0x000000023041000a polls=2\nFPGA Test segment pages verified descriptor=114\nFPGA Test burst pages verified sequence=114 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=115 sequence=115 bank=1 mode=2 bytes=64 ddr_offset=0x40000000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=115 before=0x000000023041000a status=0x000000024041000a polls=2\nFPGA Test segment pages verified descriptor=115\nFPGA Test burst pages verified sequence=115 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=116 sequence=116 bank=1 mode=2 bytes=64 ddr_offset=0x80000000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=116 before=0x000000024041000a status=0x000000025041000a polls=2\nFPGA Test segment pages verified descriptor=116\nFPGA Test burst pages verified sequence=116 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=117 sequence=117 bank=1 mode=2 bytes=64 ddr_offset=0x100000000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=117 before=0x000000025041000a status=0x000000026041000a polls=2\nFPGA Test segment pages verified descriptor=117\nFPGA Test burst pages verified sequence=117 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=118 sequence=118 bank=1 mode=2 bytes=64 ddr_offset=0x200000000 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=118 before=0x000000026041000a status=0x000000027041000a polls=2\nFPGA Test segment pages verified descriptor=118\nFPGA Test burst pages verified sequence=118 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA segment submit descriptor=119 sequence=119 bank=1 mode=2 bytes=64 ddr_offset=0x3ffffffc0 iova=0x0000000000001040\nFPGA Test DMA segment retired descriptor=119 before=0x000000027041000a status=0x000000028041000a polls=2\nFPGA Test segment pages verified descriptor=119\nFPGA Test burst pages verified sequence=119 bank=1 source_page=4096 destination_page=4096\nFPGA Test burst data verified bank=1 bytes=64\nFPGA Test DMA address walk PASSED: banks=2 locations=30 descriptors=120 verified_payload_and_guards=1\nNo kernel launch, simultaneous-bank, sustained or full-DDR qualification. Implicit VFIO resets apply.\n",
+    "native_log_sha256": "fbabe44b347b9ca1bb18463268dc8f03b9cfa50d021cb9b104196850d8488a55",
+    "loader_logs": {
+      "loader.16": {
+        "sha256": "9251926067930920fe627fd81173ef9a60315a1c2b7179f2c01e3415c5936dc5",
+        "bytes": 8751,
+        "text": "        16:\tfind library=libjson-c.so.5 [0]; searching\n        16:\t search path=/work/sdk-build/lib/glibc-hwcaps/x86-64-v4:/work/sdk-build/lib/glibc-hwcaps/x86-64-v3:/work/sdk-build/lib/glibc-hwcaps/x86-64-v2:/work/sdk-build/lib/tls/haswell/avx512_1/x86_64:/work/sdk-build/lib/tls/haswell/avx512_1:/work/sdk-build/lib/tls/haswell/x86_64:/work/sdk-build/lib/tls/haswell:/work/sdk-build/lib/tls/avx512_1/x86_64:/work/sdk-build/lib/tls/avx512_1:/work/sdk-build/lib/tls/x86_64:/work/sdk-build/lib/tls:/work/sdk-build/lib/haswell/avx512_1/x86_64:/work/sdk-build/lib/haswell/avx512_1:/work/sdk-build/lib/haswell/x86_64:/work/sdk-build/lib/haswell:/work/sdk-build/lib/avx512_1/x86_64:/work/sdk-build/lib/avx512_1:/work/sdk-build/lib/x86_64:/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/glibc-hwcaps/x86-64-v4/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/glibc-hwcaps/x86-64-v3/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/glibc-hwcaps/x86-64-v2/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/haswell/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/haswell/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/haswell/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/haswell/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/tls/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/haswell/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/haswell/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/haswell/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/haswell/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/sdk-build/lib/libjson-c.so.5\n        16:\t search path=/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v4:/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v3:/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v2:/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/avx512_1/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/avx512_1:/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell:/work/prefix/usr/lib/x86_64-linux-gnu/tls/avx512_1/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/tls/avx512_1:/work/prefix/usr/lib/x86_64-linux-gnu/tls/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/tls:/work/prefix/usr/lib/x86_64-linux-gnu/haswell/avx512_1/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/haswell/avx512_1:/work/prefix/usr/lib/x86_64-linux-gnu/haswell/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/haswell:/work/prefix/usr/lib/x86_64-linux-gnu/avx512_1/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu/avx512_1:/work/prefix/usr/lib/x86_64-linux-gnu/x86_64:/work/prefix/usr/lib/x86_64-linux-gnu\t\t(RUNPATH from file /exec/ahls_memory_caps03_startup)\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v4/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v3/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v2/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/haswell/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/tls/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/haswell/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/haswell/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/haswell/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/haswell/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/avx512_1/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/avx512_1/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/x86_64/libjson-c.so.5\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5\n        16:\t\n        16:\tfind library=libc.so.6 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libc.so.6\n        16:\t search path=/work/prefix/usr/lib/x86_64-linux-gnu\t\t(RUNPATH from file /exec/ahls_memory_caps03_startup)\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/libc.so.6\n        16:\t search path=/work/prefix/usr/lib/x86_64-linux-gnu\t\t(RUNPATH from file /exec/ahls_memory_caps03_startup)\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/libc.so.6\n        16:\t search cache=/etc/ld.so.cache\n        16:\t  trying file=/lib/x86_64-linux-gnu/libc.so.6\n        16:\t\n        16:\t\n        16:\tcalling init: /lib64/ld-linux-x86-64.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /lib/x86_64-linux-gnu/libc.so.6\n        16:\t\n        16:\t\n        16:\tcalling init: /work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5\n        16:\t\n        16:\t\n        16:\tinitialize program: /exec/ahls_memory_caps03_startup\n        16:\t\n        16:\t\n        16:\ttransferring control: /exec/ahls_memory_caps03_startup\n        16:\t\n        16:\tfind library=libopae-c.so.2 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libopae-c.so.2\n        16:\t\n        16:\tfind library=libuuid.so.1 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libuuid.so.1\n        16:\t search path=/work/prefix/usr/lib/x86_64-linux-gnu\t\t(RUNPATH from file /exec/ahls_memory_caps03_startup)\n        16:\t  trying file=/work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1\n        16:\t\n        16:\t\n        16:\tcalling init: /work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1\n        16:\t\n        16:\t\n        16:\tcalling init: /work/sdk-build/lib/libopae-c.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /walk/build/libahls_memory_caps03_walk_entry_vfio_strict.so\n        16:\t\n        16:\tfind library=libopae-v.so [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libopae-v.so\n        16:\t\n        16:\tfind library=libopaevfio.so.2 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libopaevfio.so.2\n        16:\t\n        16:\tfind library=libopaemem.so.2 [0]; searching\n        16:\t search path=/work/sdk-build/lib\t\t(LD_LIBRARY_PATH)\n        16:\t  trying file=/work/sdk-build/lib/libopaemem.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /work/sdk-build/lib/libopaemem.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /work/sdk-build/lib/libopaevfio.so.2\n        16:\t\n        16:\t\n        16:\tcalling init: /work/sdk-build/lib/libopae-v.so\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/sdk-build/lib/libopae-v.so [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/sdk-build/lib/libopaevfio.so.2 [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/sdk-build/lib/libopaemem.so.2 [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /exec/ahls_memory_caps03_startup [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /walk/build/libahls_memory_caps03_walk_entry_vfio_strict.so [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/sdk-build/lib/libopae-c.so.2 [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/prefix/usr/lib/x86_64-linux-gnu/libjson-c.so.5 [0]\n        16:\t\n        16:\t\n        16:\tcalling fini: /work/prefix/usr/lib/x86_64-linux-gnu/libuuid.so.1 [0]\n        16:\t\n"
+      }
+    },
+    "numerical_data_pass": true,
+    "descriptors_verified": 120,
+    "addresses_per_bank": 30,
+    "native_exit_passed": true,
+    "ended": "2026-10-04T02:09:41.442550+00:00"
+  },
+  "native_rc": 0,
+  "ownership_after": {
+    "boot_id": "3e2d2060-d6c0-44b5-a269-1adf1e450041",
+    "d_state": [],
+    "errors": [],
+    "holders": [],
+    "kernel": "5.14.0-687.48.1.el9_8.x86_64",
+    "maps": [],
+    "pci": [
+      {
+        "bdf": "0000:4f:00.1",
+        "device": "0x0070",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.1"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/5",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "vendor": "0x12ba",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.2",
+        "device": "0xbccf",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.2"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/76",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "physfn": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0",
+        "vendor": "0x8086",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.0",
+        "device": "0xbcce",
+        "driver": "/sys/bus/pci/drivers/dfl-pci",
+        "group_members": [
+          "0000:4f:00.0"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/4",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "sriov_numvfs": "1",
+        "vendor": "0x8086",
+        "virtfn_links": {
+          "virtfn0": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2"
+        }
+      }
+    ],
+    "relevant_processes": [
+      {
+        "argv": [
+          "bash",
+          "-c",
+          "tmux save-buffer -b ia840f_capture_0b11c7a8d8d14867865794b76db42ac9_source - | /usr/bin/env -u LD_LIBRARY_PATH -u PYTHONOPTIMIZE /usr/bin/python3 -B - ia840f_capture_0b11c7a8d8d14867865794b76db42ac9; rc=$?; tmux set-buffer -b ia840f_capture_0b11c7a8d8d14867865794b76db42ac9_outer \"$rc\"; tmux wait-for -S ia840f_capture_0b11c7a8d8d14867865794b76db42ac9_done; exit \"$rc\""
+        ],
+        "comm": "bash",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/bash",
+        "pid": 7870,
+        "start_ticks": "639001",
+        "state": "S"
+      },
+      {
+        "argv": [
+          "tmux",
+          "wait-for",
+          "ia840f_capture_0b11c7a8d8d14867865794b76db42ac9_done"
+        ],
+        "comm": "tmux: client",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/tmux",
+        "pid": 7901,
+        "start_ticks": "639035",
+        "state": "S"
+      }
+    ],
+    "retained_original_owner_scope": {
+      "bdfs": [
+        "0000:4f:00.0",
+        "0000:4f:00.1",
+        "0000:4f:00.2"
+      ],
+      "vfio_nodes": [
+        "/dev/vfio/vfio",
+        "/dev/vfio/4",
+        "/dev/vfio/5",
+        "/dev/vfio/76"
+      ]
+    },
+    "scope": "ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API",
+    "sdk_service_readonly": {
+      "rc": 0,
+      "stderr": "",
+      "stdout": "MainPID=0\nExecMainStatus=0\nControlGroup=\nActiveState=inactive\nSubState=dead\n"
+    },
+    "utc": "2026-10-04T02:09:41.598374+00:00"
+  },
+  "drivers_after": {
+    "0000:4f:00.0": "dfl-pci",
+    "0000:4f:00.1": "vfio-pci",
+    "0000:4f:00.2": "vfio-pci"
+  },
+  "original_files_unchanged": true,
+  "boot_after": "3e2d2060-d6c0-44b5-a269-1adf1e450041",
+  "numerical_data_pass": true,
+  "application_exit_passed": true,
+  "kernel_journal": "2026-10-03T19:09:40-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: enabling device (0000 -> 0002)\n2026-10-03T19:09:40-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: enabling device (0000 -> 0002)\n2026-10-03T19:09:41-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: timed out waiting for pending transaction; performing function level reset anyway\n",
+  "kernel_concern_lines": [
+    "2026-10-03T19:09:41-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: timed out waiting for pending transaction; performing function level reset anyway"
+  ],
+  "lifecycle_clean": false,
+  "accepted_erratum_lines": [
+    "2026-10-03T19:09:41-0700 Agilex7Workstation kernel: vfio-pci 0000:4f:00.2: timed out waiting for pending transaction; performing function level reset anyway"
+  ],
+  "unaccepted_kernel_concern_lines": [],
+  "erratum_policy": "User explicitly accepted exact P-Tile VF pending-before-FLR warning; ERRATUM-ACCEPTED25.md",
+  "lifecycle_accepted": true,
+  "ended": "2026-10-04T02:09:41.955542+00:00"
+}
