@@ -1,0 +1,122 @@
+{
+  "case_count": 16,
+  "cases": [
+    {
+      "accepted": true,
+      "case": "current captured three-function population",
+      "expected_acceptance": true,
+      "inert_not_hardware": true
+    },
+    {
+      "accepted": true,
+      "case": "PF1 only removal",
+      "expected_acceptance": true,
+      "inert_not_hardware": true
+    },
+    {
+      "accepted": true,
+      "case": "PF0 plus VF cascade, cumulative exact3",
+      "expected_acceptance": true,
+      "inert_not_hardware": true
+    },
+    {
+      "accepted": false,
+      "case": "root removed rejected",
+      "expected_acceptance": false,
+      "inert_not_hardware": true
+    },
+    {
+      "accepted": false,
+      "case": "leftover VF rejected",
+      "expected_acceptance": false,
+      "inert_not_hardware": true
+    },
+    {
+      "accepted": false,
+      "case": "unrelated removal rejected",
+      "expected_acceptance": false,
+      "inert_not_hardware": true
+    },
+    {
+      "accepted": false,
+      "case": "addition rejected",
+      "expected_acceptance": false,
+      "inert_not_hardware": true
+    },
+    {
+      "accepted": false,
+      "case": "PF1 cascade too early rejected",
+      "expected_acceptance": false,
+      "inert_not_hardware": true
+    },
+    {
+      "accepted": false,
+      "case": "wrong reverse physfn rejected",
+      "expected_acceptance": false,
+      "inert_not_hardware": true
+    },
+    {
+      "accepted": false,
+      "case": "duplicate PCI token rejected",
+      "expected_acceptance": false,
+      "inert_not_hardware": true
+    },
+    {
+      "accepted": false,
+      "case": "malformed literal PCI token rejected",
+      "expected_acceptance": false,
+      "inert_not_hardware": true
+    },
+    {
+      "accepted": true,
+      "case": "retained ownership target /dev/vfio/4",
+      "inert_not_hardware": true
+    },
+    {
+      "accepted": true,
+      "case": "retained ownership target /dev/vfio/5",
+      "inert_not_hardware": true
+    },
+    {
+      "accepted": true,
+      "case": "retained ownership target /dev/vfio/76",
+      "inert_not_hardware": true
+    },
+    {
+      "accepted": true,
+      "case": "retained ownership target /dev/vfio/76 (deleted)",
+      "inert_not_hardware": true
+    },
+    {
+      "accepted": true,
+      "case": "retained ownership target /sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2/resource0 (deleted)",
+      "inert_not_hardware": true
+    }
+  ],
+  "fd_prefix_collision_53_rejected": true,
+  "guard_sha256": "4e63968f5cae892daf07e00399b475e085baf69ad0cdac00c79de7b60b12c44b",
+  "hardware_execution_evidence": false,
+  "hardware_execution_ready": false,
+  "old_fail_new_pass": {
+    "historical_two_removed_accepts": false,
+    "historical_zero_VF_population_accepts": false,
+    "new_driver_VF_cascade_predicate_accepts": true,
+    "new_three_function_population_accepts": true
+  },
+  "retained_scope_survives_empty_postremove_discovery": {
+    "bdfs": [
+      "0000:4f:00.0",
+      "0000:4f:00.1",
+      "0000:4f:00.2"
+    ],
+    "vfio_nodes": [
+      "/dev/vfio/vfio",
+      "/dev/vfio/4",
+      "/dev/vfio/5",
+      "/dev/vfio/76"
+    ]
+  },
+  "review_sha256": "4bf0e8161fe2a86ccab9a540bab5b61f3569edcf78884424b5b9dcd6783e78a7",
+  "scope": "pure local predicate checks using immutable captured PCI metadata and explicitly synthetic inventory mutations; no native/card operation",
+  "success": true
+}

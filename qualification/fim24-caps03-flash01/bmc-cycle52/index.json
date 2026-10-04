@@ -1,0 +1,192 @@
+{
+  "batch": "ia840f_capture_a7a33e5d65fa4f4eb5ecd69c52d67bf4",
+  "boot": "8121620d-a638-42f8-abab-a547aae32076",
+  "boot_after": "8121620d-a638-42f8-abab-a547aae32076",
+  "card_cycle_verified": true,
+  "commands": [
+    {
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/env",
+        "PYTHONPATH=/home/uwb_student00/.local/lib/python3.9/site-packages",
+        "PATH=/home/uwb_student00/.local/bin:/usr/bin:/bin",
+        "/home/uwb_student00/.local/bin/bw_bmc_configure",
+        "-i",
+        "USB",
+        "-d",
+        "USB:0",
+        "power",
+        "-p",
+        "Off"
+      ],
+      "ended": "2026-10-04T00:12:57.187322+00:00",
+      "label": "power-off",
+      "log_sha256": "92d776c8d093b970e18fbceab0ae06aef1616e34d379641837869d984f21c3b2",
+      "native_rc": 0,
+      "pid": 403598,
+      "started": "2026-10-04T00:12:55.969573+00:00"
+    },
+    {
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/env",
+        "PYTHONPATH=/home/uwb_student00/.local/lib/python3.9/site-packages",
+        "PATH=/home/uwb_student00/.local/bin:/usr/bin:/bin",
+        "/home/uwb_student00/.local/bin/bw_bmc_configure",
+        "-i",
+        "USB",
+        "-d",
+        "USB:0",
+        "power"
+      ],
+      "ended": "2026-10-04T00:12:58.059684+00:00",
+      "label": "off-readback",
+      "log_sha256": "6f900d036a0d8cd8a1cf37e3faf8d87507f38853b55e5d41d3ef68e0213c7fc8",
+      "native_rc": 0,
+      "pid": 403605,
+      "started": "2026-10-04T00:12:57.191248+00:00"
+    },
+    {
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/env",
+        "PYTHONPATH=/home/uwb_student00/.local/lib/python3.9/site-packages",
+        "PATH=/home/uwb_student00/.local/bin:/usr/bin:/bin",
+        "/home/uwb_student00/.local/bin/bw_bmc_configure",
+        "-i",
+        "USB",
+        "-d",
+        "USB:0",
+        "power",
+        "-p",
+        "On"
+      ],
+      "ended": "2026-10-04T00:13:15.002361+00:00",
+      "label": "power-on",
+      "log_sha256": "e97dedf394ec7bdf049a3f2efcdd00f08138f386b2c68cde2c9a8008b3986a65",
+      "native_rc": 0,
+      "pid": 403613,
+      "started": "2026-10-04T00:13:10.077015+00:00"
+    },
+    {
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/env",
+        "PYTHONPATH=/home/uwb_student00/.local/lib/python3.9/site-packages",
+        "PATH=/home/uwb_student00/.local/bin:/usr/bin:/bin",
+        "/home/uwb_student00/.local/bin/bw_bmc_configure",
+        "-i",
+        "USB",
+        "-d",
+        "USB:0",
+        "power"
+      ],
+      "ended": "2026-10-04T00:13:15.822858+00:00",
+      "label": "on-readback",
+      "log_sha256": "b963b6b423c75bc96e3c00d7b86dba34af6c8e2b67711471bd341a87e1cd42e9",
+      "native_rc": 0,
+      "pid": 403625,
+      "started": "2026-10-04T00:13:15.004248+00:00"
+    }
+  ],
+  "electrical_waveforms_measured": false,
+  "ended": "2026-10-04T00:13:45.857898+00:00",
+  "flash_writes": false,
+  "hardware_access": true,
+  "off_confirmed": true,
+  "on_confirmed": true,
+  "ownership_before": {
+    "boot_id": "8121620d-a638-42f8-abab-a547aae32076",
+    "d_state": [],
+    "errors": [],
+    "holders": [],
+    "kernel": "5.14.0-687.48.1.el9_8.x86_64",
+    "maps": [],
+    "pci": [],
+    "relevant_processes": [
+      {
+        "argv": [
+          "bash",
+          "-c",
+          "tmux save-buffer -b ia840f_capture_a7a33e5d65fa4f4eb5ecd69c52d67bf4_source - | /usr/bin/env -u LD_LIBRARY_PATH -u PYTHONOPTIMIZE /usr/bin/python3 -B - ia840f_capture_a7a33e5d65fa4f4eb5ecd69c52d67bf4; rc=$?; tmux set-buffer -b ia840f_capture_a7a33e5d65fa4f4eb5ecd69c52d67bf4_outer \"$rc\"; tmux wait-for -S ia840f_capture_a7a33e5d65fa4f4eb5ecd69c52d67bf4_done; exit \"$rc\""
+        ],
+        "comm": "bash",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/bash",
+        "pid": 403533,
+        "start_ticks": "62188336",
+        "state": "S"
+      }
+    ],
+    "retained_original_owner_scope": {
+      "bdfs": [
+        "0000:4f:00.0",
+        "0000:4f:00.1",
+        "0000:4f:00.2"
+      ],
+      "vfio_nodes": [
+        "/dev/vfio/vfio",
+        "/dev/vfio/4",
+        "/dev/vfio/5",
+        "/dev/vfio/76"
+      ]
+    },
+    "scope": "ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API",
+    "sdk_service_readonly": {
+      "rc": 0,
+      "stderr": "",
+      "stdout": "MainPID=0\nExecMainStatus=1\nControlGroup=\nActiveState=failed\nSubState=failed\n"
+    },
+    "utc": "2026-10-04T00:12:55.730392+00:00"
+  },
+  "power_change": true,
+  "quiescence_sha256": "35e71c63dfe8622e386132f3d8d749d974bdb2eae72d64bd05daca2111b84936",
+  "reboot": false,
+  "scope": "one approved BMC Off/readback then On/readback after verified card quiescence",
+  "success": true,
+  "exports": {
+    "off-confirmed.json": {
+      "bytes": 145,
+      "sha256": "c3b6548b87620c1eed7fb8425370976423c5dea60d99fa9d4f7cd5e9d2250f99",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/bmc-cycle52/off-confirmed.json"
+    },
+    "off-readback.log": {
+      "bytes": 49,
+      "sha256": "6f900d036a0d8cd8a1cf37e3faf8d87507f38853b55e5d41d3ef68e0213c7fc8",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/bmc-cycle52/off-readback.log"
+    },
+    "on-confirmed.json": {
+      "bytes": 143,
+      "sha256": "8e992fd1646d361a01e7918d405587cea2592379a853cb232369aebdeb60c744",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/bmc-cycle52/on-confirmed.json"
+    },
+    "on-readback.log": {
+      "bytes": 12,
+      "sha256": "b963b6b423c75bc96e3c00d7b86dba34af6c8e2b67711471bd341a87e1cd42e9",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/bmc-cycle52/on-readback.log"
+    },
+    "power-off.log": {
+      "bytes": 13,
+      "sha256": "92d776c8d093b970e18fbceab0ae06aef1616e34d379641837869d984f21c3b2",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/bmc-cycle52/power-off.log"
+    },
+    "power-on.log": {
+      "bytes": 48,
+      "sha256": "e97dedf394ec7bdf049a3f2efcdd00f08138f386b2c68cde2c9a8008b3986a65",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/bmc-cycle52/power-on.log"
+    },
+    "result.json": {
+      "bytes": 4708,
+      "sha256": "ab81f372e1323e8502f32e899b1ede5e9e157448d6c46fae9b6ce42290ab7dca",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/bmc-cycle52/result.json"
+    }
+  },
+  "outer_rc": 0,
+  "window_pane": "@440 %440",
+  "transport_sha256": "9effd3e4dc47adae6110f32cd8a2435c02e3bdfde97e00b98b30436d5a36f688",
+  "script_sha256": "f6044ecf54abe4aeb1c78c9aae26c442fb289f894065fc70e82182a4ff006c2c"
+}

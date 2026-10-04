@@ -1,0 +1,680 @@
+{
+  "aer_after": [
+    "00100020",
+    "00002000"
+  ],
+  "aer_before": [
+    "00000000",
+    "00100000",
+    "00002000"
+  ],
+  "batch": "ia840f_capture_6cdefb2dc17548e68fc688539d6e4721",
+  "boot": "8121620d-a638-42f8-abab-a547aae32076",
+  "commands": [
+    {
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/sbin/setpci",
+        "-s",
+        "0000:4e:00.0",
+        "ECAP_AER+0x04.L",
+        "ECAP_AER+0x08.L",
+        "ECAP_AER+0x14.L"
+      ],
+      "ended": "2026-10-04T00:02:40.423402+00:00",
+      "label": "aer-before",
+      "log_sha256": "fdc22d6c37383aaf3a5916c3182b0987c7a39d55b61310137f79044b793c3a42",
+      "native_rc": 0,
+      "pid": 402748,
+      "started": "2026-10-04T00:02:40.401229+00:00"
+    },
+    {
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/sbin/setpci",
+        "-s",
+        "0000:4e:00.0",
+        "ECAP_AER+0x04.L=20:20"
+      ],
+      "ended": "2026-10-04T00:02:40.468340+00:00",
+      "label": "aer-surprise-clear",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "native_rc": 0,
+      "pid": 402751,
+      "started": "2026-10-04T00:02:40.431256+00:00"
+    },
+    {
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/sbin/setpci",
+        "-s",
+        "0000:4e:00.0",
+        "ECAP_AER+0x08.L=20:20"
+      ],
+      "ended": "2026-10-04T00:02:40.508626+00:00",
+      "label": "aer-surprise-mask",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "native_rc": 0,
+      "pid": 402754,
+      "started": "2026-10-04T00:02:40.471409+00:00"
+    },
+    {
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/sbin/setpci",
+        "-s",
+        "0000:4e:00.0",
+        "ECAP_AER+0x08.L",
+        "ECAP_AER+0x14.L"
+      ],
+      "ended": "2026-10-04T00:02:40.551634+00:00",
+      "label": "aer-after",
+      "log_sha256": "daa172b7c24a9b3b4e29c84988773556fdf3a9397bd27aa153b6da9c7d8d3f98",
+      "native_rc": 0,
+      "pid": 402757,
+      "started": "2026-10-04T00:02:40.514304+00:00"
+    },
+    {
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/pci_device",
+        "0000:4f:00.1",
+        "remove"
+      ],
+      "ended": "2026-10-04T00:02:40.778604+00:00",
+      "label": "remove-management",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "native_rc": 0,
+      "pid": 402760,
+      "started": "2026-10-04T00:02:40.556696+00:00"
+    }
+  ],
+  "ended": "2026-10-04T00:02:40.802808+00:00",
+  "error": "AssertionError()",
+  "flash_writes": false,
+  "hardware_access": true,
+  "ownership-before": {
+    "boot_id": "8121620d-a638-42f8-abab-a547aae32076",
+    "d_state": [],
+    "errors": [],
+    "holders": [],
+    "kernel": "5.14.0-687.48.1.el9_8.x86_64",
+    "maps": [],
+    "pci": [
+      {
+        "bdf": "0000:4f:00.1",
+        "device": "0x0070",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.1"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/5",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "vendor": "0x12ba",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.2",
+        "device": "0xbccf",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.2"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/76",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "physfn": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0",
+        "vendor": "0x8086",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.0",
+        "device": "0xbcce",
+        "driver": "/sys/bus/pci/drivers/dfl-pci",
+        "group_members": [
+          "0000:4f:00.0"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/4",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "sriov_numvfs": "1",
+        "vendor": "0x8086",
+        "virtfn_links": {
+          "virtfn0": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2"
+        }
+      }
+    ],
+    "relevant_processes": [
+      {
+        "argv": [
+          "bash",
+          "-c",
+          "tmux save-buffer -b ia840f_capture_6cdefb2dc17548e68fc688539d6e4721_source - | /usr/bin/env -u LD_LIBRARY_PATH -u PYTHONOPTIMIZE /usr/bin/python3 -B - ia840f_capture_6cdefb2dc17548e68fc688539d6e4721; rc=$?; tmux set-buffer -b ia840f_capture_6cdefb2dc17548e68fc688539d6e4721_outer \"$rc\"; tmux wait-for -S ia840f_capture_6cdefb2dc17548e68fc688539d6e4721_done; exit \"$rc\""
+        ],
+        "comm": "bash",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/bash",
+        "pid": 402674,
+        "start_ticks": "62126511",
+        "state": "S"
+      },
+      {
+        "argv": [
+          "tmux",
+          "wait-for",
+          "ia840f_capture_6cdefb2dc17548e68fc688539d6e4721_done"
+        ],
+        "comm": "tmux: client",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/tmux",
+        "pid": 402709,
+        "start_ticks": "62126544",
+        "state": "S"
+      }
+    ],
+    "retained_original_owner_scope": {
+      "bdfs": [
+        "0000:4f:00.0",
+        "0000:4f:00.1",
+        "0000:4f:00.2"
+      ],
+      "vfio_nodes": [
+        "/dev/vfio/vfio",
+        "/dev/vfio/4",
+        "/dev/vfio/5",
+        "/dev/vfio/76"
+      ]
+    },
+    "scope": "ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API",
+    "sdk_service_readonly": {
+      "rc": 0,
+      "stderr": "",
+      "stdout": "MainPID=0\nExecMainStatus=1\nControlGroup=\nActiveState=failed\nSubState=failed\n"
+    },
+    "utc": "2026-10-04T00:02:40.153321+00:00"
+  },
+  "pci_before": [
+    "0000:00:00.0",
+    "0000:00:04.0",
+    "0000:00:04.1",
+    "0000:00:04.2",
+    "0000:00:04.3",
+    "0000:00:04.4",
+    "0000:00:04.5",
+    "0000:00:04.6",
+    "0000:00:04.7",
+    "0000:00:05.0",
+    "0000:00:05.2",
+    "0000:00:05.4",
+    "0000:00:08.0",
+    "0000:00:08.1",
+    "0000:00:08.2",
+    "0000:00:14.0",
+    "0000:00:14.2",
+    "0000:00:16.0",
+    "0000:00:16.3",
+    "0000:00:17.0",
+    "0000:00:1c.0",
+    "0000:00:1c.6",
+    "0000:00:1f.0",
+    "0000:00:1f.2",
+    "0000:00:1f.3",
+    "0000:00:1f.4",
+    "0000:00:1f.6",
+    "0000:02:00.0",
+    "0000:4e:00.0",
+    "0000:4e:05.0",
+    "0000:4e:05.2",
+    "0000:4e:05.4",
+    "0000:4e:08.0",
+    "0000:4e:08.1",
+    "0000:4e:08.2",
+    "0000:4e:08.3",
+    "0000:4e:08.4",
+    "0000:4e:08.5",
+    "0000:4e:08.6",
+    "0000:4e:08.7",
+    "0000:4e:09.0",
+    "0000:4e:09.1",
+    "0000:4e:09.2",
+    "0000:4e:09.3",
+    "0000:4e:09.4",
+    "0000:4e:09.5",
+    "0000:4e:09.6",
+    "0000:4e:09.7",
+    "0000:4e:0a.0",
+    "0000:4e:0a.1",
+    "0000:4e:0e.0",
+    "0000:4e:0e.1",
+    "0000:4e:0e.2",
+    "0000:4e:0e.3",
+    "0000:4e:0e.4",
+    "0000:4e:0e.5",
+    "0000:4e:0e.6",
+    "0000:4e:0e.7",
+    "0000:4e:0f.0",
+    "0000:4e:0f.1",
+    "0000:4e:0f.2",
+    "0000:4e:0f.3",
+    "0000:4e:0f.4",
+    "0000:4e:0f.5",
+    "0000:4e:0f.6",
+    "0000:4e:0f.7",
+    "0000:4e:10.0",
+    "0000:4e:10.1",
+    "0000:4e:1d.0",
+    "0000:4e:1d.1",
+    "0000:4e:1d.2",
+    "0000:4e:1d.3",
+    "0000:4e:1e.0",
+    "0000:4e:1e.1",
+    "0000:4e:1e.2",
+    "0000:4e:1e.3",
+    "0000:4e:1e.4",
+    "0000:4e:1e.5",
+    "0000:4e:1e.6",
+    "0000:4f:00.0",
+    "0000:4f:00.1",
+    "0000:4f:00.2",
+    "0000:90:00.0",
+    "0000:90:05.0",
+    "0000:90:05.2",
+    "0000:90:05.4",
+    "0000:90:08.0",
+    "0000:90:09.0",
+    "0000:90:0a.0",
+    "0000:90:0a.1",
+    "0000:90:0a.2",
+    "0000:90:0a.3",
+    "0000:90:0a.4",
+    "0000:90:0a.5",
+    "0000:90:0a.6",
+    "0000:90:0a.7",
+    "0000:90:0b.0",
+    "0000:90:0b.1",
+    "0000:90:0b.2",
+    "0000:90:0b.3",
+    "0000:90:0c.0",
+    "0000:90:0c.1",
+    "0000:90:0c.2",
+    "0000:90:0c.3",
+    "0000:90:0c.4",
+    "0000:90:0c.5",
+    "0000:90:0c.6",
+    "0000:90:0c.7",
+    "0000:90:0d.0",
+    "0000:90:0d.1",
+    "0000:90:0d.2",
+    "0000:90:0d.3",
+    "0000:91:00.0",
+    "0000:91:00.1",
+    "0000:bc:05.0",
+    "0000:bc:05.2",
+    "0000:bc:05.4",
+    "0000:bc:05.5",
+    "0000:bc:12.0",
+    "0000:bc:12.1",
+    "0000:bc:12.2",
+    "0000:bc:15.0",
+    "0000:bc:15.1",
+    "0000:bc:16.0",
+    "0000:bc:16.1",
+    "0000:bc:16.4",
+    "0000:bc:16.5",
+    "0000:bc:17.0",
+    "0000:bc:17.1",
+    "10000:00:02.0",
+    "10000:00:03.0",
+    "10000:01:00.0"
+  ],
+  "population_scope": {
+    "bdfs": [
+      "0000:4f:00.0",
+      "0000:4f:00.1",
+      "0000:4f:00.2"
+    ],
+    "groups": [
+      "4",
+      "5",
+      "76"
+    ],
+    "root": "0000:4e:00.0"
+  },
+  "power_change": false,
+  "pre_result_sha256": "0fe6e7849705d50cb7050ea4cb0ba9d407d3324aeef1b6829108a0a73bb295ff",
+  "readiness_before_evidence_writes": [
+    {
+      "boot_id": "8121620d-a638-42f8-abab-a547aae32076",
+      "d_state": [],
+      "errors": [],
+      "holders": [],
+      "kernel": "5.14.0-687.48.1.el9_8.x86_64",
+      "maps": [],
+      "pci": [
+        {
+          "bdf": "0000:4f:00.1",
+          "device": "0x0070",
+          "driver": "/sys/bus/pci/drivers/vfio-pci",
+          "group_members": [
+            "0000:4f:00.1"
+          ],
+          "iommu_group": "/sys/kernel/iommu_groups/5",
+          "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+          "vendor": "0x12ba",
+          "virtfn_links": {}
+        },
+        {
+          "bdf": "0000:4f:00.2",
+          "device": "0xbccf",
+          "driver": "/sys/bus/pci/drivers/vfio-pci",
+          "group_members": [
+            "0000:4f:00.2"
+          ],
+          "iommu_group": "/sys/kernel/iommu_groups/76",
+          "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+          "physfn": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0",
+          "vendor": "0x8086",
+          "virtfn_links": {}
+        },
+        {
+          "bdf": "0000:4f:00.0",
+          "device": "0xbcce",
+          "driver": "/sys/bus/pci/drivers/dfl-pci",
+          "group_members": [
+            "0000:4f:00.0"
+          ],
+          "iommu_group": "/sys/kernel/iommu_groups/4",
+          "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+          "sriov_numvfs": "1",
+          "vendor": "0x8086",
+          "virtfn_links": {
+            "virtfn0": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2"
+          }
+        }
+      ],
+      "relevant_processes": [
+        {
+          "argv": [
+            "bash",
+            "-c",
+            "tmux save-buffer -b ia840f_capture_6cdefb2dc17548e68fc688539d6e4721_source - | /usr/bin/env -u LD_LIBRARY_PATH -u PYTHONOPTIMIZE /usr/bin/python3 -B - ia840f_capture_6cdefb2dc17548e68fc688539d6e4721; rc=$?; tmux set-buffer -b ia840f_capture_6cdefb2dc17548e68fc688539d6e4721_outer \"$rc\"; tmux wait-for -S ia840f_capture_6cdefb2dc17548e68fc688539d6e4721_done; exit \"$rc\""
+          ],
+          "comm": "bash",
+          "cwd": "/home/uwb_student00",
+          "exe": "/usr/bin/bash",
+          "pid": 402674,
+          "start_ticks": "62126511",
+          "state": "S"
+        }
+      ],
+      "retained_original_owner_scope": {
+        "bdfs": [
+          "0000:4f:00.0",
+          "0000:4f:00.1",
+          "0000:4f:00.2"
+        ],
+        "vfio_nodes": [
+          "/dev/vfio/vfio",
+          "/dev/vfio/4",
+          "/dev/vfio/5",
+          "/dev/vfio/76"
+        ]
+      },
+      "scope": "ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API",
+      "sdk_service_readonly": {
+        "rc": 0,
+        "stderr": "",
+        "stdout": "MainPID=0\nExecMainStatus=1\nControlGroup=\nActiveState=failed\nSubState=failed\n"
+      },
+      "utc": "2026-10-04T00:02:37.505610+00:00"
+    },
+    {
+      "boot_id": "8121620d-a638-42f8-abab-a547aae32076",
+      "d_state": [],
+      "errors": [],
+      "holders": [],
+      "kernel": "5.14.0-687.48.1.el9_8.x86_64",
+      "maps": [],
+      "pci": [
+        {
+          "bdf": "0000:4f:00.1",
+          "device": "0x0070",
+          "driver": "/sys/bus/pci/drivers/vfio-pci",
+          "group_members": [
+            "0000:4f:00.1"
+          ],
+          "iommu_group": "/sys/kernel/iommu_groups/5",
+          "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+          "vendor": "0x12ba",
+          "virtfn_links": {}
+        },
+        {
+          "bdf": "0000:4f:00.2",
+          "device": "0xbccf",
+          "driver": "/sys/bus/pci/drivers/vfio-pci",
+          "group_members": [
+            "0000:4f:00.2"
+          ],
+          "iommu_group": "/sys/kernel/iommu_groups/76",
+          "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+          "physfn": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0",
+          "vendor": "0x8086",
+          "virtfn_links": {}
+        },
+        {
+          "bdf": "0000:4f:00.0",
+          "device": "0xbcce",
+          "driver": "/sys/bus/pci/drivers/dfl-pci",
+          "group_members": [
+            "0000:4f:00.0"
+          ],
+          "iommu_group": "/sys/kernel/iommu_groups/4",
+          "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+          "sriov_numvfs": "1",
+          "vendor": "0x8086",
+          "virtfn_links": {
+            "virtfn0": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2"
+          }
+        }
+      ],
+      "relevant_processes": [
+        {
+          "argv": [
+            "bash",
+            "-c",
+            "tmux save-buffer -b ia840f_capture_6cdefb2dc17548e68fc688539d6e4721_source - | /usr/bin/env -u LD_LIBRARY_PATH -u PYTHONOPTIMIZE /usr/bin/python3 -B - ia840f_capture_6cdefb2dc17548e68fc688539d6e4721; rc=$?; tmux set-buffer -b ia840f_capture_6cdefb2dc17548e68fc688539d6e4721_outer \"$rc\"; tmux wait-for -S ia840f_capture_6cdefb2dc17548e68fc688539d6e4721_done; exit \"$rc\""
+          ],
+          "comm": "bash",
+          "cwd": "/home/uwb_student00",
+          "exe": "/usr/bin/bash",
+          "pid": 402674,
+          "start_ticks": "62126511",
+          "state": "S"
+        },
+        {
+          "argv": [
+            "tmux",
+            "wait-for",
+            "ia840f_capture_6cdefb2dc17548e68fc688539d6e4721_done"
+          ],
+          "comm": "tmux: client",
+          "cwd": "/home/uwb_student00",
+          "exe": "/usr/bin/tmux",
+          "pid": 402709,
+          "start_ticks": "62126544",
+          "state": "S"
+        }
+      ],
+      "retained_original_owner_scope": {
+        "bdfs": [
+          "0000:4f:00.0",
+          "0000:4f:00.1",
+          "0000:4f:00.2"
+        ],
+        "vfio_nodes": [
+          "/dev/vfio/vfio",
+          "/dev/vfio/4",
+          "/dev/vfio/5",
+          "/dev/vfio/76"
+        ]
+      },
+      "scope": "ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API",
+      "sdk_service_readonly": {
+        "rc": 0,
+        "stderr": "",
+        "stdout": "MainPID=0\nExecMainStatus=1\nControlGroup=\nActiveState=failed\nSubState=failed\n"
+      },
+      "utc": "2026-10-04T00:02:38.835783+00:00"
+    },
+    {
+      "boot_id": "8121620d-a638-42f8-abab-a547aae32076",
+      "d_state": [],
+      "errors": [],
+      "holders": [],
+      "kernel": "5.14.0-687.48.1.el9_8.x86_64",
+      "maps": [],
+      "pci": [
+        {
+          "bdf": "0000:4f:00.1",
+          "device": "0x0070",
+          "driver": "/sys/bus/pci/drivers/vfio-pci",
+          "group_members": [
+            "0000:4f:00.1"
+          ],
+          "iommu_group": "/sys/kernel/iommu_groups/5",
+          "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+          "vendor": "0x12ba",
+          "virtfn_links": {}
+        },
+        {
+          "bdf": "0000:4f:00.2",
+          "device": "0xbccf",
+          "driver": "/sys/bus/pci/drivers/vfio-pci",
+          "group_members": [
+            "0000:4f:00.2"
+          ],
+          "iommu_group": "/sys/kernel/iommu_groups/76",
+          "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+          "physfn": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0",
+          "vendor": "0x8086",
+          "virtfn_links": {}
+        },
+        {
+          "bdf": "0000:4f:00.0",
+          "device": "0xbcce",
+          "driver": "/sys/bus/pci/drivers/dfl-pci",
+          "group_members": [
+            "0000:4f:00.0"
+          ],
+          "iommu_group": "/sys/kernel/iommu_groups/4",
+          "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+          "sriov_numvfs": "1",
+          "vendor": "0x8086",
+          "virtfn_links": {
+            "virtfn0": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2"
+          }
+        }
+      ],
+      "relevant_processes": [
+        {
+          "argv": [
+            "bash",
+            "-c",
+            "tmux save-buffer -b ia840f_capture_6cdefb2dc17548e68fc688539d6e4721_source - | /usr/bin/env -u LD_LIBRARY_PATH -u PYTHONOPTIMIZE /usr/bin/python3 -B - ia840f_capture_6cdefb2dc17548e68fc688539d6e4721; rc=$?; tmux set-buffer -b ia840f_capture_6cdefb2dc17548e68fc688539d6e4721_outer \"$rc\"; tmux wait-for -S ia840f_capture_6cdefb2dc17548e68fc688539d6e4721_done; exit \"$rc\""
+          ],
+          "comm": "bash",
+          "cwd": "/home/uwb_student00",
+          "exe": "/usr/bin/bash",
+          "pid": 402674,
+          "start_ticks": "62126511",
+          "state": "S"
+        },
+        {
+          "argv": [
+            "tmux",
+            "wait-for",
+            "ia840f_capture_6cdefb2dc17548e68fc688539d6e4721_done"
+          ],
+          "comm": "tmux: client",
+          "cwd": "/home/uwb_student00",
+          "exe": "/usr/bin/tmux",
+          "pid": 402709,
+          "start_ticks": "62126544",
+          "state": "S"
+        }
+      ],
+      "retained_original_owner_scope": {
+        "bdfs": [
+          "0000:4f:00.0",
+          "0000:4f:00.1",
+          "0000:4f:00.2"
+        ],
+        "vfio_nodes": [
+          "/dev/vfio/vfio",
+          "/dev/vfio/4",
+          "/dev/vfio/5",
+          "/dev/vfio/76"
+        ]
+      },
+      "scope": "ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API",
+      "sdk_service_readonly": {
+        "rc": 0,
+        "stderr": "",
+        "stdout": "MainPID=0\nExecMainStatus=1\nControlGroup=\nActiveState=failed\nSubState=failed\n"
+      },
+      "utc": "2026-10-04T00:02:40.153321+00:00"
+    }
+  ],
+  "scope": "approved exact card-only PCI quiescence; no power/reboot/flash/retry",
+  "source_bindings": {
+    "/home/uwb_student00/.local/bin/bw_bmc_configure": "7e6b5444405a3fb980d15ff24f897a22e44bf4ba66e9ea5eed23f3e5415e15ad",
+    "/home/uwb_student00/.local/bin/bw_card_list": "5b10b16a53af8de3504cbd35a4b0aa20d856cce19edac80a025fc68e4bff26d0",
+    "/home/uwb_student00/.local/lib/python3.9/site-packages/bw_bmc/card.py": "c7dfe75d578a9dc2bd150617a03ee6ec6d0fc8dda0217b640ad8f80e7b5f2599",
+    "/home/uwb_student00/.local/lib/python3.9/site-packages/bw_bmc_utils/bmc_configuration.py": "15b9d1cdf3334f4f99fae720ce7fedf44d7018796118029fba83a51c1f5ce994",
+    "/home/uwb_student00/IA-840f/IOFS_BUILD_ROOT/oneapi-asp/ia840f/scripts/control_aer.sh": "466ea4b03a17bc94fe4cc91020ebce7eaf224497ecbd7112b36d7650b0f91b54",
+    "/usr/bin/pci_device": "502c80133f66e7d9326660cc7c358b81b6bd0ef9525463b0df710eeae0815a10",
+    "/usr/lib/python3.9/site-packages/opae/admin/sysfs.py": "d70da0e869d7ce45ac13a15916d345841a131c0572cf1af247c2fcae32ba1151",
+    "/usr/lib/python3.9/site-packages/opae/admin/tools/pci_device.py": "8ab8230856e51b76c733d309d11d2cbec9fe9fac78e8e86b1ed7f90cc38975df"
+  },
+  "success": false,
+  "traceback": "Traceback (most recent call last):\n  File \"<stdin>\", line 47, in <module>\n  File \"/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/activation-pre43/runtime/activation_guards27.py\", line 48, in after_pf1\n    return exact_delta(before, after, [PF1])\n  File \"/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/activation-pre43/runtime/activation_guards27.py\", line 39, in exact_delta\n    before, after, removed = exact_set(before), exact_set(after), exact_set(removed)\n  File \"/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/activation-pre43/runtime/activation_guards27.py\", line 14, in exact_set\n    assert all(isinstance(v, str) and re.fullmatch(r'[0-9a-f]{4}:[0-9a-f]{2}:[0-9a-f]{2}\\.[0-7]', v) for v in values)\nAssertionError\n",
+  "exports": {
+    "aer-after.log": {
+      "bytes": 18,
+      "sha256": "daa172b7c24a9b3b4e29c84988773556fdf3a9397bd27aa153b6da9c7d8d3f98",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/quiesce48/aer-after.log"
+    },
+    "aer-before.log": {
+      "bytes": 27,
+      "sha256": "fdc22d6c37383aaf3a5916c3182b0987c7a39d55b61310137f79044b793c3a42",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/quiesce48/aer-before.log"
+    },
+    "aer-surprise-clear.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/quiesce48/aer-surprise-clear.log"
+    },
+    "aer-surprise-mask.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/quiesce48/aer-surprise-mask.log"
+    },
+    "remove-management.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/quiesce48/remove-management.log"
+    },
+    "result.json": {
+      "bytes": 20118,
+      "sha256": "52493c53dc16189ba0a94604ee4f28fe0d8056af635ed5987ea76c7c1ebca757",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/quiesce48/result.json"
+    }
+  },
+  "outer_rc": 1,
+  "window_pane": "@437 %437",
+  "transport_sha256": "b6f0eab35dcab9d0117b3a500c04ca426e4b7e53f3fb85f5a53798cecbfe3236",
+  "script_sha256": "e59d030dc4419a2dce71395d2b8e34870c6bb7b6287219b292d04036c9cd9b5e"
+}

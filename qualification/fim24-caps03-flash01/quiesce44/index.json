@@ -1,0 +1,162 @@
+{
+  "batch": "ia840f_capture_cf06aeee6f83452db0cc2cbf74fa5579",
+  "boot": "8121620d-a638-42f8-abab-a547aae32076",
+  "commands": [
+    {
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/activation-pre43/runtime/ownership27.py"
+      ],
+      "ended": "2026-10-03T23:55:11.887512+00:00",
+      "label": "ownership-before",
+      "log_sha256": "3894c411d9c9f8fa72e57541d12cb7c58ae64476db8a11202f969bc0e3faf7ed",
+      "native_rc": 0,
+      "pid": 401634,
+      "started": "2026-10-03T23:55:11.521369+00:00"
+    }
+  ],
+  "ended": "2026-10-03T23:55:11.889470+00:00",
+  "error": "AssertionError()",
+  "flash_writes": false,
+  "hardware_access": false,
+  "ownership-before": {
+    "boot_id": "8121620d-a638-42f8-abab-a547aae32076",
+    "d_state": [
+      {
+        "comm": "systemd",
+        "pid": 1,
+        "start_ticks": "10",
+        "state": "D"
+      }
+    ],
+    "errors": [],
+    "holders": [],
+    "kernel": "5.14.0-687.48.1.el9_8.x86_64",
+    "maps": [],
+    "pci": [
+      {
+        "bdf": "0000:4f:00.1",
+        "device": "0x0070",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.1"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/5",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "vendor": "0x12ba",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.2",
+        "device": "0xbccf",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.2"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/76",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "physfn": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0",
+        "vendor": "0x8086",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.0",
+        "device": "0xbcce",
+        "driver": "/sys/bus/pci/drivers/dfl-pci",
+        "group_members": [
+          "0000:4f:00.0"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/4",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "sriov_numvfs": "1",
+        "vendor": "0x8086",
+        "virtfn_links": {
+          "virtfn0": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2"
+        }
+      }
+    ],
+    "relevant_processes": [
+      {
+        "argv": [
+          "bash",
+          "-c",
+          "tmux save-buffer -b ia840f_capture_cf06aeee6f83452db0cc2cbf74fa5579_source - | /usr/bin/env -u LD_LIBRARY_PATH -u PYTHONOPTIMIZE /usr/bin/python3 -B - ia840f_capture_cf06aeee6f83452db0cc2cbf74fa5579; rc=$?; tmux set-buffer -b ia840f_capture_cf06aeee6f83452db0cc2cbf74fa5579_outer \"$rc\"; tmux wait-for -S ia840f_capture_cf06aeee6f83452db0cc2cbf74fa5579_done; exit \"$rc\""
+        ],
+        "comm": "bash",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/bash",
+        "pid": 401605,
+        "start_ticks": "62081921",
+        "state": "S"
+      }
+    ],
+    "retained_original_owner_scope": {
+      "bdfs": [
+        "0000:4f:00.0",
+        "0000:4f:00.1",
+        "0000:4f:00.2"
+      ],
+      "vfio_nodes": [
+        "/dev/vfio/vfio",
+        "/dev/vfio/4",
+        "/dev/vfio/5",
+        "/dev/vfio/76"
+      ]
+    },
+    "scope": "ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API",
+    "sdk_service_readonly": {
+      "rc": 0,
+      "stderr": "",
+      "stdout": "MainPID=0\nExecMainStatus=1\nControlGroup=\nActiveState=failed\nSubState=failed\n"
+    },
+    "utc": "2026-10-03T23:55:11.598227+00:00"
+  },
+  "population_scope": {
+    "bdfs": [
+      "0000:4f:00.0",
+      "0000:4f:00.1",
+      "0000:4f:00.2"
+    ],
+    "groups": [
+      "4",
+      "5",
+      "76"
+    ],
+    "root": "0000:4e:00.0"
+  },
+  "power_change": false,
+  "pre_result_sha256": "0fe6e7849705d50cb7050ea4cb0ba9d407d3324aeef1b6829108a0a73bb295ff",
+  "scope": "approved exact card-only PCI quiescence; no power/reboot/flash/retry",
+  "source_bindings": {
+    "/home/uwb_student00/.local/bin/bw_bmc_configure": "7e6b5444405a3fb980d15ff24f897a22e44bf4ba66e9ea5eed23f3e5415e15ad",
+    "/home/uwb_student00/.local/bin/bw_card_list": "5b10b16a53af8de3504cbd35a4b0aa20d856cce19edac80a025fc68e4bff26d0",
+    "/home/uwb_student00/.local/lib/python3.9/site-packages/bw_bmc/card.py": "c7dfe75d578a9dc2bd150617a03ee6ec6d0fc8dda0217b640ad8f80e7b5f2599",
+    "/home/uwb_student00/.local/lib/python3.9/site-packages/bw_bmc_utils/bmc_configuration.py": "15b9d1cdf3334f4f99fae720ce7fedf44d7018796118029fba83a51c1f5ce994",
+    "/home/uwb_student00/IA-840f/IOFS_BUILD_ROOT/oneapi-asp/ia840f/scripts/control_aer.sh": "466ea4b03a17bc94fe4cc91020ebce7eaf224497ecbd7112b36d7650b0f91b54",
+    "/usr/bin/pci_device": "502c80133f66e7d9326660cc7c358b81b6bd0ef9525463b0df710eeae0815a10",
+    "/usr/lib/python3.9/site-packages/opae/admin/sysfs.py": "d70da0e869d7ce45ac13a15916d345841a131c0572cf1af247c2fcae32ba1151",
+    "/usr/lib/python3.9/site-packages/opae/admin/tools/pci_device.py": "8ab8230856e51b76c733d309d11d2cbec9fe9fac78e8e86b1ed7f90cc38975df"
+  },
+  "success": false,
+  "traceback": "Traceback (most recent call last):\n  File \"<stdin>\", line 33, in <module>\n  File \"<stdin>\", line 21, in scan\nAssertionError\n",
+  "exports": {
+    "ownership-before.log": {
+      "bytes": 2174,
+      "sha256": "3894c411d9c9f8fa72e57541d12cb7c58ae64476db8a11202f969bc0e3faf7ed",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/quiesce44/ownership-before.log"
+    },
+    "result.json": {
+      "bytes": 5303,
+      "sha256": "e3e4e03cdfb96348362714698c2e39f5ad9974f021d78664f6809f3df008d9ef",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/quiesce44/result.json"
+    }
+  },
+  "outer_rc": 1,
+  "window_pane": "@433 %433",
+  "transport_sha256": "e1d7034ae17f1d01d81ce4f0b5366ec83ae78fd5a77eac05dc3cb9613da87885",
+  "script_sha256": "48aa4e7cd18ab24dc383d2afa07c6a8dfe5080abc0a7646c2ca190808ff9ed0e"
+}
