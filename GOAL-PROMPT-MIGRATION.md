@@ -21,71 +21,36 @@ are never re-issued. Evidence policy unchanged: hashes, return codes,
 independent review for acceptance, milestone commit/push, report before/after
 every long-running step.
 
-## Status — where the campaign actually is
+## Status — scoped migration complete with retained limits
 
-Branch `migration-ofs-2026.1-quartus26.1`, head `c5a6e67` == origin. Previous
-goal session `20260930_213351_8b60a9` stalled 2026-10-03 ~11:46 UTC in a
-provider wait and did not recover; resume from files, not from its memory.
+The migration to **ofs-2026.1-1 + Quartus26.1.1 Build130**, unchanged
+**3.000ns** target, is complete under the accepted numerical/CDC and functional
+qualification scopes. All five original migrated-image hardware operations
+passed native/container/outer0 and independent actual-result review; accepted
+milestones are published with blob/remote-branch/main-preservation verification.
+Raw timing/coverage/readiness flags and all disclosed limitations stay unchanged.
 
-**Accepted (all on 26.1.1 Build 130, all committed):**
+- Reused source/export/fabric/persona/simulation/mapped synthesis/fit/STA/CDC basis.
+- Assembly`278ec04`,GBS`b1ba229e`,SDKfilepackage`d8ebe698`,originalSDKprogram`4cea7532`.
+- Deployment`22890505`: one accepted BMCOff/On/readbacks + normalreboot,
+  staticFME`fc603c44-5c8f-5e94-bcbe-a5780030947c`,newboot verified.
+- Numerical`51dceebe`,34-case`59364892`,DDRtrio`a0e8ca51`
+  (594.000209015s,explicitdurationpass),walking`0d1e9ff2`,bulk`60564071`.
+- Final ordinaryOS/artifact97: all original trials terminal, expected cachedFME,
+  unchangedboot, retainedimages hashmatch, emptyobservedholders/maps/D/errors.
+- **No active job/review, UNKNOWN owner or remaining in-scope gate.**
 
-- Phase 1 source migration, four-line SDC baseline (Joe's decision), PIM
-  retained `3c21189e…`
-- Native export + fabric generation + persona setup
-  (`2844249`, `3912bb7`, `a21394d`)
-- Simulation first-run pass (`2d7d927`), mapped synthesis (`76fd93a`),
-  first-attempt fit (`57fca75`), five-corner STA at 3.000 ns (`c5a6e67`)
-- EMIF1 closed via CLOCK_SPINE 2 QSF records (+0.082 ns at the failing corner)
-- **CDC gate closed** — query63 ran clean (outer 0, 87 reports, 9.9 MB),
-  2,700 exact-name joins / 0 gaps / 10 net-delay groups over the
-  40-bundle/20-FIFO structure; three result reviews accepted with findings
-  ([CDC-ACCEPTANCE73.md](qualification/fim24-caps03-cdc03/CDC-ACCEPTANCE73.md))
-- New FIM interface UUID `fc603c44-5c8f-5e94-bcbe-a5780030947c`
+Authoritative scoped closure: [MIGRATION-COMPLETE98](qualification/fim24-caps03-runtime01/MIGRATION-COMPLETE98.md)
+and its [mechanical aggregate](qualification/fim24-caps03-runtime01/MIGRATION-COMPLETE98.json).
+This supersedes the old staged-but-unadmitted assembly handoff, not its raw records.
+No accepted build/test/programming stage is to be replayed.
 
-**In flight: assembly capsule `fim24-caps03-assembly01`** — staged but NOT
-admitted; the native `quartus_asm` has never run:
+## Next action
 
-- Workspace `work_fim24_caps03_assembly01/base01` on the workstation: exact
-  copy of the accepted STA basis (4,038 entries / 1.01 GB / 733 QDB), tmux `@394`
-- `SOURCE-SCOPE04.md` written; source/API freeze 36 members
-  (`e09ee53e…`); CMake/runner/identity inert test suites pass
-- [SOURCE/API review05](qualification/fim24-caps03-assembly01/source-api-review05.md)
-  = **PASS WITH LIMITS, two required corrections before QUALITY/admission**
-  (below)
-
-## Next steps, in order
-
-1. **Apply review05's two corrections:**
-   - Keep four current STA artifacts immutable
-     (`_all/1/report.sta.model`, `report.sta.rdb`,
-     `legacy/1/da_report_timing_signoff_final.sqlite3`,
-     `ofs_pr_afu.sta.qmsgdb`) plus final STA reports/user clocks; enumerate
-     the remaining 26 exact mutable paths from the current role basis. Never
-     exclude arbitrary QDB trees.
-   - Expect region-qualified outputs: new nonempty SHA-bound
-     `ofs_pr_afu.sof`, **`ofs_pr_afu.green_region.pmsf`** (not
-     `ofs_pr_afu.pmsf`), `ofs_pr_afu.green_region.rbf`. Preserve inherited
-     `ofs_top.sof` / `ofs_top.static.msf` / `ofs_top.green_region.pmsf`.
-2. **QUALITY review** of the corrected runtime → **fresh exact admission** →
-   one native assembler operation:
-   `quartus_asm ofs_top -c ofs_pr_afu` in
-   `base01/build/syn/board/ia840f/syn_top`.
-   **Always set `QUARTUS_ROOTDIR_OVERRIDE=/opt/altera/26.1.1/quartus` and a
-   26.1-only PATH explicitly** — the inherited launcher root selected 25.1
-   once already (help01, rejected and preserved).
-3. **GBS packaging** as a separate offline stage via the PR QSF's
-   `gen_gbs.tcl` route — bare `quartus_asm` does not run it. Validate
-   container/header/interface/AFU/clock metadata; payload byte-for-byte.
-4. **Deployment:** SDK flash of the accepted persona GBS/SOF per the flash
-   rule, BMC Off/On with readbacks, one reboot, verify static FME identity.
-   Expected new identity: interface UUID `fc603c44-…` (AFU UUID `d48dde9f…`
-   unchanged).
-5. **Hardware gates on the migrated image:** OPAE numerical copyback, 34-case
-   coverage, DDR independent/isolation/sustained trio, walking-bit, bulk
-   concurrent-bank
-   ([gate](docs/ddr-hardware-validation-gate.md)).
-6. Then — Joe's separate decision — the reopened release-wide hls-samples
-   2026.1.0 goal.
+**None for this migration goal. Stop here.** The reopened release-wide
+hls-samples2026.1.0 goal remains incomplete and requires Joe's separate later
+scope decision. No automatic expansion into that work or a new capacity,
+performance, reset, programming or recovery campaign is authorized.
 
 ## Pinned targets (verify by hash at use)
 
