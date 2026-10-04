@@ -1,0 +1,592 @@
+{
+  "activation": false,
+  "address_space_limit_bytes": 68719476736,
+  "batch": "ia840f_capture_b11d33600e604cbab0844039ffc7c599",
+  "boot_after": "8121620d-a638-42f8-abab-a547aae32076",
+  "boot_before": "8121620d-a638-42f8-abab-a547aae32076",
+  "commands": [
+    {
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/os11/ownership.py"
+      ],
+      "ended": "2026-10-03T20:35:34.995792+00:00",
+      "label": "ownership-before-readiness",
+      "log_sha256": "0f47be00f677a8063df151b8a4d3202ee2e186c8650a311b7406b82055f20184",
+      "native_rc": 0,
+      "pid": 395557,
+      "started": "2026-10-03T20:35:34.729391+00:00"
+    },
+    {
+      "argv": [
+        "/home/uwb_student00/.local/bin/bw_agilex_flash_programmer",
+        "-i",
+        "PCI",
+        "-c",
+        "0",
+        "-s"
+      ],
+      "ended": "2026-10-03T20:35:35.717602+00:00",
+      "label": "fresh-config-status",
+      "log_sha256": "b0e92630ab83613d8018037c71fe64c69904b17c9208c513bfb9e57d4051d295",
+      "native_rc": 0,
+      "pid": 395590,
+      "started": "2026-10-03T20:35:34.999040+00:00"
+    },
+    {
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/os11/ownership.py"
+      ],
+      "ended": "2026-10-03T20:35:35.938400+00:00",
+      "label": "ownership-immediate-prewrite",
+      "log_sha256": "dc54dcb8cf17ddaf02230d3649ff2318b98db8682871b2a97d4f87ef2c7cf1b8",
+      "native_rc": 0,
+      "pid": 395618,
+      "started": "2026-10-03T20:35:35.720808+00:00"
+    },
+    {
+      "argv": [
+        "/home/uwb_student00/.local/bin/bw_agilex_flash_programmer",
+        "-i",
+        "PCI",
+        "-c",
+        "0",
+        "program",
+        "--force",
+        "-a",
+        "0x00000000",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/convert05/migrated-caps03-sdk.rpd"
+      ],
+      "deadline_seconds": 18000,
+      "ended": "2026-10-03T23:31:12.497355+00:00",
+      "identity": {
+        "argv": [
+          "/usr/bin/python3",
+          "/home/uwb_student00/.local/bin/bw_agilex_flash_programmer",
+          "-i",
+          "PCI",
+          "-c",
+          "0",
+          "program",
+          "--force",
+          "-a",
+          "0x00000000",
+          "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/convert05/migrated-caps03-sdk.rpd"
+        ],
+        "cwd": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/sdk-program18",
+        "exe": "/usr/bin/python3.9",
+        "pid": 395622,
+        "start_ticks": "60884383",
+        "state": "R"
+      },
+      "label": "program",
+      "native_rc": 0,
+      "pid": 395622,
+      "started": "2026-10-03T20:35:35.983791+00:00"
+    },
+    {
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/os11/ownership.py"
+      ],
+      "ended": "2026-10-03T23:31:12.772447+00:00",
+      "label": "ownership-after-program",
+      "log_sha256": "0a2086432927e997a2613de86e621ee3f158e24932a7b3c99851a94ef4ab823e",
+      "native_rc": 0,
+      "pid": 400844,
+      "started": "2026-10-03T23:31:12.554681+00:00"
+    }
+  ],
+  "comparison_success": true,
+  "cpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35
+  ],
+  "deployment_ready": false,
+  "erase_footprint": {
+    "bytes": 10682368,
+    "formula_basis": "literal captured sdm_mailbox.py:207-209,631-678; no idealized ceil substitution",
+    "input_bytes": 10670080,
+    "last_byte": 10682367,
+    "padding_bytes": 12288,
+    "sdk_adjusted_numbytes": 10633216,
+    "sector_size": 65536,
+    "sectors": 163,
+    "start": 0
+  },
+  "fresh_config_status": {
+    "conf_done": 1,
+    "cvp_done": 0,
+    "error_details": 0,
+    "error_location": 0,
+    "hps_cold_reset": 0,
+    "hps_warm_reset": 0,
+    "init_done": 1,
+    "msel": "ASx4 Normal",
+    "nConfig": 1,
+    "nStatus": 1,
+    "rsu_version": 1638656,
+    "seu_error": 0,
+    "state": 0
+  },
+  "hardware_access": true,
+  "hardware_ready": false,
+  "input_rpd_sha256": "96fb0dc9e0716a712f9e77a09b11161ac495a6e16436beb756bf7fd04874647e",
+  "native_started": true,
+  "ownership-after-program": {
+    "boot_id": "8121620d-a638-42f8-abab-a547aae32076",
+    "d_state": [],
+    "errors": [],
+    "holders": [
+      {
+        "comm": "bwvfiod_server",
+        "fd": "10",
+        "pid": 395200,
+        "start_ticks": "60597442",
+        "state": "S",
+        "target": "/dev/vfio/vfio"
+      },
+      {
+        "comm": "bwvfiod_server",
+        "fd": "11",
+        "pid": 395200,
+        "start_ticks": "60597442",
+        "state": "S",
+        "target": "/dev/vfio/5"
+      }
+    ],
+    "kernel": "5.14.0-687.48.1.el9_8.x86_64",
+    "maps": [],
+    "pci": [
+      {
+        "bdf": "0000:4f:00.1",
+        "device": "0x0070",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.1"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/5",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "vendor": "0x12ba",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.2",
+        "device": "0xbccf",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.2"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/76",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "physfn": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0",
+        "vendor": "0x8086",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.0",
+        "device": "0xbcce",
+        "driver": "/sys/bus/pci/drivers/dfl-pci",
+        "group_members": [
+          "0000:4f:00.0"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/4",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "sriov_numvfs": "1",
+        "vendor": "0x8086",
+        "virtfn_links": {
+          "virtfn0": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2"
+        }
+      }
+    ],
+    "relevant_processes": [
+      {
+        "argv": [
+          "/usr/bin/bwvfiod_server",
+          "-d"
+        ],
+        "comm": "bwvfiod_server",
+        "cwd": "/",
+        "exe": "/usr/bin/bwvfiod_server",
+        "pid": 395200,
+        "start_ticks": "60597442",
+        "state": "S"
+      },
+      {
+        "argv": [
+          "bash",
+          "-c",
+          "tmux save-buffer -b ia840f_capture_b11d33600e604cbab0844039ffc7c599_source - | /usr/bin/env -u LD_LIBRARY_PATH -u PYTHONOPTIMIZE /usr/bin/python3 -B - ia840f_capture_b11d33600e604cbab0844039ffc7c599; rc=$?; tmux set-buffer -b ia840f_capture_b11d33600e604cbab0844039ffc7c599_outer \"$rc\"; tmux wait-for -S ia840f_capture_b11d33600e604cbab0844039ffc7c599_done; exit \"$rc\""
+        ],
+        "comm": "bash",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/bash",
+        "pid": 395524,
+        "start_ticks": "60884233",
+        "state": "S"
+      },
+      {
+        "argv": [
+          "tmux",
+          "wait-for",
+          "ia840f_capture_b11d33600e604cbab0844039ffc7c599_done"
+        ],
+        "comm": "tmux: client",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/tmux",
+        "pid": 395561,
+        "start_ticks": "60884268",
+        "state": "S"
+      }
+    ],
+    "scope": "ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API",
+    "sdk_service_readonly": {
+      "rc": 0,
+      "stderr": "",
+      "stdout": "MainPID=395200\nExecMainStatus=0\nControlGroup=/system.slice/bittware-vfiod.service\nActiveState=active\nSubState=running\n"
+    },
+    "utc": "2026-10-03T23:31:12.618351+00:00"
+  },
+  "ownership-before-readiness": {
+    "boot_id": "8121620d-a638-42f8-abab-a547aae32076",
+    "d_state": [],
+    "errors": [],
+    "holders": [
+      {
+        "comm": "bwvfiod_server",
+        "fd": "10",
+        "pid": 395200,
+        "start_ticks": "60597442",
+        "state": "S",
+        "target": "/dev/vfio/vfio"
+      },
+      {
+        "comm": "bwvfiod_server",
+        "fd": "11",
+        "pid": 395200,
+        "start_ticks": "60597442",
+        "state": "S",
+        "target": "/dev/vfio/5"
+      }
+    ],
+    "kernel": "5.14.0-687.48.1.el9_8.x86_64",
+    "maps": [],
+    "pci": [
+      {
+        "bdf": "0000:4f:00.1",
+        "device": "0x0070",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.1"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/5",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "vendor": "0x12ba",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.2",
+        "device": "0xbccf",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.2"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/76",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "physfn": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0",
+        "vendor": "0x8086",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.0",
+        "device": "0xbcce",
+        "driver": "/sys/bus/pci/drivers/dfl-pci",
+        "group_members": [
+          "0000:4f:00.0"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/4",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "sriov_numvfs": "1",
+        "vendor": "0x8086",
+        "virtfn_links": {
+          "virtfn0": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2"
+        }
+      }
+    ],
+    "relevant_processes": [
+      {
+        "argv": [
+          "/usr/bin/bwvfiod_server",
+          "-d"
+        ],
+        "comm": "bwvfiod_server",
+        "cwd": "/",
+        "exe": "/usr/bin/bwvfiod_server",
+        "pid": 395200,
+        "start_ticks": "60597442",
+        "state": "S"
+      },
+      {
+        "argv": [
+          "bash",
+          "-c",
+          "tmux save-buffer -b ia840f_capture_b11d33600e604cbab0844039ffc7c599_source - | /usr/bin/env -u LD_LIBRARY_PATH -u PYTHONOPTIMIZE /usr/bin/python3 -B - ia840f_capture_b11d33600e604cbab0844039ffc7c599; rc=$?; tmux set-buffer -b ia840f_capture_b11d33600e604cbab0844039ffc7c599_outer \"$rc\"; tmux wait-for -S ia840f_capture_b11d33600e604cbab0844039ffc7c599_done; exit \"$rc\""
+        ],
+        "comm": "bash",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/bash",
+        "pid": 395524,
+        "start_ticks": "60884233",
+        "state": "S"
+      },
+      {
+        "argv": [
+          "tmux",
+          "wait-for",
+          "ia840f_capture_b11d33600e604cbab0844039ffc7c599_done"
+        ],
+        "comm": "tmux: client",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/tmux",
+        "pid": 395561,
+        "start_ticks": "60884268",
+        "state": "S"
+      }
+    ],
+    "scope": "ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API",
+    "sdk_service_readonly": {
+      "rc": 0,
+      "stderr": "",
+      "stdout": "MainPID=395200\nExecMainStatus=0\nControlGroup=/system.slice/bittware-vfiod.service\nActiveState=active\nSubState=running\n"
+    },
+    "utc": "2026-10-03T20:35:34.823468+00:00"
+  },
+  "ownership-immediate-prewrite": {
+    "boot_id": "8121620d-a638-42f8-abab-a547aae32076",
+    "d_state": [],
+    "errors": [],
+    "holders": [
+      {
+        "comm": "bwvfiod_server",
+        "fd": "10",
+        "pid": 395200,
+        "start_ticks": "60597442",
+        "state": "S",
+        "target": "/dev/vfio/vfio"
+      },
+      {
+        "comm": "bwvfiod_server",
+        "fd": "11",
+        "pid": 395200,
+        "start_ticks": "60597442",
+        "state": "S",
+        "target": "/dev/vfio/5"
+      }
+    ],
+    "kernel": "5.14.0-687.48.1.el9_8.x86_64",
+    "maps": [],
+    "pci": [
+      {
+        "bdf": "0000:4f:00.1",
+        "device": "0x0070",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.1"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/5",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "vendor": "0x12ba",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.2",
+        "device": "0xbccf",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.2"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/76",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "physfn": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0",
+        "vendor": "0x8086",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.0",
+        "device": "0xbcce",
+        "driver": "/sys/bus/pci/drivers/dfl-pci",
+        "group_members": [
+          "0000:4f:00.0"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/4",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "sriov_numvfs": "1",
+        "vendor": "0x8086",
+        "virtfn_links": {
+          "virtfn0": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2"
+        }
+      }
+    ],
+    "relevant_processes": [
+      {
+        "argv": [
+          "/usr/bin/bwvfiod_server",
+          "-d"
+        ],
+        "comm": "bwvfiod_server",
+        "cwd": "/",
+        "exe": "/usr/bin/bwvfiod_server",
+        "pid": 395200,
+        "start_ticks": "60597442",
+        "state": "S"
+      },
+      {
+        "argv": [
+          "bash",
+          "-c",
+          "tmux save-buffer -b ia840f_capture_b11d33600e604cbab0844039ffc7c599_source - | /usr/bin/env -u LD_LIBRARY_PATH -u PYTHONOPTIMIZE /usr/bin/python3 -B - ia840f_capture_b11d33600e604cbab0844039ffc7c599; rc=$?; tmux set-buffer -b ia840f_capture_b11d33600e604cbab0844039ffc7c599_outer \"$rc\"; tmux wait-for -S ia840f_capture_b11d33600e604cbab0844039ffc7c599_done; exit \"$rc\""
+        ],
+        "comm": "bash",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/bash",
+        "pid": 395524,
+        "start_ticks": "60884233",
+        "state": "S"
+      },
+      {
+        "argv": [
+          "tmux",
+          "wait-for",
+          "ia840f_capture_b11d33600e604cbab0844039ffc7c599_done"
+        ],
+        "comm": "tmux: client",
+        "cwd": "/home/uwb_student00",
+        "exe": "/usr/bin/tmux",
+        "pid": 395561,
+        "start_ticks": "60884268",
+        "state": "S"
+      }
+    ],
+    "scope": "ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API",
+    "sdk_service_readonly": {
+      "rc": 0,
+      "stderr": "",
+      "stdout": "MainPID=395200\nExecMainStatus=0\nControlGroup=/system.slice/bittware-vfiod.service\nActiveState=active\nSubState=running\n"
+    },
+    "utc": "2026-10-03T20:35:35.786673+00:00"
+  },
+  "phase_progress": {
+    "QSPI Erase": "100.0",
+    "QSPI Program": "100.0",
+    "QSPI Readback": "100.0"
+  },
+  "prewrite_device_backup": false,
+  "program_log": {
+    "bytes": 448203,
+    "sha256": "a4e70063fdc90d4a2d08e53a7f32673fb40effa063d261cf3a05b6f19c436490"
+  },
+  "programming_verified": true,
+  "recovery_rpd": {
+    "meaning": "retained accepted prior image, not a fresh device snapshot",
+    "path": "/home/uwb_student00/ahls/new_BSP/work_caps03_flash01/sdk-convert21/caps03-sdk.rpd",
+    "sha256": "0319b7fd35d968d73f02f9a6f49706cb249c3559dec1759a3f2d3a37122e4bcf"
+  },
+  "retry": false,
+  "scope": "one approved complete non-RSU SDK flash including built-in comparison; no BMC/reboot/retry",
+  "started": "2026-10-03T20:35:34.724324+00:00",
+  "success": true,
+  "window_pane": "@416 %416",
+  "writer_transformed_sha256": "f7cc592f86182c792a5a8fdfc1347dfefd3299c538760a1d98e51fb50976772e",
+  "exports": {
+    "fresh-config-status.log": {
+      "bytes": 261,
+      "sha256": "b0e92630ab83613d8018037c71fe64c69904b17c9208c513bfb9e57d4051d295",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/sdk-program18/fresh-config-status.log"
+    },
+    "native-process.json": {
+      "bytes": 935,
+      "sha256": "7eac9eb08b1397f3e1003d6c076124e0176b95ef03e031536eaa4478869ca5a9",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/sdk-program18/native-process.json"
+    },
+    "native-result.json": {
+      "bytes": 1000,
+      "sha256": "4cc52c5d9d424d63a922f78bef03c0d9bc25d9261a4a0bfd07c54d4707aad93b",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/sdk-program18/native-result.json"
+    },
+    "ownership-after-program.log": {
+      "bytes": 2617,
+      "sha256": "0a2086432927e997a2613de86e621ee3f158e24932a7b3c99851a94ef4ab823e",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/sdk-program18/ownership-after-program.log"
+    },
+    "ownership-before-readiness.log": {
+      "bytes": 2617,
+      "sha256": "0f47be00f677a8063df151b8a4d3202ee2e186c8650a311b7406b82055f20184",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/sdk-program18/ownership-before-readiness.log"
+    },
+    "ownership-immediate-prewrite.log": {
+      "bytes": 2617,
+      "sha256": "dc54dcb8cf17ddaf02230d3649ff2318b98db8682871b2a97d4f87ef2c7cf1b8",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/sdk-program18/ownership-immediate-prewrite.log"
+    },
+    "program.log": {
+      "bytes": 448203,
+      "sha256": "a4e70063fdc90d4a2d08e53a7f32673fb40effa063d261cf3a05b6f19c436490",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/sdk-program18/program.log"
+    },
+    "result.json": {
+      "bytes": 15968,
+      "sha256": "10b50059e33bee03639d574ee881b3fbe5836b09fe874d70d52bb846029daf62",
+      "source": "/home/uwb_student00/ahls/new_BSP/work_fim24_caps03_flash01/sdk-program18/result.json"
+    }
+  },
+  "outer_rc": 0,
+  "transport_sha256": "9d15b038af0622830d62eb0d30a08d0664944ece63141c07fa5655f83f71c774",
+  "script_sha256": "f8c5e6ccb7c67b8e067d0c06ca873bbf68fc4a00b903a11ed503ddf306c0d184"
+}
