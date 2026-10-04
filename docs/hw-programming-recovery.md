@@ -1,4 +1,23 @@
-# IA-840F Hardware Programming & Recovery — SPI Flash Procedure
+# IA-840F Hardware Programming & Recovery — withdrawn historical procedure
+
+> **DO NOT EXECUTE the historical recipe below.** It is preserved as history,
+> not the current runbook. The active GOAL-PROMPT.md supersedes its bare-RPD,
+> AER-change, automatic reboot/retry and recovery assumptions. Later recorded
+> recovery used SOF-derived JIC; that history is not fresh authorization or a
+> guarantee of host recovery. See
+> [historical JIC recovery](../qualification/fim-build-13/flash-recovery-vendor-jic/RECOVERY-REPORT.md).
+>
+> Before any future live operation: establish exact image/card/BDF/PF/VF/BAR
+> identity and a finite source-supported sequence; obtain specific permission
+> and currently verified independent host recovery for anything potentially
+> host-stranding. JTAG/BMC dependent on the same workstation is not independent
+> recovery. Do not change AER, reset, power-cycle, rebind/rescan or reboot as an
+> automatic response to failure. The workstation's Gen3 x16 link is expected.
+>
+> Current source-side work and unperformed hardware gates are recorded in
+> [source-resume-01](../qualification/source-resume-01/REPORT.md).
+
+## Historical text — superseded
 
 Status: **planned procedure** (not yet executed). Source: Joe's verified
 Rocky 9 setup guide for the vendor oneAPI BSP
