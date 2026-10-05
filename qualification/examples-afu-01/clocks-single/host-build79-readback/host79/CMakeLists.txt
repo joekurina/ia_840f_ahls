@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.20)
+project(tutorial_checked C)
+add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/afu_json_info.h COMMAND /usr/bin/afu_json_mgr json-info --afu-json=/home/uwb_student00/ahls/new_BSP/work_examples_afu01/sources/clocks/hw/rtl/clock_freq_uClk_auto.json --c-hdr=${CMAKE_CURRENT_BINARY_DIR}/afu_json_info.h VERBATIM)
+add_executable(clock_freq_test_checked clock_freq_test_checked.c ${CMAKE_CURRENT_BINARY_DIR}/afu_json_info.h)
+target_include_directories(clock_freq_test_checked PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+target_compile_options(clock_freq_test_checked PRIVATE -O2 -g -Wall -Wextra)
+target_link_libraries(clock_freq_test_checked PRIVATE opae-c uuid rt m pthread)

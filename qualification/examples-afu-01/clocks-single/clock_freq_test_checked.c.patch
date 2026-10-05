@@ -1,0 +1,78 @@
+--- upstream/clock_freq_test.c
++++ alternative/clock_freq_test_checked.c
+@@ -7,6 +7,8 @@
+ #include <unistd.h>
+ #include <time.h>
+ #include <stdbool.h>
++#include <math.h>
++#include <errno.h>
+ #include <uuid/uuid.h>
+ #include <opae/fpga.h>
+ 
+@@ -21,6 +23,7 @@
+ #define AFU_NEXT                 0x18
+ 
+ static int s_error_count = 0;
++static double expected_user_mhz = 0;
+ 
+ /*
+  * macro to check return codes, print error message, and goto cleanup label
+@@ -96,6 +99,20 @@
+     uint64_t pclk_freq_value;
+     mmio_read_64(afc_handle, 0x34*4, &pclk_freq_value, "pclk_freq_value");
+     float PCLK_FREQUENCY = (float)pclk_freq_value;
++    if (!counter_pclk_value || !counter_pclk_div2_value || !counter_pclk_div4_value ||
++        !counter_clkusr_value || !counter_clkusr_div2_value || !counter_clk_value ||
++        pclk_freq_value != 470) { s_error_count++; fprintf(stderr,"Invalid clock counters/reference metadata\n"); return; }
++    double d2=(double)counter_pclk_div2_value/counter_pclk_value;
++    double d4=(double)counter_pclk_div4_value/counter_pclk_value;
++    double u2=(double)counter_clkusr_div2_value/counter_clkusr_value;
++    double au=(double)counter_clk_value/counter_clkusr_value;
++    double user_mhz=(double)pclk_freq_value*counter_clkusr_value/counter_pclk_value;
++    double tol=expected_user_mhz*0.01; if (tol < 1.0) tol=1.0;
++    if (fabs(d2-0.5)>0.005 || fabs(d4-0.25)>0.0025 || fabs(u2-0.5)>0.005 || fabs(au-1.0)>0.01 || fabs(user_mhz-expected_user_mhz)>tol) {
++        s_error_count++; fprintf(stderr,"Clock ratio/frequency check FAILED\n");
++    } else printf("CHECK clock_ratios_and_packaged_frequency PASS expected=%.6f measured=%.6f tolerance=%.6f MHz\n",expected_user_mhz,user_mhz,tol);
++    printf("pClk reference470MHz is platform metadata; frequencies are counter ratios, not independent absolute clock metrology.\n");
++
+ 
+     printf("\nStandard clocks:\n");
+     printf("  pClk \t\t%0.1f MHz\n", PCLK_FREQUENCY);
+@@ -151,10 +168,14 @@
+     bool               use_ase;
+     fpga_result        res = FPGA_OK;
+ 
++    if (argc != 2) { fprintf(stderr, "Usage: clock_freq_test <packaged_uClk_MHz>\n"); return 1; }
++    char *end = NULL; errno = 0; expected_user_mhz = strtod(argv[1], &end);
++    if (errno || !end || *end || !isfinite(expected_user_mhz) || expected_user_mhz <= 0) return 1;
+     use_ase = probe_for_ase();
+ 
+     if (uuid_parse(CLOCK_FREQ_TEST_AFU_ID, guid) < 0) {
+         fprintf(stderr, "Error parsing guid '%s'\n", CLOCK_FREQ_TEST_AFU_ID);
++        s_error_count += 1;
+         goto out_exit;
+     }
+ 
+@@ -188,6 +209,9 @@
+ 
+     printf("Running Test\n");
+ 
++    mmio_write_64(afc_handle, 0x24*4, 0, "disable_counter");
++    mmio_write_64(afc_handle, 0x22*4, 1, "reset_counter");
++    usleep(1000); /* reset remains asserted across the existing clock synchronizers */
+     // Set the number of cycles to count on pClk.  All other counters will be compared
+     // to this.
+     mmio_write_64(afc_handle, 0x26*4,
+@@ -198,8 +222,12 @@
+     // Start counting
+     mmio_write_64(afc_handle, 0x24*4, 1, "enable_counter");
+ 
++    struct timespec deadline_start, poll_now;
++    clock_gettime(CLOCK_MONOTONIC, &deadline_start);
+     do
+     {
++        clock_gettime(CLOCK_MONOTONIC, &poll_now);
++        if (poll_now.tv_sec - deadline_start.tv_sec >= 10) { s_error_count++; goto out_close; }
+         // Counting is done when the status register's low bit is 1.
+         usleep(use_ase ? 1000000 : 100000);
+         mmio_read_64(afc_handle, 0x20*4, &data, "status_reg");
