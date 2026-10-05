@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.20)
+project(tutorial_checked C)
+add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/afu_json_info.h COMMAND /usr/bin/afu_json_mgr json-info --afu-json=/home/uwb_student00/ahls/new_BSP/work_examples_afu01/sources/local_memory/hw/rtl/hello_mem_afu.json --c-hdr=${CMAKE_CURRENT_BINARY_DIR}/afu_json_info.h VERBATIM)
+add_executable(hello_mem_afu_checked hello_mem_afu_checked.c ${CMAKE_CURRENT_BINARY_DIR}/afu_json_info.h)
+target_include_directories(hello_mem_afu_checked PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+target_compile_options(hello_mem_afu_checked PRIVATE -O2 -g -Wall -Wextra)
+target_link_libraries(hello_mem_afu_checked PRIVATE opae-c uuid rt m pthread)

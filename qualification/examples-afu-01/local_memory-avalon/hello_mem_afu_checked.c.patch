@@ -1,0 +1,173 @@
+--- upstream/hello_mem_afu.c
++++ alternative/hello_mem_afu_checked.c
+@@ -7,6 +7,7 @@
+ #include <unistd.h>
+ #include <time.h>
+ #include <stdbool.h>
++#include <errno.h>
+ #include <uuid/uuid.h>
+ #include <opae/fpga.h>
+ 
+@@ -91,15 +92,17 @@
+ // block till hw is ready to accept a new s/w command
+ fpga_result wait_cmd_ready(fpga_handle afc_handle, struct timespec sleep_time)
+ {
+-   uint64_t data = 0;
+-   fpga_result res;
+-   do {
+-      res = fpgaReadMMIO64(afc_handle, 0, READY_FOR_SW_CMD, &data);
+-      if(res != FPGA_OK)
+-         return res;
+-      nanosleep(&sleep_time, NULL);
+-   } while(data != 0x1);
+-   return FPGA_OK;
++   uint64_t data=0;
++   struct timespec start,now; clock_gettime(CLOCK_MONOTONIC,&start);
++   for (unsigned poll=0;poll<10000;poll++) {
++      fpga_result res=fpgaReadMMIO64(afc_handle,0,READY_FOR_SW_CMD,&data);
++      if (res!=FPGA_OK) return res;
++      if (data==1) return FPGA_OK;
++      clock_gettime(CLOCK_MONOTONIC,&now);
++      if (now.tv_sec-start.tv_sec>=10) return FPGA_EXCEPTION;
++      nanosleep(&sleep_time,NULL);
++   }
++   return FPGA_EXCEPTION;
+ }
+ 
+ fpga_result run_test(test_params_t *params) 
+@@ -107,6 +110,7 @@
+    fpga_result res;
+    uint64_t data = 0;
+    struct timespec    sleep_time;
++   struct timespec test_start, test_now;
+    
+    if (params->use_ase) {
+       sleep_time.tv_sec = 1;
+@@ -121,51 +125,56 @@
+    if(res != FPGA_OK)
+       return res;
+    
+-   // Testmode Sweep
+-   fpgaWriteMMIO64(params->afc_handle, 0, AVM_WRITEDATA_REG, params->test_data);
+-   fpgaWriteMMIO64(params->afc_handle, 0, TESTMODE_CONTROL_REG, 1);
++   /* Qualification uses the existing commanded data-verified cases, not the historical unchecked sweep. */
++   res = fpgaWriteMMIO32(params->afc_handle, 0, AVM_ADDRESS_REG, params->start_address);
++   if(res != FPGA_OK)
++      return res;
++
++   // Clear memory errors
++   res = fpgaWriteMMIO64(params->afc_handle, 0, MEM_ERRORS, (uint64_t)0);
++   if (res != FPGA_OK) return res;
++   
++   // Issue write
++   res = fpgaWriteMMIO64(params->afc_handle, 0, AVM_WRITEDATA_REG, params->test_data);
++   if (res != FPGA_OK) return res;
++   res = fpgaWriteMMIO64(params->afc_handle, 0, AVM_BURSTCOUNT_REG, params->burst_count);
++   if (res != FPGA_OK) return res;
++   res = fpgaWriteMMIO64(params->afc_handle, 0, AVM_BYTEENABLE_REG, params->byteenable);
++   if (res != FPGA_OK) return res;
++   res = fpgaWriteMMIO64(params->afc_handle, 0, AVM_RDWR_REG, 1);
++   if (res != FPGA_OK) return res;
+ 
+    res = wait_cmd_ready(params->afc_handle, sleep_time);
+    if(res != FPGA_OK)
+       return res;
+-   
+-   res = fpgaWriteMMIO32(params->afc_handle, 0, AVM_ADDRESS_REG, params->start_address);
+-   if(res != FPGA_OK)
+-      return res;
+-
+-   // Clear memory errors
+-   fpgaWriteMMIO64(params->afc_handle, 0, MEM_ERRORS, (uint64_t)0);
+-   
+-   // Issue write
+-   fpgaWriteMMIO64(params->afc_handle, 0, AVM_WRITEDATA_REG, params->test_data);
+-   fpgaWriteMMIO64(params->afc_handle, 0, AVM_BURSTCOUNT_REG, params->burst_count);
+-   fpgaWriteMMIO64(params->afc_handle, 0, AVM_BYTEENABLE_REG, params->byteenable);      
+-   fpgaWriteMMIO64(params->afc_handle, 0, AVM_RDWR_REG, 1);
+-
+-   res = wait_cmd_ready(params->afc_handle, sleep_time);
+-   if(res != FPGA_OK)
+-      return res;
+ 
+    // wait for memory fsm to finish memory access
++   clock_gettime(CLOCK_MONOTONIC,&test_start);
+    do {
+       res = fpgaReadMMIO64(params->afc_handle, 0, AVM_RDWR_STATUS_REG, &data);
+       if(res != FPGA_OK)
+          return res;      
+       nanosleep(&sleep_time, NULL);
++      clock_gettime(CLOCK_MONOTONIC, &test_now);
++      if (test_now.tv_sec - test_start.tv_sec >= 10) return FPGA_EXCEPTION;
+    } while(0x4 != (data & 0x4));
+ 
+    // Issue read
+-   fpgaWriteMMIO64(params->afc_handle, 0, AVM_RDWR_REG, 3);
++   res = fpgaWriteMMIO64(params->afc_handle, 0, AVM_RDWR_REG, 3);
++   if (res != FPGA_OK) return res;
+       
+    res = wait_cmd_ready(params->afc_handle, sleep_time);
+    if(res != FPGA_OK)
+       return res;
+ 
++   clock_gettime(CLOCK_MONOTONIC,&test_start);
+    do {
+       res = fpgaReadMMIO64(params->afc_handle, 0, AVM_RDWR_STATUS_REG, &data);
+       if(res != FPGA_OK)
+          return res;
+       nanosleep(&sleep_time, NULL);
++      clock_gettime(CLOCK_MONOTONIC, &test_now);
++      if (test_now.tv_sec - test_start.tv_sec >= 10) return FPGA_EXCEPTION;
+    } while(0x40 != (data&0x40));
+ 
+    res = fpgaReadMMIO64(params->afc_handle, 0, AVM_READDATA_REG, &data);
+@@ -233,7 +242,9 @@
+    }
+    bank = 0;
+    if (argc == 2) {
+-      bank = atoi(argv[1]);
++      char *end = NULL; errno = 0; unsigned long b = strtoul(argv[1], &end, 10);
++      if (errno || !end || end == argv[1] || *end || b > 1) { fprintf(stderr,"Bank must be0or1\n"); return 1; }
++      bank = (uint32_t)b;
+    }
+ 
+    use_ase = probe_for_ase();
+@@ -241,6 +252,7 @@
+    // AFU_ACCEL_UUID defined in afu_json_info.h
+    if (uuid_parse(AFU_ACCEL_UUID, guid) < 0) {
+       fprintf(stderr, "Error parsing guid '%s'\n", AFU_ACCEL_UUID);
++      s_error_count++;
+       goto out_exit;
+    }
+ 
+@@ -276,10 +288,9 @@
+ 
+    printf("Running Test\n");
+ 
+-   do {
+-      res = fpgaReadMMIO64(afc_handle, 0, READY_FOR_SW_CMD, &data);
+-      ON_ERR_GOTO(res, out_close, "reading from MMIO");
+-   }while(data!=0x1);
++   struct timespec initial_sleep={0,1000000};
++   res=wait_cmd_ready(afc_handle,initial_sleep);
++   ON_ERR_GOTO(res,out_close,"initial ready deadline/error");
+ 
+ 
+    res = fpgaReadMMIO64(afc_handle, 0, AFU_DFH_REG, &data);
+@@ -308,6 +319,7 @@
+    // Stored at bit 16
+    num_mem_banks = (data >> 16);
+    printf("NUM_LOCAL_MEM_BANKS = %d\n", num_mem_banks);
++   ASSERT_GOTO(num_mem_banks == 2, out_close, "expected two physical PIM banks");
+    ON_ERR_GOTO(bank >= num_mem_banks, out_close, "illegal bank number");
+ 
+    // Access AFU user scratch-pad register
+@@ -375,7 +387,7 @@
+    }
+ 
+    // Byteenables in the middle of a word
+-	params.byteenable = 0xffff << 16;
++	params.byteenable = UINT64_C(0xffff) << 16;
+    res = run_test(&params);
+    ON_ERR_GOTO(res, out_unmap, "Memory test failed");   
+ 
