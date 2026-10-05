@@ -42,7 +42,7 @@ published as fallback.
   maintained form; PLL stays 470 MHz.
 - **CDC evidence gate:** the scoped 20-FIFO/40-bundle discriminator ran natively
   in the migrated database — 2,700 exact-name endpoint joins resolved with zero
-  gaps ([CDC acceptance](../../qualification/fim24-caps03-cdc03/CDC-ACCEPTANCE73.md)).
+  gaps ([recorded CDC result in the migration aggregate](../../qualification/fim24-caps03-runtime01/MIGRATION-COMPLETE98.md#build-timing-and-artifact-lineage)).
 - **Assembly & packaging:** one native `quartus_asm ofs_top -c ofs_pr_afu`
   (outer 0) with region-qualified outputs; offline GBS packaging verified
   payload-identical ([assembly](../../qualification/fim24-caps03-assembly01/ASSEMBLY-ACCEPTANCE28.md)).
