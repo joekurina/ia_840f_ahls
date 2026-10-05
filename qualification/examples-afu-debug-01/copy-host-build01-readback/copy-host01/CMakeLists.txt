@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.20)
+project(copy_engine_invert_checked C)
+add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/afu_json_info.h COMMAND /usr/bin/afu_json_mgr json-info --afu-json=/home/uwb_student00/ahls/new_BSP/work_examples_afu01/sources/copy_engine/hw/rtl/copy_engine.json --c-hdr=${CMAKE_CURRENT_BINARY_DIR}/afu_json_info.h VERBATIM)
+add_executable(copy_engine_invert_checked copy_engine_main_checked.c copy_engine_invert_checked.c ${CMAKE_CURRENT_BINARY_DIR}/afu_json_info.h)
+target_include_directories(copy_engine_invert_checked PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+target_compile_options(copy_engine_invert_checked PRIVATE -O2 -g -Wall -Wextra)
+target_link_libraries(copy_engine_invert_checked PRIVATE opae-c uuid rt m pthread)

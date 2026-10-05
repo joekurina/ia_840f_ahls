@@ -1,0 +1,45 @@
+--- examples-afu/tutorial/afu_types/01_pim_ifc/copy_engine/hw/rtl/ofs_plat_afu.sv
++++ qualification/examples-afu-debug-01/packet-cap26/copy_engine/ofs_plat_afu_cap.sv
+@@ -36,6 +36,33 @@
+         .BURST_CNT_WIDTH($clog2(16384/ofs_plat_host_chan_pkg::DATA_WIDTH_BYTES))
+         )
+       host_mem();
++
++    // AFU-local cap for this workstation's configured 256-byte PU MPS.
++    // Keep the engine's original wide-burst interface above; do not truncate
++    // its AxLEN. The mapper expands each request into <=4-beat fragments.
++    ofs_plat_axi_mem_if
++      #(
++        .ADDR_WIDTH(host_mem.ADDR_WIDTH),
++        .DATA_WIDTH(host_mem.DATA_WIDTH),
++        .MASKED_SYMBOL_WIDTH(host_mem.MASKED_SYMBOL_WIDTH),
++        .RID_WIDTH(host_mem.RID_WIDTH),
++        .WID_WIDTH(host_mem.WID_WIDTH),
++        .USER_WIDTH(host_mem.USER_WIDTH),
++        .BURST_CNT_WIDTH(2),
++        .LOG_CLASS(ofs_plat_log_pkg::HOST_CHAN)
++        )
++      host_mem_capped();
++
++    assign host_mem.clk = host_mem_capped.clk;
++    assign host_mem.reset_n = host_mem_capped.reset_n;
++    assign host_mem.instance_number = host_mem_capped.instance_number;
++
++    ia840f_host_packet_cap host_packet_cap
++       (
++        .mem_source(host_mem),
++        .mem_sink(host_mem_capped)
++        );
++
+ 
+     // Instance of the PIM's AXI memory lite interface, which will be
+     // used to implement the AFU's CSR space.
+@@ -76,7 +103,7 @@
+       primary_axi
+        (
+         .to_fiu(plat_ifc.host_chan.ports[0]),
+-        .host_mem_to_afu(host_mem),
++        .host_mem_to_afu(host_mem_capped),
+         .mmio_to_afu(mmio64_to_afu),
+ 
+         // These ports would be used if the PIM is told to cross to
