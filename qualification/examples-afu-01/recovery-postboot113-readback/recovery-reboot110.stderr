@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/uwb_student00/ahls/new_BSP/work_examples_afu01/recovery-reboot110.py", line 13, in <module>
+    p=Path('/usr/lib/modules')/os.uname().release/'extra'/(leaf+'.ko');note=Path('/sys/module')/name/'notes/.note.gnu.build-id';modules[name]={'path':str(p),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'loaded_note':note.read_bytes().hex()}
+  File "/usr/lib64/python3.9/pathlib.py", line 1187, in read_bytes
+    with self.open(mode='rb') as f:
+  File "/usr/lib64/python3.9/pathlib.py", line 1180, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/usr/lib64/python3.9/pathlib.py", line 1038, in _opener
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/usr/lib/modules/5.14.0-687.48.1.el9_8.x86_64/extra/fpga-region.ko'

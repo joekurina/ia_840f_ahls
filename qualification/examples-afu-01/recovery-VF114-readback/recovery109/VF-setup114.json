@@ -1,0 +1,91 @@
+{
+  "boot": "c5b29027-5b6b-4bf2-b7ed-ace79cc87e73",
+  "success": true,
+  "commands": [
+    {
+      "label": "autoprobe-off",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "-c",
+        "from pathlib import Path; Path('/sys/bus/pci/devices/0000:4f:00.0/sriov_drivers_autoprobe').write_text('0')"
+      ],
+      "pid": 3819,
+      "native_rc": 0
+    },
+    {
+      "label": "create-VF",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/pci_device",
+        "0000:4f:00.0",
+        "vf",
+        "1"
+      ],
+      "pid": 3824,
+      "native_rc": 0
+    },
+    {
+      "label": "VF-override",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "-c",
+        "from pathlib import Path; Path('/sys/bus/pci/devices/0000:4f:00.2/driver_override').write_text('vfio-pci')"
+      ],
+      "pid": 3857,
+      "native_rc": 0
+    },
+    {
+      "label": "VFIO-init",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/opae.io",
+        "init",
+        "-d",
+        "0000:4f:00.2",
+        "uwb_student00:uwb_student00"
+      ],
+      "pid": 3860,
+      "native_rc": 0
+    },
+    {
+      "label": "autoprobe-restored",
+      "argv": [
+        "sudo",
+        "-n",
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "-c",
+        "from pathlib import Path; Path('/sys/bus/pci/devices/0000:4f:00.0/sriov_drivers_autoprobe').write_text('1')"
+      ],
+      "pid": 3865,
+      "native_rc": 0
+    }
+  ],
+  "tool_hashes": {
+    "/usr/bin/pci_device": "502c80133f66e7d9326660cc7c358b81b6bd0ef9525463b0df710eeae0815a10",
+    "/usr/lib/python3.9/site-packages/opae/admin/tools/pci_device.py": "8ab8230856e51b76c733d309d11d2cbec9fe9fac78e8e86b1ed7f90cc38975df",
+    "/usr/lib/python3.9/site-packages/opae/admin/sysfs.py": "d70da0e869d7ce45ac13a15916d345841a131c0572cf1af247c2fcae32ba1151",
+    "/usr/bin/opae.io": "bd3001695d17a6bfb3cd4d01d11f96b767704d30da6e95dcad97137eeed00dda",
+    "/usr/lib64/python3.9/site-packages/opae/io/utils.py": "3777bbf406aff1a081d3085a19127f8eed95b485f2ed001c14bd6bb69d4c4bed",
+    "/usr/lib64/python3.9/site-packages/opae/io/pci.py": "ee0be3e67201123efb4a725a59661664b49a9e6e6eeed89721873dffdfc3ea02",
+    "/usr/lib64/python3.9/site-packages/opae/io/config.py": "6022ee8473ea8b472de4d4de7141ee4387cd4d987cdc6939466820e14068bd0b"
+  },
+  "VF_driver": "vfio-pci",
+  "VF_group": "76",
+  "VF_node_uid": 1000,
+  "VF_node_mode": "0o660",
+  "PF_driver": "dfl-pci",
+  "autoprobe_restored": true,
+  "reset_method": "flr"
+}

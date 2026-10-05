@@ -1,0 +1,80 @@
+{
+  "scope": "one normal source-bound VF0 FLR, no reflash/power/driver/link changes",
+  "reset_method": "flr",
+  "reset_rc": 0,
+  "stderr": "",
+  "before": {
+    "boot_id": "3e2d2060-d6c0-44b5-a269-1adf1e450041",
+    "d_state": [],
+    "errors": [],
+    "holders": [],
+    "kernel": "5.14.0-687.48.1.el9_8.x86_64",
+    "maps": [],
+    "pci": [
+      {
+        "bdf": "0000:4f:00.1",
+        "device": "0x0070",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.1"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/5",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "vendor": "0x12ba",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.2",
+        "device": "0xbccf",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.2"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/76",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "physfn": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0",
+        "vendor": "0x8086",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.0",
+        "device": "0xbcce",
+        "driver": "/sys/bus/pci/drivers/dfl-pci",
+        "group_members": [
+          "0000:4f:00.0"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/4",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "sriov_numvfs": "1",
+        "vendor": "0x8086",
+        "virtfn_links": {
+          "virtfn0": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2"
+        }
+      }
+    ],
+    "relevant_processes": [],
+    "retained_original_owner_scope": {
+      "bdfs": [
+        "0000:4f:00.0",
+        "0000:4f:00.1",
+        "0000:4f:00.2"
+      ],
+      "vfio_nodes": [
+        "/dev/vfio/vfio",
+        "/dev/vfio/4",
+        "/dev/vfio/5",
+        "/dev/vfio/76"
+      ]
+    },
+    "scope": "ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API",
+    "sdk_service_readonly": {
+      "rc": 0,
+      "stderr": "",
+      "stdout": "MainPID=0\nExecMainStatus=0\nControlGroup=\nActiveState=inactive\nSubState=dead\n"
+    },
+    "utc": "2026-10-05T17:12:42.570250+00:00"
+  },
+  "OPAE_state_rc": 0,
+  "OPAE_state_stdout": "//****** PORT ******//\nInterface                        : DFL\nObject Id                        : 0xF000000\nPCIe s:b:d.f                     : 0000:4F:00.0\nVendor Id                        : 0x8086\nDevice Id                        : 0xBCCE\nSubVendor Id                     : 0x8086\nSubDevice Id                     : 0x1771\nSocket Id                        : 0x01\n//****** PORT ******//\nInterface                        : VFIO\nObject Id                        : 0x404F000000000000\nPCIe s:b:d.f                     : 0000:4F:00.2\nVendor Id                        : 0x8086\nDevice Id                        : 0xBCCF\nSubVendor Id                     : 0x8086\nSubDevice Id                     : 0x1771\nSocket Id                        : 0x00\nAccelerator GUID                 : ffffffff-ffff-ffff-ffff-ffffffffffff\n//****** PORT ******//\nInterface                        : UIO\nObject Id                        : 0xED00000\nPCIe s:b:d.f                     : 0000:4F:00.0\nVendor Id                        : 0x8086\nDevice Id                        : 0xBCCE\nSubVendor Id                     : 0x8086\nSubDevice Id                     : 0x1771\nSocket Id                        : 0x00\nAccelerator GUID                 : ffffffff-ffff-ffff-ffff-ffffffffffff\n",
+  "OPAE_state_stderr": ""
+}
