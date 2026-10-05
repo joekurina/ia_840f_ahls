@@ -49,7 +49,7 @@ export PATH="/opt/altera/25.1/quartus/bin:/opt/altera/25.1/quartus/sopc_builder/
 
 Supply the valid local licensing environment separately; the recorded native stages set `LM_LICENSE_FILE`, `MGLS_LICENSE_FILE` and `SALT_LICENSE_SERVER`. Do not copy credentials/license-server values into Git. Confirm the actual tool version rather than trusting an inherited environment variable or a historical QPF header ([recorded IP-generation environment](../qualification/ahls-memory-ip01/generate01.py), [persona environment template](../qualification/caps03-persona01/synth01.py.in)).
 
-All remote workstation actions belong inside an owned `tmux` session. Use fresh, absolute, owned work directories and retain command logs, native exit status, source/artifact hashes and unchanged-input checks. Existing accepted run directories and consumed authorization files are evidence, not work directories to overwrite or replay ([operating rules](../GOAL-PROMPT.md)).
+All remote workstation actions belong inside an owned `tmux` session. Use fresh, absolute, owned work directories and retain command logs, native exit status, source/artifact hashes and unchanged-input checks. Existing accepted run directories and consumed authorization files are evidence, not work directories to overwrite or replay ([repository policy](../README.md#repository-policy)).
 
 ## 3. Generate the AHLS report/IP project
 

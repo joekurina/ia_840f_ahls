@@ -4,7 +4,7 @@
 
 - [Final human-readable summary](FINAL-SUMMARY121.md)
 - [Machine-checked eight-variant aggregate](FINAL-AGGREGATE121.json)
-- [Scope and goal](../../GOAL-PROMPT-EXAMPLES-AFU.md)
+- [Results and limitations](README.md)
 
 | Variant | Final verdict | Published milestone |
 |---|---|---|

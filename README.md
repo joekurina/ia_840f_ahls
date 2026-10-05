@@ -97,7 +97,7 @@ Full-capacity runtime was 78.38 minutes—an inefficient harness result, not DDR
 General cold/PR/stopped-clock/active-failure recovery and every other upstream HLS
 kernel are not claimed qualified. See [limits](qualification/caps03-final01/ACCEPTANCE.md#exact-exception-and-retained-limits).
 
-The [maintained goal](GOAL-PROMPT.md) separates this accepted CAPS03 integration
+The published qualification records separate this accepted CAPS03 integration
 from the incomplete release-wide HLS sample work. That broader work remains
 stopped except for the explicitly requested [GettingStarted subset](examples/ahls/README.md).
 Neither documentation publication nor these standalone compiler/simulator checks
@@ -125,7 +125,7 @@ The BittWare vendor platform remains the authority for device, pins, memory, PCI
 ## Historical sections (superseded context, preserved)
 
 The sections below describe the earlier source-preparation stage and its
-predecessor scopes. Use [GOAL-PROMPT.md](GOAL-PROMPT.md) for execution and
+predecessor scopes. Use the operator workflow guides above for execution and
 safety, the current checkpoint above for status, and the
 [feature matrix](docs/feature-matrix.md) to distinguish actual results from
 blocked hardware checks. Old handoffs do not authorize rebuilding or hardware
@@ -202,13 +202,13 @@ compiler baseline; the delivered platform historically used Quartus Prime Pro
 mixed-version combination. Do not silently switch installations. No
 downgrade to an older oneAPI-compatible stack was requested or applied.
 
-### Historical execution boundary — superseded by GOAL-PROMPT.md
+### Historical execution boundary
 
-The original source-only restriction is superseded for resumed project work.
-Ordinary in-scope source correction, offline tests, justified generation/builds
-and reviewed milestone commit/push are authorized by GOAL-PROMPT.md. Live
-device access, system-rule activation, programming and disruptive recovery
-remain separately gated. Never rebuild unchanged artifacts, bypass a native
+The original source-only stage has been superseded by the recorded qualification.
+Source correction, offline tests, generation/builds and milestone publication
+have separate receipts. Live device access, system-rule activation, programming
+and disruptive recovery require their own operation context. Never rebuild
+unchanged artifacts, bypass a native
 source-bound guard, or treat successful compilation as live authorization.
 
 Original vendor and sibling donor repositories remain read-only. Existing static inventory utilities inspect source/XML/hash consistency; their prior ASP results are historical evidence, not AHLS integration qualification.

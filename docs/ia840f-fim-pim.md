@@ -69,7 +69,7 @@ export OFS_PLATFORM_AFU_BBB="$PINNED_PIM"
 
 Supply installed licenses/device support separately; never put license contents or access configuration into the repository. Native setup/export uses the actual OPAE `PACSign`, `packager`, `afu_json_mgr` and platform tools, with their Python packages/schemas—not copied console-entrypoint files alone. The vendor [OPAE setup script](../ofs-agx7-pcie-attach/ofs-common/scripts/common/syn/setup_opae_sdk.sh) may enter dependency bootstrap if tools are absent. Satisfy the pinned prerequisites first; do not allow a missing dependency to become an uncontrolled download from a moving branch.
 
-Use owned `tmux` for workstation operations, fresh absolute work directories, full available CPU affinity and the current 64 GiB per-process address-space policy for new authorized runs. Record the native/effective/outer result separately. Those current settings do not authorize editing or replaying a finished historical run ([operating rules](../GOAL-PROMPT.md)).
+Use owned `tmux` for workstation operations, fresh absolute work directories, full available CPU affinity and the current 64 GiB per-process address-space policy for new authorized runs. Record the native/effective/outer result separately. Those current settings do not authorize editing or replaying a finished historical run ([repository policy](../README.md#repository-policy)).
 
 ## 5. Static FIM preparation and compile: exact historical route
 

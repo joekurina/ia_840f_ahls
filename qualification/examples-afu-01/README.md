@@ -1,6 +1,6 @@
 # OFS tutorial AFU qualification evidence
 
-This campaign implements [GOAL-PROMPT-EXAMPLES-AFU.md](../../GOAL-PROMPT-EXAMPLES-AFU.md) on the accepted migrated IA-840F FIM. It is **complete under the recorded-failure policy**: eight variants built/loaded/tested, six scoped hardware passes and two data-verification failures; the README-only advanced entry is explicitly skipped. [Final summary](FINAL-SUMMARY121.md) and [verified aggregate](FINAL-AGGREGATE121.json) carry the results. [CURRENT.md](CURRENT.md) is the authoritative closed handoff; [targets28.json](targets28.json) is the immutable initial inventory, whose old NOT_STARTED/active fields are historical—not current work.
+This campaign qualified the OFS tutorial AFUs on the accepted migrated IA-840F FIM. It is **complete under the recorded-failure policy**: eight variants built/loaded/tested, six scoped hardware passes and two data-verification failures; the README-only advanced entry is explicitly skipped. [Final summary](FINAL-SUMMARY121.md) and [verified aggregate](FINAL-AGGREGATE121.json) carry the results. [CURRENT.md](CURRENT.md) is the authoritative closed handoff; [targets28.json](targets28.json) is the immutable initial inventory, whose old NOT_STARTED/active fields are historical—not current work.
 
 ## Evidence/publication policy
 

@@ -4,7 +4,7 @@ This guide records the accepted CAPS03 deployment route for the BittWare IA-840F
 
 ## 1. Route and prerequisites
 
-**Always use `bw_agilex_flash_programmer` for IA-840F flash programming. It is the only flash route for this project.** Do not repair, retry, or continue diagnosing JTAG. `Hardware not attached` is a reason to leave the JTAG route, not to reset USB or reboot while trying to repair it. A `.jic` is conversion evidence, **not SDK-writer input**. The writer takes the correctly oriented `.rpd` generated from the accepted full-device `.sof` ([standing rule](../GOAL-PROMPT.md), [route authority](../qualification/caps03-flash01/AUTHORITY.md)).
+**Always use `bw_agilex_flash_programmer` for IA-840F flash programming. It is the only flash route for this project.** Do not repair, retry, or continue diagnosing JTAG. `Hardware not attached` is a reason to leave the JTAG route, not to reset USB or reboot while trying to repair it. A `.jic` is conversion evidence, **not SDK-writer input**. The writer takes the correctly oriented `.rpd` generated from the accepted full-device `.sof` ([recorded route authority](../qualification/caps03-flash01/AUTHORITY.md)).
 
 Before a hardware operation, establish all of the following:
 
@@ -12,7 +12,7 @@ Before a hardware operation, establish all of the following:
 - The installed BittWare CLI, RPD reader, `handle_program`, SDM mailbox implementation, VFIO service and BMC tools match the reviewed installation. The recorded installation uses user-local Python 3.9 packages; do not assume another package version has the same interface or byte-order contract ([SDK preflight](../qualification/caps03-flash01/sdk-preflight20-result.json), [deployment report](../qualification/caps03-flash01/SDK23.md)).
 - The current boot, management PF, card index, driver and IOMMU group are identified from current evidence. Card indices and BDFs below are historical examples, not identifiers to copy onto another boot or machine. Root-visible file-descriptor **and memory-map** ownership checks must show no competing application, VFIO, programmer or FPGA owner. A process-name search alone is insufficient ([target receipt](../qualification/caps03-flash01/sdk-target22-result.json)).
 - The intended complete non-RSU flash layout and exact erase footprint are accepted. This runbook does not select an RSU layout or preserve an RSU factory/user scheme. Retain recovery material; a previously booted image is not a fresh device backup. The accepted run had no fresh pre-write flash snapshot, and that limitation remains explicit ([deployment acceptance](../qualification/caps03-flash01/ACCEPTANCE48.md)).
-- Run every workstation operation inside an owned `tmux` session with durable logs. Do not use bare remote-shell commands as an alternative. Verify paths, target, ownership and authorization before executing each hardware stage ([operating rules](../GOAL-PROMPT.md#workstation-safety--operating-rules-not-new-infrastructure)).
+- Run every workstation operation inside an owned `tmux` session with durable logs. Do not use bare remote-shell commands as an alternative. Verify paths, target, ownership and authorization before executing each hardware stage ([repository policy](../README.md#repository-policy)).
 
 Do not perform JTAG, BMC, card status, flash reads, PCI removal or reboot concurrently with an active writer. If the writer's native state is uncertain, stop and recover its existing receipt; do not launch a second writer or a standalone full verification.
 
