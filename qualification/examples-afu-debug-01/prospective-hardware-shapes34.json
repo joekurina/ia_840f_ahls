@@ -1,0 +1,33 @@
+{
+  "approved": false,
+  "scope": "prospective shapes only; no futureGBSplaceholder/hardwareissued",
+  "shapes": {
+    "copy_engine": {
+      "host_command": [
+        "/home/uwb_student00/ahls/new_BSP/work_examples_afu_debug01/copy-host01/build/copy_engine_invert_checked",
+        "--chunk-size=4096",
+        "--completion-freq=1",
+        "--max-reqs=8"
+      ],
+      "host_sha256": "43d16c4d28129304b1c0546253f8f38a87233ee24a6a6013e7197df7c92f1f2d",
+      "markers": [
+        "CHECK copy_payload transform=bitwise_not buffers=32 bytes_per_buffer=4096 errors=0 PASS",
+        "Total lines read: 2048",
+        "Total lines written: 2048"
+      ],
+      "host_deadline": 60,
+      "old_failure": "first4KiBcompletiondeadline97, no claimfixeduntilactualtest"
+    },
+    "dma": {
+      "host_command": [
+        "/home/uwb_student00/ahls/new_BSP/work_examples_afu01/dma-single-fix73/host75/build/dma_checked"
+      ],
+      "host_sha256": "23d56dc12785b7ad692ecc20ffad1e81e56e55282f3093d90d3bd5ffd8f82784",
+      "markers": [
+        "CHECK DMA roundtrip bank=0 bytes=1024 words=128 errors=0 PASS"
+      ],
+      "host_deadline": 60,
+      "descriptor_shape": "one1KiBH2D andone1KiBD2H, no host-side256chunkworkaround"
+    }
+  }
+}

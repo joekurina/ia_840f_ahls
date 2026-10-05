@@ -17,6 +17,19 @@ The prior Quartus 25.1 baseline remains published and unchanged as
 
 ## Workflow guides (operator documentation)
 
+### OFS tutorial AFUs — eight scoped hardware passes
+
+The three hello-world variants, clocks, both local-memory variants, and the
+repaired copy-engine and DMA examples passed their named card checks on the
+migrated FIM. Copy uses the correct bitwise-NOT oracle; copy/DMA use an additive
+256-byte AFU-side packet cap for the configured PU/MPS limit. Original failures
+and the remaining VFIO pending-transaction/FLR warning are preserved. See the
+[AFU example instructions and results](docs/ia840f-examples-afu.md) and
+[repair acceptances](qualification/examples-afu-debug-01/FINAL-SUMMARY43.md).
+This is a post-tag supplement to the v2.0.0 release, not a changed historical tag
+or a warning-free reset/drain qualification. The README-only PIM_advanced entry
+is explicitly skipped; no programming images or licensed binaries are included.
+
 The workflow guides remain authoritative for both toolchain generations;
 version-sensitive facts for the migrated platform are in the v2.0.0 notes:
 
@@ -25,6 +38,7 @@ version-sensitive facts for the migrated platform are in the v2.0.0 notes:
 3. [Deploy the FPGA image: BittWare SDK flashing and activation](docs/ia840f-sdk-flashing.md).
 4. [Run the AFU: OPAE host build, DFL/VFIO setup, numerical checks and lifecycle](docs/ia840f-run.md).
 5. [Run the standalone AHLS tutorials: CPU/emulation, RTL simulation, reports and characterization](examples/ahls/README.md).
+6. [Run the OFS tutorial AFUs: matching PR images, checked hosts, repairs and accepted results](docs/ia840f-examples-afu.md).
 
 The FIM and AFU run as configured FPGA logic; PIM is their interface/build
 infrastructure, not a separate executable. The actual card test uses the OPAE

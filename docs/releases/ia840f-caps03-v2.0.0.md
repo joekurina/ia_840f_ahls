@@ -42,7 +42,7 @@ published as fallback.
   maintained form; PLL stays 470 MHz.
 - **CDC evidence gate:** the scoped 20-FIFO/40-bundle discriminator ran natively
   in the migrated database — 2,700 exact-name endpoint joins resolved with zero
-  gaps ([CDC acceptance](../fim24-caps03-cdc03/CDC-ACCEPTANCE73.md)).
+  gaps ([CDC acceptance](../../qualification/fim24-caps03-cdc03/CDC-ACCEPTANCE73.md)).
 - **Assembly & packaging:** one native `quartus_asm ofs_top -c ofs_pr_afu`
   (outer 0) with region-qualified outputs; offline GBS packaging verified
   payload-identical ([assembly](../../qualification/fim24-caps03-assembly01/ASSEMBLY-ACCEPTANCE28.md)).
@@ -118,3 +118,42 @@ pending-before-FLR warning unchanged and scoped by
   migration".
 - Campaign window: 2026-09-30 through 2026-10-04; card campaign day 2026-10-03
   (flash 13:35–16:35 PDT, activation 17:12 PDT, gates 17:28–19:26 PDT).
+
+## Post-tag supplement: OFS AFU example instructions and results
+
+The historical v2.0.0 tag is unchanged. Later source/evidence commits and release
+attachments add the [AFU example operator guide](../ia840f-examples-afu.md) and
+[copy/DMA repair report](../../qualification/examples-afu-debug-01/FINAL-SUMMARY43.md).
+The original tag's generated source archives do not contain these later commits;
+use the supplement's pinned checkout linked in the GitHub release notes.
+
+All eight requested RTL variants have a scoped hardware pass: hello-world
+Avalon/CCI-P/AXI, clocks, local-memory Avalon/AXI, and repaired copy-engine/DMA.
+`PIM_advanced` is README-only and explicitly skipped, not a ninth AFU.
+
+- Hello-world verifies a full64-byte MMIO-triggered DMA greeting.
+- Clocks verifies divider/counter ratios and its packaged759MHz user target,
+  not independently measured absolute470MHz.
+- Both local-memory variants pass the commanded-data gate on banks0/1, not
+  full-capacity/isolation/sustained qualification.
+- Copy passes32×4096bytes with maxreq8/completion1, source-defined bitwise-NOT
+  expectation,2048 read/write lines and zero data errors. Accepted repair
+  milestone: `4ac6d7bad464428c8f7bd014cd5de24e8c4bb65f`.
+- DMA passes bank0, one1024byteH2D and one1024byteD2H descriptor with all128words
+  correct, using the original checked host and no host chunk workaround.
+  Accepted repair milestone: `9ab6e4abe685ef8cdf1c3a02ef9db229ac442b79`.
+
+The initial six-pass/two-failure report and its original receipts remain intact.
+The follow-on corrects my wrong copy identity oracle and adds a shared256-byte
+AFU-side packet cap with private USER4 response ownership. Actual retained PU
+configuration allowed512-byte writes versus configured PF0MPS256/MRRS512; the
+source/runtime discrepancy and paired tests support the diagnosis, but wire
+packets/physical rejection were not captured. Gen3 itself is not a256-byte ceiling.
+
+Both repaired tests retain a VFIO pending-transaction timeout/FLR-anyway warning
+during cleanup. Data PASS and native0 do not establish global drain, reset safety,
+future health or performance. Read-RRESP and intermediate-BRESP limitations remain.
+Programming images, licensed tools and generated native workspace collateral stay
+external and hash-referenced; this supplement is not a clean-checkout FPGA build kit.
+No build, programming, reset or reboot was performed to publish it. Task prompt
+files were removed from the current repository tree, not republished as runbooks.
