@@ -1,15 +1,9 @@
-# clocks — build accepted, hardware unqualified
+# clocks — relative-frequency FPGA Test accepted after targeted permission fix
 
-FINAL `deleg_e6797d57` accepts the recorded failure disposition, **not a clock pass**. [Disposition86](FINAL-DISPOSITION86.json), [failure83](failure-disposition83.json), [review83](review-manifest83.json).
+**PASS at the named scope**, FINAL `deleg_8c818285`, attempt89. [Acceptance93](ACCEPTANCE93.json), [retry summary90](successful-retry-summary90.json), [review90](review-manifest90.json).
 
-## What actually ran
+Original native build0/effective0 and GBS SHA256 `d29b3c059316aac396fe76ed6cfeaf79698a35919e4c1bb1a4f5fdfacb18ee75` are unchanged. Following explicit user authorization for necessary permissions, only UID1000rwACL was granted on exact `/dev/uio0`; owner/group remainroot/root, grouproot---/other---. Backup/rollback/effectiveaccess verified. [Permission88](permission88-collection.json). No driver/BIOS/AER/link changes or GBS rebuild.
 
-Native CMake PR flow under Quartus26.1.1 Build130 exited0/effective0, all21boundinputs preserved. Upstream auto-frequency target, no RTL edits. [Build readback](build-artifacts80-collection.json).
+Fresh normal-user `fpgaconf 0000:4f:00.0 <same GBS>` and `clock_freq_test_checked 759` both durably nativeEXITED0 with empty stderr. Host resets its existing counters, then verifies divider/AFU ratios and actual packaged user-frequency target. Expected759.000000MHz, metadata-scaled counter estimate757.143062MHz, tolerance7.590000MHz; uClkDiv2 approximately378.6MHz. pClk470MHz is reference metadata, not independent absolute metrology. [Runtime89](hardware-result89-collection.json). Scopedpostflight holders/maps/errors/relevants/D empty, sameboot.
 
-GBS SHA256 `d29b3c059316aac396fe76ed6cfeaf79698a35919e4c1bb1a4f5fdfacb18ee75`; interfacefc603c44-5c8f-5e94-bcbe-a5780030947c; AFUbd9ccef3-0b2c-4bb2-901f-6c7486821188. Packaged759/379.5MHz values are metadata, **not measured hardware frequencies**.
-
-One normal-user `/usr/bin/fpgaconf 0000:4f:00.0 <GBS>` durably exited5 before successful PR, printing FailedtoopenUIO/Failedtosetuserclock. Rawsuccessfalse/hosts[] preserved. [Hardware receipts](hardware-result81-collection.json). **No host execution, clock measurement or successful PR qualification occurred.** Reviewed checked host built0 but was not run.
-
-Ordinary [UIO metadata86](uio-metadata86.json) shows `/dev/uio0` UID0/GID0/mode0600, executionUID1000 cannotread/write. OPAE source lookup calls opae_uio_open. No permission/driver/system-forcepass changes or skip-userclock workaround; moveon under goal hardrule4. No postflight exists in this failed result, and none is inferred. Images/oversized log remain remote-only with hash references.
-
-No active job. Overall campaign still has other pending targets; this example is disposed UNQUALIFIED with an honest access blocker.
+Original permission failure is preserved in commit `1de1cf23feecda8479cc48ce508b38b7c2099afc`, with nativePR5/hosts[]/successfalse. This follow-up does not rewrite it. The current authored checkpoint supersedes its earlier failure-only state. No blanket timing/CDC/reset/future-health/no-hang qualification. No active example job; images/oversized raw remain remote-only and hash-referenced.

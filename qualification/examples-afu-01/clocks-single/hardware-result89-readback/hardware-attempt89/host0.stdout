@@ -1,0 +1,27 @@
+Running Test
+MMIO Write to disable_counter (Byte Offset=00000090) = 00000000
+MMIO Write to reset_counter (Byte Offset=00000088) = 00000001
+MMIO Write to counter_max (Byte Offset=00000098) = 01000000
+MMIO Write to reset_counter (Byte Offset=00000088) = 00000000
+MMIO Write to enable_counter (Byte Offset=00000090) = 00000001
+Reading status_reg (Byte Offset=00000080) = 00000001
+Reading counter_pclk_value (Byte Offset=000000a0) = 01000001
+Reading counter_pclk_div2_value (Byte Offset=000000a8) = 00800002
+Reading counter_pclk_div4_value (Byte Offset=000000b0) = 00400001
+Reading counter_clkusr_value (Byte Offset=000000b8) = 019c66bf
+Reading counter_clkusr_div2_value (Byte Offset=000000c0) = 00ce335f
+Reading counter_clk_value (Byte Offset=000000c8) = 019c66bf
+Reading pclk_freq_value (Byte Offset=000000d0) = 000001d6
+CHECK clock_ratios_and_packaged_frequency PASS expected=759.000000 measured=757.143062 tolerance=7.590000 MHz
+pClk reference470MHz is platform metadata; frequencies are counter ratios, not independent absolute clock metrology.
+
+Standard clocks:
+  pClk 		470.0 MHz
+  pClkDiv2 	235.0 MHz
+  pClkDiv4 	117.5 MHz
+  uClk_usr 	757.1 MHz
+  uClk_usrDiv2 	378.6 MHz
+
+  AFU clk 	757.1 MHz
+
+Done Running Test

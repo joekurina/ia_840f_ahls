@@ -1,0 +1,27 @@
+{
+  "scope": "explicit user permission amendment; targeted clock UIO UID1000 rw only",
+  "user_authority": "you have full authorization to change permissions if necessary.",
+  "target": "/dev/uio0",
+  "sysfs": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0/fpga_region/region0/dfl-port.0/dfl_dev.8/uio/uio0",
+  "before_stat": {
+    "mode": "0o600",
+    "uid": 0,
+    "gid": 0,
+    "read": false,
+    "write": false
+  },
+  "before_acl": "# file: /dev/uio0\n# owner: root\n# group: root\nuser::rw-\ngroup::---\nother::---\n\n",
+  "change_rc": 0,
+  "change_stdout": "",
+  "change_stderr": "",
+  "after_acl": "# file: /dev/uio0\n# owner: root\n# group: root\nuser::rw-\nuser:uwb_student00:rw-\ngroup::---\nmask::rw-\nother::---\n\n",
+  "after_stat": {
+    "mode": "0o660",
+    "uid": 0,
+    "gid": 0,
+    "read": true,
+    "write": true
+  },
+  "rollback": "sudo -n /usr/bin/setfacl --restore=/home/uwb_student00/ahls/new_BSP/work_examples_afu01/clock-uio-acl-before88.txt",
+  "no_driver_bios_link_AER_change": true
+}
