@@ -1,0 +1,38 @@
+--- hardware-runner38.py
++++ hardware-runner47.py
+@@ -92,7 +92,7 @@
+ def main():
+     assert os.environ.get('TMUX') and socket.gethostname() == 'Agilex7Workstation'
+     assert os.getuid() == 1000 and APPROVAL_SHA256 != 'UNBOUND_NOT_AUTHORIZED'
+-    approval_path = RUN / 'hardware-approval.json'
++    approval_path = RUN / 'hardware-approval47.json'
+     assert sha(approval_path) == APPROVAL_SHA256
+     approval = json.loads(approval_path.read_text())
+     assert approval['accepted_for_one_attempt'] is True
+@@ -112,7 +112,7 @@
+     assert not any(before[k] for k in ('d_state', 'holders', 'maps', 'errors', 'relevant_processes'))
+     for bdf, driver in approval['drivers'].items():
+         assert str((Path('/sys/bus/pci/devices') / bdf / 'driver').resolve()) == driver
+-    trial = RUN / 'hardware-attempt01'
++    trial = RUN / 'hardware-attempt02'
+     trial.mkdir(exist_ok=False)
+     (trial / 'preflight.json').write_text(json.dumps(before, indent=2))
+     env = dict(os.environ)
+@@ -123,7 +123,7 @@
+     for key in ('OPAE_CONFIG_FILE', 'OPAE_CONFIG_PATH', 'OPAE_PLUGIN_PATH', 'LD_PRELOAD'):
+         assert not env.get(key), (key, 'unreviewed inherited override')
+     results = {'scope': approval['scope'], 'success': False, 'boot': EXPECTED_BOOT}
+-    kernel_before = subprocess.run(['sudo', '-n', '/usr/bin/dmesg', '--raw', '--color=never'],
++    kernel_before = subprocess.run(['sudo', '-n', '/usr/bin/dmesg', '--raw'],
+                                    capture_output=True, timeout=30)
+     assert kernel_before.returncode == 0, kernel_before.stderr.decode(errors='replace')
+     (trial / 'kernel-before.log').write_bytes(kernel_before.stdout)
+@@ -145,7 +145,7 @@
+             results['success'] = (results['exact_data_marker'] and results['empty_host_stderr']
+                                   and after['boot_id'] == EXPECTED_BOOT
+                                   and not any(after[k] for k in ('d_state', 'holders', 'maps', 'errors', 'relevant_processes')))
+-    kernel_after = subprocess.run(['sudo', '-n', '/usr/bin/dmesg', '--raw', '--color=never'],
++    kernel_after = subprocess.run(['sudo', '-n', '/usr/bin/dmesg', '--raw'],
+                                   capture_output=True, timeout=30)
+     results['kernel_capture_rc'] = kernel_after.returncode
+     (trial / 'kernel-after.log').write_bytes(kernel_after.stdout)

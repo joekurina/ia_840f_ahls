@@ -1,0 +1,26 @@
+--- hardware-runner24-draft.py
++++ hardware-runner38.py
+@@ -82,6 +82,13 @@
+     return result
+ 
+ 
++def load_diagnostics_clean(load, directory):
++    """The default nonverbose fpgaconf is expected to be silent on success."""
++    return (load['execution_state'] == 'EXITED' and load['native_rc'] == 0
++            and (directory / 'fpgaconf.stdout').read_bytes() == b''
++            and (directory / 'fpgaconf.stderr').read_bytes() == b'')
++
++
+ def main():
+     assert os.environ.get('TMUX') and socket.gethostname() == 'Agilex7Workstation'
+     assert os.getuid() == 1000 and APPROVAL_SHA256 != 'UNBOUND_NOT_AUTHORIZED'
+@@ -123,7 +130,8 @@
+     load = execute_once('fpgaconf', ['/usr/bin/fpgaconf', '0000:4f:00.0', approval['gbs']],
+                         120, trial, env)
+     results['load'] = load
+-    if load['execution_state'] == 'EXITED' and load['native_rc'] == 0:
++    results['load_diagnostics_clean'] = load_diagnostics_clean(load, trial)
++    if results['load_diagnostics_clean']:
+         # No reset/rebind/retry between successful PR and this one tutorial execution.
+         host = execute_once('host', [approval['host']], 30, trial, env)
+         results['host'] = host

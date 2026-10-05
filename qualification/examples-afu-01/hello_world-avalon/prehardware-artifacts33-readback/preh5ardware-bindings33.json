@@ -1,0 +1,131 @@
+{
+  "scope": "ordinary-file/OS fresh prehardware evidence, no programming or AFU execution",
+  "ownership": {
+    "boot_id": "3e2d2060-d6c0-44b5-a269-1adf1e450041",
+    "d_state": [],
+    "errors": [],
+    "holders": [],
+    "kernel": "5.14.0-687.48.1.el9_8.x86_64",
+    "maps": [],
+    "pci": [
+      {
+        "bdf": "0000:4f:00.1",
+        "device": "0x0070",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.1"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/5",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "vendor": "0x12ba",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.2",
+        "device": "0xbccf",
+        "driver": "/sys/bus/pci/drivers/vfio-pci",
+        "group_members": [
+          "0000:4f:00.2"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/76",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "physfn": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0",
+        "vendor": "0x8086",
+        "virtfn_links": {}
+      },
+      {
+        "bdf": "0000:4f:00.0",
+        "device": "0xbcce",
+        "driver": "/sys/bus/pci/drivers/dfl-pci",
+        "group_members": [
+          "0000:4f:00.0"
+        ],
+        "iommu_group": "/sys/kernel/iommu_groups/4",
+        "parent_path": "/sys/devices/pci0000:4e/0000:4e:00.0",
+        "sriov_numvfs": "1",
+        "vendor": "0x8086",
+        "virtfn_links": {
+          "virtfn0": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.2"
+        }
+      }
+    ],
+    "relevant_processes": [],
+    "retained_original_owner_scope": {
+      "bdfs": [
+        "0000:4f:00.0",
+        "0000:4f:00.1",
+        "0000:4f:00.2"
+      ],
+      "vfio_nodes": [
+        "/dev/vfio/vfio",
+        "/dev/vfio/4",
+        "/dev/vfio/5",
+        "/dev/vfio/76"
+      ]
+    },
+    "scope": "ordinary cached PCI/sysfs identities and root-visible process/fd/maps only; no hardware API",
+    "sdk_service_readonly": {
+      "rc": 0,
+      "stderr": "",
+      "stdout": "MainPID=0\nExecMainStatus=0\nControlGroup=\nActiveState=inactive\nSubState=dead\n"
+    },
+    "utc": "2026-10-05T07:59:50.248797+00:00"
+  },
+  "files": {
+    "/usr/bin/fpgaconf": {
+      "bytes": 38728,
+      "sha256": "49d98ab8168a0f5f570672d90158647fa7640b01a712bd61d017e3f57216f786",
+      "resolved": "/usr/bin/fpgaconf"
+    },
+    "/usr/lib64/libopae-c.so.2.13.0": {
+      "bytes": 202312,
+      "sha256": "2cc2f37de8fdbb396add0c7a61a96bd9a7051d14ccfc4c7f79d42679ff825ddf",
+      "resolved": "/usr/lib64/libopae-c.so.2.13.0"
+    },
+    "/usr/lib64/opae/libopae-v.so": {
+      "bytes": 73304,
+      "sha256": "e4ce26f97e4746bc6fd6879630561578a5a04a61204225b9fac8079b6845dc6b",
+      "resolved": "/usr/lib64/opae/libopae-v.so"
+    },
+    "/usr/lib64/opae/libxfpga.so": {
+      "bytes": 347616,
+      "sha256": "118460ff6360a3207f25c53fc96925a741f7c6c7a1236534ec31394d49d3a609",
+      "resolved": "/usr/lib64/opae/libxfpga.so"
+    },
+    "/usr/lib64/libopaevfio.so.2": {
+      "bytes": 33736,
+      "sha256": "44d1b2f60c66ec9abf2d80d47119abc62e1a454f601bf19348c8592f59eb0062",
+      "resolved": "/usr/lib64/libopaevfio.so.2.13.0"
+    },
+    "/usr/lib64/libopaemem.so.2": {
+      "bytes": 32216,
+      "sha256": "b1125067b47c1bbf07066d78c76680ac236cbcd251e6a853c87028ef2dd31979",
+      "resolved": "/usr/lib64/libopaemem.so.2.13.0"
+    },
+    "/etc/opae/opae.cfg": {
+      "bytes": 26958,
+      "sha256": "c4618ab7191d8d79547367d381bd41d9f58ca8c13b8a78cc5a8eb1b5c9aeb8de",
+      "resolved": "/etc/opae/opae.cfg"
+    },
+    "/home/uwb_student00/ahls/new_BSP/work_examples_afu01/hello_world-avalon/host21/build/hello_world_checked": {
+      "bytes": 30096,
+      "sha256": "2d2a32a013e7ab47d194b58a90a629c02b6bb07cb48b85d6ed1b57bc672c6bf3",
+      "resolved": "/home/uwb_student00/ahls/new_BSP/work_examples_afu01/hello_world-avalon/host21/build/hello_world_checked"
+    },
+    "/home/uwb_student00/ahls/new_BSP/work_examples_afu01/hello_world-avalon/persona/build/syn/board/ia840f/syn_top/output_files/ofs_pr_afu.green_region.gbs": {
+      "bytes": 7139655,
+      "sha256": "b3aeb3c6c07febad0aa08f36d17daf7b940cd2328d770323d5e03bf8f8a78bfa",
+      "resolved": "/home/uwb_student00/ahls/new_BSP/work_examples_afu01/hello_world-avalon/persona/build/syn/board/ia840f/syn_top/output_files/ofs_pr_afu.green_region.gbs"
+    }
+  },
+  "cached_uuid_path": "/sys/devices/pci0000:4e/0000:4e:00.0/0000:4f:00.0/fpga_region/region0/dfl-fme.0/dfl-fme-region.1/fpga_region/region1/compat_id",
+  "cached_uuid": "fc603c445c8f5e94bcbea5780030947c",
+  "container_payload_matches_native_rbf": true,
+  "OPAE_environment": {
+    "OPAE_CONFIG_FILE": null,
+    "OPAE_CONFIG_PATH": null,
+    "OPAE_PLUGIN_PATH": null,
+    "LD_PRELOAD": null,
+    "LD_LIBRARY_PATH": "/opt/gurobi1301/linux64/lib:/opt/gurobi1301/linux64/lib"
+  }
+}

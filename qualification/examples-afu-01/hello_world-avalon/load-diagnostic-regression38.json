@@ -1,0 +1,50 @@
+{
+  "scope": "pure load diagnostic gate fixtures; demonstrates RC0/error counterexample rejection; no hardware",
+  "rows": [
+    {
+      "case": "silent_zero",
+      "expected_host_allowed": true,
+      "actual_host_allowed": true,
+      "passed": true,
+      "scope": "synthetic load-result/log fixture only; no fpgaconf/hardware invocation"
+    },
+    {
+      "case": "stderr_error_zero",
+      "expected_host_allowed": false,
+      "actual_host_allowed": false,
+      "passed": true,
+      "scope": "synthetic load-result/log fixture only; no fpgaconf/hardware invocation"
+    },
+    {
+      "case": "stdout_unexpected_zero",
+      "expected_host_allowed": false,
+      "actual_host_allowed": false,
+      "passed": true,
+      "scope": "synthetic load-result/log fixture only; no fpgaconf/hardware invocation"
+    },
+    {
+      "case": "nonzero",
+      "expected_host_allowed": false,
+      "actual_host_allowed": false,
+      "passed": true,
+      "scope": "synthetic load-result/log fixture only; no fpgaconf/hardware invocation"
+    },
+    {
+      "case": "stopped",
+      "expected_host_allowed": false,
+      "actual_host_allowed": false,
+      "passed": true,
+      "scope": "synthetic load-result/log fixture only; no fpgaconf/hardware invocation"
+    },
+    {
+      "case": "timeout",
+      "expected_host_allowed": false,
+      "actual_host_allowed": false,
+      "passed": true,
+      "scope": "synthetic load-result/log fixture only; no fpgaconf/hardware invocation"
+    }
+  ],
+  "total": 6,
+  "passed": 6,
+  "runner_sha256": "0a281659e8df8557bc4266dae9b11502a36e16a1c18d60c23be957c89de309e0"
+}

@@ -1,0 +1,143 @@
+{
+  "scope": "execute_once inert method regression only; real main/preflight not executed",
+  "rows": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-c",
+        "print(\"inert\")"
+      ],
+      "utc_start": "2026-10-05T08:03:27.589777+00:00",
+      "native_rc": 0,
+      "execution_state": "EXITED",
+      "retained_owner": false,
+      "owner": {
+        "pid": 3092667,
+        "ppid": 3031777,
+        "state": "R",
+        "start_ticks": "21479917",
+        "exe": "/usr/bin/python3.13",
+        "cwd": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/examples-afu-01/hello_world-avalon",
+        "argv": [
+          "/usr/bin/python3",
+          "-c",
+          "print(\"inert\")"
+        ]
+      },
+      "utc_end": "2026-10-05T08:03:27.692034+00:00",
+      "stdout": {
+        "bytes": 6,
+        "sha256": "9a72dc6ee5665ab1364707965c4b75a6e3a58e25148d5ea02b17aa78b2a84eb5"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "passed": true,
+      "scope": "inert process only, no FPGA/OPAE"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-c",
+        "import os,signal; os.kill(os.getpid(),signal.SIGSTOP)"
+      ],
+      "utc_start": "2026-10-05T08:03:27.692994+00:00",
+      "native_rc": null,
+      "execution_state": "RETAINED_T",
+      "retained_owner": true,
+      "owner": {
+        "pid": 3092668,
+        "ppid": 3031777,
+        "state": "R",
+        "start_ticks": "21479927",
+        "exe": "/usr/bin/python3.13",
+        "cwd": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/examples-afu-01/hello_world-avalon",
+        "argv": [
+          "/usr/bin/python3",
+          "-c",
+          "import os,signal; os.kill(os.getpid(),signal.SIGSTOP)"
+        ]
+      },
+      "current_owner": {
+        "pid": 3092668,
+        "ppid": 3031777,
+        "state": "T",
+        "start_ticks": "21479927",
+        "exe": "/usr/bin/python3.13",
+        "cwd": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/examples-afu-01/hello_world-avalon",
+        "argv": [
+          "/usr/bin/python3",
+          "-c",
+          "import os,signal; os.kill(os.getpid(),signal.SIGSTOP)"
+        ]
+      },
+      "utc_end": "2026-10-05T08:03:27.795868+00:00",
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "inert_owner_alive_at_return": true,
+      "inert_state_at_return": "T",
+      "passed": true,
+      "scope": "inert process only, no FPGA/OPAE"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-c",
+        "import time; time.sleep(30)"
+      ],
+      "utc_start": "2026-10-05T08:03:27.799278+00:00",
+      "native_rc": null,
+      "execution_state": "TIMEOUT_EXECUTION_UNKNOWN",
+      "retained_owner": true,
+      "owner": {
+        "pid": 3092669,
+        "ppid": 3031777,
+        "state": "R",
+        "start_ticks": "21479938",
+        "exe": "/usr/bin/python3.13",
+        "cwd": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/examples-afu-01/hello_world-avalon",
+        "argv": [
+          "/usr/bin/python3",
+          "-c",
+          "import time; time.sleep(30)"
+        ]
+      },
+      "current_owner": {
+        "pid": 3092669,
+        "ppid": 3031777,
+        "state": "S",
+        "start_ticks": "21479938",
+        "exe": "/usr/bin/python3.13",
+        "cwd": "/home/joe/Projects/Thesis/AHLS/new_bsp/new/qualification/examples-afu-01/hello_world-avalon",
+        "argv": [
+          "/usr/bin/python3",
+          "-c",
+          "import time; time.sleep(30)"
+        ]
+      },
+      "utc_end": "2026-10-05T08:03:28.103671+00:00",
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "inert_owner_alive_at_return": true,
+      "inert_state_at_return": "S",
+      "passed": true,
+      "scope": "inert process only, no FPGA/OPAE"
+    }
+  ],
+  "total": 3,
+  "passed": 3,
+  "runner_sha256": "cdbdadb5c64621e1f9afb492cb632b55a6396ebfbc00ab6e7098fde56b328ea2"
+}
