@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.20)
+project(dma_snapshot_256_checked C)
+add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/afu_json_info.h COMMAND /usr/bin/afu_json_mgr json-info --afu-json=/home/uwb_student00/ahls/new_BSP/work_examples_afu01/sources_dma_fix73/dma/hw/rtl/dma.json --c-hdr=${CMAKE_CURRENT_BINARY_DIR}/afu_json_info.h VERBATIM)
+add_executable(dma_snapshot_256_checked dma_snapshot_256_checked.c ${CMAKE_CURRENT_BINARY_DIR}/afu_json_info.h)
+target_include_directories(dma_snapshot_256_checked PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+target_compile_options(dma_snapshot_256_checked PRIVATE -O2 -g -Wall -Wextra -D_GNU_SOURCE)
+target_link_libraries(dma_snapshot_256_checked PRIVATE opae-c uuid rt)
