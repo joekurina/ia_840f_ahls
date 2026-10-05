@@ -10,8 +10,16 @@ already flashed and idle). Each example that synthesizes into a GBS is loaded
 with `fpgaconf` into the green region and executed with its OPAE host program;
 results are accepted per the evidence rules below.
 
-**DO NOT DO ANYTHING THAT COULD CAUSE THE WORKSTATION TO HANG.** Protecting the
-workstation, its data and remote access takes precedence over progress.
+**SCOPE CALIBRATION (Joe, 2026-10-05): the workstation-hang rule targets the
+historical failure mode — blind/speculative PCIe MMIO BAR probes and unqualified
+register writes, which wedged the machine. It does NOT apply to normal operation.**
+Running the tutorial host programs (OPAE open → MMIO → DMA → read → exit),
+re-running a host program, `fpgaconf` PR loads, and reading sysfs/OPAE state are
+**normal, explicitly authorized operation — do them freely without asking**. Do
+not let a transient D-state process sample (systemd and kernel threads enter D
+for microseconds routinely) trigger a safety stop: re-check the actual state
+live before treating it as a hang, and only a sustained (minutes) D-state on the
+critical path with unresponsive SSH is a real stop condition.
 
 **Flash rule (Joe): ALWAYS use the BittWare SDK flash writer
 `bw_agilex_flash_programmer`. Never JTAG.** These examples load as PR GBS via
@@ -72,11 +80,16 @@ on exit code alone when it prints data checks).
 1. **One card owner, one operation at a time.** No concurrent hardware jobs.
    Hardware is a single serial lane; synthesis can parallelize.
 2. **No speculative MMIO/BAR reads, UUID/base-address scans, `/dev/mem`, or
-   raw probing.** The host programs from the tutorial are the only card
-   software; do not write new kernel-level or diagnostic probes.
-3. **Timeout/disconnect/unexpected response = stop, preserve, report.** Never
-   duplicate-launch, auto-reset, rescan, rebind, reflash or reboot after a
-   failure. Never improvise power sequencing. No unbounded loops.
+   raw probing** (the historical hang cause). This does NOT restrict the
+   tutorial host programs or OPAE API usage — those are the sanctioned access
+   path and need no special care.
+3. **On failure: preserve the evidence, fix the cause, retry.** Do not
+   duplicate-launch a still-running job (check first, then act), and never
+   improvise power sequencing or reflash. But a failed host run, a lost exit
+   receipt, or a supervisor bug is fixed and retried as part of normal work —
+   host-only reruns and corrected monitoring **never require
+   re-authorization**. Only PR reload loops, reflash, power-cycle or reboot
+   after repeated failures warrant stopping to report.
 4. **No BIOS/AER/permission/link/driver changes to force a pass.** If an
    example cannot run as a plain OPAE user, record why and move on; do not
    modify system state to make it pass.
@@ -118,6 +131,11 @@ Per example, one capsule under `qualification/examples-afu-01/` named
 - Parent implements and executes; independent review accepts actual results
   for each hardware gate. Synthesis-only stages need evidence discipline, not
   a review per attempt.
+- **Never block on an unanswered clarify.** If an authorization prompt times
+  out, record the question, choose the most conservative action that stays
+  inside standing authority (host reruns, PR loads, normal runs qualify), and
+  keep working. Pausing is for reflash/power/reboot territory or real hang
+  symptoms — nothing else.
 - Report before and after every long-running step (each synthesis is minutes
   to ~an hour; each card run is seconds to minutes).
 - Subagent provider: whatever the runtime assigns; disclose substitutions.
