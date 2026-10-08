@@ -1,0 +1,23 @@
+\textbf{OPAE 2.14.0-3 hardware regression: all four rows passed.}
+
+The final project runtime used the released source pin and the documented module-search configuration patch. Each row ran the unchanged SYCL fat binary and its own matching GBS, with rebuilt MMD/MPF and private OPAE core/plugins.\src{19}
+
+\par\noindent\begin{tabular}{@{}l l r r r@{}}
+
+\toprule
+
+Variant & Flow & MHz & Comparisons & Native exit\\\midrule
+
+\code{ofs_ia840f} & \code{afu_flat} & 618 & 10000 & 0\\
+
+\code{ofs_ia840f} & \code{afu_flat_kclk} & 490 & 10000 & 0\\
+
+\code{ofs_ia840f_usm} & \code{afu_flat} & 592 & 10000 & 0\\
+
+\code{ofs_ia840f_usm} & \code{afu_flat_kclk} & 479 & 10000 & 0\\
+
+\bottomrule\end{tabular}\par
+
+All 40,000 comparisons passed. The loaded SYCL/OpenCL/FPGA-runtime bytes matched AHLS; the OPAE core and both selected plugins resolved inside the private release prefix. Every application ended with no device holders or unreadable owner entries. No FPGA synthesis, fitting, flash or reboot was needed for this software upgrade.\src{19}
+
+The displayed MHz values are operating-clock STA/GBS metadata, not a live frequency or throughput measurement. The exact scoped VF pending-before-FLR warning remains recorded. The verdict is \mbox{\texttt{lifecycle\_clean=false}}; no universal reset/write-retirement claim is added.\src{19}

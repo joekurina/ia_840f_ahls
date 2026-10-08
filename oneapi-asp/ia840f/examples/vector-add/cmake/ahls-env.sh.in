@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -eo pipefail
+ulimit -v "$((@AHLS_MEMORY_LIMIT_GIB@ * 1024 * 1024))"
+# Source the real SDK first, then select the required Quartus generation.
+source "@AHLS_ROOT@/fpgavars.sh" >/dev/null
+export INTELFPGAOCLSDKROOT="@AHLS_ROOT@"
+export ALTERA_HLS_ROOT="@AHLS_ROOT@"
+export QUARTUS_ROOTDIR="@QUARTUS_ROOT@"
+export QUARTUS_ROOTDIR_OVERRIDE="@QUARTUS_ROOT@"
+export PATH="@QUARTUS_ROOT@/bin:@QUARTUS_ROOT@/sopc_builder/bin:@AHLS_ROOT@/bin:@AHLS_ROOT@/llvm/bin-llvm:$PATH"
+export OPAE_PLATFORM_ROOT="@OPAE_PLATFORM_ROOT@"
+export OPAE_PLATFORM_FPGA_FAMILY=AGILEX
+export QUARTUS_VERSION=26.1
+export QUARTUS_VERSION_MAJOR=26
+export PR_COMPILE=1
+export BUILD_ROOT_REL=../../../..
+unset LD_PRELOAD
+if [[ -n "@ASP_BUILD_CONFIG@" ]]; then
+  export IA840F_BUILD_CONFIG="@ASP_BUILD_CONFIG@"
+fi
+exec "$@"

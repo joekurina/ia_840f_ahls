@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -eo pipefail
+ulimit -v "$((@AHLS_MEMORY_LIMIT_GIB@ * 1024 * 1024))"
+source "@AHLS_ROOT@/fpgavars.sh" >/dev/null
+# Private runtime selection only; no system install or global FCD registration.
+if [[ ! -f "@ASP_RUNTIME_ROOT@/activate.sh" ]]; then
+  printf '%s\n' 'ASP_RUNTIME_ROOT must contain the selected runtime activate.sh' >&2
+  exit 1
+fi
+unset LD_PRELOAD SYCL_DEVICE_FILTER ONEAPI_DEVICE_SELECTOR SYCL_BE
+unset CL_CONTEXT_MPSIM_DEVICE_INTELFPGA CL_CONTEXT_COMPILER_MODE_INTELFPGA CL_CONTEXT_EMULATOR_DEVICE_ALTERA
+source "@ASP_RUNTIME_ROOT@/activate.sh"
+exec "$@"

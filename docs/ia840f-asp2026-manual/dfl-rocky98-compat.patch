@@ -1,0 +1,64 @@
+diff --git a/drivers/fpga/dfl.c b/drivers/fpga/dfl.c
+index 9093238..350a5f3 100644
+--- a/drivers/fpga/dfl.c
++++ b/drivers/fpga/dfl.c
+@@ -253,7 +253,7 @@ dfl_match_one_device(const struct dfl_device_id *id, struct dfl_device *ddev)
+ 	return NULL;
+ }
+ 
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 11, 0)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 11, 0) && RHEL_RELEASE_CODE < 0x908
+ static int dfl_bus_match(struct device *dev, struct device_driver *drv)
+ #else
+ static int dfl_bus_match(struct device *dev, const struct device_driver *drv)
+diff --git a/drivers/net/ethernet/intel/s10hssi.c b/drivers/net/ethernet/intel/s10hssi.c
+index f85037a..165c3db 100644
+--- a/drivers/net/ethernet/intel/s10hssi.c
++++ b/drivers/net/ethernet/intel/s10hssi.c
+@@ -15,6 +15,11 @@
+ #include <linux/regmap.h>
+ #include <linux/uaccess.h>
+ 
++#ifndef from_timer
++#define from_timer(var, callback_timer, timer_fieldname) \
++	container_of(callback_timer, typeof(*var), timer_fieldname)
++#endif
++
+ #define CAPABILITY_OFF		0x08
+ #define CAP_AVAILABLE_RATES	GENMASK_ULL(7, 0)
+ #define CAP_CONTAINS_PCS	GENMASK_ULL(15, 8)
+diff --git a/drivers/net/ethernet/silicom/n5010-hssi.c b/drivers/net/ethernet/silicom/n5010-hssi.c
+index 14dd5c7..18e6ed7 100644
+--- a/drivers/net/ethernet/silicom/n5010-hssi.c
++++ b/drivers/net/ethernet/silicom/n5010-hssi.c
+@@ -485,10 +485,14 @@ err_unreg_netdev:
+ }
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(6, 14, 0)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 9, 0) && RHEL_RELEASE_CODE < 0x908
+ static int n5010_match_phy_dev(struct device *dev, void *data)
+ #else
+ static int n5010_match_phy_dev(struct device *dev, const void *data)
+ #endif
++#else
++static int n5010_match_phy_dev(struct device *dev, const void *data)
++#endif
+ {
+ 	return dev->driver && !strcmp(dev->driver->name, "n5010bmc-phy");
+ }
+diff --git a/drivers/net/ethernet/silicom/n5010-phy.c b/drivers/net/ethernet/silicom/n5010-phy.c
+index 3854788..85c4926 100644
+--- a/drivers/net/ethernet/silicom/n5010-phy.c
++++ b/drivers/net/ethernet/silicom/n5010-phy.c
+@@ -151,7 +151,11 @@ int n5010_phy_attach(struct device *dev, struct net_device *netdev,
+ 	struct n5010_port *port;
+ 	int ret;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 3, 0) && RHEL_RELEASE_CODE < 0x908
+ 	phy = fixed_phy_register(PHY_POLL, &n5010_phy_status, NULL);
++#else
++	phy = fixed_phy_register(&n5010_phy_status, NULL);
++#endif
+ 	if (IS_ERR(phy))
+ 		return PTR_ERR(phy);
+ 

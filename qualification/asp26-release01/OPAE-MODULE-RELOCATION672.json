@@ -1,0 +1,10 @@
+{
+  "upstream_release": "2.14.0-3",
+  "base_commit": "e4b329185d2c462f5b8c3c74443a5c5cdb25f3b3",
+  "before_sha256": "02ec3e1fd0e68eee9781d0bc39f8c4041b518201821e048263abc9f3b416e362",
+  "after_sha256": "bd1e14570af4fba81f50ba7e6d8194a155f9b53e7f30f3e97562e07023d824a8",
+  "change": "module search uses bare configured tokens through private loader paths; no absolute install/system plugin precedence",
+  "C_functions_changed": false,
+  "FPGA_logic_changed": false,
+  "diff": "diff --git a/cmake/config/config.h.in b/cmake/config/config.h.in\nindex c8824c10..3bd34ccf 100644\n--- a/cmake/config/config.h.in\n+++ b/cmake/config/config.h.in\n@@ -230,12 +230,7 @@\n #define OPAE_ASE_CFG_SRC_PATH \"@CMAKE_CURRENT_SOURCE_DIR@/libopae/plugins/ase/opae_ase.cfg\"\n #define OPAE_ASE_CFG_INST_PATH \"@CMAKE_INSTALL_PREFIX@/share/opae/ase/opae_ase.cfg\"\n \n-#define OPAE_MODULE_SEARCH_PATHS        \\\n-  \"@CMAKE_INSTALL_PREFIX@/lib64/opae/\", \\\n-  \"@CMAKE_INSTALL_PREFIX@/lib/opae/\",   \\\n-  \"/usr/lib64/opae/\",                   \\\n-  \"/usr/lib/opae/\",                     \\\n-  \"\"\n+#define OPAE_MODULE_SEARCH_PATHS \"\"\n \n #ifndef STATIC\n #define STATIC static\n"
+}

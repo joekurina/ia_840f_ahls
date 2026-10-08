@@ -1,0 +1,11 @@
+if(@VECTOR_ADD_TRACE_RUNTIME@)
+  set(ENV{LD_DEBUG} "libs")
+endif()
+execute_process(
+  COMMAND "@BASH_EXECUTABLE@" "@CMAKE_BINARY_DIR@/runtime-env.sh"
+    "@FPGA_TARGET@" "@VECTOR_ADD_SIZE@"
+  RESULT_VARIABLE native_rc)
+file(WRITE "@CMAKE_BINARY_DIR@/native-runtime-exit.txt" "${native_rc}\n")
+if(NOT native_rc EQUAL 0)
+  message(FATAL_ERROR "Vector-add native runtime failed: ${native_rc}")
+endif()

@@ -1,6 +1,25 @@
 # IA-840F OFS / Altera AHLS source project
 
-## Current release: OFS 2026.1 / Quartus 26.1 migration
+## Current ASP release: AHLS2026.1 / OFS2026.1 / OPAE2.14.0-3
+
+**`ia840f-asp-v1.0.0`** publishes the qualified IA-840F oneAPI-style ASP source,
+native AHLS vector-add example, current-runtime qualification and31-page
+LaTeX support manual. Both buffer and shared-USM variants passed `afu_flat`
+and `afu_flat_kclk`:10,000 comparisons/native0 per row,40,000 total with the
+final private OPAE2.14.0-3 core/plugins and matching MMD/MPF.
+
+Start with the [release notes](docs/releases/ia840f-asp-v1.0.0.md),
+[manual](docs/ia840f-asp2026-manual/IA-840F_OFS2026.1_AHLS_Support_Guide.pdf),
+[board source](oneapi-asp/ia840f/README.md) and
+[qualification index](qualification/asp26-release01/README.md).
+The source release excludes licensed runtimes, programming images, static
+netlists and prepared workspaces. Their identities and the retained qualified
+package are recorded in the release metadata; a clean clone alone is not a
+standalone provisioned BSP. Existing CAPS03 releases/tags remain unchanged.
+The exact VF pending-before-FLR warning remains a disclosed operating limit.
+No hardware rebuild or device operation is part of Git publication.
+
+## Retained CAPS03 static-platform release
 
 Release **`ia840f-caps03-v2.0.0`** is the migrated platform: the accepted
 CAPS03 static FIM + PIM + memory-HLS AFU moved to **ofs-2026.1-1 /
@@ -57,7 +76,7 @@ its external prerequisites. The existing `ia840f-caps03-v1.0.0` tag is unchanged
 > hardware. The claim that it completed the release-wide goal was incorrect.
 > See [active correction](qualification/hls-samples-2026.1.0-01/CORRECTION.md).
 
-**Active target: Altera AHLS-generated RTL integrated into an OFS AFU through PIM, with OPAE/DFL host access. Not an Intel oneAPI compiler/runtime BSP. The Work21-based CAPS03 memory-HLS integration and scoped hardware qualification are complete, with the exact user-accepted lifecycle erratum exception.**
+**Retained CAPS03 integration scope:** Altera AHLS-generated RTL integrated into an OFS AFU through PIM, with OPAE/DFL host access. That separate integration is not the compiler/runtime ASP described in the current release above. Its scoped hardware qualification and exact lifecycle erratum exception remain unchanged.
 
 The selected build uses **Quartus Prime Pro 26.1.1 Build 130** on the migrated
 `ofs-2026.1-1` platform at the unchanged 3.000 ns application-clock target; the
